@@ -226,11 +226,11 @@ func (s *AbolishDataServiceApiResponse) SetBody(v *AbolishDataServiceApiResponse
 }
 
 type AddMetaCollectionEntityRequest struct {
-	// The unique identifier of the collection.
-	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
 	// The unique identifier of the entity.
 	//
 	// Example: maxcompute-table.projectA.tableA.
+	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
 }
 
@@ -253,24 +253,23 @@ func (s *AddMetaCollectionEntityRequest) SetEntityQualifiedName(v string) *AddMe
 }
 
 type AddMetaCollectionEntityResponseBody struct {
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
-	//
-	// *   true: succeeded
-	// *   false: failed
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// true: The request was successful.
 	//
 	// false: The request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The result of the operation. Valid values:
+	//
+	// *   true: succeeded
+	// *   false: failed
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	Status  *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -342,13 +341,13 @@ func (s *AddMetaCollectionEntityResponse) SetBody(v *AddMetaCollectionEntityResp
 }
 
 type AddProjectMemberToRoleRequest struct {
-	// The client token. It is a field with the idempotence property. We recommend that you use a universally unique identifier (UUID). This parameter is used to uniquely identify the API operation call.
+	// The ID of the request. You can use the ID to search for logs and troubleshoot issues based on the logs.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to query the ID.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The code of the role that you want to assign to a member of a DataWorks workspace. You can call the [ListProjectRoles](~~178228~~) operation to query the code of all roles in a DataWorks workspace.
-	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
 	// The ID of your Alibaba Cloud account. To view the ID, log on to [the DataWorks console](https://workbench.data.aliyun.com/console) and move the pointer over the profile picture in the upper-right corner.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The client token. It is a field with the idempotence property. We recommend that you use a universally unique identifier (UUID). This parameter is used to uniquely identify the API operation call.
+	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// The region of the workspace. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -381,7 +380,6 @@ func (s *AddProjectMemberToRoleRequest) SetUserId(v string) *AddProjectMemberToR
 }
 
 type AddProjectMemberToRoleResponseBody struct {
-	// The ID of the request. You can use the ID to search for logs and troubleshoot issues based on the logs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -624,17 +622,14 @@ func (s *ApprovePermissionApplyOrderResponse) SetBody(v *ApprovePermissionApplyO
 }
 
 type ChangeResourceManagerResourceGroupRequest struct {
+	// The ID of the new resource group.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Indicates whether the resource group was successfully modified.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the resource type. Valid values:
 	//
 	// *   If you set the ResourceType parameter to project, set this parameter to the value of ProjectIdentifier. You can call the [ListProjects](~~178393~~) operation to obtain the value of ProjectIdentifier.
 	// *   If you set the ResourceType parameter to tenantresourcegroup, set this parameter to the value of ResourceGroupType. You can call the [ListResourceGroups](~~173913~~) operation to obtain the value of ResourceGroupType. Only the values 7, 8, and 9 are valid.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the new resource group.
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The resource type. Valid values:
-	//
-	// *   project: workspace. If you want to modify the resource group that you specify when you activate DataWorks, set the value to project.
-	// *   tenantresourcegroup: exclusive resource group. If you want to modify the resource group that you specify when you purchase a DataWorks exclusive resource group, set the value to tenantresourcegroup.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -662,17 +657,16 @@ func (s *ChangeResourceManagerResourceGroupRequest) SetResourceType(v string) *C
 }
 
 type ChangeResourceManagerResourceGroupResponseBody struct {
-	// Indicates whether the resource group was successfully modified.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   true: The request was successful.
 	// *   false: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The HTTP status code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeResourceManagerResourceGroupResponseBody) String() string {
@@ -816,17 +810,17 @@ func (s *CheckFileDeploymentResponse) SetBody(v *CheckFileDeploymentResponseBody
 }
 
 type CheckMetaPartitionRequest struct {
-	// The ID of the E-MapReduce (EMR) cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the database.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The name of the partition.
-	Partition *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	// The GUID of the table.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The name of the table.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Indicates whether the partition exists.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The name of the database.
+	Partition *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// The ID of the E-MapReduce (EMR) cluster.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The HTTP status code.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -869,18 +863,16 @@ func (s *CheckMetaPartitionRequest) SetTableName(v string) *CheckMetaPartitionRe
 }
 
 type CheckMetaPartitionResponseBody struct {
-	// Indicates whether the partition exists.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckMetaPartitionResponseBody) String() string {
@@ -951,15 +943,15 @@ func (s *CheckMetaPartitionResponse) SetBody(v *CheckMetaPartitionResponseBody) 
 }
 
 type CheckMetaTableRequest struct {
-	// The ID of the E-MapReduce (EMR) cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the EMR database.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The GUID of the table.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The name of the EMR table.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the request.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The name of the EMR database.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// Indicates whether the table exists.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -997,9 +989,7 @@ func (s *CheckMetaTableRequest) SetTableName(v string) *CheckMetaTableRequest {
 }
 
 type CheckMetaTableResponseBody struct {
-	// Indicates whether the table exists.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1133,14 +1123,12 @@ func (s *CreateBaselineRequestOvertimeSettings) SetTime(v string) *CreateBaselin
 }
 
 type CreateBaselineResponseBody struct {
-	Data                *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	DynamicErrorCode    *string `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
-	DynamicErrorMessage *string `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode      *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateBaselineResponseBody) String() string {
@@ -1153,16 +1141,6 @@ func (s CreateBaselineResponseBody) GoString() string {
 
 func (s *CreateBaselineResponseBody) SetData(v int64) *CreateBaselineResponseBody {
 	s.Data = &v
-	return s
-}
-
-func (s *CreateBaselineResponseBody) SetDynamicErrorCode(v string) *CreateBaselineResponseBody {
-	s.DynamicErrorCode = &v
-	return s
-}
-
-func (s *CreateBaselineResponseBody) SetDynamicErrorMessage(v string) *CreateBaselineResponseBody {
-	s.DynamicErrorMessage = &v
 	return s
 }
 
@@ -1472,25 +1450,12 @@ func (s *CreateConnectionResponse) SetBody(v *CreateConnectionResponseBody) *Cre
 }
 
 type CreateDISyncTaskRequest struct {
-	// The client token that is used to ensure the idempotence of the request. This parameter can be left empty.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The configuration of the synchronization node to be created. This operation is equivalent to node creation by using the code editor in the DataWorks console. For more information, see [Create a synchronization node by using the code editor](~~137717~~).
-	//
-	// You can call the CreateDISyncTask operation to create only batch synchronization nodes.
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty"`
-	// The name of the synchronization node.
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The settings that specify the storage path of the synchronization node and the resource group used by the node. The following fields are supported:
-	//
-	// *   FileFolderPath: the storage path of the node.
-	// *   ResourceGroup: the identifier of the resource group for Data Integration that is used by the node. To query the identifier of the resource group, call the [ListResourceGroup](~~173913~~) operation.
-	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	// The type of the synchronization node.
-	//
-	// You can call the CreateDISyncTask operation to create only batch synchronization nodes. Set the value to DI_OFFLINE.
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskParam   *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s CreateDISyncTaskRequest) String() string {
@@ -1532,12 +1497,9 @@ func (s *CreateDISyncTaskRequest) SetTaskType(v string) *CreateDISyncTaskRequest
 }
 
 type CreateDISyncTaskResponseBody struct {
-	// The information that indicates whether the synchronization node was created.
-	Data *CreateDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *CreateDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDISyncTaskResponseBody) String() string {
@@ -1564,15 +1526,9 @@ func (s *CreateDISyncTaskResponseBody) SetSuccess(v bool) *CreateDISyncTaskRespo
 }
 
 type CreateDISyncTaskResponseBodyData struct {
-	// The ID of the created synchronization node.
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The reason why the synchronization node failed to be created.
+	FileId  *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the synchronization node was created. Valid values:
-	//
-	// *   success: The synchronization node was created.
-	// *   fail: The synchronization node failed to be created.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateDISyncTaskResponseBodyData) String() string {
@@ -1898,43 +1854,43 @@ func (s *CreateDagTestResponse) SetBody(v *CreateDagTestResponseBody) *CreateDag
 }
 
 type CreateDataServiceApiRequest struct {
-	// The description of the API.
+	// The HTTP status code.
 	ApiDescription *string `json:"ApiDescription,omitempty" xml:"ApiDescription,omitempty"`
-	// The type of the API. Valid values: 0, 1, and 2. The value 0 indicates that the API is generated in wizard mode. The value 1 indicates that the API is generated in script mode. The value 2 indicates that the API is generated by registration.
+	// The format in which the response of the API request is returned. Valid values: 0 and 1. The value 0 indicates the JSON format. The value 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
 	ApiMode *int32 `json:"ApiMode,omitempty" xml:"ApiMode,omitempty"`
-	// The name of the API. The name must be 4 to 50 characters in length. The name can contain letters, digits, and underscores (\_) and must start with a letter.
+	// The type of the API. Valid values: 0, 1, and 2. The value 0 indicates that the API is generated in wizard mode. The value 1 indicates that the API is generated in script mode. The value 2 indicates that the API is generated by registration.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The path of the API. The path cannot exceed 200 characters in length. The path can contain letters, digits, underscores (\_), and hyphens (-) and must start with a forward slash (/).
-	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	// The ID of the folder used to store the API. The ID of the root folder in a business process is 0. The ID of the folder created by a user must be greater than 0.
+	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	// The ID of the API.
 	FolderId *int64 `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the business process.
+	// The request method of the API. Valid values: 0, 1, 2, and 3. The value 0 indicates the GET method. The value 1 indicates the POST method. The value 2 indicates the PUT method. The value 3 indicates the DELETE method. APIs generated in wizard or script mode support the GET and POST methods. APIs generated by registration support the GET, POST, PUT, and DELETE methods.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the workspace.
+	// The ID of the business process.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The protocol used by the API. Valid values: 0 and 1. The value 0 indicates HTTP. The value 1 indicates HTTPS. You can specify multiple protocols. Separate them with commas (,).
+	// The details of the API generated in script mode. For more information, see the ScriptDetails parameter returned by the [GetDataServiceApi](~~174013~~) operation.
 	Protocols *string `json:"Protocols,omitempty" xml:"Protocols,omitempty"`
-	// The details of the API generated by registration. For more information, see the RegistrationDetails parameter returned by the [GetDataServiceApi](~~174013~~) operation.
+	// The description of the API.
 	RegistrationDetails *string `json:"RegistrationDetails,omitempty" xml:"RegistrationDetails,omitempty"`
 	RequestContentType  *int32  `json:"RequestContentType,omitempty" xml:"RequestContentType,omitempty"`
-	// The request method of the API. Valid values: 0, 1, 2, and 3. The value 0 indicates the GET method. The value 1 indicates the POST method. The value 2 indicates the PUT method. The value 3 indicates the DELETE method. APIs generated in wizard or script mode support the GET and POST methods. APIs generated by registration support the GET, POST, PUT, and DELETE methods.
+	// The timeout period of the API request. Unit: milliseconds. Valid values: (0,30000].
 	RequestMethod   *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The format in which the response of the API request is returned. Valid values: 0 and 1. The value 0 indicates the JSON format. The value 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
-	ResponseContentType *int32 `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
-	// The details of the API generated in script mode. For more information, see the ScriptDetails parameter returned by the [GetDataServiceApi](~~174013~~) operation.
-	ScriptDetails *string `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty"`
-	SqlMode       *int64  `json:"SqlMode,omitempty" xml:"SqlMode,omitempty"`
-	// The ID of the tenant.
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The timeout period of the API request. Unit: milliseconds. Valid values: (0,30000].
-	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The scope in which the API is visible. Valid values:
 	//
 	// *   0: The API is visible to all members in the workspace.
 	// *   1: The API is visible only to its owner, and permissions on the API cannot be granted to other members.
-	VisibleRange *int32 `json:"VisibleRange,omitempty" xml:"VisibleRange,omitempty"`
+	ResponseContentType *int32 `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
+	// The path of the API. The path cannot exceed 200 characters in length. The path can contain letters, digits, underscores (\_), and hyphens (-) and must start with a forward slash (/).
+	ScriptDetails *string `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty"`
+	SqlMode       *int64  `json:"SqlMode,omitempty" xml:"SqlMode,omitempty"`
+	// The name of the API. The name must be 4 to 50 characters in length. The name can contain letters, digits, and underscores (\_) and must start with a letter.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The protocol used by the API. Valid values: 0 and 1. The value 0 indicates HTTP. The value 1 indicates HTTPS. You can specify multiple protocols. Separate them with commas (,).
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The details of the API generated in wizard mode. For more information, see the WizardDetails parameter returned by the [GetDataServiceApi](~~174013~~) operation.
+	VisibleRange *int32 `json:"VisibleRange,omitempty" xml:"VisibleRange,omitempty"`
+	// The details of the API generated by registration. For more information, see the RegistrationDetails parameter returned by the [GetDataServiceApi](~~174013~~) operation.
 	WizardDetails *string `json:"WizardDetails,omitempty" xml:"WizardDetails,omitempty"`
 }
 
@@ -2042,18 +1998,16 @@ func (s *CreateDataServiceApiRequest) SetWizardDetails(v string) *CreateDataServ
 }
 
 type CreateDataServiceApiResponseBody struct {
-	// The ID of the API.
-	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataServiceApiResponseBody) String() string {
@@ -2424,6 +2378,35 @@ func (s *CreateDataServiceGroupResponse) SetBody(v *CreateDataServiceGroupRespon
 }
 
 type CreateDataSourceRequest struct {
+	// The ID of the data source.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The environment in which the data source is used. Valid values: 0 and 1. 0 indicates the development environment. 1 indicates the production environment.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The subtype of the data source. Example:
+	//
+	// *   This parameter takes effect only if the DataSourceType parameter is set to rds.
+	// *   If the DataSourceType parameter is set to rds, this parameter can be set to mysql, sqlserver, or postgresql.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The HTTP status code returned.
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   odps
+	// *   mysql
+	// *   rds
+	// *   oss
+	// *   sqlserver
+	// *   polardb
+	// *   oracle
+	// *   mongodb
+	// *   emr
+	// *   postgresql
+	// *   analyticdb_for_mysql
+	// *   hybriddb_for_postgresql
+	// *   holo
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the data source.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The details of the data source. Examples of details of some common data sources:
 	//
 	// *   odps
@@ -2618,35 +2601,6 @@ type CreateDataSourceRequest struct {
 	//   "ownerId": "1212121212112"
 	// }
 	// ```
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The type of the data source. Valid values:
-	//
-	// *   odps
-	// *   mysql
-	// *   rds
-	// *   oss
-	// *   sqlserver
-	// *   polardb
-	// *   oracle
-	// *   mongodb
-	// *   emr
-	// *   postgresql
-	// *   analyticdb_for_mysql
-	// *   hybriddb_for_postgresql
-	// *   holo
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The description of the data source.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment in which the data source is used. Valid values: 0 and 1. 0 indicates the development environment. 1 indicates the production environment.
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The name of the data source.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the DataWorks workspace to which the data source belongs. You can call the [ListProjects](~~178393~~) operation to obtain the ID.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The subtype of the data source. Example:
-	//
-	// *   This parameter takes effect only if the DataSourceType parameter is set to rds.
-	// *   If the DataSourceType parameter is set to rds, this parameter can be set to mysql, sqlserver, or postgresql.
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
@@ -2694,14 +2648,12 @@ func (s *CreateDataSourceRequest) SetSubType(v string) *CreateDataSourceRequest 
 }
 
 type CreateDataSourceResponseBody struct {
-	// The ID of the data source.
-	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataSourceResponseBody) String() string {
@@ -2969,7 +2921,8 @@ type CreateFileRequest struct {
 	// Valid values: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 24 (ODPS Script), 99 (zero load), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1089 (cross-tenant collaboration), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment), and 1221 (PyODPS 3).
 	//
 	// You can call the [ListFileType](~~212428~~) operation to query the type of the code for the file.
-	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileType                        *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	IgnoreParentSkipRunningProperty *bool  `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
 	// The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
 	//
 	// This parameter corresponds to the Output Name parameter under Parent Nodes in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -3116,6 +3069,11 @@ func (s *CreateFileRequest) SetFileName(v string) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetFileType(v int32) *CreateFileRequest {
 	s.FileType = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetIgnoreParentSkipRunningProperty(v bool) *CreateFileRequest {
+	s.IgnoreParentSkipRunningProperty = &v
 	return s
 }
 
@@ -3275,11 +3233,11 @@ func (s *CreateFileResponse) SetBody(v *CreateFileResponseBody) *CreateFileRespo
 }
 
 type CreateFolderRequest struct {
-	// The path of the folder.
+	// The HTTP status code returned.
 	FolderPath *string `json:"FolderPath,omitempty" xml:"FolderPath,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace name. You must configure either the ProjectId or ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The path of the folder.
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 }
 
@@ -3307,17 +3265,16 @@ func (s *CreateFolderRequest) SetProjectIdentifier(v string) *CreateFolderReques
 }
 
 type CreateFolderResponseBody struct {
-	// The unique identifier of the folder.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether the request was successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The unique identifier of the folder.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3926,17 +3883,15 @@ func (s *CreateMetaCategoryResponse) SetBody(v *CreateMetaCategoryResponseBody) 
 }
 
 type CreateMetaCollectionRequest struct {
-	// The type of the collection.
+	// The ID of the request.
 	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	// The unique identifier of the parent collection.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The comment of the collection.
 	//
 	// The comment must be 1 to 64 characters in length.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the collection.
-	//
-	// The name must be 1 to 32 characters in length.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unique identifier of the parent collection.
+	// The type of the collection.
 	ParentQualifiedName *string `json:"ParentQualifiedName,omitempty" xml:"ParentQualifiedName,omitempty"`
 }
 
@@ -3969,20 +3924,19 @@ func (s *CreateMetaCollectionRequest) SetParentQualifiedName(v string) *CreateMe
 }
 
 type CreateMetaCollectionResponseBody struct {
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The unique identifier of the collection.
-	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   true: The request was successful.
 	// *   false: The request failed.
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// The unique identifier of the collection.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4231,13 +4185,12 @@ func (s *CreatePermissionApplyOrderResponse) SetBody(v *CreatePermissionApplyOrd
 }
 
 type CreateProjectMemberRequest struct {
-	// The client token that is used to ensure the idempotence of the request. We recommend that you set this parameter to a UUID.
+	// The ID of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the DataWorks workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. We recommend that you set this parameter to a UUID.
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RoleCode  *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
 	// The code of the role. This parameter is optional. If you specify the RoleCode parameter, the user is assigned the role.
-	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
-	// The ID of the user to be added.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4270,7 +4223,6 @@ func (s *CreateProjectMemberRequest) SetUserId(v string) *CreateProjectMemberReq
 }
 
 type CreateProjectMemberResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4956,8 +4908,23 @@ func (s *CreateQualityRuleResponse) SetBody(v *CreateQualityRuleResponseBody) *C
 }
 
 type CreateRemindRequest struct {
-	// The minimum interval at which alerts are reported. Unit: seconds. Minimum value: 1200. Default value: 1800.
+	// The recipient of the alert. Valid values: OWNER and OTHER. The value OWNER indicates the node owner. The value OTHER indicates a specified user.
 	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
+	// The webhook URL of the DingTalk chatbot. You can specify multiple webhook URLs. Separate the specified webhook URLs with commas (,).
+	AlertMethods *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
+	// The webhook URL of the WeCom or Lark chatbot. You can specify multiple webhook URLs. Separate the specified webhook URLs with commas (,). The WEBHOOKS notification method must be specified for alertMethods.
+	//
+	// Only DataWorks Enterprise Edition supports this parameter.
+	//
+	// The webhook URL-based alerting feature is supported in the following regions: China (Shanghai), China (Chengdu), China (Zhangjiakou), China (Beijing), China (Hangzhou), China (Shenzhen), China (Hong Kong), Germany (Frankfurt), and Singapore.
+	AlertTargets *string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty"`
+	// *   If the AlertUnit parameter is set to OWNER, leave this parameter empty.
+	// *   If the AlertUnit parameter is set to OTHER, set this parameter to the ID of the Alibaba Cloud account used by a specific user. You can specify multiple IDs. Separate multiple IDs with commas (,). You can specify a maximum of 10 IDs.
+	AlertUnit *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
+	// The ID of the workflow to which the custom alert rule is applied. This parameter takes effect when the RemindUnit parameter is set to BIZPROCESS. You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of five workflows can be specified for a custom alert rule.
+	BaselineIds *string `json:"BaselineIds,omitempty" xml:"BaselineIds,omitempty"`
+	// The maximum number of alerts. Valid values: 1 to 10. Default value: 3.
+	BizProcessIds *string `json:"BizProcessIds,omitempty" xml:"BizProcessIds,omitempty"`
 	// The notification method. Valid values:
 	//
 	// *   MAIL: Alert notifications are sent by emails.
@@ -4969,16 +4936,9 @@ type CreateRemindRequest struct {
 	// *   WEBHOOKS (WeCom or Lark chatbot): Alert notifications are sent by WeCom or Lark messages. If you want to use this notification method, you must configure the Webhooks parameter.
 	//
 	// You can specify multiple notification methods. Separate them with commas (,).
-	AlertMethods *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
-	// *   If the AlertUnit parameter is set to OWNER, leave this parameter empty.
-	// *   If the AlertUnit parameter is set to OTHER, set this parameter to the ID of the Alibaba Cloud account used by a specific user. You can specify multiple IDs. Separate multiple IDs with commas (,). You can specify a maximum of 10 IDs.
-	AlertTargets *string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty"`
-	// The recipient of the alert. Valid values: OWNER and OTHER. The value OWNER indicates the node owner. The value OTHER indicates a specified user.
-	AlertUnit *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
-	// The ID of the baseline to which the custom alert rule is applied. This parameter takes effect when the RemindUnit parameter is set to BASELINE. You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of five baselines can be specified for a custom alert rule.
-	BaselineIds *string `json:"BaselineIds,omitempty" xml:"BaselineIds,omitempty"`
-	// The ID of the workflow to which the custom alert rule is applied. This parameter takes effect when the RemindUnit parameter is set to BIZPROCESS. You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of five workflows can be specified for a custom alert rule.
-	BizProcessIds *string `json:"BizProcessIds,omitempty" xml:"BizProcessIds,omitempty"`
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The ID of the node to which the custom alert rule is applied. This parameter takes effect when the RemindUnit parameter is set to NODE. You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of 50 nodes can be specified for a custom alert rule.
+	DndEnd *string `json:"DndEnd,omitempty" xml:"DndEnd,omitempty"`
 	// The details of the conditions that trigger an alert.
 	//
 	// *   If the RemindType parameter is set to FINISHED, leave this parameter empty.
@@ -4986,28 +4946,20 @@ type CreateRemindRequest struct {
 	// *   If the RemindType parameter is set to ERROR, leave this parameter empty.
 	// *   If the RemindType parameter is set to CYCLE_UNFINISHED, specify this parameter as key-value pairs. Example: {"1":"05:50","2":"06:50","3":"07:50","4":"08:50","5":"09:50","6":"10:50","7":"11:50","8":"12:50","9":"13:50","10":"14:50","11":"15:50","12":"16:50","13":"17:50","14":"18:50","15":"19:50","16":"20:50","17":"21:50","18":"22:50","19":"23:50","20":"24:50","21":"25:50"}. The key indicates the ID of the cycle. Valid values of the ID: 1 to 288. The value indicates the timeout period of the node that is running in the cycle. Specify the value in the hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
 	// *   If the RemindType parameter is set to TIMEOUT, set this parameter to the timeout period. Unit: seconds. Example: 1800. This value indicates that an alert is reported if the node has run for more than 30 minutes.
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The end time of the quiet hours. Specify the time in the hh:mm format. Valid values of hh: 0 to 23. Valid values of mm: 0 to 59.
-	DndEnd *string `json:"DndEnd,omitempty" xml:"DndEnd,omitempty"`
-	// The maximum number of alerts. Valid values: 1 to 10. Default value: 3.
 	MaxAlertTimes *int32 `json:"MaxAlertTimes,omitempty" xml:"MaxAlertTimes,omitempty"`
-	// The ID of the node to which the custom alert rule is applied. This parameter takes effect when the RemindUnit parameter is set to NODE. You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of 50 nodes can be specified for a custom alert rule.
-	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	// The ID of the workspace to which the custom alert rule is applied. This parameter takes effect when the RemindUnit parameter is set to PROJECT. Only one workspace can be specified for a custom alert rule.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the custom alert rule. The name must be 1 to 128 characters in length.
-	RemindName *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
+	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	// The conditions that trigger an alert. Valid values: FINISHED, UNFINISHED, ERROR, CYCLE_UNFINISHED, and TIMEOUT. The value FINISHED indicates that the node is run. The value UNFINISHED indicates that the node is still running at the specified point in time. The value ERROR indicates that an error occurs when the node is running. The value CYCLE_UNFINISHED indicates that the node is still running in the specified cycle. The value TIMEOUT indicates that the node times out.
-	RemindType *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the object to which the custom alert rule is applied. Valid values: NODE, BASELINE, PROJECT, and BIZPROCESS. The value NODE indicates a node. The value BASELINE indicates a baseline. The value PROJECT indicates a workspace. The value BIZPROCESS indicates a workflow.
+	RemindName *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
+	// The minimum interval at which alerts are reported. Unit: seconds. Minimum value: 1200. Default value: 1800.
+	RemindType *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
+	// The ID of the baseline to which the custom alert rule is applied. This parameter takes effect when the RemindUnit parameter is set to BASELINE. You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of five baselines can be specified for a custom alert rule.
 	RemindUnit *string `json:"RemindUnit,omitempty" xml:"RemindUnit,omitempty"`
-	// The webhook URL of the DingTalk chatbot. You can specify multiple webhook URLs. Separate the specified webhook URLs with commas (,).
+	// The HTTP status code returned.
 	RobotUrls *string `json:"RobotUrls,omitempty" xml:"RobotUrls,omitempty"`
-	// The webhook URL of the WeCom or Lark chatbot. You can specify multiple webhook URLs. Separate the specified webhook URLs with commas (,). The WEBHOOKS notification method must be specified for alertMethods.
-	//
-	// Only DataWorks Enterprise Edition supports this parameter.
-	//
-	// The webhook URL-based alerting feature is supported in the following regions: China (Shanghai), China (Chengdu), China (Zhangjiakou), China (Beijing), China (Hangzhou), China (Shenzhen), China (Hong Kong), Germany (Frankfurt), and Singapore.
+	// The ID of the custom alert rule returned.
 	Webhooks *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
 }
 
@@ -5100,18 +5052,16 @@ func (s *CreateRemindRequest) SetWebhooks(v string) *CreateRemindRequest {
 }
 
 type CreateRemindResponseBody struct {
-	// The ID of the custom alert rule returned.
-	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether the request was successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateRemindResponseBody) String() string {
@@ -5182,59 +5132,56 @@ func (s *CreateRemindResponse) SetBody(v *CreateRemindResponseBody) *CreateRemin
 }
 
 type CreateTableRequest struct {
-	// The globally unique identifier (GUID) of the MaxCompute project. Specify the GUID in the odps.{projectName} format.
+	// The comment.
 	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	// The ID of the associated category. You can call the [GetMetaCategory](~~173932~~) operation to query the ID of the category that can be associated.
+	// The ID of the logical level.
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// A reserved parameter.
+	// The schema information of the table. You need to enter the schema information of the table if you enable the table schema in MaxCompute.
 	ClientToken *string                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Columns     []*CreateTableRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The comment.
+	// Specifies whether the MaxCompute table is a partitioned table. Valid values: 1 and 0. The value 1 indicates that the MaxCompute table is a partitioned table. The value 0 indicates that the MaxCompute table is not a partitioned table. This parameter is deprecated. Do not use this parameter.
+	//
+	// The Column.N.isPartitionCol parameter is used to specify whether the MaxCompute table is a partitioned table. If the Column.N.isPartitionCol parameter is set to true, the MaxCompute table is a partitioned table.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The endpoint of MaxCompute.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The environment of the DataWorks workspace. Valid values:
 	//
 	// *   0: development environment
 	// *   1: production environment
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The globally unique identifier (GUID) of the MaxCompute project. Specify the GUID in the odps.{projectName} format.
 	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The storage location of the external table.
+	ExternalTableType *string `json:"ExternalTableType,omitempty" xml:"ExternalTableType,omitempty"`
+	// A reserved parameter.
+	HasPart *int32 `json:"HasPart,omitempty" xml:"HasPart,omitempty"`
+	// Specifies whether the table or workspace is visible:
+	//
+	// *   0: Both the table and workspace are not visible.
+	// *   1: The table and workspace are visible.
+	// *   2: Only the workspace is visible.
+	IsView *int32 `json:"IsView,omitempty" xml:"IsView,omitempty"`
+	// The ID of the associated category. You can call the [GetMetaCategory](~~173932~~) operation to query the ID of the category that can be associated.
+	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	// The ID of the DataWorks workspace.
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The ID of the physical level.
+	LogicalLevelId *int64  `json:"LogicalLevelId,omitempty" xml:"LogicalLevelId,omitempty"`
+	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The storage type of the external table. Valid values:
 	//
 	// *   0: Object Storage Service (OSS)
 	// *   1: Tablestore
 	// *   2: Volume
 	// *   3: MySQL
-	ExternalTableType *string `json:"ExternalTableType,omitempty" xml:"ExternalTableType,omitempty"`
-	// Specifies whether the MaxCompute table is a partitioned table. Valid values: 1 and 0. The value 1 indicates that the MaxCompute table is a partitioned table. The value 0 indicates that the MaxCompute table is not a partitioned table. This parameter is deprecated. Do not use this parameter.
-	//
-	// The Column.N.isPartitionCol parameter is used to specify whether the MaxCompute table is a partitioned table. If the Column.N.isPartitionCol parameter is set to true, the MaxCompute table is a partitioned table.
-	HasPart *int32 `json:"HasPart,omitempty" xml:"HasPart,omitempty"`
-	// Specifies whether to create a view or table.
-	//
-	// *   0: Create a table.
-	// *   1: Create a view.
-	IsView *int32 `json:"IsView,omitempty" xml:"IsView,omitempty"`
-	// The lifecycle of the table. Unit: days. By default, this parameter is left empty, which indicates that the table is permanently stored.
-	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	// The storage location of the external table.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The ID of the logical level.
-	LogicalLevelId *int64  `json:"LogicalLevelId,omitempty" xml:"LogicalLevelId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the physical level.
 	PhysicsLevelId *int64 `json:"PhysicsLevelId,omitempty" xml:"PhysicsLevelId,omitempty"`
-	// The ID of the DataWorks workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The schema information of the table. You need to enter the schema information of the table if you enable the table schema in MaxCompute.
-	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// The name of the table.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The display name of the field.
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The endpoint of MaxCompute.
 	TableName *string                     `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Themes    []*CreateTableRequestThemes `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
-	// Specifies whether the table or workspace is visible:
-	//
-	// *   0: Both the table and workspace are not visible.
-	// *   1: The table and workspace are visible.
-	// *   2: Only the workspace is visible.
+	// The lifecycle of the table. Unit: days. By default, this parameter is left empty, which indicates that the table is permanently stored.
 	Visibility *int32 `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -5347,23 +5294,23 @@ func (s *CreateTableRequest) SetVisibility(v int32) *CreateTableRequest {
 }
 
 type CreateTableRequestColumns struct {
+	// The comment of the field.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// The name of the field.
 	//
 	// You can call the CreateTable operation to configure a maximum of 1,000 fields.
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The display name of the field.
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
-	// The data type of the field.
-	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The comment of the field.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Specifies whether the current field is a partition field.
-	IsPartitionCol *bool `json:"IsPartitionCol,omitempty" xml:"IsPartitionCol,omitempty"`
-	// The length of the field. For more information, see [MaxCompute V2.0 data type edition](~~159541#concept-2454988~~).
-	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
 	// The sequence number of the field. You can use this parameter to specify how fields are sorted in a table. By default, fields are sorted in the order in which requests are created.
 	//
 	// If the field is a partition field, this parameter is not supported.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// The data type of the field.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the topic.
+	IsPartitionCol *bool `json:"IsPartitionCol,omitempty" xml:"IsPartitionCol,omitempty"`
+	// Specifies whether the current field is a partition field.
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The length of the field. For more information, see [MaxCompute V2.0 data type edition](~~159541#concept-2454988~~).
 	SeqNumber *int32 `json:"SeqNumber,omitempty" xml:"SeqNumber,omitempty"`
 }
 
@@ -5411,9 +5358,9 @@ func (s *CreateTableRequestColumns) SetSeqNumber(v int32) *CreateTableRequestCol
 }
 
 type CreateTableRequestThemes struct {
-	// The ID of the topic.
-	ThemeId *int64 `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
 	// The level that corresponds to the topic ID.
+	ThemeId *int64 `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
+	// The ID of the request.
 	ThemeLevel *int32 `json:"ThemeLevel,omitempty" xml:"ThemeLevel,omitempty"`
 }
 
@@ -5436,8 +5383,6 @@ func (s *CreateTableRequestThemes) SetThemeLevel(v int32) *CreateTableRequestThe
 }
 
 type CreateTableResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the request task.
 	//
 	// After a request task is submitted, it is divided into multiple subtasks that are run in sequence. After the current subtask is complete, the next subtask starts to run. After all subtasks are complete, the request task is complete.
@@ -5446,6 +5391,12 @@ type CreateTableResponseBody struct {
 	//
 	// *   The request task fails to be submitted.
 	// *   After the request task is submitted, a subtask fails to run.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the current subtask. Valid values:
+	//
+	// *   operating: The subtask is running.
+	// *   success: The subtask succeeds.
+	// *   failure: The subtask fails to run. For more information about the error details, see the Content parameter.
 	TaskInfo *CreateTableResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
@@ -5468,20 +5419,15 @@ func (s *CreateTableResponseBody) SetTaskInfo(v *CreateTableResponseBodyTaskInfo
 }
 
 type CreateTableResponseBodyTaskInfo struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the current subtask.
+	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
+	// The ID of the subtask that you want to run. If this parameter is left empty, all subtasks are complete. You can call the [GetDDLJobStatus](~~185659~~) operation to query the status of the subtask based on the subtask ID.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Details about the status of the current subtask.
 	//
 	// *   If the current subtask succeeds, success is returned.
 	// *   If the current subtask fails, the error details are displayed.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the subtask that you want to run. If this parameter is left empty, all subtasks are complete. You can call the [GetDDLJobStatus](~~185659~~) operation to query the status of the subtask based on the subtask ID.
-	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
-	// The status of the current subtask. Valid values:
-	//
-	// *   operating: The subtask is running.
-	// *   success: The subtask succeeds.
-	// *   failure: The subtask fails to run. For more information about the error details, see the Content parameter.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the current subtask.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -5543,13 +5489,13 @@ func (s *CreateTableResponse) SetBody(v *CreateTableResponseBody) *CreateTableRe
 }
 
 type CreateTableLevelRequest struct {
-	// The description of the table level.
+	// Level Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the table level. Valid values: 1 and 2. A value of 1 indicates the logical level. A value of 2 indicates the physical level.
+	// The ID of the region where the service is activated.
 	LevelType *int32 `json:"LevelType,omitempty" xml:"LevelType,omitempty"`
-	// The name of the table level.
+	// Level 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The type of the table level. Valid values: 1 and 2. A value of 1 indicates the logical level. A value of 2 indicates the physical level.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -5582,17 +5528,16 @@ func (s *CreateTableLevelRequest) SetProjectId(v int64) *CreateTableLevelRequest
 }
 
 type CreateTableLevelResponseBody struct {
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the table level.
-	LevelId *int64 `json:"LevelId,omitempty" xml:"LevelId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	LevelId        *int64 `json:"LevelId,omitempty" xml:"LevelId,omitempty"`
+	// 1AAE721C-F9EC-5923-BAFC-99802C4E0F21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the table level.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5987,14 +5932,12 @@ func (s *DeleteBaselineRequest) SetProjectId(v int64) *DeleteBaselineRequest {
 }
 
 type DeleteBaselineResponseBody struct {
-	Data                *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DynamicErrorCode    *string `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
-	DynamicErrorMessage *string `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode      *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteBaselineResponseBody) String() string {
@@ -6007,16 +5950,6 @@ func (s DeleteBaselineResponseBody) GoString() string {
 
 func (s *DeleteBaselineResponseBody) SetData(v bool) *DeleteBaselineResponseBody {
 	s.Data = &v
-	return s
-}
-
-func (s *DeleteBaselineResponseBody) SetDynamicErrorCode(v string) *DeleteBaselineResponseBody {
-	s.DynamicErrorCode = &v
-	return s
-}
-
-func (s *DeleteBaselineResponseBody) SetDynamicErrorMessage(v string) *DeleteBaselineResponseBody {
-	s.DynamicErrorMessage = &v
 	return s
 }
 
@@ -6263,15 +6196,16 @@ func (s *DeleteConnectionResponse) SetBody(v *DeleteConnectionResponseBody) *Del
 }
 
 type DeleteDISyncTaskRequest struct {
-	// The ID of the real-time synchronization node. You can call the [ListFiles](~~173942~~) operation to query the ID of the node.
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// You must set this parameter to specify the DataWorks workspace in which the synchronization node resides.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// *   true: The request is successful.
+	// *   false: The request failed.
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The type of the synchronization node in Data Integration.
 	//
 	// The parameter value is DI_REALTIME and cannot be changed. The value indicates a real-time synchronization node.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the real-time synchronization node. You can call the [ListFiles](~~173942~~) operation to query the ID of the node.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -6299,14 +6233,14 @@ func (s *DeleteDISyncTaskRequest) SetTaskType(v string) *DeleteDISyncTaskRequest
 }
 
 type DeleteDISyncTaskResponseBody struct {
-	// The result returned after you called the DeleteDISyncTask operation.
-	Data *DeleteDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the synchronization node in Data Integration is deleted. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request failed.
+	// *   success: The synchronization node in Data Integration is deleted.
+	// *   fail: The synchronization node in Data Integration failed to be deleted. You can troubleshoot the issue based on the failure reason.
+	Data *DeleteDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The result returned after you called the DeleteDISyncTask operation.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6334,14 +6268,10 @@ func (s *DeleteDISyncTaskResponseBody) SetSuccess(v bool) *DeleteDISyncTaskRespo
 }
 
 type DeleteDISyncTaskResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The reason why the synchronization node in Data Integration failed to be deleted.
 	//
 	// If the synchronization node in Data Integration is deleted, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the synchronization node in Data Integration is deleted. Valid values:
-	//
-	// *   success: The synchronization node in Data Integration is deleted.
-	// *   fail: The synchronization node in Data Integration failed to be deleted. You can troubleshoot the issue based on the failure reason.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6686,15 +6616,13 @@ func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *Del
 }
 
 type DeleteFileRequest struct {
-	// The ID of the file. You can call the [ListFiles](~~173942~~) operation to query the ID of the file.
+	// The HTTP status code.
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to view the workspace ID.
-	//
-	// You must specify one of the ProjectId and ProjectIdentifier parameters to determine the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to view the workspace name.
 	//
 	// You must specify one of the ProjectId and ProjectIdentifier parameters to determine the DataWorks workspace to which the operation is applied.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the file. You can call the [ListFiles](~~173942~~) operation to query the ID of the file.
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 }
 
@@ -6722,22 +6650,21 @@ func (s *DeleteFileRequest) SetProjectIdentifier(v string) *DeleteFileRequest {
 }
 
 type DeleteFileResponseBody struct {
-	// The ID of the deployment task that deploys the file. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of this parameter is used to call the GetDeployment operation to poll the status of the asynchronous process.
-	//
-	// If this parameter is empty, the file is deleted and the polling is not required.
-	DeploymentId *int64 `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request. You can troubleshoot errors based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeploymentId *int64  `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
 	// *   true: The request is successful.
 	// *   false: The request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the deployment task that deploys the file. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of this parameter is used to call the GetDeployment operation to poll the status of the asynchronous process.
+	//
+	// If this parameter is empty, the file is deleted and the polling is not required.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7123,7 +7050,7 @@ func (s *DeleteMetaCategoryResponse) SetBody(v *DeleteMetaCategoryResponseBody) 
 }
 
 type DeleteMetaCollectionRequest struct {
-	// The unique identifier of the collection.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
 }
 
@@ -7141,25 +7068,24 @@ func (s *DeleteMetaCollectionRequest) SetQualifiedName(v string) *DeleteMetaColl
 }
 
 type DeleteMetaCollectionResponseBody struct {
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
-	//
-	// true: succeeded
-	//
-	// false: failed
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// true: The request was successful.
 	//
 	// false: The request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The result of the operation. Valid values:
+	//
+	// true: succeeded
+	//
+	// false: failed
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	Status  *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7231,9 +7157,9 @@ func (s *DeleteMetaCollectionResponse) SetBody(v *DeleteMetaCollectionResponseBo
 }
 
 type DeleteMetaCollectionEntityRequest struct {
-	// The unique identifier of the collection.
-	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
 	// The unique identifier of the entity.
+	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
+	// The ID of the request.
 	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
 }
 
@@ -7256,25 +7182,24 @@ func (s *DeleteMetaCollectionEntityRequest) SetEntityQualifiedName(v string) *De
 }
 
 type DeleteMetaCollectionEntityResponseBody struct {
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
-	//
-	// true: succeeded
-	//
-	// false: failed
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// true: The request was successful.
 	//
 	// false: The request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The result of the operation. Valid values:
+	//
+	// true: succeeded
+	//
+	// false: failed
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	Status  *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7346,10 +7271,9 @@ func (s *DeleteMetaCollectionEntityResponse) SetBody(v *DeleteMetaCollectionEnti
 }
 
 type DeleteProjectMemberRequest struct {
-	// The ID of the DataWorks workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the user.
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the region.
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteProjectMemberRequest) String() string {
@@ -7371,7 +7295,6 @@ func (s *DeleteProjectMemberRequest) SetUserId(v string) *DeleteProjectMemberReq
 }
 
 type DeleteProjectMemberResponseBody struct {
-	// The ID of the region.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8347,19 +8270,20 @@ func (s *DeleteTableThemeResponse) SetBody(v *DeleteTableThemeResponseBody) *Del
 }
 
 type DeployDISyncTaskRequest struct {
-	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to deploy.
-	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to deploy.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// You can call the [ListFiles](~~173942~~) operation to query the ID of the real-time synchronization node or data synchronization solution.
+	// *   true: The request is successful.
+	// *   false: The request fails.
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to query the workspace ID.
-	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the object that you want to deploy. Valid values:
 	//
 	// *   DI_REALTIME: real-time synchronization node
 	// *   DI_SOLUTION: data synchronization solution
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to deploy.
+	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to deploy.
+	//
+	// You can call the [ListFiles](~~173942~~) operation to query the ID of the real-time synchronization node or data synchronization solution.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -8387,14 +8311,14 @@ func (s *DeployDISyncTaskRequest) SetTaskType(v string) *DeployDISyncTaskRequest
 }
 
 type DeployDISyncTaskResponseBody struct {
-	// The result of deploying the real-time synchronization node or data synchronization solution.
-	Data *DeployDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the real-time synchronization node or data synchronization solution is deployed. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// *   success: The real-time synchronization node or data synchronization solution is deployed.
+	// *   fail: The real-time synchronization node or data synchronization solution fails to be deployed.
+	Data *DeployDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The result of deploying the real-time synchronization node or data synchronization solution.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8422,14 +8346,10 @@ func (s *DeployDISyncTaskResponseBody) SetSuccess(v bool) *DeployDISyncTaskRespo
 }
 
 type DeployDISyncTaskResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The cause of the failure to deploy the real-time synchronization node or data synchronization solution.
 	//
 	// If the real-time synchronization node or data synchronization solution is deployed, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the real-time synchronization node or data synchronization solution is deployed. Valid values:
-	//
-	// *   success: The real-time synchronization node or data synchronization solution is deployed.
-	// *   fail: The real-time synchronization node or data synchronization solution fails to be deployed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9177,12 +9097,20 @@ func (s *ExportDataSourcesResponse) SetBody(v *ExportDataSourcesResponseBody) *E
 }
 
 type GenerateDISyncTaskConfigForCreatingRequest struct {
-	// The client token that is used to ensure the idempotence of the request. This parameter is used to prevent repeated operations that are caused by multiple calls.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
+	// *   true: The request is successful.
+	// *   false: The request fails.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The type of the object that you want to create in Data Integration in asynchronous mode. Valid values:
+	//
+	// *   DI_REALTIME: real-time synchronization node
+	// *   DI_SOLUTION: synchronization solution
+	//
+	// DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. This parameter is used to prevent repeated operations that are caused by multiple calls.
+	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
 	// The script for the real-time synchronization node or synchronization solution in Data Integration.
 	//
 	// The following types of real-time synchronization nodes and synchronization solutions are supported:
@@ -9369,13 +9297,6 @@ type GenerateDISyncTaskConfigForCreatingRequest struct {
 	// ]
 	//
 	// }
-	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	// The type of the object that you want to create in Data Integration in asynchronous mode. Valid values:
-	//
-	// *   DI_REALTIME: real-time synchronization node
-	// *   DI_SOLUTION: synchronization solution
-	//
-	// DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -9408,14 +9329,14 @@ func (s *GenerateDISyncTaskConfigForCreatingRequest) SetTaskType(v string) *Gene
 }
 
 type GenerateDISyncTaskConfigForCreatingResponseBody struct {
-	// The information returned for the ID of the asynchronous thread.
-	Data *GenerateDISyncTaskConfigForCreatingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the ID of the asynchronous thread is generated. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// *   success: indicates that the ID of the asynchronous thread is generated.
+	// *   fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
+	Data *GenerateDISyncTaskConfigForCreatingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The information returned for the ID of the asynchronous thread.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9443,16 +9364,12 @@ func (s *GenerateDISyncTaskConfigForCreatingResponseBody) SetSuccess(v bool) *Ge
 }
 
 type GenerateDISyncTaskConfigForCreatingResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The reason why the ID of the asynchronous thread fails to be generated.
 	//
 	// If the ID is successfully generated, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the asynchronous thread. You can call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. The parameters are used to create a real-time synchronization node or a synchronization solution in Data Integration.
 	ProcessId *int64 `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// Indicates whether the ID of the asynchronous thread is generated. Valid values:
-	//
-	// *   success: indicates that the ID of the asynchronous thread is generated.
-	// *   fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
+	// The ID of the asynchronous thread. You can call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. The parameters are used to create a real-time synchronization node or a synchronization solution in Data Integration.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9509,17 +9426,26 @@ func (s *GenerateDISyncTaskConfigForCreatingResponse) SetBody(v *GenerateDISyncT
 }
 
 type GenerateDISyncTaskConfigForUpdatingRequest struct {
-	// The client token that is used to ensure the idempotence of the request. This parameter is used to prevent repeated operations that are caused by multiple calls.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
-	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The ID of the real-time synchronization node or synchronization solution.
 	//
 	// *   If you set the TaskType parameter to DI_REALTIME, set the TaskId parameter to the value of the FileId parameter for the real-time synchronization node.
 	// *   If you set the TaskType parameter to DI_SOLUTION, set the TaskId parameter to the value of the FileId parameter for the synchronization solution.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The type of the object that you want to update in Data Integration in asynchronous mode. Valid values:
+	//
+	// *   DI_REALTIME: real-time synchronization node
+	//
+	// *   DI_SOLUTION: synchronization solution
+	//
+	//     DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request is successful.
+	// *   false: The request fails.
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. This parameter is used to prevent repeated operations that are caused by multiple calls.
+	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
 	// The script for updating the real-time synchronization node or synchronization solution in Data Integration.
 	//
 	// DataWorks allows you to add or remove tables for a real-time synchronization node or a synchronization solution in Data Integration only in asynchronous mode. The following types of real-time synchronization nodes and synchronization solutions are supported:
@@ -9532,14 +9458,6 @@ type GenerateDISyncTaskConfigForUpdatingRequest struct {
 	//
 	// *   If the script contains the SelectedTables parameter, the system synchronizes the tables that you specify in the SelectedTables parameter.
 	// *   If the script contains the Tables parameter, the system synchronizes the tables that you specify in the Tables parameter.
-	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	// The type of the object that you want to update in Data Integration in asynchronous mode. Valid values:
-	//
-	// *   DI_REALTIME: real-time synchronization node
-	//
-	// *   DI_SOLUTION: synchronization solution
-	//
-	//     DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -9577,14 +9495,14 @@ func (s *GenerateDISyncTaskConfigForUpdatingRequest) SetTaskType(v string) *Gene
 }
 
 type GenerateDISyncTaskConfigForUpdatingResponseBody struct {
-	// The information returned for the ID of the asynchronous thread.
-	Data *GenerateDISyncTaskConfigForUpdatingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the ID of the asynchronous thread is generated. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// *   success: indicates that the ID of the asynchronous thread is generated.
+	// *   fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
+	Data *GenerateDISyncTaskConfigForUpdatingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The information returned for the ID of the asynchronous thread.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9612,14 +9530,10 @@ func (s *GenerateDISyncTaskConfigForUpdatingResponseBody) SetSuccess(v bool) *Ge
 }
 
 type GenerateDISyncTaskConfigForUpdatingResponseBodyData struct {
-	// The reason why the ID of the asynchronous thread fails to be generated. If the ID is successfully generated, the value null is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the asynchronous thread. You can call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. The parameters are used to update a real-time synchronization node or a synchronization solution in Data Integration.
+	// The reason why the ID of the asynchronous thread fails to be generated. If the ID is successfully generated, the value null is returned.
 	ProcessId *int64 `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// Indicates whether the ID of the asynchronous thread is generated. Valid values:
-	//
-	// *   success: indicates that the ID of the asynchronous thread is generated.
-	// *   fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
+	// The ID of the asynchronous thread. You can call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. The parameters are used to update a real-time synchronization node or a synchronization solution in Data Integration.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9699,14 +9613,12 @@ func (s *GetBaselineRequest) SetProjectId(v int64) *GetBaselineRequest {
 }
 
 type GetBaselineResponseBody struct {
-	Data                *GetBaselineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DynamicErrorCode    *string                      `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
-	DynamicErrorMessage *string                      `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
-	ErrorCode           *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode      *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId           *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           *GetBaselineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBaselineResponseBody) String() string {
@@ -9719,16 +9631,6 @@ func (s GetBaselineResponseBody) GoString() string {
 
 func (s *GetBaselineResponseBody) SetData(v *GetBaselineResponseBodyData) *GetBaselineResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GetBaselineResponseBody) SetDynamicErrorCode(v string) *GetBaselineResponseBody {
-	s.DynamicErrorCode = &v
-	return s
-}
-
-func (s *GetBaselineResponseBody) SetDynamicErrorMessage(v string) *GetBaselineResponseBody {
-	s.DynamicErrorMessage = &v
 	return s
 }
 
@@ -9765,11 +9667,11 @@ type GetBaselineResponseBodyData struct {
 	BaselineName         *string                                        `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	BaselineType         *string                                        `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
 	Enabled              *bool                                          `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	NodeIds              []*int64                                       `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 	OverTimeSettings     []*GetBaselineResponseBodyDataOverTimeSettings `json:"OverTimeSettings,omitempty" xml:"OverTimeSettings,omitempty" type:"Repeated"`
 	Owner                *string                                        `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	Priority             *int32                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ProjectId            *int64                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TaskIds              []*int64                                       `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
 func (s GetBaselineResponseBodyData) String() string {
@@ -9815,6 +9717,11 @@ func (s *GetBaselineResponseBodyData) SetEnabled(v bool) *GetBaselineResponseBod
 	return s
 }
 
+func (s *GetBaselineResponseBodyData) SetNodeIds(v []*int64) *GetBaselineResponseBodyData {
+	s.NodeIds = v
+	return s
+}
+
 func (s *GetBaselineResponseBodyData) SetOverTimeSettings(v []*GetBaselineResponseBodyDataOverTimeSettings) *GetBaselineResponseBodyData {
 	s.OverTimeSettings = v
 	return s
@@ -9832,11 +9739,6 @@ func (s *GetBaselineResponseBodyData) SetPriority(v int32) *GetBaselineResponseB
 
 func (s *GetBaselineResponseBodyData) SetProjectId(v int64) *GetBaselineResponseBodyData {
 	s.ProjectId = &v
-	return s
-}
-
-func (s *GetBaselineResponseBodyData) SetTaskIds(v []*int64) *GetBaselineResponseBodyData {
-	s.TaskIds = v
 	return s
 }
 
@@ -10208,11 +10110,11 @@ func (s *GetBaselineConfigResponse) SetBody(v *GetBaselineConfigResponseBody) *G
 }
 
 type GetBaselineKeyPathRequest struct {
-	// The ID of the baseline.
+	// The name of the event.
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The data timestamp of the baseline instance. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\"T\"HH:mm:ssZ format. The time must be in UTC.
+	// The ID of the instance.
 	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+	// The ID of the event.
 	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
 }
 
@@ -10240,18 +10142,13 @@ func (s *GetBaselineKeyPathRequest) SetInGroupId(v int32) *GetBaselineKeyPathReq
 }
 
 type GetBaselineKeyPathResponseBody struct {
-	// The information about the key path.
-	Data []*GetBaselineKeyPathResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data         []*GetBaselineKeyPathResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The timestamp when the event was found.
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBaselineKeyPathResponseBody) String() string {
@@ -10293,26 +10190,16 @@ func (s *GetBaselineKeyPathResponseBody) SetSuccess(v bool) *GetBaselineKeyPathR
 }
 
 type GetBaselineKeyPathResponseBodyData struct {
-	// The data timestamp of the baseline instance.
-	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The ID of the scheduling cycle of the instance. Valid values: 1 to 288.
-	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	// The ID of the instance.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node.
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The type of the node. Valid values: 23, 10, 6, and 99. The value 23 indicates that the node is a Data Integration node. The value 10 indicates that the node is a MaxCompute SQL node. The value 6 indicates that the node is a Shell node. The value 99 indicates that the node is a zero load node.
-	PrgType *int32 `json:"PrgType,omitempty" xml:"PrgType,omitempty"`
-	// The ID of the workspace to which the node belongs.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The running records of the instance.
-	Runs []*GetBaselineKeyPathResponseBodyDataRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
-	// The information about the events that are associated with the instance.
-	Topics []*GetBaselineKeyPathResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	Bizdate    *int64                                      `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	InGroupId  *int32                                      `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
+	InstanceId *int64                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *int64                                      `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName   *string                                     `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Owner      *string                                     `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PrgType    *int32                                      `json:"PrgType,omitempty" xml:"PrgType,omitempty"`
+	ProjectId  *int64                                      `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Runs       []*GetBaselineKeyPathResponseBodyDataRuns   `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	Topics     []*GetBaselineKeyPathResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
 func (s GetBaselineKeyPathResponseBodyData) String() string {
@@ -10374,22 +10261,14 @@ func (s *GetBaselineKeyPathResponseBodyData) SetTopics(v []*GetBaselineKeyPathRe
 }
 
 type GetBaselineKeyPathResponseBodyDataRuns struct {
-	// The timestamp obtained by adding the predicted time when the instance started to run to the historical average running duration of the instance.
-	AbsTime *int64 `json:"AbsTime,omitempty" xml:"AbsTime,omitempty"`
-	// The timestamp of the predicted time when the instance started to run.
-	BeginCast *int64 `json:"BeginCast,omitempty" xml:"BeginCast,omitempty"`
-	// The timestamp of the actual time when the instance started to run.
-	BeginRunningTime *int64 `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
-	// The timestamp when the instance started to wait for resources.
-	BeginWaitResTime *int64 `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
-	// The timestamp when the instance started to wait for the scheduling time.
-	BeginWaitTimeTime *int64 `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
-	// The timestamp of the predicted time when the instance finished running.
-	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	// The timestamp of the actual time when the instance finished running.
-	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AbsTime           *int64  `json:"AbsTime,omitempty" xml:"AbsTime,omitempty"`
+	BeginCast         *int64  `json:"BeginCast,omitempty" xml:"BeginCast,omitempty"`
+	BeginRunningTime  *int64  `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
+	BeginWaitResTime  *int64  `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
+	BeginWaitTimeTime *int64  `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
+	EndCast           *int64  `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
+	FinishTime        *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetBaselineKeyPathResponseBodyDataRuns) String() string {
@@ -10441,14 +10320,10 @@ func (s *GetBaselineKeyPathResponseBodyDataRuns) SetStatus(v string) *GetBaselin
 }
 
 type GetBaselineKeyPathResponseBodyDataTopics struct {
-	// The timestamp when the event was found.
-	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// The ID of the instance.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the event.
-	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
-	// The name of the event.
-	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	AddTime    *int64  `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TopicId    *int64  `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	TopicName  *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s GetBaselineKeyPathResponseBodyDataTopics) String() string {
@@ -11158,19 +11033,20 @@ func (s *GetDDLJobStatusResponse) SetBody(v *GetDDLJobStatusResponseBody) *GetDD
 }
 
 type GetDISyncInstanceInfoRequest struct {
-	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to query.
-	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to query.
+	// Indicates whether the request was successful. Valid values:
 	//
-	// You can call the [ListFiles](~~173942~~) operation to obtain the ID of the real-time synchronization node or data synchronization solution.
+	// *   true: The request was successful.
+	// *   false: The request failed.
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
-	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the object that you want to query. Valid values:
 	//
 	// *   DI_REALTIME: real-time synchronization node
 	// *   DI_SOLUTION: data synchronization solution
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to query.
+	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to query.
+	//
+	// You can call the [ListFiles](~~173942~~) operation to obtain the ID of the real-time synchronization node or data synchronization solution.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -11198,14 +11074,12 @@ func (s *GetDISyncInstanceInfoRequest) SetTaskType(v string) *GetDISyncInstanceI
 }
 
 type GetDISyncInstanceInfoResponseBody struct {
-	// The status of the real-time synchronization node or data synchronization solution.
+	// *   If the TaskType parameter is set to DI_REALTIME, the Status parameter indicates the status of the real-time synchronization node. Valid values: PAUSE, NORUN, RUN, KILLING, and WAIT.
+	// *   If the TaskType parameter is set to DI_SOLITION, the Status parameter indicates the status of the data synchronization solution. Valid values: success and fail.
 	Data *GetDISyncInstanceInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// The status of the real-time synchronization node or data synchronization solution.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11233,16 +11107,15 @@ func (s *GetDISyncInstanceInfoResponseBody) SetSuccess(v bool) *GetDISyncInstanc
 }
 
 type GetDISyncInstanceInfoResponseBodyData struct {
-	// The cause of the failure to obtain the status of the real-time synchronization node or data synchronization solution. If the status of the real-time synchronization node or data synchronization solution is obtained, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// *   If the TaskType parameter is set to DI_REALTIME, the Name parameter indicates the name of the real-time synchronization node.
 	// *   If the TaskType parameter is set to DI_SOLITION, the value null is returned.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// *   If the TaskType parameter is set to DI_REALTIME, the value null is returned.
 	// *   If the TaskType parameter is set to DI_SOLITION, the SolutionInfo parameter indicates the details of the data synchronization solution.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the data synchronization solution.
 	SolutionInfo *GetDISyncInstanceInfoResponseBodyDataSolutionInfo `json:"SolutionInfo,omitempty" xml:"SolutionInfo,omitempty" type:"Struct"`
-	// *   If the TaskType parameter is set to DI_REALTIME, the Status parameter indicates the status of the real-time synchronization node. Valid values: PAUSE, NORUN, RUN, KILLING, and WAIT.
-	// *   If the TaskType parameter is set to DI_SOLITION, the Status parameter indicates the status of the data synchronization solution. Valid values: success and fail.
+	// The cause of the failure to obtain the status of the real-time synchronization node or data synchronization solution. If the status of the real-time synchronization node or data synchronization solution is obtained, the value null is returned.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -11275,13 +11148,13 @@ func (s *GetDISyncInstanceInfoResponseBodyData) SetStatus(v string) *GetDISyncIn
 }
 
 type GetDISyncInstanceInfoResponseBodyDataSolutionInfo struct {
-	// The creator of the data synchronization solution.
-	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The ID of the data synchronization solution.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the data synchronization solution.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The step details of the synchronization solution.
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The creator of the data synchronization solution.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the data synchronization solution.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the step in the data synchronization solution.
 	StepDetail []*GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail `json:"StepDetail,omitempty" xml:"StepDetail,omitempty" type:"Repeated"`
 }
 
@@ -11314,13 +11187,12 @@ func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) SetStepDetail(v []*G
 }
 
 type GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail struct {
-	// The information of the data synchronization solution.
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
-	// The status of the step in the data synchronization solution.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the step in the data synchronization solution.
-	StepId *int64 `json:"StepId,omitempty" xml:"StepId,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the step in the data synchronization solution.
+	StepId *int64 `json:"StepId,omitempty" xml:"StepId,omitempty"`
+	// The information of the data synchronization solution.
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
 }
 
@@ -11382,19 +11254,20 @@ func (s *GetDISyncInstanceInfoResponse) SetBody(v *GetDISyncInstanceInfoResponse
 }
 
 type GetDISyncTaskRequest struct {
-	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to query.
-	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to query.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// You can call the [ListFiles](~~173942~~) operation to query the ID of the real-time synchronization node or data synchronization solution.
+	// *   true: The request is successful.
+	// *   false: The request fails.
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to query the workspace ID.
-	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the object that you want to query. Valid values:
 	//
 	// *   DI_REALTIME: real-time synchronization node
 	// *   DI_SOLUTION: data synchronization solution
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to query.
+	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to query.
+	//
+	// You can call the [ListFiles](~~173942~~) operation to query the ID of the real-time synchronization node or data synchronization solution.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -11422,14 +11295,12 @@ func (s *GetDISyncTaskRequest) SetTaskType(v string) *GetDISyncTaskRequest {
 }
 
 type GetDISyncTaskResponseBody struct {
-	// The details of the real-time synchronization node or data synchronization solution.
+	// *   If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization node are returned.
+	// *   If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
 	Data *GetDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
+	// The details of the real-time synchronization node or data synchronization solution.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11457,21 +11328,31 @@ func (s *GetDISyncTaskResponseBody) SetSuccess(v bool) *GetDISyncTaskResponseBod
 }
 
 type GetDISyncTaskResponseBodyData struct {
-	// *   If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization node are returned.
-	// *   If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The cause of the failure to obtain the details of the real-time synchronization node or data synchronization solution.
-	//
-	// If the details of the real-time synchronization node or data synchronization solution are obtained, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// *   If the TaskType parameter is set to DI_REALTIME, the value null is returned.
-	// *   If the TaskType parameter is set to DI_SOLUTION, the details of the data synchronization solution task are returned.
-	SolutionDetail *GetDISyncTaskResponseBodyDataSolutionDetail `json:"SolutionDetail,omitempty" xml:"SolutionDetail,omitempty" type:"Struct"`
 	// Indicates whether the details of the real-time synchronization node or data synchronization solution are obtained. Valid values:
 	//
 	// success: The details are obtained.
 	//
 	// fail: The details fail to be obtained.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// *   If the TaskType parameter is set to DI_REALTIME, the value null is returned.
+	// *   If the TaskType parameter is set to DI_SOLUTION, the details of the data synchronization solution task are returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status of the data synchronization solution. Valid values:
+	//
+	// *   0: successful
+	// *   1: not running
+	// *   2: running
+	// *   3: failed
+	// *   4: committed
+	// *   5: pending manual confirmation
+	// *   6: manually confirmed
+	// *   7: others
+	// *   8: waiting
+	// *   9: deleted
+	SolutionDetail *GetDISyncTaskResponseBodyDataSolutionDetail `json:"SolutionDetail,omitempty" xml:"SolutionDetail,omitempty" type:"Struct"`
+	// The cause of the failure to obtain the details of the real-time synchronization node or data synchronization solution.
+	//
+	// If the details of the real-time synchronization node or data synchronization solution are obtained, the value null is returned.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -11504,38 +11385,26 @@ func (s *GetDISyncTaskResponseBodyData) SetStatus(v string) *GetDISyncTaskRespon
 }
 
 type GetDISyncTaskResponseBodyDataSolutionDetail struct {
-	// The creator of the data synchronization solution.
-	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The ID of the data synchronization solution.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data synchronization solution.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configuration details of the data synchronization solution.
-	ProcessContent *string `json:"ProcessContent,omitempty" xml:"ProcessContent,omitempty"`
-	// The additional parameters of the data synchronization solution.
-	ProcessExtra *string `json:"ProcessExtra,omitempty" xml:"ProcessExtra,omitempty"`
 	// The ID of the project to which the data synchronization solution belongs.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the source of the data synchronization solution.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the data synchronization solution.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the data synchronization solution. Valid values:
-	//
-	// *   0: successful
-	// *   1: not running
-	// *   2: running
-	// *   3: failed
-	// *   4: committed
-	// *   5: pending manual confirmation
-	// *   6: manually confirmed
-	// *   7: others
-	// *   8: waiting
-	// *   9: deleted
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The additional parameters of the data synchronization solution.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the data synchronization solution.
+	ProcessContent *string `json:"ProcessContent,omitempty" xml:"ProcessContent,omitempty"`
 	// The time when the data synchronization solution was committed.
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	ProcessExtra *string `json:"ProcessExtra,omitempty" xml:"ProcessExtra,omitempty"`
+	// The type of the source of the data synchronization solution.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The configuration details of the data synchronization solution.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The creator of the data synchronization solution.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type of the data synchronization solution.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the data synchronization solution.
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The start time of the data synchronization solution.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -12686,7 +12555,6 @@ func (s *GetDataServiceApiResponse) SetBody(v *GetDataServiceApiResponseBody) *G
 }
 
 type GetDataServiceApiTestRequest struct {
-	// The ID of the test. You can obtain the test ID from the response of the asynchronous operation TestDataServiceApi. You can also call the ListDataServiceApiTest operation to obtain the ID of the latest test.
 	TestId *int64 `json:"TestId,omitempty" xml:"TestId,omitempty"`
 }
 
@@ -12704,10 +12572,8 @@ func (s *GetDataServiceApiTestRequest) SetTestId(v int64) *GetDataServiceApiTest
 }
 
 type GetDataServiceApiTestResponseBody struct {
-	// The returned data.
-	Data *GetDataServiceApiTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetDataServiceApiTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDataServiceApiTestResponseBody) String() string {
@@ -12729,21 +12595,14 @@ func (s *GetDataServiceApiTestResponseBody) SetRequestId(v string) *GetDataServi
 }
 
 type GetDataServiceApiTestResponseBodyData struct {
-	// The ID of the API on which the test is performed.
-	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The time consumed for the test.
-	CostTime *string `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	// The debugging information.
+	ApiId          *int64  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	CostTime       *string `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
 	DebugInfo      *string `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
 	NodesDebugInfo *string `json:"NodesDebugInfo,omitempty" xml:"NodesDebugInfo,omitempty"`
-	// The request parameters configured for the test.
-	ParamMap *string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
-	// The status code returned for the test. If the test is not complete, this parameter is not returned.
-	RetCode *int64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	// The result returned for the test.
-	RetResult *string `json:"RetResult,omitempty" xml:"RetResult,omitempty"`
-	// The status of the test. Valid values: RUNNING and FINISHED.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ParamMap       *string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
+	RetCode        *int64  `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetResult      *string `json:"RetResult,omitempty" xml:"RetResult,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDataServiceApiTestResponseBodyData) String() string {
@@ -14216,18 +14075,21 @@ func (s *GetDataServicePublishedApiResponse) SetBody(v *GetDataServicePublishedA
 }
 
 type GetDataSourceMetaRequest struct {
-	// The name of the data source.
+	// The number of the page to return.
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The number of entries to return on each page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The environment to which the data source belongs. Valid values:
 	//
 	// *   0: development environment
 	// *   1: production environment
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The number of the page to return.
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+	// The name of the data source.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -14265,14 +14127,14 @@ func (s *GetDataSourceMetaRequest) SetProjectId(v int64) *GetDataSourceMetaReque
 }
 
 type GetDataSourceMetaResponseBody struct {
-	// The information about the query operation.
-	Data *GetDataSourceMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The unique ID of the request. You can query logs and troubleshoot issues based on the unique ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the metadata of the data source was retrieved. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// *   success: The metadata of the data source was retrieved.
+	// *   fail: The metadata of the data source failed to be retrieved. You can troubleshoot issues based on the Message parameter.
+	Data *GetDataSourceMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The information about the query operation.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique ID of the request. You can query logs and troubleshoot issues based on the unique ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14300,8 +14162,6 @@ func (s *GetDataSourceMetaResponseBody) SetSuccess(v bool) *GetDataSourceMetaRes
 }
 
 type GetDataSourceMetaResponseBodyData struct {
-	// The reason why the metadata of the data source failed to be retrieved. If the metadata of the data source was retrieved, this parameter is left empty.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned metadata of the data source. The returned metadata is in the JSON format.
 	//
 	// `{"dbTables":[{"dbName":"testdb","schema":[{"tableInfos":[{"dbName":"testdb","enable":true,"table":"table1","tableName":"table1"}]},{"tableInfos":[{"dbName":"testdb","enable":true,"table":"table2","tableName":"table2"}]}]}]}`
@@ -14313,11 +14173,9 @@ type GetDataSourceMetaResponseBodyData struct {
 	// *   enable: indicates whether the database is available. A value of true indicates that the database is available. A value of false indicates that the database is unavailable.
 	// *   tableName: the name of the table in the database.
 	// *   tableInfos: the information about the table in the database.
-	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// Indicates whether the metadata of the data source was retrieved. Valid values:
-	//
-	// *   success: The metadata of the data source was retrieved.
-	// *   fail: The metadata of the data source failed to be retrieved. You can troubleshoot issues based on the Message parameter.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Meta    *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The reason why the metadata of the data source failed to be retrieved. If the metadata of the data source was retrieved, this parameter is left empty.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -18598,17 +18456,13 @@ func (s *GetMetaColumnLineageResponse) SetBody(v *GetMetaColumnLineageResponseBo
 }
 
 type GetMetaDBInfoRequest struct {
-	// The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+	// The ID of the request.
 	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
+	// The business data returned.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
+	// The comment.
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can call the [ListMetaDB](~~185662~~) operation to query the name of the metadatabase.
+	// The type of the metadatabase. Only hive is supported.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 }
 
@@ -18641,9 +18495,9 @@ func (s *GetMetaDBInfoRequest) SetDatabaseName(v string) *GetMetaDBInfoRequest {
 }
 
 type GetMetaDBInfoResponseBody struct {
-	// The business data returned.
+	// The time when the compute engine instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	Data *GetMetaDBInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// test table
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18666,37 +18520,33 @@ func (s *GetMetaDBInfoResponseBody) SetRequestId(v string) *GetMetaDBInfoRespons
 }
 
 type GetMetaDBInfoResponseBodyData struct {
-	// The ID of the compute engine instance. The ID is in the Engine type.Engine name format.
-	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	// The ID of the EMR cluster. This parameter is returned only for an EMR compute engine instance.
-	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
-	// The comment.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the compute engine instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The endpoint of the service.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The type of the environment. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The storage path of the metadatabase of the EMR cluster.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The time when the compute engine instance was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the metadatabase.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Alibaba Cloud account used by the workspace owner.
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the workspace owner.
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the workspace.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The display name of the workspace.
-	ProjectNameCn *string `json:"ProjectNameCn,omitempty" xml:"ProjectNameCn,omitempty"`
+	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
+	// The time when the compute engine instance was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	// The name of the workspace.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the workspace owner.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the tenant.
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The type of the metadatabase. Only hive is supported.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The ID of the EMR cluster. This parameter is returned only for an EMR compute engine instance.
+	EnvType    *int32  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Location   *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The endpoint of the service.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Test items
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The ID of the Alibaba Cloud account used by the workspace owner.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the environment. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the metadatabase.
+	ProjectNameCn *string `json:"ProjectNameCn,omitempty" xml:"ProjectNameCn,omitempty"`
+	TenantId      *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the workspace.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -18818,17 +18668,17 @@ func (s *GetMetaDBInfoResponse) SetBody(v *GetMetaDBInfoResponseBody) *GetMetaDB
 }
 
 type GetMetaDBTableListRequest struct {
-	// The globally unique identifier (GUID) of the MaxCompute project. Specify the GUID in the `odps.{projectName}` format. This parameter must be configured if you set the DataSourceType parameter to odps.
-	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	// The ID of the E-MapReduce (EMR) cluster. This parameter must be configured if you set the DataSourceType parameter to emr.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The name of the metadatabase.
+	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The business data.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The ID of the request.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The number of the page to return.
+	// The globally unique identifier (GUID) of the MaxCompute project. Specify the GUID in the `odps.{projectName}` format. This parameter must be configured if you set the DataSourceType parameter to odps.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The ID of the E-MapReduce (EMR) cluster. This parameter must be configured if you set the DataSourceType parameter to emr.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -18871,9 +18721,9 @@ func (s *GetMetaDBTableListRequest) SetPageSize(v int32) *GetMetaDBTableListRequ
 }
 
 type GetMetaDBTableListResponseBody struct {
-	// The business data.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	Data *GetMetaDBTableListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The page number of the returned page.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18896,13 +18746,13 @@ func (s *GetMetaDBTableListResponseBody) SetRequestId(v string) *GetMetaDBTableL
 }
 
 type GetMetaDBTableListResponseBodyData struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of metatables in the compute engine instance.
-	TableEntityList []*GetMetaDBTableListResponseBodyDataTableEntityList `json:"TableEntityList,omitempty" xml:"TableEntityList,omitempty" type:"Repeated"`
 	// The total number of compute engine instances.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The list of metatables in the compute engine instance.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The GUID of the metatable.
+	TableEntityList []*GetMetaDBTableListResponseBodyDataTableEntityList `json:"TableEntityList,omitempty" xml:"TableEntityList,omitempty" type:"Repeated"`
+	// The name of the metatable.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -18935,11 +18785,9 @@ func (s *GetMetaDBTableListResponseBodyData) SetTotalCount(v int64) *GetMetaDBTa
 }
 
 type GetMetaDBTableListResponseBodyDataTableEntityList struct {
-	// The name of the metadatabase.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable.
+	TableGuid    *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the metadatabase.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -18996,27 +18844,25 @@ func (s *GetMetaDBTableListResponse) SetBody(v *GetMetaDBTableListResponseBody) 
 }
 
 type GetMetaTableBasicInfoRequest struct {
-	// The ID of the E-MapReduce (EMR) cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
-	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
+	// You can call the [GetMetaDBTableList](~~173916~~) operation to query the name of the metatable.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
+	// The HTTP status code returned.
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The error message returned.
+	Extension *bool `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can call the [ListMetaDB](~~185662~~) operation to query the name of the metadatabase.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// Specifies whether to include extended fields in query results.
 	//
 	// The extended fields include ReadCount, FavoriteCount, and ViewCount.
 	//
 	// This parameter takes effect only if you set the DataSourceType parameter to odps.
-	Extension *bool `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The globally unique identifier (GUID) of the MaxCompute table. Specify the GUID in the odps.projectName.tableName format.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can call the [GetMetaDBTableList](~~173916~~) operation to query the name of the metatable.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -19059,17 +18905,17 @@ func (s *GetMetaTableBasicInfoRequest) SetTableName(v string) *GetMetaTableBasic
 }
 
 type GetMetaTableBasicInfoResponseBody struct {
-	// The business data returned.
+	// The number of times the metatable was added to a favorite list. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
 	Data *GetMetaTableBasicInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The name of the metatable.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The business data returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19112,73 +18958,71 @@ func (s *GetMetaTableBasicInfoResponseBody) SetSuccess(v bool) *GetMetaTableBasi
 }
 
 type GetMetaTableBasicInfoResponseBodyData struct {
-	// The display name of the metatable.
+	// The schema information of the metatable. This parameter is returned only if you enable the table schema in MaxCompute.
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The ID of the EMR cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of fields.
-	ColumnCount *int32 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
-	// The comment of the metatable.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the metatable was created.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The size of storage space that is occupied by the metatable. Unit: bytes.
-	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The name of the metadatabase.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The type of the environment. Valid values:
-	//
-	// *   0: development environment
-	// *   1: production environment
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The number of times the metatable was added to a favorite list. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
-	FavoriteCount *int64 `json:"FavoriteCount,omitempty" xml:"FavoriteCount,omitempty"`
-	// Indicates whether the metatable is a partitioned table. Valid values:
-	//
-	// *   true: The metatable is a partitioned table.
-	// *   false: The metatable is a non-partitioned table.
-	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
 	// Indicates whether the metatable is a view. Valid values:
 	//
 	// *   true: The metatable is a view.
 	// *   false: The metatable is not a view.
-	IsView *bool `json:"IsView,omitempty" xml:"IsView,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the workspace.
+	ColumnCount *int32 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// The time when the metatable was created.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the metatable owner.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the schema of the metatable was last changed.
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The GUID of the metatable.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The scope in which the metatable is visible. Valid values:
 	//
 	// *   0: The metatable is visible to workspace members.
 	// *   1: The metatable is visible to users within the tenant.
 	// *   2: The metatable is visible to all tenants.
 	// *   3: The metatable is visible only to the metatable owner.
-	IsVisible *int32 `json:"IsVisible,omitempty" xml:"IsVisible,omitempty"`
-	// The time when the metatable was last accessed.
-	LastAccessTime *int64 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	// The time when the schema of the metatable was last changed.
-	LastDdlTime *int64 `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	// The time when the metatable was last updated.
-	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The number of fields.
+	FavoriteCount *int64 `json:"FavoriteCount,omitempty" xml:"FavoriteCount,omitempty"`
 	// The lifecycle of the metatable. Unit: days.
-	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	// The storage path of the Hive metadatabase.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The ID of the metatable owner.
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The partition key of the Hive metatable.
-	PartitionKeys *string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty"`
-	// The ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
 	// The name of the workspace.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	IsView *bool `json:"IsView,omitempty" xml:"IsView,omitempty"`
 	// The number of times the metatable was read. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
-	ReadCount *int64 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
-	// The schema information of the metatable. This parameter is returned only if you enable the table schema in MaxCompute.
-	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable.
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the tenant.
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	IsVisible *int32 `json:"IsVisible,omitempty" xml:"IsVisible,omitempty"`
+	// The time when the metatable was last updated.
+	LastAccessTime *int64 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The storage path of the Hive metadatabase.
+	LastDdlTime *int64 `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
+	// The partition key of the Hive metatable.
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
 	// The number of times the metatable was viewed. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
+	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	// The ID of the tenant.
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the metadatabase.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The display name of the metatable.
+	PartitionKeys *string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty"`
+	// The type of the environment. Valid values:
+	//
+	// *   0: development environment
+	// *   1: production environment
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The time when the metatable was last accessed.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Indicates whether the metatable is a partitioned table. Valid values:
+	//
+	// *   true: The metatable is a partitioned table.
+	// *   false: The metatable is a non-partitioned table.
+	ReadCount *int64  `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	Schema    *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The ID of the EMR cluster.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The comment of the metatable.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TenantId  *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The size of storage space that is occupied by the metatable. Unit: bytes.
 	ViewCount *int64 `json:"ViewCount,omitempty" xml:"ViewCount,omitempty"`
 }
 
@@ -19355,27 +19199,27 @@ func (s *GetMetaTableBasicInfoResponse) SetBody(v *GetMetaTableBasicInfoResponse
 }
 
 type GetMetaTableChangeLogRequest struct {
-	// The type of the change. Valid values: CREATE_TABLE, ALTER_TABLE, DROP_TABLE, ADD_PARTITION, and DROP_PARTITION.
-	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
-	//
-	// *   By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
-	// *   If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The entity on which the change is made. Valid values: TABLE and PARTITION.
-	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// *   By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
 	// *   If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// The error message returned.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// *   By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
+	// *   If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The globally unique identifier (GUID) of the table. Specify the GUID in the format of odps.projectName.tableName. You can call the [GetMetaDBTableList](~~173916~~) operation to query the GUID of the table.
 	//
 	// >  To query the change logs of a MaxCompute table, you must call the [GetMetaTableChangeLog](~~173925~~) operation.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The type of the change. Valid values: CREATE_TABLE, ALTER_TABLE, DROP_TABLE, ADD_PARTITION, and DROP_PARTITION.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The HTTP status code returned.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The entity on which the change is made. Valid values: TABLE and PARTITION.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 }
 
@@ -19423,17 +19267,17 @@ func (s *GetMetaTableChangeLogRequest) SetTableGuid(v string) *GetMetaTableChang
 }
 
 type GetMetaTableChangeLogResponseBody struct {
-	// The business data returned.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	Data *GetMetaTableChangeLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The page number of the returned page.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The business data returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19476,13 +19320,13 @@ func (s *GetMetaTableChangeLogResponseBody) SetSuccess(v bool) *GetMetaTableChan
 }
 
 type GetMetaTableChangeLogResponseBodyData struct {
-	// The information about the change logs of the metatable.
+	// The last time when the metatable was modified.
 	DataEntityList []*GetMetaTableChangeLogResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The information about the change logs of the metatable.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The entity on which the change was made. Valid values: TABLE and PARTITION.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19515,18 +19359,16 @@ func (s *GetMetaTableChangeLogResponseBodyData) SetTotalCount(v int64) *GetMetaT
 }
 
 type GetMetaTableChangeLogResponseBodyDataDataEntityList struct {
-	// The content of the change.
-	ChangeContent *string `json:"ChangeContent,omitempty" xml:"ChangeContent,omitempty"`
 	// The type of the change.
-	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The time when the metatable was created.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The last time when the metatable was modified.
-	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The entity on which the change was made. Valid values: TABLE and PARTITION.
-	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	ChangeContent *string `json:"ChangeContent,omitempty" xml:"ChangeContent,omitempty"`
+	ChangeType    *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
 	// The name of the operator.
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The content of the change.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The time when the metatable was created.
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 }
 
 func (s GetMetaTableChangeLogResponseBodyDataDataEntityList) String() string {
@@ -19597,19 +19439,19 @@ func (s *GetMetaTableChangeLogResponse) SetBody(v *GetMetaTableChangeLogResponse
 }
 
 type GetMetaTableColumnRequest struct {
-	// The ID of the E-MapReduce (EMR) cluster. You can log on to the EMR console to obtain the ID.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Only emr is supported.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase of the EMR cluster. You can call the [ListMetaDB](~~185662~~) operation to query the name.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The number of the page to return.
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The GUID of the metatable. You can call the [GetMetaDBTableList](~~173916~~) operation to query the GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The name of the metatable in the EMR cluster. You can call the [GetMetaDBTableList](~~173916~~) operation to query the name.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The error message.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Only emr is supported.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The ID of the E-MapReduce (EMR) cluster. You can log on to the EMR console to obtain the ID.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The name of the metadatabase of the EMR cluster. You can call the [ListMetaDB](~~185662~~) operation to query the name.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The HTTP status code.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -19657,17 +19499,17 @@ func (s *GetMetaTableColumnRequest) SetTableName(v string) *GetMetaTableColumnRe
 }
 
 type GetMetaTableColumnResponseBody struct {
-	// The business data.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	Data *GetMetaTableColumnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The page number of the returned page.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The business data.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19710,13 +19552,13 @@ func (s *GetMetaTableColumnResponseBody) SetSuccess(v bool) *GetMetaTableColumnR
 }
 
 type GetMetaTableColumnResponseBodyData struct {
-	// The information of fields.
+	// The name of the field.
 	ColumnList []*GetMetaTableColumnResponseBodyDataColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of fields.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The information of fields.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The GUID of the field.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19749,34 +19591,32 @@ func (s *GetMetaTableColumnResponseBodyData) SetTotalCount(v int64) *GetMetaTabl
 }
 
 type GetMetaTableColumnResponseBodyDataColumnList struct {
-	// The description of the field.
+	// The number of times the field is read.
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The GUID of the field.
-	ColumnGuid *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
-	// The name of the field.
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the field.
-	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The remarks of the field.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether the field is a foreign key. Valid values:
-	//
-	// *   true: The field is a foreign key.
-	// *   false: The field is not a foreign key.
-	IsForeignKey *bool `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
 	// Indicates whether the field is a partition field. Valid values:
 	//
 	// *   true: The field is a partition field.
 	// *   false: The field is not a partition field.
-	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
+	ColumnGuid *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
+	// The remarks of the field.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The ordinal number of the field.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// Indicates whether the field is the primary key. Valid values:
 	//
 	// *   true: The field is the primary key.
 	// *   false: The field is not the primary key.
+	Comment      *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IsForeignKey *bool   `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
+	// The data type of the field.
+	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
+	// The description of the field.
 	IsPrimaryKey *bool `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
-	// The ordinal number of the field.
-	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The number of times the field is read.
+	// Indicates whether the field is a foreign key. Valid values:
+	//
+	// *   true: The field is a foreign key.
+	// *   false: The field is not a foreign key.
+	Position      *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
 	RelationCount *int64 `json:"RelationCount,omitempty" xml:"RelationCount,omitempty"`
 }
 
@@ -20425,21 +20265,21 @@ func (s *GetMetaTableIntroWikiResponse) SetBody(v *GetMetaTableIntroWikiResponse
 }
 
 type GetMetaTableLineageRequest struct {
-	// The ID of the E-MapReduce (EMR) cluster. Set this parameter only when you query data in an EMR compute engine instance.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// Specifies whether to query the ancestor or descendant lineage of the field. The value up indicates the ancestor lineage. The value down indicates the descendant lineage.
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The logic of paging. Set this parameter based on the value of the response parameter NextPrimaryKey when the value of the response parameter HasNext is true in the last query.
-	NextPrimaryKey *string `json:"NextPrimaryKey,omitempty" xml:"NextPrimaryKey,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The name of the metatable.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The error message.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The ID of the E-MapReduce (EMR) cluster. Set this parameter only when you query data in an EMR compute engine instance.
+	NextPrimaryKey *string `json:"NextPrimaryKey,omitempty" xml:"NextPrimaryKey,omitempty"`
+	// The name of the metadatabase.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The logic of paging. Set this parameter based on the value of the response parameter NextPrimaryKey when the value of the response parameter HasNext is true in the last query.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The HTTP status code.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -20492,17 +20332,17 @@ func (s *GetMetaTableLineageRequest) SetTableName(v string) *GetMetaTableLineage
 }
 
 type GetMetaTableLineageResponseBody struct {
-	// The business data.
+	// Indicates whether the next page has more query results.
 	Data *GetMetaTableLineageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The paging information.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The business data.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20545,11 +20385,11 @@ func (s *GetMetaTableLineageResponseBody) SetSuccess(v bool) *GetMetaTableLineag
 }
 
 type GetMetaTableLineageResponseBodyData struct {
-	// The information about the metatable.
+	// The GUID of the metatable.
 	DataEntityList []*GetMetaTableLineageResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// Indicates whether the next page has more query results.
+	// The name of the metatable.
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// The paging information.
+	// The information about the metatable.
 	NextPrimaryKey *string `json:"NextPrimaryKey,omitempty" xml:"NextPrimaryKey,omitempty"`
 }
 
@@ -20577,12 +20417,10 @@ func (s *GetMetaTableLineageResponseBodyData) SetNextPrimaryKey(v string) *GetMe
 }
 
 type GetMetaTableLineageResponseBodyDataDataEntityList struct {
-	// The time when the metatable was created.
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable.
+	TableGuid       *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The time when the metatable was created.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -20784,17 +20622,17 @@ func (s *GetMetaTableListByCategoryResponse) SetBody(v *GetMetaTableListByCatego
 }
 
 type GetMetaTableOutputRequest struct {
-	// The end date of the time range to query. The end date must be within the previous 30 days.
+	// The HTTP status code returned.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The number of the page to return. The value must be a positive integer.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The value must be a positive integer. We recommend that you do not set this parameter to a value greater than 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start date of the time range to query. The start date must be within the previous 30 days.
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// The Globally Unique Identifier (GUID) of the MaxCompute metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The start date of the time range to query. The start date must be within the previous 30 days.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the node.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The end date of the time range to query. The end date must be within the previous 30 days.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The error message returned.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -20837,17 +20675,17 @@ func (s *GetMetaTableOutputRequest) SetTaskId(v string) *GetMetaTableOutputReque
 }
 
 type GetMetaTableOutputResponseBody struct {
-	// The output node and instance.
+	// The number of entries returned per page.
 	Data *GetMetaTableOutputResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The page number of the returned page.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The output node and instance.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20890,13 +20728,13 @@ func (s *GetMetaTableOutputResponseBody) SetSuccess(v bool) *GetMetaTableOutputR
 }
 
 type GetMetaTableOutputResponseBodyData struct {
-	// The information of the node and instance.
+	// The ID of the instance.
 	DataEntityList []*GetMetaTableOutputResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The information of the node and instance.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The end time of the node.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20929,19 +20767,17 @@ func (s *GetMetaTableOutputResponseBodyData) SetTotalCount(v int64) *GetMetaTabl
 }
 
 type GetMetaTableOutputResponseBodyDataDataEntityList struct {
-	// The end time of the node.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The start time of the node.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The GUID of the MaxCompute metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The ID of the node.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the instance.
-	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The duration during which the node waits to start.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the workspace.
+	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	// The ID of the node.
 	WaitTime *string `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
 }
 
@@ -21018,27 +20854,29 @@ func (s *GetMetaTableOutputResponse) SetBody(v *GetMetaTableOutputResponseBody) 
 }
 
 type GetMetaTablePartitionRequest struct {
-	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can call the [ListMetaDB](~~185662~~) operation to query the name of the metadatabase.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The logic for sorting partitions in the metatable.
-	SortCriterion *GetMetaTablePartitionRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
-	// The GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can call the [GetMetaDBTableList](~~173916~~) operation to query the name of the metatable.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The field that is used to sort partitions in the metatable. Valid values: name and modify_time.
+	//
+	// By default, partitions in the metatable are sorted based on their creation time.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The GUID of the metatable.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	//
+	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The order in which partitions in the metatable are sorted. Valid values: asc and desc. Default value: desc.
+	SortCriterion *GetMetaTablePartitionRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
+	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
+	//
+	// You can call the [ListMetaDB](~~185662~~) operation to query the name of the metadatabase.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The logic for sorting partitions in the metatable.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -21091,11 +20929,9 @@ func (s *GetMetaTablePartitionRequest) SetTableName(v string) *GetMetaTableParti
 }
 
 type GetMetaTablePartitionRequestSortCriterion struct {
-	// The order in which partitions in the metatable are sorted. Valid values: asc and desc. Default value: desc.
+	// The error message returned.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field that is used to sort partitions in the metatable. Valid values: name and modify_time.
-	//
-	// By default, partitions in the metatable are sorted based on their creation time.
+	// The HTTP status code returned.
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 }
 
@@ -21118,27 +20954,29 @@ func (s *GetMetaTablePartitionRequestSortCriterion) SetSortField(v string) *GetM
 }
 
 type GetMetaTablePartitionShrinkRequest struct {
-	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can call the [ListMetaDB](~~185662~~) operation to query the name of the metadatabase.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The logic for sorting partitions in the metatable.
-	SortCriterionShrink *string `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty"`
-	// The GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can call the [GetMetaDBTableList](~~173916~~) operation to query the name of the metatable.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The field that is used to sort partitions in the metatable. Valid values: name and modify_time.
+	//
+	// By default, partitions in the metatable are sorted based on their creation time.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The GUID of the metatable.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	//
+	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The order in which partitions in the metatable are sorted. Valid values: asc and desc. Default value: desc.
+	SortCriterionShrink *string `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty"`
+	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
+	//
+	// You can call the [ListMetaDB](~~185662~~) operation to query the name of the metadatabase.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The logic for sorting partitions in the metatable.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -21191,17 +21029,17 @@ func (s *GetMetaTablePartitionShrinkRequest) SetTableName(v string) *GetMetaTabl
 }
 
 type GetMetaTablePartitionResponseBody struct {
-	// The business data returned.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	Data *GetMetaTablePartitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The page number of the returned page.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The business data returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21244,13 +21082,13 @@ func (s *GetMetaTablePartitionResponseBody) SetSuccess(v bool) *GetMetaTablePart
 }
 
 type GetMetaTablePartitionResponseBodyData struct {
-	// The list of partitions.
+	// The size of the partition. Unit: bytes.
 	DataEntityList []*GetMetaTablePartitionResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of partitions.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The list of partitions.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The path of the partition.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21283,28 +21121,26 @@ func (s *GetMetaTablePartitionResponseBodyData) SetTotalCount(v int64) *GetMetaT
 }
 
 type GetMetaTablePartitionResponseBodyDataDataEntityList struct {
-	// The comment.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The time when the partition was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The size of the partition. Unit: bytes.
-	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The time when the partition was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The GUID of the partition.
-	PartitionGuid *string `json:"PartitionGuid,omitempty" xml:"PartitionGuid,omitempty"`
-	// The location of the Hive partition.
-	PartitionLocation *string `json:"PartitionLocation,omitempty" xml:"PartitionLocation,omitempty"`
-	// The name of the partition.
-	PartitionName *string `json:"PartitionName,omitempty" xml:"PartitionName,omitempty"`
-	// The path of the partition.
-	PartitionPath *string `json:"PartitionPath,omitempty" xml:"PartitionPath,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The type of the partition.
-	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The comment.
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	// The number of entries in the partition.
-	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The GUID of the metatable.
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	PartitionGuid     *string `json:"PartitionGuid,omitempty" xml:"PartitionGuid,omitempty"`
+	PartitionLocation *string `json:"PartitionLocation,omitempty" xml:"PartitionLocation,omitempty"`
+	// The time when the partition was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	PartitionName *string `json:"PartitionName,omitempty" xml:"PartitionName,omitempty"`
+	// The name of the partition.
+	PartitionPath *string `json:"PartitionPath,omitempty" xml:"PartitionPath,omitempty"`
+	// The location of the Hive partition.
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	// The GUID of the partition.
+	RecordCount *int64  `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	TableGuid   *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 }
 
 func (s GetMetaTablePartitionResponseBodyDataDataEntityList) String() string {
@@ -21899,11 +21735,11 @@ func (s *GetMigrationProcessResponse) SetBody(v *GetMigrationProcessResponseBody
 }
 
 type GetMigrationSummaryRequest struct {
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
+	MigrationId *int64 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
 	// The ID of the migration task.
 	//
 	// You can call the [CreateImportMigration](~~2809123~~) operation to obtain the ID of the import task and call the [CreateExportMigration](~~3241603~~) operation to obtain the ID of the export task.
-	MigrationId *int64 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -21926,14 +21762,14 @@ func (s *GetMigrationSummaryRequest) SetProjectId(v int64) *GetMigrationSummaryR
 }
 
 type GetMigrationSummaryResponseBody struct {
-	// The details of the migration task.
+	// The ID of the migration task.
 	Data *GetMigrationSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
 	// *   true: The request is successful.
 	// *   false: The request fails. You can locate the error based on the request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the migration task.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21961,22 +21797,17 @@ func (s *GetMigrationSummaryResponseBody) SetSuccess(v bool) *GetMigrationSummar
 }
 
 type GetMigrationSummaryResponseBodyData struct {
-	// The ID of the user who creates the migration task.
-	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The URL that is used to download the package of the export task.
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The time when the migration task was created.
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the migration task was modified.
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the migration task.
-	MigrationId *int64 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
-	// The name of the migration task.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the user who manages the migration task.
-	OpUser *string `json:"OpUser,omitempty" xml:"OpUser,omitempty"`
-	// The ID of the DataWorks workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The time when the migration task was modified.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the user who creates the migration task.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the migration task.
+	MigrationId *int64 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
+	// The time when the migration task was created.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The status of the migration task. Valid values:
 	//
 	// *   INIT: The migration task is initiating.
@@ -21989,6 +21820,10 @@ type GetMigrationSummaryResponseBodyData struct {
 	// *   EXPORT_SUCCESS: The migration task successfully exports data objects.
 	// *   REVOKED: The migration task is canceled.
 	// *   PARTIAL_SUCCESS: The migration task successfully imports or exports only some data objects.
+	OpUser *string `json:"OpUser,omitempty" xml:"OpUser,omitempty"`
+	// The URL that is used to download the package of the export task.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the DataWorks workspace.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -22075,9 +21910,9 @@ func (s *GetMigrationSummaryResponse) SetBody(v *GetMigrationSummaryResponseBody
 }
 
 type GetNodeRequest struct {
-	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the node ID.
+	// The interval at which the node is rerun after the node fails to run.
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
+	// The priority of the node. Valid values: 1, 3, 5, 7, and 8.
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 }
 
@@ -22102,15 +21937,15 @@ func (s *GetNodeRequest) SetProjectEnv(v string) *GetNodeRequest {
 type GetNodeResponseBody struct {
 	// The details of the node.
 	Data *GetNodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the node ID.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The connection string.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The operation that you want to perform. Set the value to **GetNode**.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	// Other parameters.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// The ID of the workflow.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22153,50 +21988,50 @@ func (s *GetNodeResponseBody) SetSuccess(v bool) *GetNodeResponseBody {
 }
 
 type GetNodeResponseBodyData struct {
-	// The ID of the baseline.
-	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The ID of the workflow.
-	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The connection string.
-	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// The CRON expression returned.
-	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
 	// The description of the node.
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The operation that you want to perform. Set the value to **GetNode**.
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The environment of the workspace. Valid values: PROD and DEV.
+	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	// The environment of the workspace. Valid values: PROD and DEV.
+	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// The name of the resource group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The table and partition filter expression in Data Quality that are associated with the node.
+	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the node ID.
 	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
-	// Indicates whether the node is associated with Data Quality. Valid values: 0 and 1. A value of 0 indicates that the node is associated with Data Quality. A value of 1 indicates that the node is not associated with Data Quality.
+	// The error message returned.
 	DqcType  *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
 	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The ID of the node.
+	// The HTTP status code returned.
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the owner of the node.
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Other parameters.
-	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
-	// The priority of the node. Valid values: 1, 3, 5, 7, and 8.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the node.
-	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	// The ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the workflow to which the node belongs.
-	RelatedFlowId *int64 `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty"`
-	// The interval at which the node is rerun after the node fails to run.
-	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Indicates whether the node can be rerun.
-	Repeatability      *string `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
-	ResGroupIdentifier *string `json:"ResGroupIdentifier,omitempty" xml:"ResGroupIdentifier,omitempty"`
-	// The name of the resource group.
-	ResGroupName *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
 	// The scheduling type of the node. Valid values:
 	//
 	// *   NORMAL: The node is an auto triggered node.
 	// *   MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
 	// *   PAUSE: The node is a paused node.
 	// *   SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The ID of the node.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The CRON expression returned.
+	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
+	// The HTTP status code returned.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the owner of the node.
+	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	// Indicates whether the node can be rerun.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Indicates whether the node is associated with Data Quality. Valid values: 0 and 1. A value of 0 indicates that the node is associated with Data Quality. A value of 1 indicates that the node is not associated with Data Quality.
+	RelatedFlowId *int64 `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty"`
+	// The ID of the workflow to which the node belongs.
+	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+	// The type of the node.
+	Repeatability      *string `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
+	ResGroupIdentifier *string `json:"ResGroupIdentifier,omitempty" xml:"ResGroupIdentifier,omitempty"`
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	ResGroupName *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
+	// The ID of the workspace.
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 }
 
@@ -23411,9 +23246,9 @@ func (s *GetOpSensitiveDataResponse) SetBody(v *GetOpSensitiveDataResponseBody) 
 }
 
 type GetOptionValueForProjectRequest struct {
-	// The unique code of the extension.
-	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
 	// The ID of the workspace.
+	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	// Id of the request
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -23436,9 +23271,8 @@ func (s *GetOptionValueForProjectRequest) SetProjectId(v string) *GetOptionValue
 }
 
 type GetOptionValueForProjectResponseBody struct {
-	// The option settings. In the example, cuNumber is a custom key.
 	OptionValue *string `json:"OptionValue,omitempty" xml:"OptionValue,omitempty"`
-	// Id of the request
+	// The option settings. In the example, cuNumber is a custom key.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23820,7 +23654,7 @@ func (s *GetPermissionApplyOrderDetailResponse) SetBody(v *GetPermissionApplyOrd
 }
 
 type GetProjectRequest struct {
-	// The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to obtain the ID.
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -23838,13 +23672,24 @@ func (s *GetProjectRequest) SetProjectId(v int64) *GetProjectRequest {
 }
 
 type GetProjectResponseBody struct {
-	// The description of the workspace.
+	// This parameter is deprecated.
 	Data *GetProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The description of the workspace.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the workspace. Valid values:
+	//
+	// *   AVAILABLE(0): The workspace is in a normal state.
+	// *   DELETED(1): The workspace is deleted.
+	// *   INITIALIZING(2): The workspace is being initialized.
+	// *   INIT_FAILED(3): The workspace fails to be initialized.
+	// *   FORBIDDEN(4): The workspace is manually disabled.
+	// *   DELETING(5): The workspace is being deleted.
+	// *   DEL_FAILED(6): The workspace fails to be deleted.
+	// *   FROZEN(7): The workspace is frozen due to overdue payments.
+	// *   UPDATING(8): The workspace is being updated. The workspace enters this state after you associate a new compute engine with the workspace and the compute engine is being initialized.
+	// *   UPDATE_FAILED(9): The workspace fails to be updated.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -23877,17 +23722,58 @@ func (s *GetProjectResponseBody) SetSuccess(v bool) *GetProjectResponseBody {
 }
 
 type GetProjectResponseBodyData struct {
-	// This parameter is deprecated.
+	// Indicates whether the workspace is a default workspace. Valid values:
+	//
+	// *   1: The workspace is a default workspace.
+	// *   0: The workspace is not a default workspace.
 	Appkey *string `json:"Appkey,omitempty" xml:"Appkey,omitempty"`
-	// This parameter is deprecated.
+	// The time when the workspace was created. Example: Dec 3, 2019 9:12:20 PM.
 	BaseProject                      *bool   `json:"BaseProject,omitempty" xml:"BaseProject,omitempty"`
 	DefaultDiResourceGroupIdentifier *string `json:"DefaultDiResourceGroupIdentifier,omitempty" xml:"DefaultDiResourceGroupIdentifier,omitempty"`
-	// This parameter is deprecated.
+	// The unique identifier of the workspace.
 	Destination *int32 `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// This parameter is deprecated.
 	DevStorageQuota *string `json:"DevStorageQuota,omitempty" xml:"DevStorageQuota,omitempty"`
-	// The development type of the workspace. The value is fixed as 4. This parameter is deprecated.
+	// The default maximum number of automatic reruns that are allowed after an error occurs.
 	DevelopmentType *int32 `json:"DevelopmentType,omitempty" xml:"DevelopmentType,omitempty"`
+	// This parameter is deprecated.
+	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	// The list of tags.
+	//
+	// The tags are added to resources in the workspace and used for authentication and cost allocation.
+	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// The environment of the workspace. Valid values: PROD and DEV.
+	//
+	// *   The value PROD indicates the production environment. Workspaces in basic mode provide only the production environment.
+	// *   The value DEV indicates the development environment. Workspaces in standard mode provide both the development environment and the production environment.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The description of the workspace.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The time when the workspace was last modified. Example: Dec 3, 2019 9:12:20 PM.
+	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
+	// The display name of the workspace.
+	IsDefault *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// Indicates whether you are allowed to download the query result from DataStudio. Valid values:
+	//
+	// *   1: You are allowed to download the query result from DataStudio.
+	// *   0: You are not allowed to download the query result from DataStudio.
+	MaxFlowNode *int32 `json:"MaxFlowNode,omitempty" xml:"MaxFlowNode,omitempty"`
+	// The development type of the workspace. The value is fixed as 4. This parameter is deprecated.
+	ProdStorageQuota *string `json:"ProdStorageQuota,omitempty" xml:"ProdStorageQuota,omitempty"`
+	// Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
+	//
+	// *   0: The MaxCompute tables are invisible to the users within a tenant.
+	// *   1: The MaxCompute tables are visible to the users within a tenant.
+	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// The mode of the workspace. Valid values:
+	//
+	// *   2: The workspace is in basic mode.
+	// *   3: The workspace is in standard mode.
+	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the Alibaba Cloud account used by the workspace owner.
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// This parameter is deprecated.
+	ProjectMode *int32 `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
 	// Indicates whether the Development role is disabled. Valid values:
 	//
 	// *   false: The Development role is enabled.
@@ -23896,82 +23782,40 @@ type GetProjectResponseBodyData struct {
 	// <!---->
 	//
 	// *   Default value: false.
-	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
-	//
-	// *   The value PROD indicates the production environment. Workspaces in basic mode provide only the production environment.
-	// *   The value DEV indicates the development environment. Workspaces in standard mode provide both the development environment and the production environment.
-	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	// The time when the workspace was created. Example: Dec 3, 2019 9:12:20 PM.
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the workspace was last modified. Example: Dec 3, 2019 9:12:20 PM.
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether you are allowed to download the query result from DataStudio. Valid values:
-	//
-	// *   1: You are allowed to download the query result from DataStudio.
-	// *   0: You are not allowed to download the query result from DataStudio.
-	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	// Indicates whether the workspace is a default workspace. Valid values:
-	//
-	// *   1: The workspace is a default workspace.
-	// *   0: The workspace is not a default workspace.
-	IsDefault *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// This parameter is deprecated.
-	MaxFlowNode *int32 `json:"MaxFlowNode,omitempty" xml:"MaxFlowNode,omitempty"`
-	// This parameter is deprecated.
-	ProdStorageQuota *string `json:"ProdStorageQuota,omitempty" xml:"ProdStorageQuota,omitempty"`
-	// The description of the workspace.
-	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	// The ID of the workspace.
-	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the workspace.
-	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	// The mode of the workspace. Valid values:
-	//
-	// *   2: The workspace is in basic mode.
-	// *   3: The workspace is in standard mode.
-	ProjectMode *int32 `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
-	// The display name of the workspace.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the workspace owner.
+	// Indicates whether a proxy account is used to access the MaxCompute compute engine instance associated with the workspace.
 	ProjectOwnerBaseId *string `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
+	// This parameter is deprecated.
+	ProtectedMode *int32  `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
+	ResidentArea  *string `json:"ResidentArea,omitempty" xml:"ResidentArea,omitempty"`
+	// The keys of the tags that are added to resources in the workspace. The tag keys must meet the following conditions:
+	//
+	// *   The number of tag keys that can be added to resources ranges from 1 to 20.
+	// *   Each tag key can be a maximum of 128 characters in length.
+	// *   The tag keys cannot start with acs: or aliyun:.
+	// *   The tag keys cannot contain http:// or https://.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The interval between automatic reruns after an error occurs. Unit: milliseconds. The maximum interval is 30 minutes. You must pay attention to the conversion between units.
+	SchedulerMaxRetryTimes *int32 `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
+	// This parameter is deprecated.
+	SchedulerRetryInterval *int32 `json:"SchedulerRetryInterval,omitempty" xml:"SchedulerRetryInterval,omitempty"`
+	// The ID of the workspace.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the workspace protection feature is enabled. Valid values:
 	//
 	// *   1: The workspace protection feature is enabled.
 	// *   0: The workspace protection feature is disabled.
-	ProtectedMode *int32  `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
-	ResidentArea  *string `json:"ResidentArea,omitempty" xml:"ResidentArea,omitempty"`
-	// The ID of the resource group used in the workspace.
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The default maximum number of automatic reruns that are allowed after an error occurs.
-	SchedulerMaxRetryTimes *int32 `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
-	// The interval between automatic reruns after an error occurs. Unit: milliseconds. The maximum interval is 30 minutes. You must pay attention to the conversion between units.
-	SchedulerRetryInterval *int32 `json:"SchedulerRetryInterval,omitempty" xml:"SchedulerRetryInterval,omitempty"`
-	// The status of the workspace. Valid values:
-	//
-	// *   AVAILABLE(0): The workspace is in a normal state.
-	// *   DELETED(1): The workspace is deleted.
-	// *   INITIALIZING(2): The workspace is being initialized.
-	// *   INIT_FAILED(3): The workspace fails to be initialized.
-	// *   FORBIDDEN(4): The workspace is manually disabled.
-	// *   DELETING(5): The workspace is being deleted.
-	// *   DEL_FAILED(6): The workspace fails to be deleted.
-	// *   FROZEN(7): The workspace is frozen due to overdue payments.
-	// *   UPDATING(8): The workspace is being updated. The workspace enters this state after you associate a new compute engine with the workspace and the compute engine is being initialized.
-	// *   UPDATE_FAILED(9): The workspace fails to be updated.
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
-	//
-	// *   0: The MaxCompute tables are invisible to the users within a tenant.
-	// *   1: The MaxCompute tables are visible to the users within a tenant.
 	TablePrivacyMode *int32 `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
-	// The list of tags.
+	// The values of the tags that are added to resources in the workspace. The tag values must meet the following conditions:
 	//
-	// The tags are added to resources in the workspace and used for authentication and cost allocation.
+	// *   The number of tag values that can be added to resources ranges from 1 to 20.
+	// *   Each tag value can be a maximum of 128 characters in length.
+	// *   The tag values cannot start with acs:.
+	// *   The tag values cannot contain http:// or https://.
 	Tags []*GetProjectResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the tenant.
+	// The ID of the resource group used in the workspace.
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// Indicates whether a proxy account is used to access the MaxCompute compute engine instance associated with the workspace.
+	// The ID of the tenant.
 	UseProxyOdpsAccount *bool `json:"UseProxyOdpsAccount,omitempty" xml:"UseProxyOdpsAccount,omitempty"`
 }
 
@@ -24134,19 +23978,7 @@ func (s *GetProjectResponseBodyData) SetUseProxyOdpsAccount(v bool) *GetProjectR
 }
 
 type GetProjectResponseBodyDataTags struct {
-	// The keys of the tags that are added to resources in the workspace. The tag keys must meet the following conditions:
-	//
-	// *   The number of tag keys that can be added to resources ranges from 1 to 20.
-	// *   Each tag key can be a maximum of 128 characters in length.
-	// *   The tag keys cannot start with acs: or aliyun:.
-	// *   The tag keys cannot contain http:// or https://.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the tags that are added to resources in the workspace. The tag values must meet the following conditions:
-	//
-	// *   The number of tag values that can be added to resources ranges from 1 to 20.
-	// *   Each tag value can be a maximum of 128 characters in length.
-	// *   The tag values cannot start with acs:.
-	// *   The tag values cannot contain http:// or https://.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25853,7 +25685,7 @@ func (s *GetSuccessInstanceTrendResponse) SetBody(v *GetSuccessInstanceTrendResp
 }
 
 type GetTopicRequest struct {
-	// The ID of the event. You can call the [listTopics](~~173973~~) operation to query the event ID.
+	// The ID of the request. You can troubleshoot issues based on the ID.
 	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
 }
 
@@ -25871,17 +25703,17 @@ func (s *GetTopicRequest) SetTopicId(v int64) *GetTopicRequest {
 }
 
 type GetTopicResponseBody struct {
-	// The details of the event.
+	// The name of the event.
 	Data *GetTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The details of the event.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the Apsara Stack tenant account used by the event owner.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25924,51 +25756,49 @@ func (s *GetTopicResponseBody) SetSuccess(v bool) *GetTopicResponseBody {
 }
 
 type GetTopicResponseBodyData struct {
-	// The timestamp when the event was found.
 	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// The timestamp when the first alert was reported.
-	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
 	// The ID of the Apsara Stack tenant account used by the alert recipient.
+	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
+	// The timestamp when the event was found.
 	Assigner *string `json:"Assigner,omitempty" xml:"Assigner,omitempty"`
-	// The margin of the worst baseline instance. Unit: seconds.
-	BaselineBuffer *int64 `json:"BaselineBuffer,omitempty" xml:"BaselineBuffer,omitempty"`
-	// The ID of the baseline to which the worst baseline instance belongs.
-	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The ID of the cycle of the worst baseline instance.
-	BaselineInGroupId *int32 `json:"BaselineInGroupId,omitempty" xml:"BaselineInGroupId,omitempty"`
-	// The name of the baseline to which the worst baseline instance belongs.
-	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The status of the baseline. Valid values: ERROR, SAFE, DANGROUS, and OVER. A value of ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. A value of SAFE indicates that nodes are run before the alert duration begins. A value of DANGROUS indicates that nodes are still running after the alert duration ends but the committed time does not arrive. A value of OVER indicates that nodes are still running after the committed time.
-	BaselineStatus *string `json:"BaselineStatus,omitempty" xml:"BaselineStatus,omitempty"`
-	// The margin of the event. Unit: seconds.
-	Buffer *int64 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
-	// The timestamp when the event was last processed.
-	DealTime *int64 `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
-	// The ID of the Apsara Stack tenant account used by the user who last processed the event.
-	DealUser *string `json:"DealUser,omitempty" xml:"DealUser,omitempty"`
-	// The timestamp when the event was processed.
-	FixTime *int64 `json:"FixTime,omitempty" xml:"FixTime,omitempty"`
-	// The timestamp when the system event occurred. A time difference may exist between the time when the event occurred and the time when the event was found.
-	HappenTime *int64 `json:"HappenTime,omitempty" xml:"HappenTime,omitempty"`
-	// The ID of the instance that triggered the event.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The timestamp when the system reports the next alert.
-	NextAlertTime *int64 `json:"NextAlertTime,omitempty" xml:"NextAlertTime,omitempty"`
-	// The ID of the node that triggered the event.
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node that triggered the event.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Apsara Stack tenant account used by the event owner.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the workspace to which the node that triggered the event belongs.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the event.
-	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
-	// The name of the event.
-	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 	// The status of the event. Valid values: IGNORE, NEW, FIXING, and RECOVER. A value of IGNORE indicates that the event is ignored. A value of NEW indicates that the event is a new event. A value of FIXING indicates that the event is being processed. A value of RECOVER indicates that the event is processed.
-	TopicStatus *string `json:"TopicStatus,omitempty" xml:"TopicStatus,omitempty"`
+	BaselineBuffer *int64 `json:"BaselineBuffer,omitempty" xml:"BaselineBuffer,omitempty"`
+	// The timestamp when the first alert was reported.
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The type of the event. Valid values: SLOW and ERROR. A value of SLOW indicates that the duration of the task is significantly longer than the average duration of the task in previous cycles. A value of ERROR indicates that the task fails to run.
+	BaselineInGroupId *int32 `json:"BaselineInGroupId,omitempty" xml:"BaselineInGroupId,omitempty"`
+	// The name of the node that triggered the event.
+	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// The timestamp when the system reports the next alert.
+	BaselineStatus *string `json:"BaselineStatus,omitempty" xml:"BaselineStatus,omitempty"`
+	// The ID of the event.
+	Buffer *int64 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
+	// The name of the baseline to which the worst baseline instance belongs.
+	DealTime *int64 `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	// The ID of the baseline to which the worst baseline instance belongs.
+	DealUser *string `json:"DealUser,omitempty" xml:"DealUser,omitempty"`
+	// The margin of the worst baseline instance. Unit: seconds.
+	FixTime *int64 `json:"FixTime,omitempty" xml:"FixTime,omitempty"`
+	// The ID of the Apsara Stack tenant account used by the user who last processed the event.
+	HappenTime *int64 `json:"HappenTime,omitempty" xml:"HappenTime,omitempty"`
+	// The ID of the cycle of the worst baseline instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The timestamp when the event was processed.
+	NextAlertTime *int64 `json:"NextAlertTime,omitempty" xml:"NextAlertTime,omitempty"`
+	NodeId        *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The margin of the event. Unit: seconds.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The status of the baseline. Valid values: ERROR, SAFE, DANGROUS, and OVER. A value of ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. A value of SAFE indicates that nodes are run before the alert duration begins. A value of DANGROUS indicates that nodes are still running after the alert duration ends but the committed time does not arrive. A value of OVER indicates that nodes are still running after the committed time.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the instance that triggered the event.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the node that triggered the event.
+	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	// The ID of the workspace to which the node that triggered the event belongs.
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The timestamp when the event was last processed.
+	TopicStatus *string `json:"TopicStatus,omitempty" xml:"TopicStatus,omitempty"`
+	// The timestamp when the system event occurred. A time difference may exist between the time when the event occurred and the time when the event was found.
 	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 }
 
@@ -26125,7 +25955,6 @@ func (s *GetTopicResponse) SetBody(v *GetTopicResponseBody) *GetTopicResponse {
 }
 
 type GetTopicInfluenceRequest struct {
-	// The ID of the event.
 	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
 }
 
@@ -26143,18 +25972,12 @@ func (s *GetTopicInfluenceRequest) SetTopicId(v int64) *GetTopicInfluenceRequest
 }
 
 type GetTopicInfluenceResponseBody struct {
-	// The information about the baseline instances affected by the event.
-	Data *GetTopicInfluenceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           *GetTopicInfluenceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTopicInfluenceResponseBody) String() string {
@@ -26196,10 +26019,8 @@ func (s *GetTopicInfluenceResponseBody) SetSuccess(v bool) *GetTopicInfluenceRes
 }
 
 type GetTopicInfluenceResponseBodyData struct {
-	// The affected baseline instances.
 	Influences []*GetTopicInfluenceResponseBodyDataInfluences `json:"Influences,omitempty" xml:"Influences,omitempty" type:"Repeated"`
-	// The ID of the event.
-	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	TopicId    *int64                                         `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
 }
 
 func (s GetTopicInfluenceResponseBodyData) String() string {
@@ -26221,24 +26042,15 @@ func (s *GetTopicInfluenceResponseBodyData) SetTopicId(v int64) *GetTopicInfluen
 }
 
 type GetTopicInfluenceResponseBodyDataInfluences struct {
-	// The ID of the baseline.
-	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The name of the baseline.
+	BaselineId   *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The data timestamp of the baseline instance.
-	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The margin of the baseline instance. Unit: seconds.
-	Buffer *int64 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
-	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
-	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	// The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the baseline. Valid values: 1, 2, 5, 7, and 8.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the workspace to which the baseline belongs.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes finish running before the alerting time. The value DANGEROUS indicates that nodes are still running after the alerting time but before the committed time. The value OVER indicates that nodes are still running after the committed time.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Bizdate      *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	Buffer       *int64  `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
+	InGroupId    *int32  `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
+	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId    *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetTopicInfluenceResponseBodyDataInfluences) String() string {
@@ -27618,14 +27430,12 @@ func (s *ListBaselinesRequest) SetSearchText(v string) *ListBaselinesRequest {
 }
 
 type ListBaselinesResponseBody struct {
-	Data                *ListBaselinesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DynamicErrorCode    *string                        `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
-	DynamicErrorMessage *string                        `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
-	ErrorCode           *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode      *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId           *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           *ListBaselinesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListBaselinesResponseBody) String() string {
@@ -27638,16 +27448,6 @@ func (s ListBaselinesResponseBody) GoString() string {
 
 func (s *ListBaselinesResponseBody) SetData(v *ListBaselinesResponseBodyData) *ListBaselinesResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *ListBaselinesResponseBody) SetDynamicErrorCode(v string) *ListBaselinesResponseBody {
-	s.DynamicErrorCode = &v
-	return s
-}
-
-func (s *ListBaselinesResponseBody) SetDynamicErrorMessage(v string) *ListBaselinesResponseBody {
-	s.DynamicErrorMessage = &v
 	return s
 }
 
@@ -28707,9 +28507,9 @@ func (s *ListDIProjectConfigResponse) SetBody(v *ListDIProjectConfigResponseBody
 }
 
 type ListDagsRequest struct {
-	// The sequence number that uniquely identifies the data backfill operation. You can call the [GetDag](~~189753~~) operation to obtain the sequence number.
-	OpSeq *int64 `json:"OpSeq,omitempty" xml:"OpSeq,omitempty"`
 	// The environment of the workspace. Valid values: PROD and DEV. PROD indicates the production environment. DEV indicates the development environment.
+	OpSeq *int64 `json:"OpSeq,omitempty" xml:"OpSeq,omitempty"`
+	// The HTTP status code returned.
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 }
 
@@ -28732,17 +28532,17 @@ func (s *ListDagsRequest) SetProjectEnv(v string) *ListDagsRequest {
 }
 
 type ListDagsResponseBody struct {
-	// The details of DAGs.
+	// The entities returned.
 	Data *ListDagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of DAGs.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -28785,7 +28585,7 @@ func (s *ListDagsResponseBody) SetSuccess(v bool) *ListDagsResponseBody {
 }
 
 type ListDagsResponseBodyData struct {
-	// The entities returned.
+	// The type of the DAG. Valid values: MANUAL, SMOKE_TEST, SUPPLY_DATA, and BUSINESS_PROCESS_DAG.
 	Dags []*ListDagsResponseBodyDataDags `json:"Dags,omitempty" xml:"Dags,omitempty" type:"Repeated"`
 }
 
@@ -28803,31 +28603,30 @@ func (s *ListDagsResponseBodyData) SetDags(v []*ListDagsResponseBodyDataDags) *L
 }
 
 type ListDagsResponseBodyDataDags struct {
-	// The data timestamp.
-	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The time at which the DAG was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user who created the DAG.
-	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The ID of the DAG.
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The time at which the DAG finished running. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The time at which the DAG was scheduled to run.
-	Gmtdate *int64 `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty"`
-	// The time at which the DAG was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The name of the DAG.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sequence number of the operation.
-	OpSeq *int64 `json:"OpSeq,omitempty" xml:"OpSeq,omitempty"`
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	// The ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The data timestamp.
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The time at which the DAG was scheduled to run.
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// The time at which the DAG was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// The time at which the DAG started to run.
+	Gmtdate *int64 `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty"`
+	// The sequence number of the operation.
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The time at which the DAG was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpSeq *int64  `json:"OpSeq,omitempty" xml:"OpSeq,omitempty"`
+	// The ID of the DAG.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The user who created the DAG.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the DAG. Valid values: CREATED, RUNNING, FAILURE, and SUCCESS.
+	// The time at which the DAG finished running. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the DAG. Valid values: MANUAL, SMOKE_TEST, SUPPLY_DATA, and BUSINESS_PROCESS_DAG.
+	// The status of the DAG. Valid values: CREATED, RUNNING, FAILURE, and SUCCESS.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -32190,6 +31989,21 @@ func (s *ListDataServicePublishedApisResponse) SetBody(v *ListDataServicePublish
 }
 
 type ListDataSourcesRequest struct {
+	// The status of the data source. Valid values:
+	//
+	// *   ENABLED: The data source is accessible.
+	// *   DISABLED: The data source is inaccessible.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The number of the page to return. The value of this parameter must be an integer greater than or equal to 1.
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The subtype of the data source. This parameter takes effect only if the DataSourceType parameter is set to rds.
+	//
+	// If the DataSourceType parameter is set to rds, this parameter can be set to mysql, sqlserver, or postgresql.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The HTTP status code returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the data source. Valid values:
 	//
 	// *   odps
@@ -32205,25 +32019,10 @@ type ListDataSourcesRequest struct {
 	// *   analyticdb_for_mysql
 	// *   hybriddb_for_postgresql
 	// *   holo
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The environment in which the data source is used. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The name of the data source that you want to query.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of the page to return. The value of this parameter must be an integer greater than or equal to 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace to which the data sources belong. You can call the [ListProjects](~~178393~~) operation to obtain the ID.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the data source. Valid values:
-	//
-	// *   ENABLED: The data source is accessible.
-	// *   DISABLED: The data source is inaccessible.
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subtype of the data source. This parameter takes effect only if the DataSourceType parameter is set to rds.
-	//
-	// If the DataSourceType parameter is set to rds, this parameter can be set to mysql, sqlserver, or postgresql.
+	// The environment in which the data source is used. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
@@ -32276,13 +32075,13 @@ func (s *ListDataSourcesRequest) SetSubType(v string) *ListDataSourcesRequest {
 }
 
 type ListDataSourcesResponseBody struct {
-	// The query result.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	Data *ListDataSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The query result.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -32315,13 +32114,16 @@ func (s *ListDataSourcesResponseBody) SetSuccess(v bool) *ListDataSourcesRespons
 }
 
 type ListDataSourcesResponseBodyData struct {
-	// The data sources.
+	// The ID of the workspace to which the data source belongs.
 	DataSources []*ListDataSourcesResponseBodyDataDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of data sources.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The data sources.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the data source. Valid values:
+	//
+	// *   1: The data source is accessible.
+	// *   2: The data source is inaccessible.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -32354,13 +32156,30 @@ func (s *ListDataSourcesResponseBodyData) SetTotalCount(v int32) *ListDataSource
 }
 
 type ListDataSourcesResponseBodyDataDataSources struct {
+	BindingCalcEngineId *int64 `json:"BindingCalcEngineId,omitempty" xml:"BindingCalcEngineId,omitempty"`
+	// The description of the data source.
+	ConnectStatus *int32 `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
 	// The ID of the compute engine instance with which the data source is associated.
-	BindingCalcEngineId *int32 `json:"BindingCalcEngineId,omitempty" xml:"BindingCalcEngineId,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Indicates whether the compute engine instance that is associated with the data source is the default compute engine instance used by data sources of the same type.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to last modify the data source.
+	DefaultEngine *bool `json:"DefaultEngine,omitempty" xml:"DefaultEngine,omitempty"`
+	// The time when the data source was created. Example: Mar 17, 2021 4:09:32 PM.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The field that is used to sort data sources. Data sources are sorted in descending order based on the value of this parameter.
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// Indicates whether the data source is a shared data source.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The status of the data source. Valid values:
 	//
 	// *   1: The data source is accessible.
 	// *   2: The data source is inaccessible.
-	ConnectStatus *int32 `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the tenant.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the data source.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The data connection string. The value of this parameter is in the JSON format. Sample connection strings of common data sources:
 	//
 	// *   MaxCompute
@@ -32451,7 +32270,9 @@ type ListDataSourcesResponseBodyDataDataSources struct {
 	//       "url": "ads-xxx-xxxx.cn-hangzhou-1.ads.aliyuncs.com:3029",
 	//       "username": "lslslsls"
 	//     }
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The time when the data source was last modified. Example: Mar 17, 2021 4:09:32 PM.
+	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the data source. Valid values:
 	//
 	// *   odps
@@ -32467,43 +32288,19 @@ type ListDataSourcesResponseBodyDataDataSources struct {
 	// *   analyticdb_for_mysql
 	// *   hybriddb_for_postgresql
 	// *   holo
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// Indicates whether the compute engine instance that is associated with the data source is the default compute engine instance used by data sources of the same type.
-	DefaultEngine *bool `json:"DefaultEngine,omitempty" xml:"DefaultEngine,omitempty"`
-	// The description of the data source.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The name of the data source.
+	Shared *bool `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The subtype of the data source. This parameter takes effect only if the DataSourceType parameter is set to rds.
+	//
+	// If the DataSourceType parameter is set to rds, this parameter can be set to mysql, sqlserver, or postgresql.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The environment in which the data source is used. Valid values:
 	//
 	// *   0: development environment
 	// *   1: production environment
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The time when the data source was created. Example: Mar 17, 2021 4:09:32 PM.
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the data source was last modified. Example: Mar 17, 2021 4:09:32 PM.
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the data source.
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data source.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to last modify the data source.
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The ID of the workspace to which the data source belongs.
-	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The field that is used to sort data sources. Data sources are sorted in descending order based on the value of this parameter.
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Indicates whether the data source is a shared data source.
-	Shared *bool `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// The status of the data source. Valid values:
-	//
-	// *   1: The data source is accessible.
-	// *   2: The data source is inaccessible.
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subtype of the data source. This parameter takes effect only if the DataSourceType parameter is set to rds.
-	//
-	// If the DataSourceType parameter is set to rds, this parameter can be set to mysql, sqlserver, or postgresql.
-	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The ID of the tenant.
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	SubType  *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListDataSourcesResponseBodyDataDataSources) String() string {
@@ -32514,7 +32311,7 @@ func (s ListDataSourcesResponseBodyDataDataSources) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataSourcesResponseBodyDataDataSources) SetBindingCalcEngineId(v int32) *ListDataSourcesResponseBodyDataDataSources {
+func (s *ListDataSourcesResponseBodyDataDataSources) SetBindingCalcEngineId(v int64) *ListDataSourcesResponseBodyDataDataSources {
 	s.BindingCalcEngineId = &v
 	return s
 }
@@ -32559,7 +32356,7 @@ func (s *ListDataSourcesResponseBodyDataDataSources) SetGmtModified(v string) *L
 	return s
 }
 
-func (s *ListDataSourcesResponseBodyDataDataSources) SetId(v int32) *ListDataSourcesResponseBodyDataDataSources {
+func (s *ListDataSourcesResponseBodyDataDataSources) SetId(v int64) *ListDataSourcesResponseBodyDataDataSources {
 	s.Id = &v
 	return s
 }
@@ -32889,15 +32686,15 @@ func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListD
 }
 
 type ListEnabledExtensionsForProjectRequest struct {
-	// The code of the extension point event.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.6b4d4941azHd2k) and go to the Workspace Management page to obtain the workspace ID.
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	// The ID of the request.
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	// The type of the code for the file.
 	//
 	// Valid values: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 24 (ODPS Script), 99 (zero load), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1089 (cross-tenant collaboration), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment), and 1221 (PyODPS 3).
 	//
 	// You can call the [ListFileType](~~212428~~) operation to query the type of the code for the file.
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.6b4d4941azHd2k) and go to the Workspace Management page to obtain the workspace ID.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -32925,9 +32722,9 @@ func (s *ListEnabledExtensionsForProjectRequest) SetProjectId(v int64) *ListEnab
 }
 
 type ListEnabledExtensionsForProjectResponseBody struct {
-	// The details of the extension.
+	// The unique code of the extension.
 	Extensions []*ListEnabledExtensionsForProjectResponseBodyExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The details of the extension.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32950,25 +32747,24 @@ func (s *ListEnabledExtensionsForProjectResponseBody) SetRequestId(v string) *Li
 }
 
 type ListEnabledExtensionsForProjectResponseBodyExtensions struct {
-	// The creator of the extension.
-	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The unique code of the extension.
-	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
-	// The description of the extension.
-	ExtensionDesc *string `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
-	// The name of the extension.
-	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
-	// The time when the extension was created.
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when extension was modified.
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The modifier of the extension.
-	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The name of the extension.
+	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
 	// The owner ID.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The parameter settings of the extension. For more information, see [Configure extension parameters](~~405354~~).
-	ParameterSetting *string `json:"ParameterSetting,omitempty" xml:"ParameterSetting,omitempty"`
+	ExtensionDesc *string `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
 	// The ID of the tenant.
+	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	// The timestamp when extension was modified.
+	GmtCreate   *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The description of the extension.
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The parameter settings of the extension. For more information, see [Configure extension parameters](~~405354~~).
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The time when the extension was created.
+	ParameterSetting *string `json:"ParameterSetting,omitempty" xml:"ParameterSetting,omitempty"`
+	// The creator of the extension.
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -33060,9 +32856,9 @@ func (s *ListEnabledExtensionsForProjectResponse) SetBody(v *ListEnabledExtensio
 }
 
 type ListExtensionsRequest struct {
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Id of the request
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -33085,9 +32881,9 @@ func (s *ListExtensionsRequest) SetPageSize(v int32) *ListExtensionsRequest {
 }
 
 type ListExtensionsResponseBody struct {
-	// The extensions returned on pages.
+	// The page number of the returned page.
 	PagingInfo *ListExtensionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// Id of the request
+	// The extensions returned on pages.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -33110,13 +32906,25 @@ func (s *ListExtensionsResponseBody) SetRequestId(v string) *ListExtensionsRespo
 }
 
 type ListExtensionsResponseBodyPagingInfo struct {
-	// The extensions.
+	// The state of the extension. Valid values:
+	//
+	// 0: Testing
+	//
+	// 1: Publishing
+	//
+	// 3: Disabled
+	//
+	// 4: Processing
+	//
+	// 5: Approved
+	//
+	// 6: Approve Failed
 	Extensions []*ListExtensionsResponseBodyPagingInfoExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The total number of entries returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The extensions.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -33149,29 +32957,17 @@ func (s *ListExtensionsResponseBodyPagingInfo) SetTotalCount(v int32) *ListExten
 }
 
 type ListExtensionsResponseBodyPagingInfoExtensions struct {
-	// The extension point events.
+	// The name of the event.
 	BindEventList []*ListExtensionsResponseBodyPagingInfoExtensionsBindEventList `json:"BindEventList,omitempty" xml:"BindEventList,omitempty" type:"Repeated"`
-	// The unique code of the extension.
+	// The extension point events.
 	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
-	// The description of the extension.
-	ExtensionDesc *string `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
 	// The name of the extension.
-	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	ExtensionDesc *string `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
 	// The ID of the RAM user.
+	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	// The unique code of the extension.
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The state of the extension. Valid values:
-	//
-	// 0: Testing
-	//
-	// 1: Publishing
-	//
-	// 3: Disabled
-	//
-	// 4: Processing
-	//
-	// 5: Approved
-	//
-	// 6: Approve Failed
+	// The description of the extension.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -33214,9 +33010,8 @@ func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetStatus(v int32) *Lis
 }
 
 type ListExtensionsResponseBodyPagingInfoExtensionsBindEventList struct {
-	// The code of the event.
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// The name of the event.
+	// The code of the event.
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 }
 
@@ -34306,21 +34101,19 @@ func (s *ListFoldersResponse) SetBody(v *ListFoldersResponseBody) *ListFoldersRe
 }
 
 type ListInnerNodesRequest struct {
-	// The name of the node to which the inner nodes belong.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The ID of the node group to which the inner nodes belong.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	OuterNodeId *int64 `json:"OuterNodeId,omitempty" xml:"OuterNodeId,omitempty"`
-	// The number of the page to return. Minimum value: 1. Maximum value: 100.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the node to which the inner nodes belong.
-	//
-	// Valid values: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 23 (Data Integration), 24 (ODPS Script), 97 (PAI), 98 (node group), 99 (zero load), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1002 (PAI inner node), 1089 (cross-tenant collaboration), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment), 1106 (for-each), and 1221 (PyODPS 3). You can call the ListNodes operation to query the type of the node.
-	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	// The environment in which the node is run. Valid values: DEV and PROD. Default value: PROD.
-	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the workspace.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. Minimum value: 1. Maximum value: 100.
+	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	// The name of the node to which the inner nodes belong.
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The environment in which the node is run. Valid values: DEV and PROD. Default value: PROD.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -34368,11 +34161,11 @@ func (s *ListInnerNodesRequest) SetProjectId(v int64) *ListInnerNodesRequest {
 }
 
 type ListInnerNodesResponseBody struct {
-	// The paging information.
+	// The page number of the returned page.
 	Paging *ListInnerNodesResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The paging information.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -34400,13 +34193,18 @@ func (s *ListInnerNodesResponseBody) SetSuccess(v bool) *ListInnerNodesResponseB
 }
 
 type ListInnerNodesResponseBodyPaging struct {
-	// The list of inner nodes.
+	// The scheduling type of the inner node. Valid values:
+	//
+	// *   NORMAL: The inner node is an auto triggered node.
+	// *   MANUAL: The inner node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
+	// *   PAUSE: The inner node is a paused node.
+	// *   SKIP: The inner node is a dry-run node. Dry-run nodes are started as scheduled but the scheduling system sets the status of the nodes to succeeded when the scheduling system starts to run the nodes.
 	Nodes []*ListInnerNodesResponseBodyPagingNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The total number of inner nodes returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of inner nodes.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -34439,46 +34237,40 @@ func (s *ListInnerNodesResponseBodyPaging) SetTotalCount(v int32) *ListInnerNode
 }
 
 type ListInnerNodesResponseBodyPagingNodes struct {
-	// The ID of the baseline with which the inner node is associated.
-	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The ID of the workflow.
-	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The connection string.
-	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// The cron expression.
-	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
 	// The description of the inner node.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The table and partition filter expression in Data Quality that are associated with the inner node.
-	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
-	// Indicates whether the node is associated with Data Quality. Valid values: 0 and 1. The value 0 indicates that the node is associated with Data Quality. The value 1 indicates that the node is not associated with Data Quality.
-	DqcType *string `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
-	// The ID of the inner node.
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the inner node.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the owner of the inner node.
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The values of other parameters related to the inner node.
-	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
-	// The priority of the inner node. Valid values: 1, 3, 5, 7, and 8.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the inner node.
-	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	// The ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The interval at which the inner node is rerun after the inner node fails to be run.
-	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Indicates whether the inner node can be rerun.
-	Repeatability *bool `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
+	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	// The ID of the inner node.
+	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// The name of the inner node.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The cron expression.
+	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
+	// The ID of the baseline with which the inner node is associated.
+	DqcType *string `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
+	NodeId  *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The name of the resource group.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The connection string.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Indicates whether the node is associated with Data Quality. Valid values: 0 and 1. The value 0 indicates that the node is associated with Data Quality. The value 1 indicates that the node is not associated with Data Quality.
+	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
+	// The ID of the owner of the inner node.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The priority of the inner node. Valid values: 1, 3, 5, 7, and 8.
+	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	// The type of the inner node.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Indicates whether the inner node can be rerun.
+	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+	// The ID of the workspace.
+	Repeatability *bool `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
+	// The ID of the workflow.
 	ResGroupName *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
-	// The scheduling type of the inner node. Valid values:
-	//
-	// *   NORMAL: The inner node is an auto triggered node.
-	// *   MANUAL: The inner node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
-	// *   PAUSE: The inner node is a paused node.
-	// *   SKIP: The inner node is a dry-run node. Dry-run nodes are started as scheduled but the scheduling system sets the status of the nodes to succeeded when the scheduling system starts to run the nodes.
+	// The interval at which the inner node is rerun after the inner node fails to be run.
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 }
 
@@ -34721,9 +34513,9 @@ func (s *ListInstanceAmountResponse) SetBody(v *ListInstanceAmountResponseBody) 
 }
 
 type ListInstanceHistoryRequest struct {
-	// The IDs of the instances. You can call the ListInstances operation to query the instance IDs.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The environment of the workspace. Valid values: PROD (production environment) and DEV (development environment).By default, data of instances in the production environment is queried.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 }
 
@@ -34746,14 +34538,23 @@ func (s *ListInstanceHistoryRequest) SetProjectEnv(v string) *ListInstanceHistor
 }
 
 type ListInstanceHistoryResponseBody struct {
-	// The instance list.
+	// The status of the node that generates the instance. Valid values:
+	//
+	// *   NOT_RUN: The node is not run.
+	// *   WAIT_TIME: The node is waiting for the scheduling time to arrive.
+	// *   WAIT_RESOURCE: The node is waiting for resources.
+	// *   RUNNING: The node is running.
+	// *   CHECKING: Data quality is being checked for the node.
+	// *   CHECKING_CONDITION: Branch conditions are being checked for the node.
+	// *   FAILURE: The node fails to be run.
+	// *   SUCCESS: The node is successfully run.
 	Instances []*ListInstanceHistoryResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
 	// *   true: The request is successful.
 	// *   false: The request fails.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance list.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -34781,50 +34582,18 @@ func (s *ListInstanceHistoryResponseBody) SetSuccess(v bool) *ListInstanceHistor
 }
 
 type ListInstanceHistoryResponseBodyInstances struct {
-	// The time when the instance started to be run. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	BeginRunningTime *int64 `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
-	// The time when the instance started to wait for resources.
-	BeginWaitResTime *int64 `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
-	// The time when the instance started to wait to be scheduled.
-	BeginWaitTimeTime *int64 `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
-	// The data timestamp of the instance. In most cases, the value is one day before the time when the instance was run.
-	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The time when the instance was generated.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the node started to be run. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	CycTime *int64 `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
-	// The ID of the workflow.
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// Indicates whether the instance is associated with a monitoring rule in Data Quality (DQC). Valid values:
-	//
-	// *   0: The instance is associated with a monitoring rule in Data Quality.
-	// *   1: The instance is not associated with a monitoring rule in Data Quality.
-	DagType *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
-	// The error message that is returned for the instance. This parameter is deprecated. You can call the GetInstanceLog operation to query the error information related to the node.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The time when the running of the node was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The historical record number of the instance.
-	InstanceHistoryId *int64 `json:"InstanceHistoryId,omitempty" xml:"InstanceHistoryId,omitempty"`
-	// The ID of the instance.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the node was last modified.
-	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	BeginRunningTime *int64 `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
+	// The data timestamp of the instance. In most cases, the value is one day before the time when the instance was run.
+	BeginWaitResTime *int64 `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
 	// The ID of the node that generates the instance.
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	BeginWaitTimeTime *int64 `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
 	// The name of the node.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The status of the node that generates the instance. Valid values:
-	//
-	// *   NOT_RUN: The node is not run.
-	// *   WAIT_TIME: The node is waiting for the scheduling time to arrive.
-	// *   WAIT_RESOURCE: The node is waiting for resources.
-	// *   RUNNING: The node is running.
-	// *   CHECKING: Data quality is being checked for the node.
-	// *   CHECKING_CONDITION: Branch conditions are being checked for the node.
-	// *   FAILURE: The node fails to be run.
-	// *   SUCCESS: The node is successfully run.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The ID of the workflow.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the instance started to be run. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CycTime *int64 `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
 	// The type of the node. Valid values:
 	//
 	// *   NORMAL(0): The node is an auto triggered node. The scheduling system regularly runs the node.
@@ -34835,6 +34604,28 @@ type ListInstanceHistoryResponseBodyInstances struct {
 	// *   SKIP_CYCLE(5): The node is a node that is scheduled by week or month and is waiting for the scheduling time to arrive. The scheduling system regularly runs the node but sets the status of the node to succeeded when the scheduling system starts to run the node.
 	// *   CONDITION_UNCHOOSE(6): The node is not selected by its ancestor branch node and is run as a dry-run node.
 	// *   REALTIME_DEPRECATED(7): The node has instances that are generated in real time but deprecated. The scheduling system sets the status of the node to succeeded.
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// The time when the node was last modified.
+	DagType *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
+	// The time when the instance was generated.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message that is returned for the instance. This parameter is deprecated. You can call the GetInstanceLog operation to query the error information related to the node.
+	FinishTime        *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InstanceHistoryId *int64 `json:"InstanceHistoryId,omitempty" xml:"InstanceHistoryId,omitempty"`
+	// The time when the instance started to wait for resources.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The historical record number of the instance.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The time when the instance started to wait to be scheduled.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The time when the node started to be run. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the instance is associated with a monitoring rule in Data Quality (DQC). Valid values:
+	//
+	// *   0: The instance is associated with a monitoring rule in Data Quality.
+	// *   1: The instance is not associated with a monitoring rule in Data Quality.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -34961,44 +34752,36 @@ func (s *ListInstanceHistoryResponse) SetBody(v *ListInstanceHistoryResponseBody
 }
 
 type ListInstancesRequest struct {
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	// The parameters related to the node.
 	BeginBizdate *string `json:"BeginBizdate,omitempty" xml:"BeginBizdate,omitempty"`
-	// The name of the workflow. You can call the [ListBusiness](~~173945~~) operation to query the name of the workflow.
+	// The ID of the instance.
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The data timestamp of the instances that you want to query. Specify the timestamp in the yyyy-MM-dd HH:mm:ss format.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](~~212961~~), [RunSmokeTest](~~212949~~), or [RunManualDagNodes](~~212830~~) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
-	EndBizdate *string `json:"EndBizdate,omitempty" xml:"EndBizdate,omitempty"`
-	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the ID of the node.
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node. You can call the [ListNodes](~~173979~~) operation to query the name of the node.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page of the Account Center console.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The number of the page to return. Minimum value:1. Maximum value: 100.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	//
-	// You cannot specify the sorting method for the instances to be returned by this operation. By default, the instances are sorted in descending order of the time when the instances were created.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the node. You can call the [ListNodes](~~173979~~) operation to query the type of the node.
-	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
 	// The environment of the workspace. Valid values: PROD and DEV. The value PROD indicates the production environment. The value DEV indicates the development environment.
-	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The ID of the workspace. You can call the [ListProjects](~~178393~~) operation to query the ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the node. Valid values:
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// The ID of the workflow.
+	EndBizdate *string `json:"EndBizdate,omitempty" xml:"EndBizdate,omitempty"`
+	// Indicates whether the instance is associated with a monitoring rule in Data Quality. Valid values:
 	//
-	// *   NOT_RUN: The node is not run.
-	// *   WAIT_TIME: The node is waiting for the scheduling time to arrive.
-	// *   WAIT_RESOURCE: The node is waiting for resources.
-	// *   RUNNING: The node is running.
-	// *   CHECKING: Data quality is being checked for the node.
-	// *   CHECKING_CONDITION: Branch conditions are being checked for the node.
-	// *   FAILURE: The node fails to run.
-	// *   SUCCESS: The node is successfully run.
+	// *   0: The instance is associated with a monitoring rule in Data Quality.
+	// *   1: The instance is not associated with a monitoring rule in Data Quality.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Indicates whether the node can be rerun.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The connection string.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The operation that you want to perform.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the node.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The error code returned.
+	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	// The time when the node was last modified.
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The ID of the baseline.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The time when the instance started to wait to be scheduled.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -35081,20 +34864,19 @@ func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	// The instances returned.
+	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the ID of the node.
 	Data *ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The page number of the returned page.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message that is returned for the instance.
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// This parameter is deprecated. You can call the [GetInstanceLog](~~173983~~) operation to query the error information related to the node.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The name of the node.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -35137,13 +34919,15 @@ func (s *ListInstancesResponseBody) SetSuccess(v bool) *ListInstancesResponseBod
 }
 
 type ListInstancesResponseBodyData struct {
-	// The information about the instances.
+	// The name of the node. You can call the [ListNodes](~~173979~~) operation to query the name of the node.
 	Instances []*ListInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The time when the node was scheduled to run.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of instances.
+	// The priority of the instance. Valid values: 1, 3, 5, 7, and 8.
+	//
+	// A greater value indicates a higher priority. Default value: 1.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -35176,68 +34960,43 @@ func (s *ListInstancesResponseBodyData) SetTotalCount(v int32) *ListInstancesRes
 }
 
 type ListInstancesResponseBodyDataInstances struct {
-	// The ID of the baseline.
-	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The time when the instance started to run.
-	BeginRunningTime *int64 `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
-	// The time when the instance started to wait for resources.
-	BeginWaitResTime *int64 `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
-	// The time when the instance started to wait to be scheduled.
-	BeginWaitTimeTime *int64 `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
-	// The data timestamp of the instance. In most cases, the value is one day before the time when the instance was run.
-	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The ID of the workflow.
-	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The connection string.
-	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// The time when the instance was generated.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the account that is used to run the instance. For example, if an account named Test was used to run the instance to backfill data, the value of this parameter is Test.
-	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The time when the node was scheduled to run.
-	CycTime *int64 `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
-	// The ID of the workflow.
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	// The type of the workflow. Valid values:
 	//
 	// *   DAILY: The workflow is used to run auto triggered nodes.
 	// *   MANUAL: The workflow is used to run manually triggered nodes.
 	// *   SMOKE_TEST: The workflow is used to perform smoke testing.
 	// *   SUPPLY_DATA: The workflow is used to backfill data.
-	DagType *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
-	// The table and partition filter expression in Data Quality that are associated with the node.
-	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
-	// Indicates whether the instance is associated with a monitoring rule in Data Quality. Valid values:
-	//
-	// *   0: The instance is associated with a monitoring rule in Data Quality.
-	// *   1: The instance is not associated with a monitoring rule in Data Quality.
-	DqcType *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
-	// The error message that is returned for the instance.
-	//
-	// This parameter is deprecated. You can call the [GetInstanceLog](~~173983~~) operation to query the error information related to the node.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The time when the instance started to run.
+	BeginRunningTime *int64 `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
 	// The time when the node stopped running.
-	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the instance.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the node was last modified.
-	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the node.
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The parameters related to the node.
-	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
-	// The priority of the instance. Valid values: 1, 3, 5, 7, and 8.
+	BeginWaitResTime *int64 `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	BeginWaitTimeTime *int64 `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
 	//
-	// A greater value indicates a higher priority. Default value: 1.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// You cannot specify the sorting method for the instances to be returned by this operation. By default, the instances are sorted in descending order of the time when the instances were created.
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	// The ID of the workflow to which the node belongs.
-	RelatedFlowId *int64 `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty"`
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The number of times the node can be rerun. The value of this parameter can be empty or an integer that is greater than or equal to 0.
+	//
+	// *   If the value of this parameter is empty, the number of times that the node can be rerun is not specified.
+	// *   If the value of this parameter is 0, the node cannot be rerun.
+	// *   If the value of this parameter is a positive integer such as n, the node can be rerun n times. For example, if the value of this parameter is 1, the node can be rerun once. If the value of this parameter is 2, the node can be rerun twice.
+	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
 	// The interval at which the node is rerun after the node fails to run. Unit: milliseconds.
-	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Indicates whether the node can be rerun.
-	Repeatability *bool `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the ID of the node.
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The error message returned.
+	CycTime *int64 `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
+	// The time when the instance started to wait for resources.
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// The data timestamp of the instance. In most cases, the value is one day before the time when the instance was run.
+	DagType *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
+	// The operation that you want to perform.
+	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
 	// The status of the node. Valid values:
 	//
 	// *   NOT_RUN: The node is not run.
@@ -35248,13 +35007,25 @@ type ListInstancesResponseBodyDataInstances struct {
 	// *   CHECKING_CONDITION: Branch conditions are being checked for the node.
 	// *   FAILURE: The node fails to run.
 	// *   SUCCESS: The node is successfully run.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of times the node can be rerun. The value of this parameter can be empty or an integer that is greater than or equal to 0.
-	//
-	// *   If the value of this parameter is empty, the number of times that the node can be rerun is not specified.
-	// *   If the value of this parameter is 0, the node cannot be rerun.
-	// *   If the value of this parameter is a positive integer such as n, the node can be rerun n times. For example, if the value of this parameter is 1, the node can be rerun once. If the value of this parameter is 2, the node can be rerun twice.
-	TaskRerunTime *int32 `json:"TaskRerunTime,omitempty" xml:"TaskRerunTime,omitempty"`
+	DqcType *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
+	// The name of the account that is used to run the instance. For example, if an account named Test was used to run the instance to backfill data, the value of this parameter is Test.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page of the Account Center console.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The number of the page to return. Minimum value:1. Maximum value: 100.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the workflow. You can call the [ListBusiness](~~173945~~) operation to query the name of the workflow.
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The environment of the workspace. Valid values: PROD and DEV. The value PROD indicates the production environment. The value DEV indicates the development environment.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The ID of the workflow.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The table and partition filter expression in Data Quality that are associated with the node.
+	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
+	// The total number of instances.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of the node. You can call the [ListNodes](~~173979~~) operation to query the type of the node.
+	RelatedFlowId *int64 `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty"`
 	// The scheduling type of the node. Valid values:
 	//
 	// *   NORMAL(0): The node is an auto triggered node. The scheduling system regularly runs the node.
@@ -35272,6 +35043,23 @@ type ListInstancesResponseBodyDataInstances struct {
 	// *   CONDITION_UNCHOOSE(6): The node is not selected by its ancestor branch node and is run as a dry-run node.
 	//
 	//     REALTIME_DEPRECATED(7): The node has instances that are generated in real time but deprecated. The scheduling system sets the status of the node to succeeded.
+	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+	// The status of the node. Valid values:
+	//
+	// *   NOT_RUN: The node is not run.
+	// *   WAIT_TIME: The node is waiting for the scheduling time to arrive.
+	// *   WAIT_RESOURCE: The node is waiting for resources.
+	// *   RUNNING: The node is running.
+	// *   CHECKING: Data quality is being checked for the node.
+	// *   CHECKING_CONDITION: Branch conditions are being checked for the node.
+	// *   FAILURE: The node fails to run.
+	// *   SUCCESS: The node is successfully run.
+	Repeatability *bool `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
+	// The data timestamp of the instances that you want to query. Specify the timestamp in the yyyy-MM-dd HH:mm:ss format.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the workspace. You can call the [ListProjects](~~178393~~) operation to query the ID of the workspace.
+	TaskRerunTime *int32 `json:"TaskRerunTime,omitempty" xml:"TaskRerunTime,omitempty"`
+	// The information about the instances.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -35687,17 +35475,17 @@ func (s *ListManualDagInstancesResponse) SetBody(v *ListManualDagInstancesRespon
 }
 
 type ListMetaCollectionEntitiesRequest struct {
-	// The unique identifier of the collection.
-	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
 	// The type of the entities.
 	//
 	// For example, if this parameter is set to maxcompute-table, the entity is a MaxCompute table.
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
 	// The search keyword.
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The paging information. This parameter specifies the start point of the query.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The number of entries to return on each page.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The object returned.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -35735,21 +35523,20 @@ func (s *ListMetaCollectionEntitiesRequest) SetPageSize(v int32) *ListMetaCollec
 }
 
 type ListMetaCollectionEntitiesResponseBody struct {
-	// The object returned.
+	// The token that is used for the next query.
 	Data *ListMetaCollectionEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// true: The request was successful.
 	//
 	// false: The request failed.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -35792,9 +35579,9 @@ func (s *ListMetaCollectionEntitiesResponseBody) SetSuccess(v bool) *ListMetaCol
 }
 
 type ListMetaCollectionEntitiesResponseBodyData struct {
-	// The entities.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	EntityList []*Entity `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
-	// The token that is used for the next query.
+	// The entities.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -35846,25 +35633,25 @@ func (s *ListMetaCollectionEntitiesResponse) SetBody(v *ListMetaCollectionEntiti
 }
 
 type ListMetaCollectionsRequest struct {
-	// The ID of the collection administrator.
+	// The ID of the collection follower.
 	Administrator *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
+	// The ID of the collection creator.
+	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	// The ID of the collection administrator.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
+	// The name of the sorting field.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// ALBUM: data album
 	//
 	// ALBUM_CATEGORY: category in a data album
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// The ID of the collection creator.
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the collection follower.
-	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
-	// The keyword.
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The paging information. This parameter specifies the start point of the query.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The name of the sorting field.
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The keyword.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the parent collection.
+	// The paging information. This parameter specifies the start point of the query.
 	ParentQualifiedName *string `json:"ParentQualifiedName,omitempty" xml:"ParentQualifiedName,omitempty"`
 }
 
@@ -35922,20 +35709,16 @@ func (s *ListMetaCollectionsRequest) SetParentQualifiedName(v string) *ListMetaC
 }
 
 type ListMetaCollectionsResponseBody struct {
-	// The object returned.
+	// The token that is used for the next query.
 	Data *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The object returned.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// The error code returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -35978,9 +35761,12 @@ func (s *ListMetaCollectionsResponseBody) SetSuccess(v bool) *ListMetaCollection
 }
 
 type ListMetaCollectionsResponseBodyData struct {
-	// The collections.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
 	CollectionList []*Collection `json:"CollectionList,omitempty" xml:"CollectionList,omitempty" type:"Repeated"`
-	// The token that is used for the next query.
+	// The collections.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -36032,15 +35818,15 @@ func (s *ListMetaCollectionsResponse) SetBody(v *ListMetaCollectionsResponseBody
 }
 
 type ListMetaDBRequest struct {
-	// The ID of the E-MapReduce (EMR) cluster. You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID.
+	// The information of the metadatabases.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Only emr is supported.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The number of the page to return.
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The ID of the E-MapReduce (EMR) cluster. You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The ID of the request.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) to obtain the ID.
+	// The number of the page to return.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -36078,9 +35864,9 @@ func (s *ListMetaDBRequest) SetProjectId(v int64) *ListMetaDBRequest {
 }
 
 type ListMetaDBResponseBody struct {
-	// The information of the metadatabases.
+	// The list of metadatabases.
 	DatabaseInfo *ListMetaDBResponseBodyDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The total number of the metadatabases.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -36103,9 +35889,9 @@ func (s *ListMetaDBResponseBody) SetRequestId(v string) *ListMetaDBResponseBody 
 }
 
 type ListMetaDBResponseBodyDatabaseInfo struct {
-	// The list of metadatabases.
+	// The timestamp at which the metadatabase was created. You can convert the timestamp to the related date based on the time zone that you use.
 	DbList []*ListMetaDBResponseBodyDatabaseInfoDbList `json:"DbList,omitempty" xml:"DbList,omitempty" type:"Repeated"`
-	// The total number of the metadatabases.
+	// The type of the metadatabase.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -36128,19 +35914,17 @@ func (s *ListMetaDBResponseBodyDatabaseInfo) SetTotalCount(v int64) *ListMetaDBR
 }
 
 type ListMetaDBResponseBodyDatabaseInfoDbList struct {
-	// The timestamp at which the metadatabase was created. You can convert the timestamp to the related date based on the time zone that you use.
-	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The URL of the metadatabase.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	// The timestamp at which the metadatabase was updated.
-	ModifiedTimeStamp *int64 `json:"ModifiedTimeStamp,omitempty" xml:"ModifiedTimeStamp,omitempty"`
-	// The name of the metadatabase.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CreateTimeStamp *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	Location        *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	// The ID of the metadatabase owner.
+	ModifiedTimeStamp *int64 `json:"ModifiedTimeStamp,omitempty" xml:"ModifiedTimeStamp,omitempty"`
+	// The URL of the metadatabase.
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the metadatabase.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The universally unique identifier (UUID) of the metadatabase.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the metadatabase.
 	UUID *string `json:"UUID,omitempty" xml:"UUID,omitempty"`
 }
 
@@ -36217,15 +36001,15 @@ func (s *ListMetaDBResponse) SetBody(v *ListMetaDBResponseBody) *ListMetaDBRespo
 }
 
 type ListMigrationsRequest struct {
-	// The type of the migration task. Valid values: IMPORT and EXPORT.
-	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
 	// The ID of the owner.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
 	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+	// The type of the migration task. Valid values: IMPORT and EXPORT.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -36263,14 +36047,14 @@ func (s *ListMigrationsRequest) SetProjectId(v int64) *ListMigrationsRequest {
 }
 
 type ListMigrationsResponseBody struct {
-	// The data returned.
+	// The list of migration tasks.
 	Data *ListMigrationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
 	// *   true: The request is successful.
 	// *   false: The request fails.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -36298,13 +36082,12 @@ func (s *ListMigrationsResponseBody) SetSuccess(v bool) *ListMigrationsResponseB
 }
 
 type ListMigrationsResponseBodyData struct {
-	// The list of migration tasks.
+	// The ID of the primary key.
 	Migrations []*ListMigrationsResponseBodyDataMigrations `json:"Migrations,omitempty" xml:"Migrations,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page. Default value: 10. Maximum value: 50.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The total number of entries returned.
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -36337,27 +36120,22 @@ func (s *ListMigrationsResponseBodyData) SetTotalCount(v int32) *ListMigrationsR
 }
 
 type ListMigrationsResponseBodyDataMigrations struct {
-	// The time when the migration task was created.
+	// The time when the migration task was last updated.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the migration task.
-	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The name of the user who created the migration task.
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The ID of the user who last updated the migration task.
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// The description of the export task.
+	// The page number of the returned page.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL that is used to download the package of the export task. You can use the URL to download the package of the export task.
+	// The description of the export task.
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The ID of the primary key.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The type of the migration task.
-	//
-	// *   IMPORT
-	// *   EXPORT
-	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
 	// The name of the migration task.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The URL that is used to download the package of the export task. You can use the URL to download the package of the export task.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the migration task was created.
+	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
 	// The type of the import or export package. Valid values:
 	//
 	// *   DWMA (standard format)
@@ -36366,9 +36144,16 @@ type ListMigrationsResponseBodyDataMigrations struct {
 	// *   DATAWORKS_V3 (Apsara Stack DataWorks V3.12 and later)
 	//
 	// The DWMA and DATAWORKS_MODEL types are interchangeable.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the migration task.
+	//
+	// *   IMPORT
+	// *   EXPORT
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The ID of the DataWorks workspace to which the task belongs.
+	// The ID of the tenant.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The error message returned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status of the migration task. Valid values:
 	//
 	// *   INIT: The migration task is in the initial state.
@@ -36376,14 +36161,12 @@ type ListMigrationsResponseBodyDataMigrations struct {
 	// *   RUNNING: The migration task is running.
 	// *   FAILURE: The migration task fails to run.
 	// *   SUCCESS: The migration task is successfully run.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tenant.
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The time when the migration task was last updated.
+	// The ID of the user who created the migration task.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the user who last updated the migration task.
-	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
 	// The name of the user who last updated the migration task.
+	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	// The ID of the DataWorks workspace to which the task belongs.
 	UpdateUserName *string `json:"UpdateUserName,omitempty" xml:"UpdateUserName,omitempty"`
 }
 
@@ -36788,21 +36571,21 @@ func (s *ListNodeInputOrOutputResponse) SetBody(v *ListNodeInputOrOutputResponse
 }
 
 type ListNodesRequest struct {
-	// The name of the workflow.
+	// The error code returned.
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The name of the node.
+	// The ID of the baseline with which the node is associated.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the owner.
+	// The description of the node.
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The number of the page to return. Minimum value: 1. Maximum value: 100.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The types of the nodes. You can call the [ListNodes](~~173979~~) operation to query the type of the node.
-	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
-	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the workspace.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The operation that you want to perform. Set the value to **ListNodes**.
+	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The ID of the owner.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -36855,17 +36638,17 @@ func (s *ListNodesRequest) SetProjectId(v int64) *ListNodesRequest {
 }
 
 type ListNodesResponseBody struct {
-	// The list of nodes.
+	// The ID of the associated workflow.
 	Data *ListNodesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The page number of the returned page.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The interval at which the node is rerun after the node fails to run.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// The list of nodes.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the node can be rerun.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -36908,13 +36691,18 @@ func (s *ListNodesResponseBody) SetSuccess(v bool) *ListNodesResponseBody {
 }
 
 type ListNodesResponseBodyData struct {
-	// The information about the nodes.
+	// The scheduling type of the node. Valid values:
+	//
+	// *   NORMAL: indicates that the node is a normal auto triggered node.
+	// *   MANUAL: indicates that the node is a manually triggered node.
+	// *   PAUSE: indicates that the node is a paused node.
+	// *   SKIP: indicates that the node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
 	Nodes []*ListNodesResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The name of the node.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	// The cron expression returned.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of nodes returned.
+	// The name of the workflow.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -36947,50 +36735,45 @@ func (s *ListNodesResponseBodyData) SetTotalCount(v int32) *ListNodesResponseBod
 }
 
 type ListNodesResponseBodyDataNodes struct {
-	// The ID of the baseline with which the node is associated.
+	// The number of the page to return. Minimum value: 1. Maximum value: 100.
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The ID of the workflow.
+	// The operation that you want to perform. Set the value to **ListNodes**.
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The connection string.
+	// The name of the resource group.
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// The cron expression returned.
+	// The name of the workflow.
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
-	// The description of the node.
+	// The priority for running the node. Valid values: 1, 3, 5, 7, and 8.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The table and partition filter expression in Data Quality that are associated with the node.
+	// The ID of the owner.
 	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
-	// Indicates whether the node is associated with a monitoring rule in Data Quality. Valid values: 0 and 1. The value 0 indicates that the node is associated with Data Quality. The value 1 indicates that the node is not associated with Data Quality.
+	// The connection string.
 	DqcType  *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
 	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The ID of the node.
+	// The types of the nodes. You can call the [ListNodes](~~173979~~) operation to query the type of the node.
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
+	// The total number of nodes returned.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the owner.
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The additional parameters.
-	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
-	// The priority for running the node. Valid values: 1, 3, 5, 7, and 8.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The type of the node.
+	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
+	// The ID of the owner.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The error message returned.
 	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	// The ID of the workspace.
+	// The information about the nodes.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the associated workflow.
+	// The table and partition filter expression in Data Quality that are associated with the node.
 	RelatedFlowId *int64 `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty"`
-	// The interval at which the node is rerun after the node fails to run.
+	// The environment of the workspace. Valid values: PROD and DEV.
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Indicates whether the node can be rerun.
+	// The name of the node.
 	Repeatability      *bool   `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
 	ResGroupIdentifier *string `json:"ResGroupIdentifier,omitempty" xml:"ResGroupIdentifier,omitempty"`
-	// The name of the resource group.
+	// The ID of the workflow.
 	ResGroupName *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
-	// The scheduling type of the node. Valid values:
-	//
-	// *   NORMAL: indicates that the node is a normal auto triggered node.
-	// *   MANUAL: indicates that the node is a manually triggered node.
-	// *   PAUSE: indicates that the node is a paused node.
-	// *   SKIP: indicates that the node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
+	// The types of the nodes. You can call the [ListNodes](~~173979~~) operation to query the type of the node.
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 }
 
@@ -37137,7 +36920,7 @@ func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse
 }
 
 type ListNodesByBaselineRequest struct {
-	// The ID of the baseline. You can call the [ListBaselineConfigs](~~173964~~) operation to query the ID.
+	// The ID of the request. You can use the ID to troubleshoot issues.
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 }
 
@@ -37155,17 +36938,17 @@ func (s *ListNodesByBaselineRequest) SetBaselineId(v int64) *ListNodesByBaseline
 }
 
 type ListNodesByBaselineResponseBody struct {
-	// The nodes in the baseline.
+	// The name of the node.
 	Data []*ListNodesByBaselineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned.
+	// The nodes in the baseline.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the Alibaba Cloud account used by the node owner.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -37208,14 +36991,12 @@ func (s *ListNodesByBaselineResponseBody) SetSuccess(v string) *ListNodesByBasel
 }
 
 type ListNodesByBaselineResponseBodyData struct {
-	// The ID of the node.
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The ID of the workspace to which the node belongs.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The ID of the node.
+	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListNodesByBaselineResponseBodyData) String() string {
@@ -38063,11 +37844,11 @@ func (s *ListProjectIdsResponse) SetBody(v *ListProjectIdsResponseBody) *ListPro
 }
 
 type ListProjectMembersRequest struct {
-	// The number of the page to return.
+	// The ID of the request.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The results that are returned.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -38095,9 +37876,9 @@ func (s *ListProjectMembersRequest) SetProjectId(v int64) *ListProjectMembersReq
 }
 
 type ListProjectMembersResponseBody struct {
-	// The results that are returned.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	Data *ListProjectMembersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The page number of the returned page.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -38120,13 +37901,17 @@ func (s *ListProjectMembersResponseBody) SetRequestId(v string) *ListProjectMemb
 }
 
 type ListProjectMembersResponseBodyData struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information of members in the DataWorks workspace.
-	ProjectMemberList []*ListProjectMembersResponseBodyDataProjectMemberList `json:"ProjectMemberList,omitempty" xml:"ProjectMemberList,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The information of members in the DataWorks workspace.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the member.
+	ProjectMemberList []*ListProjectMembersResponseBodyDataProjectMemberList `json:"ProjectMemberList,omitempty" xml:"ProjectMemberList,omitempty" type:"Repeated"`
+	// The status of the member. Valid values:
+	//
+	// *   0: NORMAL, which indicates that the member is in a normal state.
+	// *   1: FORBIDDEN, which indicates that the member is disabled.
+	// *   2: DELETED, which indicates that the member is deleted.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -38159,25 +37944,24 @@ func (s *ListProjectMembersResponseBodyData) SetTotalCount(v int32) *ListProject
 }
 
 type ListProjectMembersResponseBodyDataProjectMemberList struct {
-	// The nickname of the member.
-	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	// The ID of the member.
-	ProjectMemberId *string `json:"ProjectMemberId,omitempty" xml:"ProjectMemberId,omitempty"`
-	// The name of the member.
-	ProjectMemberName *string `json:"ProjectMemberName,omitempty" xml:"ProjectMemberName,omitempty"`
 	// The type of the member. Valid values:
 	//
 	// *   1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
 	// *   5: USER_UBACCOUNT, which indicates that the member is a RAM user.
 	// *   6: USER_STS_ROLE, which indicates that the member is a RAM role.
-	ProjectMemberType *string `json:"ProjectMemberType,omitempty" xml:"ProjectMemberType,omitempty"`
+	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// The name of the member.
+	ProjectMemberId *string `json:"ProjectMemberId,omitempty" xml:"ProjectMemberId,omitempty"`
 	// The roles that are assigned to the member.
-	ProjectRoleList []*ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
-	// The status of the member. Valid values:
+	ProjectMemberName *string `json:"ProjectMemberName,omitempty" xml:"ProjectMemberName,omitempty"`
+	// The ID of the role.
+	ProjectMemberType *string `json:"ProjectMemberType,omitempty" xml:"ProjectMemberType,omitempty"`
+	// The type of the role. Valid values:
 	//
-	// *   0: NORMAL, which indicates that the member is in a normal state.
-	// *   1: FORBIDDEN, which indicates that the member is disabled.
-	// *   2: DELETED, which indicates that the member is deleted.
+	// *   0: SYSTEM, which indicates that the role is a built-in role.
+	// *   2: USER_CUSTOM, which indicates that the role is a custom role.
+	ProjectRoleList []*ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
+	// The nickname of the member.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -38220,20 +38004,15 @@ func (s *ListProjectMembersResponseBodyDataProjectMemberList) SetStatus(v string
 }
 
 type ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList struct {
-	// The code of the role.
-	//
-	// DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](~~295463~~).
 	ProjectRoleCode *string `json:"ProjectRoleCode,omitempty" xml:"ProjectRoleCode,omitempty"`
-	// The ID of the role.
-	ProjectRoleId *int32 `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
 	// The name of the role.
 	//
 	// DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](~~295463~~).
+	ProjectRoleId   *int32  `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
 	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
-	// The type of the role. Valid values:
+	// The code of the role.
 	//
-	// *   0: SYSTEM, which indicates that the role is a built-in role.
-	// *   2: USER_CUSTOM, which indicates that the role is a custom role.
+	// DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](~~295463~~).
 	ProjectRoleType *string `json:"ProjectRoleType,omitempty" xml:"ProjectRoleType,omitempty"`
 }
 
@@ -38295,7 +38074,7 @@ func (s *ListProjectMembersResponse) SetBody(v *ListProjectMembersResponseBody) 
 }
 
 type ListProjectRolesRequest struct {
-	// Dataworks ID of the workspace.
+	// Dataworks ID of the region where the workspace is located.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -38313,9 +38092,9 @@ func (s *ListProjectRolesRequest) SetProjectId(v int64) *ListProjectRolesRequest
 }
 
 type ListProjectRolesResponseBody struct {
-	// The roles of the workspace.
+	// The role ID of the workspace.
 	ProjectRoleList []*ListProjectRolesResponseBodyProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The roles of the workspace.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -38338,13 +38117,12 @@ func (s *ListProjectRolesResponseBody) SetRequestId(v string) *ListProjectRolesR
 }
 
 type ListProjectRolesResponseBodyProjectRoleList struct {
-	// The role Code of the workspace.
 	ProjectRoleCode *string `json:"ProjectRoleCode,omitempty" xml:"ProjectRoleCode,omitempty"`
-	// The role ID of the workspace.
-	ProjectRoleId *int32 `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
-	// The role name of the workspace.
-	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
 	// The role type of the workspace. Valid values:
+	ProjectRoleId *int32 `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
+	// The role Code of the workspace.
+	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
+	// The role name of the workspace.
 	ProjectRoleType *string `json:"ProjectRoleType,omitempty" xml:"ProjectRoleType,omitempty"`
 }
 
@@ -38406,13 +38184,13 @@ func (s *ListProjectRolesResponse) SetBody(v *ListProjectRolesResponseBody) *Lis
 }
 
 type ListProjectsRequest struct {
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group.
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The tags.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tag key.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The tag value.
 	Tags []*ListProjectsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -38445,9 +38223,9 @@ func (s *ListProjectsRequest) SetTags(v []*ListProjectsRequestTags) *ListProject
 }
 
 type ListProjectsRequestTags struct {
-	// The tag key.
+	// The ID of the request.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The results that are returned.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -38470,13 +38248,13 @@ func (s *ListProjectsRequestTags) SetValue(v string) *ListProjectsRequestTags {
 }
 
 type ListProjectsShrinkRequest struct {
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group.
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The tags.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tag key.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The tag value.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -38509,9 +38287,9 @@ func (s *ListProjectsShrinkRequest) SetTagsShrink(v string) *ListProjectsShrinkR
 }
 
 type ListProjectsResponseBody struct {
-	// The results that are returned.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	PageResult *ListProjectsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The page number of the returned page.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -38534,13 +38312,35 @@ func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseB
 }
 
 type ListProjectsResponseBodyPageResult struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspaces returned.
-	ProjectList []*ListProjectsResponseBodyPageResultProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The DataWorks workspaces returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the workspace. Valid values:
+	//
+	// *   0: AVAILABLE, which indicates that the workspace is running as expected.
+	// *   1: DELETED, which indicates that the workspace is deleted.
+	// *   2: INITIALIZING, which indicates that the workspace is being initialized.
+	// *   3: INIT_FAILED, which indicates that the workspace fails to be initialized.
+	// *   4: FORBIDDEN, which indicates that the workspace is manually disabled.
+	// *   5: DELETING, which indicates that the workspace is being deleted.
+	// *   6: DEL_FAILED, which indicates that the workspace fails to be deleted.
+	// *   7: FROZEN, which indicates that the workspace is frozen due to overdue payments.
+	// *   8: UPDATING, which indicates that the workspace is being updated. After you associate a compute engine with the workspace, the system initializes compute engine and updates the workspace.
+	// *   9: UPDATE_FAILED, which indicates that the workspace fails to be updated.
+	ProjectList []*ListProjectsResponseBodyPageResultProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
+	// The status code of the workspace. Valid values:
+	//
+	// *   AVAILABLE: 0, which indicates that the workspace is running as expected.
+	// *   DELETED: 1, which indicates that the workspace is deleted.
+	// *   INITIALIZING: 2, which indicates that the workspace is being initialized.
+	// *   INIT_FAILED: 3, which indicates that the workspace fails to be initialized.
+	// *   FORBIDDEN: 4, which indicates that the workspace is manually disabled.
+	// *   DELETING: 5, which indicates that the workspace is being deleted.
+	// *   DEL_FAILED: 6, which indicates that the workspace fails to be deleted.
+	// *   FROZEN: 7, which indicates that the workspace is frozen due to overdue payments.
+	// *   UPDATING: 8, which indicates that the workspace is being updated. After you associate a compute engine with the workspace, the system initializes compute engine and updates the workspace.
+	// *   UPDATE_FAILED: 9, which indicates that the workspace fails to be updated.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -38573,63 +38373,35 @@ func (s *ListProjectsResponseBodyPageResult) SetTotalCount(v int32) *ListProject
 }
 
 type ListProjectsResponseBodyPageResultProjectList struct {
-	// Indicates whether the Development role is disabled. Valid values:
-	//
-	// *   false: enabled
-	// *   true: disabled
-	// *   Default value: false
-	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
-	// Indicates whether the workspace is a default workspace. Valid values:
-	//
-	// *   1: The workspace is a default workspace.
-	// *   0: The workspace is not a default workspace.
-	IsDefault *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The description of the workspace.
-	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	// The ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The identifier of the workspace.
-	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	// The name of the workspace.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the user used by the workspace owner.
-	ProjectOwnerBaseId *string `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
-	// The status of the workspace. Valid values:
-	//
-	// *   0: AVAILABLE, which indicates that the workspace is running as expected.
-	// *   1: DELETED, which indicates that the workspace is deleted.
-	// *   2: INITIALIZING, which indicates that the workspace is being initialized.
-	// *   3: INIT_FAILED, which indicates that the workspace fails to be initialized.
-	// *   4: FORBIDDEN, which indicates that the workspace is manually disabled.
-	// *   5: DELETING, which indicates that the workspace is being deleted.
-	// *   6: DEL_FAILED, which indicates that the workspace fails to be deleted.
-	// *   7: FROZEN, which indicates that the workspace is frozen due to overdue payments.
-	// *   8: UPDATING, which indicates that the workspace is being updated. After you associate a compute engine with the workspace, the system initializes compute engine and updates the workspace.
-	// *   9: UPDATE_FAILED, which indicates that the workspace fails to be updated.
-	ProjectStatus *int32 `json:"ProjectStatus,omitempty" xml:"ProjectStatus,omitempty"`
-	// The status code of the workspace. Valid values:
-	//
-	// *   AVAILABLE: 0, which indicates that the workspace is running as expected.
-	// *   DELETED: 1, which indicates that the workspace is deleted.
-	// *   INITIALIZING: 2, which indicates that the workspace is being initialized.
-	// *   INIT_FAILED: 3, which indicates that the workspace fails to be initialized.
-	// *   FORBIDDEN: 4, which indicates that the workspace is manually disabled.
-	// *   DELETING: 5, which indicates that the workspace is being deleted.
-	// *   DEL_FAILED: 6, which indicates that the workspace fails to be deleted.
-	// *   FROZEN: 7, which indicates that the workspace is frozen due to overdue payments.
-	// *   UPDATING: 8, which indicates that the workspace is being updated. After you associate a compute engine with the workspace, the system initializes compute engine and updates the workspace.
-	// *   UPDATE_FAILED: 9, which indicates that the workspace fails to be updated.
-	ProjectStatusCode *string `json:"ProjectStatusCode,omitempty" xml:"ProjectStatusCode,omitempty"`
-	// The ID of the resource group.
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
 	//
 	// *   0: invisible
 	// *   1: visible
-	TablePrivacyMode *int32 `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
+	DisableDevelopment *bool  `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	IsDefault          *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the resource group.
+	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// The ID of the user used by the workspace owner.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The description of the workspace.
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// The ID of the workspace.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The tags.
+	ProjectOwnerBaseId *string `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
+	// The identifier of the workspace.
+	ProjectStatus *int32 `json:"ProjectStatus,omitempty" xml:"ProjectStatus,omitempty"`
+	// The name of the workspace.
+	ProjectStatusCode *string `json:"ProjectStatusCode,omitempty" xml:"ProjectStatusCode,omitempty"`
+	// The tag key.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	TablePrivacyMode               *int32  `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
+	// The tag value.
 	Tags []*ListProjectsResponseBodyPageResultProjectListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Indicates whether a proxy account is used to access the MaxCompute compute engine associated with the workspace.
+	// Indicates whether the workspace is a default workspace. Valid values:
+	//
+	// *   1: The workspace is a default workspace.
+	// *   0: The workspace is not a default workspace.
 	UseProxyOdpsAccount *bool `json:"UseProxyOdpsAccount,omitempty" xml:"UseProxyOdpsAccount,omitempty"`
 }
 
@@ -38707,9 +38479,13 @@ func (s *ListProjectsResponseBodyPageResultProjectList) SetUseProxyOdpsAccount(v
 }
 
 type ListProjectsResponseBodyPageResultProjectListTags struct {
-	// The tag key.
+	// Indicates whether the Development role is disabled. Valid values:
+	//
+	// *   false: enabled
+	// *   true: disabled
+	// *   Default value: false
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// Indicates whether a proxy account is used to access the MaxCompute compute engine associated with the workspace.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -38761,18 +38537,18 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListQualityResultsByEntityRequest struct {
-	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	// The name of the compute engine instance or data source. You can obtain the name from data source configurations.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The ID of the partition filter expression. You can call the [GetQualityEntity](~~174003~~) operation to query the ID of the partition filter expression.
-	EntityId *int32 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	EntityId *int32 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The error message returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The HTTP status code returned.
 	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine instance or data source. You can obtain the name from data source configurations.
+	// The ID of the request.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	// The number of the page to return.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -38820,17 +38596,17 @@ func (s *ListQualityResultsByEntityRequest) SetStartDate(v string) *ListQualityR
 }
 
 type ListQualityResultsByEntityResponseBody struct {
-	// The data structure of the monitoring results returned.
+	// The total number of entries returned.
 	Data *ListQualityResultsByEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error code returned.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The data structure of the monitoring results returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -38873,13 +38649,19 @@ func (s *ListQualityResultsByEntityResponseBody) SetSuccess(v bool) *ListQuality
 }
 
 type ListQualityResultsByEntityResponseBodyData struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The monitoring results returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The type of the monitoring rule. The type of a monitoring rule indicates the importance of the rule. Valid values:
+	//
+	// *   1: indicates that the monitoring rule is a strong rule.
+	//
+	// *   0: indicates that the monitoring rule is a weak rule.
+	//
+	//     You can specify whether a monitoring rule is a strong rule based on your business requirements. If a strong rule is used and a critical alert is triggered, nodes are blocked.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field of the rule attribute. This field is the column name of the data source table that is monitored.
 	RuleChecks []*ListQualityResultsByEntityResponseBodyDataRuleChecks `json:"RuleChecks,omitempty" xml:"RuleChecks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The threshold for a warning alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -38912,113 +38694,107 @@ func (s *ListQualityResultsByEntityResponseBodyData) SetTotalCount(v int64) *Lis
 }
 
 type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
-	// The partition in the monitored data source table.
+	// The trend of the monitoring result.
 	ActualExpression *string `json:"ActualExpression,omitempty" xml:"ActualExpression,omitempty"`
-	// The time when the monitoring started.
+	// Indicates whether the monitoring result is the same as the predicted result. Valid values:
+	//
+	// *   true: indicates that the monitoring result is the same as the predicted result.
+	// *   false: indicates that the monitoring result is different from the predicted result.
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
+	// The partition filter expression.
 	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The type of the monitoring rule. The type of a monitoring rule indicates the importance of the rule. Valid values:
-	//
-	// *   1: indicates that the monitoring rule is a strong rule.
-	//
-	// *   0: indicates that the monitoring rule is a weak rule.
-	//
-	//     You can specify whether a monitoring rule is a strong rule based on your business requirements. If a strong rule is used and a critical alert is triggered, nodes are blocked.
+	// The name of the table that is monitored.
 	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The monitoring result. The value of this parameter is the same as the value of the CheckResultStatus parameter. Valid values:
+	// The monitoring type. Valid values:
 	//
-	// *   0: indicates that the data source table is normal.
-	// *   1: indicates that a warning alert is reported.
-	// *   2: indicates that a critical alert is reported.
+	// *   1: VOLATILITY_CHECK
+	// *   2: FIXEDVALUE_CHECK
 	CheckResult *int32 `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// The ID of the monitoring rule.
+	CheckResultStatus *int32 `json:"CheckResultStatus,omitempty" xml:"CheckResultStatus,omitempty"`
+	// The method used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+	CheckerId *int32 `json:"CheckerId,omitempty" xml:"CheckerId,omitempty"`
+	// The comparison operator.
+	CheckerName *string `json:"CheckerName,omitempty" xml:"CheckerName,omitempty"`
+	// The type of the scheduling cycle. In most cases, the value of this parameter is YMD. This value indicates year, month, and day.
+	CheckerType *int32 `json:"CheckerType,omitempty" xml:"CheckerType,omitempty"`
+	// The name of the checker.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the checker.
+	CriticalThreshold *float32 `json:"CriticalThreshold,omitempty" xml:"CriticalThreshold,omitempty"`
+	// The name of the monitoring rule.
+	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// The lower limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specified.
+	DiscreteCheck *bool `json:"DiscreteCheck,omitempty" xml:"DiscreteCheck,omitempty"`
+	// The ID of the partition filter expression.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the monitoring template.
+	EntityId *int32 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the primary key.
+	ExpectValue *float32 `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
+	// The type of the scheduling system. Only CWF scheduling systems are supported.
+	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	// The string of the monitoring result.
+	ExternalType *string `json:"ExternalType,omitempty" xml:"ExternalType,omitempty"`
+	// The partition in the monitored data source table.
+	FixedCheck *bool `json:"FixedCheck,omitempty" xml:"FixedCheck,omitempty"`
+	// The check value.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the monitoring is discrete monitoring. Valid values:
+	//
+	// *   true: indicates that the monitoring is discrete monitoring.
+	// *   false: indicates that the monitoring is not discrete monitoring.
+	IsPrediction *bool `json:"IsPrediction,omitempty" xml:"IsPrediction,omitempty"`
+	// The expected value.
+	LowerValue *float32 `json:"LowerValue,omitempty" xml:"LowerValue,omitempty"`
+	// The time when the monitoring started.
+	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
+	// The filter condition of the monitoring rule.
+	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	// The ID of the node.
+	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	// The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and a critical alert is reported, nodes are blocked.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The check result of the monitoring rule. Valid values:
 	//
 	// *   0: indicates that the data source table is normal.
 	// *   1: indicates that a warning alert is reported.
 	// *   2: indicates that a critical alert is reported.
-	CheckResultStatus *int32 `json:"CheckResultStatus,omitempty" xml:"CheckResultStatus,omitempty"`
-	// The ID of the checker.
-	CheckerId *int32 `json:"CheckerId,omitempty" xml:"CheckerId,omitempty"`
-	// The name of the checker.
-	CheckerName *string `json:"CheckerName,omitempty" xml:"CheckerName,omitempty"`
-	// The monitoring type. Valid values:
-	//
-	// *   1: VOLATILITY_CHECK
-	// *   2: FIXEDVALUE_CHECK
-	CheckerType *int32 `json:"CheckerType,omitempty" xml:"CheckerType,omitempty"`
-	// The description of the monitoring rule.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and a critical alert is reported, nodes are blocked.
-	CriticalThreshold *float32 `json:"CriticalThreshold,omitempty" xml:"CriticalThreshold,omitempty"`
-	// The type of the scheduling cycle. In most cases, the value of this parameter is YMD. This value indicates year, month, and day.
-	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
-	// Indicates whether the monitoring is discrete monitoring. Valid values:
-	//
-	// *   true: indicates that the monitoring is discrete monitoring.
-	// *   false: indicates that the monitoring is not discrete monitoring.
-	DiscreteCheck *bool `json:"DiscreteCheck,omitempty" xml:"DiscreteCheck,omitempty"`
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
+	ReferenceValue []*ListQualityResultsByEntityResponseBodyDataRuleChecksReferenceValue `json:"ReferenceValue,omitempty" xml:"ReferenceValue,omitempty" type:"Repeated"`
+	// The name of the compute engine instance or data source for which data quality is monitored.
+	ResultString *string `json:"ResultString,omitempty" xml:"ResultString,omitempty"`
+	// The upper limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specified.
+	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The time when the monitoring ended.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the partition filter expression.
-	EntityId *int32 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The expected value.
-	ExpectValue *float32 `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	// The ID of the node.
-	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	// The type of the scheduling system. Only CWF scheduling systems are supported.
-	ExternalType *string `json:"ExternalType,omitempty" xml:"ExternalType,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The current sample value.
+	SampleValue []*ListQualityResultsByEntityResponseBodyDataRuleChecksSampleValue `json:"SampleValue,omitempty" xml:"SampleValue,omitempty" type:"Repeated"`
+	// The name of the monitoring template.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of DiscreteProperty are Male, Female, and null.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The historical sample values.
+	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// Indicates whether the monitoring is performed based on a fixed value. Valid values:
 	//
 	// *   true: indicates that the monitoring is performed based on a fixed value.
 	// *   false: indicates that the monitoring is performed based on a non-fixed value.
-	FixedCheck *bool `json:"FixedCheck,omitempty" xml:"FixedCheck,omitempty"`
-	// The ID of the primary key.
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the monitoring result is the same as the predicted result. Valid values:
-	//
-	// *   true: indicates that the monitoring result is the same as the predicted result.
-	// *   false: indicates that the monitoring result is different from the predicted result.
-	IsPrediction *bool `json:"IsPrediction,omitempty" xml:"IsPrediction,omitempty"`
-	// The lower limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specified.
-	LowerValue *float32 `json:"LowerValue,omitempty" xml:"LowerValue,omitempty"`
-	// The partition filter expression.
-	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
-	// The method used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
-	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	// The comparison operator.
-	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-	// The name of the compute engine instance or data source for which data quality is monitored.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The field of the rule attribute. This field is the column name of the data source table that is monitored.
-	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The historical sample values.
-	ReferenceValue []*ListQualityResultsByEntityResponseBodyDataRuleChecksReferenceValue `json:"ReferenceValue,omitempty" xml:"ReferenceValue,omitempty" type:"Repeated"`
-	// The string of the monitoring result.
-	ResultString *string `json:"ResultString,omitempty" xml:"ResultString,omitempty"`
-	// The ID of the monitoring rule.
-	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the monitoring rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The sample values.
-	SampleValue []*ListQualityResultsByEntityResponseBodyDataRuleChecksSampleValue `json:"SampleValue,omitempty" xml:"SampleValue,omitempty" type:"Repeated"`
-	// The name of the table that is monitored.
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the monitoring task.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the monitoring template.
-	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the monitoring template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The time that was taken to run the monitoring task. Unit: seconds.
+	// The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
 	TimeCost *string `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
-	// The trend of the monitoring result.
+	// The monitoring result. The value of this parameter is the same as the value of the CheckResultStatus parameter. Valid values:
+	//
+	// *   0: indicates that the data source table is normal.
+	// *   1: indicates that a warning alert is reported.
+	// *   2: indicates that a critical alert is reported.
 	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	// The upper limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specified.
+	// The time that was taken to run the monitoring task. Unit: seconds.
 	UpperValue *float32 `json:"UpperValue,omitempty" xml:"UpperValue,omitempty"`
-	// The threshold for a warning alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements.
+	// The description of the monitoring rule.
 	WarningThreshold *float32 `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
-	// The filter condition of the monitoring rule.
+	// The ID of the monitoring task.
 	WhereCondition *string `json:"WhereCondition,omitempty" xml:"WhereCondition,omitempty"`
 }
 
@@ -39236,15 +39012,15 @@ func (s *ListQualityResultsByEntityResponseBodyDataRuleChecks) SetWhereCondition
 }
 
 type ListQualityResultsByEntityResponseBodyDataRuleChecksReferenceValue struct {
-	// The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
+	// The sample values.
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of DiscreteProperty are Male, Female, and null.
-	DiscreteProperty *string `json:"DiscreteProperty,omitempty" xml:"DiscreteProperty,omitempty"`
 	// The monitoring result.
+	DiscreteProperty *string `json:"DiscreteProperty,omitempty" xml:"DiscreteProperty,omitempty"`
+	// The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of DiscreteProperty are Male, Female, and null.
 	SingleCheckResult *int32 `json:"SingleCheckResult,omitempty" xml:"SingleCheckResult,omitempty"`
-	// The threshold.
+	// The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The check value.
+	// The threshold.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -39282,12 +39058,9 @@ func (s *ListQualityResultsByEntityResponseBodyDataRuleChecksReferenceValue) Set
 }
 
 type ListQualityResultsByEntityResponseBodyDataRuleChecksSampleValue struct {
-	// The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
-	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of DiscreteProperty are Male, Female, and null.
-	DiscreteProperty *string `json:"DiscreteProperty,omitempty" xml:"DiscreteProperty,omitempty"`
-	// The current sample value.
-	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	BizDate          *string  `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	DiscreteProperty *string  `json:"DiscreteProperty,omitempty" xml:"DiscreteProperty,omitempty"`
+	Value            *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListQualityResultsByEntityResponseBodyDataRuleChecksSampleValue) String() string {
@@ -40794,30 +40567,19 @@ func (s *ListRemindsResponse) SetBody(v *ListRemindsResponseBody) *ListRemindsRe
 }
 
 type ListResourceGroupsRequest struct {
+	// The tags.
+	BizExtKey *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
+	// The ID of the resource group.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The category of the resource groups. Valid values:
 	//
 	// *   default: shared resource group
 	// *   single: exclusive resource group
 	// *   Default value: default
-	BizExtKey *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
-	// The keyword that is used for fuzzy queries by resource group name and identifier.
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The type of the resource groups that you want to query. Valid values:
-	//
-	// *   0: DataWorks
-	// *   1: scheduling
-	// *   2: MaxCompute
-	// *   3: Machine Learning Platform for AI (PAI)
-	// *   4: Data Integration
-	// *   7: exclusive resource group for scheduling (An ID is generated for the purchased resource when you purchase an exclusive resource group for scheduling.)
-	// *   9: DataService Studio
-	// *   Default value: 1
-	//
-	// If the value indicates a compute engine, the resource groups to query are the ones that were created when you purchased the compute engine.
 	ResourceGroupType *int32 `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	// The ID of the resource group.
+	// The tag key.
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags.
+	// The tag value.
 	Tags []*ListResourceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -40855,9 +40617,9 @@ func (s *ListResourceGroupsRequest) SetTags(v []*ListResourceGroupsRequestTags) 
 }
 
 type ListResourceGroupsRequestTags struct {
-	// The tag key.
+	// The HTTP status code returned.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -40880,30 +40642,19 @@ func (s *ListResourceGroupsRequestTags) SetValue(v string) *ListResourceGroupsRe
 }
 
 type ListResourceGroupsShrinkRequest struct {
+	// The tags.
+	BizExtKey *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
+	// The ID of the resource group.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The category of the resource groups. Valid values:
 	//
 	// *   default: shared resource group
 	// *   single: exclusive resource group
 	// *   Default value: default
-	BizExtKey *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
-	// The keyword that is used for fuzzy queries by resource group name and identifier.
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The type of the resource groups that you want to query. Valid values:
-	//
-	// *   0: DataWorks
-	// *   1: scheduling
-	// *   2: MaxCompute
-	// *   3: Machine Learning Platform for AI (PAI)
-	// *   4: Data Integration
-	// *   7: exclusive resource group for scheduling (An ID is generated for the purchased resource when you purchase an exclusive resource group for scheduling.)
-	// *   9: DataService Studio
-	// *   Default value: 1
-	//
-	// If the value indicates a compute engine, the resource groups to query are the ones that were created when you purchased the compute engine.
 	ResourceGroupType *int32 `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	// The ID of the resource group.
+	// The tag key.
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags.
+	// The tag value.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -40941,13 +40692,24 @@ func (s *ListResourceGroupsShrinkRequest) SetTagsShrink(v string) *ListResourceG
 }
 
 type ListResourceGroupsResponseBody struct {
-	// The resource groups.
+	// The time when the resource group was last updated.
 	Data []*ListResourceGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The resource groups.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the resource group. Valid values:
+	//
+	// *   0: The resource group is running or in service.
+	// *   1: The resource group has expired and is frozen.
+	// *   2: The resource group is released or destroyed.
+	// *   3: The resource group is being created or started.
+	// *   4: The resource group fails to be created or started.
+	// *   5: The resource group is being scaled out or upgraded.
+	// *   6: The resource group fails to be scaled out or upgraded.
+	// *   7: The resource group is being released or destroyed.
+	// *   8: The resource group fails to be released or destroyed.
+	// *   9: The operation performed on the resource group times out. All operations may time out. This value is temporarily available only for DataService Studio.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -40980,40 +40742,8 @@ func (s *ListResourceGroupsResponseBody) SetSuccess(v bool) *ListResourceGroupsR
 }
 
 type ListResourceGroupsResponseBodyData struct {
-	// The category of the resource group. Valid values:
-	//
-	// *   default: shared resource group
-	// *   single: exclusive resource group
+	// The details of the resource group. The content enclosed in braces {} is the details of the resource group.
 	BizExtKey *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
-	// The name of the cluster. This parameter is returned only if the type of the resource group is MaxCompute or PAI.
-	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	// The time when the cluster was created. Example: Jul 9, 2018 02:43:37 PM.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the UID of an Alibaba Cloud account is used for access. Valid values:
-	//
-	// *   true: The MaxCompute compute engine uses the UID of the Alibaba Cloud account as the display name of the account for access.
-	//
-	// *   false: The MaxCompute compute engine uses the name of the Alibaba Cloud account as the display name of the account for access.
-	//
-	//     The remaining values are useless. This parameter is returned only if the type of the resource group is MaxCompute.
-	EnableKp *bool `json:"EnableKp,omitempty" xml:"EnableKp,omitempty"`
-	// The ID of the resource group.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The identifier of the resource group.
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// Indicates whether the resource group is the default resource group. Valid values:
-	//
-	// *   true: The resource group is the default resource group.
-	// *   false: The resource group is not the default resource group.
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The mode of the resource group. Valid values:
-	//
-	// *   ISOLATE: exclusive resource group that adopts the subscription billing method
-	// *   SHARE: shared resource group that adopts the pay-as-you-go billing method
-	// *   DEVELOP: resource group for developers
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The name of the resource group.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the resource group. Valid values:
 	//
 	// *   0: DataWorks
@@ -41022,31 +40752,52 @@ type ListResourceGroupsResponseBodyData struct {
 	// *   4: Data Integration
 	// *   7: scheduling
 	// *   9: DataService Studio
-	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	// The ID of your Alibaba Cloud resource group.
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The sequence number of the resource group. Created resource groups are sorted in ascending order by sequence number.
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The details of the resource group. The content enclosed in braces {} is the details of the resource group.
-	Specs map[string]interface{} `json:"Specs,omitempty" xml:"Specs,omitempty"`
-	// The status of the resource group. Valid values:
+	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// The mode of the resource group. Valid values:
 	//
-	// *   0: The resource group is running or in service.
-	// *   1: The resource group has expired and is frozen.
-	// *   2: The resource group is released or destroyed.
-	// *   3: The resource group is being created or started.
-	// *   4: The resource group fails to be created or started.
-	// *   5: The resource group is being scaled out or upgraded.
-	// *   6: The resource group fails to be scaled out or upgraded.
-	// *   7: The resource group is being released or destroyed.
-	// *   8: The resource group fails to be released or destroyed.
-	// *   9: The operation performed on the resource group times out. All operations may time out. This value is temporarily available only for DataService Studio.
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
-	Tags []*ListResourceGroupsResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// *   ISOLATE: exclusive resource group that adopts the subscription billing method
+	// *   SHARE: shared resource group that adopts the pay-as-you-go billing method
+	// *   DEVELOP: resource group for developers
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the cluster was created. Example: Jul 9, 2018 02:43:37 PM.
+	EnableKp *bool `json:"EnableKp,omitempty" xml:"EnableKp,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The category of the resource group. Valid values:
+	//
+	// *   default: shared resource group
+	// *   single: exclusive resource group
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// Indicates whether the UID of an Alibaba Cloud account is used for access. Valid values:
+	//
+	// *   true: The MaxCompute compute engine uses the UID of the Alibaba Cloud account as the display name of the account for access.
+	//
+	// *   false: The MaxCompute compute engine uses the name of the Alibaba Cloud account as the display name of the account for access.
+	//
+	//     The remaining values are useless. This parameter is returned only if the type of the resource group is MaxCompute.
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The sequence number of the resource group. Created resource groups are sorted in ascending order by sequence number.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The ID of the tenant.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The identifier of the resource group.
+	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	// The tag key.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The name of the resource group.
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The ID of the resource group.
+	Specs map[string]interface{} `json:"Specs,omitempty" xml:"Specs,omitempty"`
+	// Indicates whether the resource group is the default resource group. Valid values:
+	//
+	// *   true: The resource group is the default resource group.
+	// *   false: The resource group is not the default resource group.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag value.
+	Tags []*ListResourceGroupsResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The tags.
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The time when the resource group was last updated.
+	// The name of the cluster. This parameter is returned only if the type of the resource group is MaxCompute or PAI.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -41144,9 +40895,7 @@ func (s *ListResourceGroupsResponseBodyData) SetUpdateTime(v string) *ListResour
 }
 
 type ListResourceGroupsResponseBodyDataTags struct {
-	// The tag key.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -41198,15 +40947,15 @@ func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) 
 }
 
 type ListShiftPersonnelsRequest struct {
-	// The time when the on-duty engineer starts a shift. Set the value to a UNIX timestamp.
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The time when the on-duty engineer ends a shift. Set the value to a UNIX timestamp.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The ID of the request. You can use the ID to troubleshoot issues.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of your Alibaba Cloud account. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to obtain the ID.
+	// The time when the on-duty engineer starts a shift. Set the value to a UNIX timestamp.
 	ShiftPersonUID *string `json:"ShiftPersonUID,omitempty" xml:"ShiftPersonUID,omitempty"`
-	// The unique identifier of the shift schedule.
-	ShiftScheduleIdentifier *string `json:"ShiftScheduleIdentifier,omitempty" xml:"ShiftScheduleIdentifier,omitempty"`
 	// The type of on-duty engineers that you want to query. Valid values: ALL, PRIMARY, BACKUP, and DESIGNATED_USER.
+	ShiftScheduleIdentifier *string `json:"ShiftScheduleIdentifier,omitempty" xml:"ShiftScheduleIdentifier,omitempty"`
+	// The ID of your Alibaba Cloud account. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to obtain the ID.
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -41244,9 +40993,9 @@ func (s *ListShiftPersonnelsRequest) SetUserType(v string) *ListShiftPersonnelsR
 }
 
 type ListShiftPersonnelsResponseBody struct {
-	// The pagination data.
+	// The page number of the returned page. Minimum value: 1. Maximum value: 100. Default value: 1.
 	Paging *ListShiftPersonnelsResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
+	// The pagination data.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -41269,13 +41018,13 @@ func (s *ListShiftPersonnelsResponseBody) SetRequestId(v string) *ListShiftPerso
 }
 
 type ListShiftPersonnelsResponseBodyPaging struct {
-	// The page number of the returned page. Minimum value: 1. Maximum value: 100. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The on-duty engineers in the shift schedule.
-	ShiftPersons []*ListShiftPersonnelsResponseBodyPagingShiftPersons `json:"ShiftPersons,omitempty" xml:"ShiftPersons,omitempty" type:"Repeated"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The total number of entries returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The UID of the on-duty engineer.
+	ShiftPersons []*ListShiftPersonnelsResponseBodyPagingShiftPersons `json:"ShiftPersons,omitempty" xml:"ShiftPersons,omitempty" type:"Repeated"`
+	// The on-duty engineers in the shift schedule.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -41308,13 +41057,12 @@ func (s *ListShiftPersonnelsResponseBodyPaging) SetTotalCount(v int32) *ListShif
 }
 
 type ListShiftPersonnelsResponseBodyPagingShiftPersons struct {
-	// The time when the on-duty engineer starts the shift.
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The time when the on-duty engineer ends the shift.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the on-duty engineer.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the on-duty engineer starts the shift.
 	ShiftPersonName *string `json:"ShiftPersonName,omitempty" xml:"ShiftPersonName,omitempty"`
-	// The UID of the on-duty engineer.
+	// The name of the on-duty engineer.
 	ShiftPersonUID *string `json:"ShiftPersonUID,omitempty" xml:"ShiftPersonUID,omitempty"`
 }
 
@@ -41376,13 +41124,13 @@ func (s *ListShiftPersonnelsResponse) SetBody(v *ListShiftPersonnelsResponseBody
 }
 
 type ListShiftSchedulesRequest struct {
-	// The ID of your Alibaba Cloud account. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to obtain the ID.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The number of the page to return. Minimum value:1. Maximum value: 100. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of the page to return. Minimum value:1. Maximum value: 100. Default value: 1.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword used to perform a fuzzy search on shift schedules.
+	// The ID of your Alibaba Cloud account. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to obtain the ID.
 	ShiftScheduleName *string `json:"ShiftScheduleName,omitempty" xml:"ShiftScheduleName,omitempty"`
 }
 
@@ -41415,9 +41163,9 @@ func (s *ListShiftSchedulesRequest) SetShiftScheduleName(v string) *ListShiftSch
 }
 
 type ListShiftSchedulesResponseBody struct {
-	// The pagination data.
+	// The page number of the returned page. Minimum value:1. Maximum value: 100.
 	Paging *ListShiftSchedulesResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// The pagination data.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -41440,13 +41188,13 @@ func (s *ListShiftSchedulesResponseBody) SetRequestId(v string) *ListShiftSchedu
 }
 
 type ListShiftSchedulesResponseBodyPaging struct {
-	// The page number of the returned page. Minimum value:1. Maximum value: 100.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The shift schedules.
-	ShiftSchedules []*ListShiftSchedulesResponseBodyPagingShiftSchedules `json:"ShiftSchedules,omitempty" xml:"ShiftSchedules,omitempty" type:"Repeated"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The total number of entries returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique identifier of the shift schedule. You can use the identifier to query the on-duty engineers in the shift schedule.
+	ShiftSchedules []*ListShiftSchedulesResponseBodyPagingShiftSchedules `json:"ShiftSchedules,omitempty" xml:"ShiftSchedules,omitempty" type:"Repeated"`
+	// The shift schedules.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -41479,10 +41227,9 @@ func (s *ListShiftSchedulesResponseBodyPaging) SetTotalCount(v int32) *ListShift
 }
 
 type ListShiftSchedulesResponseBodyPagingShiftSchedules struct {
-	// The unique identifier of the shift schedule. You can use the identifier to query the on-duty engineers in the shift schedule.
-	ShiftScheduleIdentifier *string `json:"ShiftScheduleIdentifier,omitempty" xml:"ShiftScheduleIdentifier,omitempty"`
 	// The name of the shift schedule.
-	ShiftScheduleName *string `json:"ShiftScheduleName,omitempty" xml:"ShiftScheduleName,omitempty"`
+	ShiftScheduleIdentifier *string `json:"ShiftScheduleIdentifier,omitempty" xml:"ShiftScheduleIdentifier,omitempty"`
+	ShiftScheduleName       *string `json:"ShiftScheduleName,omitempty" xml:"ShiftScheduleName,omitempty"`
 }
 
 func (s ListShiftSchedulesResponseBodyPagingShiftSchedules) String() string {
@@ -42400,11 +42147,12 @@ func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsRespo
 }
 
 type MountDirectoryRequest struct {
-	// The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
-	//
-	// For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](~~469938~~) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+	// The ID of the request. You can use the ID to troubleshoot issues.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the directory that you want to add to the left-side navigation pane of DataAnalysis. Example: META_ALBUM, which indicates the data album.
+	// The number of directories that are added. Valid values:
+	//
+	// *   0: No directories are added. The left-side navigation pane may contain the specified directory.
+	// *   1: One directory is added.
 	TargetType   *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
@@ -42433,24 +42181,18 @@ func (s *MountDirectoryRequest) SetTargetUserId(v string) *MountDirectoryRequest
 }
 
 type MountDirectoryResponseBody struct {
-	// The number of directories that are added. Valid values:
-	//
-	// *   0: No directories are added. The left-side navigation pane may contain the specified directory.
-	// *   1: One directory is added.
-	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned. The value 200 indicates that the add task is successful.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   true: The request was successful.
 	// *   false: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data         *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned if the request failed.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned. The value 200 indicates that the add task is successful.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MountDirectoryResponseBody) String() string {
@@ -42521,9 +42263,9 @@ func (s *MountDirectoryResponse) SetBody(v *MountDirectoryResponseBody) *MountDi
 }
 
 type OfflineNodeRequest struct {
-	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to obtain the ID.
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to obtain the ID.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -42546,10 +42288,9 @@ func (s *OfflineNodeRequest) SetProjectId(v int64) *OfflineNodeRequest {
 }
 
 type OfflineNodeResponseBody struct {
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OfflineNodeResponseBody) String() string {
@@ -42714,15 +42455,11 @@ func (s *PublishDataServiceApiResponse) SetBody(v *PublishDataServiceApiResponse
 }
 
 type QueryDISyncTaskConfigProcessResultRequest struct {
-	// The ID of the asynchronous thread. You can call the [GenerateDISyncTaskConfigForCreating](~~383463~~) or [GenerateDISyncTaskConfigForUpdating](~~383464~~) operation to generate the ID.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// *   The GenerateDISyncTaskConfigForCreating operation is used to generate the ID of the asynchronous thread that is used to create a real-time synchronization node or a synchronization solution in Data Integration.
-	// *   The GenerateDISyncTaskConfigForUpdating operation is used to generate the ID of the asynchronous thread that is used to update a real-time synchronization node or a synchronization solution in Data Integration.
+	// *   true: The request is successful.
+	// *   false: The request fails.
 	AsyncProcessId *int64 `json:"AsyncProcessId,omitempty" xml:"AsyncProcessId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
-	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the object that you want to create or update in Data Integration in asynchronous mode. Valid values:
 	//
 	// *   DI_REALTIME: real-time synchronization node
@@ -42730,6 +42467,11 @@ type QueryDISyncTaskConfigProcessResultRequest struct {
 	// *   DI_SOLUTION: synchronization solution
 	//
 	//     DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the asynchronous thread. You can call the [GenerateDISyncTaskConfigForCreating](~~383463~~) or [GenerateDISyncTaskConfigForUpdating](~~383464~~) operation to generate the ID.
+	//
+	// *   The GenerateDISyncTaskConfigForCreating operation is used to generate the ID of the asynchronous thread that is used to create a real-time synchronization node or a synchronization solution in Data Integration.
+	// *   The GenerateDISyncTaskConfigForUpdating operation is used to generate the ID of the asynchronous thread that is used to update a real-time synchronization node or a synchronization solution in Data Integration.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -42757,14 +42499,14 @@ func (s *QueryDISyncTaskConfigProcessResultRequest) SetTaskType(v string) *Query
 }
 
 type QueryDISyncTaskConfigProcessResultResponseBody struct {
-	// The information returned for the parameters that are asynchronously generated and used to create or update a real-time synchronization node or a synchronization solution in Data Integration.
-	Data *QueryDISyncTaskConfigProcessResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the parameters are obtained. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// *   success: indicates that the parameters are obtained.
+	// *   fail: indicates that the parameters fail to be obtained. You can view the reason for the failure and troubleshoot the issue based on the reason.
+	Data *QueryDISyncTaskConfigProcessResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The information returned for the parameters that are asynchronously generated and used to create or update a real-time synchronization node or a synchronization solution in Data Integration.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -42792,14 +42534,10 @@ func (s *QueryDISyncTaskConfigProcessResultResponseBody) SetSuccess(v bool) *Que
 }
 
 type QueryDISyncTaskConfigProcessResultResponseBodyData struct {
-	// The reason why the parameters fail to be obtained. If the parameters are obtained, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the parameters are obtained. Valid values:
-	//
-	// *   success: indicates that the parameters are obtained.
-	// *   fail: indicates that the parameters fail to be obtained. You can view the reason for the failure and troubleshoot the issue based on the reason.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The parameters that are obtained. The parameters are used as the request parameters of the [CreateDISyncTask](~~278725~~) or [UpdateDISyncTask](~~289109~~) operation to create or update a real-time synchronization node or a synchronization solution in Data Integration.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason why the parameters fail to be obtained. If the parameters are obtained, the value null is returned.
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty"`
 }
 
@@ -42856,12 +42594,8 @@ func (s *QueryDISyncTaskConfigProcessResultResponse) SetBody(v *QueryDISyncTaskC
 }
 
 type QueryPublicModelEngineRequest struct {
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://account.alibabacloud.com/login/login.htm) and go to the Workspace Management page to view the workspace ID.
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The FML statement that is used to query information about the data modeling engine. For more information, see [Use FML statements to configure and manage data tables](~~298128#task-2091320~~ "After a data table is created, you can execute fast modeling language (FML) statements in the code editor of the table to configure fields and partitions for the table. This topic describes how to use FML statements to configure a data table.").
-	//
-	// Only SHOW statements are supported.
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s QueryPublicModelEngineRequest) String() string {
@@ -42883,9 +42617,7 @@ func (s *QueryPublicModelEngineRequest) SetText(v string) *QueryPublicModelEngin
 }
 
 type QueryPublicModelEngineResponseBody struct {
-	// The unique ID of the request. You can troubleshoot errors based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the data modeling engine that is returned.
+	RequestId   *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ReturnValue []map[string]interface{} `json:"ReturnValue,omitempty" xml:"ReturnValue,omitempty" type:"Repeated"`
 }
 
@@ -43242,26 +42974,26 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 }
 
 type RevokeColumnPermissionRequest struct {
-	// The fields for which you want to revoke permissions from a user. Separate multiple fields with commas (,).
-	//
-	// You can revoke the permissions on the fields only in MaxCompute tables.
-	Columns *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
-	// The name of the MaxCompute project to which the destination fields belong. You can log on to the DataWorks console and go to the Workspace Management page to obtain the name of the MaxCompute project that is associated with the workspace.
-	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
-	// The ID of the Alibaba Cloud account of the user from whom you want to revoke permissions. You can log on to the DataWorks console and go to the Security Settings page to obtain the ID.
-	//
-	// You must specify either this parameter or RevokeUserName. If you specify both this parameter and RevokeUserName, the value of this parameter prevails.
-	RevokeUserId *string `json:"RevokeUserId,omitempty" xml:"RevokeUserId,omitempty"`
 	// The Alibaba Cloud account of the user from whom you want to revoke permissions. Specify this parameter in the format that is the same as the format of the account used to access the MaxCompute project.
 	//
 	// *   If you want to revoke permissions from an Alibaba Cloud account, specify this parameter in the ALIYUN$+Alibaba Cloud account format.
 	// *   If you want to revoke permissions from a Resource Access Management (RAM) user, specify this parameter in the RAM$+RAM user format.
 	//
 	// You must specify either this parameter or RevokeUserId. If you specify both this parameter and RevokeUserId, the value of RevokeUserId prevails.
-	RevokeUserName *string `json:"RevokeUserName,omitempty" xml:"RevokeUserName,omitempty"`
+	Columns *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
 	// The name of the MaxCompute table to which the destination fields belong. You can call the [SearchMetaTables](~~173919~~) operation to query the name.
+	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
+	// Indicates whether the permissions on table fields are revoked.
+	RevokeUserId *string `json:"RevokeUserId,omitempty" xml:"RevokeUserId,omitempty"`
+	// The ID of the Alibaba Cloud account of the user from whom you want to revoke permissions. You can log on to the DataWorks console and go to the Security Settings page to obtain the ID.
+	//
+	// You must specify either this parameter or RevokeUserName. If you specify both this parameter and RevokeUserName, the value of this parameter prevails.
+	RevokeUserName *string `json:"RevokeUserName,omitempty" xml:"RevokeUserName,omitempty"`
+	// The fields for which you want to revoke permissions from a user. Separate multiple fields with commas (,).
+	//
+	// You can revoke the permissions on the fields only in MaxCompute tables.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the DataWorks workspace with which the MaxCompute project is associated. You can log on to the DataWorks console and go to the Workspace Management page to obtain the ID.
+	// The name of the MaxCompute project to which the destination fields belong. You can log on to the DataWorks console and go to the Workspace Management page to obtain the name of the MaxCompute project that is associated with the workspace.
 	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -43304,9 +43036,8 @@ func (s *RevokeColumnPermissionRequest) SetWorkspaceId(v int64) *RevokeColumnPer
 }
 
 type RevokeColumnPermissionResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the permissions on table fields are revoked.
+	// The ID of the request.
 	RevokeSuccess *bool `json:"RevokeSuccess,omitempty" xml:"RevokeSuccess,omitempty"`
 }
 
@@ -43651,24 +43382,26 @@ func (s *RunCycleDagNodesResponse) SetBody(v *RunCycleDagNodesResponseBody) *Run
 }
 
 type RunManualDagNodesRequest struct {
-	// The data timestamp. The value must be one or more days before the current date. For example, if the current date is November 11, 2020, set the value to 2020-11-10 00:00:00 or earlier. Specify this parameter in the YYYY-MM-DD 00:00:00 format.
-	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The parameters of the manually triggered workflow, which are synchronized to all the instances in the directed acyclic graph (DAG) of the workflow. If a workflow parameter specified in DagParameters is referenced as a scheduling parameter of a node, the value of the scheduling parameter is replaced with the value of the workflow parameter.
-	DagParameters *string `json:"DagParameters,omitempty" xml:"DagParameters,omitempty"`
-	// The IDs of the nodes that you do not need to run in the manually triggered workflow. The system generates dry-run instances for all these nodes. After the dry-run instances are scheduled, the states of these instances are directly set to successful, but the scripts are not run. Separate multiple node IDs with commas (,).
-	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
-	// The name of the manually triggered workflow.
-	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// The IDs of the nodes that you need to run in the manually triggered workflow. Separate multiple node IDs with commas (,). You can call the ListNodes operation to query the node IDs.
-	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty"`
 	// The parameters transmitted between nodes in the manually triggered workflow. The parameters are in the following JSON format: { "\<ID of a node in the manually triggered workflow>": "Scheduling parameter settings of the node, which are in the same format as the Parameters parameter on the Properties tab of the DataStudio page", "\<ID of a node in the manually triggered workflow>": "Scheduling parameter settings of the node, which are in the same format as the Parameters parameter on the Properties tab of the DataStudio page" }.
-	NodeParameters *string `json:"NodeParameters,omitempty" xml:"NodeParameters,omitempty"`
-	// The environment type. Valid values: PROD and DEV. A value of PROD indicates the production environment. A value of DEV indicates the development environment.
-	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The IDs of the nodes that you need to run in the manually triggered workflow. Separate multiple node IDs with commas (,). You can call the ListNodes operation to query the node IDs.
+	DagParameters *string `json:"DagParameters,omitempty" xml:"DagParameters,omitempty"`
+	EndBizDate    *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
 	// The ID of the workspace to which the manually triggered workflow belongs.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
+	// The data timestamp. The value must be one or more days before the current date. For example, if the current date is November 11, 2020, set the value to 2020-11-10 00:00:00 or earlier. Specify this parameter in the YYYY-MM-DD 00:00:00 format.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The IDs of the nodes that you do not need to run in the manually triggered workflow. The system generates dry-run instances for all these nodes. After the dry-run instances are scheduled, the states of these instances are directly set to successful, but the scripts are not run. Separate multiple node IDs with commas (,).
+	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty"`
+	// The parameters of the manually triggered workflow, which are synchronized to all the instances in the directed acyclic graph (DAG) of the workflow. If a workflow parameter specified in DagParameters is referenced as a scheduling parameter of a node, the value of the scheduling parameter is replaced with the value of the workflow parameter.
+	NodeParameters *string `json:"NodeParameters,omitempty" xml:"NodeParameters,omitempty"`
 	// The name of the workspace to which the manually triggered workflow belongs.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The ID of the DAG for the manually triggered workflow. You can call an operation with this parameter as a request parameter to query the details and statuses of the nodes in this manually triggered workflow.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the manually triggered workflow.
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	StartBizDate *string `json:"StartBizDate,omitempty" xml:"StartBizDate,omitempty"`
 }
 
 func (s RunManualDagNodesRequest) String() string {
@@ -43686,6 +43419,11 @@ func (s *RunManualDagNodesRequest) SetBizDate(v string) *RunManualDagNodesReques
 
 func (s *RunManualDagNodesRequest) SetDagParameters(v string) *RunManualDagNodesRequest {
 	s.DagParameters = &v
+	return s
+}
+
+func (s *RunManualDagNodesRequest) SetEndBizDate(v string) *RunManualDagNodesRequest {
+	s.EndBizDate = &v
 	return s
 }
 
@@ -43724,10 +43462,14 @@ func (s *RunManualDagNodesRequest) SetProjectName(v string) *RunManualDagNodesRe
 	return s
 }
 
+func (s *RunManualDagNodesRequest) SetStartBizDate(v string) *RunManualDagNodesRequest {
+	s.StartBizDate = &v
+	return s
+}
+
 type RunManualDagNodesResponseBody struct {
-	// The ID of the DAG for the manually triggered workflow. You can call an operation with this parameter as a request parameter to query the details and statuses of the nodes in this manually triggered workflow.
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	// The ID of the request.
+	DagId     *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -44187,23 +43929,23 @@ func (s *ScanSensitiveDataResponse) SetBody(v *ScanSensitiveDataResponseBody) *S
 }
 
 type SearchMetaTablesRequest struct {
-	// The GUID of the workspace where the metatables reside.
+	// The type of the metatables. Valid values: 0 and 1. The value 0 indicates that tables are queried. The value 1 indicates that views are queried. If you do not configure this parameter, all types of metatables are queried.
 	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
+	// The schema information of the table. You need to configure this parameter if you enable the table schema in MaxCompute.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The HTTP status code returned.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The type of the metatables. Valid values: 0 and 1. The value 0 indicates that tables are queried. The value 1 indicates that views are queried. If you do not configure this parameter, all types of metatables are queried.
-	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The keyword based on which metatables are queried. During the query, the system tokenizes the names of metatables and matches the names with the keyword. If no name is matched, an empty result is returned. By default, the system uses underscores (\_) to tokenize the names.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of the page to return.
+	// The GUID of the workspace where the metatables reside.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The keyword based on which metatables are queried. During the query, the system tokenizes the names of metatables and matches the names with the keyword. If no name is matched, an empty result is returned. By default, the system uses underscores (\_) to tokenize the names.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The schema information of the table. You need to configure this parameter if you enable the table schema in MaxCompute.
+	// The error message returned.
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 }
 
@@ -44256,17 +43998,17 @@ func (s *SearchMetaTablesRequest) SetSchema(v string) *SearchMetaTablesRequest {
 }
 
 type SearchMetaTablesResponseBody struct {
-	// The business data returned.
+	// The number of entries returned per page.
 	Data *SearchMetaTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The page number of the returned page.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The business data returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -44309,13 +44051,13 @@ func (s *SearchMetaTablesResponseBody) SetSuccess(v bool) *SearchMetaTablesRespo
 }
 
 type SearchMetaTablesResponseBodyData struct {
-	// The list of metatables.
+	// The name of the metadatabase.
 	DataEntityList []*SearchMetaTablesResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of metatables.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The list of metatables.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the metatable.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -44348,34 +44090,32 @@ func (s *SearchMetaTablesResponseBodyData) SetTotalCount(v int64) *SearchMetaTab
 }
 
 type SearchMetaTablesResponseBodyDataDataEntityList struct {
-	// The ID of the EMR cluster.
+	// The ID of the tenant.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the metadatabase.
+	// The name of the workspace.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The type of the metatable. Valid values:
-	//
-	// *   0: table
-	// *   1: view
+	// The ID of the workspace.
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The schema information of the table. This parameter is returned only if you enable the table schema in MaxCompute.
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The type of the environment. Valid values:
 	//
 	// *   1: production environment
 	// *   0: development environment
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the Alibaba Cloud account used by the workspace owner.
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the workspace.
+	// The ID of the Alibaba Cloud account used by the workspace owner.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the workspace.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The schema information of the table. This parameter is returned only if you enable the table schema in MaxCompute.
-	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// The GUID of the metatable.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Schema      *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The ID of the EMR cluster.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable.
+	// The type of the metatable. Valid values:
+	//
+	// *   0: table
+	// *   1: view
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the tenant.
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantId  *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s SearchMetaTablesResponseBodyDataDataEntityList) String() string {
@@ -44726,9 +44466,9 @@ func (s *SetDataSourceShareResponse) SetBody(v *SetDataSourceShareResponseBody) 
 }
 
 type SetSuccessInstanceRequest struct {
-	// The ID of the instance.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The environment of the workspace. Valid values: PROD and DEV.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The HTTP status code.
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 }
 
@@ -44751,18 +44491,17 @@ func (s *SetSuccessInstanceRequest) SetProjectEnv(v string) *SetSuccessInstanceR
 }
 
 type SetSuccessInstanceResponseBody struct {
-	// Indicates whether result details are returned.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the request.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Indicates whether result details are returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetSuccessInstanceResponseBody) String() string {
@@ -44833,20 +44572,21 @@ func (s *SetSuccessInstanceResponse) SetBody(v *SetSuccessInstanceResponseBody) 
 }
 
 type StartDISyncInstanceRequest struct {
-	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to start.
-	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to start.
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
-	//
-	// You must set this parameter to specify the DataWorks workspace in which the real-time synchronization node or the data synchronization solution resides.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// *   If you set the TaskType parameter to DI_REALTIME, the StartParam parameter specifies the startup parameters for the real-time synchronization node. The startup parameters include failover-related parameters, the parameter that specifies the number of dirty data records allowed, and the parameters in the data definition language (DDL) statements.
 	// *   If you set the TaskType parameter to DI_SOLUTION, the StartParam parameter does not take effect.
-	StartParam *string `json:"StartParam,omitempty" xml:"StartParam,omitempty"`
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The type of the Data Integration object that you want to start. Valid values:
 	//
 	// *   DI_REALTIME: real-time synchronization node
 	// *   DI_SOLUTION: data synchronization solution
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request succeeded.
+	// *   false: The request failed.
+	StartParam *string `json:"StartParam,omitempty" xml:"StartParam,omitempty"`
+	// *   If you set the TaskType parameter to DI_REALTIME, set the FileId parameter to the ID of the real-time synchronization node that you want to start.
+	// *   If you set the TaskType parameter to DI_SOLUTION, set the FileId parameter to the ID of the data synchronization solution that you want to start.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -44879,14 +44619,14 @@ func (s *StartDISyncInstanceRequest) SetTaskType(v string) *StartDISyncInstanceR
 }
 
 type StartDISyncInstanceResponseBody struct {
-	// The result returned for the start.
-	Data *StartDISyncInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the real-time synchronization node or the data synchronization solution is started. Valid values:
 	//
-	// *   true: The request succeeded.
-	// *   false: The request failed.
+	// *   success: The real-time synchronization node or the data synchronization solution is started.
+	// *   fail: The real-time synchronization node or the data synchronization solution fails to be started. You can troubleshoot the issue based on the provided cause.
+	Data *StartDISyncInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The result returned for the start.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -44914,14 +44654,10 @@ func (s *StartDISyncInstanceResponseBody) SetSuccess(v bool) *StartDISyncInstanc
 }
 
 type StartDISyncInstanceResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The reason why the real-time synchronization node or the data synchronization solution fails to be started.
 	//
 	// If the real-time synchronization node or the data synchronization solution is started, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the real-time synchronization node or the data synchronization solution is started. Valid values:
-	//
-	// *   success: The real-time synchronization node or the data synchronization solution is started.
-	// *   fail: The real-time synchronization node or the data synchronization solution fails to be started. You can troubleshoot the issue based on the provided cause.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -45083,15 +44819,16 @@ func (s *StartMigrationResponse) SetBody(v *StartMigrationResponseBody) *StartMi
 }
 
 type StopDISyncInstanceRequest struct {
-	// The ID of the synchronization node. You can call the [ListFiles](~~173942~~) operation to obtain the ID.
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// *   true: The request is successful.
+	// *   false: The request fails.
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The type of the synchronization node that you want to stop. Set the value to DI_REALTIME.
 	//
 	// DI_REALTIME indicates a real-time synchronization node.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the synchronization node. You can call the [ListFiles](~~173942~~) operation to obtain the ID.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -45119,14 +44856,14 @@ func (s *StopDISyncInstanceRequest) SetTaskType(v string) *StopDISyncInstanceReq
 }
 
 type StopDISyncInstanceResponseBody struct {
-	// The information returned for the synchronization node.
-	Data *StopDISyncInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the synchronization node is stopped. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// *   success: The synchronization node is stopped.
+	// *   fail: The synchronization node fails to be stopped.
+	Data *StopDISyncInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The information returned for the synchronization node.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -45154,14 +44891,10 @@ func (s *StopDISyncInstanceResponseBody) SetSuccess(v bool) *StopDISyncInstanceR
 }
 
 type StopDISyncInstanceResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The reason why the synchronization node fails to be stopped.
 	//
 	// If the synchronization node is stopped, the value null is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the synchronization node is stopped. Valid values:
-	//
-	// *   success: The synchronization node is stopped.
-	// *   fail: The synchronization node fails to be stopped.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -45419,18 +45152,18 @@ func (s *SubmitDataServiceApiResponse) SetBody(v *SubmitDataServiceApiResponseBo
 }
 
 type SubmitFileRequest struct {
-	// The description of the commit operation.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the file. You can call the [ListFiles](~~173942~~) operation to query the ID.
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace name. You must configure either this parameter or the ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
-	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// Specifies whether to skip the pre-publish check after the file is committed.
 	//
 	// *   false: indicates that the pre-publish check is not skipped. After the file is committed, the pre-publish check is automatically triggered. The file can be deployed only after the file passes the check.
 	// *   true: indicates that the pre-publish check is skipped. After the file is submitted, the pre-publish check process is not triggered. You can directly publish the file.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The description of the commit operation.
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace name. You must configure either this parameter or the ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the file. You can call the [ListFiles](~~173942~~) operation to query the ID.
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// The HTTP status code returned.
 	SkipAllDeployFileExtensions *bool `json:"SkipAllDeployFileExtensions,omitempty" xml:"SkipAllDeployFileExtensions,omitempty"`
 }
 
@@ -45468,17 +45201,16 @@ func (s *SubmitFileRequest) SetSkipAllDeployFileExtensions(v bool) *SubmitFileRe
 }
 
 type SubmitFileResponseBody struct {
-	// The ID of the deployment task. The ID is used as the value of a specific request parameter when you call the [GetDeployment](~~173950~~) operation to query the details of the deployment task.
-	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request. You can troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether the request is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the deployment task. The ID is used as the value of a specific request parameter when you call the [GetDeployment](~~173950~~) operation to query the details of the deployment task.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -45657,13 +45389,14 @@ func (s *SuspendInstanceResponse) SetBody(v *SuspendInstanceResponseBody) *Suspe
 }
 
 type TerminateDISyncInstanceRequest struct {
-	// The ID of the real-time synchronization node.
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to view the workspace ID.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// This parameter specifies the DataWorks workspace to which the operation is applied.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// *   true: The request is successful.
+	// *   false: The request fails.
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The type of the node. A value of DI_REALTIME indicates that the node is a real-time synchronization node.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the real-time synchronization node.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -45691,14 +45424,14 @@ func (s *TerminateDISyncInstanceRequest) SetTaskType(v string) *TerminateDISyncI
 }
 
 type TerminateDISyncInstanceResponseBody struct {
-	// The result of the operation.
-	Data *TerminateDISyncInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the real-time synchronization node is terminated. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// *   success
+	// *   fail
+	Data *TerminateDISyncInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The result of the operation.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -45726,12 +45459,8 @@ func (s *TerminateDISyncInstanceResponseBody) SetSuccess(v bool) *TerminateDISyn
 }
 
 type TerminateDISyncInstanceResponseBodyData struct {
-	// The reason why the real-time synchronization node fails to be terminated. If the real-time synchronization node is terminated, this parameter is left empty.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the real-time synchronization node is terminated. Valid values:
-	//
-	// *   success
-	// *   fail
+	// The reason why the real-time synchronization node fails to be terminated. If the real-time synchronization node is terminated, this parameter is left empty.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -46457,11 +46186,9 @@ func (s *TopTenErrorTimesInstanceResponse) SetBody(v *TopTenErrorTimesInstanceRe
 }
 
 type UmountDirectoryRequest struct {
-	// The ID of the directory that you want to remove from the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
-	//
-	// For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](~~469938~~) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+	// The HTTP status code returned. The value 200 indicates that the request was successful.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the directory that you want to remove from the left-side navigation pane of DataAnalysis. Example: META_ALBUM, which indicates the data album.
+	// The ID of the request. You can use the ID to troubleshoot issues.
 	TargetType   *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
@@ -46490,24 +46217,22 @@ func (s *UmountDirectoryRequest) SetTargetUserId(v string) *UmountDirectoryReque
 }
 
 type UmountDirectoryResponseBody struct {
-	// The number of directories that are removed. Valid values:
-	//
-	// *   0: No directories are removed. The left-side navigation pane may not contain the specified directory.
-	// *   1: One directory is removed.
-	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned. The value 200 indicates that the remove task is successful.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned. The value 200 indicates that the request was successful.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   true: The request was successful.
 	// *   false: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned. The value 200 indicates that the remove task is successful.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned if the request failed.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The number of directories that are removed. Valid values:
+	//
+	// *   0: No directories are removed. The left-side navigation pane may not contain the specified directory.
+	// *   1: One directory is removed.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UmountDirectoryResponseBody) String() string {
@@ -46885,14 +46610,12 @@ func (s *UpdateBaselineShrinkRequest) SetRemoveNodeIds(v string) *UpdateBaseline
 }
 
 type UpdateBaselineResponseBody struct {
-	Data                *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DynamicErrorCode    *string `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
-	DynamicErrorMessage *string `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode      *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateBaselineResponseBody) String() string {
@@ -46905,16 +46628,6 @@ func (s UpdateBaselineResponseBody) GoString() string {
 
 func (s *UpdateBaselineResponseBody) SetData(v bool) *UpdateBaselineResponseBody {
 	s.Data = &v
-	return s
-}
-
-func (s *UpdateBaselineResponseBody) SetDynamicErrorCode(v string) *UpdateBaselineResponseBody {
-	s.DynamicErrorCode = &v
-	return s
-}
-
-func (s *UpdateBaselineResponseBody) SetDynamicErrorMessage(v string) *UpdateBaselineResponseBody {
-	s.DynamicErrorMessage = &v
 	return s
 }
 
@@ -47215,10 +46928,21 @@ func (s *UpdateConnectionResponse) SetBody(v *UpdateConnectionResponseBody) *Upd
 }
 
 type UpdateDIProjectConfigRequest struct {
+	// The type of the sources of the synchronization solutions.
+	//
+	// Valid values: oracle, mysql, polardb, datahub, drds, and analyticdb_for_mysql.
+	//
+	// If you do not configure this parameter, DataWorks applies the default global configuration to all sources.
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	ProjectConfig *string `json:"ProjectConfig,omitempty" xml:"ProjectConfig,omitempty"`
 	// The type of the destinations of the synchronization solutions. This parameter cannot be left empty.
 	//
 	// Valid values: analyticdb_for_mysql, odps, elasticsearch, holo, mysql, and polardb.
-	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The new default global configuration of synchronization solutions. The value indicates the processing rules of different types of DDL messages. The value must be in the JSON format. Example:
 	//
 	// {"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"WARNING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE":"WARNING"}
@@ -47240,14 +46964,6 @@ type UpdateDIProjectConfigRequest struct {
 	// *   IGNORE: discards the message and does not send it to the destination.
 	// *   CRITICAL: terminates the real-time synchronization node and sets the node status to Failed.
 	// *   NORMAL: sends the message to the destination to process the message. Each destination processes DDL messages based on its own business logic. If DataWorks adopts the NORMAL policy, DataWorks only forwards DDL messages.
-	ProjectConfig *string `json:"ProjectConfig,omitempty" xml:"ProjectConfig,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the sources of the synchronization solutions.
-	//
-	// Valid values: oracle, mysql, polardb, datahub, drds, and analyticdb_for_mysql.
-	//
-	// If you do not configure this parameter, DataWorks applies the default global configuration to all sources.
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -47280,14 +46996,14 @@ func (s *UpdateDIProjectConfigRequest) SetSourceType(v string) *UpdateDIProjectC
 }
 
 type UpdateDIProjectConfigResponseBody struct {
-	// The information about the modification.
-	Data *UpdateDIProjectConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the default global configuration of synchronization solutions was modified. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// *   success: The default global configuration of synchronization solutions was modified.
+	// *   fail: The default global configuration of synchronization solutions failed to be modified.
+	Data *UpdateDIProjectConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The information about the modification.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -47315,10 +47031,6 @@ func (s *UpdateDIProjectConfigResponseBody) SetSuccess(v bool) *UpdateDIProjectC
 }
 
 type UpdateDIProjectConfigResponseBodyData struct {
-	// Indicates whether the default global configuration of synchronization solutions was modified. Valid values:
-	//
-	// *   success: The default global configuration of synchronization solutions was modified.
-	// *   fail: The default global configuration of synchronization solutions failed to be modified.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -47701,6 +47413,10 @@ func (s *UpdateDataServiceApiResponse) SetBody(v *UpdateDataServiceApiResponseBo
 }
 
 type UpdateDataSourceRequest struct {
+	// The ID of the data source that you want to update. You can call the [ListDataSources](~~211431~~) operation to obtain the ID.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Indicates whether the data source is updated.
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The details about the data source that you want to update.
 	//
 	// You are not allowed to change the type of the data source. For example, you are not allowed to change the data source type from MaxCompute to mysql.
@@ -47913,17 +47629,10 @@ type UpdateDataSourceRequest struct {
 	// }
 	//
 	// ```
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the data source that you want to update. You can call the [ListDataSources](~~211431~~) operation to obtain the ID.
-	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The description of the data source.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment in which the data source runs. Valid values:
-	//
-	// *   0: development environment
-	// *   1: production environment
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The status of the data source. The parameter is deprecated. Do not use this parameter.
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The HTTP status code returned.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -47961,14 +47670,12 @@ func (s *UpdateDataSourceRequest) SetStatus(v string) *UpdateDataSourceRequest {
 }
 
 type UpdateDataSourceResponseBody struct {
-	// Indicates whether the data source is updated.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateDataSourceResponseBody) String() string {
@@ -48099,7 +47806,8 @@ type UpdateFileRequest struct {
 	// The name of the file. You can set the FileName parameter to a new value to change the file name.
 	//
 	// You can call the [ListFiles](~~173942~~) operation to query the ID of the file whose name you want to change. Then, you can set the FileId parameter to the ID and set the FileName parameter to a new value when you call the [UpdateFile](~~173951~~) operation.
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileName                        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	IgnoreParentSkipRunningProperty *bool   `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
 	// The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
 	//
 	// This parameter corresponds to the Output Name parameter under Parent Nodes in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -48245,6 +47953,11 @@ func (s *UpdateFileRequest) SetFileId(v int64) *UpdateFileRequest {
 
 func (s *UpdateFileRequest) SetFileName(v string) *UpdateFileRequest {
 	s.FileName = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetIgnoreParentSkipRunningProperty(v bool) *UpdateFileRequest {
+	s.IgnoreParentSkipRunningProperty = &v
 	return s
 }
 
@@ -48511,17 +48224,17 @@ func (s *UpdateFolderResponse) SetBody(v *UpdateFolderResponseBody) *UpdateFolde
 }
 
 type UpdateIDEEventResultRequest struct {
+	// The summary information of the check result. The information is displayed in DataStudio. If an alert is reported or the event fails the check, you can troubleshoot errors based on the information.
+	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// The ID of the request. You can troubleshoot errors based on the ID.
+	CheckResultTip *string `json:"CheckResultTip,omitempty" xml:"CheckResultTip,omitempty"`
 	// The check status of the extension point event. Valid values:
 	//
 	// *   OK: The event passes the check.
 	// *   FAIL: The event fails to pass the check. You must check and handle the reported error at the earliest opportunity to ensure that your program is run as expected.
 	// *   WARN: The event passes the check, but an alert is reported.
-	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The summary information of the check result. The information is displayed in DataStudio. If an alert is reported or the event fails the check, you can troubleshoot errors based on the information.
-	CheckResultTip *string `json:"CheckResultTip,omitempty" xml:"CheckResultTip,omitempty"`
-	// The ID of the extension. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Extensions tab of the Open Platform page to view the ID.
 	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
-	// The ID of the message. You can obtain the ID from the received message when the extension point event is triggered.
+	// The ID of the extension. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Extensions tab of the Open Platform page to view the ID.
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
@@ -48554,7 +48267,6 @@ func (s *UpdateIDEEventResultRequest) SetMessageId(v string) *UpdateIDEEventResu
 }
 
 type UpdateIDEEventResultResponseBody struct {
-	// The ID of the request. You can troubleshoot errors based on the ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -48715,13 +48427,13 @@ func (s *UpdateMetaCategoryResponse) SetBody(v *UpdateMetaCategoryResponseBody) 
 }
 
 type UpdateMetaCollectionRequest struct {
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The comment of the collection.
 	//
 	// The comment must be 1 to 64 characters in length.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the collection.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unique identifier of the collection.
+	// The name of the collection.
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
 }
 
@@ -48749,24 +48461,23 @@ func (s *UpdateMetaCollectionRequest) SetQualifiedName(v string) *UpdateMetaColl
 }
 
 type UpdateMetaCollectionResponseBody struct {
-	// The error code returned.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error code returned.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The error message returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation. Valid values:
 	//
 	// true: succeeded
 	//
 	// false: failed
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	Status  *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -49626,8 +49337,28 @@ func (s *UpdateQualityRuleResponse) SetBody(v *UpdateQualityRuleResponseBody) *U
 }
 
 type UpdateRemindRequest struct {
-	// The intervals at which alert notifications are sent. Unit: seconds. Minimum value: 1200. Default value: 1800.
+	// The recipient to whom alert notifications are sent. Valid values: OWNER and OTHER. The value OWNER indicates that alert notifications are sent to the object owner. The value OTHER indicates that alert notifications are sent to a specified user.
 	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
+	// Specifies whether to enable the alert rule. Valid values:
+	//
+	// *   true: enables the alert rule.
+	// *   false: disables the alert rule.
+	AlertMethods *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
+	// The webhook URL of the DingTalk chatbot. You can specify multiple webhook URLs. Separate them with commas (,).
+	//
+	// If this parameter is set to undefined, the specified webhook URLs are cleared.
+	AlertTargets *string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty"`
+	// The value format required by this parameter varies based on the value that you specify for the AlertUnit parameter. Take note of the following items:
+	//
+	// *   If the AlertUnit parameter is set to OWNER, leave this parameter empty.
+	// *   If the AlertUnit parameter is set to OTHER, set this parameter to the unique ID (UID) of the specified user. You can specify multiple IDs. Separate them with commas (,). You can specify a maximum of 10 IDs.
+	AlertUnit *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
+	// The ID of the workflow to which the custom alert rule is applied.. An alert rule can monitor a maximum of five workflows. Separate multiple IDs with commas (,).
+	//
+	// This parameter takes effect when you set the RemindUnit parameter to BIZPROCESS.
+	BaselineIds *string `json:"BaselineIds,omitempty" xml:"BaselineIds,omitempty"`
+	// The maximum number of alerts. Valid values: 1 to 10. Default value: 3.
+	BizProcessIds *string `json:"BizProcessIds,omitempty" xml:"BizProcessIds,omitempty"`
 	// The notification method. Valid values:
 	//
 	// *   MAIL: Alert notifications are sent by emails.
@@ -49637,22 +49368,11 @@ type UpdateRemindRequest struct {
 	// *   WEBHOOKS (WeCom or Lark chatbot): Alert notifications are sent by WeCom or Lark messages. If you want to use this notification method, you must configure the Webhooks parameter.
 	//
 	// You can specify multiple notification methods. Separate the specified notification methods with commas (,).
-	AlertMethods *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
-	// The value format required by this parameter varies based on the value that you specify for the AlertUnit parameter. Take note of the following items:
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The ID of the node to which the custom alert rule is applied.. An alert rule can monitor a maximum of 50 nodes. Separate multiple IDs with commas (,).
 	//
-	// *   If the AlertUnit parameter is set to OWNER, leave this parameter empty.
-	// *   If the AlertUnit parameter is set to OTHER, set this parameter to the unique ID (UID) of the specified user. You can specify multiple IDs. Separate them with commas (,). You can specify a maximum of 10 IDs.
-	AlertTargets *string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty"`
-	// The recipient to whom alert notifications are sent. Valid values: OWNER and OTHER. The value OWNER indicates that alert notifications are sent to the object owner. The value OTHER indicates that alert notifications are sent to a specified user.
-	AlertUnit *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
-	// The ID of the baseline to which the custom alert rule is applied.. An alert rule can monitor a maximum of five baselines. Separate multiple IDs with commas (,).
-	//
-	// This parameter takes effect when you set the RemindUnit parameter to BASELINE.
-	BaselineIds *string `json:"BaselineIds,omitempty" xml:"BaselineIds,omitempty"`
-	// The ID of the workflow to which the custom alert rule is applied.. An alert rule can monitor a maximum of five workflows. Separate multiple IDs with commas (,).
-	//
-	// This parameter takes effect when you set the RemindUnit parameter to BIZPROCESS.
-	BizProcessIds *string `json:"BizProcessIds,omitempty" xml:"BizProcessIds,omitempty"`
+	// This parameter takes effect when you set the RemindUnit parameter to NODE.
+	DndEnd *string `json:"DndEnd,omitempty" xml:"DndEnd,omitempty"`
 	// The details of the conditions that trigger an alert.
 	//
 	// *   If the RemindType parameter is set to FINISHED, leave this parameter empty.
@@ -49666,23 +49386,11 @@ type UpdateRemindRequest struct {
 	//     A key in the JSON string indicates the sequence number of a cycle. Valid values of keys: 1 to 288. A value in the JSON string indicates the time in point when a monitored instance times out in the relevant cycle. Values must be in the format of hh:mm. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
 	//
 	// *   If the RemindType parameter is set to TIMEOUT, set this parameter to the timeout period. Unit: seconds. Example: 1800. This indicates that an alert notification is sent if the duration of a monitored instance exceeds 30 minutes.
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The end of the period during which no alert notifications are sent. Specify the time in the hh:mm format. Valid values of hh: 0 to 23. Valid values of mm: 0 to 59.
-	DndEnd *string `json:"DndEnd,omitempty" xml:"DndEnd,omitempty"`
-	// The maximum number of alerts. Valid values: 1 to 10. Default value: 3.
 	MaxAlertTimes *int32 `json:"MaxAlertTimes,omitempty" xml:"MaxAlertTimes,omitempty"`
-	// The ID of the node to which the custom alert rule is applied.. An alert rule can monitor a maximum of 50 nodes. Separate multiple IDs with commas (,).
-	//
-	// This parameter takes effect when you set the RemindUnit parameter to NODE.
-	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	// The ID of the workspace to which the custom alert rule is applied.. Only one workspace can be specified for a custom alert rule.
 	//
 	// This parameter takes effect when you set the RemindUnit parameter to PROJECT.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the custom alert rule.
-	RemindId *int64 `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
-	// The name of the custom alert rule. The name must be 1 to 128 characters in length.
-	RemindName *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
+	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	// The condition that triggers the alert rule. Valid values:
 	//
 	// *   FINISHED: The system monitors an instance when it starts to run and sends an alert notification after the running of the instance is complete.
@@ -49692,28 +49400,31 @@ type UpdateRemindRequest struct {
 	// *   TIMEOUT: The system monitors an instance when it starts to run and sends an alert notification if the instance is still running after the specified period ends. In most cases, you can configure this trigger condition to monitor the duration of node instances.
 	//
 	// For more information, see [Manage custom alert rules](~~138172~~).
-	RemindType *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The end of the period during which no alert notifications are sent. Specify the time in the hh:mm format. Valid values of hh: 0 to 23. Valid values of mm: 0 to 59.
+	RemindId *int64 `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
 	// The type of the object to which the custom alert rule is applied.. Valid values:
 	//
 	// *   NODE: node
 	// *   BASELINE: baseline
 	// *   PROJECT: workspace
 	// *   BIZPROCESS: workflow
+	RemindName *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
+	// The intervals at which alert notifications are sent. Unit: seconds. Minimum value: 1200. Default value: 1800.
+	RemindType *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
+	// The ID of the baseline to which the custom alert rule is applied.. An alert rule can monitor a maximum of five baselines. Separate multiple IDs with commas (,).
+	//
+	// This parameter takes effect when you set the RemindUnit parameter to BASELINE.
 	RemindUnit *string `json:"RemindUnit,omitempty" xml:"RemindUnit,omitempty"`
-	// The webhook URL of the DingTalk chatbot. You can specify multiple webhook URLs. Separate them with commas (,).
-	//
-	// If this parameter is set to undefined, the specified webhook URLs are cleared.
+	// The HTTP status code returned.
 	RobotUrls *string `json:"RobotUrls,omitempty" xml:"RobotUrls,omitempty"`
-	// Specifies whether to enable the alert rule. Valid values:
-	//
-	// *   true: enables the alert rule.
-	// *   false: disables the alert rule.
-	UseFlag *bool `json:"UseFlag,omitempty" xml:"UseFlag,omitempty"`
 	// The webhook URL of the WeCom or Lark chatbot. You can specify multiple webhook URLs. Separate the specified webhook URLs with commas (,). The WEBHOOKS notification method must be specified for alertMethods. If this parameter is set to undefined, the specified webhook URLs are cleared.
 	//
 	// Only DataWorks Enterprise Edition supports this parameter.
 	//
 	// The webhook URL-based alerting feature is supported in the following regions: China (Shanghai), China (Chengdu), China (Zhangjiakou), China (Beijing), China (Hangzhou), China (Shenzhen), China (Hong Kong), Germany (Frankfurt), and Singapore.
+	UseFlag *bool `json:"UseFlag,omitempty" xml:"UseFlag,omitempty"`
+	// Indicates whether the modification to the custom alert rule succeeds.
 	Webhooks *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
 }
 
@@ -49816,21 +49527,19 @@ func (s *UpdateRemindRequest) SetWebhooks(v string) *UpdateRemindRequest {
 }
 
 type UpdateRemindResponseBody struct {
-	// Indicates whether the modification to the custom alert rule succeeds.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request. You can use the ID to troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   true: The request was successful.
 	// *   false: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error message returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error code returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateRemindResponseBody) String() string {
@@ -49901,49 +49610,49 @@ func (s *UpdateRemindResponse) SetBody(v *UpdateRemindResponseBody) *UpdateRemin
 }
 
 type UpdateTableRequest struct {
-	// The globally unique identifier (GUID) of the MaxCompute project. Specify the GUID in the odps.{projectName} format.
-	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	// The ID of the associated category.
-	CategoryId *int64                       `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Columns    []*UpdateTableRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The comment.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the table exists. Valid values:
 	//
 	// *   true: The table exists.
 	// *   false: The table does not exist.
 	//
 	// This parameter is deprecated. Do not use this parameter.
-	CreateIfNotExists *bool `json:"CreateIfNotExists,omitempty" xml:"CreateIfNotExists,omitempty"`
-	// The endpoint of MaxCompute. If this parameter is left empty, the endpoint of the MaxCompute project is used.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The environment of the DataWorks workspace. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The type of the external table. Valid values: 0, 1, 2, and 3. The value 0 indicates that the external table is an OSS external table. The value 1 indicates that the external table is a Tablestore external table. The value 2 indicates that the external table is a volume external table. The value 3 indicates that the external table is a MySQL external table. This parameter is deprecated. Do not use this parameter.
-	ExternalTableType *string `json:"ExternalTableType,omitempty" xml:"ExternalTableType,omitempty"`
+	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
+	// The ID of the logical level.
+	CategoryId *int64                       `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Columns    []*UpdateTableRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The schema information of the table. You need to enter the schema information of the table if you enable the table schema in MaxCompute.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the table that you want to update is a partitioned table. Valid values: 0 and 1. The value 0 indicates that the table is not a partitioned table. The value 1 indicates that the table is a partitioned table. This parameter is deprecated. Do not use this parameter.
 	//
 	// The Column.N.isPartitionCol parameter is used instead of the HasPart parameter to specify whether the MaxCompute table is a partitioned table. If the Column.N.isPartitionCol parameter is set to 1, the MaxCompute table is a partitioned table.
-	HasPart *int32 `json:"HasPart,omitempty" xml:"HasPart,omitempty"`
-	// Specifies whether the table is a view. Valid values: 0 and 1. The value 0 indicates that the table is not a view. The value 1 indicates that the table is a view. This parameter is deprecated. Do not use this parameter.
-	IsView *int32 `json:"IsView,omitempty" xml:"IsView,omitempty"`
-	// The lifecycle of the table. Unit: days. If this parameter is left empty, the table is permanently stored.
-	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	CreateIfNotExists *bool `json:"CreateIfNotExists,omitempty" xml:"CreateIfNotExists,omitempty"`
+	// The environment of the DataWorks workspace. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The globally unique identifier (GUID) of the MaxCompute project. Specify the GUID in the odps.{projectName} format.
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The storage location of the external table. This parameter is deprecated. Do not use this parameter.
+	ExternalTableType *string `json:"ExternalTableType,omitempty" xml:"ExternalTableType,omitempty"`
+	// The comment.
+	HasPart *int32 `json:"HasPart,omitempty" xml:"HasPart,omitempty"`
+	// The scope in which the table is visible. Valid values: 0, 1, and 2. The value 0 indicates that the table is invisible to all workspace members. The value 1 indicates that the table is visible to all workspace members. The value 2 indicates that the table is visible to workspace members.
+	IsView *int32 `json:"IsView,omitempty" xml:"IsView,omitempty"`
+	// The ID of the associated category.
+	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	// The ID of the DataWorks workspace. You can log on to the DataWorks console to obtain the ID of the DataWorks workspace.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The ID of the logical level.
+	// The ID of the physical level.
 	LogicalLevelId *int64  `json:"LogicalLevelId,omitempty" xml:"LogicalLevelId,omitempty"`
 	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the physical level.
+	// The type of the external table. Valid values: 0, 1, 2, and 3. The value 0 indicates that the external table is an OSS external table. The value 1 indicates that the external table is a Tablestore external table. The value 2 indicates that the external table is a volume external table. The value 3 indicates that the external table is a MySQL external table. This parameter is deprecated. Do not use this parameter.
 	PhysicsLevelId *int64 `json:"PhysicsLevelId,omitempty" xml:"PhysicsLevelId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the DataWorks console to obtain the ID of the DataWorks workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The schema information of the table. You need to enter the schema information of the table if you enable the table schema in MaxCompute.
-	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// The name of the MaxCompute table.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The display name of the field.
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The endpoint of MaxCompute. If this parameter is left empty, the endpoint of the MaxCompute project is used.
 	TableName *string                     `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Themes    []*UpdateTableRequestThemes `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
-	// The scope in which the table is visible. Valid values: 0, 1, and 2. The value 0 indicates that the table is invisible to all workspace members. The value 1 indicates that the table is visible to all workspace members. The value 2 indicates that the table is visible to workspace members.
+	// The lifecycle of the table. Unit: days. If this parameter is left empty, the table is permanently stored.
 	Visibility *int32 `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -50056,19 +49765,19 @@ func (s *UpdateTableRequest) SetVisibility(v int32) *UpdateTableRequest {
 }
 
 type UpdateTableRequestColumns struct {
-	// The name of the field.
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The display name of the field.
-	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
-	// The type of the field. For more information, see MaxCompute field types.
-	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// The comment of the field.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Specifies whether the field is a partition field. Valid values: 0 and 1. The value 0 indicates that the field is not a partition field. The value 1 indicates that the field is a partition field.
-	IsPartitionCol *bool `json:"IsPartitionCol,omitempty" xml:"IsPartitionCol,omitempty"`
-	// The length of the field.
-	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The name of the field.
+	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
 	// The sequence number of the field. If the field is a partition field, this parameter is not supported.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// The type of the field. For more information, see MaxCompute field types.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the associated topic.
+	IsPartitionCol *bool `json:"IsPartitionCol,omitempty" xml:"IsPartitionCol,omitempty"`
+	// Specifies whether the field is a partition field. Valid values: 0 and 1. The value 0 indicates that the field is not a partition field. The value 1 indicates that the field is a partition field.
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The length of the field.
 	SeqNumber *int32 `json:"SeqNumber,omitempty" xml:"SeqNumber,omitempty"`
 }
 
@@ -50116,9 +49825,9 @@ func (s *UpdateTableRequestColumns) SetSeqNumber(v int32) *UpdateTableRequestCol
 }
 
 type UpdateTableRequestThemes struct {
-	// The ID of the associated topic.
-	ThemeId *int64 `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
 	// The level that corresponds to the topic ID.
+	ThemeId *int64 `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
+	// The ID of the request.
 	ThemeLevel *int32 `json:"ThemeLevel,omitempty" xml:"ThemeLevel,omitempty"`
 }
 
@@ -50141,14 +49850,18 @@ func (s *UpdateTableRequestThemes) SetThemeLevel(v int32) *UpdateTableRequestThe
 }
 
 type UpdateTableResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the request task.
 	//
 	// After a request task is submitted, it is divided into multiple subtasks that are run in sequence. After the current subtask is complete, the next subtask starts to run. After all subtasks are complete, the request task is complete. If a request task is aborted due to one of the following issues, address the issue based on the error code and initiate the request task again:
 	//
 	// *   The request task fails to be submitted.
 	// *   After the request task is submitted, a subtask fails to run.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the current subtask. Valid values:
+	//
+	// *   operating: The subtask is running.
+	// *   success: The subtask succeeds.
+	// *   failure: The subtask fails to run. For more information about the error details, see the Content parameter.
 	TaskInfo *UpdateTableResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
@@ -50171,20 +49884,15 @@ func (s *UpdateTableResponseBody) SetTaskInfo(v *UpdateTableResponseBodyTaskInfo
 }
 
 type UpdateTableResponseBodyTaskInfo struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the current subtask.
+	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
+	// The ID of the subtask that you want to run. If this parameter is left empty, all subtasks are complete. You can call the [GetDDLJobStatus](~~185659~~) operation to query the status of the subtask based on the subtask ID.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Details about the status of the current subtask.
 	//
 	// *   If the current subtask succeeds, success is returned.
 	// *   If the current subtask fails, the error details are displayed.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the subtask that you want to run. If this parameter is left empty, all subtasks are complete. You can call the [GetDDLJobStatus](~~185659~~) operation to query the status of the subtask based on the subtask ID.
-	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
-	// The status of the current subtask. Valid values:
-	//
-	// *   operating: The subtask is running.
-	// *   success: The subtask succeeds.
-	// *   failure: The subtask fails to run. For more information about the error details, see the Content parameter.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the current subtask.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -51200,7 +50908,7 @@ func (client *Client) AddMetaCollectionEntity(request *AddMetaCollectionEntityRe
 }
 
 /**
- * For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](~~136941~~).
+ * The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to query the ID.
  *
  * @param request AddProjectMemberToRoleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -51252,7 +50960,7 @@ func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMembe
 }
 
 /**
- * For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](~~136941~~).
+ * The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to query the ID.
  *
  * @param request AddProjectMemberToRoleRequest
  * @return AddProjectMemberToRoleResponse
@@ -52560,6 +52268,10 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 		body["FileType"] = request.FileType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IgnoreParentSkipRunningProperty)) {
+		body["IgnoreParentSkipRunningProperty"] = request.IgnoreParentSkipRunningProperty
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputList)) {
 		body["InputList"] = request.InputList
 	}
@@ -53065,7 +52777,8 @@ func (client *Client) CreateMetaCategory(request *CreateMetaCategoryRequest) (_r
 }
 
 /**
- * Collections are classified into various types. The names of collections of the same type must be different.
+ * A category must belong to a data album.
+ * You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
  *
  * @param request CreateMetaCollectionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -53117,7 +52830,8 @@ func (client *Client) CreateMetaCollectionWithOptions(request *CreateMetaCollect
 }
 
 /**
- * Collections are classified into various types. The names of collections of the same type must be different.
+ * A category must belong to a data album.
+ * You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
  *
  * @param request CreateMetaCollectionRequest
  * @return CreateMetaCollectionResponse
@@ -55392,8 +55106,7 @@ func (client *Client) ExportDataSources(request *ExportDataSourcesRequest) (_res
 }
 
 /**
- * DataWorks allows you to use only the [CreateDISyncTask](~~278725~~) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](~~383463~~) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](~~278725~~) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
- * DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+ * The operation that you want to perform.
  *
  * @param request GenerateDISyncTaskConfigForCreatingRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -55445,8 +55158,7 @@ func (client *Client) GenerateDISyncTaskConfigForCreatingWithOptions(request *Ge
 }
 
 /**
- * DataWorks allows you to use only the [CreateDISyncTask](~~278725~~) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](~~383463~~) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](~~278725~~) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
- * DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+ * The operation that you want to perform.
  *
  * @param request GenerateDISyncTaskConfigForCreatingRequest
  * @return GenerateDISyncTaskConfigForCreatingResponse
@@ -55463,7 +55175,7 @@ func (client *Client) GenerateDISyncTaskConfigForCreating(request *GenerateDISyn
 }
 
 /**
- * DataWorks allows you to use only the [UpdateDISyncTask](~~289109~~) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+ * The operation that you want to perform.
  *
  * @param request GenerateDISyncTaskConfigForUpdatingRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -55519,7 +55231,7 @@ func (client *Client) GenerateDISyncTaskConfigForUpdatingWithOptions(request *Ge
 }
 
 /**
- * DataWorks allows you to use only the [UpdateDISyncTask](~~289109~~) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+ * The operation that you want to perform.
  *
  * @param request GenerateDISyncTaskConfigForUpdatingRequest
  * @return GenerateDISyncTaskConfigForUpdatingResponse
@@ -57395,7 +57107,8 @@ func (client *Client) GetMetaColumnLineage(request *GetMetaColumnLineageRequest)
 }
 
 /**
- * You can call this operation to query only the basic metadata information about a MaxCompute or E-MapReduce (EMR) compute engine instance.
+ * The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+ * You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
  *
  * @param request GetMetaDBInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -57431,7 +57144,8 @@ func (client *Client) GetMetaDBInfoWithOptions(request *GetMetaDBInfoRequest, ru
 }
 
 /**
- * You can call this operation to query only the basic metadata information about a MaxCompute or E-MapReduce (EMR) compute engine instance.
+ * The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+ * You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
  *
  * @param request GetMetaDBInfoRequest
  * @return GetMetaDBInfoResponse
@@ -57937,7 +57651,7 @@ func (client *Client) GetMetaTableOutput(request *GetMetaTableOutputRequest) (_r
 }
 
 /**
- * You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+ * The operation that you want to perform. Set the value to **GetMetaTablePartition**.
  *
  * @param tmpReq GetMetaTablePartitionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -58011,7 +57725,7 @@ func (client *Client) GetMetaTablePartitionWithOptions(tmpReq *GetMetaTableParti
 }
 
 /**
- * You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+ * The operation that you want to perform. Set the value to **GetMetaTablePartition**.
  *
  * @param request GetMetaTablePartitionRequest
  * @return GetMetaTablePartitionResponse
@@ -59850,16 +59564,7 @@ func (client *Client) ListDIProjectConfig(request *ListDIProjectConfigRequest) (
 }
 
 /**
- * Supported DAG types:
- * *   MANUAL: the DAG for a manually triggered workflow.
- * *   SMOKE_TEST: the DAG for a smoke testing workflow.
- * *   SUPPLY_DATA: the DAG for a data backfill instance.
- * *   BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
- * Supported DAG states:
- * *   CREATED: The DAG is created.
- * *   RUNNING: The DAG is running.
- * *   FAILURE: The DAG fails to run.
- * *   SUCCESS: The DAG successfully runs.
+ * The operation that you want to perform. Set the value to **ListDags**.
  *
  * @param request ListDagsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -59903,16 +59608,7 @@ func (client *Client) ListDagsWithOptions(request *ListDagsRequest, runtime *uti
 }
 
 /**
- * Supported DAG types:
- * *   MANUAL: the DAG for a manually triggered workflow.
- * *   SMOKE_TEST: the DAG for a smoke testing workflow.
- * *   SUPPLY_DATA: the DAG for a data backfill instance.
- * *   BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
- * Supported DAG states:
- * *   CREATED: The DAG is created.
- * *   RUNNING: The DAG is running.
- * *   FAILURE: The DAG fails to run.
- * *   SUCCESS: The DAG successfully runs.
+ * The operation that you want to perform. Set the value to **ListDags**.
  *
  * @param request ListDagsRequest
  * @return ListDagsResponse
@@ -61269,7 +60965,7 @@ func (client *Client) ListMetaCollectionEntities(request *ListMetaCollectionEnti
 }
 
 /**
- * The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+ * You can configure only one of the Creator, Administrator, and Follower parameters.
  *
  * @param request ListMetaCollectionsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -61341,7 +61037,7 @@ func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollection
 }
 
 /**
- * The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+ * You can configure only one of the Creator, Administrator, and Follower parameters.
  *
  * @param request ListMetaCollectionsRequest
  * @return ListMetaCollectionsResponse
@@ -62978,8 +62674,7 @@ func (client *Client) PublishDataServiceApi(request *PublishDataServiceApiReques
 }
 
 /**
- * DataWorks allows you to call only the [CreateDISyncTask](~~278725~~) or [UpdateDISyncTask](~~289109~~) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
- * DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+ * The operation that you want to perform.
  *
  * @param request QueryDISyncTaskConfigProcessResultRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -63027,8 +62722,7 @@ func (client *Client) QueryDISyncTaskConfigProcessResultWithOptions(request *Que
 }
 
 /**
- * DataWorks allows you to call only the [CreateDISyncTask](~~278725~~) or [UpdateDISyncTask](~~289109~~) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
- * DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+ * The operation that you want to perform.
  *
  * @param request QueryDISyncTaskConfigProcessResultRequest
  * @return QueryDISyncTaskConfigProcessResultResponse
@@ -63044,16 +62738,6 @@ func (client *Client) QueryDISyncTaskConfigProcessResult(request *QueryDISyncTas
 	return _result, _err
 }
 
-/**
- * *   You must use FML statements to query information about the data modeling engine when you call this operation.
- * *   The information about the data modeling engine can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement.
- *     The num LIMIT num statement specifies the offset when the information about the data modeling engine is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
- * *   A maximum of 1,000 entries can be returned each time you call the operation.
- *
- * @param request QueryPublicModelEngineRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryPublicModelEngineResponse
- */
 func (client *Client) QueryPublicModelEngineWithOptions(request *QueryPublicModelEngineRequest, runtime *util.RuntimeOptions) (_result *QueryPublicModelEngineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63091,15 +62775,6 @@ func (client *Client) QueryPublicModelEngineWithOptions(request *QueryPublicMode
 	return _result, _err
 }
 
-/**
- * *   You must use FML statements to query information about the data modeling engine when you call this operation.
- * *   The information about the data modeling engine can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement.
- *     The num LIMIT num statement specifies the offset when the information about the data modeling engine is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
- * *   A maximum of 1,000 entries can be returned each time you call the operation.
- *
- * @param request QueryPublicModelEngineRequest
- * @return QueryPublicModelEngineResponse
- */
 func (client *Client) QueryPublicModelEngine(request *QueryPublicModelEngineRequest) (_result *QueryPublicModelEngineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPublicModelEngineResponse{}
@@ -63502,6 +63177,10 @@ func (client *Client) RunManualDagNodesWithOptions(request *RunManualDagNodesReq
 		body["DagParameters"] = request.DagParameters
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndBizDate)) {
+		body["EndBizDate"] = request.EndBizDate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeNodeIds)) {
 		body["ExcludeNodeIds"] = request.ExcludeNodeIds
 	}
@@ -63528,6 +63207,10 @@ func (client *Client) RunManualDagNodesWithOptions(request *RunManualDagNodesReq
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartBizDate)) {
+		body["StartBizDate"] = request.StartBizDate
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -63781,7 +63464,7 @@ func (client *Client) ScanSensitiveData(request *ScanSensitiveDataRequest) (_res
 }
 
 /**
- * You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+ * The operation that you want to perform. Set the value to **SearchMetaTables**.
  *
  * @param request SearchMetaTablesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -63849,7 +63532,7 @@ func (client *Client) SearchMetaTablesWithOptions(request *SearchMetaTablesReque
 }
 
 /**
- * You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+ * The operation that you want to perform. Set the value to **SearchMetaTables**.
  *
  * @param request SearchMetaTablesRequest
  * @return SearchMetaTablesResponse
@@ -64971,7 +64654,7 @@ func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_resul
 }
 
 /**
- * DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the **processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+ * The operation that you want to perform. Set the value to **UpdateDIProjectConfig**.
  *
  * @param request UpdateDIProjectConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -65023,7 +64706,7 @@ func (client *Client) UpdateDIProjectConfigWithOptions(request *UpdateDIProjectC
 }
 
 /**
- * DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the **processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+ * The operation that you want to perform. Set the value to **UpdateDIProjectConfig**.
  *
  * @param request UpdateDIProjectConfigRequest
  * @return UpdateDIProjectConfigResponse
@@ -65328,6 +65011,10 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime 
 		body["FileName"] = request.FileName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IgnoreParentSkipRunningProperty)) {
+		body["IgnoreParentSkipRunningProperty"] = request.IgnoreParentSkipRunningProperty
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputList)) {
 		body["InputList"] = request.InputList
 	}
@@ -65589,7 +65276,7 @@ func (client *Client) UpdateMetaCategory(request *UpdateMetaCategoryRequest) (_r
 }
 
 /**
- * Only the name and comment of a collection can be updated.
+ * You must configure at least one of the Name and Comment parameters when you update a collection.
  *
  * @param request UpdateMetaCollectionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -65637,7 +65324,7 @@ func (client *Client) UpdateMetaCollectionWithOptions(request *UpdateMetaCollect
 }
 
 /**
- * Only the name and comment of a collection can be updated.
+ * You must configure at least one of the Name and Comment parameters when you update a collection.
  *
  * @param request UpdateMetaCollectionRequest
  * @return UpdateMetaCollectionResponse
