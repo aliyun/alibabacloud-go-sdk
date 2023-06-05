@@ -13845,7 +13845,9 @@ func (s *DescribeCheckWarningDetailRequest) SetSourceIp(v string) *DescribeCheck
 
 type DescribeCheckWarningDetailResponseBody struct {
 	// The suggestion for the management of the risk item.
-	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Advice               *string                                                     `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	CheckDetailAssetInfo []map[string]*string                                        `json:"CheckDetailAssetInfo,omitempty" xml:"CheckDetailAssetInfo,omitempty" type:"Repeated"`
+	CheckDetailColumns   []*DescribeCheckWarningDetailResponseBodyCheckDetailColumns `json:"CheckDetailColumns,omitempty" xml:"CheckDetailColumns,omitempty" type:"Repeated"`
 	// The ID of the check item.
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	// The additional information about the risk item.
@@ -13876,6 +13878,16 @@ func (s DescribeCheckWarningDetailResponseBody) GoString() string {
 
 func (s *DescribeCheckWarningDetailResponseBody) SetAdvice(v string) *DescribeCheckWarningDetailResponseBody {
 	s.Advice = &v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailResponseBody) SetCheckDetailAssetInfo(v []map[string]*string) *DescribeCheckWarningDetailResponseBody {
+	s.CheckDetailAssetInfo = v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailResponseBody) SetCheckDetailColumns(v []*DescribeCheckWarningDetailResponseBodyCheckDetailColumns) *DescribeCheckWarningDetailResponseBody {
+	s.CheckDetailColumns = v
 	return s
 }
 
@@ -13910,6 +13922,70 @@ func (s *DescribeCheckWarningDetailResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeCheckWarningDetailResponseBody) SetType(v string) *DescribeCheckWarningDetailResponseBody {
+	s.Type = &v
+	return s
+}
+
+type DescribeCheckWarningDetailResponseBodyCheckDetailColumns struct {
+	Grids    []*DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids `json:"Grids,omitempty" xml:"Grids,omitempty" type:"Repeated"`
+	Key      *string                                                          `json:"Key,omitempty" xml:"Key,omitempty"`
+	ShowName *string                                                          `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	Type     *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCheckWarningDetailResponseBodyCheckDetailColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCheckWarningDetailResponseBodyCheckDetailColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumns) SetGrids(v []*DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids) *DescribeCheckWarningDetailResponseBodyCheckDetailColumns {
+	s.Grids = v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumns) SetKey(v string) *DescribeCheckWarningDetailResponseBodyCheckDetailColumns {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumns) SetShowName(v string) *DescribeCheckWarningDetailResponseBodyCheckDetailColumns {
+	s.ShowName = &v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumns) SetType(v string) *DescribeCheckWarningDetailResponseBodyCheckDetailColumns {
+	s.Type = &v
+	return s
+}
+
+type DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids) SetKey(v string) *DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids) SetShowName(v string) *DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids {
+	s.ShowName = &v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids) SetType(v string) *DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids {
 	s.Type = &v
 	return s
 }
@@ -36206,6 +36282,17 @@ func (s *DescribePropertyScaItemResponse) SetBody(v *DescribePropertyScaItemResp
 }
 
 type DescribePropertyScheduleConfigRequest struct {
+	// The type of the asset fingerprints to query. Valid values:
+	//
+	// *   **scheduler_port_period**: listening port
+	// *   **scheduler_process_period**: running process
+	// *   **scheduler_account_period**: account
+	// *   **scheduler_software_period**: software
+	// *   **scheduler_cron_period**: scheduled task
+	// *   **scheduler_sca_period**: middleware
+	// *   **scheduler_autorun_period**: startup item
+	// *   **scheduler_lkm_period**: kernel module
+	// *   **scheduler_sca_proxy_period**: website
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -36223,7 +36310,11 @@ func (s *DescribePropertyScheduleConfigRequest) SetType(v string) *DescribePrope
 }
 
 type DescribePropertyScheduleConfigResponseBody struct {
-	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration time. Unit: hours.
+	//
+	// >  The value **0** indicates that asset fingerprint collection is disabled for this type of asset.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -55728,6 +55819,337 @@ func (s *GetAppNetworkResponse) SetStatusCode(v int32) *GetAppNetworkResponse {
 }
 
 func (s *GetAppNetworkResponse) SetBody(v *GetAppNetworkResponseBody) *GetAppNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type GetAssetDetailByUuidRequest struct {
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetAssetDetailByUuidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssetDetailByUuidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssetDetailByUuidRequest) SetLang(v string) *GetAssetDetailByUuidRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidRequest) SetSourceIp(v string) *GetAssetDetailByUuidRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidRequest) SetUuid(v string) *GetAssetDetailByUuidRequest {
+	s.Uuid = &v
+	return s
+}
+
+type GetAssetDetailByUuidResponseBody struct {
+	AssetDetail *GetAssetDetailByUuidResponseBodyAssetDetail `json:"AssetDetail,omitempty" xml:"AssetDetail,omitempty" type:"Struct"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAssetDetailByUuidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssetDetailByUuidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssetDetailByUuidResponseBody) SetAssetDetail(v *GetAssetDetailByUuidResponseBodyAssetDetail) *GetAssetDetailByUuidResponseBody {
+	s.AssetDetail = v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBody) SetRequestId(v string) *GetAssetDetailByUuidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAssetDetailByUuidResponseBodyAssetDetail struct {
+	AssetType      *string                                                    `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	AuthModifyTime *int64                                                     `json:"AuthModifyTime,omitempty" xml:"AuthModifyTime,omitempty"`
+	AuthVersion    *int32                                                     `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	Bind           *bool                                                      `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	ClientStatus   *string                                                    `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	ClientVersion  *string                                                    `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	Cpu            *int32                                                     `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CpuInfo        *string                                                    `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	CreateTime     *int64                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DiskInfoList   []*GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList `json:"DiskInfoList,omitempty" xml:"DiskInfoList,omitempty" type:"Repeated"`
+	Flag           *int32                                                     `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	GroupTrace     *string                                                    `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
+	HostName       *string                                                    `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId     *string                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName   *string                                                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp     *string                                                    `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp     *string                                                    `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Ip             *string                                                    `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpList         []*string                                                  `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	Kernel         *string                                                    `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
+	MacList        []*string                                                  `json:"MacList,omitempty" xml:"MacList,omitempty" type:"Repeated"`
+	Mem            *int32                                                     `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Memory         *int64                                                     `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Os             *string                                                    `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsDetail       *string                                                    `json:"OsDetail,omitempty" xml:"OsDetail,omitempty"`
+	OsName         *string                                                    `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	Region         *string                                                    `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId       *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName     *string                                                    `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	SysInfo        *string                                                    `json:"SysInfo,omitempty" xml:"SysInfo,omitempty"`
+	Tag            *string                                                    `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Uuid           *string                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	VpcInstanceId  *string                                                    `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+}
+
+func (s GetAssetDetailByUuidResponseBodyAssetDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssetDetailByUuidResponseBodyAssetDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetAssetType(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.AssetType = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetAuthModifyTime(v int64) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.AuthModifyTime = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetAuthVersion(v int32) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.AuthVersion = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetBind(v bool) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Bind = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetClientStatus(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.ClientStatus = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetClientVersion(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetCpu(v int32) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Cpu = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetCpuInfo(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.CpuInfo = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetCreateTime(v int64) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetDiskInfoList(v []*GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.DiskInfoList = v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetFlag(v int32) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Flag = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetGroupTrace(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.GroupTrace = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetHostName(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.HostName = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetInstanceId(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetInstanceName(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetInternetIp(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetIntranetIp(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetIp(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetIpList(v []*string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.IpList = v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetKernel(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Kernel = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetMacList(v []*string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.MacList = v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetMem(v int32) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Mem = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetMemory(v int64) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Memory = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetOs(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Os = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetOsDetail(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.OsDetail = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetOsName(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.OsName = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetRegion(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Region = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetRegionId(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetRegionName(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.RegionName = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetSysInfo(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.SysInfo = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetTag(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Tag = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetUuid(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.Uuid = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetVpcInstanceId(v string) *GetAssetDetailByUuidResponseBodyAssetDetail {
+	s.VpcInstanceId = &v
+	return s
+}
+
+type GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList struct {
+	DiskName      *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	TotalSizeByte *int64  `json:"TotalSizeByte,omitempty" xml:"TotalSizeByte,omitempty"`
+	UseSize       *int64  `json:"UseSize,omitempty" xml:"UseSize,omitempty"`
+	UseSizeByte   *int64  `json:"UseSizeByte,omitempty" xml:"UseSizeByte,omitempty"`
+}
+
+func (s GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) SetDiskName(v string) *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList {
+	s.DiskName = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) SetTotalSize(v int64) *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) SetTotalSizeByte(v int64) *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList {
+	s.TotalSizeByte = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) SetUseSize(v int64) *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList {
+	s.UseSize = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) SetUseSizeByte(v int64) *GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList {
+	s.UseSizeByte = &v
+	return s
+}
+
+type GetAssetDetailByUuidResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAssetDetailByUuidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAssetDetailByUuidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssetDetailByUuidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssetDetailByUuidResponse) SetHeaders(v map[string]*string) *GetAssetDetailByUuidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponse) SetStatusCode(v int32) *GetAssetDetailByUuidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAssetDetailByUuidResponse) SetBody(v *GetAssetDetailByUuidResponseBody) *GetAssetDetailByUuidResponse {
 	s.Body = v
 	return s
 }
@@ -100284,6 +100706,58 @@ func (client *Client) GetAppNetwork(request *GetAppNetworkRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppNetworkResponse{}
 	_body, _err := client.GetAppNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAssetDetailByUuidWithOptions(request *GetAssetDetailByUuidRequest, runtime *util.RuntimeOptions) (_result *GetAssetDetailByUuidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAssetDetailByUuid"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAssetDetailByUuidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAssetDetailByUuid(request *GetAssetDetailByUuidRequest) (_result *GetAssetDetailByUuidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAssetDetailByUuidResponse{}
+	_body, _err := client.GetAssetDetailByUuidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
