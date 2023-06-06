@@ -2765,6 +2765,98 @@ func (s *CreateUploadStreamResponse) SetBody(v *CreateUploadStreamResponseBody) 
 	return s
 }
 
+type DecryptKMSDataKeyRequest struct {
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+}
+
+func (s DecryptKMSDataKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptKMSDataKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptKMSDataKeyRequest) SetCiphertextBlob(v string) *DecryptKMSDataKeyRequest {
+	s.CiphertextBlob = &v
+	return s
+}
+
+type DecryptKMSDataKeyResponseBody struct {
+	DataKey   *DecryptKMSDataKeyResponseBodyDataKey `json:"DataKey,omitempty" xml:"DataKey,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DecryptKMSDataKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptKMSDataKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptKMSDataKeyResponseBody) SetDataKey(v *DecryptKMSDataKeyResponseBodyDataKey) *DecryptKMSDataKeyResponseBody {
+	s.DataKey = v
+	return s
+}
+
+func (s *DecryptKMSDataKeyResponseBody) SetRequestId(v string) *DecryptKMSDataKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DecryptKMSDataKeyResponseBodyDataKey struct {
+	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	Plaintext *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+}
+
+func (s DecryptKMSDataKeyResponseBodyDataKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptKMSDataKeyResponseBodyDataKey) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptKMSDataKeyResponseBodyDataKey) SetKeyId(v string) *DecryptKMSDataKeyResponseBodyDataKey {
+	s.KeyId = &v
+	return s
+}
+
+func (s *DecryptKMSDataKeyResponseBodyDataKey) SetPlaintext(v string) *DecryptKMSDataKeyResponseBodyDataKey {
+	s.Plaintext = &v
+	return s
+}
+
+type DecryptKMSDataKeyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DecryptKMSDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DecryptKMSDataKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptKMSDataKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptKMSDataKeyResponse) SetHeaders(v map[string]*string) *DecryptKMSDataKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DecryptKMSDataKeyResponse) SetStatusCode(v int32) *DecryptKMSDataKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DecryptKMSDataKeyResponse) SetBody(v *DecryptKMSDataKeyResponseBody) *DecryptKMSDataKeyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCategoryRequest struct {
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 }
@@ -7466,6 +7558,87 @@ func (s *DescribeQueryConfigsResponse) SetStatusCode(v int32) *DescribeQueryConf
 }
 
 func (s *DescribeQueryConfigsResponse) SetBody(v *DescribeQueryConfigsResponseBody) *DescribeQueryConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateKMSDataKeyResponseBody struct {
+	DataKey   *GenerateKMSDataKeyResponseBodyDataKey `json:"DataKey,omitempty" xml:"DataKey,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateKMSDataKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateKMSDataKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateKMSDataKeyResponseBody) SetDataKey(v *GenerateKMSDataKeyResponseBodyDataKey) *GenerateKMSDataKeyResponseBody {
+	s.DataKey = v
+	return s
+}
+
+func (s *GenerateKMSDataKeyResponseBody) SetRequestId(v string) *GenerateKMSDataKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateKMSDataKeyResponseBodyDataKey struct {
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	Plaintext      *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+}
+
+func (s GenerateKMSDataKeyResponseBodyDataKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateKMSDataKeyResponseBodyDataKey) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateKMSDataKeyResponseBodyDataKey) SetCiphertextBlob(v string) *GenerateKMSDataKeyResponseBodyDataKey {
+	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *GenerateKMSDataKeyResponseBodyDataKey) SetKeyId(v string) *GenerateKMSDataKeyResponseBodyDataKey {
+	s.KeyId = &v
+	return s
+}
+
+func (s *GenerateKMSDataKeyResponseBodyDataKey) SetPlaintext(v string) *GenerateKMSDataKeyResponseBodyDataKey {
+	s.Plaintext = &v
+	return s
+}
+
+type GenerateKMSDataKeyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateKMSDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateKMSDataKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateKMSDataKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateKMSDataKeyResponse) SetHeaders(v map[string]*string) *GenerateKMSDataKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateKMSDataKeyResponse) SetStatusCode(v int32) *GenerateKMSDataKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateKMSDataKeyResponse) SetBody(v *GenerateKMSDataKeyResponseBody) *GenerateKMSDataKeyResponse {
 	s.Body = v
 	return s
 }
@@ -14753,9 +14926,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCo
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption struct {
-	CipherText    *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
-	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
-	EncryptType   *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	CipherText     *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	DecryptKeyUri  *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	EncryptType    *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	KeyServiceType *string `json:"KeyServiceType,omitempty" xml:"KeyServiceType,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption) String() string {
@@ -14778,6 +14952,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEn
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption) SetEncryptType(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption {
 	s.EncryptType = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption) SetKeyServiceType(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption {
+	s.KeyServiceType = &v
 	return s
 }
 
@@ -16098,9 +16277,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption struct {
-	CipherText    *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
-	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
-	EncryptType   *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	CipherText     *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	DecryptKeyUri  *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	EncryptType    *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	KeyServiceType *string `json:"KeyServiceType,omitempty" xml:"KeyServiceType,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption) String() string {
@@ -16123,6 +16303,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption) SetEncryptType(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption {
 	s.EncryptType = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption) SetKeyServiceType(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption {
+	s.KeyServiceType = &v
 	return s
 }
 
@@ -33060,9 +33245,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs) SetVid
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption struct {
-	CipherText    *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
-	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
-	EncryptType   *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	CipherText     *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	DecryptKeyUri  *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	EncryptType    *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	KeyServiceType *string `json:"KeyServiceType,omitempty" xml:"KeyServiceType,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption) String() string {
@@ -33085,6 +33271,11 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption) SetDecrypt
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption) SetEncryptType(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption {
 	s.EncryptType = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption) SetKeyServiceType(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption {
+	s.KeyServiceType = &v
 	return s
 }
 
@@ -34113,9 +34304,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption struct {
-	CipherText    *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
-	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
-	EncryptType   *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	CipherText     *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	DecryptKeyUri  *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	EncryptType    *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	KeyServiceType *string `json:"KeyServiceType,omitempty" xml:"KeyServiceType,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption) String() string {
@@ -34138,6 +34330,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption) SetEncryptType(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption {
 	s.EncryptType = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption) SetKeyServiceType(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption {
+	s.KeyServiceType = &v
 	return s
 }
 
@@ -35458,9 +35655,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption struct {
-	CipherText    *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
-	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
-	EncryptType   *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	CipherText     *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	DecryptKeyUri  *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	EncryptType    *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	KeyServiceType *string `json:"KeyServiceType,omitempty" xml:"KeyServiceType,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption) String() string {
@@ -35483,6 +35681,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption) SetEncryptType(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption {
 	s.EncryptType = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption) SetKeyServiceType(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption {
+	s.KeyServiceType = &v
 	return s
 }
 
@@ -39000,6 +39203,50 @@ func (client *Client) CreateUploadStream(request *CreateUploadStreamRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DecryptKMSDataKeyWithOptions(request *DecryptKMSDataKeyRequest, runtime *util.RuntimeOptions) (_result *DecryptKMSDataKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DecryptKMSDataKey"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DecryptKMSDataKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DecryptKMSDataKey(request *DecryptKMSDataKeyRequest) (_result *DecryptKMSDataKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DecryptKMSDataKeyResponse{}
+	_body, _err := client.DecryptKMSDataKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, runtime *util.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41243,6 +41490,39 @@ func (client *Client) DescribeQueryConfigs(request *DescribeQueryConfigsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeQueryConfigsResponse{}
 	_body, _err := client.DescribeQueryConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateKMSDataKeyWithOptions(runtime *util.RuntimeOptions) (_result *GenerateKMSDataKeyResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateKMSDataKey"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateKMSDataKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateKMSDataKey() (_result *GenerateKMSDataKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateKMSDataKeyResponse{}
+	_body, _err := client.GenerateKMSDataKeyWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
