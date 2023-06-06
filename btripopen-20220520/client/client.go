@@ -26440,7 +26440,7 @@ type HotelOrderCreateRequestOccupantInfoList struct {
 	LastName       *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
 	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RoomNo         *string `json:"room_no,omitempty" xml:"room_no,omitempty"`
+	RoomNo         *int32  `json:"room_no,omitempty" xml:"room_no,omitempty"`
 	StaffNo        *string `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
 	UserType       *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
@@ -26508,7 +26508,7 @@ func (s *HotelOrderCreateRequestOccupantInfoList) SetPhone(v string) *HotelOrder
 	return s
 }
 
-func (s *HotelOrderCreateRequestOccupantInfoList) SetRoomNo(v string) *HotelOrderCreateRequestOccupantInfoList {
+func (s *HotelOrderCreateRequestOccupantInfoList) SetRoomNo(v int32) *HotelOrderCreateRequestOccupantInfoList {
 	s.RoomNo = &v
 	return s
 }
@@ -27410,7 +27410,7 @@ type HotelOrderDetailInfoResponseBodyModuleOccupantInfoList struct {
 	LastName           *string                                                                     `json:"last_name,omitempty" xml:"last_name,omitempty"`
 	Name               *string                                                                     `json:"name,omitempty" xml:"name,omitempty"`
 	Phone              *string                                                                     `json:"phone,omitempty" xml:"phone,omitempty"`
-	RoomNo             *string                                                                     `json:"room_no,omitempty" xml:"room_no,omitempty"`
+	RoomNo             *int32                                                                      `json:"room_no,omitempty" xml:"room_no,omitempty"`
 	Selected           *bool                                                                       `json:"selected,omitempty" xml:"selected,omitempty"`
 	StaffNo            *string                                                                     `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
 	UserType           *int32                                                                      `json:"user_type,omitempty" xml:"user_type,omitempty"`
@@ -27489,7 +27489,7 @@ func (s *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList) SetPhone(v stri
 	return s
 }
 
-func (s *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList) SetRoomNo(v string) *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList {
+func (s *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList) SetRoomNo(v int32) *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList {
 	s.RoomNo = &v
 	return s
 }
