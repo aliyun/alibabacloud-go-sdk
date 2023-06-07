@@ -94,12 +94,21 @@ func (s *AllocatePublicConnectionResponse) SetBody(v *AllocatePublicConnectionRe
 }
 
 type CreateCustomImageRequest struct {
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataSnapshotId   *string `json:"DataSnapshotId,omitempty" xml:"DataSnapshotId,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageName        *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the data disk snapshot.
+	DataSnapshotId *string `json:"DataSnapshotId,omitempty" xml:"DataSnapshotId,omitempty"`
+	// The description of the custom image.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the custom image. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter or a digit.
+	//
+	// This parameter is empty by default.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the system disk snapshot.
 	SystemSnapshotId *string `json:"SystemSnapshotId,omitempty" xml:"SystemSnapshotId,omitempty"`
 }
 
@@ -147,7 +156,9 @@ func (s *CreateCustomImageRequest) SetSystemSnapshotId(v string) *CreateCustomIm
 }
 
 type CreateCustomImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the custom image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -199,11 +210,21 @@ func (s *CreateCustomImageResponse) SetBody(v *CreateCustomImageResponseBody) *C
 }
 
 type CreateFirewallRuleRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. ****For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The port range. Valid values: 1 to 65535. Specify a port range in the format of \<start port number>/\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The remarks of the firewall rule.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The transport layer protocol. Valid values:
+	//
+	// *   TCP: the TCP protocol
+	// *   UDP: the UDP protocol
+	// *   TCP+UDP: the TCP and UDP protocols
 	RuleProtocol *string `json:"RuleProtocol,omitempty" xml:"RuleProtocol,omitempty"`
 }
 
@@ -246,8 +267,10 @@ func (s *CreateFirewallRuleRequest) SetRuleProtocol(v string) *CreateFirewallRul
 }
 
 type CreateFirewallRuleResponseBody struct {
+	// The ID of the firewall rule.
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFirewallRuleResponseBody) String() string {
@@ -297,17 +320,291 @@ func (s *CreateFirewallRuleResponse) SetBody(v *CreateFirewallRuleResponseBody) 
 	return s
 }
 
+type CreateFirewallRulesRequest struct {
+	ClientToken   *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	FirewallRules []*CreateFirewallRulesRequestFirewallRules `json:"FirewallRules,omitempty" xml:"FirewallRules,omitempty" type:"Repeated"`
+	InstanceId    *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId      *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateFirewallRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFirewallRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFirewallRulesRequest) SetClientToken(v string) *CreateFirewallRulesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateFirewallRulesRequest) SetFirewallRules(v []*CreateFirewallRulesRequestFirewallRules) *CreateFirewallRulesRequest {
+	s.FirewallRules = v
+	return s
+}
+
+func (s *CreateFirewallRulesRequest) SetInstanceId(v string) *CreateFirewallRulesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateFirewallRulesRequest) SetRegionId(v string) *CreateFirewallRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateFirewallRulesRequestFirewallRules struct {
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RuleProtocol *string `json:"RuleProtocol,omitempty" xml:"RuleProtocol,omitempty"`
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+}
+
+func (s CreateFirewallRulesRequestFirewallRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFirewallRulesRequestFirewallRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) SetPort(v string) *CreateFirewallRulesRequestFirewallRules {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) SetRemark(v string) *CreateFirewallRulesRequestFirewallRules {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) SetRuleProtocol(v string) *CreateFirewallRulesRequestFirewallRules {
+	s.RuleProtocol = &v
+	return s
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) SetSourceCidrIp(v string) *CreateFirewallRulesRequestFirewallRules {
+	s.SourceCidrIp = &v
+	return s
+}
+
+type CreateFirewallRulesShrinkRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	FirewallRulesShrink *string `json:"FirewallRules,omitempty" xml:"FirewallRules,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateFirewallRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFirewallRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFirewallRulesShrinkRequest) SetClientToken(v string) *CreateFirewallRulesShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateFirewallRulesShrinkRequest) SetFirewallRulesShrink(v string) *CreateFirewallRulesShrinkRequest {
+	s.FirewallRulesShrink = &v
+	return s
+}
+
+func (s *CreateFirewallRulesShrinkRequest) SetInstanceId(v string) *CreateFirewallRulesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateFirewallRulesShrinkRequest) SetRegionId(v string) *CreateFirewallRulesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateFirewallRulesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFirewallRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFirewallRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFirewallRulesResponseBody) SetRequestId(v string) *CreateFirewallRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFirewallRulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFirewallRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFirewallRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFirewallRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFirewallRulesResponse) SetHeaders(v map[string]*string) *CreateFirewallRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFirewallRulesResponse) SetStatusCode(v int32) *CreateFirewallRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFirewallRulesResponse) SetBody(v *CreateFirewallRulesResponseBody) *CreateFirewallRulesResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceKeyPairRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateInstanceKeyPairRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceKeyPairRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceKeyPairRequest) SetClientToken(v string) *CreateInstanceKeyPairRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateInstanceKeyPairRequest) SetInstanceId(v string) *CreateInstanceKeyPairRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceKeyPairRequest) SetKeyPairName(v string) *CreateInstanceKeyPairRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateInstanceKeyPairRequest) SetRegionId(v string) *CreateInstanceKeyPairRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateInstanceKeyPairResponseBody struct {
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateInstanceKeyPairResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceKeyPairResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceKeyPairResponseBody) SetFingerprint(v string) *CreateInstanceKeyPairResponseBody {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *CreateInstanceKeyPairResponseBody) SetKeyPairName(v string) *CreateInstanceKeyPairResponseBody {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateInstanceKeyPairResponseBody) SetPrivateKey(v string) *CreateInstanceKeyPairResponseBody {
+	s.PrivateKey = &v
+	return s
+}
+
+func (s *CreateInstanceKeyPairResponseBody) SetRequestId(v string) *CreateInstanceKeyPairResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateInstanceKeyPairResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceKeyPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceKeyPairResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceKeyPairResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceKeyPairResponse) SetHeaders(v map[string]*string) *CreateInstanceKeyPairResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceKeyPairResponse) SetStatusCode(v int32) *CreateInstanceKeyPairResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceKeyPairResponse) SetBody(v *CreateInstanceKeyPairResponseBody) *CreateInstanceKeyPairResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstancesRequest struct {
-	Amount          *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoRenew       *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataDiskSize    *int64  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Period          *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PlanId          *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of simple application servers that you want to create. Valid values: 1 to 20.
+	//
+	// Default value: 1.
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// *   true: enables auto-renewal.
+	// *   false: does not enable auto-renewal.
+	//
+	// Default value: false.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// The billing method of the simple application server. Set the value to PrePaid, which indicates the subscription billing method. Only the subscription billing method is supported.
+	//
+	// Default value: PrePaid.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The size of the data disk. Unit: GB. Valid values: 0 to 16380. The value must be an integral multiple of 20.
+	//
+	// *   A value of 0 indicates that no data disk is attached.
+	// *   If the disk included in the specified plan is a standard SSD, the data disk must be 20 GB or larger in size.
+	//
+	// Default value: 0.
+	DataDiskSize *int64 `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	// The ID of the image. You can call the [ListImages](~~189313~~) operation to query the available images in the specified region.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The subscription period. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the plan. You can call the [ListPlans](~~189314~~) operation to query all the plans provided by Simple Application Server in the specified region.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateInstancesRequest) String() string {
@@ -369,8 +666,10 @@ func (s *CreateInstancesRequest) SetRegionId(v string) *CreateInstancesRequest {
 }
 
 type CreateInstancesResponseBody struct {
+	// The IDs of the simple application servers.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstancesResponseBody) String() string {
@@ -421,9 +720,13 @@ func (s *CreateInstancesResponse) SetBody(v *CreateInstancesResponseBody) *Creat
 }
 
 type CreateSnapshotRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DiskId       *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The region ID of the simple application server to which the disk is attached.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the snapshot. The name must be 2 to 50 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
 
@@ -456,7 +759,9 @@ func (s *CreateSnapshotRequest) SetSnapshotName(v string) *CreateSnapshotRequest
 }
 
 type CreateSnapshotResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the snapshot.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -508,9 +813,12 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type DeleteCustomImageRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the custom image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The region ID of the custom image. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteCustomImageRequest) String() string {
@@ -537,6 +845,7 @@ func (s *DeleteCustomImageRequest) SetRegionId(v string) *DeleteCustomImageReque
 }
 
 type DeleteCustomImageResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -583,10 +892,14 @@ func (s *DeleteCustomImageResponse) SetBody(v *DeleteCustomImageResponseBody) *D
 }
 
 type DeleteFirewallRuleRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the firewall rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteFirewallRuleRequest) String() string {
@@ -618,6 +931,7 @@ func (s *DeleteFirewallRuleRequest) SetRuleId(v string) *DeleteFirewallRuleReque
 }
 
 type DeleteFirewallRuleResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -663,10 +977,88 @@ func (s *DeleteFirewallRuleResponse) SetBody(v *DeleteFirewallRuleResponseBody) 
 	return s
 }
 
-type DeleteSnapshotRequest struct {
+type DeleteInstanceKeyPairRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s DeleteInstanceKeyPairRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceKeyPairRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceKeyPairRequest) SetClientToken(v string) *DeleteInstanceKeyPairRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteInstanceKeyPairRequest) SetInstanceId(v string) *DeleteInstanceKeyPairRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteInstanceKeyPairRequest) SetRegionId(v string) *DeleteInstanceKeyPairRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteInstanceKeyPairResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstanceKeyPairResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceKeyPairResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceKeyPairResponseBody) SetRequestId(v string) *DeleteInstanceKeyPairResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstanceKeyPairResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceKeyPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstanceKeyPairResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceKeyPairResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceKeyPairResponse) SetHeaders(v map[string]*string) *DeleteInstanceKeyPairResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceKeyPairResponse) SetStatusCode(v int32) *DeleteInstanceKeyPairResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceKeyPairResponse) SetBody(v *DeleteInstanceKeyPairResponseBody) *DeleteInstanceKeyPairResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSnapshotRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the snapshot.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s DeleteSnapshotRequest) String() string {
@@ -693,6 +1085,7 @@ func (s *DeleteSnapshotRequest) SetSnapshotId(v string) *DeleteSnapshotRequest {
 }
 
 type DeleteSnapshotResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -738,11 +1131,98 @@ func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteS
 	return s
 }
 
+type DeleteSnapshotsRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SnapshotIds *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+}
+
+func (s DeleteSnapshotsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotsRequest) SetClientToken(v string) *DeleteSnapshotsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteSnapshotsRequest) SetRegionId(v string) *DeleteSnapshotsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteSnapshotsRequest) SetSnapshotIds(v string) *DeleteSnapshotsRequest {
+	s.SnapshotIds = &v
+	return s
+}
+
+type DeleteSnapshotsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSnapshotsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotsResponseBody) SetRequestId(v string) *DeleteSnapshotsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSnapshotsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSnapshotsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotsResponse) SetHeaders(v map[string]*string) *DeleteSnapshotsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSnapshotsResponse) SetStatusCode(v int32) *DeleteSnapshotsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSnapshotsResponse) SetBody(v *DeleteSnapshotsResponseBody) *DeleteSnapshotsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCloudAssistantStatusRequest struct {
+	// The IDs of the simple application servers.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	PageNumber  *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Maximum value: 50.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCloudAssistantStatusRequest) String() string {
@@ -774,10 +1254,22 @@ func (s *DescribeCloudAssistantStatusRequest) SetRegionId(v string) *DescribeClo
 }
 
 type DescribeCloudAssistantStatusShrinkRequest struct {
+	// The IDs of the simple application servers.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Maximum value: 50.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCloudAssistantStatusShrinkRequest) String() string {
@@ -809,11 +1301,24 @@ func (s *DescribeCloudAssistantStatusShrinkRequest) SetRegionId(v string) *Descr
 }
 
 type DescribeCloudAssistantStatusResponseBody struct {
+	// The status of the Cloud Assistant client.
 	CloudAssistantStatus []*DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus `json:"CloudAssistantStatus,omitempty" xml:"CloudAssistantStatus,omitempty" type:"Repeated"`
-	PageNumber           *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount           *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
+	// Maximum value: 50.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of commands.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCloudAssistantStatusResponseBody) String() string {
@@ -850,8 +1355,10 @@ func (s *DescribeCloudAssistantStatusResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus struct {
+	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Status     *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the Cloud Assistant client is installed on the server.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) String() string {
@@ -897,6 +1404,116 @@ func (s *DescribeCloudAssistantStatusResponse) SetStatusCode(v int32) *DescribeC
 }
 
 func (s *DescribeCloudAssistantStatusResponse) SetBody(v *DescribeCloudAssistantStatusResponseBody) *DescribeCloudAssistantStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudMonitorAgentStatusesRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCloudMonitorAgentStatusesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudMonitorAgentStatusesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesRequest) SetClientToken(v string) *DescribeCloudMonitorAgentStatusesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesRequest) SetInstanceIds(v string) *DescribeCloudMonitorAgentStatusesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesRequest) SetRegionId(v string) *DescribeCloudMonitorAgentStatusesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCloudMonitorAgentStatusesResponseBody struct {
+	InstanceStatusList []*DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList `json:"InstanceStatusList,omitempty" xml:"InstanceStatusList,omitempty" type:"Repeated"`
+	RequestId          *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudMonitorAgentStatusesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudMonitorAgentStatusesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBody) SetInstanceStatusList(v []*DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) *DescribeCloudMonitorAgentStatusesResponseBody {
+	s.InstanceStatusList = v
+	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBody) SetRequestId(v string) *DescribeCloudMonitorAgentStatusesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList struct {
+	AutoInstall *bool   `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) SetAutoInstall(v bool) *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList {
+	s.AutoInstall = &v
+	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) SetInstanceId(v string) *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) SetStatus(v string) *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList {
+	s.Status = &v
+	return s
+}
+
+type DescribeCloudMonitorAgentStatusesResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCloudMonitorAgentStatusesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCloudMonitorAgentStatusesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudMonitorAgentStatusesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponse) SetHeaders(v map[string]*string) *DescribeCloudMonitorAgentStatusesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponse) SetStatusCode(v int32) *DescribeCloudMonitorAgentStatusesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponse) SetBody(v *DescribeCloudMonitorAgentStatusesResponseBody) *DescribeCloudMonitorAgentStatusesResponse {
 	s.Body = v
 	return s
 }
@@ -1745,10 +2362,268 @@ func (s *DescribeDatabaseSlowLogRecordsResponse) SetBody(v *DescribeDatabaseSlow
 	return s
 }
 
+type DescribeInstanceKeyPairRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeInstanceKeyPairRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceKeyPairRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceKeyPairRequest) SetClientToken(v string) *DescribeInstanceKeyPairRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeInstanceKeyPairRequest) SetInstanceId(v string) *DescribeInstanceKeyPairRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceKeyPairRequest) SetRegionId(v string) *DescribeInstanceKeyPairRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeInstanceKeyPairResponseBody struct {
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceKeyPairResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceKeyPairResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceKeyPairResponseBody) SetFingerprint(v string) *DescribeInstanceKeyPairResponseBody {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *DescribeInstanceKeyPairResponseBody) SetKeyPairName(v string) *DescribeInstanceKeyPairResponseBody {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *DescribeInstanceKeyPairResponseBody) SetRequestId(v string) *DescribeInstanceKeyPairResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceKeyPairResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceKeyPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceKeyPairResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceKeyPairResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceKeyPairResponse) SetHeaders(v map[string]*string) *DescribeInstanceKeyPairResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceKeyPairResponse) SetStatusCode(v int32) *DescribeInstanceKeyPairResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceKeyPairResponse) SetBody(v *DescribeInstanceKeyPairResponseBody) *DescribeInstanceKeyPairResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstancePasswordsSettingRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeInstancePasswordsSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePasswordsSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePasswordsSettingRequest) SetClientToken(v string) *DescribeInstancePasswordsSettingRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeInstancePasswordsSettingRequest) SetInstanceId(v string) *DescribeInstancePasswordsSettingRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstancePasswordsSettingRequest) SetRegionId(v string) *DescribeInstancePasswordsSettingRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeInstancePasswordsSettingResponseBody struct {
+	InstancePasswordSetting *bool   `json:"InstancePasswordSetting,omitempty" xml:"InstancePasswordSetting,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VncPasswordSetting      *bool   `json:"VncPasswordSetting,omitempty" xml:"VncPasswordSetting,omitempty"`
+}
+
+func (s DescribeInstancePasswordsSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePasswordsSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePasswordsSettingResponseBody) SetInstancePasswordSetting(v bool) *DescribeInstancePasswordsSettingResponseBody {
+	s.InstancePasswordSetting = &v
+	return s
+}
+
+func (s *DescribeInstancePasswordsSettingResponseBody) SetRequestId(v string) *DescribeInstancePasswordsSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstancePasswordsSettingResponseBody) SetVncPasswordSetting(v bool) *DescribeInstancePasswordsSettingResponseBody {
+	s.VncPasswordSetting = &v
+	return s
+}
+
+type DescribeInstancePasswordsSettingResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstancePasswordsSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstancePasswordsSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePasswordsSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePasswordsSettingResponse) SetHeaders(v map[string]*string) *DescribeInstancePasswordsSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstancePasswordsSettingResponse) SetStatusCode(v int32) *DescribeInstancePasswordsSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstancePasswordsSettingResponse) SetBody(v *DescribeInstancePasswordsSettingResponseBody) *DescribeInstancePasswordsSettingResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceVncUrlRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeInstanceVncUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceVncUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceVncUrlRequest) SetClientToken(v string) *DescribeInstanceVncUrlRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeInstanceVncUrlRequest) SetInstanceId(v string) *DescribeInstanceVncUrlRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceVncUrlRequest) SetRegionId(v string) *DescribeInstanceVncUrlRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeInstanceVncUrlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VncUrl    *string `json:"VncUrl,omitempty" xml:"VncUrl,omitempty"`
+}
+
+func (s DescribeInstanceVncUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceVncUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceVncUrlResponseBody) SetRequestId(v string) *DescribeInstanceVncUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceVncUrlResponseBody) SetVncUrl(v string) *DescribeInstanceVncUrlResponseBody {
+	s.VncUrl = &v
+	return s
+}
+
+type DescribeInstanceVncUrlResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceVncUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceVncUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceVncUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceVncUrlResponse) SetHeaders(v map[string]*string) *DescribeInstanceVncUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceVncUrlResponse) SetStatusCode(v int32) *DescribeInstanceVncUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceVncUrlResponse) SetBody(v *DescribeInstanceVncUrlResponseBody) *DescribeInstanceVncUrlResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInvocationResultRequest struct {
+	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvokeId   *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the command task. You can call the [DescribeInvocations](~~439368~~) operation to query the task IDs.
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The region ID of the simple application server. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInvocationResultRequest) String() string {
@@ -1775,8 +2650,10 @@ func (s *DescribeInvocationResultRequest) SetRegionId(v string) *DescribeInvocat
 }
 
 type DescribeInvocationResultResponseBody struct {
+	// The information about the command running result.
 	InvocationResult *DescribeInvocationResultResponseBodyInvocationResult `json:"InvocationResult,omitempty" xml:"InvocationResult,omitempty" type:"Struct"`
-	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInvocationResultResponseBody) String() string {
@@ -1798,17 +2675,84 @@ func (s *DescribeInvocationResultResponseBody) SetRequestId(v string) *DescribeI
 }
 
 type DescribeInvocationResultResponseBodyInvocationResult struct {
-	ErrorCode          *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorInfo          *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	ExitCode           *int64  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishedTime       *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvocationStatus   *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	InvokeId           *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The error code returned when the command cannot be sent or run. Valid values:
+	//
+	// *   If this parameter is empty, the command is run normally.
+	// *   InstanceNotExists: The instance does not exist or is released.
+	// *   InstanceReleased: The instance was released while the command was being run on the instance.
+	// *   InstanceNotRunning: The instance is not in the Running state while the command is being run.
+	// *   CommandNotApplicable: The command is not applicable to the specified instance.
+	// *   AccountNotExists: The specified account does not exist.
+	// *   DirectoryNotExists: The specified directory does not exist.
+	// *   BadCronExpression: The specified cron expression for the running schedule is invalid.
+	// *   ClientNotRunning: The Cloud Assistant client is not running.
+	// *   ClientNotResponse: The Cloud Assistant client does not respond.
+	// *   ClientIsUpgrading: The Cloud Assistant client is being upgraded.
+	// *   ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
+	// *   DeliveryTimeout: The request for sending the command times out.
+	// *   ExecutionTimeout: The running of the command times out.
+	// *   ExecutionException: An exception has occurred while the command is being run.
+	// *   ExecutionInterrupted: The running of the command is interrupted.
+	// *   ExitCodeNonzero: The command finishes running, but the exit code is not 0.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the command cannot be sent or run. Valid values:
+	//
+	// *   If this parameter is empty, the command is run normally.
+	// *   the specified instance does not exists: The specified instance does not exist or is released.
+	// *   the instance has released when create task: The instance was released while the command was being run on the instance.
+	// *   the instance is not running when create task: The instance is not in the Running state while the command is being run.
+	// *   the command is not applicable: The command is not applicable to the specified instance.
+	// *   the specified account does not exists: The specified account does not exist.
+	// *   the specified directory does not exists: The specified directory does not exist.
+	// *   the cron job expression is invalid: The specified cron expression for the runing schedule is invalid.
+	// *   the aliyun service is not running on the instance: The Cloud Assistance client is not running.
+	// *   the aliyun service in the instance does not response: The Cloud Assistant client does not respond.
+	// *   the aliyun service in the instance is upgrading now: The Cloud Assistant client is being upgraded.
+	// *   the aliyun service in the instance need upgrade: The Cloud Assistant client needs to be upgraded.
+	// *   the command delivery has been timeout: The request for sending the command times out.
+	// *   the command execution has been timeout: The running of the command times out.
+	// *   the command execution got an exception: An exception has occurred while the command is being run.
+	// *   the command execution has been interrupted: The running of the command is interrupted.
+	// *   the command execution exit code is not zero: The command finishes running, but the exit code is not 0.
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The exit code of the command task.
+	//
+	// *   For Linux instances, the value is the exit code of the shell command.
+	// *   For Windows instances, the value is the exit code of the batch or PowerShell command.
+	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The time when the command finished running on the instance.
+	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the command. Valid values:
+	//
+	// *   Pending: The command is being verified or sent.
+	// *   Invalid: The specified command type or parameter is invalid.
+	// *   Aborted: The command failed to be sent. To send a command to an instance, make sure that the instance is in the Running state and the command is sent to the instance within 1 minute.
+	// *   Running: The command is being run on the instance.
+	// *   Success: The command finishes running, and the exit code is 0.
+	// *   Failed: The command finishes running, but the exit code is not 0.
+	// *   Error: The running of the command cannot proceed due to an exception.
+	// *   Timeout: The running of the command times out.
+	// *   Cancelled: The running is canceled, and the command is not run.
+	// *   Stopping: The command that is running is being stopped.
+	// *   Terminated: The command is terminated while it is being run.
+	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// The ID of the command task.
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The status of the command task. Valid values:
+	//
+	// *   Running
+	// *   Finished
+	// *   Failed
+	// *   Stopped
 	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	InvokeUser         *string `json:"InvokeUser,omitempty" xml:"InvokeUser,omitempty"`
-	Output             *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The username who runs the command on the simple application server.
+	InvokeUser *string `json:"InvokeUser,omitempty" xml:"InvokeUser,omitempty"`
+	// The command output.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The time when the command started to be run on the instance.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeInvocationResultResponseBodyInvocationResult) String() string {
@@ -1904,11 +2848,28 @@ func (s *DescribeInvocationResultResponse) SetBody(v *DescribeInvocationResultRe
 }
 
 type DescribeInvocationsRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the command. Valid values:
+	//
+	// *   Running: The command is running.
+	// *   Finished: The command finishes running.
+	// *   Failed: The command failed to be run.
 	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Maximum value: 50.
+	//
+	// Default value: 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInvocationsRequest) String() string {
@@ -1945,11 +2906,16 @@ func (s *DescribeInvocationsRequest) SetRegionId(v string) *DescribeInvocationsR
 }
 
 type DescribeInvocationsResponseBody struct {
+	// Running records of commands.
 	Invocations []*DescribeInvocationsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Repeated"`
-	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of commands.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBody) String() string {
@@ -1986,14 +2952,43 @@ func (s *DescribeInvocationsResponseBody) SetTotalCount(v int32) *DescribeInvoca
 }
 
 type DescribeInvocationsResponseBodyInvocations struct {
-	CommandContent   *string                `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	CommandName      *string                `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
-	CommandType      *string                `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	CreationTime     *string                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	InvocationStatus *string                `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	InvokeId         *string                `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	InvokeStatus     *string                `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	Parameters       map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The content of the command, which is Base64-encoded.
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// The name of the command.
+	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+	// The type of the command. Valid values:
+	//
+	// *   RunBatScript: batch command (applicable to Windows instances).
+	// *   RunPowerShellScript: PowerShell command (applicable to Windows instances).
+	// *   RunShellScript: shell command (applicable to Linux instances).
+	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	// The time when the command was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The status of the command. Valid values:
+	//
+	// *   Pending: The command is being verified or sent.
+	// *   Invalid: The specified command type or parameter is invalid.
+	// *   Aborted: The command failed to be sent. To send a command to an instance, make sure that the instance is in the Running state and the command is sent to the instance within 1 minute.
+	// *   Running: The command is being run on the instance.
+	// *   Success: The command finishes running, and the exit code is 0.
+	// *   Failed: The command finishes running, but the exit code is not 0.
+	// *   Error: The running of the command cannot proceed due to an exception.
+	// *   Timeout: The running of the command times out.
+	// *   Cancelled: The running is canceled, and the command is not run.
+	// *   Stopping: The command that is running is being stopped.
+	// *   Terminated: The command is terminated while it is being run.
+	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// The ID of the command task.
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The status of the command. Valid values:
+	//
+	// *   Running: The command is running.
+	// *   Finished: The command finishes running.
+	// *   Failed: The running of the command failed.
+	// *   Stopped: The running is stopped.
+	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
+	// The custom parameters in the command. If no custom parameter exists in the command, the default value is {}.
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBodyInvocations) String() string {
@@ -2073,9 +3068,401 @@ func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody
 	return s
 }
 
+type DescribeMonitorDataRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Length      *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	MetricName  *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Period      *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeMonitorDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMonitorDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMonitorDataRequest) SetClientToken(v string) *DescribeMonitorDataRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetEndTime(v string) *DescribeMonitorDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetInstanceId(v string) *DescribeMonitorDataRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetLength(v string) *DescribeMonitorDataRequest {
+	s.Length = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetMetricName(v string) *DescribeMonitorDataRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetNextToken(v string) *DescribeMonitorDataRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetPeriod(v string) *DescribeMonitorDataRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetRegionId(v string) *DescribeMonitorDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMonitorDataRequest) SetStartTime(v string) *DescribeMonitorDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeMonitorDataResponseBody struct {
+	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Period     *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMonitorDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMonitorDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMonitorDataResponseBody) SetDatapoints(v string) *DescribeMonitorDataResponseBody {
+	s.Datapoints = &v
+	return s
+}
+
+func (s *DescribeMonitorDataResponseBody) SetNextToken(v string) *DescribeMonitorDataResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeMonitorDataResponseBody) SetPeriod(v string) *DescribeMonitorDataResponseBody {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeMonitorDataResponseBody) SetRequestId(v string) *DescribeMonitorDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMonitorDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMonitorDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMonitorDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMonitorDataResponse) SetHeaders(v map[string]*string) *DescribeMonitorDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorDataResponse) SetStatusCode(v int32) *DescribeMonitorDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMonitorDataResponse) SetBody(v *DescribeMonitorDataResponseBody) *DescribeMonitorDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSecurityAgentStatusRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeSecurityAgentStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityAgentStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityAgentStatusRequest) SetClientToken(v string) *DescribeSecurityAgentStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeSecurityAgentStatusRequest) SetInstanceId(v string) *DescribeSecurityAgentStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSecurityAgentStatusRequest) SetRegionId(v string) *DescribeSecurityAgentStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeSecurityAgentStatusResponseBody struct {
+	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSecurityAgentStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityAgentStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityAgentStatusResponseBody) SetClientStatus(v string) *DescribeSecurityAgentStatusResponseBody {
+	s.ClientStatus = &v
+	return s
+}
+
+func (s *DescribeSecurityAgentStatusResponseBody) SetRequestId(v string) *DescribeSecurityAgentStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSecurityAgentStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSecurityAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSecurityAgentStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityAgentStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityAgentStatusResponse) SetHeaders(v map[string]*string) *DescribeSecurityAgentStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSecurityAgentStatusResponse) SetStatusCode(v int32) *DescribeSecurityAgentStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSecurityAgentStatusResponse) SetBody(v *DescribeSecurityAgentStatusResponseBody) *DescribeSecurityAgentStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DisableFirewallRuleRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DisableFirewallRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableFirewallRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableFirewallRuleRequest) SetClientToken(v string) *DisableFirewallRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DisableFirewallRuleRequest) SetInstanceId(v string) *DisableFirewallRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DisableFirewallRuleRequest) SetRegionId(v string) *DisableFirewallRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DisableFirewallRuleRequest) SetRemark(v string) *DisableFirewallRuleRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *DisableFirewallRuleRequest) SetRuleId(v string) *DisableFirewallRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DisableFirewallRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableFirewallRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableFirewallRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableFirewallRuleResponseBody) SetRequestId(v string) *DisableFirewallRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableFirewallRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableFirewallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableFirewallRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableFirewallRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableFirewallRuleResponse) SetHeaders(v map[string]*string) *DisableFirewallRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableFirewallRuleResponse) SetStatusCode(v int32) *DisableFirewallRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableFirewallRuleResponse) SetBody(v *DisableFirewallRuleResponseBody) *DisableFirewallRuleResponse {
+	s.Body = v
+	return s
+}
+
+type EnableFirewallRuleRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+}
+
+func (s EnableFirewallRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableFirewallRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableFirewallRuleRequest) SetClientToken(v string) *EnableFirewallRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *EnableFirewallRuleRequest) SetInstanceId(v string) *EnableFirewallRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableFirewallRuleRequest) SetRegionId(v string) *EnableFirewallRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnableFirewallRuleRequest) SetRemark(v string) *EnableFirewallRuleRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *EnableFirewallRuleRequest) SetRuleId(v string) *EnableFirewallRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *EnableFirewallRuleRequest) SetSourceCidrIp(v string) *EnableFirewallRuleRequest {
+	s.SourceCidrIp = &v
+	return s
+}
+
+type EnableFirewallRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableFirewallRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableFirewallRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableFirewallRuleResponseBody) SetRequestId(v string) *EnableFirewallRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableFirewallRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableFirewallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableFirewallRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableFirewallRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableFirewallRuleResponse) SetHeaders(v map[string]*string) *EnableFirewallRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableFirewallRuleResponse) SetStatusCode(v int32) *EnableFirewallRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableFirewallRuleResponse) SetBody(v *EnableFirewallRuleResponseBody) *EnableFirewallRuleResponse {
+	s.Body = v
+	return s
+}
+
 type InstallCloudAssistantRequest struct {
+	// The IDs of the simple application servers.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s InstallCloudAssistantRequest) String() string {
@@ -2097,8 +3484,10 @@ func (s *InstallCloudAssistantRequest) SetRegionId(v string) *InstallCloudAssist
 }
 
 type InstallCloudAssistantShrinkRequest struct {
+	// The IDs of the simple application servers.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s InstallCloudAssistantShrinkRequest) String() string {
@@ -2120,6 +3509,7 @@ func (s *InstallCloudAssistantShrinkRequest) SetRegionId(v string) *InstallCloud
 }
 
 type InstallCloudAssistantResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2165,12 +3555,323 @@ func (s *InstallCloudAssistantResponse) SetBody(v *InstallCloudAssistantResponse
 	return s
 }
 
+type InstallCloudMonitorAgentRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s InstallCloudMonitorAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudMonitorAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudMonitorAgentRequest) SetClientToken(v string) *InstallCloudMonitorAgentRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *InstallCloudMonitorAgentRequest) SetForce(v bool) *InstallCloudMonitorAgentRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *InstallCloudMonitorAgentRequest) SetInstanceId(v string) *InstallCloudMonitorAgentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *InstallCloudMonitorAgentRequest) SetRegionId(v string) *InstallCloudMonitorAgentRequest {
+	s.RegionId = &v
+	return s
+}
+
+type InstallCloudMonitorAgentResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InstallCloudMonitorAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudMonitorAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudMonitorAgentResponseBody) SetRequestId(v string) *InstallCloudMonitorAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InstallCloudMonitorAgentResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallCloudMonitorAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InstallCloudMonitorAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudMonitorAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudMonitorAgentResponse) SetHeaders(v map[string]*string) *InstallCloudMonitorAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InstallCloudMonitorAgentResponse) SetStatusCode(v int32) *InstallCloudMonitorAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InstallCloudMonitorAgentResponse) SetBody(v *InstallCloudMonitorAgentResponseBody) *InstallCloudMonitorAgentResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomImagesRequest struct {
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DataSnapshotId   *string `json:"DataSnapshotId,omitempty" xml:"DataSnapshotId,omitempty"`
+	ImageIds         *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
+	ImageNames       *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SystemSnapshotId *string `json:"SystemSnapshotId,omitempty" xml:"SystemSnapshotId,omitempty"`
+}
+
+func (s ListCustomImagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomImagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomImagesRequest) SetClientToken(v string) *ListCustomImagesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListCustomImagesRequest) SetDataSnapshotId(v string) *ListCustomImagesRequest {
+	s.DataSnapshotId = &v
+	return s
+}
+
+func (s *ListCustomImagesRequest) SetImageIds(v string) *ListCustomImagesRequest {
+	s.ImageIds = &v
+	return s
+}
+
+func (s *ListCustomImagesRequest) SetImageNames(v string) *ListCustomImagesRequest {
+	s.ImageNames = &v
+	return s
+}
+
+func (s *ListCustomImagesRequest) SetPageNumber(v int32) *ListCustomImagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomImagesRequest) SetPageSize(v int32) *ListCustomImagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomImagesRequest) SetRegionId(v string) *ListCustomImagesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListCustomImagesRequest) SetSystemSnapshotId(v string) *ListCustomImagesRequest {
+	s.SystemSnapshotId = &v
+	return s
+}
+
+type ListCustomImagesResponseBody struct {
+	CustomImages []*ListCustomImagesResponseBodyCustomImages `json:"CustomImages,omitempty" xml:"CustomImages,omitempty" type:"Repeated"`
+	PageNumber   *string                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *string                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *string                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomImagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomImagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomImagesResponseBody) SetCustomImages(v []*ListCustomImagesResponseBodyCustomImages) *ListCustomImagesResponseBody {
+	s.CustomImages = v
+	return s
+}
+
+func (s *ListCustomImagesResponseBody) SetPageNumber(v string) *ListCustomImagesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBody) SetPageSize(v string) *ListCustomImagesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBody) SetRequestId(v string) *ListCustomImagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBody) SetTotalCount(v string) *ListCustomImagesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomImagesResponseBodyCustomImages struct {
+	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataSnapshotId     *string `json:"DataSnapshotId,omitempty" xml:"DataSnapshotId,omitempty"`
+	DataSnapshotName   *string `json:"DataSnapshotName,omitempty" xml:"DataSnapshotName,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InShare            *bool   `json:"InShare,omitempty" xml:"InShare,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemSnapshotId   *string `json:"SystemSnapshotId,omitempty" xml:"SystemSnapshotId,omitempty"`
+	SystemSnapshotName *string `json:"SystemSnapshotName,omitempty" xml:"SystemSnapshotName,omitempty"`
+}
+
+func (s ListCustomImagesResponseBodyCustomImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomImagesResponseBodyCustomImages) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetCreationTime(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetDataSnapshotId(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.DataSnapshotId = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetDataSnapshotName(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.DataSnapshotName = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetDescription(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.Description = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetImageId(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetInShare(v bool) *ListCustomImagesResponseBodyCustomImages {
+	s.InShare = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetInstanceId(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetInstanceName(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetName(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetRegionId(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetStatus(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetSystemSnapshotId(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.SystemSnapshotId = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetSystemSnapshotName(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.SystemSnapshotName = &v
+	return s
+}
+
+type ListCustomImagesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomImagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomImagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomImagesResponse) SetHeaders(v map[string]*string) *ListCustomImagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomImagesResponse) SetStatusCode(v int32) *ListCustomImagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomImagesResponse) SetBody(v *ListCustomImagesResponseBody) *ListCustomImagesResponse {
+	s.Body = v
+	return s
+}
+
 type ListDisksRequest struct {
-	DiskIds    *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// The IDs of the disks. The value can be a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,).
+	DiskIds  *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Maximum value: 100.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDisksRequest) String() string {
@@ -2183,6 +3884,11 @@ func (s ListDisksRequest) GoString() string {
 
 func (s *ListDisksRequest) SetDiskIds(v string) *ListDisksRequest {
 	s.DiskIds = &v
+	return s
+}
+
+func (s *ListDisksRequest) SetDiskType(v string) *ListDisksRequest {
+	s.DiskType = &v
 	return s
 }
 
@@ -2207,11 +3913,16 @@ func (s *ListDisksRequest) SetRegionId(v string) *ListDisksRequest {
 }
 
 type ListDisksResponseBody struct {
-	Disks      []*ListDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	PageNumber *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details about the disks.
+	Disks []*ListDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of disks.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDisksResponseBody) String() string {
@@ -2248,17 +3959,43 @@ func (s *ListDisksResponseBody) SetTotalCount(v int32) *ListDisksResponseBody {
 }
 
 type ListDisksResponseBodyDisks struct {
-	Category       *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Device         *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// The category of the disk. Valid values: Valid values:
+	//
+	// *   ESSD: enhanced SSD (ESSD) at performance level 0 (PL0)
+	// *   SSD: standard SSD
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the disk was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The device name of the disk on the simple application server.
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// The billing method of the disk.
 	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	DiskId         *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskName       *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	DiskType       *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Size           *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// The type of the disk. Valid values:
+	//
+	// *   System: system disk
+	// *   Data: data disk
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The ID of the simple application server to which the disk is attached.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID of the server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The size of the disk. Unit: GB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The status of the disk. Valid values:
+	//
+	// *   ReIniting: The disk is being initialized.
+	// *   Creating: The disk is being created.
+	// *   In_Use: The disk is being used.
+	// *   Available: The disk can be attached.
+	// *   Attaching: The disk is being attached.
+	// *   Detaching: The disk is being detached.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDisksResponseBodyDisks) String() string {
@@ -2309,8 +4046,18 @@ func (s *ListDisksResponseBodyDisks) SetInstanceId(v string) *ListDisksResponseB
 	return s
 }
 
+func (s *ListDisksResponseBodyDisks) SetInstanceName(v string) *ListDisksResponseBodyDisks {
+	s.InstanceName = &v
+	return s
+}
+
 func (s *ListDisksResponseBodyDisks) SetRegionId(v string) *ListDisksResponseBodyDisks {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListDisksResponseBodyDisks) SetRemark(v string) *ListDisksResponseBodyDisks {
+	s.Remark = &v
 	return s
 }
 
@@ -2354,10 +4101,22 @@ func (s *ListDisksResponse) SetBody(v *ListDisksResponseBody) *ListDisksResponse
 }
 
 type ListFirewallRulesRequest struct {
+	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Maximum value: 100.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListFirewallRulesRequest) String() string {
@@ -2389,11 +4148,16 @@ func (s *ListFirewallRulesRequest) SetRegionId(v string) *ListFirewallRulesReque
 }
 
 type ListFirewallRulesResponseBody struct {
+	// Details about the firewall rules.
 	FirewallRules []*ListFirewallRulesResponseBodyFirewallRules `json:"FirewallRules,omitempty" xml:"FirewallRules,omitempty" type:"Repeated"`
-	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of firewall rules.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFirewallRulesResponseBody) String() string {
@@ -2430,10 +4194,20 @@ func (s *ListFirewallRulesResponseBody) SetTotalCount(v int32) *ListFirewallRule
 }
 
 type ListFirewallRulesResponseBodyFirewallRules struct {
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The port range.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The remarks of the firewall rule.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the firewall rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The transport layer protocol. Valid values:
+	//
+	// *   TCP: the TCP protocol.
+	// *   UDP: the UDP protocol.
+	// *   TCP+UDP: the TCP and UDP protocols.
 	RuleProtocol *string `json:"RuleProtocol,omitempty" xml:"RuleProtocol,omitempty"`
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 }
 
 func (s ListFirewallRulesResponseBodyFirewallRules) String() string {
@@ -2442,6 +4216,11 @@ func (s ListFirewallRulesResponseBodyFirewallRules) String() string {
 
 func (s ListFirewallRulesResponseBodyFirewallRules) GoString() string {
 	return s.String()
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) SetPolicy(v string) *ListFirewallRulesResponseBodyFirewallRules {
+	s.Policy = &v
+	return s
 }
 
 func (s *ListFirewallRulesResponseBodyFirewallRules) SetPort(v string) *ListFirewallRulesResponseBodyFirewallRules {
@@ -2461,6 +4240,11 @@ func (s *ListFirewallRulesResponseBodyFirewallRules) SetRuleId(v string) *ListFi
 
 func (s *ListFirewallRulesResponseBodyFirewallRules) SetRuleProtocol(v string) *ListFirewallRulesResponseBodyFirewallRules {
 	s.RuleProtocol = &v
+	return s
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) SetSourceCidrIp(v string) *ListFirewallRulesResponseBodyFirewallRules {
+	s.SourceCidrIp = &v
 	return s
 }
 
@@ -2494,9 +4278,16 @@ func (s *ListFirewallRulesResponse) SetBody(v *ListFirewallRulesResponseBody) *L
 }
 
 type ListImagesRequest struct {
-	ImageIds  *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
+	// The IDs of the images. The value can be a JSON array that consists of up to 50 image IDs, in the format of `["xxx", "yyy", … "zzz"]`. Separate the image IDs with commas (,).
+	ImageIds *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
+	// The type of the image. Valid values:
+	//
+	// *   system
+	// *   app
+	// *   custom
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the images. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -2523,8 +4314,10 @@ func (s *ListImagesRequest) SetRegionId(v string) *ListImagesRequest {
 }
 
 type ListImagesResponseBody struct {
-	Images    []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the images.
+	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListImagesResponseBody) String() string {
@@ -2546,11 +4339,23 @@ func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody 
 }
 
 type ListImagesResponseBodyImages struct {
+	// The description of the image.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName   *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageType   *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	Platform    *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The type of the image. Valid values:
+	//
+	// *   system
+	// *   app
+	// *   custom
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The operating system type of the image. Valid values:
+	//
+	// *   Linux
+	// *   Windows
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 }
 
 func (s ListImagesResponseBodyImages) String() string {
@@ -2616,8 +4421,10 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 }
 
 type ListInstancePlansModificationRequest struct {
+	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstancePlansModificationRequest) String() string {
@@ -2639,8 +4446,10 @@ func (s *ListInstancePlansModificationRequest) SetRegionId(v string) *ListInstan
 }
 
 type ListInstancePlansModificationResponseBody struct {
-	Plans     []*ListInstancePlansModificationResponseBodyPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the plans.
+	Plans []*ListInstancePlansModificationResponseBodyPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstancePlansModificationResponseBody) String() string {
@@ -2662,16 +4471,32 @@ func (s *ListInstancePlansModificationResponseBody) SetRequestId(v string) *List
 }
 
 type ListInstancePlansModificationResponseBodyPlans struct {
-	Bandwidth       *int32   `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Core            *int32   `json:"Core,omitempty" xml:"Core,omitempty"`
-	Currency        *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DiskSize        *int32   `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType        *string  `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	Flow            *int32   `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	Memory          *int32   `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OriginPrice     *float64 `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
-	PlanId          *string  `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	SupportPlatform *string  `json:"SupportPlatform,omitempty" xml:"SupportPlatform,omitempty"`
+	// The peak bandwidth. Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The number of vCPUs.
+	Core *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
+	// The unit of the plan price. Valid values:
+	//
+	// *   CNY
+	// *   USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The disk size of the simple application server. Unit: GB.
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The category of the disk. Valid values:
+	//
+	// *   SSD: standard SSD
+	// *   ESSD: enhanced SSD
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The monthly data transfer quota. Unit: GB.
+	Flow *int32 `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	// The memory size. Unit: GB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The price of the plan.
+	OriginPrice *float64 `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The operating system types supported by the plan.
+	SupportPlatform *string `json:"SupportPlatform,omitempty" xml:"SupportPlatform,omitempty"`
 }
 
 func (s ListInstancePlansModificationResponseBodyPlans) String() string {
@@ -2761,13 +4586,157 @@ func (s *ListInstancePlansModificationResponse) SetBody(v *ListInstancePlansModi
 	return s
 }
 
+type ListInstanceStatusRequest struct {
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListInstanceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceStatusRequest) SetInstanceIds(v string) *ListInstanceStatusRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *ListInstanceStatusRequest) SetPageNumber(v int32) *ListInstanceStatusRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceStatusRequest) SetPageSize(v int32) *ListInstanceStatusRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceStatusRequest) SetRegionId(v string) *ListInstanceStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListInstanceStatusResponseBody struct {
+	InstanceStatuses []*ListInstanceStatusResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Repeated"`
+	PageNumber       *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListInstanceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceStatusResponseBody) SetInstanceStatuses(v []*ListInstanceStatusResponseBodyInstanceStatuses) *ListInstanceStatusResponseBody {
+	s.InstanceStatuses = v
+	return s
+}
+
+func (s *ListInstanceStatusResponseBody) SetPageNumber(v int32) *ListInstanceStatusResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceStatusResponseBody) SetPageSize(v int32) *ListInstanceStatusResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceStatusResponseBody) SetRequestId(v string) *ListInstanceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceStatusResponseBody) SetTotalCount(v int32) *ListInstanceStatusResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstanceStatusResponseBodyInstanceStatuses struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstanceStatusResponseBodyInstanceStatuses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceStatusResponseBodyInstanceStatuses) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceStatusResponseBodyInstanceStatuses) SetInstanceId(v string) *ListInstanceStatusResponseBodyInstanceStatuses {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceStatusResponseBodyInstanceStatuses) SetStatus(v string) *ListInstanceStatusResponseBodyInstanceStatuses {
+	s.Status = &v
+	return s
+}
+
+type ListInstanceStatusResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceStatusResponse) SetHeaders(v map[string]*string) *ListInstanceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceStatusResponse) SetStatusCode(v int32) *ListInstanceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceStatusResponse) SetBody(v *ListInstanceStatusResponseBody) *ListInstanceStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstancesRequest struct {
-	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceIds       *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The billing method of the simple application server. Set the value to PrePaid, which indicates the subscription billing method. Only the subscription billing method is supported.
+	//
+	// Default value: PrePaid.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate the server IDs with commas (,).
+	//
+	// >  If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that each specified ID and its corresponding public IP address belong to the same simple application server. Otherwise, an empty result is returned.
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The number of the page to return.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The public IP addresses of the simple application servers. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+	//
+	// >  If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that each specified ID and its corresponding public IP address belong to the same simple application server. Otherwise, an empty result is returned.
 	PublicIpAddresses *string `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the simple application servers.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -2809,11 +4778,16 @@ func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details about the simple application servers.
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of simple application servers returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -2850,19 +4824,55 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	BusinessStatus  *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DdosStatus      *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
-	ExpiredTime     *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InnerIpAddress  *string `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PlanId          *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The status of the simple application server. Valid values:
+	//
+	// *   Normal
+	// *   Expired
+	// *   Overdue
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// The billing method of the simple application server.
+	ChargeType            *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Combination           *bool   `json:"Combination,omitempty" xml:"Combination,omitempty"`
+	CombinationInstanceId *string `json:"CombinationInstanceId,omitempty" xml:"CombinationInstanceId,omitempty"`
+	// The time when the simple application server was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The DDoS protection status. Valid values:
+	//
+	// *   Normal: Normal
+	// *   BlackHole: Blackholing
+	// *   Defense: Cleaning
+	DdosStatus    *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
+	DisableReason *string `json:"DisableReason,omitempty" xml:"DisableReason,omitempty"`
+	// The time when the simple application server expires. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	ExpiredTime *string                                  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Image       *ListInstancesResponseBodyInstancesImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The internal IP address of the simple application server.
+	InnerIpAddress *string `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the simple application server.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The public IP address.
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The region ID of the simple application servers.
+	RegionId     *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceSpec *ListInstancesResponseBodyInstancesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// The status of the simple application server. Valid values:
+	//
+	// *   Pending
+	// *   Starting
+	// *   Running
+	// *   Stopping
+	// *   Stopped
+	// *   Resetting
+	// *   Upgrading
+	// *   Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Uuid   *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -2883,6 +4893,16 @@ func (s *ListInstancesResponseBodyInstances) SetChargeType(v string) *ListInstan
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetCombination(v bool) *ListInstancesResponseBodyInstances {
+	s.Combination = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetCombinationInstanceId(v string) *ListInstancesResponseBodyInstances {
+	s.CombinationInstanceId = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetCreationTime(v string) *ListInstancesResponseBodyInstances {
 	s.CreationTime = &v
 	return s
@@ -2893,8 +4913,18 @@ func (s *ListInstancesResponseBodyInstances) SetDdosStatus(v string) *ListInstan
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetDisableReason(v string) *ListInstancesResponseBodyInstances {
+	s.DisableReason = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetExpiredTime(v string) *ListInstancesResponseBodyInstances {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetImage(v *ListInstancesResponseBodyInstancesImage) *ListInstancesResponseBodyInstances {
+	s.Image = v
 	return s
 }
 
@@ -2933,8 +4963,112 @@ func (s *ListInstancesResponseBodyInstances) SetRegionId(v string) *ListInstance
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetResourceSpec(v *ListInstancesResponseBodyInstancesResourceSpec) *ListInstancesResponseBodyInstances {
+	s.ResourceSpec = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesResponseBodyInstances {
 	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetUuid(v string) *ListInstancesResponseBodyInstances {
+	s.Uuid = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesImage struct {
+	ImageContact *string `json:"ImageContact,omitempty" xml:"ImageContact,omitempty"`
+	ImageIconUrl *string `json:"ImageIconUrl,omitempty" xml:"ImageIconUrl,omitempty"`
+	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageType    *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	OsType       *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesImage) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) SetImageContact(v string) *ListInstancesResponseBodyInstancesImage {
+	s.ImageContact = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) SetImageIconUrl(v string) *ListInstancesResponseBodyInstancesImage {
+	s.ImageIconUrl = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) SetImageName(v string) *ListInstancesResponseBodyInstancesImage {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) SetImageType(v string) *ListInstancesResponseBodyInstancesImage {
+	s.ImageType = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) SetImageVersion(v string) *ListInstancesResponseBodyInstancesImage {
+	s.ImageVersion = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) SetOsType(v string) *ListInstancesResponseBodyInstancesImage {
+	s.OsType = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesResourceSpec struct {
+	Bandwidth    *int32   `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Cpu          *int32   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DiskCategory *string  `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskSize     *int32   `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	Flow         *float64 `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	Memory       *float64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) SetBandwidth(v int32) *ListInstancesResponseBodyInstancesResourceSpec {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) SetCpu(v int32) *ListInstancesResponseBodyInstancesResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) SetDiskCategory(v string) *ListInstancesResponseBodyInstancesResourceSpec {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) SetDiskSize(v int32) *ListInstancesResponseBodyInstancesResourceSpec {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) SetFlow(v float64) *ListInstancesResponseBodyInstancesResourceSpec {
+	s.Flow = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) SetMemory(v float64) *ListInstancesResponseBodyInstancesResourceSpec {
+	s.Memory = &v
 	return s
 }
 
@@ -2968,8 +5102,10 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListInstancesTrafficPackagesRequest struct {
+	// The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate the server IDs with commas (,).
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstancesTrafficPackagesRequest) String() string {
@@ -2991,8 +5127,10 @@ func (s *ListInstancesTrafficPackagesRequest) SetRegionId(v string) *ListInstanc
 }
 
 type ListInstancesTrafficPackagesResponseBody struct {
+	// The details of the data transfer plans of the simple application servers.
 	InstanceTrafficPackageUsages []*ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages `json:"InstanceTrafficPackageUsages,omitempty" xml:"InstanceTrafficPackageUsages,omitempty" type:"Repeated"`
-	RequestId                    *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstancesTrafficPackagesResponseBody) String() string {
@@ -3014,11 +5152,18 @@ func (s *ListInstancesTrafficPackagesResponseBody) SetRequestId(v string) *ListI
 }
 
 type ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages struct {
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TrafficOverflow         *int64  `json:"TrafficOverflow,omitempty" xml:"TrafficOverflow,omitempty"`
-	TrafficPackageRemaining *int64  `json:"TrafficPackageRemaining,omitempty" xml:"TrafficPackageRemaining,omitempty"`
-	TrafficPackageTotal     *int64  `json:"TrafficPackageTotal,omitempty" xml:"TrafficPackageTotal,omitempty"`
-	TrafficUsed             *int64  `json:"TrafficUsed,omitempty" xml:"TrafficUsed,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The data transfers that exceeds the quota of the data transfer plan in the current month. Unit: Byte.
+	TrafficOverflow *int64 `json:"TrafficOverflow,omitempty" xml:"TrafficOverflow,omitempty"`
+	// The unused quota of the data transfer plan in the current month. Unit: Byte.
+	TrafficPackageRemaining *int64 `json:"TrafficPackageRemaining,omitempty" xml:"TrafficPackageRemaining,omitempty"`
+	// The quota of the data transfer plan in the current month. Unit: Byte.
+	//
+	// >  TrafficPackageTotal = TrafficUsed + TrafficPackageRemaining
+	TrafficPackageTotal *int64 `json:"TrafficPackageTotal,omitempty" xml:"TrafficPackageTotal,omitempty"`
+	// The used quota of the data transfer plan in the current month. Unit: Byte.
+	TrafficUsed *int64 `json:"TrafficUsed,omitempty" xml:"TrafficUsed,omitempty"`
 }
 
 func (s ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) String() string {
@@ -3084,6 +5229,7 @@ func (s *ListInstancesTrafficPackagesResponse) SetBody(v *ListInstancesTrafficPa
 }
 
 type ListPlansRequest struct {
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3101,8 +5247,10 @@ func (s *ListPlansRequest) SetRegionId(v string) *ListPlansRequest {
 }
 
 type ListPlansResponseBody struct {
-	Plans     []*ListPlansResponseBodyPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the plans.
+	Plans []*ListPlansResponseBodyPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPlansResponseBody) String() string {
@@ -3124,16 +5272,34 @@ func (s *ListPlansResponseBody) SetRequestId(v string) *ListPlansResponseBody {
 }
 
 type ListPlansResponseBodyPlans struct {
-	Bandwidth       *int32   `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Core            *int32   `json:"Core,omitempty" xml:"Core,omitempty"`
-	Currency        *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DiskSize        *int32   `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType        *string  `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	Flow            *int32   `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	Memory          *int32   `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OriginPrice     *float64 `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
-	PlanId          *string  `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	SupportPlatform *string  `json:"SupportPlatform,omitempty" xml:"SupportPlatform,omitempty"`
+	// The peak bandwidth. Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The number of vCPUs.
+	Core *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
+	// The unit of the plan price. Valid values:
+	//
+	// *   CNY
+	// *   USD
+	//
+	// >  CNY is for the China site (aliyun.com). USD is for the international site (alibabacloud.com).
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The size of the disk. Unit: GB.
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The category of the disk. Valid values:
+	//
+	// *   SSD: standard SSDs
+	// *   ESSD: enhanced SSDs
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The monthly data transfer quota. Unit: GB.
+	Flow *int32 `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	// The memory size. Unit: GB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The monthly price of the plan.
+	OriginPrice *float64 `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The operating system types supported by the plan.
+	SupportPlatform *string `json:"SupportPlatform,omitempty" xml:"SupportPlatform,omitempty"`
 }
 
 func (s ListPlansResponseBodyPlans) String() string {
@@ -3224,8 +5390,10 @@ func (s *ListPlansResponse) SetBody(v *ListPlansResponseBody) *ListPlansResponse
 }
 
 type ListRegionsResponseBody struct {
-	Regions   []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the regions.
+	Regions []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRegionsResponseBody) String() string {
@@ -3247,9 +5415,12 @@ func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBod
 }
 
 type ListRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListRegionsResponseBodyRegions) String() string {
@@ -3305,12 +5476,23 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListSnapshotsRequest struct {
-	DiskId      *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SnapshotIds *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	// The ID of the source disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the snapshots. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate the snapshot IDs with commas (,).
+	SnapshotIds    *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
 }
 
 func (s ListSnapshotsRequest) String() string {
@@ -3351,12 +5533,22 @@ func (s *ListSnapshotsRequest) SetSnapshotIds(v string) *ListSnapshotsRequest {
 	return s
 }
 
+func (s *ListSnapshotsRequest) SetSourceDiskType(v string) *ListSnapshotsRequest {
+	s.SourceDiskType = &v
+	return s
+}
+
 type ListSnapshotsResponseBody struct {
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Snapshots  []*ListSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the snapshots.
+	Snapshots []*ListSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The total number of snapshots.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSnapshotsResponseBody) String() string {
@@ -3393,15 +5585,33 @@ func (s *ListSnapshotsResponseBody) SetTotalCount(v int32) *ListSnapshotsRespons
 }
 
 type ListSnapshotsResponseBodySnapshots struct {
-	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Progress       *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName   *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	SourceDiskId   *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
+	// The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The progress of snapshot creation.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The remarks of the snapshot.
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RollbackTime *string `json:"RollbackTime,omitempty" xml:"RollbackTime,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The name of the snapshot.
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// The ID of the source disk. This parameter has a value even after the source disk is released.
+	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
+	// The type of the source disk. Valid values:
+	//
+	// *   System: system disk
+	// *   data: data disk
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the snapshot. Valid values:
+	//
+	// *   Progressing: The snapshot is being created.
+	// *   Accomplished: The snapshot is created.
+	// *   Failed: The snapshot failed to be created.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSnapshotsResponseBodySnapshots) String() string {
@@ -3417,6 +5627,11 @@ func (s *ListSnapshotsResponseBodySnapshots) SetCreationTime(v string) *ListSnap
 	return s
 }
 
+func (s *ListSnapshotsResponseBodySnapshots) SetInstanceId(v string) *ListSnapshotsResponseBodySnapshots {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ListSnapshotsResponseBodySnapshots) SetProgress(v string) *ListSnapshotsResponseBodySnapshots {
 	s.Progress = &v
 	return s
@@ -3429,6 +5644,11 @@ func (s *ListSnapshotsResponseBodySnapshots) SetRegionId(v string) *ListSnapshot
 
 func (s *ListSnapshotsResponseBodySnapshots) SetRemark(v string) *ListSnapshotsResponseBodySnapshots {
 	s.Remark = &v
+	return s
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) SetRollbackTime(v string) *ListSnapshotsResponseBodySnapshots {
+	s.RollbackTime = &v
 	return s
 }
 
@@ -3487,10 +5707,22 @@ func (s *ListSnapshotsResponse) SetBody(v *ListSnapshotsResponseBody) *ListSnaps
 }
 
 type LoginInstanceRequest struct {
+	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The password that corresponds to the username.
+	//
+	// *   For a Linux server, you do not need to enter a password.
+	// *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](~~60055~~l).
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID of the simple application server.
+	//
+	// You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The username of the simple application server.
+	//
+	// *   For a Linux server, you do not need to enter a username.
+	// *   For a Windows server, the default username is `administrator`.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s LoginInstanceRequest) String() string {
@@ -3522,8 +5754,10 @@ func (s *LoginInstanceRequest) SetUsername(v string) *LoginInstanceRequest {
 }
 
 type LoginInstanceResponseBody struct {
+	// The URL that you use to log on to the server.
 	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s LoginInstanceResponseBody) String() string {
@@ -3741,11 +5975,123 @@ func (s *ModifyDatabaseInstanceParameterResponse) SetBody(v *ModifyDatabaseInsta
 	return s
 }
 
+type ModifyFirewallRuleRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleProtocol *string `json:"RuleProtocol,omitempty" xml:"RuleProtocol,omitempty"`
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+}
+
+func (s ModifyFirewallRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFirewallRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFirewallRuleRequest) SetClientToken(v string) *ModifyFirewallRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleRequest) SetInstanceId(v string) *ModifyFirewallRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleRequest) SetPort(v string) *ModifyFirewallRuleRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleRequest) SetRegionId(v string) *ModifyFirewallRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleRequest) SetRemark(v string) *ModifyFirewallRuleRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleRequest) SetRuleId(v string) *ModifyFirewallRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleRequest) SetRuleProtocol(v string) *ModifyFirewallRuleRequest {
+	s.RuleProtocol = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleRequest) SetSourceCidrIp(v string) *ModifyFirewallRuleRequest {
+	s.SourceCidrIp = &v
+	return s
+}
+
+type ModifyFirewallRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyFirewallRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFirewallRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFirewallRuleResponseBody) SetRequestId(v string) *ModifyFirewallRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyFirewallRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyFirewallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyFirewallRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFirewallRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFirewallRuleResponse) SetHeaders(v map[string]*string) *ModifyFirewallRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyFirewallRuleResponse) SetStatusCode(v int32) *ModifyFirewallRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyFirewallRuleResponse) SetBody(v *ModifyFirewallRuleResponseBody) *ModifyFirewallRuleResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyImageShareStatusRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Valid values:
+	//
+	// *   Share
+	// *   UnShare
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The region ID of the custom image. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyImageShareStatusRequest) String() string {
@@ -3777,6 +6123,7 @@ func (s *ModifyImageShareStatusRequest) SetRegionId(v string) *ModifyImageShareS
 }
 
 type ModifyImageShareStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3822,10 +6169,94 @@ func (s *ModifyImageShareStatusResponse) SetBody(v *ModifyImageShareStatusRespon
 	return s
 }
 
-type RebootInstanceRequest struct {
+type ModifyInstanceVncPasswordRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VncPassword *string `json:"VncPassword,omitempty" xml:"VncPassword,omitempty"`
+}
+
+func (s ModifyInstanceVncPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVncPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVncPasswordRequest) SetClientToken(v string) *ModifyInstanceVncPasswordRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyInstanceVncPasswordRequest) SetInstanceId(v string) *ModifyInstanceVncPasswordRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceVncPasswordRequest) SetRegionId(v string) *ModifyInstanceVncPasswordRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyInstanceVncPasswordRequest) SetVncPassword(v string) *ModifyInstanceVncPasswordRequest {
+	s.VncPassword = &v
+	return s
+}
+
+type ModifyInstanceVncPasswordResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceVncPasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVncPasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVncPasswordResponseBody) SetRequestId(v string) *ModifyInstanceVncPasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceVncPasswordResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceVncPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceVncPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVncPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVncPasswordResponse) SetHeaders(v map[string]*string) *ModifyInstanceVncPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceVncPasswordResponse) SetStatusCode(v int32) *ModifyInstanceVncPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceVncPasswordResponse) SetBody(v *ModifyInstanceVncPasswordResponseBody) *ModifyInstanceVncPasswordResponse {
+	s.Body = v
+	return s
+}
+
+type RebootInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RebootInstanceRequest) String() string {
@@ -3852,6 +6283,7 @@ func (s *RebootInstanceRequest) SetRegionId(v string) *RebootInstanceRequest {
 }
 
 type RebootInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3893,6 +6325,87 @@ func (s *RebootInstanceResponse) SetStatusCode(v int32) *RebootInstanceResponse 
 }
 
 func (s *RebootInstanceResponse) SetBody(v *RebootInstanceResponseBody) *RebootInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RebootInstancesRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceReboot *bool   `json:"ForceReboot,omitempty" xml:"ForceReboot,omitempty"`
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RebootInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootInstancesRequest) SetClientToken(v string) *RebootInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RebootInstancesRequest) SetForceReboot(v bool) *RebootInstancesRequest {
+	s.ForceReboot = &v
+	return s
+}
+
+func (s *RebootInstancesRequest) SetInstanceIds(v string) *RebootInstancesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *RebootInstancesRequest) SetRegionId(v string) *RebootInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RebootInstancesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebootInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebootInstancesResponseBody) SetRequestId(v string) *RebootInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebootInstancesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RebootInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RebootInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebootInstancesResponse) SetHeaders(v map[string]*string) *RebootInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebootInstancesResponse) SetStatusCode(v int32) *RebootInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebootInstancesResponse) SetBody(v *RebootInstancesResponseBody) *RebootInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -3973,10 +6486,14 @@ func (s *ReleasePublicConnectionResponse) SetBody(v *ReleasePublicConnectionResp
 }
 
 type RenewInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Period      *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The renewal duration. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -4008,6 +6525,7 @@ func (s *RenewInstanceRequest) SetRegionId(v string) *RenewInstanceRequest {
 }
 
 type RenewInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4135,10 +6653,14 @@ func (s *ResetDatabaseAccountPasswordResponse) SetBody(v *ResetDatabaseAccountPa
 }
 
 type ResetDiskRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DiskId      *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The ID of the disk to be rolled back.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The region ID of the simple application server for which the snapshot is created.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s ResetDiskRequest) String() string {
@@ -4170,6 +6692,7 @@ func (s *ResetDiskRequest) SetSnapshotId(v string) *ResetDiskRequest {
 }
 
 type ResetDiskResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4216,10 +6739,14 @@ func (s *ResetDiskResponse) SetBody(v *ResetDiskResponseBody) *ResetDiskResponse
 }
 
 type ResetSystemRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. ****For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the image that is used to replace the image on the simple application server. If you do not specify this parameter, the operating system of the simple application server is reset by default.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ResetSystemRequest) String() string {
@@ -4251,6 +6778,7 @@ func (s *ResetSystemRequest) SetRegionId(v string) *ResetSystemRequest {
 }
 
 type ResetSystemResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4372,17 +6900,63 @@ func (s *RestartDatabaseInstanceResponse) SetBody(v *RestartDatabaseInstanceResp
 }
 
 type RunCommandRequest struct {
-	CommandContent      *string                `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	EnableParameter     *bool                  `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	InstanceId          *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters          map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RegionId            *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Timeout             *int32                 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type                *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	WindowsPasswordName *string                `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
-	WorkingDir          *string                `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
-	WorkingUser         *string                `json:"WorkingUser,omitempty" xml:"WorkingUser,omitempty"`
+	// The content of the command. Take note of the following items:
+	//
+	// *   When `EnableParameter` is set to true, the custom parameter feature is enabled and you can configure custom parameters based on the following rules:
+	// *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+	// *   The number of custom parameters cannot be greater than 20.
+	// *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
+	// *   Each custom parameter name cannot exceed 64 bytes in length.
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// Specifies whether to include custom parameters in the command.
+	//
+	// Default value: false.
+	EnableParameter *bool `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the command.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can set the `Parameters` parameter to the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is actually run.
+	//
+	// Number of custom parameters ranges from 0 to 20. Take note of the following items:
+	//
+	// *   The key cannot be an empty string and can be up to 64 characters in length.
+	// *   The value can be an empty string.
+	// *   After custom parameters and original command content are encoded in Base64, the command cannot exceed 16 KB in size.
+	// *   The value of Parameters must be included in the custom parameters specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
+	//
+	// This parameter is empty by default. You can leave this parameter empty to disable the custom parameter feature.
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies the timeout period of the command on the server.
+	//
+	// If a task that runs the command times out, Command Assistant forcefully terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
+	//
+	// Default value: 60.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The language type of the command. Valid values:
+	//
+	// *   RunBatScript: batch commands (applicable to Windows servers).
+	// *   RunPowerShellScript: PowerShell commands (applicable to Windows servers).
+	// *   RunShellScript: shell commands (applicable to Linux servers).
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the password to be used to run the command on a Windows server.
+	//
+	// If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service (OOS) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter.
+	WindowsPasswordName *string `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
+	// The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
+	//
+	// *   For Linux servers, the default execution path is the /home directory of the root user.
+	// *   For Windows servers, the default execution path is C:\Windows\system32.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks.
+	//
+	// Default value:
+	//
+	// *   For Linux servers, the default value is root.
+	// *   For Windows servers, the default value is system.
+	WorkingUser *string `json:"WorkingUser,omitempty" xml:"WorkingUser,omitempty"`
 }
 
 func (s RunCommandRequest) String() string {
@@ -4449,17 +7023,63 @@ func (s *RunCommandRequest) SetWorkingUser(v string) *RunCommandRequest {
 }
 
 type RunCommandShrinkRequest struct {
-	CommandContent      *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	EnableParameter     *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParametersShrink    *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Timeout             *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The content of the command. Take note of the following items:
+	//
+	// *   When `EnableParameter` is set to true, the custom parameter feature is enabled and you can configure custom parameters based on the following rules:
+	// *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+	// *   The number of custom parameters cannot be greater than 20.
+	// *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
+	// *   Each custom parameter name cannot exceed 64 bytes in length.
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// Specifies whether to include custom parameters in the command.
+	//
+	// Default value: false.
+	EnableParameter *bool `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the command.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can set the `Parameters` parameter to the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is actually run.
+	//
+	// Number of custom parameters ranges from 0 to 20. Take note of the following items:
+	//
+	// *   The key cannot be an empty string and can be up to 64 characters in length.
+	// *   The value can be an empty string.
+	// *   After custom parameters and original command content are encoded in Base64, the command cannot exceed 16 KB in size.
+	// *   The value of Parameters must be included in the custom parameters specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
+	//
+	// This parameter is empty by default. You can leave this parameter empty to disable the custom parameter feature.
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies the timeout period of the command on the server.
+	//
+	// If a task that runs the command times out, Command Assistant forcefully terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
+	//
+	// Default value: 60.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The language type of the command. Valid values:
+	//
+	// *   RunBatScript: batch commands (applicable to Windows servers).
+	// *   RunPowerShellScript: PowerShell commands (applicable to Windows servers).
+	// *   RunShellScript: shell commands (applicable to Linux servers).
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the password to be used to run the command on a Windows server.
+	//
+	// If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service (OOS) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter.
 	WindowsPasswordName *string `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
-	WorkingDir          *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
-	WorkingUser         *string `json:"WorkingUser,omitempty" xml:"WorkingUser,omitempty"`
+	// The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
+	//
+	// *   For Linux servers, the default execution path is the /home directory of the root user.
+	// *   For Windows servers, the default execution path is C:\Windows\system32.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks.
+	//
+	// Default value:
+	//
+	// *   For Linux servers, the default value is root.
+	// *   For Windows servers, the default value is system.
+	WorkingUser *string `json:"WorkingUser,omitempty" xml:"WorkingUser,omitempty"`
 }
 
 func (s RunCommandShrinkRequest) String() string {
@@ -4526,7 +7146,9 @@ func (s *RunCommandShrinkRequest) SetWorkingUser(v string) *RunCommandShrinkRequ
 }
 
 type RunCommandResponseBody struct {
-	InvokeId  *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The ID of the command task.
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4653,9 +7275,12 @@ func (s *StartDatabaseInstanceResponse) SetBody(v *StartDatabaseInstanceResponse
 }
 
 type StartInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartInstanceRequest) String() string {
@@ -4682,6 +7307,7 @@ func (s *StartInstanceRequest) SetRegionId(v string) *StartInstanceRequest {
 }
 
 type StartInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4723,6 +7349,81 @@ func (s *StartInstanceResponse) SetStatusCode(v int32) *StartInstanceResponse {
 }
 
 func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StartInstancesRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstancesRequest) SetClientToken(v string) *StartInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *StartInstancesRequest) SetInstanceIds(v string) *StartInstancesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *StartInstancesRequest) SetRegionId(v string) *StartInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartInstancesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstancesResponseBody) SetRequestId(v string) *StartInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartInstancesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstancesResponse) SetHeaders(v map[string]*string) *StartInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartInstancesResponse) SetStatusCode(v int32) *StartInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartInstancesResponse) SetBody(v *StartInstancesResponseBody) *StartInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -4803,9 +7504,12 @@ func (s *StopDatabaseInstanceResponse) SetBody(v *StopDatabaseInstanceResponseBo
 }
 
 type StopInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopInstanceRequest) String() string {
@@ -4832,6 +7536,7 @@ func (s *StopInstanceRequest) SetRegionId(v string) *StopInstanceRequest {
 }
 
 type StopInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4877,12 +7582,181 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 	return s
 }
 
+type StopInstancesRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceStop   *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstancesRequest) SetClientToken(v string) *StopInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *StopInstancesRequest) SetForceStop(v bool) *StopInstancesRequest {
+	s.ForceStop = &v
+	return s
+}
+
+func (s *StopInstancesRequest) SetInstanceIds(v string) *StopInstancesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *StopInstancesRequest) SetRegionId(v string) *StopInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopInstancesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstancesResponseBody) SetRequestId(v string) *StopInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopInstancesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstancesResponse) SetHeaders(v map[string]*string) *StopInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopInstancesResponse) SetStatusCode(v int32) *StopInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopInstancesResponse) SetBody(v *StopInstancesResponseBody) *StopInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDiskAttributeRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DiskId      *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s UpdateDiskAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDiskAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDiskAttributeRequest) SetClientToken(v string) *UpdateDiskAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateDiskAttributeRequest) SetDiskId(v string) *UpdateDiskAttributeRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *UpdateDiskAttributeRequest) SetRegionId(v string) *UpdateDiskAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateDiskAttributeRequest) SetRemark(v string) *UpdateDiskAttributeRequest {
+	s.Remark = &v
+	return s
+}
+
+type UpdateDiskAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDiskAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDiskAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDiskAttributeResponseBody) SetRequestId(v string) *UpdateDiskAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDiskAttributeResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDiskAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDiskAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDiskAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDiskAttributeResponse) SetHeaders(v map[string]*string) *UpdateDiskAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDiskAttributeResponse) SetStatusCode(v int32) *UpdateDiskAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDiskAttributeResponse) SetBody(v *UpdateDiskAttributeResponseBody) *UpdateDiskAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateInstanceAttributeRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The new password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
+	//
+	// `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateInstanceAttributeRequest) String() string {
@@ -4919,6 +7793,7 @@ func (s *UpdateInstanceAttributeRequest) SetRegionId(v string) *UpdateInstanceAt
 }
 
 type UpdateInstanceAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4964,11 +7839,96 @@ func (s *UpdateInstanceAttributeResponse) SetBody(v *UpdateInstanceAttributeResp
 	return s
 }
 
-type UpgradeInstanceRequest struct {
+type UpdateSnapshotAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PlanId      *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s UpdateSnapshotAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotAttributeRequest) SetClientToken(v string) *UpdateSnapshotAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateSnapshotAttributeRequest) SetRegionId(v string) *UpdateSnapshotAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSnapshotAttributeRequest) SetRemark(v string) *UpdateSnapshotAttributeRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateSnapshotAttributeRequest) SetSnapshotId(v string) *UpdateSnapshotAttributeRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+type UpdateSnapshotAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSnapshotAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotAttributeResponseBody) SetRequestId(v string) *UpdateSnapshotAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSnapshotAttributeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSnapshotAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSnapshotAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotAttributeResponse) SetHeaders(v map[string]*string) *UpdateSnapshotAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSnapshotAttributeResponse) SetStatusCode(v int32) *UpdateSnapshotAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSnapshotAttributeResponse) SetBody(v *UpdateSnapshotAttributeResponseBody) *UpdateSnapshotAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the simple application server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the new plan. You can call the [ListPlans](~~189314~~) operation to query plans provided by Simple Application Server.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The region ID of the simple application server.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpgradeInstanceRequest) String() string {
@@ -5000,6 +7960,7 @@ func (s *UpgradeInstanceRequest) SetRegionId(v string) *UpgradeInstanceRequest {
 }
 
 type UpgradeInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5041,6 +8002,93 @@ func (s *UpgradeInstanceResponse) SetStatusCode(v int32) *UpgradeInstanceRespons
 }
 
 func (s *UpgradeInstanceResponse) SetBody(v *UpgradeInstanceResponseBody) *UpgradeInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UploadInstanceKeyPairRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	PublicKey   *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UploadInstanceKeyPairRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadInstanceKeyPairRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadInstanceKeyPairRequest) SetClientToken(v string) *UploadInstanceKeyPairRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UploadInstanceKeyPairRequest) SetInstanceId(v string) *UploadInstanceKeyPairRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UploadInstanceKeyPairRequest) SetKeyPairName(v string) *UploadInstanceKeyPairRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *UploadInstanceKeyPairRequest) SetPublicKey(v string) *UploadInstanceKeyPairRequest {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *UploadInstanceKeyPairRequest) SetRegionId(v string) *UploadInstanceKeyPairRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UploadInstanceKeyPairResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadInstanceKeyPairResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadInstanceKeyPairResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadInstanceKeyPairResponseBody) SetRequestId(v string) *UploadInstanceKeyPairResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UploadInstanceKeyPairResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadInstanceKeyPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadInstanceKeyPairResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadInstanceKeyPairResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadInstanceKeyPairResponse) SetHeaders(v map[string]*string) *UploadInstanceKeyPairResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadInstanceKeyPairResponse) SetStatusCode(v int32) *UploadInstanceKeyPairResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadInstanceKeyPairResponse) SetBody(v *UploadInstanceKeyPairResponseBody) *UploadInstanceKeyPairResponse {
 	s.Body = v
 	return s
 }
@@ -5144,6 +8192,24 @@ func (client *Client) AllocatePublicConnection(request *AllocatePublicConnection
 	return _result, _err
 }
 
+/**
+ * A custom image is created based on a snapshot of a simple application server. You can use custom images to create multiple simple application servers that have the same configurations. You can also share custom images with ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances.
+ * For more information about custom images, see [Overview of custom images](~~199375~~).
+ * You must create a system disk snapshot of a simple application server before you create a custom image of the simple application server. For more information, see [CreateSnapshot](~~190452~~).
+ * >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+ * When you create a custom image, take note of the following items:
+ * *   The custom image and the corresponding simple application server reside in the same region.
+ * *   The maximum number of custom images that can be retained in an Alibaba Cloud account is triple of the number of simple application servers that you created. The value cannot be greater than 15.
+ * *   You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
+ * *   If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+ * *   If you reset a simple application sever, the disk data on the server is cleared. You must back up the data as needed.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request CreateCustomImageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateCustomImageResponse
+ */
 func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageRequest, runtime *util.RuntimeOptions) (_result *CreateCustomImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5201,6 +8267,23 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 	return _result, _err
 }
 
+/**
+ * A custom image is created based on a snapshot of a simple application server. You can use custom images to create multiple simple application servers that have the same configurations. You can also share custom images with ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances.
+ * For more information about custom images, see [Overview of custom images](~~199375~~).
+ * You must create a system disk snapshot of a simple application server before you create a custom image of the simple application server. For more information, see [CreateSnapshot](~~190452~~).
+ * >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+ * When you create a custom image, take note of the following items:
+ * *   The custom image and the corresponding simple application server reside in the same region.
+ * *   The maximum number of custom images that can be retained in an Alibaba Cloud account is triple of the number of simple application servers that you created. The value cannot be greater than 15.
+ * *   You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
+ * *   If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+ * *   If you reset a simple application sever, the disk data on the server is cleared. You must back up the data as needed.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request CreateCustomImageRequest
+ * @return CreateCustomImageResponse
+ */
 func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_result *CreateCustomImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCustomImageResponse{}
@@ -5212,6 +8295,13 @@ func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Firewalls serve to control network access to simple application servers and isolate security domains in the cloud. By default, Secure Shell (SSH) port 22, HTTP port 80, and HTTPS port 443 are enabled for simple application servers. Other ports are disabled. You can add firewall rules to enable more ports.
+ *
+ * @param request CreateFirewallRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateFirewallRuleResponse
+ */
 func (client *Client) CreateFirewallRuleWithOptions(request *CreateFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *CreateFirewallRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5265,6 +8355,12 @@ func (client *Client) CreateFirewallRuleWithOptions(request *CreateFirewallRuleR
 	return _result, _err
 }
 
+/**
+ * Firewalls serve to control network access to simple application servers and isolate security domains in the cloud. By default, Secure Shell (SSH) port 22, HTTP port 80, and HTTPS port 443 are enabled for simple application servers. Other ports are disabled. You can add firewall rules to enable more ports.
+ *
+ * @param request CreateFirewallRuleRequest
+ * @return CreateFirewallRuleResponse
+ */
 func (client *Client) CreateFirewallRule(request *CreateFirewallRuleRequest) (_result *CreateFirewallRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFirewallRuleResponse{}
@@ -5276,6 +8372,135 @@ func (client *Client) CreateFirewallRule(request *CreateFirewallRuleRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateFirewallRulesWithOptions(tmpReq *CreateFirewallRulesRequest, runtime *util.RuntimeOptions) (_result *CreateFirewallRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFirewallRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FirewallRules)) {
+		request.FirewallRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FirewallRules, tea.String("FirewallRules"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallRulesShrink)) {
+		query["FirewallRules"] = request.FirewallRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFirewallRules"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFirewallRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFirewallRules(request *CreateFirewallRulesRequest) (_result *CreateFirewallRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFirewallRulesResponse{}
+	_body, _err := client.CreateFirewallRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceKeyPairWithOptions(request *CreateInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceKeyPairResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceKeyPair"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceKeyPairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceKeyPair(request *CreateInstanceKeyPairRequest) (_result *CreateInstanceKeyPairResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateInstanceKeyPairResponse{}
+	_body, _err := client.CreateInstanceKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](~~58623~~).
+ * *   A maximum of 20 simple application servers can be created within an Alibaba Cloud account.
+ * *   When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request CreateInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateInstancesResponse
+ */
 func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest, runtime *util.RuntimeOptions) (_result *CreateInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5345,6 +8570,16 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](~~58623~~).
+ * *   A maximum of 20 simple application servers can be created within an Alibaba Cloud account.
+ * *   When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request CreateInstancesRequest
+ * @return CreateInstancesResponse
+ */
 func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result *CreateInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstancesResponse{}
@@ -5356,6 +8591,21 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental instance releases, recover data after network attacks, and create custom images.
+ * >  You are not charged for creating snapshots for simple application servers.
+ * ## Precautions
+ * - You can create up to three snapshots for disks of each simple application server.
+ * - The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
+ * - If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
+ * - If you create a snapshot for a simple application server before you reset the server, the snapshot is retained after you reset the server but the snapshot cannot be used to roll back the disks of the server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request CreateSnapshotRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateSnapshotResponse
+ */
 func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, runtime *util.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5401,6 +8651,20 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 	return _result, _err
 }
 
+/**
+ * A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental instance releases, recover data after network attacks, and create custom images.
+ * >  You are not charged for creating snapshots for simple application servers.
+ * ## Precautions
+ * - You can create up to three snapshots for disks of each simple application server.
+ * - The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
+ * - If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
+ * - If you create a snapshot for a simple application server before you reset the server, the snapshot is retained after you reset the server but the snapshot cannot be used to roll back the disks of the server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request CreateSnapshotRequest
+ * @return CreateSnapshotResponse
+ */
 func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSnapshotResponse{}
@@ -5412,6 +8676,16 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * You can delete a custom image that you no longer need. After the custom image is deleted, the simple application servers that were created from the custom image cannot be reset by using the custom image.
+ * >  If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling ECS API operations. If you need to use the custom image in ECS, we recommend that you copy the image before you delete it. For more information, see [Copy custom images](~~199378~~).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request DeleteCustomImageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteCustomImageResponse
+ */
 func (client *Client) DeleteCustomImageWithOptions(request *DeleteCustomImageRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5453,6 +8727,15 @@ func (client *Client) DeleteCustomImageWithOptions(request *DeleteCustomImageReq
 	return _result, _err
 }
 
+/**
+ * You can delete a custom image that you no longer need. After the custom image is deleted, the simple application servers that were created from the custom image cannot be reset by using the custom image.
+ * >  If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling ECS API operations. If you need to use the custom image in ECS, we recommend that you copy the image before you delete it. For more information, see [Copy custom images](~~199378~~).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request DeleteCustomImageRequest
+ * @return DeleteCustomImageResponse
+ */
 func (client *Client) DeleteCustomImage(request *DeleteCustomImageRequest) (_result *DeleteCustomImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomImageResponse{}
@@ -5464,6 +8747,15 @@ func (client *Client) DeleteCustomImage(request *DeleteCustomImageRequest) (_res
 	return _result, _err
 }
 
+/**
+ * After a firewall rule is deleted, your business deployed on the simple application server may become inaccessible. Before you delete a firewall rule, make sure that the firewall rule is no longer needed by the simple application server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request DeleteFirewallRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteFirewallRuleResponse
+ */
 func (client *Client) DeleteFirewallRuleWithOptions(request *DeleteFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteFirewallRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5509,6 +8801,14 @@ func (client *Client) DeleteFirewallRuleWithOptions(request *DeleteFirewallRuleR
 	return _result, _err
 }
 
+/**
+ * After a firewall rule is deleted, your business deployed on the simple application server may become inaccessible. Before you delete a firewall rule, make sure that the firewall rule is no longer needed by the simple application server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request DeleteFirewallRuleRequest
+ * @return DeleteFirewallRuleResponse
+ */
 func (client *Client) DeleteFirewallRule(request *DeleteFirewallRuleRequest) (_result *DeleteFirewallRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFirewallRuleResponse{}
@@ -5520,6 +8820,68 @@ func (client *Client) DeleteFirewallRule(request *DeleteFirewallRuleRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DeleteInstanceKeyPairWithOptions(request *DeleteInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceKeyPairResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceKeyPair"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceKeyPairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceKeyPair(request *DeleteInstanceKeyPairRequest) (_result *DeleteInstanceKeyPairResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteInstanceKeyPairResponse{}
+	_body, _err := client.DeleteInstanceKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can delete a snapshot that is no longer needed.
+ * >  If a custom image was created from the snapshot, delete the custom image before you delete the snapshot.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request DeleteSnapshotRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteSnapshotResponse
+ */
 func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5561,6 +8923,15 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 	return _result, _err
 }
 
+/**
+ * You can delete a snapshot that is no longer needed.
+ * >  If a custom image was created from the snapshot, delete the custom image before you delete the snapshot.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request DeleteSnapshotRequest
+ * @return DeleteSnapshotResponse
+ */
 func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSnapshotResponse{}
@@ -5572,6 +8943,65 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteSnapshotsWithOptions(request *DeleteSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotIds)) {
+		query["SnapshotIds"] = request.SnapshotIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSnapshots"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSnapshotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (_result *DeleteSnapshotsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSnapshotsResponse{}
+	_body, _err := client.DeleteSnapshotsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * By default, the Cloud Assistant client is installed on your simple application server. If you have manually uninstalled the client, you must reinstall the client. Otherwise, you cannot run commands on the server.
+ *
+ * @param tmpReq DescribeCloudAssistantStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCloudAssistantStatusResponse
+ */
 func (client *Client) DescribeCloudAssistantStatusWithOptions(tmpReq *DescribeCloudAssistantStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudAssistantStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5623,10 +9053,68 @@ func (client *Client) DescribeCloudAssistantStatusWithOptions(tmpReq *DescribeCl
 	return _result, _err
 }
 
+/**
+ * By default, the Cloud Assistant client is installed on your simple application server. If you have manually uninstalled the client, you must reinstall the client. Otherwise, you cannot run commands on the server.
+ *
+ * @param request DescribeCloudAssistantStatusRequest
+ * @return DescribeCloudAssistantStatusResponse
+ */
 func (client *Client) DescribeCloudAssistantStatus(request *DescribeCloudAssistantStatusRequest) (_result *DescribeCloudAssistantStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudAssistantStatusResponse{}
 	_body, _err := client.DescribeCloudAssistantStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudMonitorAgentStatusesWithOptions(request *DescribeCloudMonitorAgentStatusesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudMonitorAgentStatusesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudMonitorAgentStatuses"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudMonitorAgentStatusesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudMonitorAgentStatuses(request *DescribeCloudMonitorAgentStatusesRequest) (_result *DescribeCloudMonitorAgentStatusesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudMonitorAgentStatusesResponse{}
+	_body, _err := client.DescribeCloudMonitorAgentStatusesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5926,6 +9414,170 @@ func (client *Client) DescribeDatabaseSlowLogRecords(request *DescribeDatabaseSl
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceKeyPairWithOptions(request *DescribeInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceKeyPairResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceKeyPair"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceKeyPairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceKeyPair(request *DescribeInstanceKeyPairRequest) (_result *DescribeInstanceKeyPairResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceKeyPairResponse{}
+	_body, _err := client.DescribeInstanceKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstancePasswordsSettingWithOptions(request *DescribeInstancePasswordsSettingRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancePasswordsSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstancePasswordsSetting"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstancePasswordsSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstancePasswordsSetting(request *DescribeInstancePasswordsSettingRequest) (_result *DescribeInstancePasswordsSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstancePasswordsSettingResponse{}
+	_body, _err := client.DescribeInstancePasswordsSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanceVncUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceVncUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceVncUrl"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceVncUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (_result *DescribeInstanceVncUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceVncUrlResponse{}
+	_body, _err := client.DescribeInstanceVncUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
+ * *   You can query the execution information that is generated within the last two weeks. Up to 100,000 lines of execution information can be retained.
+ *
+ * @param request DescribeInvocationResultRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInvocationResultResponse
+ */
 func (client *Client) DescribeInvocationResultWithOptions(request *DescribeInvocationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeInvocationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5967,6 +9619,13 @@ func (client *Client) DescribeInvocationResultWithOptions(request *DescribeInvoc
 	return _result, _err
 }
 
+/**
+ * *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
+ * *   You can query the execution information that is generated within the last two weeks. Up to 100,000 lines of execution information can be retained.
+ *
+ * @param request DescribeInvocationResultRequest
+ * @return DescribeInvocationResultResponse
+ */
 func (client *Client) DescribeInvocationResult(request *DescribeInvocationResultRequest) (_result *DescribeInvocationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInvocationResultResponse{}
@@ -5978,6 +9637,14 @@ func (client *Client) DescribeInvocationResult(request *DescribeInvocationResult
 	return _result, _err
 }
 
+/**
+ * *   After you run a command, the command may not succeed or deliver the expected results. You can call this operation to query the actual execution results.
+ * *   You can query the execution information that is generated within the last two weeks. Up to 100,000 lines of execution information can be retained.
+ *
+ * @param request DescribeInvocationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInvocationsResponse
+ */
 func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *util.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6027,6 +9694,13 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 	return _result, _err
 }
 
+/**
+ * *   After you run a command, the command may not succeed or deliver the expected results. You can call this operation to query the actual execution results.
+ * *   You can query the execution information that is generated within the last two weeks. Up to 100,000 lines of execution information can be retained.
+ *
+ * @param request DescribeInvocationsRequest
+ * @return DescribeInvocationsResponse
+ */
 func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (_result *DescribeInvocationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInvocationsResponse{}
@@ -6038,6 +9712,265 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeMonitorDataWithOptions(request *DescribeMonitorDataRequest, runtime *util.RuntimeOptions) (_result *DescribeMonitorDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Length)) {
+		query["Length"] = request.Length
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
+		query["MetricName"] = request.MetricName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMonitorData"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMonitorDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMonitorData(request *DescribeMonitorDataRequest) (_result *DescribeMonitorDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMonitorDataResponse{}
+	_body, _err := client.DescribeMonitorDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSecurityAgentStatusWithOptions(request *DescribeSecurityAgentStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityAgentStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityAgentStatus"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSecurityAgentStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSecurityAgentStatus(request *DescribeSecurityAgentStatusRequest) (_result *DescribeSecurityAgentStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSecurityAgentStatusResponse{}
+	_body, _err := client.DescribeSecurityAgentStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DisableFirewallRuleWithOptions(request *DisableFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *DisableFirewallRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableFirewallRule"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableFirewallRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableFirewallRule(request *DisableFirewallRuleRequest) (_result *DisableFirewallRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableFirewallRuleResponse{}
+	_body, _err := client.DisableFirewallRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableFirewallRuleWithOptions(request *EnableFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *EnableFirewallRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+		query["SourceCidrIp"] = request.SourceCidrIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableFirewallRule"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableFirewallRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableFirewallRule(request *EnableFirewallRuleRequest) (_result *EnableFirewallRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableFirewallRuleResponse{}
+	_body, _err := client.EnableFirewallRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * To run commands, you must install the Cloud Assistant client on your simple application server. You can call the [DescribeCloudAssistantStatus](~~439512~~) operation to query whether the Cloud Assistant client is installed on your simple application server. If you have not installed the Cloud Assistant client, you can call the InstallCloudAssistant operation to install the client. Then, you can call the [RebootInstance](~~190443~~) operation to restart the server to allow the installation to take effect.
+ *
+ * @param tmpReq InstallCloudAssistantRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InstallCloudAssistantResponse
+ */
 func (client *Client) InstallCloudAssistantWithOptions(tmpReq *InstallCloudAssistantRequest, runtime *util.RuntimeOptions) (_result *InstallCloudAssistantResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6081,6 +10014,12 @@ func (client *Client) InstallCloudAssistantWithOptions(tmpReq *InstallCloudAssis
 	return _result, _err
 }
 
+/**
+ * To run commands, you must install the Cloud Assistant client on your simple application server. You can call the [DescribeCloudAssistantStatus](~~439512~~) operation to query whether the Cloud Assistant client is installed on your simple application server. If you have not installed the Cloud Assistant client, you can call the InstallCloudAssistant operation to install the client. Then, you can call the [RebootInstance](~~190443~~) operation to restart the server to allow the installation to take effect.
+ *
+ * @param request InstallCloudAssistantRequest
+ * @return InstallCloudAssistantResponse
+ */
 func (client *Client) InstallCloudAssistant(request *InstallCloudAssistantRequest) (_result *InstallCloudAssistantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallCloudAssistantResponse{}
@@ -6092,6 +10031,143 @@ func (client *Client) InstallCloudAssistant(request *InstallCloudAssistantReques
 	return _result, _err
 }
 
+func (client *Client) InstallCloudMonitorAgentWithOptions(request *InstallCloudMonitorAgentRequest, runtime *util.RuntimeOptions) (_result *InstallCloudMonitorAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallCloudMonitorAgent"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InstallCloudMonitorAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InstallCloudMonitorAgent(request *InstallCloudMonitorAgentRequest) (_result *InstallCloudMonitorAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InstallCloudMonitorAgentResponse{}
+	_body, _err := client.InstallCloudMonitorAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomImagesWithOptions(request *ListCustomImagesRequest, runtime *util.RuntimeOptions) (_result *ListCustomImagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSnapshotId)) {
+		query["DataSnapshotId"] = request.DataSnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageIds)) {
+		query["ImageIds"] = request.ImageIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageNames)) {
+		query["ImageNames"] = request.ImageNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemSnapshotId)) {
+		query["SystemSnapshotId"] = request.SystemSnapshotId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomImages"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomImagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomImages(request *ListCustomImagesRequest) (_result *ListCustomImagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomImagesResponse{}
+	_body, _err := client.ListCustomImagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListDisksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDisksResponse
+ */
 func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *util.RuntimeOptions) (_result *ListDisksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6100,6 +10176,10 @@ func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *u
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
 		query["DiskIds"] = request.DiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -6141,6 +10221,14 @@ func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListDisksRequest
+ * @return ListDisksResponse
+ */
 func (client *Client) ListDisks(request *ListDisksRequest) (_result *ListDisksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDisksResponse{}
@@ -6152,6 +10240,15 @@ func (client *Client) ListDisks(request *ListDisksRequest) (_result *ListDisksRe
 	return _result, _err
 }
 
+/**
+ * You can call the ListFirewallRules operation to query the firewall rule details of a specified simple application server, including the port range, firewall rule ID, and transport layer protocol.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListFirewallRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListFirewallRulesResponse
+ */
 func (client *Client) ListFirewallRulesWithOptions(request *ListFirewallRulesRequest, runtime *util.RuntimeOptions) (_result *ListFirewallRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6197,6 +10294,14 @@ func (client *Client) ListFirewallRulesWithOptions(request *ListFirewallRulesReq
 	return _result, _err
 }
 
+/**
+ * You can call the ListFirewallRules operation to query the firewall rule details of a specified simple application server, including the port range, firewall rule ID, and transport layer protocol.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListFirewallRulesRequest
+ * @return ListFirewallRulesResponse
+ */
 func (client *Client) ListFirewallRules(request *ListFirewallRulesRequest) (_result *ListFirewallRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFirewallRulesResponse{}
@@ -6208,6 +10313,15 @@ func (client *Client) ListFirewallRules(request *ListFirewallRulesRequest) (_res
 	return _result, _err
 }
 
+/**
+ * You can query details about one or more images in a specified region, including the IDs, names, and types of the images.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of your calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListImagesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListImagesResponse
+ */
 func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime *util.RuntimeOptions) (_result *ListImagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6249,6 +10363,14 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * You can query details about one or more images in a specified region, including the IDs, names, and types of the images.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of your calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListImagesRequest
+ * @return ListImagesResponse
+ */
 func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListImagesResponse{}
@@ -6260,6 +10382,17 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 	return _result, _err
 }
 
+/**
+ * If the plans of your simple application server do not meet your business requirements, you can call the ListInstancePlansModification operation to obtain a list of plans that can be upgraded for your simple application server. Then, you can call the [UpgradeInstance](~~190445~~) operation to upgrade the plans.
+ * >  We recommend that you create snapshots for the disks of your simple application server to back up data before you upgrade the plans. For more information, see [CreateSnapshot](~~190452~~).
+ * For the precautions about plan upgrade, see [Upgrade configurations](~~61433~~).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListInstancePlansModificationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListInstancePlansModificationResponse
+ */
 func (client *Client) ListInstancePlansModificationWithOptions(request *ListInstancePlansModificationRequest, runtime *util.RuntimeOptions) (_result *ListInstancePlansModificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6297,6 +10430,16 @@ func (client *Client) ListInstancePlansModificationWithOptions(request *ListInst
 	return _result, _err
 }
 
+/**
+ * If the plans of your simple application server do not meet your business requirements, you can call the ListInstancePlansModification operation to obtain a list of plans that can be upgraded for your simple application server. Then, you can call the [UpgradeInstance](~~190445~~) operation to upgrade the plans.
+ * >  We recommend that you create snapshots for the disks of your simple application server to back up data before you upgrade the plans. For more information, see [CreateSnapshot](~~190452~~).
+ * For the precautions about plan upgrade, see [Upgrade configurations](~~61433~~).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListInstancePlansModificationRequest
+ * @return ListInstancePlansModificationResponse
+ */
 func (client *Client) ListInstancePlansModification(request *ListInstancePlansModificationRequest) (_result *ListInstancePlansModificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancePlansModificationResponse{}
@@ -6308,6 +10451,71 @@ func (client *Client) ListInstancePlansModification(request *ListInstancePlansMo
 	return _result, _err
 }
 
+func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *ListInstanceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceStatus"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceStatus(request *ListInstanceStatusRequest) (_result *ListInstanceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceStatusResponse{}
+	_body, _err := client.ListInstanceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can call this operation to query the details of one or more simple application servers in a specified region, including the names, public IP addresses, internal IP addresses, creation time, and expiration time of the servers.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListInstancesResponse
+ */
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6361,6 +10569,14 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of one or more simple application servers in a specified region, including the names, public IP addresses, internal IP addresses, creation time, and expiration time of the servers.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListInstancesRequest
+ * @return ListInstancesResponse
+ */
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesResponse{}
@@ -6372,6 +10588,20 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * You can query the details of data transfer plans for one or more simple application servers, including the data transfer quota, used data transfer quota, unused data transfer quota, and excess data transfers in the current month.
+ * Simple Application Server provides data transfer quotas in plans. The prices for data transfers within quotas are included in the plans. You are charged for data transfers that exceed the quotas. Take note of the following items:
+ * *   You are charged only for outbound data transfers from simple application servers over the Internet. You are not charged for inbound data transfers to simple application servers over the Internet.
+ * *   Outbound data transfers from simple application servers to other Alibaba Cloud services over the Internet consume the data transfer quotas that are included in plans. If the quotas are exceeded, you are charged for the excess data transfers.
+ * *   You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
+ * For more information, see [Quotas and billing of data transfers](~~86281~~).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListInstancesTrafficPackagesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListInstancesTrafficPackagesResponse
+ */
 func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInstancesTrafficPackagesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesTrafficPackagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6409,6 +10639,19 @@ func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInsta
 	return _result, _err
 }
 
+/**
+ * You can query the details of data transfer plans for one or more simple application servers, including the data transfer quota, used data transfer quota, unused data transfer quota, and excess data transfers in the current month.
+ * Simple Application Server provides data transfer quotas in plans. The prices for data transfers within quotas are included in the plans. You are charged for data transfers that exceed the quotas. Take note of the following items:
+ * *   You are charged only for outbound data transfers from simple application servers over the Internet. You are not charged for inbound data transfers to simple application servers over the Internet.
+ * *   Outbound data transfers from simple application servers to other Alibaba Cloud services over the Internet consume the data transfer quotas that are included in plans. If the quotas are exceeded, you are charged for the excess data transfers.
+ * *   You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
+ * For more information, see [Quotas and billing of data transfers](~~86281~~).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListInstancesTrafficPackagesRequest
+ * @return ListInstancesTrafficPackagesResponse
+ */
 func (client *Client) ListInstancesTrafficPackages(request *ListInstancesTrafficPackagesRequest) (_result *ListInstancesTrafficPackagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesTrafficPackagesResponse{}
@@ -6420,6 +10663,15 @@ func (client *Client) ListInstancesTrafficPackages(request *ListInstancesTraffic
 	return _result, _err
 }
 
+/**
+ * You can query the details of all plans provided by Simple Application Server in a specified region, including the IDs, prices, disk sizes, and disk categories of the plans.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListPlansRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListPlansResponse
+ */
 func (client *Client) ListPlansWithOptions(request *ListPlansRequest, runtime *util.RuntimeOptions) (_result *ListPlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6453,6 +10705,14 @@ func (client *Client) ListPlansWithOptions(request *ListPlansRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * You can query the details of all plans provided by Simple Application Server in a specified region, including the IDs, prices, disk sizes, and disk categories of the plans.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListPlansRequest
+ * @return ListPlansResponse
+ */
 func (client *Client) ListPlans(request *ListPlansRequest) (_result *ListPlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPlansResponse{}
@@ -6464,6 +10724,15 @@ func (client *Client) ListPlans(request *ListPlansRequest) (_result *ListPlansRe
 	return _result, _err
 }
 
+/**
+ * The query results include all the Alibaba Cloud regions where Simple Application Server is available on the International site (alibabacloud.com) and the China site (aliyun.com).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListRegionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListRegionsResponse
+ */
 func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -6486,6 +10755,13 @@ func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_res
 	return _result, _err
 }
 
+/**
+ * The query results include all the Alibaba Cloud regions where Simple Application Server is available on the International site (alibabacloud.com) and the China site (aliyun.com).
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @return ListRegionsResponse
+ */
 func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
@@ -6497,6 +10773,15 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	return _result, _err
 }
 
+/**
+ * You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListSnapshotsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSnapshotsResponse
+ */
 func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6527,6 +10812,10 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 		query["SnapshotIds"] = request.SnapshotIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceDiskType)) {
+		query["SourceDiskType"] = request.SourceDiskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6550,6 +10839,14 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 	return _result, _err
 }
 
+/**
+ * You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ListSnapshotsRequest
+ * @return ListSnapshotsResponse
+ */
 func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *ListSnapshotsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSnapshotsResponse{}
@@ -6561,6 +10858,13 @@ func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * After you create a simple application server, you can log on to the simple application server to build environments and applications on the server.
+ *
+ * @param request LoginInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return LoginInstanceResponse
+ */
 func (client *Client) LoginInstanceWithOptions(request *LoginInstanceRequest, runtime *util.RuntimeOptions) (_result *LoginInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6606,6 +10910,12 @@ func (client *Client) LoginInstanceWithOptions(request *LoginInstanceRequest, ru
 	return _result, _err
 }
 
+/**
+ * After you create a simple application server, you can log on to the simple application server to build environments and applications on the server.
+ *
+ * @param request LoginInstanceRequest
+ * @return LoginInstanceResponse
+ */
 func (client *Client) LoginInstance(request *LoginInstanceRequest) (_result *LoginInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LoginInstanceResponse{}
@@ -6733,6 +11043,92 @@ func (client *Client) ModifyDatabaseInstanceParameter(request *ModifyDatabaseIns
 	return _result, _err
 }
 
+func (client *Client) ModifyFirewallRuleWithOptions(request *ModifyFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyFirewallRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleProtocol)) {
+		query["RuleProtocol"] = request.RuleProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+		query["SourceCidrIp"] = request.SourceCidrIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyFirewallRule"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyFirewallRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyFirewallRule(request *ModifyFirewallRuleRequest) (_result *ModifyFirewallRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyFirewallRuleResponse{}
+	_body, _err := client.ModifyFirewallRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can share a custom image to ECS. When the configurations of your simple application server cannot meet your business requirements, or you want to use ECS instances to deploy your business, you can share your custom image to ECS to transfer your business from Simple Application Server to ECS.
+ * >  The region in which the shared image resides in ECS is the same as the region in which the custom image resides in Simple Application Server.
+ * You can unshare a custom image based on your business requirements or when you want to delete the custom image.
+ * Take note of the following items:
+ * *   After you unshare a custom image, you cannot query or use the custom image in the ECS console or by calling ECS API operations.
+ * *   After you unshare a custom image, the system disks of the ECS instances that were created from the shared image cannot be re-initialized.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ModifyImageShareStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyImageShareStatusResponse
+ */
 func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShareStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyImageShareStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6778,6 +11174,19 @@ func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShar
 	return _result, _err
 }
 
+/**
+ * You can share a custom image to ECS. When the configurations of your simple application server cannot meet your business requirements, or you want to use ECS instances to deploy your business, you can share your custom image to ECS to transfer your business from Simple Application Server to ECS.
+ * >  The region in which the shared image resides in ECS is the same as the region in which the custom image resides in Simple Application Server.
+ * You can unshare a custom image based on your business requirements or when you want to delete the custom image.
+ * Take note of the following items:
+ * *   After you unshare a custom image, you cannot query or use the custom image in the ECS console or by calling ECS API operations.
+ * *   After you unshare a custom image, the system disks of the ECS instances that were created from the shared image cannot be re-initialized.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ModifyImageShareStatusRequest
+ * @return ModifyImageShareStatusResponse
+ */
 func (client *Client) ModifyImageShareStatus(request *ModifyImageShareStatusRequest) (_result *ModifyImageShareStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyImageShareStatusResponse{}
@@ -6789,6 +11198,72 @@ func (client *Client) ModifyImageShareStatus(request *ModifyImageShareStatusRequ
 	return _result, _err
 }
 
+func (client *Client) ModifyInstanceVncPasswordWithOptions(request *ModifyInstanceVncPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceVncPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VncPassword)) {
+		query["VncPassword"] = request.VncPassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceVncPassword"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceVncPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceVncPassword(request *ModifyInstanceVncPasswordRequest) (_result *ModifyInstanceVncPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceVncPasswordResponse{}
+	_body, _err := client.ModifyInstanceVncPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   You can restart simple application server instances that are only in the Running (Running) state.
+ * *   After you restart a simple application server, it enters the Starting (Starting) state.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request RebootInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RebootInstanceResponse
+ */
 func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6830,10 +11305,75 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * *   You can restart simple application server instances that are only in the Running (Running) state.
+ * *   After you restart a simple application server, it enters the Starting (Starting) state.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request RebootInstanceRequest
+ * @return RebootInstanceResponse
+ */
 func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *RebootInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootInstanceResponse{}
 	_body, _err := client.RebootInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RebootInstancesWithOptions(request *RebootInstancesRequest, runtime *util.RuntimeOptions) (_result *RebootInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceReboot)) {
+		query["ForceReboot"] = request.ForceReboot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebootInstances"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebootInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result *RebootInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebootInstancesResponse{}
+	_body, _err := client.RebootInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6893,6 +11433,16 @@ func (client *Client) ReleasePublicConnection(request *ReleasePublicConnectionRe
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](~~58623~~).
+ * *   When you call this operation to renew a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be renewed.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request RenewInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RenewInstanceResponse
+ */
 func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6938,6 +11488,15 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](~~58623~~).
+ * *   When you call this operation to renew a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be renewed.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request RenewInstanceRequest
+ * @return RenewInstanceResponse
+ */
 func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewInstanceResponse{}
@@ -7005,6 +11564,18 @@ func (client *Client) ResetDatabaseAccountPassword(request *ResetDatabaseAccount
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to roll back a disk only when the associated simple application server is in the Stopped state.
+ * *   After a disk is rolled back, all data changes that are made from when the snapshot was created to when the disk is rolled back are lost. Back up disk data based on your needs before you roll back the disk.
+ * ## Precautions
+ * If you reset a simple application server, the disk data on the server is deleted. Snapshots created before the resetting are retained but cannot be used to roll back the disks of the server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ResetDiskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResetDiskResponse
+ */
 func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *util.RuntimeOptions) (_result *ResetDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7050,6 +11621,17 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to roll back a disk only when the associated simple application server is in the Stopped state.
+ * *   After a disk is rolled back, all data changes that are made from when the snapshot was created to when the disk is rolled back are lost. Back up disk data based on your needs before you roll back the disk.
+ * ## Precautions
+ * If you reset a simple application server, the disk data on the server is deleted. Snapshots created before the resetting are retained but cannot be used to roll back the disks of the server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ResetDiskRequest
+ * @return ResetDiskResponse
+ */
 func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetDiskResponse{}
@@ -7061,6 +11643,32 @@ func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskRe
 	return _result, _err
 }
 
+/**
+ * You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the operating system or replacing the image.
+ * You can use one of the following methods to reset a simple application server:
+ * *   Reset the operating system. You can re-install the operating system without the need to replace the image.
+ * *   Replace the image. You can replace the existing image on the simple application server by using another Alibaba Cloud image or a custom image. This effectively replaces the operating system.
+ * ## Precautions
+ * - If you reset a simple application sever, the disk data on the server is cleared. You must back up the data as needed.
+ * - After you reset a simple application server, the monitoring operations that are performed on the server may fail. You can use one of the following methods to install the CloudMonitor agent on the server:    - Connect to the server: For more information, see [Manually install plug-ins for Alibaba Cloud hosts](/help/en/cloudmonitor/latest/install-and-uninstall-the-cloudmonitor-agent-for-cpp).
+ *   - Use Command Assistant: For more information, see [Use Command Assistant](/help/en/simple-application-server/latest/cloud-assistant). You can obtain the commands that are used to install CloudMonitor from the "Common commands" section in the [Use Command Assistant](/help/en/simple-application-server/latest/cloud-assistant) topic.
+ * ## Limits
+ * - If a simple application server is reset, snapshots that are created before the server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
+ * - If a simple application server was created based on a custom image that contains data of a data disk, the server cannot be reset.
+ * - If you reset a simple application server by replacing the existing image with a custom image,   - The custom image must reside in the same region as the current server.
+ *   - The custom image cannot be created from the current server. If you want to recover the data on the server, you can use a snapshot that is created from the server to roll back the disks.
+ *   - If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating system of simple application servers only between Windows Server operating systems or between Linux distributions.
+ *   - The following limits apply to the disks on the simple application server:     - If the custom image contains a system disk and data disks, but the simple application server is not attached with a data disk but attached only with a system disk, you cannot use the custom image to reset the simple application server.
+ *     - If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
+ *     - When the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of the server, you can upgrade the simple application server. For more information, see Upgrade configurations.
+ *     - If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ResetSystemRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResetSystemResponse
+ */
 func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtime *util.RuntimeOptions) (_result *ResetSystemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7106,6 +11714,31 @@ func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtim
 	return _result, _err
 }
 
+/**
+ * You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the operating system or replacing the image.
+ * You can use one of the following methods to reset a simple application server:
+ * *   Reset the operating system. You can re-install the operating system without the need to replace the image.
+ * *   Replace the image. You can replace the existing image on the simple application server by using another Alibaba Cloud image or a custom image. This effectively replaces the operating system.
+ * ## Precautions
+ * - If you reset a simple application sever, the disk data on the server is cleared. You must back up the data as needed.
+ * - After you reset a simple application server, the monitoring operations that are performed on the server may fail. You can use one of the following methods to install the CloudMonitor agent on the server:    - Connect to the server: For more information, see [Manually install plug-ins for Alibaba Cloud hosts](/help/en/cloudmonitor/latest/install-and-uninstall-the-cloudmonitor-agent-for-cpp).
+ *   - Use Command Assistant: For more information, see [Use Command Assistant](/help/en/simple-application-server/latest/cloud-assistant). You can obtain the commands that are used to install CloudMonitor from the "Common commands" section in the [Use Command Assistant](/help/en/simple-application-server/latest/cloud-assistant) topic.
+ * ## Limits
+ * - If a simple application server is reset, snapshots that are created before the server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
+ * - If a simple application server was created based on a custom image that contains data of a data disk, the server cannot be reset.
+ * - If you reset a simple application server by replacing the existing image with a custom image,   - The custom image must reside in the same region as the current server.
+ *   - The custom image cannot be created from the current server. If you want to recover the data on the server, you can use a snapshot that is created from the server to roll back the disks.
+ *   - If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating system of simple application servers only between Windows Server operating systems or between Linux distributions.
+ *   - The following limits apply to the disks on the simple application server:     - If the custom image contains a system disk and data disks, but the simple application server is not attached with a data disk but attached only with a system disk, you cannot use the custom image to reset the simple application server.
+ *     - If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
+ *     - When the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of the server, you can upgrade the simple application server. For more information, see Upgrade configurations.
+ *     - If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request ResetSystemRequest
+ * @return ResetSystemResponse
+ */
 func (client *Client) ResetSystem(request *ResetSystemRequest) (_result *ResetSystemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetSystemResponse{}
@@ -7169,6 +11802,16 @@ func (client *Client) RestartDatabaseInstance(request *RestartDatabaseInstanceRe
 	return _result, _err
 }
 
+/**
+ * Command Assistant is a Simple Application Server-specific automated O\\&M tool. You can manage simple application servers by running shell, PowerShell, and batch commands in the Simple Application Server console without logging on to the servers.
+ * When you use Command Assistant, the following conditions must be met:
+ * *   The simple application server must be in the Running state.
+ * *   The Cloud Assistant client is installed on the server. By default, the Cloud Assistant client is installed on simple application servers. If you manually uninstall the client, you must reinstall it. For more information, see [Install the Cloud Assistant client](~~64921~~).
+ *
+ * @param tmpReq RunCommandRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RunCommandResponse
+ */
 func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *util.RuntimeOptions) (_result *RunCommandResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7248,6 +11891,15 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 	return _result, _err
 }
 
+/**
+ * Command Assistant is a Simple Application Server-specific automated O\\&M tool. You can manage simple application servers by running shell, PowerShell, and batch commands in the Simple Application Server console without logging on to the servers.
+ * When you use Command Assistant, the following conditions must be met:
+ * *   The simple application server must be in the Running state.
+ * *   The Cloud Assistant client is installed on the server. By default, the Cloud Assistant client is installed on simple application servers. If you manually uninstall the client, you must reinstall it. For more information, see [Install the Cloud Assistant client](~~64921~~).
+ *
+ * @param request RunCommandRequest
+ * @return RunCommandResponse
+ */
 func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunCommandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunCommandResponse{}
@@ -7311,6 +11963,15 @@ func (client *Client) StartDatabaseInstance(request *StartDatabaseInstanceReques
 	return _result, _err
 }
 
+/**
+ * If your simple application server is in the Stopped state, you can call the StartInstance operation to start the server.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request StartInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartInstanceResponse
+ */
 func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, runtime *util.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7352,10 +12013,70 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 	return _result, _err
 }
 
+/**
+ * If your simple application server is in the Stopped state, you can call the StartInstance operation to start the server.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request StartInstanceRequest
+ * @return StartInstanceResponse
+ */
 func (client *Client) StartInstance(request *StartInstanceRequest) (_result *StartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartInstanceResponse{}
 	_body, _err := client.StartInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartInstancesWithOptions(request *StartInstancesRequest, runtime *util.RuntimeOptions) (_result *StartInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartInstances"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartInstances(request *StartInstancesRequest) (_result *StartInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartInstancesResponse{}
+	_body, _err := client.StartInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7415,6 +12136,16 @@ func (client *Client) StopDatabaseInstance(request *StopDatabaseInstanceRequest)
 	return _result, _err
 }
 
+/**
+ * You can stop simple application servers that are not used for the time being.
+ * >  The stopping of simple application server may interrupt your business. We recommend that you perform the stop operation during off-peak hours.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request StopInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopInstanceResponse
+ */
 func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7456,6 +12187,15 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 	return _result, _err
 }
 
+/**
+ * You can stop simple application servers that are not used for the time being.
+ * >  The stopping of simple application server may interrupt your business. We recommend that you perform the stop operation during off-peak hours.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request StopInstanceRequest
+ * @return StopInstanceResponse
+ */
 func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopInstanceResponse{}
@@ -7467,6 +12207,127 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 	return _result, _err
 }
 
+func (client *Client) StopInstancesWithOptions(request *StopInstancesRequest, runtime *util.RuntimeOptions) (_result *StopInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+		query["ForceStop"] = request.ForceStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopInstances"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopInstances(request *StopInstancesRequest) (_result *StopInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopInstancesResponse{}
+	_body, _err := client.StopInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDiskAttributeWithOptions(request *UpdateDiskAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateDiskAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDiskAttribute"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDiskAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDiskAttribute(request *UpdateDiskAttributeRequest) (_result *UpdateDiskAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDiskAttributeResponse{}
+	_body, _err := client.UpdateDiskAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * After you change the password of a simple application server, you must restart the server by calling the [RebootInstance](~~190443~~) operation for the new password to take effect.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request UpdateInstanceAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateInstanceAttributeResponse
+ */
 func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7516,6 +12377,14 @@ func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstance
 	return _result, _err
 }
 
+/**
+ * After you change the password of a simple application server, you must restart the server by calling the [RebootInstance](~~190443~~) operation for the new password to take effect.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request UpdateInstanceAttributeRequest
+ * @return UpdateInstanceAttributeResponse
+ */
 func (client *Client) UpdateInstanceAttribute(request *UpdateInstanceAttributeRequest) (_result *UpdateInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceAttributeResponse{}
@@ -7527,6 +12396,72 @@ func (client *Client) UpdateInstanceAttribute(request *UpdateInstanceAttributeRe
 	return _result, _err
 }
 
+func (client *Client) UpdateSnapshotAttributeWithOptions(request *UpdateSnapshotAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateSnapshotAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSnapshotAttribute"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSnapshotAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSnapshotAttribute(request *UpdateSnapshotAttributeRequest) (_result *UpdateSnapshotAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSnapshotAttributeResponse{}
+	_body, _err := client.UpdateSnapshotAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   The plans of simple application servers can only be upgraded. For more information about plans, see [Billable items](~~58623~~).
+ * *   When you call this operation to upgrade a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be upgraded.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request UpgradeInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpgradeInstanceResponse
+ */
 func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7572,10 +12507,79 @@ func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest
 	return _result, _err
 }
 
+/**
+ * *   The plans of simple application servers can only be upgraded. For more information about plans, see [Billable items](~~58623~~).
+ * *   When you call this operation to upgrade a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be upgraded.
+ * ## QPS limits
+ * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ *
+ * @param request UpgradeInstanceRequest
+ * @return UpgradeInstanceResponse
+ */
 func (client *Client) UpgradeInstance(request *UpgradeInstanceRequest) (_result *UpgradeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeInstanceResponse{}
 	_body, _err := client.UpgradeInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadInstanceKeyPairWithOptions(request *UploadInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *UploadInstanceKeyPairResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKey)) {
+		query["PublicKey"] = request.PublicKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadInstanceKeyPair"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadInstanceKeyPairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadInstanceKeyPair(request *UploadInstanceKeyPairRequest) (_result *UploadInstanceKeyPairResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadInstanceKeyPairResponse{}
+	_body, _err := client.UploadInstanceKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
