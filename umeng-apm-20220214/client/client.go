@@ -12,6 +12,704 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type GetH5PageTrendRequest struct {
+	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s GetH5PageTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetH5PageTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetH5PageTrendRequest) SetAppVersion(v string) *GetH5PageTrendRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetH5PageTrendRequest) SetDataSourceId(v string) *GetH5PageTrendRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetH5PageTrendRequest) SetEndDate(v string) *GetH5PageTrendRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetH5PageTrendRequest) SetStartDate(v string) *GetH5PageTrendRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetH5PageTrendRequest) SetTimeUnit(v string) *GetH5PageTrendRequest {
+	s.TimeUnit = &v
+	return s
+}
+
+type GetH5PageTrendResponseBody struct {
+	Code    *int64                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data    []*GetH5PageTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg     *string                           `json:"msg,omitempty" xml:"msg,omitempty"`
+	Success *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetH5PageTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetH5PageTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetH5PageTrendResponseBody) SetCode(v int64) *GetH5PageTrendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBody) SetData(v []*GetH5PageTrendResponseBodyData) *GetH5PageTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBody) SetMsg(v string) *GetH5PageTrendResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBody) SetSuccess(v bool) *GetH5PageTrendResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetH5PageTrendResponseBodyData struct {
+	AnalyzeDOM     *float64 `json:"analyzeDOM,omitempty" xml:"analyzeDOM,omitempty"`
+	AppCache       *float64 `json:"appCache,omitempty" xml:"appCache,omitempty"`
+	ContentTrans   *float64 `json:"contentTrans,omitempty" xml:"contentTrans,omitempty"`
+	Dns            *float64 `json:"dns,omitempty" xml:"dns,omitempty"`
+	DomReady       *float64 `json:"domReady,omitempty" xml:"domReady,omitempty"`
+	Fcp            *float64 `json:"fcp,omitempty" xml:"fcp,omitempty"`
+	FirstByte      *float64 `json:"firstByte,omitempty" xml:"firstByte,omitempty"`
+	FiveSecondRate *float64 `json:"fiveSecondRate,omitempty" xml:"fiveSecondRate,omitempty"`
+	Fp             *float64 `json:"fp,omitempty" xml:"fp,omitempty"`
+	LoadEvent      *float64 `json:"loadEvent,omitempty" xml:"loadEvent,omitempty"`
+	LoadFinish     *float64 `json:"loadFinish,omitempty" xml:"loadFinish,omitempty"`
+	LoadResource   *float64 `json:"loadResource,omitempty" xml:"loadResource,omitempty"`
+	LogCnt         *int64   `json:"logCnt,omitempty" xml:"logCnt,omitempty"`
+	OneSecondRate  *float64 `json:"oneSecondRate,omitempty" xml:"oneSecondRate,omitempty"`
+	Redirect       *float64 `json:"redirect,omitempty" xml:"redirect,omitempty"`
+	Ssl            *float64 `json:"ssl,omitempty" xml:"ssl,omitempty"`
+	Tcp            *float64 `json:"tcp,omitempty" xml:"tcp,omitempty"`
+	TimePoint      *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	Ttfb           *float64 `json:"ttfb,omitempty" xml:"ttfb,omitempty"`
+	Tti            *float64 `json:"tti,omitempty" xml:"tti,omitempty"`
+	TwoSecondRate  *float64 `json:"twoSecondRate,omitempty" xml:"twoSecondRate,omitempty"`
+	Unload         *float64 `json:"unload,omitempty" xml:"unload,omitempty"`
+}
+
+func (s GetH5PageTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetH5PageTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetAnalyzeDOM(v float64) *GetH5PageTrendResponseBodyData {
+	s.AnalyzeDOM = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetAppCache(v float64) *GetH5PageTrendResponseBodyData {
+	s.AppCache = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetContentTrans(v float64) *GetH5PageTrendResponseBodyData {
+	s.ContentTrans = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetDns(v float64) *GetH5PageTrendResponseBodyData {
+	s.Dns = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetDomReady(v float64) *GetH5PageTrendResponseBodyData {
+	s.DomReady = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetFcp(v float64) *GetH5PageTrendResponseBodyData {
+	s.Fcp = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetFirstByte(v float64) *GetH5PageTrendResponseBodyData {
+	s.FirstByte = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetFiveSecondRate(v float64) *GetH5PageTrendResponseBodyData {
+	s.FiveSecondRate = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetFp(v float64) *GetH5PageTrendResponseBodyData {
+	s.Fp = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetLoadEvent(v float64) *GetH5PageTrendResponseBodyData {
+	s.LoadEvent = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetLoadFinish(v float64) *GetH5PageTrendResponseBodyData {
+	s.LoadFinish = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetLoadResource(v float64) *GetH5PageTrendResponseBodyData {
+	s.LoadResource = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetLogCnt(v int64) *GetH5PageTrendResponseBodyData {
+	s.LogCnt = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetOneSecondRate(v float64) *GetH5PageTrendResponseBodyData {
+	s.OneSecondRate = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetRedirect(v float64) *GetH5PageTrendResponseBodyData {
+	s.Redirect = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetSsl(v float64) *GetH5PageTrendResponseBodyData {
+	s.Ssl = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetTcp(v float64) *GetH5PageTrendResponseBodyData {
+	s.Tcp = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetTimePoint(v string) *GetH5PageTrendResponseBodyData {
+	s.TimePoint = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetTtfb(v float64) *GetH5PageTrendResponseBodyData {
+	s.Ttfb = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetTti(v float64) *GetH5PageTrendResponseBodyData {
+	s.Tti = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetTwoSecondRate(v float64) *GetH5PageTrendResponseBodyData {
+	s.TwoSecondRate = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponseBodyData) SetUnload(v float64) *GetH5PageTrendResponseBodyData {
+	s.Unload = &v
+	return s
+}
+
+type GetH5PageTrendResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetH5PageTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetH5PageTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetH5PageTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetH5PageTrendResponse) SetHeaders(v map[string]*string) *GetH5PageTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetH5PageTrendResponse) SetStatusCode(v int32) *GetH5PageTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetH5PageTrendResponse) SetBody(v *GetH5PageTrendResponseBody) *GetH5PageTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetLaunchTrendRequest struct {
+	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s GetLaunchTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLaunchTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLaunchTrendRequest) SetAppVersion(v string) *GetLaunchTrendRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetLaunchTrendRequest) SetDataSourceId(v string) *GetLaunchTrendRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetLaunchTrendRequest) SetEndDate(v string) *GetLaunchTrendRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetLaunchTrendRequest) SetStartDate(v string) *GetLaunchTrendRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetLaunchTrendRequest) SetTimeUnit(v string) *GetLaunchTrendRequest {
+	s.TimeUnit = &v
+	return s
+}
+
+type GetLaunchTrendResponseBody struct {
+	Code    *int64                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data    []*GetLaunchTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg     *string                           `json:"msg,omitempty" xml:"msg,omitempty"`
+	Success *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetLaunchTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLaunchTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLaunchTrendResponseBody) SetCode(v int64) *GetLaunchTrendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBody) SetData(v []*GetLaunchTrendResponseBodyData) *GetLaunchTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBody) SetMsg(v string) *GetLaunchTrendResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBody) SetSuccess(v bool) *GetLaunchTrendResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLaunchTrendResponseBodyData struct {
+	ColdLaunchCount     *int64   `json:"coldLaunchCount,omitempty" xml:"coldLaunchCount,omitempty"`
+	ColdLaunchDuration  *float64 `json:"coldLaunchDuration,omitempty" xml:"coldLaunchDuration,omitempty"`
+	FirstLaunchCount    *int64   `json:"firstLaunchCount,omitempty" xml:"firstLaunchCount,omitempty"`
+	FirstLaunchDuration *float64 `json:"firstLaunchDuration,omitempty" xml:"firstLaunchDuration,omitempty"`
+	HotLaunchCount      *int64   `json:"hotLaunchCount,omitempty" xml:"hotLaunchCount,omitempty"`
+	HotLaunchDuration   *float64 `json:"hotLaunchDuration,omitempty" xml:"hotLaunchDuration,omitempty"`
+	TimePoint           *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+}
+
+func (s GetLaunchTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLaunchTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetLaunchTrendResponseBodyData) SetColdLaunchCount(v int64) *GetLaunchTrendResponseBodyData {
+	s.ColdLaunchCount = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBodyData) SetColdLaunchDuration(v float64) *GetLaunchTrendResponseBodyData {
+	s.ColdLaunchDuration = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBodyData) SetFirstLaunchCount(v int64) *GetLaunchTrendResponseBodyData {
+	s.FirstLaunchCount = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBodyData) SetFirstLaunchDuration(v float64) *GetLaunchTrendResponseBodyData {
+	s.FirstLaunchDuration = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBodyData) SetHotLaunchCount(v int64) *GetLaunchTrendResponseBodyData {
+	s.HotLaunchCount = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBodyData) SetHotLaunchDuration(v float64) *GetLaunchTrendResponseBodyData {
+	s.HotLaunchDuration = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponseBodyData) SetTimePoint(v string) *GetLaunchTrendResponseBodyData {
+	s.TimePoint = &v
+	return s
+}
+
+type GetLaunchTrendResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLaunchTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLaunchTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLaunchTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLaunchTrendResponse) SetHeaders(v map[string]*string) *GetLaunchTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLaunchTrendResponse) SetStatusCode(v int32) *GetLaunchTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLaunchTrendResponse) SetBody(v *GetLaunchTrendResponseBody) *GetLaunchTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetNativePageTrendRequest struct {
+	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s GetNativePageTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNativePageTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNativePageTrendRequest) SetAppVersion(v string) *GetNativePageTrendRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetNativePageTrendRequest) SetDataSourceId(v string) *GetNativePageTrendRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetNativePageTrendRequest) SetEndDate(v string) *GetNativePageTrendRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetNativePageTrendRequest) SetStartDate(v string) *GetNativePageTrendRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetNativePageTrendRequest) SetTimeUnit(v string) *GetNativePageTrendRequest {
+	s.TimeUnit = &v
+	return s
+}
+
+type GetNativePageTrendResponseBody struct {
+	Code    *int64                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data    []*GetNativePageTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg     *string                               `json:"msg,omitempty" xml:"msg,omitempty"`
+	Success *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetNativePageTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNativePageTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNativePageTrendResponseBody) SetCode(v int64) *GetNativePageTrendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetNativePageTrendResponseBody) SetData(v []*GetNativePageTrendResponseBodyData) *GetNativePageTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetNativePageTrendResponseBody) SetMsg(v string) *GetNativePageTrendResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetNativePageTrendResponseBody) SetSuccess(v bool) *GetNativePageTrendResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetNativePageTrendResponseBodyData struct {
+	AvgLoadDuration *float64 `json:"avgLoadDuration,omitempty" xml:"avgLoadDuration,omitempty"`
+	CrashRate       *float64 `json:"crashRate,omitempty" xml:"crashRate,omitempty"`
+	LoadCnt         *int64   `json:"loadCnt,omitempty" xml:"loadCnt,omitempty"`
+	SlowLoadRate    *float64 `json:"slowLoadRate,omitempty" xml:"slowLoadRate,omitempty"`
+	TimePoint       *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+}
+
+func (s GetNativePageTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNativePageTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetNativePageTrendResponseBodyData) SetAvgLoadDuration(v float64) *GetNativePageTrendResponseBodyData {
+	s.AvgLoadDuration = &v
+	return s
+}
+
+func (s *GetNativePageTrendResponseBodyData) SetCrashRate(v float64) *GetNativePageTrendResponseBodyData {
+	s.CrashRate = &v
+	return s
+}
+
+func (s *GetNativePageTrendResponseBodyData) SetLoadCnt(v int64) *GetNativePageTrendResponseBodyData {
+	s.LoadCnt = &v
+	return s
+}
+
+func (s *GetNativePageTrendResponseBodyData) SetSlowLoadRate(v float64) *GetNativePageTrendResponseBodyData {
+	s.SlowLoadRate = &v
+	return s
+}
+
+func (s *GetNativePageTrendResponseBodyData) SetTimePoint(v string) *GetNativePageTrendResponseBodyData {
+	s.TimePoint = &v
+	return s
+}
+
+type GetNativePageTrendResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNativePageTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetNativePageTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNativePageTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNativePageTrendResponse) SetHeaders(v map[string]*string) *GetNativePageTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNativePageTrendResponse) SetStatusCode(v int32) *GetNativePageTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNativePageTrendResponse) SetBody(v *GetNativePageTrendResponseBody) *GetNativePageTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetNetworkTrendRequest struct {
+	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s GetNetworkTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkTrendRequest) SetAppVersion(v string) *GetNetworkTrendRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetNetworkTrendRequest) SetDataSourceId(v string) *GetNetworkTrendRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetNetworkTrendRequest) SetEndDate(v string) *GetNetworkTrendRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetNetworkTrendRequest) SetStartDate(v string) *GetNetworkTrendRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetNetworkTrendRequest) SetTimeUnit(v string) *GetNetworkTrendRequest {
+	s.TimeUnit = &v
+	return s
+}
+
+type GetNetworkTrendResponseBody struct {
+	Code    *int64                             `json:"code,omitempty" xml:"code,omitempty"`
+	Data    []*GetNetworkTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg     *string                            `json:"msg,omitempty" xml:"msg,omitempty"`
+	Success *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetNetworkTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkTrendResponseBody) SetCode(v int64) *GetNetworkTrendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetNetworkTrendResponseBody) SetData(v []*GetNetworkTrendResponseBodyData) *GetNetworkTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetNetworkTrendResponseBody) SetMsg(v string) *GetNetworkTrendResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetNetworkTrendResponseBody) SetSuccess(v bool) *GetNetworkTrendResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetNetworkTrendResponseBodyData struct {
+	AvgCost           *float64 `json:"avgCost,omitempty" xml:"avgCost,omitempty"`
+	AvgResponseTime   *float64 `json:"avgResponseTime,omitempty" xml:"avgResponseTime,omitempty"`
+	AvgTransformBytes *float64 `json:"avgTransformBytes,omitempty" xml:"avgTransformBytes,omitempty"`
+	RequestPerMinute  *float64 `json:"requestPerMinute,omitempty" xml:"requestPerMinute,omitempty"`
+	TimePoint         *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+}
+
+func (s GetNetworkTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkTrendResponseBodyData) SetAvgCost(v float64) *GetNetworkTrendResponseBodyData {
+	s.AvgCost = &v
+	return s
+}
+
+func (s *GetNetworkTrendResponseBodyData) SetAvgResponseTime(v float64) *GetNetworkTrendResponseBodyData {
+	s.AvgResponseTime = &v
+	return s
+}
+
+func (s *GetNetworkTrendResponseBodyData) SetAvgTransformBytes(v float64) *GetNetworkTrendResponseBodyData {
+	s.AvgTransformBytes = &v
+	return s
+}
+
+func (s *GetNetworkTrendResponseBodyData) SetRequestPerMinute(v float64) *GetNetworkTrendResponseBodyData {
+	s.RequestPerMinute = &v
+	return s
+}
+
+func (s *GetNetworkTrendResponseBodyData) SetTimePoint(v string) *GetNetworkTrendResponseBodyData {
+	s.TimePoint = &v
+	return s
+}
+
+type GetNetworkTrendResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNetworkTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetNetworkTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkTrendResponse) SetHeaders(v map[string]*string) *GetNetworkTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNetworkTrendResponse) SetStatusCode(v int32) *GetNetworkTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNetworkTrendResponse) SetBody(v *GetNetworkTrendResponseBody) *GetNetworkTrendResponse {
+	s.Body = v
+	return s
+}
+
 type GetStatTrendRequest struct {
 	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
@@ -194,11 +892,13 @@ func (s *GetSymUploadParamRequest) SetFileType(v int32) *GetSymUploadParamReques
 }
 
 type GetSymUploadParamResponseBody struct {
-	Code    *int64                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// data
 	Data    *GetSymUploadParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	Msg     *string                            `json:"msg,omitempty" xml:"msg,omitempty"`
 	Success *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s GetSymUploadParamResponseBody) String() string {
@@ -578,11 +1278,247 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) GetStatTrend(request *GetStatTrendRequest) (_result *GetStatTrendResponse, _err error) {
+func (client *Client) GetH5PageTrendWithOptions(request *GetH5PageTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetH5PageTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		query["appVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["startDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeUnit)) {
+		query["timeUnit"] = request.TimeUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetH5PageTrend"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/stat/getH5PageTrend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetH5PageTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetH5PageTrend(request *GetH5PageTrendRequest) (_result *GetH5PageTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetStatTrendResponse{}
-	_body, _err := client.GetStatTrendWithOptions(request, headers, runtime)
+	_result = &GetH5PageTrendResponse{}
+	_body, _err := client.GetH5PageTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLaunchTrendWithOptions(request *GetLaunchTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLaunchTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		query["appVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["startDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeUnit)) {
+		query["timeUnit"] = request.TimeUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLaunchTrend"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/stat/getLaunchTrend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLaunchTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLaunchTrend(request *GetLaunchTrendRequest) (_result *GetLaunchTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLaunchTrendResponse{}
+	_body, _err := client.GetLaunchTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetNativePageTrendWithOptions(request *GetNativePageTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNativePageTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		query["appVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["startDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeUnit)) {
+		query["timeUnit"] = request.TimeUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNativePageTrend"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/stat/getNativePageTrend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetNativePageTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetNativePageTrend(request *GetNativePageTrendRequest) (_result *GetNativePageTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetNativePageTrendResponse{}
+	_body, _err := client.GetNativePageTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetNetworkTrendWithOptions(request *GetNetworkTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNetworkTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		query["appVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["startDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeUnit)) {
+		query["timeUnit"] = request.TimeUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNetworkTrend"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/stat/getNetworkTrend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetNetworkTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetNetworkTrend(request *GetNetworkTrendRequest) (_result *GetNetworkTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetNetworkTrendResponse{}
+	_body, _err := client.GetNetworkTrendWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -640,11 +1576,11 @@ func (client *Client) GetStatTrendWithOptions(request *GetStatTrendRequest, head
 	return _result, _err
 }
 
-func (client *Client) GetSymUploadParam(request *GetSymUploadParamRequest) (_result *GetSymUploadParamResponse, _err error) {
+func (client *Client) GetStatTrend(request *GetStatTrendRequest) (_result *GetStatTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSymUploadParamResponse{}
-	_body, _err := client.GetSymUploadParamWithOptions(request, headers, runtime)
+	_result = &GetStatTrendResponse{}
+	_body, _err := client.GetStatTrendWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -698,11 +1634,11 @@ func (client *Client) GetSymUploadParamWithOptions(request *GetSymUploadParamReq
 	return _result, _err
 }
 
-func (client *Client) GetTodayStatTrend(request *GetTodayStatTrendRequest) (_result *GetTodayStatTrendResponse, _err error) {
+func (client *Client) GetSymUploadParam(request *GetSymUploadParamRequest) (_result *GetSymUploadParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTodayStatTrendResponse{}
-	_body, _err := client.GetTodayStatTrendWithOptions(request, headers, runtime)
+	_result = &GetSymUploadParamResponse{}
+	_body, _err := client.GetSymUploadParamWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -752,11 +1688,11 @@ func (client *Client) GetTodayStatTrendWithOptions(request *GetTodayStatTrendReq
 	return _result, _err
 }
 
-func (client *Client) UpdateAlertPlan(request *UpdateAlertPlanRequest) (_result *UpdateAlertPlanResponse, _err error) {
+func (client *Client) GetTodayStatTrend(request *GetTodayStatTrendRequest) (_result *GetTodayStatTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateAlertPlanResponse{}
-	_body, _err := client.UpdateAlertPlanWithOptions(request, headers, runtime)
+	_result = &GetTodayStatTrendResponse{}
+	_body, _err := client.GetTodayStatTrendWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -803,5 +1739,17 @@ func (client *Client) UpdateAlertPlanWithOptions(request *UpdateAlertPlanRequest
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAlertPlan(request *UpdateAlertPlanRequest) (_result *UpdateAlertPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlertPlanResponse{}
+	_body, _err := client.UpdateAlertPlanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
