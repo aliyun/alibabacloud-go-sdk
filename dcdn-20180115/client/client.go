@@ -9931,40 +9931,14 @@ func (s *DescribeDcdnDomainRealTimeByteHitRateDataResponse) SetBody(v *DescribeD
 }
 
 type DescribeDcdnDomainRealTimeDetailDataRequest struct {
-	// Specifies whether to return a summary value of **LocationNameEn** and **IspNameEn**. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	//
-	// The default value is **false**.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time, and the maximum time range to query is 10 minutes.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to return a summary value. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	//
-	// The default value is **false**.
-	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The information returned.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The type of the information that you want to query. Separate multiple types with commas (,). Valid values:
-	//
-	// *   **qps**: queries per second
-	// *   **bps**: bandwidth
-	// *   **http_code**: HTTP status code
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Field          *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The ID of the request.
-	Merge *string `json:"Merge,omitempty" xml:"Merge,omitempty"`
-	// The name of the region. You can call the [DescribeDcdnRegionAndIsp](~~207199~~) operation to query the region name.
-	//
-	// If you do not specify a value for this parameter, all regions are queried.
-	MergeLocIsp *string `json:"MergeLocIsp,omitempty" xml:"MergeLocIsp,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Merge          *string `json:"Merge,omitempty" xml:"Merge,omitempty"`
+	MergeLocIsp    *string `json:"MergeLocIsp,omitempty" xml:"MergeLocIsp,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDcdnDomainRealTimeDetailDataRequest) String() string {
@@ -10016,9 +9990,7 @@ func (s *DescribeDcdnDomainRealTimeDetailDataRequest) SetStartTime(v string) *De
 }
 
 type DescribeDcdnDomainRealTimeDetailDataResponseBody struct {
-	// DescribeDcdnDomainRealTimeDetailData
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Queries traffic data and the number of visits of each ISP in each region. Data is collected every minute. The maximum time range to query for this operation is 10 minutes.
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23793,9 +23765,7 @@ func (s *EditRoutineConfResponse) SetBody(v *EditRoutineConfResponseBody) *EditR
 }
 
 type GetDcdnKvRequest struct {
-	// The name of the namespace.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Queries the value of the key in a key-value pair.
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -23818,10 +23788,8 @@ func (s *GetDcdnKvRequest) SetNamespace(v string) *GetDcdnKvRequest {
 }
 
 type GetDcdnKvResponseBody struct {
-	// The value of the key.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the key that you want to query.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDcdnKvResponseBody) String() string {
