@@ -1555,6 +1555,128 @@ func (s *CreateTenantReadOnlyConnectionResponse) SetBody(v *CreateTenantReadOnly
 	return s
 }
 
+type CreateTenantSecurityIpGroupRequest struct {
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s CreateTenantSecurityIpGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTenantSecurityIpGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTenantSecurityIpGroupRequest) SetInstanceId(v string) *CreateTenantSecurityIpGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupRequest) SetSecurityIpGroupName(v string) *CreateTenantSecurityIpGroupRequest {
+	s.SecurityIpGroupName = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupRequest) SetSecurityIps(v string) *CreateTenantSecurityIpGroupRequest {
+	s.SecurityIps = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupRequest) SetTenantId(v string) *CreateTenantSecurityIpGroupRequest {
+	s.TenantId = &v
+	return s
+}
+
+type CreateTenantSecurityIpGroupResponseBody struct {
+	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityIpGroup *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup `json:"SecurityIpGroup,omitempty" xml:"SecurityIpGroup,omitempty" type:"Struct"`
+}
+
+func (s CreateTenantSecurityIpGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTenantSecurityIpGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTenantSecurityIpGroupResponseBody) SetRequestId(v string) *CreateTenantSecurityIpGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupResponseBody) SetSecurityIpGroup(v *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) *CreateTenantSecurityIpGroupResponseBody {
+	s.SecurityIpGroup = v
+	return s
+}
+
+type CreateTenantSecurityIpGroupResponseBodySecurityIpGroup struct {
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) SetInstanceId(v string) *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) SetSecurityIpGroupName(v string) *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.SecurityIpGroupName = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) SetSecurityIps(v string) *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.SecurityIps = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) SetTenantId(v string) *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.TenantId = &v
+	return s
+}
+
+type CreateTenantSecurityIpGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTenantSecurityIpGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTenantSecurityIpGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTenantSecurityIpGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTenantSecurityIpGroupResponse) SetHeaders(v map[string]*string) *CreateTenantSecurityIpGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupResponse) SetStatusCode(v int32) *CreateTenantSecurityIpGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTenantSecurityIpGroupResponse) SetBody(v *CreateTenantSecurityIpGroupResponseBody) *CreateTenantSecurityIpGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTenantUserRequest struct {
 	// The description of the database.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -2173,6 +2295,116 @@ func (s *DeleteSecurityIpGroupResponse) SetStatusCode(v int32) *DeleteSecurityIp
 }
 
 func (s *DeleteSecurityIpGroupResponse) SetBody(v *DeleteSecurityIpGroupResponseBody) *DeleteSecurityIpGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTenantSecurityIpGroupRequest struct {
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DeleteTenantSecurityIpGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTenantSecurityIpGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTenantSecurityIpGroupRequest) SetInstanceId(v string) *DeleteTenantSecurityIpGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteTenantSecurityIpGroupRequest) SetSecurityIpGroupName(v string) *DeleteTenantSecurityIpGroupRequest {
+	s.SecurityIpGroupName = &v
+	return s
+}
+
+func (s *DeleteTenantSecurityIpGroupRequest) SetTenantId(v string) *DeleteTenantSecurityIpGroupRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteTenantSecurityIpGroupResponseBody struct {
+	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityIpGroup *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup `json:"SecurityIpGroup,omitempty" xml:"SecurityIpGroup,omitempty" type:"Struct"`
+}
+
+func (s DeleteTenantSecurityIpGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTenantSecurityIpGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTenantSecurityIpGroupResponseBody) SetRequestId(v string) *DeleteTenantSecurityIpGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTenantSecurityIpGroupResponseBody) SetSecurityIpGroup(v *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup) *DeleteTenantSecurityIpGroupResponseBody {
+	s.SecurityIpGroup = v
+	return s
+}
+
+type DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup struct {
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup) SetInstanceId(v string) *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup) SetSecurityIpGroupName(v string) *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.SecurityIpGroupName = &v
+	return s
+}
+
+func (s *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup) SetTenantId(v string) *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteTenantSecurityIpGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTenantSecurityIpGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTenantSecurityIpGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTenantSecurityIpGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTenantSecurityIpGroupResponse) SetHeaders(v map[string]*string) *DeleteTenantSecurityIpGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTenantSecurityIpGroupResponse) SetStatusCode(v int32) *DeleteTenantSecurityIpGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTenantSecurityIpGroupResponse) SetBody(v *DeleteTenantSecurityIpGroupResponseBody) *DeleteTenantSecurityIpGroupResponse {
 	s.Body = v
 	return s
 }
@@ -5465,6 +5697,2594 @@ func (s *DescribeNodeMetricsResponse) SetBody(v *DescribeNodeMetricsResponseBody
 	return s
 }
 
+type DescribeOasAnomalySQLListRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Current         *int64  `json:"Current,omitempty" xml:"Current,omitempty"`
+	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FilterCondition *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeIp          *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKeyWord   *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	SearchParam     *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
+	SearchRule      *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// SQL ID。
+	SqlId         *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextLength *int64  `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeOasAnomalySQLListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasAnomalySQLListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetAcceptLanguage(v string) *DescribeOasAnomalySQLListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetCurrent(v int64) *DescribeOasAnomalySQLListRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetDbName(v string) *DescribeOasAnomalySQLListRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetEndTime(v string) *DescribeOasAnomalySQLListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetFilterCondition(v string) *DescribeOasAnomalySQLListRequest {
+	s.FilterCondition = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetInstanceId(v string) *DescribeOasAnomalySQLListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetNodeIp(v string) *DescribeOasAnomalySQLListRequest {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetPageSize(v int64) *DescribeOasAnomalySQLListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetSearchKeyWord(v string) *DescribeOasAnomalySQLListRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetSearchParam(v string) *DescribeOasAnomalySQLListRequest {
+	s.SearchParam = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetSearchRule(v string) *DescribeOasAnomalySQLListRequest {
+	s.SearchRule = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetSearchValue(v string) *DescribeOasAnomalySQLListRequest {
+	s.SearchValue = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetSqlId(v string) *DescribeOasAnomalySQLListRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetSqlTextLength(v int64) *DescribeOasAnomalySQLListRequest {
+	s.SqlTextLength = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetStartTime(v string) *DescribeOasAnomalySQLListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetTenantId(v string) *DescribeOasAnomalySQLListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeOasAnomalySQLListResponseBody struct {
+	Data       []*DescribeOasAnomalySQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeOasAnomalySQLListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasAnomalySQLListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasAnomalySQLListResponseBody) SetData(v []*DescribeOasAnomalySQLListResponseBodyData) *DescribeOasAnomalySQLListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBody) SetRequestId(v string) *DescribeOasAnomalySQLListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBody) SetTotalCount(v int64) *DescribeOasAnomalySQLListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeOasAnomalySQLListResponseBodyData struct {
+	AvgCpuTime       *float64  `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgElapsedTime   *float64  `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgGetPlanTime   *float64  `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	CpuTime          *float64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	DbName           *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DiagTypes        []*string `json:"DiagTypes,omitempty" xml:"DiagTypes,omitempty" type:"Repeated"`
+	Diagnosis        *string   `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
+	Executions       *float64  `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	LastExecutedTime *float64  `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
+	RiskLevel        *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// SQL ID。
+	SqlId          *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextShort   *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	Suggestion     *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	SumElapsedTime *string `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeOasAnomalySQLListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasAnomalySQLListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgElapsedTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgGetPlanTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.AvgGetPlanTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetCpuTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.CpuTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetDbName(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetDiagTypes(v []*string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.DiagTypes = v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetDiagnosis(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.Diagnosis = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetExecutions(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetLastExecutedTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.LastExecutedTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetRiskLevel(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSqlId(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSqlTextShort(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.SqlTextShort = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSuggestion(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumElapsedTime(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.SumElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetUserName(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+type DescribeOasAnomalySQLListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOasAnomalySQLListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOasAnomalySQLListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasAnomalySQLListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasAnomalySQLListResponse) SetHeaders(v map[string]*string) *DescribeOasAnomalySQLListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponse) SetStatusCode(v int32) *DescribeOasAnomalySQLListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponse) SetBody(v *DescribeOasAnomalySQLListResponseBody) *DescribeOasAnomalySQLListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOasSQLDetailsRequest struct {
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// SQL ID。
+	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeOasSQLDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetDbName(v string) *DescribeOasSQLDetailsRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetEndTime(v string) *DescribeOasSQLDetailsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetInstanceId(v string) *DescribeOasSQLDetailsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetSqlId(v string) *DescribeOasSQLDetailsRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetStartTime(v string) *DescribeOasSQLDetailsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetTenantId(v string) *DescribeOasSQLDetailsRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeOasSQLDetailsResponseBody struct {
+	Data      *DescribeOasSQLDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOasSQLDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLDetailsResponseBody) SetData(v *DescribeOasSQLDetailsResponseBodyData) *DescribeOasSQLDetailsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsResponseBody) SetRequestId(v string) *DescribeOasSQLDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOasSQLDetailsResponseBodyData struct {
+	DbName    *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	Fulltext  *string   `json:"Fulltext,omitempty" xml:"Fulltext,omitempty"`
+	Statement *string   `json:"Statement,omitempty" xml:"Statement,omitempty"`
+	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	UserName  *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeOasSQLDetailsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLDetailsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLDetailsResponseBodyData) SetDbName(v string) *DescribeOasSQLDetailsResponseBodyData {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsResponseBodyData) SetFulltext(v string) *DescribeOasSQLDetailsResponseBodyData {
+	s.Fulltext = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsResponseBodyData) SetStatement(v string) *DescribeOasSQLDetailsResponseBodyData {
+	s.Statement = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsResponseBodyData) SetTables(v []*string) *DescribeOasSQLDetailsResponseBodyData {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsResponseBodyData) SetUserName(v string) *DescribeOasSQLDetailsResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+type DescribeOasSQLDetailsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOasSQLDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOasSQLDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLDetailsResponse) SetHeaders(v map[string]*string) *DescribeOasSQLDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsResponse) SetStatusCode(v int32) *DescribeOasSQLDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsResponse) SetBody(v *DescribeOasSQLDetailsResponseBody) *DescribeOasSQLDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOasSQLHistoryListRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeIp         *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// SQL ID。
+	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeOasSQLHistoryListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLHistoryListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetAcceptLanguage(v string) *DescribeOasSQLHistoryListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetDbName(v string) *DescribeOasSQLHistoryListRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetEndTime(v string) *DescribeOasSQLHistoryListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetInstanceId(v string) *DescribeOasSQLHistoryListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetNodeIp(v string) *DescribeOasSQLHistoryListRequest {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetSqlId(v string) *DescribeOasSQLHistoryListRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetStartTime(v string) *DescribeOasSQLHistoryListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetTenantId(v string) *DescribeOasSQLHistoryListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeOasSQLHistoryListResponseBody struct {
+	Data      []*DescribeOasSQLHistoryListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOasSQLHistoryListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLHistoryListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLHistoryListResponseBody) SetData(v []*DescribeOasSQLHistoryListResponseBodyData) *DescribeOasSQLHistoryListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBody) SetRequestId(v string) *DescribeOasSQLHistoryListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOasSQLHistoryListResponseBodyData struct {
+	AvgAffectedRows        *int64   `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	AvgApplicationWaitTime *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	AvgBlockCacheHit       *int64   `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	AvgBlockIndexCacheHit  *int64   `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	AvgBloomFilterCacheHit *int64   `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	AvgConcurrencyWaitTime *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	AvgCpuTime             *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDecodeTime          *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	AvgDiskReads           *int64   `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	AvgElapsedTime         *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgExecuteTime         *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	AvgExecutorRpcCount    *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	AvgExpectedWorkerCount *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
+	AvgGetPlanTime         *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	AvgLogicalReads        *int64   `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgMemstoreReadRows    *int64   `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	AvgNetTime             *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	AvgNetWaitTime         *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	AvgPartitionCount      *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	AvgQueueTime           *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	AvgReturnRows          *int64   `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	AvgRowCacheHit         *int64   `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	AvgRpcCount            *int64   `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	AvgScheduleTime        *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	AvgSsstoreReadRows     *int64   `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	AvgUsedWorkerCount     *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	AvgUserIoWaitTime      *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	AvgWaitCount           *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	AvgWaitTime            *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	DbName                 *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DistPlanPercentage     *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	ExecPs                 *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	Executions             *int64   `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FailCount              *int64   `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailPercentage         *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	LocalPlanPercentage    *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	MaxAffectedRows        *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	MaxApplicationWaitTime *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	MaxConcurrencyWaitTime *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
+	MaxCpuTime             *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	MaxDiskReads           *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	MaxElapsedTime         *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	MaxReturnRows          *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	MaxUserIoWaitTime      *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	MaxWaitTime            *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	MissPlanPercentage     *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	MissPlans              *int64   `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	RemotePlanPercentage   *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	RemotePlans            *int64   `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RetCode4012Count       *float64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	RetCode4013Count       *float64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	RetCode5001Count       *float64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	RetCode5024Count       *float64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	RetCode5167Count       *float64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	RetCode5217Count       *float64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	RetCode6002Count       *float64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	RetryCount             *int64   `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// SQL ID
+	SQLId                       *string  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	Server                      *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
+	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	Timestamp                   *string  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+}
+
+func (s DescribeOasSQLHistoryListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLHistoryListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgAffectedRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgApplicationWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBlockCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgBlockCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBlockIndexCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgBlockIndexCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBloomFilterCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgBloomFilterCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgConcurrencyWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgDecodeTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgDecodeTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgDiskReads(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgElapsedTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgExecuteTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgExecuteTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgExecutorRpcCount(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgExecutorRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgExpectedWorkerCount(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgExpectedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgGetPlanTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgGetPlanTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgLogicalReads(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgMemstoreReadRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgMemstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgNetTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgNetTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgNetWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgNetWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgPartitionCount(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgPartitionCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgQueueTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgQueueTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgReturnRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgRowCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgRowCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgRpcCount(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgScheduleTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgScheduleTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgSsstoreReadRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgSsstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgUsedWorkerCount(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgUsedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgUserIoWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgWaitCount(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgWaitCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.AvgWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetDbName(v string) *DescribeOasSQLHistoryListResponseBodyData {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetDistPlanPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.DistPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetExecPs(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.ExecPs = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetExecutions(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetFailCount(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.FailCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetFailPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.FailPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetLocalPlanPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.LocalPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxAffectedRows(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxApplicationWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxConcurrencyWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxCpuTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxDiskReads(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxElapsedTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxReturnRows(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxUserIoWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMaxWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MaxWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMissPlanPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MissPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetMissPlans(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.MissPlans = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRemotePlanPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RemotePlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRemotePlans(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RemotePlans = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode4012Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetCode4012Count = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode4013Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetCode4013Count = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5001Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetCode5001Count = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5024Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetCode5024Count = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5167Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetCode5167Count = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5217Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetCode5217Count = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode6002Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetCode6002Count = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetryCount(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetSQLId(v string) *DescribeOasSQLHistoryListResponseBodyData {
+	s.SQLId = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetServer(v string) *DescribeOasSQLHistoryListResponseBodyData {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetStrongConsistencyPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.StrongConsistencyPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetSumElapsedTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.SumElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetSumLogicalReads(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.SumLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetSumWaitTime(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.SumWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetTableScanPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.TableScanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetTimestamp(v string) *DescribeOasSQLHistoryListResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetUserName(v string) *DescribeOasSQLHistoryListResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetWeakConsistencyPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+	s.WeakConsistencyPercentage = &v
+	return s
+}
+
+type DescribeOasSQLHistoryListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOasSQLHistoryListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOasSQLHistoryListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLHistoryListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLHistoryListResponse) SetHeaders(v map[string]*string) *DescribeOasSQLHistoryListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponse) SetStatusCode(v int32) *DescribeOasSQLHistoryListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListResponse) SetBody(v *DescribeOasSQLHistoryListResponseBody) *DescribeOasSQLHistoryListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOasSQLPlansRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// SQL ID。
+	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeOasSQLPlansRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLPlansRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLPlansRequest) SetAcceptLanguage(v string) *DescribeOasSQLPlansRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansRequest) SetDbName(v string) *DescribeOasSQLPlansRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansRequest) SetEndTime(v string) *DescribeOasSQLPlansRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansRequest) SetInstanceId(v string) *DescribeOasSQLPlansRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansRequest) SetSqlId(v string) *DescribeOasSQLPlansRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansRequest) SetStartTime(v string) *DescribeOasSQLPlansRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansRequest) SetTenantId(v string) *DescribeOasSQLPlansRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeOasSQLPlansResponseBody struct {
+	Data      []*DescribeOasSQLPlansResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOasSQLPlansResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLPlansResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLPlansResponseBody) SetData(v []*DescribeOasSQLPlansResponseBodyData) *DescribeOasSQLPlansResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBody) SetRequestId(v string) *DescribeOasSQLPlansResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOasSQLPlansResponseBodyData struct {
+	AvgCpuTime    *float64                                        `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	Bounded       *bool                                           `json:"Bounded,omitempty" xml:"Bounded,omitempty"`
+	Executions    *int64                                          `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FirstLoadTime *string                                         `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
+	HitDiagnosis  *bool                                           `json:"HitDiagnosis,omitempty" xml:"HitDiagnosis,omitempty"`
+	HitPercentage *float64                                        `json:"HitPercentage,omitempty" xml:"HitPercentage,omitempty"`
+	MergedVersion *int64                                          `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	PlanExplain   *DescribeOasSQLPlansResponseBodyDataPlanExplain `json:"PlanExplain,omitempty" xml:"PlanExplain,omitempty" type:"Struct"`
+	PlanHash      *string                                         `json:"PlanHash,omitempty" xml:"PlanHash,omitempty"`
+	PlanType      *string                                         `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	PlanUnionHash *string                                         `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
+	Plans         []*DescribeOasSQLPlansResponseBodyDataPlans     `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
+	QuerySql      *string                                         `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+}
+
+func (s DescribeOasSQLPlansResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLPlansResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasSQLPlansResponseBodyData {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetBounded(v bool) *DescribeOasSQLPlansResponseBodyData {
+	s.Bounded = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetExecutions(v int64) *DescribeOasSQLPlansResponseBodyData {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetFirstLoadTime(v string) *DescribeOasSQLPlansResponseBodyData {
+	s.FirstLoadTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetHitDiagnosis(v bool) *DescribeOasSQLPlansResponseBodyData {
+	s.HitDiagnosis = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetHitPercentage(v float64) *DescribeOasSQLPlansResponseBodyData {
+	s.HitPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetMergedVersion(v int64) *DescribeOasSQLPlansResponseBodyData {
+	s.MergedVersion = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetPlanExplain(v *DescribeOasSQLPlansResponseBodyDataPlanExplain) *DescribeOasSQLPlansResponseBodyData {
+	s.PlanExplain = v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetPlanHash(v string) *DescribeOasSQLPlansResponseBodyData {
+	s.PlanHash = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetPlanType(v string) *DescribeOasSQLPlansResponseBodyData {
+	s.PlanType = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetPlanUnionHash(v string) *DescribeOasSQLPlansResponseBodyData {
+	s.PlanUnionHash = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetPlans(v []*DescribeOasSQLPlansResponseBodyDataPlans) *DescribeOasSQLPlansResponseBodyData {
+	s.Plans = v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetQuerySql(v string) *DescribeOasSQLPlansResponseBodyData {
+	s.QuerySql = &v
+	return s
+}
+
+type DescribeOasSQLPlansResponseBodyDataPlanExplain struct {
+	PlanJsonString *string `json:"PlanJsonString,omitempty" xml:"PlanJsonString,omitempty"`
+}
+
+func (s DescribeOasSQLPlansResponseBodyDataPlanExplain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLPlansResponseBodyDataPlanExplain) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlanExplain) SetPlanJsonString(v string) *DescribeOasSQLPlansResponseBodyDataPlanExplain {
+	s.PlanJsonString = &v
+	return s
+}
+
+type DescribeOasSQLPlansResponseBodyDataPlans struct {
+	AvgApplicationWaitTime      *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	AvgBufferGets               *float64 `json:"AvgBufferGets,omitempty" xml:"AvgBufferGets,omitempty"`
+	AvgConcurrencyWaitTime      *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	AvgCpuTime                  *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDiskReads                *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	AvgDiskWrites               *float64 `json:"AvgDiskWrites,omitempty" xml:"AvgDiskWrites,omitempty"`
+	AvgElapsedTime              *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgRowProcessed             *float64 `json:"AvgRowProcessed,omitempty" xml:"AvgRowProcessed,omitempty"`
+	AvgUserIoWaitTime           *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	CollectTimeUs               *int64   `json:"CollectTimeUs,omitempty" xml:"CollectTimeUs,omitempty"`
+	DelayedLargeQueryPercentage *float64 `json:"DelayedLargeQueryPercentage,omitempty" xml:"DelayedLargeQueryPercentage,omitempty"`
+	ExecPs                      *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	Executions                  *int64   `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FirstLoadTime               *string  `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
+	FirstLoadTimeUs             *int64   `json:"FirstLoadTimeUs,omitempty" xml:"FirstLoadTimeUs,omitempty"`
+	HitDiagnosis                *bool    `json:"HitDiagnosis,omitempty" xml:"HitDiagnosis,omitempty"`
+	HitPercentage               *float64 `json:"HitPercentage,omitempty" xml:"HitPercentage,omitempty"`
+	LargeQueryPercentage        *float64 `json:"LargeQueryPercentage,omitempty" xml:"LargeQueryPercentage,omitempty"`
+	MergedVersion               *int64   `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	ObDbId                      *int64   `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
+	// server  ID。
+	ObServerId  *int64  `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
+	OutlineData *string `json:"OutlineData,omitempty" xml:"OutlineData,omitempty"`
+	// Outline ID。
+	OutlineId         *int64   `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	PlanHash          *string  `json:"PlanHash,omitempty" xml:"PlanHash,omitempty"`
+	PlanId            *int64   `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanSize          *int64   `json:"PlanSize,omitempty" xml:"PlanSize,omitempty"`
+	PlanType          *string  `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	PlanUnionHash     *string  `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
+	SchemaVersion     *int64   `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+	Server            *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	ServerId          *int64   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	TableScan         *bool    `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	TimeoutPercentage *float64 `json:"TimeoutPercentage,omitempty" xml:"TimeoutPercentage,omitempty"`
+	Uid               *string  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s DescribeOasSQLPlansResponseBodyDataPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLPlansResponseBodyDataPlans) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgApplicationWaitTime(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgBufferGets(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgBufferGets = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgConcurrencyWaitTime(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgCpuTime(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgDiskReads(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgDiskWrites(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgDiskWrites = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgElapsedTime(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgRowProcessed(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgRowProcessed = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetAvgUserIoWaitTime(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.AvgUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetCollectTimeUs(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.CollectTimeUs = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetDelayedLargeQueryPercentage(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.DelayedLargeQueryPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetExecPs(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.ExecPs = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetExecutions(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetFirstLoadTime(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.FirstLoadTime = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetFirstLoadTimeUs(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.FirstLoadTimeUs = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetHitDiagnosis(v bool) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.HitDiagnosis = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetHitPercentage(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.HitPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetLargeQueryPercentage(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.LargeQueryPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetMergedVersion(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.MergedVersion = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetObDbId(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.ObDbId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetObServerId(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.ObServerId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetOutlineData(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.OutlineData = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetOutlineId(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.OutlineId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetPlanHash(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.PlanHash = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetPlanId(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetPlanSize(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.PlanSize = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetPlanType(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.PlanType = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetPlanUnionHash(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.PlanUnionHash = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetSchemaVersion(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.SchemaVersion = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetServer(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetServerId(v int64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.ServerId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetTableScan(v bool) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.TableScan = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetTimeoutPercentage(v float64) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.TimeoutPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetUid(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.Uid = &v
+	return s
+}
+
+type DescribeOasSQLPlansResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOasSQLPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOasSQLPlansResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSQLPlansResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSQLPlansResponse) SetHeaders(v map[string]*string) *DescribeOasSQLPlansResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponse) SetStatusCode(v int32) *DescribeOasSQLPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponse) SetBody(v *DescribeOasSQLPlansResponseBody) *DescribeOasSQLPlansResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOasSlowSQLListRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FilterCondition *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeIp          *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	SearchKeyWord   *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	SearchParam     *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
+	SearchRule      *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	SqlId           *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextLength   *int64  `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeOasSlowSQLListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSlowSQLListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetAcceptLanguage(v string) *DescribeOasSlowSQLListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetDbName(v string) *DescribeOasSlowSQLListRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetEndTime(v string) *DescribeOasSlowSQLListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetFilterCondition(v string) *DescribeOasSlowSQLListRequest {
+	s.FilterCondition = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetInstanceId(v string) *DescribeOasSlowSQLListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetNodeIp(v string) *DescribeOasSlowSQLListRequest {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetSearchKeyWord(v string) *DescribeOasSlowSQLListRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetSearchParam(v string) *DescribeOasSlowSQLListRequest {
+	s.SearchParam = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetSearchRule(v string) *DescribeOasSlowSQLListRequest {
+	s.SearchRule = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetSearchValue(v string) *DescribeOasSlowSQLListRequest {
+	s.SearchValue = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetSqlId(v string) *DescribeOasSlowSQLListRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetSqlTextLength(v int64) *DescribeOasSlowSQLListRequest {
+	s.SqlTextLength = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetStartTime(v string) *DescribeOasSlowSQLListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetTenantId(v string) *DescribeOasSlowSQLListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeOasSlowSQLListResponseBody struct {
+	Data      []*DescribeOasSlowSQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOasSlowSQLListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSlowSQLListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSlowSQLListResponseBody) SetData(v []*DescribeOasSlowSQLListResponseBodyData) *DescribeOasSlowSQLListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBody) SetRequestId(v string) *DescribeOasSlowSQLListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOasSlowSQLListResponseBodyData struct {
+	AvgAffectedRows        *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	AvgApplicationWaitTime *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	AvgBlockCacheHit       *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	AvgBlockIndexCacheHit  *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	AvgBloomFilterCacheHit *float64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	AvgConcurrencyWaitTime *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	AvgCpuTime             *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDecodeTime          *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	AvgDiskReads           *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	AvgElapsedTime         *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgExecuteTime         *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	AvgExecutorRpcCount    *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	AvgExpectedWorkerCount *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
+	AvgGetPlanTime         *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	AvgLogicalReads        *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgMemstoreReadRows    *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	AvgNetTime             *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	AvgNetWaitTime         *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	AvgPartitionCount      *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	AvgQueueTime           *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	AvgReturnRows          *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	AvgRowCacheHit         *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	AvgRpcCount            *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	AvgScheduleTime        *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	AvgSsstoreReadRows     *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	AvgUsedWorkerCount     *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	AvgUserIoWaitTime      *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	AvgWaitCount           *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	AvgWaitTime            *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	ClientIp               *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	DbName                 *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DistPlanPercentage     *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	ExecPs                 *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	Executions             *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FailCount              *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailPercentage         *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	Inner                  *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	LocalPlanPercentage    *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	MaxAffectedRows        *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	MaxApplicationWaitTime *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	MaxConcurrencyWaitTime *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
+	MaxCpuTime             *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	MaxDiskReads           *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	MaxElapsedTime         *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	MaxReturnRows          *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	MaxUserIoWaitTime      *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	MaxWaitTime            *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	MissPlanPercentage     *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	MissPlans              *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	RemotePlanPercentage   *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	RemotePlans            *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RetCode4012Count       *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	RetCode4013Count       *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	RetCode5001Count       *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	RetCode5024Count       *int64   `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	RetCode5167Count       *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	RetCode5217Count       *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	RetCode6002Count       *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	RetryCount             *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RpcCount               *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	Server                 *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	ServerIp               *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerPort             *int64   `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
+	// SQL ID。
+	SqlId                       *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextShort                *string  `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	SqlType                     *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
+	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	TotalWaitTime               *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WaitEvent                   *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+}
+
+func (s DescribeOasSlowSQLListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSlowSQLListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgAffectedRows(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgApplicationWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgBlockCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgBlockCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgBlockIndexCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgBlockIndexCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgBloomFilterCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgBloomFilterCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgConcurrencyWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgDecodeTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgDecodeTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgDiskReads(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgElapsedTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgExecuteTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgExecuteTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgExecutorRpcCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgExecutorRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgExpectedWorkerCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgExpectedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgGetPlanTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgGetPlanTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgLogicalReads(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgMemstoreReadRows(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgMemstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgNetTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgNetTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgNetWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgNetWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgPartitionCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgPartitionCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgQueueTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgQueueTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgReturnRows(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgRowCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgRowCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgRpcCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgScheduleTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgScheduleTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgSsstoreReadRows(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgSsstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgUsedWorkerCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgUsedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgUserIoWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgWaitCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgWaitCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetClientIp(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetDbName(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetDistPlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.DistPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetExecPs(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.ExecPs = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetExecutions(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetFailCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.FailCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetFailPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.FailPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetInner(v bool) *DescribeOasSlowSQLListResponseBodyData {
+	s.Inner = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetLocalPlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.LocalPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxAffectedRows(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxApplicationWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxConcurrencyWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxCpuTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxDiskReads(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxElapsedTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxReturnRows(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxUserIoWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMaxWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MaxWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMissPlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MissPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMissPlans(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.MissPlans = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRemotePlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RemotePlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRemotePlans(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RemotePlans = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode4012Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetCode4012Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode4013Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetCode4013Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5001Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetCode5001Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5024Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetCode5024Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5167Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetCode5167Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5217Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetCode5217Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode6002Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetCode6002Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetryCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRpcCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.RpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetServer(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetServerIp(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetServerPort(v int64) *DescribeOasSlowSQLListResponseBodyData {
+	s.ServerPort = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSqlId(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSqlTextShort(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.SqlTextShort = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSqlType(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetStrongConsistencyPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.StrongConsistencyPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSumElapsedTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.SumElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSumLogicalReads(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.SumLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSumWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.SumWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetTableScanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.TableScanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetTotalWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.TotalWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetUserName(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetWaitEvent(v string) *DescribeOasSlowSQLListResponseBodyData {
+	s.WaitEvent = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetWeakConsistencyPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.WeakConsistencyPercentage = &v
+	return s
+}
+
+type DescribeOasSlowSQLListResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOasSlowSQLListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOasSlowSQLListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSlowSQLListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSlowSQLListResponse) SetHeaders(v map[string]*string) *DescribeOasSlowSQLListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponse) SetStatusCode(v int32) *DescribeOasSlowSQLListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponse) SetBody(v *DescribeOasSlowSQLListResponseBody) *DescribeOasSlowSQLListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOasTopSQLListRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FilterCondition *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeIp          *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	SearchKeyWord   *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	SearchParam     *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
+	SearchRule      *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	SqlId           *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextLength   *int64  `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeOasTopSQLListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasTopSQLListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasTopSQLListRequest) SetAcceptLanguage(v string) *DescribeOasTopSQLListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetDbName(v string) *DescribeOasTopSQLListRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetEndTime(v string) *DescribeOasTopSQLListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetFilterCondition(v string) *DescribeOasTopSQLListRequest {
+	s.FilterCondition = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetInstanceId(v string) *DescribeOasTopSQLListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetNodeIp(v string) *DescribeOasTopSQLListRequest {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetSearchKeyWord(v string) *DescribeOasTopSQLListRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetSearchParam(v string) *DescribeOasTopSQLListRequest {
+	s.SearchParam = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetSearchRule(v string) *DescribeOasTopSQLListRequest {
+	s.SearchRule = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetSearchValue(v string) *DescribeOasTopSQLListRequest {
+	s.SearchValue = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetSqlId(v string) *DescribeOasTopSQLListRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetSqlTextLength(v int64) *DescribeOasTopSQLListRequest {
+	s.SqlTextLength = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetStartTime(v string) *DescribeOasTopSQLListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetTenantId(v string) *DescribeOasTopSQLListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeOasTopSQLListResponseBody struct {
+	Data      []*DescribeOasTopSQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOasTopSQLListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasTopSQLListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasTopSQLListResponseBody) SetData(v []*DescribeOasTopSQLListResponseBodyData) *DescribeOasTopSQLListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBody) SetRequestId(v string) *DescribeOasTopSQLListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOasTopSQLListResponseBodyData struct {
+	AvgAffectedRows        *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	AvgApplicationWaitTime *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	AvgBlockCacheHit       *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	AvgBlockIndexCacheHit  *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	AvgBloomFilterCacheHit *float64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	AvgConcurrencyWaitTime *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	AvgCpuTime             *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDecodeTime          *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	AvgDiskReads           *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	AvgElapsedTime         *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgExecuteTime         *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	AvgExecutorRpcCount    *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	AvgExpectedWorkerCount *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
+	AvgGetPlanTime         *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	AvgLogicalReads        *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgMemstoreReadRows    *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	AvgNetTime             *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	AvgNetWaitTime         *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	AvgPartitionCount      *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	AvgQueueTime           *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	AvgReturnRows          *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	AvgRowCacheHit         *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	AvgRpcCount            *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	AvgScheduleTime        *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	AvgSsstoreReadRows     *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	AvgUsedWorkerCount     *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	AvgUserIoWaitTime      *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	AvgWaitCount           *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	AvgWaitTime            *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	ClientIp               *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	CpuPercentage          *float64 `json:"CpuPercentage,omitempty" xml:"CpuPercentage,omitempty"`
+	DbName                 *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DistPlanPercentage     *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	ExecPs                 *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	Executions             *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FailCount              *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailPercentage         *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	Inner                  *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	LocalPlanPercentage    *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	MaxAffectedRows        *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	MaxApplicationWaitTime *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	MaxConcurrencyWaitTime *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
+	MaxCpuTime             *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	MaxDiskReads           *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	MaxElapsedTime         *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	MaxReturnRows          *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	MaxUserIoWaitTime      *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	MaxWaitTime            *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	MissPlanPercentage     *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	MissPlans              *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	RemotePlanPercentage   *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	RemotePlans            *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RetCode4012Count       *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	RetCode4013Count       *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	RetCode5001Count       *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	RetCode5024Count       *int64   `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	RetCode5167Count       *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	RetCode5217Count       *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	RetCode6002Count       *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	RetryCount             *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RpcCount               *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	Server                 *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	ServerIp               *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerPort             *int64   `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
+	// SQL ID。
+	SqlId                       *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextShort                *string  `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	SqlType                     *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
+	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	TotalWaitTime               *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WaitEvent                   *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+}
+
+func (s DescribeOasTopSQLListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasTopSQLListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgAffectedRows(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgApplicationWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgBlockCacheHit(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgBlockCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgBlockIndexCacheHit(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgBlockIndexCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgBloomFilterCacheHit(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgBloomFilterCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgConcurrencyWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgDecodeTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgDecodeTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgDiskReads(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgElapsedTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgExecuteTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgExecuteTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgExecutorRpcCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgExecutorRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgExpectedWorkerCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgExpectedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgGetPlanTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgGetPlanTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgLogicalReads(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgMemstoreReadRows(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgMemstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgNetTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgNetTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgNetWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgNetWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgPartitionCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgPartitionCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgQueueTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgQueueTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgReturnRows(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgRowCacheHit(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgRowCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgRpcCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgScheduleTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgScheduleTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgSsstoreReadRows(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgSsstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgUsedWorkerCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgUsedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgUserIoWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgWaitCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgWaitCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetClientIp(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetCpuPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.CpuPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetDbName(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetDistPlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.DistPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetExecPs(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.ExecPs = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetExecutions(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetFailCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.FailCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetFailPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.FailPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetInner(v bool) *DescribeOasTopSQLListResponseBodyData {
+	s.Inner = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetLocalPlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.LocalPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxAffectedRows(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxApplicationWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxConcurrencyWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxCpuTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxDiskReads(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxElapsedTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxReturnRows(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxUserIoWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMaxWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MaxWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMissPlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MissPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetMissPlans(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.MissPlans = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRemotePlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.RemotePlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRemotePlans(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.RemotePlans = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode4012Count(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetCode4012Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode4013Count(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetCode4013Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode5001Count(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetCode5001Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode5024Count(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetCode5024Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode5167Count(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetCode5167Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode5217Count(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetCode5217Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode6002Count(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetCode6002Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetryCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetRpcCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.RpcCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetServer(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetServerIp(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetServerPort(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.ServerPort = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetSqlId(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetSqlTextShort(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.SqlTextShort = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetSqlType(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetStrongConsistencyPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.StrongConsistencyPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetSumElapsedTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.SumElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetSumLogicalReads(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.SumLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetSumWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.SumWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetTableScanPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.TableScanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetTotalWaitTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.TotalWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetUserName(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetWaitEvent(v string) *DescribeOasTopSQLListResponseBodyData {
+	s.WaitEvent = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetWeakConsistencyPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.WeakConsistencyPercentage = &v
+	return s
+}
+
+type DescribeOasTopSQLListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOasTopSQLListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOasTopSQLListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasTopSQLListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasTopSQLListResponse) SetHeaders(v map[string]*string) *DescribeOasTopSQLListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponse) SetStatusCode(v int32) *DescribeOasTopSQLListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponse) SetBody(v *DescribeOasTopSQLListResponseBody) *DescribeOasTopSQLListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeOmsOpenAPIProjectRequest struct {
 	// The page number, which takes effect in a pagination query.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -8598,6 +11418,425 @@ func (s *DescribeSQLPlansResponse) SetBody(v *DescribeSQLPlansResponseBody) *Des
 	return s
 }
 
+type DescribeSQLSamplesRequest struct {
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// SQL ID。
+	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeSQLSamplesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLSamplesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLSamplesRequest) SetDbName(v string) *DescribeSQLSamplesRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesRequest) SetEndTime(v string) *DescribeSQLSamplesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesRequest) SetInstanceId(v string) *DescribeSQLSamplesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesRequest) SetSqlId(v string) *DescribeSQLSamplesRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesRequest) SetStartTime(v string) *DescribeSQLSamplesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesRequest) SetTenantId(v string) *DescribeSQLSamplesRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeSQLSamplesResponseBody struct {
+	Data      []*DescribeSQLSamplesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSQLSamplesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLSamplesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLSamplesResponseBody) SetData(v []*DescribeSQLSamplesResponseBodyData) *DescribeSQLSamplesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBody) SetRequestId(v string) *DescribeSQLSamplesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSQLSamplesResponseBodyData struct {
+	AffectedRows        *float64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
+	ApplicationWaitTime *float64 `json:"ApplicationWaitTime,omitempty" xml:"ApplicationWaitTime,omitempty"`
+	BlockCacheHit       *float64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
+	BlockIndexCacheHit  *float64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
+	BloomFilterCacheHit *float64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
+	ClientIp            *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ClientPort          *string  `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	ConcurrencyWaitTime *float64 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
+	ConsistencyLevel    *string  `json:"ConsistencyLevel,omitempty" xml:"ConsistencyLevel,omitempty"`
+	CpuTime             *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	DbName              *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DecodeTime          *float64 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
+	DiskReads           *float64 `json:"DiskReads,omitempty" xml:"DiskReads,omitempty"`
+	ElapsedTime         *float64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	ExecuteTime         *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	ExecutorRpc         *float64 `json:"ExecutorRpc,omitempty" xml:"ExecutorRpc,omitempty"`
+	ExpectedWorkerCount *float64 `json:"ExpectedWorkerCount,omitempty" xml:"ExpectedWorkerCount,omitempty"`
+	GetPlanTime         *float64 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
+	HitPlan             *float64 `json:"HitPlan,omitempty" xml:"HitPlan,omitempty"`
+	Inner               *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	MemstoreReadRows    *float64 `json:"MemstoreReadRows,omitempty" xml:"MemstoreReadRows,omitempty"`
+	NetTime             *float64 `json:"NetTime,omitempty" xml:"NetTime,omitempty"`
+	NetWaitTime         *float64 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
+	ObDbId              *float64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
+	// server  ID。
+	ObServerId      *float64 `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
+	ObUserId        *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
+	PartitionCount  *float64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	PlanId          *float64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanType        *string  `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	QueueTime       *float64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestTime     *string  `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	RetCode         *float64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetryCount      *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	ReturnRows      *float64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	RowCacheHit     *float64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
+	RpcCount        *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	ScheduleTime    *float64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	Server          *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	SqlType         *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	SsstoreReadRows *float64 `json:"SsstoreReadRows,omitempty" xml:"SsstoreReadRows,omitempty"`
+	Statement       *string  `json:"Statement,omitempty" xml:"Statement,omitempty"`
+	TableScan       *float64 `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	TraceId         *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// transaction hash。
+	TransHash       *string  `json:"TransHash,omitempty" xml:"TransHash,omitempty"`
+	UsedWorkerCount *float64 `json:"UsedWorkerCount,omitempty" xml:"UsedWorkerCount,omitempty"`
+	UserIoWaitTime  *float64 `json:"UserIoWaitTime,omitempty" xml:"UserIoWaitTime,omitempty"`
+	UserName        *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WaitCount       *float64 `json:"WaitCount,omitempty" xml:"WaitCount,omitempty"`
+	WaitEvent       *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	WaitTime        *float64 `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+}
+
+func (s DescribeSQLSamplesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLSamplesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetAffectedRows(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.AffectedRows = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetApplicationWaitTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetBlockCacheHit(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.BlockCacheHit = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetBlockIndexCacheHit(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.BlockIndexCacheHit = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetBloomFilterCacheHit(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.BloomFilterCacheHit = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetClientIp(v string) *DescribeSQLSamplesResponseBodyData {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetClientPort(v string) *DescribeSQLSamplesResponseBodyData {
+	s.ClientPort = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetConcurrencyWaitTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetConsistencyLevel(v string) *DescribeSQLSamplesResponseBodyData {
+	s.ConsistencyLevel = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetCpuTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.CpuTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetDbName(v string) *DescribeSQLSamplesResponseBodyData {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetDecodeTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.DecodeTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetDiskReads(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.DiskReads = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetElapsedTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ElapsedTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetExecuteTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetExecutorRpc(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ExecutorRpc = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetExpectedWorkerCount(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ExpectedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetGetPlanTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.GetPlanTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetHitPlan(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.HitPlan = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetInner(v bool) *DescribeSQLSamplesResponseBodyData {
+	s.Inner = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetMemstoreReadRows(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.MemstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetNetTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.NetTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetNetWaitTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.NetWaitTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetObDbId(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ObDbId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetObServerId(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ObServerId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetObUserId(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ObUserId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetPartitionCount(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetPlanId(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetPlanType(v string) *DescribeSQLSamplesResponseBodyData {
+	s.PlanType = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetQueueTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.QueueTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetRequestId(v string) *DescribeSQLSamplesResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetRequestTime(v string) *DescribeSQLSamplesResponseBodyData {
+	s.RequestTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetRetCode(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.RetCode = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetRetryCount(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetReturnRows(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ReturnRows = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetRowCacheHit(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.RowCacheHit = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetRpcCount(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.RpcCount = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetScheduleTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetServer(v string) *DescribeSQLSamplesResponseBodyData {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetSqlType(v string) *DescribeSQLSamplesResponseBodyData {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetSsstoreReadRows(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.SsstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetStatement(v string) *DescribeSQLSamplesResponseBodyData {
+	s.Statement = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetTableScan(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.TableScan = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetTraceId(v string) *DescribeSQLSamplesResponseBodyData {
+	s.TraceId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetTransHash(v string) *DescribeSQLSamplesResponseBodyData {
+	s.TransHash = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetUsedWorkerCount(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.UsedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetUserIoWaitTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.UserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetUserName(v string) *DescribeSQLSamplesResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetWaitCount(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.WaitCount = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetWaitEvent(v string) *DescribeSQLSamplesResponseBodyData {
+	s.WaitEvent = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetWaitTime(v float64) *DescribeSQLSamplesResponseBodyData {
+	s.WaitTime = &v
+	return s
+}
+
+type DescribeSQLSamplesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSQLSamplesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSQLSamplesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLSamplesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLSamplesResponse) SetHeaders(v map[string]*string) *DescribeSQLSamplesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponse) SetStatusCode(v int32) *DescribeSQLSamplesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponse) SetBody(v *DescribeSQLSamplesResponseBody) *DescribeSQLSamplesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSecurityIpGroupsRequest struct {
 	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -10728,6 +13967,122 @@ func (s *DescribeTenantSecurityConfigsResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeTenantSecurityConfigsResponse) SetBody(v *DescribeTenantSecurityConfigsResponseBody) *DescribeTenantSecurityConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTenantSecurityIpGroupsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeTenantSecurityIpGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityIpGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityIpGroupsRequest) SetInstanceId(v string) *DescribeTenantSecurityIpGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsRequest) SetTenantId(v string) *DescribeTenantSecurityIpGroupsRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeTenantSecurityIpGroupsResponseBody struct {
+	RequestId        *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityIpGroups []*DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Repeated"`
+	TotalCount       *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTenantSecurityIpGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityIpGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponseBody) SetRequestId(v string) *DescribeTenantSecurityIpGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponseBody) SetSecurityIpGroups(v []*DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) *DescribeTenantSecurityIpGroupsResponseBody {
+	s.SecurityIpGroups = v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponseBody) SetTotalCount(v int32) *DescribeTenantSecurityIpGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups struct {
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	SecurityIpGroupType *string `json:"SecurityIpGroupType,omitempty" xml:"SecurityIpGroupType,omitempty"`
+	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) SetSecurityIpGroupName(v string) *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups {
+	s.SecurityIpGroupName = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) SetSecurityIpGroupType(v string) *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups {
+	s.SecurityIpGroupType = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) SetSecurityIps(v string) *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups {
+	s.SecurityIps = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) SetTenantId(v string) *DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeTenantSecurityIpGroupsResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTenantSecurityIpGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTenantSecurityIpGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityIpGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponse) SetHeaders(v map[string]*string) *DescribeTenantSecurityIpGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponse) SetStatusCode(v int32) *DescribeTenantSecurityIpGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityIpGroupsResponse) SetBody(v *DescribeTenantSecurityIpGroupsResponseBody) *DescribeTenantSecurityIpGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -13520,6 +16875,128 @@ func (s *ModifyTenantResourceResponse) SetStatusCode(v int32) *ModifyTenantResou
 }
 
 func (s *ModifyTenantResourceResponse) SetBody(v *ModifyTenantResourceResponseBody) *ModifyTenantResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTenantSecurityIpGroupRequest struct {
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ModifyTenantSecurityIpGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantSecurityIpGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantSecurityIpGroupRequest) SetInstanceId(v string) *ModifyTenantSecurityIpGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupRequest) SetSecurityIpGroupName(v string) *ModifyTenantSecurityIpGroupRequest {
+	s.SecurityIpGroupName = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupRequest) SetSecurityIps(v string) *ModifyTenantSecurityIpGroupRequest {
+	s.SecurityIps = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupRequest) SetTenantId(v string) *ModifyTenantSecurityIpGroupRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ModifyTenantSecurityIpGroupResponseBody struct {
+	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityIpGroup *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup `json:"SecurityIpGroup,omitempty" xml:"SecurityIpGroup,omitempty" type:"Struct"`
+}
+
+func (s ModifyTenantSecurityIpGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantSecurityIpGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantSecurityIpGroupResponseBody) SetRequestId(v string) *ModifyTenantSecurityIpGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupResponseBody) SetSecurityIpGroup(v *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) *ModifyTenantSecurityIpGroupResponseBody {
+	s.SecurityIpGroup = v
+	return s
+}
+
+type ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup struct {
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) SetInstanceId(v string) *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) SetSecurityIpGroupName(v string) *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.SecurityIpGroupName = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) SetSecurityIps(v string) *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.SecurityIps = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) SetTenantId(v string) *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup {
+	s.TenantId = &v
+	return s
+}
+
+type ModifyTenantSecurityIpGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTenantSecurityIpGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyTenantSecurityIpGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantSecurityIpGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantSecurityIpGroupResponse) SetHeaders(v map[string]*string) *ModifyTenantSecurityIpGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupResponse) SetStatusCode(v int32) *ModifyTenantSecurityIpGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTenantSecurityIpGroupResponse) SetBody(v *ModifyTenantSecurityIpGroupResponseBody) *ModifyTenantSecurityIpGroupResponse {
 	s.Body = v
 	return s
 }
@@ -16563,6 +20040,110 @@ func (s *StopOmsOpenAPIProjectResponse) SetBody(v *StopOmsOpenAPIProjectResponse
 	return s
 }
 
+type SwitchoverInstanceRequest struct {
+	Forced           *bool   `json:"Forced,omitempty" xml:"Forced,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s SwitchoverInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchoverInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchoverInstanceRequest) SetForced(v bool) *SwitchoverInstanceRequest {
+	s.Forced = &v
+	return s
+}
+
+func (s *SwitchoverInstanceRequest) SetInstanceId(v string) *SwitchoverInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SwitchoverInstanceRequest) SetTargetInstanceId(v string) *SwitchoverInstanceRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type SwitchoverInstanceResponseBody struct {
+	Data      *SwitchoverInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SwitchoverInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchoverInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchoverInstanceResponseBody) SetData(v *SwitchoverInstanceResponseBodyData) *SwitchoverInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SwitchoverInstanceResponseBody) SetRequestId(v string) *SwitchoverInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SwitchoverInstanceResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SwitchoverInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchoverInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchoverInstanceResponseBodyData) SetMessage(v string) *SwitchoverInstanceResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *SwitchoverInstanceResponseBodyData) SetSuccess(v bool) *SwitchoverInstanceResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type SwitchoverInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwitchoverInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SwitchoverInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchoverInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchoverInstanceResponse) SetHeaders(v map[string]*string) *SwitchoverInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SwitchoverInstanceResponse) SetStatusCode(v int32) *SwitchoverInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SwitchoverInstanceResponse) SetBody(v *SwitchoverInstanceResponseBody) *SwitchoverInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -17163,6 +20744,62 @@ func (client *Client) CreateTenantReadOnlyConnection(request *CreateTenantReadOn
 	return _result, _err
 }
 
+func (client *Client) CreateTenantSecurityIpGroupWithOptions(request *CreateTenantSecurityIpGroupRequest, runtime *util.RuntimeOptions) (_result *CreateTenantSecurityIpGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIpGroupName)) {
+		body["SecurityIpGroupName"] = request.SecurityIpGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIps)) {
+		body["SecurityIps"] = request.SecurityIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTenantSecurityIpGroup"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTenantSecurityIpGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTenantSecurityIpGroup(request *CreateTenantSecurityIpGroupRequest) (_result *CreateTenantSecurityIpGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTenantSecurityIpGroupResponse{}
+	_body, _err := client.CreateTenantSecurityIpGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateTenantUserWithOptions(request *CreateTenantUserRequest, runtime *util.RuntimeOptions) (_result *CreateTenantUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17445,6 +21082,58 @@ func (client *Client) DeleteSecurityIpGroup(request *DeleteSecurityIpGroupReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecurityIpGroupResponse{}
 	_body, _err := client.DeleteSecurityIpGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTenantSecurityIpGroupWithOptions(request *DeleteTenantSecurityIpGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteTenantSecurityIpGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIpGroupName)) {
+		body["SecurityIpGroupName"] = request.SecurityIpGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTenantSecurityIpGroup"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTenantSecurityIpGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTenantSecurityIpGroup(request *DeleteTenantSecurityIpGroupRequest) (_result *DeleteTenantSecurityIpGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTenantSecurityIpGroupResponse{}
+	_body, _err := client.DeleteTenantSecurityIpGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18298,6 +21987,506 @@ func (client *Client) DescribeNodeMetrics(request *DescribeNodeMetricsRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeOasAnomalySQLListWithOptions(request *DescribeOasAnomalySQLListRequest, runtime *util.RuntimeOptions) (_result *DescribeOasAnomalySQLListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Current)) {
+		body["Current"] = request.Current
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterCondition)) {
+		body["FilterCondition"] = request.FilterCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
+		body["NodeIp"] = request.NodeIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWord)) {
+		body["SearchKeyWord"] = request.SearchKeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchParam)) {
+		body["SearchParam"] = request.SearchParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchRule)) {
+		body["SearchRule"] = request.SearchRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchValue)) {
+		body["SearchValue"] = request.SearchValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlTextLength)) {
+		body["SqlTextLength"] = request.SqlTextLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOasAnomalySQLList"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOasAnomalySQLListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOasAnomalySQLList(request *DescribeOasAnomalySQLListRequest) (_result *DescribeOasAnomalySQLListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOasAnomalySQLListResponse{}
+	_body, _err := client.DescribeOasAnomalySQLListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSQLDetailsWithOptions(request *DescribeOasSQLDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeOasSQLDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOasSQLDetails"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOasSQLDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSQLDetails(request *DescribeOasSQLDetailsRequest) (_result *DescribeOasSQLDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOasSQLDetailsResponse{}
+	_body, _err := client.DescribeOasSQLDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSQLHistoryListWithOptions(request *DescribeOasSQLHistoryListRequest, runtime *util.RuntimeOptions) (_result *DescribeOasSQLHistoryListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
+		body["NodeIp"] = request.NodeIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOasSQLHistoryList"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOasSQLHistoryListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSQLHistoryList(request *DescribeOasSQLHistoryListRequest) (_result *DescribeOasSQLHistoryListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOasSQLHistoryListResponse{}
+	_body, _err := client.DescribeOasSQLHistoryListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSQLPlansWithOptions(request *DescribeOasSQLPlansRequest, runtime *util.RuntimeOptions) (_result *DescribeOasSQLPlansResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOasSQLPlans"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOasSQLPlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSQLPlans(request *DescribeOasSQLPlansRequest) (_result *DescribeOasSQLPlansResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOasSQLPlansResponse{}
+	_body, _err := client.DescribeOasSQLPlansWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSlowSQLListWithOptions(request *DescribeOasSlowSQLListRequest, runtime *util.RuntimeOptions) (_result *DescribeOasSlowSQLListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterCondition)) {
+		body["FilterCondition"] = request.FilterCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
+		body["NodeIp"] = request.NodeIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWord)) {
+		body["SearchKeyWord"] = request.SearchKeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchParam)) {
+		body["SearchParam"] = request.SearchParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchRule)) {
+		body["SearchRule"] = request.SearchRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchValue)) {
+		body["SearchValue"] = request.SearchValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlTextLength)) {
+		body["SqlTextLength"] = request.SqlTextLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOasSlowSQLList"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOasSlowSQLListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOasSlowSQLList(request *DescribeOasSlowSQLListRequest) (_result *DescribeOasSlowSQLListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOasSlowSQLListResponse{}
+	_body, _err := client.DescribeOasSlowSQLListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOasTopSQLListWithOptions(request *DescribeOasTopSQLListRequest, runtime *util.RuntimeOptions) (_result *DescribeOasTopSQLListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterCondition)) {
+		body["FilterCondition"] = request.FilterCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
+		body["NodeIp"] = request.NodeIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWord)) {
+		body["SearchKeyWord"] = request.SearchKeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchParam)) {
+		body["SearchParam"] = request.SearchParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchRule)) {
+		body["SearchRule"] = request.SearchRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchValue)) {
+		body["SearchValue"] = request.SearchValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlTextLength)) {
+		body["SqlTextLength"] = request.SqlTextLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOasTopSQLList"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOasTopSQLListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOasTopSQLList(request *DescribeOasTopSQLListRequest) (_result *DescribeOasTopSQLListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOasTopSQLListResponse{}
+	_body, _err := client.DescribeOasTopSQLListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeOmsOpenAPIProjectWithOptions(request *DescribeOmsOpenAPIProjectRequest, runtime *util.RuntimeOptions) (_result *DescribeOmsOpenAPIProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18806,6 +22995,70 @@ func (client *Client) DescribeSQLPlans(request *DescribeSQLPlansRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DescribeSQLSamplesWithOptions(request *DescribeSQLSamplesRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLSamplesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSQLSamples"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSQLSamplesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSQLSamples(request *DescribeSQLSamplesRequest) (_result *DescribeSQLSamplesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSQLSamplesResponse{}
+	_body, _err := client.DescribeSQLSamplesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSecurityIpGroupsWithOptions(request *DescribeSecurityIpGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityIpGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19185,6 +23438,54 @@ func (client *Client) DescribeTenantSecurityConfigs(request *DescribeTenantSecur
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTenantSecurityConfigsResponse{}
 	_body, _err := client.DescribeTenantSecurityConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTenantSecurityIpGroupsWithOptions(request *DescribeTenantSecurityIpGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantSecurityIpGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTenantSecurityIpGroups"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTenantSecurityIpGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTenantSecurityIpGroups(request *DescribeTenantSecurityIpGroupsRequest) (_result *DescribeTenantSecurityIpGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTenantSecurityIpGroupsResponse{}
+	_body, _err := client.DescribeTenantSecurityIpGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20228,6 +24529,62 @@ func (client *Client) ModifyTenantResource(request *ModifyTenantResourceRequest)
 	return _result, _err
 }
 
+func (client *Client) ModifyTenantSecurityIpGroupWithOptions(request *ModifyTenantSecurityIpGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyTenantSecurityIpGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIpGroupName)) {
+		body["SecurityIpGroupName"] = request.SecurityIpGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIps)) {
+		body["SecurityIps"] = request.SecurityIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTenantSecurityIpGroup"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTenantSecurityIpGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyTenantSecurityIpGroup(request *ModifyTenantSecurityIpGroupRequest) (_result *ModifyTenantSecurityIpGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTenantSecurityIpGroupResponse{}
+	_body, _err := client.ModifyTenantSecurityIpGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyTenantTagsWithOptions(request *ModifyTenantTagsRequest, runtime *util.RuntimeOptions) (_result *ModifyTenantTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20947,6 +25304,58 @@ func (client *Client) StopOmsOpenAPIProject(request *StopOmsOpenAPIProjectReques
 	runtime := &util.RuntimeOptions{}
 	_result = &StopOmsOpenAPIProjectResponse{}
 	_body, _err := client.StopOmsOpenAPIProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SwitchoverInstanceWithOptions(request *SwitchoverInstanceRequest, runtime *util.RuntimeOptions) (_result *SwitchoverInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Forced)) {
+		body["Forced"] = request.Forced
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
+		body["TargetInstanceId"] = request.TargetInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchoverInstance"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SwitchoverInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SwitchoverInstance(request *SwitchoverInstanceRequest) (_result *SwitchoverInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SwitchoverInstanceResponse{}
+	_body, _err := client.SwitchoverInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
