@@ -6373,6 +6373,7 @@ type DescribeTrFirewallV2RoutePolicyListRequest struct {
 	FirewallId  *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
 func (s DescribeTrFirewallV2RoutePolicyListRequest) String() string {
@@ -6403,8 +6404,14 @@ func (s *DescribeTrFirewallV2RoutePolicyListRequest) SetPageSize(v int32) *Descr
 	return s
 }
 
+func (s *DescribeTrFirewallV2RoutePolicyListRequest) SetPolicyId(v string) *DescribeTrFirewallV2RoutePolicyListRequest {
+	s.PolicyId = &v
+	return s
+}
+
 type DescribeTrFirewallV2RoutePolicyListResponseBody struct {
 	RequestId               *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount              *string                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TrFirewallRoutePolicies []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies `json:"TrFirewallRoutePolicies,omitempty" xml:"TrFirewallRoutePolicies,omitempty" type:"Repeated"`
 }
 
@@ -6418,6 +6425,11 @@ func (s DescribeTrFirewallV2RoutePolicyListResponseBody) GoString() string {
 
 func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) SetRequestId(v string) *DescribeTrFirewallV2RoutePolicyListResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) SetTotalCount(v string) *DescribeTrFirewallV2RoutePolicyListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -15163,6 +15175,10 @@ func (client *Client) DescribeTrFirewallV2RoutePolicyListWithOptions(request *De
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
 	}
 
 	req := &openapi.OpenApiRequest{
