@@ -115,6 +115,7 @@ func (s *CardOcrResponseBody) SetResult(v *CardOcrResponseBodyResult) *CardOcrRe
 
 type CardOcrResponseBodyResult struct {
 	ExtCardInfo   *string `json:"ExtCardInfo,omitempty" xml:"ExtCardInfo,omitempty"`
+	ExtIdInfo     *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
 	Passed        *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
 	SubCode       *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
@@ -130,6 +131,11 @@ func (s CardOcrResponseBodyResult) GoString() string {
 
 func (s *CardOcrResponseBodyResult) SetExtCardInfo(v string) *CardOcrResponseBodyResult {
 	s.ExtCardInfo = &v
+	return s
+}
+
+func (s *CardOcrResponseBodyResult) SetExtIdInfo(v string) *CardOcrResponseBodyResult {
+	s.ExtIdInfo = &v
 	return s
 }
 
@@ -1141,6 +1147,171 @@ func (s *DescribeTransactionsListResponse) SetBody(v *DescribeTransactionsListRe
 	return s
 }
 
+type DocOcrRequest struct {
+	DocType            *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	IdFaceQuality      *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	IdOcrPictureUrl    *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	MerchantBizId      *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	MerchantUserId     *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	Ocr                *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	ProductCode        *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Spoof              *string `json:"Spoof,omitempty" xml:"Spoof,omitempty"`
+}
+
+func (s DocOcrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrRequest) SetDocType(v string) *DocOcrRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetIdFaceQuality(v string) *DocOcrRequest {
+	s.IdFaceQuality = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetIdOcrPictureBase64(v string) *DocOcrRequest {
+	s.IdOcrPictureBase64 = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetIdOcrPictureUrl(v string) *DocOcrRequest {
+	s.IdOcrPictureUrl = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetMerchantBizId(v string) *DocOcrRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetMerchantUserId(v string) *DocOcrRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetOcr(v string) *DocOcrRequest {
+	s.Ocr = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetProductCode(v string) *DocOcrRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetSpoof(v string) *DocOcrRequest {
+	s.Spoof = &v
+	return s
+}
+
+type DocOcrResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DocOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s DocOcrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrResponseBody) SetCode(v string) *DocOcrResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DocOcrResponseBody) SetMessage(v string) *DocOcrResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DocOcrResponseBody) SetRequestId(v string) *DocOcrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DocOcrResponseBody) SetResult(v *DocOcrResponseBodyResult) *DocOcrResponseBody {
+	s.Result = v
+	return s
+}
+
+type DocOcrResponseBodyResult struct {
+	ExtIdInfo     *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	Passed        *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	SubCode       *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s DocOcrResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrResponseBodyResult) SetExtIdInfo(v string) *DocOcrResponseBodyResult {
+	s.ExtIdInfo = &v
+	return s
+}
+
+func (s *DocOcrResponseBodyResult) SetPassed(v string) *DocOcrResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *DocOcrResponseBodyResult) SetSubCode(v string) *DocOcrResponseBodyResult {
+	s.SubCode = &v
+	return s
+}
+
+func (s *DocOcrResponseBodyResult) SetTransactionId(v string) *DocOcrResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type DocOcrResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DocOcrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DocOcrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrResponse) SetHeaders(v map[string]*string) *DocOcrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DocOcrResponse) SetStatusCode(v int32) *DocOcrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DocOcrResponse) SetBody(v *DocOcrResponseBody) *DocOcrResponse {
+	s.Body = v
+	return s
+}
+
 type FaceCompareRequest struct {
 	MerchantBizId        *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	SourceFacePicture    *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
@@ -1724,6 +1895,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+ *
+ * @param request CardOcrRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CardOcrResponse
+ */
+// Deprecated
 func (client *Client) CardOcrWithOptions(request *CardOcrRequest, runtime *util.RuntimeOptions) (_result *CardOcrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1789,6 +1968,13 @@ func (client *Client) CardOcrWithOptions(request *CardOcrRequest, runtime *util.
 	return _result, _err
 }
 
+/**
+ * @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+ *
+ * @param request CardOcrRequest
+ * @return CardOcrResponse
+ */
+// Deprecated
 func (client *Client) CardOcr(request *CardOcrRequest) (_result *CardOcrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CardOcrResponse{}
@@ -2133,6 +2319,82 @@ func (client *Client) DescribeTransactionsList(request *DescribeTransactionsList
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTransactionsListResponse{}
 	_body, _err := client.DescribeTransactionsListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DocOcrWithOptions(request *DocOcrRequest, runtime *util.RuntimeOptions) (_result *DocOcrResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocType)) {
+		query["DocType"] = request.DocType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdFaceQuality)) {
+		query["IdFaceQuality"] = request.IdFaceQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
+		query["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureUrl)) {
+		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantUserId)) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ocr)) {
+		query["Ocr"] = request.Ocr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spoof)) {
+		query["Spoof"] = request.Spoof
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DocOcr"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DocOcrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DocOcr(request *DocOcrRequest) (_result *DocOcrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DocOcrResponse{}
+	_body, _err := client.DocOcrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
