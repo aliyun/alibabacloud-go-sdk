@@ -748,10 +748,11 @@ func (s *GetVideoTaskInfoResponseBodyData) SetType(v string) *GetVideoTaskInfoRe
 }
 
 type GetVideoTaskInfoResponseBodyDataTaskResult struct {
-	FailCode     *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	FailReason   *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	SubtitlesUrl *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
-	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	FailCode      *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	FailReason    *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	SubtitlesUrl  *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
+	VideoDuration *int32  `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
+	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 	// 字粒度的时间戳文件，特定任务支持
 	WordSubtitlesUrl *string `json:"WordSubtitlesUrl,omitempty" xml:"WordSubtitlesUrl,omitempty"`
 }
@@ -776,6 +777,11 @@ func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetFailReason(v string) *Ge
 
 func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetSubtitlesUrl(v string) *GetVideoTaskInfoResponseBodyDataTaskResult {
 	s.SubtitlesUrl = &v
+	return s
+}
+
+func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetVideoDuration(v int32) *GetVideoTaskInfoResponseBodyDataTaskResult {
+	s.VideoDuration = &v
 	return s
 }
 
@@ -930,6 +936,519 @@ func (s *LicenseAuthResponse) SetStatusCode(v int32) *LicenseAuthResponse {
 }
 
 func (s *LicenseAuthResponse) SetBody(v *LicenseAuthResponseBody) *LicenseAuthResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAvatarRequest struct {
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryAvatarRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarRequest) SetCode(v string) *QueryAvatarRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAvatarRequest) SetTenantId(v int64) *QueryAvatarRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryAvatarResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryAvatarResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAvatarResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarResponseBody) SetCode(v string) *QueryAvatarResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBody) SetData(v *QueryAvatarResponseBodyData) *QueryAvatarResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAvatarResponseBody) SetMessage(v string) *QueryAvatarResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBody) SetRequestId(v string) *QueryAvatarResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBody) SetSuccess(v bool) *QueryAvatarResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAvatarResponseBodyData struct {
+	AvatarType           *string                                          `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	Description          *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Image                *string                                          `json:"Image,omitempty" xml:"Image,omitempty"`
+	ModelType            *string                                          `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	Name                 *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Portrait             *string                                          `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	SupportedResolutions *QueryAvatarResponseBodyDataSupportedResolutions `json:"SupportedResolutions,omitempty" xml:"SupportedResolutions,omitempty" type:"Struct"`
+}
+
+func (s QueryAvatarResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarResponseBodyData) SetAvatarType(v string) *QueryAvatarResponseBodyData {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetDescription(v string) *QueryAvatarResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetImage(v string) *QueryAvatarResponseBodyData {
+	s.Image = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetModelType(v string) *QueryAvatarResponseBodyData {
+	s.ModelType = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetName(v string) *QueryAvatarResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetPortrait(v string) *QueryAvatarResponseBodyData {
+	s.Portrait = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetSupportedResolutions(v *QueryAvatarResponseBodyDataSupportedResolutions) *QueryAvatarResponseBodyData {
+	s.SupportedResolutions = v
+	return s
+}
+
+type QueryAvatarResponseBodyDataSupportedResolutions struct {
+	Offline []*QueryAvatarResponseBodyDataSupportedResolutionsOffline `json:"Offline,omitempty" xml:"Offline,omitempty" type:"Repeated"`
+	Online  []*QueryAvatarResponseBodyDataSupportedResolutionsOnline  `json:"Online,omitempty" xml:"Online,omitempty" type:"Repeated"`
+}
+
+func (s QueryAvatarResponseBodyDataSupportedResolutions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarResponseBodyDataSupportedResolutions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutions) SetOffline(v []*QueryAvatarResponseBodyDataSupportedResolutionsOffline) *QueryAvatarResponseBodyDataSupportedResolutions {
+	s.Offline = v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutions) SetOnline(v []*QueryAvatarResponseBodyDataSupportedResolutionsOnline) *QueryAvatarResponseBodyDataSupportedResolutions {
+	s.Online = v
+	return s
+}
+
+type QueryAvatarResponseBodyDataSupportedResolutionsOffline struct {
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s QueryAvatarResponseBodyDataSupportedResolutionsOffline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarResponseBodyDataSupportedResolutionsOffline) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutionsOffline) SetDesc(v string) *QueryAvatarResponseBodyDataSupportedResolutionsOffline {
+	s.Desc = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutionsOffline) SetHeight(v int32) *QueryAvatarResponseBodyDataSupportedResolutionsOffline {
+	s.Height = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutionsOffline) SetWidth(v int32) *QueryAvatarResponseBodyDataSupportedResolutionsOffline {
+	s.Width = &v
+	return s
+}
+
+type QueryAvatarResponseBodyDataSupportedResolutionsOnline struct {
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s QueryAvatarResponseBodyDataSupportedResolutionsOnline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarResponseBodyDataSupportedResolutionsOnline) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutionsOnline) SetDesc(v string) *QueryAvatarResponseBodyDataSupportedResolutionsOnline {
+	s.Desc = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutionsOnline) SetHeight(v int32) *QueryAvatarResponseBodyDataSupportedResolutionsOnline {
+	s.Height = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyDataSupportedResolutionsOnline) SetWidth(v int32) *QueryAvatarResponseBodyDataSupportedResolutionsOnline {
+	s.Width = &v
+	return s
+}
+
+type QueryAvatarResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAvatarResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarResponse) SetHeaders(v map[string]*string) *QueryAvatarResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAvatarResponse) SetStatusCode(v int32) *QueryAvatarResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAvatarResponse) SetBody(v *QueryAvatarResponseBody) *QueryAvatarResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAvatarListRequest struct {
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TenantId  *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryAvatarListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListRequest) SetModelType(v string) *QueryAvatarListRequest {
+	s.ModelType = &v
+	return s
+}
+
+func (s *QueryAvatarListRequest) SetPageNo(v int32) *QueryAvatarListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryAvatarListRequest) SetPageSize(v int32) *QueryAvatarListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAvatarListRequest) SetTenantId(v int64) *QueryAvatarListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryAvatarListResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryAvatarListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAvatarListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListResponseBody) SetCode(v string) *QueryAvatarListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBody) SetData(v *QueryAvatarListResponseBodyData) *QueryAvatarListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAvatarListResponseBody) SetMessage(v string) *QueryAvatarListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBody) SetRequestId(v string) *QueryAvatarListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBody) SetSuccess(v bool) *QueryAvatarListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAvatarListResponseBodyData struct {
+	List       []*QueryAvatarListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo     *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32                                 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s QueryAvatarListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListResponseBodyData) SetList(v []*QueryAvatarListResponseBodyDataList) *QueryAvatarListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyData) SetPageNo(v int32) *QueryAvatarListResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyData) SetPageSize(v int32) *QueryAvatarListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyData) SetTotalCount(v int32) *QueryAvatarListResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyData) SetTotalPage(v int32) *QueryAvatarListResponseBodyData {
+	s.TotalPage = &v
+	return s
+}
+
+type QueryAvatarListResponseBodyDataList struct {
+	AvatarType           *string                                                  `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	Code                 *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Description          *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Image                *string                                                  `json:"Image,omitempty" xml:"Image,omitempty"`
+	ModelType            *string                                                  `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	Name                 *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Portrait             *string                                                  `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	SupportedResolutions *QueryAvatarListResponseBodyDataListSupportedResolutions `json:"SupportedResolutions,omitempty" xml:"SupportedResolutions,omitempty" type:"Struct"`
+}
+
+func (s QueryAvatarListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetAvatarType(v string) *QueryAvatarListResponseBodyDataList {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetCode(v string) *QueryAvatarListResponseBodyDataList {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetDescription(v string) *QueryAvatarListResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetImage(v string) *QueryAvatarListResponseBodyDataList {
+	s.Image = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetModelType(v string) *QueryAvatarListResponseBodyDataList {
+	s.ModelType = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetName(v string) *QueryAvatarListResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetPortrait(v string) *QueryAvatarListResponseBodyDataList {
+	s.Portrait = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetSupportedResolutions(v *QueryAvatarListResponseBodyDataListSupportedResolutions) *QueryAvatarListResponseBodyDataList {
+	s.SupportedResolutions = v
+	return s
+}
+
+type QueryAvatarListResponseBodyDataListSupportedResolutions struct {
+	Offline []*QueryAvatarListResponseBodyDataListSupportedResolutionsOffline `json:"Offline,omitempty" xml:"Offline,omitempty" type:"Repeated"`
+	Online  []*QueryAvatarListResponseBodyDataListSupportedResolutionsOnline  `json:"Online,omitempty" xml:"Online,omitempty" type:"Repeated"`
+}
+
+func (s QueryAvatarListResponseBodyDataListSupportedResolutions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListResponseBodyDataListSupportedResolutions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutions) SetOffline(v []*QueryAvatarListResponseBodyDataListSupportedResolutionsOffline) *QueryAvatarListResponseBodyDataListSupportedResolutions {
+	s.Offline = v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutions) SetOnline(v []*QueryAvatarListResponseBodyDataListSupportedResolutionsOnline) *QueryAvatarListResponseBodyDataListSupportedResolutions {
+	s.Online = v
+	return s
+}
+
+type QueryAvatarListResponseBodyDataListSupportedResolutionsOffline struct {
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s QueryAvatarListResponseBodyDataListSupportedResolutionsOffline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListResponseBodyDataListSupportedResolutionsOffline) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutionsOffline) SetDesc(v string) *QueryAvatarListResponseBodyDataListSupportedResolutionsOffline {
+	s.Desc = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutionsOffline) SetHeight(v int32) *QueryAvatarListResponseBodyDataListSupportedResolutionsOffline {
+	s.Height = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutionsOffline) SetWidth(v int32) *QueryAvatarListResponseBodyDataListSupportedResolutionsOffline {
+	s.Width = &v
+	return s
+}
+
+type QueryAvatarListResponseBodyDataListSupportedResolutionsOnline struct {
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s QueryAvatarListResponseBodyDataListSupportedResolutionsOnline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListResponseBodyDataListSupportedResolutionsOnline) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutionsOnline) SetDesc(v string) *QueryAvatarListResponseBodyDataListSupportedResolutionsOnline {
+	s.Desc = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutionsOnline) SetHeight(v int32) *QueryAvatarListResponseBodyDataListSupportedResolutionsOnline {
+	s.Height = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataListSupportedResolutionsOnline) SetWidth(v int32) *QueryAvatarListResponseBodyDataListSupportedResolutionsOnline {
+	s.Width = &v
+	return s
+}
+
+type QueryAvatarListResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryAvatarListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAvatarListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarListResponse) SetHeaders(v map[string]*string) *QueryAvatarListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAvatarListResponse) SetStatusCode(v int32) *QueryAvatarListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAvatarListResponse) SetBody(v *QueryAvatarListResponseBody) *QueryAvatarListResponse {
 	s.Body = v
 	return s
 }
@@ -2105,6 +2624,256 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 	return s
 }
 
+type SubmitAudioTo2DAvatarVideoTaskRequest struct {
+	App        *SubmitAudioTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AvatarInfo *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
+	TenantId   *int64                                           `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title      *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url        *string                                          `json:"Url,omitempty" xml:"Url,omitempty"`
+	VideoInfo  *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetApp(v *SubmitAudioTo2DAvatarVideoTaskRequestApp) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.App = v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetAvatarInfo(v *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.AvatarInfo = v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetTenantId(v int64) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetTitle(v string) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetUrl(v string) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetVideoInfo(v *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.VideoInfo = v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskRequestApp struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestApp) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitAudioTo2DAvatarVideoTaskRequestApp {
+	s.AppId = &v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) SetCode(v string) *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.Code = &v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo struct {
+	AlphaFormat        *int32  `json:"AlphaFormat,omitempty" xml:"AlphaFormat,omitempty"`
+	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
+	IsAlpha            *bool   `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
+	Resolution         *int32  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) SetAlphaFormat(v int32) *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo {
+	s.AlphaFormat = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) SetBackgroundImageUrl(v string) *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo {
+	s.BackgroundImageUrl = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) SetIsAlpha(v bool) *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo {
+	s.IsAlpha = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo {
+	s.Resolution = &v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskShrinkRequest struct {
+	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
+	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
+	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url              *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	VideoInfoShrink  *string `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetAppShrink(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.AppShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetAvatarInfoShrink(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.AvatarInfoShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetTenantId(v int64) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetTitle(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetUrl(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetVideoInfoShrink(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.VideoInfoShrink = &v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SubmitAudioTo2DAvatarVideoTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetCode(v string) *SubmitAudioTo2DAvatarVideoTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetData(v *SubmitAudioTo2DAvatarVideoTaskResponseBodyData) *SubmitAudioTo2DAvatarVideoTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetMessage(v string) *SubmitAudioTo2DAvatarVideoTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetRequestId(v string) *SubmitAudioTo2DAvatarVideoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetSuccess(v string) *SubmitAudioTo2DAvatarVideoTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskResponseBodyData struct {
+	TaskUuid *string `json:"TaskUuid,omitempty" xml:"TaskUuid,omitempty"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponseBodyData) SetTaskUuid(v string) *SubmitAudioTo2DAvatarVideoTaskResponseBodyData {
+	s.TaskUuid = &v
+	return s
+}
+
+type SubmitAudioTo2DAvatarVideoTaskResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitAudioTo2DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo2DAvatarVideoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponse) SetHeaders(v map[string]*string) *SubmitAudioTo2DAvatarVideoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponse) SetStatusCode(v int32) *SubmitAudioTo2DAvatarVideoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskResponse) SetBody(v *SubmitAudioTo2DAvatarVideoTaskResponseBody) *SubmitAudioTo2DAvatarVideoTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTextTo2DAvatarVideoTaskRequest struct {
 	App        *SubmitTextTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
 	AudioInfo  *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo  `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty" type:"Struct"`
@@ -2228,9 +2997,11 @@ func (s *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) SetCode(v string) *Subm
 }
 
 type SubmitTextTo2DAvatarVideoTaskRequestVideoInfo struct {
+	AlphaFormat        *int32  `json:"AlphaFormat,omitempty" xml:"AlphaFormat,omitempty"`
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
 	IsAlpha            *bool   `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
 	IsSubtitles        *bool   `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
+	Resolution         *int32  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 }
 
 func (s SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) String() string {
@@ -2239,6 +3010,11 @@ func (s SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) String() string {
 
 func (s SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetAlphaFormat(v int32) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
+	s.AlphaFormat = &v
+	return s
 }
 
 func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetBackgroundImageUrl(v string) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
@@ -2253,6 +3029,11 @@ func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetIsAlpha(v bool) *Subm
 
 func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetIsSubtitles(v bool) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
 	s.IsSubtitles = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
+	s.Resolution = &v
 	return s
 }
 
@@ -2664,221 +3445,6 @@ func (s *SubmitTextTo3DAvatarVideoTaskResponse) SetBody(v *SubmitTextTo3DAvatarV
 	return s
 }
 
-type SubmitTextToSignVideoTaskRequest struct {
-	App       *SubmitTextToSignVideoTaskRequestApp       `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	TenantId  *int64                                     `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Text      *string                                    `json:"Text,omitempty" xml:"Text,omitempty"`
-	Title     *string                                    `json:"Title,omitempty" xml:"Title,omitempty"`
-	VideoInfo *SubmitTextToSignVideoTaskRequestVideoInfo `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
-}
-
-func (s SubmitTextToSignVideoTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTextToSignVideoTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTextToSignVideoTaskRequest) SetApp(v *SubmitTextToSignVideoTaskRequestApp) *SubmitTextToSignVideoTaskRequest {
-	s.App = v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskRequest) SetTenantId(v int64) *SubmitTextToSignVideoTaskRequest {
-	s.TenantId = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskRequest) SetText(v string) *SubmitTextToSignVideoTaskRequest {
-	s.Text = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskRequest) SetTitle(v string) *SubmitTextToSignVideoTaskRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskRequest) SetVideoInfo(v *SubmitTextToSignVideoTaskRequestVideoInfo) *SubmitTextToSignVideoTaskRequest {
-	s.VideoInfo = v
-	return s
-}
-
-type SubmitTextToSignVideoTaskRequestApp struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-}
-
-func (s SubmitTextToSignVideoTaskRequestApp) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTextToSignVideoTaskRequestApp) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTextToSignVideoTaskRequestApp) SetAppId(v string) *SubmitTextToSignVideoTaskRequestApp {
-	s.AppId = &v
-	return s
-}
-
-type SubmitTextToSignVideoTaskRequestVideoInfo struct {
-	IsAlpha     *bool  `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
-	IsSubtitles *bool  `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
-	Resolution  *int32 `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-}
-
-func (s SubmitTextToSignVideoTaskRequestVideoInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTextToSignVideoTaskRequestVideoInfo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTextToSignVideoTaskRequestVideoInfo) SetIsAlpha(v bool) *SubmitTextToSignVideoTaskRequestVideoInfo {
-	s.IsAlpha = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskRequestVideoInfo) SetIsSubtitles(v bool) *SubmitTextToSignVideoTaskRequestVideoInfo {
-	s.IsSubtitles = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskRequestVideoInfo) SetResolution(v int32) *SubmitTextToSignVideoTaskRequestVideoInfo {
-	s.Resolution = &v
-	return s
-}
-
-type SubmitTextToSignVideoTaskShrinkRequest struct {
-	AppShrink       *string `json:"App,omitempty" xml:"App,omitempty"`
-	TenantId        *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Text            *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	VideoInfoShrink *string `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty"`
-}
-
-func (s SubmitTextToSignVideoTaskShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTextToSignVideoTaskShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTextToSignVideoTaskShrinkRequest) SetAppShrink(v string) *SubmitTextToSignVideoTaskShrinkRequest {
-	s.AppShrink = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskShrinkRequest) SetTenantId(v int64) *SubmitTextToSignVideoTaskShrinkRequest {
-	s.TenantId = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskShrinkRequest) SetText(v string) *SubmitTextToSignVideoTaskShrinkRequest {
-	s.Text = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskShrinkRequest) SetTitle(v string) *SubmitTextToSignVideoTaskShrinkRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskShrinkRequest) SetVideoInfoShrink(v string) *SubmitTextToSignVideoTaskShrinkRequest {
-	s.VideoInfoShrink = &v
-	return s
-}
-
-type SubmitTextToSignVideoTaskResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitTextToSignVideoTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitTextToSignVideoTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTextToSignVideoTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTextToSignVideoTaskResponseBody) SetCode(v string) *SubmitTextToSignVideoTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskResponseBody) SetData(v *SubmitTextToSignVideoTaskResponseBodyData) *SubmitTextToSignVideoTaskResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskResponseBody) SetMessage(v string) *SubmitTextToSignVideoTaskResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskResponseBody) SetRequestId(v string) *SubmitTextToSignVideoTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskResponseBody) SetSuccess(v string) *SubmitTextToSignVideoTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitTextToSignVideoTaskResponseBodyData struct {
-	TaskUuid *string `json:"TaskUuid,omitempty" xml:"TaskUuid,omitempty"`
-}
-
-func (s SubmitTextToSignVideoTaskResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTextToSignVideoTaskResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTextToSignVideoTaskResponseBodyData) SetTaskUuid(v string) *SubmitTextToSignVideoTaskResponseBodyData {
-	s.TaskUuid = &v
-	return s
-}
-
-type SubmitTextToSignVideoTaskResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTextToSignVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitTextToSignVideoTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTextToSignVideoTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTextToSignVideoTaskResponse) SetHeaders(v map[string]*string) *SubmitTextToSignVideoTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskResponse) SetStatusCode(v int32) *SubmitTextToSignVideoTaskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitTextToSignVideoTaskResponse) SetBody(v *SubmitTextToSignVideoTaskResponseBody) *SubmitTextToSignVideoTaskResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -3213,6 +3779,102 @@ func (client *Client) LicenseAuth(request *LicenseAuthRequest) (_result *License
 	runtime := &util.RuntimeOptions{}
 	_result = &LicenseAuthResponse{}
 	_body, _err := client.LicenseAuthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryAvatarWithOptions(request *QueryAvatarRequest, runtime *util.RuntimeOptions) (_result *QueryAvatarResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAvatar"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAvatar(request *QueryAvatarRequest) (_result *QueryAvatarResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAvatarResponse{}
+	_body, _err := client.QueryAvatarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryAvatarListWithOptions(request *QueryAvatarListRequest, runtime *util.RuntimeOptions) (_result *QueryAvatarListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		query["ModelType"] = request.ModelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAvatarList"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAvatarListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAvatarList(request *QueryAvatarListRequest) (_result *QueryAvatarListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAvatarListResponse{}
+	_body, _err := client.QueryAvatarListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3570,6 +4232,84 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 	return _result, _err
 }
 
+func (client *Client) SubmitAudioTo2DAvatarVideoTaskWithOptions(tmpReq *SubmitAudioTo2DAvatarVideoTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitAudioTo2DAvatarVideoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitAudioTo2DAvatarVideoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.App)) {
+		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.AvatarInfo)) {
+		request.AvatarInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvatarInfo, tea.String("AvatarInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoInfo)) {
+		request.VideoInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoInfo, tea.String("VideoInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
+		query["App"] = request.AppShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvatarInfoShrink)) {
+		query["AvatarInfo"] = request.AvatarInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoInfoShrink)) {
+		query["VideoInfo"] = request.VideoInfoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAudioTo2DAvatarVideoTask"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitAudioTo2DAvatarVideoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitAudioTo2DAvatarVideoTask(request *SubmitAudioTo2DAvatarVideoTaskRequest) (_result *SubmitAudioTo2DAvatarVideoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAudioTo2DAvatarVideoTaskResponse{}
+	_body, _err := client.SubmitAudioTo2DAvatarVideoTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitTextTo2DAvatarVideoTaskWithOptions(tmpReq *SubmitTextTo2DAvatarVideoTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitTextTo2DAvatarVideoTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3727,76 +4467,6 @@ func (client *Client) SubmitTextTo3DAvatarVideoTask(request *SubmitTextTo3DAvata
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitTextTo3DAvatarVideoTaskResponse{}
 	_body, _err := client.SubmitTextTo3DAvatarVideoTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitTextToSignVideoTaskWithOptions(tmpReq *SubmitTextToSignVideoTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitTextToSignVideoTaskResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &SubmitTextToSignVideoTaskShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.App)) {
-		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.VideoInfo)) {
-		request.VideoInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoInfo, tea.String("VideoInfo"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
-		query["App"] = request.AppShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
-		query["TenantId"] = request.TenantId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Text)) {
-		query["Text"] = request.Text
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Title)) {
-		query["Title"] = request.Title
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VideoInfoShrink)) {
-		query["VideoInfo"] = request.VideoInfoShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitTextToSignVideoTask"),
-		Version:     tea.String("2022-01-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitTextToSignVideoTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitTextToSignVideoTask(request *SubmitTextToSignVideoTaskRequest) (_result *SubmitTextToSignVideoTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitTextToSignVideoTaskResponse{}
-	_body, _err := client.SubmitTextToSignVideoTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
