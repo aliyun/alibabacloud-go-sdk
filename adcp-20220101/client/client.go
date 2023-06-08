@@ -3467,23 +3467,12 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 }
 
 type GrantUserPermissionRequest struct {
-	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	IsRamRole *bool   `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
-	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set role_type to cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Specifies the predefined role that you want to assign. Valid values:
-	//
-	// *   admin: the administrator role.
-	// *   dev: the developer role.
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The authorization type. Valid values:
-	//
-	// *   cluster: specifies that the permissions are scoped to a master instance.
-	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
-	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The ID of the RAM user.
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleType  *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GrantUserPermissionRequest) String() string {
@@ -3525,7 +3514,6 @@ func (s *GrantUserPermissionRequest) SetUserId(v string) *GrantUserPermissionReq
 }
 
 type GrantUserPermissionResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3709,6 +3697,7 @@ type UpdateHubClusterFeatureRequest struct {
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	ArmsEnabled       *bool   `json:"ArmsEnabled,omitempty" xml:"ArmsEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
 	// *   true: enables the audit logging feature.
@@ -3758,6 +3747,11 @@ func (s *UpdateHubClusterFeatureRequest) SetArgoCDEnabled(v bool) *UpdateHubClus
 
 func (s *UpdateHubClusterFeatureRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureRequest {
 	s.ArgoServerEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetArmsEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.ArmsEnabled = &v
 	return s
 }
 
@@ -3811,6 +3805,7 @@ type UpdateHubClusterFeatureShrinkRequest struct {
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	ArmsEnabled       *bool   `json:"ArmsEnabled,omitempty" xml:"ArmsEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
 	// *   true: enables the audit logging feature.
@@ -3860,6 +3855,11 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoCDEnabled(v bool) *UpdateH
 
 func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
 	s.ArgoServerEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetArmsEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.ArmsEnabled = &v
 	return s
 }
 
@@ -5214,6 +5214,10 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 
 	if !tea.BoolValue(util.IsUnset(request.ArgoServerEnabled)) {
 		query["ArgoServerEnabled"] = request.ArgoServerEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArmsEnabled)) {
+		query["ArmsEnabled"] = request.ArmsEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AuditLogEnabled)) {
