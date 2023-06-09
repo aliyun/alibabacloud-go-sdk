@@ -4202,291 +4202,6 @@ func (s *CreateServiceLinkedRoleForProductResponse) SetBody(v *CreateServiceLink
 	return s
 }
 
-type CreateTargetsRequest struct {
-	EventBusName *string                        `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	RuleName     *string                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Targets      []*CreateTargetsRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-}
-
-func (s CreateTargetsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsRequest) SetEventBusName(v string) *CreateTargetsRequest {
-	s.EventBusName = &v
-	return s
-}
-
-func (s *CreateTargetsRequest) SetRuleName(v string) *CreateTargetsRequest {
-	s.RuleName = &v
-	return s
-}
-
-func (s *CreateTargetsRequest) SetTargets(v []*CreateTargetsRequestTargets) *CreateTargetsRequest {
-	s.Targets = v
-	return s
-}
-
-type CreateTargetsRequestTargets struct {
-	DeadLetterQueue   *CreateTargetsRequestTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
-	Endpoint          *string                                     `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	ErrorsTolerance   *string                                     `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
-	Id                *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	ParamList         []*CreateTargetsRequestTargetsParamList     `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	PushRetryStrategy *string                                     `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
-	Type              *string                                     `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s CreateTargetsRequestTargets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsRequestTargets) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsRequestTargets) SetDeadLetterQueue(v *CreateTargetsRequestTargetsDeadLetterQueue) *CreateTargetsRequestTargets {
-	s.DeadLetterQueue = v
-	return s
-}
-
-func (s *CreateTargetsRequestTargets) SetEndpoint(v string) *CreateTargetsRequestTargets {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateTargetsRequestTargets) SetErrorsTolerance(v string) *CreateTargetsRequestTargets {
-	s.ErrorsTolerance = &v
-	return s
-}
-
-func (s *CreateTargetsRequestTargets) SetId(v string) *CreateTargetsRequestTargets {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateTargetsRequestTargets) SetParamList(v []*CreateTargetsRequestTargetsParamList) *CreateTargetsRequestTargets {
-	s.ParamList = v
-	return s
-}
-
-func (s *CreateTargetsRequestTargets) SetPushRetryStrategy(v string) *CreateTargetsRequestTargets {
-	s.PushRetryStrategy = &v
-	return s
-}
-
-func (s *CreateTargetsRequestTargets) SetType(v string) *CreateTargetsRequestTargets {
-	s.Type = &v
-	return s
-}
-
-type CreateTargetsRequestTargetsDeadLetterQueue struct {
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-}
-
-func (s CreateTargetsRequestTargetsDeadLetterQueue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsRequestTargetsDeadLetterQueue) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsRequestTargetsDeadLetterQueue) SetArn(v string) *CreateTargetsRequestTargetsDeadLetterQueue {
-	s.Arn = &v
-	return s
-}
-
-type CreateTargetsRequestTargetsParamList struct {
-	Form        *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	ResourceKey *string `json:"ResourceKey,omitempty" xml:"ResourceKey,omitempty"`
-	Template    *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateTargetsRequestTargetsParamList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsRequestTargetsParamList) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsRequestTargetsParamList) SetForm(v string) *CreateTargetsRequestTargetsParamList {
-	s.Form = &v
-	return s
-}
-
-func (s *CreateTargetsRequestTargetsParamList) SetResourceKey(v string) *CreateTargetsRequestTargetsParamList {
-	s.ResourceKey = &v
-	return s
-}
-
-func (s *CreateTargetsRequestTargetsParamList) SetTemplate(v string) *CreateTargetsRequestTargetsParamList {
-	s.Template = &v
-	return s
-}
-
-func (s *CreateTargetsRequestTargetsParamList) SetValue(v string) *CreateTargetsRequestTargetsParamList {
-	s.Value = &v
-	return s
-}
-
-type CreateTargetsShrinkRequest struct {
-	EventBusName  *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-}
-
-func (s CreateTargetsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsShrinkRequest) SetEventBusName(v string) *CreateTargetsShrinkRequest {
-	s.EventBusName = &v
-	return s
-}
-
-func (s *CreateTargetsShrinkRequest) SetRuleName(v string) *CreateTargetsShrinkRequest {
-	s.RuleName = &v
-	return s
-}
-
-func (s *CreateTargetsShrinkRequest) SetTargetsShrink(v string) *CreateTargetsShrinkRequest {
-	s.TargetsShrink = &v
-	return s
-}
-
-type CreateTargetsResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateTargetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateTargetsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsResponseBody) SetCode(v string) *CreateTargetsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateTargetsResponseBody) SetData(v *CreateTargetsResponseBodyData) *CreateTargetsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateTargetsResponseBody) SetMessage(v string) *CreateTargetsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateTargetsResponseBody) SetRequestId(v string) *CreateTargetsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateTargetsResponseBody) SetSuccess(v bool) *CreateTargetsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateTargetsResponseBodyData struct {
-	ErrorEntries      []*CreateTargetsResponseBodyDataErrorEntries `json:"ErrorEntries,omitempty" xml:"ErrorEntries,omitempty" type:"Repeated"`
-	ErrorEntriesCount *int32                                       `json:"ErrorEntriesCount,omitempty" xml:"ErrorEntriesCount,omitempty"`
-}
-
-func (s CreateTargetsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsResponseBodyData) SetErrorEntries(v []*CreateTargetsResponseBodyDataErrorEntries) *CreateTargetsResponseBodyData {
-	s.ErrorEntries = v
-	return s
-}
-
-func (s *CreateTargetsResponseBodyData) SetErrorEntriesCount(v int32) *CreateTargetsResponseBodyData {
-	s.ErrorEntriesCount = &v
-	return s
-}
-
-type CreateTargetsResponseBodyDataErrorEntries struct {
-	EntryId      *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-}
-
-func (s CreateTargetsResponseBodyDataErrorEntries) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsResponseBodyDataErrorEntries) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsResponseBodyDataErrorEntries) SetEntryId(v string) *CreateTargetsResponseBodyDataErrorEntries {
-	s.EntryId = &v
-	return s
-}
-
-func (s *CreateTargetsResponseBodyDataErrorEntries) SetErrorCode(v string) *CreateTargetsResponseBodyDataErrorEntries {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateTargetsResponseBodyDataErrorEntries) SetErrorMessage(v string) *CreateTargetsResponseBodyDataErrorEntries {
-	s.ErrorMessage = &v
-	return s
-}
-
-type CreateTargetsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateTargetsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTargetsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTargetsResponse) SetHeaders(v map[string]*string) *CreateTargetsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateTargetsResponse) SetStatusCode(v int32) *CreateTargetsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateTargetsResponse) SetBody(v *CreateTargetsResponseBody) *CreateTargetsResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteApiDestinationRequest struct {
 	ApiDestinationName *string `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
 }
@@ -9431,6 +9146,8 @@ type ListEventStreamingsRequest struct {
 	Limit      *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SinkArn    *string `json:"SinkArn,omitempty" xml:"SinkArn,omitempty"`
+	SourceArn  *string `json:"SourceArn,omitempty" xml:"SourceArn,omitempty"`
 }
 
 func (s ListEventStreamingsRequest) String() string {
@@ -9453,6 +9170,16 @@ func (s *ListEventStreamingsRequest) SetNamePrefix(v string) *ListEventStreaming
 
 func (s *ListEventStreamingsRequest) SetNextToken(v string) *ListEventStreamingsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListEventStreamingsRequest) SetSinkArn(v string) *ListEventStreamingsRequest {
+	s.SinkArn = &v
+	return s
+}
+
+func (s *ListEventStreamingsRequest) SetSourceArn(v string) *ListEventStreamingsRequest {
+	s.SourceArn = &v
 	return s
 }
 
@@ -11615,6 +11342,228 @@ func (s *ListRulesResponse) SetStatusCode(v int32) *ListRulesResponse {
 }
 
 func (s *ListRulesResponse) SetBody(v *ListRulesResponseBody) *ListRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTargetsRequest struct {
+	Arn          *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	Limit        *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RuleName     *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s ListTargetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetsRequest) SetArn(v string) *ListTargetsRequest {
+	s.Arn = &v
+	return s
+}
+
+func (s *ListTargetsRequest) SetEventBusName(v string) *ListTargetsRequest {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *ListTargetsRequest) SetLimit(v int32) *ListTargetsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListTargetsRequest) SetNextToken(v string) *ListTargetsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTargetsRequest) SetRuleName(v string) *ListTargetsRequest {
+	s.RuleName = &v
+	return s
+}
+
+type ListTargetsResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListTargetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListTargetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetsResponseBody) SetCode(v string) *ListTargetsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTargetsResponseBody) SetData(v *ListTargetsResponseBodyData) *ListTargetsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTargetsResponseBody) SetMessage(v string) *ListTargetsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTargetsResponseBody) SetRequestId(v string) *ListTargetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTargetsResponseBody) SetSuccess(v bool) *ListTargetsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTargetsResponseBodyData struct {
+	NextToken *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Targets   []*ListTargetsResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	Total     *int32                                `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListTargetsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetsResponseBodyData) SetNextToken(v string) *ListTargetsResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyData) SetTargets(v []*ListTargetsResponseBodyDataTargets) *ListTargetsResponseBodyData {
+	s.Targets = v
+	return s
+}
+
+func (s *ListTargetsResponseBodyData) SetTotal(v int32) *ListTargetsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListTargetsResponseBodyDataTargets struct {
+	Endpoint     *string                                        `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EventBusName *string                                        `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	Id           *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	ParamList    []*ListTargetsResponseBodyDataTargetsParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	RuleName     *string                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Type         *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTargetsResponseBodyDataTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetsResponseBodyDataTargets) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetsResponseBodyDataTargets) SetEndpoint(v string) *ListTargetsResponseBodyDataTargets {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargets) SetEventBusName(v string) *ListTargetsResponseBodyDataTargets {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargets) SetId(v string) *ListTargetsResponseBodyDataTargets {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargets) SetParamList(v []*ListTargetsResponseBodyDataTargetsParamList) *ListTargetsResponseBodyDataTargets {
+	s.ParamList = v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargets) SetRuleName(v string) *ListTargetsResponseBodyDataTargets {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargets) SetType(v string) *ListTargetsResponseBodyDataTargets {
+	s.Type = &v
+	return s
+}
+
+type ListTargetsResponseBodyDataTargetsParamList struct {
+	Form        *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	ResourceKey *string `json:"ResourceKey,omitempty" xml:"ResourceKey,omitempty"`
+	Template    *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTargetsResponseBodyDataTargetsParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetsResponseBodyDataTargetsParamList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetsResponseBodyDataTargetsParamList) SetForm(v string) *ListTargetsResponseBodyDataTargetsParamList {
+	s.Form = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargetsParamList) SetResourceKey(v string) *ListTargetsResponseBodyDataTargetsParamList {
+	s.ResourceKey = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargetsParamList) SetTemplate(v string) *ListTargetsResponseBodyDataTargetsParamList {
+	s.Template = &v
+	return s
+}
+
+func (s *ListTargetsResponseBodyDataTargetsParamList) SetValue(v string) *ListTargetsResponseBodyDataTargetsParamList {
+	s.Value = &v
+	return s
+}
+
+type ListTargetsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTargetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTargetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTargetsResponse) SetHeaders(v map[string]*string) *ListTargetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTargetsResponse) SetStatusCode(v int32) *ListTargetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTargetsResponse) SetBody(v *ListTargetsResponseBody) *ListTargetsResponse {
 	s.Body = v
 	return s
 }
@@ -16918,64 +16867,6 @@ func (client *Client) CreateServiceLinkedRoleForProduct(request *CreateServiceLi
 	return _result, _err
 }
 
-func (client *Client) CreateTargetsWithOptions(tmpReq *CreateTargetsRequest, runtime *util.RuntimeOptions) (_result *CreateTargetsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateTargetsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Targets)) {
-		request.TargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Targets, tea.String("Targets"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
-		query["EventBusName"] = request.EventBusName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
-		query["RuleName"] = request.RuleName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetsShrink)) {
-		query["Targets"] = request.TargetsShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateTargets"),
-		Version:     tea.String("2020-04-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateTargetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateTargets(request *CreateTargetsRequest) (_result *CreateTargetsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateTargetsResponse{}
-	_body, _err := client.CreateTargetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteApiDestinationWithOptions(request *DeleteApiDestinationRequest, runtime *util.RuntimeOptions) (_result *DeleteApiDestinationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17833,6 +17724,14 @@ func (client *Client) ListEventStreamingsWithOptions(request *ListEventStreaming
 		body["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SinkArn)) {
+		body["SinkArn"] = request.SinkArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceArn)) {
+		body["SourceArn"] = request.SourceArn
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -17916,6 +17815,66 @@ func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRulesResponse{}
 	_body, _err := client.ListRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTargetsWithOptions(request *ListTargetsRequest, runtime *util.RuntimeOptions) (_result *ListTargetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Arn)) {
+		query["Arn"] = request.Arn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
+		query["EventBusName"] = request.EventBusName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTargets"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTargets(request *ListTargetsRequest) (_result *ListTargetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTargetsResponse{}
+	_body, _err := client.ListTargetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

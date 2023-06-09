@@ -1,3 +1,6 @@
+2023-06-09 Version: v2.0.0
+- Add listTargets api.
+
 2023-04-21 Version: v1.0.7
 - Update api param.
 
