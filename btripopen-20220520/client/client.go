@@ -35,10 +35,8 @@ type AccessTokenResponseBody struct {
 	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 成功标识
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AccessTokenResponseBody) String() string {
@@ -7423,9 +7421,8 @@ func (s *CitySearchRequest) SetKeyword(v string) *CitySearchRequest {
 }
 
 type CitySearchResponseBody struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
+	Code      *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *CitySearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
@@ -28875,7 +28872,7 @@ func (s *HotelOrderPreValidateResponseBodyModulePromotionInfoPromotionDetailInfo
 type HotelOrderPreValidateResponseBodyModuleRatePlanDaily struct {
 	Board                 *string `json:"board,omitempty" xml:"board,omitempty"`
 	DiscountPrice         *string `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
-	MaxBookingNum         *string `json:"max_booking_num,omitempty" xml:"max_booking_num,omitempty"`
+	MaxBookingNum         *int32  `json:"max_booking_num,omitempty" xml:"max_booking_num,omitempty"`
 	Price                 *int64  `json:"price,omitempty" xml:"price,omitempty"`
 	RateStartTime         *string `json:"rate_start_time,omitempty" xml:"rate_start_time,omitempty"`
 	RoomCount             *int32  `json:"room_count,omitempty" xml:"room_count,omitempty"`
@@ -28902,7 +28899,7 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanDaily) SetDiscountPrice(
 	return s
 }
 
-func (s *HotelOrderPreValidateResponseBodyModuleRatePlanDaily) SetMaxBookingNum(v string) *HotelOrderPreValidateResponseBodyModuleRatePlanDaily {
+func (s *HotelOrderPreValidateResponseBodyModuleRatePlanDaily) SetMaxBookingNum(v int32) *HotelOrderPreValidateResponseBodyModuleRatePlanDaily {
 	s.MaxBookingNum = &v
 	return s
 }
@@ -32282,8 +32279,7 @@ type InvoiceAddResponseBody struct {
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceAddResponseBody) String() string {
