@@ -1666,6 +1666,7 @@ type AllocateEipSegmentAddressRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Zone                 *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s AllocateEipSegmentAddressRequest) String() string {
@@ -1733,6 +1734,11 @@ func (s *AllocateEipSegmentAddressRequest) SetResourceOwnerAccount(v string) *Al
 
 func (s *AllocateEipSegmentAddressRequest) SetResourceOwnerId(v int64) *AllocateEipSegmentAddressRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *AllocateEipSegmentAddressRequest) SetZone(v string) *AllocateEipSegmentAddressRequest {
+	s.Zone = &v
 	return s
 }
 
@@ -8482,16 +8488,73 @@ func (s *CreateIpv6GatewayResponse) SetBody(v *CreateIpv6GatewayResponseBody) *C
 }
 
 type CreateNatGatewayRequest struct {
-	// The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
+	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** might be different for each API request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the NAT gateway.
+	//
+	// You can leave this parameter empty or enter a description. If you enter a description, the description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The mode in which the EIP is associated with the NAT gateway. Valid values:
+	//
+	// *   **MULTI_BINDED** (default): Multi-EIP-to-ENI mode.
+	//
+	// *   **NAT**: NAT mode. IPv4 gateways are supported.
+	//
+	// > If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with at most 50 EIPs.
+	EipBindMode *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
+	// Specifies whether to enable the ICMP non-retrieval feature. Valid values:
+	//
+	// *   **false** (default): no
+	// *   **true**: yes
+	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
 	// The billing method of the NAT gateway.
 	//
 	// Set the value to **PostPaid** (pay-as-you-go), which is the default value.
 	//
 	// For more information, see [Internet NAT gateway billing](~~48126~~) and [VPC NAT gateway billing](~~270913~~).
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies the pay-by-CU metering method.
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The name of the NAT gateway.
+	//
+	// The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	//
+	// If this parameter is not set, the system assigns a default name to the NAT gateway.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
+	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	// The network type of the NAT gateway. Valid values:
+	//
+	// *   **internet**: an Internet NAT gateway
+	// *   **intranet**: a VPC NAT gateway
+	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The ID of the region where you want to create the NAT gateway.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to enable the firewall feature. Valid values:
+	//
+	// *   **false** (default): no
+	// *   **true**: yes
+	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
+	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The list of Tag entries.
+	Tag []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch to which the NAT gateway is attached.
 	//
 	// When you create a NAT gateway, you must specify a vSwitch for the NAT gateway. Then, the system assigns an idle private IP address from the vSwitch to the NAT gateway.
@@ -8500,62 +8563,8 @@ type CreateNatGatewayRequest struct {
 	// *   If no vSwitch exists in the VPC, create a vSwitch in a zone that supports NAT gateways. Then, specify the vSwitch for the NAT gateway.
 	//
 	// >  You can query the zones that support NAT gateways by calling the [ListEnhanhcedNatGatewayAvailableZones](~~182292~~) operation. You can query the number of available IP addresses in a vSwitch by calling the [DescribeVSwitches](~~35748~~) operation.
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
-	EipBindMode *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
-	// The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
-	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
-	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// Specifies whether to enable the firewall feature. Valid values:
-	//
-	// *   **false** (default): no
-	// *   **true**: yes
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
-	//
-	// >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** might be different for each API request.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the NAT gateway. Valid values:
-	//
-	// *   **internet**: an Internet NAT gateway
-	// *   **intranet**: a VPC NAT gateway
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// Specifies whether to enable the ICMP non-retrieval feature. Valid values:
-	//
-	// *   **false** (default): no
-	// *   **true**: yes
-	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The name of the NAT gateway.
-	//
-	// The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
-	//
-	// If this parameter is not set, the system assigns a default name to the NAT gateway.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The mode in which the EIP is associated with the NAT gateway. Valid values:
-	//
-	// *   **MULTI_BINDED** (default): Multi-EIP-to-ENI mode.
-	//
-	// *   **NAT**: NAT mode. IPv4 gateways are supported.
-	//
-	// > If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with at most 50 EIPs.
-	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-	Spec *string                       `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Tag  []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies the pay-by-CU metering method.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The description of the NAT gateway.
-	//
-	// You can leave this parameter empty or enter a description. If you enter a description, the description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The ID of the VPC where you want to create the NAT gateway.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -8678,9 +8687,9 @@ func (s *CreateNatGatewayRequest) SetVpcId(v string) *CreateNatGatewayRequest {
 }
 
 type CreateNatGatewayRequestTag struct {
-	// The ID of the NAT gateway.
+	// The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the request.
+	// The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8703,13 +8712,15 @@ func (s *CreateNatGatewayRequestTag) SetValue(v string) *CreateNatGatewayRequest
 }
 
 type CreateNatGatewayResponseBody struct {
-	// The list of FULLNAT entries.
-	ForwardTableIds *CreateNatGatewayResponseBodyForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
-	FullNatTableIds *CreateNatGatewayResponseBodyFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
 	// The list of DNAT entries.
+	ForwardTableIds *CreateNatGatewayResponseBodyForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
+	// The list of FULLNAT entries.
+	FullNatTableIds *CreateNatGatewayResponseBodyFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of SNAT entries.
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnatTableIds *CreateNatGatewayResponseBodySnatTableIds `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
 }
 
@@ -18114,24 +18125,20 @@ func (s *DeleteNatIpResponse) SetBody(v *DeleteNatIpResponseBody) *DeleteNatIpRe
 }
 
 type DeleteNatIpCidrRequest struct {
-	// The operation that you want to perform. Set the value to **DeleteNatIpCidr**.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The operation that you want to perform. Set the value to **DeleteNatIpCidr**.
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
+	NatIpCidr    *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	NatIpCidr    *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether only to precheck this request. Valid values:
-	//
-	// *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -19247,23 +19254,21 @@ func (s *DeleteRouterInterfaceResponse) SetBody(v *DeleteRouterInterfaceResponse
 }
 
 type DeleteSnatEntryRequest struct {
+	// The ID of the request.
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the SNAT table to which the SNAT entry belongs.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the NAT gateway.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SNAT entry that you want to delete.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	// The ID of the SNAT table to which the SNAT entry belongs.
+	// The ID of the SNAT entry that you want to delete.
 	SnatTableId *string `json:"SnatTableId,omitempty" xml:"SnatTableId,omitempty"`
 }
 
@@ -19316,7 +19321,6 @@ func (s *DeleteSnatEntryRequest) SetSnatTableId(v string) *DeleteSnatEntryReques
 }
 
 type DeleteSnatEntryResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28394,6 +28398,7 @@ type DescribeIpv6AddressesRequest struct {
 	//
 	// Set the value to **EcsInstance**, which specifies an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). This is the default value.
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
+	IncludeReservationData *bool   `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
 	// The IPv6 address that you want to query.
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	// The ID of the IPv6 address that you want to query. You can enter at most 20 IPv6 IDs in each API request. Separate IPv6 IDs with commas (,).
@@ -28440,6 +28445,11 @@ func (s *DescribeIpv6AddressesRequest) SetAssociatedInstanceId(v string) *Descri
 
 func (s *DescribeIpv6AddressesRequest) SetAssociatedInstanceType(v string) *DescribeIpv6AddressesRequest {
 	s.AssociatedInstanceType = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesRequest) SetIncludeReservationData(v bool) *DescribeIpv6AddressesRequest {
+	s.IncludeReservationData = &v
 	return s
 }
 
@@ -28708,7 +28718,8 @@ type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwi
 	// *   **Normal**: normal
 	// *   **FinancialLocked**: locked due to overdue payments
 	// *   **SecurityLocked**: locked due to security reasons
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	BusinessStatus     *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	HasReservationData *bool   `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
 	// The billing method of the Internet bandwidth of the IPv6 address. Valid values:
 	//
 	// **PostPaid**: pay-as-you-go
@@ -28719,7 +28730,11 @@ type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwi
 	// *   **PayByBandwidth**: pay-by-bandwidth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The instance ID of the Internet bandwidth of the IPv6 address.
-	Ipv6InternetBandwidthId *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
+	Ipv6InternetBandwidthId       *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
+	ReservationActiveTime         *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationBandwidth          *int64  `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationOrderType          *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
 }
 
 func (s DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) String() string {
@@ -28740,6 +28755,11 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBa
 	return s
 }
 
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) SetHasReservationData(v bool) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth {
+	s.HasReservationData = &v
+	return s
+}
+
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) SetInstanceChargeType(v string) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth {
 	s.InstanceChargeType = &v
 	return s
@@ -28752,6 +28772,26 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBa
 
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) SetIpv6InternetBandwidthId(v string) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth {
 	s.Ipv6InternetBandwidthId = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) SetReservationActiveTime(v string) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth {
+	s.ReservationActiveTime = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) SetReservationBandwidth(v int64) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth {
+	s.ReservationBandwidth = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) SetReservationInternetChargeType(v string) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth {
+	s.ReservationInternetChargeType = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) SetReservationOrderType(v string) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth {
+	s.ReservationOrderType = &v
 	return s
 }
 
@@ -29616,13 +29656,10 @@ func (s *DescribeIpv6GatewaysResponse) SetBody(v *DescribeIpv6GatewaysResponseBo
 }
 
 type DescribeNatGatewaysRequest struct {
-	// The status of the NAT gateway. Valid values:
+	// The type of the NAT gateway. Valid values:
 	//
-	// *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the **Creating** state until the operation is completed.
-	// *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
-	// *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the **Modifying** state until the operation is completed.
-	// *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the **Deleting** state until the operation is completed.
-	// *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the **Converting** state until the operation is completed.
+	// *   **internet**: an Internet NAT gateway
+	// *   **intranet**: a VPC NAT gateway
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The size of the NAT gateway. Ignore this parameter.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
@@ -29630,42 +29667,48 @@ type DescribeNatGatewaysRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the VPC to which the NAT gateway belongs.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The ID of the resource group to which the NAT gateway belongs.
+	// The number of the page to return. Default value: **1**.
 	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The tag keys of the NAT gateway. You can specify up to 20 tag keys.
+	// The tag values of the NAT gateway. You can specify up to 20 tag values.
 	//
-	// Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
 	// - **true**: performs a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	// - **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The status of the NAT gateway. Valid values:
+	//
+	// *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the **Creating** state until the operation is completed.
+	// *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
+	// *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the **Modifying** state until the operation is completed.
+	// *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the **Deleting** state until the operation is completed.
+	// *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the **Converting** state until the operation is completed.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the NAT gateway.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The type of the NAT gateway. Valid values:
+	// The tag keys of the NAT gateway. You can specify up to 20 tag keys.
 	//
-	// *   **internet**: an Internet NAT gateway
-	// *   **intranet**: a VPC NAT gateway
-	Status *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*DescribeNatGatewaysRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the zone to which the NAT gateway belongs.
+	Tag []*DescribeNatGatewaysRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The name of the NAT gateway.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// If this parameter is not set, the system automatically assigns a name to the NAT gateway.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The number of entries returned per page.
+	// The number of NAT gateway entries that are returned.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -29773,11 +29816,9 @@ func (s *DescribeNatGatewaysRequest) SetZoneId(v string) *DescribeNatGatewaysReq
 }
 
 type DescribeNatGatewaysRequestTag struct {
-	// The tag values of the NAT gateway. You can specify up to 20 tag values.
-	//
-	// The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+	// The ID of the request.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the zone to which the NAT gateway belongs.
+	// The page number of the returned page.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -29800,6 +29841,12 @@ func (s *DescribeNatGatewaysRequestTag) SetValue(v string) *DescribeNatGatewaysR
 }
 
 type DescribeNatGatewaysResponseBody struct {
+	// The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
+	NatGateways *DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Struct"`
+	// The time when the NAT gateway was created.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The details about the NAT gateway.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the NAT gateway. Valid values:
 	//
 	// *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
@@ -29807,14 +29854,8 @@ type DescribeNatGatewaysResponseBody struct {
 	// *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
 	// *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
 	// *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
-	NatGateways *DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Struct"`
-	// The number of NAT gateway entries that are returned.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the request.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The page number of the returned page.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the NAT gateway.
+	// The ID of the VPC where the NAT gateway is deployed.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -29869,104 +29910,93 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNatGateway(v []*Describe
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
+	// Indicates whether the firewall feature is enabled. Valid values:
+	//
+	// *   **false**: no
+	// *   **true**: yes
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The IP address of the EIP associated with the NAT gateway.
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The size of the NAT gateway. An empty value is returned for the parameter.
 	//
 	// If **InternetChargeType** is set to **PayByLcu**, an empty value is returned.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The name of the NAT gateway.
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The ID of the VPC where the NAT gateway is deployed.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The type of NAT gateway. Valid values:
-	//
-	// *   **internet**: an Internet NAT gateway
-	// *   **intranet**: a VPC NAT gateway
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The time when the NAT gateway expires.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	EcsMetricEnabled *bool `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
-	// The tags that are added to the resource group.
-	EipBindMode *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
-	// The ID of the resource group to which the contiguous EIP group belongs.
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the SNAT table of the NAT gateway.
-	ForwardTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
-	// The private network information about the enhanced Internet NAT gateway.
-	//
-	// >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
-	FullNatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
-	// The description of the NAT gateway.
-	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
 	// The ID of the region where the NAT gateway is deployed.
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The metering method of the NAT gateway. Valid values:
+	//
+	// *   **PayBySpec**: pay-by-specification
+	// *   **PayByLcu**: pay-by-CU
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource group to which the contiguous EIP group belongs.
+	EcsMetricEnabled *bool   `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
+	EipBindMode      *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
 	// The status of the NAT gateway. Valid values:
 	//
 	// *   **Normal**: normal
 	// *   **FinancialLocked**: locked due to overdue payments
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The ID of the vSwitch to which the NAT gateway belongs.
+	ForwardTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
+	// The number of new connections to the NAT gateway. Unit: connections per second.
+	FullNatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
+	// The ID of the NAT gateway.
+	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	// The description of the NAT gateway.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The association between the EIP and the Internet NAT gateway. Valid values:
 	//
 	// *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
 	// *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
 	// *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
 	// *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The ID of the EIP associated with the NAT gateway.
 	IpLists *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
-	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
+	// Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The metering method of the NAT gateway. Valid values:
-	//
-	// *   **PayBySpec**: pay-by-specification
-	// *   **PayByLcu**: pay-by-CU
+	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The ID of the vSwitch to which the NAT gateway belongs.
+	// The zone to which the NAT gateway belongs.
 	NatGatewayPrivateInfo *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo `json:"NatGatewayPrivateInfo,omitempty" xml:"NatGatewayPrivateInfo,omitempty" type:"Struct"`
-	// Indicates whether automatic payment is enabled. Valid values:
+	// The type of NAT gateway. Valid values:
 	//
-	// *   **false**: no
-	// *   **true**: yes
+	// *   **internet**: an Internet NAT gateway
+	// *   **intranet**: a VPC NAT gateway
 	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// Indicates whether the firewall feature is enabled. Valid values:
-	//
-	// *   **false**: no
-	// *   **true**: yes
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The mode that is used by PrivateLink. Valid values:
-	//
-	// *   **FullNat**: the FULLNAT mode
-	// *   **Geneve**: the GENEVE mode
-	PrivateLinkEnabled *bool `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
-	// The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
-	//
-	// *   **MULTI_BINDED**: multi-EIP-to-ENI mode
-	// *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
-	//
-	// >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
-	PrivateLinkMode *string `json:"PrivateLinkMode,omitempty" xml:"PrivateLinkMode,omitempty"`
 	// Indicates whether the traffic monitoring feature is enabled. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false**: no
+	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PrivateLinkEnabled *bool   `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
+	PrivateLinkMode    *string `json:"PrivateLinkMode,omitempty" xml:"PrivateLinkMode,omitempty"`
+	// The time when the NAT gateway expires.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the NAT gateway.
+	// The name of the NAT gateway.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
+	// Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
 	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// The ID of the FULLNAT table.
+	// The maximum bandwidth. Unit: Mbit/s.
 	SnatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
+	// The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// Indicates whether automatic payment is enabled. Valid values:
+	//
+	// *   **false**: no
+	// *   **true**: yes
+	Status *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// Indicates whether the deletion protection feature is enabled. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The time when the NAT gateway was created.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag key of the instance.
-	Tags *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -30175,18 +30205,17 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists) SetIpList(
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList struct {
-	// The private IP address of the NAT gateway.
+	// The ID of the FULLNAT table.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The ID of the DNAT table.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The private network information about the enhanced Internet NAT gateway.
+	//
+	// >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the EIP associated with the NAT gateway.
+	// The ID of the SNAT table of the NAT gateway.
 	SnatEntryEnabled *bool `json:"SnatEntryEnabled,omitempty" xml:"SnatEntryEnabled,omitempty"`
-	// The IP address of the EIP associated with the NAT gateway.
+	// The private IP address of the NAT gateway.
 	UsingStatus *string `json:"UsingStatus,omitempty" xml:"UsingStatus,omitempty"`
 }
 
@@ -30224,27 +30253,34 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList) SetU
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo struct {
-	// The maximum bandwidth. Unit: Mbit/s.
-	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
 	// Indicates whether the NAT gateway supports PrivateLink. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	EniType *string `json:"EniType,omitempty" xml:"EniType,omitempty"`
+	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
+	EniType       *string `json:"EniType,omitempty" xml:"EniType,omitempty"`
+	// The tag value of the instance.
+	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The mode that is used by PrivateLink. Valid values:
+	//
+	// *   **FullNat**: the FULLNAT mode
+	// *   **Geneve**: the GENEVE mode
+	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
+	// The tags that are added to the resource group.
+	MaxSessionEstablishRate *int32 `json:"MaxSessionEstablishRate,omitempty" xml:"MaxSessionEstablishRate,omitempty"`
+	// The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
+	//
+	// *   **MULTI_BINDED**: multi-EIP-to-ENI mode
+	// *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
+	//
+	// >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
+	MaxSessionQuota *int32 `json:"MaxSessionQuota,omitempty" xml:"MaxSessionQuota,omitempty"`
+	// The tag key of the instance.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The mode in which the ENI is associated with the NAT gateway.
 	//
 	// *   **indirect**: non-cut-through mode
 	// *   If an empty value is returned, it indicates that the cut-through mode is used.
-	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The number of concurrent connections to the NAT gateway. Unit: connections.
-	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
-	// The private IP address.
-	MaxSessionEstablishRate *int32 `json:"MaxSessionEstablishRate,omitempty" xml:"MaxSessionEstablishRate,omitempty"`
-	// The number of new connections to the NAT gateway. Unit: connections per second.
-	MaxSessionQuota *int32 `json:"MaxSessionQuota,omitempty" xml:"MaxSessionQuota,omitempty"`
-	// The zone to which the NAT gateway belongs.
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the elastic network interface (ENI).
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
@@ -30331,7 +30367,6 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) SetTag(v []*D
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag struct {
-	// The tag value of the instance.
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
@@ -48775,18 +48810,14 @@ func (s *ListDhcpOptionsSetsResponse) SetBody(v *ListDhcpOptionsSetsResponseBody
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesRequest struct {
+	// The operation that you want to perform. Set the value to **ListEnhanhcedNatGatewayAvailableZones**.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The language to display the results. Valid values:
 	//
 	// *   **zh-CN** (default): Chinese
 	// *   **en-US**: English
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region that you want to query.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	//
-	// In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -48831,9 +48862,9 @@ func (s *ListEnhanhcedNatGatewayAvailableZonesRequest) SetResourceOwnerId(v int6
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of zones.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the zone where the instance is deployed.
 	Zones []*ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -48856,9 +48887,8 @@ func (s *ListEnhanhcedNatGatewayAvailableZonesResponseBody) SetZones(v []*ListEn
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones struct {
-	// The name of the zone.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the zone where the instance is deployed.
+	// The name of the zone.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -50404,37 +50434,40 @@ func (s *ListIpv4GatewaysResponse) SetBody(v *ListIpv4GatewaysResponseBody) *Lis
 }
 
 type ListNatIpCidrsRequest struct {
+	// The status of the CIDR block that you want to query. Set the value to **Available**.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The name of the CIDR block that you want to query. Valid values of **N**: **1** to **20**.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The CIDR block of the NAT gateway that you want to query.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// Specifies whether to only precheck this request. Valid values:
 	//
 	// *   **true**: checks the API request. The CIDR blocks of the NAT gateway are not queried if the API request passes the precheck. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether the required parameters are set. If the request fails to pass the precheck, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// *   **false**: sends the API request. If the request passes the precheck, 2xx HTTP status code is returned and the CIDR blocks of the NAT gateway are queried. This is the default value.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the VPC NAT gateway that you want to query.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The CIDR block of the NAT gateway that you want to query.
-	NatIpCidr     *string   `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	// The CIDR block of the NAT gateway that you want to query. Valid values of **N**: **1** to **20**.
 	NatIpCidrName []*string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty" type:"Repeated"`
-	// The status of the CIDR block that you want to query. Set the value to **Available**.
-	NatIpCidrStatus *string   `json:"NatIpCidrStatus,omitempty" xml:"NatIpCidrStatus,omitempty"`
-	NatIpCidrs      []*string `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
 	// The token that is used for the next query. Set the value as needed.
 	//
 	// *   If this is your first query or no next query is to be sent, ignore this parameter.
 	// *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+	NatIpCidrStatus *string `json:"NatIpCidrStatus,omitempty" xml:"NatIpCidrStatus,omitempty"`
+	// The token that is used for the next query. Valid values:
+	//
+	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+	NatIpCidrs []*string `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Virtual Private Cloud (VPC) NAT gateway that you want to query.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The ID of the VPC NAT gateway that you want to query.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -50519,16 +50552,16 @@ func (s *ListNatIpCidrsRequest) SetResourceOwnerId(v int64) *ListNatIpCidrsReque
 }
 
 type ListNatIpCidrsResponseBody struct {
-	// The CIDR blocks of the NAT gateway.
-	NatIpCidrs []*ListNatIpCidrsResponseBodyNatIpCidrs `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
-	// The token that is used for the next query. Valid values:
+	// Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
 	//
-	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+	// *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
+	// *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
+	NatIpCidrs []*ListNatIpCidrsResponseBodyNatIpCidrs `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
+	// The CIDR blocks of the NAT gateway.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The time when the CIDR block was created.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of CIDR blocks that are returned.
+	// The ID of the CIDR block of the NAT gateway.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -50561,24 +50594,18 @@ func (s *ListNatIpCidrsResponseBody) SetTotalCount(v string) *ListNatIpCidrsResp
 }
 
 type ListNatIpCidrsResponseBodyNatIpCidrs struct {
-	// The time when the CIDR block was created.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
-	//
-	// *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
-	// *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the VPC NAT gateway.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The CIDR block of the NAT gateway.
-	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	// The description of the CIDR block of the NAT gateway.
-	NatIpCidrDescription *string `json:"NatIpCidrDescription,omitempty" xml:"NatIpCidrDescription,omitempty"`
-	// The ID of the CIDR block of the NAT gateway.
-	NatIpCidrId *string `json:"NatIpCidrId,omitempty" xml:"NatIpCidrId,omitempty"`
-	// The name of the CIDR block of the NAT gateway.
-	NatIpCidrName *string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty"`
 	// The status of the CIDR block of the NAT gateway. If **Available** is returned, it indicates that the CIDR block is available.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The CIDR block of the NAT gateway.
+	IsDefault            *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	NatGatewayId         *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatIpCidr            *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	NatIpCidrDescription *string `json:"NatIpCidrDescription,omitempty" xml:"NatIpCidrDescription,omitempty"`
+	// The name of the CIDR block of the NAT gateway.
+	NatIpCidrId *string `json:"NatIpCidrId,omitempty" xml:"NatIpCidrId,omitempty"`
+	// The description of the CIDR block of the NAT gateway.
+	NatIpCidrName *string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty"`
+	// The ID of the VPC NAT gateway.
 	NatIpCidrStatus *string `json:"NatIpCidrStatus,omitempty" xml:"NatIpCidrStatus,omitempty"`
 }
 
@@ -50660,41 +50687,44 @@ func (s *ListNatIpCidrsResponse) SetBody(v *ListNatIpCidrsResponseBody) *ListNat
 }
 
 type ListNatIpsRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck the request. Valid values:
-	//
-	// *   **true**: checks the API request. IP addresses are not queried. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the NAT gateway.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The CIDR block to which the IP address belongs.
-	NatIpCidr *string   `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	NatIpIds  []*string `json:"NatIpIds,omitempty" xml:"NatIpIds,omitempty" type:"Repeated"`
-	NatIpName []*string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty" type:"Repeated"`
 	// The status of the IP address. Valid values:
 	//
 	// *   **Available**
 	// *   **Deleting**
 	// *   **Creating**
-	NatIpStatus *string `json:"NatIpStatus,omitempty" xml:"NatIpStatus,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The name of the IP address. Valid values of **N**: **1** to **20**.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The CIDR block to which the IP address belongs.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// Specifies whether to only precheck the request. Valid values:
+	//
+	// *   **true**: checks the API request. IP addresses are not queried. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	// The token that is used for the next query. Valid values:
+	//
+	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+	NatIpIds []*string `json:"NatIpIds,omitempty" xml:"NatIpIds,omitempty" type:"Repeated"`
+	// The ID of the IP address. Valid values of **N**: **1** to **20**.
+	NatIpName []*string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty" type:"Repeated"`
 	// The token that is used for the next query. Valid values:
 	//
 	// *   If this is your first query or no next query is to be sent, ignore this parameter.
 	// *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+	NatIpStatus *string `json:"NatIpStatus,omitempty" xml:"NatIpStatus,omitempty"`
+	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the NAT gateway is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The ID of the NAT gateway.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -50779,16 +50809,16 @@ func (s *ListNatIpsRequest) SetResourceOwnerId(v int64) *ListNatIpsRequest {
 }
 
 type ListNatIpsResponseBody struct {
-	// The list of IP addresses of the NAT gateway.
+	// The CIDR block to which the IP address belongs.
 	NatIps []*ListNatIpsResponseBodyNatIps `json:"NatIps,omitempty" xml:"NatIps,omitempty" type:"Repeated"`
-	// The token that is used for the next query. Valid values:
-	//
-	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+	// The list of IP addresses of the NAT gateway.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of IP addresses that are returned.
+	// The IP address.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -50821,23 +50851,13 @@ func (s *ListNatIpsResponseBody) SetTotalCount(v string) *ListNatIpsResponseBody
 }
 
 type ListNatIpsResponseBodyNatIps struct {
-	// Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the IP address is assigned.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The IP address.
-	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The CIDR block to which the IP address belongs.
-	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	// The description of the IP address.
-	NatIpDescription *string `json:"NatIpDescription,omitempty" xml:"NatIpDescription,omitempty"`
 	// The ID of the IP address.
-	NatIpId *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
-	// The name of the IP address.
-	NatIpName *string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty"`
+	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The description of the IP address.
+	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the IP address is assigned.
+	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
 	// The status of the IP address. Valid values:
 	//
 	// *   **Available**: available
@@ -50846,6 +50866,10 @@ type ListNatIpsResponseBodyNatIps struct {
 	// *   **Creating**: creating
 	// *   **Associated**: specified in an SNAT or DNAT entry
 	// *   **Associating**: being specified in an SNAT or DNAT entry
+	NatIpDescription *string `json:"NatIpDescription,omitempty" xml:"NatIpDescription,omitempty"`
+	// The name of the IP address.
+	NatIpId     *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
+	NatIpName   *string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty"`
 	NatIpStatus *string `json:"NatIpStatus,omitempty" xml:"NatIpStatus,omitempty"`
 }
 
@@ -69861,6 +69885,10 @@ func (client *Client) AllocateEipSegmentAddressWithOptions(request *AllocateEipS
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Zone)) {
+		query["Zone"] = request.Zone
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -74223,8 +74251,14 @@ func (client *Client) CreateIpv6Gateway(request *CreateIpv6GatewayRequest) (_res
 }
 
 /**
- * The ID of the region where you want to create the NAT gateway.
- * You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+ * Before you call this operation, take note of the following items:
+ * *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
+ * *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
+ * *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
+ *     *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
+ *     *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
+ *         It takes 1 to 3 minutes to create a NAT gateway.
+ * *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
  *
  * @param request CreateNatGatewayRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -74348,8 +74382,14 @@ func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayReque
 }
 
 /**
- * The ID of the region where you want to create the NAT gateway.
- * You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+ * Before you call this operation, take note of the following items:
+ * *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
+ * *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
+ * *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
+ *     *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
+ *     *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
+ *         It takes 1 to 3 minutes to create a NAT gateway.
+ * *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
  *
  * @param request CreateNatGatewayRequest
  * @return CreateNatGatewayResponse
@@ -79616,9 +79656,9 @@ func (client *Client) DeleteNatIp(request *DeleteNatIpRequest) (_result *DeleteN
 }
 
 /**
- * The NAT CIDR block to be deleted.
- * *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
- * *   The default NAT CIDR block cannot be deleted.
+ * Specifies whether only to precheck this request. Valid values:
+ * *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+ * *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
  *
  * @param request DeleteNatIpCidrRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -79694,9 +79734,9 @@ func (client *Client) DeleteNatIpCidrWithOptions(request *DeleteNatIpCidrRequest
 }
 
 /**
- * The NAT CIDR block to be deleted.
- * *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
- * *   The default NAT CIDR block cannot be deleted.
+ * Specifies whether only to precheck this request. Valid values:
+ * *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+ * *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
  *
  * @param request DeleteNatIpCidrRequest
  * @return DeleteNatIpCidrResponse
@@ -80423,10 +80463,7 @@ func (client *Client) DeleteRouterInterface(request *DeleteRouterInterfaceReques
 }
 
 /**
- * DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
- * *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
- * *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
- * If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
+ * The operation that you want to perform. Set the value to **DeleteSnatEntry**.
  *
  * @param request DeleteSnatEntryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -80494,10 +80531,7 @@ func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest
 }
 
 /**
- * DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
- * *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
- * *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
- * If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
+ * The operation that you want to perform. Set the value to **DeleteSnatEntry**.
  *
  * @param request DeleteSnatEntryRequest
  * @return DeleteSnatEntryResponse
@@ -84018,6 +84052,10 @@ func (client *Client) DescribeIpv6AddressesWithOptions(request *DescribeIpv6Addr
 
 	if !tea.BoolValue(util.IsUnset(request.AssociatedInstanceType)) {
 		query["AssociatedInstanceType"] = request.AssociatedInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeReservationData)) {
+		query["IncludeReservationData"] = request.IncludeReservationData
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ipv6Address)) {
@@ -89663,7 +89701,9 @@ func (client *Client) ListDhcpOptionsSets(request *ListDhcpOptionsSetsRequest) (
 }
 
 /**
- * You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
+ * The ID of the region that you want to query.
+ * You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+ * In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
  *
  * @param request ListEnhanhcedNatGatewayAvailableZonesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -89727,7 +89767,9 @@ func (client *Client) ListEnhanhcedNatGatewayAvailableZonesWithOptions(request *
 }
 
 /**
- * You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
+ * The ID of the region that you want to query.
+ * You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+ * In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
  *
  * @param request ListEnhanhcedNatGatewayAvailableZonesRequest
  * @return ListEnhanhcedNatGatewayAvailableZonesResponse
