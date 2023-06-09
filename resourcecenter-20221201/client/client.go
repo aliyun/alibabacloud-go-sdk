@@ -13,6 +13,7 @@ import (
 )
 
 type DisableMultiAccountResourceCenterResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,6 +60,7 @@ func (s *DisableMultiAccountResourceCenterResponse) SetBody(v *DisableMultiAccou
 }
 
 type DisableResourceCenterResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -105,8 +107,13 @@ func (s *DisableResourceCenterResponse) SetBody(v *DisableResourceCenterResponse
 }
 
 type EnableMultiAccountResourceCenterResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the feature. Valid values:
+	//
+	// *   Pending: The feature is being enabled.
+	// *   Enabled: The feature is enabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s EnableMultiAccountResourceCenterResponseBody) String() string {
@@ -157,8 +164,13 @@ func (s *EnableMultiAccountResourceCenterResponse) SetBody(v *EnableMultiAccount
 }
 
 type EnableResourceCenterResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The activation status of the service. Valid values:
+	//
+	// *   Pending: The service is being activated.
+	// *   Enabled: The service is activated.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s EnableResourceCenterResponseBody) String() string {
@@ -209,8 +221,17 @@ func (s *EnableResourceCenterResponse) SetBody(v *EnableResourceCenterResponseBo
 }
 
 type GetMultiAccountResourceCenterServiceStatusResponseBody struct {
+	// The initialization status of the feature. Valid values:
+	//
+	// *   Pending: The feature is being initialized.
+	// *   Finished: The feature is initialized.
 	InitialStatus *string `json:"InitialStatus,omitempty" xml:"InitialStatus,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the feature. Valid values:
+	//
+	// *   Enabled: The feature is enabled.
+	// *   Disabled: The feature is disabled.
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -267,10 +288,14 @@ func (s *GetMultiAccountResourceCenterServiceStatusResponse) SetBody(v *GetMulti
 }
 
 type GetMultiAccountResourceConfigurationRequest struct {
-	AccountId        *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the management account or member of the resource directory.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The region ID of the resource.
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetMultiAccountResourceConfigurationRequest) String() string {
@@ -302,18 +327,32 @@ func (s *GetMultiAccountResourceConfigurationRequest) SetResourceType(v string) 
 }
 
 type GetMultiAccountResourceConfigurationResponseBody struct {
-	AccountId       *string                                                 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Configuration   map[string]interface{}                                  `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	CreateTime      *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IpAddresses     []*string                                               `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	RegionId        *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string                                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName    *string                                                 `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType    *string                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags            []*GetMultiAccountResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ZoneId          *string                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the management account or member of the resource directory.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The configurations of the resource.
+	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The time when the resource was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IP addresses.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	// The region ID of the resource.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the resource belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags []*GetMultiAccountResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The zone ID of the resource.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetMultiAccountResourceConfigurationResponseBody) String() string {
@@ -385,7 +424,9 @@ func (s *GetMultiAccountResourceConfigurationResponseBody) SetZoneId(v string) *
 }
 
 type GetMultiAccountResourceConfigurationResponseBodyTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -437,8 +478,17 @@ func (s *GetMultiAccountResourceConfigurationResponse) SetBody(v *GetMultiAccoun
 }
 
 type GetResourceCenterServiceStatusResponseBody struct {
+	// The initialization status of the service. Valid values:
+	//
+	// *   Pending: The service being initialized.
+	// *   Finished: The service is initialized.
 	InitialStatus *string `json:"InitialStatus,omitempty" xml:"InitialStatus,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the service. Valid values:
+	//
+	// *   Enabled: The service is activated.
+	// *   Disabled: The service is deactivated.
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -495,9 +545,14 @@ func (s *GetResourceCenterServiceStatusResponse) SetBody(v *GetResourceCenterSer
 }
 
 type GetResourceConfigurationRequest struct {
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The region ID of the resource.
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about the resource types supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetResourceConfigurationRequest) String() string {
@@ -524,18 +579,32 @@ func (s *GetResourceConfigurationRequest) SetResourceType(v string) *GetResource
 }
 
 type GetResourceConfigurationResponseBody struct {
-	AccountId       *string                                     `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Configuration   map[string]interface{}                      `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	CreateTime      *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IpAddresses     []*string                                   `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	RegionId        *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId       *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string                                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName    *string                                     `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType    *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags            []*GetResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ZoneId          *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The configurations of the resource.
+	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The time when the resource was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IP addresses.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	// The region ID of the resource.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the resource belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags []*GetResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The zone ID of the resource.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetResourceConfigurationResponseBody) String() string {
@@ -607,7 +676,9 @@ func (s *GetResourceConfigurationResponseBody) SetZoneId(v string) *GetResourceC
 }
 
 type GetResourceConfigurationResponseBodyTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -658,10 +729,199 @@ func (s *GetResourceConfigurationResponse) SetBody(v *GetResourceConfigurationRe
 	return s
 }
 
+type GetResourceCountsRequest struct {
+	// The filter conditions.
+	Filter []*GetResourceCountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The dimension by which resources are queried. Valid values:
+	//
+	// *   ResourceType
+	// *   Region
+	// *   ResourceGroupId
+	// *   TagKey
+	// *   TagValue
+	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+}
+
+func (s GetResourceCountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceCountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceCountsRequest) SetFilter(v []*GetResourceCountsRequestFilter) *GetResourceCountsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *GetResourceCountsRequest) SetGroupByKey(v string) *GetResourceCountsRequest {
+	s.GroupByKey = &v
+	return s
+}
+
+type GetResourceCountsRequestFilter struct {
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching mode.
+	//
+	// The value Equals indicates an equal match.
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceCountsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceCountsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceCountsRequestFilter) SetKey(v string) *GetResourceCountsRequestFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *GetResourceCountsRequestFilter) SetMatchType(v string) *GetResourceCountsRequestFilter {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetResourceCountsRequestFilter) SetValue(v []*string) *GetResourceCountsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type GetResourceCountsResponseBody struct {
+	// The filter conditions.
+	Filters []*GetResourceCountsResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The dimension by which resources are queried.
+	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The numbers of resources.
+	ResourceCounts []*GetResourceCountsResponseBodyResourceCounts `json:"ResourceCounts,omitempty" xml:"ResourceCounts,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceCountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceCountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceCountsResponseBody) SetFilters(v []*GetResourceCountsResponseBodyFilters) *GetResourceCountsResponseBody {
+	s.Filters = v
+	return s
+}
+
+func (s *GetResourceCountsResponseBody) SetGroupByKey(v string) *GetResourceCountsResponseBody {
+	s.GroupByKey = &v
+	return s
+}
+
+func (s *GetResourceCountsResponseBody) SetRequestId(v string) *GetResourceCountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceCountsResponseBody) SetResourceCounts(v []*GetResourceCountsResponseBodyResourceCounts) *GetResourceCountsResponseBody {
+	s.ResourceCounts = v
+	return s
+}
+
+type GetResourceCountsResponseBodyFilters struct {
+	// The key of the filter condition.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the filter condition.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceCountsResponseBodyFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceCountsResponseBodyFilters) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceCountsResponseBodyFilters) SetKey(v string) *GetResourceCountsResponseBodyFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *GetResourceCountsResponseBodyFilters) SetValues(v []*string) *GetResourceCountsResponseBodyFilters {
+	s.Values = v
+	return s
+}
+
+type GetResourceCountsResponseBodyResourceCounts struct {
+	// The number of resources.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The group name.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s GetResourceCountsResponseBodyResourceCounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceCountsResponseBodyResourceCounts) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceCountsResponseBodyResourceCounts) SetCount(v int64) *GetResourceCountsResponseBodyResourceCounts {
+	s.Count = &v
+	return s
+}
+
+func (s *GetResourceCountsResponseBodyResourceCounts) SetGroupName(v string) *GetResourceCountsResponseBodyResourceCounts {
+	s.GroupName = &v
+	return s
+}
+
+type GetResourceCountsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceCountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceCountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceCountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceCountsResponse) SetHeaders(v map[string]*string) *GetResourceCountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceCountsResponse) SetStatusCode(v int32) *GetResourceCountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceCountsResponse) SetBody(v *GetResourceCountsResponseBody) *GetResourceCountsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMultiAccountResourceGroupsRequest struct {
-	AccountId        *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the management account or member of the resource directory.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Maximum value: 100. Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The IDs of resource groups.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -694,8 +954,11 @@ func (s *ListMultiAccountResourceGroupsRequest) SetResourceGroupIds(v []*string)
 }
 
 type ListMultiAccountResourceGroupsResponseBody struct {
-	NextToken      *string                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the resource groups.
 	ResourceGroups []*ListMultiAccountResourceGroupsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 }
 
@@ -723,12 +986,22 @@ func (s *ListMultiAccountResourceGroupsResponseBody) SetResourceGroups(v []*List
 }
 
 type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The ID of the management account or member of the resource directory.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The time when the resource group was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the resource group.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the resource group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique identifier of the resource group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the resource group. Valid values:
+	//
+	// *   Creating: The resource group is being created.
+	// *   OK: The resource group is created.
+	// *   PendingDelete: The resource group is waiting to be deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListMultiAccountResourceGroupsResponseBodyResourceGroups) String() string {
@@ -799,11 +1072,30 @@ func (s *ListMultiAccountResourceGroupsResponse) SetBody(v *ListMultiAccountReso
 }
 
 type ListMultiAccountTagKeysRequest struct {
-	MatchType  *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TagKey     *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The matching mode. Valid values:
+	//
+	// *   Equals: equal match
+	// *   Prefix: match by prefix
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search scope. You can set the value to one of the following items:
+	//
+	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
+	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
+	// *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
+	// *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s ListMultiAccountTagKeysRequest) String() string {
@@ -840,9 +1132,12 @@ func (s *ListMultiAccountTagKeysRequest) SetTagKey(v string) *ListMultiAccountTa
 }
 
 type ListMultiAccountTagKeysResponseBody struct {
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagKeys   []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag keys.
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 
 func (s ListMultiAccountTagKeysResponseBody) String() string {
@@ -898,12 +1193,32 @@ func (s *ListMultiAccountTagKeysResponse) SetBody(v *ListMultiAccountTagKeysResp
 }
 
 type ListMultiAccountTagValuesRequest struct {
-	MatchType  *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TagKey     *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue   *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The matching mode. Valid values:
+	//
+	// *   Equals: equal match
+	// *   Prefix: match by prefix
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search scope. You can set the value to one of the following items:
+	//
+	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
+	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
+	// *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
+	// *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListMultiAccountTagValuesRequest) String() string {
@@ -945,8 +1260,11 @@ func (s *ListMultiAccountTagValuesRequest) SetTagValue(v string) *ListMultiAccou
 }
 
 type ListMultiAccountTagValuesResponseBody struct {
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag values.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 
@@ -1003,9 +1321,17 @@ func (s *ListMultiAccountTagValuesResponse) SetBody(v *ListMultiAccountTagValues
 }
 
 type ListResourceTypesRequest struct {
-	AcceptLanguage *string   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Query          []*string `json:"Query,omitempty" xml:"Query,omitempty" type:"Repeated"`
-	ResourceType   *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh-CN: Chinese
+	// *   en-US: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The query conditions.
+	Query []*string `json:"Query,omitempty" xml:"Query,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// For more information about the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListResourceTypesRequest) String() string {
@@ -1032,7 +1358,9 @@ func (s *ListResourceTypesRequest) SetResourceType(v string) *ListResourceTypesR
 }
 
 type ListResourceTypesResponseBody struct {
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the resource types.
 	ResourceTypes []*ListResourceTypesResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -1055,10 +1383,14 @@ func (s *ListResourceTypesResponseBody) SetResourceTypes(v []*ListResourceTypesR
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
-	FilterKeys       []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
-	ProductName      *string   `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ResourceType     *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceTypeName *string   `json:"ResourceTypeName,omitempty" xml:"ResourceTypeName,omitempty"`
+	// The supported filter conditions.
+	FilterKeys []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
+	// The name of the Alibaba Cloud service.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The name of the resource type.
+	ResourceTypeName *string `json:"ResourceTypeName,omitempty" xml:"ResourceTypeName,omitempty"`
 }
 
 func (s ListResourceTypesResponseBodyResourceTypes) String() string {
@@ -1119,10 +1451,23 @@ func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *L
 }
 
 type ListTagKeysRequest struct {
-	MatchType  *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TagKey     *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The matching mode. Valid values:
+	//
+	// *   Equals: equal match
+	// *   Prefix: match by prefix
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -1154,9 +1499,12 @@ func (s *ListTagKeysRequest) SetTagKey(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagKeys   []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag keys.
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -1212,11 +1560,25 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagValuesRequest struct {
-	MatchType  *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TagKey     *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue   *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The matching mode. Valid values:
+	//
+	// *   Equals: equal match
+	// *   Prefix: match by prefix
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -1253,8 +1615,11 @@ func (s *ListTagValuesRequest) SetTagValue(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag values.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 
@@ -1311,10 +1676,26 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 }
 
 type SearchMultiAccountResourcesRequest struct {
-	Filter        []*SearchMultiAccountResourcesRequestFilter      `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults    *int32                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Scope         *string                                          `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The filter conditions.
+	Filter []*SearchMultiAccountResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search scope. You can set the value to one of the following items:
+	//
+	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
+	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
+	// *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
+	// *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The method that is used to sort the entries returned.
 	SortCriterion *SearchMultiAccountResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
 }
 
@@ -1352,9 +1733,14 @@ func (s *SearchMultiAccountResourcesRequest) SetSortCriterion(v *SearchMultiAcco
 }
 
 type SearchMultiAccountResourcesRequestFilter struct {
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching mode.
+	//
+	// The value Equals indicates an equal match.
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s SearchMultiAccountResourcesRequestFilter) String() string {
@@ -1381,7 +1767,14 @@ func (s *SearchMultiAccountResourcesRequestFilter) SetValue(v []*string) *Search
 }
 
 type SearchMultiAccountResourcesRequestSortCriterion struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The attribute based on which the entries are sorted.
+	//
+	// The value CreateTime indicates the creation time of resources.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The order in which the entries are sorted. Valid values:
+	//
+	// *   ASC: The entries are sorted in ascending order. This value is the default value.
+	// *   DESC: The entries are sorted in descending order.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
@@ -1404,12 +1797,23 @@ func (s *SearchMultiAccountResourcesRequestSortCriterion) SetOrder(v string) *Se
 }
 
 type SearchMultiAccountResourcesResponseBody struct {
-	Filters    []*SearchMultiAccountResourcesResponseBodyFilters   `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	MaxResults *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources  []*SearchMultiAccountResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Scope      *string                                             `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The filter conditions.
+	Filters []*SearchMultiAccountResourcesResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The maximum number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the resources.
+	Resources []*SearchMultiAccountResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The search scope.
+	//
+	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+	// *   ID of a folder: Resources within all members in the folder are searched.
+	// *   ID of a member: Resources within the member are searched.
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s SearchMultiAccountResourcesResponseBody) String() string {
@@ -1451,9 +1855,12 @@ func (s *SearchMultiAccountResourcesResponseBody) SetScope(v string) *SearchMult
 }
 
 type SearchMultiAccountResourcesResponseBodyFilters struct {
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The key of the filter condition.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching mode.
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s SearchMultiAccountResourcesResponseBodyFilters) String() string {
@@ -1480,16 +1887,32 @@ func (s *SearchMultiAccountResourcesResponseBodyFilters) SetValues(v []*string) 
 }
 
 type SearchMultiAccountResourcesResponseBodyResources struct {
-	AccountId       *string                                                 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CreateTime      *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IpAddresses     []*string                                               `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	RegionId        *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string                                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName    *string                                                 `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType    *string                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags            []*SearchMultiAccountResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ZoneId          *string                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the management account or member of the resource directory.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The time when the resource was created.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IP addresses.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	// The region ID of the resource.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the resource belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags []*SearchMultiAccountResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The zone ID of the resource.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s SearchMultiAccountResourcesResponseBodyResources) String() string {
@@ -1551,7 +1974,9 @@ func (s *SearchMultiAccountResourcesResponseBodyResources) SetZoneId(v string) *
 }
 
 type SearchMultiAccountResourcesResponseBodyResourcesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1603,11 +2028,22 @@ func (s *SearchMultiAccountResourcesResponse) SetBody(v *SearchMultiAccountResou
 }
 
 type SearchResourcesRequest struct {
-	Filter          []*SearchResourcesRequestFilter      `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults      *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SortCriterion   *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
+	// The filter conditions.
+	Filter []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The method that is used to sort the entries returned.
+	SortCriterion *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
 }
 
 func (s SearchResourcesRequest) String() string {
@@ -1644,9 +2080,14 @@ func (s *SearchResourcesRequest) SetSortCriterion(v *SearchResourcesRequestSortC
 }
 
 type SearchResourcesRequestFilter struct {
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching mode.
+	//
+	// The value Equals indicates an equal match.
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s SearchResourcesRequestFilter) String() string {
@@ -1673,7 +2114,14 @@ func (s *SearchResourcesRequestFilter) SetValue(v []*string) *SearchResourcesReq
 }
 
 type SearchResourcesRequestSortCriterion struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The attribute based on which the entries are sorted.
+	//
+	// The value CreateTime indicates the creation time of resources.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The order in which the entries are sorted. Valid values:
+	//
+	// *   ASC: The entries are sorted in ascending order. This value is the default value.
+	// *   DESC: The entries are sorted in descending order.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
@@ -1696,11 +2144,16 @@ func (s *SearchResourcesRequestSortCriterion) SetOrder(v string) *SearchResource
 }
 
 type SearchResourcesResponseBody struct {
-	Filters    []*SearchResourcesResponseBodyFilters   `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources  []*SearchResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The filter conditions.
+	Filters []*SearchResourcesResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The maximum number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the resources.
+	Resources []*SearchResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s SearchResourcesResponseBody) String() string {
@@ -1737,9 +2190,12 @@ func (s *SearchResourcesResponseBody) SetResources(v []*SearchResourcesResponseB
 }
 
 type SearchResourcesResponseBodyFilters struct {
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The key of the filter condition.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching mode.
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s SearchResourcesResponseBodyFilters) String() string {
@@ -1766,16 +2222,32 @@ func (s *SearchResourcesResponseBodyFilters) SetValues(v []*string) *SearchResou
 }
 
 type SearchResourcesResponseBodyResources struct {
-	AccountId       *string                                     `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CreateTime      *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IpAddresses     []*string                                   `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	RegionId        *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string                                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName    *string                                     `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType    *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags            []*SearchResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ZoneId          *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The time when the resource was created.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IP addresses.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	// The region ID of the resource.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the resource belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags []*SearchResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The zone ID of the resource.
+	//
+	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s SearchResourcesResponseBodyResources) String() string {
@@ -1837,7 +2309,9 @@ func (s *SearchResourcesResponseBodyResources) SetZoneId(v string) *SearchResour
 }
 
 type SearchResourcesResponseBodyResourcesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2001,6 +2475,13 @@ func (client *Client) DisableResourceCenter() (_result *DisableResourceCenterRes
 	return _result, _err
 }
 
+/**
+ * If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
+ *
+ * @param request EnableMultiAccountResourceCenterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return EnableMultiAccountResourceCenterResponse
+ */
 func (client *Client) EnableMultiAccountResourceCenterWithOptions(runtime *util.RuntimeOptions) (_result *EnableMultiAccountResourceCenterResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -2023,6 +2504,11 @@ func (client *Client) EnableMultiAccountResourceCenterWithOptions(runtime *util.
 	return _result, _err
 }
 
+/**
+ * If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
+ *
+ * @return EnableMultiAccountResourceCenterResponse
+ */
 func (client *Client) EnableMultiAccountResourceCenter() (_result *EnableMultiAccountResourceCenterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableMultiAccountResourceCenterResponse{}
@@ -2234,6 +2720,54 @@ func (client *Client) GetResourceConfiguration(request *GetResourceConfiguration
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceConfigurationResponse{}
 	_body, _err := client.GetResourceConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceCountsWithOptions(request *GetResourceCountsRequest, runtime *util.RuntimeOptions) (_result *GetResourceCountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupByKey)) {
+		query["GroupByKey"] = request.GroupByKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceCounts"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceCountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceCounts(request *GetResourceCountsRequest) (_result *GetResourceCountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResourceCountsResponse{}
+	_body, _err := client.GetResourceCountsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
