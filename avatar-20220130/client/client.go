@@ -2874,6 +2874,268 @@ func (s *SubmitAudioTo2DAvatarVideoTaskResponse) SetBody(v *SubmitAudioTo2DAvata
 	return s
 }
 
+type SubmitAudioTo3DAvatarVideoTaskRequest struct {
+	App        *SubmitAudioTo3DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AvatarInfo *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
+	TenantId   *int64                                           `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title      *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url        *string                                          `json:"Url,omitempty" xml:"Url,omitempty"`
+	VideoInfo  *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetApp(v *SubmitAudioTo3DAvatarVideoTaskRequestApp) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.App = v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetAvatarInfo(v *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.AvatarInfo = v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetTenantId(v int64) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetTitle(v string) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetUrl(v string) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetVideoInfo(v *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.VideoInfo = v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskRequestApp struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestApp) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitAudioTo3DAvatarVideoTaskRequestApp {
+	s.AppId = &v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo struct {
+	Angle  *int32  `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Locate *int32  `json:"Locate,omitempty" xml:"Locate,omitempty"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) SetAngle(v int32) *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo {
+	s.Angle = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) SetCode(v string) *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) SetLocate(v int32) *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo {
+	s.Locate = &v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo struct {
+	AlphaFormat        *int32  `json:"AlphaFormat,omitempty" xml:"AlphaFormat,omitempty"`
+	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
+	IsAlpha            *bool   `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
+	Resolution         *int32  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) SetAlphaFormat(v int32) *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo {
+	s.AlphaFormat = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) SetBackgroundImageUrl(v string) *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo {
+	s.BackgroundImageUrl = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) SetIsAlpha(v bool) *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo {
+	s.IsAlpha = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo {
+	s.Resolution = &v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskShrinkRequest struct {
+	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
+	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
+	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url              *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	VideoInfoShrink  *string `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetAppShrink(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.AppShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetAvatarInfoShrink(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.AvatarInfoShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetTenantId(v int64) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetTitle(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetUrl(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetVideoInfoShrink(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.VideoInfoShrink = &v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SubmitAudioTo3DAvatarVideoTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetCode(v string) *SubmitAudioTo3DAvatarVideoTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetData(v *SubmitAudioTo3DAvatarVideoTaskResponseBodyData) *SubmitAudioTo3DAvatarVideoTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetMessage(v string) *SubmitAudioTo3DAvatarVideoTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetRequestId(v string) *SubmitAudioTo3DAvatarVideoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetSuccess(v string) *SubmitAudioTo3DAvatarVideoTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskResponseBodyData struct {
+	TaskUuid *string `json:"TaskUuid,omitempty" xml:"TaskUuid,omitempty"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponseBodyData) SetTaskUuid(v string) *SubmitAudioTo3DAvatarVideoTaskResponseBodyData {
+	s.TaskUuid = &v
+	return s
+}
+
+type SubmitAudioTo3DAvatarVideoTaskResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitAudioTo3DAvatarVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAudioTo3DAvatarVideoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponse) SetHeaders(v map[string]*string) *SubmitAudioTo3DAvatarVideoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponse) SetStatusCode(v int32) *SubmitAudioTo3DAvatarVideoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskResponse) SetBody(v *SubmitAudioTo3DAvatarVideoTaskResponseBody) *SubmitAudioTo3DAvatarVideoTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTextTo2DAvatarVideoTaskRequest struct {
 	App        *SubmitTextTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
 	AudioInfo  *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo  `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty" type:"Struct"`
@@ -4303,6 +4565,84 @@ func (client *Client) SubmitAudioTo2DAvatarVideoTask(request *SubmitAudioTo2DAva
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAudioTo2DAvatarVideoTaskResponse{}
 	_body, _err := client.SubmitAudioTo2DAvatarVideoTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitAudioTo3DAvatarVideoTaskWithOptions(tmpReq *SubmitAudioTo3DAvatarVideoTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitAudioTo3DAvatarVideoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitAudioTo3DAvatarVideoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.App)) {
+		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.AvatarInfo)) {
+		request.AvatarInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvatarInfo, tea.String("AvatarInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoInfo)) {
+		request.VideoInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoInfo, tea.String("VideoInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
+		query["App"] = request.AppShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvatarInfoShrink)) {
+		query["AvatarInfo"] = request.AvatarInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoInfoShrink)) {
+		query["VideoInfo"] = request.VideoInfoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAudioTo3DAvatarVideoTask"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitAudioTo3DAvatarVideoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitAudioTo3DAvatarVideoTask(request *SubmitAudioTo3DAvatarVideoTaskRequest) (_result *SubmitAudioTo3DAvatarVideoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAudioTo3DAvatarVideoTaskResponse{}
+	_body, _err := client.SubmitAudioTo3DAvatarVideoTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
