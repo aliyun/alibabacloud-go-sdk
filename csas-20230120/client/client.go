@@ -296,9 +296,13 @@ type CreatePrivateAccessPolicyRequest struct {
 	PolicyAction         *string                                                 `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	Priority             *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	Status               *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds               []*string                                               `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	UserGroupIds         []*string                                               `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	UserGroupMode        *string                                                 `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
+	TagIds       []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// 内网访问策略的用户组类型。取值：
+	// - **Normal**：普通用户组。
+	// - **Custom**：自定义用户组。
+	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
 func (s CreatePrivateAccessPolicyRequest) String() string {
@@ -408,9 +412,13 @@ type CreatePrivateAccessPolicyShrinkRequest struct {
 	PolicyAction               *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	Priority                   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	Status                     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIdsShrink               *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-	UserGroupIdsShrink         *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	UserGroupMode              *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
+	TagIdsShrink       *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
+	UserGroupIdsShrink *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
+	// 内网访问策略的用户组类型。取值：
+	// - **Normal**：普通用户组。
+	// - **Custom**：自定义用户组。
+	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
 func (s CreatePrivateAccessPolicyShrinkRequest) String() string {
@@ -664,35 +672,6 @@ func (s *CreateUserGroupRequestAttributes) SetUserGroupType(v string) *CreateUse
 
 func (s *CreateUserGroupRequestAttributes) SetValue(v string) *CreateUserGroupRequestAttributes {
 	s.Value = &v
-	return s
-}
-
-type CreateUserGroupShrinkRequest struct {
-	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s CreateUserGroupShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUserGroupShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUserGroupShrinkRequest) SetAttributesShrink(v string) *CreateUserGroupShrinkRequest {
-	s.AttributesShrink = &v
-	return s
-}
-
-func (s *CreateUserGroupShrinkRequest) SetDescription(v string) *CreateUserGroupShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateUserGroupShrinkRequest) SetName(v string) *CreateUserGroupShrinkRequest {
-	s.Name = &v
 	return s
 }
 
@@ -1612,23 +1591,6 @@ func (s *ListApplicationsForPrivateAccessPolicyRequest) SetPolicyIds(v []*string
 	return s
 }
 
-type ListApplicationsForPrivateAccessPolicyShrinkRequest struct {
-	PolicyIdsShrink *string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty"`
-}
-
-func (s ListApplicationsForPrivateAccessPolicyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApplicationsForPrivateAccessPolicyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListApplicationsForPrivateAccessPolicyShrinkRequest) SetPolicyIdsShrink(v string) *ListApplicationsForPrivateAccessPolicyShrinkRequest {
-	s.PolicyIdsShrink = &v
-	return s
-}
-
 type ListApplicationsForPrivateAccessPolicyResponseBody struct {
 	Polices   []*ListApplicationsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
 	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1803,23 +1765,6 @@ func (s *ListApplicationsForPrivateAccessTagRequest) SetTagIds(v []*string) *Lis
 	return s
 }
 
-type ListApplicationsForPrivateAccessTagShrinkRequest struct {
-	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-}
-
-func (s ListApplicationsForPrivateAccessTagShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApplicationsForPrivateAccessTagShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListApplicationsForPrivateAccessTagShrinkRequest) SetTagIdsShrink(v string) *ListApplicationsForPrivateAccessTagShrinkRequest {
-	s.TagIdsShrink = &v
-	return s
-}
-
 type ListApplicationsForPrivateAccessTagResponseBody struct {
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*ListApplicationsForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -1867,14 +1812,15 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTags) SetTagId(v string)
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTagsApplications struct {
-	Addresses     []*string                                                                    `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	ApplicationId *string                                                                      `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CreateTime    *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortRanges    []*ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol      *string                                                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status        *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Addresses     []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 内网访问应用创建时间。
+	CreateTime  *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges  []*ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	Protocol    *string                                                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Status      *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessTagResponseBodyTagsApplications) String() string {
@@ -1982,6 +1928,8 @@ type ListConnectorsRequest struct {
 	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwitchStatus *string   `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
 }
 
 func (s ListConnectorsRequest) String() string {
@@ -2012,38 +1960,13 @@ func (s *ListConnectorsRequest) SetPageSize(v int32) *ListConnectorsRequest {
 	return s
 }
 
-type ListConnectorsShrinkRequest struct {
-	ConnectorIdsShrink *string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty"`
-	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListConnectorsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConnectorsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListConnectorsShrinkRequest) SetConnectorIdsShrink(v string) *ListConnectorsShrinkRequest {
-	s.ConnectorIdsShrink = &v
+func (s *ListConnectorsRequest) SetStatus(v string) *ListConnectorsRequest {
+	s.Status = &v
 	return s
 }
 
-func (s *ListConnectorsShrinkRequest) SetCurrentPage(v int32) *ListConnectorsShrinkRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListConnectorsShrinkRequest) SetName(v string) *ListConnectorsShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListConnectorsShrinkRequest) SetPageSize(v int32) *ListConnectorsShrinkRequest {
-	s.PageSize = &v
+func (s *ListConnectorsRequest) SetSwitchStatus(v string) *ListConnectorsRequest {
+	s.SwitchStatus = &v
 	return s
 }
 
@@ -2225,23 +2148,6 @@ func (s ListPolicesForPrivateAccessApplicationRequest) GoString() string {
 
 func (s *ListPolicesForPrivateAccessApplicationRequest) SetApplicationIds(v []*string) *ListPolicesForPrivateAccessApplicationRequest {
 	s.ApplicationIds = v
-	return s
-}
-
-type ListPolicesForPrivateAccessApplicationShrinkRequest struct {
-	ApplicationIdsShrink *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
-}
-
-func (s ListPolicesForPrivateAccessApplicationShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPolicesForPrivateAccessApplicationShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPolicesForPrivateAccessApplicationShrinkRequest) SetApplicationIdsShrink(v string) *ListPolicesForPrivateAccessApplicationShrinkRequest {
-	s.ApplicationIdsShrink = &v
 	return s
 }
 
@@ -2443,23 +2349,6 @@ func (s *ListPolicesForPrivateAccessTagRequest) SetTagIds(v []*string) *ListPoli
 	return s
 }
 
-type ListPolicesForPrivateAccessTagShrinkRequest struct {
-	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-}
-
-func (s ListPolicesForPrivateAccessTagShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPolicesForPrivateAccessTagShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPolicesForPrivateAccessTagShrinkRequest) SetTagIdsShrink(v string) *ListPolicesForPrivateAccessTagShrinkRequest {
-	s.TagIdsShrink = &v
-	return s
-}
-
 type ListPolicesForPrivateAccessTagResponseBody struct {
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*ListPolicesForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -2507,8 +2396,10 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTags) SetTagId(v string) *Lis
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolices struct {
-	ApplicationType      *string                                                                      `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CreateTime           *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// 内网访问策略创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 自定义用户组属性集合。多个自定义用户组属性之间是或的关系，按照合集生效。
 	CustomUserAttributes []*ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name                 *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2578,10 +2469,24 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTagsPolices) SetUserGroupType
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// 用户组的身份源ID。当自定义用户组类型为**department**时，存在该值。
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// 用户组的关系。取值：
+	// - **Equal**：等于。
+	// - **Unequal**：不等于。
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// 用户组的类型。取值：
+	// - **username**：用户名。
+	// - **department**：部门。
+	// - **email**：邮箱。
+	// - **telephone**：手机。
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 用户组属性的值。
+	// - 当用户组类型为**username**时，表示用户名的值。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
+	// - 当用户组类型为**department**时，表示部门的值。如：OU=部门1,OU=SASE钉钉。
+	// - 当用户组类型为**email**时，表示邮箱的值。如：username@example.com。
+	// - 当用户组类型为**telephone**时，表示手机的值。如：13900001234。
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes) String() string {
@@ -2655,23 +2560,6 @@ func (s ListPolicesForUserGroupRequest) GoString() string {
 
 func (s *ListPolicesForUserGroupRequest) SetUserGroupIds(v []*string) *ListPolicesForUserGroupRequest {
 	s.UserGroupIds = v
-	return s
-}
-
-type ListPolicesForUserGroupShrinkRequest struct {
-	UserGroupIdsShrink *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-}
-
-func (s ListPolicesForUserGroupShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPolicesForUserGroupShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPolicesForUserGroupShrinkRequest) SetUserGroupIdsShrink(v string) *ListPolicesForUserGroupShrinkRequest {
-	s.UserGroupIdsShrink = &v
 	return s
 }
 
@@ -2838,65 +2726,6 @@ func (s *ListPrivateAccessApplicationsRequest) SetTagId(v string) *ListPrivateAc
 	return s
 }
 
-type ListPrivateAccessApplicationsShrinkRequest struct {
-	Address              *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	ApplicationIdsShrink *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
-	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId             *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagId                *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-}
-
-func (s ListPrivateAccessApplicationsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPrivateAccessApplicationsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetAddress(v string) *ListPrivateAccessApplicationsShrinkRequest {
-	s.Address = &v
-	return s
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetApplicationIdsShrink(v string) *ListPrivateAccessApplicationsShrinkRequest {
-	s.ApplicationIdsShrink = &v
-	return s
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetCurrentPage(v int32) *ListPrivateAccessApplicationsShrinkRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetName(v string) *ListPrivateAccessApplicationsShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetPageSize(v int32) *ListPrivateAccessApplicationsShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetPolicyId(v string) *ListPrivateAccessApplicationsShrinkRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetStatus(v string) *ListPrivateAccessApplicationsShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *ListPrivateAccessApplicationsShrinkRequest) SetTagId(v string) *ListPrivateAccessApplicationsShrinkRequest {
-	s.TagId = &v
-	return s
-}
-
 type ListPrivateAccessApplicationsResponseBody struct {
 	Applications []*ListPrivateAccessApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	RequestId    *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3058,7 +2887,10 @@ type ListPrivateAccessPolicesRequest struct {
 	PolicyIds     []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 	TagId         *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	UserGroupId   *string   `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// 用户组ID。取值来源：
+	// - [ListUserGroups](~~ListUserGroups~~)：批量查询用户组。
+	// - [CreateUserGroup](~~CreateUserGroup~~)：创建用户组。
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s ListPrivateAccessPolicesRequest) String() string {
@@ -3110,71 +2942,6 @@ func (s *ListPrivateAccessPolicesRequest) SetTagId(v string) *ListPrivateAccessP
 }
 
 func (s *ListPrivateAccessPolicesRequest) SetUserGroupId(v string) *ListPrivateAccessPolicesRequest {
-	s.UserGroupId = &v
-	return s
-}
-
-type ListPrivateAccessPolicesShrinkRequest struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyAction    *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyIdsShrink *string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagId           *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	UserGroupId     *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-}
-
-func (s ListPrivateAccessPolicesShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPrivateAccessPolicesShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetApplicationId(v string) *ListPrivateAccessPolicesShrinkRequest {
-	s.ApplicationId = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetCurrentPage(v int32) *ListPrivateAccessPolicesShrinkRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetName(v string) *ListPrivateAccessPolicesShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetPageSize(v int32) *ListPrivateAccessPolicesShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetPolicyAction(v string) *ListPrivateAccessPolicesShrinkRequest {
-	s.PolicyAction = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetPolicyIdsShrink(v string) *ListPrivateAccessPolicesShrinkRequest {
-	s.PolicyIdsShrink = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetStatus(v string) *ListPrivateAccessPolicesShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetTagId(v string) *ListPrivateAccessPolicesShrinkRequest {
-	s.TagId = &v
-	return s
-}
-
-func (s *ListPrivateAccessPolicesShrinkRequest) SetUserGroupId(v string) *ListPrivateAccessPolicesShrinkRequest {
 	s.UserGroupId = &v
 	return s
 }
@@ -3408,53 +3175,6 @@ func (s *ListPrivateAccessTagsRequest) SetTagIds(v []*string) *ListPrivateAccess
 	return s
 }
 
-type ListPrivateAccessTagsShrinkRequest struct {
-	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	TagIdsShrink  *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-}
-
-func (s ListPrivateAccessTagsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPrivateAccessTagsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrivateAccessTagsShrinkRequest) SetApplicationId(v string) *ListPrivateAccessTagsShrinkRequest {
-	s.ApplicationId = &v
-	return s
-}
-
-func (s *ListPrivateAccessTagsShrinkRequest) SetCurrentPage(v int32) *ListPrivateAccessTagsShrinkRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListPrivateAccessTagsShrinkRequest) SetName(v string) *ListPrivateAccessTagsShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListPrivateAccessTagsShrinkRequest) SetPageSize(v int32) *ListPrivateAccessTagsShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListPrivateAccessTagsShrinkRequest) SetPolicyId(v string) *ListPrivateAccessTagsShrinkRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *ListPrivateAccessTagsShrinkRequest) SetTagIdsShrink(v string) *ListPrivateAccessTagsShrinkRequest {
-	s.TagIdsShrink = &v
-	return s
-}
-
 type ListPrivateAccessTagsResponseBody struct {
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*ListPrivateAccessTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -3580,23 +3300,6 @@ func (s ListTagsForPrivateAccessApplicationRequest) GoString() string {
 
 func (s *ListTagsForPrivateAccessApplicationRequest) SetApplicationIds(v []*string) *ListTagsForPrivateAccessApplicationRequest {
 	s.ApplicationIds = v
-	return s
-}
-
-type ListTagsForPrivateAccessApplicationShrinkRequest struct {
-	ApplicationIdsShrink *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
-}
-
-func (s ListTagsForPrivateAccessApplicationShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagsForPrivateAccessApplicationShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagsForPrivateAccessApplicationShrinkRequest) SetApplicationIdsShrink(v string) *ListTagsForPrivateAccessApplicationShrinkRequest {
-	s.ApplicationIdsShrink = &v
 	return s
 }
 
@@ -3733,23 +3436,6 @@ func (s *ListTagsForPrivateAccessPolicyRequest) SetPolicyIds(v []*string) *ListT
 	return s
 }
 
-type ListTagsForPrivateAccessPolicyShrinkRequest struct {
-	PolicyIdsShrink *string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty"`
-}
-
-func (s ListTagsForPrivateAccessPolicyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagsForPrivateAccessPolicyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagsForPrivateAccessPolicyShrinkRequest) SetPolicyIdsShrink(v string) *ListTagsForPrivateAccessPolicyShrinkRequest {
-	s.PolicyIdsShrink = &v
-	return s
-}
-
 type ListTagsForPrivateAccessPolicyResponseBody struct {
 	Polices   []*ListTagsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3797,6 +3483,7 @@ func (s *ListTagsForPrivateAccessPolicyResponseBodyPolices) SetTags(v []*ListTag
 }
 
 type ListTagsForPrivateAccessPolicyResponseBodyPolicesTags struct {
+	// 内网访问标签创建时间。
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -3867,12 +3554,13 @@ func (s *ListTagsForPrivateAccessPolicyResponse) SetBody(v *ListTagsForPrivateAc
 }
 
 type ListUserGroupsRequest struct {
-	AttributeValue *string   `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
-	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PAPolicyId     *string   `json:"PAPolicyId,omitempty" xml:"PAPolicyId,omitempty"`
-	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserGroupIds   []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
+	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 用户组名称。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
+	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PAPolicyId   *string   `json:"PAPolicyId,omitempty" xml:"PAPolicyId,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s ListUserGroupsRequest) String() string {
@@ -3910,53 +3598,6 @@ func (s *ListUserGroupsRequest) SetPageSize(v int32) *ListUserGroupsRequest {
 
 func (s *ListUserGroupsRequest) SetUserGroupIds(v []*string) *ListUserGroupsRequest {
 	s.UserGroupIds = v
-	return s
-}
-
-type ListUserGroupsShrinkRequest struct {
-	AttributeValue     *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
-	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PAPolicyId         *string `json:"PAPolicyId,omitempty" xml:"PAPolicyId,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserGroupIdsShrink *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-}
-
-func (s ListUserGroupsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserGroupsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserGroupsShrinkRequest) SetAttributeValue(v string) *ListUserGroupsShrinkRequest {
-	s.AttributeValue = &v
-	return s
-}
-
-func (s *ListUserGroupsShrinkRequest) SetCurrentPage(v int32) *ListUserGroupsShrinkRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListUserGroupsShrinkRequest) SetName(v string) *ListUserGroupsShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListUserGroupsShrinkRequest) SetPAPolicyId(v string) *ListUserGroupsShrinkRequest {
-	s.PAPolicyId = &v
-	return s
-}
-
-func (s *ListUserGroupsShrinkRequest) SetPageSize(v int32) *ListUserGroupsShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListUserGroupsShrinkRequest) SetUserGroupIdsShrink(v string) *ListUserGroupsShrinkRequest {
-	s.UserGroupIdsShrink = &v
 	return s
 }
 
@@ -4111,23 +3752,6 @@ func (s *ListUserGroupsForPrivateAccessPolicyRequest) SetPolicyIds(v []*string) 
 	return s
 }
 
-type ListUserGroupsForPrivateAccessPolicyShrinkRequest struct {
-	PolicyIdsShrink *string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty"`
-}
-
-func (s ListUserGroupsForPrivateAccessPolicyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserGroupsForPrivateAccessPolicyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserGroupsForPrivateAccessPolicyShrinkRequest) SetPolicyIdsShrink(v string) *ListUserGroupsForPrivateAccessPolicyShrinkRequest {
-	s.PolicyIdsShrink = &v
-	return s
-}
-
 type ListUserGroupsForPrivateAccessPolicyResponseBody struct {
 	Polices   []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
 	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4175,11 +3799,12 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolices) SetUserGroups(
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups struct {
-	Attributes  []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	CreateTime  *string                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserGroupId *string                                                                        `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	Attributes []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// 用户组创建时间。
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups) String() string {
@@ -4476,9 +4101,13 @@ type UpdatePrivateAccessPolicyRequest struct {
 	PolicyId             *string                                                 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	Priority             *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	Status               *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds               []*string                                               `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	UserGroupIds         []*string                                               `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	UserGroupMode        *string                                                 `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// 内网访问标签ID集合。一条策略最多支持100个内网访问标签ID。
+	TagIds       []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// 内网访问策略的用户组类型。取值：
+	// - **Normal**：普通用户组。
+	// - **Custom**：自定义用户组。
+	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
 func (s UpdatePrivateAccessPolicyRequest) String() string {
@@ -4594,9 +4223,13 @@ type UpdatePrivateAccessPolicyShrinkRequest struct {
 	PolicyId                   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	Priority                   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	Status                     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIdsShrink               *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-	UserGroupIdsShrink         *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	UserGroupMode              *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// 内网访问标签ID集合。一条策略最多支持100个内网访问标签ID。
+	TagIdsShrink       *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
+	UserGroupIdsShrink *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
+	// 内网访问策略的用户组类型。取值：
+	// - **Normal**：普通用户组。
+	// - **Custom**：自定义用户组。
+	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
 func (s UpdatePrivateAccessPolicyShrinkRequest) String() string {
@@ -4780,41 +4413,6 @@ func (s *UpdateUserGroupRequestAttributes) SetUserGroupType(v string) *UpdateUse
 
 func (s *UpdateUserGroupRequestAttributes) SetValue(v string) *UpdateUserGroupRequestAttributes {
 	s.Value = &v
-	return s
-}
-
-type UpdateUserGroupShrinkRequest struct {
-	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ModifyType       *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	UserGroupId      *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-}
-
-func (s UpdateUserGroupShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserGroupShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserGroupShrinkRequest) SetAttributesShrink(v string) *UpdateUserGroupShrinkRequest {
-	s.AttributesShrink = &v
-	return s
-}
-
-func (s *UpdateUserGroupShrinkRequest) SetDescription(v string) *UpdateUserGroupShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateUserGroupShrinkRequest) SetModifyType(v string) *UpdateUserGroupShrinkRequest {
-	s.ModifyType = &v
-	return s
-}
-
-func (s *UpdateUserGroupShrinkRequest) SetUserGroupId(v string) *UpdateUserGroupShrinkRequest {
-	s.UserGroupId = &v
 	return s
 }
 
@@ -5197,20 +4795,15 @@ func (client *Client) CreatePrivateAccessTag(request *CreatePrivateAccessTagRequ
 	return _result, _err
 }
 
-func (client *Client) CreateUserGroupWithOptions(tmpReq *CreateUserGroupRequest, runtime *util.RuntimeOptions) (_result *CreateUserGroupResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest, runtime *util.RuntimeOptions) (_result *CreateUserGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &CreateUserGroupShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Attributes)) {
-		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, tea.String("Attributes"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AttributesShrink)) {
-		body["Attributes"] = request.AttributesShrink
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		bodyFlat["Attributes"] = request.Attributes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -5221,6 +4814,8 @@ func (client *Client) CreateUserGroupWithOptions(tmpReq *CreateUserGroupRequest,
 		body["Name"] = request.Name
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -5605,17 +5200,11 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 	return _result, _err
 }
 
-func (client *Client) ListApplicationsForPrivateAccessPolicyWithOptions(tmpReq *ListApplicationsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForPrivateAccessPolicyResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListApplicationsForPrivateAccessPolicyWithOptions(request *ListApplicationsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForPrivateAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListApplicationsForPrivateAccessPolicyShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.PolicyIds)) {
-		request.PolicyIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolicyIds, tea.String("PolicyIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5651,17 +5240,11 @@ func (client *Client) ListApplicationsForPrivateAccessPolicy(request *ListApplic
 	return _result, _err
 }
 
-func (client *Client) ListApplicationsForPrivateAccessTagWithOptions(tmpReq *ListApplicationsForPrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForPrivateAccessTagResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListApplicationsForPrivateAccessTagWithOptions(request *ListApplicationsForPrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForPrivateAccessTagResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListApplicationsForPrivateAccessTagShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
-		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5697,17 +5280,11 @@ func (client *Client) ListApplicationsForPrivateAccessTag(request *ListApplicati
 	return _result, _err
 }
 
-func (client *Client) ListConnectorsWithOptions(tmpReq *ListConnectorsRequest, runtime *util.RuntimeOptions) (_result *ListConnectorsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, runtime *util.RuntimeOptions) (_result *ListConnectorsResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListConnectorsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ConnectorIds)) {
-		request.ConnectorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConnectorIds, tea.String("ConnectorIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5743,17 +5320,11 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 	return _result, _err
 }
 
-func (client *Client) ListPolicesForPrivateAccessApplicationWithOptions(tmpReq *ListPolicesForPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForPrivateAccessApplicationResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListPolicesForPrivateAccessApplicationWithOptions(request *ListPolicesForPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForPrivateAccessApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListPolicesForPrivateAccessApplicationShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationIds)) {
-		request.ApplicationIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationIds, tea.String("ApplicationIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5789,17 +5360,11 @@ func (client *Client) ListPolicesForPrivateAccessApplication(request *ListPolice
 	return _result, _err
 }
 
-func (client *Client) ListPolicesForPrivateAccessTagWithOptions(tmpReq *ListPolicesForPrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForPrivateAccessTagResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListPolicesForPrivateAccessTagWithOptions(request *ListPolicesForPrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForPrivateAccessTagResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListPolicesForPrivateAccessTagShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
-		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5835,17 +5400,11 @@ func (client *Client) ListPolicesForPrivateAccessTag(request *ListPolicesForPriv
 	return _result, _err
 }
 
-func (client *Client) ListPolicesForUserGroupWithOptions(tmpReq *ListPolicesForUserGroupRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForUserGroupResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListPolicesForUserGroupWithOptions(request *ListPolicesForUserGroupRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForUserGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListPolicesForUserGroupShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.UserGroupIds)) {
-		request.UserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserGroupIds, tea.String("UserGroupIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5881,17 +5440,11 @@ func (client *Client) ListPolicesForUserGroup(request *ListPolicesForUserGroupRe
 	return _result, _err
 }
 
-func (client *Client) ListPrivateAccessApplicationsWithOptions(tmpReq *ListPrivateAccessApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessApplicationsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPrivateAccessApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessApplicationsResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListPrivateAccessApplicationsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationIds)) {
-		request.ApplicationIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationIds, tea.String("ApplicationIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5927,17 +5480,11 @@ func (client *Client) ListPrivateAccessApplications(request *ListPrivateAccessAp
 	return _result, _err
 }
 
-func (client *Client) ListPrivateAccessPolicesWithOptions(tmpReq *ListPrivateAccessPolicesRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessPolicesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListPrivateAccessPolicesWithOptions(request *ListPrivateAccessPolicesRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessPolicesResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListPrivateAccessPolicesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.PolicyIds)) {
-		request.PolicyIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolicyIds, tea.String("PolicyIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -5973,17 +5520,11 @@ func (client *Client) ListPrivateAccessPolices(request *ListPrivateAccessPolices
 	return _result, _err
 }
 
-func (client *Client) ListPrivateAccessTagsWithOptions(tmpReq *ListPrivateAccessTagsRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessTagsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListPrivateAccessTagsWithOptions(request *ListPrivateAccessTagsRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListPrivateAccessTagsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
-		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -6019,17 +5560,11 @@ func (client *Client) ListPrivateAccessTags(request *ListPrivateAccessTagsReques
 	return _result, _err
 }
 
-func (client *Client) ListTagsForPrivateAccessApplicationWithOptions(tmpReq *ListTagsForPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *ListTagsForPrivateAccessApplicationResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListTagsForPrivateAccessApplicationWithOptions(request *ListTagsForPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *ListTagsForPrivateAccessApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListTagsForPrivateAccessApplicationShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationIds)) {
-		request.ApplicationIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationIds, tea.String("ApplicationIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -6065,17 +5600,11 @@ func (client *Client) ListTagsForPrivateAccessApplication(request *ListTagsForPr
 	return _result, _err
 }
 
-func (client *Client) ListTagsForPrivateAccessPolicyWithOptions(tmpReq *ListTagsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListTagsForPrivateAccessPolicyResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListTagsForPrivateAccessPolicyWithOptions(request *ListTagsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListTagsForPrivateAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListTagsForPrivateAccessPolicyShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.PolicyIds)) {
-		request.PolicyIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolicyIds, tea.String("PolicyIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -6111,17 +5640,11 @@ func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivate
 	return _result, _err
 }
 
-func (client *Client) ListUserGroupsWithOptions(tmpReq *ListUserGroupsRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListUserGroupsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.UserGroupIds)) {
-		request.UserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserGroupIds, tea.String("UserGroupIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -6157,17 +5680,11 @@ func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *L
 	return _result, _err
 }
 
-func (client *Client) ListUserGroupsForPrivateAccessPolicyWithOptions(tmpReq *ListUserGroupsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsForPrivateAccessPolicyResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListUserGroupsForPrivateAccessPolicyWithOptions(request *ListUserGroupsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsForPrivateAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListUserGroupsForPrivateAccessPolicyShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.PolicyIds)) {
-		request.PolicyIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolicyIds, tea.String("PolicyIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -6395,20 +5912,15 @@ func (client *Client) UpdatePrivateAccessPolicy(request *UpdatePrivateAccessPoli
 	return _result, _err
 }
 
-func (client *Client) UpdateUserGroupWithOptions(tmpReq *UpdateUserGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateUserGroupResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateUserGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &UpdateUserGroupShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Attributes)) {
-		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, tea.String("Attributes"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AttributesShrink)) {
-		body["Attributes"] = request.AttributesShrink
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		bodyFlat["Attributes"] = request.Attributes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -6423,6 +5935,8 @@ func (client *Client) UpdateUserGroupWithOptions(tmpReq *UpdateUserGroupRequest,
 		body["UserGroupId"] = request.UserGroupId
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
