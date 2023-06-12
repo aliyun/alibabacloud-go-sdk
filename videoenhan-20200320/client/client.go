@@ -291,7 +291,8 @@ func (s *AbstractFilmVideoResponse) SetBody(v *AbstractFilmVideoResponseBody) *A
 }
 
 type AddFaceVideoTemplateRequest struct {
-	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	VideoScene *string `json:"VideoScene,omitempty" xml:"VideoScene,omitempty"`
+	VideoURL   *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s AddFaceVideoTemplateRequest) String() string {
@@ -302,12 +303,18 @@ func (s AddFaceVideoTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AddFaceVideoTemplateRequest) SetVideoScene(v string) *AddFaceVideoTemplateRequest {
+	s.VideoScene = &v
+	return s
+}
+
 func (s *AddFaceVideoTemplateRequest) SetVideoURL(v string) *AddFaceVideoTemplateRequest {
 	s.VideoURL = &v
 	return s
 }
 
 type AddFaceVideoTemplateAdvanceRequest struct {
+	VideoScene     *string   `json:"VideoScene,omitempty" xml:"VideoScene,omitempty"`
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -317,6 +324,11 @@ func (s AddFaceVideoTemplateAdvanceRequest) String() string {
 
 func (s AddFaceVideoTemplateAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddFaceVideoTemplateAdvanceRequest) SetVideoScene(v string) *AddFaceVideoTemplateAdvanceRequest {
+	s.VideoScene = &v
+	return s
 }
 
 func (s *AddFaceVideoTemplateAdvanceRequest) SetVideoURLObject(v io.Reader) *AddFaceVideoTemplateAdvanceRequest {
@@ -354,7 +366,8 @@ func (s *AddFaceVideoTemplateResponseBody) SetRequestId(v string) *AddFaceVideoT
 }
 
 type AddFaceVideoTemplateResponseBodyDate struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	FaceInfos  []*AddFaceVideoTemplateResponseBodyDateFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
+	TemplateId *string                                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s AddFaceVideoTemplateResponseBodyDate) String() string {
@@ -365,8 +378,36 @@ func (s AddFaceVideoTemplateResponseBodyDate) GoString() string {
 	return s.String()
 }
 
+func (s *AddFaceVideoTemplateResponseBodyDate) SetFaceInfos(v []*AddFaceVideoTemplateResponseBodyDateFaceInfos) *AddFaceVideoTemplateResponseBodyDate {
+	s.FaceInfos = v
+	return s
+}
+
 func (s *AddFaceVideoTemplateResponseBodyDate) SetTemplateId(v string) *AddFaceVideoTemplateResponseBodyDate {
 	s.TemplateId = &v
+	return s
+}
+
+type AddFaceVideoTemplateResponseBodyDateFaceInfos struct {
+	TemplateFaceID  *string `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+	TemplateFaceURL *string `json:"TemplateFaceURL,omitempty" xml:"TemplateFaceURL,omitempty"`
+}
+
+func (s AddFaceVideoTemplateResponseBodyDateFaceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFaceVideoTemplateResponseBodyDateFaceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *AddFaceVideoTemplateResponseBodyDateFaceInfos) SetTemplateFaceID(v string) *AddFaceVideoTemplateResponseBodyDateFaceInfos {
+	s.TemplateFaceID = &v
+	return s
+}
+
+func (s *AddFaceVideoTemplateResponseBodyDateFaceInfos) SetTemplateFaceURL(v string) *AddFaceVideoTemplateResponseBodyDateFaceInfos {
+	s.TemplateFaceURL = &v
 	return s
 }
 
@@ -2394,8 +2435,9 @@ func (s *MergeVideoFaceResponse) SetBody(v *MergeVideoFaceResponseBody) *MergeVi
 }
 
 type MergeVideoModelFaceRequest struct {
-	FaceImageURL *string `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	FaceImageURL *string                                 `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
+	MergeInfos   []*MergeVideoModelFaceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
+	TemplateId   *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s MergeVideoModelFaceRequest) String() string {
@@ -2411,14 +2453,49 @@ func (s *MergeVideoModelFaceRequest) SetFaceImageURL(v string) *MergeVideoModelF
 	return s
 }
 
+func (s *MergeVideoModelFaceRequest) SetMergeInfos(v []*MergeVideoModelFaceRequestMergeInfos) *MergeVideoModelFaceRequest {
+	s.MergeInfos = v
+	return s
+}
+
 func (s *MergeVideoModelFaceRequest) SetTemplateId(v string) *MergeVideoModelFaceRequest {
 	s.TemplateId = &v
 	return s
 }
 
+type MergeVideoModelFaceRequestMergeInfos struct {
+	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	TemplateFaceID  *string `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+	TemplateFaceURL *string `json:"TemplateFaceURL,omitempty" xml:"TemplateFaceURL,omitempty"`
+}
+
+func (s MergeVideoModelFaceRequestMergeInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeVideoModelFaceRequestMergeInfos) GoString() string {
+	return s.String()
+}
+
+func (s *MergeVideoModelFaceRequestMergeInfos) SetImageURL(v string) *MergeVideoModelFaceRequestMergeInfos {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *MergeVideoModelFaceRequestMergeInfos) SetTemplateFaceID(v string) *MergeVideoModelFaceRequestMergeInfos {
+	s.TemplateFaceID = &v
+	return s
+}
+
+func (s *MergeVideoModelFaceRequestMergeInfos) SetTemplateFaceURL(v string) *MergeVideoModelFaceRequestMergeInfos {
+	s.TemplateFaceURL = &v
+	return s
+}
+
 type MergeVideoModelFaceAdvanceRequest struct {
-	FaceImageURLObject io.Reader `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
-	TemplateId         *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	FaceImageURLObject io.Reader                                      `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
+	MergeInfos         []*MergeVideoModelFaceAdvanceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
+	TemplateId         *string                                        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s MergeVideoModelFaceAdvanceRequest) String() string {
@@ -2434,8 +2511,42 @@ func (s *MergeVideoModelFaceAdvanceRequest) SetFaceImageURLObject(v io.Reader) *
 	return s
 }
 
+func (s *MergeVideoModelFaceAdvanceRequest) SetMergeInfos(v []*MergeVideoModelFaceAdvanceRequestMergeInfos) *MergeVideoModelFaceAdvanceRequest {
+	s.MergeInfos = v
+	return s
+}
+
 func (s *MergeVideoModelFaceAdvanceRequest) SetTemplateId(v string) *MergeVideoModelFaceAdvanceRequest {
 	s.TemplateId = &v
+	return s
+}
+
+type MergeVideoModelFaceAdvanceRequestMergeInfos struct {
+	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	TemplateFaceID  *string `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+	TemplateFaceURL *string `json:"TemplateFaceURL,omitempty" xml:"TemplateFaceURL,omitempty"`
+}
+
+func (s MergeVideoModelFaceAdvanceRequestMergeInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeVideoModelFaceAdvanceRequestMergeInfos) GoString() string {
+	return s.String()
+}
+
+func (s *MergeVideoModelFaceAdvanceRequestMergeInfos) SetImageURL(v string) *MergeVideoModelFaceAdvanceRequestMergeInfos {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *MergeVideoModelFaceAdvanceRequestMergeInfos) SetTemplateFaceID(v string) *MergeVideoModelFaceAdvanceRequestMergeInfos {
+	s.TemplateFaceID = &v
+	return s
+}
+
+func (s *MergeVideoModelFaceAdvanceRequestMergeInfos) SetTemplateFaceURL(v string) *MergeVideoModelFaceAdvanceRequestMergeInfos {
+	s.TemplateFaceURL = &v
 	return s
 }
 
@@ -2572,11 +2683,12 @@ func (s *QueryFaceVideoTemplateResponseBodyData) SetElements(v []*QueryFaceVideo
 }
 
 type QueryFaceVideoTemplateResponseBodyDataElements struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CreateTime  *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FaceInfos   []*QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
+	TemplateId  *string                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL *string                                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	UpdateTime  *string                                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId      *string                                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryFaceVideoTemplateResponseBodyDataElements) String() string {
@@ -2589,6 +2701,11 @@ func (s QueryFaceVideoTemplateResponseBodyDataElements) GoString() string {
 
 func (s *QueryFaceVideoTemplateResponseBodyDataElements) SetCreateTime(v string) *QueryFaceVideoTemplateResponseBodyDataElements {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryFaceVideoTemplateResponseBodyDataElements) SetFaceInfos(v []*QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos) *QueryFaceVideoTemplateResponseBodyDataElements {
+	s.FaceInfos = v
 	return s
 }
 
@@ -2609,6 +2726,29 @@ func (s *QueryFaceVideoTemplateResponseBodyDataElements) SetUpdateTime(v string)
 
 func (s *QueryFaceVideoTemplateResponseBodyDataElements) SetUserId(v string) *QueryFaceVideoTemplateResponseBodyDataElements {
 	s.UserId = &v
+	return s
+}
+
+type QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos struct {
+	TemplateFaceID  *string `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+	TemplateFaceURL *string `json:"TemplateFaceURL,omitempty" xml:"TemplateFaceURL,omitempty"`
+}
+
+func (s QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos) SetTemplateFaceID(v string) *QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos {
+	s.TemplateFaceID = &v
+	return s
+}
+
+func (s *QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos) SetTemplateFaceURL(v string) *QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos {
+	s.TemplateFaceURL = &v
 	return s
 }
 
@@ -3373,6 +3513,10 @@ func (client *Client) AddFaceVideoTemplateWithOptions(request *AddFaceVideoTempl
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoScene)) {
+		body["VideoScene"] = request.VideoScene
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VideoURL)) {
 		body["VideoURL"] = request.VideoURL
 	}
@@ -5468,6 +5612,10 @@ func (client *Client) MergeVideoModelFaceWithOptions(request *MergeVideoModelFac
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FaceImageURL)) {
 		body["FaceImageURL"] = request.FaceImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeInfos)) {
+		body["MergeInfos"] = request.MergeInfos
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
