@@ -35,8 +35,10 @@ type AccessTokenResponseBody struct {
 	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// 成功标识
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AccessTokenResponseBody) String() string {
@@ -7421,8 +7423,9 @@ func (s *CitySearchRequest) SetKeyword(v string) *CitySearchRequest {
 }
 
 type CitySearchResponseBody struct {
-	Code      *string                       `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
 	Module    *CitySearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
@@ -23306,6 +23309,7 @@ type GroupDepartSaveRequest struct {
 	OuterDeptPid  *string   `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
 	Status        *int32    `json:"status,omitempty" xml:"status,omitempty"`
 	SubCorpIdList []*string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty" type:"Repeated"`
+	SyncGroup     *bool     `json:"sync_group,omitempty" xml:"sync_group,omitempty"`
 }
 
 func (s GroupDepartSaveRequest) String() string {
@@ -23346,6 +23350,11 @@ func (s *GroupDepartSaveRequest) SetSubCorpIdList(v []*string) *GroupDepartSaveR
 	return s
 }
 
+func (s *GroupDepartSaveRequest) SetSyncGroup(v bool) *GroupDepartSaveRequest {
+	s.SyncGroup = &v
+	return s
+}
+
 type GroupDepartSaveShrinkRequest struct {
 	DeptName            *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	ManagerIds          *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
@@ -23353,6 +23362,7 @@ type GroupDepartSaveShrinkRequest struct {
 	OuterDeptPid        *string `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
 	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
+	SyncGroup           *bool   `json:"sync_group,omitempty" xml:"sync_group,omitempty"`
 }
 
 func (s GroupDepartSaveShrinkRequest) String() string {
@@ -23390,6 +23400,11 @@ func (s *GroupDepartSaveShrinkRequest) SetStatus(v int32) *GroupDepartSaveShrink
 
 func (s *GroupDepartSaveShrinkRequest) SetSubCorpIdListShrink(v string) *GroupDepartSaveShrinkRequest {
 	s.SubCorpIdListShrink = &v
+	return s
+}
+
+func (s *GroupDepartSaveShrinkRequest) SetSyncGroup(v bool) *GroupDepartSaveShrinkRequest {
+	s.SyncGroup = &v
 	return s
 }
 
@@ -32279,7 +32294,8 @@ type InvoiceAddResponseBody struct {
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceAddResponseBody) String() string {
@@ -47206,6 +47222,10 @@ func (client *Client) GroupDepartSaveWithOptions(tmpReq *GroupDepartSaveRequest,
 
 	if !tea.BoolValue(util.IsUnset(request.SubCorpIdListShrink)) {
 		body["sub_corp_id_list"] = request.SubCorpIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncGroup)) {
+		body["sync_group"] = request.SyncGroup
 	}
 
 	realHeaders := make(map[string]*string)
