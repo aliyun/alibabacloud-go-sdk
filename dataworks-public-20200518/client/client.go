@@ -111,6 +111,93 @@ func (s *Entity) SetTenantId(v int64) *Entity {
 	return s
 }
 
+type LineageEntityVO struct {
+	DetailUrl     *string `json:"DetailUrl,omitempty" xml:"DetailUrl,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentName    *string `json:"ParentName,omitempty" xml:"ParentName,omitempty"`
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+}
+
+func (s LineageEntityVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageEntityVO) GoString() string {
+	return s.String()
+}
+
+func (s *LineageEntityVO) SetDetailUrl(v string) *LineageEntityVO {
+	s.DetailUrl = &v
+	return s
+}
+
+func (s *LineageEntityVO) SetName(v string) *LineageEntityVO {
+	s.Name = &v
+	return s
+}
+
+func (s *LineageEntityVO) SetParentName(v string) *LineageEntityVO {
+	s.ParentName = &v
+	return s
+}
+
+func (s *LineageEntityVO) SetQualifiedName(v string) *LineageEntityVO {
+	s.QualifiedName = &v
+	return s
+}
+
+type LineageRelationRegisterVO struct {
+	CreateTimestamp *int64           `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DestEntity      *LineageEntityVO `json:"DestEntity,omitempty" xml:"DestEntity,omitempty"`
+	Relationship    *RelationshipVO  `json:"Relationship,omitempty" xml:"Relationship,omitempty"`
+	SrcEntity       *LineageEntityVO `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+}
+
+func (s LineageRelationRegisterVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageRelationRegisterVO) GoString() string {
+	return s.String()
+}
+
+func (s *LineageRelationRegisterVO) SetCreateTimestamp(v int64) *LineageRelationRegisterVO {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *LineageRelationRegisterVO) SetDestEntity(v *LineageEntityVO) *LineageRelationRegisterVO {
+	s.DestEntity = v
+	return s
+}
+
+func (s *LineageRelationRegisterVO) SetRelationship(v *RelationshipVO) *LineageRelationRegisterVO {
+	s.Relationship = v
+	return s
+}
+
+func (s *LineageRelationRegisterVO) SetSrcEntity(v *LineageEntityVO) *LineageRelationRegisterVO {
+	s.SrcEntity = v
+	return s
+}
+
+type RelationshipVO struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RelationshipVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RelationshipVO) GoString() string {
+	return s.String()
+}
+
+func (s *RelationshipVO) SetType(v string) *RelationshipVO {
+	s.Type = &v
+	return s
+}
+
 type AbolishDataServiceApiRequest struct {
 	// The ID of the DataService Studio API.
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
@@ -6945,6 +7032,111 @@ func (s *DeleteFromMetaCategoryResponse) SetStatusCode(v int32) *DeleteFromMetaC
 }
 
 func (s *DeleteFromMetaCategoryResponse) SetBody(v *DeleteFromMetaCategoryResponseBody) *DeleteFromMetaCategoryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLineageRelationRequest struct {
+	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
+	RelationshipGuid        *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	SrcEntityQualifiedName  *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
+}
+
+func (s DeleteLineageRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLineageRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLineageRelationRequest) SetDestEntityQualifiedName(v string) *DeleteLineageRelationRequest {
+	s.DestEntityQualifiedName = &v
+	return s
+}
+
+func (s *DeleteLineageRelationRequest) SetRelationshipGuid(v string) *DeleteLineageRelationRequest {
+	s.RelationshipGuid = &v
+	return s
+}
+
+func (s *DeleteLineageRelationRequest) SetSrcEntityQualifiedName(v string) *DeleteLineageRelationRequest {
+	s.SrcEntityQualifiedName = &v
+	return s
+}
+
+type DeleteLineageRelationResponseBody struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status         *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteLineageRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLineageRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLineageRelationResponseBody) SetErrorCode(v string) *DeleteLineageRelationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteLineageRelationResponseBody) SetErrorMessage(v string) *DeleteLineageRelationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteLineageRelationResponseBody) SetHttpStatusCode(v int32) *DeleteLineageRelationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteLineageRelationResponseBody) SetRequestId(v string) *DeleteLineageRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteLineageRelationResponseBody) SetStatus(v bool) *DeleteLineageRelationResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteLineageRelationResponseBody) SetSuccess(v bool) *DeleteLineageRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteLineageRelationResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLineageRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLineageRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLineageRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLineageRelationResponse) SetHeaders(v map[string]*string) *DeleteLineageRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLineageRelationResponse) SetStatusCode(v int32) *DeleteLineageRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLineageRelationResponse) SetBody(v *DeleteLineageRelationResponseBody) *DeleteLineageRelationResponse {
 	s.Body = v
 	return s
 }
@@ -35240,6 +35432,210 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
+type ListLineageRequest struct {
+	Direction           *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
+	Keyword             *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListLineageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageRequest) SetDirection(v string) *ListLineageRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *ListLineageRequest) SetEntityQualifiedName(v string) *ListLineageRequest {
+	s.EntityQualifiedName = &v
+	return s
+}
+
+func (s *ListLineageRequest) SetKeyword(v string) *ListLineageRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListLineageRequest) SetNextToken(v string) *ListLineageRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLineageRequest) SetPageSize(v int32) *ListLineageRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListLineageResponseBody struct {
+	Data           *ListLineageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListLineageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageResponseBody) SetData(v *ListLineageResponseBodyData) *ListLineageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListLineageResponseBody) SetErrorCode(v string) *ListLineageResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListLineageResponseBody) SetErrorMessage(v string) *ListLineageResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListLineageResponseBody) SetHttpStatusCode(v int32) *ListLineageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListLineageResponseBody) SetRequestId(v string) *ListLineageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLineageResponseBody) SetSuccess(v bool) *ListLineageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListLineageResponseBodyData struct {
+	DataEntityList []*ListLineageResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
+	NextToken      *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListLineageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageResponseBodyData) SetDataEntityList(v []*ListLineageResponseBodyDataDataEntityList) *ListLineageResponseBodyData {
+	s.DataEntityList = v
+	return s
+}
+
+func (s *ListLineageResponseBodyData) SetNextToken(v string) *ListLineageResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+type ListLineageResponseBodyDataDataEntityList struct {
+	CreateTimestamp *int64                                                   `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Entity          *Entity                                                  `json:"Entity,omitempty" xml:"Entity,omitempty"`
+	RelationList    []*ListLineageResponseBodyDataDataEntityListRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
+}
+
+func (s ListLineageResponseBodyDataDataEntityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageResponseBodyDataDataEntityList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageResponseBodyDataDataEntityList) SetCreateTimestamp(v int64) *ListLineageResponseBodyDataDataEntityList {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListLineageResponseBodyDataDataEntityList) SetEntity(v *Entity) *ListLineageResponseBodyDataDataEntityList {
+	s.Entity = v
+	return s
+}
+
+func (s *ListLineageResponseBodyDataDataEntityList) SetRelationList(v []*ListLineageResponseBodyDataDataEntityListRelationList) *ListLineageResponseBodyDataDataEntityList {
+	s.RelationList = v
+	return s
+}
+
+type ListLineageResponseBodyDataDataEntityListRelationList struct {
+	Channel    *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
+	Guid       *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListLineageResponseBodyDataDataEntityListRelationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageResponseBodyDataDataEntityListRelationList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageResponseBodyDataDataEntityListRelationList) SetChannel(v string) *ListLineageResponseBodyDataDataEntityListRelationList {
+	s.Channel = &v
+	return s
+}
+
+func (s *ListLineageResponseBodyDataDataEntityListRelationList) SetDatasource(v string) *ListLineageResponseBodyDataDataEntityListRelationList {
+	s.Datasource = &v
+	return s
+}
+
+func (s *ListLineageResponseBodyDataDataEntityListRelationList) SetGuid(v string) *ListLineageResponseBodyDataDataEntityListRelationList {
+	s.Guid = &v
+	return s
+}
+
+func (s *ListLineageResponseBodyDataDataEntityListRelationList) SetType(v string) *ListLineageResponseBodyDataDataEntityListRelationList {
+	s.Type = &v
+	return s
+}
+
+type ListLineageResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLineageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLineageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageResponse) SetHeaders(v map[string]*string) *ListLineageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLineageResponse) SetStatusCode(v int32) *ListLineageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLineageResponse) SetBody(v *ListLineageResponseBody) *ListLineageResponse {
+	s.Body = v
+	return s
+}
+
 type ListManualDagInstancesRequest struct {
 	// The ID of the directed acyclic graph (DAG) for the manually triggered workflow. You can call the [RunManualDagNodes](~~212830~~) operation to obtain the ID.
 	DagId *string `json:"DagId,omitempty" xml:"DagId,omitempty"`
@@ -42664,6 +43060,145 @@ func (s *QueryPublicModelEngineResponse) SetStatusCode(v int32) *QueryPublicMode
 }
 
 func (s *QueryPublicModelEngineResponse) SetBody(v *QueryPublicModelEngineResponseBody) *QueryPublicModelEngineResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterLineageRelationRequest struct {
+	LineageRelationRegisterVO *LineageRelationRegisterVO `json:"LineageRelationRegisterVO,omitempty" xml:"LineageRelationRegisterVO,omitempty"`
+}
+
+func (s RegisterLineageRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterLineageRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterLineageRelationRequest) SetLineageRelationRegisterVO(v *LineageRelationRegisterVO) *RegisterLineageRelationRequest {
+	s.LineageRelationRegisterVO = v
+	return s
+}
+
+type RegisterLineageRelationShrinkRequest struct {
+	LineageRelationRegisterVOShrink *string `json:"LineageRelationRegisterVO,omitempty" xml:"LineageRelationRegisterVO,omitempty"`
+}
+
+func (s RegisterLineageRelationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterLineageRelationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterLineageRelationShrinkRequest) SetLineageRelationRegisterVOShrink(v string) *RegisterLineageRelationShrinkRequest {
+	s.LineageRelationRegisterVOShrink = &v
+	return s
+}
+
+type RegisterLineageRelationResponseBody struct {
+	ErrorCode       *string                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage    *string                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode  *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	LineageRelation *RegisterLineageRelationResponseBodyLineageRelation `json:"LineageRelation,omitempty" xml:"LineageRelation,omitempty" type:"Struct"`
+	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RegisterLineageRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterLineageRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterLineageRelationResponseBody) SetErrorCode(v string) *RegisterLineageRelationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RegisterLineageRelationResponseBody) SetErrorMessage(v string) *RegisterLineageRelationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RegisterLineageRelationResponseBody) SetHttpStatusCode(v int32) *RegisterLineageRelationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RegisterLineageRelationResponseBody) SetLineageRelation(v *RegisterLineageRelationResponseBodyLineageRelation) *RegisterLineageRelationResponseBody {
+	s.LineageRelation = v
+	return s
+}
+
+func (s *RegisterLineageRelationResponseBody) SetRequestId(v string) *RegisterLineageRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterLineageRelationResponseBody) SetSuccess(v bool) *RegisterLineageRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RegisterLineageRelationResponseBodyLineageRelation struct {
+	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
+	RelationshipGuid        *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	SrcEntityQualifiedName  *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
+}
+
+func (s RegisterLineageRelationResponseBodyLineageRelation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterLineageRelationResponseBodyLineageRelation) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterLineageRelationResponseBodyLineageRelation) SetDestEntityQualifiedName(v string) *RegisterLineageRelationResponseBodyLineageRelation {
+	s.DestEntityQualifiedName = &v
+	return s
+}
+
+func (s *RegisterLineageRelationResponseBodyLineageRelation) SetRelationshipGuid(v string) *RegisterLineageRelationResponseBodyLineageRelation {
+	s.RelationshipGuid = &v
+	return s
+}
+
+func (s *RegisterLineageRelationResponseBodyLineageRelation) SetSrcEntityQualifiedName(v string) *RegisterLineageRelationResponseBodyLineageRelation {
+	s.SrcEntityQualifiedName = &v
+	return s
+}
+
+type RegisterLineageRelationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RegisterLineageRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterLineageRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterLineageRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterLineageRelationResponse) SetHeaders(v map[string]*string) *RegisterLineageRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterLineageRelationResponse) SetStatusCode(v int32) *RegisterLineageRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RegisterLineageRelationResponse) SetBody(v *RegisterLineageRelationResponseBody) *RegisterLineageRelationResponse {
 	s.Body = v
 	return s
 }
@@ -54228,6 +54763,58 @@ func (client *Client) DeleteFromMetaCategory(request *DeleteFromMetaCategoryRequ
 	return _result, _err
 }
 
+func (client *Client) DeleteLineageRelationWithOptions(request *DeleteLineageRelationRequest, runtime *util.RuntimeOptions) (_result *DeleteLineageRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestEntityQualifiedName)) {
+		query["DestEntityQualifiedName"] = request.DestEntityQualifiedName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationshipGuid)) {
+		query["RelationshipGuid"] = request.RelationshipGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcEntityQualifiedName)) {
+		query["SrcEntityQualifiedName"] = request.SrcEntityQualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLineageRelation"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLineageRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLineageRelation(request *DeleteLineageRelationRequest) (_result *DeleteLineageRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLineageRelationResponse{}
+	_body, _err := client.DeleteLineageRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteMetaCategoryWithOptions(request *DeleteMetaCategoryRequest, runtime *util.RuntimeOptions) (_result *DeleteMetaCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60852,6 +61439,66 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ListLineageWithOptions(request *ListLineageRequest, runtime *util.RuntimeOptions) (_result *ListLineageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityQualifiedName)) {
+		query["EntityQualifiedName"] = request.EntityQualifiedName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLineage"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLineageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLineage(request *ListLineageRequest) (_result *ListLineageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLineageResponse{}
+	_body, _err := client.ListLineageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListManualDagInstancesWithOptions(request *ListManualDagInstancesRequest, runtime *util.RuntimeOptions) (_result *ListManualDagInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62779,6 +63426,56 @@ func (client *Client) QueryPublicModelEngine(request *QueryPublicModelEngineRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPublicModelEngineResponse{}
 	_body, _err := client.QueryPublicModelEngineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterLineageRelationWithOptions(tmpReq *RegisterLineageRelationRequest, runtime *util.RuntimeOptions) (_result *RegisterLineageRelationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RegisterLineageRelationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LineageRelationRegisterVO)) {
+		request.LineageRelationRegisterVOShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LineageRelationRegisterVO, tea.String("LineageRelationRegisterVO"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LineageRelationRegisterVOShrink)) {
+		body["LineageRelationRegisterVO"] = request.LineageRelationRegisterVOShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterLineageRelation"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterLineageRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterLineageRelation(request *RegisterLineageRelationRequest) (_result *RegisterLineageRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterLineageRelationResponse{}
+	_body, _err := client.RegisterLineageRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
