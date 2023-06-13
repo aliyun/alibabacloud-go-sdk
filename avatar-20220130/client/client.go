@@ -1845,11 +1845,12 @@ func (s *QueryTimedResetOperateStatusResponse) SetBody(v *QueryTimedResetOperate
 }
 
 type SendMessageRequest struct {
-	Feedback    *bool                          `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	SessionId   *string                        `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TenantId    *int64                         `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TextRequest *SendMessageRequestTextRequest `json:"TextRequest,omitempty" xml:"TextRequest,omitempty" type:"Struct"`
-	VAMLRequest *SendMessageRequestVAMLRequest `json:"VAMLRequest,omitempty" xml:"VAMLRequest,omitempty" type:"Struct"`
+	Feedback        *bool                              `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	SessionId       *string                            `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	StreamExtension *SendMessageRequestStreamExtension `json:"StreamExtension,omitempty" xml:"StreamExtension,omitempty" type:"Struct"`
+	TenantId        *int64                             `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TextRequest     *SendMessageRequestTextRequest     `json:"TextRequest,omitempty" xml:"TextRequest,omitempty" type:"Struct"`
+	VAMLRequest     *SendMessageRequestVAMLRequest     `json:"VAMLRequest,omitempty" xml:"VAMLRequest,omitempty" type:"Struct"`
 }
 
 func (s SendMessageRequest) String() string {
@@ -1870,6 +1871,11 @@ func (s *SendMessageRequest) SetSessionId(v string) *SendMessageRequest {
 	return s
 }
 
+func (s *SendMessageRequest) SetStreamExtension(v *SendMessageRequestStreamExtension) *SendMessageRequest {
+	s.StreamExtension = v
+	return s
+}
+
 func (s *SendMessageRequest) SetTenantId(v int64) *SendMessageRequest {
 	s.TenantId = &v
 	return s
@@ -1882,6 +1888,35 @@ func (s *SendMessageRequest) SetTextRequest(v *SendMessageRequestTextRequest) *S
 
 func (s *SendMessageRequest) SetVAMLRequest(v *SendMessageRequestVAMLRequest) *SendMessageRequest {
 	s.VAMLRequest = v
+	return s
+}
+
+type SendMessageRequestStreamExtension struct {
+	Index    *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	IsStream *bool   `json:"IsStream,omitempty" xml:"IsStream,omitempty"`
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+}
+
+func (s SendMessageRequestStreamExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageRequestStreamExtension) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageRequestStreamExtension) SetIndex(v int32) *SendMessageRequestStreamExtension {
+	s.Index = &v
+	return s
+}
+
+func (s *SendMessageRequestStreamExtension) SetIsStream(v bool) *SendMessageRequestStreamExtension {
+	s.IsStream = &v
+	return s
+}
+
+func (s *SendMessageRequestStreamExtension) SetPosition(v string) *SendMessageRequestStreamExtension {
+	s.Position = &v
 	return s
 }
 
@@ -1944,11 +1979,12 @@ func (s *SendMessageRequestVAMLRequest) SetVaml(v string) *SendMessageRequestVAM
 }
 
 type SendMessageShrinkRequest struct {
-	Feedback          *bool   `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TenantId          *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TextRequestShrink *string `json:"TextRequest,omitempty" xml:"TextRequest,omitempty"`
-	VAMLRequestShrink *string `json:"VAMLRequest,omitempty" xml:"VAMLRequest,omitempty"`
+	Feedback              *bool   `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	SessionId             *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	StreamExtensionShrink *string `json:"StreamExtension,omitempty" xml:"StreamExtension,omitempty"`
+	TenantId              *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TextRequestShrink     *string `json:"TextRequest,omitempty" xml:"TextRequest,omitempty"`
+	VAMLRequestShrink     *string `json:"VAMLRequest,omitempty" xml:"VAMLRequest,omitempty"`
 }
 
 func (s SendMessageShrinkRequest) String() string {
@@ -1966,6 +2002,11 @@ func (s *SendMessageShrinkRequest) SetFeedback(v bool) *SendMessageShrinkRequest
 
 func (s *SendMessageShrinkRequest) SetSessionId(v string) *SendMessageShrinkRequest {
 	s.SessionId = &v
+	return s
+}
+
+func (s *SendMessageShrinkRequest) SetStreamExtensionShrink(v string) *SendMessageShrinkRequest {
+	s.StreamExtensionShrink = &v
 	return s
 }
 
@@ -4257,6 +4298,10 @@ func (client *Client) SendMessageWithOptions(tmpReq *SendMessageRequest, runtime
 	}
 	request := &SendMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamExtension)) {
+		request.StreamExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamExtension, tea.String("StreamExtension"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TextRequest)) {
 		request.TextRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TextRequest, tea.String("TextRequest"), tea.String("json"))
 	}
@@ -4272,6 +4317,10 @@ func (client *Client) SendMessageWithOptions(tmpReq *SendMessageRequest, runtime
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamExtensionShrink)) {
+		query["StreamExtension"] = request.StreamExtensionShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
