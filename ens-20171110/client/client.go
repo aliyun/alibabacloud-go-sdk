@@ -1644,6 +1644,7 @@ type CreateARMServerInstancesRequest struct {
 	Period       *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit   *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	Resolution   *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ServerName   *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
 	ServerType   *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
@@ -1712,6 +1713,11 @@ func (s *CreateARMServerInstancesRequest) SetPeriodUnit(v string) *CreateARMServ
 
 func (s *CreateARMServerInstancesRequest) SetResolution(v string) *CreateARMServerInstancesRequest {
 	s.Resolution = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetServerName(v string) *CreateARMServerInstancesRequest {
+	s.ServerName = &v
 	return s
 }
 
@@ -20217,10 +20223,10 @@ func (s *DescribeRegionBandwidthQuotaResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota struct {
-	BandwidthInfo *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo  `json:"BandwidthInfo,omitempty" xml:"BandwidthInfo,omitempty" type:"Struct"`
-	Date          *string                                                               `json:"Date,omitempty" xml:"Date,omitempty"`
-	InstanceInfo  []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	RegionId      *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	BandwidthInfo []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo `json:"BandwidthInfo,omitempty" xml:"BandwidthInfo,omitempty" type:"Repeated"`
+	Date          *string                                                                `json:"Date,omitempty" xml:"Date,omitempty"`
+	InstanceInfo  []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo  `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
+	RegionId      *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) String() string {
@@ -20231,7 +20237,7 @@ func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) GoString() strin
 	return s.String()
 }
 
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetBandwidthInfo(v *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetBandwidthInfo(v []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
 	s.BandwidthInfo = v
 	return s
 }
@@ -20252,10 +20258,11 @@ func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetRegionId(v s
 }
 
 type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo struct {
-	MonthAverageQuota *int64 `json:"MonthAverageQuota,omitempty" xml:"MonthAverageQuota,omitempty"`
-	MonthMax          *int64 `json:"MonthMax,omitempty" xml:"MonthMax,omitempty"`
-	WeekAverageQuota  *int64 `json:"WeekAverageQuota,omitempty" xml:"WeekAverageQuota,omitempty"`
-	WeekMax           *int64 `json:"WeekMax,omitempty" xml:"WeekMax,omitempty"`
+	Isp               *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	MonthAverageQuota *int64  `json:"MonthAverageQuota,omitempty" xml:"MonthAverageQuota,omitempty"`
+	MonthMax          *int64  `json:"MonthMax,omitempty" xml:"MonthMax,omitempty"`
+	WeekAverageQuota  *int64  `json:"WeekAverageQuota,omitempty" xml:"WeekAverageQuota,omitempty"`
+	WeekMax           *int64  `json:"WeekMax,omitempty" xml:"WeekMax,omitempty"`
 }
 
 func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) String() string {
@@ -20264,6 +20271,11 @@ func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) Str
 
 func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetIsp(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
+	s.Isp = &v
+	return s
 }
 
 func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetMonthAverageQuota(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
@@ -23834,6 +23846,412 @@ func (s *DescribeVSwitchesResponse) SetStatusCode(v int32) *DescribeVSwitchesRes
 }
 
 func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *DescribeVSwitchesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWorkflowRequest struct {
+	AliUid       *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	BusinessId   *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNum      *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkFlowId   *string `json:"WorkFlowId,omitempty" xml:"WorkFlowId,omitempty"`
+	WorkFlowName *string `json:"WorkFlowName,omitempty" xml:"WorkFlowName,omitempty"`
+}
+
+func (s DescribeWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowRequest) SetAliUid(v string) *DescribeWorkflowRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetBusinessId(v string) *DescribeWorkflowRequest {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetEndDate(v string) *DescribeWorkflowRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetEnsRegionId(v string) *DescribeWorkflowRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetId(v string) *DescribeWorkflowRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetInstanceId(v string) *DescribeWorkflowRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetPageNum(v string) *DescribeWorkflowRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetPageSize(v string) *DescribeWorkflowRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetStartDate(v string) *DescribeWorkflowRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetStatus(v string) *DescribeWorkflowRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetWorkFlowId(v string) *DescribeWorkflowRequest {
+	s.WorkFlowId = &v
+	return s
+}
+
+func (s *DescribeWorkflowRequest) SetWorkFlowName(v string) *DescribeWorkflowRequest {
+	s.WorkFlowName = &v
+	return s
+}
+
+type DescribeWorkflowResponseBody struct {
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WorkFlowInfo []*DescribeWorkflowResponseBodyWorkFlowInfo `json:"WorkFlowInfo,omitempty" xml:"WorkFlowInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowResponseBody) SetRequestId(v string) *DescribeWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBody) SetWorkFlowInfo(v []*DescribeWorkflowResponseBodyWorkFlowInfo) *DescribeWorkflowResponseBody {
+	s.WorkFlowInfo = v
+	return s
+}
+
+type DescribeWorkflowResponseBodyWorkFlowInfo struct {
+	AliUid         *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BussinessId    *string `json:"BussinessId,omitempty" xml:"BussinessId,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtEnd         *string `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
+	GmtExpire      *string `json:"GmtExpire,omitempty" xml:"GmtExpire,omitempty"`
+	GmtModify      *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	GmtStart       *string `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InitAttributes *string `json:"InitAttributes,omitempty" xml:"InitAttributes,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Priority       *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkerNode     *string `json:"WorkerNode,omitempty" xml:"WorkerNode,omitempty"`
+	WorkflowId     *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s DescribeWorkflowResponseBodyWorkFlowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowResponseBodyWorkFlowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetAliUid(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetBizType(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetBussinessId(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.BussinessId = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetDuration(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetEnsRegionId(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetGmtCreate(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetGmtEnd(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetGmtExpire(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.GmtExpire = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetGmtModify(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetGmtStart(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetId(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetInitAttributes(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.InitAttributes = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetInstanceId(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetName(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetPriority(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetStatus(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetWorkerNode(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.WorkerNode = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponseBodyWorkFlowInfo) SetWorkflowId(v string) *DescribeWorkflowResponseBodyWorkFlowInfo {
+	s.WorkflowId = &v
+	return s
+}
+
+type DescribeWorkflowResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowResponse) SetHeaders(v map[string]*string) *DescribeWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWorkflowResponse) SetStatusCode(v int32) *DescribeWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWorkflowResponse) SetBody(v *DescribeWorkflowResponseBody) *DescribeWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWorkflowActivityRequest struct {
+	WorkFlowId *string `json:"WorkFlowId,omitempty" xml:"WorkFlowId,omitempty"`
+}
+
+func (s DescribeWorkflowActivityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowActivityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowActivityRequest) SetWorkFlowId(v string) *DescribeWorkflowActivityRequest {
+	s.WorkFlowId = &v
+	return s
+}
+
+type DescribeWorkflowActivityResponseBody struct {
+	ActivityInfo []*DescribeWorkflowActivityResponseBodyActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Repeated"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeWorkflowActivityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowActivityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowActivityResponseBody) SetActivityInfo(v []*DescribeWorkflowActivityResponseBodyActivityInfo) *DescribeWorkflowActivityResponseBody {
+	s.ActivityInfo = v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBody) SetRequestId(v string) *DescribeWorkflowActivityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeWorkflowActivityResponseBodyActivityInfo struct {
+	ActivityId   *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Error        *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtEnd       *string `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
+	GmtStart     *string `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	Input        *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Method       *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Output       *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	WorkerNode   *string `json:"WorkerNode,omitempty" xml:"WorkerNode,omitempty"`
+}
+
+func (s DescribeWorkflowActivityResponseBodyActivityInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowActivityResponseBodyActivityInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetActivityId(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetActivityName(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.ActivityName = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetDuration(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetError(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.Error = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetGmtCreate(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetGmtEnd(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetGmtStart(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetInput(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.Input = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetMethod(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetOutput(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.Output = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetState(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponseBodyActivityInfo) SetWorkerNode(v string) *DescribeWorkflowActivityResponseBodyActivityInfo {
+	s.WorkerNode = &v
+	return s
+}
+
+type DescribeWorkflowActivityResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWorkflowActivityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWorkflowActivityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkflowActivityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkflowActivityResponse) SetHeaders(v map[string]*string) *DescribeWorkflowActivityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponse) SetStatusCode(v int32) *DescribeWorkflowActivityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWorkflowActivityResponse) SetBody(v *DescribeWorkflowActivityResponseBody) *DescribeWorkflowActivityResponse {
 	s.Body = v
 	return s
 }
@@ -28593,6 +29011,166 @@ func (s *RestartDeviceInstanceResponse) SetBody(v *RestartDeviceInstanceResponse
 	return s
 }
 
+type RestartWorkflowRequest struct {
+	WorkflowIds []*string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty" type:"Repeated"`
+}
+
+func (s RestartWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartWorkflowRequest) SetWorkflowIds(v []*string) *RestartWorkflowRequest {
+	s.WorkflowIds = v
+	return s
+}
+
+type RestartWorkflowShrinkRequest struct {
+	WorkflowIdsShrink *string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty"`
+}
+
+func (s RestartWorkflowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartWorkflowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartWorkflowShrinkRequest) SetWorkflowIdsShrink(v string) *RestartWorkflowShrinkRequest {
+	s.WorkflowIdsShrink = &v
+	return s
+}
+
+type RestartWorkflowResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestartWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartWorkflowResponseBody) SetRequestId(v string) *RestartWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestartWorkflowResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestartWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestartWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartWorkflowResponse) SetHeaders(v map[string]*string) *RestartWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartWorkflowResponse) SetStatusCode(v int32) *RestartWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartWorkflowResponse) SetBody(v *RestartWorkflowResponseBody) *RestartWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type RetryWorkflowRequest struct {
+	WorkflowIds []*string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty" type:"Repeated"`
+}
+
+func (s RetryWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryWorkflowRequest) SetWorkflowIds(v []*string) *RetryWorkflowRequest {
+	s.WorkflowIds = v
+	return s
+}
+
+type RetryWorkflowShrinkRequest struct {
+	WorkflowIdsShrink *string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty"`
+}
+
+func (s RetryWorkflowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryWorkflowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryWorkflowShrinkRequest) SetWorkflowIdsShrink(v string) *RetryWorkflowShrinkRequest {
+	s.WorkflowIdsShrink = &v
+	return s
+}
+
+type RetryWorkflowResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RetryWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryWorkflowResponseBody) SetRequestId(v string) *RetryWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RetryWorkflowResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetryWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryWorkflowResponse) SetHeaders(v map[string]*string) *RetryWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryWorkflowResponse) SetStatusCode(v int32) *RetryWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryWorkflowResponse) SetBody(v *RetryWorkflowResponseBody) *RetryWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type RevokeSecurityGroupRequest struct {
 	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
@@ -28885,6 +29463,86 @@ func (s *RollbackApplicationResponse) SetBody(v *RollbackApplicationResponseBody
 	return s
 }
 
+type RollbackWorkflowRequest struct {
+	WorkflowIds []*string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty" type:"Repeated"`
+}
+
+func (s RollbackWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackWorkflowRequest) SetWorkflowIds(v []*string) *RollbackWorkflowRequest {
+	s.WorkflowIds = v
+	return s
+}
+
+type RollbackWorkflowShrinkRequest struct {
+	WorkflowIdsShrink *string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty"`
+}
+
+func (s RollbackWorkflowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackWorkflowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackWorkflowShrinkRequest) SetWorkflowIdsShrink(v string) *RollbackWorkflowShrinkRequest {
+	s.WorkflowIdsShrink = &v
+	return s
+}
+
+type RollbackWorkflowResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RollbackWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackWorkflowResponseBody) SetRequestId(v string) *RollbackWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RollbackWorkflowResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RollbackWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RollbackWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackWorkflowResponse) SetHeaders(v map[string]*string) *RollbackWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RollbackWorkflowResponse) SetStatusCode(v int32) *RollbackWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RollbackWorkflowResponse) SetBody(v *RollbackWorkflowResponseBody) *RollbackWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type RunInstancesRequest struct {
 	Amount                  *int64                         `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	AutoRenew               *bool                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
@@ -29100,7 +29758,8 @@ func (s *RunInstancesRequestDataDisk) SetSize(v int64) *RunInstancesRequestDataD
 }
 
 type RunInstancesRequestSystemDisk struct {
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s RunInstancesRequestSystemDisk) String() string {
@@ -29109,6 +29768,11 @@ func (s RunInstancesRequestSystemDisk) String() string {
 
 func (s RunInstancesRequestSystemDisk) GoString() string {
 	return s.String()
+}
+
+func (s *RunInstancesRequestSystemDisk) SetCategory(v string) *RunInstancesRequestSystemDisk {
+	s.Category = &v
+	return s
 }
 
 func (s *RunInstancesRequestSystemDisk) SetSize(v int64) *RunInstancesRequestSystemDisk {
@@ -31150,6 +31814,86 @@ func (s *StopSnatIpForSnatEntryResponse) SetBody(v *StopSnatIpForSnatEntryRespon
 	return s
 }
 
+type TerminateWorkflowRequest struct {
+	WorkflowIds []*string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty" type:"Repeated"`
+}
+
+func (s TerminateWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateWorkflowRequest) SetWorkflowIds(v []*string) *TerminateWorkflowRequest {
+	s.WorkflowIds = v
+	return s
+}
+
+type TerminateWorkflowShrinkRequest struct {
+	WorkflowIdsShrink *string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty"`
+}
+
+func (s TerminateWorkflowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateWorkflowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateWorkflowShrinkRequest) SetWorkflowIdsShrink(v string) *TerminateWorkflowShrinkRequest {
+	s.WorkflowIdsShrink = &v
+	return s
+}
+
+type TerminateWorkflowResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TerminateWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateWorkflowResponseBody) SetRequestId(v string) *TerminateWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TerminateWorkflowResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TerminateWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TerminateWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateWorkflowResponse) SetHeaders(v map[string]*string) *TerminateWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TerminateWorkflowResponse) SetStatusCode(v int32) *TerminateWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TerminateWorkflowResponse) SetBody(v *TerminateWorkflowResponseBody) *TerminateWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type UnAssociateEnsEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 }
@@ -32498,6 +33242,10 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 
 	if !tea.BoolValue(util.IsUnset(request.Resolution)) {
 		query["Resolution"] = request.Resolution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerName)) {
+		query["ServerName"] = request.ServerName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServerType)) {
@@ -39658,6 +40406,138 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeWorkflowWithOptions(request *DescribeWorkflowRequest, runtime *util.RuntimeOptions) (_result *DescribeWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		query["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkFlowId)) {
+		query["WorkFlowId"] = request.WorkFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkFlowName)) {
+		query["WorkFlowName"] = request.WorkFlowName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWorkflow"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWorkflow(request *DescribeWorkflowRequest) (_result *DescribeWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWorkflowResponse{}
+	_body, _err := client.DescribeWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWorkflowActivityWithOptions(request *DescribeWorkflowActivityRequest, runtime *util.RuntimeOptions) (_result *DescribeWorkflowActivityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkFlowId)) {
+		query["WorkFlowId"] = request.WorkFlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWorkflowActivity"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWorkflowActivityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWorkflowActivity(request *DescribeWorkflowActivityRequest) (_result *DescribeWorkflowActivityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWorkflowActivityResponse{}
+	_body, _err := client.DescribeWorkflowActivityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetachDiskWithOptions(request *DetachDiskRequest, runtime *util.RuntimeOptions) (_result *DetachDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42328,6 +43208,106 @@ func (client *Client) RestartDeviceInstance(request *RestartDeviceInstanceReques
 	return _result, _err
 }
 
+func (client *Client) RestartWorkflowWithOptions(tmpReq *RestartWorkflowRequest, runtime *util.RuntimeOptions) (_result *RestartWorkflowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RestartWorkflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WorkflowIds)) {
+		request.WorkflowIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowIds, tea.String("WorkflowIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkflowIdsShrink)) {
+		query["WorkflowIds"] = request.WorkflowIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartWorkflow"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestartWorkflow(request *RestartWorkflowRequest) (_result *RestartWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartWorkflowResponse{}
+	_body, _err := client.RestartWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryWorkflowWithOptions(tmpReq *RetryWorkflowRequest, runtime *util.RuntimeOptions) (_result *RetryWorkflowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RetryWorkflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WorkflowIds)) {
+		request.WorkflowIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowIds, tea.String("WorkflowIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkflowIdsShrink)) {
+		query["WorkflowIds"] = request.WorkflowIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryWorkflow"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryWorkflow(request *RetryWorkflowRequest) (_result *RetryWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryWorkflowResponse{}
+	_body, _err := client.RetryWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *RevokeSecurityGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42521,6 +43501,56 @@ func (client *Client) RollbackApplication(request *RollbackApplicationRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &RollbackApplicationResponse{}
 	_body, _err := client.RollbackApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RollbackWorkflowWithOptions(tmpReq *RollbackWorkflowRequest, runtime *util.RuntimeOptions) (_result *RollbackWorkflowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RollbackWorkflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WorkflowIds)) {
+		request.WorkflowIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowIds, tea.String("WorkflowIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkflowIdsShrink)) {
+		query["WorkflowIds"] = request.WorkflowIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RollbackWorkflow"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RollbackWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RollbackWorkflow(request *RollbackWorkflowRequest) (_result *RollbackWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RollbackWorkflowResponse{}
+	_body, _err := client.RollbackWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43772,6 +44802,56 @@ func (client *Client) StopSnatIpForSnatEntry(request *StopSnatIpForSnatEntryRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &StopSnatIpForSnatEntryResponse{}
 	_body, _err := client.StopSnatIpForSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TerminateWorkflowWithOptions(tmpReq *TerminateWorkflowRequest, runtime *util.RuntimeOptions) (_result *TerminateWorkflowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TerminateWorkflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WorkflowIds)) {
+		request.WorkflowIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowIds, tea.String("WorkflowIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkflowIdsShrink)) {
+		query["WorkflowIds"] = request.WorkflowIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TerminateWorkflow"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TerminateWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TerminateWorkflow(request *TerminateWorkflowRequest) (_result *TerminateWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TerminateWorkflowResponse{}
+	_body, _err := client.TerminateWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
