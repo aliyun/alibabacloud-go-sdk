@@ -202,7 +202,8 @@ func (s *CreateClusterRequestComponentsComponentConfig) SetNodeUnits(v []interfa
 type CreateClusterRequestNetworks struct {
 	IpAllocationPolicy []*CreateClusterRequestNetworksIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
 	NewVpdInfo         *CreateClusterRequestNetworksNewVpdInfo           `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
-	VpdInfo            *CreateClusterRequestNetworksVpdInfo              `json:"VpdInfo,omitempty" xml:"VpdInfo,omitempty" type:"Struct"`
+	// 复用VPD信息
+	VpdInfo *CreateClusterRequestNetworksVpdInfo `json:"VpdInfo,omitempty" xml:"VpdInfo,omitempty" type:"Struct"`
 }
 
 func (s CreateClusterRequestNetworks) String() string {
@@ -478,7 +479,9 @@ func (s *CreateClusterRequestNetworksNewVpdInfoVpdSubnets) SetZoneId(v string) *
 }
 
 type CreateClusterRequestNetworksVpdInfo struct {
-	VpdId      *string   `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// 专有网络 id
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// 集群子网id列表
 	VpdSubnets []*string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
@@ -1007,12 +1010,13 @@ func (s *DescribeNodeRequest) SetNodeId(v string) *DescribeNodeRequest {
 }
 
 type DescribeNodeResponseBody struct {
-	ClusterId      *string                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string                             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreateTime     *string                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime    *string                             `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	Hostname       *string                             `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	ImageId        *string                             `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Hostname    *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
 	ImageName      *string                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	MachineType    *string                             `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	Networks       []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
@@ -1291,6 +1295,7 @@ type DescribeTaskResponseBody struct {
 	ClusterName *string                          `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	CreateTime  *string                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Message     *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	NodeIds     []*string                        `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 	RequestId   *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Steps       []*DescribeTaskResponseBodySteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
 	TaskState   *string                          `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
@@ -1323,6 +1328,11 @@ func (s *DescribeTaskResponseBody) SetCreateTime(v string) *DescribeTaskResponse
 
 func (s *DescribeTaskResponseBody) SetMessage(v string) *DescribeTaskResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *DescribeTaskResponseBody) SetNodeIds(v []*string) *DescribeTaskResponseBody {
+	s.NodeIds = v
 	return s
 }
 
