@@ -1367,6 +1367,7 @@ type SubmitDocStructureJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	StructureType     *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 
 func (s SubmitDocStructureJobRequest) String() string {
@@ -1392,10 +1393,16 @@ func (s *SubmitDocStructureJobRequest) SetFileUrl(v string) *SubmitDocStructureJ
 	return s
 }
 
+func (s *SubmitDocStructureJobRequest) SetStructureType(v string) *SubmitDocStructureJobRequest {
+	s.StructureType = &v
+	return s
+}
+
 type SubmitDocStructureJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	StructureType     *string   `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 
 func (s SubmitDocStructureJobAdvanceRequest) String() string {
@@ -1418,6 +1425,11 @@ func (s *SubmitDocStructureJobAdvanceRequest) SetFileNameExtension(v string) *Su
 
 func (s *SubmitDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocStructureJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitDocStructureJobAdvanceRequest) SetStructureType(v string) *SubmitDocStructureJobAdvanceRequest {
+	s.StructureType = &v
 	return s
 }
 
@@ -2901,6 +2913,10 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructureType)) {
+		query["StructureType"] = request.StructureType
 	}
 
 	req := &openapi.OpenApiRequest{
