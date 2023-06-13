@@ -1018,7 +1018,10 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
 	// *   **close**: After you create the VPC firewall, the VPC firewall is disabled. You can call the [ModifyVpcFirewallCenSwitchStatus](~~345780~~) operation to manually enable the VPC firewall.
-	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
+	FirewallSwitch           *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
+	FirewallVSwitchCidrBlock *string `json:"FirewallVSwitchCidrBlock,omitempty" xml:"FirewallVSwitchCidrBlock,omitempty"`
+	FirewallVpcCidrBlock     *string `json:"FirewallVpcCidrBlock,omitempty" xml:"FirewallVpcCidrBlock,omitempty"`
+	FirewallVpcZoneId        *string `json:"FirewallVpcZoneId,omitempty" xml:"FirewallVpcZoneId,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
@@ -1052,6 +1055,21 @@ func (s *CreateVpcFirewallCenConfigureRequest) SetCenId(v string) *CreateVpcFire
 
 func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallSwitch(v string) *CreateVpcFirewallCenConfigureRequest {
 	s.FirewallSwitch = &v
+	return s
+}
+
+func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVSwitchCidrBlock(v string) *CreateVpcFirewallCenConfigureRequest {
+	s.FirewallVSwitchCidrBlock = &v
+	return s
+}
+
+func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVpcCidrBlock(v string) *CreateVpcFirewallCenConfigureRequest {
+	s.FirewallVpcCidrBlock = &v
+	return s
+}
+
+func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVpcZoneId(v string) *CreateVpcFirewallCenConfigureRequest {
+	s.FirewallVpcZoneId = &v
 	return s
 }
 
@@ -6814,19 +6832,21 @@ func (s *DescribeTrFirewallsV2ListResponseBody) SetVpcTrFirewalls(v []*DescribeT
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
-	CenId                *string                                                       `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CenName              *string                                                       `json:"CenName,omitempty" xml:"CenName,omitempty"`
-	FirewallId           *string                                                       `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	FirewallSwitchStatus *string                                                       `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	IpsConfig            *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
-	OwnerId              *int64                                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PrecheckStatus       *string                                                       `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
-	RegionNo             *string                                                       `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RegionStatus         *string                                                       `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
-	ResultCode           *string                                                       `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	RouteMode            *string                                                       `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	TransitRouterId      *string                                                       `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	VpcFirewallName      *string                                                       `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
+	CenId                *string                                                                 `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenName              *string                                                                 `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	FirewallId           *string                                                                 `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	FirewallSwitchStatus *string                                                                 `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	IpsConfig            *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig           `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
+	OwnerId              *int64                                                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrecheckStatus       *string                                                                 `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
+	ProtectedResource    *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource   `json:"ProtectedResource,omitempty" xml:"ProtectedResource,omitempty" type:"Struct"`
+	RegionNo             *string                                                                 `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RegionStatus         *string                                                                 `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
+	ResultCode           *string                                                                 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	RouteMode            *string                                                                 `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TransitRouterId      *string                                                                 `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	UnprotectedResource  *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource `json:"UnprotectedResource,omitempty" xml:"UnprotectedResource,omitempty" type:"Struct"`
+	VpcFirewallName      *string                                                                 `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) String() string {
@@ -6872,6 +6892,11 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetPrecheckStatus(
 	return s
 }
 
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetProtectedResource(v *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.ProtectedResource = v
+	return s
+}
+
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetRegionNo(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
 	s.RegionNo = &v
 	return s
@@ -6894,6 +6919,11 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetRouteMode(v str
 
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetTransitRouterId(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
 	s.TransitRouterId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetUnprotectedResource(v *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.UnprotectedResource = v
 	return s
 }
 
@@ -6928,6 +6958,88 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) SetEnable
 
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) SetRunMode(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig {
 	s.RunMode = &v
+	return s
+}
+
+type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource struct {
+	Count      *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
+	VbrList    []*string `json:"VbrList,omitempty" xml:"VbrList,omitempty" type:"Repeated"`
+	VpcList    []*string `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	VpnList    []*string `json:"VpnList,omitempty" xml:"VpnList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) SetCount(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) SetPeerTrList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource {
+	s.PeerTrList = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) SetVbrList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource {
+	s.VbrList = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) SetVpcList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource {
+	s.VpcList = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) SetVpnList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource {
+	s.VpnList = v
+	return s
+}
+
+type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource struct {
+	Count      *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
+	VbrList    []*string `json:"VbrList,omitempty" xml:"VbrList,omitempty" type:"Repeated"`
+	VpcList    []*string `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	VpnList    []*string `json:"VpnList,omitempty" xml:"VpnList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) SetCount(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) SetPeerTrList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource {
+	s.PeerTrList = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) SetVbrList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource {
+	s.VbrList = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) SetVpcList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource {
+	s.VpcList = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) SetVpnList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource {
+	s.VpnList = v
 	return s
 }
 
@@ -7423,7 +7535,8 @@ type DescribeVpcFirewallCenDetailResponseBody struct {
 	// *   **opened**: enabled
 	// *   **closed**: disabled
 	// *   **notconfigured**: not configured
-	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	FirewallSwitchStatus *string                                              `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	FirewallVpc          *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc `json:"FirewallVpc,omitempty" xml:"FirewallVpc,omitempty" type:"Struct"`
 	// The details about the VPC.
 	LocalVpc *DescribeVpcFirewallCenDetailResponseBodyLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
 	// The ID of the request.
@@ -7452,6 +7565,11 @@ func (s *DescribeVpcFirewallCenDetailResponseBody) SetFirewallSwitchStatus(v str
 	return s
 }
 
+func (s *DescribeVpcFirewallCenDetailResponseBody) SetFirewallVpc(v *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) *DescribeVpcFirewallCenDetailResponseBody {
+	s.FirewallVpc = v
+	return s
+}
+
 func (s *DescribeVpcFirewallCenDetailResponseBody) SetLocalVpc(v *DescribeVpcFirewallCenDetailResponseBodyLocalVpc) *DescribeVpcFirewallCenDetailResponseBody {
 	s.LocalVpc = v
 	return s
@@ -7469,6 +7587,53 @@ func (s *DescribeVpcFirewallCenDetailResponseBody) SetVpcFirewallId(v string) *D
 
 func (s *DescribeVpcFirewallCenDetailResponseBody) SetVpcFirewallName(v string) *DescribeVpcFirewallCenDetailResponseBody {
 	s.VpcFirewallName = &v
+	return s
+}
+
+type DescribeVpcFirewallCenDetailResponseBodyFirewallVpc struct {
+	AllowConfiguration *int32  `json:"AllowConfiguration,omitempty" xml:"AllowConfiguration,omitempty"`
+	VpcCidr            *string `json:"VpcCidr,omitempty" xml:"VpcCidr,omitempty"`
+	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchCidr        *string `json:"VswitchCidr,omitempty" xml:"VswitchCidr,omitempty"`
+	VswitchId          *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetAllowConfiguration(v int32) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.AllowConfiguration = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVpcCidr(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.VpcCidr = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVpcId(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVswitchCidr(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.VswitchCidr = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVswitchId(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetZoneId(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.ZoneId = &v
 	return s
 }
 
@@ -7616,6 +7781,7 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList struct {
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
 	// The private IP address of the ENI that belongs to the VPC.
 	EniPrivateIpAddress *string `json:"EniPrivateIpAddress,omitempty" xml:"EniPrivateIpAddress,omitempty"`
+	EniVSwitchId        *string `json:"EniVSwitchId,omitempty" xml:"EniVSwitchId,omitempty"`
 }
 
 func (s DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) String() string {
@@ -7633,6 +7799,11 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) SetEniId(v str
 
 func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) SetEniPrivateIpAddress(v string) *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList {
 	s.EniPrivateIpAddress = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) SetEniVSwitchId(v string) *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList {
+	s.EniVSwitchId = &v
 	return s
 }
 
@@ -13199,6 +13370,18 @@ func (client *Client) CreateVpcFirewallCenConfigureWithOptions(request *CreateVp
 
 	if !tea.BoolValue(util.IsUnset(request.FirewallSwitch)) {
 		query["FirewallSwitch"] = request.FirewallSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallVSwitchCidrBlock)) {
+		query["FirewallVSwitchCidrBlock"] = request.FirewallVSwitchCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallVpcCidrBlock)) {
+		query["FirewallVpcCidrBlock"] = request.FirewallVpcCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallVpcZoneId)) {
+		query["FirewallVpcZoneId"] = request.FirewallVpcZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
