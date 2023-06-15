@@ -32239,6 +32239,7 @@ type InvoiceAddRequest struct {
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UnitType    *int32  `json:"unit_type,omitempty" xml:"unit_type,omitempty"`
 }
 
 func (s InvoiceAddRequest) String() string {
@@ -32286,6 +32287,11 @@ func (s *InvoiceAddRequest) SetTitle(v string) *InvoiceAddRequest {
 
 func (s *InvoiceAddRequest) SetType(v int32) *InvoiceAddRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *InvoiceAddRequest) SetUnitType(v int32) *InvoiceAddRequest {
+	s.UnitType = &v
 	return s
 }
 
@@ -32503,6 +32509,7 @@ type InvoiceModifyRequest struct {
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UnitType    *int32  `json:"unit_type,omitempty" xml:"unit_type,omitempty"`
 }
 
 func (s InvoiceModifyRequest) String() string {
@@ -32550,6 +32557,11 @@ func (s *InvoiceModifyRequest) SetTitle(v string) *InvoiceModifyRequest {
 
 func (s *InvoiceModifyRequest) SetType(v int32) *InvoiceModifyRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *InvoiceModifyRequest) SetUnitType(v int32) *InvoiceModifyRequest {
+	s.UnitType = &v
 	return s
 }
 
@@ -48854,6 +48866,10 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 		body["type"] = request.Type
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UnitType)) {
+		body["unit_type"] = request.UnitType
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -48990,6 +49006,10 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnitType)) {
+		body["unit_type"] = request.UnitType
 	}
 
 	realHeaders := make(map[string]*string)
