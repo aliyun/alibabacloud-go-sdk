@@ -34764,15 +34764,16 @@ func (s *QueryReimbursementOrderResponseBodyModule) SetUserName(v string) *Query
 }
 
 type QueryReimbursementOrderResponseBodyModuleExpenses struct {
-	Amount          *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	Currency        *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	ExpenseCity     *string `json:"expense_city,omitempty" xml:"expense_city,omitempty"`
-	ExpenseTime     *string `json:"expense_time,omitempty" xml:"expense_time,omitempty"`
-	ExpenseType     *string `json:"expense_type,omitempty" xml:"expense_type,omitempty"`
-	ExpenseTypeCode *string `json:"expense_type_code,omitempty" xml:"expense_type_code,omitempty"`
-	ReimbExpenseId  *int64  `json:"reimb_expense_id,omitempty" xml:"reimb_expense_id,omitempty"`
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	SettlementType  *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Amount              *string                                                                 `json:"amount,omitempty" xml:"amount,omitempty"`
+	Currency            *string                                                                 `json:"currency,omitempty" xml:"currency,omitempty"`
+	ExpenseCity         *string                                                                 `json:"expense_city,omitempty" xml:"expense_city,omitempty"`
+	ExpenseCompositions []*QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions `json:"expense_compositions,omitempty" xml:"expense_compositions,omitempty" type:"Repeated"`
+	ExpenseTime         *string                                                                 `json:"expense_time,omitempty" xml:"expense_time,omitempty"`
+	ExpenseType         *string                                                                 `json:"expense_type,omitempty" xml:"expense_type,omitempty"`
+	ExpenseTypeCode     *string                                                                 `json:"expense_type_code,omitempty" xml:"expense_type_code,omitempty"`
+	ReimbExpenseId      *int64                                                                  `json:"reimb_expense_id,omitempty" xml:"reimb_expense_id,omitempty"`
+	Remark              *string                                                                 `json:"remark,omitempty" xml:"remark,omitempty"`
+	SettlementType      *string                                                                 `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 }
 
 func (s QueryReimbursementOrderResponseBodyModuleExpenses) String() string {
@@ -34795,6 +34796,11 @@ func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetCurrency(v string
 
 func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetExpenseCity(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
 	s.ExpenseCity = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetExpenseCompositions(v []*QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.ExpenseCompositions = v
 	return s
 }
 
@@ -34825,6 +34831,59 @@ func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetRemark(v string) 
 
 func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetSettlementType(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
 	s.SettlementType = &v
+	return s
+}
+
+type QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions struct {
+	BillSettlementId *int64    `json:"bill_settlement_id,omitempty" xml:"bill_settlement_id,omitempty"`
+	FeeType          *string   `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	Remark           *string   `json:"remark,omitempty" xml:"remark,omitempty"`
+	RemindTagList    []*string `json:"remind_tag_list,omitempty" xml:"remind_tag_list,omitempty" type:"Repeated"`
+	SettlementAmount *string   `json:"settlement_amount,omitempty" xml:"settlement_amount,omitempty"`
+	SettlementTime   *string   `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	VoucherType      *int32    `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+}
+
+func (s QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetBillSettlementId(v int64) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.BillSettlementId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetFeeType(v string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.FeeType = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetRemark(v string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetRemindTagList(v []*string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.RemindTagList = v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetSettlementAmount(v string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.SettlementAmount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetSettlementTime(v string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.SettlementTime = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetVoucherType(v int32) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.VoucherType = &v
 	return s
 }
 
