@@ -2484,6 +2484,7 @@ type GetWirelessCloudConnectorResponseBodyNetLinks struct {
 	NetLinkId *string   `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
 	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type      *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 	VSwitchs  []*string `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 	VpcId     *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -2538,6 +2539,11 @@ func (s *GetWirelessCloudConnectorResponseBodyNetLinks) SetRegionId(v string) *G
 
 func (s *GetWirelessCloudConnectorResponseBodyNetLinks) SetStatus(v string) *GetWirelessCloudConnectorResponseBodyNetLinks {
 	s.Status = &v
+	return s
+}
+
+func (s *GetWirelessCloudConnectorResponseBodyNetLinks) SetType(v string) *GetWirelessCloudConnectorResponseBodyNetLinks {
+	s.Type = &v
 	return s
 }
 
@@ -2712,9 +2718,8 @@ type ListAPNsResponseBody struct {
 	APNs       []*ListAPNsResponseBodyAPNs `json:"APNs,omitempty" xml:"APNs,omitempty" type:"Repeated"`
 	MaxResults *string                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAPNsResponseBody) String() string {
@@ -2751,7 +2756,7 @@ func (s *ListAPNsResponseBody) SetTotalCount(v string) *ListAPNsResponseBody {
 }
 
 type ListAPNsResponseBodyAPNs struct {
-	// apn
+	// 代表资源名称的资源属性字段
 	APN         *string `json:"APN,omitempty" xml:"APN,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// 代表资源一级ID的资源属性字段
@@ -3289,6 +3294,163 @@ func (s *ListBatchOperateCardsTasksResponse) SetStatusCode(v int32) *ListBatchOp
 }
 
 func (s *ListBatchOperateCardsTasksResponse) SetBody(v *ListBatchOperateCardsTasksResponseBody) *ListBatchOperateCardsTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListCardDayUsagesRequest struct {
+	Iccids                   []*string `json:"Iccids,omitempty" xml:"Iccids,omitempty" type:"Repeated"`
+	LatestMonthNum           *int32    `json:"LatestMonthNum,omitempty" xml:"LatestMonthNum,omitempty"`
+	WirelessCloudConnectorId *string   `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s ListCardDayUsagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardDayUsagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardDayUsagesRequest) SetIccids(v []*string) *ListCardDayUsagesRequest {
+	s.Iccids = v
+	return s
+}
+
+func (s *ListCardDayUsagesRequest) SetLatestMonthNum(v int32) *ListCardDayUsagesRequest {
+	s.LatestMonthNum = &v
+	return s
+}
+
+func (s *ListCardDayUsagesRequest) SetWirelessCloudConnectorId(v string) *ListCardDayUsagesRequest {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type ListCardDayUsagesResponseBody struct {
+	Cards     []*ListCardDayUsagesResponseBodyCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCardDayUsagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardDayUsagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardDayUsagesResponseBody) SetCards(v []*ListCardDayUsagesResponseBodyCards) *ListCardDayUsagesResponseBody {
+	s.Cards = v
+	return s
+}
+
+func (s *ListCardDayUsagesResponseBody) SetRequestId(v string) *ListCardDayUsagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCardDayUsagesResponseBodyCards struct {
+	// 代表资源一级ID的资源属性字段
+	Iccid           *string                                              `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	UsageDataMonths []*ListCardDayUsagesResponseBodyCardsUsageDataMonths `json:"UsageDataMonths,omitempty" xml:"UsageDataMonths,omitempty" type:"Repeated"`
+}
+
+func (s ListCardDayUsagesResponseBodyCards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardDayUsagesResponseBodyCards) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardDayUsagesResponseBodyCards) SetIccid(v string) *ListCardDayUsagesResponseBodyCards {
+	s.Iccid = &v
+	return s
+}
+
+func (s *ListCardDayUsagesResponseBodyCards) SetUsageDataMonths(v []*ListCardDayUsagesResponseBodyCardsUsageDataMonths) *ListCardDayUsagesResponseBodyCards {
+	s.UsageDataMonths = v
+	return s
+}
+
+type ListCardDayUsagesResponseBodyCardsUsageDataMonths struct {
+	CardDayUsages  []*ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages `json:"CardDayUsages,omitempty" xml:"CardDayUsages,omitempty" type:"Repeated"`
+	Month          *string                                                           `json:"Month,omitempty" xml:"Month,omitempty"`
+	UsageDataMonth *string                                                           `json:"UsageDataMonth,omitempty" xml:"UsageDataMonth,omitempty"`
+}
+
+func (s ListCardDayUsagesResponseBodyCardsUsageDataMonths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardDayUsagesResponseBodyCardsUsageDataMonths) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardDayUsagesResponseBodyCardsUsageDataMonths) SetCardDayUsages(v []*ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages) *ListCardDayUsagesResponseBodyCardsUsageDataMonths {
+	s.CardDayUsages = v
+	return s
+}
+
+func (s *ListCardDayUsagesResponseBodyCardsUsageDataMonths) SetMonth(v string) *ListCardDayUsagesResponseBodyCardsUsageDataMonths {
+	s.Month = &v
+	return s
+}
+
+func (s *ListCardDayUsagesResponseBodyCardsUsageDataMonths) SetUsageDataMonth(v string) *ListCardDayUsagesResponseBodyCardsUsageDataMonths {
+	s.UsageDataMonth = &v
+	return s
+}
+
+type ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages struct {
+	Day       *string `json:"Day,omitempty" xml:"Day,omitempty"`
+	UsageData *string `json:"UsageData,omitempty" xml:"UsageData,omitempty"`
+}
+
+func (s ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages) SetDay(v string) *ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages {
+	s.Day = &v
+	return s
+}
+
+func (s *ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages) SetUsageData(v string) *ListCardDayUsagesResponseBodyCardsUsageDataMonthsCardDayUsages {
+	s.UsageData = &v
+	return s
+}
+
+type ListCardDayUsagesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCardDayUsagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCardDayUsagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardDayUsagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardDayUsagesResponse) SetHeaders(v map[string]*string) *ListCardDayUsagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCardDayUsagesResponse) SetStatusCode(v int32) *ListCardDayUsagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCardDayUsagesResponse) SetBody(v *ListCardDayUsagesResponseBody) *ListCardDayUsagesResponse {
 	s.Body = v
 	return s
 }
@@ -8682,6 +8844,46 @@ func (client *Client) ListBatchOperateCardsTasks(request *ListBatchOperateCardsT
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBatchOperateCardsTasksResponse{}
 	_body, _err := client.ListBatchOperateCardsTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCardDayUsagesWithOptions(request *ListCardDayUsagesRequest, runtime *util.RuntimeOptions) (_result *ListCardDayUsagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCardDayUsages"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCardDayUsagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCardDayUsages(request *ListCardDayUsagesRequest) (_result *ListCardDayUsagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCardDayUsagesResponse{}
+	_body, _err := client.ListCardDayUsagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
