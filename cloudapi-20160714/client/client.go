@@ -21664,6 +21664,99 @@ func (s *DescribeSignaturesByApiResponse) SetBody(v *DescribeSignaturesByApiResp
 	return s
 }
 
+type DescribeSummaryDataRequest struct {
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeSummaryDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSummaryDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSummaryDataRequest) SetSecurityToken(v string) *DescribeSummaryDataRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeSummaryDataResponseBody struct {
+	ExpireInstanceNum *int32  `json:"ExpireInstanceNum,omitempty" xml:"ExpireInstanceNum,omitempty"`
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UsageApiNum       *int32  `json:"UsageApiNum,omitempty" xml:"UsageApiNum,omitempty"`
+	UsageGroupNum     *int32  `json:"UsageGroupNum,omitempty" xml:"UsageGroupNum,omitempty"`
+	UsageInstanceNum  *int32  `json:"UsageInstanceNum,omitempty" xml:"UsageInstanceNum,omitempty"`
+}
+
+func (s DescribeSummaryDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSummaryDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSummaryDataResponseBody) SetExpireInstanceNum(v int32) *DescribeSummaryDataResponseBody {
+	s.ExpireInstanceNum = &v
+	return s
+}
+
+func (s *DescribeSummaryDataResponseBody) SetRegion(v string) *DescribeSummaryDataResponseBody {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeSummaryDataResponseBody) SetRequestId(v string) *DescribeSummaryDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSummaryDataResponseBody) SetUsageApiNum(v int32) *DescribeSummaryDataResponseBody {
+	s.UsageApiNum = &v
+	return s
+}
+
+func (s *DescribeSummaryDataResponseBody) SetUsageGroupNum(v int32) *DescribeSummaryDataResponseBody {
+	s.UsageGroupNum = &v
+	return s
+}
+
+func (s *DescribeSummaryDataResponseBody) SetUsageInstanceNum(v int32) *DescribeSummaryDataResponseBody {
+	s.UsageInstanceNum = &v
+	return s
+}
+
+type DescribeSummaryDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSummaryDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSummaryDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSummaryDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSummaryDataResponse) SetHeaders(v map[string]*string) *DescribeSummaryDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSummaryDataResponse) SetStatusCode(v int32) *DescribeSummaryDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSummaryDataResponse) SetBody(v *DescribeSummaryDataResponseBody) *DescribeSummaryDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSystemParametersRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -37341,6 +37434,50 @@ func (client *Client) DescribeSignaturesByApi(request *DescribeSignaturesByApiRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSignaturesByApiResponse{}
 	_body, _err := client.DescribeSignaturesByApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSummaryDataWithOptions(request *DescribeSummaryDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSummaryDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSummaryData"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSummaryDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSummaryData(request *DescribeSummaryDataRequest) (_result *DescribeSummaryDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSummaryDataResponse{}
+	_body, _err := client.DescribeSummaryDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
