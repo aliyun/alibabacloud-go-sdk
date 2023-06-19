@@ -7161,7 +7161,9 @@ type DescribeApiGroupResponseBody struct {
 	// The VIP list of the instance.
 	InstanceVipList *string `json:"InstanceVipList,omitempty" xml:"InstanceVipList,omitempty"`
 	// The IPv6 status.
-	Ipv6Status *string `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
+	Ipv6Status      *string `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
+	MigrationError  *string `json:"MigrationError,omitempty" xml:"MigrationError,omitempty"`
+	MigrationStatus *string `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
 	// The last modification time (UTC) of the API group.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// Specifies whether to pass headers.
@@ -7301,6 +7303,16 @@ func (s *DescribeApiGroupResponseBody) SetInstanceVipList(v string) *DescribeApi
 
 func (s *DescribeApiGroupResponseBody) SetIpv6Status(v string) *DescribeApiGroupResponseBody {
 	s.Ipv6Status = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBody) SetMigrationError(v string) *DescribeApiGroupResponseBody {
+	s.MigrationError = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBody) SetMigrationStatus(v string) *DescribeApiGroupResponseBody {
+	s.MigrationStatus = &v
 	return s
 }
 
@@ -13589,6 +13601,7 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageName(v
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct {
+	DiscoveryConfig       *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig       `json:"DiscoveryConfig,omitempty" xml:"DiscoveryConfig,omitempty" type:"Struct"`
 	EventBridgeConfig     *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig     `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
 	FunctionComputeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
 	HttpTargetHostName    *string                                                                                    `json:"HttpTargetHostName,omitempty" xml:"HttpTargetHostName,omitempty"`
@@ -13605,6 +13618,11 @@ func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) St
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetDiscoveryConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.DiscoveryConfig = v
+	return s
 }
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetEventBridgeConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
@@ -13644,6 +13662,100 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) S
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetVpcConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
 	s.VpcConfig = v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig struct {
+	NacosConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig `json:"NacosConfig,omitempty" xml:"NacosConfig,omitempty" type:"Struct"`
+	RcType      *string                                                                                         `json:"RcType,omitempty" xml:"RcType,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig) SetNacosConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig {
+	s.NacosConfig = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig) SetRcType(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig {
+	s.RcType = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig struct {
+	AccessKey     *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AuthType      *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Clusters      *string `json:"Clusters,omitempty" xml:"Clusters,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Password      *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	SecretKey     *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	ServerAddress *string `json:"ServerAddress,omitempty" xml:"ServerAddress,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetAccessKey(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetAuthType(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.AuthType = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetClusters(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.Clusters = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetGroupName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetNamespace(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetPassword(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.Password = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetSecretKey(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.SecretKey = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetServerAddress(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.ServerAddress = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetServiceName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig) SetUserName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig {
+	s.UserName = &v
 	return s
 }
 
@@ -18378,6 +18490,7 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	AclStatus            *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	AclType              *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	ClassicEgressAddress *string `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
+	ConnectCidrBlocks    *string `json:"ConnectCidrBlocks,omitempty" xml:"ConnectCidrBlocks,omitempty"`
 	// VPC融合类型专享实例联通的用户VPC ID
 	ConnectVpcId *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
 	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
@@ -18406,6 +18519,8 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	InstanceType           *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InternetEgressAddress  *string                                                                        `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
 	IntranetSegments       *string                                                                        `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	MaintainEndTime        *string                                                                        `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime      *string                                                                        `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// VPC融合类型专享实例连通的用户VPC内的网络信息
 	NetworkInterfaceAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes `json:"NetworkInterfaceAttributes,omitempty" xml:"NetworkInterfaceAttributes,omitempty" type:"Struct"`
 	RegionId                   *string                                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -18452,6 +18567,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetAclType(v s
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetClassicEgressAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.ClassicEgressAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetConnectCidrBlocks(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.ConnectCidrBlocks = &v
 	return s
 }
 
@@ -18557,6 +18677,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInternetEgr
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetIntranetSegments(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.IntranetSegments = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetMaintainEndTime(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetMaintainStartTime(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.MaintainStartTime = &v
 	return s
 }
 
@@ -24935,6 +25065,7 @@ type ModifyApiGroupRequest struct {
 	PassthroughHeaders *string                     `json:"PassthroughHeaders,omitempty" xml:"PassthroughHeaders,omitempty"`
 	RpcPattern         *string                     `json:"RpcPattern,omitempty" xml:"RpcPattern,omitempty"`
 	SecurityToken      *string                     `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SupportSSE         *string                     `json:"SupportSSE,omitempty" xml:"SupportSSE,omitempty"`
 	Tag                []*ModifyApiGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UserLogConfig      *string                     `json:"UserLogConfig,omitempty" xml:"UserLogConfig,omitempty"`
 }
@@ -24999,6 +25130,11 @@ func (s *ModifyApiGroupRequest) SetRpcPattern(v string) *ModifyApiGroupRequest {
 
 func (s *ModifyApiGroupRequest) SetSecurityToken(v string) *ModifyApiGroupRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyApiGroupRequest) SetSupportSSE(v string) *ModifyApiGroupRequest {
+	s.SupportSSE = &v
 	return s
 }
 
@@ -38511,6 +38647,10 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportSSE)) {
+		query["SupportSSE"] = request.SupportSSE
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
