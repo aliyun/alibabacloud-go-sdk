@@ -150,7 +150,8 @@ func (s *DescribeImageResultExtResponseBodyDataPublicFigure) SetFigureId(v strin
 }
 
 type DescribeImageResultExtResponseBodyDataTextInImage struct {
-	OcrDatas []*string `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
+	OcrDatas  []*string `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
+	RiskWords []*string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageResultExtResponseBodyDataTextInImage) String() string {
@@ -163,6 +164,11 @@ func (s DescribeImageResultExtResponseBodyDataTextInImage) GoString() string {
 
 func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetOcrDatas(v []*string) *DescribeImageResultExtResponseBodyDataTextInImage {
 	s.OcrDatas = v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetRiskWords(v []*string) *DescribeImageResultExtResponseBodyDataTextInImage {
+	s.RiskWords = v
 	return s
 }
 
