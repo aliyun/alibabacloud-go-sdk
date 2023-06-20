@@ -772,8 +772,6 @@ type GetApplicationResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// CADT application
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The ID of the application.
-	TopoURL *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 }
 
 func (s GetApplicationResponseBodyData) String() string {
@@ -841,11 +839,6 @@ func (s *GetApplicationResponseBodyData) SetStatus(v string) *GetApplicationResp
 
 func (s *GetApplicationResponseBodyData) SetTemplateId(v string) *GetApplicationResponseBodyData {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetTopoURL(v string) *GetApplicationResponseBodyData {
-	s.TopoURL = &v
 	return s
 }
 
@@ -1310,7 +1303,6 @@ type GetTemplateResponseBodyData struct {
 	Name            *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TemplateId      *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TopoURL         *string                                 `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 	Variables       []*GetTemplateResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -1349,11 +1341,6 @@ func (s *GetTemplateResponseBodyData) SetResourceGroupId(v string) *GetTemplateR
 
 func (s *GetTemplateResponseBodyData) SetTemplateId(v string) *GetTemplateResponseBodyData {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *GetTemplateResponseBodyData) SetTopoURL(v string) *GetTemplateResponseBodyData {
-	s.TopoURL = &v
 	return s
 }
 
@@ -1672,7 +1659,6 @@ type ListApplicationResponseBodyData struct {
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TopoURL         *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 }
 
 func (s ListApplicationResponseBodyData) String() string {
@@ -1713,11 +1699,6 @@ func (s *ListApplicationResponseBodyData) SetStatus(v string) *ListApplicationRe
 	return s
 }
 
-func (s *ListApplicationResponseBodyData) SetTopoURL(v string) *ListApplicationResponseBodyData {
-	s.TopoURL = &v
-	return s
-}
-
 type ListApplicationResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1748,12 +1729,18 @@ func (s *ListApplicationResponse) SetBody(v *ListApplicationResponseBody) *ListA
 }
 
 type ListTagResourcesRequest struct {
-	ClientToken  *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify a maximum number of 50 IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. A maximum of 20 tags are supported.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -1795,7 +1782,9 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1818,11 +1807,15 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code. A value of 200 indicates that the request is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request failed.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TagResource
+	// The tags that are added to the resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -1860,10 +1853,14 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid values: application and template.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -2054,8 +2051,6 @@ type ListTemplateResponseBodyData struct {
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	// The ID of the template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The URL of the template topology image.
-	TopoURL *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 }
 
 func (s ListTemplateResponseBodyData) String() string {
@@ -2098,11 +2093,6 @@ func (s *ListTemplateResponseBodyData) SetTagName(v string) *ListTemplateRespons
 
 func (s *ListTemplateResponseBodyData) SetTemplateId(v string) *ListTemplateResponseBodyData {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *ListTemplateResponseBodyData) SetTopoURL(v string) *ListTemplateResponseBodyData {
-	s.TopoURL = &v
 	return s
 }
 
@@ -2410,6 +2400,334 @@ func (s *ValuateApplicationResponse) SetStatusCode(v int32) *ValuateApplicationR
 }
 
 func (s *ValuateApplicationResponse) SetBody(v *ValuateApplicationResponseBody) *ValuateApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type ValuateTemplateRequest struct {
+	AreaId          *string                            `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	ClientToken     *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Instances       []*ValuateTemplateRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TemplateId      *string                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Variables       map[string]*string                 `json:"Variables,omitempty" xml:"Variables,omitempty"`
+}
+
+func (s ValuateTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateRequest) SetAreaId(v string) *ValuateTemplateRequest {
+	s.AreaId = &v
+	return s
+}
+
+func (s *ValuateTemplateRequest) SetClientToken(v string) *ValuateTemplateRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ValuateTemplateRequest) SetInstances(v []*ValuateTemplateRequestInstances) *ValuateTemplateRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *ValuateTemplateRequest) SetResourceGroupId(v string) *ValuateTemplateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ValuateTemplateRequest) SetTemplateId(v string) *ValuateTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ValuateTemplateRequest) SetVariables(v map[string]*string) *ValuateTemplateRequest {
+	s.Variables = v
+	return s
+}
+
+type ValuateTemplateRequestInstances struct {
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+}
+
+func (s ValuateTemplateRequestInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateRequestInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateRequestInstances) SetId(v string) *ValuateTemplateRequestInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *ValuateTemplateRequestInstances) SetNodeName(v string) *ValuateTemplateRequestInstances {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ValuateTemplateRequestInstances) SetNodeType(v string) *ValuateTemplateRequestInstances {
+	s.NodeType = &v
+	return s
+}
+
+type ValuateTemplateShrinkRequest struct {
+	AreaId          *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+}
+
+func (s ValuateTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateShrinkRequest) SetAreaId(v string) *ValuateTemplateShrinkRequest {
+	s.AreaId = &v
+	return s
+}
+
+func (s *ValuateTemplateShrinkRequest) SetClientToken(v string) *ValuateTemplateShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ValuateTemplateShrinkRequest) SetInstancesShrink(v string) *ValuateTemplateShrinkRequest {
+	s.InstancesShrink = &v
+	return s
+}
+
+func (s *ValuateTemplateShrinkRequest) SetResourceGroupId(v string) *ValuateTemplateShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ValuateTemplateShrinkRequest) SetTemplateId(v string) *ValuateTemplateShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ValuateTemplateShrinkRequest) SetVariablesShrink(v string) *ValuateTemplateShrinkRequest {
+	s.VariablesShrink = &v
+	return s
+}
+
+type ValuateTemplateResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ValuateTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ValuateTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateResponseBody) SetCode(v string) *ValuateTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBody) SetData(v *ValuateTemplateResponseBodyData) *ValuateTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ValuateTemplateResponseBody) SetMessage(v string) *ValuateTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBody) SetRequestId(v string) *ValuateTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ValuateTemplateResponseBodyData struct {
+	ResourceList []*ValuateTemplateResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+}
+
+func (s ValuateTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateResponseBodyData) SetResourceList(v []*ValuateTemplateResponseBodyDataResourceList) *ValuateTemplateResponseBodyData {
+	s.ResourceList = v
+	return s
+}
+
+type ValuateTemplateResponseBodyDataResourceList struct {
+	DiscountAmount *float64                                                `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	Error          *string                                                 `json:"Error,omitempty" xml:"Error,omitempty"`
+	NodeType       *string                                                 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OriginalPrice  *float64                                                `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	PriceList      []*ValuateTemplateResponseBodyDataResourceListPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
+	PriceUnit      *string                                                 `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	PromotionName  *string                                                 `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	TradePrice     *float64                                                `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s ValuateTemplateResponseBodyDataResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateResponseBodyDataResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetDiscountAmount(v float64) *ValuateTemplateResponseBodyDataResourceList {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetError(v string) *ValuateTemplateResponseBodyDataResourceList {
+	s.Error = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetNodeType(v string) *ValuateTemplateResponseBodyDataResourceList {
+	s.NodeType = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetOriginalPrice(v float64) *ValuateTemplateResponseBodyDataResourceList {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetPriceList(v []*ValuateTemplateResponseBodyDataResourceListPriceList) *ValuateTemplateResponseBodyDataResourceList {
+	s.PriceList = v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetPriceUnit(v string) *ValuateTemplateResponseBodyDataResourceList {
+	s.PriceUnit = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetPromotionName(v string) *ValuateTemplateResponseBodyDataResourceList {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceList) SetTradePrice(v float64) *ValuateTemplateResponseBodyDataResourceList {
+	s.TradePrice = &v
+	return s
+}
+
+type ValuateTemplateResponseBodyDataResourceListPriceList struct {
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	Error          *string  `json:"Error,omitempty" xml:"Error,omitempty"`
+	NodeType       *string  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OriginalPrice  *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	PriceUnit      *string  `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	PromotionName  *string  `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	ResourceId     *string  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TradePrice     *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	Type           *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ValuateTemplateResponseBodyDataResourceListPriceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateResponseBodyDataResourceListPriceList) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetDiscountAmount(v float32) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetError(v string) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.Error = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetNodeType(v string) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.NodeType = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetOriginalPrice(v float32) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetPriceUnit(v string) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.PriceUnit = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetPromotionName(v string) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetResourceId(v string) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetTradePrice(v float32) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.TradePrice = &v
+	return s
+}
+
+func (s *ValuateTemplateResponseBodyDataResourceListPriceList) SetType(v string) *ValuateTemplateResponseBodyDataResourceListPriceList {
+	s.Type = &v
+	return s
+}
+
+type ValuateTemplateResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValuateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ValuateTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValuateTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValuateTemplateResponse) SetHeaders(v map[string]*string) *ValuateTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValuateTemplateResponse) SetStatusCode(v int32) *ValuateTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValuateTemplateResponse) SetBody(v *ValuateTemplateResponseBody) *ValuateTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -3289,6 +3607,80 @@ func (client *Client) ValuateApplication(request *ValuateApplicationRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ValuateApplicationResponse{}
 	_body, _err := client.ValuateApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ValuateTemplateWithOptions(tmpReq *ValuateTemplateRequest, runtime *util.RuntimeOptions) (_result *ValuateTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ValuateTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Instances)) {
+		request.InstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Instances, tea.String("Instances"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Variables)) {
+		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, tea.String("Variables"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AreaId)) {
+		body["AreaId"] = request.AreaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstancesShrink)) {
+		body["Instances"] = request.InstancesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VariablesShrink)) {
+		body["Variables"] = request.VariablesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValuateTemplate"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValuateTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ValuateTemplate(request *ValuateTemplateRequest) (_result *ValuateTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ValuateTemplateResponse{}
+	_body, _err := client.ValuateTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
