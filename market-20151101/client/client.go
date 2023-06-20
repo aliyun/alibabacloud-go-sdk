@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -59,8 +59,9 @@ func (s *ActivateLicenseResponseBody) SetSuccess(v bool) *ActivateLicenseRespons
 }
 
 type ActivateLicenseResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ActivateLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ActivateLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ActivateLicenseResponse) String() string {
@@ -76,7 +77,111 @@ func (s *ActivateLicenseResponse) SetHeaders(v map[string]*string) *ActivateLice
 	return s
 }
 
+func (s *ActivateLicenseResponse) SetStatusCode(v int32) *ActivateLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ActivateLicenseResponse) SetBody(v *ActivateLicenseResponseBody) *ActivateLicenseResponse {
+	s.Body = v
+	return s
+}
+
+type AutoRenewInstanceRequest struct {
+	AutoRenewCycle    *string `json:"AutoRenewCycle,omitempty" xml:"AutoRenewCycle,omitempty"`
+	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	OrderBizId        *int64  `json:"OrderBizId,omitempty" xml:"OrderBizId,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AutoRenewInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AutoRenewInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AutoRenewInstanceRequest) SetAutoRenewCycle(v string) *AutoRenewInstanceRequest {
+	s.AutoRenewCycle = &v
+	return s
+}
+
+func (s *AutoRenewInstanceRequest) SetAutoRenewDuration(v int32) *AutoRenewInstanceRequest {
+	s.AutoRenewDuration = &v
+	return s
+}
+
+func (s *AutoRenewInstanceRequest) SetOrderBizId(v int64) *AutoRenewInstanceRequest {
+	s.OrderBizId = &v
+	return s
+}
+
+func (s *AutoRenewInstanceRequest) SetOwnerId(v int64) *AutoRenewInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AutoRenewInstanceRequest) SetType(v string) *AutoRenewInstanceRequest {
+	s.Type = &v
+	return s
+}
+
+type AutoRenewInstanceResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AutoRenewInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AutoRenewInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AutoRenewInstanceResponseBody) SetData(v bool) *AutoRenewInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AutoRenewInstanceResponseBody) SetRequestId(v string) *AutoRenewInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AutoRenewInstanceResponseBody) SetSuccess(v bool) *AutoRenewInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AutoRenewInstanceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AutoRenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AutoRenewInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AutoRenewInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AutoRenewInstanceResponse) SetHeaders(v map[string]*string) *AutoRenewInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AutoRenewInstanceResponse) SetStatusCode(v int32) *AutoRenewInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AutoRenewInstanceResponse) SetBody(v *AutoRenewInstanceResponseBody) *AutoRenewInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -175,8 +280,9 @@ func (s *CreateOrderResponseBodyInstanceIds) SetInstanceId(v []*string) *CreateO
 }
 
 type CreateOrderResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateOrderResponse) String() string {
@@ -192,7 +298,312 @@ func (s *CreateOrderResponse) SetHeaders(v map[string]*string) *CreateOrderRespo
 	return s
 }
 
+func (s *CreateOrderResponse) SetStatusCode(v int32) *CreateOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CrossAccountVerifyTokenRequest struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s CrossAccountVerifyTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CrossAccountVerifyTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CrossAccountVerifyTokenRequest) SetToken(v string) *CrossAccountVerifyTokenRequest {
+	s.Token = &v
+	return s
+}
+
+type CrossAccountVerifyTokenResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CrossAccountVerifyTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CrossAccountVerifyTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CrossAccountVerifyTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CrossAccountVerifyTokenResponseBody) SetCode(v string) *CrossAccountVerifyTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponseBody) SetMessage(v string) *CrossAccountVerifyTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponseBody) SetRequestId(v string) *CrossAccountVerifyTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponseBody) SetResult(v *CrossAccountVerifyTokenResponseBodyResult) *CrossAccountVerifyTokenResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponseBody) SetSuccess(v bool) *CrossAccountVerifyTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CrossAccountVerifyTokenResponseBodyResult struct {
+	AuthRoles []*string `json:"AuthRoles,omitempty" xml:"AuthRoles,omitempty" type:"Repeated"`
+	AuthTime  *int64    `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
+	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Uid       *string   `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s CrossAccountVerifyTokenResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CrossAccountVerifyTokenResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CrossAccountVerifyTokenResponseBodyResult) SetAuthRoles(v []*string) *CrossAccountVerifyTokenResponseBodyResult {
+	s.AuthRoles = v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponseBodyResult) SetAuthTime(v int64) *CrossAccountVerifyTokenResponseBodyResult {
+	s.AuthTime = &v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponseBodyResult) SetName(v string) *CrossAccountVerifyTokenResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponseBodyResult) SetUid(v string) *CrossAccountVerifyTokenResponseBodyResult {
+	s.Uid = &v
+	return s
+}
+
+type CrossAccountVerifyTokenResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CrossAccountVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CrossAccountVerifyTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CrossAccountVerifyTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CrossAccountVerifyTokenResponse) SetHeaders(v map[string]*string) *CrossAccountVerifyTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponse) SetStatusCode(v int32) *CrossAccountVerifyTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CrossAccountVerifyTokenResponse) SetBody(v *CrossAccountVerifyTokenResponseBody) *CrossAccountVerifyTokenResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApiMeteringRequest struct {
+	PageNum     *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeApiMeteringRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiMeteringRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiMeteringRequest) SetPageNum(v int32) *DescribeApiMeteringRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeApiMeteringRequest) SetProductCode(v string) *DescribeApiMeteringRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeApiMeteringRequest) SetType(v int32) *DescribeApiMeteringRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeApiMeteringResponseBody struct {
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// fatal
+	Fatal      *bool                                    `json:"Fatal,omitempty" xml:"Fatal,omitempty"`
+	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int64                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*DescribeApiMeteringResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Version    *string                                  `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeApiMeteringResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiMeteringResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiMeteringResponseBody) SetCode(v string) *DescribeApiMeteringResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetCount(v int64) *DescribeApiMeteringResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetFatal(v bool) *DescribeApiMeteringResponseBody {
+	s.Fatal = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetMessage(v string) *DescribeApiMeteringResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetPageNumber(v int64) *DescribeApiMeteringResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetPageSize(v int64) *DescribeApiMeteringResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetRequestId(v string) *DescribeApiMeteringResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetResult(v []*DescribeApiMeteringResponseBodyResult) *DescribeApiMeteringResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetSuccess(v bool) *DescribeApiMeteringResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBody) SetVersion(v string) *DescribeApiMeteringResponseBody {
+	s.Version = &v
+	return s
+}
+
+type DescribeApiMeteringResponseBodyResult struct {
+	AliyunPk    *int64  `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	TotalQuota  *int64  `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	TotalUsage  *int64  `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty"`
+	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s DescribeApiMeteringResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiMeteringResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiMeteringResponseBodyResult) SetAliyunPk(v int64) *DescribeApiMeteringResponseBodyResult {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBodyResult) SetProductCode(v string) *DescribeApiMeteringResponseBodyResult {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBodyResult) SetProductName(v string) *DescribeApiMeteringResponseBodyResult {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBodyResult) SetTotalQuota(v int64) *DescribeApiMeteringResponseBodyResult {
+	s.TotalQuota = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBodyResult) SetTotalUsage(v int64) *DescribeApiMeteringResponseBodyResult {
+	s.TotalUsage = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponseBodyResult) SetUnit(v string) *DescribeApiMeteringResponseBodyResult {
+	s.Unit = &v
+	return s
+}
+
+type DescribeApiMeteringResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeApiMeteringResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeApiMeteringResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiMeteringResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiMeteringResponse) SetHeaders(v map[string]*string) *DescribeApiMeteringResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApiMeteringResponse) SetStatusCode(v int32) *DescribeApiMeteringResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApiMeteringResponse) SetBody(v *DescribeApiMeteringResponseBody) *DescribeApiMeteringResponse {
 	s.Body = v
 	return s
 }
@@ -351,8 +762,9 @@ func (s *DescribeCurrentNodeInfoResponseBodyResult) SetTemplateForm(v string) *D
 }
 
 type DescribeCurrentNodeInfoResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCurrentNodeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCurrentNodeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCurrentNodeInfoResponse) String() string {
@@ -368,7 +780,357 @@ func (s *DescribeCurrentNodeInfoResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeCurrentNodeInfoResponse) SetStatusCode(v int32) *DescribeCurrentNodeInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeCurrentNodeInfoResponse) SetBody(v *DescribeCurrentNodeInfoResponseBody) *DescribeCurrentNodeInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDistributionProductsRequest struct {
+	Filter     []*DescribeDistributionProductsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	PageNumber *int64                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDistributionProductsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsRequest) SetFilter(v []*DescribeDistributionProductsRequestFilter) *DescribeDistributionProductsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *DescribeDistributionProductsRequest) SetPageNumber(v int64) *DescribeDistributionProductsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsRequest) SetPageSize(v int64) *DescribeDistributionProductsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDistributionProductsRequestFilter struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDistributionProductsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsRequestFilter) SetKey(v string) *DescribeDistributionProductsRequestFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsRequestFilter) SetValue(v string) *DescribeDistributionProductsRequestFilter {
+	s.Value = &v
+	return s
+}
+
+type DescribeDistributionProductsResponseBody struct {
+	PageNumber *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results    []*DescribeDistributionProductsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDistributionProductsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsResponseBody) SetPageNumber(v int32) *DescribeDistributionProductsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBody) SetPageSize(v int32) *DescribeDistributionProductsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBody) SetRequestId(v string) *DescribeDistributionProductsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBody) SetResults(v []*DescribeDistributionProductsResponseBodyResults) *DescribeDistributionProductsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBody) SetTotalCount(v int32) *DescribeDistributionProductsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDistributionProductsResponseBodyResults struct {
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	FirstCategoryName  *string `json:"FirstCategoryName,omitempty" xml:"FirstCategoryName,omitempty"`
+	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Price              *string `json:"Price,omitempty" xml:"Price,omitempty"`
+	Score              *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
+	ShortDescription   *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	SubmissionRadio    *string `json:"SubmissionRadio,omitempty" xml:"SubmissionRadio,omitempty"`
+	SupplierName       *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	SupplierUId        *string `json:"SupplierUId,omitempty" xml:"SupplierUId,omitempty"`
+	TradeCount         *string `json:"TradeCount,omitempty" xml:"TradeCount,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserCommentCount   *string `json:"UserCommentCount,omitempty" xml:"UserCommentCount,omitempty"`
+}
+
+func (s DescribeDistributionProductsResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetCode(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetFirstCategoryName(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.FirstCategoryName = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetImageUrl(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetName(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetPrice(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.Price = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetScore(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.Score = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetSecondCategoryName(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.SecondCategoryName = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetShortDescription(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.ShortDescription = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetSubmissionRadio(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.SubmissionRadio = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetSupplierName(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetSupplierUId(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.SupplierUId = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetTradeCount(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.TradeCount = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetType(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponseBodyResults) SetUserCommentCount(v string) *DescribeDistributionProductsResponseBodyResults {
+	s.UserCommentCount = &v
+	return s
+}
+
+type DescribeDistributionProductsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDistributionProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDistributionProductsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsResponse) SetHeaders(v map[string]*string) *DescribeDistributionProductsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponse) SetStatusCode(v int32) *DescribeDistributionProductsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsResponse) SetBody(v *DescribeDistributionProductsResponseBody) *DescribeDistributionProductsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDistributionProductsLinkRequest struct {
+	Codes []*string `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDistributionProductsLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsLinkRequest) SetCodes(v []*string) *DescribeDistributionProductsLinkRequest {
+	s.Codes = v
+	return s
+}
+
+type DescribeDistributionProductsLinkShrinkRequest struct {
+	CodesShrink *string `json:"Codes,omitempty" xml:"Codes,omitempty"`
+}
+
+func (s DescribeDistributionProductsLinkShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsLinkShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsLinkShrinkRequest) SetCodesShrink(v string) *DescribeDistributionProductsLinkShrinkRequest {
+	s.CodesShrink = &v
+	return s
+}
+
+type DescribeDistributionProductsLinkResponseBody struct {
+	// Id of the request
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*DescribeDistributionProductsLinkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success    *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDistributionProductsLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsLinkResponseBody) SetRequestId(v string) *DescribeDistributionProductsLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsLinkResponseBody) SetResult(v []*DescribeDistributionProductsLinkResponseBodyResult) *DescribeDistributionProductsLinkResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DescribeDistributionProductsLinkResponseBody) SetSuccess(v bool) *DescribeDistributionProductsLinkResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsLinkResponseBody) SetTotalCount(v int64) *DescribeDistributionProductsLinkResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDistributionProductsLinkResponseBodyResult struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeDistributionProductsLinkResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsLinkResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsLinkResponseBodyResult) SetCode(v string) *DescribeDistributionProductsLinkResponseBodyResult {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsLinkResponseBodyResult) SetName(v string) *DescribeDistributionProductsLinkResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsLinkResponseBodyResult) SetUrl(v string) *DescribeDistributionProductsLinkResponseBodyResult {
+	s.Url = &v
+	return s
+}
+
+type DescribeDistributionProductsLinkResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDistributionProductsLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDistributionProductsLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDistributionProductsLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDistributionProductsLinkResponse) SetHeaders(v map[string]*string) *DescribeDistributionProductsLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDistributionProductsLinkResponse) SetStatusCode(v int32) *DescribeDistributionProductsLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDistributionProductsLinkResponse) SetBody(v *DescribeDistributionProductsLinkResponseBody) *DescribeDistributionProductsLinkResponse {
 	s.Body = v
 	return s
 }
@@ -404,6 +1166,7 @@ func (s *DescribeInstanceRequest) SetOwnerId(v int64) *DescribeInstanceRequest {
 
 type DescribeInstanceResponseBody struct {
 	AppJson        *string                                     `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
+	AutoRenewal    *string                                     `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	BeganOn        *int64                                      `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
 	ComponentJson  *string                                     `json:"ComponentJson,omitempty" xml:"ComponentJson,omitempty"`
 	Constraints    *string                                     `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
@@ -434,6 +1197,11 @@ func (s DescribeInstanceResponseBody) GoString() string {
 
 func (s *DescribeInstanceResponseBody) SetAppJson(v string) *DescribeInstanceResponseBody {
 	s.AppJson = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetAutoRenewal(v string) *DescribeInstanceResponseBody {
+	s.AutoRenewal = &v
 	return s
 }
 
@@ -725,8 +1493,9 @@ func (s *DescribeInstanceResponseBodyRelationalData) SetServiceStatus(v string) 
 }
 
 type DescribeInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstanceResponse) String() string {
@@ -739,6 +1508,11 @@ func (s DescribeInstanceResponse) GoString() string {
 
 func (s *DescribeInstanceResponse) SetHeaders(v map[string]*string) *DescribeInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceResponse) SetStatusCode(v int32) *DescribeInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -960,8 +1734,9 @@ func (s *DescribeInstancesResponseBodyInstanceItemsInstanceItem) SetSupplierName
 }
 
 type DescribeInstancesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstancesResponse) String() string {
@@ -974,6 +1749,11 @@ func (s DescribeInstancesResponse) GoString() string {
 
 func (s *DescribeInstancesResponse) SetHeaders(v map[string]*string) *DescribeInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstancesResponse) SetStatusCode(v int32) *DescribeInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1181,8 +1961,9 @@ func (s *DescribeLicenseResponseBodyLicenseExtendInfo) SetMobile(v string) *Desc
 }
 
 type DescribeLicenseResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeLicenseResponse) String() string {
@@ -1195,6 +1976,11 @@ func (s DescribeLicenseResponse) GoString() string {
 
 func (s *DescribeLicenseResponse) SetHeaders(v map[string]*string) *DescribeLicenseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeLicenseResponse) SetStatusCode(v int32) *DescribeLicenseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1398,8 +2184,9 @@ func (s *DescribeOrderResponseBodySupplierTelephones) SetTelephone(v []*string) 
 }
 
 type DescribeOrderResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeOrderResponse) String() string {
@@ -1412,6 +2199,11 @@ func (s DescribeOrderResponse) GoString() string {
 
 func (s *DescribeOrderResponse) SetHeaders(v map[string]*string) *DescribeOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeOrderResponse) SetStatusCode(v int32) *DescribeOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1643,8 +2435,9 @@ func (s *DescribePriceResponseBodyPromotionRulesPromotionRule) SetTitle(v string
 }
 
 type DescribePriceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePriceResponse) String() string {
@@ -1660,12 +2453,18 @@ func (s *DescribePriceResponse) SetHeaders(v map[string]*string) *DescribePriceR
 	return s
 }
 
+func (s *DescribePriceResponse) SetStatusCode(v int32) *DescribePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribePriceResponse) SetBody(v *DescribePriceResponseBody) *DescribePriceResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeProductRequest struct {
+	// AliUid
 	AliUid     *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	QueryDraft *bool   `json:"QueryDraft,omitempty" xml:"QueryDraft,omitempty"`
@@ -2272,8 +3071,9 @@ func (s *DescribeProductResponseBodyShopInfoWangWangsWangWang) SetUserName(v str
 }
 
 type DescribeProductResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProductResponse) String() string {
@@ -2286,6 +3086,11 @@ func (s DescribeProductResponse) GoString() string {
 
 func (s *DescribeProductResponse) SetHeaders(v map[string]*string) *DescribeProductResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProductResponse) SetStatusCode(v int32) *DescribeProductResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2518,8 +3323,9 @@ func (s *DescribeProductsResponseBodyProductItemsProductItem) SetWarrantyDate(v 
 }
 
 type DescribeProductsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProductsResponse) String() string {
@@ -2532,6 +3338,11 @@ func (s DescribeProductsResponse) GoString() string {
 
 func (s *DescribeProductsResponse) SetHeaders(v map[string]*string) *DescribeProductsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProductsResponse) SetStatusCode(v int32) *DescribeProductsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2688,8 +3499,9 @@ func (s *DescribeProjectAttachmentsResponseBodyResult) SetStepNo(v int32) *Descr
 }
 
 type DescribeProjectAttachmentsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProjectAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProjectAttachmentsResponse) String() string {
@@ -2702,6 +3514,11 @@ func (s DescribeProjectAttachmentsResponse) GoString() string {
 
 func (s *DescribeProjectAttachmentsResponse) SetHeaders(v map[string]*string) *DescribeProjectAttachmentsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectAttachmentsResponse) SetStatusCode(v int32) *DescribeProjectAttachmentsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2870,8 +3687,9 @@ func (s *DescribeProjectInfoResponseBodyResult) SetTemplateType(v string) *Descr
 }
 
 type DescribeProjectInfoResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProjectInfoResponse) String() string {
@@ -2884,6 +3702,11 @@ func (s DescribeProjectInfoResponse) GoString() string {
 
 func (s *DescribeProjectInfoResponse) SetHeaders(v map[string]*string) *DescribeProjectInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectInfoResponse) SetStatusCode(v int32) *DescribeProjectInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2992,8 +3815,9 @@ func (s *DescribeProjectMessagesResponseBodyResult) SetOperatorRole(v string) *D
 }
 
 type DescribeProjectMessagesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProjectMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProjectMessagesResponse) String() string {
@@ -3006,6 +3830,11 @@ func (s DescribeProjectMessagesResponse) GoString() string {
 
 func (s *DescribeProjectMessagesResponse) SetHeaders(v map[string]*string) *DescribeProjectMessagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectMessagesResponse) SetStatusCode(v int32) *DescribeProjectMessagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3168,8 +3997,9 @@ func (s *DescribeProjectNodesResponseBodyResult) SetTemplateForm(v string) *Desc
 }
 
 type DescribeProjectNodesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProjectNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProjectNodesResponse) String() string {
@@ -3182,6 +4012,11 @@ func (s DescribeProjectNodesResponse) GoString() string {
 
 func (s *DescribeProjectNodesResponse) SetHeaders(v map[string]*string) *DescribeProjectNodesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectNodesResponse) SetStatusCode(v int32) *DescribeProjectNodesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3278,8 +4113,9 @@ func (s *DescribeProjectOperateLogsResponseBodyResult) SetOperatorRole(v string)
 }
 
 type DescribeProjectOperateLogsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProjectOperateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectOperateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProjectOperateLogsResponse) String() string {
@@ -3292,6 +4128,11 @@ func (s DescribeProjectOperateLogsResponse) GoString() string {
 
 func (s *DescribeProjectOperateLogsResponse) SetHeaders(v map[string]*string) *DescribeProjectOperateLogsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectOperateLogsResponse) SetStatusCode(v int32) *DescribeProjectOperateLogsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3365,8 +4206,9 @@ func (s *FinishCurrentProjectNodeResponseBody) SetSuccess(v bool) *FinishCurrent
 }
 
 type FinishCurrentProjectNodeResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FinishCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FinishCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FinishCurrentProjectNodeResponse) String() string {
@@ -3379,6 +4221,11 @@ func (s FinishCurrentProjectNodeResponse) GoString() string {
 
 func (s *FinishCurrentProjectNodeResponse) SetHeaders(v map[string]*string) *FinishCurrentProjectNodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FinishCurrentProjectNodeResponse) SetStatusCode(v int32) *FinishCurrentProjectNodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3446,8 +4293,9 @@ func (s *PauseProjectResponseBody) SetSuccess(v bool) *PauseProjectResponseBody 
 }
 
 type PauseProjectResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PauseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PauseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PauseProjectResponse) String() string {
@@ -3460,6 +4308,11 @@ func (s PauseProjectResponse) GoString() string {
 
 func (s *PauseProjectResponse) SetHeaders(v map[string]*string) *PauseProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PauseProjectResponse) SetStatusCode(v int32) *PauseProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3509,8 +4362,9 @@ func (s *PushMeteringDataResponseBody) SetSuccess(v bool) *PushMeteringDataRespo
 }
 
 type PushMeteringDataResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PushMeteringDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushMeteringDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PushMeteringDataResponse) String() string {
@@ -3523,6 +4377,11 @@ func (s PushMeteringDataResponse) GoString() string {
 
 func (s *PushMeteringDataResponse) SetHeaders(v map[string]*string) *PushMeteringDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PushMeteringDataResponse) SetStatusCode(v int32) *PushMeteringDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3590,8 +4449,9 @@ func (s *ResumeProjectResponseBody) SetSuccess(v bool) *ResumeProjectResponseBod
 }
 
 type ResumeProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResumeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResumeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ResumeProjectResponse) String() string {
@@ -3604,6 +4464,11 @@ func (s ResumeProjectResponse) GoString() string {
 
 func (s *ResumeProjectResponse) SetHeaders(v map[string]*string) *ResumeProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ResumeProjectResponse) SetStatusCode(v int32) *ResumeProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3671,8 +4536,9 @@ func (s *RollbackCurrentProjectNodeResponseBody) SetSuccess(v bool) *RollbackCur
 }
 
 type RollbackCurrentProjectNodeResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RollbackCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RollbackCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RollbackCurrentProjectNodeResponse) String() string {
@@ -3685,6 +4551,11 @@ func (s RollbackCurrentProjectNodeResponse) GoString() string {
 
 func (s *RollbackCurrentProjectNodeResponse) SetHeaders(v map[string]*string) *RollbackCurrentProjectNodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RollbackCurrentProjectNodeResponse) SetStatusCode(v int32) *RollbackCurrentProjectNodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3813,6 +4684,66 @@ func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) AutoRenewInstanceWithOptions(request *AutoRenewInstanceRequest, runtime *util.RuntimeOptions) (_result *AutoRenewInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewCycle)) {
+		body["AutoRenewCycle"] = request.AutoRenewCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewDuration)) {
+		body["AutoRenewDuration"] = request.AutoRenewDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBizId)) {
+		body["OrderBizId"] = request.OrderBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		body["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AutoRenewInstance"),
+		Version:     tea.String("2015-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AutoRenewInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AutoRenewInstance(request *AutoRenewInstanceRequest) (_result *AutoRenewInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AutoRenewInstanceResponse{}
+	_body, _err := client.AutoRenewInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, runtime *util.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3877,6 +4808,90 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 	return _result, _err
 }
 
+func (client *Client) CrossAccountVerifyTokenWithOptions(request *CrossAccountVerifyTokenRequest, runtime *util.RuntimeOptions) (_result *CrossAccountVerifyTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CrossAccountVerifyToken"),
+		Version:     tea.String("2015-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CrossAccountVerifyTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CrossAccountVerifyToken(request *CrossAccountVerifyTokenRequest) (_result *CrossAccountVerifyTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CrossAccountVerifyTokenResponse{}
+	_body, _err := client.CrossAccountVerifyTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeApiMeteringWithOptions(request *DescribeApiMeteringRequest, runtime *util.RuntimeOptions) (_result *DescribeApiMeteringResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApiMetering"),
+		Version:     tea.String("2015-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApiMeteringResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeApiMetering(request *DescribeApiMeteringRequest) (_result *DescribeApiMeteringResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApiMeteringResponse{}
+	_body, _err := client.DescribeApiMeteringWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCurrentNodeInfoWithOptions(request *DescribeCurrentNodeInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeCurrentNodeInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3914,6 +4929,96 @@ func (client *Client) DescribeCurrentNodeInfo(request *DescribeCurrentNodeInfoRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCurrentNodeInfoResponse{}
 	_body, _err := client.DescribeCurrentNodeInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDistributionProductsWithOptions(request *DescribeDistributionProductsRequest, runtime *util.RuntimeOptions) (_result *DescribeDistributionProductsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDistributionProducts"),
+		Version:     tea.String("2015-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDistributionProductsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDistributionProducts(request *DescribeDistributionProductsRequest) (_result *DescribeDistributionProductsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDistributionProductsResponse{}
+	_body, _err := client.DescribeDistributionProductsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDistributionProductsLinkWithOptions(tmpReq *DescribeDistributionProductsLinkRequest, runtime *util.RuntimeOptions) (_result *DescribeDistributionProductsLinkResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeDistributionProductsLinkShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Codes)) {
+		request.CodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Codes, tea.String("Codes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodesShrink)) {
+		query["Codes"] = request.CodesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDistributionProductsLink"),
+		Version:     tea.String("2015-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDistributionProductsLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDistributionProductsLink(request *DescribeDistributionProductsLinkRequest) (_result *DescribeDistributionProductsLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDistributionProductsLinkResponse{}
+	_body, _err := client.DescribeDistributionProductsLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4413,6 +5518,14 @@ func (client *Client) DescribeProjectMessages(request *DescribeProjectMessagesRe
 	return _result, _err
 }
 
+/**
+ * **
+ * **
+ *
+ * @param request DescribeProjectNodesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeProjectNodesResponse
+ */
 func (client *Client) DescribeProjectNodesWithOptions(request *DescribeProjectNodesRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4446,6 +5559,13 @@ func (client *Client) DescribeProjectNodesWithOptions(request *DescribeProjectNo
 	return _result, _err
 }
 
+/**
+ * **
+ * **
+ *
+ * @param request DescribeProjectNodesRequest
+ * @return DescribeProjectNodesResponse
+ */
 func (client *Client) DescribeProjectNodes(request *DescribeProjectNodesRequest) (_result *DescribeProjectNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProjectNodesResponse{}
