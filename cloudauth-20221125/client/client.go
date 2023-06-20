@@ -114,9 +114,10 @@ func (s *EntElementVerifyResponseBody) SetResult(v *EntElementVerifyResponseBody
 }
 
 type EntElementVerifyResponseBodyResult struct {
-	BizCode    *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizCode      *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	ReasonCode   *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonDetail *string `json:"ReasonDetail,omitempty" xml:"ReasonDetail,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s EntElementVerifyResponseBodyResult) String() string {
@@ -134,6 +135,11 @@ func (s *EntElementVerifyResponseBodyResult) SetBizCode(v string) *EntElementVer
 
 func (s *EntElementVerifyResponseBodyResult) SetReasonCode(v string) *EntElementVerifyResponseBodyResult {
 	s.ReasonCode = &v
+	return s
+}
+
+func (s *EntElementVerifyResponseBodyResult) SetReasonDetail(v string) *EntElementVerifyResponseBodyResult {
+	s.ReasonDetail = &v
 	return s
 }
 
