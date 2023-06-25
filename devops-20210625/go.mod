@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/devops-20210625/v2
+module github.com/alibabacloud-go/devops-20210625/v3
 
 go 1.15
 

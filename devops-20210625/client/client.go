@@ -3833,6 +3833,690 @@ func (s *CreateTagResponse) SetBody(v *CreateTagResponseBody) *CreateTagResponse
 	return s
 }
 
+type CreateTestCaseRequest struct {
+	AssignedTo              *string                                       `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	DirectoryIdentifier     *string                                       `json:"directoryIdentifier,omitempty" xml:"directoryIdentifier,omitempty"`
+	FieldValueList          []*CreateTestCaseRequestFieldValueList        `json:"fieldValueList,omitempty" xml:"fieldValueList,omitempty" type:"Repeated"`
+	Priority                *string                                       `json:"priority,omitempty" xml:"priority,omitempty"`
+	SpaceIdentifier         *string                                       `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	Subject                 *string                                       `json:"subject,omitempty" xml:"subject,omitempty"`
+	Tags                    []*string                                     `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TestcaseStepContentInfo *CreateTestCaseRequestTestcaseStepContentInfo `json:"testcaseStepContentInfo,omitempty" xml:"testcaseStepContentInfo,omitempty" type:"Struct"`
+}
+
+func (s CreateTestCaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseRequest) SetAssignedTo(v string) *CreateTestCaseRequest {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *CreateTestCaseRequest) SetDirectoryIdentifier(v string) *CreateTestCaseRequest {
+	s.DirectoryIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseRequest) SetFieldValueList(v []*CreateTestCaseRequestFieldValueList) *CreateTestCaseRequest {
+	s.FieldValueList = v
+	return s
+}
+
+func (s *CreateTestCaseRequest) SetPriority(v string) *CreateTestCaseRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateTestCaseRequest) SetSpaceIdentifier(v string) *CreateTestCaseRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseRequest) SetSubject(v string) *CreateTestCaseRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreateTestCaseRequest) SetTags(v []*string) *CreateTestCaseRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateTestCaseRequest) SetTestcaseStepContentInfo(v *CreateTestCaseRequestTestcaseStepContentInfo) *CreateTestCaseRequest {
+	s.TestcaseStepContentInfo = v
+	return s
+}
+
+type CreateTestCaseRequestFieldValueList struct {
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateTestCaseRequestFieldValueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseRequestFieldValueList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseRequestFieldValueList) SetFieldIdentifier(v string) *CreateTestCaseRequestFieldValueList {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseRequestFieldValueList) SetValue(v string) *CreateTestCaseRequestFieldValueList {
+	s.Value = &v
+	return s
+}
+
+type CreateTestCaseRequestTestcaseStepContentInfo struct {
+	Precondition   *string                                                       `json:"precondition,omitempty" xml:"precondition,omitempty"`
+	StepResultList []*CreateTestCaseRequestTestcaseStepContentInfoStepResultList `json:"stepResultList,omitempty" xml:"stepResultList,omitempty" type:"Repeated"`
+	StepType       *string                                                       `json:"stepType,omitempty" xml:"stepType,omitempty"`
+}
+
+func (s CreateTestCaseRequestTestcaseStepContentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseRequestTestcaseStepContentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseRequestTestcaseStepContentInfo) SetPrecondition(v string) *CreateTestCaseRequestTestcaseStepContentInfo {
+	s.Precondition = &v
+	return s
+}
+
+func (s *CreateTestCaseRequestTestcaseStepContentInfo) SetStepResultList(v []*CreateTestCaseRequestTestcaseStepContentInfoStepResultList) *CreateTestCaseRequestTestcaseStepContentInfo {
+	s.StepResultList = v
+	return s
+}
+
+func (s *CreateTestCaseRequestTestcaseStepContentInfo) SetStepType(v string) *CreateTestCaseRequestTestcaseStepContentInfo {
+	s.StepType = &v
+	return s
+}
+
+type CreateTestCaseRequestTestcaseStepContentInfoStepResultList struct {
+	Expected *string `json:"expected,omitempty" xml:"expected,omitempty"`
+	Step     *string `json:"step,omitempty" xml:"step,omitempty"`
+}
+
+func (s CreateTestCaseRequestTestcaseStepContentInfoStepResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseRequestTestcaseStepContentInfoStepResultList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseRequestTestcaseStepContentInfoStepResultList) SetExpected(v string) *CreateTestCaseRequestTestcaseStepContentInfoStepResultList {
+	s.Expected = &v
+	return s
+}
+
+func (s *CreateTestCaseRequestTestcaseStepContentInfoStepResultList) SetStep(v string) *CreateTestCaseRequestTestcaseStepContentInfoStepResultList {
+	s.Step = &v
+	return s
+}
+
+type CreateTestCaseResponseBody struct {
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Id of the request
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	Testcase  *CreateTestCaseResponseBodyTestcase `json:"testcase,omitempty" xml:"testcase,omitempty" type:"Struct"`
+}
+
+func (s CreateTestCaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBody) SetErrorCode(v string) *CreateTestCaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBody) SetErrorMsg(v string) *CreateTestCaseResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBody) SetRequestId(v string) *CreateTestCaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBody) SetSuccess(v bool) *CreateTestCaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBody) SetTestcase(v *CreateTestCaseResponseBodyTestcase) *CreateTestCaseResponseBody {
+	s.Testcase = v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcase struct {
+	AssignedTo         *CreateTestCaseResponseBodyTestcaseAssignedTo `json:"assignedTo,omitempty" xml:"assignedTo,omitempty" type:"Struct"`
+	CategoryIdentifier *string                                       `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator            *CreateTestCaseResponseBodyTestcaseCreator    `json:"creator,omitempty" xml:"creator,omitempty" type:"Struct"`
+	DetailInfo         *CreateTestCaseResponseBodyTestcaseDetailInfo `json:"detailInfo,omitempty" xml:"detailInfo,omitempty" type:"Struct"`
+	Directory          *CreateTestCaseResponseBodyTestcaseDirectory  `json:"directory,omitempty" xml:"directory,omitempty" type:"Struct"`
+	Identifier         *string                                       `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier           *CreateTestCaseResponseBodyTestcaseModifier   `json:"modifier,omitempty" xml:"modifier,omitempty" type:"Struct"`
+	SpaceIdentifier    *string                                       `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceType          *string                                       `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	Subject            *string                                       `json:"subject,omitempty" xml:"subject,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcase) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetAssignedTo(v *CreateTestCaseResponseBodyTestcaseAssignedTo) *CreateTestCaseResponseBodyTestcase {
+	s.AssignedTo = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetCategoryIdentifier(v string) *CreateTestCaseResponseBodyTestcase {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetCreator(v *CreateTestCaseResponseBodyTestcaseCreator) *CreateTestCaseResponseBodyTestcase {
+	s.Creator = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetDetailInfo(v *CreateTestCaseResponseBodyTestcaseDetailInfo) *CreateTestCaseResponseBodyTestcase {
+	s.DetailInfo = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetDirectory(v *CreateTestCaseResponseBodyTestcaseDirectory) *CreateTestCaseResponseBodyTestcase {
+	s.Directory = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetIdentifier(v string) *CreateTestCaseResponseBodyTestcase {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetModifier(v *CreateTestCaseResponseBodyTestcaseModifier) *CreateTestCaseResponseBodyTestcase {
+	s.Modifier = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetSpaceIdentifier(v string) *CreateTestCaseResponseBodyTestcase {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetSpaceType(v string) *CreateTestCaseResponseBodyTestcase {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcase) SetSubject(v string) *CreateTestCaseResponseBodyTestcase {
+	s.Subject = &v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseAssignedTo struct {
+	AssignIdentifier *string `json:"assignIdentifier,omitempty" xml:"assignIdentifier,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	TbRoleId         *string `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseAssignedTo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseAssignedTo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseAssignedTo) SetAssignIdentifier(v string) *CreateTestCaseResponseBodyTestcaseAssignedTo {
+	s.AssignIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseAssignedTo) SetName(v string) *CreateTestCaseResponseBodyTestcaseAssignedTo {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseAssignedTo) SetTbRoleId(v string) *CreateTestCaseResponseBodyTestcaseAssignedTo {
+	s.TbRoleId = &v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseCreator struct {
+	CreateIdentifier *string `json:"createIdentifier,omitempty" xml:"createIdentifier,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseCreator) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseCreator) SetCreateIdentifier(v string) *CreateTestCaseResponseBodyTestcaseCreator {
+	s.CreateIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseCreator) SetName(v string) *CreateTestCaseResponseBodyTestcaseCreator {
+	s.Name = &v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseDetailInfo struct {
+	ExpectedResult *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult `json:"expectedResult,omitempty" xml:"expectedResult,omitempty" type:"Struct"`
+	Precondition   *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition   `json:"precondition,omitempty" xml:"precondition,omitempty" type:"Struct"`
+	StepContent    *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent    `json:"stepContent,omitempty" xml:"stepContent,omitempty" type:"Struct"`
+	StepType       *string                                                     `json:"stepType,omitempty" xml:"stepType,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfo) SetExpectedResult(v *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) *CreateTestCaseResponseBodyTestcaseDetailInfo {
+	s.ExpectedResult = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfo) SetPrecondition(v *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition) *CreateTestCaseResponseBodyTestcaseDetailInfo {
+	s.Precondition = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfo) SetStepContent(v *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent) *CreateTestCaseResponseBodyTestcaseDetailInfo {
+	s.StepContent = v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfo) SetStepType(v string) *CreateTestCaseResponseBodyTestcaseDetailInfo {
+	s.StepType = &v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult struct {
+	ExpectContent     *string `json:"expectContent,omitempty" xml:"expectContent,omitempty"`
+	ExpectContentType *string `json:"expectContentType,omitempty" xml:"expectContentType,omitempty"`
+	ExpectIdentifier  *string `json:"expectIdentifier,omitempty" xml:"expectIdentifier,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) SetExpectContent(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult {
+	s.ExpectContent = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) SetExpectContentType(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult {
+	s.ExpectContentType = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) SetExpectIdentifier(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoExpectedResult {
+	s.ExpectIdentifier = &v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition struct {
+	PreContent     *string `json:"preContent,omitempty" xml:"preContent,omitempty"`
+	PreContentType *string `json:"preContentType,omitempty" xml:"preContentType,omitempty"`
+	PreIdentifier  *string `json:"preIdentifier,omitempty" xml:"preIdentifier,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition) SetPreContent(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition {
+	s.PreContent = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition) SetPreContentType(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition {
+	s.PreContentType = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition) SetPreIdentifier(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoPrecondition {
+	s.PreIdentifier = &v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseDetailInfoStepContent struct {
+	StepContent     *string `json:"stepContent,omitempty" xml:"stepContent,omitempty"`
+	StepContentType *string `json:"stepContentType,omitempty" xml:"stepContentType,omitempty"`
+	StepIdentifier  *string `json:"stepIdentifier,omitempty" xml:"stepIdentifier,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfoStepContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDetailInfoStepContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent) SetStepContent(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent {
+	s.StepContent = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent) SetStepContentType(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent {
+	s.StepContentType = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent) SetStepIdentifier(v string) *CreateTestCaseResponseBodyTestcaseDetailInfoStepContent {
+	s.StepIdentifier = &v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseDirectory struct {
+	ChildIdentifier     *string   `json:"childIdentifier,omitempty" xml:"childIdentifier,omitempty"`
+	DirectoryIdentifier *string   `json:"directoryIdentifier,omitempty" xml:"directoryIdentifier,omitempty"`
+	Name                *string   `json:"name,omitempty" xml:"name,omitempty"`
+	PathName            []*string `json:"pathName,omitempty" xml:"pathName,omitempty" type:"Repeated"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDirectory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseDirectory) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDirectory) SetChildIdentifier(v string) *CreateTestCaseResponseBodyTestcaseDirectory {
+	s.ChildIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDirectory) SetDirectoryIdentifier(v string) *CreateTestCaseResponseBodyTestcaseDirectory {
+	s.DirectoryIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDirectory) SetName(v string) *CreateTestCaseResponseBodyTestcaseDirectory {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseDirectory) SetPathName(v []*string) *CreateTestCaseResponseBodyTestcaseDirectory {
+	s.PathName = v
+	return s
+}
+
+type CreateTestCaseResponseBodyTestcaseModifier struct {
+	ModifyIdentifier *string `json:"modifyIdentifier,omitempty" xml:"modifyIdentifier,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateTestCaseResponseBodyTestcaseModifier) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponseBodyTestcaseModifier) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseModifier) SetModifyIdentifier(v string) *CreateTestCaseResponseBodyTestcaseModifier {
+	s.ModifyIdentifier = &v
+	return s
+}
+
+func (s *CreateTestCaseResponseBodyTestcaseModifier) SetName(v string) *CreateTestCaseResponseBodyTestcaseModifier {
+	s.Name = &v
+	return s
+}
+
+type CreateTestCaseResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTestCaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTestCaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTestCaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTestCaseResponse) SetHeaders(v map[string]*string) *CreateTestCaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTestCaseResponse) SetStatusCode(v int32) *CreateTestCaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTestCaseResponse) SetBody(v *CreateTestCaseResponseBody) *CreateTestCaseResponse {
+	s.Body = v
+	return s
+}
+
+type CreateUserKeyRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	ExpireTime     *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	KeyScope       *string `json:"keyScope,omitempty" xml:"keyScope,omitempty"`
+	PublicKey      *string `json:"publicKey,omitempty" xml:"publicKey,omitempty"`
+	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreateUserKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserKeyRequest) SetAccessToken(v string) *CreateUserKeyRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateUserKeyRequest) SetExpireTime(v string) *CreateUserKeyRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateUserKeyRequest) SetKeyScope(v string) *CreateUserKeyRequest {
+	s.KeyScope = &v
+	return s
+}
+
+func (s *CreateUserKeyRequest) SetPublicKey(v string) *CreateUserKeyRequest {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *CreateUserKeyRequest) SetTitle(v string) *CreateUserKeyRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateUserKeyRequest) SetOrganizationId(v string) *CreateUserKeyRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreateUserKeyResponseBody struct {
+	ErrorCode    *string                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                          `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateUserKeyResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateUserKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserKeyResponseBody) SetErrorCode(v string) *CreateUserKeyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBody) SetErrorMessage(v string) *CreateUserKeyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBody) SetRequestId(v string) *CreateUserKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBody) SetResult(v *CreateUserKeyResponseBodyResult) *CreateUserKeyResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateUserKeyResponseBody) SetSuccess(v bool) *CreateUserKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateUserKeyResponseBodyResult struct {
+	CreatedAt    *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	ExpireTime   *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	FingerPrint  *string `json:"fingerPrint,omitempty" xml:"fingerPrint,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	KeyScope     *string `json:"keyScope,omitempty" xml:"keyScope,omitempty"`
+	LastUsedTime *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	PublicKey    *string `json:"publicKey,omitempty" xml:"publicKey,omitempty"`
+	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateUserKeyResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserKeyResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetCreatedAt(v string) *CreateUserKeyResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetExpireTime(v string) *CreateUserKeyResponseBodyResult {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetFingerPrint(v string) *CreateUserKeyResponseBodyResult {
+	s.FingerPrint = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetId(v int64) *CreateUserKeyResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetKeyScope(v string) *CreateUserKeyResponseBodyResult {
+	s.KeyScope = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetLastUsedTime(v string) *CreateUserKeyResponseBodyResult {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetPublicKey(v string) *CreateUserKeyResponseBodyResult {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *CreateUserKeyResponseBodyResult) SetTitle(v string) *CreateUserKeyResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+type CreateUserKeyResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUserKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateUserKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserKeyResponse) SetHeaders(v map[string]*string) *CreateUserKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUserKeyResponse) SetStatusCode(v int32) *CreateUserKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUserKeyResponse) SetBody(v *CreateUserKeyResponseBody) *CreateUserKeyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVariableGroupRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -7049,6 +7733,176 @@ func (s *DeleteTagResponse) SetBody(v *DeleteTagResponseBody) *DeleteTagResponse
 	return s
 }
 
+type DeleteUserKeyRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s DeleteUserKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserKeyRequest) SetAccessToken(v string) *DeleteUserKeyRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteUserKeyRequest) SetOrganizationId(v string) *DeleteUserKeyRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type DeleteUserKeyResponseBody struct {
+	ErrorCode    *string                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                          `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeleteUserKeyResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteUserKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserKeyResponseBody) SetErrorCode(v string) *DeleteUserKeyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBody) SetErrorMessage(v string) *DeleteUserKeyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBody) SetRequestId(v string) *DeleteUserKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBody) SetResult(v *DeleteUserKeyResponseBodyResult) *DeleteUserKeyResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBody) SetSuccess(v bool) *DeleteUserKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteUserKeyResponseBodyResult struct {
+	Context      *string `json:"context,omitempty" xml:"context,omitempty"`
+	CreatedAt    *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	ExpireTime   *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	FingerPrint  *string `json:"fingerPrint,omitempty" xml:"fingerPrint,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	KeyScope     *string `json:"keyScope,omitempty" xml:"keyScope,omitempty"`
+	LastUsedTime *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	PublicKey    *string `json:"publicKey,omitempty" xml:"publicKey,omitempty"`
+	ShaContext   *string `json:"shaContext,omitempty" xml:"shaContext,omitempty"`
+	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
+	UpdatedAt    *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+}
+
+func (s DeleteUserKeyResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserKeyResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetContext(v string) *DeleteUserKeyResponseBodyResult {
+	s.Context = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetCreatedAt(v string) *DeleteUserKeyResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetExpireTime(v string) *DeleteUserKeyResponseBodyResult {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetFingerPrint(v string) *DeleteUserKeyResponseBodyResult {
+	s.FingerPrint = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetId(v int64) *DeleteUserKeyResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetKeyScope(v string) *DeleteUserKeyResponseBodyResult {
+	s.KeyScope = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetLastUsedTime(v string) *DeleteUserKeyResponseBodyResult {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetPublicKey(v string) *DeleteUserKeyResponseBodyResult {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetShaContext(v string) *DeleteUserKeyResponseBodyResult {
+	s.ShaContext = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetTitle(v string) *DeleteUserKeyResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponseBodyResult) SetUpdatedAt(v string) *DeleteUserKeyResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+type DeleteUserKeyResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUserKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserKeyResponse) SetHeaders(v map[string]*string) *DeleteUserKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserKeyResponse) SetStatusCode(v int32) *DeleteUserKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserKeyResponse) SetBody(v *DeleteUserKeyResponseBody) *DeleteUserKeyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVariableGroupResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -8903,20 +9757,19 @@ func (s *GetFileLastCommitResponseBody) SetSuccess(v bool) *GetFileLastCommitRes
 }
 
 type GetFileLastCommitResponseBodyResult struct {
-	AuthorDate     *string `json:"authorDate,omitempty" xml:"authorDate,omitempty"`
-	AuthorEmail    *string `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
-	AuthorName     *string `json:"authorName,omitempty" xml:"authorName,omitempty"`
-	CommittedDate  *string `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
-	CommitterEmail *string `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
-	CommitterName  *string `json:"committerName,omitempty" xml:"committerName,omitempty"`
-	CreatedAt      *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Commit ID
-	Id        *string                                       `json:"id,omitempty" xml:"id,omitempty"`
-	Message   *string                                       `json:"message,omitempty" xml:"message,omitempty"`
-	ParentIds []*string                                     `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
-	ShortId   *string                                       `json:"shortId,omitempty" xml:"shortId,omitempty"`
-	Signature *GetFileLastCommitResponseBodyResultSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
-	Title     *string                                       `json:"title,omitempty" xml:"title,omitempty"`
+	AuthorDate     *string                                       `json:"authorDate,omitempty" xml:"authorDate,omitempty"`
+	AuthorEmail    *string                                       `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                       `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	CommittedDate  *string                                       `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	CommitterEmail *string                                       `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                       `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                       `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                       `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                     `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                       `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Signature      *GetFileLastCommitResponseBodyResultSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
+	Title          *string                                       `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s GetFileLastCommitResponseBodyResult) String() string {
@@ -8993,6 +9846,7 @@ func (s *GetFileLastCommitResponseBodyResult) SetTitle(v string) *GetFileLastCom
 }
 
 type GetFileLastCommitResponseBodyResultSignature struct {
+	// GPG密钥ID
 	GpgKeyId           *string `json:"gpgKeyId,omitempty" xml:"gpgKeyId,omitempty"`
 	VerificationStatus *string `json:"verificationStatus,omitempty" xml:"verificationStatus,omitempty"`
 }
@@ -12468,6 +13322,555 @@ func (s *GetSprintInfoResponse) SetBody(v *GetSprintInfoResponseBody) *GetSprint
 	return s
 }
 
+type GetTestResultListRequest struct {
+	Conditions          *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
+	DirectoryIdentifier *string `json:"directoryIdentifier,omitempty" xml:"directoryIdentifier,omitempty"`
+}
+
+func (s GetTestResultListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestResultListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestResultListRequest) SetConditions(v string) *GetTestResultListRequest {
+	s.Conditions = &v
+	return s
+}
+
+func (s *GetTestResultListRequest) SetDirectoryIdentifier(v string) *GetTestResultListRequest {
+	s.DirectoryIdentifier = &v
+	return s
+}
+
+type GetTestResultListResponseBody struct {
+	ErrorCode  *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg   *string                                    `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId  *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success    *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	TestResult []*GetTestResultListResponseBodyTestResult `json:"testResult,omitempty" xml:"testResult,omitempty" type:"Repeated"`
+}
+
+func (s GetTestResultListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestResultListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestResultListResponseBody) SetErrorCode(v string) *GetTestResultListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBody) SetErrorMsg(v string) *GetTestResultListResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBody) SetRequestId(v string) *GetTestResultListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBody) SetSuccess(v bool) *GetTestResultListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBody) SetTestResult(v []*GetTestResultListResponseBodyTestResult) *GetTestResultListResponseBody {
+	s.TestResult = v
+	return s
+}
+
+type GetTestResultListResponseBodyTestResult struct {
+	AssignedTo           *GetTestResultListResponseBodyTestResultAssignedTo         `json:"assignedTo,omitempty" xml:"assignedTo,omitempty" type:"Struct"`
+	BugCount             *int64                                                     `json:"bugCount,omitempty" xml:"bugCount,omitempty"`
+	CategoryIdentifier   *string                                                    `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	CustomFields         []*GetTestResultListResponseBodyTestResultCustomFields     `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	GmtCreate            *int64                                                     `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	SpaceIdentifier      *string                                                    `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	Subject              *string                                                    `json:"subject,omitempty" xml:"subject,omitempty"`
+	TestResultExecutor   *GetTestResultListResponseBodyTestResultTestResultExecutor `json:"testResultExecutor,omitempty" xml:"testResultExecutor,omitempty" type:"Struct"`
+	TestResultGmtCreate  *int64                                                     `json:"testResultGmtCreate,omitempty" xml:"testResultGmtCreate,omitempty"`
+	TestResultIdentifier *string                                                    `json:"testResultIdentifier,omitempty" xml:"testResultIdentifier,omitempty"`
+	TestResultStatus     *string                                                    `json:"testResultStatus,omitempty" xml:"testResultStatus,omitempty"`
+	TestcaseIdentifier   *string                                                    `json:"testcaseIdentifier,omitempty" xml:"testcaseIdentifier,omitempty"`
+}
+
+func (s GetTestResultListResponseBodyTestResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestResultListResponseBodyTestResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetAssignedTo(v *GetTestResultListResponseBodyTestResultAssignedTo) *GetTestResultListResponseBodyTestResult {
+	s.AssignedTo = v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetBugCount(v int64) *GetTestResultListResponseBodyTestResult {
+	s.BugCount = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetCategoryIdentifier(v string) *GetTestResultListResponseBodyTestResult {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetCustomFields(v []*GetTestResultListResponseBodyTestResultCustomFields) *GetTestResultListResponseBodyTestResult {
+	s.CustomFields = v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetGmtCreate(v int64) *GetTestResultListResponseBodyTestResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetSpaceIdentifier(v string) *GetTestResultListResponseBodyTestResult {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetSubject(v string) *GetTestResultListResponseBodyTestResult {
+	s.Subject = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetTestResultExecutor(v *GetTestResultListResponseBodyTestResultTestResultExecutor) *GetTestResultListResponseBodyTestResult {
+	s.TestResultExecutor = v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetTestResultGmtCreate(v int64) *GetTestResultListResponseBodyTestResult {
+	s.TestResultGmtCreate = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetTestResultIdentifier(v string) *GetTestResultListResponseBodyTestResult {
+	s.TestResultIdentifier = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetTestResultStatus(v string) *GetTestResultListResponseBodyTestResult {
+	s.TestResultStatus = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResult) SetTestcaseIdentifier(v string) *GetTestResultListResponseBodyTestResult {
+	s.TestcaseIdentifier = &v
+	return s
+}
+
+type GetTestResultListResponseBodyTestResultAssignedTo struct {
+	AssignedToIdenttifier *string `json:"assignedToIdenttifier,omitempty" xml:"assignedToIdenttifier,omitempty"`
+	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetTestResultListResponseBodyTestResultAssignedTo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestResultListResponseBodyTestResultAssignedTo) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestResultListResponseBodyTestResultAssignedTo) SetAssignedToIdenttifier(v string) *GetTestResultListResponseBodyTestResultAssignedTo {
+	s.AssignedToIdenttifier = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResultAssignedTo) SetName(v string) *GetTestResultListResponseBodyTestResultAssignedTo {
+	s.Name = &v
+	return s
+}
+
+type GetTestResultListResponseBodyTestResultCustomFields struct {
+	FieldClassName  *string `json:"fieldClassName,omitempty" xml:"fieldClassName,omitempty"`
+	FieldFormat     *string `json:"fieldFormat,omitempty" xml:"fieldFormat,omitempty"`
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetTestResultListResponseBodyTestResultCustomFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestResultListResponseBodyTestResultCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestResultListResponseBodyTestResultCustomFields) SetFieldClassName(v string) *GetTestResultListResponseBodyTestResultCustomFields {
+	s.FieldClassName = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResultCustomFields) SetFieldFormat(v string) *GetTestResultListResponseBodyTestResultCustomFields {
+	s.FieldFormat = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResultCustomFields) SetFieldIdentifier(v string) *GetTestResultListResponseBodyTestResultCustomFields {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResultCustomFields) SetValue(v string) *GetTestResultListResponseBodyTestResultCustomFields {
+	s.Value = &v
+	return s
+}
+
+type GetTestResultListResponseBodyTestResultTestResultExecutor struct {
+	ExecutorIdentifier *string `json:"executorIdentifier,omitempty" xml:"executorIdentifier,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetTestResultListResponseBodyTestResultTestResultExecutor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestResultListResponseBodyTestResultTestResultExecutor) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestResultListResponseBodyTestResultTestResultExecutor) SetExecutorIdentifier(v string) *GetTestResultListResponseBodyTestResultTestResultExecutor {
+	s.ExecutorIdentifier = &v
+	return s
+}
+
+func (s *GetTestResultListResponseBodyTestResultTestResultExecutor) SetName(v string) *GetTestResultListResponseBodyTestResultTestResultExecutor {
+	s.Name = &v
+	return s
+}
+
+type GetTestResultListResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTestResultListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTestResultListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestResultListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestResultListResponse) SetHeaders(v map[string]*string) *GetTestResultListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTestResultListResponse) SetStatusCode(v int32) *GetTestResultListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTestResultListResponse) SetBody(v *GetTestResultListResponseBody) *GetTestResultListResponse {
+	s.Body = v
+	return s
+}
+
+type GetTestcaseListRequest struct {
+	Conditions          *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
+	DirectoryIdentifier *string `json:"directoryIdentifier,omitempty" xml:"directoryIdentifier,omitempty"`
+	MaxResult           *string `json:"maxResult,omitempty" xml:"maxResult,omitempty"`
+	NextToken           *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	SpaceIdentifier     *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+}
+
+func (s GetTestcaseListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListRequest) SetConditions(v string) *GetTestcaseListRequest {
+	s.Conditions = &v
+	return s
+}
+
+func (s *GetTestcaseListRequest) SetDirectoryIdentifier(v string) *GetTestcaseListRequest {
+	s.DirectoryIdentifier = &v
+	return s
+}
+
+func (s *GetTestcaseListRequest) SetMaxResult(v string) *GetTestcaseListRequest {
+	s.MaxResult = &v
+	return s
+}
+
+func (s *GetTestcaseListRequest) SetNextToken(v string) *GetTestcaseListRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetTestcaseListRequest) SetSpaceIdentifier(v string) *GetTestcaseListRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+type GetTestcaseListResponseBody struct {
+	ErrorCode  *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg   *string                                `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	MaxResults *int64                                 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string                                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId  *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success    *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	Testcase   []*GetTestcaseListResponseBodyTestcase `json:"testcase,omitempty" xml:"testcase,omitempty" type:"Repeated"`
+	TotalCount *int64                                 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s GetTestcaseListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListResponseBody) SetErrorCode(v string) *GetTestcaseListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBody) SetErrorMsg(v string) *GetTestcaseListResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBody) SetMaxResults(v int64) *GetTestcaseListResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBody) SetNextToken(v string) *GetTestcaseListResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBody) SetRequestId(v string) *GetTestcaseListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBody) SetSuccess(v bool) *GetTestcaseListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBody) SetTestcase(v []*GetTestcaseListResponseBodyTestcase) *GetTestcaseListResponseBody {
+	s.Testcase = v
+	return s
+}
+
+func (s *GetTestcaseListResponseBody) SetTotalCount(v int64) *GetTestcaseListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetTestcaseListResponseBodyTestcase struct {
+	AssignedTo         *GetTestcaseListResponseBodyTestcaseAssignedTo     `json:"assignedTo,omitempty" xml:"assignedTo,omitempty" type:"Struct"`
+	CategoryIdentifier *string                                            `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	CustomFields       []*GetTestcaseListResponseBodyTestcaseCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	GmtCreate          *int64                                             `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Identifier         *string                                            `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Space              *GetTestcaseListResponseBodyTestcaseSpace          `json:"space,omitempty" xml:"space,omitempty" type:"Struct"`
+	Subject            *string                                            `json:"subject,omitempty" xml:"subject,omitempty"`
+	Tags               []*GetTestcaseListResponseBodyTestcaseTags         `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+}
+
+func (s GetTestcaseListResponseBodyTestcase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListResponseBodyTestcase) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetAssignedTo(v *GetTestcaseListResponseBodyTestcaseAssignedTo) *GetTestcaseListResponseBodyTestcase {
+	s.AssignedTo = v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetCategoryIdentifier(v string) *GetTestcaseListResponseBodyTestcase {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetCustomFields(v []*GetTestcaseListResponseBodyTestcaseCustomFields) *GetTestcaseListResponseBodyTestcase {
+	s.CustomFields = v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetGmtCreate(v int64) *GetTestcaseListResponseBodyTestcase {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetIdentifier(v string) *GetTestcaseListResponseBodyTestcase {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetSpace(v *GetTestcaseListResponseBodyTestcaseSpace) *GetTestcaseListResponseBodyTestcase {
+	s.Space = v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetSubject(v string) *GetTestcaseListResponseBodyTestcase {
+	s.Subject = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcase) SetTags(v []*GetTestcaseListResponseBodyTestcaseTags) *GetTestcaseListResponseBodyTestcase {
+	s.Tags = v
+	return s
+}
+
+type GetTestcaseListResponseBodyTestcaseAssignedTo struct {
+	AssignedToIdenttifier *string `json:"assignedToIdenttifier,omitempty" xml:"assignedToIdenttifier,omitempty"`
+	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetTestcaseListResponseBodyTestcaseAssignedTo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListResponseBodyTestcaseAssignedTo) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseAssignedTo) SetAssignedToIdenttifier(v string) *GetTestcaseListResponseBodyTestcaseAssignedTo {
+	s.AssignedToIdenttifier = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseAssignedTo) SetName(v string) *GetTestcaseListResponseBodyTestcaseAssignedTo {
+	s.Name = &v
+	return s
+}
+
+type GetTestcaseListResponseBodyTestcaseCustomFields struct {
+	FieldClassName  *string `json:"fieldClassName,omitempty" xml:"fieldClassName,omitempty"`
+	FieldFormat     *string `json:"fieldFormat,omitempty" xml:"fieldFormat,omitempty"`
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetTestcaseListResponseBodyTestcaseCustomFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListResponseBodyTestcaseCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseCustomFields) SetFieldClassName(v string) *GetTestcaseListResponseBodyTestcaseCustomFields {
+	s.FieldClassName = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseCustomFields) SetFieldFormat(v string) *GetTestcaseListResponseBodyTestcaseCustomFields {
+	s.FieldFormat = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseCustomFields) SetFieldIdentifier(v string) *GetTestcaseListResponseBodyTestcaseCustomFields {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseCustomFields) SetValue(v string) *GetTestcaseListResponseBodyTestcaseCustomFields {
+	s.Value = &v
+	return s
+}
+
+type GetTestcaseListResponseBodyTestcaseSpace struct {
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetTestcaseListResponseBodyTestcaseSpace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListResponseBodyTestcaseSpace) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseSpace) SetSpaceIdentifier(v string) *GetTestcaseListResponseBodyTestcaseSpace {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseSpace) SetType(v string) *GetTestcaseListResponseBodyTestcaseSpace {
+	s.Type = &v
+	return s
+}
+
+type GetTestcaseListResponseBodyTestcaseTags struct {
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	TagIdentifier *string `json:"tagIdentifier,omitempty" xml:"tagIdentifier,omitempty"`
+}
+
+func (s GetTestcaseListResponseBodyTestcaseTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListResponseBodyTestcaseTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseTags) SetName(v string) *GetTestcaseListResponseBodyTestcaseTags {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTestcaseListResponseBodyTestcaseTags) SetTagIdentifier(v string) *GetTestcaseListResponseBodyTestcaseTags {
+	s.TagIdentifier = &v
+	return s
+}
+
+type GetTestcaseListResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTestcaseListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTestcaseListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTestcaseListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTestcaseListResponse) SetHeaders(v map[string]*string) *GetTestcaseListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTestcaseListResponse) SetStatusCode(v int32) *GetTestcaseListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTestcaseListResponse) SetBody(v *GetTestcaseListResponseBody) *GetTestcaseListResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserInfoRequest struct {
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
@@ -15420,6 +16823,8 @@ func (s *ListHostGroupsResponse) SetBody(v *ListHostGroupsResponseBody) *ListHos
 }
 
 type ListOrganizationMembersRequest struct {
+	// 返回信息中是否包含第三方信息，默认不包含。
+	ContainsExternInfo     *bool   `json:"containsExternInfo,omitempty" xml:"containsExternInfo,omitempty"`
 	ExternUid              *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	JoinTimeFrom           *int64  `json:"joinTimeFrom,omitempty" xml:"joinTimeFrom,omitempty"`
 	JoinTimeTo             *int64  `json:"joinTimeTo,omitempty" xml:"joinTimeTo,omitempty"`
@@ -15436,6 +16841,11 @@ func (s ListOrganizationMembersRequest) String() string {
 
 func (s ListOrganizationMembersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOrganizationMembersRequest) SetContainsExternInfo(v bool) *ListOrganizationMembersRequest {
+	s.ContainsExternInfo = &v
+	return s
 }
 
 func (s *ListOrganizationMembersRequest) SetExternUid(v string) *ListOrganizationMembersRequest {
@@ -16976,9 +18386,10 @@ type ListProjectMembersResponseBodyMembers struct {
 	OrganizationUserInfo *ListProjectMembersResponseBodyMembersOrganizationUserInfo `json:"organizationUserInfo,omitempty" xml:"organizationUserInfo,omitempty" type:"Struct"`
 	RealName             *string                                                    `json:"realName,omitempty" xml:"realName,omitempty"`
 	RealNamePinyin       *string                                                    `json:"realNamePinyin,omitempty" xml:"realNamePinyin,omitempty"`
-	RoleName             *string                                                    `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	Stamp                *string                                                    `json:"stamp,omitempty" xml:"stamp,omitempty"`
-	TbRoleId             *string                                                    `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
+	// 角色名称
+	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	Stamp    *string `json:"stamp,omitempty" xml:"stamp,omitempty"`
+	TbRoleId *string `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
 }
 
 func (s ListProjectMembersResponseBodyMembers) String() string {
@@ -19638,7 +21049,6 @@ func (s *ListRepositoryGroupsResponse) SetBody(v *ListRepositoryGroupsResponseBo
 }
 
 type ListRepositoryMemberWithInheritedRequest struct {
-	// accessToken
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
@@ -21844,6 +23254,435 @@ func (s *ListSprintsResponse) SetStatusCode(v int32) *ListSprintsResponse {
 }
 
 func (s *ListSprintsResponse) SetBody(v *ListSprintsResponseBody) *ListSprintsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTestCaseFieldsRequest struct {
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+}
+
+func (s ListTestCaseFieldsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTestCaseFieldsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTestCaseFieldsRequest) SetSpaceIdentifier(v string) *ListTestCaseFieldsRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+type ListTestCaseFieldsResponseBody struct {
+	ErrorCode *string                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                 `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Fields    []*ListTestCaseFieldsResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTestCaseFieldsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTestCaseFieldsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTestCaseFieldsResponseBody) SetErrorCode(v string) *ListTestCaseFieldsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBody) SetErrorMsg(v string) *ListTestCaseFieldsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBody) SetFields(v []*ListTestCaseFieldsResponseBodyFields) *ListTestCaseFieldsResponseBody {
+	s.Fields = v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBody) SetRequestId(v string) *ListTestCaseFieldsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBody) SetSuccess(v bool) *ListTestCaseFieldsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTestCaseFieldsResponseBodyFields struct {
+	ClassName        *string                                        `json:"className,omitempty" xml:"className,omitempty"`
+	Creator          *string                                        `json:"creator,omitempty" xml:"creator,omitempty"`
+	DefaultValue     *string                                        `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
+	Description      *string                                        `json:"description,omitempty" xml:"description,omitempty"`
+	Format           *string                                        `json:"format,omitempty" xml:"format,omitempty"`
+	GmtCreate        *int64                                         `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified      *int64                                         `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier       *string                                        `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	IsRequired       *bool                                          `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsShowWhenCreate *bool                                          `json:"isShowWhenCreate,omitempty" xml:"isShowWhenCreate,omitempty"`
+	IsSystemRequired *bool                                          `json:"isSystemRequired,omitempty" xml:"isSystemRequired,omitempty"`
+	LinkWithService  *string                                        `json:"linkWithService,omitempty" xml:"linkWithService,omitempty"`
+	Modifier         *string                                        `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name             *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	Options          []*ListTestCaseFieldsResponseBodyFieldsOptions `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
+	ResourceType     *string                                        `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Type             *string                                        `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListTestCaseFieldsResponseBodyFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTestCaseFieldsResponseBodyFields) GoString() string {
+	return s.String()
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetClassName(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.ClassName = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetCreator(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetDefaultValue(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetDescription(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetFormat(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.Format = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetGmtCreate(v int64) *ListTestCaseFieldsResponseBodyFields {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetGmtModified(v int64) *ListTestCaseFieldsResponseBodyFields {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetIdentifier(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetIsRequired(v bool) *ListTestCaseFieldsResponseBodyFields {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetIsShowWhenCreate(v bool) *ListTestCaseFieldsResponseBodyFields {
+	s.IsShowWhenCreate = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetIsSystemRequired(v bool) *ListTestCaseFieldsResponseBodyFields {
+	s.IsSystemRequired = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetLinkWithService(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.LinkWithService = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetModifier(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetName(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetOptions(v []*ListTestCaseFieldsResponseBodyFieldsOptions) *ListTestCaseFieldsResponseBodyFields {
+	s.Options = v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetResourceType(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFields) SetType(v string) *ListTestCaseFieldsResponseBodyFields {
+	s.Type = &v
+	return s
+}
+
+type ListTestCaseFieldsResponseBodyFieldsOptions struct {
+	DisplayValue    *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Identifier      *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Level           *int64  `json:"level,omitempty" xml:"level,omitempty"`
+	Position        *int64  `json:"position,omitempty" xml:"position,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueEn         *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
+}
+
+func (s ListTestCaseFieldsResponseBodyFieldsOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTestCaseFieldsResponseBodyFieldsOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListTestCaseFieldsResponseBodyFieldsOptions) SetDisplayValue(v string) *ListTestCaseFieldsResponseBodyFieldsOptions {
+	s.DisplayValue = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFieldsOptions) SetFieldIdentifier(v string) *ListTestCaseFieldsResponseBodyFieldsOptions {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFieldsOptions) SetIdentifier(v string) *ListTestCaseFieldsResponseBodyFieldsOptions {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFieldsOptions) SetLevel(v int64) *ListTestCaseFieldsResponseBodyFieldsOptions {
+	s.Level = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFieldsOptions) SetPosition(v int64) *ListTestCaseFieldsResponseBodyFieldsOptions {
+	s.Position = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFieldsOptions) SetValue(v string) *ListTestCaseFieldsResponseBodyFieldsOptions {
+	s.Value = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponseBodyFieldsOptions) SetValueEn(v string) *ListTestCaseFieldsResponseBodyFieldsOptions {
+	s.ValueEn = &v
+	return s
+}
+
+type ListTestCaseFieldsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTestCaseFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTestCaseFieldsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTestCaseFieldsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTestCaseFieldsResponse) SetHeaders(v map[string]*string) *ListTestCaseFieldsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponse) SetStatusCode(v int32) *ListTestCaseFieldsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTestCaseFieldsResponse) SetBody(v *ListTestCaseFieldsResponseBody) *ListTestCaseFieldsResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserKeysRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Sort           *string `json:"sort,omitempty" xml:"sort,omitempty"`
+}
+
+func (s ListUserKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKeysRequest) SetAccessToken(v string) *ListUserKeysRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListUserKeysRequest) SetOrderBy(v string) *ListUserKeysRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListUserKeysRequest) SetOrganizationId(v string) *ListUserKeysRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListUserKeysRequest) SetPage(v int64) *ListUserKeysRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListUserKeysRequest) SetPageSize(v int64) *ListUserKeysRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserKeysRequest) SetSort(v string) *ListUserKeysRequest {
+	s.Sort = &v
+	return s
+}
+
+type ListUserKeysResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListUserKeysResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListUserKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKeysResponseBody) SetErrorCode(v string) *ListUserKeysResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBody) SetErrorMessage(v string) *ListUserKeysResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBody) SetRequestId(v string) *ListUserKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBody) SetResult(v []*ListUserKeysResponseBodyResult) *ListUserKeysResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListUserKeysResponseBody) SetSuccess(v bool) *ListUserKeysResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListUserKeysResponseBodyResult struct {
+	CreatedAt    *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	ExpireTime   *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	FingerPrint  *string `json:"fingerPrint,omitempty" xml:"fingerPrint,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	KeyScope     *string `json:"keyScope,omitempty" xml:"keyScope,omitempty"`
+	LastUsedTime *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	PublicKey    *string `json:"publicKey,omitempty" xml:"publicKey,omitempty"`
+	Tittle       *string `json:"tittle,omitempty" xml:"tittle,omitempty"`
+}
+
+func (s ListUserKeysResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKeysResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKeysResponseBodyResult) SetCreatedAt(v string) *ListUserKeysResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBodyResult) SetExpireTime(v string) *ListUserKeysResponseBodyResult {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBodyResult) SetFingerPrint(v string) *ListUserKeysResponseBodyResult {
+	s.FingerPrint = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBodyResult) SetId(v int64) *ListUserKeysResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBodyResult) SetKeyScope(v string) *ListUserKeysResponseBodyResult {
+	s.KeyScope = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBodyResult) SetLastUsedTime(v string) *ListUserKeysResponseBodyResult {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBodyResult) SetPublicKey(v string) *ListUserKeysResponseBodyResult {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *ListUserKeysResponseBodyResult) SetTittle(v string) *ListUserKeysResponseBodyResult {
+	s.Tittle = &v
+	return s
+}
+
+type ListUserKeysResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKeysResponse) SetHeaders(v map[string]*string) *ListUserKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserKeysResponse) SetStatusCode(v int32) *ListUserKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserKeysResponse) SetBody(v *ListUserKeysResponseBody) *ListUserKeysResponse {
 	s.Body = v
 	return s
 }
@@ -27152,6 +28991,507 @@ func (s *UpdateResourceMemberResponse) SetBody(v *UpdateResourceMemberResponseBo
 	return s
 }
 
+type UpdateTestCaseRequest struct {
+	UpdateWorkitemPropertyRequest []*UpdateTestCaseRequestUpdateWorkitemPropertyRequest `json:"updateWorkitemPropertyRequest,omitempty" xml:"updateWorkitemPropertyRequest,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTestCaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseRequest) SetUpdateWorkitemPropertyRequest(v []*UpdateTestCaseRequestUpdateWorkitemPropertyRequest) *UpdateTestCaseRequest {
+	s.UpdateWorkitemPropertyRequest = v
+	return s
+}
+
+type UpdateTestCaseRequestUpdateWorkitemPropertyRequest struct {
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	FieldValue      *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
+}
+
+func (s UpdateTestCaseRequestUpdateWorkitemPropertyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseRequestUpdateWorkitemPropertyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseRequestUpdateWorkitemPropertyRequest) SetFieldIdentifier(v string) *UpdateTestCaseRequestUpdateWorkitemPropertyRequest {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseRequestUpdateWorkitemPropertyRequest) SetFieldValue(v string) *UpdateTestCaseRequestUpdateWorkitemPropertyRequest {
+	s.FieldValue = &v
+	return s
+}
+
+type UpdateTestCaseResponseBody struct {
+	Testcase  *UpdateTestCaseResponseBodyTestcase `json:"Testcase,omitempty" xml:"Testcase,omitempty" type:"Struct"`
+	ErrorCode *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                             `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBody) SetTestcase(v *UpdateTestCaseResponseBodyTestcase) *UpdateTestCaseResponseBody {
+	s.Testcase = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBody) SetErrorCode(v string) *UpdateTestCaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBody) SetErrorMsg(v string) *UpdateTestCaseResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBody) SetRequestId(v string) *UpdateTestCaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBody) SetSuccess(v bool) *UpdateTestCaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcase struct {
+	AssignedTo         *UpdateTestCaseResponseBodyTestcaseAssignedTo `json:"assignedTo,omitempty" xml:"assignedTo,omitempty" type:"Struct"`
+	CategoryIdentifier *string                                       `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator            *UpdateTestCaseResponseBodyTestcaseCreator    `json:"creator,omitempty" xml:"creator,omitempty" type:"Struct"`
+	DetailInfo         *UpdateTestCaseResponseBodyTestcaseDetailInfo `json:"detailInfo,omitempty" xml:"detailInfo,omitempty" type:"Struct"`
+	Directory          *UpdateTestCaseResponseBodyTestcaseDirectory  `json:"directory,omitempty" xml:"directory,omitempty" type:"Struct"`
+	Identifier         *string                                       `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier           *UpdateTestCaseResponseBodyTestcaseModifier   `json:"modifier,omitempty" xml:"modifier,omitempty" type:"Struct"`
+	SpaceIdentifier    *string                                       `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceType          *string                                       `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	Subject            *string                                       `json:"subject,omitempty" xml:"subject,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcase) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetAssignedTo(v *UpdateTestCaseResponseBodyTestcaseAssignedTo) *UpdateTestCaseResponseBodyTestcase {
+	s.AssignedTo = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetCategoryIdentifier(v string) *UpdateTestCaseResponseBodyTestcase {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetCreator(v *UpdateTestCaseResponseBodyTestcaseCreator) *UpdateTestCaseResponseBodyTestcase {
+	s.Creator = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetDetailInfo(v *UpdateTestCaseResponseBodyTestcaseDetailInfo) *UpdateTestCaseResponseBodyTestcase {
+	s.DetailInfo = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetDirectory(v *UpdateTestCaseResponseBodyTestcaseDirectory) *UpdateTestCaseResponseBodyTestcase {
+	s.Directory = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetIdentifier(v string) *UpdateTestCaseResponseBodyTestcase {
+	s.Identifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetModifier(v *UpdateTestCaseResponseBodyTestcaseModifier) *UpdateTestCaseResponseBodyTestcase {
+	s.Modifier = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetSpaceIdentifier(v string) *UpdateTestCaseResponseBodyTestcase {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetSpaceType(v string) *UpdateTestCaseResponseBodyTestcase {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcase) SetSubject(v string) *UpdateTestCaseResponseBodyTestcase {
+	s.Subject = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseAssignedTo struct {
+	AssignIdentifier *string `json:"assignIdentifier,omitempty" xml:"assignIdentifier,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	TbRoleId         *string `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseAssignedTo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseAssignedTo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseAssignedTo) SetAssignIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseAssignedTo {
+	s.AssignIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseAssignedTo) SetName(v string) *UpdateTestCaseResponseBodyTestcaseAssignedTo {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseAssignedTo) SetTbRoleId(v string) *UpdateTestCaseResponseBodyTestcaseAssignedTo {
+	s.TbRoleId = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseCreator struct {
+	CreateIdentifier *string `json:"createIdentifier,omitempty" xml:"createIdentifier,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseCreator) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseCreator) SetCreateIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseCreator {
+	s.CreateIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseCreator) SetName(v string) *UpdateTestCaseResponseBodyTestcaseCreator {
+	s.Name = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseDetailInfo struct {
+	ExpectedResult *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult `json:"expectedResult,omitempty" xml:"expectedResult,omitempty" type:"Struct"`
+	Precondition   *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition   `json:"precondition,omitempty" xml:"precondition,omitempty" type:"Struct"`
+	StepContent    *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent    `json:"stepContent,omitempty" xml:"stepContent,omitempty" type:"Struct"`
+	StepType       *string                                                     `json:"stepType,omitempty" xml:"stepType,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfo) SetExpectedResult(v *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) *UpdateTestCaseResponseBodyTestcaseDetailInfo {
+	s.ExpectedResult = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfo) SetPrecondition(v *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition) *UpdateTestCaseResponseBodyTestcaseDetailInfo {
+	s.Precondition = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfo) SetStepContent(v *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent) *UpdateTestCaseResponseBodyTestcaseDetailInfo {
+	s.StepContent = v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfo) SetStepType(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfo {
+	s.StepType = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult struct {
+	ExpectContent     *string `json:"expectContent,omitempty" xml:"expectContent,omitempty"`
+	ExpectContentType *string `json:"expectContentType,omitempty" xml:"expectContentType,omitempty"`
+	ExpectIdentifier  *string `json:"expectIdentifier,omitempty" xml:"expectIdentifier,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) SetExpectContent(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult {
+	s.ExpectContent = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) SetExpectContentType(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult {
+	s.ExpectContentType = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult) SetExpectIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoExpectedResult {
+	s.ExpectIdentifier = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition struct {
+	PreContent     *string `json:"preContent,omitempty" xml:"preContent,omitempty"`
+	PreContentType *string `json:"preContentType,omitempty" xml:"preContentType,omitempty"`
+	PreIdentifier  *string `json:"preIdentifier,omitempty" xml:"preIdentifier,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition) SetPreContent(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition {
+	s.PreContent = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition) SetPreContentType(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition {
+	s.PreContentType = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition) SetPreIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoPrecondition {
+	s.PreIdentifier = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent struct {
+	StepContent     *string `json:"stepContent,omitempty" xml:"stepContent,omitempty"`
+	StepContentType *string `json:"stepContentType,omitempty" xml:"stepContentType,omitempty"`
+	StepIdentifier  *string `json:"stepIdentifier,omitempty" xml:"stepIdentifier,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent) SetStepContent(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent {
+	s.StepContent = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent) SetStepContentType(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent {
+	s.StepContentType = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent) SetStepIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseDetailInfoStepContent {
+	s.StepIdentifier = &v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseDirectory struct {
+	ChildIdentifier     *string   `json:"childIdentifier,omitempty" xml:"childIdentifier,omitempty"`
+	DirectoryIdentifier *string   `json:"directoryIdentifier,omitempty" xml:"directoryIdentifier,omitempty"`
+	Name                *string   `json:"name,omitempty" xml:"name,omitempty"`
+	PathName            []*string `json:"pathName,omitempty" xml:"pathName,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDirectory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseDirectory) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDirectory) SetChildIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseDirectory {
+	s.ChildIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDirectory) SetDirectoryIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseDirectory {
+	s.DirectoryIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDirectory) SetName(v string) *UpdateTestCaseResponseBodyTestcaseDirectory {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseDirectory) SetPathName(v []*string) *UpdateTestCaseResponseBodyTestcaseDirectory {
+	s.PathName = v
+	return s
+}
+
+type UpdateTestCaseResponseBodyTestcaseModifier struct {
+	ModifyIdentifier *string `json:"modifyIdentifier,omitempty" xml:"modifyIdentifier,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseModifier) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponseBodyTestcaseModifier) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseModifier) SetModifyIdentifier(v string) *UpdateTestCaseResponseBodyTestcaseModifier {
+	s.ModifyIdentifier = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponseBodyTestcaseModifier) SetName(v string) *UpdateTestCaseResponseBodyTestcaseModifier {
+	s.Name = &v
+	return s
+}
+
+type UpdateTestCaseResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTestCaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTestCaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestCaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestCaseResponse) SetHeaders(v map[string]*string) *UpdateTestCaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTestCaseResponse) SetStatusCode(v int32) *UpdateTestCaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTestCaseResponse) SetBody(v *UpdateTestCaseResponseBody) *UpdateTestCaseResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTestResultRequest struct {
+	Executor *string `json:"executor,omitempty" xml:"executor,omitempty"`
+	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s UpdateTestResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestResultRequest) SetExecutor(v string) *UpdateTestResultRequest {
+	s.Executor = &v
+	return s
+}
+
+func (s *UpdateTestResultRequest) SetStatus(v string) *UpdateTestResultRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateTestResultResponseBody struct {
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateTestResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestResultResponseBody) SetErrorCode(v string) *UpdateTestResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTestResultResponseBody) SetErrorMsg(v string) *UpdateTestResultResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateTestResultResponseBody) SetRequestId(v string) *UpdateTestResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTestResultResponseBody) SetSuccess(v bool) *UpdateTestResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTestResultResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTestResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTestResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTestResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTestResultResponse) SetHeaders(v map[string]*string) *UpdateTestResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTestResultResponse) SetStatusCode(v int32) *UpdateTestResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTestResultResponse) SetBody(v *UpdateTestResultResponseBody) *UpdateTestResultResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateVariableGroupRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -29315,6 +31655,148 @@ func (client *Client) CreateTag(repositoryId *string, request *CreateTagRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateTestCaseWithOptions(organizationId *string, request *CreateTestCaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTestCaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssignedTo)) {
+		body["assignedTo"] = request.AssignedTo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryIdentifier)) {
+		body["directoryIdentifier"] = request.DirectoryIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValueList)) {
+		body["fieldValueList"] = request.FieldValueList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		body["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestcaseStepContentInfo)) {
+		body["testcaseStepContentInfo"] = request.TestcaseStepContentInfo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTestCase"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/testhub/testcase"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTestCaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTestCase(organizationId *string, request *CreateTestCaseRequest) (_result *CreateTestCaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTestCaseResponse{}
+	_body, _err := client.CreateTestCaseWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateUserKeyWithOptions(request *CreateUserKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateUserKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		body["expireTime"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyScope)) {
+		body["keyScope"] = request.KeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKey)) {
+		body["publicKey"] = request.PublicKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUserKey"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v3/user/keys/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUserKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateUserKey(request *CreateUserKeyRequest) (_result *CreateUserKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateUserKeyResponse{}
+	_body, _err := client.CreateUserKeyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateVariableGroupWithOptions(organizationId *string, request *CreateVariableGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVariableGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30538,6 +33020,56 @@ func (client *Client) DeleteTag(repositoryId *string, request *DeleteTagRequest)
 	headers := make(map[string]*string)
 	_result = &DeleteTagResponse{}
 	_body, _err := client.DeleteTagWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteUserKeyWithOptions(keyId *string, request *DeleteUserKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteUserKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserKey"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v3/user/keys/" + tea.StringValue(openapiutil.GetEncodeParam(keyId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUserKey(keyId *string, request *DeleteUserKeyRequest) (_result *DeleteUserKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteUserKeyResponse{}
+	_body, _err := client.DeleteUserKeyWithOptions(keyId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31911,6 +34443,118 @@ func (client *Client) GetSprintInfo(organizationId *string, sprintId *string) (_
 	return _result, _err
 }
 
+func (client *Client) GetTestResultListWithOptions(organizationId *string, testPlanIdentifier *string, request *GetTestResultListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTestResultListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Conditions)) {
+		body["conditions"] = request.Conditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryIdentifier)) {
+		body["directoryIdentifier"] = request.DirectoryIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTestResultList"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/testhub/testplan/" + tea.StringValue(openapiutil.GetEncodeParam(testPlanIdentifier)) + "/testresults"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTestResultListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTestResultList(organizationId *string, testPlanIdentifier *string, request *GetTestResultListRequest) (_result *GetTestResultListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTestResultListResponse{}
+	_body, _err := client.GetTestResultListWithOptions(organizationId, testPlanIdentifier, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTestcaseListWithOptions(organizationId *string, request *GetTestcaseListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTestcaseListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Conditions)) {
+		body["conditions"] = request.Conditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryIdentifier)) {
+		body["directoryIdentifier"] = request.DirectoryIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResult)) {
+		body["maxResult"] = request.MaxResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		body["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTestcaseList"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/testhub/testcases"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTestcaseListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTestcaseList(organizationId *string, request *GetTestcaseListRequest) (_result *GetTestcaseListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTestcaseListResponse{}
+	_body, _err := client.GetTestcaseListWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetUserInfoWithOptions(request *GetUserInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32583,6 +35227,10 @@ func (client *Client) ListOrganizationMembersWithOptions(organizationId *string,
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContainsExternInfo)) {
+		query["containsExternInfo"] = request.ContainsExternInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExternUid)) {
 		query["externUid"] = request.ExternUid
 	}
@@ -34356,6 +37004,118 @@ func (client *Client) ListSprints(organizationId *string, request *ListSprintsRe
 	headers := make(map[string]*string)
 	_result = &ListSprintsResponse{}
 	_body, _err := client.ListSprintsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTestCaseFieldsWithOptions(organizationId *string, request *ListTestCaseFieldsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTestCaseFieldsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		query["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTestCaseFields"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/testhub/testcase/fields"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTestCaseFieldsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTestCaseFields(organizationId *string, request *ListTestCaseFieldsRequest) (_result *ListTestCaseFieldsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTestCaseFieldsResponse{}
+	_body, _err := client.ListTestCaseFieldsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserKeysWithOptions(request *ListUserKeysRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserKeys"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v3/user/keys"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserKeys(request *ListUserKeysRequest) (_result *ListUserKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserKeysResponse{}
+	_body, _err := client.ListUserKeysWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36252,6 +39012,102 @@ func (client *Client) UpdateResourceMember(organizationId *string, resourceType 
 	headers := make(map[string]*string)
 	_result = &UpdateResourceMemberResponse{}
 	_body, _err := client.UpdateResourceMemberWithOptions(organizationId, resourceType, resourceId, accountId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTestCaseWithOptions(organizationId *string, testcaseIdentifier *string, request *UpdateTestCaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTestCaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UpdateWorkitemPropertyRequest)) {
+		body["updateWorkitemPropertyRequest"] = request.UpdateWorkitemPropertyRequest
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTestCase"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/testhub/testcase/" + tea.StringValue(openapiutil.GetEncodeParam(testcaseIdentifier))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTestCaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTestCase(organizationId *string, testcaseIdentifier *string, request *UpdateTestCaseRequest) (_result *UpdateTestCaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTestCaseResponse{}
+	_body, _err := client.UpdateTestCaseWithOptions(organizationId, testcaseIdentifier, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTestResultWithOptions(organizationId *string, testPlanIdentifier *string, testcaseIdentifier *string, request *UpdateTestResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTestResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Executor)) {
+		body["executor"] = request.Executor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTestResult"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/testhub/testplan/" + tea.StringValue(openapiutil.GetEncodeParam(testPlanIdentifier)) + "/testresult/" + tea.StringValue(openapiutil.GetEncodeParam(testcaseIdentifier))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTestResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTestResult(organizationId *string, testPlanIdentifier *string, testcaseIdentifier *string, request *UpdateTestResultRequest) (_result *UpdateTestResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTestResultResponse{}
+	_body, _err := client.UpdateTestResultWithOptions(organizationId, testPlanIdentifier, testcaseIdentifier, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
