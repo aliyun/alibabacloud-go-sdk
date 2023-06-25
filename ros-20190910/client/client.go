@@ -2819,21 +2819,23 @@ func (s *DeleteChangeSetResponse) SetBody(v *DeleteChangeSetResponseBody) *Delet
 
 type DeleteStackRequest struct {
 	DeleteOptions []*string `json:"DeleteOptions,omitempty" xml:"DeleteOptions,omitempty" type:"Repeated"`
-	// The name of resource N that you want to retain.
-	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The name of resource N that you want to retain.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
-	//
-	// ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the role.
-	//
-	// If you leave this parameter empty when you call the DeleteStack operation, ROS cannot assume the existing RAM role that is associated with the stack. If you want ROS to assume a RAM role, you must specify this parameter. If no role is available for ROS to assume, ROS uses a temporary credential that is generated from the credentials of your account.
-	//
+	// The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
+	// ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\
+	// If you leave this parameter empty when you call the DeleteStack operation, ROS cannot assume the existing RAM role that is associated with the stack. If you want ROS to assume a RAM role, you must specify this parameter. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\
 	// The name of the RAM role can be up to 64 bytes in length.
-	RetainAllResources *bool `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
-	// The ID of the request.
-	RetainResources []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
+	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to retain all resources in the stack.
+	//
+	// Valid values:
+	//
+	// *   true
+	// *   false (default)
+	RetainAllResources *bool `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
+	// The resources that you want to retain.
+	RetainResources []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
+	// The ID of the stack.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
@@ -2876,6 +2878,7 @@ func (s *DeleteStackRequest) SetStackId(v string) *DeleteStackRequest {
 }
 
 type DeleteStackResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4257,6 +4260,7 @@ type GenerateTemplateByScratchRequest struct {
 	//
 	// For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
 	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateType      *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s GenerateTemplateByScratchRequest) String() string {
@@ -4279,6 +4283,11 @@ func (s *GenerateTemplateByScratchRequest) SetRegionId(v string) *GenerateTempla
 
 func (s *GenerateTemplateByScratchRequest) SetTemplateScratchId(v string) *GenerateTemplateByScratchRequest {
 	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *GenerateTemplateByScratchRequest) SetTemplateType(v string) *GenerateTemplateByScratchRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -4503,7 +4512,8 @@ func (s *GenerateTemplatePolicyResponseBodyPolicy) SetVersion(v string) *Generat
 
 type GenerateTemplatePolicyResponseBodyPolicyStatement struct {
 	// The operations that are performed on the specified resource.
-	Action []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
+	Action    []*string              `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
+	Condition map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The effect of the statement. Valid values:
 	//
 	// *   Allow
@@ -4523,6 +4533,11 @@ func (s GenerateTemplatePolicyResponseBodyPolicyStatement) GoString() string {
 
 func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetAction(v []*string) *GenerateTemplatePolicyResponseBodyPolicyStatement {
 	s.Action = v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetCondition(v map[string]interface{}) *GenerateTemplatePolicyResponseBodyPolicyStatement {
+	s.Condition = v
 	return s
 }
 
@@ -4858,9 +4873,14 @@ func (s *GetChangeSetResponse) SetBody(v *GetChangeSetResponseBody) *GetChangeSe
 }
 
 type GetFeatureDetailsRequest struct {
-	// The resource types that support the scenario feature.
+	// The one or more features that you want to query. Valid values:
+	//
+	// *   Terraform: the Terraform hosting feature.
+	// *   ResourceCleaner: the resource cleaner feature. You can use ALIYUN::ROS::ResourceCleaner to create a resource cleaner.
+	// *   TemplateScratch: the scenario feature.
+	// *   All: all features that are supported by ROS.
 	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	// The resource types that support the system tag `acs:ros:stackId`.
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4884,15 +4904,16 @@ func (s *GetFeatureDetailsRequest) SetRegionId(v string) *GetFeatureDetailsReque
 
 type GetFeatureDetailsResponseBody struct {
 	DriftDetection *GetFeatureDetailsResponseBodyDriftDetection `json:"DriftDetection,omitempty" xml:"DriftDetection,omitempty" type:"Struct"`
-	// The resource types that support the system tag `acs:ros:stackId`.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The names of properties that are supported by the resource type.
-	ResourceCleaner              *GetFeatureDetailsResponseBodyResourceCleaner              `json:"ResourceCleaner,omitempty" xml:"ResourceCleaner,omitempty" type:"Struct"`
-	ResourceImport               *GetFeatureDetailsResponseBodyResourceImport               `json:"ResourceImport,omitempty" xml:"ResourceImport,omitempty" type:"Struct"`
+	// Details of the resource cleaner feature.
+	ResourceCleaner *GetFeatureDetailsResponseBodyResourceCleaner `json:"ResourceCleaner,omitempty" xml:"ResourceCleaner,omitempty" type:"Struct"`
+	ResourceImport  *GetFeatureDetailsResponseBodyResourceImport  `json:"ResourceImport,omitempty" xml:"ResourceImport,omitempty" type:"Struct"`
+	// Details of the template parameter constraint feature.
 	TemplateParameterConstraints *GetFeatureDetailsResponseBodyTemplateParameterConstraints `json:"TemplateParameterConstraints,omitempty" xml:"TemplateParameterConstraints,omitempty" type:"Struct"`
-	// The names of the side effects. The StopInstance value indicates that an instance that is related to the specified resource is stopped.
+	// Details of the scenario feature.
 	TemplateScratch *GetFeatureDetailsResponseBodyTemplateScratch `json:"TemplateScratch,omitempty" xml:"TemplateScratch,omitempty" type:"Struct"`
-	// The resource types that support the custom tag feature.
+	// Details of the Terraform hosting feature.
 	Terraform *GetFeatureDetailsResponseBodyTerraform `json:"Terraform,omitempty" xml:"Terraform,omitempty" type:"Struct"`
 }
 
@@ -4957,6 +4978,7 @@ func (s *GetFeatureDetailsResponseBodyDriftDetection) SetSupportedResourceTypes(
 }
 
 type GetFeatureDetailsResponseBodyResourceCleaner struct {
+	// The resource types that can be cleaned up.
 	SupportedResourceTypes []*GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -4974,8 +4996,18 @@ func (s *GetFeatureDetailsResponseBodyResourceCleaner) SetSupportedResourceTypes
 }
 
 type GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes struct {
-	ResourceType     *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SideEffects      []*string `json:"SideEffects,omitempty" xml:"SideEffects,omitempty" type:"Repeated"`
+	// The resource type that can be cleaned up.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The names of the side effects. The StopInstance value indicates that an instance that is related to the specified resource is stopped.
+	SideEffects []*string `json:"SideEffects,omitempty" xml:"SideEffects,omitempty" type:"Repeated"`
+	// The filters that are used to filter resources. Valid values:
+	//
+	// *   RegionId: the ID of the region.
+	// *   ResourceId: the ID of the resource.
+	// *   ResourceName: the name of the resource.
+	// *   Tags: the tags of the resource.
+	// *   ResourceGroupId: the ID of the resource group.
+	// *   DeletionProtection: the deletion protection feature.
 	SupportedFilters []*string `json:"SupportedFilters,omitempty" xml:"SupportedFilters,omitempty" type:"Repeated"`
 }
 
@@ -5043,6 +5075,7 @@ func (s *GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes) SetR
 }
 
 type GetFeatureDetailsResponseBodyTemplateParameterConstraints struct {
+	// The resource types that support the template parameter constraint feature.
 	SupportedResourceTypes []*GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -5060,8 +5093,10 @@ func (s *GetFeatureDetailsResponseBodyTemplateParameterConstraints) SetSupported
 }
 
 type GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes struct {
-	Properties   []*string `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The names of properties that are supported by the resource type.
+	Properties []*string `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes) String() string {
@@ -5083,7 +5118,7 @@ func (s *GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResou
 }
 
 type GetFeatureDetailsResponseBodyTemplateScratch struct {
-	// The names of the side effects. The StopInstance value indicates that an instance that is related to the specified resource is stopped.
+	// The resource types that support the scenario feature.
 	SupportedResourceTypes []*GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -5101,15 +5136,27 @@ func (s *GetFeatureDetailsResponseBodyTemplateScratch) SetSupportedResourceTypes
 }
 
 type GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes struct {
-	// Details of the template parameter constraint feature.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Indicates whether the resource scope can be specified by resource group. Valid values:
+	//
+	// - true
+	// - false
 	SourceResourceGroupSupported *bool `json:"SourceResourceGroupSupported,omitempty" xml:"SourceResourceGroupSupported,omitempty"`
-	// The resource types that support the template parameter constraint feature.
+	// Indicates whether the resource scope can be specified by tag, resource group, or resource. Valid values:
+	//
+	// - true
+	// - false
 	SourceResourcesSupported *bool `json:"SourceResourcesSupported,omitempty" xml:"SourceResourcesSupported,omitempty"`
-	// The names of properties that are supported by the resource type.
+	// Indicates whether the resource scope can be specified by resource. Valid values:
+	//
+	// - true
+	// - false
 	SourceSupported *bool `json:"SourceSupported,omitempty" xml:"SourceSupported,omitempty"`
-	// The resource types that support the template parameter constraint feature.
+	// Indicates whether the resource scope can be specified by tag. Valid values:
+	//
+	// - true
+	// - false
 	SourceTagSupported *bool `json:"SourceTagSupported,omitempty" xml:"SourceTagSupported,omitempty"`
 }
 
@@ -5149,7 +5196,7 @@ func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) Set
 type GetFeatureDetailsResponseBodyTerraform struct {
 	// The resource types that support the scenario feature.
 	SupportedResourceTypes *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Struct"`
-	// The resource types that support the custom tag feature.
+	// The Terraform versions.
 	SupportedVersions []*GetFeatureDetailsResponseBodyTerraformSupportedVersions `json:"SupportedVersions,omitempty" xml:"SupportedVersions,omitempty" type:"Repeated"`
 }
 
@@ -5172,21 +5219,15 @@ func (s *GetFeatureDetailsResponseBodyTerraform) SetSupportedVersions(v []*GetFe
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes struct {
-	// Indicates whether the resource scope can be specified by tag, resource group, or resource. Valid values:
-	//
-	// - true
-	// - false
+	// The resource types that support the custom tag feature.
 	CustomTag []*string `json:"CustomTag,omitempty" xml:"CustomTag,omitempty" type:"Repeated"`
-	// Indicates whether the resource scope can be specified by resource group. Valid values:
-	//
-	// - true
-	// - false
+	// The resource types that support the price inquiry feature.
 	EstimateCost []*string `json:"EstimateCost,omitempty" xml:"EstimateCost,omitempty" type:"Repeated"`
-	// Details of the resource cleaner feature.
+	// The resource types that support the resource group feature.
 	ResourceGroup []*string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
-	// The resource type that can be cleaned up.
+	// The resource type that support the risk check feature.
 	StackOperationRisk *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk `json:"StackOperationRisk,omitempty" xml:"StackOperationRisk,omitempty" type:"Struct"`
-	// The resource types that support the scenario feature.
+	// The resource types that support the system tag `acs:ros:stackId`.
 	SystemTag []*string `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
 }
 
@@ -5224,14 +5265,7 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetSystem
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk struct {
-	// The filters that are used to filter resources. Valid values:
-	//
-	// *   RegionId: the ID of the region.
-	// *   ResourceId: the ID of the resource.
-	// *   ResourceName: the name of the resource.
-	// *   Tags: the tags of the resource.
-	// *   ResourceGroupId: the ID of the resource group.
-	// *   DeletionProtection: the deletion protection feature.
+	// The resource types that support the risk check performed to detect risks caused by a stack deletion operation.
 	DeleteStack []*string `json:"DeleteStack,omitempty" xml:"DeleteStack,omitempty" type:"Repeated"`
 }
 
@@ -5249,13 +5283,13 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperat
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedVersions struct {
-	// The resource types that support the price inquiry feature.
+	// The names and versions of the providers that correspond to the Terraform versions.
 	ProviderVersions []*GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions `json:"ProviderVersions,omitempty" xml:"ProviderVersions,omitempty" type:"Repeated"`
-	// The resource type that support the risk check feature.
+	// The Terraform version.
 	TerraformVersion *string `json:"TerraformVersion,omitempty" xml:"TerraformVersion,omitempty"`
-	// The resource types that support the risk check performed to detect risks caused by a stack deletion operation.
+	// The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
 	Transform *string `json:"Transform,omitempty" xml:"Transform,omitempty"`
-	// The resource types that support the risk check performed to detect risks caused by a stack deletion operation.
+	// The versions to which Terraform can be updated in ROS.
 	UpdateAllowedTransforms []*string `json:"UpdateAllowedTransforms,omitempty" xml:"UpdateAllowedTransforms,omitempty" type:"Repeated"`
 }
 
@@ -5288,9 +5322,9 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetUpdateAllow
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions struct {
-	// The resource types that support the price inquiry feature.
+	// The name of the provider.
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	// The resource types that support the resource group feature.
+	// The versions of the provider.
 	SupportedVersions []*string `json:"SupportedVersions,omitempty" xml:"SupportedVersions,omitempty" type:"Repeated"`
 }
 
@@ -8613,9 +8647,8 @@ type GetTemplateEstimateCostRequest struct {
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
 	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackId  *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId      *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The value of parameter N.
 	//
@@ -8799,12 +8832,7 @@ type GetTemplateParameterConstraintsRequest struct {
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the stack.
-	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The structure that contains the template body.
-	//
-	// The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	StackId      *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
@@ -8927,12 +8955,7 @@ type GetTemplateParameterConstraintsShrinkRequest struct {
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the stack.
-	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The structure that contains the template body.
-	//
-	// The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	StackId      *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
@@ -9085,6 +9108,7 @@ type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
 	IllegalValueByRules []interface{} `json:"IllegalValueByRules,omitempty" xml:"IllegalValueByRules,omitempty" type:"Repeated"`
 	// The unsupported resources in the template.
 	NotSupportResources []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources `json:"NotSupportResources,omitempty" xml:"NotSupportResources,omitempty" type:"Repeated"`
+	OriginalConstraints []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints `json:"OriginalConstraints,omitempty" xml:"OriginalConstraints,omitempty" type:"Repeated"`
 	// The name of the parameter.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	// The error details that are returned if the request fails.
@@ -9136,6 +9160,11 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetNot
 	return s
 }
 
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetOriginalConstraints(v []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.OriginalConstraints = v
+	return s
+}
+
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetParameterKey(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
 	s.ParameterKey = &v
 	return s
@@ -9174,6 +9203,41 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSuppo
 }
 
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources) SetResourceType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources {
+	s.ResourceType = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints struct {
+	AllowedValues []interface{} `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	PropertyName  *string       `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	ResourceName  *string       `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType  *string       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) SetAllowedValues(v []interface{}) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints {
+	s.AllowedValues = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) SetPropertyName(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints {
+	s.PropertyName = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) SetResourceName(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) SetResourceType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints {
 	s.ResourceType = &v
 	return s
 }
@@ -11943,49 +12007,50 @@ func (s *ListStackInstancesResponse) SetBody(v *ListStackInstancesResponseBody) 
 }
 
 type ListStackOperationRisksRequest struct {
-	// The resource N that you want to retain in the stack.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see [How to ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to retain all resources in the stack.
+	// The type of the operation of which you want to detect risks. Valid values:
 	//
-	// Default value: false. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// >  This parameter takes effect when the OperationType parameter is set to DeleteStack.
+	// *   DeleteStack: detects high risks that may arise in resources when you delete a stack.
+	// *   CreateStack: detects the missing permissions when you fail to create a stack.
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The resource N that you want to retain in the stack.
-	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-	//
-	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	//
-	// For more information, see [Ensure idempotence](~~134212~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
-	RetainAllResources *bool `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
-	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
-	RetainResources []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
 	// The name of the RAM role.
 	//
 	// *   If you specify a RAM role, ROS creates stacks based on the permissions that are granted to the RAM role and uses the credentials of the RAM role to call the API operations of Alibaba Cloud services.
 	// *   If you do not specify a RAM role, ROS creates stacks based on the permissions of your Alibaba Cloud account.
 	//
 	// The name of the RAM role can be up to 64 bytes in length.
+	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to retain all resources in the stack. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	//
+	// > This parameter takes effect only if you set OperationType to DeleteStack.
+	RetainAllResources *bool `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
+	// The list of resources to retain.
+	//
+	// > This parameter takes effect only if you set OperationType to DeleteStack.
+	RetainResources []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
+	// The ID of the stack.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	//
+	// > You must specify one of TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The ID of the template. This parameter applies to shared and private templates.
+	//
+	// > You must specify one of TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify RegionId in the URL, the region ID of the stack is used.
+	//
+	// > You must specify one of TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	// The version of the template.
 	//
-	// >  This parameter takes effect only when the TemplateId parameter is specified.
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The resources that are at risk.
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The ID of the request.
-	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	// The logical ID of the resource. The logical ID is the resource name that is defined in the template.
+	// > This parameter takes effect only if you specify TemplateId.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -12053,12 +12118,11 @@ func (s *ListStackOperationRisksRequest) SetTemplateVersion(v string) *ListStack
 }
 
 type ListStackOperationRisksResponseBody struct {
+	// The operations on which the permissions are not granted to the Alibaba Cloud account of the caller.
 	MissingPolicyActions []*string `json:"MissingPolicyActions,omitempty" xml:"MissingPolicyActions,omitempty" type:"Repeated"`
-	// The physical ID of the resource. The physical ID is the actual ID of the resource.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request when the risk detection fails.
-	//
-	// >  This parameter is not returned if the risk detection is successful.
+	// The resources that are at risk.
 	RiskResources []*ListStackOperationRisksResponseBodyRiskResources `json:"RiskResources,omitempty" xml:"RiskResources,omitempty" type:"Repeated"`
 }
 
@@ -12086,29 +12150,32 @@ func (s *ListStackOperationRisksResponseBody) SetRiskResources(v []*ListStackOpe
 }
 
 type ListStackOperationRisksResponseBodyRiskResources struct {
-	// The reason for the risk.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The resource type.
-	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	// The operations on which the permissions are not granted to the Alibaba Cloud account of the caller.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The error code that is returned when the risk detection fails.
 	//
 	// >  This parameter is not returned if the risk detection is successful.
-	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	Reason             *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The logical ID of the resource. The logical ID is the resource name that is defined in the template.
+	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	// The error message that is returned when the risk detection fails.
 	//
 	// >  This parameter is not returned if the risk detection is successful.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The physical ID of the resource. The physical ID is the actual ID of the resource.
+	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
+	// The cause of the risk.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The ID of the request when the risk detection fails.
+	//
+	// >  This parameter is not returned if the risk detection is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The type of the risk. Valid values:
 	//
 	// *   Referenced: The resource is referenced by other resources.
 	// *   MaybeReferenced: The resource may be referenced by other resources.
 	// *   AdditionalRiskCheckRequired: An additional risk detection is required for a nested stack.
 	// *   OperationIgnored: The operation does not take effect for the resource.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The operations on which the permissions are not granted to the Alibaba Cloud account of the caller.
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
 }
 
@@ -20072,6 +20139,10 @@ func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemp
 		query["TemplateScratchId"] = request.TemplateScratchId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20253,7 +20324,9 @@ func (client *Client) GetChangeSet(request *GetChangeSetRequest) (_result *GetCh
 }
 
 /**
- * The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
+ * You can call this operation to query the Terraform hosting, resource cleaner, and scenario features.
+ * This topic provides an example on how to query the details of features supported by ROS in the China (Hangzhou) region. The details include Terraform versions, provider versions, and supported resource types.
+ * >  In the Examples section, only part of the sample code is provided.
  *
  * @param request GetFeatureDetailsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20297,7 +20370,9 @@ func (client *Client) GetFeatureDetailsWithOptions(request *GetFeatureDetailsReq
 }
 
 /**
- * The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
+ * You can call this operation to query the Terraform hosting, resource cleaner, and scenario features.
+ * This topic provides an example on how to query the details of features supported by ROS in the China (Hangzhou) region. The details include Terraform versions, provider versions, and supported resource types.
+ * >  In the Examples section, only part of the sample code is provided.
  *
  * @param request GetFeatureDetailsRequest
  * @return GetFeatureDetailsResponse
@@ -21100,10 +21175,6 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 		query["StackId"] = request.StackId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -21124,8 +21195,14 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 		query["TemplateVersion"] = request.TemplateVersion
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplateEstimateCost"),
@@ -21212,10 +21289,6 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 		query["StackId"] = request.StackId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
-		query["TemplateBody"] = request.TemplateBody
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -21228,8 +21301,14 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 		query["TemplateVersion"] = request.TemplateVersion
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		body["TemplateBody"] = request.TemplateBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplateParameterConstraints"),
@@ -22075,7 +22154,9 @@ func (client *Client) ListStackInstances(request *ListStackInstancesRequest) (_r
 }
 
 /**
- * The ID of the stack.
+ * The ListStackOperationRisks operation is suitable for the following scenarios:
+ * *   You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+ * *   When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
  *
  * @param request ListStackOperationRisksRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22155,7 +22236,9 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 }
 
 /**
- * The ID of the stack.
+ * The ListStackOperationRisks operation is suitable for the following scenarios:
+ * *   You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+ * *   When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
  *
  * @param request ListStackOperationRisksRequest
  * @return ListStackOperationRisksResponse
