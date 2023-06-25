@@ -2666,12 +2666,15 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type SubmitAudioTo2DAvatarVideoTaskRequest struct {
-	App        *SubmitAudioTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	AvatarInfo *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
-	TenantId   *int64                                           `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Title      *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url        *string                                          `json:"Url,omitempty" xml:"Url,omitempty"`
-	VideoInfo  *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
+	App            *SubmitAudioTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AvatarInfo     *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
+	Callback       *bool                                            `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams *string                                          `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams      *string                                          `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	TenantId       *int64                                           `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title          *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url            *string                                          `json:"Url,omitempty" xml:"Url,omitempty"`
+	VideoInfo      *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
 }
 
 func (s SubmitAudioTo2DAvatarVideoTaskRequest) String() string {
@@ -2689,6 +2692,21 @@ func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetApp(v *SubmitAudioTo2DAvatarV
 
 func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetAvatarInfo(v *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) *SubmitAudioTo2DAvatarVideoTaskRequest {
 	s.AvatarInfo = v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetCallback(v bool) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetCallbackParams(v string) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequest) SetExtParams(v string) *SubmitAudioTo2DAvatarVideoTaskRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -2784,6 +2802,9 @@ func (s *SubmitAudioTo2DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) 
 type SubmitAudioTo2DAvatarVideoTaskShrinkRequest struct {
 	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
 	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
+	Callback         *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams   *string `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams        *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
 	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	Url              *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -2805,6 +2826,21 @@ func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetAppShrink(v string) *Su
 
 func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetAvatarInfoShrink(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
 	s.AvatarInfoShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetCallback(v bool) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetCallbackParams(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskShrinkRequest) SetExtParams(v string) *SubmitAudioTo2DAvatarVideoTaskShrinkRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -2916,12 +2952,15 @@ func (s *SubmitAudioTo2DAvatarVideoTaskResponse) SetBody(v *SubmitAudioTo2DAvata
 }
 
 type SubmitAudioTo3DAvatarVideoTaskRequest struct {
-	App        *SubmitAudioTo3DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	AvatarInfo *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
-	TenantId   *int64                                           `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Title      *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url        *string                                          `json:"Url,omitempty" xml:"Url,omitempty"`
-	VideoInfo  *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
+	App            *SubmitAudioTo3DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AvatarInfo     *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
+	Callback       *bool                                            `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams *string                                          `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams      *string                                          `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	TenantId       *int64                                           `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title          *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url            *string                                          `json:"Url,omitempty" xml:"Url,omitempty"`
+	VideoInfo      *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
 }
 
 func (s SubmitAudioTo3DAvatarVideoTaskRequest) String() string {
@@ -2939,6 +2978,21 @@ func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetApp(v *SubmitAudioTo3DAvatarV
 
 func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetAvatarInfo(v *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) *SubmitAudioTo3DAvatarVideoTaskRequest {
 	s.AvatarInfo = v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetCallback(v bool) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetCallbackParams(v string) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequest) SetExtParams(v string) *SubmitAudioTo3DAvatarVideoTaskRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -3046,6 +3100,9 @@ func (s *SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) 
 type SubmitAudioTo3DAvatarVideoTaskShrinkRequest struct {
 	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
 	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
+	Callback         *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams   *string `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams        *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
 	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	Url              *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -3067,6 +3124,21 @@ func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetAppShrink(v string) *Su
 
 func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetAvatarInfoShrink(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
 	s.AvatarInfoShrink = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetCallback(v bool) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetCallbackParams(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskShrinkRequest) SetExtParams(v string) *SubmitAudioTo3DAvatarVideoTaskShrinkRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -3178,13 +3250,16 @@ func (s *SubmitAudioTo3DAvatarVideoTaskResponse) SetBody(v *SubmitAudioTo3DAvata
 }
 
 type SubmitTextTo2DAvatarVideoTaskRequest struct {
-	App        *SubmitTextTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	AudioInfo  *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo  `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty" type:"Struct"`
-	AvatarInfo *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
-	TenantId   *int64                                          `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Text       *string                                         `json:"Text,omitempty" xml:"Text,omitempty"`
-	Title      *string                                         `json:"Title,omitempty" xml:"Title,omitempty"`
-	VideoInfo  *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
+	App            *SubmitTextTo2DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AudioInfo      *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo  `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty" type:"Struct"`
+	AvatarInfo     *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
+	Callback       *bool                                           `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams *string                                         `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams      *string                                         `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	TenantId       *int64                                          `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Text           *string                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+	Title          *string                                         `json:"Title,omitempty" xml:"Title,omitempty"`
+	VideoInfo      *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
 }
 
 func (s SubmitTextTo2DAvatarVideoTaskRequest) String() string {
@@ -3207,6 +3282,21 @@ func (s *SubmitTextTo2DAvatarVideoTaskRequest) SetAudioInfo(v *SubmitTextTo2DAva
 
 func (s *SubmitTextTo2DAvatarVideoTaskRequest) SetAvatarInfo(v *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) *SubmitTextTo2DAvatarVideoTaskRequest {
 	s.AvatarInfo = v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequest) SetCallback(v bool) *SubmitTextTo2DAvatarVideoTaskRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequest) SetCallbackParams(v string) *SubmitTextTo2DAvatarVideoTaskRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequest) SetExtParams(v string) *SubmitTextTo2DAvatarVideoTaskRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -3344,6 +3434,9 @@ type SubmitTextTo2DAvatarVideoTaskShrinkRequest struct {
 	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
 	AudioInfoShrink  *string `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty"`
 	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
+	Callback         *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams   *string `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams        *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
 	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Text             *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -3370,6 +3463,21 @@ func (s *SubmitTextTo2DAvatarVideoTaskShrinkRequest) SetAudioInfoShrink(v string
 
 func (s *SubmitTextTo2DAvatarVideoTaskShrinkRequest) SetAvatarInfoShrink(v string) *SubmitTextTo2DAvatarVideoTaskShrinkRequest {
 	s.AvatarInfoShrink = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskShrinkRequest) SetCallback(v bool) *SubmitTextTo2DAvatarVideoTaskShrinkRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskShrinkRequest) SetCallbackParams(v string) *SubmitTextTo2DAvatarVideoTaskShrinkRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskShrinkRequest) SetExtParams(v string) *SubmitTextTo2DAvatarVideoTaskShrinkRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -4571,6 +4679,18 @@ func (client *Client) SubmitAudioTo2DAvatarVideoTaskWithOptions(tmpReq *SubmitAu
 		query["AvatarInfo"] = request.AvatarInfoShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Callback)) {
+		query["Callback"] = request.Callback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		query["CallbackParams"] = request.CallbackParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtParams)) {
+		query["ExtParams"] = request.ExtParams
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
 		query["TenantId"] = request.TenantId
 	}
@@ -4647,6 +4767,18 @@ func (client *Client) SubmitAudioTo3DAvatarVideoTaskWithOptions(tmpReq *SubmitAu
 
 	if !tea.BoolValue(util.IsUnset(request.AvatarInfoShrink)) {
 		query["AvatarInfo"] = request.AvatarInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Callback)) {
+		query["Callback"] = request.Callback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		query["CallbackParams"] = request.CallbackParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtParams)) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
@@ -4733,6 +4865,18 @@ func (client *Client) SubmitTextTo2DAvatarVideoTaskWithOptions(tmpReq *SubmitTex
 
 	if !tea.BoolValue(util.IsUnset(request.AvatarInfoShrink)) {
 		query["AvatarInfo"] = request.AvatarInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Callback)) {
+		query["Callback"] = request.Callback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		query["CallbackParams"] = request.CallbackParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtParams)) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
