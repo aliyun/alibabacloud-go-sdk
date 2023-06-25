@@ -538,35 +538,67 @@ func (s *FaceGroupGroupCoverFaceBoundary) SetWidth(v int32) *FaceGroupGroupCover
 	return s
 }
 
+type FaceThumbnail struct {
+	FaceGroupId *string `json:"face_group_id,omitempty" xml:"face_group_id,omitempty"`
+	FaceId      *string `json:"face_id,omitempty" xml:"face_id,omitempty"`
+	// Deprecated
+	FaceThumbnail *string `json:"face_thumbnail,omitempty" xml:"face_thumbnail,omitempty"`
+}
+
+func (s FaceThumbnail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceThumbnail) GoString() string {
+	return s.String()
+}
+
+func (s *FaceThumbnail) SetFaceGroupId(v string) *FaceThumbnail {
+	s.FaceGroupId = &v
+	return s
+}
+
+func (s *FaceThumbnail) SetFaceId(v string) *FaceThumbnail {
+	s.FaceId = &v
+	return s
+}
+
+func (s *FaceThumbnail) SetFaceThumbnail(v string) *FaceThumbnail {
+	s.FaceThumbnail = &v
+	return s
+}
+
 type File struct {
-	Category          *string                `json:"category,omitempty" xml:"category,omitempty"`
-	ContentHash       *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
-	ContentHashName   *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
-	ContentType       *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	Crc64Hash         *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
-	CreatedAt         *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Description       *string                `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId          *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DownloadUrl       *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	DriveId           *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileExtension     *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
-	FileId            *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	Hidden            *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	InvestigationInfo *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
-	Labels            *string                `json:"labels,omitempty" xml:"labels,omitempty"`
-	LocalCreatedAt    *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
-	LocalModifiedAt   *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
-	Name              *string                `json:"name,omitempty" xml:"name,omitempty"`
-	ParentFileId      *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	RevisionId        *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
-	Size              *int64                 `json:"size,omitempty" xml:"size,omitempty"`
-	Starred           *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
-	Status            *string                `json:"status,omitempty" xml:"status,omitempty"`
-	Thumbnail         *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	TrashedAt         *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
-	Type              *string                `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt         *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UploadId          *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	Category           *string                `json:"category,omitempty" xml:"category,omitempty"`
+	ContentHash        *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName    *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	ContentType        *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	Crc64Hash          *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	CreatedAt          *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description        *string                `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId           *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DownloadUrl        *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	DriveId            *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileExtension      *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+	FileId             *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Hidden             *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	ImageMediaMetadata *ImageMediaMetadata    `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
+	InvestigationInfo  *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
+	Labels             []*string              `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	LocalCreatedAt     *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
+	LocalModifiedAt    *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
+	Name               *string                `json:"name,omitempty" xml:"name,omitempty"`
+	ParentFileId       *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	RevisionId         *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	Size               *int64                 `json:"size,omitempty" xml:"size,omitempty"`
+	Starred            *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
+	Status             *string                `json:"status,omitempty" xml:"status,omitempty"`
+	Thumbnail          *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	ThumbnailUrls      map[string]*string     `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
+	TrashedAt          *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+	Type               *string                `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt          *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UploadId           *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
 func (s File) String() string {
@@ -642,13 +674,18 @@ func (s *File) SetHidden(v bool) *File {
 	return s
 }
 
+func (s *File) SetImageMediaMetadata(v *ImageMediaMetadata) *File {
+	s.ImageMediaMetadata = v
+	return s
+}
+
 func (s *File) SetInvestigationInfo(v *FileInvestigationInfo) *File {
 	s.InvestigationInfo = v
 	return s
 }
 
-func (s *File) SetLabels(v string) *File {
-	s.Labels = &v
+func (s *File) SetLabels(v []*string) *File {
+	s.Labels = v
 	return s
 }
 
@@ -694,6 +731,11 @@ func (s *File) SetStatus(v string) *File {
 
 func (s *File) SetThumbnail(v string) *File {
 	s.Thumbnail = &v
+	return s
+}
+
+func (s *File) SetThumbnailUrls(v map[string]*string) *File {
+	s.ThumbnailUrls = v
 	return s
 }
 
@@ -994,9 +1036,22 @@ func (s *IdentityToBenefitPkgMapping) SetUpdatedAt(v string) *IdentityToBenefitP
 }
 
 type ImageMediaMetadata struct {
-	Height  *int64  `json:"height,omitempty" xml:"height,omitempty"`
-	TakenAt *string `json:"taken_at,omitempty" xml:"taken_at,omitempty"`
-	Width   *int64  `json:"width,omitempty" xml:"width,omitempty"`
+	AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
+	City        *string `json:"city,omitempty" xml:"city,omitempty"`
+	Country     *string `json:"country,omitempty" xml:"country,omitempty"`
+	District    *string `json:"district,omitempty" xml:"district,omitempty"`
+	Exif        *string `json:"exif,omitempty" xml:"exif,omitempty"`
+	// Deprecated
+	Faces          *string          `json:"faces,omitempty" xml:"faces,omitempty"`
+	FacesThumbnail []*FaceThumbnail `json:"faces_thumbnail,omitempty" xml:"faces_thumbnail,omitempty" type:"Repeated"`
+	Height         *int64           `json:"height,omitempty" xml:"height,omitempty"`
+	ImageQuality   *ImageQuality    `json:"image_quality,omitempty" xml:"image_quality,omitempty"`
+	ImageTags      []*SystemTag     `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
+	Location       *string          `json:"location,omitempty" xml:"location,omitempty"`
+	Province       *string          `json:"province,omitempty" xml:"province,omitempty"`
+	Time           *string          `json:"time,omitempty" xml:"time,omitempty"`
+	Township       *string          `json:"township,omitempty" xml:"township,omitempty"`
+	Width          *int64           `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s ImageMediaMetadata) String() string {
@@ -1007,18 +1062,124 @@ func (s ImageMediaMetadata) GoString() string {
 	return s.String()
 }
 
+func (s *ImageMediaMetadata) SetAddressLine(v string) *ImageMediaMetadata {
+	s.AddressLine = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetCity(v string) *ImageMediaMetadata {
+	s.City = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetCountry(v string) *ImageMediaMetadata {
+	s.Country = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetDistrict(v string) *ImageMediaMetadata {
+	s.District = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetExif(v string) *ImageMediaMetadata {
+	s.Exif = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetFaces(v string) *ImageMediaMetadata {
+	s.Faces = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetFacesThumbnail(v []*FaceThumbnail) *ImageMediaMetadata {
+	s.FacesThumbnail = v
+	return s
+}
+
 func (s *ImageMediaMetadata) SetHeight(v int64) *ImageMediaMetadata {
 	s.Height = &v
 	return s
 }
 
-func (s *ImageMediaMetadata) SetTakenAt(v string) *ImageMediaMetadata {
-	s.TakenAt = &v
+func (s *ImageMediaMetadata) SetImageQuality(v *ImageQuality) *ImageMediaMetadata {
+	s.ImageQuality = v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetImageTags(v []*SystemTag) *ImageMediaMetadata {
+	s.ImageTags = v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetLocation(v string) *ImageMediaMetadata {
+	s.Location = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetProvince(v string) *ImageMediaMetadata {
+	s.Province = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetTime(v string) *ImageMediaMetadata {
+	s.Time = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetTownship(v string) *ImageMediaMetadata {
+	s.Township = &v
 	return s
 }
 
 func (s *ImageMediaMetadata) SetWidth(v int64) *ImageMediaMetadata {
 	s.Width = &v
+	return s
+}
+
+type ImageProcess struct {
+	ImageThumbnailProcess  *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	OfficeThumbnailProcess *string `json:"office_thumbnail_process,omitempty" xml:"office_thumbnail_process,omitempty"`
+	VideoThumbnailProcess  *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ImageProcess) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageProcess) GoString() string {
+	return s.String()
+}
+
+func (s *ImageProcess) SetImageThumbnailProcess(v string) *ImageProcess {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ImageProcess) SetOfficeThumbnailProcess(v string) *ImageProcess {
+	s.OfficeThumbnailProcess = &v
+	return s
+}
+
+func (s *ImageProcess) SetVideoThumbnailProcess(v string) *ImageProcess {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+type ImageQuality struct {
+	OverallScore *float64 `json:"overall_score,omitempty" xml:"overall_score,omitempty"`
+}
+
+func (s ImageQuality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageQuality) GoString() string {
+	return s.String()
+}
+
+func (s *ImageQuality) SetOverallScore(v float64) *ImageQuality {
+	s.OverallScore = &v
 	return s
 }
 
@@ -1501,12 +1662,102 @@ func (s *ShareLink) SetVideoPreviewCount(v int64) *ShareLink {
 	return s
 }
 
+type Story struct {
+	CoverFileId           *string                `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
+	CoverFileThumbnailUrl *string                `json:"cover_file_thumbnail_url,omitempty" xml:"cover_file_thumbnail_url,omitempty"`
+	CreatedAt             *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	CustomLabels          map[string]interface{} `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	FaceGroupIds          []*string              `json:"face_group_ids,omitempty" xml:"face_group_ids,omitempty" type:"Repeated"`
+	StoryEndTime          *string                `json:"story_end_time,omitempty" xml:"story_end_time,omitempty"`
+	StoryFileList         []*File                `json:"story_file_list,omitempty" xml:"story_file_list,omitempty" type:"Repeated"`
+	StoryId               *string                `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	StoryName             *string                `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	StoryStartTime        *string                `json:"story_start_time,omitempty" xml:"story_start_time,omitempty"`
+	StorySubType          *string                `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
+	StoryType             *string                `json:"story_type,omitempty" xml:"story_type,omitempty"`
+	UpdatedAt             *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s Story) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Story) GoString() string {
+	return s.String()
+}
+
+func (s *Story) SetCoverFileId(v string) *Story {
+	s.CoverFileId = &v
+	return s
+}
+
+func (s *Story) SetCoverFileThumbnailUrl(v string) *Story {
+	s.CoverFileThumbnailUrl = &v
+	return s
+}
+
+func (s *Story) SetCreatedAt(v string) *Story {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Story) SetCustomLabels(v map[string]interface{}) *Story {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *Story) SetFaceGroupIds(v []*string) *Story {
+	s.FaceGroupIds = v
+	return s
+}
+
+func (s *Story) SetStoryEndTime(v string) *Story {
+	s.StoryEndTime = &v
+	return s
+}
+
+func (s *Story) SetStoryFileList(v []*File) *Story {
+	s.StoryFileList = v
+	return s
+}
+
+func (s *Story) SetStoryId(v string) *Story {
+	s.StoryId = &v
+	return s
+}
+
+func (s *Story) SetStoryName(v string) *Story {
+	s.StoryName = &v
+	return s
+}
+
+func (s *Story) SetStoryStartTime(v string) *Story {
+	s.StoryStartTime = &v
+	return s
+}
+
+func (s *Story) SetStorySubType(v string) *Story {
+	s.StorySubType = &v
+	return s
+}
+
+func (s *Story) SetStoryType(v string) *Story {
+	s.StoryType = &v
+	return s
+}
+
+func (s *Story) SetUpdatedAt(v string) *Story {
+	s.UpdatedAt = &v
+	return s
+}
+
 type SystemTag struct {
-	Confidence *float32 `json:"confidence,omitempty" xml:"confidence,omitempty"`
-	Name       *string  `json:"name,omitempty" xml:"name,omitempty"`
-	ParentName *string  `json:"parent_name,omitempty" xml:"parent_name,omitempty"`
-	Source     *string  `json:"source,omitempty" xml:"source,omitempty"`
-	TagLevel   *int32   `json:"tag_level,omitempty" xml:"tag_level,omitempty"`
+	CentricScore *float32 `json:"centric_score,omitempty" xml:"centric_score,omitempty"`
+	Confidence   *float32 `json:"confidence,omitempty" xml:"confidence,omitempty"`
+	Name         *string  `json:"name,omitempty" xml:"name,omitempty"`
+	ParentName   *string  `json:"parent_name,omitempty" xml:"parent_name,omitempty"`
+	Source       *string  `json:"source,omitempty" xml:"source,omitempty"`
+	TagLevel     *int32   `json:"tag_level,omitempty" xml:"tag_level,omitempty"`
 }
 
 func (s SystemTag) String() string {
@@ -1515,6 +1766,11 @@ func (s SystemTag) String() string {
 
 func (s SystemTag) GoString() string {
 	return s.String()
+}
+
+func (s *SystemTag) SetCentricScore(v float32) *SystemTag {
+	s.CentricScore = &v
+	return s
 }
 
 func (s *SystemTag) SetConfidence(v float32) *SystemTag {
@@ -2098,6 +2354,110 @@ func (s *AddGroupMemberResponse) SetStatusCode(v int32) *AddGroupMemberResponse 
 	return s
 }
 
+type AddStoryFilesRequest struct {
+	DriveId *string                      `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Files   []*AddStoryFilesRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	StoryId *string                      `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s AddStoryFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesRequest) SetDriveId(v string) *AddStoryFilesRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *AddStoryFilesRequest) SetFiles(v []*AddStoryFilesRequestFiles) *AddStoryFilesRequest {
+	s.Files = v
+	return s
+}
+
+func (s *AddStoryFilesRequest) SetStoryId(v string) *AddStoryFilesRequest {
+	s.StoryId = &v
+	return s
+}
+
+type AddStoryFilesRequestFiles struct {
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s AddStoryFilesRequestFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesRequestFiles) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesRequestFiles) SetFileId(v string) *AddStoryFilesRequestFiles {
+	s.FileId = &v
+	return s
+}
+
+func (s *AddStoryFilesRequestFiles) SetRevisionId(v string) *AddStoryFilesRequestFiles {
+	s.RevisionId = &v
+	return s
+}
+
+type AddStoryFilesResponseBody struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s AddStoryFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesResponseBody) SetDriveId(v string) *AddStoryFilesResponseBody {
+	s.DriveId = &v
+	return s
+}
+
+func (s *AddStoryFilesResponseBody) SetStoryId(v string) *AddStoryFilesResponseBody {
+	s.StoryId = &v
+	return s
+}
+
+type AddStoryFilesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddStoryFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesResponse) SetHeaders(v map[string]*string) *AddStoryFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddStoryFilesResponse) SetStatusCode(v int32) *AddStoryFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddStoryFilesResponse) SetBody(v *AddStoryFilesResponseBody) *AddStoryFilesResponse {
+	s.Body = v
+	return s
+}
+
 type AuthorizeRequest struct {
 	ClientId     *string   `json:"client_id,omitempty" xml:"client_id,omitempty"`
 	HideConsent  *bool     `json:"hide_consent,omitempty" xml:"hide_consent,omitempty"`
@@ -2646,6 +3006,158 @@ func (s *CopyFileResponse) SetStatusCode(v int32) *CopyFileResponse {
 }
 
 func (s *CopyFileResponse) SetBody(v *CopyFileResponseBody) *CopyFileResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomizedStoryRequest struct {
+	// Deprecated
+	CustomLabels map[string]*string                        `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	DriveId      *string                                   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryCover   *CreateCustomizedStoryRequestStoryCover   `json:"story_cover,omitempty" xml:"story_cover,omitempty" type:"Struct"`
+	StoryFiles   []*CreateCustomizedStoryRequestStoryFiles `json:"story_files,omitempty" xml:"story_files,omitempty" type:"Repeated"`
+	StoryName    *string                                   `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	StorySubType *string                                   `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
+	StoryType    *string                                   `json:"story_type,omitempty" xml:"story_type,omitempty"`
+}
+
+func (s CreateCustomizedStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedStoryRequest) SetCustomLabels(v map[string]*string) *CreateCustomizedStoryRequest {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequest) SetDriveId(v string) *CreateCustomizedStoryRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequest) SetStoryCover(v *CreateCustomizedStoryRequestStoryCover) *CreateCustomizedStoryRequest {
+	s.StoryCover = v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequest) SetStoryFiles(v []*CreateCustomizedStoryRequestStoryFiles) *CreateCustomizedStoryRequest {
+	s.StoryFiles = v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequest) SetStoryName(v string) *CreateCustomizedStoryRequest {
+	s.StoryName = &v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequest) SetStorySubType(v string) *CreateCustomizedStoryRequest {
+	s.StorySubType = &v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequest) SetStoryType(v string) *CreateCustomizedStoryRequest {
+	s.StoryType = &v
+	return s
+}
+
+type CreateCustomizedStoryRequestStoryCover struct {
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s CreateCustomizedStoryRequestStoryCover) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedStoryRequestStoryCover) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedStoryRequestStoryCover) SetFileId(v string) *CreateCustomizedStoryRequestStoryCover {
+	s.FileId = &v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequestStoryCover) SetRevisionId(v string) *CreateCustomizedStoryRequestStoryCover {
+	s.RevisionId = &v
+	return s
+}
+
+type CreateCustomizedStoryRequestStoryFiles struct {
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s CreateCustomizedStoryRequestStoryFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedStoryRequestStoryFiles) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedStoryRequestStoryFiles) SetFileId(v string) *CreateCustomizedStoryRequestStoryFiles {
+	s.FileId = &v
+	return s
+}
+
+func (s *CreateCustomizedStoryRequestStoryFiles) SetRevisionId(v string) *CreateCustomizedStoryRequestStoryFiles {
+	s.RevisionId = &v
+	return s
+}
+
+type CreateCustomizedStoryResponseBody struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s CreateCustomizedStoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedStoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedStoryResponseBody) SetDriveId(v string) *CreateCustomizedStoryResponseBody {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateCustomizedStoryResponseBody) SetStoryId(v string) *CreateCustomizedStoryResponseBody {
+	s.StoryId = &v
+	return s
+}
+
+type CreateCustomizedStoryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomizedStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomizedStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedStoryResponse) SetHeaders(v map[string]*string) *CreateCustomizedStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomizedStoryResponse) SetStatusCode(v int32) *CreateCustomizedStoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomizedStoryResponse) SetBody(v *CreateCustomizedStoryResponseBody) *CreateCustomizedStoryResponse {
 	s.Body = v
 	return s
 }
@@ -3355,6 +3867,193 @@ func (s *CreateShareLinkResponse) SetBody(v *ShareLink) *CreateShareLinkResponse
 	return s
 }
 
+type CreateSimilarImageClusterTaskRequest struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+}
+
+func (s CreateSimilarImageClusterTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusterTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusterTaskRequest) SetDriveId(v string) *CreateSimilarImageClusterTaskRequest {
+	s.DriveId = &v
+	return s
+}
+
+type CreateSimilarImageClusterTaskResponseBody struct {
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s CreateSimilarImageClusterTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusterTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusterTaskResponseBody) SetTaskId(v string) *CreateSimilarImageClusterTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateSimilarImageClusterTaskResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSimilarImageClusterTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSimilarImageClusterTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusterTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusterTaskResponse) SetHeaders(v map[string]*string) *CreateSimilarImageClusterTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSimilarImageClusterTaskResponse) SetStatusCode(v int32) *CreateSimilarImageClusterTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusterTaskResponse) SetBody(v *CreateSimilarImageClusterTaskResponseBody) *CreateSimilarImageClusterTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateStoryRequest struct {
+	Address *Address `json:"address,omitempty" xml:"address,omitempty"`
+	// Deprecated
+	CustomLabels   map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	DriveId        *string            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	MaxImageCount  *int64             `json:"max_image_count,omitempty" xml:"max_image_count,omitempty"`
+	MinImageCount  *int64             `json:"min_image_count,omitempty" xml:"min_image_count,omitempty"`
+	StoryEndTime   *string            `json:"story_end_time,omitempty" xml:"story_end_time,omitempty"`
+	StoryId        *string            `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	StoryName      *string            `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	StoryStartTime *string            `json:"story_start_time,omitempty" xml:"story_start_time,omitempty"`
+	StorySubType   *string            `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
+	StoryType      *string            `json:"story_type,omitempty" xml:"story_type,omitempty"`
+}
+
+func (s CreateStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryRequest) SetAddress(v *Address) *CreateStoryRequest {
+	s.Address = v
+	return s
+}
+
+func (s *CreateStoryRequest) SetCustomLabels(v map[string]*string) *CreateStoryRequest {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *CreateStoryRequest) SetDriveId(v string) *CreateStoryRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetMaxImageCount(v int64) *CreateStoryRequest {
+	s.MaxImageCount = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetMinImageCount(v int64) *CreateStoryRequest {
+	s.MinImageCount = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryEndTime(v string) *CreateStoryRequest {
+	s.StoryEndTime = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryId(v string) *CreateStoryRequest {
+	s.StoryId = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryName(v string) *CreateStoryRequest {
+	s.StoryName = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryStartTime(v string) *CreateStoryRequest {
+	s.StoryStartTime = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStorySubType(v string) *CreateStoryRequest {
+	s.StorySubType = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryType(v string) *CreateStoryRequest {
+	s.StoryType = &v
+	return s
+}
+
+type CreateStoryResponseBody struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+}
+
+func (s CreateStoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryResponseBody) SetDriveId(v string) *CreateStoryResponseBody {
+	s.DriveId = &v
+	return s
+}
+
+type CreateStoryResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryResponse) SetHeaders(v map[string]*string) *CreateStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStoryResponse) SetStatusCode(v int32) *CreateStoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateStoryResponse) SetBody(v *CreateStoryResponseBody) *CreateStoryResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUserRequest struct {
 	Avatar        *string                           `json:"avatar,omitempty" xml:"avatar,omitempty"`
 	Description   *string                           `json:"description,omitempty" xml:"description,omitempty"`
@@ -3917,6 +4616,75 @@ func (s *DeleteRevisionResponse) SetHeaders(v map[string]*string) *DeleteRevisio
 
 func (s *DeleteRevisionResponse) SetStatusCode(v int32) *DeleteRevisionResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type DeleteStoryRequest struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s DeleteStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStoryRequest) SetDriveId(v string) *DeleteStoryRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DeleteStoryRequest) SetStoryId(v string) *DeleteStoryRequest {
+	s.StoryId = &v
+	return s
+}
+
+type DeleteStoryResponseBody struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+}
+
+func (s DeleteStoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStoryResponseBody) SetDriveId(v string) *DeleteStoryResponseBody {
+	s.DriveId = &v
+	return s
+}
+
+type DeleteStoryResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStoryResponse) SetHeaders(v map[string]*string) *DeleteStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStoryResponse) SetStatusCode(v int32) *DeleteStoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStoryResponse) SetBody(v *DeleteStoryResponseBody) *DeleteStoryResponse {
+	s.Body = v
 	return s
 }
 
@@ -5501,6 +6269,169 @@ func (s *GetShareLinkTokenResponse) SetBody(v *GetShareLinkTokenResponseBody) *G
 	return s
 }
 
+type GetStoryRequest struct {
+	// Deprecated
+	CoverImageThumbnailProcess *string `json:"cover_image_thumbnail_process,omitempty" xml:"cover_image_thumbnail_process,omitempty"`
+	// Deprecated
+	CoverVideoThumbnailProcess *string `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
+	DriveId                    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// Deprecated
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// Deprecated
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	StoryId         *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// Deprecated
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+	// Deprecated
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s GetStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryRequest) SetCoverImageThumbnailProcess(v string) *GetStoryRequest {
+	s.CoverImageThumbnailProcess = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetCoverVideoThumbnailProcess(v string) *GetStoryRequest {
+	s.CoverVideoThumbnailProcess = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetDriveId(v string) *GetStoryRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetImageThumbnailProcess(v string) *GetStoryRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetImageUrlProcess(v string) *GetStoryRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetStoryId(v string) *GetStoryRequest {
+	s.StoryId = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetUrlExpireSec(v int64) *GetStoryRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetVideoThumbnailProcess(v string) *GetStoryRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+type GetStoryResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Story             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryResponse) SetHeaders(v map[string]*string) *GetStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStoryResponse) SetStatusCode(v int32) *GetStoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStoryResponse) SetBody(v *Story) *GetStoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskStatusRequest struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	TaskId  *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s GetTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusRequest) SetDriveId(v string) *GetTaskStatusRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetTaskStatusRequest) SetTaskId(v string) *GetTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTaskStatusResponseBody struct {
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusResponseBody) SetStatus(v string) *GetTaskStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetTaskStatusResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusResponse) SetHeaders(v map[string]*string) *GetTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskStatusResponse) SetStatusCode(v int32) *GetTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetUploadUrlRequest struct {
 	DriveId      *string                            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	FileId       *string                            `json:"file_id,omitempty" xml:"file_id,omitempty"`
@@ -6766,17 +7697,18 @@ func (s *ListFacegroupsResponse) SetBody(v *ListFacegroupsResponseBody) *ListFac
 }
 
 type ListFileRequest struct {
-	Category       *string `json:"category,omitempty" xml:"category,omitempty"`
-	DriveId        *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Fields         *string `json:"fields,omitempty" xml:"fields,omitempty"`
-	Limit          *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Marker         *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	OrderBy        *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
-	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
-	ParentFileId   *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	ShareId        *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	Category           *string                  `json:"category,omitempty" xml:"category,omitempty"`
+	DriveId            *string                  `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Fields             *string                  `json:"fields,omitempty" xml:"fields,omitempty"`
+	Limit              *int32                   `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker             *string                  `json:"marker,omitempty" xml:"marker,omitempty"`
+	OrderBy            *string                  `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	OrderDirection     *string                  `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
+	ParentFileId       *string                  `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	ShareId            *string                  `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	Status             *string                  `json:"status,omitempty" xml:"status,omitempty"`
+	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
+	Type               *string                  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListFileRequest) String() string {
@@ -6834,6 +7766,11 @@ func (s *ListFileRequest) SetShareId(v string) *ListFileRequest {
 
 func (s *ListFileRequest) SetStatus(v string) *ListFileRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListFileRequest) SetThumbnailProcesses(v map[string]*ImageProcess) *ListFileRequest {
+	s.ThumbnailProcesses = v
 	return s
 }
 
@@ -8215,6 +9152,110 @@ func (s *RemoveGroupMemberResponse) SetStatusCode(v int32) *RemoveGroupMemberRes
 	return s
 }
 
+type RemoveStoryFilesRequest struct {
+	DriveId *string                         `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Files   []*RemoveStoryFilesRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	StoryId *string                         `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s RemoveStoryFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesRequest) SetDriveId(v string) *RemoveStoryFilesRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *RemoveStoryFilesRequest) SetFiles(v []*RemoveStoryFilesRequestFiles) *RemoveStoryFilesRequest {
+	s.Files = v
+	return s
+}
+
+func (s *RemoveStoryFilesRequest) SetStoryId(v string) *RemoveStoryFilesRequest {
+	s.StoryId = &v
+	return s
+}
+
+type RemoveStoryFilesRequestFiles struct {
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s RemoveStoryFilesRequestFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesRequestFiles) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesRequestFiles) SetFileId(v string) *RemoveStoryFilesRequestFiles {
+	s.FileId = &v
+	return s
+}
+
+func (s *RemoveStoryFilesRequestFiles) SetRevisionId(v string) *RemoveStoryFilesRequestFiles {
+	s.RevisionId = &v
+	return s
+}
+
+type RemoveStoryFilesResponseBody struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s RemoveStoryFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesResponseBody) SetDriveId(v string) *RemoveStoryFilesResponseBody {
+	s.DriveId = &v
+	return s
+}
+
+func (s *RemoveStoryFilesResponseBody) SetStoryId(v string) *RemoveStoryFilesResponseBody {
+	s.StoryId = &v
+	return s
+}
+
+type RemoveStoryFilesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveStoryFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesResponse) SetHeaders(v map[string]*string) *RemoveStoryFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveStoryFilesResponse) SetStatusCode(v int32) *RemoveStoryFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveStoryFilesResponse) SetBody(v *RemoveStoryFilesResponseBody) *RemoveStoryFilesResponse {
+	s.Body = v
+	return s
+}
+
 type RestoreFileRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
@@ -8938,6 +9979,355 @@ func (s *SearchShareLinkResponse) SetStatusCode(v int32) *SearchShareLinkRespons
 }
 
 func (s *SearchShareLinkResponse) SetBody(v *SearchShareLinkResponseBody) *SearchShareLinkResponse {
+	s.Body = v
+	return s
+}
+
+type SearchSimilarImageClustersRequest struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// Deprecated
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	Limit                 *int64  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker                *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	Order                 *string `json:"order,omitempty" xml:"order,omitempty"`
+}
+
+func (s SearchSimilarImageClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchSimilarImageClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchSimilarImageClustersRequest) SetDriveId(v string) *SearchSimilarImageClustersRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *SearchSimilarImageClustersRequest) SetImageThumbnailProcess(v string) *SearchSimilarImageClustersRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *SearchSimilarImageClustersRequest) SetLimit(v int64) *SearchSimilarImageClustersRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *SearchSimilarImageClustersRequest) SetMarker(v string) *SearchSimilarImageClustersRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *SearchSimilarImageClustersRequest) SetOrder(v string) *SearchSimilarImageClustersRequest {
+	s.Order = &v
+	return s
+}
+
+type SearchSimilarImageClustersResponseBody struct {
+	NextMarker           *string                                                       `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+	SimilarImageClusters []*SearchSimilarImageClustersResponseBodySimilarImageClusters `json:"similar_image_clusters,omitempty" xml:"similar_image_clusters,omitempty" type:"Repeated"`
+}
+
+func (s SearchSimilarImageClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchSimilarImageClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchSimilarImageClustersResponseBody) SetNextMarker(v string) *SearchSimilarImageClustersResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+func (s *SearchSimilarImageClustersResponseBody) SetSimilarImageClusters(v []*SearchSimilarImageClustersResponseBodySimilarImageClusters) *SearchSimilarImageClustersResponseBody {
+	s.SimilarImageClusters = v
+	return s
+}
+
+type SearchSimilarImageClustersResponseBodySimilarImageClusters struct {
+	Files []*File `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+}
+
+func (s SearchSimilarImageClustersResponseBodySimilarImageClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchSimilarImageClustersResponseBodySimilarImageClusters) GoString() string {
+	return s.String()
+}
+
+func (s *SearchSimilarImageClustersResponseBodySimilarImageClusters) SetFiles(v []*File) *SearchSimilarImageClustersResponseBodySimilarImageClusters {
+	s.Files = v
+	return s
+}
+
+type SearchSimilarImageClustersResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchSimilarImageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchSimilarImageClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchSimilarImageClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchSimilarImageClustersResponse) SetHeaders(v map[string]*string) *SearchSimilarImageClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchSimilarImageClustersResponse) SetStatusCode(v int32) *SearchSimilarImageClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchSimilarImageClustersResponse) SetBody(v *SearchSimilarImageClustersResponseBody) *SearchSimilarImageClustersResponse {
+	s.Body = v
+	return s
+}
+
+type SearchStoriesRequest struct {
+	// Deprecated
+	CoverImageThumbnailProcess *string `json:"cover_image_thumbnail_process,omitempty" xml:"cover_image_thumbnail_process,omitempty"`
+	// Deprecated
+	CoverVideoThumbnailProcess *string                              `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
+	CreateTimeRange            *SearchStoriesRequestCreateTimeRange `json:"create_time_range,omitempty" xml:"create_time_range,omitempty" type:"Struct"`
+	// Deprecated
+	CustomLabels        *string                                  `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	DriveId             *string                                  `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FaceGroupIds        []*string                                `json:"face_group_ids,omitempty" xml:"face_group_ids,omitempty" type:"Repeated"`
+	Limit               *int64                                   `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker              *string                                  `json:"marker,omitempty" xml:"marker,omitempty"`
+	Order               *string                                  `json:"order,omitempty" xml:"order,omitempty"`
+	Sort                *string                                  `json:"sort,omitempty" xml:"sort,omitempty"`
+	StoryEndTimeRange   *SearchStoriesRequestStoryEndTimeRange   `json:"story_end_time_range,omitempty" xml:"story_end_time_range,omitempty" type:"Struct"`
+	StoryId             *string                                  `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	StoryName           *string                                  `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	StoryStartTimeRange *SearchStoriesRequestStoryStartTimeRange `json:"story_start_time_range,omitempty" xml:"story_start_time_range,omitempty" type:"Struct"`
+	StoryType           *string                                  `json:"story_type,omitempty" xml:"story_type,omitempty"`
+	// Deprecated
+	UrlExpireSec     *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+	WithEmptyStories *bool  `json:"with_empty_stories,omitempty" xml:"with_empty_stories,omitempty"`
+}
+
+func (s SearchStoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchStoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchStoriesRequest) SetCoverImageThumbnailProcess(v string) *SearchStoriesRequest {
+	s.CoverImageThumbnailProcess = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetCoverVideoThumbnailProcess(v string) *SearchStoriesRequest {
+	s.CoverVideoThumbnailProcess = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetCreateTimeRange(v *SearchStoriesRequestCreateTimeRange) *SearchStoriesRequest {
+	s.CreateTimeRange = v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetCustomLabels(v string) *SearchStoriesRequest {
+	s.CustomLabels = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetDriveId(v string) *SearchStoriesRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetFaceGroupIds(v []*string) *SearchStoriesRequest {
+	s.FaceGroupIds = v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetLimit(v int64) *SearchStoriesRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetMarker(v string) *SearchStoriesRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetOrder(v string) *SearchStoriesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetSort(v string) *SearchStoriesRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetStoryEndTimeRange(v *SearchStoriesRequestStoryEndTimeRange) *SearchStoriesRequest {
+	s.StoryEndTimeRange = v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetStoryId(v string) *SearchStoriesRequest {
+	s.StoryId = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetStoryName(v string) *SearchStoriesRequest {
+	s.StoryName = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetStoryStartTimeRange(v *SearchStoriesRequestStoryStartTimeRange) *SearchStoriesRequest {
+	s.StoryStartTimeRange = v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetStoryType(v string) *SearchStoriesRequest {
+	s.StoryType = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetUrlExpireSec(v int64) *SearchStoriesRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *SearchStoriesRequest) SetWithEmptyStories(v bool) *SearchStoriesRequest {
+	s.WithEmptyStories = &v
+	return s
+}
+
+type SearchStoriesRequestCreateTimeRange struct {
+	End   *string `json:"end,omitempty" xml:"end,omitempty"`
+	Start *string `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s SearchStoriesRequestCreateTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchStoriesRequestCreateTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *SearchStoriesRequestCreateTimeRange) SetEnd(v string) *SearchStoriesRequestCreateTimeRange {
+	s.End = &v
+	return s
+}
+
+func (s *SearchStoriesRequestCreateTimeRange) SetStart(v string) *SearchStoriesRequestCreateTimeRange {
+	s.Start = &v
+	return s
+}
+
+type SearchStoriesRequestStoryEndTimeRange struct {
+	End   *string `json:"end,omitempty" xml:"end,omitempty"`
+	Start *string `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s SearchStoriesRequestStoryEndTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchStoriesRequestStoryEndTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *SearchStoriesRequestStoryEndTimeRange) SetEnd(v string) *SearchStoriesRequestStoryEndTimeRange {
+	s.End = &v
+	return s
+}
+
+func (s *SearchStoriesRequestStoryEndTimeRange) SetStart(v string) *SearchStoriesRequestStoryEndTimeRange {
+	s.Start = &v
+	return s
+}
+
+type SearchStoriesRequestStoryStartTimeRange struct {
+	End   *string `json:"end,omitempty" xml:"end,omitempty"`
+	Start *string `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s SearchStoriesRequestStoryStartTimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchStoriesRequestStoryStartTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *SearchStoriesRequestStoryStartTimeRange) SetEnd(v string) *SearchStoriesRequestStoryStartTimeRange {
+	s.End = &v
+	return s
+}
+
+func (s *SearchStoriesRequestStoryStartTimeRange) SetStart(v string) *SearchStoriesRequestStoryStartTimeRange {
+	s.Start = &v
+	return s
+}
+
+type SearchStoriesResponseBody struct {
+	Items      []*Story `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	NextMarker *string  `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s SearchStoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchStoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchStoriesResponseBody) SetItems(v []*Story) *SearchStoriesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *SearchStoriesResponseBody) SetNextMarker(v string) *SearchStoriesResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+type SearchStoriesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchStoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchStoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchStoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchStoriesResponse) SetHeaders(v map[string]*string) *SearchStoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchStoriesResponse) SetStatusCode(v int32) *SearchStoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchStoriesResponse) SetBody(v *SearchStoriesResponseBody) *SearchStoriesResponse {
 	s.Body = v
 	return s
 }
@@ -9910,6 +11300,123 @@ func (s *UpdateShareLinkResponse) SetBody(v *ShareLink) *UpdateShareLinkResponse
 	return s
 }
 
+type UpdateStoryRequest struct {
+	Cover *UpdateStoryRequestCover `json:"cover,omitempty" xml:"cover,omitempty" type:"Struct"`
+	// Deprecated
+	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	DriveId      *string            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryId      *string            `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	StoryName    *string            `json:"story_name,omitempty" xml:"story_name,omitempty"`
+}
+
+func (s UpdateStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStoryRequest) SetCover(v *UpdateStoryRequestCover) *UpdateStoryRequest {
+	s.Cover = v
+	return s
+}
+
+func (s *UpdateStoryRequest) SetCustomLabels(v map[string]*string) *UpdateStoryRequest {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *UpdateStoryRequest) SetDriveId(v string) *UpdateStoryRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UpdateStoryRequest) SetStoryId(v string) *UpdateStoryRequest {
+	s.StoryId = &v
+	return s
+}
+
+func (s *UpdateStoryRequest) SetStoryName(v string) *UpdateStoryRequest {
+	s.StoryName = &v
+	return s
+}
+
+type UpdateStoryRequestCover struct {
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s UpdateStoryRequestCover) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStoryRequestCover) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStoryRequestCover) SetFileId(v string) *UpdateStoryRequestCover {
+	s.FileId = &v
+	return s
+}
+
+func (s *UpdateStoryRequestCover) SetRevisionId(v string) *UpdateStoryRequestCover {
+	s.RevisionId = &v
+	return s
+}
+
+type UpdateStoryResponseBody struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s UpdateStoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStoryResponseBody) SetDriveId(v string) *UpdateStoryResponseBody {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UpdateStoryResponseBody) SetStoryId(v string) *UpdateStoryResponseBody {
+	s.StoryId = &v
+	return s
+}
+
+type UpdateStoryResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStoryResponse) SetHeaders(v map[string]*string) *UpdateStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateStoryResponse) SetStatusCode(v int32) *UpdateStoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateStoryResponse) SetBody(v *UpdateStoryResponseBody) *UpdateStoryResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateUserRequest struct {
 	Avatar        *string                           `json:"avatar,omitempty" xml:"avatar,omitempty"`
 	Description   *string                           `json:"description,omitempty" xml:"description,omitempty"`
@@ -10103,6 +11610,60 @@ func (client *Client) AddGroupMember(domainId *string, request *AddGroupMemberRe
 	headers := make(map[string]*string)
 	_result = &AddGroupMemberResponse{}
 	_body, _err := client.AddGroupMemberWithOptions(domainId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddStoryFilesWithOptions(request *AddStoryFilesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddStoryFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Files)) {
+		body["files"] = request.Files
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryId)) {
+		body["story_id"] = request.StoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddStoryFiles"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/add_story_files"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddStoryFilesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *AddStoryFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddStoryFilesResponse{}
+	_body, _err := client.AddStoryFilesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10441,6 +12002,76 @@ func (client *Client) CopyFile(request *CopyFileRequest) (_result *CopyFileRespo
 	headers := make(map[string]*string)
 	_result = &CopyFileResponse{}
 	_body, _err := client.CopyFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCustomizedStoryWithOptions(request *CreateCustomizedStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCustomizedStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		body["custom_labels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryCover)) {
+		body["story_cover"] = request.StoryCover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryFiles)) {
+		body["story_files"] = request.StoryFiles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryName)) {
+		body["story_name"] = request.StoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorySubType)) {
+		body["story_sub_type"] = request.StorySubType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryType)) {
+		body["story_type"] = request.StoryType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomizedStory"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/create_customized_story"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomizedStoryResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryRequest) (_result *CreateCustomizedStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCustomizedStoryResponse{}
+	_body, _err := client.CreateCustomizedStoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10936,6 +12567,138 @@ func (client *Client) CreateShareLink(request *CreateShareLinkRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) CreateSimilarImageClusterTaskWithOptions(request *CreateSimilarImageClusterTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSimilarImageClusterTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSimilarImageClusterTask"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/create_similar_image_cluster_task"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSimilarImageClusterTaskResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSimilarImageClusterTask(request *CreateSimilarImageClusterTaskRequest) (_result *CreateSimilarImageClusterTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSimilarImageClusterTaskResponse{}
+	_body, _err := client.CreateSimilarImageClusterTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateStoryWithOptions(request *CreateStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		body["address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		body["custom_labels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxImageCount)) {
+		body["max_image_count"] = request.MaxImageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinImageCount)) {
+		body["min_image_count"] = request.MinImageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryEndTime)) {
+		body["story_end_time"] = request.StoryEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryId)) {
+		body["story_id"] = request.StoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryName)) {
+		body["story_name"] = request.StoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryStartTime)) {
+		body["story_start_time"] = request.StoryStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorySubType)) {
+		body["story_sub_type"] = request.StorySubType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryType)) {
+		body["story_type"] = request.StoryType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStory"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/create_story"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStoryResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateStoryResponse{}
+	_body, _err := client.CreateStoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11311,6 +13074,56 @@ func (client *Client) DeleteRevision(request *DeleteRevisionRequest) (_result *D
 	headers := make(map[string]*string)
 	_result = &DeleteRevisionResponse{}
 	_body, _err := client.DeleteRevisionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteStoryWithOptions(request *DeleteStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryId)) {
+		body["story_id"] = request.StoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStory"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/delete_story"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStoryResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteStoryResponse{}
+	_body, _err := client.DeleteStoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12466,6 +14279,130 @@ func (client *Client) GetShareLinkToken(request *GetShareLinkTokenRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetStoryWithOptions(request *GetStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoverImageThumbnailProcess)) {
+		body["cover_image_thumbnail_process"] = request.CoverImageThumbnailProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverVideoThumbnailProcess)) {
+		body["cover_video_thumbnail_process"] = request.CoverVideoThumbnailProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageThumbnailProcess)) {
+		body["image_thumbnail_process"] = request.ImageThumbnailProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlProcess)) {
+		body["image_url_process"] = request.ImageUrlProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryId)) {
+		body["story_id"] = request.StoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UrlExpireSec)) {
+		body["url_expire_sec"] = request.UrlExpireSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoThumbnailProcess)) {
+		body["video_thumbnail_process"] = request.VideoThumbnailProcess
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStory"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/get_story"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStoryResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetStoryResponse{}
+	_body, _err := client.GetStoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["task_id"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskStatus"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/get_task_status"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *GetTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTaskStatusResponse{}
+	_body, _err := client.GetTaskStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetUploadUrlWithOptions(request *GetUploadUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUploadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13275,6 +15212,10 @@ func (client *Client) ListFileWithOptions(request *ListFileRequest, headers map[
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThumbnailProcesses)) {
+		body["thumbnail_processes"] = request.ThumbnailProcesses
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -14206,6 +16147,60 @@ func (client *Client) RemoveGroupMember(domainId *string, request *RemoveGroupMe
 	return _result, _err
 }
 
+func (client *Client) RemoveStoryFilesWithOptions(request *RemoveStoryFilesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveStoryFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Files)) {
+		body["files"] = request.Files
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryId)) {
+		body["story_id"] = request.StoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveStoryFiles"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/remove_story_files"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveStoryFilesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_result *RemoveStoryFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveStoryFilesResponse{}
+	_body, _err := client.RemoveStoryFilesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RestoreFileWithOptions(request *RestoreFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestoreFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14687,6 +16682,178 @@ func (client *Client) SearchShareLink(request *SearchShareLinkRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &SearchShareLinkResponse{}
 	_body, _err := client.SearchShareLinkWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchSimilarImageClustersWithOptions(request *SearchSimilarImageClustersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchSimilarImageClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageThumbnailProcess)) {
+		body["image_thumbnail_process"] = request.ImageThumbnailProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["order"] = request.Order
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchSimilarImageClusters"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/query_similar_image_clusters"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchSimilarImageClustersResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchSimilarImageClusters(request *SearchSimilarImageClustersRequest) (_result *SearchSimilarImageClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchSimilarImageClustersResponse{}
+	_body, _err := client.SearchSimilarImageClustersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchStoriesWithOptions(request *SearchStoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchStoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoverImageThumbnailProcess)) {
+		body["cover_image_thumbnail_process"] = request.CoverImageThumbnailProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverVideoThumbnailProcess)) {
+		body["cover_video_thumbnail_process"] = request.CoverVideoThumbnailProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeRange)) {
+		body["create_time_range"] = request.CreateTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		body["custom_labels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceGroupIds)) {
+		body["face_group_ids"] = request.FaceGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		body["sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryEndTimeRange)) {
+		body["story_end_time_range"] = request.StoryEndTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryId)) {
+		body["story_id"] = request.StoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryName)) {
+		body["story_name"] = request.StoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryStartTimeRange)) {
+		body["story_start_time_range"] = request.StoryStartTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryType)) {
+		body["story_type"] = request.StoryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UrlExpireSec)) {
+		body["url_expire_sec"] = request.UrlExpireSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithEmptyStories)) {
+		body["with_empty_stories"] = request.WithEmptyStories
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchStories"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/find_stories"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchStoriesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchStories(request *SearchStoriesRequest) (_result *SearchStoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchStoriesResponse{}
+	_body, _err := client.SearchStoriesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15449,6 +17616,68 @@ func (client *Client) UpdateShareLink(request *UpdateShareLinkRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &UpdateShareLinkResponse{}
 	_body, _err := client.UpdateShareLinkWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateStoryWithOptions(request *UpdateStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cover)) {
+		body["cover"] = request.Cover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		body["custom_labels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryId)) {
+		body["story_id"] = request.StoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryName)) {
+		body["story_name"] = request.StoryName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStory"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/update_story"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateStoryResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateStory(request *UpdateStoryRequest) (_result *UpdateStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateStoryResponse{}
+	_body, _err := client.UpdateStoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
