@@ -26110,8 +26110,10 @@ func (s *HotelOrderCancelResponseBody) SetTraceId(v string) *HotelOrderCancelRes
 }
 
 type HotelOrderCancelResponseBodyModule struct {
-	CancelSuccess *bool  `json:"cancel_success,omitempty" xml:"cancel_success,omitempty"`
-	ForfeitFee    *int64 `json:"forfeit_fee,omitempty" xml:"forfeit_fee,omitempty"`
+	CancelSuccess *bool   `json:"cancel_success,omitempty" xml:"cancel_success,omitempty"`
+	Code          *string `json:"code,omitempty" xml:"code,omitempty"`
+	Desc          *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	ForfeitFee    *int64  `json:"forfeit_fee,omitempty" xml:"forfeit_fee,omitempty"`
 }
 
 func (s HotelOrderCancelResponseBodyModule) String() string {
@@ -26124,6 +26126,16 @@ func (s HotelOrderCancelResponseBodyModule) GoString() string {
 
 func (s *HotelOrderCancelResponseBodyModule) SetCancelSuccess(v bool) *HotelOrderCancelResponseBodyModule {
 	s.CancelSuccess = &v
+	return s
+}
+
+func (s *HotelOrderCancelResponseBodyModule) SetCode(v string) *HotelOrderCancelResponseBodyModule {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelOrderCancelResponseBodyModule) SetDesc(v string) *HotelOrderCancelResponseBodyModule {
+	s.Desc = &v
 	return s
 }
 
