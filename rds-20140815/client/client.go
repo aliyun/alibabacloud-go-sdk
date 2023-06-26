@@ -15636,7 +15636,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	// Specifies whether the instance expires. Valid values:
 	//
 	// *   **True**: The instance expires.
-	// *   **False**: The instance does not expire.
+	// *   **False:** The instance does not expire.
 	Expired         *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -15707,7 +15707,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) SetDBInstanceAttribute(v 
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
-	// The maximum number of accounts that can be created on an instance.
+	// The maximum number of accounts that can be created on the instance.
 	AccountMaxQuantity *int32 `json:"AccountMaxQuantity,omitempty" xml:"AccountMaxQuantity,omitempty"`
 	// The advanced features that are enabled for the instance. If multiple advanced features are enabled, the advanced features are separated by commas (,). This parameter is available only to instances that run **SQL Server**. Valid values:
 	//
@@ -15721,26 +15721,31 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	AutoUpgradeMinorVersion *string `json:"AutoUpgradeMinorVersion,omitempty" xml:"AutoUpgradeMinorVersion,omitempty"`
 	// The availability status of the instance in percentage.
 	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
-	// The configuration of Babelfish for the instance.
+	// The configuration of the Babelfish feature for the ApsaraDB RDS for PostgreSQL instance.
 	//
-	// >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+	// > This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](~~428613~~).
 	BabelfishConfig *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig `json:"BabelfishConfig,omitempty" xml:"BabelfishConfig,omitempty" type:"Struct"`
-	BpeEnabled      *string                                                                         `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	BurstingEnabled *bool                                                                           `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	// <props="china">预留参数，无需配置。</props>
+	// <props="intl">无效参数，无需配置。</props>
+	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
+	// <props="china">预留参数，无需配置。</props>
+	// <props="intl">无效参数，无需配置。</props>
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
 	// *   **Basic**: RDS Basic Edition
 	// *   **HighAvailability**: RDS High-availability Edition
-	// *   **AlwaysOn**: RDS Cluster Edition for SQL Server
 	// *   **cluster**: RDS Cluster Edition for MySQL
+	// *   **AlwaysOn**: RDS Cluster Edition for SQL Server
 	// *   **Finance**: RDS Enterprise Edition
+	// *   **Serverless_basic**: RDS Serverless Basic Edition
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The character set collation of the instance.
 	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
 	// *   **Standard**: standard mode
-	// *   **Safe**: proxy mode
+	// *   **Safe**: database proxy mode
 	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	// The internal endpoint of the instance.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
@@ -15749,13 +15754,13 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **1**: shared proxy
 	// *   **2**: dedicated proxy
 	//
-	// >  We recommend that you use the **ProxyType** parameter instead of this parameter.
+	// > We recommend that you use the **ProxyType** parameter instead of this parameter.
 	ConsoleVersion *string `json:"ConsoleVersion,omitempty" xml:"ConsoleVersion,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The minor engine version of the instance.
 	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
-	// The nodes of cluster.
+	// The information about the node in the cluster.
 	DBClusterNodes *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNodes `json:"DBClusterNodes,omitempty" xml:"DBClusterNodes,omitempty" type:"Struct"`
 	// The number of cores that are configured for the instance.
 	DBInstanceCPU *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
@@ -15776,8 +15781,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	// The type of the network over which the instance is connected. Valid values:
 	//
-	// *   **Internet**
-	// *   **Intranet**
+	// *   **Internet**: Internet
+	// *   **Intranet**: internal network
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The status of the instance. For more information, see [Instance states](~~26315~~).
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
@@ -15787,7 +15792,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// *   **local_ssd** and **ephemeral_ssd**: local SSD
 	// *   **cloud_ssd**: standard SSD
-	// *   **cloud_essd**: enhanced SSD (ESSD)
+	// *   **cloud_essd**: enhanced SSD
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The type of the instance. Valid values:
 	//
@@ -15798,12 +15803,12 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	// The maximum number of databases that can be created on the instance.
 	DBMaxQuantity *int32 `json:"DBMaxQuantity,omitempty" xml:"DBMaxQuantity,omitempty"`
-	// The ID of the dedicated cluster to which the instance belongs.
+	// The ID of the dedicated cluster.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Indicates whether the release protection feature is enabled. Valid values:
 	//
-	// - **true**: The feature is enabled.
-	// - **false**: The feature is disabled.
+	// *   **true**: The feature is enabled.
+	// *   **false**: The feature is disabled.
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The database engine of the instance. Valid values:
 	//
@@ -15812,31 +15817,31 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **SQLServer**
 	// *   **MariaDB**
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The version of the database engine.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time at which the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
-	// >  Pay-as-you-go instances never expire.
+	// > Pay-as-you-go instances never expire.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The extended information of the instance.
 	Extra *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
-	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster.
+	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	GeneralGroupName *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
 	// The ID of the disaster recovery instance that is attached to the instance.
 	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
-	// The type of the IP address that is used by the instance. The value is fixed as **IPv4**.
+	// The type of the IP address. Only **IPv4** addresses are supported.
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
 	// The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance or read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
 	IncrementSourceDBInstanceId *string `json:"IncrementSourceDBInstanceId,omitempty" xml:"IncrementSourceDBInstanceId,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **Classic**
-	// *   **VPC**
+	// *   **Classic**: classic network
+	// *   **VPC**: virtual private cloud (VPC)
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The architecture type of the instance. Valid values:
 	//
-	// - **x86**
-	// - **arm**
+	// *   **x86**
+	// *   **arm**
 	InstructionSetArch *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
 	// The latest minor engine version that is supported by the instance.
 	LatestKernelVersion *string `json:"LatestKernelVersion,omitempty" xml:"LatestKernelVersion,omitempty"`
@@ -15847,7 +15852,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
 	// *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
 	// *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
-	// *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked when the disk space is exhausted.
+	// *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the instance was locked.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
@@ -15855,22 +15860,22 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	// The ID of the primary instance.
 	//
-	// >  If this parameter is not returned, the instance is the primary instance.
+	// > If this parameter is not returned, the instance is the primary instance.
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	// The ID of the primary zone.
+	// The zone ID of the primary instance.
 	MasterZone *string `json:"MasterZone,omitempty" xml:"MasterZone,omitempty"`
-	// The maximum number of concurrent connections that are allowed by the instance.
+	// The maximum number of concurrent connections.
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum I/O throughput. Unit: MB/s.
 	MaxIOMBPS *int32 `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
-	// The maximum number of I/O requests that can be processed by the instance per second.
+	// The maximum number of I/O requests that is processed by the instance per second.
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// *   **Postpaid**: pay-as-you-go
 	// *   **Prepaid**: subscription
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The internal port number that is used to connect to the instance.
+	// The port that is used to connect to the instance over an internal network.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of the proxy that is supported by the instance. Valid values:
 	//
@@ -15878,13 +15883,13 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **1**: The instance supports shared proxies, with which the instance runs in multi-tenant mode.
 	// *   **2**: The instance supports dedicated proxies, with which the instance runs in single-tenant mode.
 	ProxyType *int32 `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// An array that consists of the IDs of the read-only instances that are attached to the primary instance.
+	// An array consisting of the IDs of the read-only instances that are attached to the primary instance.
 	ReadOnlyDBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
-	// The latency at which the read-only instances replicate data. The read-only instances replicate data from the primary instance at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime** parameter. Unit: seconds.
+	// The latency at which the system replicates data to read-only instances. The system replicates data from the primary instance to the read-only instances at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime** parameter. Unit: seconds.
 	ReadonlyInstanceSQLDelayedTime *string `json:"ReadonlyInstanceSQLDelayedTime,omitempty" xml:"ReadonlyInstanceSQLDelayedTime,omitempty"`
 	// The region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IP addresses in the IP address whitelist.
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
@@ -15906,22 +15911,22 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
 	// The time zone of the instance.
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	// The information about the exception that is detected on the instance. This parameter is returned only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster.
+	// The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	// The severity level of the exception that is detected on the instance. This parameter is returned only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster. Valid values:
+	// The severity level of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
 	//
 	// *   **1**: The instance is normal.
-	// *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance. You must adjust the specifications of these instances based on your business requirements.
+	// *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and the performance is affected. You must adjust the specifications of these instances based on your business requirements.
 	TipsLevel *int32 `json:"TipsLevel,omitempty" xml:"TipsLevel,omitempty"`
-	// The ID of the vSwitch that serves the instance.
+	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the instance belongs. This parameter is returned only when the instance resides in a VPC.
+	// The VPC ID of the instance. This parameter is returned only when the instance resides in a VPC.
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the instance belongs.
+	// The ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the instances belong.
+	// The zone ID of the instance.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// An internal parameter. This operation does not return a value for this parameter.
+	// An internal parameter. You can ignore this parameter.
 	KindCode *string `json:"kindCode,omitempty" xml:"kindCode,omitempty"`
 }
 
@@ -16281,14 +16286,14 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetKin
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig struct {
 	// The switch to enable or disable Babelfish.
 	//
-	// >  If Babelfish is enabled when you purchase an ApsaraDB RDS for PostgreSQL instance, this parameter is fixed as **true**.
+	// > If Babelfish is enabled when you purchase an ApsaraDB RDS for PostgreSQL instance, this parameter is fixed as **true**.
 	BabelfishEnabled *string `json:"BabelfishEnabled,omitempty" xml:"BabelfishEnabled,omitempty"`
 	// The migration mode for Babelfish. Valid values:
 	//
-	// - **single-db**
-	// - **multi-db**
+	// *   **single-db**
+	// *   **multi-db**
 	//
-	// >  For more information about migration modes for Babelfish, see [Migration modes](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+	// > For more information about migration modes for Babelfish, see [Migration mode](~~428613~~).
 	MigrationMode *string `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty"`
 }
 
@@ -16332,14 +16337,14 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNod
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
 	// The ID of the node.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The region ID of the node.
+	// The ID of the region.
 	NodeRegionId *string `json:"NodeRegionId,omitempty" xml:"NodeRegionId,omitempty"`
-	// The role of node. The valid values:
+	// The role of the node. Valid values:
 	//
-	// - **primary**: primary node.
-	// - **secondary**: standby node.
+	// *   **primary**: primary node
+	// *   **secondary**: secondary node
 	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
-	// The zone ID of the node.
+	// The zone ID of the instance.
 	NodeZoneId *string `json:"NodeZoneId,omitempty" xml:"NodeZoneId,omitempty"`
 }
 
@@ -16377,7 +16382,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBCluste
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
-	// The IDs of the instances.
+	// The details of the instance.
 	DBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
 }
 
@@ -16429,7 +16434,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnly
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIdsReadOnlyDBInstanceId struct {
-	// The ID of the read-only RDS instance.
+	// The ID of the read-only instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -16447,23 +16452,23 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnly
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeServerlessConfig struct {
-	// Indicates whether the automatic suspension feature is enabled for the serverless instance. Valid values:
+	// Indicates whether the automatic start and stop feature is enabled for the serverless instance. Valid values:
 	//
-	// - **true**: The feature is enabled.
-	// - **false**: The feature is disabled. This is the default value.
+	// *   **true**: The feature is enabled.
+	// *   **false** (default): The feature is disabled.
 	//
-	// >  After the automatic suspension feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection is established to the instance, the instance is automatically resumed.
+	// > After the automatic start and stop feature is enabled, if no connections are established to the instance within 10 minutes, the instance is suspended. After a connection is established to the instance, the instance automatically resumes.
 	AutoPause *bool `json:"AutoPause,omitempty" xml:"AutoPause,omitempty"`
-	// The maximum value of RCU.
+	// The maximum number of RDS Capacity Units (RCUs).
 	ScaleMax *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum value of RDS Capacity Unit (RCU).
+	// The minimum number of RDS Capacity Units (RCUs).
 	ScaleMin *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
 	// Indicates whether the forced scaling feature is enabled for the serverless instance.
 	//
-	// - **true**: The feature is enabled.
-	// - **false**: The feature is disabled. This is the default value.
+	// *   **true**: The feature is enabled.
+	// *   **false** (default): The feature is disabled.
 	//
-	// >  In most cases, ApsaraDB RDS automatically scales in or out the RCUs of a serverless instance based on business requirements in real time. In some cases, the scaling does not take effect in real time. You can enable the forced scaling feature to forcefully scales in or out the RCUs of the instance.
+	// > In most cases, the RCU scaling of a serverless instance immediately takes effect. In some cases, the RCU scaling does not immediately take effect. If this happens, you can enable the forced scaling feature to forcefully scale the RCUs of the serverless instance.
 	SwitchForce *bool `json:"SwitchForce,omitempty" xml:"SwitchForce,omitempty"`
 }
 
@@ -17002,12 +17007,12 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the key.
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// An array that consists of keys.
+	// The details about the key.
 	EncryptionKeyList []*DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList `json:"EncryptionKeyList,omitempty" xml:"EncryptionKeyList,omitempty" type:"Repeated"`
 	// The status of the key. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// *   **Enabled**
+	// *   **Disabled**
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
 	// The purpose of the key.
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
@@ -17090,10 +17095,13 @@ type DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The status of the key. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// *   **Enabled**
+	// *   **Disabled**
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
-	// The type of the key.
+	// The type of the key. Valid values:
+	//
+	// *   **CMK**
+	// *   **ServiceKey**
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// The purpose of the key.
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
@@ -17101,7 +17109,10 @@ type DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList struct {
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
 	// The source of the key.
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The role of the instance that uses the key. Valid values: ***master**: primary instance*. **slave**: read-only instance.
+	// The role of the instance. Valid values:
+	//
+	// *   **Master**: primary instance
+	// *   **slave**: read-only instance
 	UsedBy *string `json:"UsedBy,omitempty" xml:"UsedBy,omitempty"`
 }
 
@@ -20751,8 +20762,10 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeDBInstancesAsCsvRequest struct {
+	CachedAsync *bool `json:"CachedAsync,omitempty" xml:"CachedAsync,omitempty"`
 	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ExportKey    *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -20770,8 +20783,18 @@ func (s DescribeDBInstancesAsCsvRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstancesAsCsvRequest) SetCachedAsync(v bool) *DescribeDBInstancesAsCsvRequest {
+	s.CachedAsync = &v
+	return s
+}
+
 func (s *DescribeDBInstancesAsCsvRequest) SetDBInstanceId(v string) *DescribeDBInstancesAsCsvRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesAsCsvRequest) SetExportKey(v string) *DescribeDBInstancesAsCsvRequest {
+	s.ExportKey = &v
 	return s
 }
 
@@ -20896,6 +20919,7 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration time.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExportKey  *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
 	// The ID of the disaster recovery instance that is attached to the instance.
 	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
 	// The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance or read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
@@ -20923,7 +20947,8 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	// The ID of the region in which the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IP address whitelist of the instance.
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SecurityIPList *string                                                                 `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SlaveZones     *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
 	// None.
 	SupportUpgradeAccountType *string `json:"SupportUpgradeAccountType,omitempty" xml:"SupportUpgradeAccountType,omitempty"`
 	// The tag.
@@ -21051,6 +21076,11 @@ func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetExpire
 	return s
 }
 
+func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetExportKey(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
+	s.ExportKey = &v
+	return s
+}
+
 func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetGuardDBInstanceId(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
 	s.GuardDBInstanceId = &v
 	return s
@@ -21121,6 +21151,11 @@ func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetSecuri
 	return s
 }
 
+func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetSlaveZones(v *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
+	s.SlaveZones = v
+	return s
+}
+
 func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetSupportUpgradeAccountType(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
 	s.SupportUpgradeAccountType = &v
 	return s
@@ -21148,6 +21183,23 @@ func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetVpcId(
 
 func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute) SetZoneId(v string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones struct {
+	SlaveRegion []*string `json:"slaveRegion,omitempty" xml:"slaveRegion,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones) SetSlaveRegion(v []*string) *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones {
+	s.SlaveRegion = v
 	return s
 }
 
@@ -23991,7 +24043,9 @@ func (s *DescribeDatabasesResponseBodyDatabases) SetDatabase(v []*DescribeDataba
 
 type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	// An array that consists of the details of the accounts. Each account has specific permissions on the database.
-	Accounts *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	Accounts     *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts     `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	AdvancedInfo *DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo `json:"AdvancedInfo,omitempty" xml:"AdvancedInfo,omitempty" type:"Struct"`
+	BasicInfo    *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo    `json:"BasicInfo,omitempty" xml:"BasicInfo,omitempty" type:"Struct"`
 	// The name of the character set.
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
 	// The collation of the character set. The example value C stands for localization.
@@ -24024,7 +24078,8 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	// The reserved parameter.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RuntimeInfo     *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo `json:"RuntimeInfo,omitempty" xml:"RuntimeInfo,omitempty" type:"Struct"`
 	// The tablespace of the database.
 	//
 	// >  This parameter is returned only for instances that run PostgreSQL.
@@ -24043,6 +24098,16 @@ func (s DescribeDatabasesResponseBodyDatabasesDatabase) GoString() string {
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetAccounts(v *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts) *DescribeDatabasesResponseBodyDatabasesDatabase {
 	s.Accounts = v
+	return s
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetAdvancedInfo(v *DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo) *DescribeDatabasesResponseBodyDatabasesDatabase {
+	s.AdvancedInfo = v
+	return s
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetBasicInfo(v *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo) *DescribeDatabasesResponseBodyDatabasesDatabase {
+	s.BasicInfo = v
 	return s
 }
 
@@ -24103,6 +24168,11 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetPageSize(v int32) *D
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetResourceGroupId(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetRuntimeInfo(v *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo) *DescribeDatabasesResponseBodyDatabasesDatabase {
+	s.RuntimeInfo = v
 	return s
 }
 
@@ -24167,6 +24237,57 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeI
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo) SetAccountPrivilegeDetail(v string) *DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo {
 	s.AccountPrivilegeDetail = &v
+	return s
+}
+
+type DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo struct {
+	AdvancedDbProperty []map[string]interface{} `json:"AdvancedDbProperty,omitempty" xml:"AdvancedDbProperty,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo) SetAdvancedDbProperty(v []map[string]interface{}) *DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo {
+	s.AdvancedDbProperty = v
+	return s
+}
+
+type DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo struct {
+	BasicDbProperty []map[string]interface{} `json:"BasicDbProperty,omitempty" xml:"BasicDbProperty,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo) SetBasicDbProperty(v []map[string]interface{}) *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo {
+	s.BasicDbProperty = v
+	return s
+}
+
+type DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo struct {
+	RuntimeDbProperty []map[string]interface{} `json:"RuntimeDbProperty,omitempty" xml:"RuntimeDbProperty,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo) SetRuntimeDbProperty(v []map[string]interface{}) *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo {
+	s.RuntimeDbProperty = v
 	return s
 }
 
@@ -32812,13 +32933,9 @@ type DescribeSQLLogFilesRequest struct {
 	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: **1 to 100000**.
-	//
-	// Default value: **1**.
+	// The number of the page to return. Valid values: **1 to 100000**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid value: **30 to 200**.
-	//
-	// Default value: **30**.
+	// The number of entries to return on each page. Valid value: **30 to 200**. Default value: **30**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -32877,11 +32994,11 @@ type DescribeSQLLogFilesResponseBody struct {
 	Items *DescribeSQLLogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of entries returned per page.
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries returned.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -32936,9 +33053,9 @@ func (s *DescribeSQLLogFilesResponseBodyItems) SetLogFile(v []*DescribeSQLLogFil
 }
 
 type DescribeSQLLogFilesResponseBodyItemsLogFile struct {
-	// The name of the audit log file.
+	// The name of the file.
 	FileID *string `json:"FileID,omitempty" xml:"FileID,omitempty"`
-	// The download URL of the audit log file. If the audit log file cannot be downloaded, this parameter is null.
+	// The download URL of the file. If the audit log file cannot be downloaded, this parameter is null.
 	LogDownloadURL *string `json:"LogDownloadURL,omitempty" xml:"LogDownloadURL,omitempty"`
 	// The time at which the last SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	LogEndTime *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
@@ -58931,8 +59048,16 @@ func (client *Client) DescribeDBInstancesAsCsvWithOptions(request *DescribeDBIns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CachedAsync)) {
+		query["CachedAsync"] = request.CachedAsync
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportKey)) {
+		query["ExportKey"] = request.ExportKey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -62825,7 +62950,9 @@ func (client *Client) DescribeSQLCollectorRetention(request *DescribeSQLCollecto
  * *   MySQL
  * *   SQL Server 2008 R2
  * *   PostgreSQL
- * >  The DescribeSQLLogFiles operation cannot be used to query the audit log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+ * >
+ * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+ * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
  *
  * @param request DescribeSQLLogFilesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -62897,7 +63024,9 @@ func (client *Client) DescribeSQLLogFilesWithOptions(request *DescribeSQLLogFile
  * *   MySQL
  * *   SQL Server 2008 R2
  * *   PostgreSQL
- * >  The DescribeSQLLogFiles operation cannot be used to query the audit log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+ * >
+ * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+ * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
  *
  * @param request DescribeSQLLogFilesRequest
  * @return DescribeSQLLogFilesResponse
