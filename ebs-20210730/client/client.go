@@ -13,10 +13,13 @@ import (
 )
 
 type AddDiskReplicaPairRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the IDs of existing replication pairs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	ReplicaPairId  *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
+	// The ID of the request.
+	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
 }
 
 func (s AddDiskReplicaPairRequest) String() string {
@@ -185,14 +188,119 @@ func (s *CancelLensServiceResponse) SetBody(v *CancelLensServiceResponseBody) *C
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetClientToken(v string) *ChangeResourceGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetRegionId(v string) *ChangeResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDedicatedBlockStorageClusterRequest struct {
-	Azone           *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	Capacity        *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	DbscId          *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
-	DbscName        *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the zone in which to create the dedicated block storage cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
+	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	// The capacity of the dedicated block storage cluster. Valid values: 61440 to 2334720. Unit: GiB. 2,334,720 GiB is equal to 2,280 TiB. The capacity increases in a minimum increment of 12,288 GB.
+	//
+	// >  If the capacity of a dedicated block storage cluster is less than 576 TiB, the maximum throughput supported per TiB does not exceed 52 MB/s. If the capacity of a dedicated block storage cluster is greater than 576 TiB, the maximum throughput supported per TiB does not exceed 26 MB/s.
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// Deprecated
+	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	// The name of the dedicated block storage cluster.
+	DbscName   *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
+	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the region in which to create the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId        *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*CreateDedicatedBlockStorageClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The type of the dedicated block storage cluster. Valid values:
+	//
+	// *   Standard: basic type. When you set Type to Standard, enhanced SSDs (ESSDs) at performance level 0 (PL0 ESSDs) can be created in the dedicated block storage cluster.
+	// *   Premium: performance type. When you set Type to Premium, ESSDs at performance level 1 (PL1 ESSDs) can be created in the dedicated block storage cluster.
+	//
+	// Default value: Premium.
+	//
+	// For more information about ESSDs, see [ESSDs](~~122389~~).
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateDedicatedBlockStorageClusterRequest) String() string {
@@ -223,6 +331,16 @@ func (s *CreateDedicatedBlockStorageClusterRequest) SetDbscName(v string) *Creat
 	return s
 }
 
+func (s *CreateDedicatedBlockStorageClusterRequest) SetPeriod(v int32) *CreateDedicatedBlockStorageClusterRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetPeriodUnit(v string) *CreateDedicatedBlockStorageClusterRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
 func (s *CreateDedicatedBlockStorageClusterRequest) SetRegionId(v string) *CreateDedicatedBlockStorageClusterRequest {
 	s.RegionId = &v
 	return s
@@ -233,14 +351,45 @@ func (s *CreateDedicatedBlockStorageClusterRequest) SetResourceGroupId(v string)
 	return s
 }
 
+func (s *CreateDedicatedBlockStorageClusterRequest) SetTag(v []*CreateDedicatedBlockStorageClusterRequestTag) *CreateDedicatedBlockStorageClusterRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateDedicatedBlockStorageClusterRequest) SetType(v string) *CreateDedicatedBlockStorageClusterRequest {
 	s.Type = &v
 	return s
 }
 
+type CreateDedicatedBlockStorageClusterRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDedicatedBlockStorageClusterRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDedicatedBlockStorageClusterRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequestTag) SetKey(v string) *CreateDedicatedBlockStorageClusterRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequestTag) SetValue(v string) *CreateDedicatedBlockStorageClusterRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateDedicatedBlockStorageClusterResponseBody struct {
-	DbscId    *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the dedicated block storage cluster.
+	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -297,15 +446,28 @@ func (s *CreateDedicatedBlockStorageClusterResponse) SetBody(v *CreateDedicatedB
 }
 
 type CreateDiskReplicaGroupRequest struct {
-	Bandwidth           *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The bandwidth value. Unit: Mbit/s.
+	//
+	// >  This parameter is unavailable.
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID of the secondary site.
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	DestinationZoneId   *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	GroupName           *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	RPO                 *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceZoneId        *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	// The zone ID of the secondary site.
+	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
+	// The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The RPO of the replication pair-consistent group. Unit: seconds. Set the value to 900.
+	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	// The ID of the region in which to create the replication pair-consistent group. The primary site is deployed in this region.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The zone ID of the primary site.
+	SourceZoneId *string                             `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	Tag          []*CreateDiskReplicaGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateDiskReplicaGroupRequest) String() string {
@@ -356,14 +518,49 @@ func (s *CreateDiskReplicaGroupRequest) SetRegionId(v string) *CreateDiskReplica
 	return s
 }
 
+func (s *CreateDiskReplicaGroupRequest) SetResourceGroupId(v string) *CreateDiskReplicaGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateDiskReplicaGroupRequest) SetSourceZoneId(v string) *CreateDiskReplicaGroupRequest {
 	s.SourceZoneId = &v
 	return s
 }
 
+func (s *CreateDiskReplicaGroupRequest) SetTag(v []*CreateDiskReplicaGroupRequestTag) *CreateDiskReplicaGroupRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateDiskReplicaGroupRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDiskReplicaGroupRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiskReplicaGroupRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiskReplicaGroupRequestTag) SetKey(v string) *CreateDiskReplicaGroupRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDiskReplicaGroupRequestTag) SetValue(v string) *CreateDiskReplicaGroupRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateDiskReplicaGroupResponseBody struct {
+	// The ID of the replication pair-consistent group.
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDiskReplicaGroupResponseBody) String() string {
@@ -414,20 +611,59 @@ func (s *CreateDiskReplicaGroupResponse) SetBody(v *CreateDiskReplicaGroupRespon
 }
 
 type CreateDiskReplicaPairRequest struct {
-	Bandwidth           *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ChargeType          *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationDiskId   *string `json:"DestinationDiskId,omitempty" xml:"DestinationDiskId,omitempty"`
+	// The recovery point objective (RPO) of the replication pair. Unit: seconds. Set the value to 900.
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The subscription duration of the replication pair. This parameter is required when the `ChargeType` parameter is set to PREPAY. The unit of the subscription duration is specified by the `PeriodUnit` parameter.
+	//
+	// *   Valid values when the `PeriodUnit` parameter is set to Week: 1, 2, 3, and 4.
+	// *   Valid values when the `PeriodUnit` parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The bandwidth to use to asynchronously replicate data between the primary disk and secondary disk. Unit: Kbit/s. Valid values:
+	//
+	// *   10240 : equal to 10 Mbit/s
+	// *   20480 : equal to 20 Mbit/s
+	// *   51200 : equal to 50 Mbit/s
+	// *   102400 : equal to 100 Mbit/s
+	//
+	// Default value: 10240.
+	//
+	// When you set the ChargeType parameter to POSTPAY, the Bandwidth parameter is automatically set to 0 and cannot be modified. The value 0 indicates that bandwidth is dynamically allocated based on the volume of data that is asynchronously replicated from the primary disk to the secondary disk.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The billing method of the replication pair. Valid values:
+	//
+	// *   PREPAY: subscription
+	// *   POSTPAY: pay-as-you-go
+	//
+	// Default value: POSTPAY.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The zone ID of the secondary disk.
+	DestinationDiskId *string `json:"DestinationDiskId,omitempty" xml:"DestinationDiskId,omitempty"`
+	// The ID of the secondary disk.
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	DestinationZoneId   *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	DiskId              *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	PairName            *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
-	Period              *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit          *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	RPO                 *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceZoneId        *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	// The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
+	// The region ID of the secondary disk. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The description of the replication pair. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	PairName *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
+	// The unit of the subscription duration of the replication pair. Valid values:
+	//
+	// *   Week.
+	// *   Month
+	//
+	// Default value: Month.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the resource group to which to assign the replication pair.
+	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	// The zone ID of the primary disk.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The key of tag N to add to the replication pair.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the primary disk.
+	SourceZoneId *string                            `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	Tag          []*CreateDiskReplicaPairRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateDiskReplicaPairRequest) String() string {
@@ -503,15 +739,52 @@ func (s *CreateDiskReplicaPairRequest) SetRegionId(v string) *CreateDiskReplicaP
 	return s
 }
 
+func (s *CreateDiskReplicaPairRequest) SetResourceGroupId(v string) *CreateDiskReplicaPairRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateDiskReplicaPairRequest) SetSourceZoneId(v string) *CreateDiskReplicaPairRequest {
 	s.SourceZoneId = &v
 	return s
 }
 
+func (s *CreateDiskReplicaPairRequest) SetTag(v []*CreateDiskReplicaPairRequestTag) *CreateDiskReplicaPairRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateDiskReplicaPairRequestTag struct {
+	// The value of tag N to add to the replication pair.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the request.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDiskReplicaPairRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiskReplicaPairRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiskReplicaPairRequestTag) SetKey(v string) *CreateDiskReplicaPairRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDiskReplicaPairRequestTag) SetValue(v string) *CreateDiskReplicaPairRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateDiskReplicaPairResponseBody struct {
-	OrderId       *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the order.
 	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the replication pair.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDiskReplicaPairResponseBody) String() string {
@@ -567,8 +840,11 @@ func (s *CreateDiskReplicaPairResponse) SetBody(v *CreateDiskReplicaPairResponse
 }
 
 type DeleteDiskReplicaGroupRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the replication pair-consistent group.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
 }
 
@@ -596,6 +872,7 @@ func (s *DeleteDiskReplicaGroupRequest) SetReplicaGroupId(v string) *DeleteDiskR
 }
 
 type DeleteDiskReplicaGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -642,8 +919,11 @@ func (s *DeleteDiskReplicaGroupResponse) SetBody(v *DeleteDiskReplicaGroupRespon
 }
 
 type DeleteDiskReplicaPairRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the primary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region information of replication pairs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the replication pair.
 	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
 }
 
@@ -671,6 +951,7 @@ func (s *DeleteDiskReplicaPairRequest) SetReplicaPairId(v string) *DeleteDiskRep
 }
 
 type DeleteDiskReplicaPairResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -717,10 +998,16 @@ func (s *DeleteDiskReplicaPairResponse) SetBody(v *DeleteDiskReplicaPairResponse
 }
 
 type DescribeDedicatedBlockStorageClusterDisksRequest struct {
-	DbscId     *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the dedicated block storage cluster.
+	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	// The maximum number of entries to return on each page. Maximum value: 500.
+	//
+	// Default value: 10.
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. Set the value to the NextToken value returned in the previous call to the DescribeDedicatedBlockStorageClusterDisks operation. Leave this parameter empty the first time you call this operation.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the dedicated block storage cluster resides. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClusterDisksRequest) String() string {
@@ -752,9 +1039,12 @@ func (s *DescribeDedicatedBlockStorageClusterDisksRequest) SetRegionId(v string)
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBody struct {
-	Disks     *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	NextToken *string                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the cloud disks.
+	Disks *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
+	// The query token returned in this call.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClusterDisksResponseBody) String() string {
@@ -781,6 +1071,7 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBody) SetRequestId(v s
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks struct {
+	// Details about the cloud disks.
 	Disk []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
 }
 
@@ -798,37 +1089,107 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks) SetDisk(v [
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
-	AttachedTime              *string                                                               `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	BdfId                     *string                                                               `json:"BdfId,omitempty" xml:"BdfId,omitempty"`
-	Category                  *string                                                               `json:"Category,omitempty" xml:"Category,omitempty"`
-	DeleteAutoSnapshot        *bool                                                                 `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
-	DeleteWithInstance        *bool                                                                 `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Description               *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	DetachedTime              *string                                                               `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
-	Device                    *string                                                               `json:"Device,omitempty" xml:"Device,omitempty"`
-	DiskChargeType            *string                                                               `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	DiskId                    *string                                                               `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskName                  *string                                                               `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	EnableAutoSnapshot        *bool                                                                 `json:"EnableAutoSnapshot,omitempty" xml:"EnableAutoSnapshot,omitempty"`
-	Encrypted                 *bool                                                                 `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	IOPS                      *int64                                                                `json:"IOPS,omitempty" xml:"IOPS,omitempty"`
-	ImageId                   *string                                                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId                *string                                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	KMSKeyId                  *string                                                               `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	MountInstanceNum          *int32                                                                `json:"MountInstanceNum,omitempty" xml:"MountInstanceNum,omitempty"`
-	MultiAttach               *string                                                               `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
-	PerformanceLevel          *string                                                               `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Portable                  *bool                                                                 `json:"Portable,omitempty" xml:"Portable,omitempty"`
-	RegionId                  *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Size                      *int32                                                                `json:"Size,omitempty" xml:"Size,omitempty"`
-	SourceSnapshotId          *string                                                               `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
-	Status                    *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageClusterId          *string                                                               `json:"StorageClusterId,omitempty" xml:"StorageClusterId,omitempty"`
-	StorageSetId              *string                                                               `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
-	StorageSetPartitionNumber *int32                                                                `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
-	Tags                      []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type                      *string                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
-	ZoneId                    *string                                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The time when the cloud disk was last attached. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	// This parameter is currently in invitational preview and unavailable for general users.
+	BdfId           *string `json:"BdfId,omitempty" xml:"BdfId,omitempty"`
+	BurstingEnabled *bool   `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	// The category of the disk. A value of cloud_essd indicates that the disk is an ESSD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Indicates whether the automatic snapshots of the cloud disk are deleted when the disk is released. Valid values:
+	//
+	// *   true: The automatic snapshots of the cloud disk are deleted when the disk is released.
+	// *   false: The automatic snapshots of the cloud disk are retained when the disk is released.
+	//
+	// Snapshots that are created by calling the [CreateSnapshot](~~25524~~) operation or by using the Elastic Compute Service (ECS) console are retained and not affected by this parameter.
+	DeleteAutoSnapshot *bool `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
+	// Indicates whether the cloud disk is released when its associated instance is released. Valid values:
+	//
+	// *   true: The cloud disk is released when its associated instance is released.
+	// *   false: The cloud disk is retained when its associated instance is released.
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// The description of the cloud disk.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the cloud disk was last detached.
+	DetachedTime *string `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
+	// The device name of the cloud disk on its associated instance. Example: /dev/xvdb. Take note of the following items:
+	//
+	// *   This parameter has a value only when the `Status` value is `In_use`.
+	// *   This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
+	//
+	// >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// The billing method of the cloud disk. Valid values:
+	//
+	// *   PrePaid: subscription
+	// *   PostPaid: pay-as-you-go
+	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
+	// The ID of the cloud disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the cloud disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// Indicates whether the automatic snapshot policy feature is enabled for the cloud disk.
+	EnableAutoSnapshot *bool `json:"EnableAutoSnapshot,omitempty" xml:"EnableAutoSnapshot,omitempty"`
+	// Indicates whether the cloud disk is encrypted.
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// The maximum number of IOPS.
+	IOPS *int64 `json:"IOPS,omitempty" xml:"IOPS,omitempty"`
+	// The ID of the image that was used to create the instance. This parameter is empty unless the cloud disk was created from an image. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the instance to which the cloud disk is attached. Take note of the following items:
+	//
+	// *   This parameter has a value only when the `Status` value is `In_use`.
+	// *   This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Key Management Service (KMS) key used by the cloud disk.
+	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	// The number of instances to which the Shared Block Storage device is attached.
+	MountInstanceNum *int32 `json:"MountInstanceNum,omitempty" xml:"MountInstanceNum,omitempty"`
+	// Indicates whether the multi-attach feature was enabled for the cloud disk.
+	MultiAttach *string `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
+	// The performance level of the enhanced SSD (ESSD). Valid values:
+	//
+	// *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// Indicates whether the cloud disk is removable.
+	Portable        *bool  `json:"Portable,omitempty" xml:"Portable,omitempty"`
+	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	// The region ID of cloud disk.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The size of the disk. Unit: GiB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The ID of the snapshot that was used to create the cloud disk.
+	//
+	// This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
+	SourceSnapshotId *string `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
+	// The state of the cloud disk. For more information, see [Disk states](~~25689~~). Valid values:
+	//
+	// *   In_use
+	// *   Available
+	// *   Attaching
+	// *   Detaching
+	// *   Creating
+	// *   ReIniting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the dedicated block storage cluster to which the cloud disk belongs. If your cloud disk belongs to the public block storage cluster, an empty value is returned.
+	StorageClusterId *string `json:"StorageClusterId,omitempty" xml:"StorageClusterId,omitempty"`
+	// The ID of the storage set.
+	StorageSetId *string `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
+	// The maximum number of partitions in the storage set.
+	StorageSetPartitionNumber *int32 `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
+	// The tags of the cloud disk.
+	Tags       []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Throughput *int64                                                                `json:"Throughput,omitempty" xml:"Throughput,omitempty"`
+	// The type of the disk. Valid values:
+	//
+	// *   system: system disk
+	// *   data: data disk
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The zone ID of cloud disk.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) String() string {
@@ -846,6 +1207,11 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetAtta
 
 func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetBdfId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
 	s.BdfId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetBurstingEnabled(v bool) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.BurstingEnabled = &v
 	return s
 }
 
@@ -944,6 +1310,11 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetPort
 	return s
 }
 
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetProvisionedIops(v int64) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.ProvisionedIops = &v
+	return s
+}
+
 func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetRegionId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
 	s.RegionId = &v
 	return s
@@ -984,6 +1355,11 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetTags
 	return s
 }
 
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetThroughput(v int64) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Throughput = &v
+	return s
+}
+
 func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetType(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
 	s.Type = &v
 	return s
@@ -995,7 +1371,9 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetZone
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key of the cloud disk.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value of the cloud disk.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1047,18 +1425,28 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponse) SetBody(v *DescribeD
 }
 
 type DescribeDedicatedBlockStorageClustersRequest struct {
-	AzoneId                        *string                                            `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
-	Category                       *string                                            `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken                    *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedicatedBlockStorageClusterId []*string                                          `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty" type:"Repeated"`
-	MaxResults                     *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                      *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber                     *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                       *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId                       *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId                *string                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status                         []*string                                          `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	Tag                            []*DescribeDedicatedBlockStorageClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The zone ID of the dedicated block storage cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
+	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	// The category of disks that can be created in the dedicated block storage cluster.
+	//
+	// Set the value to cloud_essd. Only enhanced SSDs (ESSDs) can be created in dedicated block storage clusters.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedicatedBlockStorageClusterId []*string `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty" type:"Repeated"`
+	// The maximum number of entries to return on each page. Maximum value: 500.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. Set the value to the NextToken value returned in the previous call to the DescribeDedicatedBlockStorageClusters operation. Leave this parameter empty the first time you call this operation.
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId        *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status          []*string                                          `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	Tag             []*DescribeDedicatedBlockStorageClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDedicatedBlockStorageClustersRequest) String() string {
@@ -1153,12 +1541,15 @@ func (s *DescribeDedicatedBlockStorageClustersRequestTag) SetValue(v string) *De
 }
 
 type DescribeDedicatedBlockStorageClustersResponseBody struct {
+	// Details about the dedicated block storage clusters.
 	DedicatedBlockStorageClusters []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters `json:"DedicatedBlockStorageClusters,omitempty" xml:"DedicatedBlockStorageClusters,omitempty" type:"Repeated"`
-	NextToken                     *string                                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber                    *int32                                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                      *int32                                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId                     *string                                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount                    *int64                                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The query token returned in this call.
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClustersResponseBody) String() string {
@@ -1200,21 +1591,49 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetTotalCount(v int6
 }
 
 type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters struct {
-	Category                             *string                                                                                                             `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreateTime                           *string                                                                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The category of disks that can be created in the dedicated block storage cluster.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the dedicated block storage cluster was created. The value is a UNIX timestamp. Unit: seconds.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Details about the storage capacity of the dedicated block storage cluster.
 	DedicatedBlockStorageClusterCapacity *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity `json:"DedicatedBlockStorageClusterCapacity,omitempty" xml:"DedicatedBlockStorageClusterCapacity,omitempty" type:"Struct"`
-	DedicatedBlockStorageClusterId       *string                                                                                                             `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty"`
-	DedicatedBlockStorageClusterName     *string                                                                                                             `json:"DedicatedBlockStorageClusterName,omitempty" xml:"DedicatedBlockStorageClusterName,omitempty"`
-	Description                          *string                                                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime                          *string                                                                                                             `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	PerformanceLevel                     *string                                                                                                             `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	RegionId                             *string                                                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId                      *string                                                                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status                               *string                                                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportedCategory                    *string                                                                                                             `json:"SupportedCategory,omitempty" xml:"SupportedCategory,omitempty"`
-	Tags                                 []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags                               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type                                 *string                                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
-	ZoneId                               *string                                                                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the dedicated block storage cluster.
+	DedicatedBlockStorageClusterId *string `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty"`
+	// The name of the dedicated block storage cluster.
+	DedicatedBlockStorageClusterName *string `json:"DedicatedBlockStorageClusterName,omitempty" xml:"DedicatedBlockStorageClusterName,omitempty"`
+	// The description of the dedicated block storage cluster.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the dedicated block storage cluster expires. The value is a UNIX timestamp. Unit: seconds.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The performance level of disks. Valid values:
+	//
+	// *   PL0
+	// *   PL1
+	// *   PL2
+	// *   PL3
+	//
+	// >  This parameter is valid only when SupportedCategory is set to cloud_essd.
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The region ID of the dedicated block storage cluster.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The state of the dedicated block storage cluster. Valid values:
+	//
+	// *   Preparing: The cluster is pending delivery.
+	// *   Running: The cluster is running.
+	// *   Expired: The cluster has expired.
+	// *   Offline: The cluster is offline.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is not supported.
+	SupportedCategory *string                                                                               `json:"SupportedCategory,omitempty" xml:"SupportedCategory,omitempty"`
+	Tags              []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of the dedicated block storage cluster. Valid values:
+	//
+	// *   Standard: a standard dedicated block storage cluster. ESSDs at performance level 0 (PL0 ESSDs) can be created in standard dedicated block storage clusters.
+	// *   Premium: a performance dedicated block storage cluster. ESSDs at performance level 1 (PL1 ESSDs) can be created in performance dedicated block storage clusters.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The zone ID of the dedicated block storage cluster.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) String() string {
@@ -1301,10 +1720,12 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageC
 }
 
 type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity struct {
+	// The available capacity of the dedicated block storage cluster. Unit: GiB.
 	AvailableCapacity *int64 `json:"AvailableCapacity,omitempty" xml:"AvailableCapacity,omitempty"`
 	DeliveryCapacity  *int64 `json:"DeliveryCapacity,omitempty" xml:"DeliveryCapacity,omitempty"`
-	TotalCapacity     *int64 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
-	UsedCapacity      *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+	// The total capacity of the dedicated block storage cluster. Unit: GiB.
+	TotalCapacity *int64 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	UsedCapacity  *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) String() string {
@@ -1880,13 +2301,33 @@ func (s *DescribeDiskMonitorDataListResponse) SetBody(v *DescribeDiskMonitorData
 }
 
 type DescribeDiskReplicaGroupsRequest struct {
-	GroupIds   *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Site       *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// The number of the page to return.
+	GroupIds *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
+	// The IDs of replication pair-consistent groups. You can specify the IDs of one or more replication pair-consistent groups. Separate the IDs with commas (,).
+	//
+	// This parameter is empty by default, which indicates that all replication pair-consistent groups in the specified region are queried.
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The type of the site from which the information of replication pair-consistent groups is retrieved. This parameter is used for scenarios where data is replicated across zones in replication pairs.
+	//
+	// *   If the Site parameter is not specified, information such as the state of replication pair-consistent groups at the primary site is queried and returned.
+	//
+	// *   Otherwise, information such as the state of replication pair-consistent groups at the site specified by the Site parameter is queried and returned. Valid values:
+	//
+	//     *   production: primary site
+	//     *   backup: secondary site
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The query token returned in this call.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query token. Set the value to the NextToken value returned in the previous call to the DescribeDiskReplicaGroups operation. Leave this parameter empty the first time you call this operation. When NextToken is specified, the PageSize and PageNumber request parameters do not take effect and the TotalCount response parameter is invalid.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	Site *string                                `json:"Site,omitempty" xml:"Site,omitempty"`
+	Tag  []*DescribeDiskReplicaGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDiskReplicaGroupsRequest) String() string {
@@ -1927,18 +2368,55 @@ func (s *DescribeDiskReplicaGroupsRequest) SetRegionId(v string) *DescribeDiskRe
 	return s
 }
 
+func (s *DescribeDiskReplicaGroupsRequest) SetResourceGroupId(v string) *DescribeDiskReplicaGroupsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaGroupsRequest) SetSite(v string) *DescribeDiskReplicaGroupsRequest {
 	s.Site = &v
 	return s
 }
 
+func (s *DescribeDiskReplicaGroupsRequest) SetTag(v []*DescribeDiskReplicaGroupsRequestTag) *DescribeDiskReplicaGroupsRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeDiskReplicaGroupsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDiskReplicaGroupsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskReplicaGroupsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskReplicaGroupsRequestTag) SetKey(v string) *DescribeDiskReplicaGroupsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsRequestTag) SetValue(v string) *DescribeDiskReplicaGroupsRequestTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeDiskReplicaGroupsResponseBody struct {
-	NextToken     *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber    *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the replication pair-consistent group.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of entries returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region in which the primary site is deployed.
 	ReplicaGroups []*DescribeDiskReplicaGroupsResponseBodyReplicaGroups `json:"ReplicaGroups,omitempty" xml:"ReplicaGroups,omitempty" type:"Repeated"`
-	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details about the replication pair-consistent groups.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDiskReplicaGroupsResponseBody) String() string {
@@ -1980,24 +2458,66 @@ func (s *DescribeDiskReplicaGroupsResponseBody) SetTotalCount(v int64) *Describe
 }
 
 type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
-	Bandwidth           *int64   `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationRegionId *string  `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	DestinationZoneId   *string  `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	GroupName           *string  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LastRecoverPoint    *int64   `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
-	PairIds             [][]byte `json:"PairIds,omitempty" xml:"PairIds,omitempty" type:"Repeated"`
-	PairNumber          *int64   `json:"PairNumber,omitempty" xml:"PairNumber,omitempty"`
-	PrimaryRegion       *string  `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
-	PrimaryZone         *string  `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	RPO                 *int64   `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	ReplicaGroupId      *string  `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	Site                *string  `json:"Site,omitempty" xml:"Site,omitempty"`
-	SourceRegionId      *string  `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	SourceZoneId        *string  `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	StandbyRegion       *string  `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
-	StandbyZone         *string  `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
-	Status              *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of entries returned per page.
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the replication pair-consistent group.
+	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	// The description of the replication pair-consistent group.
+	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
+	// The state of the replication pair-consistent group. Valid values:
+	//
+	// *   invalid: The replication pair-consistent group is invalid, which indicates that abnormal replication pairs are present in the replication pair-consistent group.
+	// *   creating: The replication pair-consistent group is being created.
+	// *   created: The replication pair-consistent group is created.
+	// *   create_failed: The replication pair-consistent group cannot be created.
+	// *   manual_syncing: Data is being manually synchronized between the disks in the replication pair-consistent group. The first time data is being manually synchronized between the disks in a replication pair-consistent group, the replication pair-consistent group is in this state.
+	// *   syncing: Data is being synchronized between the disks in the replication pair-consistent group. While data is being asynchronously replicated from the primary disks to the secondary disks not for the first time, the replication pair-consistent group is in this state.
+	// *   normal: The replication pair-consistent group is working as expected. When the system finishes replicating data from the primary disks to the secondary disks within the current replication cycle, the replication pair-consistent group enters this state.
+	// *   stopping: The replication pair-consistent group is being stopped.
+	// *   stopped: The replication pair-consistent group is stopped.
+	// *   stop_failed: The replication pair-consistent group cannot be stopped.
+	// *   failovering: A failover is being performed.
+	// *   failovered: A failover is performed.
+	// *   failover_failed: A failover cannot be performed.
+	// *   reprotecting: A reverse replication is being performed.
+	// *   reprotect_failed: A reverse replication cannot be performed.
+	// *   deleting: The replication pair-consistent group is being deleted.
+	// *   delete_failed: The replication pair-consistent group cannot be deleted.
+	// *   deleted: The replication pair-consistent group is deleted.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IDs of the replications pairs that belong to the replication pair-consistent group.
+	LastRecoverPoint *int64 `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
+	// The initial source region (primary region) of the replication pair-consistent group.
+	PairIds [][]byte `json:"PairIds,omitempty" xml:"PairIds,omitempty" type:"Repeated"`
+	// The initial destination region (secondary region) of the replication pair-consistent group.
+	PairNumber *int64 `json:"PairNumber,omitempty" xml:"PairNumber,omitempty"`
+	// The initial source zone (primary zone) of the replication pair-consistent group.
+	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
+	// The bandwidth value. Unit: Mbit/s. This parameter is unavailable and has a system-preset value.
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The type of the site from which the information of the replication pair and replication pair-consistent group is obtained. Valid values:
+	//
+	// *   production: primary site
+	// *   backup: secondary site
+	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	// The ID of the zone in which the primary site is deployed.
+	ReplicaGroupId  *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of replications pairs that belong to the replication pair-consistent group.
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// The ID of the region in which the secondary site is deployed.
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// The ID of the zone in which the secondary site is deployed.
+	SourceZoneId *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	// The initial destination zone (secondary zone) of the replication pair-consistent group.
+	StandbyRegion *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
+	// The page number of the returned page.
+	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
+	// The time when data was last replicated from the primary disks to the secondary disks in the replication pair-consistent group. The value of this parameter is a timestamp. Unit: seconds.
+	Status *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDiskReplicaGroupsResponseBodyReplicaGroups) String() string {
@@ -2068,6 +2588,11 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetReplicaGroupId(v
 	return s
 }
 
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetResourceGroupId(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetSite(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
 	s.Site = &v
 	return s
@@ -2095,6 +2620,34 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetStandbyZone(v st
 
 func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetStatus(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetTags(v []*DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.Tags = v
+	return s
+}
+
+type DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags) SetTagKey(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags) SetTagValue(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -2209,14 +2762,42 @@ func (s *DescribeDiskReplicaPairProgressResponse) SetBody(v *DescribeDiskReplica
 }
 
 type DescribeDiskReplicaPairsRequest struct {
-	MaxResults     *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PairIds        *string `json:"PairIds,omitempty" xml:"PairIds,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 500.
+	//
+	// Default value: 10.
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. Set the value to the NextToken value returned in the previous call to the DescribeDiskReplicaPairs operation. Leave this parameter empty the first time you call this operation. When NextToken is specified, the PageSize and PageNumber request parameters do not take effect and the TotalCount response parameter is invalid.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of replication pairs. You can specify the IDs of one or more replication pairs and separate the IDs with commas (,). Example: `pair-cn-dsa****,pair-cn-asd****`.
+	//
+	// This parameter is empty by default, which indicates that all replication pairs in the specified region are queried.
+	PairIds *string `json:"PairIds,omitempty" xml:"PairIds,omitempty"`
+	// The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the replication pair-consistent group. You can specify the ID of a replication pair-consistent group to query the replication pairs that are added to this group. Example: `pg-****`.
+	//
+	// This parameter is empty by default, which indicates that all replication pairs in the specified region are queried.
+	//
+	// >  If you set this parameter to `-`, replication pairs that are not added to replication pair-consistent groups are queried.
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	Site           *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// The ID of the resource group to which the replication pair belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The type of the site from which the information of replication pairs is retrieved. Valid values:
+	//
+	// *   production: primary site
+	// *   backup: secondary site
+	//
+	// Default value: production.
+	Site *string                               `json:"Site,omitempty" xml:"Site,omitempty"`
+	Tag  []*DescribeDiskReplicaPairsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDiskReplicaPairsRequest) String() string {
@@ -2262,18 +2843,59 @@ func (s *DescribeDiskReplicaPairsRequest) SetReplicaGroupId(v string) *DescribeD
 	return s
 }
 
+func (s *DescribeDiskReplicaPairsRequest) SetResourceGroupId(v string) *DescribeDiskReplicaPairsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaPairsRequest) SetSite(v string) *DescribeDiskReplicaPairsRequest {
 	s.Site = &v
 	return s
 }
 
+func (s *DescribeDiskReplicaPairsRequest) SetTag(v []*DescribeDiskReplicaPairsRequestTag) *DescribeDiskReplicaPairsRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeDiskReplicaPairsRequestTag struct {
+	// The key of tag N of the replication pair.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N of the replication pair.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDiskReplicaPairsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskReplicaPairsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskReplicaPairsRequestTag) SetKey(v string) *DescribeDiskReplicaPairsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsRequestTag) SetValue(v string) *DescribeDiskReplicaPairsRequestTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeDiskReplicaPairsResponseBody struct {
-	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber   *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query token returned in this call.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Valid values: 1 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Details about the replication pairs.
 	ReplicaPairs []*DescribeDiskReplicaPairsResponseBodyReplicaPairs `json:"ReplicaPairs,omitempty" xml:"ReplicaPairs,omitempty" type:"Repeated"`
-	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDiskReplicaPairsResponseBody) String() string {
@@ -2315,30 +2937,93 @@ func (s *DescribeDiskReplicaPairsResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 type DescribeDiskReplicaPairsResponseBodyReplicaPairs struct {
-	Bandwidth         *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The bandwidth used to asynchronously replicate data from the primary disk to the secondary disk. Unit: Kbit/s.
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The billing method of the replication pair.
+	//
+	// Valid values:
+	//
+	// *   PREPAY: subscription
+	// *   POSTPAY: pay-as-you-go
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the replication pair was created. The value of this parameter is a timestamp. Unit: seconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the replication pair.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the secondary disk.
 	DestinationDiskId *string `json:"DestinationDiskId,omitempty" xml:"DestinationDiskId,omitempty"`
+	// The region ID of the secondary disk.
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// The zone ID of the secondary disk.
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	ExpiredTime       *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	LastRecoverPoint  *int64  `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
-	PairName          *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
-	PrimaryRegion     *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
-	PrimaryZone       *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	RPO               *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	ReplicaGroupId    *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	ReplicaGroupName  *string `json:"ReplicaGroupName,omitempty" xml:"ReplicaGroupName,omitempty"`
-	ReplicaPairId     *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
-	Site              *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	SourceDiskId      *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
-	SourceRegion      *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
-	SourceZoneId      *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	StandbyRegion     *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
-	StandbyZone       *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusMessage     *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// The time when the replication pair expires. The value of this parameter is a timestamp. Unit: seconds.
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The time when data was last replicated from the primary disk to the secondary disk in the replication pair. The value of this parameter is a timestamp. Unit: seconds.
+	LastRecoverPoint *int64 `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
+	// The name of the replication pair.
+	PairName *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
+	// The initial source region (primary region) of the replication pair.
+	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
+	// The initial source zone (primary zone) of the replication pair.
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The recovery point objective (RPO) of the replication pair. Unit: seconds.
+	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	// The ID of the replication pair-consistent group to which the replication pair belongs.
+	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	// The name of the replication pair-consistent group to which the replication pair belongs.
+	ReplicaGroupName *string `json:"ReplicaGroupName,omitempty" xml:"ReplicaGroupName,omitempty"`
+	// The ID of the replication pair.
+	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
+	// The ID of the resource group to which the replication pair belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The type of the site from which the information of the replication pair and replication pair-consistent group is obtained. Valid values:
+	//
+	// *   production: primary site
+	// *   backup: secondary site
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// The ID of the primary disk.
+	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
+	// The region ID of the primary disk.
+	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// The zone ID of the primary disk.
+	SourceZoneId *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	// The initial destination region (secondary region) of the replication pair.
+	StandbyRegion *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
+	// The initial destination zone (secondary zone) of the replication pair.
+	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
+	// The state of the replication pair. Valid values:
+	//
+	// *   invalid: The replication pair is invalid. When a replication pair becomes abnormal, it enters this state.
+	// *   creating: The replication pair is being created.
+	// *   created: The replication pair is created.
+	// *   create_failed: The replication pair cannot be created.
+	// *   initial_syncing: Data is synchronized from the primary disk to the secondary disk for the first time. After a replication pair is created and activated, the replication pair is in this state the first time data is synchronized from the primary disk to the secondary disk.
+	// *   manual_syncing: Data is being manually synchronized from the primary disk to the secondary disk. After data is manually synchronized from the primary disk to the secondary disk, the replication pair returns to the Stopped state. The first time data is manually synchronized from the primary disk to the secondary disk, the replication pair is in the manual_syncing state during the synchronization.
+	// *   syncing: Data is being synchronized from the primary disk to the secondary disk. While data is being asynchronously replicated from the primary disk to the secondary disk not for the first time, the replication pair is in this state.
+	// *   normal: The replication pair is working as expected. When the system finishes replicating data from the primary disk to the secondary disk within the current replication cycle, the replication pair enters this state.
+	// *   stopping: The replication pair is being stopped.
+	// *   stopped: The replication pair is stopped.
+	// *   stop_failed: The replication pair cannot be stopped.
+	// *   failovering: A failover is being performed.
+	// *   failovered: A failover is performed.
+	// *   failover_failed: A failover cannot be performed.
+	// *   reprotecting: A reverse replication is being performed.
+	// *   reprotect_failed: A reverse replication cannot be performed.
+	// *   deleting: The replication pair is being deleted.
+	// *   delete_failed: The replication pair cannot be deleted.
+	// *   deleted: The replication pair is deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The message that describes the state of the replication pair. This parameter has a value when `Status` has a value of invalid or `create_failed`. Valid values:
+	//
+	// *   PrePayOrderExpired: The replication pair has expired.
+	// *   PostPayOrderCeaseService: The pay-as-you-go replication pair has been stopped due to an overdue payment.
+	// *   DeviceRemoved: The primary or secondary disk has been deleted.
+	// *   DeviceKeyChanged: The `DeviceKey` mapping of the primary or secondary disk has changed.
+	// *   DeviceSizeChanged: The `DeviceSize` value of the primary or secondary disk has changed.
+	// *   OperationDenied.QuotaExceed: The maximum number of replication pairs that can be created has been reached.
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// The tags of the replication pair.
+	Tags []*DescribeDiskReplicaPairsResponseBodyReplicaPairsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDiskReplicaPairsResponseBodyReplicaPairs) String() string {
@@ -2429,6 +3114,11 @@ func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetReplicaPairId(v st
 	return s
 }
 
+func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetResourceGroupId(v string) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetSite(v string) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
 	s.Site = &v
 	return s
@@ -2466,6 +3156,36 @@ func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetStatus(v string) *
 
 func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetStatusMessage(v string) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
 	s.StatusMessage = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetTags(v []*DescribeDiskReplicaPairsResponseBodyReplicaPairsTags) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
+	s.Tags = v
+	return s
+}
+
+type DescribeDiskReplicaPairsResponseBodyReplicaPairsTags struct {
+	// The tag key of the replication pair.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value of the replication pair.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDiskReplicaPairsResponseBodyReplicaPairsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskReplicaPairsResponseBodyReplicaPairsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairsTags) SetTagKey(v string) *DescribeDiskReplicaPairsResponseBodyReplicaPairsTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairsTags) SetTagValue(v string) *DescribeDiskReplicaPairsResponseBodyReplicaPairsTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -2551,9 +3271,12 @@ func (s *DescribeLensServiceStatusResponse) SetBody(v *DescribeLensServiceStatus
 }
 
 type DescribeRegionsRequest struct {
+	// The name of the region.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The endpoint of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Details about the regions.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -2580,8 +3303,10 @@ func (s *DescribeRegionsRequest) SetResourceType(v string) *DescribeRegionsReque
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the zones.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the region.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -2603,10 +3328,17 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string                                    `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionEndpoint *string                                    `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Zones          []*DescribeRegionsResponseBodyRegionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	// The name of the zone.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The ID of the zone.
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// The type of resource. Valid values:
+	//
+	// *   ear: async replication
+	// *   lend: CloudLens for EBS
+	// *   dbsc: Dedicated Block Storage Cluster
+	RegionId *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Zones    []*DescribeRegionsResponseBodyRegionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -2696,8 +3428,11 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type FailoverDiskReplicaGroupRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the replication pair-consistent group.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
 }
 
@@ -2846,10 +3581,18 @@ func (s *FailoverDiskReplicaPairResponse) SetBody(v *FailoverDiskReplicaPairResp
 }
 
 type ListTagResourcesRequest struct {
-	ClientToken  *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The token used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   dbsc: dedicated block storage cluster
+	// *   pair: replication pair
+	// *   group: replication pair-consistent group
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -2893,7 +3636,15 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N used for exact search of EBS resources. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+	//
+	// The `Tag.N` parameter pair (Tag.N.Key and Tag.N.Value) is used for exact search of EBS resources that have specified tags added. Each tag is a key-value pair.
+	//
+	// *   If you specify only `Tag.N.Key`, all EBS resources whose tags contain the specified tag key are returned.
+	// *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
+	// *   If you specify multiple tag key-value pairs at the same time, only EBS resources that match all tag key-value pairs are returned.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N used for exact search of EBS resources. The tag value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2916,8 +3667,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request. The request ID is returned regardless of whether the call is successful.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the resources and tags, including resource IDs, resource types, and tag key-value pairs.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -2945,10 +3699,18 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   dbsc: dedicated block storage cluster
+	// *   pair: replication pair
+	// *   group: replication pair-consistent group
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key of the resource.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value of the resource.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -3009,11 +3771,18 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyDedicatedBlockStorageClusterAttributeRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+	//
+	// The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DbscId      *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
-	DbscName    *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
+	// The ID of the dedicated block storage cluster.
+	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	// The new name of the dedicated block storage cluster.
+	DbscName *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
+	// The new description of dedicated block storage cluster.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDedicatedBlockStorageClusterAttributeRequest) String() string {
@@ -3050,6 +3819,7 @@ func (s *ModifyDedicatedBlockStorageClusterAttributeRequest) SetRegionId(v strin
 }
 
 type ModifyDedicatedBlockStorageClusterAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3096,12 +3866,18 @@ func (s *ModifyDedicatedBlockStorageClusterAttributeResponse) SetBody(v *ModifyD
 }
 
 type ModifyDiskReplicaGroupRequest struct {
-	Bandwidth      *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	RPO            *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
+	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	// The region ID of the replication pair-consistent group.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
 }
 
@@ -3149,6 +3925,7 @@ func (s *ModifyDiskReplicaGroupRequest) SetReplicaGroupId(v string) *ModifyDiskR
 }
 
 type ModifyDiskReplicaGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3195,12 +3972,23 @@ func (s *ModifyDiskReplicaGroupResponse) SetBody(v *ModifyDiskReplicaGroupRespon
 }
 
 type ModifyDiskReplicaPairRequest struct {
-	Bandwidth     *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PairName      *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
-	RPO           *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Bandwidth   *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the request.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The recovery point objective (RPO) of the replication pair. Unit: seconds. Set the value to 900.
+	PairName *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
+	RPO      *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The bandwidth used to asynchronously replicate data between the primary and secondary disks. Unit: Kbit/s. Valid values:
+	//
+	// *   10240: equal to 10 Mbit/s
+	// *   20480: equal to 20 Mbit/s
+	// *   51200: equal to 50 Mbit/s
+	// *   102400: equal to 100 Mbit/s
+	//
+	// Default value: 10240.
 	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
 }
 
@@ -3294,10 +4082,14 @@ func (s *ModifyDiskReplicaPairResponse) SetBody(v *ModifyDiskReplicaPairResponse
 }
 
 type RemoveDiskReplicaPairRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the replication pair-consistent group.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the replication pair-consistent group.
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	ReplicaPairId  *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
+	// The ID of the replication pair.
+	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
 }
 
 func (s RemoveDiskReplicaPairRequest) String() string {
@@ -3329,6 +4121,7 @@ func (s *RemoveDiskReplicaPairRequest) SetReplicaPairId(v string) *RemoveDiskRep
 }
 
 type RemoveDiskReplicaPairResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3375,8 +4168,11 @@ func (s *RemoveDiskReplicaPairResponse) SetBody(v *RemoveDiskReplicaPairResponse
 }
 
 type ReprotectDiskReplicaGroupRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
 }
 
@@ -3617,9 +4413,18 @@ func (s *StartDiskMonitorResponse) SetBody(v *StartDiskMonitorResponseBody) *Sta
 }
 
 type StartDiskReplicaGroupRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OneShot        *bool   `json:"OneShot,omitempty" xml:"OneShot,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to immediately synchronize data once. Valid values:
+	//
+	// *   true: immediately synchronizes data once.
+	// *   false: synchronizes data based on the RPO of the replication pair-consistent group.
+	//
+	// Default value: false.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the request.
+	OneShot *bool `json:"OneShot,omitempty" xml:"OneShot,omitempty"`
+	// The ID of the replication pair-consistent group.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
 }
 
@@ -3698,8 +4503,9 @@ func (s *StartDiskReplicaGroupResponse) SetBody(v *StartDiskReplicaGroupResponse
 }
 
 type StartDiskReplicaPairRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OneShot       *bool   `json:"OneShot,omitempty" xml:"OneShot,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OneShot     *bool   `json:"OneShot,omitempty" xml:"OneShot,omitempty"`
+	// The ID of the request.
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
 }
@@ -3871,8 +4677,11 @@ func (s *StopDiskMonitorResponse) SetBody(v *StopDiskMonitorResponseBody) *StopD
 }
 
 type StopDiskReplicaGroupRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the replication pair-consistent group.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
 }
 
@@ -3900,6 +4709,7 @@ func (s *StopDiskReplicaGroupRequest) SetReplicaGroupId(v string) *StopDiskRepli
 }
 
 type StopDiskReplicaGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3946,8 +4756,11 @@ func (s *StopDiskReplicaGroupResponse) SetBody(v *StopDiskReplicaGroupResponseBo
 }
 
 type StopDiskReplicaPairRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region information of replication pairs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the replication pair.
 	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
 }
 
@@ -3975,6 +4788,7 @@ func (s *StopDiskReplicaPairRequest) SetReplicaPairId(v string) *StopDiskReplica
 }
 
 type StopDiskReplicaPairResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4021,9 +4835,16 @@ func (s *StopDiskReplicaPairResponse) SetBody(v *StopDiskReplicaPairResponseBody
 }
 
 type TagResourcesRequest struct {
-	ClientToken  *string                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   dbsc: dedicated block storage cluster
+	// *   pair: replication pair
+	// *   group: replication pair-consistent group
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -4062,7 +4883,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4085,6 +4908,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request. The request ID is returned regardless of whether the call is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4131,10 +4955,23 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ClientToken  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags from the resource. This parameter is valid only when the TagKey.N parameter is not specified. Valid values:
+	//
+	// *   true: removes all tags from the resource.
+	// *   false: does not remove all tags from the resource.
+	//
+	// Default value: false.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   dbsc: dedicated block storage cluster
+	// *   pair: the replication pair.
+	// *   group: replication pair-consistent group
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -4178,6 +5015,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The ID of the request. The request ID is returned regardless of whether the call is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4270,6 +5108,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * The region ID of the replication pair-consistent group.
+ *
+ * @param request AddDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddDiskReplicaPairResponse
+ */
 func (client *Client) AddDiskReplicaPairWithOptions(request *AddDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *AddDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4315,6 +5160,12 @@ func (client *Client) AddDiskReplicaPairWithOptions(request *AddDiskReplicaPairR
 	return _result, _err
 }
 
+/**
+ * The region ID of the replication pair-consistent group.
+ *
+ * @param request AddDiskReplicaPairRequest
+ * @return AddDiskReplicaPairResponse
+ */
 func (client *Client) AddDiskReplicaPair(request *AddDiskReplicaPairRequest) (_result *AddDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDiskReplicaPairResponse{}
@@ -4392,6 +5243,76 @@ func (client *Client) CancelLensService() (_result *CancelLensServiceResponse, _
 	return _result, _err
 }
 
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+ * Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
+ * Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
+ * You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+ *
+ * @param request CreateDedicatedBlockStorageClusterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDedicatedBlockStorageClusterResponse
+ */
 func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *CreateDedicatedBlockStorageClusterRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedBlockStorageClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4414,12 +5335,24 @@ func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *Cre
 		query["DbscName"] = request.DbscName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -4449,6 +5382,15 @@ func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *Cre
 	return _result, _err
 }
 
+/**
+ * Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+ * Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
+ * Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
+ * You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+ *
+ * @param request CreateDedicatedBlockStorageClusterRequest
+ * @return CreateDedicatedBlockStorageClusterResponse
+ */
 func (client *Client) CreateDedicatedBlockStorageCluster(request *CreateDedicatedBlockStorageClusterRequest) (_result *CreateDedicatedBlockStorageClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDedicatedBlockStorageClusterResponse{}
@@ -4460,6 +5402,18 @@ func (client *Client) CreateDedicatedBlockStorageCluster(request *CreateDedicate
 	return _result, _err
 }
 
+/**
+ * The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of one or more instances.
+ * When you create a replication pair-consistent group, take note of the following items:
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
+ * *   Replication pair-consistent groups support disaster recovery across zones within the same region and disaster recovery across regions.
+ * *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). Replication pairs can be added only to a replication pair-consistent group that replicates in the same direction as them.
+ * *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
+ *
+ * @param request CreateDiskReplicaGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDiskReplicaGroupResponse
+ */
 func (client *Client) CreateDiskReplicaGroupWithOptions(request *CreateDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4498,8 +5452,16 @@ func (client *Client) CreateDiskReplicaGroupWithOptions(request *CreateDiskRepli
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceZoneId)) {
 		query["SourceZoneId"] = request.SourceZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4525,6 +5487,17 @@ func (client *Client) CreateDiskReplicaGroupWithOptions(request *CreateDiskRepli
 	return _result, _err
 }
 
+/**
+ * The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of one or more instances.
+ * When you create a replication pair-consistent group, take note of the following items:
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
+ * *   Replication pair-consistent groups support disaster recovery across zones within the same region and disaster recovery across regions.
+ * *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). Replication pairs can be added only to a replication pair-consistent group that replicates in the same direction as them.
+ * *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
+ *
+ * @param request CreateDiskReplicaGroupRequest
+ * @return CreateDiskReplicaGroupResponse
+ */
 func (client *Client) CreateDiskReplicaGroup(request *CreateDiskReplicaGroupRequest) (_result *CreateDiskReplicaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDiskReplicaGroupResponse{}
@@ -4536,6 +5509,13 @@ func (client *Client) CreateDiskReplicaGroup(request *CreateDiskReplicaGroupRequ
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **CreateDiskReplicaPair**.
+ *
+ * @param request CreateDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDiskReplicaPairResponse
+ */
 func (client *Client) CreateDiskReplicaPairWithOptions(request *CreateDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *CreateDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4594,8 +5574,16 @@ func (client *Client) CreateDiskReplicaPairWithOptions(request *CreateDiskReplic
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceZoneId)) {
 		query["SourceZoneId"] = request.SourceZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4621,6 +5609,12 @@ func (client *Client) CreateDiskReplicaPairWithOptions(request *CreateDiskReplic
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **CreateDiskReplicaPair**.
+ *
+ * @param request CreateDiskReplicaPairRequest
+ * @return CreateDiskReplicaPairResponse
+ */
 func (client *Client) CreateDiskReplicaPair(request *CreateDiskReplicaPairRequest) (_result *CreateDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDiskReplicaPairResponse{}
@@ -4632,6 +5626,15 @@ func (client *Client) CreateDiskReplicaPair(request *CreateDiskReplicaPairReques
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   Before you can delete a replication pair-consistent group, make sure that no replication pairs are present in the group.
+ * *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failover Failed** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
+ *
+ * @param request DeleteDiskReplicaGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDiskReplicaGroupResponse
+ */
 func (client *Client) DeleteDiskReplicaGroupWithOptions(request *DeleteDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4673,6 +5676,14 @@ func (client *Client) DeleteDiskReplicaGroupWithOptions(request *DeleteDiskRepli
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   Before you can delete a replication pair-consistent group, make sure that no replication pairs are present in the group.
+ * *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failover Failed** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
+ *
+ * @param request DeleteDiskReplicaGroupRequest
+ * @return DeleteDiskReplicaGroupResponse
+ */
 func (client *Client) DeleteDiskReplicaGroup(request *DeleteDiskReplicaGroupRequest) (_result *DeleteDiskReplicaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDiskReplicaGroupResponse{}
@@ -4684,6 +5695,15 @@ func (client *Client) DeleteDiskReplicaGroup(request *DeleteDiskReplicaGroupRequ
 	return _result, _err
 }
 
+/**
+ * *   The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failed Over** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
+ * *   To delete a replication pair, you must call this operation in the region where the primary disk is located. After the replication pair is deleted, the functionality limits are lifted from the primary and secondary disks. For example, you can attach the secondary disk, resize the disk, or read data from or write data to the disk.
+ *
+ * @param request DeleteDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDiskReplicaPairResponse
+ */
 func (client *Client) DeleteDiskReplicaPairWithOptions(request *DeleteDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *DeleteDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4725,6 +5745,14 @@ func (client *Client) DeleteDiskReplicaPairWithOptions(request *DeleteDiskReplic
 	return _result, _err
 }
 
+/**
+ * *   The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failed Over** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
+ * *   To delete a replication pair, you must call this operation in the region where the primary disk is located. After the replication pair is deleted, the functionality limits are lifted from the primary and secondary disks. For example, you can attach the secondary disk, resize the disk, or read data from or write data to the disk.
+ *
+ * @param request DeleteDiskReplicaPairRequest
+ * @return DeleteDiskReplicaPairResponse
+ */
 func (client *Client) DeleteDiskReplicaPair(request *DeleteDiskReplicaPairRequest) (_result *DeleteDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDiskReplicaPairResponse{}
@@ -4736,6 +5764,18 @@ func (client *Client) DeleteDiskReplicaPair(request *DeleteDiskReplicaPairReques
 	return _result, _err
 }
 
+/**
+ * *   You can use one of the following methods to check the responses:
+ *     *   Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+ *     *   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the number of the page to return.
+ *         You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use method 1. When `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+ * *   A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+ * When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+ *
+ * @param request DescribeDedicatedBlockStorageClusterDisksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDedicatedBlockStorageClusterDisksResponse
+ */
 func (client *Client) DescribeDedicatedBlockStorageClusterDisksWithOptions(request *DescribeDedicatedBlockStorageClusterDisksRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedBlockStorageClusterDisksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4781,6 +5821,17 @@ func (client *Client) DescribeDedicatedBlockStorageClusterDisksWithOptions(reque
 	return _result, _err
 }
 
+/**
+ * *   You can use one of the following methods to check the responses:
+ *     *   Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+ *     *   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the number of the page to return.
+ *         You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use method 1. When `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+ * *   A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+ * When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+ *
+ * @param request DescribeDedicatedBlockStorageClusterDisksRequest
+ * @return DescribeDedicatedBlockStorageClusterDisksResponse
+ */
 func (client *Client) DescribeDedicatedBlockStorageClusterDisks(request *DescribeDedicatedBlockStorageClusterDisksRequest) (_result *DescribeDedicatedBlockStorageClusterDisksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDedicatedBlockStorageClusterDisksResponse{}
@@ -4792,6 +5843,15 @@ func (client *Client) DescribeDedicatedBlockStorageClusterDisks(request *Describ
 	return _result, _err
 }
 
+/**
+ * >  Dedicated Block Storage Cluster is supported in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
+ * *   You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+ * *   We recommend that you use the NextToken and MaxResults parameters to perform a paged query. During a paged query, when you call the DescribeDedicatedBlockStorageClusters operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+ *
+ * @param request DescribeDedicatedBlockStorageClustersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDedicatedBlockStorageClustersResponse
+ */
 func (client *Client) DescribeDedicatedBlockStorageClustersWithOptions(request *DescribeDedicatedBlockStorageClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedBlockStorageClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4871,6 +5931,14 @@ func (client *Client) DescribeDedicatedBlockStorageClustersWithOptions(request *
 	return _result, _err
 }
 
+/**
+ * >  Dedicated Block Storage Cluster is supported in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
+ * *   You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+ * *   We recommend that you use the NextToken and MaxResults parameters to perform a paged query. During a paged query, when you call the DescribeDedicatedBlockStorageClusters operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+ *
+ * @param request DescribeDedicatedBlockStorageClustersRequest
+ * @return DescribeDedicatedBlockStorageClustersResponse
+ */
 func (client *Client) DescribeDedicatedBlockStorageClusters(request *DescribeDedicatedBlockStorageClustersRequest) (_result *DescribeDedicatedBlockStorageClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDedicatedBlockStorageClustersResponse{}
@@ -5086,6 +6154,13 @@ func (client *Client) DescribeDiskMonitorDataList(request *DescribeDiskMonitorDa
 	return _result, _err
 }
 
+/**
+ * The region ID of the replication pair-consistent group.
+ *
+ * @param request DescribeDiskReplicaGroupsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDiskReplicaGroupsResponse
+ */
 func (client *Client) DescribeDiskReplicaGroupsWithOptions(request *DescribeDiskReplicaGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskReplicaGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5116,8 +6191,16 @@ func (client *Client) DescribeDiskReplicaGroupsWithOptions(request *DescribeDisk
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Site)) {
 		query["Site"] = request.Site
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5143,6 +6226,12 @@ func (client *Client) DescribeDiskReplicaGroupsWithOptions(request *DescribeDisk
 	return _result, _err
 }
 
+/**
+ * The region ID of the replication pair-consistent group.
+ *
+ * @param request DescribeDiskReplicaGroupsRequest
+ * @return DescribeDiskReplicaGroupsResponse
+ */
 func (client *Client) DescribeDiskReplicaGroups(request *DescribeDiskReplicaGroupsRequest) (_result *DescribeDiskReplicaGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiskReplicaGroupsResponse{}
@@ -5202,6 +6291,15 @@ func (client *Client) DescribeDiskReplicaPairProgress(request *DescribeDiskRepli
 	return _result, _err
 }
 
+/**
+ * *   The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
+ * *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides within the region, the information of the replication pair is displayed in the response.
+ * *   If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+ *
+ * @param request DescribeDiskReplicaPairsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDiskReplicaPairsResponse
+ */
 func (client *Client) DescribeDiskReplicaPairsWithOptions(request *DescribeDiskReplicaPairsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskReplicaPairsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5236,8 +6334,16 @@ func (client *Client) DescribeDiskReplicaPairsWithOptions(request *DescribeDiskR
 		query["ReplicaGroupId"] = request.ReplicaGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Site)) {
 		query["Site"] = request.Site
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5263,6 +6369,14 @@ func (client *Client) DescribeDiskReplicaPairsWithOptions(request *DescribeDiskR
 	return _result, _err
 }
 
+/**
+ * *   The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
+ * *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides within the region, the information of the replication pair is displayed in the response.
+ * *   If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+ *
+ * @param request DescribeDiskReplicaPairsRequest
+ * @return DescribeDiskReplicaPairsResponse
+ */
 func (client *Client) DescribeDiskReplicaPairs(request *DescribeDiskReplicaPairsRequest) (_result *DescribeDiskReplicaPairsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiskReplicaPairsResponse{}
@@ -5359,6 +6473,13 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **FailoverDiskReplicaGroup**.
+ *
+ * @param request FailoverDiskReplicaGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return FailoverDiskReplicaGroupResponse
+ */
 func (client *Client) FailoverDiskReplicaGroupWithOptions(request *FailoverDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *FailoverDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5400,6 +6521,12 @@ func (client *Client) FailoverDiskReplicaGroupWithOptions(request *FailoverDiskR
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **FailoverDiskReplicaGroup**.
+ *
+ * @param request FailoverDiskReplicaGroupRequest
+ * @return FailoverDiskReplicaGroupResponse
+ */
 func (client *Client) FailoverDiskReplicaGroup(request *FailoverDiskReplicaGroupRequest) (_result *FailoverDiskReplicaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FailoverDiskReplicaGroupResponse{}
@@ -5411,6 +6538,13 @@ func (client *Client) FailoverDiskReplicaGroup(request *FailoverDiskReplicaGroup
 	return _result, _err
 }
 
+/**
+ * The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+ *
+ * @param request FailoverDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return FailoverDiskReplicaPairResponse
+ */
 func (client *Client) FailoverDiskReplicaPairWithOptions(request *FailoverDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *FailoverDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5452,6 +6586,12 @@ func (client *Client) FailoverDiskReplicaPairWithOptions(request *FailoverDiskRe
 	return _result, _err
 }
 
+/**
+ * The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+ *
+ * @param request FailoverDiskReplicaPairRequest
+ * @return FailoverDiskReplicaPairResponse
+ */
 func (client *Client) FailoverDiskReplicaPair(request *FailoverDiskReplicaPairRequest) (_result *FailoverDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FailoverDiskReplicaPairResponse{}
@@ -5463,6 +6603,16 @@ func (client *Client) FailoverDiskReplicaPair(request *FailoverDiskReplicaPairRe
 	return _result, _err
 }
 
+/**
+ * Specify at least one of the following parameters or parameter pairs in a request to determine a query object:
+ * *   `ResourceId.N`
+ * *   `Tag.N` parameter pair (`Tag.N.Key` and `Tag.N.Value`)
+ * If you set `Tag.N` and `ResourceId.N` at the same time, the EBS resources that match both the parameters are returned.
+ *
+ * @param request ListTagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5516,6 +6666,15 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+/**
+ * Specify at least one of the following parameters or parameter pairs in a request to determine a query object:
+ * *   `ResourceId.N`
+ * *   `Tag.N` parameter pair (`Tag.N.Key` and `Tag.N.Value`)
+ * If you set `Tag.N` and `ResourceId.N` at the same time, the EBS resources that match both the parameters are returned.
+ *
+ * @param request ListTagResourcesRequest
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -5527,6 +6686,13 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify the information of a dedicated block storage cluster. The information includes the name and description of the cluster.
+ *
+ * @param request ModifyDedicatedBlockStorageClusterAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDedicatedBlockStorageClusterAttributeResponse
+ */
 func (client *Client) ModifyDedicatedBlockStorageClusterAttributeWithOptions(request *ModifyDedicatedBlockStorageClusterAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyDedicatedBlockStorageClusterAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5576,6 +6742,12 @@ func (client *Client) ModifyDedicatedBlockStorageClusterAttributeWithOptions(req
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify the information of a dedicated block storage cluster. The information includes the name and description of the cluster.
+ *
+ * @param request ModifyDedicatedBlockStorageClusterAttributeRequest
+ * @return ModifyDedicatedBlockStorageClusterAttributeResponse
+ */
 func (client *Client) ModifyDedicatedBlockStorageClusterAttribute(request *ModifyDedicatedBlockStorageClusterAttributeRequest) (_result *ModifyDedicatedBlockStorageClusterAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDedicatedBlockStorageClusterAttributeResponse{}
@@ -5587,6 +6759,14 @@ func (client *Client) ModifyDedicatedBlockStorageClusterAttribute(request *Modif
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   The replication pair-consistent group must be in the **Created** (`created`) or **Stopped** (`stopped`) state.
+ *
+ * @param request ModifyDiskReplicaGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDiskReplicaGroupResponse
+ */
 func (client *Client) ModifyDiskReplicaGroupWithOptions(request *ModifyDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5644,6 +6824,13 @@ func (client *Client) ModifyDiskReplicaGroupWithOptions(request *ModifyDiskRepli
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   The replication pair-consistent group must be in the **Created** (`created`) or **Stopped** (`stopped`) state.
+ *
+ * @param request ModifyDiskReplicaGroupRequest
+ * @return ModifyDiskReplicaGroupResponse
+ */
 func (client *Client) ModifyDiskReplicaGroup(request *ModifyDiskReplicaGroupRequest) (_result *ModifyDiskReplicaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDiskReplicaGroupResponse{}
@@ -5655,6 +6842,13 @@ func (client *Client) ModifyDiskReplicaGroup(request *ModifyDiskReplicaGroupRequ
 	return _result, _err
 }
 
+/**
+ * The name of the replication pair.
+ *
+ * @param request ModifyDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDiskReplicaPairResponse
+ */
 func (client *Client) ModifyDiskReplicaPairWithOptions(request *ModifyDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *ModifyDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5712,6 +6906,12 @@ func (client *Client) ModifyDiskReplicaPairWithOptions(request *ModifyDiskReplic
 	return _result, _err
 }
 
+/**
+ * The name of the replication pair.
+ *
+ * @param request ModifyDiskReplicaPairRequest
+ * @return ModifyDiskReplicaPairResponse
+ */
 func (client *Client) ModifyDiskReplicaPair(request *ModifyDiskReplicaPairRequest) (_result *ModifyDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDiskReplicaPairResponse{}
@@ -5723,6 +6923,14 @@ func (client *Client) ModifyDiskReplicaPair(request *ModifyDiskReplicaPairReques
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   The replication pair-consistent group from which you want to remove a replication pair must be in the **Created** (`created`), **Stopped** (`stopped`), or **Invalid** (`invalid`) state.
+ *
+ * @param request RemoveDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveDiskReplicaPairResponse
+ */
 func (client *Client) RemoveDiskReplicaPairWithOptions(request *RemoveDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *RemoveDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5768,6 +6976,13 @@ func (client *Client) RemoveDiskReplicaPairWithOptions(request *RemoveDiskReplic
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   The replication pair-consistent group from which you want to remove a replication pair must be in the **Created** (`created`), **Stopped** (`stopped`), or **Invalid** (`invalid`) state.
+ *
+ * @param request RemoveDiskReplicaPairRequest
+ * @return RemoveDiskReplicaPairResponse
+ */
 func (client *Client) RemoveDiskReplicaPair(request *RemoveDiskReplicaPairRequest) (_result *RemoveDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveDiskReplicaPairResponse{}
@@ -5779,6 +6994,13 @@ func (client *Client) RemoveDiskReplicaPair(request *RemoveDiskReplicaPairReques
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **ReprotectDiskReplicaGroup**.
+ *
+ * @param request ReprotectDiskReplicaGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReprotectDiskReplicaGroupResponse
+ */
 func (client *Client) ReprotectDiskReplicaGroupWithOptions(request *ReprotectDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *ReprotectDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5820,6 +7042,12 @@ func (client *Client) ReprotectDiskReplicaGroupWithOptions(request *ReprotectDis
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **ReprotectDiskReplicaGroup**.
+ *
+ * @param request ReprotectDiskReplicaGroupRequest
+ * @return ReprotectDiskReplicaGroupResponse
+ */
 func (client *Client) ReprotectDiskReplicaGroup(request *ReprotectDiskReplicaGroupRequest) (_result *ReprotectDiskReplicaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReprotectDiskReplicaGroupResponse{}
@@ -5831,6 +7059,13 @@ func (client *Client) ReprotectDiskReplicaGroup(request *ReprotectDiskReplicaGro
 	return _result, _err
 }
 
+/**
+ * The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+ *
+ * @param request ReprotectDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReprotectDiskReplicaPairResponse
+ */
 func (client *Client) ReprotectDiskReplicaPairWithOptions(request *ReprotectDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *ReprotectDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5872,6 +7107,12 @@ func (client *Client) ReprotectDiskReplicaPairWithOptions(request *ReprotectDisk
 	return _result, _err
 }
 
+/**
+ * The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+ *
+ * @param request ReprotectDiskReplicaPairRequest
+ * @return ReprotectDiskReplicaPairResponse
+ */
 func (client *Client) ReprotectDiskReplicaPair(request *ReprotectDiskReplicaPairRequest) (_result *ReprotectDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReprotectDiskReplicaPairResponse{}
@@ -5937,6 +7178,13 @@ func (client *Client) StartDiskMonitor(request *StartDiskMonitorRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **StartDiskReplicaGroup**.
+ *
+ * @param request StartDiskReplicaGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartDiskReplicaGroupResponse
+ */
 func (client *Client) StartDiskReplicaGroupWithOptions(request *StartDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *StartDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5982,6 +7230,12 @@ func (client *Client) StartDiskReplicaGroupWithOptions(request *StartDiskReplica
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **StartDiskReplicaGroup**.
+ *
+ * @param request StartDiskReplicaGroupRequest
+ * @return StartDiskReplicaGroupResponse
+ */
 func (client *Client) StartDiskReplicaGroup(request *StartDiskReplicaGroupRequest) (_result *StartDiskReplicaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDiskReplicaGroupResponse{}
@@ -5993,6 +7247,13 @@ func (client *Client) StartDiskReplicaGroup(request *StartDiskReplicaGroupReques
 	return _result, _err
 }
 
+/**
+ * The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+ *
+ * @param request StartDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartDiskReplicaPairResponse
+ */
 func (client *Client) StartDiskReplicaPairWithOptions(request *StartDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *StartDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6038,6 +7299,12 @@ func (client *Client) StartDiskReplicaPairWithOptions(request *StartDiskReplicaP
 	return _result, _err
 }
 
+/**
+ * The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+ *
+ * @param request StartDiskReplicaPairRequest
+ * @return StartDiskReplicaPairResponse
+ */
 func (client *Client) StartDiskReplicaPair(request *StartDiskReplicaPairRequest) (_result *StartDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDiskReplicaPairResponse{}
@@ -6103,6 +7370,15 @@ func (client *Client) StopDiskMonitor(request *StopDiskMonitorRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   The replication pair-consistent group that you want to stop must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), or **Stopped** (`stopped`) state.
+ * *   When a replication pair-consistent group is stopped, it enters the **Stopped** (`stopped`) state. If a replication pair-consistent group cannot be stopped, the state of the group remains unchanged or changes to **Stop Failed** (`stop_failed`). In this case, try again later.
+ *
+ * @param request StopDiskReplicaGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopDiskReplicaGroupResponse
+ */
 func (client *Client) StopDiskReplicaGroupWithOptions(request *StopDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *StopDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6144,6 +7420,14 @@ func (client *Client) StopDiskReplicaGroupWithOptions(request *StopDiskReplicaGr
 	return _result, _err
 }
 
+/**
+ * *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   The replication pair-consistent group that you want to stop must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), or **Stopped** (`stopped`) state.
+ * *   When a replication pair-consistent group is stopped, it enters the **Stopped** (`stopped`) state. If a replication pair-consistent group cannot be stopped, the state of the group remains unchanged or changes to **Stop Failed** (`stop_failed`). In this case, try again later.
+ *
+ * @param request StopDiskReplicaGroupRequest
+ * @return StopDiskReplicaGroupResponse
+ */
 func (client *Client) StopDiskReplicaGroup(request *StopDiskReplicaGroupRequest) (_result *StopDiskReplicaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDiskReplicaGroupResponse{}
@@ -6155,6 +7439,14 @@ func (client *Client) StopDiskReplicaGroup(request *StopDiskReplicaGroupRequest)
 	return _result, _err
 }
 
+/**
+ * *   The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last asynchronous replication was complete and drops all the data that is being replicated from the primary disk.
+ *
+ * @param request StopDiskReplicaPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopDiskReplicaPairResponse
+ */
 func (client *Client) StopDiskReplicaPairWithOptions(request *StopDiskReplicaPairRequest, runtime *util.RuntimeOptions) (_result *StopDiskReplicaPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6196,6 +7488,13 @@ func (client *Client) StopDiskReplicaPairWithOptions(request *StopDiskReplicaPai
 	return _result, _err
 }
 
+/**
+ * *   The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+ * *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last asynchronous replication was complete and drops all the data that is being replicated from the primary disk.
+ *
+ * @param request StopDiskReplicaPairRequest
+ * @return StopDiskReplicaPairResponse
+ */
 func (client *Client) StopDiskReplicaPair(request *StopDiskReplicaPairRequest) (_result *StopDiskReplicaPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDiskReplicaPairResponse{}
@@ -6207,6 +7506,13 @@ func (client *Client) StopDiskReplicaPair(request *StopDiskReplicaPairRequest) (
 	return _result, _err
 }
 
+/**
+ * Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](~~25412~~).
+ *
+ * @param request TagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6256,6 +7562,12 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+/**
+ * Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](~~25412~~).
+ *
+ * @param request TagResourcesRequest
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -6267,6 +7579,14 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+/**
+ * *   You can remove up to 20 tags at a time.
+ * *   After a tag is removed from an EBS resource, the tag is automatically deleted if the tag is not added to any instance.
+ *
+ * @param request UntagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6320,6 +7640,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+/**
+ * *   You can remove up to 20 tags at a time.
+ * *   After a tag is removed from an EBS resource, the tag is automatically deleted if the tag is not added to any instance.
+ *
+ * @param request UntagResourcesRequest
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
