@@ -705,9 +705,8 @@ func (s *PipelineTemplate) SetUid(v string) *PipelineTemplate {
 }
 
 type PipelineTemplateSpec struct {
-	Context       *Context               `json:"context,omitempty" xml:"context,omitempty"`
-	ContextSchema map[string]interface{} `json:"contextSchema,omitempty" xml:"contextSchema,omitempty"`
-	Tasks         []*TaskExec            `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+	Context *Context    `json:"context,omitempty" xml:"context,omitempty"`
+	Tasks   []*TaskExec `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
 }
 
 func (s PipelineTemplateSpec) String() string {
@@ -720,11 +719,6 @@ func (s PipelineTemplateSpec) GoString() string {
 
 func (s *PipelineTemplateSpec) SetContext(v *Context) *PipelineTemplateSpec {
 	s.Context = v
-	return s
-}
-
-func (s *PipelineTemplateSpec) SetContextSchema(v map[string]interface{}) *PipelineTemplateSpec {
-	s.ContextSchema = v
 	return s
 }
 
@@ -1420,11 +1414,10 @@ func (s *TaskTemplate) SetUid(v string) *TaskTemplate {
 }
 
 type TaskTemplateSpec struct {
-	Context          *Context               `json:"context,omitempty" xml:"context,omitempty"`
-	ContextSchema    map[string]interface{} `json:"contextSchema,omitempty" xml:"contextSchema,omitempty"`
-	Description      *string                `json:"description,omitempty" xml:"description,omitempty"`
-	ExecuteCondition *Condition             `json:"executeCondition,omitempty" xml:"executeCondition,omitempty"`
-	Worker           *TaskWorker            `json:"worker,omitempty" xml:"worker,omitempty"`
+	Context          *Context    `json:"context,omitempty" xml:"context,omitempty"`
+	Description      *string     `json:"description,omitempty" xml:"description,omitempty"`
+	ExecuteCondition *Condition  `json:"executeCondition,omitempty" xml:"executeCondition,omitempty"`
+	Worker           *TaskWorker `json:"worker,omitempty" xml:"worker,omitempty"`
 }
 
 func (s TaskTemplateSpec) String() string {
@@ -1437,11 +1430,6 @@ func (s TaskTemplateSpec) GoString() string {
 
 func (s *TaskTemplateSpec) SetContext(v *Context) *TaskTemplateSpec {
 	s.Context = v
-	return s
-}
-
-func (s *TaskTemplateSpec) SetContextSchema(v map[string]interface{}) *TaskTemplateSpec {
-	s.ContextSchema = v
 	return s
 }
 
