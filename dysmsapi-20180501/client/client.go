@@ -13,11 +13,22 @@ import (
 )
 
 type BatchSendMessageToGlobeRequest struct {
-	From    *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The content of the message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	To      *string `json:"To,omitempty" xml:"To,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the messaging campaign. It must be 1 to 255 characters in length. The ID is the value of the TaskId field in the delivery receipt of the message.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The mobile phone numbers to which the message is sent. You must add the dialing code to the beginning of each mobile phone number.
+	//
+	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// The type of the message. Valid values:
+	//
+	// *   **NOTIFY**: notification
+	// *   **MKT**: promotional message
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ValidityPeriod *int64  `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
 }
 
 func (s BatchSendMessageToGlobeRequest) String() string {
@@ -53,14 +64,26 @@ func (s *BatchSendMessageToGlobeRequest) SetType(v string) *BatchSendMessageToGl
 	return s
 }
 
+func (s *BatchSendMessageToGlobeRequest) SetValidityPeriod(v int64) *BatchSendMessageToGlobeRequest {
+	s.ValidityPeriod = &v
+	return s
+}
+
 type BatchSendMessageToGlobeResponseBody struct {
-	FailedList          *string `json:"FailedList,omitempty" xml:"FailedList,omitempty"`
-	From                *string `json:"From,omitempty" xml:"From,omitempty"`
-	MessageIdList       *string `json:"MessageIdList,omitempty" xml:"MessageIdList,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResponseCode        *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The list of mobile phone numbers that failed to receive the message.
+	FailedList *string `json:"FailedList,omitempty" xml:"FailedList,omitempty"`
+	// The sender ID returned.
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The ID of the message.
+	MessageIdList *string `json:"MessageIdList,omitempty" xml:"MessageIdList,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/error-codes).
+	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The description of the status code.
 	ResponseDescription *string `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
-	SuccessCount        *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The number of mobile phone numbers that received the message.
+	SuccessCount *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 
 func (s BatchSendMessageToGlobeResponseBody) String() string {
@@ -136,8 +159,14 @@ func (s *BatchSendMessageToGlobeResponse) SetBody(v *BatchSendMessageToGlobeResp
 }
 
 type ConversionDataRequest struct {
+	// Conversion rate monitoring return value.
+	//
+	// >  The value of this parameter is of type double, and the value is between \[0,1].
 	ConversionRate *string `json:"ConversionRate,omitempty" xml:"ConversionRate,omitempty"`
-	ReportTime     *int64  `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+	// Timestamp of the conversion rate observation should be a Unix timestamp, millisecond-level long integer.
+	//
+	// >  If this field is not specified: the current timestamp is the default.
+	ReportTime *int64 `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
 }
 
 func (s ConversionDataRequest) String() string {
@@ -159,8 +188,11 @@ func (s *ConversionDataRequest) SetReportTime(v int64) *ConversionDataRequest {
 }
 
 type ConversionDataResponseBody struct {
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResponseCode        *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code. Returning OK means the request was successful. For other error codes, please refer to the [Error codes](~~180674~~) list.
+	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The description of the status code.
 	ResponseDescription *string `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
 }
 
@@ -217,6 +249,7 @@ func (s *ConversionDataResponse) SetBody(v *ConversionDataResponseBody) *Convers
 }
 
 type QueryMessageRequest struct {
+	// The ID of the message.
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
@@ -234,18 +267,34 @@ func (s *QueryMessageRequest) SetMessageId(v string) *QueryMessageRequest {
 }
 
 type QueryMessageResponseBody struct {
-	ErrorCode           *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorDescription    *string                               `json:"ErrorDescription,omitempty" xml:"ErrorDescription,omitempty"`
-	Message             *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	MessageId           *string                               `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	NumberDetail        *QueryMessageResponseBodyNumberDetail `json:"NumberDetail,omitempty" xml:"NumberDetail,omitempty" type:"Struct"`
-	ReceiveDate         *string                               `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
-	RequestId           *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResponseCode        *string                               `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	ResponseDescription *string                               `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
-	SendDate            *string                               `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	Status              *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	To                  *string                               `json:"To,omitempty" xml:"To,omitempty"`
+	// The status code of the message.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The description of the status code.
+	ErrorDescription *string `json:"ErrorDescription,omitempty" xml:"ErrorDescription,omitempty"`
+	// The content of the message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the message.
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The details about the mobile phone number.
+	NumberDetail *QueryMessageResponseBodyNumberDetail `json:"NumberDetail,omitempty" xml:"NumberDetail,omitempty" type:"Struct"`
+	// The time when the delivery receipt was received from the carrier.
+	ReceiveDate *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code of the delivery request.
+	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The description of the delivery request status.
+	ResponseDescription *string `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
+	// The time when the message was sent to the carrier.
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	// The delivery status of the message.
+	//
+	// *   1: The message was sent.
+	// *   2: The message failed to be sent.
+	// *   3: The message is being sent.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The mobile phone number to which the message was sent.
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s QueryMessageResponseBody) String() string {
@@ -317,9 +366,12 @@ func (s *QueryMessageResponseBody) SetTo(v string) *QueryMessageResponseBody {
 }
 
 type QueryMessageResponseBodyNumberDetail struct {
+	// The carrier that owns the mobile phone number.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The country to which the mobile phone number belongs.
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region to which the mobile phone number belongs.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryMessageResponseBodyNumberDetail) String() string {
@@ -375,10 +427,17 @@ func (s *QueryMessageResponse) SetBody(v *QueryMessageResponseBody) *QueryMessag
 }
 
 type SendMessageToGlobeRequest struct {
-	From    *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The content of the message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	To      *string `json:"To,omitempty" xml:"To,omitempty"`
+	// The ID of the messaging campaign. It must be 1 to 255 characters in length. The ID is the value of the TaskId field in the delivery receipt of the message.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The mobile phone number to which the message is sent. You must add the dialing code to the beginning of the mobile phone number. Example: 8521245567\*\*\*\*.
+	//
+	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+	To             *string `json:"To,omitempty" xml:"To,omitempty"`
+	ValidityPeriod *int64  `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
 }
 
 func (s SendMessageToGlobeRequest) String() string {
@@ -409,15 +468,28 @@ func (s *SendMessageToGlobeRequest) SetTo(v string) *SendMessageToGlobeRequest {
 	return s
 }
 
+func (s *SendMessageToGlobeRequest) SetValidityPeriod(v int64) *SendMessageToGlobeRequest {
+	s.ValidityPeriod = &v
+	return s
+}
+
 type SendMessageToGlobeResponseBody struct {
-	From                *string                                     `json:"From,omitempty" xml:"From,omitempty"`
-	MessageId           *string                                     `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	NumberDetail        *SendMessageToGlobeResponseBodyNumberDetail `json:"NumberDetail,omitempty" xml:"NumberDetail,omitempty" type:"Struct"`
-	RequestId           *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResponseCode        *string                                     `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	ResponseDescription *string                                     `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
-	Segments            *string                                     `json:"Segments,omitempty" xml:"Segments,omitempty"`
-	To                  *string                                     `json:"To,omitempty" xml:"To,omitempty"`
+	// The sender ID returned.
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The ID of the message.
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The details about the mobile phone number of the recipient.
+	NumberDetail *SendMessageToGlobeResponseBodyNumberDetail `json:"NumberDetail,omitempty" xml:"NumberDetail,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code of the delivery request.
+	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The description of the delivery request status.
+	ResponseDescription *string `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
+	// The number of messages that incurred fees.
+	Segments *string `json:"Segments,omitempty" xml:"Segments,omitempty"`
+	// The mobile phone number to which the message was sent.
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s SendMessageToGlobeResponseBody) String() string {
@@ -469,9 +541,12 @@ func (s *SendMessageToGlobeResponseBody) SetTo(v string) *SendMessageToGlobeResp
 }
 
 type SendMessageToGlobeResponseBodyNumberDetail struct {
+	// The carrier that owns the mobile phone number.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The country to which the mobile phone number belongs.
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region to which the mobile phone number belongs.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s SendMessageToGlobeResponseBodyNumberDetail) String() string {
@@ -527,11 +602,19 @@ func (s *SendMessageToGlobeResponse) SetBody(v *SendMessageToGlobeResponseBody) 
 }
 
 type SendMessageWithTemplateRequest struct {
-	From            *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The signature. To query the signature, log on to the [Short Message Service (SMS) console](https://sms-intl.console.aliyun.com/overview) and navigate to the **Signatures** tab of the **Go China** page.
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The extension code of the MO message.
 	SmsUpExtendCode *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
-	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateParam   *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
-	To              *string `json:"To,omitempty" xml:"To,omitempty"`
+	// The code of the message template. To query the code, log on to the [SMS console](https://sms-intl.console.aliyun.com/overview) and navigate to the **Templates** tab of the **Go China** page.
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The value of the variable in the message template. If a variable exists in the template, the parameter is required.
+	TemplateParam *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
+	// The mobile phone number to which the message is sent. You must add the country code to the beginning of the mobile phone number. Example: 861503871\*\*\*\*.
+	//
+	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+	To             *string `json:"To,omitempty" xml:"To,omitempty"`
+	ValidityPeriod *int64  `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
 }
 
 func (s SendMessageWithTemplateRequest) String() string {
@@ -567,14 +650,26 @@ func (s *SendMessageWithTemplateRequest) SetTo(v string) *SendMessageWithTemplat
 	return s
 }
 
+func (s *SendMessageWithTemplateRequest) SetValidityPeriod(v int64) *SendMessageWithTemplateRequest {
+	s.ValidityPeriod = &v
+	return s
+}
+
 type SendMessageWithTemplateResponseBody struct {
-	MessageId           *string                                          `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	NumberDetail        *SendMessageWithTemplateResponseBodyNumberDetail `json:"NumberDetail,omitempty" xml:"NumberDetail,omitempty" type:"Struct"`
-	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResponseCode        *string                                          `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	ResponseDescription *string                                          `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
-	Segments            *string                                          `json:"Segments,omitempty" xml:"Segments,omitempty"`
-	To                  *string                                          `json:"To,omitempty" xml:"To,omitempty"`
+	// The ID of the message.
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The details about the mobile phone number of the recipient.
+	NumberDetail *SendMessageWithTemplateResponseBodyNumberDetail `json:"NumberDetail,omitempty" xml:"NumberDetail,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code of the delivery request.
+	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The description of the delivery request status.
+	ResponseDescription *string `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
+	// The number of messages that incurred fees.
+	Segments *string `json:"Segments,omitempty" xml:"Segments,omitempty"`
+	// The mobile phone number to which the message was sent. The dialing code was added to the beginning of the mobile phone number. Example: 861503871\*\*\*\*.
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s SendMessageWithTemplateResponseBody) String() string {
@@ -621,9 +716,12 @@ func (s *SendMessageWithTemplateResponseBody) SetTo(v string) *SendMessageWithTe
 }
 
 type SendMessageWithTemplateResponseBodyNumberDetail struct {
+	// The carrier that owns the mobile phone number.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The country to which the mobile phone number belongs.
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region to which the mobile phone number belongs.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s SendMessageWithTemplateResponseBodyNumberDetail) String() string {
@@ -679,9 +777,15 @@ func (s *SendMessageWithTemplateResponse) SetBody(v *SendMessageWithTemplateResp
 }
 
 type SmsConversionRequest struct {
-	ConversionTime *int64  `json:"ConversionTime,omitempty" xml:"ConversionTime,omitempty"`
-	Delivered      *bool   `json:"Delivered,omitempty" xml:"Delivered,omitempty"`
-	MessageId      *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The time when the OTP message was delivered. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// *   If you leave the parameter empty, the current timestamp is specified by default.
+	// *   If you specify the parameter, the timestamp must be greater than the message sending time and less than the current timestamp.
+	ConversionTime *int64 `json:"ConversionTime,omitempty" xml:"ConversionTime,omitempty"`
+	// Specifies whether customers replied to the OTP message. Valid values: true and false.
+	Delivered *bool `json:"Delivered,omitempty" xml:"Delivered,omitempty"`
+	// The ID of the OTP message.
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s SmsConversionRequest) String() string {
@@ -708,8 +812,11 @@ func (s *SmsConversionRequest) SetMessageId(v string) *SmsConversionRequest {
 }
 
 type SmsConversionResponseBody struct {
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResponseCode        *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code. If OK is returned, the request is successful. For more information, see [Error codes](~~180674~~).
+	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// The description of the status code.
 	ResponseDescription *string `json:"ResponseDescription,omitempty" xml:"ResponseDescription,omitempty"`
 }
 
@@ -783,9 +890,11 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	client.EndpointRule = tea.String("central")
 	client.EndpointMap = map[string]*string{
 		"ap-southeast-1": tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5": tea.String("dysmsapi-xman.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-5": tea.String("dysmsapi.ap-southeast-5.aliyuncs.com"),
 		"cn-beijing":     tea.String("dysmsapi-proxy.cn-beijing.aliyuncs.com"),
 		"cn-hongkong":    tea.String("dysmsapi-xman.cn-hongkong.aliyuncs.com"),
+		"eu-central-1":   tea.String("dysmsapi.eu-central-1.aliyuncs.com"),
+		"us-east-1":      tea.String("dysmsapi.us-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -818,6 +927,18 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * *   You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
+ * *   You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages exceeding more than 1,000 mobile number per request, you can choose to use the broadcast messaging feature available in the Alibaba Cloud SMS console.
+ * *   For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](~~SendMessageToGlobe~~) operation to ensure that messages are delivered on time.
+ * *   In each request, you can send messages to up to 1,000 mobile phone numbers.
+ * ### QPS limit
+ * You may call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+ *
+ * @param request BatchSendMessageToGlobeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchSendMessageToGlobeResponse
+ */
 func (client *Client) BatchSendMessageToGlobeWithOptions(request *BatchSendMessageToGlobeRequest, runtime *util.RuntimeOptions) (_result *BatchSendMessageToGlobeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -844,6 +965,10 @@ func (client *Client) BatchSendMessageToGlobeWithOptions(request *BatchSendMessa
 		query["Type"] = request.Type
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ValidityPeriod)) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -867,6 +992,17 @@ func (client *Client) BatchSendMessageToGlobeWithOptions(request *BatchSendMessa
 	return _result, _err
 }
 
+/**
+ * *   You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
+ * *   You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages exceeding more than 1,000 mobile number per request, you can choose to use the broadcast messaging feature available in the Alibaba Cloud SMS console.
+ * *   For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](~~SendMessageToGlobe~~) operation to ensure that messages are delivered on time.
+ * *   In each request, you can send messages to up to 1,000 mobile phone numbers.
+ * ### QPS limit
+ * You may call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+ *
+ * @param request BatchSendMessageToGlobeRequest
+ * @return BatchSendMessageToGlobeResponse
+ */
 func (client *Client) BatchSendMessageToGlobe(request *BatchSendMessageToGlobeRequest) (_result *BatchSendMessageToGlobeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchSendMessageToGlobeResponse{}
@@ -878,6 +1014,16 @@ func (client *Client) BatchSendMessageToGlobe(request *BatchSendMessageToGlobeRe
 	return _result, _err
 }
 
+/**
+ * Metrics:
+ * *   Requested OTP messages
+ * *   Verified OTP messages
+ * An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+ *
+ * @param request ConversionDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ConversionDataResponse
+ */
 func (client *Client) ConversionDataWithOptions(request *ConversionDataRequest, runtime *util.RuntimeOptions) (_result *ConversionDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -915,6 +1061,15 @@ func (client *Client) ConversionDataWithOptions(request *ConversionDataRequest, 
 	return _result, _err
 }
 
+/**
+ * Metrics:
+ * *   Requested OTP messages
+ * *   Verified OTP messages
+ * An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+ *
+ * @param request ConversionDataRequest
+ * @return ConversionDataResponse
+ */
 func (client *Client) ConversionData(request *ConversionDataRequest) (_result *ConversionDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConversionDataResponse{}
@@ -926,6 +1081,14 @@ func (client *Client) ConversionData(request *ConversionDataRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * ### QPS limit
+ * You can call this operation up to 300 times per second. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request QueryMessageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryMessageResponse
+ */
 func (client *Client) QueryMessageWithOptions(request *QueryMessageRequest, runtime *util.RuntimeOptions) (_result *QueryMessageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -959,6 +1122,13 @@ func (client *Client) QueryMessageWithOptions(request *QueryMessageRequest, runt
 	return _result, _err
 }
 
+/**
+ * ### QPS limit
+ * You can call this operation up to 300 times per second. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request QueryMessageRequest
+ * @return QueryMessageResponse
+ */
 func (client *Client) QueryMessage(request *QueryMessageRequest) (_result *QueryMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMessageResponse{}
@@ -970,6 +1140,16 @@ func (client *Client) QueryMessage(request *QueryMessageRequest) (_result *Query
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * You cannot call the SendMessageToGlobe operation to send messages to the Chinese mainland.
+ * ### QPS limit
+ * You may call this operation up to 300 times per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+ *
+ * @param request SendMessageToGlobeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SendMessageToGlobeResponse
+ */
 func (client *Client) SendMessageToGlobeWithOptions(request *SendMessageToGlobeRequest, runtime *util.RuntimeOptions) (_result *SendMessageToGlobeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -990,6 +1170,10 @@ func (client *Client) SendMessageToGlobeWithOptions(request *SendMessageToGlobeR
 
 	if !tea.BoolValue(util.IsUnset(request.To)) {
 		query["To"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidityPeriod)) {
+		query["ValidityPeriod"] = request.ValidityPeriod
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -1015,6 +1199,15 @@ func (client *Client) SendMessageToGlobeWithOptions(request *SendMessageToGlobeR
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * You cannot call the SendMessageToGlobe operation to send messages to the Chinese mainland.
+ * ### QPS limit
+ * You may call this operation up to 300 times per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+ *
+ * @param request SendMessageToGlobeRequest
+ * @return SendMessageToGlobeResponse
+ */
 func (client *Client) SendMessageToGlobe(request *SendMessageToGlobeRequest) (_result *SendMessageToGlobeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendMessageToGlobeResponse{}
@@ -1026,6 +1219,14 @@ func (client *Client) SendMessageToGlobe(request *SendMessageToGlobeRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * You can call the SendMessageWithTemplate operation to send messages only to the Chinese mainland.
+ *
+ * @param request SendMessageWithTemplateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SendMessageWithTemplateResponse
+ */
 func (client *Client) SendMessageWithTemplateWithOptions(request *SendMessageWithTemplateRequest, runtime *util.RuntimeOptions) (_result *SendMessageWithTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1052,6 +1253,10 @@ func (client *Client) SendMessageWithTemplateWithOptions(request *SendMessageWit
 		query["To"] = request.To
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ValidityPeriod)) {
+		query["ValidityPeriod"] = request.ValidityPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1075,6 +1280,13 @@ func (client *Client) SendMessageWithTemplateWithOptions(request *SendMessageWit
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * You can call the SendMessageWithTemplate operation to send messages only to the Chinese mainland.
+ *
+ * @param request SendMessageWithTemplateRequest
+ * @return SendMessageWithTemplateResponse
+ */
 func (client *Client) SendMessageWithTemplate(request *SendMessageWithTemplateRequest) (_result *SendMessageWithTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendMessageWithTemplateResponse{}
@@ -1086,6 +1298,19 @@ func (client *Client) SendMessageWithTemplate(request *SendMessageWithTemplateRe
 	return _result, _err
 }
 
+/**
+ * Metrics:
+ * *   Requested OTP messages
+ * *   Verified OTP messages
+ * An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+ * > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations:
+ * > * Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
+ * > * Manually degrade your services or use a circuit breaker to automatically degrade services.
+ *
+ * @param request SmsConversionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SmsConversionResponse
+ */
 func (client *Client) SmsConversionWithOptions(request *SmsConversionRequest, runtime *util.RuntimeOptions) (_result *SmsConversionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1127,6 +1352,18 @@ func (client *Client) SmsConversionWithOptions(request *SmsConversionRequest, ru
 	return _result, _err
 }
 
+/**
+ * Metrics:
+ * *   Requested OTP messages
+ * *   Verified OTP messages
+ * An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+ * > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations:
+ * > * Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
+ * > * Manually degrade your services or use a circuit breaker to automatically degrade services.
+ *
+ * @param request SmsConversionRequest
+ * @return SmsConversionResponse
+ */
 func (client *Client) SmsConversion(request *SmsConversionRequest) (_result *SmsConversionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmsConversionResponse{}

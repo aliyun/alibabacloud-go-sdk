@@ -1,3 +1,6 @@
+2023-06-27 Version: v2.0.1
+- Fix empty RequestId return for QueryMessage and SendMessageWithTemplate.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2018-05-01 for Dysmsapi.
 
