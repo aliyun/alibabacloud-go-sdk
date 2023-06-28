@@ -30,9 +30,12 @@ func (s *AddDataLevelPermissionRuleUsersRequest) SetAddUserModel(v string) *AddD
 }
 
 type AddDataLevelPermissionRuleUsersResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface. Valid values:\n\n*   true: The request was successful.\n*   false: The request failed.\n
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:\n\n*   true: The request was successful.\n*   false: The request failed.\n
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddDataLevelPermissionRuleUsersResponseBody) String() string {
@@ -1405,7 +1408,9 @@ func (s *CancelAuthorizationMenuResponse) SetBody(v *CancelAuthorizationMenuResp
 }
 
 type CancelCollectionRequest struct {
-	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the favorite user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the work to cancel the collection.
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -1428,9 +1433,18 @@ func (s *CancelCollectionRequest) SetWorksId(v string) *CancelCollectionRequest 
 }
 
 type CancelCollectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelCollectionResponseBody) String() string {
@@ -1685,7 +1699,9 @@ func (s *ChangeVisibilityModelResponse) SetBody(v *ChangeVisibilityModelResponse
 }
 
 type CheckReadableRequest struct {
-	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID of the Quick BI to be checked.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the work. Resources here include BI portal, dashboards, spreadsheets, and self-service access.
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -1708,9 +1724,18 @@ func (s *CheckReadableRequest) SetWorksId(v string) *CheckReadableRequest {
 }
 
 type CheckReadableResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckReadableResponseBody) String() string {
@@ -4886,6 +4911,749 @@ func (s *ModifyApiDatasourceParametersResponse) SetBody(v *ModifyApiDatasourcePa
 	return s
 }
 
+type QueryComponentPerformanceRequest struct {
+	CostTimeAvgMin *int32  `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
+	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryType      *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ReportId       *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryComponentPerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryComponentPerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryComponentPerformanceRequest) SetCostTimeAvgMin(v int32) *QueryComponentPerformanceRequest {
+	s.CostTimeAvgMin = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceRequest) SetPageNum(v int32) *QueryComponentPerformanceRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceRequest) SetPageSize(v int32) *QueryComponentPerformanceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceRequest) SetQueryType(v string) *QueryComponentPerformanceRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceRequest) SetReportId(v string) *QueryComponentPerformanceRequest {
+	s.ReportId = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceRequest) SetResourceType(v string) *QueryComponentPerformanceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceRequest) SetWorkspaceId(v string) *QueryComponentPerformanceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryComponentPerformanceResponseBody struct {
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryComponentPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryComponentPerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryComponentPerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryComponentPerformanceResponseBody) SetRequestId(v string) *QueryComponentPerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBody) SetResult(v []*QueryComponentPerformanceResponseBodyResult) *QueryComponentPerformanceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBody) SetSuccess(v bool) *QueryComponentPerformanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryComponentPerformanceResponseBodyResult struct {
+	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	ComponentId               *string  `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	ComponentName             *string  `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
+	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	ReportId                  *string  `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportName                *string  `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	ReportType                *string  `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s QueryComponentPerformanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryComponentPerformanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetCacheCostTimeAvg(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.CacheCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetCacheQueryCount(v int32) *QueryComponentPerformanceResponseBodyResult {
+	s.CacheQueryCount = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetComponentId(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.ComponentId = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetComponentName(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetCostTimeAvg(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.CostTimeAvg = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryCount(v int32) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryCount = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryCountAvg(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryCountAvg = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryOverFivePercentNum(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryOverFivePercentNum = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryOverFiveSecPercent(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryOverFiveSecPercent = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryOverTenSecPercent(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryOverTenSecPercent = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryOverTenSecPercentNum(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryOverTenSecPercentNum = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryTimeoutCount(v int32) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryTimeoutCount = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQueryTimeoutCountPercent(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.QueryTimeoutCountPercent = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQuickIndexCostTimeAvg(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.QuickIndexCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetQuickIndexQueryCount(v int32) *QueryComponentPerformanceResponseBodyResult {
+	s.QuickIndexQueryCount = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetRepeatQueryPercent(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.RepeatQueryPercent = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetRepeatQueryPercentNum(v float64) *QueryComponentPerformanceResponseBodyResult {
+	s.RepeatQueryPercentNum = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetRepeatSqlQueryCount(v int32) *QueryComponentPerformanceResponseBodyResult {
+	s.RepeatSqlQueryCount = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetRepeatSqlQueryPercent(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.RepeatSqlQueryPercent = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetReportId(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.ReportId = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetReportName(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.ReportName = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetReportType(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.ReportType = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetWorkspaceId(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponseBodyResult) SetWorkspaceName(v string) *QueryComponentPerformanceResponseBodyResult {
+	s.WorkspaceName = &v
+	return s
+}
+
+type QueryComponentPerformanceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryComponentPerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryComponentPerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryComponentPerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryComponentPerformanceResponse) SetHeaders(v map[string]*string) *QueryComponentPerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponse) SetStatusCode(v int32) *QueryComponentPerformanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryComponentPerformanceResponse) SetBody(v *QueryComponentPerformanceResponseBody) *QueryComponentPerformanceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCubeOptimizationRequest struct {
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryCubeOptimizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubeOptimizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubeOptimizationRequest) SetWorkspaceId(v string) *QueryCubeOptimizationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryCubeOptimizationResponseBody struct {
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryCubeOptimizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCubeOptimizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubeOptimizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubeOptimizationResponseBody) SetRequestId(v string) *QueryCubeOptimizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBody) SetResult(v []*QueryCubeOptimizationResponseBodyResult) *QueryCubeOptimizationResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBody) SetSuccess(v bool) *QueryCubeOptimizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCubeOptimizationResponseBodyResult struct {
+	AdviceType                   *string                                                              `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
+	CubePerformanceDiagnoseModel *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel `json:"CubePerformanceDiagnoseModel,omitempty" xml:"CubePerformanceDiagnoseModel,omitempty" type:"Struct"`
+}
+
+func (s QueryCubeOptimizationResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubeOptimizationResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubeOptimizationResponseBodyResult) SetAdviceType(v string) *QueryCubeOptimizationResponseBodyResult {
+	s.AdviceType = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResult) SetCubePerformanceDiagnoseModel(v *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) *QueryCubeOptimizationResponseBodyResult {
+	s.CubePerformanceDiagnoseModel = v
+	return s
+}
+
+type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct {
+	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	CubeId                    *string  `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	CubeName                  *string  `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
+	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetCacheCostTimeAvg(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.CacheCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetCacheQueryCount(v int32) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.CacheQueryCount = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetCostTimeAvg(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.CostTimeAvg = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetCubeId(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.CubeId = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetCubeName(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.CubeName = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryCount(v int32) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryCount = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryCountAvg(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryCountAvg = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryOverFivePercentNum(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryOverFivePercentNum = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryOverFiveSecPercent(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryOverFiveSecPercent = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryOverTenSecPercent(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryOverTenSecPercent = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryOverTenSecPercentNum(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryOverTenSecPercentNum = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryTimeoutCount(v int32) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryTimeoutCount = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQueryTimeoutCountPercent(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QueryTimeoutCountPercent = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQuickIndexCostTimeAvg(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QuickIndexCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetQuickIndexQueryCount(v int32) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.QuickIndexQueryCount = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetRepeatQueryPercent(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.RepeatQueryPercent = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetRepeatQueryPercentNum(v float64) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.RepeatQueryPercentNum = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetRepeatSqlQueryCount(v int32) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.RepeatSqlQueryCount = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetRepeatSqlQueryPercent(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.RepeatSqlQueryPercent = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetWorkspaceId(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) SetWorkspaceName(v string) *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel {
+	s.WorkspaceName = &v
+	return s
+}
+
+type QueryCubeOptimizationResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCubeOptimizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCubeOptimizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubeOptimizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubeOptimizationResponse) SetHeaders(v map[string]*string) *QueryCubeOptimizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponse) SetStatusCode(v int32) *QueryCubeOptimizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCubeOptimizationResponse) SetBody(v *QueryCubeOptimizationResponseBody) *QueryCubeOptimizationResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCubePerformanceRequest struct {
+	CostTimeAvgMin *int32  `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
+	CubeId         *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryType      *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryCubePerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubePerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubePerformanceRequest) SetCostTimeAvgMin(v int32) *QueryCubePerformanceRequest {
+	s.CostTimeAvgMin = &v
+	return s
+}
+
+func (s *QueryCubePerformanceRequest) SetCubeId(v string) *QueryCubePerformanceRequest {
+	s.CubeId = &v
+	return s
+}
+
+func (s *QueryCubePerformanceRequest) SetPageNum(v int32) *QueryCubePerformanceRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryCubePerformanceRequest) SetPageSize(v int32) *QueryCubePerformanceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryCubePerformanceRequest) SetQueryType(v string) *QueryCubePerformanceRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryCubePerformanceRequest) SetWorkspaceId(v string) *QueryCubePerformanceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryCubePerformanceResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryCubePerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCubePerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubePerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubePerformanceResponseBody) SetRequestId(v string) *QueryCubePerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBody) SetResult(v []*QueryCubePerformanceResponseBodyResult) *QueryCubePerformanceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBody) SetSuccess(v bool) *QueryCubePerformanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCubePerformanceResponseBodyResult struct {
+	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	CubeId                    *string  `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	CubeName                  *string  `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
+	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s QueryCubePerformanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubePerformanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetCacheCostTimeAvg(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.CacheCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetCacheQueryCount(v int32) *QueryCubePerformanceResponseBodyResult {
+	s.CacheQueryCount = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetCostTimeAvg(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.CostTimeAvg = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetCubeId(v string) *QueryCubePerformanceResponseBodyResult {
+	s.CubeId = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetCubeName(v string) *QueryCubePerformanceResponseBodyResult {
+	s.CubeName = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryCount(v int32) *QueryCubePerformanceResponseBodyResult {
+	s.QueryCount = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryCountAvg(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.QueryCountAvg = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryOverFivePercentNum(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.QueryOverFivePercentNum = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryOverFiveSecPercent(v string) *QueryCubePerformanceResponseBodyResult {
+	s.QueryOverFiveSecPercent = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryOverTenSecPercent(v string) *QueryCubePerformanceResponseBodyResult {
+	s.QueryOverTenSecPercent = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryOverTenSecPercentNum(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.QueryOverTenSecPercentNum = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryTimeoutCount(v int32) *QueryCubePerformanceResponseBodyResult {
+	s.QueryTimeoutCount = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQueryTimeoutCountPercent(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.QueryTimeoutCountPercent = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQuickIndexCostTimeAvg(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.QuickIndexCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetQuickIndexQueryCount(v int32) *QueryCubePerformanceResponseBodyResult {
+	s.QuickIndexQueryCount = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetRepeatQueryPercent(v string) *QueryCubePerformanceResponseBodyResult {
+	s.RepeatQueryPercent = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetRepeatQueryPercentNum(v float64) *QueryCubePerformanceResponseBodyResult {
+	s.RepeatQueryPercentNum = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetRepeatSqlQueryCount(v int32) *QueryCubePerformanceResponseBodyResult {
+	s.RepeatSqlQueryCount = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetRepeatSqlQueryPercent(v string) *QueryCubePerformanceResponseBodyResult {
+	s.RepeatSqlQueryPercent = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetWorkspaceId(v string) *QueryCubePerformanceResponseBodyResult {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponseBodyResult) SetWorkspaceName(v string) *QueryCubePerformanceResponseBodyResult {
+	s.WorkspaceName = &v
+	return s
+}
+
+type QueryCubePerformanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCubePerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCubePerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCubePerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCubePerformanceResponse) SetHeaders(v map[string]*string) *QueryCubePerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCubePerformanceResponse) SetStatusCode(v int32) *QueryCubePerformanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCubePerformanceResponse) SetBody(v *QueryCubePerformanceResponseBody) *QueryCubePerformanceResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDataServiceRequest struct {
 	// Call an API that is created in DataService Studio.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
@@ -5094,6 +5862,7 @@ func (s *QueryDataServiceResponse) SetBody(v *QueryDataServiceResponseBody) *Que
 }
 
 type QueryDatasetDetailInfoRequest struct {
+	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 }
 
@@ -5111,9 +5880,15 @@ func (s *QueryDatasetDetailInfoRequest) SetDatasetId(v string) *QueryDatasetDeta
 }
 
 type QueryDatasetDetailInfoResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Returns the dataset data in JSON format: `{ "cube": { "dimensions": [ { "caption": "customer name", "dataType": "string", "dimensionType": "standard_dimension", "factColumn": "customer_name", "uid": "N5820f5_customer_name" }, { "caption": "datastring", "" standard_dimension", "factColumn": "order_id", "uid": "N5820f5_order_id" }, ], "measures": [ { "caption": "order amount ", "dataType": "number", "factColumn": "order_amt", "measureType": "standard_measure ": " Nderamid " }, " { "customsql": false, "dsId": "261b252d-c3c3-498a-a0a7-5d1ec6cd****", "tableName": "company_sales_record_copy" } }, "datasetId": "5820f58c-c734-4d8a-baf1-7979af4f****", "datasetName": "company_sales_record_copy12", "datasource": { "dsId": "261b252d-c3c3-498a-a0a7-5d1ec6cd****", "dsName": "Self-use", "dsType": "mysql" }, "directory" { "id": "schemaad8aad00-9c55-4984-a767-b4e0ec60****", "name": "My dataset", "pathId": "schemaad8aad00-9c55-4984-a767-b4e0ec60****", "pathName": "My dataset" }, "ownerId": "13651626232****", "ownerName": "Zhang San", "rowLevel": false, "workspaceId": "95296e95-ca89-4c7d-8af9-dedf0ad0****", "workspaceName": "Test Workspace" }`
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryDatasetDetailInfoResponseBody) String() string {
@@ -6225,6 +7000,7 @@ func (s *QueryEmbeddedInfoResponse) SetBody(v *QueryEmbeddedInfoResponseBody) *Q
 }
 
 type QueryEmbeddedStatusRequest struct {
+	// The work ID of the query.
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -6242,9 +7018,18 @@ func (s *QueryEmbeddedStatusRequest) SetWorksId(v string) *QueryEmbeddedStatusRe
 }
 
 type QueryEmbeddedStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the work is enabled for embedding. Valid values:
+	//
+	// *   true: embedded
+	// *   false: not embedded
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryEmbeddedStatusResponseBody) String() string {
@@ -6778,6 +7563,272 @@ func (s *QueryReadableResourcesListByUserIdResponse) SetStatusCode(v int32) *Que
 }
 
 func (s *QueryReadableResourcesListByUserIdResponse) SetBody(v *QueryReadableResourcesListByUserIdResponseBody) *QueryReadableResourcesListByUserIdResponse {
+	s.Body = v
+	return s
+}
+
+type QueryReportPerformanceRequest struct {
+	CostTimeAvgMin *int32  `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
+	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryType      *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ReportId       *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryReportPerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportPerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportPerformanceRequest) SetCostTimeAvgMin(v int32) *QueryReportPerformanceRequest {
+	s.CostTimeAvgMin = &v
+	return s
+}
+
+func (s *QueryReportPerformanceRequest) SetPageNum(v int32) *QueryReportPerformanceRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryReportPerformanceRequest) SetPageSize(v int32) *QueryReportPerformanceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryReportPerformanceRequest) SetQueryType(v string) *QueryReportPerformanceRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryReportPerformanceRequest) SetReportId(v string) *QueryReportPerformanceRequest {
+	s.ReportId = &v
+	return s
+}
+
+func (s *QueryReportPerformanceRequest) SetResourceType(v string) *QueryReportPerformanceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryReportPerformanceRequest) SetWorkspaceId(v string) *QueryReportPerformanceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryReportPerformanceResponseBody struct {
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryReportPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryReportPerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportPerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportPerformanceResponseBody) SetRequestId(v string) *QueryReportPerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBody) SetResult(v []*QueryReportPerformanceResponseBodyResult) *QueryReportPerformanceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBody) SetSuccess(v bool) *QueryReportPerformanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryReportPerformanceResponseBodyResult struct {
+	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	ComponentQueryCount       *int32   `json:"ComponentQueryCount,omitempty" xml:"ComponentQueryCount,omitempty"`
+	ComponentQueryCountAvg    *float64 `json:"ComponentQueryCountAvg,omitempty" xml:"ComponentQueryCountAvg,omitempty"`
+	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
+	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	ReportId                  *string  `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportName                *string  `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	ReportType                *string  `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s QueryReportPerformanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportPerformanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetCacheCostTimeAvg(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.CacheCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetCacheQueryCount(v int32) *QueryReportPerformanceResponseBodyResult {
+	s.CacheQueryCount = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetComponentQueryCount(v int32) *QueryReportPerformanceResponseBodyResult {
+	s.ComponentQueryCount = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetComponentQueryCountAvg(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.ComponentQueryCountAvg = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetCostTimeAvg(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.CostTimeAvg = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryCount(v int32) *QueryReportPerformanceResponseBodyResult {
+	s.QueryCount = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryCountAvg(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.QueryCountAvg = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryOverFivePercentNum(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.QueryOverFivePercentNum = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryOverFiveSecPercent(v string) *QueryReportPerformanceResponseBodyResult {
+	s.QueryOverFiveSecPercent = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryOverTenSecPercent(v string) *QueryReportPerformanceResponseBodyResult {
+	s.QueryOverTenSecPercent = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryOverTenSecPercentNum(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.QueryOverTenSecPercentNum = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryTimeoutCount(v int32) *QueryReportPerformanceResponseBodyResult {
+	s.QueryTimeoutCount = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQueryTimeoutCountPercent(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.QueryTimeoutCountPercent = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQuickIndexCostTimeAvg(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.QuickIndexCostTimeAvg = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetQuickIndexQueryCount(v int32) *QueryReportPerformanceResponseBodyResult {
+	s.QuickIndexQueryCount = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetRepeatQueryPercent(v string) *QueryReportPerformanceResponseBodyResult {
+	s.RepeatQueryPercent = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetRepeatQueryPercentNum(v float64) *QueryReportPerformanceResponseBodyResult {
+	s.RepeatQueryPercentNum = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetRepeatSqlQueryCount(v int32) *QueryReportPerformanceResponseBodyResult {
+	s.RepeatSqlQueryCount = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetRepeatSqlQueryPercent(v string) *QueryReportPerformanceResponseBodyResult {
+	s.RepeatSqlQueryPercent = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetReportId(v string) *QueryReportPerformanceResponseBodyResult {
+	s.ReportId = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetReportName(v string) *QueryReportPerformanceResponseBodyResult {
+	s.ReportName = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetReportType(v string) *QueryReportPerformanceResponseBodyResult {
+	s.ReportType = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetWorkspaceId(v string) *QueryReportPerformanceResponseBodyResult {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponseBodyResult) SetWorkspaceName(v string) *QueryReportPerformanceResponseBodyResult {
+	s.WorkspaceName = &v
+	return s
+}
+
+type QueryReportPerformanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryReportPerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryReportPerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportPerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportPerformanceResponse) SetHeaders(v map[string]*string) *QueryReportPerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryReportPerformanceResponse) SetStatusCode(v int32) *QueryReportPerformanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryReportPerformanceResponse) SetBody(v *QueryReportPerformanceResponseBody) *QueryReportPerformanceResponse {
 	s.Body = v
 	return s
 }
@@ -9841,7 +10892,9 @@ func (s *ResultCallbackResponse) SetBody(v *ResultCallbackResponseBody) *ResultC
 }
 
 type SaveFavoritesRequest struct {
-	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID of the collection. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the collection.
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -9864,9 +10917,18 @@ func (s *SaveFavoritesRequest) SetWorksId(v string) *SaveFavoritesRequest {
 }
 
 type SaveFavoritesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SaveFavoritesResponseBody) String() string {
@@ -11165,9 +12227,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 }
 
 /**
- * Indicates whether the request is successful. Valid values:
- * *   true: The request was successful.
- * *   false: The request failed.
+ * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
  *
  * @param request AddDataLevelPermissionRuleUsersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11207,9 +12267,7 @@ func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDat
 }
 
 /**
- * Indicates whether the request is successful. Valid values:
- * *   true: The request was successful.
- * *   false: The request failed.
+ * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
  *
  * @param request AddDataLevelPermissionRuleUsersRequest
  * @return AddDataLevelPermissionRuleUsersResponse
@@ -13369,6 +14427,182 @@ func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasource
 	return _result, _err
 }
 
+func (client *Client) QueryComponentPerformanceWithOptions(request *QueryComponentPerformanceRequest, runtime *util.RuntimeOptions) (_result *QueryComponentPerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CostTimeAvgMin)) {
+		query["CostTimeAvgMin"] = request.CostTimeAvgMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryComponentPerformance"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryComponentPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryComponentPerformance(request *QueryComponentPerformanceRequest) (_result *QueryComponentPerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryComponentPerformanceResponse{}
+	_body, _err := client.QueryComponentPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCubeOptimizationWithOptions(request *QueryCubeOptimizationRequest, runtime *util.RuntimeOptions) (_result *QueryCubeOptimizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCubeOptimization"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCubeOptimizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCubeOptimization(request *QueryCubeOptimizationRequest) (_result *QueryCubeOptimizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCubeOptimizationResponse{}
+	_body, _err := client.QueryCubeOptimizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCubePerformanceWithOptions(request *QueryCubePerformanceRequest, runtime *util.RuntimeOptions) (_result *QueryCubePerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CostTimeAvgMin)) {
+		query["CostTimeAvgMin"] = request.CostTimeAvgMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CubeId)) {
+		query["CubeId"] = request.CubeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCubePerformance"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCubePerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCubePerformance(request *QueryCubePerformanceRequest) (_result *QueryCubePerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCubePerformanceResponse{}
+	_body, _err := client.QueryCubePerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * f4cc43bc3***
  *
@@ -13435,9 +14669,7 @@ func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_resul
 }
 
 /**
- * The execution result of the interface is returned. Valid values:
- * *   true: The request was successful.
- * *   false: The request fails.
+ * The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
  *
  * @param request QueryDatasetDetailInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13477,9 +14709,7 @@ func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDet
 }
 
 /**
- * The execution result of the interface is returned. Valid values:
- * *   true: The request was successful.
- * *   false: The request fails.
+ * The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
  *
  * @param request QueryDatasetDetailInfoRequest
  * @return QueryDatasetDetailInfoResponse
@@ -13817,6 +15047,74 @@ func (client *Client) QueryReadableResourcesListByUserId(request *QueryReadableR
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryReadableResourcesListByUserIdResponse{}
 	_body, _err := client.QueryReadableResourcesListByUserIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryReportPerformanceWithOptions(request *QueryReportPerformanceRequest, runtime *util.RuntimeOptions) (_result *QueryReportPerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CostTimeAvgMin)) {
+		query["CostTimeAvgMin"] = request.CostTimeAvgMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryReportPerformance"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryReportPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryReportPerformance(request *QueryReportPerformanceRequest) (_result *QueryReportPerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryReportPerformanceResponse{}
+	_body, _err := client.QueryReportPerformanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14717,15 +16015,6 @@ func (client *Client) SetDataLevelPermissionExtraConfig(request *SetDataLevelPer
 	return _result, _err
 }
 
-/**
- * Indicates whether the request is successful. Valid values:
- * *   true: The request was successful.
- * *   false: The request failed.
- *
- * @param request SetDataLevelPermissionRuleConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetDataLevelPermissionRuleConfigResponse
- */
 func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDataLevelPermissionRuleConfigRequest, runtime *util.RuntimeOptions) (_result *SetDataLevelPermissionRuleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14759,14 +16048,6 @@ func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDa
 	return _result, _err
 }
 
-/**
- * Indicates whether the request is successful. Valid values:
- * *   true: The request was successful.
- * *   false: The request failed.
- *
- * @param request SetDataLevelPermissionRuleConfigRequest
- * @return SetDataLevelPermissionRuleConfigResponse
- */
 func (client *Client) SetDataLevelPermissionRuleConfig(request *SetDataLevelPermissionRuleConfigRequest) (_result *SetDataLevelPermissionRuleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataLevelPermissionRuleConfigResponse{}

@@ -1,3 +1,7 @@
+2023-06-28 Version: v2.0.2
+- Add QueryCubePerformance, QueryComponentPerformance, QueryCubeOptimization, and QueryReportPerformance APIs.
+- Update error code description.
+
 2023-05-11 Version: v2.0.1
 - Add AllotDatasetAccelerationTask API.
 - Update error code description.
