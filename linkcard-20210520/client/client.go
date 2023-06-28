@@ -208,12 +208,13 @@ func (s *AddCardToDirectionalGroupResponse) SetBody(v *AddCardToDirectionalGroup
 }
 
 type AddDirectionalAddressRequest struct {
-	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MsgNotify   *bool   `json:"MsgNotify,omitempty" xml:"MsgNotify,omitempty"`
-	SerialNo    *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Address            *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressType        *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MsgNotify          *bool   `json:"MsgNotify,omitempty" xml:"MsgNotify,omitempty"`
+	SerialNo           *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Source             *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	UrlInsecurityForce *bool   `json:"UrlInsecurityForce,omitempty" xml:"UrlInsecurityForce,omitempty"`
 }
 
 func (s AddDirectionalAddressRequest) String() string {
@@ -251,6 +252,11 @@ func (s *AddDirectionalAddressRequest) SetSerialNo(v string) *AddDirectionalAddr
 
 func (s *AddDirectionalAddressRequest) SetSource(v string) *AddDirectionalAddressRequest {
 	s.Source = &v
+	return s
+}
+
+func (s *AddDirectionalAddressRequest) SetUrlInsecurityForce(v bool) *AddDirectionalAddressRequest {
+	s.UrlInsecurityForce = &v
 	return s
 }
 
@@ -2748,6 +2754,7 @@ type GetCredentialPoolStatisticsResponseBodyData struct {
 	CredentialType         *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	EffectiveAvailableFlow *string `json:"EffectiveAvailableFlow,omitempty" xml:"EffectiveAvailableFlow,omitempty"`
 	EffectiveTotalFlow     *string `json:"EffectiveTotalFlow,omitempty" xml:"EffectiveTotalFlow,omitempty"`
+	MonthExceedFee         *int64  `json:"MonthExceedFee,omitempty" xml:"MonthExceedFee,omitempty"`
 	MonthFeatureFee        *int64  `json:"MonthFeatureFee,omitempty" xml:"MonthFeatureFee,omitempty"`
 	MonthUsedAmount        *int64  `json:"MonthUsedAmount,omitempty" xml:"MonthUsedAmount,omitempty"`
 	PoolAvaiable           *string `json:"PoolAvaiable,omitempty" xml:"PoolAvaiable,omitempty"`
@@ -2798,6 +2805,11 @@ func (s *GetCredentialPoolStatisticsResponseBodyData) SetEffectiveAvailableFlow(
 
 func (s *GetCredentialPoolStatisticsResponseBodyData) SetEffectiveTotalFlow(v string) *GetCredentialPoolStatisticsResponseBodyData {
 	s.EffectiveTotalFlow = &v
+	return s
+}
+
+func (s *GetCredentialPoolStatisticsResponseBodyData) SetMonthExceedFee(v int64) *GetCredentialPoolStatisticsResponseBodyData {
+	s.MonthExceedFee = &v
 	return s
 }
 
@@ -5573,6 +5585,10 @@ func (client *Client) AddDirectionalAddressWithOptions(request *AddDirectionalAd
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UrlInsecurityForce)) {
+		query["UrlInsecurityForce"] = request.UrlInsecurityForce
 	}
 
 	req := &openapi.OpenApiRequest{
