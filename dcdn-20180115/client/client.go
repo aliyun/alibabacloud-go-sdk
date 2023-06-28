@@ -19634,9 +19634,9 @@ func (s *DescribeDcdnUserSecDropByMinuteResponse) SetBody(v *DescribeDcdnUserSec
 }
 
 type DescribeDcdnUserTagsResponseBody struct {
-	// The tags.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The key of the returned tag.
+	// The tag.
 	Tags []*DescribeDcdnUserTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -19659,7 +19659,7 @@ func (s *DescribeDcdnUserTagsResponseBody) SetTags(v []*DescribeDcdnUserTagsResp
 }
 
 type DescribeDcdnUserTagsResponseBodyTags struct {
-	// The value of the returned tag.
+	// The tag key.
 	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
@@ -25361,6 +25361,110 @@ func (s *SetDcdnDomainStagingConfigResponse) SetStatusCode(v int32) *SetDcdnDoma
 }
 
 func (s *SetDcdnDomainStagingConfigResponse) SetBody(v *SetDcdnDomainStagingConfigResponseBody) *SetDcdnDomainStagingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SetDcdnFullDomainsBlockIPRequest struct {
+	// The blocking period. Unit: seconds.
+	//
+	// > If you set the **OperationType** parameter to **unblock**, you do not need to set this parameter.
+	BlockInterval *int32 `json:"BlockInterval,omitempty" xml:"BlockInterval,omitempty"`
+	// The IP addresses that are blocked or unblocked. Separate multiple IP addresses with commas (,). You can specify up to 1,000 IP addresses.
+	IPList *string `json:"IPList,omitempty" xml:"IPList,omitempty"`
+	// The action. Valid values:
+	//
+	// *   **block**
+	// *   **unblock**
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	UpdateType    *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
+}
+
+func (s SetDcdnFullDomainsBlockIPRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnFullDomainsBlockIPRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetBlockInterval(v int32) *SetDcdnFullDomainsBlockIPRequest {
+	s.BlockInterval = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetIPList(v string) *SetDcdnFullDomainsBlockIPRequest {
+	s.IPList = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetOperationType(v string) *SetDcdnFullDomainsBlockIPRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetUpdateType(v string) *SetDcdnFullDomainsBlockIPRequest {
+	s.UpdateType = &v
+	return s
+}
+
+type SetDcdnFullDomainsBlockIPResponseBody struct {
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status code that indicates the result.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDcdnFullDomainsBlockIPResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnFullDomainsBlockIPResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponseBody) SetCode(v int32) *SetDcdnFullDomainsBlockIPResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponseBody) SetMessage(v string) *SetDcdnFullDomainsBlockIPResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponseBody) SetRequestId(v string) *SetDcdnFullDomainsBlockIPResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDcdnFullDomainsBlockIPResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDcdnFullDomainsBlockIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDcdnFullDomainsBlockIPResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnFullDomainsBlockIPResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponse) SetHeaders(v map[string]*string) *SetDcdnFullDomainsBlockIPResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponse) SetStatusCode(v int32) *SetDcdnFullDomainsBlockIPResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponse) SetBody(v *SetDcdnFullDomainsBlockIPResponseBody) *SetDcdnFullDomainsBlockIPResponse {
 	s.Body = v
 	return s
 }
@@ -35382,7 +35486,7 @@ func (client *Client) DescribeDcdnUserSecDropByMinute(request *DescribeDcdnUserS
 }
 
 /**
- * The ID of the request.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnUserTagsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35411,7 +35515,7 @@ func (client *Client) DescribeDcdnUserTagsWithOptions(runtime *util.RuntimeOptio
 }
 
 /**
- * The ID of the request.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @return DescribeDcdnUserTagsResponse
  */
@@ -38298,6 +38402,75 @@ func (client *Client) SetDcdnDomainStagingConfig(request *SetDcdnDomainStagingCo
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDcdnDomainStagingConfigResponse{}
 	_body, _err := client.SetDcdnDomainStagingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * > You can call this operation up to 10 times per second per account.
+ *
+ * @param request SetDcdnFullDomainsBlockIPRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDcdnFullDomainsBlockIPResponse
+ */
+func (client *Client) SetDcdnFullDomainsBlockIPWithOptions(request *SetDcdnFullDomainsBlockIPRequest, runtime *util.RuntimeOptions) (_result *SetDcdnFullDomainsBlockIPResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BlockInterval)) {
+		body["BlockInterval"] = request.BlockInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IPList)) {
+		body["IPList"] = request.IPList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		body["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateType)) {
+		body["UpdateType"] = request.UpdateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDcdnFullDomainsBlockIP"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDcdnFullDomainsBlockIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * > You can call this operation up to 10 times per second per account.
+ *
+ * @param request SetDcdnFullDomainsBlockIPRequest
+ * @return SetDcdnFullDomainsBlockIPResponse
+ */
+func (client *Client) SetDcdnFullDomainsBlockIP(request *SetDcdnFullDomainsBlockIPRequest) (_result *SetDcdnFullDomainsBlockIPResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDcdnFullDomainsBlockIPResponse{}
+	_body, _err := client.SetDcdnFullDomainsBlockIPWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

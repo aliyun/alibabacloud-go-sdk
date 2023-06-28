@@ -1,3 +1,6 @@
+2023-06-28 Version: v2.1.9
+- Add DescribeDdosBpsMax.
+
 2023-06-20 Version: v2.1.8
 - Add DescribeDdosEventMax.
 
