@@ -755,8 +755,13 @@ func (s *DescribeInstanceListResponse) SetBody(v *DescribeInstanceListResponseBo
 }
 
 type DescribeOnDemandInstanceRequest struct {
-	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page. Maximum value: **50**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the on-demand instance that you want to query.
+	//
+	// >  You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/ddos-protection/latest/instances-describeregions) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -784,9 +789,12 @@ func (s *DescribeOnDemandInstanceRequest) SetRegionId(v string) *DescribeOnDeman
 }
 
 type DescribeOnDemandInstanceResponseBody struct {
+	// The details of the on-demand instance.
 	Instances []*DescribeOnDemandInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *string                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries that were returned.
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeOnDemandInstanceResponseBody) String() string {
@@ -813,11 +821,19 @@ func (s *DescribeOnDemandInstanceResponseBody) SetTotal(v string) *DescribeOnDem
 }
 
 type DescribeOnDemandInstanceResponseBodyInstances struct {
-	DefenseStatus *string   `json:"DefenseStatus,omitempty" xml:"DefenseStatus,omitempty"`
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ipnet         []*string `json:"Ipnet,omitempty" xml:"Ipnet,omitempty" type:"Repeated"`
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark        *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The protection status of the on-demand instance. Valid values:
+	//
+	// - **Defense**: The on-demand instance is protecting your assets, which indicates that traffic is routed to the on-demand instance.
+	// - **UnDefense**: The on-demand instance does not protect your assets.
+	DefenseStatus *string `json:"DefenseStatus,omitempty" xml:"DefenseStatus,omitempty"`
+	// The ID of the on-demand instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The CIDR block of the on-demand instance.
+	Ipnet []*string `json:"Ipnet,omitempty" xml:"Ipnet,omitempty" type:"Repeated"`
+	// The region ID of the on-demand instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The description of the on-demand instance.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DescribeOnDemandInstanceResponseBodyInstances) String() string {
@@ -1855,15 +1871,30 @@ func (s *DescribeResourcePackUsageResponse) SetBody(v *DescribeResourcePackUsage
 }
 
 type DescribeTopTrafficRequest struct {
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ipnet           *string `json:"Ipnet,omitempty" xml:"Ipnet,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the on-demand instance.
+	//
+	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The CIDR block of the on-demand instance that you want to query.
+	Ipnet *string `json:"Ipnet,omitempty" xml:"Ipnet,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page. Default value: **10**. Maximum value: **50**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the on-demand instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the on-demand instance belongs in Resource Management.
+	//
+	// If you do not specify this parameter, the instance belongs to the default resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Rn              *int32  `json:"Rn,omitempty" xml:"Rn,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The number of IP addresses from which the most traffic is forwarded. Default value: **1**, which indicates the IP address from which the most traffic is forwarded.
+	Rn *int32 `json:"Rn,omitempty" xml:"Rn,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeTopTrafficRequest) String() string {
@@ -1920,8 +1951,11 @@ func (s *DescribeTopTrafficRequest) SetStartTime(v string) *DescribeTopTrafficRe
 }
 
 type DescribeTopTrafficResponseBody struct {
-	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total       *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The information about the traffic that is forwarded by the on-demand instance.
 	TrafficList []*DescribeTopTrafficResponseBodyTrafficList `json:"TrafficList,omitempty" xml:"TrafficList,omitempty" type:"Repeated"`
 }
 
@@ -1949,11 +1983,16 @@ func (s *DescribeTopTrafficResponseBody) SetTrafficList(v []*DescribeTopTrafficR
 }
 
 type DescribeTopTrafficResponseBodyTrafficList struct {
-	AttackBps *int32  `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
-	AttackPps *int32  `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
-	Bps       *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Pps       *int32  `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// The attack traffic. Unit: Kbit/s.
+	AttackBps *int32 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
+	// The number of attack data packets. Unit: packets per second (pps).
+	AttackPps *int32 `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
+	// The total traffic. Unit: Kbit/s.
+	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// The IP address from which the most traffic is forwarded by the on-demand instance.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The total number of data packets. Unit: pps.
+	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
 func (s DescribeTopTrafficResponseBodyTrafficList) String() string {
@@ -2153,9 +2192,19 @@ func (s *DescribeTrafficResponse) SetBody(v *DescribeTrafficResponseBody) *Descr
 }
 
 type ModifyOnDemaondDefenseStatusRequest struct {
+	// The protection status of the on-demand instance. Valid values:
+	//
+	// *   **Defense**: enables the on-demand instance.
+	// *   **UnDefense**: disables the on-demand instance.
 	DefenseStatus *string `json:"DefenseStatus,omitempty" xml:"DefenseStatus,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the on-demand instance.
+	//
+	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the on-demand instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyOnDemaondDefenseStatusRequest) String() string {
@@ -2182,6 +2231,7 @@ func (s *ModifyOnDemaondDefenseStatusRequest) SetRegionId(v string) *ModifyOnDem
 }
 
 type ModifyOnDemaondDefenseStatusResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2716,6 +2766,15 @@ func (client *Client) DescribeInstanceList(request *DescribeInstanceListRequest)
 	return _result, _err
 }
 
+/**
+ * Queries the information about on-demand instances, such as whether an on-demand instance is enabled and the CIDR block of each on-demand instance.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeOnDemandInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeOnDemandInstanceResponse
+ */
 func (client *Client) DescribeOnDemandInstanceWithOptions(request *DescribeOnDemandInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeOnDemandInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2757,6 +2816,14 @@ func (client *Client) DescribeOnDemandInstanceWithOptions(request *DescribeOnDem
 	return _result, _err
 }
 
+/**
+ * Queries the information about on-demand instances, such as whether an on-demand instance is enabled and the CIDR block of each on-demand instance.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeOnDemandInstanceRequest
+ * @return DescribeOnDemandInstanceResponse
+ */
 func (client *Client) DescribeOnDemandInstance(request *DescribeOnDemandInstanceRequest) (_result *DescribeOnDemandInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOnDemandInstanceResponse{}
@@ -3140,6 +3207,15 @@ func (client *Client) DescribeResourcePackUsage(request *DescribeResourcePackUsa
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeTopTraffic operation to query the top N IP addresses from which the most traffic is forwarded by an on-demand instance within a specific period.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeTopTrafficRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeTopTrafficResponse
+ */
 func (client *Client) DescribeTopTrafficWithOptions(request *DescribeTopTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeTopTrafficResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3205,6 +3281,14 @@ func (client *Client) DescribeTopTrafficWithOptions(request *DescribeTopTrafficR
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeTopTraffic operation to query the top N IP addresses from which the most traffic is forwarded by an on-demand instance within a specific period.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeTopTrafficRequest
+ * @return DescribeTopTrafficResponse
+ */
 func (client *Client) DescribeTopTraffic(request *DescribeTopTrafficRequest) (_result *DescribeTopTrafficResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTopTrafficResponse{}
