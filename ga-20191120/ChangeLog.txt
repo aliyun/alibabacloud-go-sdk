@@ -1,3 +1,6 @@
+2023-06-28 Version: v2.0.9
+- Update EndPointGroup api.
+
 2023-04-20 Version: v2.0.8
 - Add resource tag for ga.
 

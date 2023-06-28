@@ -13,6 +13,7 @@ import (
 )
 
 type AddEntriesToAclRequest struct {
+	// The ACL entries.
 	AclEntries []*AddEntriesToAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	// The ID of the ACL.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
@@ -65,7 +66,7 @@ func (s *AddEntriesToAclRequest) SetRegionId(v string) *AddEntriesToAclRequest {
 }
 
 type AddEntriesToAclRequestAclEntries struct {
-	// The IP address or CIDR block that you want to add to the network ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	//
 	// You can add at most 20 entries in each request.
 	//
@@ -153,23 +154,20 @@ func (s *AddEntriesToAclResponse) SetBody(v *AddEntriesToAclResponseBody) *AddEn
 
 type AssociateAclsWithListenerRequest struct {
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	// The ID of the listener.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The type of ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After you configure a whitelist for a listener, only requests from the IP addresses that are added to the whitelist are forwarded by the listener. If the whitelist is enabled but no IP addresses are added to it, the listener does not forward requests.
 	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are denied. Blacklists apply to scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to it, the listener forwards all requests.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck the request. Default value: false. Valid values:
-	//
-	// *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the listener.
+	// The ID of the ACL. You can associate up to two ACL IDs.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -214,11 +212,14 @@ func (s *AssociateAclsWithListenerRequest) SetRegionId(v string) *AssociateAclsW
 }
 
 type AssociateAclsWithListenerResponseBody struct {
-	// The ID of the ACL.
-	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	// The ID of the listener.
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The ID of the request.
+	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	// The ID of the ACL.
+	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// Specifies whether to only precheck the request. Default value: false. Valid values:
+	//
+	// *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1076,9 +1077,8 @@ type CreateAcceleratorRequest struct {
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The bandwidth billing method. Valid values:
 	//
-	// *   **BandwidthPackage:** billed based on bandwidth plans.
+	// *   **BandwidthPackage:** billed based on bandwidth plans. This is the default value.
 	// *   **CDT:** billed based on data transfer.
-	// *   **CDT95:** billed based on the 95th percentile bandwidth. The bills are managed by using Cloud Data Transfer (CDT). This bandwidth billing method is not available by default. Contact your Alibaba Cloud account manager for more information.
 	BandwidthBillingType *string `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -1086,11 +1086,13 @@ type CreateAcceleratorRequest struct {
 	//
 	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The subscription duration of the GA instance.
 	//
 	// *   If you set the **PricingCycle** parameter to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
 	// *   If you set the **PricingCycle** parameter to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration           *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The configurations of the acceleration area.
 	IpSetConfig *CreateAcceleratorRequestIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
 	// The name of the GA instance.
@@ -1174,8 +1176,18 @@ func (s *CreateAcceleratorRequest) SetClientToken(v string) *CreateAcceleratorRe
 	return s
 }
 
+func (s *CreateAcceleratorRequest) SetDryRun(v bool) *CreateAcceleratorRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *CreateAcceleratorRequest) SetDuration(v int32) *CreateAcceleratorRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetInstanceChargeType(v string) *CreateAcceleratorRequest {
+	s.InstanceChargeType = &v
 	return s
 }
 
@@ -1327,6 +1339,7 @@ func (s *CreateAcceleratorResponse) SetBody(v *CreateAcceleratorResponseBody) *C
 }
 
 type CreateAclRequest struct {
+	// The ACL entries.
 	AclEntries []*CreateAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	// The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
@@ -1347,7 +1360,8 @@ type CreateAclRequest struct {
 	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*CreateAclRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -1401,7 +1415,7 @@ func (s *CreateAclRequest) SetTag(v []*CreateAclRequestTag) *CreateAclRequest {
 }
 
 type CreateAclRequestAclEntries struct {
-	// The IP address or CIDR block that you want to add to the ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the ACL.
 	//
 	// You can add up to 20 entries in each request.
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
@@ -1675,31 +1689,33 @@ type CreateBandwidthPackageRequest struct {
 	// *   **false** (default): disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
 	// *   **true**: enables automatic payment. Payments are automatically completed.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal for the bandwidth plan. Valid values:
 	//
 	// *   **true**: enables auto-renewal.
-	// *   **false** (default): disables auto-renewal.
+	// *   **false** (default): does not enable auto-renewal.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The auto-renewal duration. Unit: months.
 	//
 	// Valid values: **1** to **12**. Default value: **1**.
 	//
-	// >  This parameter takes effect only if **AutoRenew** is set to **true**.
+	// >  This parameter is required only if **AutoRenew** is set to **true**.
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// Specifies whether to automatically pay bills by using coupons. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false** (default): no
 	//
-	// >  This parameter takes effect only if **AutoPay** is set to **true**.
+	// >  This parameter is required only if **AutoPay** is set to **true**.
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The bandwidth value of the bandwidth plan. Unit: Mbit/s. Valid values: **2** to **2000**.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The type of bandwidth. Valid values:
+	// The bandwidth of the bandwidth plan. Unit: Mbit/s.
 	//
-	// *   **Basic**: standard
-	// *   **Enhanced**: enhanced
-	// *   **Advanced**: premium
+	// Valid values: **2** to **2000**.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The type of the bandwidth. Valid values:
+	//
+	// *   **Basic**: standard bandwidth
+	// *   **Enhanced**: enhanced bandwidth
+	// *   **Advanced**: premium bandwidth
 	//
 	// If **Type** is set to **Basic**, this parameter is required.
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
@@ -1723,14 +1739,14 @@ type CreateBandwidthPackageRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The ClientToken value contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** of each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The subscription duration.
 	//
-	// *   If the **PricingCycle** parameter is set to **Month**, the valid values of the **Duration** parameter are **1** to **9**.
-	// *   If the **PricingCycle** parameter is set to **Year**, the valid values of the **Duration** parameter are **1** to **3**.
+	// *   If the **PricingCycle** parameter is set to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
+	// *   If the **PricingCycle** parameter is set to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
 	//
 	// If **ChargeType** is set to **PREPAY**, this parameter is required.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
@@ -1743,18 +1759,18 @@ type CreateBandwidthPackageRequest struct {
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The coupon code.
 	//
-	// >  This parameter is available only on the international site.
+	// >  This parameter is only available on the international site (alibabacloud.com).
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The percentage of the minimum bandwidth guaranteed if the pay-by-95th-percentile-bandwidth metering method is used. Valid values: **30** to **100**.
 	//
-	// >  This parameter takes effect only if **BillingType** is set to **PayBY95**.
+	// >  This parameter is required only if **BillingType** is set to **PayBY95**.
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the GA instance is deployed. **cn-hangzhou** is returned.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the bandwidth plan belongs.
+	// The ID of the resource group.
 	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*CreateBandwidthPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The type of bandwidth plan. Valid values:
+	// The type of the bandwidth plan. Valid values:
 	//
 	// *   **Basic**: a basic bandwidth plan
 	// *   **CrossDomain**: a cross-region acceleration bandwidth plan
@@ -2335,61 +2351,63 @@ func (s *CreateBasicAccelerateIpEndpointRelationsResponse) SetBody(v *CreateBasi
 type CreateBasicAcceleratorRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// *   **false** (default): disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
-	// *   **true**: enables automatic payment. Payments are automatically completed.
+	// *   **false:** disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated. This is the default value.
+	// *   **true:** enables automatic payment. Payments are automatically completed.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for the GA instance. Valid values:
+	// Specifies whether to enable auto-renewal for the basic GA instance. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// *   **true:** enables auto-renewal for the basic GA instance.
+	// *   **false:** disables auto-renewal for the basic GA instance. This is the default value.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The auto-renewal duration. Unit: months.
 	//
 	// Valid values: **1** to **12**. Default value: **1**.
 	//
-	// > : This parameter takes effect only if **AutoRenew** is set to **true**.
+	// >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// Specifies whether to automatically pay bills by using coupons. Default value: false. Valid values:
+	// Specifies whether to automatically apply coupons to your bills. Valid values:
 	//
-	// *   **true**: automatically pays bills by using coupons.
-	// *   **false**: does not automatically pay bills by using coupons.
+	// *   **true:** automatically applies coupons to your bills.
+	// *   **false:** does not automatically apply coupons to your bills. This is the default value.
 	//
-	// >  This parameter takes effect only if **AutoPay** is set to **true**.
+	// >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The bandwidth billing method. Valid values:
 	//
-	// *   **BandwidthPackage**: billed based on bandwidth plans.
-	// *   **CDT**: billed through Cloud Data Transfer (CDT) and based on data transfer.
-	// *   **CDT95**: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+	// *   **BandwidthPackage:** billed based on bandwidth plans.
+	// *   **CDT:** billed based on data transfer. The bills are managed by using Cloud Data Transfer (CDT).
+	// *   **CDT95:** billed based on the 95th percentile bandwidth. The bills are managed by using Cloud Data Transfer (CDT). This bandwidth billing method is not available by default. Contact your Alibaba Cloud account manager for more information.
 	BandwidthBillingType *string `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
-	// The billing method. Set the value to **PREPAY**, which specifies the subscription billing method.
+	// The billing method of the basic GA instance. Valid values:
+	// - **PREPAY**: subscription. This is the default value.
+	// - **POSTPAY**: pay-as-you-go.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Default value: false. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true:** performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false**: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The subscription duration.
+	// The subscription duration of the GA instance.
 	//
-	// *   If the **PricingCycle** parameter is set to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
-	// *   If the **PricingCycle** parameter is set to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
+	// *   If you set the **PricingCycle** parameter to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
+	// *   If you set the **PricingCycle** parameter to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The billing cycle of the GA instance. Valid values:
+	// The billing cycle of the basic GA instance. Valid values:
 	//
-	// *   **Month**: billed on a monthly basis.
-	// *   **Year**: billed on an annual basis.
+	// *   **Month:** billed on a monthly basis.
+	// *   **Year:** billed on an annual basis.
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The coupon code.
+	// The code of the coupon.
 	//
-	// >  This parameter is available only on the international site (alibabacloud.com).
+	// >  This parameter takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The ID of the region to which the basic GA instance belongs. Set the value to **cn-hangzhou**.
+	// The ID of the region where the basic GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the basic GA instance belongs.
 	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -2729,15 +2747,15 @@ type CreateBasicEndpointGroupRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the endpoint group.
 	//
 	// The description cannot exceed 256 characters in length and cannot contain `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The address of the endpoint.
+	// The endpoint address.
 	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
 	// The ID of the region where you want to create the endpoint group.
 	//
@@ -2745,22 +2763,22 @@ type CreateBasicEndpointGroupRequest struct {
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
 	// The secondary address of the endpoint.
 	//
-	// This parameter is required when the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+	// You must specify this parameter when the accelerated IP address is associated with the secondary private IP address of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
 	//
-	// *   If the endpoint type is **ECS**, you can set the **EndpointSubAddress** parameter to the secondary private IP address of the primary ENI. If the parameter is left empty, the primary private IP address of the primary ENI is used.
-	// *   If the endpoint type is **ENI**, you can set the **EndpointSubAddress** parameter to the secondary private IP address of the secondary ENI. If the parameter is left empty, the primary private IP address of the secondary ENI is used.
+	// *   When the endpoint type is **ECS**, you can set **EndpointSubAddress** to the secondary private IP address of the primary ENI. If the parameter is left empty, the primary private IP address of the primary ENI is used.
+	// *   If the endpoint type is **ENI**, you can set **EndpointSubAddress** to the secondary private IP address of the secondary ENI. If the parameter is left empty, the primary private IP address of the secondary ENI is used.
 	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
-	// The type of endpoint. Valid values:
+	// The type of the endpoint. Valid values:
 	//
-	// *   **ENI**: elastic network interface (ENI)
-	// *   **SLB**: Classic Load Balancer (CLB) instance
-	// *   **ECS**: Elastic Compute Service (ECS) instance
+	// *   **ENI**
+	// *   **SLB**
+	// *   **ECS**
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The name of the endpoint group.
 	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the basic GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2818,9 +2836,9 @@ func (s *CreateBasicEndpointGroupRequest) SetRegionId(v string) *CreateBasicEndp
 }
 
 type CreateBasicEndpointGroupResponseBody struct {
-	// The ID of the endpoint group.
+	// The endpoint group ID.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2876,13 +2894,13 @@ type CreateBasicEndpointsRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The endpoints that are associated with the basic GA instance.
+	// The endpoints in the endpoint group.
 	Endpoints []*CreateBasicEndpointsRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2932,19 +2950,19 @@ type CreateBasicEndpointsRequestEndpoints struct {
 	// *   If the endpoint type is **ENI**, you can set the **EndpointSubAddress** parameter to the secondary private IP address of the secondary ENI. If the parameter is left empty, the primary private IP address of the secondary ENI is used.
 	// *   This parameter is required if the endpoint type is **NLB**. **EndpointSubAddress** is the primary private IP address of the NLB backend server.
 	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
-	// The type of the secondary address of the endpoint. Valid values:
+	// The secondary address type of the endpoint. Valid values:
 	//
-	// *   **primary**: a primary private IP address.
-	// *   **secondary**: a secondary private IP address.
+	// *   **primary:** a primary private IP address.
+	// *   **secondary:** a secondary private IP address.
 	//
 	// This parameter is required if the endpoint type is **ECS**, **ENI**, or **NLB**. If the endpoint type is **NLB**, only **primary** is supported.
 	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// *   **ENI**: elastic network interface (ENI).
-	// *   **SLB**: Classic Load Balancer (CLB) instance.
-	// *   **ECS**: Elastic Compute Service (ECS) instance.
-	// *   **NLB**: Network Load Balancer (NLB) instance.
+	// *   **ENI:** elastic network interface (ENI).
+	// *   **SLB:** Classic Load Balancer (CLB) instance.
+	// *   **ECS:** Elastic Compute Service (ECS) instance.
+	// *   **NLB:** Network Load Balancer (NLB) instance.
 	//
 	// >  This parameter is required.
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
@@ -2954,7 +2972,7 @@ type CreateBasicEndpointsRequestEndpoints struct {
 	EndpointZoneId *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
 	// The name of the endpoint.
 	//
-	// The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2999,7 +3017,7 @@ func (s *CreateBasicEndpointsRequestEndpoints) SetName(v string) *CreateBasicEnd
 type CreateBasicEndpointsResponseBody struct {
 	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The endpoints that are associated with the basic GA instance.
+	// The endpoints in the endpoint group.
 	Endpoints []*CreateBasicEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3041,12 +3059,12 @@ type CreateBasicEndpointsResponseBodyEndpoints struct {
 	// *   If the endpoint type is **ENI**, **EndpointSubAddress** returns the primary or secondary private IP address of the secondary ENI.
 	// *   If the endpoint type is **NLB**, **EndpointSubAddress** returns the primary private IP address of the NLB backend server.
 	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
-	// The type of endpoint. Valid values:
+	// The type of the endpoint. Valid values:
 	//
-	// *   **ENI**: ENI.
-	// *   **SLB**: CLB instance.
-	// *   **ECS**: ECS instance.
-	// *   **NLB**: NLB instance.
+	// *   **ENI:** ENI.
+	// *   **SLB:** CLB instance.
+	// *   **ECS:** ECS instance.
+	// *   **NLB:** NLB instance.
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 }
 
@@ -3110,22 +3128,22 @@ func (s *CreateBasicEndpointsResponse) SetBody(v *CreateBasicEndpointsResponseBo
 type CreateBasicIpSetRequest struct {
 	// The ID of the acceleration region.
 	//
-	// You can call the [ListAvailableBusiRegions](~~261190~~) operation to query the acceleration regions available for a specified GA instance.
+	// You can call the [ListAvailableBusiRegions](~~261190~~) operation to query the most recent acceleration region list.
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	// The ID of the basic GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The bandwidth allocated to the acceleration region. Unit: **Mbit/s**.
+	// The bandwidth to be allocated to the acceleration region. Unit: **Mbit/s**.
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
 	//
-	// *   **BGP**: BGP (Multi-ISP) lines
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines If the acceleration region is China (Hong Kong) and a basic bandwidth plan whose bandwidth type is Premium is associated with the GA instance, the default value of IspType is BGP_PRO.
+	// *   **BGP** (default)
+	// *   **BGP_PRO** If the acceleration region is China (Hong Kong) and a basic bandwidth plan whose bandwidth type is Premium is associated with the GA instance, the default value of IspType is BGP_PRO.
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also specify one of the following values:
 	//
@@ -3138,7 +3156,7 @@ type CreateBasicIpSetRequest struct {
 	//
 	// > Different acceleration regions support different single-ISP BGP lines.
 	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
-	// The ID of the region where the basic GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the basic GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3181,9 +3199,9 @@ func (s *CreateBasicIpSetRequest) SetRegionId(v string) *CreateBasicIpSetRequest
 }
 
 type CreateBasicIpSetResponseBody struct {
-	// The ID of the acceleration region of the basic GA instance.
+	// The region ID of the GA instance.
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3235,26 +3253,30 @@ func (s *CreateBasicIpSetResponse) SetBody(v *CreateBasicIpSetResponseBody) *Cre
 }
 
 type CreateCustomRoutingEndpointGroupDestinationsRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
-	//
-	// > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request is different.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The mapping configurations of the endpoint group.
+	// The mapping configuration of the endpoint group.
 	//
 	// You need to specify the backend service ports and protocols for the endpoint group. The ports are mapped to listener ports.
 	//
-	// You can specify up to 20 mapping configurations in each call.
+	// You can specify up to 20 mappings in each call.
 	DestinationConfigurations []*CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations `json:"DestinationConfigurations,omitempty" xml:"DestinationConfigurations,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// The endpoint group ID.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the endpoint group.
+	// The mappings of the endpoint group.
+	//
+	// You need to specify the backend service ports and protocols for the endpoint group. The ports are mapped to listener ports.
+	//
+	// You can specify up to 20 mappings in each call.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3292,29 +3314,21 @@ func (s *CreateCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v stri
 }
 
 type CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations struct {
-	// The first port of the backend service port range.
-	//
-	// Valid values: **1** to **65499**. The value of **FromPort** must be equal to or smaller than the value of **ToPort**.
-	//
-	// You can specify up to 20 first ports in each request.
-	//
-	// > This parameter is required.
-	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The backend service protocol of the endpoint group. Valid values:
-	//
-	// *   **TCP**: TCP
-	// *   **UDP**: UDP
-	// *   **TCP,UDP**: TCP and UDP
-	//
-	// You can specify up to four protocols for each mapping configuration.
-	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
 	// The last port of the backend service port range.
 	//
 	// Valid values: **1** to **65499**. The value of **FromPort** must be equal to or smaller than the value of **ToPort**.
 	//
-	// You can specify up to 20 last ports in each request.
+	// You can specify up to 20 last ports in each call.
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	// The backend service protocol of the endpoint group. Valid values:
 	//
-	// > This parameter is required.
+	// *   **TCP**
+	// *   **UDP**
+	// *   **TCP+UDP: the TCP and UDP protocols.**
+	//
+	// You can specify up to four backend service protocols for each endpoint group mapping.
+	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// The response parameters.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -3342,9 +3356,9 @@ func (s *CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigura
 }
 
 type CreateCustomRoutingEndpointGroupDestinationsResponseBody struct {
-	// The IDs of the mapping configurations.
+	// The IDs of the endpoint group mappings.
 	DestinationIds []*string `json:"DestinationIds,omitempty" xml:"DestinationIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The IDs of the endpoint group mappings.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3908,19 +3922,21 @@ func (s *CreateCustomRoutingEndpointTrafficPoliciesResponse) SetBody(v *CreateCu
 }
 
 type CreateCustomRoutingEndpointsRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
-	//
-	// > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request is different.
+	// The ID of the endpoint group in which to create endpoints.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The information about the endpoints.
 	//
 	// You can specify information for up to 20 endpoints.
 	EndpointConfigurations []*CreateCustomRoutingEndpointsRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	// The ID of the endpoint group in which to create endpoints.
+	// The information about the endpoints.
+	//
+	// You can specify information for up to 20 endpoints.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+	//
+	// > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request is different.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3953,12 +3969,6 @@ func (s *CreateCustomRoutingEndpointsRequest) SetRegionId(v string) *CreateCusto
 }
 
 type CreateCustomRoutingEndpointsRequestEndpointConfigurations struct {
-	// The name of the vSwitch that is specified as an endpoint.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The destination to which traffic is forwarded.
-	//
-	// You can specify up to 20 destinations for each endpoint.
-	PolicyConfigurations []*CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
 	// The traffic policy that is used to process traffic to the endpoint. Valid values:
 	//
 	// *   **DenyAll** (default): denies all traffic to the endpoint.
@@ -3966,10 +3976,16 @@ type CreateCustomRoutingEndpointsRequestEndpointConfigurations struct {
 	// *   **AllowCustom**: allows traffic only to specified destinations in the endpoint.
 	//
 	// If you set this parameter to AllowCustom, you must specify IP addresses and port ranges as the destinations to which traffic is distributed. If you specify only IP addresses and do not specify port ranges, GA can forward traffic to the specified IP addresses over all destination ports.
-	TrafficToEndpointPolicy *string `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
-	// The type of endpoint.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The destination to which traffic is forwarded.
 	//
-	// Set the value to **PrivateSubNet**, which specifies a private CIDR block. This is the default value.
+	// You can specify up to 20 destinations for each endpoint.
+	PolicyConfigurations []*CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
+	// The destination to which traffic is forwarded.
+	//
+	// You can specify up to 20 destinations for each endpoint.
+	TrafficToEndpointPolicy *string `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
+	// The ID of the vSwitch that is specified as an endpoint.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4002,11 +4018,13 @@ func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurations) SetType(v st
 }
 
 type CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations struct {
-	// The IP address of the destination to which traffic is forwarded.
+	// The port range of the destination to which traffic is forwarded. The value of this parameter must fall within the port range of the endpoint group.
+	//
+	// If you leave this parameter empty, traffic is forwarded to all destination ports.
 	//
 	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
 	//
-	// You can specify up to 20 destination IP addresses for each endpoint.
+	// You can specify port ranges for up to 20 destinations for each endpoint and specify up to 20 port ranges for each destination.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The port range of the destination to which traffic is forwarded. The value of this parameter must fall within the port range of the endpoint group.
 	//
@@ -4037,17 +4055,13 @@ func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigur
 }
 
 type CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges struct {
-	// The first port of the destination port range. The value of this parameter must fall within the port range of the endpoint group.
-	//
-	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
-	//
-	// You can specify port ranges for up to 20 destinations for each endpoint and specify up to 20 first ports for each destination.
-	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
 	// The last port of the destination port range. The value of this parameter must fall within the port range of the endpoint group.
 	//
 	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
 	//
 	// You can specify port ranges for up to 20 destinations for each endpoint and specify up to 20 last ports for each destination.
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	// The returned information.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -4072,7 +4086,7 @@ func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigur
 type CreateCustomRoutingEndpointsResponseBody struct {
 	// The IDs of the endpoints.
 	EndpointIds []*string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The IDs of the endpoints.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4218,7 +4232,8 @@ type CreateEndpointGroupRequest struct {
 	// The description of the endpoint group.
 	//
 	// The description cannot exceed 256 characters in length and cannot contain `http://` or `https://`.
-	Description            *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configurations of the endpoint.
 	EndpointConfigurations []*CreateEndpointGroupRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of the region in which to create the endpoint group.
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
@@ -4234,9 +4249,8 @@ type CreateEndpointGroupRequest struct {
 	// *   **HTTP**
 	// *   **HTTPS**
 	//
-	// >
-	// *   You can set this parameter only when the listener that is associated with the endpoint group uses **HTTP** or **HTTPS**.
-	// *   For an **HTTP** listener, the backend service protocol must be **HTTP**.
+	// > *   You can set this parameter only when the listener that is associated with the endpoint group uses **HTTP** or **HTTPS**.
+	// >*   For an **HTTP** listener, the backend service protocol must be **HTTP**.
 	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
 	// Specifies whether to enable the health check feature. Default value: true. Valid values:
 	//
@@ -4260,11 +4274,13 @@ type CreateEndpointGroupRequest struct {
 	// The name of the endpoint group.
 	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
-	Name          *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The mappings between ports.
 	PortOverrides []*CreateEndpointGroupRequestPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
-	RegionId *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      []*CreateEndpointGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Tags of GA instances.
+	Tag []*CreateEndpointGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy.
 	//
 	// Valid values: **2** to **10**. Default value: **3**.
@@ -4384,6 +4400,11 @@ type CreateEndpointGroupRequestEndpointConfigurations struct {
 	// *   **true**: preserves client IP addresses by using the TOA module.
 	// *   **false**: does not preserve client IP addresses by using the TOA module.
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
+	// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default value: false. Valid values:
+	//
+	// *   **true**: preserves client IP addresses by using the ProxyProtocol module.
+	// *   **false**: does not preserve client IP addresses by using the ProxyProtocol module.
+	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
 	// The IP address or domain name of the endpoint.
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The type of the endpoint. Valid values:
@@ -4424,6 +4445,11 @@ func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEnableClientIPPres
 	return s
 }
 
+func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEnableProxyProtocol(v bool) *CreateEndpointGroupRequestEndpointConfigurations {
+	s.EnableProxyProtocol = &v
+	return s
+}
+
 func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEndpoint(v string) *CreateEndpointGroupRequestEndpointConfigurations {
 	s.Endpoint = &v
 	return s
@@ -4444,9 +4470,8 @@ type CreateEndpointGroupRequestPortOverrides struct {
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
 	// The listener port that is mapped to the endpoint port.
 	//
-	// >
-	// *   Only HTTP and HTTPS listeners support port mappings.
-	// *   The listener port must be the one used by the current listener.
+	// > *   Only HTTP and HTTPS listeners support port mappings.
+	// >*   The listener port must be the one used by the current listener.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -4469,7 +4494,17 @@ func (s *CreateEndpointGroupRequestPortOverrides) SetListenerPort(v int32) *Crea
 }
 
 type CreateEndpointGroupRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the GA instance. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// You can specify up to 20 tag keys.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the GA instance. The tag value cannot be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// You can specify up to 20 tag values.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4946,7 +4981,8 @@ type CreateForwardingRulesRequest struct {
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken     *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Details about the forwarding rules.
 	ForwardingRules []*CreateForwardingRulesRequestForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -4993,8 +5029,10 @@ type CreateForwardingRulesRequestForwardingRules struct {
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	ForwardingRuleName *string `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
 	// The priority of the forwarding rule. Valid values: **1** to **10000**. A lower value indicates a higher priority.
-	Priority       *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RuleActions    []*CreateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The forwarding action.
+	RuleActions []*CreateForwardingRulesRequestForwardingRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	// The forwarding conditions.
 	RuleConditions []*CreateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The direction in which the rule takes effect. You do not need to set this parameter.
 	//
@@ -5124,6 +5162,9 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionVa
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig struct {
+	// The information about the endpoint group.
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you call **RuleActionType** and **RuleActionValue** to query forwarding actions.
 	ServerGroupTuples []*CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -5141,6 +5182,9 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
+	// The ID of the endpoint group.
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you call **RuleActionType** and **RuleActionValue** to query forwarding actions.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 }
 
@@ -5234,6 +5278,11 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleCondi
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
+	// The domain name.
+	//
+	// The domain name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), and periods (.). Supported wildcard characters are asterisks (\*) and question marks (?).
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5251,6 +5300,11 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) Se
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
+	// The path.
+	//
+	// The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain only letters, digits, and the following special characters: $ - \_ . + / & ~ @ : \". Supported wildcard characters are asterisks (\*) and question marks (?).
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5342,13 +5396,13 @@ func (s *CreateForwardingRulesResponse) SetBody(v *CreateForwardingRulesResponse
 type CreateIpSetsRequest struct {
 	// The information about the acceleration regions.
 	AccelerateRegion []*CreateIpSetsRequestAccelerateRegion `json:"AccelerateRegion,omitempty" xml:"AccelerateRegion,omitempty" type:"Repeated"`
-	// The ID of the GA instance.
+	// The GA instance ID.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -5383,7 +5437,7 @@ func (s *CreateIpSetsRequest) SetRegionId(v string) *CreateIpSetsRequest {
 }
 
 type CreateIpSetsRequestAccelerateRegion struct {
-	// The ID of the region that requires acceleration.
+	// The acceleration region IDs.
 	//
 	// The number of regions that can be added varies based on the specification of the GA instance. For more information, see [Overview](~~153127~~).
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
@@ -5393,17 +5447,17 @@ type CreateIpSetsRequestAccelerateRegion struct {
 	//
 	// *   Each acceleration region must be allocated a minimum of 2 Mbit/s of bandwidth.
 	//
-	// *   The total bandwidth for all acceleration regions cannot exceed the bandwidth limit of your basic bandwidth plan.
+	// *   The total bandwidth for all acceleration regions cannot exceed the maximum bandwidth of the basic bandwidth plan.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The IP version used to connect to the GA instance. Valid values:
 	//
-	// *   **IPv4** (default): IPv4
-	// *   **IPv6**: IPv6
+	// *   **IPv4** (default)
+	// *   **IPv6**
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
 	//
-	// *   **BGP**: BGP (Multi-ISP) lines.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. If the acceleration region is China (Hong Kong) and a basic bandwidth plan whose bandwidth type is Premium is associated with the GA instance, the default value of IspType is BGP_PRO.
+	// *   **BGP**
+	// *   **BGP_PRO** If the acceleration region is China (Hong Kong) and a basic bandwidth plan whose bandwidth type is Premium is associated with the GA instance, the default value of IspType is BGP_PRO.
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also specify one of the following values:
 	//
@@ -5414,7 +5468,7 @@ type CreateIpSetsRequestAccelerateRegion struct {
 	// *   **ChinaUnicom_L2**: China Unicom \_L2 (single ISP)
 	// *   **ChinaMobile_L2**: China Mobile \_L2 (single ISP)
 	//
-	// >  The supported single-ISP line types vary based on the acceleration region.
+	// > Different acceleration regions support different single-ISP BGP lines.
 	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 }
 
@@ -5447,11 +5501,11 @@ func (s *CreateIpSetsRequestAccelerateRegion) SetIspType(v string) *CreateIpSets
 }
 
 type CreateIpSetsResponseBody struct {
-	// The ID of the GA instance.
+	// The GA instance ID.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The details about the acceleration regions.
 	IpSets []*CreateIpSetsResponseBodyIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5479,11 +5533,11 @@ func (s *CreateIpSetsResponseBody) SetRequestId(v string) *CreateIpSetsResponseB
 }
 
 type CreateIpSetsResponseBodyIpSets struct {
-	// The ID of the region that requires acceleration.
+	// The acceleration region ID.
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	// The bandwidth allocated to the acceleration region. Unit: **Mbit/s**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the acceleration region.
+	// The acceleration region ID.
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	// The line type of the EIP in the acceleration region.
 	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
@@ -6583,7 +6637,7 @@ func (s *CreateSpareIpsResponse) SetBody(v *CreateSpareIpsResponseBody) *CreateS
 type DeleteAcceleratorRequest struct {
 	// The ID of the GA instance that you want to delete.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where your GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6843,15 +6897,15 @@ func (s *DeleteApplicationMonitorResponse) SetBody(v *DeleteApplicationMonitorRe
 }
 
 type DeleteBandwidthPackageRequest struct {
-	// The ID of the bandwidth plan.
+	// The bandwidth plan ID.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the value of the **ClientToken** parameter is set to the value of the **RequestId** parameter. The value of the **RequestId** parameter for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6879,9 +6933,9 @@ func (s *DeleteBandwidthPackageRequest) SetRegionId(v string) *DeleteBandwidthPa
 }
 
 type DeleteBandwidthPackageResponseBody struct {
-	// The ID of the bandwidth plan.
+	// The bandwidth plan ID.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7152,7 +7206,7 @@ func (s *DeleteBasicAccelerateIpEndpointRelationResponse) SetBody(v *DeleteBasic
 type DeleteBasicAcceleratorRequest struct {
 	// The ID of the basic GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the region where the basic GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region to which the basic GA instance belongs. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7404,11 +7458,11 @@ func (s *DeleteBasicEndpointGroupResponse) SetBody(v *DeleteBasicEndpointGroupRe
 type DeleteBasicIpSetRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the acceleration region.
+	// The ID of the acceleration region of the basic GA instance.
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	// The ID of the region where the basic GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -7487,22 +7541,24 @@ func (s *DeleteBasicIpSetResponse) SetBody(v *DeleteBasicIpSetResponseBody) *Del
 type DeleteCustomRoutingEndpointGroupDestinationsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The IDs of the endpoint group mappings.
 	DestinationIds []*string `json:"DestinationIds,omitempty" xml:"DestinationIds,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true:** performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false:** performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the endpoint group.
+	// The endpoint group ID.
 	//
-	// >  This parameter is required.
+	// **
+	//
+	// ****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7540,7 +7596,7 @@ func (s *DeleteCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v stri
 }
 
 type DeleteCustomRoutingEndpointGroupDestinationsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7785,19 +7841,19 @@ func (s *DeleteCustomRoutingEndpointTrafficPoliciesResponse) SetBody(v *DeleteCu
 type DeleteCustomRoutingEndpointsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the endpoint group to which the endpoint that you want to delete belongs.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The IDs of the endpoints to be deleted.
+	// The IDs of endpoints to be deleted.
 	//
 	// If you do not set this parameter, all the endpoints in the specified endpoint group are deleted.
 	//
 	// You can specify at most 10 endpoint IDs.
 	EndpointIds []*string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty" type:"Repeated"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7830,7 +7886,7 @@ func (s *DeleteCustomRoutingEndpointsRequest) SetRegionId(v string) *DeleteCusto
 }
 
 type DeleteCustomRoutingEndpointsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8043,17 +8099,18 @@ func (s *DeleteEndpointGroupResponse) SetBody(v *DeleteEndpointGroupResponseBody
 type DeleteEndpointGroupsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck this request. Default value: false. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
-	DryRun           *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The IDs of the endpoint groups.
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8086,7 +8143,7 @@ func (s *DeleteEndpointGroupsRequest) SetRegionId(v string) *DeleteEndpointGroup
 }
 
 type DeleteEndpointGroupsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8133,18 +8190,19 @@ func (s *DeleteEndpointGroupsResponse) SetBody(v *DeleteEndpointGroupsResponseBo
 }
 
 type DeleteForwardingRulesRequest struct {
-	// The ID of the GA instance.
+	// The GA instance ID.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The forwarding rules.
 	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
-	// The ID of the listener.
+	// The listener ID.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8182,9 +8240,9 @@ func (s *DeleteForwardingRulesRequest) SetRegionId(v string) *DeleteForwardingRu
 }
 
 type DeleteForwardingRulesResponseBody struct {
-	// Details about the forwarding rules.
+	// The forwarding rules.
 	ForwardingRules []*DeleteForwardingRulesResponseBodyForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8207,7 +8265,7 @@ func (s *DeleteForwardingRulesResponseBody) SetRequestId(v string) *DeleteForwar
 }
 
 type DeleteForwardingRulesResponseBodyForwardingRules struct {
-	// The ID of the forwarding rule.
+	// The forwarding rule ID.
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitempty" xml:"ForwardingRuleId,omitempty"`
 }
 
@@ -8415,13 +8473,13 @@ func (s *DeleteIpSetsResponse) SetBody(v *DeleteIpSetsResponseBody) *DeleteIpSet
 }
 
 type DeleteListenerRequest struct {
-	// The ID of the GA instance.
+	// The ID of the GA instance for which you want to delete a listener.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the listener that you want to delete.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -8635,11 +8693,14 @@ type DescribeAcceleratorResponseBody struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The timestamp that indicates when the GA instance is created.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The type of cross-border acceleration. This parameter is returned for GA instances whose bandwidth metering method is pay-by-data-transfer.
+	// The type of cross-border acceleration. This parameter is returned for GA instances whose bandwidth metering method is pay-by-data-transfer (CDT).
 	//
-	// **bpgPro** is returned, which indicates BGP (Multi-ISP) Pro lines.
-	CrossBorderMode   *string `json:"CrossBorderMode,omitempty" xml:"CrossBorderMode,omitempty"`
-	CrossBorderStatus *bool   `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
+	// Only **bpgPro** may be returned, which indicates BGP (Multi-ISP) Pro lines.
+	CrossBorderMode *string `json:"CrossBorderMode,omitempty" xml:"CrossBorderMode,omitempty"`
+	// Indicates whether cross-border acceleration is enabled.
+	// - **true**: yes
+	// - **false**: no
+	CrossBorderStatus *bool `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
 	// The details about the cross-border acceleration bandwidth plan that is associated with the GA instance.
 	//
 	// This array is returned only for GA instances that are created on the international site (alibabacloud.com).
@@ -8706,6 +8767,11 @@ type DescribeAcceleratorResponseBody struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The tags of the GA instance.
 	Tags []*DescribeAcceleratorResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Indicates the upgradable state of the GA instance.
+	// - **notUpgradable**: The GA instance can not be upgraded
+	// - **upgradable**: The GA instance can be upgraded
+	// - **upgradeFailed**: The GA instance has been upgraded and failed
+	UpgradableStatus *string `json:"UpgradableStatus,omitempty" xml:"UpgradableStatus,omitempty"`
 }
 
 func (s DescribeAcceleratorResponseBody) String() string {
@@ -8828,6 +8894,11 @@ func (s *DescribeAcceleratorResponseBody) SetState(v string) *DescribeAccelerato
 
 func (s *DescribeAcceleratorResponseBody) SetTags(v []*DescribeAcceleratorResponseBodyTags) *DescribeAcceleratorResponseBody {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeAcceleratorResponseBody) SetUpgradableStatus(v string) *DescribeAcceleratorResponseBody {
+	s.UpgradableStatus = &v
 	return s
 }
 
@@ -8997,18 +9068,18 @@ type DescribeAcceleratorAutoRenewAttributeResponseBody struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// Indicates whether auto-renewal is enabled. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// *   **true**: enabled
+	// *   **false** (default): disabled
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period. Unit: months.
+	// The auto-renewal duration. Unit: months.
 	//
 	// This parameter is returned only if **AutoRenew** is set to **true**.
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// Indicates how the GA instance is renewed. Valid values:
 	//
 	// *   **AutoRenewal**: The GA instance is automatically renewed.
-	// *   **Normal**: The GA instance is manually renewed.
-	// *   **NotRenewal**: The GA instance is not renewed after the instance expires. The system sends only a non-renewal reminder three days before the expiration date. The system no longer sends notifications to remind you to renew the GA instance.
+	// *   **Normal**: You must manually renew the GA instance.
+	// *   **NotRenewal**: The GA instance is not renewed after it expires. The system sends only a non-renewal reminder three days before the expiration date. The system no longer sends notifications to remind you to renew the GA instance.
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -9072,6 +9143,94 @@ func (s *DescribeAcceleratorAutoRenewAttributeResponse) SetStatusCode(v int32) *
 }
 
 func (s *DescribeAcceleratorAutoRenewAttributeResponse) SetBody(v *DescribeAcceleratorAutoRenewAttributeResponseBody) *DescribeAcceleratorAutoRenewAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAcceleratorServiceStatusRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeAcceleratorServiceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorServiceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorServiceStatusRequest) SetRegionId(v string) *DescribeAcceleratorServiceStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeAcceleratorServiceStatusResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAcceleratorServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorServiceStatusResponseBody) SetCode(v string) *DescribeAcceleratorServiceStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAcceleratorServiceStatusResponseBody) SetMessage(v string) *DescribeAcceleratorServiceStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAcceleratorServiceStatusResponseBody) SetRequestId(v string) *DescribeAcceleratorServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAcceleratorServiceStatusResponseBody) SetStatus(v string) *DescribeAcceleratorServiceStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAcceleratorServiceStatusResponseBody) SetSuccess(v string) *DescribeAcceleratorServiceStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAcceleratorServiceStatusResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAcceleratorServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAcceleratorServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorServiceStatusResponse) SetHeaders(v map[string]*string) *DescribeAcceleratorServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAcceleratorServiceStatusResponse) SetStatusCode(v int32) *DescribeAcceleratorServiceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAcceleratorServiceStatusResponse) SetBody(v *DescribeAcceleratorServiceStatusResponseBody) *DescribeAcceleratorServiceStatusResponse {
 	s.Body = v
 	return s
 }
@@ -9566,7 +9725,7 @@ type DescribeBandwidthPackageAutoRenewAttributeResponseBody struct {
 	// *   **true**: enabled
 	// *   **false** (default): disabled
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal duration. Unit: months. Valid values: **1** to **12**.
+	// The auto-renewal period. Unit: months. Valid values: **1** to **12**.
 	//
 	// > : This parameter takes effect only if **AutoRenew** is set to **true**.
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
@@ -11072,7 +11231,7 @@ func (s *DescribeCustomRoutingEndpointGroupDestinationsResponse) SetBody(v *Desc
 type DescribeEndpointGroupRequest struct {
 	// The ID of the endpoint group that you want to query.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where your Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11097,7 +11256,7 @@ func (s *DescribeEndpointGroupRequest) SetRegionId(v string) *DescribeEndpointGr
 type DescribeEndpointGroupResponseBody struct {
 	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// Indicates the state of the binding relationship between the Log Service project and the endpoint group. Valid values:
+	// Indicates the status of the binding between the Log Service project and the endpoint group. Valid values:
 	//
 	// *   **on**: The Log Service project is bound to the endpoint group.
 	// *   **off**: No Log Service projects are bound to the endpoint group.
@@ -11106,12 +11265,12 @@ type DescribeEndpointGroupResponseBody struct {
 	AccessLogSwitch *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
 	// The description of the endpoint group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the access logging feature is enabled. Valid values:
+	// Indicates whether the access log feature is enabled. Valid values:
 	//
-	// *   **on**: The access logging feature is enabled.
-	// *   **off**: The access logging feature is disabled.
+	// *   **on**: enabled
+	// *   **off**: disabled
 	EnableAccessLog *bool `json:"EnableAccessLog,omitempty" xml:"EnableAccessLog,omitempty"`
-	// The configurations of endpoints in the endpoint group.
+	// The configurations of the endpoint.
 	EndpointConfigurations []*DescribeEndpointGroupResponseBodyEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
@@ -11119,12 +11278,12 @@ type DescribeEndpointGroupResponseBody struct {
 	EndpointGroupIpList []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	// The type of the endpoint group. Valid values:
+	// The type of endpoint group. Valid values:
 	//
 	// *   **default**: a default endpoint group
 	// *   **virtual**: a virtual endpoint group
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	// The endpoint group IP addresses to be confirmed. After the GA instance is upgraded, the IP addresses that are added to the endpoint group need to be confirmed.
+	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
 	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
 	// The protocol that is used by the backend service.
 	//
@@ -11135,12 +11294,12 @@ type DescribeEndpointGroupResponseBody struct {
 	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	// Indicates whether the health check feature is enabled. Valid values:
 	//
-	// *   **true**: The health check feature is enabled.
-	// *   **false**: The health check feature is disabled.
+	// *   **true**: enabled
+	// *   **false**: disabled
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds *int32 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	// The path to which health check requests are sent.
+	// The path to which health check probes are sent.
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The port that is used for health checks.
 	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
@@ -11164,14 +11323,15 @@ type DescribeEndpointGroupResponseBody struct {
 	SlsProjectName *string `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
 	// The region of the Log Service project.
 	SlsRegion *string `json:"SlsRegion,omitempty" xml:"SlsRegion,omitempty"`
-	// The state of the endpoint group.
+	// The status of the endpoint group. Valid values:
 	//
 	// *   **init**: The endpoint group is being initialized.
-	// *   **active**: The endpoint group is running normally.
+	// *   **active**: The endpoint group is running as expected.
 	// *   **updating**: The endpoint group is being updated.
 	// *   **deleting**: The endpoint group is being deleted.
-	State *string                                  `json:"State,omitempty" xml:"State,omitempty"`
-	Tags  []*DescribeEndpointGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Tags.
+	Tags []*DescribeEndpointGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
 	ThresholdCount *int32 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
 	// The weight of the endpoint group. If the listener is associated with multiple endpoint groups, this parameter indicates the weight of the current endpoint group.
@@ -11329,28 +11489,29 @@ func (s *DescribeEndpointGroupResponseBody) SetTrafficPercentage(v int32) *Descr
 type DescribeEndpointGroupResponseBodyEndpointConfigurations struct {
 	// Indicates whether the client IP address preservation feature is enabled. Valid values:
 	//
-	// *   **true**: The client IP address preservation feature is enabled.
-	// *   **false**: The client IP address preservation feature is disabled.
+	// *   **true**: enabled
+	// *   **false**: disabled
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	EnableProxyProtocol        *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
+	// 是否使用ProxyProtocol方式保留客户端源IP。
+	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
 	// The IP address or domain name of the endpoint.
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The port that is used to monitor latency.
+	// The port that is used to monitor the latency.
 	ProbePort *int32 `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
 	// The protocol that is used to monitor the network latency. Valid values:
 	//
 	// *   **tcp**: TCP
 	// *   **icmp**: ICMP
 	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The type of endpoint. Valid values:
 	//
 	// *   **Domain**: a custom domain name
 	// *   **Ip**: a custom IP address
 	// *   **PublicIp**: a public IP address provided by Alibaba Cloud
-	// *   **ECS**: an Elastic Compute Service (ECS) instance
-	// *   **SLB**: a Server Load Balancer (SLB) instance
-	// *   **ALB**: an Application Load Balancer (ALB) instance
-	// *   **OSS**: an Object Storage Service (OSS) bucket
+	// *   **ECS:** Elastic Compute Service (ECS) instance
+	// *   **SLB**: Server Load Balancer (SLB) instance
+	// *   **ALB**: Application Load Balancer (ALB) instance
+	// *   **OSS**: Object Storage Service (OSS) bucket
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the endpoint.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
@@ -11402,7 +11563,7 @@ func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetWeight(v in
 type DescribeEndpointGroupResponseBodyPortOverrides struct {
 	// The endpoint port.
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
-	// The listener port.
+	// The listening port.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -11425,7 +11586,9 @@ func (s *DescribeEndpointGroupResponseBodyPortOverrides) SetListenerPort(v int32
 }
 
 type DescribeEndpointGroupResponseBodyTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12779,9 +12942,9 @@ func (s *EnableApplicationMonitorResponse) SetBody(v *EnableApplicationMonitorRe
 }
 
 type GetAclRequest struct {
-	// The ID of the network ACL.
+	// The ID of the request.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the network ACL.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12804,12 +12967,16 @@ func (s *GetAclRequest) SetRegionId(v string) *GetAclRequest {
 }
 
 type GetAclResponseBody struct {
-	// The list of network ACL entries that are returned. A maximum of 20 network ACL entries can be returned.
+	// The network ACL entry.
 	AclEntries []*GetAclResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	// The ID of the network ACL.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the network ACL.
+	// The IP version of the network ACL. Valid values:
+	//
+	// *   **IPv4**
+	// *   **IPv6**
+	AclId   *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	// The list of network ACL entries that are returned. A maximum of 20 network ACL entries can be returned.
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The state of the network ACL. Valid values:
 	//
 	// *   **init**: The network ACL is being initialized.
@@ -12817,15 +12984,10 @@ type GetAclResponseBody struct {
 	// *   **configuring**: The network ACL is being configured.
 	// *   **updating**: The network ACL is being updated.
 	// *   **deleting**: The network ACL is being deleted.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The IP version of the network ACL. Valid values:
-	//
-	// *   **IPv4**
-	// *   **IPv6**
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The listeners that are associated with the network ACL.
+	// The ID of the listener.
 	RelatedListeners []*GetAclResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The ID of the network ACL.
 	RequestId       *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags            []*GetAclResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -12885,9 +13047,9 @@ func (s *GetAclResponseBody) SetTags(v []*GetAclResponseBodyTags) *GetAclRespons
 }
 
 type GetAclResponseBodyAclEntries struct {
-	// The network ACL entry.
-	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	// The description of the network ACL entry.
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The listeners that are associated with the network ACL.
 	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
 }
 
@@ -12910,14 +13072,14 @@ func (s *GetAclResponseBodyAclEntries) SetEntryDescription(v string) *GetAclResp
 }
 
 type GetAclResponseBodyRelatedListeners struct {
-	// The ID of the GA instance.
+	// The name of the network ACL.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The ID of the GA instance.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The type of the network ACL.
 	//
 	// *   **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specified IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After you configure a whitelist for a listener, only requests from the IP addresses that are added to the whitelist are forwarded by the listener. If the whitelist is enabled but no IP addresses are added to the network ACL, the listener does not forward requests.
 	// *   **Black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. Blacklists apply to scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to the network ACL, the listener forwards all requests.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -13449,8 +13611,13 @@ type GetBasicAcceleratorResponseBody struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance to which the basic GA instance is attached.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The timestamp that indicates when the basic GA instance is created.
-	CreateTime        *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossBorderStatus *bool  `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 基础型全球加速实例是否开启跨境线路功能。取值：
+	//
+	// - **true**：开启跨境线路功能，可以加速跨境线路。
+	//
+	// - **false**：关闭跨境线路功能，不可以加速跨境线路。
+	CrossBorderStatus *bool `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
 	// The details about the cross-border acceleration bandwidth plan that is associated with the GA instance.
 	//
 	// This array is returned only for GA instances that are created on the international site (alibabacloud.com).
@@ -14938,7 +15105,7 @@ func (s *ListAcceleratorsRequestTag) SetValue(v string) *ListAcceleratorsRequest
 }
 
 type ListAcceleratorsResponseBody struct {
-	// The information about the GA instances.
+	// The GA instances.
 	Accelerators []*ListAcceleratorsResponseBodyAccelerators `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -15002,8 +15169,11 @@ type ListAcceleratorsResponseBodyAccelerators struct {
 	// The type of cross-border acceleration. This parameter is returned for GA instances whose bandwidth metering method is pay-by-data-transfer.
 	//
 	// **bpgPro** is returned, which indicates BGP (Multi-ISP) Pro lines.
-	CrossBorderMode   *string `json:"CrossBorderMode,omitempty" xml:"CrossBorderMode,omitempty"`
-	CrossBorderStatus *bool   `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
+	CrossBorderMode *string `json:"CrossBorderMode,omitempty" xml:"CrossBorderMode,omitempty"`
+	// Indicates whether cross-border acceleration is enabled.
+	// - **true**: yes
+	// - **false**: no
+	CrossBorderStatus *bool `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
 	// The details about the cross-border acceleration bandwidth plan that is associated with the GA instance.
 	//
 	// This array is returned only for GA instances that are created on the international site (alibabacloud.com).
@@ -15065,6 +15235,11 @@ type ListAcceleratorsResponseBodyAccelerators struct {
 	Tags []*ListAcceleratorsResponseBodyAcceleratorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// An invalid parameter.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates the upgradable state of the GA instance.
+	// - **notUpgradable**: The GA instance can not be upgraded
+	// - **upgradable**: The GA instance can be upgraded
+	// - **upgradeFailed**: The GA instance has been upgraded and failed
+	UpgradableStatus *string `json:"UpgradableStatus,omitempty" xml:"UpgradableStatus,omitempty"`
 }
 
 func (s ListAcceleratorsResponseBodyAccelerators) String() string {
@@ -15187,6 +15362,11 @@ func (s *ListAcceleratorsResponseBodyAccelerators) SetTags(v []*ListAccelerators
 
 func (s *ListAcceleratorsResponseBodyAccelerators) SetType(v string) *ListAcceleratorsResponseBodyAccelerators {
 	s.Type = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetUpgradableStatus(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.UpgradableStatus = &v
 	return s
 }
 
@@ -16206,7 +16386,7 @@ func (s *ListAvailableBusiRegionsRequest) SetRegionId(v string) *ListAvailableBu
 }
 
 type ListAvailableBusiRegionsResponseBody struct {
-	// Information about the region.
+	// The information about the regions.
 	Regions []*ListAvailableBusiRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -16233,10 +16413,10 @@ func (s *ListAvailableBusiRegionsResponseBody) SetRequestId(v string) *ListAvail
 type ListAvailableBusiRegionsResponseBodyRegions struct {
 	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// Indicates whether it is a point of presence (PoP). Valid values:
+	// Indicates whether the region is a point of presence (PoP). Valid values:
 	//
-	// *   **true**: It is a PoP.
-	// *   **false**: It is not a PoP.
+	// *   **true**: The region is a PoP.
+	// *   **false**: The region is not a PoP.
 	Pop *bool `json:"Pop,omitempty" xml:"Pop,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -17458,7 +17638,7 @@ func (s *ListBasicAcceleratorsRequestTag) SetValue(v string) *ListBasicAccelerat
 }
 
 type ListBasicAcceleratorsResponseBody struct {
-	// The information about basic GA instances.
+	// The basic GA instances.
 	Accelerators []*ListBasicAcceleratorsResponseBodyAccelerators `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -17521,8 +17701,13 @@ type ListBasicAcceleratorsResponseBodyAccelerators struct {
 	// The timestamp that indicates when the basic GA instance was created.
 	//
 	// The time follows the UNIX time format. It is the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	CreateTime        *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossBorderStatus *bool  `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 基础全球加速实例是否开启跨境线路功能。取值：
+	//
+	// - **true**：开启跨境线路功能，可以加速跨境线路。
+	//
+	// - **false**：关闭跨境线路功能，不可以加速跨境线路。
+	CrossBorderStatus *bool `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
 	// The details about the cross-region acceleration bandwidth plan that is associated with the GA instance.
 	//
 	// This array is returned only for GA instances that are created on the international site (alibabacloud.com).
@@ -18050,7 +18235,7 @@ func (s *ListBusiRegionsRequest) SetRegionId(v string) *ListBusiRegionsRequest {
 }
 
 type ListBusiRegionsResponseBody struct {
-	// Information about the region.
+	// The information of the regions.
 	Regions []*ListBusiRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -18131,18 +18316,18 @@ func (s *ListBusiRegionsResponse) SetBody(v *ListBusiRegionsResponseBody) *ListB
 type ListCommonAreasRequest struct {
 	// The IP version used to connect to the GA instance. Valid values:
 	//
-	// *   **IPv4** (default): queries regions that support IPv4.
-	// *   **IPv6** :queries regions that support IPv6.
+	// *   **IPv4** (default)
+	// *   **IPv6**
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Specifies whether to query regions where endpoint groups can be deployed.
+	// Specifies whether to query regions where endpoint groups of GA can be deployed. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false** (default): no
 	IsEpg *bool `json:"IsEpg,omitempty" xml:"IsEpg,omitempty"`
-	// Specifies whether to query regions supported by GA.
+	// Specifies whether to query regions supported by GA. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// *   **true**
+	// *   **false** (default)
 	IsIpSet *bool `json:"IsIpSet,omitempty" xml:"IsIpSet,omitempty"`
 }
 
@@ -18172,7 +18357,7 @@ func (s *ListCommonAreasRequest) SetIsIpSet(v bool) *ListCommonAreasRequest {
 type ListCommonAreasResponseBody struct {
 	// The information about the areas.
 	Areas []*ListCommonAreasResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18195,9 +18380,9 @@ func (s *ListCommonAreasResponseBody) SetRequestId(v string) *ListCommonAreasRes
 }
 
 type ListCommonAreasResponseBodyAreas struct {
-	// The ID of the area.
+	// The area ID.
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The name of the area.
+	// The area name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The information about the regions.
 	RegionList []*ListCommonAreasResponseBodyAreasRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
@@ -18227,9 +18412,9 @@ func (s *ListCommonAreasResponseBodyAreas) SetRegionList(v []*ListCommonAreasRes
 }
 
 type ListCommonAreasResponseBodyAreasRegionList struct {
-	// The name of the region.
+	// The region name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -19792,20 +19977,113 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 	return s
 }
 
+type ListEndpointGroupIpAddressCidrBlocksRequest struct {
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEndpointGroupIpAddressCidrBlocksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointGroupIpAddressCidrBlocksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksRequest) SetEndpointGroupRegion(v string) *ListEndpointGroupIpAddressCidrBlocksRequest {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksRequest) SetRegionId(v string) *ListEndpointGroupIpAddressCidrBlocksRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEndpointGroupIpAddressCidrBlocksResponseBody struct {
+	EndpointGroupRegion *string   `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	IpAddressCidrBlocks []*string `json:"IpAddressCidrBlocks,omitempty" xml:"IpAddressCidrBlocks,omitempty" type:"Repeated"`
+	RequestId           *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId     *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	State               *string   `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListEndpointGroupIpAddressCidrBlocksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointGroupIpAddressCidrBlocksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponseBody) SetEndpointGroupRegion(v string) *ListEndpointGroupIpAddressCidrBlocksResponseBody {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponseBody) SetIpAddressCidrBlocks(v []*string) *ListEndpointGroupIpAddressCidrBlocksResponseBody {
+	s.IpAddressCidrBlocks = v
+	return s
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponseBody) SetRequestId(v string) *ListEndpointGroupIpAddressCidrBlocksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponseBody) SetResourceGroupId(v string) *ListEndpointGroupIpAddressCidrBlocksResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponseBody) SetState(v string) *ListEndpointGroupIpAddressCidrBlocksResponseBody {
+	s.State = &v
+	return s
+}
+
+type ListEndpointGroupIpAddressCidrBlocksResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEndpointGroupIpAddressCidrBlocksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEndpointGroupIpAddressCidrBlocksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointGroupIpAddressCidrBlocksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponse) SetHeaders(v map[string]*string) *ListEndpointGroupIpAddressCidrBlocksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponse) SetStatusCode(v int32) *ListEndpointGroupIpAddressCidrBlocksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEndpointGroupIpAddressCidrBlocksResponse) SetBody(v *ListEndpointGroupIpAddressCidrBlocksResponseBody) *ListEndpointGroupIpAddressCidrBlocksResponse {
+	s.Body = v
+	return s
+}
+
 type ListEndpointGroupsRequest struct {
 	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// Specifies whether the access logging feature is enabled. Default value: off. Valid values:
 	//
-	// *   **on**: The access logging feature is enabled.
-	// *   **off**: The access logging feature is disabled.
+	// *   **on:** enables the access logging feature.
+	// *   **off:** disables the access logging feature.
 	AccessLogSwitch *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
 	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The type of the endpoint group. Valid values:
 	//
-	// *   **default**: a default endpoint group
-	// *   **virtual**: a virtual endpoint group
+	// *   **default:** a default endpoint group.
+	// *   **virtual:** a virtual endpoint group.
 	// *   If you leave this parameter empty, all default and virtual endpoint groups are queried.
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
 	// The ID of the listener.
@@ -19815,8 +20093,9 @@ type ListEndpointGroupsRequest struct {
 	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
-	RegionId *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      []*ListEndpointGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Tags of GA instances.
+	Tag []*ListEndpointGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListEndpointGroupsRequest) String() string {
@@ -19873,7 +20152,9 @@ func (s *ListEndpointGroupsRequest) SetTag(v []*ListEndpointGroupsRequestTag) *L
 }
 
 type ListEndpointGroupsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the GA instance.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the GA instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19896,15 +20177,15 @@ func (s *ListEndpointGroupsRequestTag) SetValue(v string) *ListEndpointGroupsReq
 }
 
 type ListEndpointGroupsResponseBody struct {
-	// The configurations of the endpoint group.
+	// Configurations of endpoint groups.
 	EndpointGroups []*ListEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19946,9 +20227,9 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The description of the endpoint group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The configurations of the endpoint.
+	// Configurations of Endpoints.
 	EndpointConfigurations []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	// The ID of an endpoint group.
+	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The list of endpoint group IP addresses.
 	EndpointGroupIpList []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
@@ -19956,49 +20237,50 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
 	// The type of the endpoint group. Valid values:
 	//
-	// *   **default**: a default endpoint group
-	// *   **virtual**: a virtual endpoint group
+	// *   **default:** a default endpoint group.
+	// *   **virtual:** a virtual endpoint group.
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+	// The list of endpoint group IP addresses to be confirmed after the GA instance is upgraded.
 	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
 	// The protocol that is used by the backend service. Valid values:
 	//
-	// *   **HTTP**: HTTP
-	// *   **HTTPS**: HTTPS
+	// *   **HTTP:** HTTP.
+	// *   **HTTPS:** HTTPS.
 	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	// The ID of the forwarding rule that is associated with the endpoint group.
+	// IDs of forwarding rules that are associated with endpoint groups.
 	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	// Indicates whether the health check feature is enabled. Valid values:
 	//
-	// *   **true**: The health check feature is enabled.
-	// *   **false**: The health check feature is disabled.
+	// *   **true:** The health check feature is enabled.
+	// *   **false:** The health check feature is disabled.
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds.
 	HealthCheckIntervalSeconds *int32 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	// The path to which health check requests are sent.
+	// The path to which health check probes are sent.
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The port that is used for health checks.
 	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The protocol over which health check requests are sent. Valid values:
+	// The protocol over which health check probes are sent. Valid values:
 	//
-	// *   **tcp**: TCP
-	// *   **http**: HTTP
-	// *   **https**: HTTPS
+	// *   **tcp:** TCP.
+	// *   **http:** HTTP.
+	// *   **https:** HTTPS.
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The name of the endpoint group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The mappings between ports.
+	// Mappings between ports.
 	PortOverrides []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
 	// The state of the endpoint group. Valid values:
 	//
-	// *   **init**: The endpoint group is being initialized.
-	// *   **active**: The endpoint group is running normally.
-	// *   **updating**:The endpoint group is being updated.
-	// *   **deleteing**: The endpoint group is being deleted.
-	State *string                                             `json:"State,omitempty" xml:"State,omitempty"`
-	Tags  []*ListEndpointGroupsResponseBodyEndpointGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// *   **init:** The endpoint group is being initialized.
+	// *   **active:** The endpoint group is running as expected.
+	// *   **updating:**The endpoint group is being updated.
+	// *   **deleteing:** The endpoint group is being deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Tags of GA instances.
+	Tags []*ListEndpointGroupsResponseBodyEndpointGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
 	ThresholdCount *int32 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
 	// The weight of the endpoint group when the listener is associated with multiple endpoint groups.
@@ -20126,8 +20408,8 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetTrafficPercentage(v in
 type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
 	// Indicates whether the client IP address preservation feature is enabled. Valid values:
 	//
-	// *   **true**: The client IP address preservation feature is enabled.
-	// *   **false**: The client IP address preservation feature is disabled.
+	// *   **true:** The client IP address preservation feature is enabled.
+	// *   **false:** The client IP address preservation feature is disabled.
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
 	// The IP address or domain name of the endpoint.
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
@@ -20137,18 +20419,18 @@ type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
 	ProbePort *int32 `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
 	// The protocol that is used to monitor latency. Valid values:
 	//
-	// *   **icmp**: ICMP
-	// *   **tcp**: TCP
+	// *   **icmp:** ICMP.
+	// *   **tcp:** TCP.
 	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// *   **Domain**: a custom domain name
-	// *   **Ip**: a custom IP address
-	// *   **PublicIp**: a public IP address provided by Alibaba Cloud
-	// *   **ECS**: an Elastic Compute Service (ECS) instance
-	// *   **SLB**: a Server Load Balancer (SLB) instance
-	// *   **ALB**: an Application Load Balancer (ALB) instance
-	// *   **OSS**: an Object Storage Service (OSS) bucket
+	// *   **Domain:** a custom domain name.
+	// *   **Ip:** a custom IP address.
+	// *   **PublicIp:** a public IP address provided by Alibaba Cloud.
+	// *   **ECS:** an Elastic Compute Service (ECS) instance.
+	// *   **SLB:** a Server Load Balancer (SLB) instance.
+	// *   **ALB:** an Application Load Balancer (ALB) instance.
+	// *   **OSS:** an Object Storage Service (OSS) bucket.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the endpoint.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
@@ -20200,7 +20482,7 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Set
 type ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides struct {
 	// The endpoint port.
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
-	// The listener port.
+	// The listening port.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -20223,7 +20505,9 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) SetListenerP
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the GA instance.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the GA instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -20653,7 +20937,9 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetRuleCo
 }
 
 type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig struct {
-	// The configuration of the domain name.
+	// The domain name.
+	//
+	// The domain name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), and periods (.). Supported wildcard characters are asterisks (\*) and question marks (?).
 	//
 	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -20673,7 +20959,9 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig)
 }
 
 type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig struct {
-	// The configuration of the path.
+	// The path.
+	//
+	// The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain only letters, digits, and the following special characters: $ - \_ . + / & ~ @ : \". Supported wildcard characters are asterisks (\*) and question marks (?).
 	//
 	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -20722,13 +21010,13 @@ func (s *ListForwardingRulesResponse) SetBody(v *ListForwardingRulesResponseBody
 }
 
 type ListIpSetsRequest struct {
-	// The ID of the GA instance that you want to query.
+	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance that you want to query is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -20761,7 +21049,7 @@ func (s *ListIpSetsRequest) SetRegionId(v string) *ListIpSetsRequest {
 }
 
 type ListIpSetsResponseBody struct {
-	// Details of the acceleration region.
+	// Details of the acceleration regions.
 	IpSets []*ListIpSetsResponseBodyIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -20807,7 +21095,7 @@ func (s *ListIpSetsResponseBody) SetTotalCount(v int32) *ListIpSetsResponseBody 
 }
 
 type ListIpSetsResponseBodyIpSets struct {
-	// The ID of the region that is accelerated.
+	// The ID of the acceleration region.
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	// The bandwidth that is allocated to the acceleration region. Unit: **Mbit/s**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
@@ -20815,18 +21103,33 @@ type ListIpSetsResponseBodyIpSets struct {
 	IpAddressList []*string `json:"IpAddressList,omitempty" xml:"IpAddressList,omitempty" type:"Repeated"`
 	// The ID of the acceleration region.
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	// The version of the accelerated IP address. Valid values:
+	// The version of the IP protocol. Valid values:
 	//
 	// *   **IPv4**
 	// *   **IPv6**
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	IspType   *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
+	//
+	// *   **BGP**: BGP (Multi-ISP) lines.
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines If the acceleration region is China (Hong Kong) and a basic bandwidth plan whose bandwidth type is Premium is associated with the GA instance, the default value of IspType is BGP_PRO.
+	//
+	// If you are allowed to use single-ISP bandwidth, you can also specify one of the following values:
+	//
+	// *   **ChinaTelecom**: China Telecom (single ISP)
+	// *   **ChinaUnicom**: China Unicom (single ISP)
+	// *   **ChinaMobile**: China Mobile (single ISP)
+	// *   **ChinaTelecom_L2**: China Telecom \_L2 (single ISP)
+	// *   **ChinaUnicom_L2**: China Unicom \_L2 (single ISP)
+	// *   **ChinaMobile_L2**: China Mobile \_L2 (single ISP)
+	//
+	// > Different acceleration regions support different single-ISP BGP lines.
+	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	// The status of the acceleration region. Valid values:
 	//
 	// *   **init**: The acceleration region is being initialized.
-	// *   **active**: The acceleration region is in the running state.
+	// *   **active**: The acceleration region is running.
 	// *   **updating**: The acceleration region is being configured.
-	// *   **Deleting**: The acceleration region is being deleted.
+	// *   **deleting**: The acceleration region is being deleted.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -21945,6 +22248,7 @@ type ListTagResourcesRequest struct {
 	// *   If you set the **ResourceType** parameter to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
 	// *   If you set the **ResourceType** parameter to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
 	// *   If you set the **ResourceType** parameter to **acl**, set the value of ResourceId to the ID of an ACL.
+	// *   If **ResourceType** is set to **endpointgroup**, set the value of ResourceId to the ID of an EndpointGroup.
 	//
 	// You can specify up to 50 GA resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -21954,6 +22258,7 @@ type ListTagResourcesRequest struct {
 	// *   **basicaccelerator:** a basic GA instance.
 	// *   **bandwidthpackage:** a bandwidth plan.
 	// *   **acl:** an access control list (ACL).
+	// *   **endpointgroup:** an endpoint group (EndpointGroup).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// An array of tags of GA resources.
 	//
@@ -22100,6 +22405,7 @@ type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	// *   **basicaccelerator:** a basic GA instance.
 	// *   **bandwidthpackage:** a bandwidth plan.
 	// *   **acl:** an ACL.
+	// *   **endpointgroup:** an EndpointGroup.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
@@ -22164,22 +22470,184 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type OpenAcceleratorServiceRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s OpenAcceleratorServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAcceleratorServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAcceleratorServiceRequest) SetClientToken(v string) *OpenAcceleratorServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *OpenAcceleratorServiceRequest) SetRegionId(v string) *OpenAcceleratorServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type OpenAcceleratorServiceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OpenAcceleratorServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAcceleratorServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAcceleratorServiceResponseBody) SetCode(v string) *OpenAcceleratorServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OpenAcceleratorServiceResponseBody) SetMessage(v string) *OpenAcceleratorServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OpenAcceleratorServiceResponseBody) SetOrderId(v int64) *OpenAcceleratorServiceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *OpenAcceleratorServiceResponseBody) SetRequestId(v string) *OpenAcceleratorServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenAcceleratorServiceResponseBody) SetSuccess(v string) *OpenAcceleratorServiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OpenAcceleratorServiceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenAcceleratorServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenAcceleratorServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAcceleratorServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAcceleratorServiceResponse) SetHeaders(v map[string]*string) *OpenAcceleratorServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenAcceleratorServiceResponse) SetStatusCode(v int32) *OpenAcceleratorServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenAcceleratorServiceResponse) SetBody(v *OpenAcceleratorServiceResponseBody) *OpenAcceleratorServiceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCrossBorderApprovalStatusRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s QueryCrossBorderApprovalStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCrossBorderApprovalStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCrossBorderApprovalStatusRequest) SetRegionId(v string) *QueryCrossBorderApprovalStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type QueryCrossBorderApprovalStatusResponseBody struct {
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryCrossBorderApprovalStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCrossBorderApprovalStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCrossBorderApprovalStatusResponseBody) SetApprovalStatus(v string) *QueryCrossBorderApprovalStatusResponseBody {
+	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *QueryCrossBorderApprovalStatusResponseBody) SetRequestId(v string) *QueryCrossBorderApprovalStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryCrossBorderApprovalStatusResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCrossBorderApprovalStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCrossBorderApprovalStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCrossBorderApprovalStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCrossBorderApprovalStatusResponse) SetHeaders(v map[string]*string) *QueryCrossBorderApprovalStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCrossBorderApprovalStatusResponse) SetStatusCode(v int32) *QueryCrossBorderApprovalStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCrossBorderApprovalStatusResponse) SetBody(v *QueryCrossBorderApprovalStatusResponseBody) *QueryCrossBorderApprovalStatusResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveEntriesFromAclRequest struct {
 	AclEntries []*RemoveEntriesFromAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	// The ID of the ACL.
+	// The IP address or CIDR block that you want to delete from the ACL.
+	//
+	// You can delete at most 20 entries in each request.
+	//
+	// >  This parameter is required.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to check the request without performing the operation. Valid values:
 	//
 	// *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
 	// *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the ACL.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -22217,11 +22685,11 @@ func (s *RemoveEntriesFromAclRequest) SetRegionId(v string) *RemoveEntriesFromAc
 }
 
 type RemoveEntriesFromAclRequestAclEntries struct {
-	// The IP address or CIDR block that you want to delete from the ACL.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can delete at most 20 entries in each request.
+	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
 	//
-	// >  This parameter is required.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
@@ -22239,9 +22707,8 @@ func (s *RemoveEntriesFromAclRequestAclEntries) SetEntry(v string) *RemoveEntrie
 }
 
 type RemoveEntriesFromAclResponseBody struct {
-	// The ID of the ACL.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the request.
+	// The ID of the ACL.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22385,7 +22852,7 @@ type TagResourcesRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -22393,8 +22860,9 @@ type TagResourcesRequest struct {
 	//
 	// *   If you set the **ResourceType** parameter to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
 	// *   If you set the **ResourceType** parameter to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
-	// *   If you set the **ResourceType** parameter to**bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
+	// *   If you set the **ResourceType** parameter to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
 	// *   If you set the **ResourceType** parameter to **acl**, set the value of ResourceId to the ID of an ACL.
+	// *   If you set the **ResourceType** parameter to **endpointgroup**, set the value of ResourceId to the ID of an EndpointGroup.
 	//
 	// You can specify 1 to 50 GA resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -22404,6 +22872,7 @@ type TagResourcesRequest struct {
 	// *   **basicaccelerator:** a basic GA instance.
 	// *   **bandwidthpackage:** a bandwidth plan.
 	// *   **acl:** an access control list (ACL).
+	// *   **endpointgroup:** an endpoint group (EndpointGroup).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of GA resources.
 	//
@@ -22544,6 +23013,7 @@ type UntagResourcesRequest struct {
 	// *   If **ResourceType** is set to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
 	// *   If **ResourceType** is set to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
 	// *   If **ResourceType** is set to **acl**, set the value of ResourceId to the ID of an ACL.
+	// *   If **ResourceType** is set to **endpointgroup**, set the value of ResourceId to the ID of an EndpointGroup.
 	//
 	// You can enter up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -22553,6 +23023,7 @@ type UntagResourcesRequest struct {
 	// *   **basicaccelerator**: a basic GA instance.
 	// *   **bandwidthpackage**: a bandwidth plan.
 	// *   **acl**: an access control list (ACL).
+	// *   **endpointgroup**: an endpoint group (EndpointGroup).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag to be removed.
 	//
@@ -23004,10 +23475,23 @@ func (s *UpdateAcceleratorConfirmResponse) SetBody(v *UpdateAcceleratorConfirmRe
 }
 
 type UpdateAcceleratorCrossBorderModeRequest struct {
-	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The GA instance ID.
+	//
+	// > The bandwidth metering method of the GA instance must be pay-by-data-transfer.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The type of transmission network of the GA instance. Valid values:
+	//
+	// *   **bgpPro**: BGP (Multi-ISP) Pro. BGP (Multi-ISP) Pro lines are used for cross-border acceleration. You do not need to perform real-name verification.
+	// *   **private**: cross-border Express Connect circuit. Cross-border Express Connect circuits provide better acceleration performance but require real-name verification.
 	CrossBorderMode *string `json:"CrossBorderMode,omitempty" xml:"CrossBorderMode,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAcceleratorCrossBorderModeRequest) String() string {
@@ -23039,6 +23523,7 @@ func (s *UpdateAcceleratorCrossBorderModeRequest) SetRegionId(v string) *UpdateA
 }
 
 type UpdateAcceleratorCrossBorderModeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23465,20 +23950,20 @@ func (s *UpdateApplicationMonitorResponse) SetBody(v *UpdateApplicationMonitorRe
 }
 
 type UpdateBandwidthPackagaAutoRenewAttributeRequest struct {
-	// Specifies whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal for the bandwidth plan. Valid values:
 	//
 	// *   **true**: enables auto-renewal.
-	// *   **false** disables auto-renewal.
+	// *   **false** (default): disables auto-renewal.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period. Unit: months. Valid values: **1** to **12**.
+	// The auto-renewal duration. Unit: months. Valid values: **1** to **12**.
 	//
-	// >  This parameter is required only if **AutoRenew** is set to **true**.
+	// > : This parameter takes effect only if **AutoRenew** is set to **true**.
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the bandwidth plan.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -23490,11 +23975,11 @@ type UpdateBandwidthPackagaAutoRenewAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The auto-renewal status of the bandwidth plan. Valid values:
 	//
-	// *   **AutoRenewal**: The system automatically renews the bandwidth plan.
+	// *   **AutoRenewal**: The bandwidth plan is automatically renewed.
 	// *   **Normal**: You must manually renew the bandwidth plan.
 	// *   **NotRenewal**: Choose this option if you do not want to renew the bandwidth plan after it expires. The system sends only a non-renewal reminder three days before the expiration date. The system no longer sends notifications to remind you to renew the bandwidth plan. You can change the value of this parameter from NotRenewal to Normal for a bandwidth plan, and then manually renew the bandwidth plan. You can also set the RenewalStatus parameter to **AutoRenewal**.
 	//
-	// >  **RenewalStatus** takes precedence over **AutoRenew**. If you do not specify **RenewalStatus**, the **AutoRenew** parameter is used by default.
+	// > The **RenewalStatus** parameter takes precedence over the **AutoRenew** parameter. If you do not set **RenewalStatus**, the **AutoRenew** parameter is used by default.
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 }
 
@@ -23596,15 +24081,15 @@ func (s *UpdateBandwidthPackagaAutoRenewAttributeResponse) SetBody(v *UpdateBand
 }
 
 type UpdateBandwidthPackageRequest struct {
-	// Specifies whether to enable automatic payment. Default value: false. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// *   **false**: disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
+	// *   **false** (default): disables automatic payment. If you select this option, you must go to Order Center to complete the payment after an order is generated.
 	// *   **true**: enables automatic payment. Payments are automatically completed.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to use coupons. Default value: false. Valid values:
+	// Specifies whether to use coupons. Valid values:
 	//
-	// *   **true**: uses coupons.
-	// *   **false**: does not use coupons.
+	// *   **true**
+	// *   **false** (default)
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The bandwidth value of the bandwidth plan. Unit: Mbit/s.
 	//
@@ -23614,21 +24099,19 @@ type UpdateBandwidthPackageRequest struct {
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The type of bandwidth. Valid values:
 	//
-	// *   **Basic**: basic
-	// *   **Enhanced**: enhanced
-	// *   **Advanced**: premium
+	// *   **Basic**
+	// *   **Enhanced**
+	// *   **Advanced**
 	//
-	// >  You can only upgrade **Basic** bandwidth to **Enhanced** bandwidth. You cannot change **Enhanced** bandwidth or **Advanced** bandwidth to another type.
+	// >  You can upgrade **Basic** bandwidth to **Enhanced** bandwidth. You cannot change **Enhanced** or **Advanced** bandwidth to another type of bandwidth.
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The description of the bandwidth plan.
 	//
 	// The description can be up to 256 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the bandwidth plan.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name of the bandwidth plan. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23681,13 +24164,13 @@ func (s *UpdateBandwidthPackageRequest) SetRegionId(v string) *UpdateBandwidthPa
 }
 
 type UpdateBandwidthPackageResponseBody struct {
-	// The ID of the bandwidth plan.
+	// The bandwidth plan ID.
 	BandwidthPackage *string `json:"BandwidthPackage,omitempty" xml:"BandwidthPackage,omitempty"`
 	// The description of the bandwidth plan.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the bandwidth plan.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23755,7 +24238,7 @@ type UpdateBasicAcceleratorRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the basic GA instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -23763,7 +24246,7 @@ type UpdateBasicAcceleratorRequest struct {
 	//
 	// The name must be 2 to 128 characters in length and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the basic GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region to which the basic GA instance belongs. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23981,7 +24464,13 @@ type UpdateBasicEndpointGroupRequest struct {
 	// The address of the endpoint.
 	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
 	// The ID of the endpoint group that is associated with the basic GA instance.
-	EndpointGroupId    *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// The secondary address of the endpoint.
+	//
+	// This parameter is required when the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+	//
+	// *   If the endpoint type is **ECS**, you can set the **EndpointSubAddress** parameter to the secondary private IP address of the primary ENI. If the parameter is left empty, the primary private IP address of the primary ENI is used.
+	// *   If the endpoint type is **ENI**, you can set the **EndpointSubAddress** parameter to the secondary private IP address of the secondary ENI. If the parameter is left empty, the primary private IP address of the secondary ENI is used.
 	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
 	// The type of endpoint. Valid values:
 	//
@@ -24442,14 +24931,17 @@ func (s *UpdateCustomRoutingEndpointGroupDestinationsResponse) SetBody(v *Update
 type UpdateCustomRoutingEndpointTrafficPoliciesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the endpoint for which you want to modify the access policies of traffic.
-	EndpointId           *string                                                                  `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The ID of the endpoint for which you want to modify the traffic policies.
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The traffic policies.
+	//
+	// You can specify up to 500 destination IP addresses for each endpoint.
 	PolicyConfigurations []*UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -24482,14 +24974,21 @@ func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequest) SetRegionId(v string
 }
 
 type UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations struct {
-	// The IP address of the destination to which to allow traffic.
+	// The IP address of the destination to which traffic is allowed.
 	//
-	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the access policy of traffic for the specified endpoint.
+	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the traffic policy for the specified endpoint.
 	//
 	// You can specify up to 500 destination IP addresses for each endpoint.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The ID of the access policy of traffic that you want to modify.
-	PolicyId   *string                                                                            `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The ID of the traffic policy to modify.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The port range of the destination to which traffic is allowed. The value of this parameter must fall within the port range of the backend service.
+	//
+	// If you do not specify array, traffic is forwarded to all ports.
+	//
+	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the traffic policy for the specified endpoint.
+	//
+	// You can specify port ranges for up to 500 traffic destinations in each endpoint and specify up to 10 port ranges for each traffic destination.
 	PortRanges []*UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 }
 
@@ -24517,21 +25016,21 @@ func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) 
 }
 
 type UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges struct {
-	// The start port of the port range in the destination to which to allow traffic. The specified port must fall within the port range of the specified endpoint group.
+	// The first port of the destination port range. The specified port must fall within the port range of the specified endpoint group.
 	//
 	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the access policy of traffic for the specified endpoint.
 	//
-	// If the start port and end port values are empty, traffic on all ports in destinations are allowed.
+	// If you do not specify FromPort and ToPort, traffic is forwarded to all ports of the destination.
 	//
 	// You can specify port ranges for up to 500 destinations for each endpoint and specify up to 10 start ports for each destination.
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The end port of the port range in the destination to which to allow traffic. The specified port must fall within the port range of the specified endpoint group.
+	// The last port of the destination port range. The specified port must fall within the port range of the specified endpoint group.
 	//
-	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the access policy of traffic for the specified endpoint.
+	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the traffic policy for the specified endpoint.
 	//
-	// If the start port and end port values are empty, traffic on all ports in destinations are allowed.
+	// If you do not specify FromPort and ToPort, traffic is forwarded to all ports of the destination.
 	//
-	// You can specify port ranges for up to 500 destinations for each endpoint and specify up to 10 end ports for each destination.
+	// You can specify port ranges for up to 500 destinations in each endpoint and specify up to 10 last ports for each destination.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -24554,9 +25053,9 @@ func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPo
 }
 
 type UpdateCustomRoutingEndpointTrafficPoliciesResponseBody struct {
-	// The IDs of the access policies of traffic.
+	// The IDs of the traffic destinations.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24812,7 +25311,7 @@ type UpdateDomainRequest struct {
 	//
 	// Only primary domain names are supported, such as `example.net`.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The accelerated domain name to be modified.
 	TargetDomain *string `json:"TargetDomain,omitempty" xml:"TargetDomain,omitempty"`
@@ -24842,7 +25341,7 @@ func (s *UpdateDomainRequest) SetTargetDomain(v string) *UpdateDomainRequest {
 }
 
 type UpdateDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24891,7 +25390,7 @@ func (s *UpdateDomainResponse) SetBody(v *UpdateDomainResponseBody) *UpdateDomai
 type UpdateDomainStateRequest struct {
 	// The accelerated domain name whose ICP filing status you want to update.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -24916,14 +25415,14 @@ func (s *UpdateDomainStateRequest) SetRegionId(v string) *UpdateDomainStateReque
 type UpdateDomainStateResponseBody struct {
 	// The accelerated domain name.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ICP filing status of the accelerated domain name.
+	// The ICP filing status of the accelerated domain name. Valid values:
 	//
-	// *   **illegal**: The domain name is illegal.
-	// *   **inactive**: The domain name has not completed ICP filing.
-	// *   **active**: The domain name has completed ICP filing.
-	// *   **unknown**: The ICP filing status is unknown.
+	// *   **illegal:** The domain name is illegal.
+	// *   **inactive:** The domain name has not completed ICP filing.
+	// *   **active:** The domain name has a valid ICP number.
+	// *   **unknown:** The ICP filing status is unknown.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -25134,6 +25633,11 @@ type UpdateEndpointGroupRequestEndpointConfigurations struct {
 	// *   **true:** reserves client IP addresses.
 	// *   **false:** does not preserve client IP addresses.
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
+	// Specifies whether to preserve the IP addresses of clients that access the endpoint by using the ProxyProtocol module. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
 	// The IP address or domain name of the endpoint.
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The type of the endpoint. Valid values:
@@ -25174,6 +25678,11 @@ func (s UpdateEndpointGroupRequestEndpointConfigurations) GoString() string {
 
 func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetEnableClientIPPreservation(v bool) *UpdateEndpointGroupRequestEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetEnableProxyProtocol(v bool) *UpdateEndpointGroupRequestEndpointConfigurations {
+	s.EnableProxyProtocol = &v
 	return s
 }
 
@@ -25273,7 +25782,7 @@ func (s *UpdateEndpointGroupResponse) SetBody(v *UpdateEndpointGroupResponseBody
 type UpdateEndpointGroupAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the value, but make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the endpoint group that you want to modify.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -25378,7 +25887,8 @@ type UpdateEndpointGroupsRequest struct {
 	//
 	// *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
-	DryRun                      *bool                                                     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Terminal node group configuration information.
 	EndpointGroupConfigurations []*UpdateEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -25429,8 +25939,9 @@ type UpdateEndpointGroupsRequestEndpointGroupConfigurations struct {
 	//
 	// *   **true**: preserves client IP addresses by using the TOA module.
 	// *   **false**: does not preserve client IP addresses by using the TOA module.
-	EnableClientIPPreservationToa *bool                                                                           `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
-	EndpointConfigurations        []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EnableClientIPPreservationToa *bool `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
+	// Terminal node configuration information.
+	EndpointConfigurations []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The description of the endpoint group.
 	//
 	// The description cannot exceed 256 characters in length and cannot contain `http://` or `https://`.
@@ -25468,8 +25979,9 @@ type UpdateEndpointGroupsRequestEndpointGroupConfigurations struct {
 	// *   **tcp**: TCP
 	// *   **http**: HTTP
 	// *   **https**: HTTPS
-	HealthCheckProtocol *string                                                                `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	PortOverrides       []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	// The mappings between ports.
+	PortOverrides []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
 	// The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy.
 	//
 	// Valid values: **2** to **10**.
@@ -25709,7 +26221,8 @@ type UpdateForwardingRulesRequest struct {
 	// You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken     *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The information about the forwarding rules.
 	ForwardingRules []*UpdateForwardingRulesRequestForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -25758,8 +26271,10 @@ type UpdateForwardingRulesRequestForwardingRules struct {
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	ForwardingRuleName *string `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
 	// The priority of the forwarding rule. Valid values: **1** to **10000**. A lower value indicates a higher priority.
-	Priority       *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RuleActions    []*UpdateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The forwarding action.
+	RuleActions []*UpdateForwardingRulesRequestForwardingRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	// The forwarding conditions.
 	RuleConditions []*UpdateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The direction in which the rule takes effect. You do not need to set this parameter.
 	//
@@ -25894,6 +26409,9 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionVa
 }
 
 type UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig struct {
+	// The information about the endpoint group.
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you call **RuleActionType** and **RuleActionValue** to query forwarding actions.
 	ServerGroupTuples []*UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -25911,6 +26429,9 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 }
 
 type UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
+	// The ID of the endpoint group.
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you call **RuleActionType** and **RuleActionValue** to query forwarding actions.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 }
 
@@ -26004,6 +26525,11 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleCondi
 }
 
 type UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
+	// The domain name.
+	//
+	// The domain name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), and periods (.). Supported wildcard characters are asterisks (\*) and question marks (?).
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -26021,6 +26547,11 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) Se
 }
 
 type UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
+	// The path.
+	//
+	// The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain only letters, digits, and the following special characters: $ - \_ . + / & ~ @ : \". Supported wildcard characters are asterisks (\*) and question marks (?).
+	//
+	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -26114,9 +26645,9 @@ type UpdateIpSetRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the acceleration region that you want to modify.
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
@@ -26200,8 +26731,9 @@ func (s *UpdateIpSetResponse) SetBody(v *UpdateIpSetResponseBody) *UpdateIpSetRe
 }
 
 type UpdateIpSetsRequest struct {
+	// The acceleration regions.
 	IpSets []*UpdateIpSetsRequestIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -26224,7 +26756,7 @@ func (s *UpdateIpSetsRequest) SetRegionId(v string) *UpdateIpSetsRequest {
 }
 
 type UpdateIpSetsRequestIpSets struct {
-	// The new bandwidth to be allocated to the acceleration region. Unit: Mbit/s.
+	// The new bandwidth of the acceleration region. Unit: Mbit/s.
 	//
 	// You can specify the bandwidth for up to 100 acceleration regions.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
@@ -26253,7 +26785,7 @@ func (s *UpdateIpSetsRequestIpSets) SetIpSetId(v string) *UpdateIpSetsRequestIpS
 }
 
 type UpdateIpSetsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26300,7 +26832,9 @@ func (s *UpdateIpSetsResponse) SetBody(v *UpdateIpSetsResponseBody) *UpdateIpSet
 }
 
 type UpdateListenerRequest struct {
+	// The range of ports that are used by backend servers to receive requests.
 	BackendPorts []*UpdateListenerRequestBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
+	// The SSL certificate.
 	Certificates []*UpdateListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// Specifies whether to enable client affinity for the listener.
 	//
@@ -26309,20 +26843,23 @@ type UpdateListenerRequest struct {
 	ClientAffinity *string `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the listener.
-	//
-	// The description can be at most 200 characters in length.
+	// The description of the listener. The description can be at most 200 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The name of the listener.
 	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
-	Name       *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The listener ports that are used to receive requests and forward the requests to endpoints.
+	//
+	// Valid values: **1** to **65499**.
+	//
+	// The maximum number of ports that can be configured varies based on the routing type and protocol of the listener. For more information, see [Listener overview](~~153216~~).
 	PortRanges []*UpdateListenerRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The network transmission protocol that is used by the listener. Valid values:
 	//
@@ -26333,10 +26870,10 @@ type UpdateListenerRequest struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// Specifies whether to reserve client IP addresses. Default value: false. Valid values:
 	//
-	// *   **true**: reserves client IP addresses. After client IP addresses are reserved, you can view the source IP addresses of clients over the backend service.
-	// *   **false**: does not reserve client IP addresses.
+	// *   **true**: enables client IP preservation. After client IP addresses are reserved, you can view client IP addresses on the endpoints.
+	// *   **false** (default): disables client IP preservation.
 	//
-	// >  This parameter will be discontinued in the API operations that are used to configure listeners. We recommend that you set this parameter when you call API operations to configure endpoint groups. For more information about the **ProxyProtocol** parameter, see [CreateEndpointGroup](~~153259~~) and [UpdateEndpointGroup](~~153262~~).
+	// > This parameter will be deprecated in the API operations that are used to configure listeners. We recommend that you set this parameter when you call API operations to configure endpoint groups. For more information about the **ProxyProtocol** parameter, see [CreateEndpointGroup](~~153259~~) and [UpdateEndpointGroup](~~153262~~).
 	ProxyProtocol *string `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -26345,17 +26882,17 @@ type UpdateListenerRequest struct {
 	// *   **tls_cipher_policy\_1\_0**
 	//
 	//     *   Supported Transport Layer Security (TLS) versions: TLS 1.0, TLS 1.1, and TLS 1.2
-	//     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+	//     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
 	//
 	// *   **tls_cipher_policy\_1\_1**
 	//
 	//     *   Supported TLS versions: TLS 1.1 and TLS 1.2
-	//     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+	//     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
 	//
 	// *   **tls_cipher_policy\_1\_2**
 	//
 	//     *   Supported TLS version: TLS 1.2
-	//     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+	//     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
 	//
 	// *   **tls_cipher_policy\_1\_2\_strict**
 	//
@@ -26367,9 +26904,9 @@ type UpdateListenerRequest struct {
 	//     *   Supported TLS versions: TLS 1.2 and TLS 1.3
 	//     *   Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
 	//
-	// >  You can specify this parameter only for HTTPS listeners.
+	// > This parameter is available only when you create an HTTPS listener.
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The configurations of the `XForward` headers.
+	// The `XForward` headers.
 	XForwardedForConfig *UpdateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -26447,13 +26984,13 @@ func (s *UpdateListenerRequest) SetXForwardedForConfig(v *UpdateListenerRequestX
 }
 
 type UpdateListenerRequestBackendPorts struct {
-	// The start port in the range of ports used by the backend server to receive requests.
+	// The first port in the range of ports that are used by backend servers to receive requests.
 	//
-	// >  This parameter is required only when you configure an HTTPS or HTTP listener and the listener port is different from the port over which the backend server provides services. In this case, the start port that is used to receive requests for the backend server must be the same as the end port.
+	// > This parameter is required only when you configure an HTTPS or HTTP listener and the listener port is different from the service port of the backend servers. In this case, the first port that is used by the backend servers to receive requests must be the same as the last port.
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The end port in the range of ports used by the backend server to receive requests.
+	// The last port in the range of ports that are used by backend servers to receive requests.
 	//
-	// >  This parameter is required only when you configure an HTTPS or HTTP listener and the listener port is different from the port over which the backend server provides services. In this case, the start port that is used to receive requests for the backend server must be the same as the end port.
+	// > This parameter is required only when you configure an HTTPS or HTTP listener and the listener port is different from the service port of the backend servers. In this case, the first port that is used by the backend servers to receive requests must be the same as the last port.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -26478,7 +27015,7 @@ func (s *UpdateListenerRequestBackendPorts) SetToPort(v int32) *UpdateListenerRe
 type UpdateListenerRequestCertificates struct {
 	// The ID of the SSL certificate.
 	//
-	// >  This parameter is required only when you configure an HTTPS listener.
+	// > This parameter is required only when you configure an HTTPS listener.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -26496,21 +27033,21 @@ func (s *UpdateListenerRequestCertificates) SetId(v string) *UpdateListenerReque
 }
 
 type UpdateListenerRequestPortRanges struct {
-	// The start port of the listener port range that is used to receive and forward requests to endpoints.
+	// The first port of the listener port range that is used to receive and forward requests to endpoints.
 	//
 	// Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
 	//
-	// The maximum number of ports that can be configured is subject to the routing type and protocol of the listener. For more information, see [Listener overview](~~153216~~).
+	// The maximum number of ports that can be configured varies based on the routing type and protocol of the listener. For more information, see [Listener overview](~~153216~~).
 	//
-	// >  You can configure only one listener port for an HTTP or HTTPS listener. In this case, the start port is the same as the end port.
+	// > You can configure only one listener port for an HTTP or HTTPS listener. In this case, the first port is the same as the last port.
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The end port of the listener port range that is used to receive and forward requests to endpoints.
+	// The last port of the listener port range that is used to receive and forward requests to endpoints.
 	//
 	// Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
 	//
-	// The maximum number of ports that can be configured is subject to the routing type and protocol of the listener. For more information, see [Listener overview](~~153216~~).
+	// The maximum number of ports that can be configured varies based on the routing type and protocol of the listener. For more information, see [Listener overview](~~153216~~).
 	//
-	// >  You can configure only one listener port for an HTTP or HTTPS listener. In this case, the start port is the same as the end port.
+	// > You can configure only one listener port for an HTTP or HTTPS listener. In this case, the first port is the same as the last port.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -26533,40 +27070,40 @@ func (s *UpdateListenerRequestPortRanges) SetToPort(v int32) *UpdateListenerRequ
 }
 
 type UpdateListenerRequestXForwardedForConfig struct {
-	// Specifies whether to use the `GA-AP` header to retrieve the information about acceleration regions. Default value: false. Valid values:
+	// Specifies whether to use the `GA-AP` header to retrieve information about acceleration regions. Valid values:
 	//
 	// *   **true**: yes
-	// *   **false**: no
+	// *   **false** (default): no
 	//
-	// >  You can specify this parameter only for HTTP and HTTPS listeners.
+	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	XForwardedForGaApEnabled *bool `json:"XForwardedForGaApEnabled,omitempty" xml:"XForwardedForGaApEnabled,omitempty"`
-	// Specifies whether to use the `GA-ID` header to retrieve the ID of the GA instance. Default value: false. Valid values:
+	// Specifies whether to use the `GA-ID` header to retrieve the ID of the GA instance. Valid values:
 	//
 	// *   **true**: yes
-	// *   **false**: no
+	// *   **false** (default): no
 	//
-	// >  You can specify this parameter only for HTTP and HTTPS listeners.
+	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	XForwardedForGaIdEnabled *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
-	// Specifies whether to use the `GA-X-Forward-Port` header to retrieve the listener ports of the GA instance. Default value: false. Valid values:
+	// Specifies whether to use the `GA-X-Forward-Port` header to retrieve the listener ports of the GA instance. Valid values:
 	//
 	// *   **true**: yes
-	// *   **false**: no
+	// *   **false** (default): no
 	//
-	// >  You can specify this parameter only for HTTP and HTTPS listeners.
+	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	XForwardedForPortEnabled *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
-	// Specifies whether to use the `GA-X-Forward-Proto` header to retrieve the listener protocol of the GA instance. Default value: false. Valid values:
+	// Specifies whether to use the `GA-X-Forward-Proto` header to retrieve the listener protocol of the GA instance. Valid values:
 	//
 	// *   **true**: yes
-	// *   **false**: no
+	// *   **false** (default): no
 	//
-	// >  You can specify this parameter only for HTTP and HTTPS listeners.
+	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	// Specifies whether to use the `X-Real-IP` header to retrieve client IP addresses. Default value: false. Valid values:
+	// Specifies whether to use the `X-Real-IP` header to retrieve client IP addresses. Valid values:
 	//
 	// *   **true**: yes
-	// *   **false**: no
+	// *   **false** (default): no
 	//
-	// >  You can specify this parameter only for HTTP and HTTPS listeners.
+	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	XRealIpEnabled *bool `json:"XRealIpEnabled,omitempty" xml:"XRealIpEnabled,omitempty"`
 }
 
@@ -26942,10 +27479,6 @@ func (client *Client) AssociateAdditionalCertificatesWithListener(request *Assoc
 
 /**
  * When you call this operation, take note of the following items:
- * *   When you call this operation, the system checks whether the GA instance assumes the service-linked role AliyunServiceRoleForGaAntiDdos. In this case, the following rules apply to the GA instance:
- *     *   If the GA instance does not assume the service-linked role AliyunServiceRoleForGaAntiDdos, the system automatically creates the service-linked role and attaches the policy AliyunServiceRolePolicyForGaAntiDdos to the service-linked role. This allows GA to access the Anti-DDoS Pro/Premium instance.
- *     *   If the GA instance assumes the service-linked role AliyunServiceRoleForGaAntiDdos, the system does not create the service-linked role again.
- *     For more information, see [AliyunServiceRoleForGaAntiDdos](~~186805~~).
  * *   **AttachDdosToAccelerator** is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) or [ListAccelerators](~~153236~~) operation to query the status of the GA instance.
  *     *   If the GA instance is in the **configuring** state, the Anti-DDoS Pro/Premium instance is being associated with the GA instance. In this case, you can perform only query operations.
  *     *   If the GA instance is in the **active** state, the Anti-DDoS Pro/Premium instance is associated with the GA instance.
@@ -27002,10 +27535,6 @@ func (client *Client) AttachDdosToAcceleratorWithOptions(request *AttachDdosToAc
 
 /**
  * When you call this operation, take note of the following items:
- * *   When you call this operation, the system checks whether the GA instance assumes the service-linked role AliyunServiceRoleForGaAntiDdos. In this case, the following rules apply to the GA instance:
- *     *   If the GA instance does not assume the service-linked role AliyunServiceRoleForGaAntiDdos, the system automatically creates the service-linked role and attaches the policy AliyunServiceRolePolicyForGaAntiDdos to the service-linked role. This allows GA to access the Anti-DDoS Pro/Premium instance.
- *     *   If the GA instance assumes the service-linked role AliyunServiceRoleForGaAntiDdos, the system does not create the service-linked role again.
- *     For more information, see [AliyunServiceRoleForGaAntiDdos](~~186805~~).
  * *   **AttachDdosToAccelerator** is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) or [ListAccelerators](~~153236~~) operation to query the status of the GA instance.
  *     *   If the GA instance is in the **configuring** state, the Anti-DDoS Pro/Premium instance is being associated with the GA instance. In this case, you can perform only query operations.
  *     *   If the GA instance is in the **active** state, the Anti-DDoS Pro/Premium instance is associated with the GA instance.
@@ -27188,7 +27717,7 @@ func (client *Client) BandwidthPackageAddAccelerator(request *BandwidthPackageAd
 }
 
 /**
- * *   **BandwidthPackageRemoveAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the state of the bandwidth plan that you attempt to disassociate.
+ * *   **BandwidthPackageRemoveAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan that you attempt to disassociate.
  *     *   If the bandwidth plan is in the **unbinding** state, it indicates that the bandwidth plan is being disassociated. In this case, you can perform only query operations.
  *     *   If the bandwidth plan is in the **active** state, it indicates that the bandwidth plan is disassociated.
  * *   The **BandwidthPackageRemoveAccelerator** cannot be called repeatedly for the same GA instance.
@@ -27239,7 +27768,7 @@ func (client *Client) BandwidthPackageRemoveAcceleratorWithOptions(request *Band
 }
 
 /**
- * *   **BandwidthPackageRemoveAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the state of the bandwidth plan that you attempt to disassociate.
+ * *   **BandwidthPackageRemoveAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan that you attempt to disassociate.
  *     *   If the bandwidth plan is in the **unbinding** state, it indicates that the bandwidth plan is being disassociated. In this case, you can perform only query operations.
  *     *   If the bandwidth plan is in the **active** state, it indicates that the bandwidth plan is disassociated.
  * *   The **BandwidthPackageRemoveAccelerator** cannot be called repeatedly for the same GA instance.
@@ -27461,8 +27990,16 @@ func (client *Client) CreateAcceleratorWithOptions(request *CreateAcceleratorReq
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Duration)) {
 		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IpSetConfig)) {
@@ -27736,13 +28273,12 @@ func (client *Client) CreateApplicationMonitor(request *CreateApplicationMonitor
 }
 
 /**
- * ##
  * To use Global Accelerator (GA) for acceleration, you must purchase a basic bandwidth plan. A basic bandwidth plan supports the following bandwidth types:
  * *   **Basic**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service is deployed on Alibaba Cloud.
  * *   **Enhanced**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud.
- * *   **Premium**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud. If you want to accelerate data transfer for clients in the Chinese mainland, you must select China (Hong Kong) as the acceleration region.
+ * *   **Premium**: Both the default acceleration region and the default service region are outside the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud. If you want to accelerate data transfer for clients in the Chinese mainland, you must select China (Hong Kong) as the acceleration region.
  * When you call this operation, take note of the following items:
- * *   The **CreateBandwidthPackage** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan.
+ * *   **CreateBandwidthPackage** is an asynchronous operation. After you send a request, the system returns the ID of a bandwidth plan, but the bandwidth plan is still being created in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan.
  *     *   If the bandwidth plan is in the **init** state, it indicates that the bandwidth plan is being created. In this case, you can perform only query operations.
  *     *   If the bandwidth plan is in the **active** state, it indicates that the bandwidth plan is created.
  * *   The **CreateBandwidthPackage** operation cannot be repeatedly called for the same GA instance within a specific period of time.
@@ -27857,13 +28393,12 @@ func (client *Client) CreateBandwidthPackageWithOptions(request *CreateBandwidth
 }
 
 /**
- * ##
  * To use Global Accelerator (GA) for acceleration, you must purchase a basic bandwidth plan. A basic bandwidth plan supports the following bandwidth types:
  * *   **Basic**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service is deployed on Alibaba Cloud.
  * *   **Enhanced**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud.
- * *   **Premium**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud. If you want to accelerate data transfer for clients in the Chinese mainland, you must select China (Hong Kong) as the acceleration region.
+ * *   **Premium**: Both the default acceleration region and the default service region are outside the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud. If you want to accelerate data transfer for clients in the Chinese mainland, you must select China (Hong Kong) as the acceleration region.
  * When you call this operation, take note of the following items:
- * *   The **CreateBandwidthPackage** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan.
+ * *   **CreateBandwidthPackage** is an asynchronous operation. After you send a request, the system returns the ID of a bandwidth plan, but the bandwidth plan is still being created in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan.
  *     *   If the bandwidth plan is in the **init** state, it indicates that the bandwidth plan is being created. In this case, you can perform only query operations.
  *     *   If the bandwidth plan is in the **active** state, it indicates that the bandwidth plan is created.
  * *   The **CreateBandwidthPackage** operation cannot be repeatedly called for the same GA instance within a specific period of time.
@@ -28112,10 +28647,9 @@ func (client *Client) CreateBasicAccelerateIpEndpointRelations(request *CreateBa
 }
 
 /**
- * ## Usage notes
- * Basic GA instances use high-quality global network bandwidth and the transmission network of Alibaba Cloud to provide users with point-to-point acceleration services. You can use basic GA instances to accelerate content delivery at Layer 3 (IP protocols). For more information, see [Overview of GA instances](~~153127~~).
+ * Basic GA instances leverage the immense bandwidth of Alibaba Cloud\\"s high-quality global network to provide end-to-end acceleration services. You can use basic GA instances to accelerate content delivery at Layer 3 (IP). For more information, see [Overview of GA instances](~~153127~~).
  * **CreateBasicAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicAccelerator](~~353188~~) or [ListBasicAccelerators](~~353189~~) operation to query the status of a basic GA instance:
- * *   If the basic GA instance is in the **init** state, it indicates the basic GA instance is being created. In this case, you can perform only query operations.
+ * *   If the basic GA instance is in the **init** state, it indicates that the basic GA instance is being created. In this case, you can continue to perform query operations on the GA instance.
  * *   If the basic GA instance is in the **active** state, it indicates that the basic GA instance is created.
  *
  * @param request CreateBasicAcceleratorRequest
@@ -28208,10 +28742,9 @@ func (client *Client) CreateBasicAcceleratorWithOptions(request *CreateBasicAcce
 }
 
 /**
- * ## Usage notes
- * Basic GA instances use high-quality global network bandwidth and the transmission network of Alibaba Cloud to provide users with point-to-point acceleration services. You can use basic GA instances to accelerate content delivery at Layer 3 (IP protocols). For more information, see [Overview of GA instances](~~153127~~).
+ * Basic GA instances leverage the immense bandwidth of Alibaba Cloud\\"s high-quality global network to provide end-to-end acceleration services. You can use basic GA instances to accelerate content delivery at Layer 3 (IP). For more information, see [Overview of GA instances](~~153127~~).
  * **CreateBasicAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicAccelerator](~~353188~~) or [ListBasicAccelerators](~~353189~~) operation to query the status of a basic GA instance:
- * *   If the basic GA instance is in the **init** state, it indicates the basic GA instance is being created. In this case, you can perform only query operations.
+ * *   If the basic GA instance is in the **init** state, it indicates that the basic GA instance is being created. In this case, you can continue to perform query operations on the GA instance.
  * *   If the basic GA instance is in the **active** state, it indicates that the basic GA instance is created.
  *
  * @param request CreateBasicAcceleratorRequest
@@ -28328,11 +28861,10 @@ func (client *Client) CreateBasicEndpoint(request *CreateBasicEndpointRequest) (
 }
 
 /**
- * ##
- * *   The **CreateBasicEndpointGroup** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicEndpointGroup](~~362984~~) operation to query the status of an endpoint group.
+ * *   **CreateBasicEndpointGroup** is an asynchronous operation. After a request is sent, the system returns an endpoint group ID and runs the task in the background. You can call the [GetBasicEndpointGroup](~~362984~~) operation to query the status of the task.
  *     *   If the endpoint group is in the **init** state, the endpoint is being created. In this case, you can perform only query operations.
  *     *   If the endpoint group is in the **active** state, the endpoint group is created.
- * *   The **CreateBasicEndpointGroup** operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
+ * *   You cannot call the **CreateBasicEndpointGroup** operation again on the same GA instance before the previous request is completed.
  *
  * @param request CreateBasicEndpointGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28404,11 +28936,10 @@ func (client *Client) CreateBasicEndpointGroupWithOptions(request *CreateBasicEn
 }
 
 /**
- * ##
- * *   The **CreateBasicEndpointGroup** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicEndpointGroup](~~362984~~) operation to query the status of an endpoint group.
+ * *   **CreateBasicEndpointGroup** is an asynchronous operation. After a request is sent, the system returns an endpoint group ID and runs the task in the background. You can call the [GetBasicEndpointGroup](~~362984~~) operation to query the status of the task.
  *     *   If the endpoint group is in the **init** state, the endpoint is being created. In this case, you can perform only query operations.
  *     *   If the endpoint group is in the **active** state, the endpoint group is created.
- * *   The **CreateBasicEndpointGroup** operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
+ * *   You cannot call the **CreateBasicEndpointGroup** operation again on the same GA instance before the previous request is completed.
  *
  * @param request CreateBasicEndpointGroupRequest
  * @return CreateBasicEndpointGroupResponse
@@ -28425,9 +28956,8 @@ func (client *Client) CreateBasicEndpointGroup(request *CreateBasicEndpointGroup
 }
 
 /**
- * ### Usage notes
- * *   **CreateBasicEndpoints** is an asynchronous operation. After you call this operation, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](~~466831~~) operation to query the status of endpoints. - If one or more endpoints are in the **init** state, the endpoints are being created. In this case, you can perform only query operations. - If all endpoints are in the **active** state, the endpoints are created.
- * *   The **CreateBasicEndpoints** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * *   **CreateBasicEndpoints** is an asynchronous operation. After you call this operation, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](~~466831~~) operation to query the status of endpoints. - If one or more endpoints are in the **init** state, it indicates that the endpoints are being created. In this case, you can continue to perform query operations on the endpoints. If all endpoints are in the **active** state, it indicates that the endpoints are created.
+ * *   You cannot call the **CreateBasicEndpoints** operation again on the same GA instance before the previous operation is complete.
  *
  * @param request CreateBasicEndpointsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28483,9 +29013,8 @@ func (client *Client) CreateBasicEndpointsWithOptions(request *CreateBasicEndpoi
 }
 
 /**
- * ### Usage notes
- * *   **CreateBasicEndpoints** is an asynchronous operation. After you call this operation, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](~~466831~~) operation to query the status of endpoints. - If one or more endpoints are in the **init** state, the endpoints are being created. In this case, you can perform only query operations. - If all endpoints are in the **active** state, the endpoints are created.
- * *   The **CreateBasicEndpoints** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * *   **CreateBasicEndpoints** is an asynchronous operation. After you call this operation, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](~~466831~~) operation to query the status of endpoints. - If one or more endpoints are in the **init** state, it indicates that the endpoints are being created. In this case, you can continue to perform query operations on the endpoints. If all endpoints are in the **active** state, it indicates that the endpoints are created.
+ * *   You cannot call the **CreateBasicEndpoints** operation again on the same GA instance before the previous operation is complete.
  *
  * @param request CreateBasicEndpointsRequest
  * @return CreateBasicEndpointsResponse
@@ -28502,12 +29031,12 @@ func (client *Client) CreateBasicEndpoints(request *CreateBasicEndpointsRequest)
 }
 
 /**
- * Before you call this operation, take note of the following limits:
- * *   You can add only one acceleration region for each basic GA instance, and only IPv4 clients can connect to basic GA instances.
- * *   **CreateBasicIpSet** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicIpSet](~~362987~~) operation to query the status of an acceleration region.
+ * Take note of the following limits:
+ * *   You can specify only one acceleration region for each basic GA instance, and only IPv4 clients can connect to basic GA instances.
+ * *   **CreateBasicIpSet** is an asynchronous operation. After you send a request, the system returns an acceleration region ID and runs the task in the background. You can call the [GetBasicIpSet](~~362987~~) operation to query the status of the task.
  *     *   If the acceleration region is in the **init** state, the acceleration region is being created. In this case, you can perform only query operations.
  *     *   If the acceleration region is in the **active** state, the acceleration region is created.
- * *   The **CreateBasicIpSet** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * *   You cannot call the **CreateBasicIpSet** operation again on the same GA instance before the previous task is completed.
  *
  * @param request CreateBasicIpSetRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28567,12 +29096,12 @@ func (client *Client) CreateBasicIpSetWithOptions(request *CreateBasicIpSetReque
 }
 
 /**
- * Before you call this operation, take note of the following limits:
- * *   You can add only one acceleration region for each basic GA instance, and only IPv4 clients can connect to basic GA instances.
- * *   **CreateBasicIpSet** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicIpSet](~~362987~~) operation to query the status of an acceleration region.
+ * Take note of the following limits:
+ * *   You can specify only one acceleration region for each basic GA instance, and only IPv4 clients can connect to basic GA instances.
+ * *   **CreateBasicIpSet** is an asynchronous operation. After you send a request, the system returns an acceleration region ID and runs the task in the background. You can call the [GetBasicIpSet](~~362987~~) operation to query the status of the task.
  *     *   If the acceleration region is in the **init** state, the acceleration region is being created. In this case, you can perform only query operations.
  *     *   If the acceleration region is in the **active** state, the acceleration region is created.
- * *   The **CreateBasicIpSet** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * *   You cannot call the **CreateBasicIpSet** operation again on the same GA instance before the previous task is completed.
  *
  * @param request CreateBasicIpSetRequest
  * @return CreateBasicIpSetResponse
@@ -28589,19 +29118,7 @@ func (client *Client) CreateBasicIpSet(request *CreateBasicIpSetRequest) (_resul
 }
 
 /**
- * After you configure a custom routing listener for a Global Accelerator (GA) instance, the GA instance generates a port mapping table based on the listener port range, mapping information (protocols and port ranges) of the associated endpoint groups, and IP addresses of endpoints (vSwitches), and forwards client requests to the specified IP addresses and ports in the vSwitches.
- * You can call this operation to create mapping configurations for an endpoint group of a custom routing listener. When you call this operation, take note of the following items:
- * *   **CreateCustomRoutingEndpointGroupDestinations** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group and determine whether mapping configurations are created for the endpoint group.
- *     *   If the endpoint group is in the **updating** state, it indicates that mapping configurations are being created for the endpoint group. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, it indicates that mapping configurations are created for the endpoint group.
- * *   The **CreateCustomRoutingEndpointGroupDestinations** operation cannot be called repeatedly for the same GA instance within a specific period of time.
- * ### Prerequisites
- * Make sure that the following operations are performed before you call this operation:
- * *   A standard GA instance is created. For more information, see [CreateAccelerator](~~206786~~).
- * *   A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
- * *   An application is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
- * *   The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
- * *   An endpoint group is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
+ * readAndWrite
  *
  * @param request CreateCustomRoutingEndpointGroupDestinationsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28657,19 +29174,7 @@ func (client *Client) CreateCustomRoutingEndpointGroupDestinationsWithOptions(re
 }
 
 /**
- * After you configure a custom routing listener for a Global Accelerator (GA) instance, the GA instance generates a port mapping table based on the listener port range, mapping information (protocols and port ranges) of the associated endpoint groups, and IP addresses of endpoints (vSwitches), and forwards client requests to the specified IP addresses and ports in the vSwitches.
- * You can call this operation to create mapping configurations for an endpoint group of a custom routing listener. When you call this operation, take note of the following items:
- * *   **CreateCustomRoutingEndpointGroupDestinations** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group and determine whether mapping configurations are created for the endpoint group.
- *     *   If the endpoint group is in the **updating** state, it indicates that mapping configurations are being created for the endpoint group. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, it indicates that mapping configurations are created for the endpoint group.
- * *   The **CreateCustomRoutingEndpointGroupDestinations** operation cannot be called repeatedly for the same GA instance within a specific period of time.
- * ### Prerequisites
- * Make sure that the following operations are performed before you call this operation:
- * *   A standard GA instance is created. For more information, see [CreateAccelerator](~~206786~~).
- * *   A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
- * *   An application is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
- * *   The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
- * *   An endpoint group is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
+ * readAndWrite
  *
  * @param request CreateCustomRoutingEndpointGroupDestinationsRequest
  * @return CreateCustomRoutingEndpointGroupDestinationsResponse
@@ -28886,19 +29391,7 @@ func (client *Client) CreateCustomRoutingEndpointTrafficPolicies(request *Create
 }
 
 /**
- * After you configure a custom routing listener for a Global Accelerator (GA) instance, the instance generates a port mapping table based on the listener port range, the protocols and port ranges of the associated endpoint groups, and the IP addresses of endpoints (vSwitches), and forwards client requests to specified IP addresses and ports in the vSwitches.
- * This operation is used to create endpoints for custom routing listeners. When you call this operation, take note of the following items:
- * *   **CreateCustomRoutingEndpoints** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group and determine whether endpoints are created in the endpoint group.
- *     *   If the endpoint group is in the **updating** state, it indicates that endpoints are being created. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, it indicates that endpoints are created.
- * *   The **CreateCustomRoutingEndpoints** operation cannot be called repeatedly for the same GA instance within a specific period of time.
- * ### Prerequisites
- * The following operations are complete before you call this operation:
- * *   Create a standard GA instance. For more information, see [CreateAccelerator](~~206786~~).
- * *   Associate a bandwidth plan with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
- * *   Deploy an application that serves as the endpoint of the GA instance. The application is used to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
- * *   Apply for permissions to use custom routing listeners and create a custom routing listener for the standard GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
- * *   Create an endpoint group for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
+ * readAndWrite
  *
  * @param request CreateCustomRoutingEndpointsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28950,19 +29443,7 @@ func (client *Client) CreateCustomRoutingEndpointsWithOptions(request *CreateCus
 }
 
 /**
- * After you configure a custom routing listener for a Global Accelerator (GA) instance, the instance generates a port mapping table based on the listener port range, the protocols and port ranges of the associated endpoint groups, and the IP addresses of endpoints (vSwitches), and forwards client requests to specified IP addresses and ports in the vSwitches.
- * This operation is used to create endpoints for custom routing listeners. When you call this operation, take note of the following items:
- * *   **CreateCustomRoutingEndpoints** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group and determine whether endpoints are created in the endpoint group.
- *     *   If the endpoint group is in the **updating** state, it indicates that endpoints are being created. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, it indicates that endpoints are created.
- * *   The **CreateCustomRoutingEndpoints** operation cannot be called repeatedly for the same GA instance within a specific period of time.
- * ### Prerequisites
- * The following operations are complete before you call this operation:
- * *   Create a standard GA instance. For more information, see [CreateAccelerator](~~206786~~).
- * *   Associate a bandwidth plan with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
- * *   Deploy an application that serves as the endpoint of the GA instance. The application is used to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
- * *   Apply for permissions to use custom routing listeners and create a custom routing listener for the standard GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
- * *   Create an endpoint group for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
+ * readAndWrite
  *
  * @param request CreateCustomRoutingEndpointsRequest
  * @return CreateCustomRoutingEndpointsResponse
@@ -29353,11 +29834,10 @@ func (client *Client) CreateForwardingRules(request *CreateForwardingRulesReques
 }
 
 /**
- * ## Usage notes
- * *   **CreateIpSets** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of acceleration regions.
+ * *   **CreateIpSets** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of the task.
  *     *   If acceleration regions are in the **init** state, it indicates that the acceleration regions are being created. In this case, you can perform only query operations.
  *     *   If acceleration regions are in the **active** state, it indicates that the acceleration regions are created.
- * *   The **CreateIpSets** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+ * *   You cannot call the **CreateIpSets** operation again on the same GA instance before the previous operation is completed.
  *
  * @param request CreateIpSetsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29409,11 +29889,10 @@ func (client *Client) CreateIpSetsWithOptions(request *CreateIpSetsRequest, runt
 }
 
 /**
- * ## Usage notes
- * *   **CreateIpSets** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of acceleration regions.
+ * *   **CreateIpSets** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of the task.
  *     *   If acceleration regions are in the **init** state, it indicates that the acceleration regions are being created. In this case, you can perform only query operations.
  *     *   If acceleration regions are in the **active** state, it indicates that the acceleration regions are created.
- * *   The **CreateIpSets** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+ * *   You cannot call the **CreateIpSets** operation again on the same GA instance before the previous operation is completed.
  *
  * @param request CreateIpSetsRequest
  * @return CreateIpSetsResponse
@@ -29633,9 +30112,9 @@ func (client *Client) CreateSpareIps(request *CreateSpareIpsRequest) (_result *C
 
 /**
  * *   Subscription GA instances cannot be deleted.
- * *   GA instances that have bandwidth plans associated cannot be deleted. To delete such GA instances, disassociate the bandwidth plans. For information about how to disassociate a bandwidth plan from a GA instance, see [BandwidthPackageRemoveAccelerator](~~153240~~).
- * *   **DeleteAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the state of a GA instance.
- *     *   If the GA instance is in the **deleting** state, it indicates that the GA instance is being deleted. In this case, you can perform only query operations.
+ * *   GA instances that have bandwidth plans associated cannot be deleted. To delete such GA instances, disassociate the bandwidth plans first. For information about how to disassociate a bandwidth plan from a GA instance, see [BandwidthPackageRemoveAccelerator](~~153240~~).
+ * *   **DeleteAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can use the [DescribeAccelerator](~~153235~~) operation to query the state of a GA instance.
+ *     *   If the GA instance is in the **deleting** state, the GA instance is being deleted. In this case, you can perform only query operations.
  *     *   If the GA instance cannot be queried, it indicates that the GA instance is deleted.
  *
  * @param request DeleteAcceleratorRequest
@@ -29681,9 +30160,9 @@ func (client *Client) DeleteAcceleratorWithOptions(request *DeleteAcceleratorReq
 
 /**
  * *   Subscription GA instances cannot be deleted.
- * *   GA instances that have bandwidth plans associated cannot be deleted. To delete such GA instances, disassociate the bandwidth plans. For information about how to disassociate a bandwidth plan from a GA instance, see [BandwidthPackageRemoveAccelerator](~~153240~~).
- * *   **DeleteAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the state of a GA instance.
- *     *   If the GA instance is in the **deleting** state, it indicates that the GA instance is being deleted. In this case, you can perform only query operations.
+ * *   GA instances that have bandwidth plans associated cannot be deleted. To delete such GA instances, disassociate the bandwidth plans first. For information about how to disassociate a bandwidth plan from a GA instance, see [BandwidthPackageRemoveAccelerator](~~153240~~).
+ * *   **DeleteAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can use the [DescribeAccelerator](~~153235~~) operation to query the state of a GA instance.
+ *     *   If the GA instance is in the **deleting** state, the GA instance is being deleted. In this case, you can perform only query operations.
  *     *   If the GA instance cannot be queried, it indicates that the GA instance is deleted.
  *
  * @param request DeleteAcceleratorRequest
@@ -29849,7 +30328,7 @@ func (client *Client) DeleteApplicationMonitor(request *DeleteApplicationMonitor
 /**
  * *   By default, subscription bandwidth plans cannot be deleted. If you want to delete subscription bandwidth plans, contact your account manager.
  * *   Bandwidth plans that are associated with Global Accelerator (GA) instances cannot be deleted. Before you can delete a bandwidth plan that is associated with a GA instance, you must disassociate the bandwidth plan from the GA instance. For information about how to disassociate a bandwidth plan from a GA instance, see [BandwidthPackageRemoveAccelerator](~~153240~~).
- * *   **DeleteBandwidthPackage** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan that you want to delete.
+ * *   **DeleteBandwidthPackage** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the task.
  *     *   If the bandwidth plan is in the **deleting** state, it indicates that the bandwidth plan is being deleted. In this case, you can perform only query operations.
  *     *   If the bandwidth plan cannot be found, it indicates that the bandwidth plan is deleted.
  * *   The **DeleteBandwidthPackage** operation cannot be called repeatedly for the same bandwidth plan within a specific period of time.
@@ -29902,7 +30381,7 @@ func (client *Client) DeleteBandwidthPackageWithOptions(request *DeleteBandwidth
 /**
  * *   By default, subscription bandwidth plans cannot be deleted. If you want to delete subscription bandwidth plans, contact your account manager.
  * *   Bandwidth plans that are associated with Global Accelerator (GA) instances cannot be deleted. Before you can delete a bandwidth plan that is associated with a GA instance, you must disassociate the bandwidth plan from the GA instance. For information about how to disassociate a bandwidth plan from a GA instance, see [BandwidthPackageRemoveAccelerator](~~153240~~).
- * *   **DeleteBandwidthPackage** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the bandwidth plan that you want to delete.
+ * *   **DeleteBandwidthPackage** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the task.
  *     *   If the bandwidth plan is in the **deleting** state, it indicates that the bandwidth plan is being deleted. In this case, you can perform only query operations.
  *     *   If the bandwidth plan cannot be found, it indicates that the bandwidth plan is deleted.
  * *   The **DeleteBandwidthPackage** operation cannot be called repeatedly for the same bandwidth plan within a specific period of time.
@@ -30279,10 +30758,10 @@ func (client *Client) DeleteBasicEndpointGroup(request *DeleteBasicEndpointGroup
 }
 
 /**
- * *   **DeleteBasicIpSet** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [GetBasicIpSet](~~362987~~) operation to query the state of an acceleration region.
+ * *   \\*\\*DeleteBasicIpSet\\*\\* is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicIpSet](~~362987~~) operation to query the status of an acceleration region:
  *     *   If the acceleration region is in the **deleting** state, it indicates that the acceleration region is being deleted. In this case, you can perform only query operations.
  *     *   If the information of the acceleration region is not displayed in the response, it indicates that the acceleration region is deleted.
- * *   The **DeleteBasicIpSet** cannot be called repeatedly for the same basic GA instance within a specific period of time.
+ * *   The \\*\\*DeleteBasicIpSet\\*\\* operation cannot be called repeatedly for the same basic GA instance within a specific period of time.
  *
  * @param request DeleteBasicIpSetRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30330,10 +30809,10 @@ func (client *Client) DeleteBasicIpSetWithOptions(request *DeleteBasicIpSetReque
 }
 
 /**
- * *   **DeleteBasicIpSet** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [GetBasicIpSet](~~362987~~) operation to query the state of an acceleration region.
+ * *   \\*\\*DeleteBasicIpSet\\*\\* is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetBasicIpSet](~~362987~~) operation to query the status of an acceleration region:
  *     *   If the acceleration region is in the **deleting** state, it indicates that the acceleration region is being deleted. In this case, you can perform only query operations.
  *     *   If the information of the acceleration region is not displayed in the response, it indicates that the acceleration region is deleted.
- * *   The **DeleteBasicIpSet** cannot be called repeatedly for the same basic GA instance within a specific period of time.
+ * *   The \\*\\*DeleteBasicIpSet\\*\\* operation cannot be called repeatedly for the same basic GA instance within a specific period of time.
  *
  * @param request DeleteBasicIpSetRequest
  * @return DeleteBasicIpSetResponse
@@ -30350,11 +30829,10 @@ func (client *Client) DeleteBasicIpSet(request *DeleteBasicIpSetRequest) (_resul
 }
 
 /**
- * ### Usage notes
- * *   **DeleteCustomRoutingEndpointGroupDestinations** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) to query the status of an endpoint group and verify whether mappings are deleted from the endpoint group.
+ * *   **DeleteCustomRoutingEndpointGroupDestinations** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) to query the status of the task.
  *     *   If the endpoint group is in the **updating** state, it indicates that mappings are being deleted from the endpoint group. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state and no information about the mappings that you want to delete is found in the response of the [DescribeCustomRoutingEndpointGroupDestinations](~~449378~~) operation, the mappings are deleted from the endpoint group.
- * *   The **DeleteCustomRoutingEndpointGroupDestinations** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+ *     *   If the endpoint group is in the **active** state and no information about the mappings that you want to delete is found in the response when you call the [DescribeCustomRoutingEndpointGroupDestinations](~~449378~~) operation, it indicates the mappings are deleted from the endpoint group.
+ * *   You cannot call the **DeleteCustomRoutingEndpointGroupDestinations** operation again on the same Global Accelerator (GA) instance before the previous request is completed.
  *
  * @param request DeleteCustomRoutingEndpointGroupDestinationsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30410,11 +30888,10 @@ func (client *Client) DeleteCustomRoutingEndpointGroupDestinationsWithOptions(re
 }
 
 /**
- * ### Usage notes
- * *   **DeleteCustomRoutingEndpointGroupDestinations** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) to query the status of an endpoint group and verify whether mappings are deleted from the endpoint group.
+ * *   **DeleteCustomRoutingEndpointGroupDestinations** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) to query the status of the task.
  *     *   If the endpoint group is in the **updating** state, it indicates that mappings are being deleted from the endpoint group. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state and no information about the mappings that you want to delete is found in the response of the [DescribeCustomRoutingEndpointGroupDestinations](~~449378~~) operation, the mappings are deleted from the endpoint group.
- * *   The **DeleteCustomRoutingEndpointGroupDestinations** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+ *     *   If the endpoint group is in the **active** state and no information about the mappings that you want to delete is found in the response when you call the [DescribeCustomRoutingEndpointGroupDestinations](~~449378~~) operation, it indicates the mappings are deleted from the endpoint group.
+ * *   You cannot call the **DeleteCustomRoutingEndpointGroupDestinations** operation again on the same Global Accelerator (GA) instance before the previous request is completed.
  *
  * @param request DeleteCustomRoutingEndpointGroupDestinationsRequest
  * @return DeleteCustomRoutingEndpointGroupDestinationsResponse
@@ -30585,11 +31062,10 @@ func (client *Client) DeleteCustomRoutingEndpointTrafficPolicies(request *Delete
 }
 
 /**
- * ### Usage notes
- * *   **DeleteCustomRoutingEndpoints** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group and check whether endpoints are deleted.
- *     *   If an endpoint group is in the **updating** state, the endpoints are being deleted. In this case, you can perform only query operations.
- *     *   If an endpoint group is in the **active** state and the endpoints cannot be found after you call the [DescribeCustomRoutingEndpoint](~~449386~~) operation, the endpoints are deleted.
- * *   You cannot repeatedly call the **DeleteCustomRoutingEndpoints** operation for the same Global Accelerator (GA) instance within the specified period of time.
+ * *   **DeleteCustomRoutingEndpoints** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) to query the status of the task.
+ *     *   If an endpoint group is in the **updating** state, the endpoint is being deleted. In this case, you can perform only query operations.
+ *     *   If an endpoint group is in the **active** state and the endpoint cannot be found after you call the [DescribeCustomRoutingEndpoint](~~449386~~) operation, the endpoint is deleted.
+ * *   You cannot call the **DeleteCustomRoutingEndpoints** operation again on the same Global Accelerator (GA) instance before the previous task is completed.
  *
  * @param request DeleteCustomRoutingEndpointsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30641,11 +31117,10 @@ func (client *Client) DeleteCustomRoutingEndpointsWithOptions(request *DeleteCus
 }
 
 /**
- * ### Usage notes
- * *   **DeleteCustomRoutingEndpoints** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group and check whether endpoints are deleted.
- *     *   If an endpoint group is in the **updating** state, the endpoints are being deleted. In this case, you can perform only query operations.
- *     *   If an endpoint group is in the **active** state and the endpoints cannot be found after you call the [DescribeCustomRoutingEndpoint](~~449386~~) operation, the endpoints are deleted.
- * *   You cannot repeatedly call the **DeleteCustomRoutingEndpoints** operation for the same Global Accelerator (GA) instance within the specified period of time.
+ * *   **DeleteCustomRoutingEndpoints** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) to query the status of the task.
+ *     *   If an endpoint group is in the **updating** state, the endpoint is being deleted. In this case, you can perform only query operations.
+ *     *   If an endpoint group is in the **active** state and the endpoint cannot be found after you call the [DescribeCustomRoutingEndpoint](~~449386~~) operation, the endpoint is deleted.
+ * *   You cannot call the **DeleteCustomRoutingEndpoints** operation again on the same Global Accelerator (GA) instance before the previous task is completed.
  *
  * @param request DeleteCustomRoutingEndpointsRequest
  * @return DeleteCustomRoutingEndpointsResponse
@@ -30798,9 +31273,9 @@ func (client *Client) DeleteEndpointGroup(request *DeleteEndpointGroupRequest) (
 }
 
 /**
- * *   **DeleteEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the state of an endpoint group.
- *     *   If the endpoint group is in the **deleting** state, it indicates that the endpoint group is being deleted. In this case, you can perform only query operations.
- *     *   If the endpoint group cannot be queried, it indicates that the endpoint group is deleted.
+ * *   **DeleteEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the status of the task.
+ *     *   If an endpoint group is in the **deleting** state, the endpoint group is being deleted. In this case, you can perform only query operations.
+ *     *   If an endpoint group cannot be queried, the endpoint group is deleted.
  * *   The **DeleteEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request DeleteEndpointGroupsRequest
@@ -30853,9 +31328,9 @@ func (client *Client) DeleteEndpointGroupsWithOptions(request *DeleteEndpointGro
 }
 
 /**
- * *   **DeleteEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the state of an endpoint group.
- *     *   If the endpoint group is in the **deleting** state, it indicates that the endpoint group is being deleted. In this case, you can perform only query operations.
- *     *   If the endpoint group cannot be queried, it indicates that the endpoint group is deleted.
+ * *   **DeleteEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the status of the task.
+ *     *   If an endpoint group is in the **deleting** state, the endpoint group is being deleted. In this case, you can perform only query operations.
+ *     *   If an endpoint group cannot be queried, the endpoint group is deleted.
  * *   The **DeleteEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request DeleteEndpointGroupsRequest
@@ -30873,9 +31348,9 @@ func (client *Client) DeleteEndpointGroups(request *DeleteEndpointGroupsRequest)
 }
 
 /**
- * *   **DeleteForwardingRules** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [ListForwardingRules](~~205817~~) operation to query the state of a forwarding rule.
- *     *   If the forwarding rule is in the **deleting** state, the forwarding rule is being deleted. In this case, you can perform only query operations.
- *     *   If the forwarding rule cannot be queried, the forwarding rule is deleted.
+ * *   **DeleteForwardingRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListForwardingRules](~~205817~~) operation to query the status of the task.
+ *     *   If a forwarding rule is in the **deleting** state, the forwarding rule is being deleted. In this case, you can perform only query operations.
+ *     *   If a forwarding rule cannot be queried, the forwarding rule is deleted.
  * *   The **DeleteForwardingRules** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request DeleteForwardingRulesRequest
@@ -30932,9 +31407,9 @@ func (client *Client) DeleteForwardingRulesWithOptions(request *DeleteForwarding
 }
 
 /**
- * *   **DeleteForwardingRules** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [ListForwardingRules](~~205817~~) operation to query the state of a forwarding rule.
- *     *   If the forwarding rule is in the **deleting** state, the forwarding rule is being deleted. In this case, you can perform only query operations.
- *     *   If the forwarding rule cannot be queried, the forwarding rule is deleted.
+ * *   **DeleteForwardingRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListForwardingRules](~~205817~~) operation to query the status of the task.
+ *     *   If a forwarding rule is in the **deleting** state, the forwarding rule is being deleted. In this case, you can perform only query operations.
+ *     *   If a forwarding rule cannot be queried, the forwarding rule is deleted.
  * *   The **DeleteForwardingRules** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request DeleteForwardingRulesRequest
@@ -31094,8 +31569,8 @@ func (client *Client) DeleteIpSets(request *DeleteIpSetsRequest) (_result *Delet
 }
 
 /**
- * *   **DeleteListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of a listener.
- *     *   If the listener is in the **deleting** state, it indicates that the listener is being deleted. In this case, you can perform only query operations.
+ * *   **DeleteListener** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](~~153254~~) operation to query the state of the listener.
+ *     *   If the listener is in the **deleting** state, it indicates that the listener is being deleted. In this case, you can continue to perform query operations on the listener.
  *     *   If the listener cannot be queried, it indicates that the listener is deleted.
  * *   The **DeleteListener** operation cannot be repeatedly called to delete listeners for the same Global Accelerator (GA) instance within a specific period of time.
  *
@@ -31145,8 +31620,8 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 }
 
 /**
- * *   **DeleteListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of a listener.
- *     *   If the listener is in the **deleting** state, it indicates that the listener is being deleted. In this case, you can perform only query operations.
+ * *   **DeleteListener** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](~~153254~~) operation to query the state of the listener.
+ *     *   If the listener is in the **deleting** state, it indicates that the listener is being deleted. In this case, you can continue to perform query operations on the listener.
  *     *   If the listener cannot be queried, it indicates that the listener is deleted.
  * *   The **DeleteListener** operation cannot be repeatedly called to delete listeners for the same Global Accelerator (GA) instance within a specific period of time.
  *
@@ -31332,6 +31807,50 @@ func (client *Client) DescribeAcceleratorAutoRenewAttribute(request *DescribeAcc
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAcceleratorAutoRenewAttributeResponse{}
 	_body, _err := client.DescribeAcceleratorAutoRenewAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAcceleratorServiceStatusWithOptions(request *DescribeAcceleratorServiceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAcceleratorServiceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAcceleratorServiceStatus"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAcceleratorServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAcceleratorServiceStatus(request *DescribeAcceleratorServiceStatusRequest) (_result *DescribeAcceleratorServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAcceleratorServiceStatusResponse{}
+	_body, _err := client.DescribeAcceleratorServiceStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34472,6 +34991,54 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 	return _result, _err
 }
 
+func (client *Client) ListEndpointGroupIpAddressCidrBlocksWithOptions(request *ListEndpointGroupIpAddressCidrBlocksRequest, runtime *util.RuntimeOptions) (_result *ListEndpointGroupIpAddressCidrBlocksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupRegion)) {
+		query["EndpointGroupRegion"] = request.EndpointGroupRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEndpointGroupIpAddressCidrBlocks"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEndpointGroupIpAddressCidrBlocksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEndpointGroupIpAddressCidrBlocks(request *ListEndpointGroupIpAddressCidrBlocksRequest) (_result *ListEndpointGroupIpAddressCidrBlocksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEndpointGroupIpAddressCidrBlocksResponse{}
+	_body, _err := client.ListEndpointGroupIpAddressCidrBlocksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsRequest, runtime *util.RuntimeOptions) (_result *ListEndpointGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35074,11 +35641,100 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) OpenAcceleratorServiceWithOptions(request *OpenAcceleratorServiceRequest, runtime *util.RuntimeOptions) (_result *OpenAcceleratorServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenAcceleratorService"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenAcceleratorServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenAcceleratorService(request *OpenAcceleratorServiceRequest) (_result *OpenAcceleratorServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenAcceleratorServiceResponse{}
+	_body, _err := client.OpenAcceleratorServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCrossBorderApprovalStatusWithOptions(request *QueryCrossBorderApprovalStatusRequest, runtime *util.RuntimeOptions) (_result *QueryCrossBorderApprovalStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCrossBorderApprovalStatus"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCrossBorderApprovalStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCrossBorderApprovalStatus(request *QueryCrossBorderApprovalStatusRequest) (_result *QueryCrossBorderApprovalStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCrossBorderApprovalStatusResponse{}
+	_body, _err := client.QueryCrossBorderApprovalStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * *   The **RemoveEntriesFromAcl** operation is asynchronous. After you send a request, the system returns the request ID, but the operation is still being performed in the system background. You can call the [GetAcl](~~258292~~) or [ListAcls](~~258291~~) operation to query the status of an ACL:
- *     *   If an ACL is in the **configuring** state, the IP entries are being deleted. In this case, you can perform only query operations.
- *     *   If an ACL is in the **active** state, the IP entries are deleted.
- * *   You cannot repeatedly call the **RemoveEntriesFromAcl** operation for the same Global Accelerator (GA) instance within the specified period of time.
+ * The operation that you want to perform. Set the value to **RemoveEntriesFromAcl**.
  *
  * @param request RemoveEntriesFromAclRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35134,10 +35790,7 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 }
 
 /**
- * *   The **RemoveEntriesFromAcl** operation is asynchronous. After you send a request, the system returns the request ID, but the operation is still being performed in the system background. You can call the [GetAcl](~~258292~~) or [ListAcls](~~258291~~) operation to query the status of an ACL:
- *     *   If an ACL is in the **configuring** state, the IP entries are being deleted. In this case, you can perform only query operations.
- *     *   If an ACL is in the **active** state, the IP entries are deleted.
- * *   You cannot repeatedly call the **RemoveEntriesFromAcl** operation for the same Global Accelerator (GA) instance within the specified period of time.
+ * The operation that you want to perform. Set the value to **RemoveEntriesFromAcl**.
  *
  * @param request RemoveEntriesFromAclRequest
  * @return RemoveEntriesFromAclResponse
@@ -35544,8 +36197,8 @@ func (client *Client) UpdateAcceleratorAutoRenewAttribute(request *UpdateAcceler
 }
 
 /**
- * After you modify the specification of a GA instance, you must confirm the modification. The **UpdateAcceleratorConfirm** operation is used to confirm the specification modification to a GA instance. When you call this operation to confirm the specification modification to a GA instance, take note of the following items:
- * *   **UpdateAcceleratorConfirm** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the state of the GA instance.
+ * After you modify the specification of a GA instance, you must confirm the modification. The **UpdateAcceleratorConfirm** operation is used to confirm the specification of a GA instance that is modified. When you call this operation to confirm the specification of a GA instance, take note of the following items:
+ * *   **UpdateAcceleratorConfirm** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of a GA instance.
  *     *   If the GA instance is in the **configuring** state, it indicates that the specification of the instance is being modified. In this case, you can perform only query operations.
  *     *   If the GA instance is in the **active** state, it indicates that the specification of the instance is modified.
  * *   The **UpdateAcceleratorConfirm** operation cannot be called repeatedly for the same GA instance within a specific period of time.
@@ -35592,8 +36245,8 @@ func (client *Client) UpdateAcceleratorConfirmWithOptions(request *UpdateAcceler
 }
 
 /**
- * After you modify the specification of a GA instance, you must confirm the modification. The **UpdateAcceleratorConfirm** operation is used to confirm the specification modification to a GA instance. When you call this operation to confirm the specification modification to a GA instance, take note of the following items:
- * *   **UpdateAcceleratorConfirm** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the state of the GA instance.
+ * After you modify the specification of a GA instance, you must confirm the modification. The **UpdateAcceleratorConfirm** operation is used to confirm the specification of a GA instance that is modified. When you call this operation to confirm the specification of a GA instance, take note of the following items:
+ * *   **UpdateAcceleratorConfirm** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of a GA instance.
  *     *   If the GA instance is in the **configuring** state, it indicates that the specification of the instance is being modified. In this case, you can perform only query operations.
  *     *   If the GA instance is in the **active** state, it indicates that the specification of the instance is modified.
  * *   The **UpdateAcceleratorConfirm** operation cannot be called repeatedly for the same GA instance within a specific period of time.
@@ -35612,6 +36265,16 @@ func (client *Client) UpdateAcceleratorConfirm(request *UpdateAcceleratorConfirm
 	return _result, _err
 }
 
+/**
+ * ### Prerequisites
+ * You can call this operation to change the type of transmission network for a **standard** GA instance whose bandwidth metering method is **pay-by-data-transfer**. Before you call this operation, make sure that the following requirements are met:
+ * *   Cloud Data Transfer (CDT) is activated. When you call the [CreateAccelerator](~~206786~~) operation and set **BandwidthBillingType** to **CDT** to create a **standard** GA instance whose bandwidth metering method is **pay-by-data-transfer**, CDT is automatically activated. The data transfer fees are managed by CDT.
+ * *   If you want to set **CrossBorderMode** to **private**, which specifies cross-border Express Connect circuit as the type of transmission network, make sure that your enterprise account completed real-name verification. For more information, see [Real-name verification](~~52595~~).
+ *
+ * @param request UpdateAcceleratorCrossBorderModeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAcceleratorCrossBorderModeResponse
+ */
 func (client *Client) UpdateAcceleratorCrossBorderModeWithOptions(request *UpdateAcceleratorCrossBorderModeRequest, runtime *util.RuntimeOptions) (_result *UpdateAcceleratorCrossBorderModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35657,6 +36320,15 @@ func (client *Client) UpdateAcceleratorCrossBorderModeWithOptions(request *Updat
 	return _result, _err
 }
 
+/**
+ * ### Prerequisites
+ * You can call this operation to change the type of transmission network for a **standard** GA instance whose bandwidth metering method is **pay-by-data-transfer**. Before you call this operation, make sure that the following requirements are met:
+ * *   Cloud Data Transfer (CDT) is activated. When you call the [CreateAccelerator](~~206786~~) operation and set **BandwidthBillingType** to **CDT** to create a **standard** GA instance whose bandwidth metering method is **pay-by-data-transfer**, CDT is automatically activated. The data transfer fees are managed by CDT.
+ * *   If you want to set **CrossBorderMode** to **private**, which specifies cross-border Express Connect circuit as the type of transmission network, make sure that your enterprise account completed real-name verification. For more information, see [Real-name verification](~~52595~~).
+ *
+ * @param request UpdateAcceleratorCrossBorderModeRequest
+ * @return UpdateAcceleratorCrossBorderModeResponse
+ */
 func (client *Client) UpdateAcceleratorCrossBorderMode(request *UpdateAcceleratorCrossBorderModeRequest) (_result *UpdateAcceleratorCrossBorderModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAcceleratorCrossBorderModeResponse{}
@@ -36000,15 +36672,15 @@ func (client *Client) UpdateBandwidthPackagaAutoRenewAttribute(request *UpdateBa
 }
 
 /**
- * When you call this operation, take note of the following items:
- * *   **UpdateBandwidthPackage** is a synchronous operation when it is called to modify the configurations excluding the bandwidth value of a bandwidth plan. The new configurations take effect immediately after the operation is performed.
- * *   **UpdateBandwidthPackage** is an asynchronous operation when it is called to modify the configurations including the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query whether the bandwidth plan is modified.
- *     *   If the parameter settings of the bandwidth plan remain unchanged, it indicates that the bandwidth plan is being modified. In this case, you can perform only query operations.
- *     *   If the parameter settings of the bandwidth plan change, it indicates that the bandwidth plan is modified.
- * *   **UpdateBandwidthPackage** is an asynchronous operation when it is called to modify the configurations including the bandwidth value of a bandwidth plan that is associated with a GA instance. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the state of the GA instance and determine whether its associated bandwidth plan is modified.
- *     *   If the GA instance is in the **configuring** state, it indicates that the bandwidth plan is being modified. In this case, you can perform only query operations.
- *     *   If the GA instance is in the **active** state, it indicates that the bandwidth plan is modified.
- * *   The **UpdateBandwidthPackage** operation cannot be called repeatedly for the same bandwidth plan within a specific period of time.
+ * Take note of the following items:
+ * *   **UpdateBandwidthPackage** is a synchronous operation when you call the operation to modify the configuration excluding the bandwidth value of a bandwidth plan. The new configuration immediately takes effect after the operation is performed.
+ * *   **UpdateBandwidthPackage** is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the task.
+ *     *   If the parameter values of the bandwidth plan remain unchanged, the bandwidth plan is being modified. In this case, you can perform only query operations.
+ *     *   If the parameter values of the bandwidth plan are changed, the bandwidth plan is modified.
+ * *   **UpdateBandwidthPackage** is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is associated with a GA instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of the task.
+ *     *   If the GA instance is in the **configuring** state, the bandwidth plan is being modified. In this case, you can perform only query operations.
+ *     *   If the GA instance is in the **active** state, the bandwidth plan is modified.
+ * *   You cannot repeatedly call the **UpdateBandwidthPackage** operation for the same bandwidth plan within a specific period of time.
  *
  * @param request UpdateBandwidthPackageRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36076,15 +36748,15 @@ func (client *Client) UpdateBandwidthPackageWithOptions(request *UpdateBandwidth
 }
 
 /**
- * When you call this operation, take note of the following items:
- * *   **UpdateBandwidthPackage** is a synchronous operation when it is called to modify the configurations excluding the bandwidth value of a bandwidth plan. The new configurations take effect immediately after the operation is performed.
- * *   **UpdateBandwidthPackage** is an asynchronous operation when it is called to modify the configurations including the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query whether the bandwidth plan is modified.
- *     *   If the parameter settings of the bandwidth plan remain unchanged, it indicates that the bandwidth plan is being modified. In this case, you can perform only query operations.
- *     *   If the parameter settings of the bandwidth plan change, it indicates that the bandwidth plan is modified.
- * *   **UpdateBandwidthPackage** is an asynchronous operation when it is called to modify the configurations including the bandwidth value of a bandwidth plan that is associated with a GA instance. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the state of the GA instance and determine whether its associated bandwidth plan is modified.
- *     *   If the GA instance is in the **configuring** state, it indicates that the bandwidth plan is being modified. In this case, you can perform only query operations.
- *     *   If the GA instance is in the **active** state, it indicates that the bandwidth plan is modified.
- * *   The **UpdateBandwidthPackage** operation cannot be called repeatedly for the same bandwidth plan within a specific period of time.
+ * Take note of the following items:
+ * *   **UpdateBandwidthPackage** is a synchronous operation when you call the operation to modify the configuration excluding the bandwidth value of a bandwidth plan. The new configuration immediately takes effect after the operation is performed.
+ * *   **UpdateBandwidthPackage** is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](~~153241~~) operation to query the status of the task.
+ *     *   If the parameter values of the bandwidth plan remain unchanged, the bandwidth plan is being modified. In this case, you can perform only query operations.
+ *     *   If the parameter values of the bandwidth plan are changed, the bandwidth plan is modified.
+ * *   **UpdateBandwidthPackage** is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is associated with a GA instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of the task.
+ *     *   If the GA instance is in the **configuring** state, the bandwidth plan is being modified. In this case, you can perform only query operations.
+ *     *   If the GA instance is in the **active** state, the bandwidth plan is modified.
+ * *   You cannot repeatedly call the **UpdateBandwidthPackage** operation for the same bandwidth plan within a specific period of time.
  *
  * @param request UpdateBandwidthPackageRequest
  * @return UpdateBandwidthPackageResponse
@@ -36530,9 +37202,9 @@ func (client *Client) UpdateCustomRoutingEndpointGroupDestinations(request *Upda
 }
 
 /**
- * *   **UpdateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the state of an endpoint group associated with a custom routing listener to check whether access policies of traffic are modified for endpoints in the endpoint group.
- *     *   If the endpoint group is in the **updating** state, access policies of traffic are being modified for endpoints in the endpoint group. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, access policies of traffic are modified for endpoints in the endpoint group.
+ * *   **UpdateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of the task.
+ *     *   If the endpoint group is in the **updating** state, traffic policies are being modified for endpoints in the endpoint group. In this case, you can perform only query operations.
+ *     *   If the endpoint group is in the **active** state, traffic policies are modified for endpoints in the endpoint group.
  * *   The **UpdateCustomRoutingEndpointTrafficPolicies** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request UpdateCustomRoutingEndpointTrafficPoliciesRequest
@@ -36585,9 +37257,9 @@ func (client *Client) UpdateCustomRoutingEndpointTrafficPoliciesWithOptions(requ
 }
 
 /**
- * *   **UpdateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the state of an endpoint group associated with a custom routing listener to check whether access policies of traffic are modified for endpoints in the endpoint group.
- *     *   If the endpoint group is in the **updating** state, access policies of traffic are being modified for endpoints in the endpoint group. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, access policies of traffic are modified for endpoints in the endpoint group.
+ * *   **UpdateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of the task.
+ *     *   If the endpoint group is in the **updating** state, traffic policies are being modified for endpoints in the endpoint group. In this case, you can perform only query operations.
+ *     *   If the endpoint group is in the **active** state, traffic policies are modified for endpoints in the endpoint group.
  * *   The **UpdateCustomRoutingEndpointTrafficPolicies** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request UpdateCustomRoutingEndpointTrafficPoliciesRequest
@@ -36680,9 +37352,8 @@ func (client *Client) UpdateCustomRoutingEndpoints(request *UpdateCustomRoutingE
 }
 
 /**
- * ### Usage notes
- * You can call this operation to modify an accelerated domain name. If the new accelerated domain name is hosted in the Chinese mainland, you must obtain an ICP number for the domain name.
- * You cannot repeatedly call the \\*\\* UpdateDomain\\*\\* operation by using the same Alibaba Cloud account within a specific period of time.
+ * You can call this operation to modify an accelerated domain name. If the new accelerated domain name is hosted in the Chinese mainland, you must obtain an Internet content provider (ICP) number for the domain name.
+ * You cannot call the **UpdateDomain** operation again by using the same Alibaba Cloud account before the previous request is completed.
  *
  * @param request UpdateDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36730,9 +37401,8 @@ func (client *Client) UpdateDomainWithOptions(request *UpdateDomainRequest, runt
 }
 
 /**
- * ### Usage notes
- * You can call this operation to modify an accelerated domain name. If the new accelerated domain name is hosted in the Chinese mainland, you must obtain an ICP number for the domain name.
- * You cannot repeatedly call the \\*\\* UpdateDomain\\*\\* operation by using the same Alibaba Cloud account within a specific period of time.
+ * You can call this operation to modify an accelerated domain name. If the new accelerated domain name is hosted in the Chinese mainland, you must obtain an Internet content provider (ICP) number for the domain name.
+ * You cannot call the **UpdateDomain** operation again by using the same Alibaba Cloud account before the previous request is completed.
  *
  * @param request UpdateDomainRequest
  * @return UpdateDomainResponse
@@ -36749,8 +37419,8 @@ func (client *Client) UpdateDomain(request *UpdateDomainRequest) (_result *Updat
 }
 
 /**
- * You can call this operation to obtain and update the ICP filing status of an accelerated domain name.
- * You cannot repeatedly call the **UpdateDomainState** operation by using the same Alibaba Cloud account within a specific period of time.
+ * You can call this operation to query and update the ICP filing status of an accelerated domain name.
+ * The **UpdateDomainState** operation holds an exclusive lock on the GA instance. While the operation is in progress, you cannot call the same operation with the same Alibaba Cloud account.
  *
  * @param request UpdateDomainStateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36794,8 +37464,8 @@ func (client *Client) UpdateDomainStateWithOptions(request *UpdateDomainStateReq
 }
 
 /**
- * You can call this operation to obtain and update the ICP filing status of an accelerated domain name.
- * You cannot repeatedly call the **UpdateDomainState** operation by using the same Alibaba Cloud account within a specific period of time.
+ * You can call this operation to query and update the ICP filing status of an accelerated domain name.
+ * The **UpdateDomainState** operation holds an exclusive lock on the GA instance. While the operation is in progress, you cannot call the same operation with the same Alibaba Cloud account.
  *
  * @param request UpdateDomainStateRequest
  * @return UpdateDomainStateResponse
@@ -37153,11 +37823,10 @@ func (client *Client) UpdateForwardingRules(request *UpdateForwardingRulesReques
 }
 
 /**
- * ## Usage notes
  * *   **UpdateIpSet** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of an acceleration region.
- *     *   If the acceleration region is in the **updating** state, the acceleration region is being modified. In this case, you can perform only query operations.
- *     *   If the acceleration region is in the **active** state, the acceleration region is modified.
- * *   The **UpdateIpSet** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ *     *   If the acceleration region is in the **updating** state, it indicates that the acceleration region is being modified. In this case, you can continue to perform query operations on the acceleration regions.
+ *     *   If the acceleration region is in the **active** state, it indicates that the acceleration region is modified.
+ * *   You cannot call the **UpdateIpSet** operation again on the same GA instance before the previous operation is complete.
  *
  * @param request UpdateIpSetRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37209,11 +37878,10 @@ func (client *Client) UpdateIpSetWithOptions(request *UpdateIpSetRequest, runtim
 }
 
 /**
- * ## Usage notes
  * *   **UpdateIpSet** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of an acceleration region.
- *     *   If the acceleration region is in the **updating** state, the acceleration region is being modified. In this case, you can perform only query operations.
- *     *   If the acceleration region is in the **active** state, the acceleration region is modified.
- * *   The **UpdateIpSet** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ *     *   If the acceleration region is in the **updating** state, it indicates that the acceleration region is being modified. In this case, you can continue to perform query operations on the acceleration regions.
+ *     *   If the acceleration region is in the **active** state, it indicates that the acceleration region is modified.
+ * *   You cannot call the **UpdateIpSet** operation again on the same GA instance before the previous operation is complete.
  *
  * @param request UpdateIpSetRequest
  * @return UpdateIpSetResponse
@@ -37230,10 +37898,10 @@ func (client *Client) UpdateIpSet(request *UpdateIpSetRequest) (_result *UpdateI
 }
 
 /**
- * *   **UpdateIpSet** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeIpSet](~~153246~~) operation to query the state of an acceleration region.
- *     *   If the acceleration region is in the **updating** state, the acceleration region is being modified. In this case, you can perform only query operations.
- *     *   If the acceleration region is in the **active** state, the acceleration region is modified.
- * *   The **UpdateIpSet** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * *   **UpdateIpSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of the task.
+ *     *   If an acceleration region is in the **updating** state, the acceleration region is being modified. In this case, you can perform only query operations.
+ *     *   If an acceleration region is in the **active** state, the acceleration region is modified.
+ * *   You cannot repeatedly call the **UpdateIpSet** operation for the same GA instance within a specific period of time.
  *
  * @param request UpdateIpSetsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37277,10 +37945,10 @@ func (client *Client) UpdateIpSetsWithOptions(request *UpdateIpSetsRequest, runt
 }
 
 /**
- * *   **UpdateIpSet** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeIpSet](~~153246~~) operation to query the state of an acceleration region.
- *     *   If the acceleration region is in the **updating** state, the acceleration region is being modified. In this case, you can perform only query operations.
- *     *   If the acceleration region is in the **active** state, the acceleration region is modified.
- * *   The **UpdateIpSet** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * *   **UpdateIpSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpSet](~~153246~~) operation to query the status of the task.
+ *     *   If an acceleration region is in the **updating** state, the acceleration region is being modified. In this case, you can perform only query operations.
+ *     *   If an acceleration region is in the **active** state, the acceleration region is modified.
+ * *   You cannot repeatedly call the **UpdateIpSet** operation for the same GA instance within a specific period of time.
  *
  * @param request UpdateIpSetsRequest
  * @return UpdateIpSetsResponse
@@ -37297,9 +37965,9 @@ func (client *Client) UpdateIpSets(request *UpdateIpSetsRequest) (_result *Updat
 }
 
 /**
- * This operation can be called to modify the configurations such as protocol and ports of a listener to meet your business requirements.
+ * This operation can be called to modify the configurations such as the protocol and ports of a listener to meet your business requirements.
  * When you call this operation, take note of the following items:
- * *   **UpdateListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of a listener.
+ * *   **UpdateListener** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](~~153254~~) operation to query the status of a listener.
  *     *   If the listener is in the **updating** state, it indicates that its configurations are being modified. In this case, you can perform only query operations.
  *     *   If the listener is in the **active** state, it indicates that its configurations are modified.
  * *   The **UpdateListener** operation cannot be repeatedly called to modify listener configurations for the same GA instance within a specific period of time.
@@ -37390,9 +38058,9 @@ func (client *Client) UpdateListenerWithOptions(request *UpdateListenerRequest, 
 }
 
 /**
- * This operation can be called to modify the configurations such as protocol and ports of a listener to meet your business requirements.
+ * This operation can be called to modify the configurations such as the protocol and ports of a listener to meet your business requirements.
  * When you call this operation, take note of the following items:
- * *   **UpdateListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of a listener.
+ * *   **UpdateListener** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](~~153254~~) operation to query the status of a listener.
  *     *   If the listener is in the **updating** state, it indicates that its configurations are being modified. In this case, you can perform only query operations.
  *     *   If the listener is in the **active** state, it indicates that its configurations are modified.
  * *   The **UpdateListener** operation cannot be repeatedly called to modify listener configurations for the same GA instance within a specific period of time.
