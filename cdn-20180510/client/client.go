@@ -24,9 +24,10 @@ type AddCdnDomainRequest struct {
 	// The domain name that you want to add to Alibaba Cloud CDN.
 	//
 	// A wildcard domain that starts with a period (.) is supported, such as .example.com.
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
 	//
 	// If you do not set this parameter, the system uses the ID of the default resource group.
@@ -66,6 +67,11 @@ func (s *AddCdnDomainRequest) SetCheckUrl(v string) *AddCdnDomainRequest {
 
 func (s *AddCdnDomainRequest) SetDomainName(v string) *AddCdnDomainRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *AddCdnDomainRequest) SetGlobalResourcePlan(v string) *AddCdnDomainRequest {
+	s.GlobalResourcePlan = &v
 	return s
 }
 
@@ -3609,7 +3615,8 @@ type DescribeCdnDomainDetailResponseBodyGetDomainDetailModel struct {
 	// *   **check_failed**
 	// *   **stopping**
 	// *   **deleting**
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	DomainStatus       *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
 	// The time when the domain name was created.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	// The time when the domain name was last modified.
@@ -3659,6 +3666,11 @@ func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) SetDomainName(
 
 func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) SetDomainStatus(v string) *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel {
 	s.DomainStatus = &v
+	return s
+}
+
+func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) SetGlobalResourcePlan(v string) *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel {
+	s.GlobalResourcePlan = &v
 	return s
 }
 
@@ -18946,7 +18958,8 @@ type DescribeUserDomainsResponseBodyDomainsPageData struct {
 	// *   **check_failed**
 	// *   **stopping**
 	// *   **deleting**
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	DomainStatus       *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
 	// The time when the accelerated domain name was added.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	// The time when the accelerated domain name was modified.
@@ -19004,6 +19017,11 @@ func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetDomainName(v string)
 
 func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetDomainStatus(v string) *DescribeUserDomainsResponseBodyDomainsPageData {
 	s.DomainStatus = &v
+	return s
+}
+
+func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetGlobalResourcePlan(v string) *DescribeUserDomainsResponseBodyDomainsPageData {
+	s.GlobalResourcePlan = &v
 	return s
 }
 
@@ -22755,6 +22773,10 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalResourcePlan)) {
+		query["GlobalResourcePlan"] = request.GlobalResourcePlan
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
