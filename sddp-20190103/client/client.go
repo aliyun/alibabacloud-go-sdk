@@ -13,10 +13,25 @@ import (
 )
 
 type CreateConfigRequest struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code of the common configuration item. Valid values:
+	//
+	// *   **access_failed_cnt**: the maximum number of access attempts allowed when Data Security Center (DSC) fails to access an unauthorized resource.
+	// *   **access_permission_exprie_max_days**: the maximum idle period allowed for access permissions before an alert is triggered.
+	// *   **log_datasize_avg_days**: the minimum percentage of the volume of logs of a specific type generated on the current day to the average volume of logs generated in the previous 10 days before an alert is triggered.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the common configuration item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The value of the common configuration item. The meaning of this parameter varies with the value of the Code parameter.
+	//
+	// *   If you set the Code parameter to **access_failed_cnt**, the Value parameter specifies the maximum number of access attempts allowed when DSC fails to access an unauthorized resource.
+	// *   If you set the Code parameter to **access_permission_exprie_max_days**, the Value parameter specifies the maximum idle period allowed for access permissions before an alert is triggered.
+	// *   If you set the Code parameter to **log_datasize_avg_days**, the Value parameter specifies the minimum percentage of the volume of logs of a specific type generated on the current day to the average amount of logs generated in the previous 10 days before an alert is triggered.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateConfigRequest) String() string {
@@ -48,7 +63,9 @@ func (s *CreateConfigRequest) SetValue(v string) *CreateConfigRequest {
 }
 
 type CreateConfigResponseBody struct {
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the common alert configuration.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -100,22 +117,89 @@ func (s *CreateConfigResponse) SetBody(v *CreateConfigResponseBody) *CreateConfi
 }
 
 type CreateDataLimitRequest struct {
-	AuditStatus           *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AutoScan              *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	// Specifies whether to enable the security audit feature. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Specifies whether to automatically trigger a re-scan after a rule is modified. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	//
+	// > When a re-scan is triggered, DSC scans all data in your data asset.
+	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	// The permissions. Valid values:
+	//
+	// *   **ReadOnly**: read-only permissions
+	// *   **ReadWrite**: read and write permissions
 	CertificatePermission *string `json:"CertificatePermission,omitempty" xml:"CertificatePermission,omitempty"`
-	Enable                *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EngineType            *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	EventStatus           *int32  `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LogStoreDay           *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	OcrStatus             *int32  `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	ParentId              *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port                  *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ResourceType          *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SamplingSize          *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	ServiceRegionId       *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Specifies whether to enable sensitive data detection. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	//
+	// > If this is your first time to authorize DSC to access the data asset, the default value is 1. If this is not your first time to authorize DSC to access the data asset, the default value is the same as that used in the last authorization operation. Both 1 and 0 are possible.
+	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The database engine that is run by the instance. Valid values:
+	//
+	// *   **MySQL**
+	// *   **SQLServer**
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// Specifies whether to enable anomalous event detection. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes (default)
+	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The retention period of raw logs after you enable the security audit feature. Unit: days. Valid values:
+	//
+	// *   **30**
+	// *   **90**
+	// *   **180**
+	// *   **365**
+	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	// Specifies whether to enable optical character recognition (OCR). Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	OcrStatus *int32 `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
+	// The name of the data asset.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The password that is used to access the database.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The port that is used to connect to the database.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of service to which the data asset belongs. Valid values:
+	//
+	// *   **1** :MaxCompute
+	// *   **2**: Object Storage Service (OSS)
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4** :Tablestore
+	// *   **5**: ApsaraDB RDS
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of sensitive data samples that are collected after sensitive data detection is enabled. Valid values:
+	//
+	// *   **0**
+	// *   **5**
+	// *   **10**
+	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	// The region in which the data asset resides. Valid values:
+	//
+	// *   **cn-beijing**: China (Beijing).
+	// *   **cn-zhangjiakou**: China (Zhangjiakou)
+	// *   **cn-huhehaote**: China (Hohhot)
+	// *   **cn-hangzhou**: China (Hangzhou)
+	// *   **cn-shanghai**: China (Shanghai)
+	// *   **cn-shenzhen**: China (Shenzhen)
+	// *   **cn-hongkong**: China (Hong Kong)
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// The username that is used to access the database.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateDataLimitRequest) String() string {
@@ -207,7 +291,9 @@ func (s *CreateDataLimitRequest) SetUserName(v string) *CreateDataLimitRequest {
 }
 
 type CreateDataLimitResponseBody struct {
-	Id        *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the data asset.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -259,21 +345,64 @@ func (s *CreateDataLimitResponse) SetBody(v *CreateDataLimitResponseBody) *Creat
 }
 
 type CreateRuleRequest struct {
-	Category        *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentCategory *int32  `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MatchType       *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId     *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleType        *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	StatExpress     *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	WarnLevel       *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	// The content type of the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: keyword
+	// *   **2**: regular expression
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The content of the sensitive data detection rule. You can specify a regular expression or keywords that are used to match sensitive fields or text.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
+	ContentCategory *int32 `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The match type. Valid values:
+	//
+	// *   **1**: rule-based match
+	// *   **2**: dictionary-based match
+	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The name of the sensitive data detection rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the data asset belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The type of the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: sensitive data detection rule
+	// *   **2**: audit rule
+	// *   **3**: anomalous event detection rule
+	// *   **99**: custom rule
+	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The statistical expression.
+	StatExpress *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
+	// Specifies whether to enable the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
+	// The code of the service to which the sensitive data detection rule is applied. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The risk level of the alert that is triggered. Valid values:
+	//
+	// *   **1**: low
+	// *   **2**: medium
+	// *   **3**: high
+	WarnLevel *int32 `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s CreateRuleRequest) String() string {
@@ -349,6 +478,11 @@ func (s *CreateRuleRequest) SetStatus(v int32) *CreateRuleRequest {
 	return s
 }
 
+func (s *CreateRuleRequest) SetSupportForm(v int32) *CreateRuleRequest {
+	s.SupportForm = &v
+	return s
+}
+
 func (s *CreateRuleRequest) SetTarget(v string) *CreateRuleRequest {
 	s.Target = &v
 	return s
@@ -360,7 +494,9 @@ func (s *CreateRuleRequest) SetWarnLevel(v int32) *CreateRuleRequest {
 }
 
 type CreateRuleResponseBody struct {
-	Id        *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the sensitive data detection rule.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -412,17 +548,36 @@ func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleRespo
 }
 
 type CreateScanTaskRequest struct {
-	DataLimitId      *int64  `json:"DataLimitId,omitempty" xml:"DataLimitId,omitempty"`
-	IntervalDay      *int32  `json:"IntervalDay,omitempty" xml:"IntervalDay,omitempty"`
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	OssScanPath      *string `json:"OssScanPath,omitempty" xml:"OssScanPath,omitempty"`
-	ResourceType     *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RunHour          *int32  `json:"RunHour,omitempty" xml:"RunHour,omitempty"`
-	RunMinute        *int32  `json:"RunMinute,omitempty" xml:"RunMinute,omitempty"`
-	ScanRange        *int32  `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	// The unique ID of the data asset, such as an instance, a database, and a bucket. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the unique ID.
+	DataLimitId *int64 `json:"DataLimitId,omitempty" xml:"DataLimitId,omitempty"`
+	// The interval between two consecutive custom scan tasks. Unit: days. Valid values: 1 to 2147483648.
+	IntervalDay *int32 `json:"IntervalDay,omitempty" xml:"IntervalDay,omitempty"`
+	// The language of the content within the request and response.
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The data to be scanned in the Object Storage Service (OSS) bucket. Prefix match, suffix match, and regular expression match are supported.
+	OssScanPath *string `json:"OssScanPath,omitempty" xml:"OssScanPath,omitempty"`
+	// The type of the service to which the data assets to be scanned belong. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The time when the scan task is executed next time. Unit: hours.
+	RunHour *int32 `json:"RunHour,omitempty" xml:"RunHour,omitempty"`
+	// The time when the scan task is executed next time. Unit: minutes.
+	RunMinute *int32 `json:"RunMinute,omitempty" xml:"RunMinute,omitempty"`
+	// The matching rule that specifies the scan scope of the custom scan task. This parameter takes effect only if you set the **ScanRangeContent** parameter. Valid values:
+	//
+	// *   **0**: exact match
+	// *   **1**: prefix match
+	// *   **2**: suffix match
+	// *   **3**: regular expression match
+	ScanRange *int32 `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	// The data to be scanned in a structured data asset. Prefix match, suffix match, and regular expression match are supported.
 	ScanRangeContent *string `json:"ScanRangeContent,omitempty" xml:"ScanRangeContent,omitempty"`
-	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskUserName     *string `json:"TaskUserName,omitempty" xml:"TaskUserName,omitempty"`
+	// The name of the scan task.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The account that is used to create the scan task.
+	TaskUserName *string `json:"TaskUserName,omitempty" xml:"TaskUserName,omitempty"`
 }
 
 func (s CreateScanTaskRequest) String() string {
@@ -489,7 +644,9 @@ func (s *CreateScanTaskRequest) SetTaskUserName(v string) *CreateScanTaskRequest
 }
 
 type CreateScanTaskResponseBody struct {
-	Id        *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the custom scan task.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -541,6 +698,10 @@ func (s *CreateScanTaskResponse) SetBody(v *CreateScanTaskResponseBody) *CreateS
 }
 
 type CreateSlrRoleRequest struct {
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese
+	// *   **en_us**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -558,8 +719,13 @@ func (s *CreateSlrRoleRequest) SetLang(v string) *CreateSlrRoleRequest {
 }
 
 type CreateSlrRoleResponseBody struct {
-	HasPermission *bool   `json:"HasPermission,omitempty" xml:"HasPermission,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the service-linked role was created. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	HasPermission *bool `json:"HasPermission,omitempty" xml:"HasPermission,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSlrRoleResponseBody) String() string {
@@ -610,7 +776,14 @@ func (s *CreateSlrRoleResponse) SetBody(v *CreateSlrRoleResponseBody) *CreateSlr
 }
 
 type DeleteDataLimitRequest struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the data asset.
+	//
+	// You can call the DescribeDataLimits operation to query the IDs of data assets. The value of the Id response parameter indicates the ID of a data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -633,6 +806,7 @@ func (s *DeleteDataLimitRequest) SetLang(v string) *DeleteDataLimitRequest {
 }
 
 type DeleteDataLimitResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -679,7 +853,9 @@ func (s *DeleteDataLimitResponse) SetBody(v *DeleteDataLimitResponseBody) *Delet
 }
 
 type DeleteRuleRequest struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the sensitive data detection rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -702,6 +878,7 @@ func (s *DeleteRuleRequest) SetLang(v string) *DeleteRuleRequest {
 }
 
 type DeleteRuleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -748,11 +925,36 @@ func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleRespo
 }
 
 type DescribeCategoryTemplateRuleListRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sensitivity level of the data that is not compliant with the rule. Valid values: **1** to **11**. Default value: **null**.
+	//
+	// *   **1**: No sensitive data is detected.
+	// *   **2**: specifies the S1 sensitivity level.
+	// *   **3**: specifies the S2 sensitivity level.
+	// *   **4**: specifies the S3 sensitivity level.
+	// *   **5**: specifies the S4 sensitivity level.
+	// *   **6**: specifies the S5 sensitivity level.
+	// *   **7**: specifies the S6 sensitivity level.
+	// *   **8**: specifies the S7 sensitivity level.
+	// *   **9**: specifies the S8 sensitivity level.
+	// *   **10**: specifies the S9 sensitivity level.
+	// *   **11**: specifies the S10 sensitivity level.
+	// *   **null**: specifies all preceding sensitivity levels.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The status of the rule. Default value: **null**. Valid values:
+	//
+	// *   **0**: disabled
+	// *   **1**: enabled
+	// *   **null**: all states
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCategoryTemplateRuleListRequest) String() string {
@@ -789,11 +991,16 @@ func (s *DescribeCategoryTemplateRuleListRequest) SetStatus(v int32) *DescribeCa
 }
 
 type DescribeCategoryTemplateRuleListResponseBody struct {
-	CurrentPage *int32                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeCategoryTemplateRuleListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of rules.
+	Items []*DescribeCategoryTemplateRuleListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of rules in the template.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCategoryTemplateRuleListResponseBody) String() string {
@@ -830,13 +1037,45 @@ func (s *DescribeCategoryTemplateRuleListResponseBody) SetTotalCount(v int32) *D
 }
 
 type DescribeCategoryTemplateRuleListResponseBodyItems struct {
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id                    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of sensitive data types. Multiple IDs are separated by commas (,).
 	IdentificationRuleIds *string `json:"IdentificationRuleIds,omitempty" xml:"IdentificationRuleIds,omitempty"`
-	IdentificationScope   *string `json:"IdentificationScope,omitempty" xml:"IdentificationScope,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RiskLevelId           *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The scan scope of the rule. The value is a JSON array of the STRING type. Each element in a JSON array indicates a scan scope that contains the following fields:
+	//
+	// *   **Asset**: the data asset type. Valid values: RDS, DRDS, PolarDB, OTS, ADB, and OceanBase. The value is of the STRING type.
+	//
+	// *   **Content**: the scan scope. The value is of the STRING type. Each element in a JSON array indicates a scan scope that contains the following fields:
+	//
+	//     *   **Range**: the matching condition. Valid values: Instance, database, table, column, project, bucket, and object. The value project is valid only for data assets in MaxCompute. The values bucket and object are valid only for data assets in Object Storage Service (OSS). The value of this parameter is of the STRING type.
+	//     *   **Operator**: the operator. Valid values: equals, regex, prefix, and suffix. The operator equals indicates a full match. The operator regex indicates a match by regular expression. The operator prefix indicates a match by prefix. The operator suffix indicates a match by suffix.
+	//     *   **Value**: the matching content. The value is of the STRING type.
+	IdentificationScope *string `json:"IdentificationScope,omitempty" xml:"IdentificationScope,omitempty"`
+	// The name of the rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sensitivity level of the data that is not compliant with the rule. Valid values: **1** to **11**.
+	//
+	// *   **1**: No sensitive data is detected.
+	// *   **2**: indicates the S1 sensitivity level.
+	// *   **3**: indicates the S2 sensitivity level.
+	// *   **4**: indicates the S3 sensitivity level.
+	// *   **5**: indicates the S4 sensitivity level.
+	// *   **6**: indicates the S5 sensitivity level.
+	// *   **7**: indicates the S6 sensitivity level.
+	// *   **8**: indicates the S7 sensitivity level.
+	// *   **9**: indicates the S8 sensitivity level.
+	// *   **10**: indicates the S9 sensitivity level.
+	// *   **11**: indicates the S10 sensitivity level.
+	// *   **null**: indicates all preceding sensitivity levels.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   **0**: disabled
+	// *   **1**: enabled
+	// *   **null**: all states
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCategoryTemplateRuleListResponseBodyItems) String() string {
@@ -912,19 +1151,55 @@ func (s *DescribeCategoryTemplateRuleListResponse) SetBody(v *DescribeCategoryTe
 }
 
 type DescribeColumnsRequest struct {
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RiskLevelId   *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The page number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the instance to which data in the column of the table belongs.
+	//
+	// > You can call the [DescribeInstances](~~DescribeRules~~) operation to query the IDs of instances.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance to which data in the column of the table belongs.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The search keyword. Fuzzy match is supported.
+	//
+	// For example, if you enter **test**, all columns whose names contain **test** are retrieved.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: N/A
+	// *   **2**: S1
+	// *   **3**: S2
+	// *   **4**: S3
+	// *   **5**: S4
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The ID of the sensitive data detection rule that data in the column of the table hits.
+	//
+	// > You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the sensitive data detection rule that data in the column of the table hits.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The name of the sensitivity level of the data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **N/A**: No sensitive data is detected.
+	// *   **S1**: indicates the low sensitivity level.
+	// *   **S2**: indicates the medium sensitivity level.
+	// *   **S3**: indicates the high sensitivity level.
+	// *   **S4**: indicates the highest sensitivity level.
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
-	TableId       *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the table to which the column belongs.
+	//
+	// > You can call the [DescribeTables](~~DescribeTables~~) operation to query the IDs of tables.
+	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeColumnsRequest) String() string {
@@ -1001,11 +1276,16 @@ func (s *DescribeColumnsRequest) SetTableName(v string) *DescribeColumnsRequest 
 }
 
 type DescribeColumnsResponseBody struct {
-	CurrentPage *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of data in the column of the table.
+	Items []*DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeColumnsResponseBody) String() string {
@@ -1042,25 +1322,81 @@ func (s *DescribeColumnsResponseBody) SetTotalCount(v int32) *DescribeColumnsRes
 }
 
 type DescribeColumnsResponseBodyItems struct {
-	CreationTime       *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DataType           *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId         *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OdpsRiskLevelName  *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	OdpsRiskLevelValue *int32  `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
-	ProductCode        *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RevisionId         *int64  `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
-	RevisionStatus     *int64  `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
-	RiskLevelId        *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RiskLevelName      *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleId             *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SensLevelName      *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
-	Sensitive          *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	TableId            *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	TableName          *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The beginning of the time range during which data in the column of the table is created. The value is a UNIX timestamp. Unit: milliseconds.
+	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The type of data in the column of the table.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The ID of the column of the table.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the instance to which data in the column of the table belongs.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance to which data in the column of the table belongs.
+	InstanceName *string                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	ModelTags    []*DescribeColumnsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	// The name of the column of the table.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the sensitivity level for data in the column of the table. Valid values:
+	//
+	// *   **N/A**: No sensitive data is detected.
+	// *   **S1**: indicates the low sensitivity level.
+	// *   **S2**: indicates the medium sensitivity level.
+	// *   **S3**: indicates the high sensitivity level.
+	// *   **S4**: indicates the highest sensitivity level.
+	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
+	// The ID of the sensitivity level for data in the column of the table. Valid values:
+	//
+	// *   **1**: N/A
+	// *   **2**: S1
+	// *   **3**: S2
+	// *   **4**: S3
+	// *   **5**: S4
+	OdpsRiskLevelValue *int32 `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
+	// The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the revision record.
+	RevisionId *int64 `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
+	// Indicates whether the column is revised. Valid values:
+	//
+	// *   1: yes
+	// *   0: no
+	RevisionStatus *int64 `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
+	// The ID of the sensitivity level of data in the column of the table. Valid values:
+	//
+	// *   **1**: N/A
+	// *   **2**: S1
+	// *   **3**: S2
+	// *   **4**: S3
+	// *   **5**: S4
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for data in the column of the table. Valid values:
+	//
+	// *   **N/A**: No sensitive data is detected.
+	// *   **S1**: indicates the low sensitivity level.
+	// *   **S2**: indicates the medium sensitivity level.
+	// *   **S3**: indicates the high sensitivity level.
+	// *   **S4**: indicates the highest sensitivity level.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The ID of the sensitive data detection rule that data in the column of the table hits.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the sensitive data detection rule that data in the column of the table hits.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The name of the sensitivity level of the data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **N/A**: No sensitive data is detected.
+	// *   **S1**: indicates the low sensitivity level.
+	// *   **S2**: indicates the medium sensitivity level.
+	// *   **S3**: indicates the high sensitivity level.
+	// *   **S4**: indicates the highest sensitivity level.
+	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
+	// Indicates whether the column contains sensitive data. Valid values:
+	//
+	// *   true: the column contains sensitive data.
+	// *   false: the column does not contain sensitive data.
+	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	// The ID of the table.
+	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the table to which the revised column belongs.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeColumnsResponseBodyItems) String() string {
@@ -1093,6 +1429,11 @@ func (s *DescribeColumnsResponseBodyItems) SetInstanceId(v int64) *DescribeColum
 
 func (s *DescribeColumnsResponseBodyItems) SetInstanceName(v string) *DescribeColumnsResponseBodyItems {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetModelTags(v []*DescribeColumnsResponseBodyItemsModelTags) *DescribeColumnsResponseBodyItems {
+	s.ModelTags = v
 	return s
 }
 
@@ -1166,6 +1507,29 @@ func (s *DescribeColumnsResponseBodyItems) SetTableName(v string) *DescribeColum
 	return s
 }
 
+type DescribeColumnsResponseBodyItemsModelTags struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeColumnsResponseBodyItemsModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsResponseBodyItemsModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsResponseBodyItemsModelTags) SetId(v int64) *DescribeColumnsResponseBodyItemsModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItemsModelTags) SetName(v string) *DescribeColumnsResponseBodyItemsModelTags {
+	s.Name = &v
+	return s
+}
+
 type DescribeColumnsResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1196,6 +1560,10 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 }
 
 type DescribeConfigsRequest struct {
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -1213,8 +1581,10 @@ func (s *DescribeConfigsRequest) SetLang(v string) *DescribeConfigsRequest {
 }
 
 type DescribeConfigsResponseBody struct {
+	// An array that consists of common configuration items for alerts.
 	ConfigList []*DescribeConfigsResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeConfigsResponseBody) String() string {
@@ -1236,11 +1606,16 @@ func (s *DescribeConfigsResponseBody) SetRequestId(v string) *DescribeConfigsRes
 }
 
 type DescribeConfigsResponseBodyConfigList struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code of the common configuration item.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the default value for the common configuration item.
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the common configuration item.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique ID of the common configuration item.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The value of the common configuration item.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeConfigsResponseBodyConfigList) String() string {
@@ -1306,13 +1681,50 @@ func (s *DescribeConfigsResponse) SetBody(v *DescribeConfigsResponseBody) *Descr
 }
 
 type DescribeDataAssetsRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RangeId     *int32  `json:"RangeId,omitempty" xml:"RangeId,omitempty"`
-	RiskLevels  *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The keyword that is used to search for data assets. Fuzzy search is supported.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page. Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the data asset that you want to query. Valid values:
+	//
+	// *   **1**: MaxCompute project
+	// *   **2**: MaxCompute table
+	// *   **3**: MaxCompute package
+	// *   **11**: AnalyticDB for MySQL database
+	// *   **12**: AnalyticDB for MySQL table
+	// *   **21**: Object Storage Service (OSS) bucket
+	// *   **22**: OSS object
+	// *   **31**: Tablestore instance
+	// *   **32**: Tablestore table
+	// *   **51**: ApsaraDB RDS database
+	// *   **52**: ApsaraDB RDS table
+	// *   **61**: self-managed database hosted on an Elastic Compute Service (ECS) instance
+	// *   **62**: self-managed table hosted on an ECS instance
+	// *   **71**: PolarDB-X database
+	// *   **72**: PolarDB-X table
+	// *   **81**: PolarDB database
+	// *   **82**: PolarDB table
+	// *   **91**: AnalyticDB for PostgreSQL database
+	// *   **92**: AnalyticDB for PostgreSQL table
+	RangeId *int32 `json:"RangeId,omitempty" xml:"RangeId,omitempty"`
+	// The sensitivity level of the data asset. Separate multiple sensitivity levels with commas (,). Valid values:
+	//
+	// *   **2**: S1, indicating the low sensitivity level
+	// *   **3**: S2, indicating the medium sensitivity level
+	// *   **4**: S3, indicating the high sensitivity level
+	// *   **5**: S4, indicating the highest sensitivity level
+	RiskLevels *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
+	// The unique ID of the sensitive data detection rule that the data assets to be queried hit.
+	//
+	// > If you query sensitive data detection results based on the sensitive data detection rule that the data assets hit, you can call the [DescribeRules](~~DescribeRules~~) operation to query the ID of the sensitive data detection rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeDataAssetsRequest) String() string {
@@ -1359,11 +1771,16 @@ func (s *DescribeDataAssetsRequest) SetRuleId(v int64) *DescribeDataAssetsReques
 }
 
 type DescribeDataAssetsResponseBody struct {
-	CurrentPage *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeDataAssetsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of data assets.
+	Items []*DescribeDataAssetsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of queried data assets that contain sensitive data.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataAssetsResponseBody) String() string {
@@ -1400,25 +1817,84 @@ func (s *DescribeDataAssetsResponseBody) SetTotalCount(v int32) *DescribeDataAss
 }
 
 type DescribeDataAssetsResponseBodyItems struct {
-	Acl               *string `json:"Acl,omitempty" xml:"Acl,omitempty"`
-	CreationTime      *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DataType          *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Labelsec          *bool   `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ObjectKey         *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	// The access control list (ACL) that controls the access permissions on the OSS bucket.
+	//
+	// > This parameter is returned only when you set the parameter **RangeId** to **21**.
+	Acl *string `json:"Acl,omitempty" xml:"Acl,omitempty"`
+	// The time when the data asset was created. Unit: milliseconds.
+	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The data type of the data asset.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The ID of the data asset.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The sensitivity tag of the data. The value is fixed as **0**. **0**, **1**, **2**, or **3** is returned for this parameter only when you set the parameter **RangeId** to **1**.
+	//
+	// *   **0**: unclassified
+	// *   **1**: confidential
+	// *   **2**: sensitive
+	// *   **3**: highly sensitive
+	Labelsec *bool `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
+	// The name of the data asset.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The key value of the OSS object.
+	//
+	// > This parameter is returned only when you set the parameter **RangeId** to **22**.
+	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	// The sensitivity level of the MaxCompute data asset. Valid values:
+	//
+	// *   **S1**: low sensitivity level
+	// *   **S2**: medium sensitivity level
+	// *   **S3**: high sensitivity level
+	// *   **S4**: highest sensitivity level
+	//
+	// > This parameter is returned only when you set the parameter **RangeId** to **1**.
 	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	Owner             *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId         *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Protection        *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
-	RiskLevelId       *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RiskLevelName     *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sensitive         *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	SensitiveCount    *int32  `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	SensitiveRatio    *string `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
-	TotalCount        *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The account that owns the data asset.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the service to which the data asset belongs.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the data asset belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: OSS
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// Indicates whether the data protection mechanism is enabled for the data asset. The value is fixed as **false**. **true** or **false** is returned for this parameter only when you set the parameter **RangeId** to **1**.
+	//
+	// *   **false**: The data protection mechanism is disabled.
+	// *   **true**: The data protection mechanism is enabled. Only data inbound is supported. Data outbound is not supported.
+	Protection *bool `json:"Protection,omitempty" xml:"Protection,omitempty"`
+	// The sensitivity level of the data asset. A higher sensitivity level indicates that the identified data is more sensitive. Valid values:
+	//
+	// *   **1**: No sensitive data is identified.
+	// *   **2**: sensitive data at level 1.
+	// *   **3**: sensitive data at level 2.
+	// *   **3**: sensitive data at level 3.
+	// *   **5**: sensitive data at level 4.
+	// *   **6**: sensitive data at level 5.
+	// *   **7**: sensitive data at level 6.
+	// *   **8**: sensitive data at level 7.
+	// *   **9**: sensitive data at level 8.
+	// *   **10**: sensitive data at level 9.
+	// *   **11**: sensitive data at level 10.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for the data asset.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The name of the sensitive data detection rule that the data asset hits.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Indicates whether the data asset contains sensitive data. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	// The total number of sensitive data assets. For example, the value can be the total number of sensitive MaxCompute projects, packages, or tables, the total number of sensitive ApsaraDB RDS databases or tables, or the total number of sensitive OSS buckets or objects.
+	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	// The percentage of sensitive data in all data assets.
+	SensitiveRatio *string `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
+	// The total number of data assets. For example, the value can be the total number of MaxCompute projects, packages, or tables, the total number of ApsaraDB RDS databases or tables, or the total number of OSS buckets or objects.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataAssetsResponseBodyItems) String() string {
@@ -1554,9 +2030,20 @@ func (s *DescribeDataAssetsResponse) SetBody(v *DescribeDataAssetsResponseBody) 
 }
 
 type DescribeDataLimitDetailRequest struct {
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NetworkType *int32  `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The unique ID of the data asset that you want to query.
+	//
+	// > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Simplified Chinese.
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The network type of the data asset that you want to query. Valid values:
+	//
+	// *   **1**: virtual private cloud (VPC)
+	// *   **2**: classic network
+	NetworkType *int32 `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 }
 
 func (s DescribeDataLimitDetailRequest) String() string {
@@ -1583,8 +2070,10 @@ func (s *DescribeDataLimitDetailRequest) SetNetworkType(v int32) *DescribeDataLi
 }
 
 type DescribeDataLimitDetailResponseBody struct {
+	// The details of the data asset.
 	DataLimit *DescribeDataLimitDetailResponseBodyDataLimit `json:"DataLimit,omitempty" xml:"DataLimit,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDataLimitDetailResponseBody) String() string {
@@ -1606,17 +2095,48 @@ func (s *DescribeDataLimitDetailResponseBody) SetRequestId(v string) *DescribeDa
 }
 
 type DescribeDataLimitDetailResponseBodyDataLimit struct {
-	CheckStatus      *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	CheckStatusName  *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LocalName        *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ParentId         *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType     *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The status of the connectivity test between the data asset and DSC. Valid values:
+	//
+	// *   **2**: indicates that the data asset was being connected.
+	// *   **3**: indicates that the data asset was connected to DSC.
+	// *   **4**: indicates that the data asset failed to be connected.
+	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The result that indicates the status of the connectivity test between the data asset and DSC. Valid values:
+	//
+	// *   **Passed**
+	// *   **Failed**
+	// *   **Testing**
+	CheckStatusName *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
+	// The time when the data asset was connected to DSC. The value is a UNIX timestamp. Unit: milliseconds.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region in which the data asset resides.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The ID and name of the data asset in the service to which the data asset belongs.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The port number that is used to connect to the database.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the region in which the data asset resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the service to which the data asset belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: OSS
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The service to which the data asset belongs. Valid values:
+	//
+	// *   **MaxCompute**
+	// *   **OSS**
+	// *   **ADS**
+	// *   **OTS**
+	// *   **RDS**
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	UserName         *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The account of the user who manages the data asset.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeDataLimitDetailResponseBodyDataLimit) String() string {
@@ -1712,9 +2232,23 @@ func (s *DescribeDataLimitDetailResponse) SetBody(v *DescribeDataLimitDetailResp
 }
 
 type DescribeDataLimitSetRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ParentId     *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese (default)
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The parent asset ID of the data asset.
+	//
+	// You can call the [DescribeDataLimitDetail](~~DescribeDataLimitDetail~~) or [DescribeDataLimits](~~DescribeDataLimits~~) operation to obtain the parent asset ID of the data asset from the value of the **ParentId** parameter.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The type of service to which the data asset belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: OSS
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeDataLimitSetRequest) String() string {
@@ -1741,8 +2275,10 @@ func (s *DescribeDataLimitSetRequest) SetResourceType(v int32) *DescribeDataLimi
 }
 
 type DescribeDataLimitSetResponseBody struct {
+	// The information about the data asset.
 	DataLimitSet *DescribeDataLimitSetResponseBodyDataLimitSet `json:"DataLimitSet,omitempty" xml:"DataLimitSet,omitempty" type:"Struct"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBody) String() string {
@@ -1764,12 +2300,30 @@ func (s *DescribeDataLimitSetResponseBody) SetRequestId(v string) *DescribeDataL
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSet struct {
-	DataLimitList    []*DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList `json:"DataLimitList,omitempty" xml:"DataLimitList,omitempty" type:"Repeated"`
-	OssBucketList    []*DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList `json:"OssBucketList,omitempty" xml:"OssBucketList,omitempty" type:"Repeated"`
-	RegionList       []*DescribeDataLimitSetResponseBodyDataLimitSetRegionList    `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	ResourceType     *int64                                                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceTypeCode *string                                                      `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	TotalCount       *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// An array that consists of data assets that DSC is authorized to scan.
+	DataLimitList []*DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList `json:"DataLimitList,omitempty" xml:"DataLimitList,omitempty" type:"Repeated"`
+	// An array consisting of the OSS objects that DSC is authorized to scan.
+	OssBucketList []*DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList `json:"OssBucketList,omitempty" xml:"OssBucketList,omitempty" type:"Repeated"`
+	// An array consisting of the regions in which the data assets can be scanned.
+	RegionList []*DescribeDataLimitSetResponseBodyDataLimitSetRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
+	// The type of service to which the data asset belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: OSS
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The service to which the data asset belongs. Valid values:
+	//
+	// *   **ODPS**
+	// *   **OSS**
+	// *   **ADS**
+	// *   **OTS**
+	// *   **RDS**
+	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
+	// The total number of data objects in the data assets.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBodyDataLimitSet) String() string {
@@ -1811,17 +2365,44 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSet) SetTotalCount(v int32) *D
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList struct {
-	CheckStatus      *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	CheckStatusName  *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	Connector        *string `json:"Connector,omitempty" xml:"Connector,omitempty"`
-	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LocalName        *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ParentId         *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType     *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Indicates whether the test of connectivity between DSC and the data asset is passed.
+	//
+	// *   **2**: The connectivity test is in progress.
+	// *   **3**: The connectivity test is passed.
+	// *   **4**: The connectivity test failed.
+	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The name of the data detection status.
+	CheckStatusName *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
+	// The connection string that is used to access the data asset.
+	Connector *string `json:"Connector,omitempty" xml:"Connector,omitempty"`
+	// The time when the data asset was created. Unit: milliseconds.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region in which the data asset resides.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The parent asset ID of the data asset.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The region in which the data asset resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of service to which the data asset belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: OSS
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The code of the service to which the data asset belongs. Valid values:
+	//
+	// *   **ODPS**
+	// *   **OSS**
+	// *   **ADS**
+	// *   **OTS**
+	// *   **RDS**
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	UserName         *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The username that is used to access the data asset.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) String() string {
@@ -1888,8 +2469,10 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetUserName(
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList struct {
+	// The name of the OSS bucket to which the OSS object belongs.
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the OSS object.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) String() string {
@@ -1911,8 +2494,10 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) SetRegionId(
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetRegionList struct {
+	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBodyDataLimitSetRegionList) String() string {
@@ -1963,19 +2548,61 @@ func (s *DescribeDataLimitSetResponse) SetBody(v *DescribeDataLimitSetResponseBo
 }
 
 type DescribeDataLimitsRequest struct {
-	AuditStatus     *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	CheckStatus     *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DatamaskStatus  *int32  `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	Enable          *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EngineType      *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ParentId        *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	ResourceType    *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Specifies whether to enable the security audit feature. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The data detection status. Valid values:
+	//
+	// *   **0**: The data detection is ready.
+	// *   **1**: The data detection is running.
+	// *   **2**: The connectivity test is in progress.
+	// *   **3**: The connectivity test passed.
+	// *   **4**: The connectivity test failed.
+	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Specifies whether DSC has the data de-identification permissions on the data asset. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	DatamaskStatus *int32 `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
+	// Specifies whether DSC has the data detection permissions on the data asset. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The end of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent ID of the data asset to be queried. Valid values:
+	//
+	// *   The name or ID of the MaxCompute project.
+	// *   The name or ID of the OSS bucket.
+	// *   The name or ID of the ApsaraDB RDS instance or database.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The type of the service to which the data asset to be queried belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: Object Storage Service (OSS)
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	// *   **6**: self-managed database
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The region in which the data asset resides.
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDataLimitsRequest) String() string {
@@ -2052,11 +2679,16 @@ func (s *DescribeDataLimitsRequest) SetStartTime(v int64) *DescribeDataLimitsReq
 }
 
 type DescribeDataLimitsResponseBody struct {
-	CurrentPage *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeDataLimitsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of the data assets.
+	Items []*DescribeDataLimitsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataLimitsResponseBody) String() string {
@@ -2093,45 +2725,139 @@ func (s *DescribeDataLimitsResponseBody) SetTotalCount(v int32) *DescribeDataLim
 }
 
 type DescribeDataLimitsResponseBodyItems struct {
-	AuditStatus         *int32    `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AutoScan            *int32    `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	CheckStatus         *int32    `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	CheckStatusName     *string   `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	DatamaskStatus      *int32    `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	DbVersion           *string   `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	Enable              *int32    `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EngineType          *string   `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ErrorCode           *string   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EventStatus         *int32    `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	GmtCreate           *int64    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                  *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceDescription *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId          *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LastFinishedTime    *int64    `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
-	LocalName           *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	LogStoreDay         *int32    `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	NextStartTime       *int64    `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
-	OcrStatus           *int32    `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	ParentId            *string   `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Port                *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProcessStatus       *int32    `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	ProcessTotalCount   *int32    `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
-	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType        *int64    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceTypeCode    *string   `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	SamplingSize        *int32    `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	// Indicates whether the security audit feature is enabled. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Indicates whether the data asset can be automatically scanned. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	// The data detection status. Valid values:
+	//
+	// *   **0**: The data detection is ready.
+	// *   **1**: The data detection is running.
+	// *   **2**: The connectivity test is in progress.
+	// *   **3**: The connectivity test passed.
+	// *   **4**: The connectivity test failed.
+	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The name of the data detection status.
+	CheckStatusName *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
+	// Indicates whether DSC has the data de-identification permissions on the data asset. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	DatamaskStatus *int32 `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
+	// The database engine version of the instance.
+	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// Indicates whether DSC has the data detection permissions on the data asset. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The error code that is returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The reason for the failure.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Indicates whether the data leak prevention feature is enabled. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes (default value)
+	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The description of the instance.
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The ID of the instance to which the table belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the last scan was finished.
+	//
+	// *   The value is a UNIX timestamp.
+	// *   Unit: milliseconds.
+	LastFinishedTime *int64 `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
+	// The region in which the data asset resides.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The retention period of raw logs. Unit: days.
+	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	// The next time when the data asset is scanned. The value is a UNIX timestamp. Unit: milliseconds.
+	NextStartTime *int64 `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
+	// Indicates whether the optical character recognition (OCR) feature is enabled. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	OcrStatus *int32 `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
+	// The parent ID of the data asset. Valid values include **bucket, db, and project**.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The port number of the self-managed database.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The status of the data asset scan. Valid values:
+	//
+	// *   **-1**: invalid
+	// *   **0**: waiting
+	// *   **1**: being scanned
+	// *   **2**: suspended
+	// *   **3**: completed
+	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// The total number of data tables or files.
+	ProcessTotalCount *int32 `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
+	// The region in which the data asset resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the service to which the data asset belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: OSS
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	// *   **6**: self-managed database
+	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The code of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
+	// The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: data entries.
+	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	// The array consisting of the IDs of the security groups that are used by PrivateLink when you install the DSC agent.
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
-	SupportAudit        *bool     `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
-	SupportDatamask     *bool     `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
-	SupportEvent        *bool     `json:"SupportEvent,omitempty" xml:"SupportEvent,omitempty"`
-	SupportOcr          *bool     `json:"SupportOcr,omitempty" xml:"SupportOcr,omitempty"`
-	SupportScan         *bool     `json:"SupportScan,omitempty" xml:"SupportScan,omitempty"`
-	TenantName          *string   `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	TotalCount          *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserName            *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	VSwitchIdList       []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
-	VpcId               *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Indicates whether the security audit feature is supported. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	SupportAudit *bool `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
+	// Indicates whether data de-identification is supported. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	SupportDatamask *bool `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
+	// Indicates whether anomalous event detection is supported. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	SupportEvent *bool `json:"SupportEvent,omitempty" xml:"SupportEvent,omitempty"`
+	// Indicates whether OCR is supported. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	SupportOcr *bool `json:"SupportOcr,omitempty" xml:"SupportOcr,omitempty"`
+	// Indicates whether the data asset scan feature is supported. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	SupportScan *bool `json:"SupportScan,omitempty" xml:"SupportScan,omitempty"`
+	// The alias of the tenant.
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The total number of fields in the table.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The username that is used to access the data asset.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The array consisting of the IDs of the vSwitches that are used by PrivateLink when you install the DSC agent.
+	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) to which the data asset belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeDataLimitsResponseBodyItems) String() string {
@@ -2367,17 +3093,40 @@ func (s *DescribeDataLimitsResponse) SetBody(v *DescribeDataLimitsResponseBody) 
 }
 
 type DescribeDataMaskingRunHistoryRequest struct {
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DstType       *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MainProcessId *int64  `json:"MainProcessId,omitempty" xml:"MainProcessId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SrcTableName  *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
-	SrcType       *int32  `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the task.
+	//
+	// > If a task has one or more subtasks, the value of the parameter must be the ID of the task. Otherwise, leave this parameter empty.
+	MainProcessId *int64 `json:"MainProcessId,omitempty" xml:"MainProcessId,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the source table.
+	SrcTableName *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
+	// The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the de-identification task. Valid values:
+	//
+	// *   **-1**: waiting
+	// *   **0**: being executed
+	// *   **1**: executed
+	// *   **2**: failed to be executed
+	// *   **3**: terminated
+	// *   **4**: partially failed
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the de-identification task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeDataMaskingRunHistoryRequest) String() string {
@@ -2444,11 +3193,16 @@ func (s *DescribeDataMaskingRunHistoryRequest) SetTaskId(v string) *DescribeData
 }
 
 type DescribeDataMaskingRunHistoryResponseBody struct {
-	CurrentPage *int32                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeDataMaskingRunHistoryResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The execution information about the de-identification task.
+	Items []*DescribeDataMaskingRunHistoryResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataMaskingRunHistoryResponseBody) String() string {
@@ -2485,25 +3239,57 @@ func (s *DescribeDataMaskingRunHistoryResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeDataMaskingRunHistoryResponseBodyItems struct {
-	ConflictCount   *int64  `json:"ConflictCount,omitempty" xml:"ConflictCount,omitempty"`
-	DstType         *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	DstTypeCode     *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FailCode        *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	FailMsg         *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
-	HasDownloadFile *int32  `json:"HasDownloadFile,omitempty" xml:"HasDownloadFile,omitempty"`
-	HasSubProcess   *int32  `json:"HasSubProcess,omitempty" xml:"HasSubProcess,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaskingCount    *int64  `json:"MaskingCount,omitempty" xml:"MaskingCount,omitempty"`
-	Percentage      *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	RunIndex        *int32  `json:"RunIndex,omitempty" xml:"RunIndex,omitempty"`
-	SrcTableName    *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
-	SrcType         *int32  `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	SrcTypeCode     *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of rows that are in conflict with the data to be de-identified in the destination table to which the data to be de-identified is moved.
+	ConflictCount *int64 `json:"ConflictCount,omitempty" xml:"ConflictCount,omitempty"`
+	// The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	// The service that stores the de-identified data. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	DstTypeCode *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
+	// The end time of the de-identification task.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error code that is returned when the de-identification task fails.
+	FailCode *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	// The reason why the de-identification task fails.
+	FailMsg *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
+	// Indicates whether a file is available for download.
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	HasDownloadFile *int32 `json:"HasDownloadFile,omitempty" xml:"HasDownloadFile,omitempty"`
+	// The number of created subtasks.
+	HasSubProcess *int32 `json:"HasSubProcess,omitempty" xml:"HasSubProcess,omitempty"`
+	// The ID of the task execution record.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of rows that are de-identified.
+	MaskingCount *int64 `json:"MaskingCount,omitempty" xml:"MaskingCount,omitempty"`
+	// The progress of the de-identification task.
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The number of times that the de-identification task is executed.
+	RunIndex *int32 `json:"RunIndex,omitempty" xml:"RunIndex,omitempty"`
+	// The name of the source table.
+	SrcTableName *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
+	// The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	// The service to which the data to be de-identified belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	SrcTypeCode *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
+	// The time when the de-identification task was executed. The value is a UNIX timestamp. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the de-identification task. Valid values:
+	//
+	// *   **-1**: waiting
+	// *   **0**: being executed
+	// *   **1**: executed
+	// *   **2**: failed to be executed
+	// *   **3**: terminated
+	// *   **4**: partially failed
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the identification task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The mode in which the de-identification task is executed. Valid values:
+	//
+	// *   **1**: manual
+	// *   **2**: scheduled
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDataMaskingRunHistoryResponseBodyItems) String() string {
@@ -2639,13 +3425,23 @@ func (s *DescribeDataMaskingRunHistoryResponse) SetBody(v *DescribeDataMaskingRu
 }
 
 type DescribeDataMaskingTasksRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DstType     *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchKey   *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The page number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The service to which the data to be de-identified belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	// The end of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword used to query the de-identification tasks, which can be the task name or ID.
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The beginning of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDataMaskingTasksRequest) String() string {
@@ -2692,11 +3488,16 @@ func (s *DescribeDataMaskingTasksRequest) SetStartTime(v int64) *DescribeDataMas
 }
 
 type DescribeDataMaskingTasksResponseBody struct {
-	CurrentPage *int32                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeDataMaskingTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of de-identification tasks.
+	Items []*DescribeDataMaskingTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataMaskingTasksResponseBody) String() string {
@@ -2733,22 +3534,45 @@ func (s *DescribeDataMaskingTasksResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 type DescribeDataMaskingTasksResponseBodyItems struct {
-	DstPath            *string `json:"DstPath,omitempty" xml:"DstPath,omitempty"`
-	DstType            *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	DstTypeCode        *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	HasUnfinishProcess *bool   `json:"HasUnfinishProcess,omitempty" xml:"HasUnfinishProcess,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OriginalTable      *bool   `json:"OriginalTable,omitempty" xml:"OriginalTable,omitempty"`
-	Owner              *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RunCount           *int32  `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
-	SrcPath            *string `json:"SrcPath,omitempty" xml:"SrcPath,omitempty"`
-	SrcType            *int32  `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	SrcTypeCode        *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TriggerType        *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The destination directory.
+	DstPath *string `json:"DstPath,omitempty" xml:"DstPath,omitempty"`
+	// The service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	// The service to which the de-identified data belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	DstTypeCode *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
+	// The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Indicates whether the de-identification task is running.
+	HasUnfinishProcess *bool `json:"HasUnfinishProcess,omitempty" xml:"HasUnfinishProcess,omitempty"`
+	// The ID of the task.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the source table is de-identified.
+	OriginalTable *bool `json:"OriginalTable,omitempty" xml:"OriginalTable,omitempty"`
+	// The user who created the de-identification task.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The number of times that the de-identification task is run.
+	RunCount *int32 `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
+	// The source path.
+	SrcPath *string `json:"SrcPath,omitempty" xml:"SrcPath,omitempty"`
+	// The code of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	// The service to which the data to be de-identified belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	SrcTypeCode *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **0**: disabled
+	// *   **1**: enabled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The mode in which the de-identification task is run. Valid values:
+	//
+	// *   **1**: manual
+	// *   **2**: scheduled
+	// *   **3**: manual and scheduled
+	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
 func (s DescribeDataMaskingTasksResponseBodyItems) String() string {
@@ -2868,8 +3692,544 @@ func (s *DescribeDataMaskingTasksResponse) SetBody(v *DescribeDataMaskingTasksRe
 	return s
 }
 
-type DescribeEventDetailRequest struct {
+type DescribeDataObjectColumnDetailRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailRequest) SetCurrentPage(v int32) *DescribeDataObjectColumnDetailRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailRequest) SetId(v int64) *DescribeDataObjectColumnDetailRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailRequest) SetLang(v string) *DescribeDataObjectColumnDetailRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailRequest) SetPageSize(v int32) *DescribeDataObjectColumnDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailRequest) SetProductId(v int64) *DescribeDataObjectColumnDetailRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailRequest) SetTemplateId(v int64) *DescribeDataObjectColumnDetailRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailResponseBody struct {
+	CurrentPage *int32                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribeDataObjectColumnDetailResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize    *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBody) SetCurrentPage(v int32) *DescribeDataObjectColumnDetailResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBody) SetItems(v []*DescribeDataObjectColumnDetailResponseBodyItems) *DescribeDataObjectColumnDetailResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBody) SetPageSize(v int32) *DescribeDataObjectColumnDetailResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBody) SetRequestId(v string) *DescribeDataObjectColumnDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBody) SetTotalCount(v int32) *DescribeDataObjectColumnDetailResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailResponseBodyItems struct {
+	Categories    []*string                                                   `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	ColumnComment *string                                                     `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
+	ColumnName    *string                                                     `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DataType      *string                                                     `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Id            *string                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModelTags     []*DescribeDataObjectColumnDetailResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	PrimaryKey    *bool                                                       `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	RiskLevelId   *int64                                                      `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName *string                                                     `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleId        *int64                                                      `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName      *string                                                     `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetCategories(v []*string) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.Categories = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetColumnComment(v string) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.ColumnComment = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetColumnName(v string) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetDataType(v string) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.DataType = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetId(v string) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetModelTags(v []*DescribeDataObjectColumnDetailResponseBodyItemsModelTags) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.ModelTags = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetPrimaryKey(v bool) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetRiskLevelId(v int64) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetRiskLevelName(v string) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetRuleId(v int64) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetRuleName(v string) *DescribeDataObjectColumnDetailResponseBodyItems {
+	s.RuleName = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailResponseBodyItemsModelTags struct {
 	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailResponseBodyItemsModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailResponseBodyItemsModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItemsModelTags) SetId(v int64) *DescribeDataObjectColumnDetailResponseBodyItemsModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponseBodyItemsModelTags) SetName(v string) *DescribeDataObjectColumnDetailResponseBodyItemsModelTags {
+	s.Name = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataObjectColumnDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataObjectColumnDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailResponse) SetHeaders(v map[string]*string) *DescribeDataObjectColumnDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponse) SetStatusCode(v int32) *DescribeDataObjectColumnDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailResponse) SetBody(v *DescribeDataObjectColumnDetailResponseBody) *DescribeDataObjectColumnDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataObjectsRequest struct {
+	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DomainId          *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ModelTagIds       *string `json:"ModelTagIds,omitempty" xml:"ModelTagIds,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentCategoryIds *string `json:"ParentCategoryIds,omitempty" xml:"ParentCategoryIds,omitempty"`
+	ProductIds        *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
+	QueryName         *string `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
+	RiskLevels        *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
+	ServiceRegionId   *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	TemplateId        *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeDataObjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectsRequest) SetCurrentPage(v int32) *DescribeDataObjectsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetDomainId(v int64) *DescribeDataObjectsRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetLang(v string) *DescribeDataObjectsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetModelTagIds(v string) *DescribeDataObjectsRequest {
+	s.ModelTagIds = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetPageSize(v int32) *DescribeDataObjectsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetParentCategoryIds(v string) *DescribeDataObjectsRequest {
+	s.ParentCategoryIds = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetProductIds(v string) *DescribeDataObjectsRequest {
+	s.ProductIds = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetQueryName(v string) *DescribeDataObjectsRequest {
+	s.QueryName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetRiskLevels(v string) *DescribeDataObjectsRequest {
+	s.RiskLevels = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetServiceRegionId(v string) *DescribeDataObjectsRequest {
+	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetTemplateId(v int64) *DescribeDataObjectsRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeDataObjectsResponseBody struct {
+	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribeDataObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDataObjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectsResponseBody) SetCurrentPage(v int32) *DescribeDataObjectsResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetItems(v []*DescribeDataObjectsResponseBodyItems) *DescribeDataObjectsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetPageSize(v int32) *DescribeDataObjectsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetRequestId(v string) *DescribeDataObjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetTotalCount(v int32) *DescribeDataObjectsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDataObjectsResponseBodyItems struct {
+	Categories          []*string                                        `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Id                  *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceDescription *string                                          `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	InstanceId          *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LastScanTime        *int64                                           `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	ModelTags           []*DescribeDataObjectsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	Name                *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObjectType          *string                                          `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	Path                *string                                          `json:"Path,omitempty" xml:"Path,omitempty"`
+	ProductCode         *string                                          `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductId           *int64                                           `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegionName          *string                                          `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	RuleList            []*DescribeDataObjectsResponseBodyItemsRuleList  `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	SensitiveCount      *int32                                           `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	TemplateId          *int64                                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeDataObjectsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetCategories(v []*string) *DescribeDataObjectsResponseBodyItems {
+	s.Categories = v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetId(v string) *DescribeDataObjectsResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetInstanceDescription(v string) *DescribeDataObjectsResponseBodyItems {
+	s.InstanceDescription = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetInstanceId(v string) *DescribeDataObjectsResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetLastScanTime(v int64) *DescribeDataObjectsResponseBodyItems {
+	s.LastScanTime = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetModelTags(v []*DescribeDataObjectsResponseBodyItemsModelTags) *DescribeDataObjectsResponseBodyItems {
+	s.ModelTags = v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetName(v string) *DescribeDataObjectsResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetObjectType(v string) *DescribeDataObjectsResponseBodyItems {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetPath(v string) *DescribeDataObjectsResponseBodyItems {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetProductCode(v string) *DescribeDataObjectsResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetProductId(v int64) *DescribeDataObjectsResponseBodyItems {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetRegionName(v string) *DescribeDataObjectsResponseBodyItems {
+	s.RegionName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetRuleList(v []*DescribeDataObjectsResponseBodyItemsRuleList) *DescribeDataObjectsResponseBodyItems {
+	s.RuleList = v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetSensitiveCount(v int32) *DescribeDataObjectsResponseBodyItems {
+	s.SensitiveCount = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetTemplateId(v int64) *DescribeDataObjectsResponseBodyItems {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeDataObjectsResponseBodyItemsModelTags struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeDataObjectsResponseBodyItemsModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectsResponseBodyItemsModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsModelTags) SetId(v int64) *DescribeDataObjectsResponseBodyItemsModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsModelTags) SetName(v string) *DescribeDataObjectsResponseBodyItemsModelTags {
+	s.Name = &v
+	return s
+}
+
+type DescribeDataObjectsResponseBodyItemsRuleList struct {
+	RiskLevelId   *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleCount     *int32  `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DescribeDataObjectsResponseBodyItemsRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectsResponseBodyItemsRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRiskLevelId(v int64) *DescribeDataObjectsResponseBodyItemsRuleList {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRiskLevelName(v string) *DescribeDataObjectsResponseBodyItemsRuleList {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRuleCount(v int32) *DescribeDataObjectsResponseBodyItemsRuleList {
+	s.RuleCount = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRuleId(v int64) *DescribeDataObjectsResponseBodyItemsRuleList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItemsRuleList) SetRuleName(v string) *DescribeDataObjectsResponseBodyItemsRuleList {
+	s.RuleName = &v
+	return s
+}
+
+type DescribeDataObjectsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataObjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataObjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectsResponse) SetHeaders(v map[string]*string) *DescribeDataObjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataObjectsResponse) SetStatusCode(v int32) *DescribeDataObjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponse) SetBody(v *DescribeDataObjectsResponseBody) *DescribeDataObjectsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEventDetailRequest struct {
+	// The ID of the anomalous event.
+	//
+	// > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -2892,8 +4252,10 @@ func (s *DescribeEventDetailRequest) SetLang(v string) *DescribeEventDetailReque
 }
 
 type DescribeEventDetailResponseBody struct {
-	Event     *DescribeEventDetailResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the anomalous event.
+	Event *DescribeEventDetailResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEventDetailResponseBody) String() string {
@@ -2915,29 +4277,65 @@ func (s *DescribeEventDetailResponseBody) SetRequestId(v string) *DescribeEventD
 }
 
 type DescribeEventDetailResponseBodyEvent struct {
-	AlertTime       *int64                                                `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	Backed          *bool                                                 `json:"Backed,omitempty" xml:"Backed,omitempty"`
-	DataInstance    *string                                               `json:"DataInstance,omitempty" xml:"DataInstance,omitempty"`
-	DealDisplayName *string                                               `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
-	DealLoginName   *string                                               `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
-	DealReason      *string                                               `json:"DealReason,omitempty" xml:"DealReason,omitempty"`
-	DealTime        *int64                                                `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
-	DealUserId      *int64                                                `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
-	Detail          *DescribeEventDetailResponseBodyEventDetail           `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	DisplayName     *string                                               `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EventTime       *int64                                                `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	HandleInfoList  []*DescribeEventDetailResponseBodyEventHandleInfoList `json:"HandleInfoList,omitempty" xml:"HandleInfoList,omitempty" type:"Repeated"`
-	Id              *int64                                                `json:"Id,omitempty" xml:"Id,omitempty"`
-	LogDetail       *string                                               `json:"LogDetail,omitempty" xml:"LogDetail,omitempty"`
-	LoginName       *string                                               `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	ProductCode     *string                                               `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Status          *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusName      *string                                               `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	SubTypeCode     *string                                               `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
-	SubTypeName     *string                                               `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
-	TypeCode        *string                                               `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
-	TypeName        *string                                               `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	UserId          *int64                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The time when the alert for the anomalous event was generated. The value is a UNIX timestamp. Unit: milliseconds.
+	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
+	// Indicates whether the handling result of the anomalous event is used to enhance the detection of anomalous events. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	//
+	// > If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved.
+	Backed *bool `json:"Backed,omitempty" xml:"Backed,omitempty"`
+	// The instance name of the service in which the anomalous event was detected.
+	DataInstance *string `json:"DataInstance,omitempty" xml:"DataInstance,omitempty"`
+	// The display name of the account that is used to handle the anomalous event.
+	DealDisplayName *string `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
+	// The username of the account that is used to handle the anomalous event.
+	DealLoginName *string `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
+	// The reason why the anomalous event is handled.
+	DealReason *string `json:"DealReason,omitempty" xml:"DealReason,omitempty"`
+	// The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
+	DealTime *int64 `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	// The ID of the account that is used to handle the anomalous event.
+	DealUserId *int64 `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
+	// The content in the details of the anomalous event.
+	Detail *DescribeEventDetailResponseBodyEventDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	// The display name of the account that triggered the anomalous event.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
+	EventTime *int64 `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// An array that consists of the handling records of the anomalous event.
+	HandleInfoList []*DescribeEventDetailResponseBodyEventHandleInfoList `json:"HandleInfoList,omitempty" xml:"HandleInfoList,omitempty" type:"Repeated"`
+	// The unique ID of the anomalous event.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The details of the alert logs.
+	LogDetail *string `json:"LogDetail,omitempty" xml:"LogDetail,omitempty"`
+	// The username of the account that triggered the anomalous event.
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The name of the service in which the anomalous event was detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The handling status for the anomalous event. Valid values:
+	//
+	// *   **0**: unhandled
+	// *   **1**: confirmed
+	// *   **2**: marked as false positive
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the handling status for the anomalous event.
+	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	// The code of the anomalous event subtype.
+	SubTypeCode *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
+	// The name of the anomalous event subtype.
+	SubTypeName *string `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
+	// The code of the anomalous event type.
+	TypeCode *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
+	// The name of the anomalous event type. Valid values:
+	//
+	// *   **01**: anomalous permission usage
+	// *   **02**: anomalous data flow
+	// *   **03**: anomalous data operation
+	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	// The ID of the account that triggered the anomalous event.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEventDetailResponseBodyEvent) String() string {
@@ -3064,8 +4462,11 @@ func (s *DescribeEventDetailResponseBodyEvent) SetUserId(v int64) *DescribeEvent
 }
 
 type DescribeEventDetailResponseBodyEventDetail struct {
-	Chart        []*DescribeEventDetailResponseBodyEventDetailChart        `json:"Chart,omitempty" xml:"Chart,omitempty" type:"Repeated"`
-	Content      []*DescribeEventDetailResponseBodyEventDetailContent      `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// An array that consists of the baseline behavior chart of the anomalous event.
+	Chart []*DescribeEventDetailResponseBodyEventDetailChart `json:"Chart,omitempty" xml:"Chart,omitempty" type:"Repeated"`
+	// An array that consists of the content in the anomalous event.
+	Content []*DescribeEventDetailResponseBodyEventDetailContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// An array that consists of the source from which the information of the anomalous event is recorded.
 	ResourceInfo []*DescribeEventDetailResponseBodyEventDetailResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Repeated"`
 }
 
@@ -3093,11 +4494,19 @@ func (s *DescribeEventDetailResponseBodyEventDetail) SetResourceInfo(v []*Descri
 }
 
 type DescribeEventDetailResponseBodyEventDetailChart struct {
-	Data   *DescribeEventDetailResponseBodyEventDetailChartData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Label  *string                                              `json:"Label,omitempty" xml:"Label,omitempty"`
-	Type   *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
-	XLabel *string                                              `json:"XLabel,omitempty" xml:"XLabel,omitempty"`
-	YLabel *string                                              `json:"YLabel,omitempty" xml:"YLabel,omitempty"`
+	// The data in the baseline behavior profile of the anomalous event.
+	Data *DescribeEventDetailResponseBodyEventDetailChartData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The name of the baseline behavior chart of the anomalous event.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The type of the chart. Valid values:
+	//
+	// *   **1**: column chart
+	// *   **2**: line chart
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The descriptive label of data on the x-axis.
+	XLabel *string `json:"XLabel,omitempty" xml:"XLabel,omitempty"`
+	// The descriptive label of data on the y-axis.
+	YLabel *string `json:"YLabel,omitempty" xml:"YLabel,omitempty"`
 }
 
 func (s DescribeEventDetailResponseBodyEventDetailChart) String() string {
@@ -3134,7 +4543,9 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) SetYLabel(v string) *D
 }
 
 type DescribeEventDetailResponseBodyEventDetailChartData struct {
+	// The values of data on the x-axis.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
+	// The values of data on the y-axis.
 	Y []*string `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 }
 
@@ -3157,7 +4568,9 @@ func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetY(v []*string) 
 }
 
 type DescribeEventDetailResponseBodyEventDetailContent struct {
+	// The title of the content in the anomalous event.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The description of the content in the anomalous event.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3180,7 +4593,9 @@ func (s *DescribeEventDetailResponseBodyEventDetailContent) SetValue(v string) *
 }
 
 type DescribeEventDetailResponseBodyEventDetailResourceInfo struct {
+	// The source title.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The source description.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3203,14 +4618,27 @@ func (s *DescribeEventDetailResponseBodyEventDetailResourceInfo) SetValue(v stri
 }
 
 type DescribeEventDetailResponseBodyEventHandleInfoList struct {
+	// The account that is used to handle the anomalous event.
 	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
-	DisableTime  *int64  `json:"DisableTime,omitempty" xml:"DisableTime,omitempty"`
-	EnableTime   *int64  `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
-	HandlerName  *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
-	HandlerType  *string `json:"HandlerType,omitempty" xml:"HandlerType,omitempty"`
-	HandlerValue *int32  `json:"HandlerValue,omitempty" xml:"HandlerValue,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The point in time when the account was locked. The value is a UNIX timestamp. Unit: milliseconds.
+	DisableTime *int64 `json:"DisableTime,omitempty" xml:"DisableTime,omitempty"`
+	// The point in time when the account was unlocked. The value is a UNIX timestamp. Unit: milliseconds.
+	EnableTime *int64 `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
+	// The handling method.
+	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
+	// The type of the handling method.
+	HandlerType *string `json:"HandlerType,omitempty" xml:"HandlerType,omitempty"`
+	// The duration for which the handling operation takes effect. If you leave this parameter empty, the handling operation is permanently valid. Unit: minutes.
+	HandlerValue *int32 `json:"HandlerValue,omitempty" xml:"HandlerValue,omitempty"`
+	// The ID of the handling record.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the account that triggered the anomalous event. Valid values:
+	//
+	// *   **0**: locked
+	// *   **1**: unlocked
+	// *   **-1**: failed to unlock the account
+	// *   **-2**: failed to enable the account
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEventDetailResponseBodyEventHandleInfoList) String() string {
@@ -3291,10 +4719,24 @@ func (s *DescribeEventDetailResponse) SetBody(v *DescribeEventDetailResponseBody
 }
 
 type DescribeEventTypesRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ParentTypeId *int64  `json:"ParentTypeId,omitempty" xml:"ParentTypeId,omitempty"`
-	ResourceId   *int32  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of anomalous event for which you want to query the anomalous events of subtypes. Valid values:
+	//
+	// *   **01**: anomalous permission usage
+	// *   **02**: anomalous data flow
+	// *   **03**: anomalous data operation
+	ParentTypeId *int64 `json:"ParentTypeId,omitempty" xml:"ParentTypeId,omitempty"`
+	// The type of the resource. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ResourceId *int32 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The status of the anomalous event. Valid values:
+	//
+	// *   **1**: enabled
+	// *   **2**: disabled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEventTypesRequest) String() string {
@@ -3326,8 +4768,12 @@ func (s *DescribeEventTypesRequest) SetStatus(v int32) *DescribeEventTypesReques
 }
 
 type DescribeEventTypesResponseBody struct {
+	// An array that consists of the types of anomalous events.
+	//
+	// > If you leave the ParentTypeId parameter empty, anomalous event types are returned. If you set the ParentTypeId parameter, anomalous event subtypes under the specified anomalous event type are returned.
 	EventTypeList []*DescribeEventTypesResponseBodyEventTypeList `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Repeated"`
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEventTypesResponseBody) String() string {
@@ -3349,10 +4795,15 @@ func (s *DescribeEventTypesResponseBody) SetRequestId(v string) *DescribeEventTy
 }
 
 type DescribeEventTypesResponseBodyEventTypeList struct {
-	Code        *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Description *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code of the anomalous event type.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the anomalous event type.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the anomalous event type.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the anomalous event type.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// An array that consists of anomalous event subtypes.
 	SubTypeList []*DescribeEventTypesResponseBodyEventTypeListSubTypeList `json:"SubTypeList,omitempty" xml:"SubTypeList,omitempty" type:"Repeated"`
 }
 
@@ -3390,17 +4841,34 @@ func (s *DescribeEventTypesResponseBodyEventTypeList) SetSubTypeList(v []*Descri
 }
 
 type DescribeEventTypesResponseBodyEventTypeListSubTypeList struct {
-	AdaptedProduct    *string `json:"AdaptedProduct,omitempty" xml:"AdaptedProduct,omitempty"`
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ConfigCode        *string `json:"ConfigCode,omitempty" xml:"ConfigCode,omitempty"`
-	ConfigContentType *int32  `json:"ConfigContentType,omitempty" xml:"ConfigContentType,omitempty"`
+	// The service to which the anomalous event detection rule applies. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	AdaptedProduct *string `json:"AdaptedProduct,omitempty" xml:"AdaptedProduct,omitempty"`
+	// The code of the anomalous event subtype.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code of the configuration.
+	ConfigCode *string `json:"ConfigCode,omitempty" xml:"ConfigCode,omitempty"`
+	// The content format of anomalous event detection rule. Valid values:
+	//
+	// *   **0**: numeric values such as thresholds
+	// *   **1**: text such as IP addresses
+	ConfigContentType *int32 `json:"ConfigContentType,omitempty" xml:"ConfigContentType,omitempty"`
+	// The description of the configuration.
 	ConfigDescription *string `json:"ConfigDescription,omitempty" xml:"ConfigDescription,omitempty"`
-	ConfigValue       *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EventHitCount     *int32  `json:"EventHitCount,omitempty" xml:"EventHitCount,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The value of the configuration.
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The description of the anomalous event subtype.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of times that the anomalous event hits the anomalous event detection rule.
+	EventHitCount *int32 `json:"EventHitCount,omitempty" xml:"EventHitCount,omitempty"`
+	// The ID of the anomalous event subtype.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the anomalous event subtype.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether detection is enabled for the anomalous event subtype. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEventTypesResponseBodyEventTypeListSubTypeList) String() string {
@@ -3496,21 +4964,49 @@ func (s *DescribeEventTypesResponse) SetBody(v *DescribeEventTypesResponseBody) 
 }
 
 type DescribeEventsRequest struct {
-	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DealUserId        *string `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubTypeCode       *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
+	// The page number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the account that handles the anomalous event.
+	DealUserId *string `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
+	// The end of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The unique ID of the anomalous event.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the data asset.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The beginning of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The handling status of the anomalous event. Valid values:
+	//
+	// *   0: unhandled
+	// *   1: confirmed
+	// *   2: marked as false positive
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the anomalous event subtype.
+	//
+	// > You can call the **DescribeEventTypes** operation to query the name of the anomalous event subtype.
+	SubTypeCode *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
+	// The name of the destination service in an anomalous data flow. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**
 	TargetProductCode *string `json:"TargetProductCode,omitempty" xml:"TargetProductCode,omitempty"`
-	TypeCode          *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
-	UserId            *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName          *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the anomalous event type. Valid values:
+	//
+	// *   01: anomalous permission usage
+	// *   02: anomalous data flow
+	// *   03: anomalous data operation
+	TypeCode *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
+	// The ID of the account that triggered the anomalous event.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the RAM user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeEventsRequest) String() string {
@@ -3597,11 +5093,16 @@ func (s *DescribeEventsRequest) SetUserName(v string) *DescribeEventsRequest {
 }
 
 type DescribeEventsResponseBody struct {
-	CurrentPage *int32                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of the anomalous events.
+	Items []*DescribeEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeEventsResponseBody) String() string {
@@ -3638,26 +5139,57 @@ func (s *DescribeEventsResponseBody) SetTotalCount(v int32) *DescribeEventsRespo
 }
 
 type DescribeEventsResponseBodyItems struct {
-	AlertTime         *int64  `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	Backed            *bool   `json:"Backed,omitempty" xml:"Backed,omitempty"`
-	DealDisplayName   *string `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
-	DealLoginName     *string `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
-	DealTime          *int64  `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
-	DealUserId        *int64  `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EventTime         *int64  `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LoginName         *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusName        *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	SubTypeCode       *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
-	SubTypeName       *string `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
+	// The time when an alert was triggered for the anomalous event. The value is a UNIX timestamp. Unit: milliseconds.
+	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
+	// Indicates whether the detection of anomalous events is enhanced. If the detection of anomalous events is enhanced, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+	//
+	// *   true: yes
+	// *   false: no
+	Backed *bool `json:"Backed,omitempty" xml:"Backed,omitempty"`
+	// The display name of the account that is used to handle the anomalous event.
+	DealDisplayName *string `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
+	// The username of the account that is used to handle the anomalous event.
+	DealLoginName *string `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
+	// The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
+	DealTime *int64 `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	// The ID of the account that is used to handle the anomalous event.
+	DealUserId *int64 `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
+	// The display name of the account that triggered the anomalous event.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
+	EventTime *int64 `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// The ID of the anomalous event.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username of the account that triggered the anomalous event.
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The name of the service in which the anomalous event was detected.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The handling status for the anomalous event. Valid values:
+	//
+	// *   0: unhandled
+	// *   1: confirmed
+	// *   2: marked as false positive
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the handling status for the anomalous event.
+	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	// The code of the anomalous event subtype.
+	SubTypeCode *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
+	// The name of the anomalous event subtype.
+	SubTypeName *string `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
+	// The name of the destination service in an anomalous data flow.
 	TargetProductCode *string `json:"TargetProductCode,omitempty" xml:"TargetProductCode,omitempty"`
-	TypeCode          *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
-	TypeName          *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	UserId            *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WarnLevel         *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	// The code of the anomalous event type.
+	TypeCode *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
+	// The name of the anomalous event type.
+	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	// The ID of the account that triggered the anomalous event.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The severity of the anomalous event.
+	//
+	// *   **1**: low
+	// *   **2**: medium
+	// *   **3**: high
+	WarnLevel *int32 `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s DescribeEventsResponseBodyItems) String() string {
@@ -3798,17 +5330,42 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 }
 
 type DescribeInstanceSourcesRequest struct {
-	AuditStatus     *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AuthStatus      *int32  `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EngineType      *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	SearchKey       *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	SearchType      *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// Specifies whether to enable the security audit feature. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Specifies whether DSC is authorized to access the data asset.
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese (default)
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service to which the data asset to query belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the data asset to query belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The content based on which a fuzzy search is performed.
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The data asset type based on which a fuzzy search is performed.
+	//
+	// *   **InstanceId**: the ID of the instance.
+	// *   **InstanceName**: the name of the instance.
+	// *   **DatabaseName**: the name of the database.
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// The region in which the data asset resides. For more information, see [Supported regions](~~214257~~).
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 }
 
@@ -3881,11 +5438,16 @@ func (s *DescribeInstanceSourcesRequest) SetServiceRegionId(v string) *DescribeI
 }
 
 type DescribeInstanceSourcesResponseBody struct {
-	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeInstanceSourcesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of the queried data assets.
+	Items []*DescribeInstanceSourcesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstanceSourcesResponseBody) String() string {
@@ -3922,31 +5484,80 @@ func (s *DescribeInstanceSourcesResponseBody) SetTotalCount(v int32) *DescribeIn
 }
 
 type DescribeInstanceSourcesResponseBodyItems struct {
-	AuditStatus         *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AutoScan            *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	CanModifyUserName   *bool   `json:"CanModifyUserName,omitempty" xml:"CanModifyUserName,omitempty"`
-	CheckStatus         *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	DatamaskStatus      *int32  `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	DbName              *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the security audit feature is enabled. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Indicates whether the automatic scan feature is enabled to detect sensitive data. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	// Indicates whether the username and password can be changed. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	CanModifyUserName *bool `json:"CanModifyUserName,omitempty" xml:"CanModifyUserName,omitempty"`
+	// The data detection status. Valid values:
+	//
+	// *   **0**: The data detection is ready.
+	// *   **1**: The data detection is running.
+	// *   **2**: The connectivity test is in progress.
+	// *   **3**: The connectivity test passed.
+	// *   **4**: The connectivity test failed.
+	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// Indicates whether DSC has the data de-identification permissions on the data asset. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	DatamaskStatus *int32 `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
+	// The name of the database to which the data asset belongs.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Indicates whether sensitive data detection is enabled for the data asset. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The reason for the failure.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The unique ID of the data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The description of the instance.
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceSize        *int64  `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
-	LastModifyTime      *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	LastModifyUserId    *string `json:"LastModifyUserId,omitempty" xml:"LastModifyUserId,omitempty"`
-	LogStoreDay         *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	PasswordStatus      *int32  `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
-	ProductId           *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName          *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	SamplingSize        *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the instance
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The storage space size of the instance. This parameter is valid only if the value of the ProductId parameter is 2. Unit: bytes.
+	InstanceSize *int64 `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
+	// The time when the data asset was last modified. Unit: milliseconds.
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// The ID of the account that is last used to modify the data asset.
+	LastModifyUserId *string `json:"LastModifyUserId,omitempty" xml:"LastModifyUserId,omitempty"`
+	// The retention period of raw logs. Unit: days.
+	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	// Indicates whether the password is used. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	PasswordStatus *int32 `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
+	// The ID of the service to which the data asset belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: data entries.
+	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The name of the tenant.
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The username of the account.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeInstanceSourcesResponseBodyItems) String() string {
@@ -4112,15 +5723,40 @@ func (s *DescribeInstanceSourcesResponse) SetBody(v *DescribeInstanceSourcesResp
 }
 
 type DescribeInstancesRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	FeatureType     *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId     *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The keyword that is used to search for data assets. DSC searches for data assets based on the keyword that you specify in fuzzy match mode. For example, if you specify data, all data assets whose names contain data are queried.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the data asset belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to query the ID of the service.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level ID of the data asset. A higher sensitivity level indicates that the identified data is more sensitive. Valid values:
+	//
+	// *   **1**: No sensitive data is identified.
+	// *   **2**: sensitive data at level 1.
+	// *   **3**: sensitive data at level 2.
+	// *   **4**: sensitive data at level 3
+	// *   **5**: sensitive data at level 4.
+	// *   **6**: sensitive data at level 5.
+	// *   **7**: sensitive data at level 6.
+	// *   **8**: sensitive data at level 7.
+	// *   **9**: sensitive data at level 8.
+	// *   **10**: sensitive data at level 9.
+	// *   **11**: sensitive data at level 10.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The ID of the sensitive data detection rule that the data asset hits. You can call the [DescribeRules](~~DescribeRules~~) operation and obtain the ID of the sensitive data detection rule from the **Id** response parameter.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The region where the data asset resides. For more information, see [Supported regions](~~214257~~).
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 }
 
@@ -4183,11 +5819,16 @@ func (s *DescribeInstancesRequest) SetServiceRegionId(v string) *DescribeInstanc
 }
 
 type DescribeInstancesResponseBody struct {
-	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of the data assets.
+	Items []*DescribeInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of data assets.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -4224,25 +5865,66 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 type DescribeInstancesResponseBodyItems struct {
-	CreationTime        *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DepartName          *string `json:"DepartName,omitempty" xml:"DepartName,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The point in time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
+	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The name of the department to which the data asset belongs.
+	DepartName *string `json:"DepartName,omitempty" xml:"DepartName,omitempty"`
+	// The unique ID of the data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The description of the data asset.
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	Labelsec            *bool   `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
-	LastFinishTime      *int64  `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OdpsRiskLevelName   *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	Owner               *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId           *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Protection          *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
-	RiskLevelId         *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RiskLevelName       *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleName            *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sensitive           *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	SensitiveCount      *int32  `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	TotalCount          *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The security status of the data asset. Valid values:
+	//
+	// *   **true**: The data asset is secure.
+	// *   **false**: The data asset is insecure.
+	Labelsec *bool `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
+	// The point in time when the data asset was last scanned. This value is a UNIX timestamp. Unit: milliseconds.
+	LastFinishTime *int64                                         `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
+	ModelTags      []*DescribeInstancesResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	// The name of the data asset.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is deprecated.
+	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
+	// The Alibaba Cloud account to which the data asset belongs.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the data asset belongs.
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The protection status of the data asset. Valid values:
+	//
+	// *   **true**: The data asset is being protected.
+	// *   **false**: The data asset is not protected.
+	Protection *bool `json:"Protection,omitempty" xml:"Protection,omitempty"`
+	// The sensitivity level of the data asset. A higher sensitivity level indicates that the identified data is more sensitive.
+	//
+	// *   **1**: No sensitive data is identified.
+	// *   **2**: sensitive data at level 1.
+	// *   **3**: sensitive data at level 2.
+	// *   **4**: sensitive data at level 3
+	// *   **5**: sensitive data at level 4.
+	// *   **6**: sensitive data at level 5.
+	// *   **7**: sensitive data at level 6.
+	// *   **8**: sensitive data at level 7.
+	// *   **9**: sensitive data at level 8.
+	// *   **10**: sensitive data at level 9.
+	// *   **11**: sensitive data at level 10.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for the data asset.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The name of the sensitive data detection rule that the data asset hits.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Indicates whether the data asset contains sensitive data. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	// The total number of sensitive data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the total number of sensitive tables in all databases of the instance.
+	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	// The name of the tenant.
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The total number of data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the total number of tables in all databases of the instance.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyItems) String() string {
@@ -4280,6 +5962,11 @@ func (s *DescribeInstancesResponseBodyItems) SetLabelsec(v bool) *DescribeInstan
 
 func (s *DescribeInstancesResponseBodyItems) SetLastFinishTime(v int64) *DescribeInstancesResponseBodyItems {
 	s.LastFinishTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetModelTags(v []*DescribeInstancesResponseBodyItemsModelTags) *DescribeInstancesResponseBodyItems {
+	s.ModelTags = v
 	return s
 }
 
@@ -4348,6 +6035,29 @@ func (s *DescribeInstancesResponseBodyItems) SetTotalCount(v int32) *DescribeIns
 	return s
 }
 
+type DescribeInstancesResponseBodyItemsModelTags struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyItemsModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyItemsModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyItemsModelTags) SetId(v int64) *DescribeInstancesResponseBodyItemsModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItemsModelTags) SetName(v string) *DescribeInstancesResponseBodyItemsModelTags {
+	s.Name = &v
+	return s
+}
+
 type DescribeInstancesResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4378,7 +6088,14 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeOssObjectDetailRequest struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the OSS object.
+	//
+	// > You can call the **DescribeOssObjects** operation to obtain the ID of the OSS object.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -4401,8 +6118,10 @@ func (s *DescribeOssObjectDetailRequest) SetLang(v string) *DescribeOssObjectDet
 }
 
 type DescribeOssObjectDetailResponseBody struct {
+	// The details of the OSS object.
 	OssObjectDetail *DescribeOssObjectDetailResponseBodyOssObjectDetail `json:"OssObjectDetail,omitempty" xml:"OssObjectDetail,omitempty" type:"Struct"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOssObjectDetailResponseBody) String() string {
@@ -4424,12 +6143,18 @@ func (s *DescribeOssObjectDetailResponseBody) SetRequestId(v string) *DescribeOs
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetail struct {
-	BucketName    *string                                                       `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	CategoryName  *string                                                       `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	Name          *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId      *string                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RiskLevelName *string                                                       `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleList      []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	// The name of the OSS bucket to which the OSS object belongs.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The type of the OSS object.
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The name of the OSS object.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID of the OSS object.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the sensitivity level for the OSS object.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// An array consisting of the sensitive data detection rules that the OSS object hits.
+	RuleList []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOssObjectDetailResponseBodyOssObjectDetail) String() string {
@@ -4471,11 +6196,23 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetail) SetRuleList(v []*De
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList struct {
-	CategoryName  *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	Count         *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	RiskLevelId   *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The type of the OSS object.
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The number of times that the OSS object hits the sensitive data detection rule.
+	Count     *int64                                                                 `json:"Count,omitempty" xml:"Count,omitempty"`
+	ModelTags []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	// The sensitivity level of the OSS object.
+	//
+	// *   **1**: No sensitive data is detected.
+	// *   **2**: indicates the low sensitivity level.
+	// *   **3**: indicates the medium sensitivity level.
+	// *   **4**: indicates the high sensitivity level.
+	// *   **5**: indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for the OSS object.
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The name of the sensitive data detection rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) String() string {
@@ -4496,6 +6233,11 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetCount(v 
 	return s
 }
 
+func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetModelTags(v []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
+	s.ModelTags = v
+	return s
+}
+
 func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRiskLevelId(v int64) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
 	s.RiskLevelId = &v
 	return s
@@ -4508,6 +6250,29 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRiskLeve
 
 func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRuleName(v string) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
 	s.RuleName = &v
+	return s
+}
+
+type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags) SetId(v int64) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags) SetName(v string) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags {
+	s.Name = &v
 	return s
 }
 
@@ -4541,17 +6306,41 @@ func (s *DescribeOssObjectDetailResponse) SetBody(v *DescribeOssObjectDetailResp
 }
 
 type DescribeOssObjectsRequest struct {
-	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LastScanTimeEnd   *int64  `json:"LastScanTimeEnd,omitempty" xml:"LastScanTimeEnd,omitempty"`
-	LastScanTimeStart *int64  `json:"LastScanTimeStart,omitempty" xml:"LastScanTimeStart,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskLevelId       *int32  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleId            *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	ServiceRegionId   *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	TemplateId        *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The page number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the instance to which the OSS object belongs.
+	//
+	// > You can call the **DescribeInstances** operation to query the instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The end time of the last scan. The value is a UNIX timestamp. Unit: milliseconds.
+	LastScanTimeEnd *int64 `json:"LastScanTimeEnd,omitempty" xml:"LastScanTimeEnd,omitempty"`
+	// The start time of the last scan. The value is a UNIX timestamp. Unit: milliseconds.
+	LastScanTimeStart *int64 `json:"LastScanTimeStart,omitempty" xml:"LastScanTimeStart,omitempty"`
+	// The search keyword. Fuzzy match is supported.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sensitivity level of the OSS object. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int32 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The ID of the sensitive data detection rule that the OSS object hits.
+	//
+	// > You can call the **DescribeRules** operation to query the ID of the sensitive data detection rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The region in which the data asset resides.
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// The ID of the industry-specific rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeOssObjectsRequest) String() string {
@@ -4618,11 +6407,16 @@ func (s *DescribeOssObjectsRequest) SetTemplateId(v int64) *DescribeOssObjectsRe
 }
 
 type DescribeOssObjectsResponseBody struct {
-	CurrentPage *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeOssObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of the OSS objects.
+	Items []*DescribeOssObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOssObjectsResponseBody) String() string {
@@ -4659,20 +6453,40 @@ func (s *DescribeOssObjectsResponseBody) SetTotalCount(v int32) *DescribeOssObje
 }
 
 type DescribeOssObjectsResponseBodyItems struct {
-	BucketName     *string                                        `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	Category       *int64                                         `json:"Category,omitempty" xml:"Category,omitempty"`
-	CategoryName   *string                                        `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	FileId         *string                                        `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Id             *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId     *int64                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RiskLevelId    *int64                                         `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RiskLevelName  *string                                        `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleCount      *int32                                         `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	RuleList       []*DescribeOssObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	SensitiveCount *int32                                         `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	Size           *int64                                         `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The name of the OSS bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The type ID of the OSS object. Valid values include **900001**, **800015**, or **800005**, which indicates the MP4 file, PDF file, or OSS configuration file, respectively.
+	Category *int64 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The file type of the OSS object.
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The file ID of the OSS object.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the OSS object.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the instance to which the OSS object belongs.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the OSS object.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID of the OSS object.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The sensitivity level of the OSS object. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for the OSS object.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The number of rules that are hit.
+	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+	// An array that consists of the rules.
+	RuleList []*DescribeOssObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	// The number of fields that are hit.
+	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	// The size of the file. Unit: bytes.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeOssObjectsResponseBodyItems) String() string {
@@ -4754,9 +6568,18 @@ func (s *DescribeOssObjectsResponseBodyItems) SetSize(v int64) *DescribeOssObjec
 }
 
 type DescribeOssObjectsResponseBodyItemsRuleList struct {
-	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The number of times that the rule is hit.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The search keyword. Fuzzy match is supported.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sensitivity level of the OSS object. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 }
 
 func (s DescribeOssObjectsResponseBodyItemsRuleList) String() string {
@@ -4812,14 +6635,37 @@ func (s *DescribeOssObjectsResponse) SetBody(v *DescribeOssObjectsResponseBody) 
 }
 
 type DescribePackagesRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId  *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The page number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the instance to which the package belongs.
+	//
+	// > You can call the **DescribeInstances** operation to query the ID of the instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The search keyword. Fuzzy match is supported.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the service to which the package belongs.
+	//
+	// > You can call the **DescribeDataAssets** operation to query the ID of the service.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level of the package. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The ID of the sensitive data detection rule that the package hits.
+	//
+	// > You can call the **DescribeRules** operation to query the ID of the sensitive data detection rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribePackagesRequest) String() string {
@@ -4871,11 +6717,16 @@ func (s *DescribePackagesRequest) SetRuleId(v int64) *DescribePackagesRequest {
 }
 
 type DescribePackagesResponseBody struct {
-	CurrentPage *int32                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribePackagesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of the information about the packages.
+	Items []*DescribePackagesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePackagesResponseBody) String() string {
@@ -4912,16 +6763,35 @@ func (s *DescribePackagesResponseBody) SetTotalCount(v int32) *DescribePackagesR
 }
 
 type DescribePackagesResponseBodyItems struct {
-	CreationTime   *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId     *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner          *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RiskLevelId    *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RiskLevelName  *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	Sensitive      *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	SensitiveCount *int32  `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	TotalCount     *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The point in time when the MaxCompute package was created. The value is a UNIX timestamp. Unit: milliseconds.
+	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the package.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the instance to which the package belongs.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the package.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account of the user that owns the package.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The sensitivity level of the package. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for the package.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// Indicates whether the package contains sensitive data. Valid values:
+	//
+	// *   true: yes
+	// *   false: no
+	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	// The total volume of sensitive data in the package. For example, the value can be the total number of sensitive tables in the MaxCompute package.
+	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	// The total volume of data in the package. For example, the value can be the total number of tables in the MaxCompute package.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePackagesResponseBodyItems) String() string {
@@ -5012,8 +6882,13 @@ func (s *DescribePackagesResponse) SetBody(v *DescribePackagesResponseBody) *Des
 }
 
 type DescribeRiskLevelsRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   zh_cn: Chinese (default)
+	// *   en_us: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the industry-specific rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeRiskLevelsRequest) String() string {
@@ -5035,7 +6910,9 @@ func (s *DescribeRiskLevelsRequest) SetTemplateId(v int64) *DescribeRiskLevelsRe
 }
 
 type DescribeRiskLevelsResponseBody struct {
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array that consists of sensitivity levels.
 	RiskLevelList []*DescribeRiskLevelsResponseBodyRiskLevelList `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
 }
 
@@ -5058,10 +6935,42 @@ func (s *DescribeRiskLevelsResponseBody) SetRiskLevelList(v []*DescribeRiskLevel
 }
 
 type DescribeRiskLevelsResponseBodyRiskLevelList struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReferenceNum *int32  `json:"ReferenceNum,omitempty" xml:"ReferenceNum,omitempty"`
+	// The description of the sensitivity level. You can enter a custom description.
+	//
+	// The following list describes the sensitivity level names and the corresponding default description:
+	//
+	// *   **NA**: which indicates that no sensitive data is detected.
+	// *   **S1**: which indicates the sensitive data at sensitivity level 1.
+	// *   **S2**: which indicates the sensitive data at sensitivity level 2.
+	// *   **S3**: which indicates the sensitive data at sensitivity level 3.
+	// *   **S4**: which indicates the sensitive data at sensitivity level 4.
+	// *   **S5**: which indicates the sensitive data at sensitivity level 5.
+	// *   **S6**: which indicates the sensitive data at sensitivity level 6.
+	// *   **S7**: which indicates the sensitive data at sensitivity level 7.
+	// *   **S8**: which indicates the sensitive data at sensitivity level 8.
+	// *   **S9**: which indicates the sensitive data at sensitivity level 9.
+	// *   **S10**: which indicates the sensitive data at sensitivity level 10.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique ID of the sensitivity level. Valid values: 1 to 11. Each sensitivity level ID maps a sensitivity level. For example, the sensitivity level ID of 2 corresponds to the sensitivity level S1.
+	//
+	// For more information, see the description of the Name parameter.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the sensitivity level. The highest sensitivity level varies based on rule templates. The highest sensitivity level is S10. The highest sensitivity level of the **Built-in data security classification templates for Alibaba and Ant Group** is S4, and that of the **built-in classification templates for financial data** and **built-in classification templates for assets** is S5. For more information about the built-in classification templates for financial data, see Guidelines for Security Classification of Financial Data and Security Data - JRT 0197-2020. For a copied rule template, the highest sensitivity level is S10. The following list describes the sensitivity level names and the corresponding IDs:
+	//
+	// *   **NA**: 1
+	// *   **S1**: 2
+	// *   **S2**: 3
+	// *   **S3**: 4
+	// *   **S4**: 5
+	// *   **S5**: 6
+	// *   **S6**: 7
+	// *   **S7**: 8
+	// *   **S8**: 9
+	// *   **S9**: 10
+	// *   **S10**: 11
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of times that each sensitivity level is referenced in the rule template. Default value: 0.
+	ReferenceNum *int32 `json:"ReferenceNum,omitempty" xml:"ReferenceNum,omitempty"`
 }
 
 func (s DescribeRiskLevelsResponseBodyRiskLevelList) String() string {
@@ -5122,22 +7031,73 @@ func (s *DescribeRiskLevelsResponse) SetBody(v *DescribeRiskLevelsResponseBody) 
 }
 
 type DescribeRulesRequest struct {
-	Category          *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
-	ContentCategory   *int32  `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
-	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	CustomType        *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
-	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	KeywordCompatible *bool   `json:"KeywordCompatible,omitempty" xml:"KeywordCompatible,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MatchType         *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode       *int32  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId         *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId       *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleType          *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	WarnLevel         *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	// The content type of the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: keyword
+	// *   **2**: regular expression
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
+	ContentCategory *int32 `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
+	// The page number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The type of the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: built-in rule
+	// *   **1**: custom rule
+	CustomType *int32 `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
+	// The parent group type of the rule.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Specifies whether to allow earlier versions of request parameters to support keywords that are supported in later versions of request parameters. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	//
+	// > To specify keywords as the content type of the sensitive data detection rule, you can set the Category parameter to 0 for earlier versions of request parameters and set the Category parameter to 5 for later versions of request parameters. You can specify the KeywordCompatible parameter based on your business requirements.
+	KeywordCompatible *bool `json:"KeywordCompatible,omitempty" xml:"KeywordCompatible,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The match type. Valid values:
+	//
+	// *   1: rule-based match
+	// *   2: dictionary-based match
+	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The name of the sensitive data detection rule. Fuzzy match is supported.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ProductCode *int32 `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The type of the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: sensitive data detection rule
+	// *   **2**: audit rule
+	// *   **3**: anomalous event detection rule
+	// *   **99**: custom rule
+	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The status of the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: enabled
+	// *   **0**: disabled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The severity level of the alert. Valid values:
+	//
+	// *   **1**: low
+	// *   **2**: medium
+	// *   **3**: high
+	WarnLevel *int32 `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s DescribeRulesRequest) String() string {
@@ -5229,11 +7189,16 @@ func (s *DescribeRulesRequest) SetWarnLevel(v int32) *DescribeRulesRequest {
 }
 
 type DescribeRulesResponseBody struct {
-	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeRulesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of the sensitive data detection rules.
+	Items []*DescribeRulesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRulesResponseBody) String() string {
@@ -5270,31 +7235,85 @@ func (s *DescribeRulesResponseBody) SetTotalCount(v int32) *DescribeRulesRespons
 }
 
 type DescribeRulesResponseBodyItems struct {
-	Category        *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
-	CategoryName    *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content type of the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: keyword
+	// *   **2**: regular expression
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The name of the content type of the sensitive data detection rule.
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The content in the sensitive data detection rule.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
 	ContentCategory *string `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
-	CustomType      *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreate       *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	HitTotalCount   *int32  `json:"HitTotalCount,omitempty" xml:"HitTotalCount,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LoginName       *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	MajorKey        *string `json:"MajorKey,omitempty" xml:"MajorKey,omitempty"`
-	MatchType       *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId     *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RiskLevelName   *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	StatExpress     *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WarnLevel       *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	// The type of the sensitive data detection rule.
+	//
+	// *   0: built-in rule
+	// *   1: custom rule
+	CustomType *int32 `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
+	// The description of the sensitive data detection rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the account that is used to create the sensitive data detection rule.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the sensitive data detection rule is created. The value is a UNIX timestamp. Unit: milliseconds.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the sensitive data detection rule is modified. The value is a UNIX timestamp. Unit: milliseconds.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The parent group type of the rule.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The number of times that the sensitive data detection rule is hit.
+	HitTotalCount *int32 `json:"HitTotalCount,omitempty" xml:"HitTotalCount,omitempty"`
+	// The ID of the sensitive data detection rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username of the account that is used to create the sensitive data detection rule.
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The key of the primary dimension.
+	MajorKey *string `json:"MajorKey,omitempty" xml:"MajorKey,omitempty"`
+	// The match type. Valid values:
+	//
+	// *   **1**: rule-based match
+	// *   **2**: dictionary-based match
+	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The name of the sensitive data detection rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The sensitivity level of data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **N/A**: No sensitive data is detected.
+	// *   **S1**: indicates the low sensitivity level.
+	// *   **S2**: indicates the medium sensitivity level.
+	// *   **S3**: indicates the high sensitivity level.
+	// *   **S4**: indicates the highest sensitivity level.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The statistical expression.
+	StatExpress *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
+	// The status of the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: disabled
+	// *   **1**: enabled
+	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
+	// The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The ID of the account that is used to create the sensitive data detection rule.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The severity level of the alert. Valid values:
+	//
+	// *   **1**: low
+	// *   **2**: medium
+	// *   **3**: high
+	WarnLevel *int32 `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s DescribeRulesResponseBodyItems) String() string {
@@ -5415,6 +7434,11 @@ func (s *DescribeRulesResponseBodyItems) SetStatus(v int32) *DescribeRulesRespon
 	return s
 }
 
+func (s *DescribeRulesResponseBodyItems) SetSupportForm(v int32) *DescribeRulesResponseBodyItems {
+	s.SupportForm = &v
+	return s
+}
+
 func (s *DescribeRulesResponseBodyItems) SetTarget(v string) *DescribeRulesResponseBodyItems {
 	s.Target = &v
 	return s
@@ -5460,18 +7484,39 @@ func (s *DescribeRulesResponse) SetBody(v *DescribeRulesResponseBody) *DescribeR
 }
 
 type DescribeTablesRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId      *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PackageId       *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId     *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The page number of the page to return. Default value: 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the data asset to which the table belongs. You can call the [DescribeInstances](~~DescribeInstances~~) operation to obtain the ID of the data asset.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The search keyword. Fuzzy match is supported. For example, if you specify test, all tables whose names contain test are retrieved.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the package to which the table belongs. You can call the [DescribePackages](~~DescribePackages~~) operation to obtain the ID of the package.
+	PackageId *int64 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service to which the table belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which Data Security Center (DSC) can scan for sensitive data, see [Supported data assets](~~212906~~).
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the table belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to obtain the ID of the service.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level of the table. Each sensitivity level ID corresponds to a sensitivity level name. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The ID of the sensitive data detection rule that the table hits. You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the ID of the sensitive data detection rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The region in which DSC is activated. For more information, see [Supported regions](~~214257~~).
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	TemplateId      *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the industry-specific rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeTablesRequest) String() string {
@@ -5543,11 +7588,16 @@ func (s *DescribeTablesRequest) SetTemplateId(v int64) *DescribeTablesRequest {
 }
 
 type DescribeTablesResponseBody struct {
-	CurrentPage *int32                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array that consists of tables.
+	Items []*DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTablesResponseBody) String() string {
@@ -5584,23 +7634,55 @@ func (s *DescribeTablesResponseBody) SetTotalCount(v int32) *DescribeTablesRespo
 }
 
 type DescribeTablesResponseBodyItems struct {
-	CreationTime        *int64                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Id                  *int64                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceDescription *string                                    `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId          *int64                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string                                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Name                *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner               *string                                    `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProductCode         *string                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId           *string                                    `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId         *int64                                     `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RiskLevelName       *string                                    `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	RuleList            []*DescribeTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	Sensitive           *bool                                      `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	SensitiveCount      *int32                                     `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	SensitiveRatio      *string                                    `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
-	TenantName          *string                                    `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	TotalCount          *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The point in time when the table was created. Unit: milliseconds.
+	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the table.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The description of the data asset.
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The ID of the data asset to which the table belongs.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the data asset to which the table belongs.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The name of the table.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account to which the table belongs.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the table belongs.
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level of the table. Each sensitivity level ID corresponds to a sensitivity level name. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for the table. Valid values:
+	//
+	// *   **N/A**: indicates that no sensitive data is detected.
+	// *   **S1**: indicates the low sensitivity level.
+	// *   **S2**: indicates the medium sensitivity level.
+	// *   **S3**: indicates the high sensitivity level.
+	// *   **S4**: indicates the highest sensitivity level.
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The information about the sensitive data detection rules that are hit.
+	RuleList []*DescribeTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	// Indicates whether the table contains sensitive fields. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	// The total number of sensitive fields in the table.
+	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	// The percentage of sensitive fields in the table.
+	SensitiveRatio *string `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
+	// The name of the tenant.
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The total number of fields in the table.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTablesResponseBodyItems) String() string {
@@ -5697,9 +7779,18 @@ func (s *DescribeTablesResponseBodyItems) SetTotalCount(v int32) *DescribeTables
 }
 
 type DescribeTablesResponseBodyItemsRuleList struct {
-	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The total number of rules.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The name of the rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 }
 
 func (s DescribeTablesResponseBodyItemsRuleList) String() string {
@@ -5755,6 +7846,10 @@ func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *Describ
 }
 
 type DescribeUserStatusRequest struct {
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese (default)
+	// *   **en_us**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -5772,7 +7867,9 @@ func (s *DescribeUserStatusRequest) SetLang(v string) *DescribeUserStatusRequest
 }
 
 type DescribeUserStatusResponseBody struct {
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the current account.
 	UserStatus *DescribeUserStatusResponseBodyUserStatus `json:"UserStatus,omitempty" xml:"UserStatus,omitempty" type:"Struct"`
 }
 
@@ -5795,22 +7892,64 @@ func (s *DescribeUserStatusResponseBody) SetUserStatus(v *DescribeUserStatusResp
 }
 
 type DescribeUserStatusResponseBodyUserStatus struct {
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AuditClosable   *bool   `json:"AuditClosable,omitempty" xml:"AuditClosable,omitempty"`
-	AuditReleasable *bool   `json:"AuditReleasable,omitempty" xml:"AuditReleasable,omitempty"`
-	Authed          *bool   `json:"Authed,omitempty" xml:"Authed,omitempty"`
-	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DataManagerRole *int32  `json:"DataManagerRole,omitempty" xml:"DataManagerRole,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceNum     *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	LabStatus       *int32  `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
-	Purchased       *bool   `json:"Purchased,omitempty" xml:"Purchased,omitempty"`
-	ReleaseDays     *int32  `json:"ReleaseDays,omitempty" xml:"ReleaseDays,omitempty"`
-	ReleaseTime     *int64  `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	RemainDays      *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-	Trail           *bool   `json:"Trail,omitempty" xml:"Trail,omitempty"`
-	UseInstanceNum  *int32  `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
-	UseOssSize      *int64  `json:"UseOssSize,omitempty" xml:"UseOssSize,omitempty"`
+	// The AccessKey ID of the current account.
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// Indicates whether the SQL Explorer feature can be disabled. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	AuditClosable *bool `json:"AuditClosable,omitempty" xml:"AuditClosable,omitempty"`
+	// Indicates whether the audit resources can be released.
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	AuditReleasable *bool `json:"AuditReleasable,omitempty" xml:"AuditReleasable,omitempty"`
+	// Indicates whether DSC has permission to access user resources within the current account. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Authed *bool `json:"Authed,omitempty" xml:"Authed,omitempty"`
+	// The billing method of DCS that is purchased by using the current account. Valid values:
+	//
+	// *   **PREPAY**: subscription
+	// *   **POSTPAY**: pay-as-you-go
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The permissions that the current account has. Valid values:
+	//
+	// *   **0**: The current account has the administrative permissions or read-only permissions on Data Security Center.
+	// *   **1**: The current account has the permissions to manage data domains.
+	DataManagerRole *int32 `json:"DataManagerRole,omitempty" xml:"DataManagerRole,omitempty"`
+	// The ID of the instance within the current account.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of instances within the current account.
+	InstanceNum        *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	InstanceTotalCount *int64 `json:"InstanceTotalCount,omitempty" xml:"InstanceTotalCount,omitempty"`
+	// Indicates whether the data security lab feature is enabled. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	LabStatus    *int32 `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
+	OssTotalSize *int64 `json:"OssTotalSize,omitempty" xml:"OssTotalSize,omitempty"`
+	// Indicates whether DSC is purchased. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Purchased *bool `json:"Purchased,omitempty" xml:"Purchased,omitempty"`
+	// The grace period between when DSC is expired and when DSC is released. Unit: days.
+	ReleaseDays *int32 `json:"ReleaseDays,omitempty" xml:"ReleaseDays,omitempty"`
+	// The time when the audit resources are released. Unit: milliseconds.
+	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The remaining period for which the data assets within the current account can be protected by DSC.
+	RemainDays *int32 `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	// Indicates whether the current account uses a free trial of DSC. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Trail *bool `json:"Trail,omitempty" xml:"Trail,omitempty"`
+	// The number of instances that are used.
+	UseInstanceNum *int32 `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
+	// The occupied space of the Object Storage Service (OSS) bucket. Unit: bytes.
+	UseOssSize *int64 `json:"UseOssSize,omitempty" xml:"UseOssSize,omitempty"`
 }
 
 func (s DescribeUserStatusResponseBodyUserStatus) String() string {
@@ -5861,8 +8000,18 @@ func (s *DescribeUserStatusResponseBodyUserStatus) SetInstanceNum(v int32) *Desc
 	return s
 }
 
+func (s *DescribeUserStatusResponseBodyUserStatus) SetInstanceTotalCount(v int64) *DescribeUserStatusResponseBodyUserStatus {
+	s.InstanceTotalCount = &v
+	return s
+}
+
 func (s *DescribeUserStatusResponseBodyUserStatus) SetLabStatus(v int32) *DescribeUserStatusResponseBodyUserStatus {
 	s.LabStatus = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponseBodyUserStatus) SetOssTotalSize(v int64) *DescribeUserStatusResponseBodyUserStatus {
+	s.OssTotalSize = &v
 	return s
 }
 
@@ -5931,7 +8080,12 @@ func (s *DescribeUserStatusResponse) SetBody(v *DescribeUserStatusResponseBody) 
 }
 
 type DisableUserConfigRequest struct {
+	// The code of the configuration item. You can call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code of the configuration item.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh_cn**: Chinese (default)
+	// *   **en_us**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -5954,6 +8108,7 @@ func (s *DisableUserConfigRequest) SetLang(v string) *DisableUserConfigRequest {
 }
 
 type DisableUserConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6000,9 +8155,22 @@ func (s *DisableUserConfigResponse) SetBody(v *DisableUserConfigResponseBody) *D
 }
 
 type ExecDatamaskRequest struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The sensitive data to be de-identified. The value is a JSON string that contains the following parameters:
+	//
+	// *   **dataHeaderList**: the names of the columns in which data needs to be de-identified. Specify the column names in accordance with the order of data that needs to be de-identified.
+	// *   **dataList**: the data that needs to be de-identified.
+	// *   **ruleList**: the IDs of sensitive data detection rules used to detect data that needs to be de-identified. Specify the rule IDs in accordance with the order of data that needs to be de-identified. Each ID identifies a sensitive data detection rule that is used to detect a type of sensitive data. You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the de-identification template. The ID is generated after you create the de-identification template in the [Data Security Center (DSC) console](https://yundun.console.aliyun.com/?\&p=sddpnext#/sddp/dm/template). You can choose **Data desensitization** > **Desensitization Template** in the left-side navigation pane and obtain the ID of the de-identification template from the **Desensitization Template** page.
+	//
+	// *   If you select **Field name** as the matching mode of the template, DSC matches data based on the columns specified by the **dataHeaderList** parameter in the **Data** parameter.
+	// *   If you select **Sensitive type** as the matching mode of the template, DSC matches data based on the sensitive data detection rules specified by the **ruleList** parameter in the **Data** parameter.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ExecDatamaskRequest) String() string {
@@ -6029,7 +8197,13 @@ func (s *ExecDatamaskRequest) SetTemplateId(v int64) *ExecDatamaskRequest {
 }
 
 type ExecDatamaskResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The de-identified data, which is described in a JSON string. The JSON string contains the following parameters:
+	//
+	// *   **dataHeaderList**: the names of columns that contain the de-identified data.
+	// *   **dataList**: the de-identified data. The column order of the de-identified data is the same as that indicated by the dataHeaderList parameter.
+	// *   **ruleList**: the IDs of sensitive data detection rules.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6081,7 +8255,14 @@ func (s *ExecDatamaskResponse) SetBody(v *ExecDatamaskResponseBody) *ExecDatamas
 }
 
 type ManualTriggerMaskingProcessRequest struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the de-identification task.
+	//
+	// The ID of the de-identification task is a string. You can call the DescribeDataMaskingTasks operation to query the ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -6104,6 +8285,7 @@ func (s *ManualTriggerMaskingProcessRequest) SetLang(v string) *ManualTriggerMas
 }
 
 type ManualTriggerMaskingProcessResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6150,22 +8332,80 @@ func (s *ManualTriggerMaskingProcessResponse) SetBody(v *ManualTriggerMaskingPro
 }
 
 type ModifyDataLimitRequest struct {
-	AuditStatus         *int32    `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AutoScan            *int32    `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	EngineType          *string   `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	Id                  *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LogStoreDay         *int32    `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	ModifyPassword      *bool     `json:"ModifyPassword,omitempty" xml:"ModifyPassword,omitempty"`
-	Password            *string   `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port                *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
-	ResourceType        *int32    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SamplingSize        *int32    `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	// Specifies whether to enable the security audit feature. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Specifies whether to automatically trigger a re-scan after a rule is modified. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	//
+	// > When a re-scan is triggered, DSC scans all data in your data asset.
+	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	// The database engine that is run by the instance. Valid values:
+	//
+	// *   **MySQL**
+	// *   **SQLServer**
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The unique ID of the data asset for which you want to modify configuration items.
+	//
+	// > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The retention period of raw logs after you enable the security audit feature. Unit: days. Valid values:
+	//
+	// *   **30**
+	// *   **90**
+	// *   **180**
+	// *   **365**
+	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	// Specifies whether to change the username and password that are used to log on to the ApsaraDB RDS database. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	ModifyPassword *bool `json:"ModifyPassword,omitempty" xml:"ModifyPassword,omitempty"`
+	// The password used to log on to the ApsaraDB RDS database that you authorize DSC to access.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The port that is used to connect to the database.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the service to which the data asset belongs. Valid values:
+	//
+	// *   **1**: MaxCompute
+	// *   **2**: Object Storage Service (OSS)
+	// *   **3**: AnalyticDB for MySQL
+	// *   **4**: Tablestore
+	// *   **5**: ApsaraDB RDS
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of sensitive data samples tht are collected after sensitive data detection is enabled. Valid values:
+	//
+	// *   **0**
+	// *   **5**
+	// *   **10**
+	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	// The security group that is used by PrivateLink when you install the DSC agent.
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
-	ServiceRegionId     *string   `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	UserName            *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	VSwitchIdList       []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
-	VpcId               *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The region in which the data asset resides. Valid values:
+	//
+	// *   **cn-beijing**: China (Beijing)
+	// *   **cn-zhangjiakou**: China (Zhangjiakou)
+	// *   **cn-huhehaote**: China (Hohhot)
+	// *   **cn-hangzhou**: China (Hangzhou)
+	// *   **cn-shanghai**: China (Shanghai)
+	// *   **cn-shenzhen**: China (Shenzhen)
+	// *   **cn-hongkong**: China (Hong Kong)
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// The username used to log on to the ApsaraDB RDS database that you authorize DSC to access.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The vSwitch that is used by PrivateLink when you install the DSC agent.
+	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) to which the data asset belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ModifyDataLimitRequest) String() string {
@@ -6257,6 +8497,7 @@ func (s *ModifyDataLimitRequest) SetVpcId(v string) *ModifyDataLimitRequest {
 }
 
 type ModifyDataLimitResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6303,8 +8544,26 @@ func (s *ModifyDataLimitResponse) SetBody(v *ModifyDataLimitResponseBody) *Modif
 }
 
 type ModifyDefaultLevelRequest struct {
-	DefaultId    *int64  `json:"DefaultId,omitempty" xml:"DefaultId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The default sensitivity level of data that Data Security Center (DSC) cannot classify as sensitive or insensitive. Valid values:
+	//
+	// *   **1**: N/A
+	// *   **2**: S1
+	// *   **3**: S2
+	// *   **4**: S3
+	// *   **5**: S4
+	DefaultId *int64 `json:"DefaultId,omitempty" xml:"DefaultId,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sensitivity level ID of data that DSC classifies as sensitive. Separate multiple IDs with commas (,). Valid values:
+	//
+	// *   **1**: N/A
+	// *   **2**: S1
+	// *   **3**: S2
+	// *   **4**: S3
+	// *   **5**: S4
 	SensitiveIds *string `json:"SensitiveIds,omitempty" xml:"SensitiveIds,omitempty"`
 }
 
@@ -6332,6 +8591,7 @@ func (s *ModifyDefaultLevelRequest) SetSensitiveIds(v string) *ModifyDefaultLeve
 }
 
 type ModifyDefaultLevelResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6378,11 +8638,27 @@ func (s *ModifyDefaultLevelResponse) SetBody(v *ModifyDefaultLevelResponseBody) 
 }
 
 type ModifyEventStatusRequest struct {
-	Backed     *bool   `json:"Backed,omitempty" xml:"Backed,omitempty"`
+	// Specifies whether to enhance the detection of anomalous events. If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Backed *bool `json:"Backed,omitempty" xml:"Backed,omitempty"`
+	// The reason why the anomalous event is handled.
 	DealReason *string `json:"DealReason,omitempty" xml:"DealReason,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the anomalous event.
+	//
+	// > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The method to handle the anomalous event. Valid values:
+	//
+	// *   **1**: marks the anomalous event as a false positive.
+	// *   **2**: confirms and handles the anomalous event.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyEventStatusRequest) String() string {
@@ -6419,6 +8695,7 @@ func (s *ModifyEventStatusRequest) SetStatus(v int32) *ModifyEventStatusRequest 
 }
 
 type ModifyEventStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6465,7 +8742,11 @@ func (s *ModifyEventStatusResponse) SetBody(v *ModifyEventStatusResponseBody) *M
 }
 
 type ModifyEventTypeStatusRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the anomalous event subtype. Separate multiple IDs with commas (,).
+	//
+	// > You can call the **DescribeEventTypes** operation to query the ID of anomalous event subtype.
 	SubTypeIds *string `json:"SubTypeIds,omitempty" xml:"SubTypeIds,omitempty"`
 }
 
@@ -6488,6 +8769,7 @@ func (s *ModifyEventTypeStatusRequest) SetSubTypeIds(v string) *ModifyEventTypeS
 }
 
 type ModifyEventTypeStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6534,8 +8816,18 @@ func (s *ModifyEventTypeStatusResponse) SetBody(v *ModifyEventTypeStatusResponse
 }
 
 type ModifyReportTaskStatusRequest struct {
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ReportTaskStatus *int32  `json:"ReportTaskStatus,omitempty" xml:"ReportTaskStatus,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies the status of the report task. Valid values:
+	//
+	// *   **0**: disabled
+	// *   **1**: enabled
+	//
+	// > This parameter is required.
+	ReportTaskStatus *int32 `json:"ReportTaskStatus,omitempty" xml:"ReportTaskStatus,omitempty"`
 }
 
 func (s ModifyReportTaskStatusRequest) String() string {
@@ -6557,6 +8849,7 @@ func (s *ModifyReportTaskStatusRequest) SetReportTaskStatus(v int32) *ModifyRepo
 }
 
 type ModifyReportTaskStatusResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6603,17 +8896,57 @@ func (s *ModifyReportTaskStatusResponse) SetBody(v *ModifyReportTaskStatusRespon
 }
 
 type ModifyRuleRequest struct {
-	Category    *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MatchType   *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The content type of the sensitive data detection rule. Valid values:
+	//
+	// *   **2**: regular expression
+	// *   **3**: algorithm
+	// *   **5**: keyword
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The content of the sensitive data detection rule. You can specify a regular expression, an algorithm, or keywords that are used to match sensitive fields or text.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the sensitive data detection rule.
+	//
+	// You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese
+	// *   **en_us**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The match type. Valid values:
+	//
+	// *   **1**: rule-based match
+	// *   **2**: dictionary-based match
+	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The name of the sensitive data detection rule.
+	//
+	// You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service to which the sensitive data detection rule is applied. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleType    *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	WarnLevel   *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	// The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: N/A, which indicates that no sensitive data is detected.
+	// *   **2**: S1, which indicates the low sensitivity level.
+	// *   **3**: S2, which indicates the medium sensitivity level.
+	// *   **4**: S3, which indicates the high sensitivity level.
+	// *   **5**: S4, which indicates the highest sensitivity level.
+	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The type of the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: data detection rule
+	// *   **2**: audit rule
+	// *   **3**: anomalous event detection rule
+	RuleType    *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
+	// The risk level of the alert that is triggered by the sensitive data detection rule. Valid values:
+	//
+	// *   **1**: low level
+	// *   **2**: medium level
+	// *   **3**: high level
+	WarnLevel *int32 `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s ModifyRuleRequest) String() string {
@@ -6674,12 +9007,18 @@ func (s *ModifyRuleRequest) SetRuleType(v int32) *ModifyRuleRequest {
 	return s
 }
 
+func (s *ModifyRuleRequest) SetSupportForm(v int32) *ModifyRuleRequest {
+	s.SupportForm = &v
+	return s
+}
+
 func (s *ModifyRuleRequest) SetWarnLevel(v int32) *ModifyRuleRequest {
 	s.WarnLevel = &v
 	return s
 }
 
 type ModifyRuleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6726,10 +9065,24 @@ func (s *ModifyRuleResponse) SetBody(v *ModifyRuleResponseBody) *ModifyRuleRespo
 }
 
 type ModifyRuleStatusRequest struct {
-	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Ids    *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the sensitive data detection rule.
+	//
+	// > You can query the ID of the sensitive data detection rule by calling the **DescribeRules** operation.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the sensitive data detection rule. Separate multiple IDs with commas (,).
+	//
+	// > You can query the ID of the sensitive data detection rule by calling the **DescribeRules** operation.
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to enable or disable the sensitive data detection rule. Valid values:
+	//
+	// *   **0**: disables the sensitive data detection rule.
+	// *   **1**: enables the sensitive data detection rule.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyRuleStatusRequest) String() string {
@@ -6761,7 +9114,9 @@ func (s *ModifyRuleStatusRequest) SetStatus(v int32) *ModifyRuleStatusRequest {
 }
 
 type ModifyRuleStatusResponseBody struct {
+	// The IDs of sensitive data detection rules whose status failed to be changed. Multiple IDs are separated with commas (,).
 	FailedIds *string `json:"FailedIds,omitempty" xml:"FailedIds,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6813,7 +9168,12 @@ func (s *ModifyRuleStatusResponse) SetBody(v *ModifyRuleStatusResponseBody) *Mod
 }
 
 type StopMaskingProcessRequest struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the de-identification task. You can query the task ID by calling the [DescribeDataMaskingTasks](~~DescribeDataMaskingTasks~~) operation.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh_cn**: Simplified Chinese (default)
+	// *   **en_us**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -6836,6 +9196,7 @@ func (s *StopMaskingProcessRequest) SetLang(v string) *StopMaskingProcessRequest
 }
 
 type StopMaskingProcessResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6931,6 +9292,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateConfigResponse
+ */
 func (client *Client) CreateConfigWithOptions(request *CreateConfigRequest, runtime *util.RuntimeOptions) (_result *CreateConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6976,6 +9346,14 @@ func (client *Client) CreateConfigWithOptions(request *CreateConfigRequest, runt
 	return _result, _err
 }
 
+/**
+ * You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateConfigRequest
+ * @return CreateConfigResponse
+ */
 func (client *Client) CreateConfig(request *CreateConfigRequest) (_result *CreateConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConfigResponse{}
@@ -6987,6 +9365,15 @@ func (client *Client) CreateConfig(request *CreateConfigRequest) (_result *Creat
 	return _result, _err
 }
 
+/**
+ * You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateDataLimitRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDataLimitResponse
+ */
 func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest, runtime *util.RuntimeOptions) (_result *CreateDataLimitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7080,6 +9467,14 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 	return _result, _err
 }
 
+/**
+ * You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateDataLimitRequest
+ * @return CreateDataLimitResponse
+ */
 func (client *Client) CreateDataLimit(request *CreateDataLimitRequest) (_result *CreateDataLimitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataLimitResponse{}
@@ -7149,6 +9544,10 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 		query["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SupportForm)) {
+		query["SupportForm"] = request.SupportForm
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
 		query["Target"] = request.Target
 	}
@@ -7191,6 +9590,15 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateScanTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateScanTaskResponse
+ */
 func (client *Client) CreateScanTaskWithOptions(request *CreateScanTaskRequest, runtime *util.RuntimeOptions) (_result *CreateScanTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7264,6 +9672,14 @@ func (client *Client) CreateScanTaskWithOptions(request *CreateScanTaskRequest, 
 	return _result, _err
 }
 
+/**
+ * You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateScanTaskRequest
+ * @return CreateScanTaskResponse
+ */
 func (client *Client) CreateScanTask(request *CreateScanTaskRequest) (_result *CreateScanTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateScanTaskResponse{}
@@ -7275,6 +9691,15 @@ func (client *Client) CreateScanTask(request *CreateScanTaskRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateSlrRoleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateSlrRoleResponse
+ */
 func (client *Client) CreateSlrRoleWithOptions(request *CreateSlrRoleRequest, runtime *util.RuntimeOptions) (_result *CreateSlrRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7308,6 +9733,14 @@ func (client *Client) CreateSlrRoleWithOptions(request *CreateSlrRoleRequest, ru
 	return _result, _err
 }
 
+/**
+ * You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateSlrRoleRequest
+ * @return CreateSlrRoleResponse
+ */
 func (client *Client) CreateSlrRole(request *CreateSlrRoleRequest) (_result *CreateSlrRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSlrRoleResponse{}
@@ -7319,6 +9752,15 @@ func (client *Client) CreateSlrRole(request *CreateSlrRoleRequest) (_result *Cre
 	return _result, _err
 }
 
+/**
+ * You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteDataLimitRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDataLimitResponse
+ */
 func (client *Client) DeleteDataLimitWithOptions(request *DeleteDataLimitRequest, runtime *util.RuntimeOptions) (_result *DeleteDataLimitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7356,6 +9798,14 @@ func (client *Client) DeleteDataLimitWithOptions(request *DeleteDataLimitRequest
 	return _result, _err
 }
 
+/**
+ * You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteDataLimitRequest
+ * @return DeleteDataLimitResponse
+ */
 func (client *Client) DeleteDataLimit(request *DeleteDataLimitRequest) (_result *DeleteDataLimitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataLimitResponse{}
@@ -7415,6 +9865,15 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query rules in a classification template.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCategoryTemplateRuleListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCategoryTemplateRuleListResponse
+ */
 func (client *Client) DescribeCategoryTemplateRuleListWithOptions(request *DescribeCategoryTemplateRuleListRequest, runtime *util.RuntimeOptions) (_result *DescribeCategoryTemplateRuleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7464,6 +9923,14 @@ func (client *Client) DescribeCategoryTemplateRuleListWithOptions(request *Descr
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query rules in a classification template.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCategoryTemplateRuleListRequest
+ * @return DescribeCategoryTemplateRuleListResponse
+ */
 func (client *Client) DescribeCategoryTemplateRuleList(request *DescribeCategoryTemplateRuleListRequest) (_result *DescribeCategoryTemplateRuleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCategoryTemplateRuleListResponse{}
@@ -7475,6 +9942,15 @@ func (client *Client) DescribeCategoryTemplateRuleList(request *DescribeCategory
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeColumnsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeColumnsResponse
+ */
 func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest, runtime *util.RuntimeOptions) (_result *DescribeColumnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7556,6 +10032,14 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeColumnsRequest
+ * @return DescribeColumnsResponse
+ */
 func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result *DescribeColumnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeColumnsResponse{}
@@ -7731,6 +10215,15 @@ func (client *Client) DescribeDataLimitDetail(request *DescribeDataLimitDetailRe
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataLimitSetRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDataLimitSetResponse
+ */
 func (client *Client) DescribeDataLimitSetWithOptions(request *DescribeDataLimitSetRequest, runtime *util.RuntimeOptions) (_result *DescribeDataLimitSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7772,6 +10265,14 @@ func (client *Client) DescribeDataLimitSetWithOptions(request *DescribeDataLimit
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataLimitSetRequest
+ * @return DescribeDataLimitSetResponse
+ */
 func (client *Client) DescribeDataLimitSet(request *DescribeDataLimitSetRequest) (_result *DescribeDataLimitSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataLimitSetResponse{}
@@ -7875,6 +10376,15 @@ func (client *Client) DescribeDataLimits(request *DescribeDataLimitsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the execution information of a static de-identification task, including the status and progress.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataMaskingRunHistoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDataMaskingRunHistoryResponse
+ */
 func (client *Client) DescribeDataMaskingRunHistoryWithOptions(request *DescribeDataMaskingRunHistoryRequest, runtime *util.RuntimeOptions) (_result *DescribeDataMaskingRunHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7948,6 +10458,14 @@ func (client *Client) DescribeDataMaskingRunHistoryWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the execution information of a static de-identification task, including the status and progress.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataMaskingRunHistoryRequest
+ * @return DescribeDataMaskingRunHistoryResponse
+ */
 func (client *Client) DescribeDataMaskingRunHistory(request *DescribeDataMaskingRunHistoryRequest) (_result *DescribeDataMaskingRunHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataMaskingRunHistoryResponse{}
@@ -7959,6 +10477,15 @@ func (client *Client) DescribeDataMaskingRunHistory(request *DescribeDataMasking
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query static de-identification tasks. This facilitates task queries and management.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataMaskingTasksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDataMaskingTasksResponse
+ */
 func (client *Client) DescribeDataMaskingTasksWithOptions(request *DescribeDataMaskingTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeDataMaskingTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8016,10 +10543,166 @@ func (client *Client) DescribeDataMaskingTasksWithOptions(request *DescribeDataM
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query static de-identification tasks. This facilitates task queries and management.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataMaskingTasksRequest
+ * @return DescribeDataMaskingTasksResponse
+ */
 func (client *Client) DescribeDataMaskingTasks(request *DescribeDataMaskingTasksRequest) (_result *DescribeDataMaskingTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataMaskingTasksResponse{}
 	_body, _err := client.DescribeDataMaskingTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataObjectColumnDetailWithOptions(request *DescribeDataObjectColumnDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeDataObjectColumnDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		query["ProductId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataObjectColumnDetail"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataObjectColumnDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataObjectColumnDetail(request *DescribeDataObjectColumnDetailRequest) (_result *DescribeDataObjectColumnDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataObjectColumnDetailResponse{}
+	_body, _err := client.DescribeDataObjectColumnDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObjectsRequest, runtime *util.RuntimeOptions) (_result *DescribeDataObjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelTagIds)) {
+		query["ModelTagIds"] = request.ModelTagIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategoryIds)) {
+		query["ParentCategoryIds"] = request.ParentCategoryIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductIds)) {
+		query["ProductIds"] = request.ProductIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryName)) {
+		query["QueryName"] = request.QueryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevels)) {
+		query["RiskLevels"] = request.RiskLevels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceRegionId)) {
+		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataObjects"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataObjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (_result *DescribeDataObjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataObjectsResponse{}
+	_body, _err := client.DescribeDataObjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8131,6 +10814,15 @@ func (client *Client) DescribeEventTypes(request *DescribeEventTypesRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeEventsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeEventsResponse
+ */
 func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8220,6 +10912,14 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeEventsRequest
+ * @return DescribeEventsResponse
+ */
 func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEventsResponse{}
@@ -8231,6 +10931,15 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the data assets that DSC is not authorized to access. This helps you obtain information about the data assets.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeInstanceSourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInstanceSourcesResponse
+ */
 func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstanceSourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8308,6 +11017,14 @@ func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstan
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the data assets that DSC is not authorized to access. This helps you obtain information about the data assets.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeInstanceSourcesRequest
+ * @return DescribeInstanceSourcesResponse
+ */
 func (client *Client) DescribeInstanceSources(request *DescribeInstanceSourcesRequest) (_result *DescribeInstanceSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSourcesResponse{}
@@ -8319,6 +11036,15 @@ func (client *Client) DescribeInstanceSources(request *DescribeInstanceSourcesRe
 	return _result, _err
 }
 
+/**
+ * When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInstancesResponse
+ */
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8388,6 +11114,14 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+/**
+ * When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeInstancesRequest
+ * @return DescribeInstancesResponse
+ */
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -8399,6 +11133,15 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of an OSS object. This helps you locate sensitive data detected in OSS.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeOssObjectDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeOssObjectDetailResponse
+ */
 func (client *Client) DescribeOssObjectDetailWithOptions(request *DescribeOssObjectDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeOssObjectDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8436,6 +11179,14 @@ func (client *Client) DescribeOssObjectDetailWithOptions(request *DescribeOssObj
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of an OSS object. This helps you locate sensitive data detected in OSS.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeOssObjectDetailRequest
+ * @return DescribeOssObjectDetailResponse
+ */
 func (client *Client) DescribeOssObjectDetail(request *DescribeOssObjectDetailRequest) (_result *DescribeOssObjectDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOssObjectDetailResponse{}
@@ -8531,6 +11282,15 @@ func (client *Client) DescribeOssObjects(request *DescribeOssObjectsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribePackagesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePackagesResponse
+ */
 func (client *Client) DescribePackagesWithOptions(request *DescribePackagesRequest, runtime *util.RuntimeOptions) (_result *DescribePackagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8592,6 +11352,14 @@ func (client *Client) DescribePackagesWithOptions(request *DescribePackagesReque
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribePackagesRequest
+ * @return DescribePackagesResponse
+ */
 func (client *Client) DescribePackages(request *DescribePackagesRequest) (_result *DescribePackagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePackagesResponse{}
@@ -8603,6 +11371,15 @@ func (client *Client) DescribePackages(request *DescribePackagesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRiskLevelsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeRiskLevelsResponse
+ */
 func (client *Client) DescribeRiskLevelsWithOptions(request *DescribeRiskLevelsRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskLevelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8640,6 +11417,14 @@ func (client *Client) DescribeRiskLevelsWithOptions(request *DescribeRiskLevelsR
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRiskLevelsRequest
+ * @return DescribeRiskLevelsResponse
+ */
 func (client *Client) DescribeRiskLevels(request *DescribeRiskLevelsRequest) (_result *DescribeRiskLevelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRiskLevelsResponse{}
@@ -8755,6 +11540,15 @@ func (client *Client) DescribeRules(request *DescribeRulesRequest) (_result *Des
 	return _result, _err
 }
 
+/**
+ * When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
+ * # Limits
+ * You can send up to 10 requests per second to call this operation by using your Alibaba Cloud account. If you send excessive requests, throttling is implemented, and your business may be affected.
+ *
+ * @param request DescribeTablesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeTablesResponse
+ */
 func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8832,6 +11626,14 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 	return _result, _err
 }
 
+/**
+ * When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
+ * # Limits
+ * You can send up to 10 requests per second to call this operation by using your Alibaba Cloud account. If you send excessive requests, throttling is implemented, and your business may be affected.
+ *
+ * @param request DescribeTablesRequest
+ * @return DescribeTablesResponse
+ */
 func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *DescribeTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTablesResponse{}
@@ -8843,6 +11645,15 @@ func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *D
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeUserStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeUserStatusResponse
+ */
 func (client *Client) DescribeUserStatusWithOptions(request *DescribeUserStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8876,6 +11687,14 @@ func (client *Client) DescribeUserStatusWithOptions(request *DescribeUserStatusR
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeUserStatusRequest
+ * @return DescribeUserStatusResponse
+ */
 func (client *Client) DescribeUserStatus(request *DescribeUserStatusRequest) (_result *DescribeUserStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserStatusResponse{}
@@ -8887,6 +11706,15 @@ func (client *Client) DescribeUserStatus(request *DescribeUserStatusRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DisableUserConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DisableUserConfigResponse
+ */
 func (client *Client) DisableUserConfigWithOptions(request *DisableUserConfigRequest, runtime *util.RuntimeOptions) (_result *DisableUserConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8924,6 +11752,14 @@ func (client *Client) DisableUserConfigWithOptions(request *DisableUserConfigReq
 	return _result, _err
 }
 
+/**
+ * You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DisableUserConfigRequest
+ * @return DisableUserConfigResponse
+ */
 func (client *Client) DisableUserConfig(request *DisableUserConfigRequest) (_result *DisableUserConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableUserConfigResponse{}
@@ -9139,6 +11975,15 @@ func (client *Client) ModifyDataLimit(request *ModifyDataLimitRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyDefaultLevelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDefaultLevelResponse
+ */
 func (client *Client) ModifyDefaultLevelWithOptions(request *ModifyDefaultLevelRequest, runtime *util.RuntimeOptions) (_result *ModifyDefaultLevelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9180,6 +12025,14 @@ func (client *Client) ModifyDefaultLevelWithOptions(request *ModifyDefaultLevelR
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyDefaultLevelRequest
+ * @return ModifyDefaultLevelResponse
+ */
 func (client *Client) ModifyDefaultLevel(request *ModifyDefaultLevelRequest) (_result *ModifyDefaultLevelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefaultLevelResponse{}
@@ -9191,6 +12044,15 @@ func (client *Client) ModifyDefaultLevel(request *ModifyDefaultLevelRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyEventStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyEventStatusResponse
+ */
 func (client *Client) ModifyEventStatusWithOptions(request *ModifyEventStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyEventStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9240,6 +12102,14 @@ func (client *Client) ModifyEventStatusWithOptions(request *ModifyEventStatusReq
 	return _result, _err
 }
 
+/**
+ * You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyEventStatusRequest
+ * @return ModifyEventStatusResponse
+ */
 func (client *Client) ModifyEventStatus(request *ModifyEventStatusRequest) (_result *ModifyEventStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyEventStatusResponse{}
@@ -9299,6 +12169,15 @@ func (client *Client) ModifyEventTypeStatus(request *ModifyEventTypeStatusReques
 	return _result, _err
 }
 
+/**
+ * You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyReportTaskStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyReportTaskStatusResponse
+ */
 func (client *Client) ModifyReportTaskStatusWithOptions(request *ModifyReportTaskStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyReportTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9336,6 +12215,14 @@ func (client *Client) ModifyReportTaskStatusWithOptions(request *ModifyReportTas
 	return _result, _err
 }
 
+/**
+ * You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyReportTaskStatusRequest
+ * @return ModifyReportTaskStatusResponse
+ */
 func (client *Client) ModifyReportTaskStatus(request *ModifyReportTaskStatusRequest) (_result *ModifyReportTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyReportTaskStatusResponse{}
@@ -9347,6 +12234,15 @@ func (client *Client) ModifyReportTaskStatus(request *ModifyReportTaskStatusRequ
 	return _result, _err
 }
 
+/**
+ * When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyRuleResponse
+ */
 func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9393,6 +12289,10 @@ func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime 
 		query["RuleType"] = request.RuleType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SupportForm)) {
+		query["SupportForm"] = request.SupportForm
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WarnLevel)) {
 		query["WarnLevel"] = request.WarnLevel
 	}
@@ -9420,6 +12320,14 @@ func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyRuleRequest
+ * @return ModifyRuleResponse
+ */
 func (client *Client) ModifyRule(request *ModifyRuleRequest) (_result *ModifyRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyRuleResponse{}
@@ -9487,6 +12395,15 @@ func (client *Client) ModifyRuleStatus(request *ModifyRuleStatusRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request StopMaskingProcessRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopMaskingProcessResponse
+ */
 func (client *Client) StopMaskingProcessWithOptions(request *StopMaskingProcessRequest, runtime *util.RuntimeOptions) (_result *StopMaskingProcessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9524,6 +12441,14 @@ func (client *Client) StopMaskingProcessWithOptions(request *StopMaskingProcessR
 	return _result, _err
 }
 
+/**
+ * You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request StopMaskingProcessRequest
+ * @return StopMaskingProcessResponse
+ */
 func (client *Client) StopMaskingProcess(request *StopMaskingProcessRequest) (_result *StopMaskingProcessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopMaskingProcessResponse{}
