@@ -301,6 +301,7 @@ type AllocateInstancePublicConnectionRequest struct {
 	GeneralGroupName *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PGBouncerPort    *string `json:"PGBouncerPort,omitempty" xml:"PGBouncerPort,omitempty"`
 	// The public port of the instance. Valid values: **1000 to 5999**.
 	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -342,6 +343,11 @@ func (s *AllocateInstancePublicConnectionRequest) SetOwnerAccount(v string) *All
 
 func (s *AllocateInstancePublicConnectionRequest) SetOwnerId(v int64) *AllocateInstancePublicConnectionRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *AllocateInstancePublicConnectionRequest) SetPGBouncerPort(v string) *AllocateInstancePublicConnectionRequest {
+	s.PGBouncerPort = &v
 	return s
 }
 
@@ -4642,6 +4648,7 @@ type CreateDBInstanceEndpointRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The IP address of the internal endpoint.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The vSwitch ID of the internal endpoint.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -4694,6 +4701,11 @@ func (s *CreateDBInstanceEndpointRequest) SetPort(v string) *CreateDBInstanceEnd
 
 func (s *CreateDBInstanceEndpointRequest) SetPrivateIpAddress(v string) *CreateDBInstanceEndpointRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *CreateDBInstanceEndpointRequest) SetResourceGroupId(v string) *CreateDBInstanceEndpointRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4772,6 +4784,7 @@ type CreateDBInstanceEndpointShrinkRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The IP address of the internal endpoint.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The vSwitch ID of the internal endpoint.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -4824,6 +4837,11 @@ func (s *CreateDBInstanceEndpointShrinkRequest) SetPort(v string) *CreateDBInsta
 
 func (s *CreateDBInstanceEndpointShrinkRequest) SetPrivateIpAddress(v string) *CreateDBInstanceEndpointShrinkRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *CreateDBInstanceEndpointShrinkRequest) SetResourceGroupId(v string) *CreateDBInstanceEndpointShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4943,6 +4961,7 @@ type CreateDBInstanceEndpointAddressRequest struct {
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	// The port number of the public endpoint.
 	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
@@ -4981,6 +5000,11 @@ func (s *CreateDBInstanceEndpointAddressRequest) SetIpType(v string) *CreateDBIn
 
 func (s *CreateDBInstanceEndpointAddressRequest) SetPort(v string) *CreateDBInstanceEndpointAddressRequest {
 	s.Port = &v
+	return s
+}
+
+func (s *CreateDBInstanceEndpointAddressRequest) SetResourceGroupId(v string) *CreateDBInstanceEndpointAddressRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5358,6 +5382,7 @@ type CreateDBNodesRequest struct {
 	DBNode               []*CreateDBNodesRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
 	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -5392,6 +5417,11 @@ func (s *CreateDBNodesRequest) SetOwnerAccount(v string) *CreateDBNodesRequest {
 
 func (s *CreateDBNodesRequest) SetOwnerId(v int64) *CreateDBNodesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDBNodesRequest) SetResourceGroupId(v string) *CreateDBNodesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5441,6 +5471,7 @@ type CreateDBNodesShrinkRequest struct {
 	DBNodeShrink         *string `json:"DBNode,omitempty" xml:"DBNode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -5475,6 +5506,11 @@ func (s *CreateDBNodesShrinkRequest) SetOwnerAccount(v string) *CreateDBNodesShr
 
 func (s *CreateDBNodesShrinkRequest) SetOwnerId(v int64) *CreateDBNodesShrinkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDBNodesShrinkRequest) SetResourceGroupId(v string) *CreateDBNodesShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15869,7 +15905,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// The maximum I/O throughput. Unit: MB/s.
 	MaxIOMBPS *int32 `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
 	// The maximum number of I/O requests that is processed by the instance per second.
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	PGBouncerEnabled *string `json:"PGBouncerEnabled,omitempty" xml:"PGBouncerEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// *   **Postpaid**: pay-as-you-go
@@ -16175,6 +16212,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMax
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMaxIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPGBouncerEnabled(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.PGBouncerEnabled = &v
 	return s
 }
 
@@ -18436,7 +18478,8 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo st
 	// The latency threshold. This parameter is returned only for a read/write splitting endpoint. Unit: seconds.
 	//
 	// > If the latency on a read-only instance exceeds the specified threshold, the system no longer forwards read requests to the read-only instance.
-	MaxDelayTime *string `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
+	MaxDelayTime  *string `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
+	PGBouncerPort *string `json:"PGBouncerPort,omitempty" xml:"PGBouncerPort,omitempty"`
 	// The port that is used to connect to the instance.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// An array that consists of the details about the IP address whitelists.
@@ -18504,6 +18547,11 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 
 func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetMaxDelayTime(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
 	s.MaxDelayTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) SetPGBouncerPort(v string) *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo {
+	s.PGBouncerPort = &v
 	return s
 }
 
@@ -30414,7 +30462,8 @@ type DescribeParametersResponseBody struct {
 	// The type of the database engine.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version of the instance.
-	EngineVersion  *string                                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// Parameter template information.
 	ParamGroupInfo *DescribeParametersResponseBodyParamGroupInfo `json:"ParamGroupInfo,omitempty" xml:"ParamGroupInfo,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -30510,9 +30559,13 @@ func (s *DescribeParametersResponseBodyConfigParametersDBInstanceParameter) SetP
 }
 
 type DescribeParametersResponseBodyParamGroupInfo struct {
-	ParamGroupId       *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// Parameter template ID.
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// Parameter template description.
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	// Parameter template name.
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	// Parameter template type.
 	ParameterGroupType *string `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
 }
 
@@ -40365,6 +40418,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	GeneralGroupName *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PGBouncerPort    *string `json:"PGBouncerPort,omitempty" xml:"PGBouncerPort,omitempty"`
 	// The port number after the change.
 	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -40411,6 +40465,11 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetOwnerAccount(v string) *Mod
 
 func (s *ModifyDBInstanceConnectionStringRequest) SetOwnerId(v int64) *ModifyDBInstanceConnectionStringRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) SetPGBouncerPort(v string) *ModifyDBInstanceConnectionStringRequest {
+	s.PGBouncerPort = &v
 	return s
 }
 
@@ -50667,6 +50726,10 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PGBouncerPort)) {
+		query["PGBouncerPort"] = request.PGBouncerPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Port)) {
 		query["Port"] = request.Port
 	}
@@ -52652,6 +52715,10 @@ func (client *Client) CreateDBInstanceEndpointWithOptions(tmpReq *CreateDBInstan
 		query["PrivateIpAddress"] = request.PrivateIpAddress
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
@@ -52745,6 +52812,10 @@ func (client *Client) CreateDBInstanceEndpointAddressWithOptions(request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.Port)) {
 		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
@@ -52971,6 +53042,10 @@ func (client *Client) CreateDBNodesWithOptions(tmpReq *CreateDBNodesRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -59036,12 +59111,14 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 }
 
 /**
+ * @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
  * This operation is no longer available. You can call the DescribeDBInstanceAttribute operation to query information about an instance.
  *
  * @param request DescribeDBInstancesAsCsvRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeDBInstancesAsCsvResponse
  */
+// Deprecated
 func (client *Client) DescribeDBInstancesAsCsvWithOptions(request *DescribeDBInstancesAsCsvRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesAsCsvResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59104,11 +59181,13 @@ func (client *Client) DescribeDBInstancesAsCsvWithOptions(request *DescribeDBIns
 }
 
 /**
+ * @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
  * This operation is no longer available. You can call the DescribeDBInstanceAttribute operation to query information about an instance.
  *
  * @param request DescribeDBInstancesAsCsvRequest
  * @return DescribeDBInstancesAsCsvResponse
  */
+// Deprecated
 func (client *Client) DescribeDBInstancesAsCsv(request *DescribeDBInstancesAsCsvRequest) (_result *DescribeDBInstancesAsCsvResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancesAsCsvResponse{}
@@ -66352,6 +66431,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PGBouncerPort)) {
+		query["PGBouncerPort"] = request.PGBouncerPort
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Port)) {
