@@ -2980,12 +2980,20 @@ func (s *CreateDataCronClearOrderResponse) SetBody(v *CreateDataCronClearOrderRe
 }
 
 type CreateDataExportOrderRequest struct {
-	AttachmentKey   *string                                  `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment         *string                                  `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParentId        *int64                                   `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	PluginParam     *CreateDataExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
-	RelatedUserList []*int64                                 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
-	Tid             *int64                                   `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the parent ticket.
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The parameters of the ticket.
+	PluginParam *CreateDataExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
+	// The stakeholders involved in this operation.
+	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateDataExportOrderRequest) String() string {
@@ -3027,15 +3035,32 @@ func (s *CreateDataExportOrderRequest) SetTid(v int64) *CreateDataExportOrderReq
 }
 
 type CreateDataExportOrderRequestPluginParam struct {
-	AffectRows             *int64                                            `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
-	Classify               *string                                           `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	DbId                   *int64                                            `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	ExeSQL                 *string                                           `json:"ExeSQL,omitempty" xml:"ExeSQL,omitempty"`
-	IgnoreAffectRows       *bool                                             `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
-	IgnoreAffectRowsReason *string                                           `json:"IgnoreAffectRowsReason,omitempty" xml:"IgnoreAffectRowsReason,omitempty"`
-	InstanceId             *int64                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Logic                  *bool                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	Watermark              *CreateDataExportOrderRequestPluginParamWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
+	// The estimated number of data rows to be affected.
+	AffectRows *int64 `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	// The reason for the export ticket.
+	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// The database ID.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The SQL statements that can be executed.
+	ExeSQL *string `json:"ExeSQL,omitempty" xml:"ExeSQL,omitempty"`
+	// Specifies whether to skip verification. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IgnoreAffectRows *bool `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
+	// The reason for skipping verification. This parameter is required if you set IgnoreAffectRows to true.
+	IgnoreAffectRowsReason *string `json:"IgnoreAffectRowsReason,omitempty" xml:"IgnoreAffectRowsReason,omitempty"`
+	// The instance ID.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the database is a logical database. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// > If you set this parameter to **true**, the database that you specify must be a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The information about the watermarks.
+	Watermark *CreateDataExportOrderRequestPluginParamWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
 func (s CreateDataExportOrderRequestPluginParam) String() string {
@@ -3092,10 +3117,15 @@ func (s *CreateDataExportOrderRequestPluginParam) SetWatermark(v *CreateDataExpo
 }
 
 type CreateDataExportOrderRequestPluginParamWatermark struct {
-	ColumnName     *string   `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DataWatermark  *string   `json:"DataWatermark,omitempty" xml:"DataWatermark,omitempty"`
-	FileWatermark  *string   `json:"FileWatermark,omitempty" xml:"FileWatermark,omitempty"`
-	Keys           []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The field into which the watermark is to be embedded.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The information to be embedded as a watermark into data.
+	DataWatermark *string `json:"DataWatermark,omitempty" xml:"DataWatermark,omitempty"`
+	// The information to be embedded as a watermark into files.
+	FileWatermark *string `json:"FileWatermark,omitempty" xml:"FileWatermark,omitempty"`
+	// One or more primary keys or unique keys.
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The methods in which the watermark is embedded.
 	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
 }
 
@@ -3133,12 +3163,20 @@ func (s *CreateDataExportOrderRequestPluginParamWatermark) SetWatermarkTypes(v [
 }
 
 type CreateDataExportOrderShrinkRequest struct {
-	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParentId              *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	PluginParamShrink     *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
+	// The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the parent ticket.
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The parameters of the ticket.
+	PluginParamShrink *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
+	// The stakeholders involved in this operation.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The tenant ID.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateDataExportOrderShrinkRequest) String() string {
@@ -3180,11 +3218,19 @@ func (s *CreateDataExportOrderShrinkRequest) SetTid(v int64) *CreateDataExportOr
 }
 
 type CreateDataExportOrderResponseBody struct {
+	// The content of the ticket.
 	CreateOrderResult *CreateDataExportOrderResponseBodyCreateOrderResult `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Struct"`
-	ErrorCode         *string                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage      *string                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataExportOrderResponseBody) String() string {
@@ -3606,10 +3652,14 @@ func (s *CreateDataImportOrderResponse) SetBody(v *CreateDataImportOrderResponse
 }
 
 type CreateDataTrackOrderRequest struct {
-	Comment         *string                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Param           *CreateDataTrackOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RelatedUserList []*string                         `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
-	Tid             *int64                            `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The purpose or objective of the data tracking ticket. This parameter is used to help reduce unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	Param *CreateDataTrackOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// The IDs of the operators that are related to the ticket.
+	RelatedUserList []*string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateDataTrackOrderRequest) String() string {
@@ -3641,11 +3691,18 @@ func (s *CreateDataTrackOrderRequest) SetTid(v int64) *CreateDataTrackOrderReque
 }
 
 type CreateDataTrackOrderRequestParam struct {
-	DbId         *string   `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	JobEndTime   *string   `json:"JobEndTime,omitempty" xml:"JobEndTime,omitempty"`
-	JobStartTime *string   `json:"JobStartTime,omitempty" xml:"JobStartTime,omitempty"`
-	TableNames   []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
-	TrackTypes   []*string `json:"TrackTypes,omitempty" xml:"TrackTypes,omitempty" type:"Repeated"`
+	// The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+	//
+	// > You can call this operation to create a data tracking ticket for only physical databases. This operation is not applicable to logical databases.
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The end time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+	JobEndTime *string `json:"JobEndTime,omitempty" xml:"JobEndTime,omitempty"`
+	// The start time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+	JobStartTime *string `json:"JobStartTime,omitempty" xml:"JobStartTime,omitempty"`
+	// The names of the tables for which you want to track data operations.
+	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	// The types of data operations that you want to track.
+	TrackTypes []*string `json:"TrackTypes,omitempty" xml:"TrackTypes,omitempty" type:"Repeated"`
 }
 
 func (s CreateDataTrackOrderRequestParam) String() string {
@@ -3682,10 +3739,14 @@ func (s *CreateDataTrackOrderRequestParam) SetTrackTypes(v []*string) *CreateDat
 }
 
 type CreateDataTrackOrderShrinkRequest struct {
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The purpose or objective of the data tracking ticket. This parameter is used to help reduce unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The IDs of the operators that are related to the ticket.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateDataTrackOrderShrinkRequest) String() string {
@@ -3717,11 +3778,19 @@ func (s *CreateDataTrackOrderShrinkRequest) SetTid(v int64) *CreateDataTrackOrde
 }
 
 type CreateDataTrackOrderResponseBody struct {
+	// The IDs of the data tracking tickets.
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
-	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataTrackOrderResponseBody) String() string {
@@ -3787,12 +3856,20 @@ func (s *CreateDataTrackOrderResponse) SetBody(v *CreateDataTrackOrderResponseBo
 }
 
 type CreateDatabaseExportOrderRequest struct {
-	AttachmentKey   *string                                      `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment         *string                                      `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParentId        *int64                                       `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	PluginParam     *CreateDatabaseExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
-	RelatedUserList []*int64                                     `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
-	Tid             *int64                                       `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the parent ticket.
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The parameters of the ticket.
+	PluginParam *CreateDatabaseExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
+	// The stakeholders involved in this operation.
+	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateDatabaseExportOrderRequest) String() string {
@@ -3834,12 +3911,21 @@ func (s *CreateDatabaseExportOrderRequest) SetTid(v int64) *CreateDatabaseExport
 }
 
 type CreateDatabaseExportOrderRequestPluginParam struct {
-	Classify   *string                                            `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	Config     *CreateDatabaseExportOrderRequestPluginParamConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	DbId       *int64                                             `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	InstanceId *int64                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Logic      *bool                                              `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	SearchName *string                                            `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The reason for the database export.
+	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// The configurations for database export.
+	Config *CreateDatabaseExportOrderRequestPluginParamConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The database ID.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The instance ID.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the database is a logical database. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The name that is used to search for the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s CreateDatabaseExportOrderRequestPluginParam) String() string {
@@ -3881,13 +3967,28 @@ func (s *CreateDatabaseExportOrderRequestPluginParam) SetSearchName(v string) *C
 }
 
 type CreateDatabaseExportOrderRequestPluginParamConfig struct {
-	DataOption     []*string          `json:"DataOption,omitempty" xml:"DataOption,omitempty" type:"Repeated"`
-	ExportContent  *string            `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
-	ExportTypes    []*string          `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Repeated"`
-	SQLExtOption   []*string          `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Repeated"`
-	SelectedTables []*string          `json:"SelectedTables,omitempty" xml:"SelectedTables,omitempty" type:"Repeated"`
-	Tables         map[string]*string `json:"Tables,omitempty" xml:"Tables,omitempty"`
-	TargetOption   *string            `json:"TargetOption,omitempty" xml:"TargetOption,omitempty"`
+	// The export options for big data. The options are used to filter the big data to be exported. You can leave this parameter empty.
+	DataOption []*string `json:"DataOption,omitempty" xml:"DataOption,omitempty" type:"Repeated"`
+	// The type of data that you want to export. Valid values:
+	//
+	// *   **DATA**: The data of the database is exported.
+	// *   **STRUCT**: The schema of the database is exported.
+	// *   **DATA_STRUCT**: The data and schema of the database are exported.
+	ExportContent *string `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
+	// The types of schemas that you want to export.
+	ExportTypes []*string `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Repeated"`
+	// The extension options of the SQL script. You can leave this parameter empty.
+	SQLExtOption []*string `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Repeated"`
+	// The tables that you want to export.
+	SelectedTables []*string `json:"SelectedTables,omitempty" xml:"SelectedTables,omitempty" type:"Repeated"`
+	// The conditions used to filter the tables to be exported.
+	Tables map[string]*string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	// The format in which the database is exported. Valid values:
+	//
+	// *   **SQL**
+	// *   **CSV**
+	// *   **XLSX**
+	TargetOption *string `json:"TargetOption,omitempty" xml:"TargetOption,omitempty"`
 }
 
 func (s CreateDatabaseExportOrderRequestPluginParamConfig) String() string {
@@ -3934,12 +4035,20 @@ func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetTargetOption(v st
 }
 
 type CreateDatabaseExportOrderShrinkRequest struct {
-	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParentId              *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	PluginParamShrink     *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
+	// The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the parent ticket.
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The parameters of the ticket.
+	PluginParamShrink *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
+	// The stakeholders involved in this operation.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The tenant ID.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateDatabaseExportOrderShrinkRequest) String() string {
@@ -3981,11 +4090,19 @@ func (s *CreateDatabaseExportOrderShrinkRequest) SetTid(v int64) *CreateDatabase
 }
 
 type CreateDatabaseExportOrderResponseBody struct {
+	// The information about the ticket.
 	CreateOrderResult *CreateDatabaseExportOrderResponseBodyCreateOrderResult `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Struct"`
-	ErrorCode         *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage      *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDatabaseExportOrderResponseBody) String() string {
@@ -7971,15 +8088,27 @@ func (s *DisableUserResponse) SetBody(v *DisableUserResponseBody) *DisableUserRe
 }
 
 type DownloadDataTrackResultRequest struct {
-	ColumnFilter    *DownloadDataTrackResultRequestColumnFilter `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty" type:"Struct"`
-	EventIdList     []*int64                                    `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
-	FilterEndTime   *string                                     `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
-	FilterStartTime *string                                     `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
-	FilterTableList []*string                                   `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty" type:"Repeated"`
-	FilterTypeList  []*string                                   `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty" type:"Repeated"`
-	OrderId         *int64                                      `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RollbackSQLType *string                                     `json:"RollbackSQLType,omitempty" xml:"RollbackSQLType,omitempty"`
-	Tid             *int64                                      `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The condition to filter columns.
+	ColumnFilter *DownloadDataTrackResultRequestColumnFilter `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty" type:"Struct"`
+	// The IDs of the events.
+	EventIdList []*int64 `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	// The end time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
+	FilterEndTime *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	// The start time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
+	FilterStartTime *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	// The names of the tables for which you want to track data operations.
+	FilterTableList []*string `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty" type:"Repeated"`
+	// The types of data operations that you want to track.
+	FilterTypeList []*string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty" type:"Repeated"`
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The type of the SQL statement.
+	//
+	// *   **REVERSE**: undoes or rolls back an executed SQL statement, which is equivalent to the UNDO SQL statement.
+	// *   **FORWARD**: redoes or re-executes an SQL statement that failed to be executed, which is equivalent to the REDO SQL statement.
+	RollbackSQLType *string `json:"RollbackSQLType,omitempty" xml:"RollbackSQLType,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s DownloadDataTrackResultRequest) String() string {
@@ -8036,12 +8165,26 @@ func (s *DownloadDataTrackResultRequest) SetTid(v int64) *DownloadDataTrackResul
 }
 
 type DownloadDataTrackResultRequestColumnFilter struct {
-	BetweenEnd   *string   `json:"BetweenEnd,omitempty" xml:"BetweenEnd,omitempty"`
-	BetweenStart *string   `json:"BetweenStart,omitempty" xml:"BetweenStart,omitempty"`
-	ColumnName   *string   `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	InList       []*string `json:"InList,omitempty" xml:"InList,omitempty" type:"Repeated"`
-	Operator     *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value        *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The end value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
+	BetweenEnd *string `json:"BetweenEnd,omitempty" xml:"BetweenEnd,omitempty"`
+	// The start value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
+	BetweenStart *string `json:"BetweenStart,omitempty" xml:"BetweenStart,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The IN list used in the filter condition.
+	InList []*string `json:"InList,omitempty" xml:"InList,omitempty" type:"Repeated"`
+	// The type of the operator used to configure the filter condition. Valid values:
+	//
+	// *   **EQUAL**: retrieves the column whose value is equal to the specified value.
+	// *   **NOT_EQUAL**: retrieves the column whose value is not equal to the specified value.
+	// *   **IN**: retrieves the column whose value is in the IN list.
+	// *   **BETWEEN**: retrieves the column whose value is in the specified range.
+	// *   **LESS**: retrieves the column whose value is less than the specified value.
+	// *   **MORE**: retrieves the column whose value is greater than the specified value.
+	// *   **NOT_IN**: retrieves the column whose value is not in the IN list.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The value used in the filter condition.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DownloadDataTrackResultRequestColumnFilter) String() string {
@@ -8083,15 +8226,27 @@ func (s *DownloadDataTrackResultRequestColumnFilter) SetValue(v string) *Downloa
 }
 
 type DownloadDataTrackResultShrinkRequest struct {
-	ColumnFilterShrink    *string `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty"`
-	EventIdListShrink     *string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty"`
-	FilterEndTime         *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
-	FilterStartTime       *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	// The condition to filter columns.
+	ColumnFilterShrink *string `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty"`
+	// The IDs of the events.
+	EventIdListShrink *string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty"`
+	// The end time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
+	FilterEndTime *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	// The start time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
+	FilterStartTime *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	// The names of the tables for which you want to track data operations.
 	FilterTableListShrink *string `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty"`
-	FilterTypeListShrink  *string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty"`
-	OrderId               *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RollbackSQLType       *string `json:"RollbackSQLType,omitempty" xml:"RollbackSQLType,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The types of data operations that you want to track.
+	FilterTypeListShrink *string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty"`
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The type of the SQL statement.
+	//
+	// *   **REVERSE**: undoes or rolls back an executed SQL statement, which is equivalent to the UNDO SQL statement.
+	// *   **FORWARD**: redoes or re-executes an SQL statement that failed to be executed, which is equivalent to the REDO SQL statement.
+	RollbackSQLType *string `json:"RollbackSQLType,omitempty" xml:"RollbackSQLType,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s DownloadDataTrackResultShrinkRequest) String() string {
@@ -8148,11 +8303,19 @@ func (s *DownloadDataTrackResultShrinkRequest) SetTid(v int64) *DownloadDataTrac
 }
 
 type DownloadDataTrackResultResponseBody struct {
+	// The ID of the download key, which is used to download the parsing result of the data tracking task.
 	DownloadKeyId *string `json:"DownloadKeyId,omitempty" xml:"DownloadKeyId,omitempty"`
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DownloadDataTrackResultResponseBody) String() string {
@@ -12977,8 +13140,10 @@ func (s *GetDataImportSQLResponse) SetBody(v *GetDataImportSQLResponseBody) *Get
 }
 
 type GetDataTrackJobDegreeRequest struct {
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataTrackJobDegreeRequest) String() string {
@@ -13000,11 +13165,19 @@ func (s *GetDataTrackJobDegreeRequest) SetTid(v int64) *GetDataTrackJobDegreeReq
 }
 
 type GetDataTrackJobDegreeResponseBody struct {
-	ErrorCode    *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	JobDegree    *GetDataTrackJobDegreeResponseBodyJobDegree `json:"JobDegree,omitempty" xml:"JobDegree,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The progress details of the data tracking task.
+	JobDegree *GetDataTrackJobDegreeResponseBodyJobDegree `json:"JobDegree,omitempty" xml:"JobDegree,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataTrackJobDegreeResponseBody) String() string {
@@ -13041,11 +13214,26 @@ func (s *GetDataTrackJobDegreeResponseBody) SetSuccess(v bool) *GetDataTrackJobD
 }
 
 type GetDataTrackJobDegreeResponseBodyJobDegree struct {
+	// The progress of binary log download. Valid values: 0 to 1. A value of 1 indicates that binary log download is complete.
 	DownloadCompletionDegree *float64 `json:"DownloadCompletionDegree,omitempty" xml:"DownloadCompletionDegree,omitempty"`
-	FilterCompletionDegree   *float64 `json:"FilterCompletionDegree,omitempty" xml:"FilterCompletionDegree,omitempty"`
-	JobStatus                *string  `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	ListCompletionDegree     *float64 `json:"ListCompletionDegree,omitempty" xml:"ListCompletionDegree,omitempty"`
-	StatusDesc               *string  `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The progress of binary log parsing. Valid values: 0 to 1. A value of 1 indicates that binary log parsing is complete.
+	FilterCompletionDegree *float64 `json:"FilterCompletionDegree,omitempty" xml:"FilterCompletionDegree,omitempty"`
+	// The status of the data tracking task. Valid values:
+	//
+	// *   **INIT**: The task is being initialized.
+	// *   **LISTING**: The binary logs are being obtained.
+	// *   **LIST_SUCCESS**: The binary logs are successfully obtained.
+	// *   **DOWNLOADING**: The binary logs are being downloaded.
+	// *   **DOWNLOAD_FAIL**: The binary logs failed to be downloaded.
+	// *   **DOWNLOAD_SUCCESS**: The binary logs are successfully downloaded.
+	// *   **FILTERING**: The binary logs are being parsed.
+	// *   **FILTER_FAIL**: The binary logs failed to be parsed.
+	// *   **FILTER_SUCCESS**: The binary logs are successfully parsed.
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The progress of binary log obtaining. Valid values: 0 to 1. A value of 1 indicates that binary log obtaining is complete.
+	ListCompletionDegree *float64 `json:"ListCompletionDegree,omitempty" xml:"ListCompletionDegree,omitempty"`
+	// The description of the task status.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 }
 
 func (s GetDataTrackJobDegreeResponseBodyJobDegree) String() string {
@@ -13111,8 +13299,10 @@ func (s *GetDataTrackJobDegreeResponse) SetBody(v *GetDataTrackJobDegreeResponse
 }
 
 type GetDataTrackJobTableMetaRequest struct {
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataTrackJobTableMetaRequest) String() string {
@@ -13134,10 +13324,18 @@ func (s *GetDataTrackJobTableMetaRequest) SetTid(v int64) *GetDataTrackJobTableM
 }
 
 type GetDataTrackJobTableMetaResponseBody struct {
-	ErrorCode     *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The metadata of tables.
 	TableMetaList []*GetDataTrackJobTableMetaResponseBodyTableMetaList `json:"TableMetaList,omitempty" xml:"TableMetaList,omitempty" type:"Repeated"`
 }
 
@@ -13175,9 +13373,12 @@ func (s *GetDataTrackJobTableMetaResponseBody) SetTableMetaList(v []*GetDataTrac
 }
 
 type GetDataTrackJobTableMetaResponseBodyTableMetaList struct {
-	Columns    []*GetDataTrackJobTableMetaResponseBodyTableMetaListColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	SchemaName *string                                                     `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName  *string                                                     `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The information about columns.
+	Columns []*GetDataTrackJobTableMetaResponseBodyTableMetaListColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetDataTrackJobTableMetaResponseBodyTableMetaList) String() string {
@@ -13204,11 +13405,19 @@ func (s *GetDataTrackJobTableMetaResponseBodyTableMetaList) SetTableName(v strin
 }
 
 type GetDataTrackJobTableMetaResponseBodyTableMetaListColumns struct {
-	Charset        *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
-	ColumnName     *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ColumnPosition *int32  `json:"ColumnPosition,omitempty" xml:"ColumnPosition,omitempty"`
-	ColumnType     *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	Fictive        *bool   `json:"Fictive,omitempty" xml:"Fictive,omitempty"`
+	// The name of the character set.
+	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The position of the column.
+	ColumnPosition *int32 `json:"ColumnPosition,omitempty" xml:"ColumnPosition,omitempty"`
+	// The data type of the column. Examples: BIGINT, INT, and VARCHAR.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// Indicates whether the column is a virtual column. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Fictive *bool `json:"Fictive,omitempty" xml:"Fictive,omitempty"`
 }
 
 func (s GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) String() string {
@@ -13274,8 +13483,10 @@ func (s *GetDataTrackJobTableMetaResponse) SetBody(v *GetDataTrackJobTableMetaRe
 }
 
 type GetDataTrackOrderDetailRequest struct {
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataTrackOrderDetailRequest) String() string {
@@ -13297,11 +13508,19 @@ func (s *GetDataTrackOrderDetailRequest) SetTid(v int64) *GetDataTrackOrderDetai
 }
 
 type GetDataTrackOrderDetailResponseBody struct {
+	// The details of the ticket.
 	DataTrackOrderDetail *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail `json:"DataTrackOrderDetail,omitempty" xml:"DataTrackOrderDetail,omitempty" type:"Struct"`
-	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataTrackOrderDetailResponseBody) String() string {
@@ -13338,16 +13557,39 @@ func (s *GetDataTrackOrderDetailResponseBody) SetSuccess(v bool) *GetDataTrackOr
 }
 
 type GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail struct {
-	DatabaseSearchName *string   `json:"DatabaseSearchName,omitempty" xml:"DatabaseSearchName,omitempty"`
-	DbId               *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	JobEndTime         *string   `json:"JobEndTime,omitempty" xml:"JobEndTime,omitempty"`
-	JobStartTime       *string   `json:"JobStartTime,omitempty" xml:"JobStartTime,omitempty"`
-	JobStatus          *string   `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	Logic              *bool     `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	SchemaName         *string   `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	StatusDesc         *string   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TableNames         []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
-	TrackTypes         []*string `json:"TrackTypes,omitempty" xml:"TrackTypes,omitempty" type:"Repeated"`
+	// The name that is used to search for the database.
+	DatabaseSearchName *string `json:"DatabaseSearchName,omitempty" xml:"DatabaseSearchName,omitempty"`
+	// The ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The end time of the time range in which data operations are tracked. The time is in the yyyy-MM-dd HH:mm:ss format.
+	JobEndTime *string `json:"JobEndTime,omitempty" xml:"JobEndTime,omitempty"`
+	// The start time of the time range in which data operations are tracked. The time is in the yyyy-MM-dd HH:mm:ss format.
+	JobStartTime *string `json:"JobStartTime,omitempty" xml:"JobStartTime,omitempty"`
+	// The status of the data tracking task. Valid values:
+	//
+	// *   **INIT**: The task is being initialized.
+	// *   **LISTING**: The binary logs are being obtained.
+	// *   **LIST_SUCCESS**: The binary logs are successfully obtained.
+	// *   **DOWNLOADING**: The binary logs are being downloaded.
+	// *   **DOWNLOAD_FAIL**: The binary logs failed to be downloaded.
+	// *   **DOWNLOAD_SUCCESS**: The binary logs are successfully downloaded.
+	// *   **FILTERING**: The binary logs are being parsed.
+	// *   **FILTER_FAIL**: The binary logs failed to be parsed.
+	// *   **FILTER_SUCCESS**: The binary logs are successfully parsed.
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The description of the task status.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The names of the tables for which data operations are tracked.
+	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	// The types of data operations that are tracked.
+	TrackTypes []*string `json:"TrackTypes,omitempty" xml:"TrackTypes,omitempty" type:"Repeated"`
 }
 
 func (s GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) String() string {
@@ -13743,8 +13985,12 @@ func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseRe
 }
 
 type GetDatabaseExportOrderDetailRequest struct {
+	// The ticket ID. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDatabaseExportOrderDetailRequest) String() string {
@@ -13766,11 +14012,19 @@ func (s *GetDatabaseExportOrderDetailRequest) SetTid(v int64) *GetDatabaseExport
 }
 
 type GetDatabaseExportOrderDetailResponseBody struct {
+	// The details of the database export ticket.
 	DatabaseExportOrderDetail *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail `json:"DatabaseExportOrderDetail,omitempty" xml:"DatabaseExportOrderDetail,omitempty" type:"Struct"`
-	ErrorCode                 *string                                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage              *string                                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                   *bool                                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDatabaseExportOrderDetailResponseBody) String() string {
@@ -13807,15 +14061,24 @@ func (s *GetDatabaseExportOrderDetailResponseBody) SetSuccess(v bool) *GetDataba
 }
 
 type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail struct {
-	Comment            *string                                                                   `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Committer          *string                                                                   `json:"Committer,omitempty" xml:"Committer,omitempty"`
-	CommitterId        *string                                                                   `json:"CommitterId,omitempty" xml:"CommitterId,omitempty"`
-	Id                 *int64                                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	KeyInfo            *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
-	Log                *string                                                                   `json:"Log,omitempty" xml:"Log,omitempty"`
-	SearchName         *string                                                                   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	StatusDesc         *string                                                                   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	WorkflowStatusDesc *string                                                                   `json:"WorkflowStatusDesc,omitempty" xml:"WorkflowStatusDesc,omitempty"`
+	// The business background information of the database export ticket.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The user who submitted the ticket.
+	Committer *string `json:"Committer,omitempty" xml:"Committer,omitempty"`
+	// The ID of the user who submitted the ticket. This ID is a user ID and is not the ID of an Alibaba Cloud account.
+	CommitterId *string `json:"CommitterId,omitempty" xml:"CommitterId,omitempty"`
+	// The ticket ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The key information about the ticket.
+	KeyInfo *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
+	// The execution logs.
+	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	// The name that is used to search for the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The status description of the ticket.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The status description of the workflow.
+	WorkflowStatusDesc *string `json:"WorkflowStatusDesc,omitempty" xml:"WorkflowStatusDesc,omitempty"`
 }
 
 func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) String() string {
@@ -13872,10 +14135,14 @@ func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetW
 }
 
 type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo struct {
-	AuditDate   *string                                                                         `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
-	Config      *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	DbId        *int64                                                                          `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DownloadURL *string                                                                         `json:"DownloadURL,omitempty" xml:"DownloadURL,omitempty"`
+	// The time when the ticket was submitted.
+	AuditDate *string `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	// The configuration information about the ticket.
+	Config *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The database ID.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The URL that is used to download the export result.
+	DownloadURL *string `json:"DownloadURL,omitempty" xml:"DownloadURL,omitempty"`
 }
 
 func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) String() string {
@@ -13907,12 +14174,26 @@ func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInf
 }
 
 type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig struct {
-	DbName         *string                                                                                       `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	ExportContent  *string                                                                                       `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
-	ExportTypes    *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes    `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Struct"`
-	SQLExtOption   *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption   `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Struct"`
+	// The database name.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The type of data that was exported. Valid values:
+	//
+	// *   **DATA**: The data of the database was exported.
+	// *   **STRUCT**: The schema of the database was exported.
+	// *   **DATA_STRUCT**: The data and schema of the database were exported.
+	ExportContent *string `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
+	// The type of schema that was exported.
+	ExportTypes *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Struct"`
+	// The extension options of the SQL script.
+	SQLExtOption *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Struct"`
+	// The tables that were exported from the database.
 	SelectedTables *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables `json:"SelectedTables,omitempty" xml:"SelectedTables,omitempty" type:"Struct"`
-	TargetOption   *string                                                                                       `json:"TargetOption,omitempty" xml:"TargetOption,omitempty"`
+	// The format in which the database was exported. Valid values:
+	//
+	// *   **SQL**
+	// *   **CSV**
+	// *   **XLSX**
+	TargetOption *string `json:"TargetOption,omitempty" xml:"TargetOption,omitempty"`
 }
 
 func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) String() string {
@@ -16535,11 +16816,11 @@ func (s *GetOwnerApplyOrderDetailResponse) SetBody(v *GetOwnerApplyOrderDetailRe
 }
 
 type GetPermApplyOrderDetailRequest struct {
-	// The ID of the ticket.
+	// The ticket ID. You can call the [ListOrders](~~465867~~) operation to query the ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
-	// > To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -16568,9 +16849,12 @@ type GetPermApplyOrderDetailResponseBody struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The details of the permission application ticket.
 	PermApplyOrderDetail *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail `json:"PermApplyOrderDetail,omitempty" xml:"PermApplyOrderDetail,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16615,15 +16899,16 @@ type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail struct {
 	// *   **COL**: column
 	// *   **INSTANT**: instance
 	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	// The type of permissions that you apply for. Valid values:
+	// The type of the permissions that you apply for. Valid values:
 	//
-	// *   **1**: the permissions to query information
-	// *   **2**: the permissions to export information
-	// *   **3**: the permissions to query and export information
-	// *   **4**: the permissions to modify information
-	// *   **5**: the permissions to query and modify information
-	// *   **6**: the permissions to export and modify information
-	// *   **7**: the permissions to query, export, and modify information
+	// *   **1**: the permissions to query information.
+	// *   **2**: the permissions to export information.
+	// *   **3**: the permissions to query and export information.
+	// *   **4**: the permissions to modify information.
+	// *   **5**: the permissions to query and modify information.
+	// *   **6**: the permissions to export and modify information.
+	// *   **7**: the permissions to query, export, and modify information.
+	// *   **8**: the permissions to log on to the database.
 	PermType *int64 `json:"PermType,omitempty" xml:"PermType,omitempty"`
 	// The list of resources.
 	Resources []*GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -16660,13 +16945,13 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetSeconds(v i
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources struct {
-	// The name of the table.
+	// The information about the column.
 	ColumnInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo `json:"ColumnInfo,omitempty" xml:"ColumnInfo,omitempty" type:"Struct"`
 	// The information about the database.
 	DatabaseInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
-	// The name of the column.
+	// The information about the instance.
 	InstanceInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
-	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	// The information about the table.
 	TableInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
 }
 
@@ -16699,9 +16984,9 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetTa
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo struct {
-	// The name of the table.
+	// The name of the column.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The information about the column.
+	// The name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -16724,23 +17009,22 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnI
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo struct {
-	// The ID of the database.
+	// The database ID.
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The nickname of the owner of the database.
+	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// Indicates whether the database is a logical database. Valid values:
 	//
-	// *   **true**: The database is a logical database.
-	// *   **false**: The database is not a logical database.
+	// *   **true**
+	// *   **false**
 	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// test@xxxx:3306[test]
+	// The IDs of the owners of the database.
 	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-	// The ID of the owner of the database.
+	// The nicknames of the owners of the database.
 	OwnerNickNames []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
 	// The name that is used to search for the database.
-	// > We recommend that you do not use this parameter for business development. The format of the parameter value may be modified in later versions.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -16788,25 +17072,25 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabas
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo struct {
-	// The name that is used to search for the instance.
+	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The nickname of the owner of the instance.
+	// The ID of the database administrator (DBA) of the instance.
 	DbaId *int64 `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
 	// The nickname of the DBA of the instance.
 	DbaNickName *string `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
-	// The type of the database engine.
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The information about the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The port that is used to connect to the instance.
-	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-	// The ID of the owner of the instance.
-	OwnerNickName []*string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty" type:"Repeated"`
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The endpoint of the instance.
-	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the owners of the instance.
+	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The nicknames of the owners of the instance.
+	OwnerNickName []*string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty" type:"Repeated"`
+	// The port that is used to connect to the instance.
+	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name that is used to search for the instance.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -16869,7 +17153,7 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanc
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo struct {
-	// The information about the table.
+	// The name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -31594,12 +31878,14 @@ type ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow struct {
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The username of the user who created the task flow.
 	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
-	CronParam       *string `json:"CronParam,omitempty" xml:"CronParam,omitempty"`
+	CronBeginDate   *string `json:"CronBeginDate,omitempty" xml:"CronBeginDate,omitempty"`
+	CronEndDate     *string `json:"CronEndDate,omitempty" xml:"CronEndDate,omitempty"`
 	CronStr         *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
 	CronSwitch      *bool   `json:"CronSwitch,omitempty" xml:"CronSwitch,omitempty"`
 	CronType        *int32  `json:"CronType,omitempty" xml:"CronType,omitempty"`
 	// The name of the task flow.
-	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagName    *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
 	// The username of the owner of the task flow.
 	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
 	// The ID of the last deployment record of the task flow.
@@ -31617,6 +31903,7 @@ type ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow struct {
 	// The time when the last execution record was created.
 	LatestInstanceTime *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
 	ScenarioId         *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	ScheduleParam      *string `json:"ScheduleParam,omitempty" xml:"ScheduleParam,omitempty"`
 	// The status of the task flow. Valid values:
 	//
 	// *   **0**: invalid
@@ -31645,8 +31932,13 @@ func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetCreatorNickName
 	return s
 }
 
-func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetCronParam(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
-	s.CronParam = &v
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetCronBeginDate(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.CronBeginDate = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetCronEndDate(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.CronEndDate = &v
 	return s
 }
 
@@ -31667,6 +31959,11 @@ func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetCronType(v int3
 
 func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetDagName(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
 	s.DagName = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetDagOwnerId(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.DagOwnerId = &v
 	return s
 }
 
@@ -31702,6 +31999,11 @@ func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetLatestInstanceT
 
 func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetScenarioId(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
 	s.ScenarioId = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetScheduleParam(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.ScheduleParam = &v
 	return s
 }
 
@@ -34166,9 +34468,12 @@ func (s *PublishAndDeployTaskFlowResponse) SetBody(v *PublishAndDeployTaskFlowRe
 }
 
 type QueryDataTrackResultDownloadStatusRequest struct {
+	// The ID of the download key, which is used to identify the parsing progress of data tracking logs. You can call the DownloadDataTrackResult operation to query the ID of the key.
 	DownloadKeyId *string `json:"DownloadKeyId,omitempty" xml:"DownloadKeyId,omitempty"`
-	OrderId       *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the ID of the tenant.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s QueryDataTrackResultDownloadStatusRequest) String() string {
@@ -34195,11 +34500,19 @@ func (s *QueryDataTrackResultDownloadStatusRequest) SetTid(v int64) *QueryDataTr
 }
 
 type QueryDataTrackResultDownloadStatusResponseBody struct {
-	ErrorCode    *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the download progress.
 	StatusResult *QueryDataTrackResultDownloadStatusResponseBodyStatusResult `json:"StatusResult,omitempty" xml:"StatusResult,omitempty" type:"Struct"`
-	Success      *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryDataTrackResultDownloadStatusResponseBody) String() string {
@@ -34236,10 +34549,20 @@ func (s *QueryDataTrackResultDownloadStatusResponseBody) SetSuccess(v bool) *Que
 }
 
 type QueryDataTrackResultDownloadStatusResponseBodyStatusResult struct {
+	// The status of the download task. Valid values:
+	//
+	// *   **INIT**: The download task is being initialized.
+	// *   **LISTING**: The download task is in a transient intermediate state during the initialization.
+	// *   **DOWNLOADING**: The download task is being processed.
+	// *   **DOWNLOAD_SUCCESS**: The download task was successfully processed.
+	// *   **DOWNLOAD_FAIL**: The download task failed.
 	DownloadStatus *string `json:"DownloadStatus,omitempty" xml:"DownloadStatus,omitempty"`
-	DownloadUrl    *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	StatusDesc     *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TotalCount     *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The URL that is used to download data tracking logs. This parameter is returned only when the value of DownloadStatus is DOWNLOAD_SUCCESS.
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The description of the state.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryDataTrackResultDownloadStatusResponseBodyStatusResult) String() string {
@@ -35651,13 +35974,20 @@ func (s *RevokeUserPermissionResponse) SetBody(v *RevokeUserPermissionResponseBo
 }
 
 type SearchDataTrackResultRequest struct {
-	ColumnFilter    *SearchDataTrackResultRequestColumnFilter `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty" type:"Struct"`
-	FilterEndTime   *string                                   `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
-	FilterStartTime *string                                   `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
-	FilterTableList []*string                                 `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty" type:"Repeated"`
-	FilterTypeList  []*string                                 `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty" type:"Repeated"`
-	OrderId         *int64                                    `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid             *int64                                    `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The condition to filter columns.
+	ColumnFilter *SearchDataTrackResultRequestColumnFilter `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty" type:"Struct"`
+	// The end time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+	FilterEndTime *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	// The start time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+	FilterStartTime *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	// The names of the tables for which you want to track data operations.
+	FilterTableList []*string `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty" type:"Repeated"`
+	// The types of data operations that you want to track.
+	FilterTypeList []*string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty" type:"Repeated"`
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SearchDataTrackResultRequest) String() string {
@@ -35704,12 +36034,26 @@ func (s *SearchDataTrackResultRequest) SetTid(v int64) *SearchDataTrackResultReq
 }
 
 type SearchDataTrackResultRequestColumnFilter struct {
-	BetweenEnd   *string   `json:"BetweenEnd,omitempty" xml:"BetweenEnd,omitempty"`
-	BetweenStart *string   `json:"BetweenStart,omitempty" xml:"BetweenStart,omitempty"`
-	ColumnName   *string   `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	InList       []*string `json:"InList,omitempty" xml:"InList,omitempty" type:"Repeated"`
-	Operator     *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value        *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The end value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
+	BetweenEnd *string `json:"BetweenEnd,omitempty" xml:"BetweenEnd,omitempty"`
+	// The start value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
+	BetweenStart *string `json:"BetweenStart,omitempty" xml:"BetweenStart,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The IN list used in the filter condition. This parameter takes effect only when Operator is set to IN or NOT_IN.
+	InList []*string `json:"InList,omitempty" xml:"InList,omitempty" type:"Repeated"`
+	// The type of the operator used to configure the filter condition. Valid values:
+	//
+	// *   **EQUAL**: retrieves the column whose value is equal to the specified value.
+	// *   **NOT_EQUAL**: retrieves the column whose value is not equal to the specified value.
+	// *   **IN**: retrieves the column whose value is in the IN list.
+	// *   **BETWEEN**: retrieves the column whose value is in the specified range.
+	// *   **LESS**: retrieves the column whose value is less than the specified value.
+	// *   **MORE**: retrieves the column whose value is greater than the specified value.
+	// *   **NOT_IN**: retrieves the column whose value is not in the IN list.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The value used in the filter condition.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SearchDataTrackResultRequestColumnFilter) String() string {
@@ -35751,13 +36095,20 @@ func (s *SearchDataTrackResultRequestColumnFilter) SetValue(v string) *SearchDat
 }
 
 type SearchDataTrackResultShrinkRequest struct {
-	ColumnFilterShrink    *string `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty"`
-	FilterEndTime         *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
-	FilterStartTime       *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	// The condition to filter columns.
+	ColumnFilterShrink *string `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty"`
+	// The end time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+	FilterEndTime *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	// The start time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+	FilterStartTime *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	// The names of the tables for which you want to track data operations.
 	FilterTableListShrink *string `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty"`
-	FilterTypeListShrink  *string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty"`
-	OrderId               *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The types of data operations that you want to track.
+	FilterTypeListShrink *string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty"`
+	// The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SearchDataTrackResultShrinkRequest) String() string {
@@ -35804,11 +36155,19 @@ func (s *SearchDataTrackResultShrinkRequest) SetTid(v int64) *SearchDataTrackRes
 }
 
 type SearchDataTrackResultResponseBody struct {
-	ErrorCode    *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TrackResult  *SearchDataTrackResultResponseBodyTrackResult `json:"TrackResult,omitempty" xml:"TrackResult,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The parsing result of the data tracking task.
+	TrackResult *SearchDataTrackResultResponseBodyTrackResult `json:"TrackResult,omitempty" xml:"TrackResult,omitempty" type:"Struct"`
 }
 
 func (s SearchDataTrackResultResponseBody) String() string {
@@ -35845,9 +36204,12 @@ func (s *SearchDataTrackResultResponseBody) SetTrackResult(v *SearchDataTrackRes
 }
 
 type SearchDataTrackResultResponseBodyTrackResult struct {
-	EventList     []*SearchDataTrackResultResponseBodyTrackResultEventList     `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// The details of the event logs.
+	EventList []*SearchDataTrackResultResponseBodyTrackResultEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// The metadata of tables for which you track data operations.
 	TableInfoList []*SearchDataTrackResultResponseBodyTrackResultTableInfoList `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
-	TotalCount    *int64                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchDataTrackResultResponseBodyTrackResult) String() string {
@@ -35874,13 +36236,27 @@ func (s *SearchDataTrackResultResponseBodyTrackResult) SetTotalCount(v int64) *S
 }
 
 type SearchDataTrackResultResponseBodyTrackResultEventList struct {
-	DataAfter      []*string `json:"DataAfter,omitempty" xml:"DataAfter,omitempty" type:"Repeated"`
-	DataBefore     []*string `json:"DataBefore,omitempty" xml:"DataBefore,omitempty" type:"Repeated"`
-	EventId        *int64    `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	EventLength    *int64    `json:"EventLength,omitempty" xml:"EventLength,omitempty"`
-	EventTimestamp *string   `json:"EventTimestamp,omitempty" xml:"EventTimestamp,omitempty"`
-	EventType      *string   `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	RollSQL        *string   `json:"RollSQL,omitempty" xml:"RollSQL,omitempty"`
+	// The data records after you perform data operations in the database.
+	DataAfter []*string `json:"DataAfter,omitempty" xml:"DataAfter,omitempty" type:"Repeated"`
+	// The data records before you perform data operations in the database.
+	DataBefore []*string `json:"DataBefore,omitempty" xml:"DataBefore,omitempty" type:"Repeated"`
+	// The ID of the event.
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The length of the event content. Unit: bytes.
+	EventLength *int64 `json:"EventLength,omitempty" xml:"EventLength,omitempty"`
+	// The event time.
+	EventTimestamp *string `json:"EventTimestamp,omitempty" xml:"EventTimestamp,omitempty"`
+	// The type of the event. Valid values:
+	//
+	// *   **WRITE_ROWS**: indicates an INSERT operation.
+	// *   **UPDATE_ROWS**: indicates an UPDATE operation.
+	// *   **DELETE_ROWS**: indicates a DELETE operation.
+	// *   **EXT_WRITE_ROWS**: indicates an INSERT operation, which is equivalent to WRITE_ROWS.
+	// *   **EXT_UPDATE_ROWS**: indicates an UPDATE operation, which is equivalent to UPDATE_ROWS.
+	// *   **EXT_DELETE_ROWS**: indicates a DELETE operation, which is equivalent to DELETE_ROWS.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The SQL statements used to roll back the data change.
+	RollSQL *string `json:"RollSQL,omitempty" xml:"RollSQL,omitempty"`
 }
 
 func (s SearchDataTrackResultResponseBodyTrackResultEventList) String() string {
@@ -35927,10 +36303,14 @@ func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetRollSQL(v str
 }
 
 type SearchDataTrackResultResponseBodyTrackResultTableInfoList struct {
-	Columns     []*SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Description *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	SchemaName  *string                                                             `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName   *string                                                             `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The information about columns.
+	Columns []*SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The description of the column.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s SearchDataTrackResultResponseBodyTrackResultTableInfoList) String() string {
@@ -35962,10 +36342,17 @@ func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoList) SetTableName
 }
 
 type SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns struct {
-	ColumnName     *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ColumnPosition *int32  `json:"ColumnPosition,omitempty" xml:"ColumnPosition,omitempty"`
-	ColumnType     *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	Fictive        *bool   `json:"Fictive,omitempty" xml:"Fictive,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The position of the column.
+	ColumnPosition *int32 `json:"ColumnPosition,omitempty" xml:"ColumnPosition,omitempty"`
+	// The data type of the column. Examples: BIGINT, INT, and VARCHAR.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// Indicates whether the column is a virtual column. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Fictive *bool `json:"Fictive,omitempty" xml:"Fictive,omitempty"`
 }
 
 func (s SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) String() string {
@@ -41387,6 +41774,13 @@ func (client *Client) CreateDataImportOrder(request *CreateDataImportOrderReques
 	return _result, _err
 }
 
+/**
+ * This operation is available only for instances that are managed in Security Collaboration mode.
+ *
+ * @param tmpReq CreateDataTrackOrderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDataTrackOrderResponse
+ */
 func (client *Client) CreateDataTrackOrderWithOptions(tmpReq *CreateDataTrackOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataTrackOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -41442,6 +41836,12 @@ func (client *Client) CreateDataTrackOrderWithOptions(tmpReq *CreateDataTrackOrd
 	return _result, _err
 }
 
+/**
+ * This operation is available only for instances that are managed in Security Collaboration mode.
+ *
+ * @param request CreateDataTrackOrderRequest
+ * @return CreateDataTrackOrderResponse
+ */
 func (client *Client) CreateDataTrackOrder(request *CreateDataTrackOrderRequest) (_result *CreateDataTrackOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataTrackOrderResponse{}
