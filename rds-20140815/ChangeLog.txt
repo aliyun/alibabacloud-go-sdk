@@ -1,3 +1,7 @@
+2023-06-30 Version: v3.0.9
+- Fixed bugs for lack of regionId.
+- Fix error code.
+
 2023-06-30 Version: v3.0.8
 - ModifyBackupPolicy API support parameter BackupPriority.
 - DescribeBackupPolicy API add return parameters: BackupPriority and SupportModifyBackupPriority.

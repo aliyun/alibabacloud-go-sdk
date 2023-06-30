@@ -40314,6 +40314,117 @@ func (s *ModifyDBInstanceAutoUpgradeMinorVersionResponse) SetBody(v *ModifyDBIns
 	return s
 }
 
+type ModifyDBInstanceConfigRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigName           *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	ConfigValue          *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyDBInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetClientToken(v string) *ModifyDBInstanceConfigRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetConfigName(v string) *ModifyDBInstanceConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetConfigValue(v string) *ModifyDBInstanceConfigRequest {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetDBInstanceId(v string) *ModifyDBInstanceConfigRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetOwnerAccount(v string) *ModifyDBInstanceConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetOwnerId(v int64) *ModifyDBInstanceConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetResourceGroupId(v string) *ModifyDBInstanceConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetResourceOwnerAccount(v string) *ModifyDBInstanceConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyDBInstanceConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceConfigResponseBody) SetRequestId(v string) *ModifyDBInstanceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDBInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceConfigResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigResponse) SetStatusCode(v int32) *ModifyDBInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigResponseBody) *ModifyDBInstanceConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceConnectionModeRequest struct {
 	// The connection mode of the instance. Valid values:
 	//
@@ -66327,6 +66438,82 @@ func (client *Client) ModifyDBInstanceAutoUpgradeMinorVersion(request *ModifyDBI
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceAutoUpgradeMinorVersionResponse{}
 	_body, _err := client.ModifyDBInstanceAutoUpgradeMinorVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		query["ConfigName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigValue)) {
+		query["ConfigValue"] = request.ConfigValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceConfig"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequest) (_result *ModifyDBInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceConfigResponse{}
+	_body, _err := client.ModifyDBInstanceConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
