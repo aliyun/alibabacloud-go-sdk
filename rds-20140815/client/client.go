@@ -12472,7 +12472,8 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **Snapshot**: snapshot backup
 	//
 	// > This parameter is returned only when the instance runs SQL Server and uses cloud disks.
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMethod   *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupPriority *int32  `json:"BackupPriority,omitempty" xml:"BackupPriority,omitempty"`
 	// The number of days for which data backup files are retained.
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// Indicates whether to enable the single-digit second backup feature. This feature allows ApsaraDB RDS to complete a backup within single-digit seconds. Valid values:
@@ -12541,7 +12542,8 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **All**: All archived backup files are retained.
 	ReleasedKeepPolicy *string `json:"ReleasedKeepPolicy,omitempty" xml:"ReleasedKeepPolicy,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SupportModifyBackupPriority *bool   `json:"SupportModifyBackupPriority,omitempty" xml:"SupportModifyBackupPriority,omitempty"`
 	// A reserved parameter.
 	SupportReleasedKeep *int32 `json:"SupportReleasedKeep,omitempty" xml:"SupportReleasedKeep,omitempty"`
 	// Indicates whether the instance supports snapshot backups. Valid values:
@@ -12588,6 +12590,11 @@ func (s *DescribeBackupPolicyResponseBody) SetBackupLog(v string) *DescribeBacku
 
 func (s *DescribeBackupPolicyResponseBody) SetBackupMethod(v string) *DescribeBackupPolicyResponseBody {
 	s.BackupMethod = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupPriority(v int32) *DescribeBackupPolicyResponseBody {
+	s.BackupPriority = &v
 	return s
 }
 
@@ -12668,6 +12675,11 @@ func (s *DescribeBackupPolicyResponseBody) SetReleasedKeepPolicy(v string) *Desc
 
 func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetSupportModifyBackupPriority(v bool) *DescribeBackupPolicyResponseBody {
+	s.SupportModifyBackupPriority = &v
 	return s
 }
 
@@ -39567,6 +39579,7 @@ type ModifyBackupPolicyRequest struct {
 	// *   **DataBackupPolicy**: data backup
 	// *   **LogBackupPolicy**: log backup
 	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
+	BackupPriority   *int32  `json:"BackupPriority,omitempty" xml:"BackupPriority,omitempty"`
 	// The number of days for which you want to retain data backup files. Valid values: **7 to 730**.
 	//
 	// >
@@ -39747,6 +39760,11 @@ func (s *ModifyBackupPolicyRequest) SetBackupMethod(v string) *ModifyBackupPolic
 
 func (s *ModifyBackupPolicyRequest) SetBackupPolicyMode(v string) *ModifyBackupPolicyRequest {
 	s.BackupPolicyMode = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetBackupPriority(v int32) *ModifyBackupPolicyRequest {
+	s.BackupPriority = &v
 	return s
 }
 
@@ -65957,6 +65975,10 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.BackupPolicyMode)) {
 		query["BackupPolicyMode"] = request.BackupPolicyMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupPriority)) {
+		query["BackupPriority"] = request.BackupPriority
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BackupRetentionPeriod)) {
