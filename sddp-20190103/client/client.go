@@ -924,6 +924,188 @@ func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleRespo
 	return s
 }
 
+type DescribeCategoryTemplateListRequest struct {
+	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UsageScenario *int32  `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
+}
+
+func (s DescribeCategoryTemplateListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateListRequest) SetCurrentPage(v int32) *DescribeCategoryTemplateListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListRequest) SetLang(v string) *DescribeCategoryTemplateListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListRequest) SetPageSize(v int32) *DescribeCategoryTemplateListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListRequest) SetUsageScenario(v int32) *DescribeCategoryTemplateListRequest {
+	s.UsageScenario = &v
+	return s
+}
+
+type DescribeCategoryTemplateListResponseBody struct {
+	CurrentPage *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribeCategoryTemplateListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize    *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCategoryTemplateListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateListResponseBody) SetCurrentPage(v int32) *DescribeCategoryTemplateListResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBody) SetItems(v []*DescribeCategoryTemplateListResponseBodyItems) *DescribeCategoryTemplateListResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBody) SetPageSize(v int32) *DescribeCategoryTemplateListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBody) SetRequestId(v string) *DescribeCategoryTemplateListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBody) SetTotalCount(v int32) *DescribeCategoryTemplateListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCategoryTemplateListResponseBodyItems struct {
+	CurrentRiskLevel *int32  `json:"CurrentRiskLevel,omitempty" xml:"CurrentRiskLevel,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified      *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MaxCategoryLevel *int32  `json:"MaxCategoryLevel,omitempty" xml:"MaxCategoryLevel,omitempty"`
+	MaxRiskLevel     *int32  `json:"MaxRiskLevel,omitempty" xml:"MaxRiskLevel,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportEdit      *int32  `json:"SupportEdit,omitempty" xml:"SupportEdit,omitempty"`
+	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCategoryTemplateListResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateListResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetCurrentRiskLevel(v int32) *DescribeCategoryTemplateListResponseBodyItems {
+	s.CurrentRiskLevel = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetDescription(v string) *DescribeCategoryTemplateListResponseBodyItems {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetGmtCreate(v int64) *DescribeCategoryTemplateListResponseBodyItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetGmtModified(v int64) *DescribeCategoryTemplateListResponseBodyItems {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetId(v int64) *DescribeCategoryTemplateListResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetMaxCategoryLevel(v int32) *DescribeCategoryTemplateListResponseBodyItems {
+	s.MaxCategoryLevel = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetMaxRiskLevel(v int32) *DescribeCategoryTemplateListResponseBodyItems {
+	s.MaxRiskLevel = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetName(v string) *DescribeCategoryTemplateListResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetStatus(v int32) *DescribeCategoryTemplateListResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetSupportEdit(v int32) *DescribeCategoryTemplateListResponseBodyItems {
+	s.SupportEdit = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponseBodyItems) SetType(v int32) *DescribeCategoryTemplateListResponseBodyItems {
+	s.Type = &v
+	return s
+}
+
+type DescribeCategoryTemplateListResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCategoryTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCategoryTemplateListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateListResponse) SetHeaders(v map[string]*string) *DescribeCategoryTemplateListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponse) SetStatusCode(v int32) *DescribeCategoryTemplateListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateListResponse) SetBody(v *DescribeCategoryTemplateListResponseBody) *DescribeCategoryTemplateListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCategoryTemplateRuleListRequest struct {
 	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -9858,6 +10040,62 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRuleResponse{}
 	_body, _err := client.DeleteRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCategoryTemplateListWithOptions(request *DescribeCategoryTemplateListRequest, runtime *util.RuntimeOptions) (_result *DescribeCategoryTemplateListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsageScenario)) {
+		query["UsageScenario"] = request.UsageScenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCategoryTemplateList"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCategoryTemplateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCategoryTemplateList(request *DescribeCategoryTemplateListRequest) (_result *DescribeCategoryTemplateListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCategoryTemplateListResponse{}
+	_body, _err := client.DescribeCategoryTemplateListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
