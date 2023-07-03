@@ -142,6 +142,7 @@ type AddTagsToResourceRequest struct {
 	//
 	// >  You can enter up to 30 instance IDs in a single request. If you enter more than one instance ID, you must separate the instance IDs with commas (,).
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The logon name of the RAM user.
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
@@ -30758,9 +30759,10 @@ type DescribePriceRequest struct {
 	// The number of instances that you want to purchase. Valid values: **0 to 30**.
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ServerlessConfig     *DescribePriceRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
 	// The unit that is used to calculate the subscription duration of the instance. If you set the **CommodityCode** parameter to **RDS**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**, you must also specify this parameter. Valid values:
 	//
 	// *   **Year**
@@ -30877,6 +30879,11 @@ func (s *DescribePriceRequest) SetResourceOwnerId(v int64) *DescribePriceRequest
 	return s
 }
 
+func (s *DescribePriceRequest) SetServerlessConfig(v *DescribePriceRequestServerlessConfig) *DescribePriceRequest {
+	s.ServerlessConfig = v
+	return s
+}
+
 func (s *DescribePriceRequest) SetTimeType(v string) *DescribePriceRequest {
 	s.TimeType = &v
 	return s
@@ -30914,6 +30921,29 @@ func (s *DescribePriceRequestDBNode) SetClassCode(v string) *DescribePriceReques
 
 func (s *DescribePriceRequestDBNode) SetZoneId(v string) *DescribePriceRequestDBNode {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribePriceRequestServerlessConfig struct {
+	MaxCapacity *float64 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	MinCapacity *float64 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
+}
+
+func (s DescribePriceRequestServerlessConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceRequestServerlessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceRequestServerlessConfig) SetMaxCapacity(v float64) *DescribePriceRequestServerlessConfig {
+	s.MaxCapacity = &v
+	return s
+}
+
+func (s *DescribePriceRequestServerlessConfig) SetMinCapacity(v float64) *DescribePriceRequestServerlessConfig {
+	s.MinCapacity = &v
 	return s
 }
 
@@ -30988,9 +31018,10 @@ type DescribePriceShrinkRequest struct {
 	// The number of instances that you want to purchase. Valid values: **0 to 30**.
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
 	// The unit that is used to calculate the subscription duration of the instance. If you set the **CommodityCode** parameter to **RDS**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**, you must also specify this parameter. Valid values:
 	//
 	// *   **Year**
@@ -31107,6 +31138,11 @@ func (s *DescribePriceShrinkRequest) SetResourceOwnerId(v int64) *DescribePriceS
 	return s
 }
 
+func (s *DescribePriceShrinkRequest) SetServerlessConfigShrink(v string) *DescribePriceShrinkRequest {
+	s.ServerlessConfigShrink = &v
+	return s
+}
+
 func (s *DescribePriceShrinkRequest) SetTimeType(v string) *DescribePriceShrinkRequest {
 	s.TimeType = &v
 	return s
@@ -31128,8 +31164,10 @@ type DescribePriceResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of the details of the promotion rule.
-	Rules        *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	ShowDiscount *bool                           `json:"ShowDiscount,omitempty" xml:"ShowDiscount,omitempty"`
+	Rules             *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	ShowDiscount      *bool                           `json:"ShowDiscount,omitempty" xml:"ShowDiscount,omitempty"`
+	TradeMaxRCUAmount *float32                        `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
+	TradeMinRCUAmount *float32                        `json:"TradeMinRCUAmount,omitempty" xml:"TradeMinRCUAmount,omitempty"`
 }
 
 func (s DescribePriceResponseBody) String() string {
@@ -31157,6 +31195,16 @@ func (s *DescribePriceResponseBody) SetRules(v *DescribePriceResponseBodyRules) 
 
 func (s *DescribePriceResponseBody) SetShowDiscount(v bool) *DescribePriceResponseBody {
 	s.ShowDiscount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBody) SetTradeMaxRCUAmount(v float32) *DescribePriceResponseBody {
+	s.TradeMaxRCUAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBody) SetTradeMinRCUAmount(v float32) *DescribePriceResponseBody {
+	s.TradeMinRCUAmount = &v
 	return s
 }
 
@@ -62408,6 +62456,10 @@ func (client *Client) DescribePriceWithOptions(tmpReq *DescribePriceRequest, run
 		request.DBNodeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBNode, tea.String("DBNode"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServerlessConfig)) {
+		request.ServerlessConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerlessConfig, tea.String("ServerlessConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -62479,6 +62531,10 @@ func (client *Client) DescribePriceWithOptions(tmpReq *DescribePriceRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessConfigShrink)) {
+		query["ServerlessConfig"] = request.ServerlessConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TimeType)) {
