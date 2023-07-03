@@ -141,6 +141,146 @@ func (s *CreateAsyncPredictResponse) SetBody(v *CreateAsyncPredictResponseBody) 
 	return s
 }
 
+type FindUserReport4AlinlpRequest struct {
+	BeginTime            *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CustomerUserParentId *int64  `json:"CustomerUserParentId,omitempty" xml:"CustomerUserParentId,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ModelType            *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s FindUserReport4AlinlpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserReport4AlinlpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserReport4AlinlpRequest) SetBeginTime(v string) *FindUserReport4AlinlpRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpRequest) SetCustomerUserParentId(v int64) *FindUserReport4AlinlpRequest {
+	s.CustomerUserParentId = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpRequest) SetEndTime(v string) *FindUserReport4AlinlpRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpRequest) SetModelType(v string) *FindUserReport4AlinlpRequest {
+	s.ModelType = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpRequest) SetType(v string) *FindUserReport4AlinlpRequest {
+	s.Type = &v
+	return s
+}
+
+type FindUserReport4AlinlpResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*FindUserReport4AlinlpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s FindUserReport4AlinlpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserReport4AlinlpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserReport4AlinlpResponseBody) SetCode(v string) *FindUserReport4AlinlpResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponseBody) SetData(v []*FindUserReport4AlinlpResponseBodyData) *FindUserReport4AlinlpResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponseBody) SetRequestId(v string) *FindUserReport4AlinlpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type FindUserReport4AlinlpResponseBodyData struct {
+	FailCount    *int64  `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	QpsMax       *int32  `json:"QpsMax,omitempty" xml:"QpsMax,omitempty"`
+	RptTime      *string `json:"RptTime,omitempty" xml:"RptTime,omitempty"`
+	SuccessCount *int64  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	TotalCount   *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s FindUserReport4AlinlpResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserReport4AlinlpResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserReport4AlinlpResponseBodyData) SetFailCount(v int64) *FindUserReport4AlinlpResponseBodyData {
+	s.FailCount = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponseBodyData) SetQpsMax(v int32) *FindUserReport4AlinlpResponseBodyData {
+	s.QpsMax = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponseBodyData) SetRptTime(v string) *FindUserReport4AlinlpResponseBodyData {
+	s.RptTime = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponseBodyData) SetSuccessCount(v int64) *FindUserReport4AlinlpResponseBodyData {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponseBodyData) SetTotalCount(v int64) *FindUserReport4AlinlpResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type FindUserReport4AlinlpResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FindUserReport4AlinlpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FindUserReport4AlinlpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserReport4AlinlpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserReport4AlinlpResponse) SetHeaders(v map[string]*string) *FindUserReport4AlinlpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponse) SetStatusCode(v int32) *FindUserReport4AlinlpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FindUserReport4AlinlpResponse) SetBody(v *FindUserReport4AlinlpResponseBody) *FindUserReport4AlinlpResponse {
+	s.Body = v
+	return s
+}
+
 type GetAsyncPredictRequest struct {
 	AsyncPredictId *int32 `json:"AsyncPredictId,omitempty" xml:"AsyncPredictId,omitempty"`
 }
@@ -345,6 +485,7 @@ func (s *RunPreTrainServiceRequest) SetServiceVersion(v string) *RunPreTrainServ
 }
 
 type RunPreTrainServiceResponseBody struct {
+	BillingCount  *int32  `json:"BillingCount,omitempty" xml:"BillingCount,omitempty"`
 	PredictResult *string `json:"PredictResult,omitempty" xml:"PredictResult,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -355,6 +496,11 @@ func (s RunPreTrainServiceResponseBody) String() string {
 
 func (s RunPreTrainServiceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RunPreTrainServiceResponseBody) SetBillingCount(v int32) *RunPreTrainServiceResponseBody {
+	s.BillingCount = &v
+	return s
 }
 
 func (s *RunPreTrainServiceResponseBody) SetPredictResult(v string) *RunPreTrainServiceResponseBody {
@@ -392,6 +538,93 @@ func (s *RunPreTrainServiceResponse) SetStatusCode(v int32) *RunPreTrainServiceR
 }
 
 func (s *RunPreTrainServiceResponse) SetBody(v *RunPreTrainServiceResponseBody) *RunPreTrainServiceResponse {
+	s.Body = v
+	return s
+}
+
+type RunPreTrainServiceNewRequest struct {
+	PredictContent *string `json:"PredictContent,omitempty" xml:"PredictContent,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s RunPreTrainServiceNewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunPreTrainServiceNewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunPreTrainServiceNewRequest) SetPredictContent(v string) *RunPreTrainServiceNewRequest {
+	s.PredictContent = &v
+	return s
+}
+
+func (s *RunPreTrainServiceNewRequest) SetServiceName(v string) *RunPreTrainServiceNewRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *RunPreTrainServiceNewRequest) SetServiceVersion(v string) *RunPreTrainServiceNewRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type RunPreTrainServiceNewResponseBody struct {
+	BillingCount  *int32  `json:"BillingCount,omitempty" xml:"BillingCount,omitempty"`
+	PredictResult *string `json:"PredictResult,omitempty" xml:"PredictResult,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunPreTrainServiceNewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunPreTrainServiceNewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunPreTrainServiceNewResponseBody) SetBillingCount(v int32) *RunPreTrainServiceNewResponseBody {
+	s.BillingCount = &v
+	return s
+}
+
+func (s *RunPreTrainServiceNewResponseBody) SetPredictResult(v string) *RunPreTrainServiceNewResponseBody {
+	s.PredictResult = &v
+	return s
+}
+
+func (s *RunPreTrainServiceNewResponseBody) SetRequestId(v string) *RunPreTrainServiceNewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunPreTrainServiceNewResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RunPreTrainServiceNewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RunPreTrainServiceNewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunPreTrainServiceNewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunPreTrainServiceNewResponse) SetHeaders(v map[string]*string) *RunPreTrainServiceNewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunPreTrainServiceNewResponse) SetStatusCode(v int32) *RunPreTrainServiceNewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunPreTrainServiceNewResponse) SetBody(v *RunPreTrainServiceNewResponseBody) *RunPreTrainServiceNewResponse {
 	s.Body = v
 	return s
 }
@@ -520,6 +753,66 @@ func (client *Client) CreateAsyncPredict(request *CreateAsyncPredictRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAsyncPredictResponse{}
 	_body, _err := client.CreateAsyncPredictWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FindUserReport4AlinlpWithOptions(request *FindUserReport4AlinlpRequest, runtime *util.RuntimeOptions) (_result *FindUserReport4AlinlpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerUserParentId)) {
+		body["CustomerUserParentId"] = request.CustomerUserParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		body["ModelType"] = request.ModelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FindUserReport4Alinlp"),
+		Version:     tea.String("2019-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FindUserReport4AlinlpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FindUserReport4Alinlp(request *FindUserReport4AlinlpRequest) (_result *FindUserReport4AlinlpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FindUserReport4AlinlpResponse{}
+	_body, _err := client.FindUserReport4AlinlpWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -672,6 +965,58 @@ func (client *Client) RunPreTrainService(request *RunPreTrainServiceRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &RunPreTrainServiceResponse{}
 	_body, _err := client.RunPreTrainServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RunPreTrainServiceNewWithOptions(request *RunPreTrainServiceNewRequest, runtime *util.RuntimeOptions) (_result *RunPreTrainServiceNewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PredictContent)) {
+		body["PredictContent"] = request.PredictContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		body["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunPreTrainServiceNew"),
+		Version:     tea.String("2019-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunPreTrainServiceNewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RunPreTrainServiceNew(request *RunPreTrainServiceNewRequest) (_result *RunPreTrainServiceNewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunPreTrainServiceNewResponse{}
+	_body, _err := client.RunPreTrainServiceNewWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
