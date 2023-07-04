@@ -1879,6 +1879,7 @@ func (s *EditTaskResponse) SetBody(v *EditTaskResponseBody) *EditTaskResponse {
 type ImportNumberRequest struct {
 	Customers            []*ImportNumberRequestCustomers `json:"Customers,omitempty" xml:"Customers,omitempty" type:"Repeated"`
 	FailReturn           *int64                          `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
+	OutId                *string                         `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1900,6 +1901,11 @@ func (s *ImportNumberRequest) SetCustomers(v []*ImportNumberRequestCustomers) *I
 
 func (s *ImportNumberRequest) SetFailReturn(v int64) *ImportNumberRequest {
 	s.FailReturn = &v
+	return s
+}
+
+func (s *ImportNumberRequest) SetOutId(v string) *ImportNumberRequest {
+	s.OutId = &v
 	return s
 }
 
@@ -1967,6 +1973,7 @@ func (s *ImportNumberRequestCustomers) SetTag(v string) *ImportNumberRequestCust
 type ImportNumberShrinkRequest struct {
 	CustomersShrink      *string `json:"Customers,omitempty" xml:"Customers,omitempty"`
 	FailReturn           *int64  `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1988,6 +1995,11 @@ func (s *ImportNumberShrinkRequest) SetCustomersShrink(v string) *ImportNumberSh
 
 func (s *ImportNumberShrinkRequest) SetFailReturn(v int64) *ImportNumberShrinkRequest {
 	s.FailReturn = &v
+	return s
+}
+
+func (s *ImportNumberShrinkRequest) SetOutId(v string) *ImportNumberShrinkRequest {
+	s.OutId = &v
 	return s
 }
 
@@ -5554,6 +5566,10 @@ func (client *Client) ImportNumberWithOptions(tmpReq *ImportNumberRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.FailReturn)) {
 		query["FailReturn"] = request.FailReturn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
