@@ -34848,6 +34848,7 @@ func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetSettlementType(v 
 
 type QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions struct {
 	BillSettlementId *int64    `json:"bill_settlement_id,omitempty" xml:"bill_settlement_id,omitempty"`
+	CapitalDirection *string   `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
 	FeeType          *string   `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
 	Remark           *string   `json:"remark,omitempty" xml:"remark,omitempty"`
 	RemindTagList    []*string `json:"remind_tag_list,omitempty" xml:"remind_tag_list,omitempty" type:"Repeated"`
@@ -34866,6 +34867,11 @@ func (s QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) Go
 
 func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetBillSettlementId(v int64) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
 	s.BillSettlementId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetCapitalDirection(v string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.CapitalDirection = &v
 	return s
 }
 
