@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ocr-20191230/v3
+module github.com/alibabacloud-go/ocr-20191230/v4
 
 go 1.15
 
@@ -12,5 +12,5 @@ require (
 	github.com/alibabacloud-go/tea-fileform v1.1.1
 	github.com/alibabacloud-go/tea-oss-sdk v1.1.3
 	github.com/alibabacloud-go/tea-oss-utils v1.1.0
-	github.com/alibabacloud-go/tea-utils/v2 v2.0.1
+	github.com/alibabacloud-go/tea-utils/v2 v2.0.3
 )
