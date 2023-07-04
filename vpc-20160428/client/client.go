@@ -1090,12 +1090,14 @@ type AllocateEipAddressRequest struct {
 	//
 	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the EIP.
 	//
 	// The name must be 1 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
 	//
 	// >  This parameter is unavailable when you create a subscription EIP.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The ID of the IP address pool.
 	//
 	// The EIP is allocated from the IP address pool.
@@ -1190,8 +1192,18 @@ func (s *AllocateEipAddressRequest) SetInstanceChargeType(v string) *AllocateEip
 	return s
 }
 
+func (s *AllocateEipAddressRequest) SetInstanceId(v string) *AllocateEipAddressRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *AllocateEipAddressRequest) SetInternetChargeType(v string) *AllocateEipAddressRequest {
 	s.InternetChargeType = &v
+	return s
+}
+
+func (s *AllocateEipAddressRequest) SetIpAddress(v string) *AllocateEipAddressRequest {
+	s.IpAddress = &v
 	return s
 }
 
@@ -5982,12 +5994,28 @@ func (s *CreateDefaultVSwitchResponse) SetBody(v *CreateDefaultVSwitchResponseBo
 }
 
 type CreateDefaultVpcRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EnableIpv6           *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
-	Ipv6CidrBlock        *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable IPv6. Valid values:
+	//
+	// *   **false** (default)
+	// *   **true**
+	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	// The IPv6 CIDR block of the default VPC.
+	//
+	// > When **EnableIpv6** is set to **true**, this parameter is required.
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region to which the default VPC belongs.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6047,10 +6075,14 @@ func (s *CreateDefaultVpcRequest) SetResourceOwnerId(v int64) *CreateDefaultVpcR
 }
 
 type CreateDefaultVpcResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The route table ID that is automatically created by the system after you create a default VPC.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	VRouterId    *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
-	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vRouter ID that is automatically created by the system after you create a default VPC.
+	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	// The ID of the default VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateDefaultVpcResponseBody) String() string {
@@ -8852,8 +8884,6 @@ type CreateNatIpRequest struct {
 	//
 	// If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
 	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateNatIp**.
-	NatIpCidrId *string `json:"NatIpCidrId,omitempty" xml:"NatIpCidrId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
@@ -8905,11 +8935,6 @@ func (s *CreateNatIpRequest) SetNatIp(v string) *CreateNatIpRequest {
 
 func (s *CreateNatIpRequest) SetNatIpCidr(v string) *CreateNatIpRequest {
 	s.NatIpCidr = &v
-	return s
-}
-
-func (s *CreateNatIpRequest) SetNatIpCidrId(v string) *CreateNatIpRequest {
-	s.NatIpCidrId = &v
 	return s
 }
 
@@ -14642,6 +14667,7 @@ type CreateVpnConnectionRequest struct {
 	// *   **true** (default): yes After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
 	// *   **false**: no
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	EnableTunnelsBgp   *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
 	// The health check configuration:
 	//
 	// *   **HealthCheckConfig.enable**: specifies whether to enable health checks. Valid values: **true** and **false**. Default value: false.
@@ -14711,10 +14737,11 @@ type CreateVpnConnectionRequest struct {
 	//
 	// *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
 	// *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
-	RemoteSubnet         *string                           `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tags                 []*CreateVpnConnectionRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RemoteSubnet               *string                                                 `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	ResourceOwnerAccount       *string                                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId            *int64                                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                       []*CreateVpnConnectionRequestTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TunnelOptionsSpecification []*CreateVpnConnectionRequestTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Repeated"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 }
@@ -14759,6 +14786,11 @@ func (s *CreateVpnConnectionRequest) SetEnableDpd(v bool) *CreateVpnConnectionRe
 
 func (s *CreateVpnConnectionRequest) SetEnableNatTraversal(v bool) *CreateVpnConnectionRequest {
 	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequest) SetEnableTunnelsBgp(v bool) *CreateVpnConnectionRequest {
+	s.EnableTunnelsBgp = &v
 	return s
 }
 
@@ -14827,6 +14859,11 @@ func (s *CreateVpnConnectionRequest) SetTags(v []*CreateVpnConnectionRequestTags
 	return s
 }
 
+func (s *CreateVpnConnectionRequest) SetTunnelOptionsSpecification(v []*CreateVpnConnectionRequestTunnelOptionsSpecification) *CreateVpnConnectionRequest {
+	s.TunnelOptionsSpecification = v
+	return s
+}
+
 func (s *CreateVpnConnectionRequest) SetVpnGatewayId(v string) *CreateVpnConnectionRequest {
 	s.VpnGatewayId = &v
 	return s
@@ -14862,6 +14899,194 @@ func (s *CreateVpnConnectionRequestTags) SetKey(v string) *CreateVpnConnectionRe
 
 func (s *CreateVpnConnectionRequestTags) SetValue(v string) *CreateVpnConnectionRequestTags {
 	s.Value = &v
+	return s
+}
+
+type CreateVpnConnectionRequestTunnelOptionsSpecification struct {
+	CustomerGatewayId   *string                                                                `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EnableDpd           *bool                                                                  `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *bool                                                                  `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	RemoteCaCertificate *string                                                                `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	Role                *string                                                                `json:"Role,omitempty" xml:"Role,omitempty"`
+	TunnelBgpConfig     *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelIkeConfig     *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetCustomerGatewayId(v string) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.CustomerGatewayId = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetEnableDpd(v bool) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.EnableDpd = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetEnableNatTraversal(v bool) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetRemoteCaCertificate(v string) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetRole(v string) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetTunnelBgpConfig(v *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.TunnelBgpConfig = v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetTunnelIkeConfig(v *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.TunnelIkeConfig = v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetTunnelIpsecConfig(v *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig) *CreateVpnConnectionRequestTunnelOptionsSpecification {
+	s.TunnelIpsecConfig = v
+	return s
+}
+
+type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig struct {
+	LocalAsn   *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
+	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) SetLocalAsn(v int64) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.LocalAsn = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) SetLocalBgpIp(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.LocalBgpIp = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) SetTunnelCidr(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.TunnelCidr = &v
+	return s
+}
+
+type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeAuthAlg(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeEncAlg(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeLifetime(v int64) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeMode(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkePfs(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeVersion(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetLocalId(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetPsk(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) SetRemoteId(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int64  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecAuthAlg(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecEncAlg(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecLifetime(v int64) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecPfs(v string) *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecPfs = &v
 	return s
 }
 
@@ -14947,7 +15172,8 @@ type CreateVpnGatewayRequest struct {
 	// *   **false** (default): no
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The ID of the VPN gateway.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
 	// The maximum number of clients that can be connected at the same time. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
 	EnableIpsec *bool `json:"EnableIpsec,omitempty" xml:"EnableIpsec,omitempty"`
 	// The ID of the vSwitch to which the VPN gateway belongs.
@@ -15013,6 +15239,11 @@ func (s *CreateVpnGatewayRequest) SetBandwidth(v int32) *CreateVpnGatewayRequest
 
 func (s *CreateVpnGatewayRequest) SetClientToken(v string) *CreateVpnGatewayRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateVpnGatewayRequest) SetDisasterRecoveryVSwitchId(v string) *CreateVpnGatewayRequest {
+	s.DisasterRecoveryVSwitchId = &v
 	return s
 }
 
@@ -18125,20 +18356,29 @@ func (s *DeleteNatIpResponse) SetBody(v *DeleteNatIpResponseBody) *DeleteNatIpRe
 }
 
 type DeleteNatIpCidrRequest struct {
-	// The ID of the request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The operation that you want to perform. Set the value to **DeleteNatIpCidr**.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
-	NatIpCidr    *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether only to precheck this request. Valid values:
+	//
+	// *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The NAT CIDR block to be deleted.
+	//
+	// *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
+	// *   The default NAT CIDR block cannot be deleted.
+	NatIpCidr    *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -18198,6 +18438,7 @@ func (s *DeleteNatIpCidrRequest) SetResourceOwnerId(v int64) *DeleteNatIpCidrReq
 }
 
 type DeleteNatIpCidrResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19254,21 +19495,23 @@ func (s *DeleteRouterInterfaceResponse) SetBody(v *DeleteRouterInterfaceResponse
 }
 
 type DeleteSnatEntryRequest struct {
-	// The ID of the request.
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the SNAT table to which the SNAT entry belongs.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the NAT gateway.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the SNAT entry that you want to delete.
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// The ID of the SNAT table to which the SNAT entry belongs.
 	SnatTableId *string `json:"SnatTableId,omitempty" xml:"SnatTableId,omitempty"`
 }
 
@@ -19321,6 +19564,7 @@ func (s *DeleteSnatEntryRequest) SetSnatTableId(v string) *DeleteSnatEntryReques
 }
 
 type DeleteSnatEntryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22613,7 +22857,8 @@ type DescribeCommonBandwidthPackagesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The number of the returned page.
-	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
+	SecurityProtectionEnabled *bool                                        `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
+	Tag                       []*DescribeCommonBandwidthPackagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCommonBandwidthPackagesRequest) String() string {
@@ -22686,6 +22931,34 @@ func (s *DescribeCommonBandwidthPackagesRequest) SetResourceOwnerId(v int64) *De
 
 func (s *DescribeCommonBandwidthPackagesRequest) SetSecurityProtectionEnabled(v bool) *DescribeCommonBandwidthPackagesRequest {
 	s.SecurityProtectionEnabled = &v
+	return s
+}
+
+func (s *DescribeCommonBandwidthPackagesRequest) SetTag(v []*DescribeCommonBandwidthPackagesRequestTag) *DescribeCommonBandwidthPackagesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeCommonBandwidthPackagesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCommonBandwidthPackagesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonBandwidthPackagesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonBandwidthPackagesRequestTag) SetKey(v string) *DescribeCommonBandwidthPackagesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCommonBandwidthPackagesRequestTag) SetValue(v string) *DescribeCommonBandwidthPackagesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -29656,30 +29929,44 @@ func (s *DescribeIpv6GatewaysResponse) SetBody(v *DescribeIpv6GatewaysResponseBo
 }
 
 type DescribeNatGatewaysRequest struct {
-	// The type of the NAT gateway. Valid values:
-	//
-	// *   **internet**: an Internet NAT gateway
-	// *   **intranet**: a VPC NAT gateway
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The size of the NAT gateway. Ignore this parameter.
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The billing method of the NAT gateway. Set the value to **PostPaid**, which specifies the pay-as-you-go billing method.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the VPC to which the NAT gateway belongs.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The tag values of the NAT gateway. You can specify up to 20 tag values.
-	//
-	// The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
-	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
 	// - **true**: performs a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	// - **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The billing method of the NAT gateway. Set the value to **PostPaid**, which specifies the pay-as-you-go billing method.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The name of the NAT gateway.
+	//
+	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	//
+	// If this parameter is not set, the system automatically assigns a name to the NAT gateway.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
+	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	// The type of the NAT gateway. Valid values:
+	//
+	// *   **internet**: an Internet NAT gateway
+	// *   **intranet**: a VPC NAT gateway
+	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the NAT gateways that you want to query.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the NAT gateway belongs.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The size of the NAT gateway. Ignore this parameter.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The status of the NAT gateway. Valid values:
 	//
 	// *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the **Creating** state until the operation is completed.
@@ -29687,28 +29974,12 @@ type DescribeNatGatewaysRequest struct {
 	// *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the **Modifying** state until the operation is completed.
 	// *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the **Deleting** state until the operation is completed.
 	// *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the **Converting** state until the operation is completed.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the NAT gateway.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The tag keys of the NAT gateway. You can specify up to 20 tag keys.
-	//
-	// Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the zone to which the NAT gateway belongs.
+	// The tags.
 	Tag []*DescribeNatGatewaysRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The name of the NAT gateway.
-	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
-	//
-	// If this parameter is not set, the system automatically assigns a name to the NAT gateway.
+	// The ID of the VPC to which the NAT gateway belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The number of NAT gateway entries that are returned.
+	// The ID of the zone to which the NAT gateway belongs.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -29816,9 +30087,13 @@ func (s *DescribeNatGatewaysRequest) SetZoneId(v string) *DescribeNatGatewaysReq
 }
 
 type DescribeNatGatewaysRequestTag struct {
-	// The ID of the request.
+	// The tag keys of the NAT gateway. You can specify up to 20 tag keys.
+	//
+	// Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The page number of the returned page.
+	// The tag values of the NAT gateway. You can specify up to 20 tag values.
+	//
+	// The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -29841,21 +30116,15 @@ func (s *DescribeNatGatewaysRequestTag) SetValue(v string) *DescribeNatGatewaysR
 }
 
 type DescribeNatGatewaysResponseBody struct {
-	// The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
-	NatGateways *DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Struct"`
-	// The time when the NAT gateway was created.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The details about the NAT gateway.
+	NatGateways *DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the NAT gateway. Valid values:
-	//
-	// *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
-	// *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
-	// *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
-	// *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
-	// *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VPC where the NAT gateway is deployed.
+	// The number of NAT gateway entries that are returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -29910,93 +30179,108 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNatGateway(v []*Describe
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
-	// Indicates whether the firewall feature is enabled. Valid values:
-	//
-	// *   **false**: no
-	// *   **true**: yes
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The IP address of the EIP associated with the NAT gateway.
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The size of the NAT gateway. An empty value is returned for the parameter.
-	//
-	// If **InternetChargeType** is set to **PayByLcu**, an empty value is returned.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the region where the NAT gateway is deployed.
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The metering method of the NAT gateway. Valid values:
-	//
-	// *   **PayBySpec**: pay-by-specification
-	// *   **PayByLcu**: pay-by-CU
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource group to which the contiguous EIP group belongs.
-	EcsMetricEnabled *bool   `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
-	EipBindMode      *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
-	// The status of the NAT gateway. Valid values:
-	//
-	// *   **Normal**: normal
-	// *   **FinancialLocked**: locked due to overdue payments
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the vSwitch to which the NAT gateway belongs.
-	ForwardTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
-	// The number of new connections to the NAT gateway. Unit: connections per second.
-	FullNatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
-	// The ID of the NAT gateway.
-	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
-	// The description of the NAT gateway.
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The association between the EIP and the Internet NAT gateway. Valid values:
-	//
-	// *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
-	// *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
-	// *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
-	// *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The ID of the EIP associated with the NAT gateway.
-	IpLists *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
-	// Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The zone to which the NAT gateway belongs.
-	NatGatewayPrivateInfo *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo `json:"NatGatewayPrivateInfo,omitempty" xml:"NatGatewayPrivateInfo,omitempty" type:"Struct"`
-	// The type of NAT gateway. Valid values:
-	//
-	// *   **internet**: an Internet NAT gateway
-	// *   **intranet**: a VPC NAT gateway
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// Indicates whether the traffic monitoring feature is enabled. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PrivateLinkEnabled *bool   `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
-	PrivateLinkMode    *string `json:"PrivateLinkMode,omitempty" xml:"PrivateLinkMode,omitempty"`
-	// The time when the NAT gateway expires.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the NAT gateway.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// The maximum bandwidth. Unit: Mbit/s.
-	SnatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
-	// The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// Indicates whether automatic payment is enabled. Valid values:
 	//
 	// *   **false**: no
 	// *   **true**: yes
-	Status *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The status of the NAT gateway. Valid values:
+	//
+	// *   **Normal**: normal
+	// *   **FinancialLocked**: locked due to overdue payments
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// The time when the NAT gateway was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// Indicates whether the deletion protection feature is enabled. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false**: no
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The description of the NAT gateway.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the traffic monitoring feature is enabled. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	EcsMetricEnabled *bool `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
+	// The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
+	//
+	// *   **MULTI_BINDED**: multi-EIP-to-ENI mode
+	// *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
+	//
+	// >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
+	EipBindMode *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
+	// The time when the NAT gateway expires.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The ID of the DNAT table.
+	ForwardTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
+	// The ID of the FULLNAT table.
+	FullNatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
+	// Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	// The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The metering method of the NAT gateway. Valid values:
+	//
+	// *   **PayBySpec**: pay-by-specification
+	// *   **PayByLcu**: pay-by-CU
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
+	IpLists *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
+	// The name of the NAT gateway.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The private network information about the enhanced Internet NAT gateway.
+	//
+	// >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
+	NatGatewayPrivateInfo *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo `json:"NatGatewayPrivateInfo,omitempty" xml:"NatGatewayPrivateInfo,omitempty" type:"Struct"`
+	// The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
+	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	// The type of NAT gateway. Valid values:
+	//
+	// *   **internet**: an Internet NAT gateway
+	// *   **intranet**: a VPC NAT gateway
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// Indicates whether the NAT gateway supports PrivateLink. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	PrivateLinkEnabled *bool `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
+	// The mode that is used by PrivateLink. Valid values:
+	//
+	// *   **FullNat**: the FULLNAT mode
+	// *   **Geneve**: the GENEVE mode
+	PrivateLinkMode *string `json:"PrivateLinkMode,omitempty" xml:"PrivateLinkMode,omitempty"`
+	// The ID of the region where the NAT gateway is deployed.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the contiguous EIP group belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether the firewall feature is enabled. Valid values:
+	//
+	// *   **false**: no
+	// *   **true**: yes
+	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
+	// The ID of the SNAT table of the NAT gateway.
+	SnatTableIds *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
+	// The size of the NAT gateway. An empty value is returned for the parameter.
+	//
+	// If **InternetChargeType** is set to **PayByLcu**, an empty value is returned.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The status of the NAT gateway. Valid values:
+	//
+	// *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
+	// *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
+	// *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
+	// *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
+	// *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags that are added to the resource group.
+	Tags *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The ID of the VPC where the NAT gateway is deployed.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -30205,17 +30489,23 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists) SetIpList(
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList struct {
-	// The ID of the FULLNAT table.
+	// The ID of the EIP associated with the NAT gateway.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The ID of the DNAT table.
+	// The IP address of the EIP associated with the NAT gateway.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The private network information about the enhanced Internet NAT gateway.
-	//
-	// >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the SNAT table of the NAT gateway.
-	SnatEntryEnabled *bool `json:"SnatEntryEnabled,omitempty" xml:"SnatEntryEnabled,omitempty"`
 	// The private IP address of the NAT gateway.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	SnatEntryEnabled *bool `json:"SnatEntryEnabled,omitempty" xml:"SnatEntryEnabled,omitempty"`
+	// The association between the EIP and the Internet NAT gateway. Valid values:
+	//
+	// *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
+	// *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
+	// *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
+	// *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
 	UsingStatus *string `json:"UsingStatus,omitempty" xml:"UsingStatus,omitempty"`
 }
 
@@ -30253,34 +30543,24 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList) SetU
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo struct {
-	// Indicates whether the NAT gateway supports PrivateLink. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
+	// The ID of the elastic network interface (ENI).
 	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	EniType       *string `json:"EniType,omitempty" xml:"EniType,omitempty"`
-	// The tag value of the instance.
-	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The mode that is used by PrivateLink. Valid values:
-	//
-	// *   **FullNat**: the FULLNAT mode
-	// *   **Geneve**: the GENEVE mode
-	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
-	// The tags that are added to the resource group.
-	MaxSessionEstablishRate *int32 `json:"MaxSessionEstablishRate,omitempty" xml:"MaxSessionEstablishRate,omitempty"`
-	// The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
-	//
-	// *   **MULTI_BINDED**: multi-EIP-to-ENI mode
-	// *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
-	//
-	// >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
-	MaxSessionQuota *int32 `json:"MaxSessionQuota,omitempty" xml:"MaxSessionQuota,omitempty"`
-	// The tag key of the instance.
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The mode in which the ENI is associated with the NAT gateway.
 	//
 	// *   **indirect**: non-cut-through mode
 	// *   If an empty value is returned, it indicates that the cut-through mode is used.
+	EniType *string `json:"EniType,omitempty" xml:"EniType,omitempty"`
+	// The zone to which the NAT gateway belongs.
+	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The maximum bandwidth. Unit: Mbit/s.
+	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
+	// The number of new connections to the NAT gateway. Unit: connections per second.
+	MaxSessionEstablishRate *int32 `json:"MaxSessionEstablishRate,omitempty" xml:"MaxSessionEstablishRate,omitempty"`
+	// The number of concurrent connections to the NAT gateway. Unit: connections.
+	MaxSessionQuota *int32 `json:"MaxSessionQuota,omitempty" xml:"MaxSessionQuota,omitempty"`
+	// The private IP address.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The ID of the vSwitch to which the NAT gateway belongs.
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
@@ -30367,7 +30647,9 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) SetTag(v []*D
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key of the instance.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value of the instance.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -35812,6 +36094,206 @@ func (s *DescribeSslVpnClientCertsResponse) SetBody(v *DescribeSslVpnClientCerts
 	return s
 }
 
+type DescribeSslVpnClientsRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VpnGatewayId         *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+}
+
+func (s DescribeSslVpnClientsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSslVpnClientsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSslVpnClientsRequest) SetOwnerAccount(v string) *DescribeSslVpnClientsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsRequest) SetOwnerId(v int64) *DescribeSslVpnClientsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsRequest) SetPageNumber(v int32) *DescribeSslVpnClientsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsRequest) SetPageSize(v int32) *DescribeSslVpnClientsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsRequest) SetRegionId(v string) *DescribeSslVpnClientsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsRequest) SetResourceOwnerAccount(v string) *DescribeSslVpnClientsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsRequest) SetResourceOwnerId(v int64) *DescribeSslVpnClientsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsRequest) SetVpnGatewayId(v string) *DescribeSslVpnClientsRequest {
+	s.VpnGatewayId = &v
+	return s
+}
+
+type DescribeSslVpnClientsResponseBody struct {
+	ClientInfoList []*DescribeSslVpnClientsResponseBodyClientInfoList `json:"ClientInfoList,omitempty" xml:"ClientInfoList,omitempty" type:"Repeated"`
+	PageNumber     *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId       *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VpnGatewayId   *string                                            `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+}
+
+func (s DescribeSslVpnClientsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSslVpnClientsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSslVpnClientsResponseBody) SetClientInfoList(v []*DescribeSslVpnClientsResponseBodyClientInfoList) *DescribeSslVpnClientsResponseBody {
+	s.ClientInfoList = v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBody) SetPageNumber(v int32) *DescribeSslVpnClientsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBody) SetPageSize(v int32) *DescribeSslVpnClientsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBody) SetRegionId(v string) *DescribeSslVpnClientsResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBody) SetRequestId(v string) *DescribeSslVpnClientsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBody) SetTotalCount(v int32) *DescribeSslVpnClientsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBody) SetVpnGatewayId(v string) *DescribeSslVpnClientsResponseBody {
+	s.VpnGatewayId = &v
+	return s
+}
+
+type DescribeSslVpnClientsResponseBodyClientInfoList struct {
+	CommonName    *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	ConnectedTime *int64  `json:"ConnectedTime,omitempty" xml:"ConnectedTime,omitempty"`
+	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	PrivateIp     *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	ReceiveBytes  *int64  `json:"ReceiveBytes,omitempty" xml:"ReceiveBytes,omitempty"`
+	SendBytes     *int64  `json:"SendBytes,omitempty" xml:"SendBytes,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeSslVpnClientsResponseBodyClientInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSslVpnClientsResponseBodyClientInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetCommonName(v string) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.CommonName = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetConnectedTime(v int64) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.ConnectedTime = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetIp(v string) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetPort(v string) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetPrivateIp(v string) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetReceiveBytes(v int64) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.ReceiveBytes = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetSendBytes(v int64) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.SendBytes = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponseBodyClientInfoList) SetStatus(v string) *DescribeSslVpnClientsResponseBodyClientInfoList {
+	s.Status = &v
+	return s
+}
+
+type DescribeSslVpnClientsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSslVpnClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSslVpnClientsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSslVpnClientsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSslVpnClientsResponse) SetHeaders(v map[string]*string) *DescribeSslVpnClientsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponse) SetStatusCode(v int32) *DescribeSslVpnClientsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientsResponse) SetBody(v *DescribeSslVpnClientsResponseBody) *DescribeSslVpnClientsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSslVpnServersRequest struct {
 	// The name of the SSL-VPN server.
 	//
@@ -40550,9 +41032,7 @@ type DescribeVpnConnectionResponseBody struct {
 	// *   **false**: no
 	CrossAccountAuthorized *bool `json:"CrossAccountAuthorized,omitempty" xml:"CrossAccountAuthorized,omitempty"`
 	// The ID of the customer gateway.
-	CustomerGatewayId          *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
-	DisasterRecoveryZoneNo     *string `json:"DisasterRecoveryZoneNo,omitempty" xml:"DisasterRecoveryZoneNo,omitempty"`
+	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	// Indicates whether IPsec negotiations immediately start.
 	//
 	// *   **true**: Negotiations are reinitiated after the configuration is changed.
@@ -40625,7 +41105,8 @@ type DescribeVpnConnectionResponseBody struct {
 	// The ID of the transit router with which the IPsec-VPN connection is associated.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The name of the transit router.
-	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	TransitRouterName          *string                                                      `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	TunnelOptionsSpecification *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
 	// The information about health checks.
 	VcoHealthCheck *DescribeVpnConnectionResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
 	// The configurations of the BGP routing protocol.
@@ -40670,16 +41151,6 @@ func (s *DescribeVpnConnectionResponseBody) SetCrossAccountAuthorized(v bool) *D
 
 func (s *DescribeVpnConnectionResponseBody) SetCustomerGatewayId(v string) *DescribeVpnConnectionResponseBody {
 	s.CustomerGatewayId = &v
-	return s
-}
-
-func (s *DescribeVpnConnectionResponseBody) SetDisasterRecoveryInternetIp(v string) *DescribeVpnConnectionResponseBody {
-	s.DisasterRecoveryInternetIp = &v
-	return s
-}
-
-func (s *DescribeVpnConnectionResponseBody) SetDisasterRecoveryZoneNo(v string) *DescribeVpnConnectionResponseBody {
-	s.DisasterRecoveryZoneNo = &v
 	return s
 }
 
@@ -40775,6 +41246,11 @@ func (s *DescribeVpnConnectionResponseBody) SetTransitRouterId(v string) *Descri
 
 func (s *DescribeVpnConnectionResponseBody) SetTransitRouterName(v string) *DescribeVpnConnectionResponseBody {
 	s.TransitRouterName = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBody) SetTunnelOptionsSpecification(v *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) *DescribeVpnConnectionResponseBody {
+	s.TunnelOptionsSpecification = v
 	return s
 }
 
@@ -40963,6 +41439,265 @@ func (s *DescribeVpnConnectionResponseBodyTagsTag) SetKey(v string) *DescribeVpn
 
 func (s *DescribeVpnConnectionResponseBodyTagsTag) SetValue(v string) *DescribeVpnConnectionResponseBodyTagsTag {
 	s.Value = &v
+	return s
+}
+
+type DescribeVpnConnectionResponseBodyTunnelOptionsSpecification struct {
+	TunnelOptions []*DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions `json:"TunnelOptions,omitempty" xml:"TunnelOptions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) SetTunnelOptions(v []*DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification {
+	s.TunnelOptions = v
+	return s
+}
+
+type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions struct {
+	CustomerGatewayId   *string                                                                                    `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EnableDpd           *string                                                                                    `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *string                                                                                    `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	InternetIp          *string                                                                                    `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	RemoteCaCertificate *string                                                                                    `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	Role                *string                                                                                    `json:"Role,omitempty" xml:"Role,omitempty"`
+	State               *string                                                                                    `json:"State,omitempty" xml:"State,omitempty"`
+	Status              *string                                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TunnelBgpConfig     *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelId            *string                                                                                    `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelIkeConfig     *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+	ZoneNo              *string                                                                                    `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetCustomerGatewayId(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.CustomerGatewayId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetEnableDpd(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.EnableDpd = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetEnableNatTraversal(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetInternetIp(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetRemoteCaCertificate(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetRole(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetState(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetStatus(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelBgpConfig(v *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelBgpConfig = v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelId(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelIkeConfig(v *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelIkeConfig = v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelIpsecConfig(v *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelIpsecConfig = v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) SetZoneNo(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.ZoneNo = &v
+	return s
+}
+
+type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
+	BgpStatus  *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
+	EnableBgp  *string `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
+	LocalAsn   *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
+	PeerAsn    *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	PeerBgpIp  *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
+	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetBgpStatus(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.BgpStatus = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetEnableBgp(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.EnableBgp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetLocalAsn(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.LocalAsn = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetLocalBgpIp(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.LocalBgpIp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetPeerAsn(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.PeerAsn = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetPeerBgpIp(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.PeerBgpIp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetTunnelCidr(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.TunnelCidr = &v
+	return s
+}
+
+type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *string `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeAuthAlg(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeEncAlg(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeLifetime(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeMode(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkePfs(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeVersion(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetLocalId(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetPsk(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetRemoteId(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *string `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecAuthAlg(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecEncAlg(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecLifetime(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecPfs(v string) *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecPfs = &v
 	return s
 }
 
@@ -41161,7 +41896,8 @@ type DescribeVpnConnectionLogsRequest struct {
 	// The end of the time range to query. The value must be a UNIX timestamp. For example, 1671004344 specifies 15:52:24 (UTC+8) on December 14, 2022.
 	//
 	// >  If you specify **To**, you must also specify **From** or **MinutePeriod**.
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	To       *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
 }
@@ -41221,6 +41957,11 @@ func (s *DescribeVpnConnectionLogsRequest) SetResourceOwnerId(v int64) *Describe
 
 func (s *DescribeVpnConnectionLogsRequest) SetTo(v int32) *DescribeVpnConnectionLogsRequest {
 	s.To = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetTunnelId(v string) *DescribeVpnConnectionLogsRequest {
+	s.TunnelId = &v
 	return s
 }
 
@@ -41555,6 +42296,7 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	//
 	// *   **false**: disabled
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	EnableTunnelsBgp   *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
 	// The configurations of phase 1 negotiations.
 	IkeConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
 	// The gateway IP address of the IPsec-VPN connection.
@@ -41607,7 +42349,8 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	// The ID of the transit router with which the IPsec-VPN connection is associated.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The name of the transit router.
-	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	TransitRouterName          *string                                                                                  `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	TunnelOptionsSpecification *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
 	// The health check configurations.
 	VcoHealthCheck *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
 	// The configurations of the BGP routing protocol.
@@ -41663,6 +42406,11 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetEnabl
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetEnableNatTraversal(v bool) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
 	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetEnableTunnelsBgp(v bool) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
+	s.EnableTunnelsBgp = &v
 	return s
 }
 
@@ -41733,6 +42481,11 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetTrans
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetTransitRouterName(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
 	s.TransitRouterName = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetTunnelOptionsSpecification(v *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
+	s.TunnelOptionsSpecification = v
 	return s
 }
 
@@ -41916,6 +42669,265 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag) Se
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag) SetValue(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag {
 	s.Value = &v
+	return s
+}
+
+type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification struct {
+	TunnelOptions []*DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions `json:"TunnelOptions,omitempty" xml:"TunnelOptions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification) SetTunnelOptions(v []*DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification {
+	s.TunnelOptions = v
+	return s
+}
+
+type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions struct {
+	CustomerGatewayId   *string                                                                                                                `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EnableDpd           *string                                                                                                                `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *string                                                                                                                `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	InternetIp          *string                                                                                                                `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	RemoteCaCertificate *string                                                                                                                `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	Role                *string                                                                                                                `json:"Role,omitempty" xml:"Role,omitempty"`
+	State               *string                                                                                                                `json:"State,omitempty" xml:"State,omitempty"`
+	Status              *string                                                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	TunnelBgpConfig     *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelId            *string                                                                                                                `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelIkeConfig     *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+	ZoneNo              *string                                                                                                                `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetCustomerGatewayId(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.CustomerGatewayId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetEnableDpd(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.EnableDpd = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetEnableNatTraversal(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetInternetIp(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetRemoteCaCertificate(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetRole(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetState(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetStatus(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetTunnelBgpConfig(v *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelBgpConfig = v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetTunnelId(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetTunnelIkeConfig(v *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelIkeConfig = v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetTunnelIpsecConfig(v *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelIpsecConfig = v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) SetZoneNo(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions {
+	s.ZoneNo = &v
+	return s
+}
+
+type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
+	BgpStatus  *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
+	EnableBgp  *string `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
+	LocalAsn   *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
+	PeerAsn    *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	PeerBgpIp  *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
+	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetBgpStatus(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.BgpStatus = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetEnableBgp(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.EnableBgp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetLocalAsn(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.LocalAsn = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetLocalBgpIp(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.LocalBgpIp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetPeerAsn(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.PeerAsn = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetPeerBgpIp(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.PeerBgpIp = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetTunnelCidr(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.TunnelCidr = &v
+	return s
+}
+
+type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *string `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeAuthAlg(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeEncAlg(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeLifetime(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeMode(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkePfs(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeVersion(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetLocalId(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetPsk(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetRemoteId(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *string `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecAuthAlg(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecEncAlg(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecLifetime(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecPfs(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecPfs = &v
 	return s
 }
 
@@ -42364,7 +43376,9 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
+	DisasterRecoveryVSwitchId  *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
 	// The payment status of the VPN gateway. Valid values:
 	//
 	// *   **Normal**: The VPN gateway is normal.
@@ -42397,7 +43411,8 @@ type DescribeVpnGatewayResponseBody struct {
 	// The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
 	SslMaxConnections *int64 `json:"SslMaxConnections,omitempty" xml:"SslMaxConnections,omitempty"`
 	// The name of the VPN gateway.
-	SslVpn *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
+	SslVpn           *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
+	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the VPN gateway belongs.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the IPsec-VPN feature is enabled. Valid values:
@@ -42480,6 +43495,16 @@ func (s *DescribeVpnGatewayResponseBody) SetDescription(v string) *DescribeVpnGa
 	return s
 }
 
+func (s *DescribeVpnGatewayResponseBody) SetDisasterRecoveryInternetIp(v string) *DescribeVpnGatewayResponseBody {
+	s.DisasterRecoveryInternetIp = &v
+	return s
+}
+
+func (s *DescribeVpnGatewayResponseBody) SetDisasterRecoveryVSwitchId(v string) *DescribeVpnGatewayResponseBody {
+	s.DisasterRecoveryVSwitchId = &v
+	return s
+}
+
 func (s *DescribeVpnGatewayResponseBody) SetEnableBgp(v bool) *DescribeVpnGatewayResponseBody {
 	s.EnableBgp = &v
 	return s
@@ -42532,6 +43557,11 @@ func (s *DescribeVpnGatewayResponseBody) SetSslMaxConnections(v int64) *Describe
 
 func (s *DescribeVpnGatewayResponseBody) SetSslVpn(v string) *DescribeVpnGatewayResponseBody {
 	s.SslVpn = &v
+	return s
+}
+
+func (s *DescribeVpnGatewayResponseBody) SetSslVpnInternetIp(v string) *DescribeVpnGatewayResponseBody {
+	s.SslVpnInternetIp = &v
 	return s
 }
 
@@ -42938,7 +43968,9 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	// The description of the VPN gateway.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The tag value.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
+	DisasterRecoveryVSwitchId  *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
 	// The information about the pending orders.
 	//
 	// >  This parameter is returned only when **IncludeReservationData** is set to **true**.
@@ -42974,7 +44006,8 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	// - **RENEWCHANGE**: renewal with a specification change
 	// - **TEMP_UPGRADE**: temporary upgrade
 	// - **RENEW**: renewal
-	SslVpn *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
+	SslVpn           *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
+	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The ID of the VPN gateway.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the VPN gateway.
@@ -43056,6 +44089,16 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetDescription(v 
 	return s
 }
 
+func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetDisasterRecoveryInternetIp(v string) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
+	s.DisasterRecoveryInternetIp = &v
+	return s
+}
+
+func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetDisasterRecoveryVSwitchId(v string) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
+	s.DisasterRecoveryVSwitchId = &v
+	return s
+}
+
 func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetEnableBgp(v bool) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
 	s.EnableBgp = &v
 	return s
@@ -43103,6 +44146,11 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetSslMaxConnecti
 
 func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetSslVpn(v string) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
 	s.SslVpn = &v
+	return s
+}
+
+func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetSslVpnInternetIp(v string) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
+	s.SslVpnInternetIp = &v
 	return s
 }
 
@@ -43401,7 +44449,8 @@ type DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry st
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The next hop of the policy-based route.
-	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHop         *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHopTunnelId *string `json:"NextHopTunnelId,omitempty" xml:"NextHopTunnelId,omitempty"`
 	// The priority of the policy-based route.
 	//
 	// A smaller value indicates a higher priority.
@@ -43439,6 +44488,11 @@ func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntr
 
 func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry) SetNextHop(v string) *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry {
 	s.NextHop = &v
+	return s
+}
+
+func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry) SetNextHopTunnelId(v string) *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry {
+	s.NextHopTunnelId = &v
 	return s
 }
 
@@ -43647,7 +44701,8 @@ type DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry struct {
 	// The timestamp when the route entry was created.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The next hop of the route entry.
-	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHop         *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHopTunnelId *string `json:"NextHopTunnelId,omitempty" xml:"NextHopTunnelId,omitempty"`
 	// The destination CIDR block of the route entry.
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
 	// The type of the route entry. Valid values:
@@ -43696,6 +44751,11 @@ func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) SetCre
 
 func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) SetNextHop(v string) *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry {
 	s.NextHop = &v
+	return s
+}
+
+func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) SetNextHopTunnelId(v string) *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry {
+	s.NextHopTunnelId = &v
 	return s
 }
 
@@ -45002,7 +46062,8 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig struct {
 	// The identifier of the customer gateway.
 	Remote *string `json:"Remote,omitempty" xml:"Remote,omitempty"`
 	// The CIDR block on the data center side.
-	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	RemoteSubnet  *string                                                                  `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	TunnelsConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig `json:"TunnelsConfig,omitempty" xml:"TunnelsConfig,omitempty" type:"Struct"`
 }
 
 func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig) String() string {
@@ -45040,6 +46101,11 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig) SetRemote(v
 
 func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig) SetRemoteSubnet(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig {
 	s.RemoteSubnet = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig) SetTunnelsConfig(v *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig {
+	s.TunnelsConfig = v
 	return s
 }
 
@@ -45152,6 +46218,170 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig) 
 }
 
 func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig) SetIpsecPfs(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig {
+	s.IpsecPfs = &v
+	return s
+}
+
+type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig struct {
+	TunnelConfig []*DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig `json:"TunnelConfig,omitempty" xml:"TunnelConfig,omitempty" type:"Repeated"`
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig) SetTunnelConfig(v []*DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig {
+	s.TunnelConfig = v
+	return s
+}
+
+type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig struct {
+	IkeConfig   *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig   `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
+	IpsecConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
+	Local       *string                                                                                         `json:"Local,omitempty" xml:"Local,omitempty"`
+	Remote      *string                                                                                         `json:"Remote,omitempty" xml:"Remote,omitempty"`
+	RightCaCert *string                                                                                         `json:"RightCaCert,omitempty" xml:"RightCaCert,omitempty"`
+	TunnelId    *string                                                                                         `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) SetIkeConfig(v *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig {
+	s.IkeConfig = v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) SetIpsecConfig(v *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig {
+	s.IpsecConfig = v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) SetLocal(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig {
+	s.Local = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) SetRemote(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig {
+	s.Remote = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) SetRightCaCert(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig {
+	s.RightCaCert = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) SetTunnelId(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig {
+	s.TunnelId = &v
+	return s
+}
+
+type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetIkeAuthAlg(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetIkeEncAlg(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetIkeLifetime(v int64) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetIkeMode(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetIkePfs(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetIkeVersion(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetLocalId(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetPsk(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) SetRemoteId(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int64  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) SetIpsecAuthAlg(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) SetIpsecEncAlg(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) SetIpsecLifetime(v int64) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) SetIpsecPfs(v string) *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig {
 	s.IpsecPfs = &v
 	return s
 }
@@ -46933,7 +48163,12 @@ func (s *GetPhysicalConnectionServiceStatusResponse) SetBody(v *GetPhysicalConne
 }
 
 type GetTrafficMirrorServiceStatusRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetTrafficMirrorServiceStatusRequest) String() string {
@@ -46944,8 +48179,33 @@ func (s GetTrafficMirrorServiceStatusRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTrafficMirrorServiceStatusRequest) SetClientToken(v string) *GetTrafficMirrorServiceStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetTrafficMirrorServiceStatusRequest) SetOwnerAccount(v string) *GetTrafficMirrorServiceStatusRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
 func (s *GetTrafficMirrorServiceStatusRequest) SetOwnerId(v int64) *GetTrafficMirrorServiceStatusRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *GetTrafficMirrorServiceStatusRequest) SetRegionId(v string) *GetTrafficMirrorServiceStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTrafficMirrorServiceStatusRequest) SetResourceOwnerAccount(v string) *GetTrafficMirrorServiceStatusRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetTrafficMirrorServiceStatusRequest) SetResourceOwnerId(v int64) *GetTrafficMirrorServiceStatusRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -48810,14 +50070,18 @@ func (s *ListDhcpOptionsSetsResponse) SetBody(v *ListDhcpOptionsSetsResponseBody
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesRequest struct {
-	// The operation that you want to perform. Set the value to **ListEnhanhcedNatGatewayAvailableZones**.
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The language to display the results. Valid values:
 	//
 	// *   **zh-CN** (default): Chinese
 	// *   **en-US**: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region that you want to query.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	//
+	// In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -48862,9 +50126,9 @@ func (s *ListEnhanhcedNatGatewayAvailableZonesRequest) SetResourceOwnerId(v int6
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesResponseBody struct {
-	// The list of zones.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the zone where the instance is deployed.
+	// The list of zones.
 	Zones []*ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -48887,8 +50151,9 @@ func (s *ListEnhanhcedNatGatewayAvailableZonesResponseBody) SetZones(v []*ListEn
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones struct {
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The name of the zone.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The ID of the zone where the instance is deployed.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -50434,40 +51699,39 @@ func (s *ListIpv4GatewaysResponse) SetBody(v *ListIpv4GatewaysResponseBody) *Lis
 }
 
 type ListNatIpCidrsRequest struct {
-	// The status of the CIDR block that you want to query. Set the value to **Available**.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The name of the CIDR block that you want to query. Valid values of **N**: **1** to **20**.
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The CIDR block of the NAT gateway that you want to query.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to only precheck this request. Valid values:
 	//
 	// *   **true**: checks the API request. The CIDR blocks of the NAT gateway are not queried if the API request passes the precheck. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether the required parameters are set. If the request fails to pass the precheck, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// *   **false**: sends the API request. If the request passes the precheck, 2xx HTTP status code is returned and the CIDR blocks of the NAT gateway are queried. This is the default value.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the VPC NAT gateway that you want to query.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The CIDR block of the NAT gateway that you want to query.
 	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	// The CIDR block of the NAT gateway that you want to query. Valid values of **N**: **1** to **20**.
+	// The name of the CIDR block that you want to query. Valid values of **N**: **1** to **20**.
 	NatIpCidrName []*string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty" type:"Repeated"`
+	// The status of the CIDR block that you want to query. Set the value to **Available**.
+	NatIpCidrStatus *string `json:"NatIpCidrStatus,omitempty" xml:"NatIpCidrStatus,omitempty"`
+	// The CIDR block of the NAT gateway that you want to query. Valid values of **N**: **1** to **20**.
+	NatIpCidrs []*string `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
 	// The token that is used for the next query. Set the value as needed.
 	//
 	// *   If this is your first query or no next query is to be sent, ignore this parameter.
 	// *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
-	NatIpCidrStatus *string `json:"NatIpCidrStatus,omitempty" xml:"NatIpCidrStatus,omitempty"`
-	// The token that is used for the next query. Valid values:
-	//
-	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
-	NatIpCidrs []*string `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the VPC NAT gateway that you want to query.
+	// The region ID of the Virtual Private Cloud (VPC) NAT gateway that you want to query.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -50552,16 +51816,16 @@ func (s *ListNatIpCidrsRequest) SetResourceOwnerId(v int64) *ListNatIpCidrsReque
 }
 
 type ListNatIpCidrsResponseBody struct {
-	// Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
-	//
-	// *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
-	// *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
-	NatIpCidrs []*ListNatIpCidrsResponseBodyNatIpCidrs `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
 	// The CIDR blocks of the NAT gateway.
+	NatIpCidrs []*ListNatIpCidrsResponseBodyNatIpCidrs `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
+	// The token that is used for the next query. Valid values:
+	//
+	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The time when the CIDR block was created.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the CIDR block of the NAT gateway.
+	// The number of CIDR blocks that are returned.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -50594,18 +51858,24 @@ func (s *ListNatIpCidrsResponseBody) SetTotalCount(v string) *ListNatIpCidrsResp
 }
 
 type ListNatIpCidrsResponseBodyNatIpCidrs struct {
-	// The status of the CIDR block of the NAT gateway. If **Available** is returned, it indicates that the CIDR block is available.
+	// The time when the CIDR block was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The CIDR block of the NAT gateway.
-	IsDefault            *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	NatGatewayId         *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NatIpCidr            *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	NatIpCidrDescription *string `json:"NatIpCidrDescription,omitempty" xml:"NatIpCidrDescription,omitempty"`
-	// The name of the CIDR block of the NAT gateway.
-	NatIpCidrId *string `json:"NatIpCidrId,omitempty" xml:"NatIpCidrId,omitempty"`
-	// The description of the CIDR block of the NAT gateway.
-	NatIpCidrName *string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty"`
+	// Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
+	//
+	// *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
+	// *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The ID of the VPC NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The CIDR block of the NAT gateway.
+	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	// The description of the CIDR block of the NAT gateway.
+	NatIpCidrDescription *string `json:"NatIpCidrDescription,omitempty" xml:"NatIpCidrDescription,omitempty"`
+	// The ID of the CIDR block of the NAT gateway.
+	NatIpCidrId *string `json:"NatIpCidrId,omitempty" xml:"NatIpCidrId,omitempty"`
+	// The name of the CIDR block of the NAT gateway.
+	NatIpCidrName *string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty"`
+	// The status of the CIDR block of the NAT gateway. If **Available** is returned, it indicates that the CIDR block is available.
 	NatIpCidrStatus *string `json:"NatIpCidrStatus,omitempty" xml:"NatIpCidrStatus,omitempty"`
 }
 
@@ -50687,44 +51957,43 @@ func (s *ListNatIpCidrsResponse) SetBody(v *ListNatIpCidrsResponseBody) *ListNat
 }
 
 type ListNatIpsRequest struct {
-	// The status of the IP address. Valid values:
-	//
-	// *   **Available**
-	// *   **Deleting**
-	// *   **Creating**
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The name of the IP address. Valid values of **N**: **1** to **20**.
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The CIDR block to which the IP address belongs.
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to only precheck the request. Valid values:
 	//
 	// *   **true**: checks the API request. IP addresses are not queried. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	// *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The CIDR block to which the IP address belongs.
 	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	// The token that is used for the next query. Valid values:
-	//
-	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
-	NatIpIds []*string `json:"NatIpIds,omitempty" xml:"NatIpIds,omitempty" type:"Repeated"`
 	// The ID of the IP address. Valid values of **N**: **1** to **20**.
+	NatIpIds []*string `json:"NatIpIds,omitempty" xml:"NatIpIds,omitempty" type:"Repeated"`
+	// The name of the IP address. Valid values of **N**: **1** to **20**.
 	NatIpName []*string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty" type:"Repeated"`
+	// The status of the IP address. Valid values:
+	//
+	// *   **Available**
+	// *   **Deleting**
+	// *   **Creating**
+	NatIpStatus *string `json:"NatIpStatus,omitempty" xml:"NatIpStatus,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
 	// *   If this is your first query or no next query is to be sent, ignore this parameter.
 	// *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
-	NatIpStatus *string `json:"NatIpStatus,omitempty" xml:"NatIpStatus,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the region where the NAT gateway is deployed.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -50809,16 +52078,16 @@ func (s *ListNatIpsRequest) SetResourceOwnerId(v int64) *ListNatIpsRequest {
 }
 
 type ListNatIpsResponseBody struct {
-	// The CIDR block to which the IP address belongs.
-	NatIps []*ListNatIpsResponseBodyNatIps `json:"NatIps,omitempty" xml:"NatIps,omitempty" type:"Repeated"`
 	// The list of IP addresses of the NAT gateway.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
+	NatIps []*ListNatIpsResponseBodyNatIps `json:"NatIps,omitempty" xml:"NatIps,omitempty" type:"Repeated"`
+	// The token that is used for the next query. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+	// *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IP address.
+	// The number of IP addresses that are returned.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -50851,13 +52120,23 @@ func (s *ListNatIpsResponseBody) SetTotalCount(v string) *ListNatIpsResponseBody
 }
 
 type ListNatIpsResponseBodyNatIps struct {
-	// The ID of the IP address.
-	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The description of the IP address.
-	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
+	// Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the IP address is assigned.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The IP address.
+	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
+	// The CIDR block to which the IP address belongs.
 	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
+	// The description of the IP address.
+	NatIpDescription *string `json:"NatIpDescription,omitempty" xml:"NatIpDescription,omitempty"`
+	// The ID of the IP address.
+	NatIpId *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
+	// The name of the IP address.
+	NatIpName *string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty"`
 	// The status of the IP address. Valid values:
 	//
 	// *   **Available**: available
@@ -50866,10 +52145,6 @@ type ListNatIpsResponseBodyNatIps struct {
 	// *   **Creating**: creating
 	// *   **Associated**: specified in an SNAT or DNAT entry
 	// *   **Associating**: being specified in an SNAT or DNAT entry
-	NatIpDescription *string `json:"NatIpDescription,omitempty" xml:"NatIpDescription,omitempty"`
-	// The name of the IP address.
-	NatIpId     *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
-	NatIpName   *string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty"`
 	NatIpStatus *string `json:"NatIpStatus,omitempty" xml:"NatIpStatus,omitempty"`
 }
 
@@ -52503,6 +53778,8 @@ func (s *ListTrafficMirrorFiltersRequestTags) SetValue(v string) *ListTrafficMir
 }
 
 type ListTrafficMirrorFiltersResponseBody struct {
+	Count      *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
 	// *   If no value is returned for **NextToken**, no next queries are sent.
@@ -52522,6 +53799,16 @@ func (s ListTrafficMirrorFiltersResponseBody) String() string {
 
 func (s ListTrafficMirrorFiltersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListTrafficMirrorFiltersResponseBody) SetCount(v int32) *ListTrafficMirrorFiltersResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListTrafficMirrorFiltersResponseBody) SetMaxResults(v int32) *ListTrafficMirrorFiltersResponseBody {
+	s.MaxResults = &v
+	return s
 }
 
 func (s *ListTrafficMirrorFiltersResponseBody) SetNextToken(v string) *ListTrafficMirrorFiltersResponseBody {
@@ -61315,6 +62602,7 @@ type ModifyVpnConnectionAttributeRequest struct {
 	// *   **true:** enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
 	// *   **false:** disables NAT traversal.
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	EnableTunnelsBgp   *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
 	// The health check configurations:
 	//
 	// *   **HealthCheckConfig.enable:** specifies whether to enable the health check feature. Valid values: **true** and **false**.
@@ -61386,9 +62674,10 @@ type ModifyVpnConnectionAttributeRequest struct {
 	//
 	// *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
 	// *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
-	RemoteSubnet         *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RemoteSubnet               *string                                                          `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	ResourceOwnerAccount       *string                                                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId            *int64                                                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TunnelOptionsSpecification []*ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Repeated"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
 }
@@ -61428,6 +62717,11 @@ func (s *ModifyVpnConnectionAttributeRequest) SetEnableDpd(v bool) *ModifyVpnCon
 
 func (s *ModifyVpnConnectionAttributeRequest) SetEnableNatTraversal(v bool) *ModifyVpnConnectionAttributeRequest {
 	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequest) SetEnableTunnelsBgp(v bool) *ModifyVpnConnectionAttributeRequest {
+	s.EnableTunnelsBgp = &v
 	return s
 }
 
@@ -61491,8 +62785,195 @@ func (s *ModifyVpnConnectionAttributeRequest) SetResourceOwnerId(v int64) *Modif
 	return s
 }
 
+func (s *ModifyVpnConnectionAttributeRequest) SetTunnelOptionsSpecification(v []*ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) *ModifyVpnConnectionAttributeRequest {
+	s.TunnelOptionsSpecification = v
+	return s
+}
+
 func (s *ModifyVpnConnectionAttributeRequest) SetVpnConnectionId(v string) *ModifyVpnConnectionAttributeRequest {
 	s.VpnConnectionId = &v
+	return s
+}
+
+type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification struct {
+	EnableDpd           *bool                                                                           `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *bool                                                                           `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	RemoteCaCertificate *string                                                                         `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	TunnelBgpConfig     *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelId            *string                                                                         `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelIkeConfig     *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetEnableDpd(v bool) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.EnableDpd = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetEnableNatTraversal(v bool) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetRemoteCaCertificate(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetTunnelBgpConfig(v *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.TunnelBgpConfig = v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetTunnelId(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.TunnelId = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetTunnelIkeConfig(v *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.TunnelIkeConfig = v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetTunnelIpsecConfig(v *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.TunnelIpsecConfig = v
+	return s
+}
+
+type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig struct {
+	LocalAsn   *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
+	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) SetLocalAsn(v int64) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.LocalAsn = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) SetLocalBgpIp(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.LocalBgpIp = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) SetTunnelCidr(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.TunnelCidr = &v
+	return s
+}
+
+type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeAuthAlg(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeEncAlg(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeLifetime(v int64) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeMode(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkePfs(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeVersion(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetLocalId(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetPsk(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetRemoteId(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int32  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecAuthAlg(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecEncAlg(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecLifetime(v int32) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecPfs(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecPfs = &v
 	return s
 }
 
@@ -61520,6 +63001,7 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	// *   **false:** NAT traversal is disabled.
 	// *   **true:** NAT traversal is enabled.
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	EnableTunnelsBgp   *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
 	// The configurations of Phase 1 negotiations.
 	IkeConfig *ModifyVpnConnectionAttributeResponseBodyIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
 	// The configurations of Phase 2 negotiations.
@@ -61531,7 +63013,8 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	// The CIDR block on the data center side.
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                  *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TunnelOptionsSpecification *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
 	// The health check configurations.
 	VcoHealthCheck *ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
 	// The BGP configurations.
@@ -61580,6 +63063,11 @@ func (s *ModifyVpnConnectionAttributeResponseBody) SetEnableNatTraversal(v bool)
 	return s
 }
 
+func (s *ModifyVpnConnectionAttributeResponseBody) SetEnableTunnelsBgp(v bool) *ModifyVpnConnectionAttributeResponseBody {
+	s.EnableTunnelsBgp = &v
+	return s
+}
+
 func (s *ModifyVpnConnectionAttributeResponseBody) SetIkeConfig(v *ModifyVpnConnectionAttributeResponseBodyIkeConfig) *ModifyVpnConnectionAttributeResponseBody {
 	s.IkeConfig = v
 	return s
@@ -61607,6 +63095,11 @@ func (s *ModifyVpnConnectionAttributeResponseBody) SetRemoteSubnet(v string) *Mo
 
 func (s *ModifyVpnConnectionAttributeResponseBody) SetRequestId(v string) *ModifyVpnConnectionAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBody) SetTunnelOptionsSpecification(v *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification) *ModifyVpnConnectionAttributeResponseBody {
+	s.TunnelOptionsSpecification = v
 	return s
 }
 
@@ -61747,6 +63240,265 @@ func (s *ModifyVpnConnectionAttributeResponseBodyIpsecConfig) SetIpsecLifetime(v
 }
 
 func (s *ModifyVpnConnectionAttributeResponseBodyIpsecConfig) SetIpsecPfs(v string) *ModifyVpnConnectionAttributeResponseBodyIpsecConfig {
+	s.IpsecPfs = &v
+	return s
+}
+
+type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification struct {
+	TunnelOptions []*ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions `json:"TunnelOptions,omitempty" xml:"TunnelOptions,omitempty" type:"Repeated"`
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification) SetTunnelOptions(v []*ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification {
+	s.TunnelOptions = v
+	return s
+}
+
+type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions struct {
+	CustomerGatewayId   *string                                                                                           `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EnableDpd           *bool                                                                                             `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *bool                                                                                             `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	InternetIp          *string                                                                                           `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	RemoteCaCertificate *string                                                                                           `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	Role                *string                                                                                           `json:"Role,omitempty" xml:"Role,omitempty"`
+	State               *string                                                                                           `json:"State,omitempty" xml:"State,omitempty"`
+	Status              *string                                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	TunnelBgpConfig     *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelId            *string                                                                                           `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelIkeConfig     *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+	ZoneNo              *string                                                                                           `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetCustomerGatewayId(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.CustomerGatewayId = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetEnableDpd(v bool) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.EnableDpd = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetEnableNatTraversal(v bool) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetInternetIp(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetRemoteCaCertificate(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetRole(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.Role = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetState(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.State = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetStatus(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelBgpConfig(v *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelBgpConfig = v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelId(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelId = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelIkeConfig(v *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelIkeConfig = v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetTunnelIpsecConfig(v *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.TunnelIpsecConfig = v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions) SetZoneNo(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions {
+	s.ZoneNo = &v
+	return s
+}
+
+type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
+	BgpStatus  *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
+	EnableBgp  *bool   `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
+	LocalAsn   *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
+	PeerAsn    *int64  `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	PeerBgpIp  *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
+	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetBgpStatus(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.BgpStatus = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetEnableBgp(v bool) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.EnableBgp = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetLocalAsn(v int64) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.LocalAsn = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetLocalBgpIp(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.LocalBgpIp = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetPeerAsn(v int64) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.PeerAsn = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetPeerBgpIp(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.PeerBgpIp = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig) SetTunnelCidr(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig {
+	s.TunnelCidr = &v
+	return s
+}
+
+type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeAuthAlg(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeEncAlg(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeLifetime(v int64) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeMode(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkePfs(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetIkeVersion(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetLocalId(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetPsk(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig) SetRemoteId(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int64  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecAuthAlg(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecEncAlg(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecLifetime(v int64) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig) SetIpsecPfs(v string) *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig {
 	s.IpsecPfs = &v
 	return s
 }
@@ -61999,7 +63751,9 @@ type ModifyVpnGatewayAttributeResponseBody struct {
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the VPN gateway.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
+	DisasterRecoveryVSwitchId  *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
 	// The BGP status of the VPN gateway. Valid values:
 	//
 	// *   **true:** enabled.
@@ -62018,7 +63772,8 @@ type ModifyVpnGatewayAttributeResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec             *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The status of the VPN gateway. Valid values:
 	//
 	// *   **init:** The VPN gateway is being initialized.
@@ -62063,6 +63818,16 @@ func (s *ModifyVpnGatewayAttributeResponseBody) SetDescription(v string) *Modify
 	return s
 }
 
+func (s *ModifyVpnGatewayAttributeResponseBody) SetDisasterRecoveryInternetIp(v string) *ModifyVpnGatewayAttributeResponseBody {
+	s.DisasterRecoveryInternetIp = &v
+	return s
+}
+
+func (s *ModifyVpnGatewayAttributeResponseBody) SetDisasterRecoveryVSwitchId(v string) *ModifyVpnGatewayAttributeResponseBody {
+	s.DisasterRecoveryVSwitchId = &v
+	return s
+}
+
 func (s *ModifyVpnGatewayAttributeResponseBody) SetEnableBgp(v bool) *ModifyVpnGatewayAttributeResponseBody {
 	s.EnableBgp = &v
 	return s
@@ -62095,6 +63860,11 @@ func (s *ModifyVpnGatewayAttributeResponseBody) SetRequestId(v string) *ModifyVp
 
 func (s *ModifyVpnGatewayAttributeResponseBody) SetSpec(v string) *ModifyVpnGatewayAttributeResponseBody {
 	s.Spec = &v
+	return s
+}
+
+func (s *ModifyVpnGatewayAttributeResponseBody) SetSslVpnInternetIp(v string) *ModifyVpnGatewayAttributeResponseBody {
+	s.SslVpnInternetIp = &v
 	return s
 }
 
@@ -63116,7 +64886,12 @@ func (s *OpenPhysicalConnectionServiceResponse) SetBody(v *OpenPhysicalConnectio
 }
 
 type OpenTrafficMirrorServiceRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s OpenTrafficMirrorServiceRequest) String() string {
@@ -63127,14 +64902,39 @@ func (s OpenTrafficMirrorServiceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *OpenTrafficMirrorServiceRequest) SetClientToken(v string) *OpenTrafficMirrorServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *OpenTrafficMirrorServiceRequest) SetOwnerAccount(v string) *OpenTrafficMirrorServiceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
 func (s *OpenTrafficMirrorServiceRequest) SetOwnerId(v int64) *OpenTrafficMirrorServiceRequest {
 	s.OwnerId = &v
 	return s
 }
 
+func (s *OpenTrafficMirrorServiceRequest) SetRegionId(v string) *OpenTrafficMirrorServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *OpenTrafficMirrorServiceRequest) SetResourceOwnerAccount(v string) *OpenTrafficMirrorServiceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OpenTrafficMirrorServiceRequest) SetResourceOwnerId(v int64) *OpenTrafficMirrorServiceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 type OpenTrafficMirrorServiceResponseBody struct {
-	// The ID of the order.
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -63147,8 +64947,13 @@ func (s OpenTrafficMirrorServiceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *OpenTrafficMirrorServiceResponseBody) SetOrderId(v string) *OpenTrafficMirrorServiceResponseBody {
-	s.OrderId = &v
+func (s *OpenTrafficMirrorServiceResponseBody) SetCode(v string) *OpenTrafficMirrorServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OpenTrafficMirrorServiceResponseBody) SetMessage(v string) *OpenTrafficMirrorServiceResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -69303,6 +71108,14 @@ func (client *Client) AddGlobalAccelerationInstanceIp(request *AddGlobalAccelera
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request AddIPv6TranslatorAclListEntryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddIPv6TranslatorAclListEntryResponse
+ */
+// Deprecated
 func (client *Client) AddIPv6TranslatorAclListEntryWithOptions(request *AddIPv6TranslatorAclListEntryRequest, runtime *util.RuntimeOptions) (_result *AddIPv6TranslatorAclListEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69364,6 +71177,13 @@ func (client *Client) AddIPv6TranslatorAclListEntryWithOptions(request *AddIPv6T
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request AddIPv6TranslatorAclListEntryRequest
+ * @return AddIPv6TranslatorAclListEntryResponse
+ */
+// Deprecated
 func (client *Client) AddIPv6TranslatorAclListEntry(request *AddIPv6TranslatorAclListEntryRequest) (_result *AddIPv6TranslatorAclListEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddIPv6TranslatorAclListEntryResponse{}
@@ -69608,8 +71428,16 @@ func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressR
 		query["InstanceChargeType"] = request.InstanceChargeType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
 		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpAddress)) {
+		query["IpAddress"] = request.IpAddress
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -72739,6 +74567,23 @@ func (client *Client) CreateDefaultVSwitch(request *CreateDefaultVSwitchRequest)
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * When you call this operation, take note of the following items:
+ * *   After you create a default VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to it.
+ * *   In each default VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
+ * *   After you create a default VPC, a vRouter and a route table are automatically created for the VPC.
+ * *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+ * *   **CreateDefaultVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
+ *     *   If the default VPC is in the **Pending** state, the VPC is being configured.
+ *     *   If the default VPC is in the **Available** state, the VPC is available.
+ * *   You cannot repeatedly call the **CreateDefaultVpc** operation within a specific time period.
+ * *   You can create only one default VPC in each region.
+ *
+ * @param request CreateDefaultVpcRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDefaultVpcResponse
+ */
 func (client *Client) CreateDefaultVpcWithOptions(request *CreateDefaultVpcRequest, runtime *util.RuntimeOptions) (_result *CreateDefaultVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72804,6 +74649,22 @@ func (client *Client) CreateDefaultVpcWithOptions(request *CreateDefaultVpcReque
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * When you call this operation, take note of the following items:
+ * *   After you create a default VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to it.
+ * *   In each default VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
+ * *   After you create a default VPC, a vRouter and a route table are automatically created for the VPC.
+ * *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+ * *   **CreateDefaultVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
+ *     *   If the default VPC is in the **Pending** state, the VPC is being configured.
+ *     *   If the default VPC is in the **Available** state, the VPC is available.
+ * *   You cannot repeatedly call the **CreateDefaultVpc** operation within a specific time period.
+ * *   You can create only one default VPC in each region.
+ *
+ * @param request CreateDefaultVpcRequest
+ * @return CreateDefaultVpcResponse
+ */
 func (client *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (_result *CreateDefaultVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDefaultVpcResponse{}
@@ -73560,6 +75421,14 @@ func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateH
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateIPv6TranslatorRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateIPv6TranslatorResponse
+ */
+// Deprecated
 func (client *Client) CreateIPv6TranslatorWithOptions(request *CreateIPv6TranslatorRequest, runtime *util.RuntimeOptions) (_result *CreateIPv6TranslatorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73641,6 +75510,13 @@ func (client *Client) CreateIPv6TranslatorWithOptions(request *CreateIPv6Transla
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateIPv6TranslatorRequest
+ * @return CreateIPv6TranslatorResponse
+ */
+// Deprecated
 func (client *Client) CreateIPv6Translator(request *CreateIPv6TranslatorRequest) (_result *CreateIPv6TranslatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIPv6TranslatorResponse{}
@@ -73652,6 +75528,14 @@ func (client *Client) CreateIPv6Translator(request *CreateIPv6TranslatorRequest)
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateIPv6TranslatorAclListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateIPv6TranslatorAclListResponse
+ */
+// Deprecated
 func (client *Client) CreateIPv6TranslatorAclListWithOptions(request *CreateIPv6TranslatorAclListRequest, runtime *util.RuntimeOptions) (_result *CreateIPv6TranslatorAclListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73709,6 +75593,13 @@ func (client *Client) CreateIPv6TranslatorAclListWithOptions(request *CreateIPv6
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateIPv6TranslatorAclListRequest
+ * @return CreateIPv6TranslatorAclListResponse
+ */
+// Deprecated
 func (client *Client) CreateIPv6TranslatorAclList(request *CreateIPv6TranslatorAclListRequest) (_result *CreateIPv6TranslatorAclListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIPv6TranslatorAclListResponse{}
@@ -73720,6 +75611,14 @@ func (client *Client) CreateIPv6TranslatorAclList(request *CreateIPv6TranslatorA
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateIPv6TranslatorEntryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateIPv6TranslatorEntryResponse
+ */
+// Deprecated
 func (client *Client) CreateIPv6TranslatorEntryWithOptions(request *CreateIPv6TranslatorEntryRequest, runtime *util.RuntimeOptions) (_result *CreateIPv6TranslatorEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73813,6 +75712,13 @@ func (client *Client) CreateIPv6TranslatorEntryWithOptions(request *CreateIPv6Tr
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateIPv6TranslatorEntryRequest
+ * @return CreateIPv6TranslatorEntryResponse
+ */
+// Deprecated
 func (client *Client) CreateIPv6TranslatorEntry(request *CreateIPv6TranslatorEntryRequest) (_result *CreateIPv6TranslatorEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIPv6TranslatorEntryResponse{}
@@ -74436,10 +76342,6 @@ func (client *Client) CreateNatIpWithOptions(request *CreateNatIpRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.NatIpCidr)) {
 		query["NatIpCidr"] = request.NatIpCidr
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NatIpCidrId)) {
-		query["NatIpCidrId"] = request.NatIpCidrId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NatIpDescription)) {
@@ -77360,6 +79262,10 @@ func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectio
 		query["EnableNatTraversal"] = request.EnableNatTraversal
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableTunnelsBgp)) {
+		query["EnableTunnelsBgp"] = request.EnableTunnelsBgp
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckConfig)) {
 		query["HealthCheckConfig"] = request.HealthCheckConfig
 	}
@@ -77416,8 +79322,17 @@ func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectio
 		query["VpnGatewayId"] = request.VpnGatewayId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TunnelOptionsSpecification)) {
+		bodyFlat["TunnelOptionsSpecification"] = request.TunnelOptionsSpecification
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateVpnConnection"),
@@ -77482,6 +79397,10 @@ func (client *Client) CreateVpnGatewayWithOptions(request *CreateVpnGatewayReque
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisasterRecoveryVSwitchId)) {
+		query["DisasterRecoveryVSwitchId"] = request.DisasterRecoveryVSwitchId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableIpsec)) {
@@ -78914,6 +80833,14 @@ func (client *Client) DeleteIPv6Translator(request *DeleteIPv6TranslatorRequest)
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteIPv6TranslatorAclListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteIPv6TranslatorAclListResponse
+ */
+// Deprecated
 func (client *Client) DeleteIPv6TranslatorAclListWithOptions(request *DeleteIPv6TranslatorAclListRequest, runtime *util.RuntimeOptions) (_result *DeleteIPv6TranslatorAclListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78971,6 +80898,13 @@ func (client *Client) DeleteIPv6TranslatorAclListWithOptions(request *DeleteIPv6
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteIPv6TranslatorAclListRequest
+ * @return DeleteIPv6TranslatorAclListResponse
+ */
+// Deprecated
 func (client *Client) DeleteIPv6TranslatorAclList(request *DeleteIPv6TranslatorAclListRequest) (_result *DeleteIPv6TranslatorAclListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIPv6TranslatorAclListResponse{}
@@ -78982,6 +80916,14 @@ func (client *Client) DeleteIPv6TranslatorAclList(request *DeleteIPv6TranslatorA
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteIPv6TranslatorEntryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteIPv6TranslatorEntryResponse
+ */
+// Deprecated
 func (client *Client) DeleteIPv6TranslatorEntryWithOptions(request *DeleteIPv6TranslatorEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteIPv6TranslatorEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79043,6 +80985,13 @@ func (client *Client) DeleteIPv6TranslatorEntryWithOptions(request *DeleteIPv6Tr
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteIPv6TranslatorEntryRequest
+ * @return DeleteIPv6TranslatorEntryResponse
+ */
+// Deprecated
 func (client *Client) DeleteIPv6TranslatorEntry(request *DeleteIPv6TranslatorEntryRequest) (_result *DeleteIPv6TranslatorEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIPv6TranslatorEntryResponse{}
@@ -79656,9 +81605,7 @@ func (client *Client) DeleteNatIp(request *DeleteNatIpRequest) (_result *DeleteN
 }
 
 /**
- * Specifies whether only to precheck this request. Valid values:
- * *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
- * *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+ * You cannot repeatedly call the **DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
  *
  * @param request DeleteNatIpCidrRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -79734,9 +81681,7 @@ func (client *Client) DeleteNatIpCidrWithOptions(request *DeleteNatIpCidrRequest
 }
 
 /**
- * Specifies whether only to precheck this request. Valid values:
- * *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
- * *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+ * You cannot repeatedly call the **DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
  *
  * @param request DeleteNatIpCidrRequest
  * @return DeleteNatIpCidrResponse
@@ -80463,7 +82408,10 @@ func (client *Client) DeleteRouterInterface(request *DeleteRouterInterfaceReques
 }
 
 /**
- * The operation that you want to perform. Set the value to **DeleteSnatEntry**.
+ * DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
+ * *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
+ * *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
+ * If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
  *
  * @param request DeleteSnatEntryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -80531,7 +82479,10 @@ func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest
 }
 
 /**
- * The operation that you want to perform. Set the value to **DeleteSnatEntry**.
+ * DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
+ * *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
+ * *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
+ * If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
  *
  * @param request DeleteSnatEntryRequest
  * @return DeleteSnatEntryResponse
@@ -82499,6 +84450,10 @@ func (client *Client) DescribeCommonBandwidthPackagesWithOptions(request *Descri
 		query["SecurityProtectionEnabled"] = request.SecurityProtectionEnabled
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -83748,6 +85703,14 @@ func (client *Client) DescribeIPv6TranslatorAclListAttributes(request *DescribeI
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeIPv6TranslatorAclListsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeIPv6TranslatorAclListsResponse
+ */
+// Deprecated
 func (client *Client) DescribeIPv6TranslatorAclListsWithOptions(request *DescribeIPv6TranslatorAclListsRequest, runtime *util.RuntimeOptions) (_result *DescribeIPv6TranslatorAclListsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -83813,6 +85776,13 @@ func (client *Client) DescribeIPv6TranslatorAclListsWithOptions(request *Describ
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeIPv6TranslatorAclListsRequest
+ * @return DescribeIPv6TranslatorAclListsResponse
+ */
+// Deprecated
 func (client *Client) DescribeIPv6TranslatorAclLists(request *DescribeIPv6TranslatorAclListsRequest) (_result *DescribeIPv6TranslatorAclListsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIPv6TranslatorAclListsResponse{}
@@ -83824,6 +85794,14 @@ func (client *Client) DescribeIPv6TranslatorAclLists(request *DescribeIPv6Transl
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeIPv6TranslatorEntriesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeIPv6TranslatorEntriesResponse
+ */
+// Deprecated
 func (client *Client) DescribeIPv6TranslatorEntriesWithOptions(request *DescribeIPv6TranslatorEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeIPv6TranslatorEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -83929,6 +85907,13 @@ func (client *Client) DescribeIPv6TranslatorEntriesWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeIPv6TranslatorEntriesRequest
+ * @return DescribeIPv6TranslatorEntriesResponse
+ */
+// Deprecated
 func (client *Client) DescribeIPv6TranslatorEntries(request *DescribeIPv6TranslatorEntriesRequest) (_result *DescribeIPv6TranslatorEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIPv6TranslatorEntriesResponse{}
@@ -83940,6 +85925,14 @@ func (client *Client) DescribeIPv6TranslatorEntries(request *DescribeIPv6Transla
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeIPv6TranslatorsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeIPv6TranslatorsResponse
+ */
+// Deprecated
 func (client *Client) DescribeIPv6TranslatorsWithOptions(request *DescribeIPv6TranslatorsRequest, runtime *util.RuntimeOptions) (_result *DescribeIPv6TranslatorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -84029,6 +86022,13 @@ func (client *Client) DescribeIPv6TranslatorsWithOptions(request *DescribeIPv6Tr
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeIPv6TranslatorsRequest
+ * @return DescribeIPv6TranslatorsResponse
+ */
+// Deprecated
 func (client *Client) DescribeIPv6Translators(request *DescribeIPv6TranslatorsRequest) (_result *DescribeIPv6TranslatorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIPv6TranslatorsResponse{}
@@ -84405,7 +86405,7 @@ func (client *Client) DescribeIpv6Gateways(request *DescribeIpv6GatewaysRequest)
 }
 
 /**
- * The operation that you want to perform. Set the value to **DescribeNatGateways**.
+ * You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
  *
  * @param request DescribeNatGatewaysRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -84517,7 +86517,7 @@ func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGateway
 }
 
 /**
- * The operation that you want to perform. Set the value to **DescribeNatGateways**.
+ * You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
  *
  * @param request DescribeNatGatewaysRequest
  * @return DescribeNatGatewaysResponse
@@ -85781,6 +87781,78 @@ func (client *Client) DescribeSslVpnClientCerts(request *DescribeSslVpnClientCer
 	return _result, _err
 }
 
+func (client *Client) DescribeSslVpnClientsWithOptions(request *DescribeSslVpnClientsRequest, runtime *util.RuntimeOptions) (_result *DescribeSslVpnClientsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnGatewayId)) {
+		query["VpnGatewayId"] = request.VpnGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSslVpnClients"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSslVpnClientsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSslVpnClients(request *DescribeSslVpnClientsRequest) (_result *DescribeSslVpnClientsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSslVpnClientsResponse{}
+	_body, _err := client.DescribeSslVpnClientsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSslVpnServersWithOptions(request *DescribeSslVpnServersRequest, runtime *util.RuntimeOptions) (_result *DescribeSslVpnServersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -87012,6 +89084,10 @@ func (client *Client) DescribeVpnConnectionLogsWithOptions(request *DescribeVpnC
 
 	if !tea.BoolValue(util.IsUnset(request.To)) {
 		query["To"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TunnelId)) {
+		query["TunnelId"] = request.TunnelId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpnConnectionId)) {
@@ -88995,8 +91071,32 @@ func (client *Client) GetTrafficMirrorServiceStatusWithOptions(request *GetTraff
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -89701,9 +91801,7 @@ func (client *Client) ListDhcpOptionsSets(request *ListDhcpOptionsSetsRequest) (
 }
 
 /**
- * The ID of the region that you want to query.
- * You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
- * In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+ * You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
  *
  * @param request ListEnhanhcedNatGatewayAvailableZonesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -89767,9 +91865,7 @@ func (client *Client) ListEnhanhcedNatGatewayAvailableZonesWithOptions(request *
 }
 
 /**
- * The ID of the region that you want to query.
- * You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
- * In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+ * You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
  *
  * @param request ListEnhanhcedNatGatewayAvailableZonesRequest
  * @return ListEnhanhcedNatGatewayAvailableZonesResponse
@@ -92739,6 +94835,14 @@ func (client *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest)
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ModifyIPv6TranslatorAclAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyIPv6TranslatorAclAttributeResponse
+ */
+// Deprecated
 func (client *Client) ModifyIPv6TranslatorAclAttributeWithOptions(request *ModifyIPv6TranslatorAclAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyIPv6TranslatorAclAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -92800,6 +94904,13 @@ func (client *Client) ModifyIPv6TranslatorAclAttributeWithOptions(request *Modif
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ModifyIPv6TranslatorAclAttributeRequest
+ * @return ModifyIPv6TranslatorAclAttributeResponse
+ */
+// Deprecated
 func (client *Client) ModifyIPv6TranslatorAclAttribute(request *ModifyIPv6TranslatorAclAttributeRequest) (_result *ModifyIPv6TranslatorAclAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyIPv6TranslatorAclAttributeResponse{}
@@ -93035,6 +95146,14 @@ func (client *Client) ModifyIPv6TranslatorBandwidth(request *ModifyIPv6Translato
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ModifyIPv6TranslatorEntryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyIPv6TranslatorEntryResponse
+ */
+// Deprecated
 func (client *Client) ModifyIPv6TranslatorEntryWithOptions(request *ModifyIPv6TranslatorEntryRequest, runtime *util.RuntimeOptions) (_result *ModifyIPv6TranslatorEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -93128,6 +95247,13 @@ func (client *Client) ModifyIPv6TranslatorEntryWithOptions(request *ModifyIPv6Tr
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ModifyIPv6TranslatorEntryRequest
+ * @return ModifyIPv6TranslatorEntryResponse
+ */
+// Deprecated
 func (client *Client) ModifyIPv6TranslatorEntry(request *ModifyIPv6TranslatorEntryRequest) (_result *ModifyIPv6TranslatorEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyIPv6TranslatorEntryResponse{}
@@ -95561,6 +97687,10 @@ func (client *Client) ModifyVpnConnectionAttributeWithOptions(request *ModifyVpn
 		query["EnableNatTraversal"] = request.EnableNatTraversal
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableTunnelsBgp)) {
+		query["EnableTunnelsBgp"] = request.EnableTunnelsBgp
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckConfig)) {
 		query["HealthCheckConfig"] = request.HealthCheckConfig
 	}
@@ -95613,8 +97743,17 @@ func (client *Client) ModifyVpnConnectionAttributeWithOptions(request *ModifyVpn
 		query["VpnConnectionId"] = request.VpnConnectionId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TunnelOptionsSpecification)) {
+		bodyFlat["TunnelOptionsSpecification"] = request.TunnelOptionsSpecification
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyVpnConnectionAttribute"),
@@ -96439,8 +98578,32 @@ func (client *Client) OpenTrafficMirrorServiceWithOptions(request *OpenTrafficMi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{

@@ -1,3 +1,7 @@
+2023-07-04 Version: v3.0.0
+- Interface modification with parameter deletion is incompatible.
+- Remove CreateNatIp remove useless parameter NatIpCidrId, must specify NatIpCidr.
+
 2023-06-09 Version: v2.0.117
 - RegionId Field is required.
 - Supported Zone for AllocateEipSegmentAddress.
