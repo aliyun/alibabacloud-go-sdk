@@ -3358,6 +3358,123 @@ func (s *DescribeControlPolicyResponse) SetBody(v *DescribeControlPolicyResponse
 	return s
 }
 
+type DescribeDefaultIPSConfigRequest struct {
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeDefaultIPSConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefaultIPSConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefaultIPSConfigRequest) SetLang(v string) *DescribeDefaultIPSConfigRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigRequest) SetSourceIp(v string) *DescribeDefaultIPSConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeDefaultIPSConfigResponseBody struct {
+	AiRules        *int32  `json:"AiRules,omitempty" xml:"AiRules,omitempty"`
+	BasicRules     *int32  `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
+	CtiRules       *int32  `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
+	EnableAllPatch *int32  `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
+	EnableDefault  *int32  `json:"EnableDefault,omitempty" xml:"EnableDefault,omitempty"`
+	PatchRules     *int32  `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleClass      *int32  `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
+	RunMode        *int32  `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+}
+
+func (s DescribeDefaultIPSConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefaultIPSConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetAiRules(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.AiRules = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetBasicRules(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.BasicRules = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetCtiRules(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.CtiRules = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetEnableAllPatch(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.EnableAllPatch = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetEnableDefault(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.EnableDefault = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetPatchRules(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.PatchRules = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetRequestId(v string) *DescribeDefaultIPSConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetRuleClass(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.RuleClass = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponseBody) SetRunMode(v int32) *DescribeDefaultIPSConfigResponseBody {
+	s.RunMode = &v
+	return s
+}
+
+type DescribeDefaultIPSConfigResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDefaultIPSConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefaultIPSConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefaultIPSConfigResponse) SetHeaders(v map[string]*string) *DescribeDefaultIPSConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponse) SetStatusCode(v int32) *DescribeDefaultIPSConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDefaultIPSConfigResponse) SetBody(v *DescribeDefaultIPSConfigResponseBody) *DescribeDefaultIPSConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDomainResolveRequest struct {
 	// The domain name whose DNS record you want to query.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -5641,7 +5758,8 @@ type DescribeRiskEventGroupRequest struct {
 	// > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
 	DstNetworkInstanceId *string `json:"DstNetworkInstanceId,omitempty" xml:"DstNetworkInstanceId,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 入侵防御事件的名称。
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The type of the firewall. Valid values:
 	//
@@ -5658,7 +5776,7 @@ type DescribeRiskEventGroupRequest struct {
 	// *   **true**: does not query the information about the geographical locations of IP addresses.
 	// *   **false**: queries the information about the geographical locations of IP addresses. This is the default value.
 	NoLocation *string `json:"NoLocation,omitempty" xml:"NoLocation,omitempty"`
-	// The order in which you want to sort the query results. Valid values:
+	// The order in which you want to sort the results. Valid values:
 	//
 	// *   **asc**: the ascending order.
 	// *   **desc**: the descending order. This is the default value.
@@ -5824,7 +5942,7 @@ func (s *DescribeRiskEventGroupRequest) SetVulLevel(v string) *DescribeRiskEvent
 }
 
 type DescribeRiskEventGroupResponseBody struct {
-	// The data returned.
+	// An array that consists of the details of the intrusion events.
 	DataList []*DescribeRiskEventGroupResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6144,7 +6262,7 @@ func (s *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) SetRes
 }
 
 type DescribeRiskEventGroupResponseBodyDataListVpcDstInfo struct {
-	// The ID of instance N on which you want to run the command.
+	// The ID of the ECS instance.
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	// The name of the ECS instance.
 	EcsInstanceName *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
@@ -6190,7 +6308,7 @@ func (s *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) SetRegionNo(v str
 }
 
 type DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo struct {
-	// The ID of instance N on which you want to run the command.
+	// The ID of the ECS instance.
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	// The name of the ECS instance.
 	EcsInstanceName *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
@@ -7334,6 +7452,169 @@ func (s *DescribeUserAssetIPTrafficInfoResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeUserAssetIPTrafficInfoResponse) SetBody(v *DescribeUserAssetIPTrafficInfoResponseBody) *DescribeUserAssetIPTrafficInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserIPSWhitelistRequest struct {
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeUserIPSWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserIPSWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserIPSWhitelistRequest) SetLang(v string) *DescribeUserIPSWhitelistRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistRequest) SetSourceIp(v string) *DescribeUserIPSWhitelistRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeUserIPSWhitelistResponseBody struct {
+	Ipv6Whitelists []*DescribeUserIPSWhitelistResponseBodyIpv6Whitelists `json:"Ipv6Whitelists,omitempty" xml:"Ipv6Whitelists,omitempty" type:"Repeated"`
+	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Whitelists     []*DescribeUserIPSWhitelistResponseBodyWhitelists     `json:"Whitelists,omitempty" xml:"Whitelists,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUserIPSWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserIPSWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserIPSWhitelistResponseBody) SetIpv6Whitelists(v []*DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) *DescribeUserIPSWhitelistResponseBody {
+	s.Ipv6Whitelists = v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBody) SetRequestId(v string) *DescribeUserIPSWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBody) SetWhitelists(v []*DescribeUserIPSWhitelistResponseBodyWhitelists) *DescribeUserIPSWhitelistResponseBody {
+	s.Whitelists = v
+	return s
+}
+
+type DescribeUserIPSWhitelistResponseBodyIpv6Whitelists struct {
+	Direction      *int64    `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	ListType       *int64    `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
+	WhiteType      *int64    `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+}
+
+func (s DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) SetDirection(v int64) *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) SetListType(v int64) *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists {
+	s.ListType = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) SetListValue(v string) *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists {
+	s.ListValue = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) SetWhiteListValue(v []*string) *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists {
+	s.WhiteListValue = v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) SetWhiteType(v int64) *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists {
+	s.WhiteType = &v
+	return s
+}
+
+type DescribeUserIPSWhitelistResponseBodyWhitelists struct {
+	Direction      *int64    `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	ListType       *int64    `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
+	WhiteType      *int64    `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+}
+
+func (s DescribeUserIPSWhitelistResponseBodyWhitelists) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserIPSWhitelistResponseBodyWhitelists) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyWhitelists) SetDirection(v int64) *DescribeUserIPSWhitelistResponseBodyWhitelists {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyWhitelists) SetListType(v int64) *DescribeUserIPSWhitelistResponseBodyWhitelists {
+	s.ListType = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyWhitelists) SetListValue(v string) *DescribeUserIPSWhitelistResponseBodyWhitelists {
+	s.ListValue = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyWhitelists) SetWhiteListValue(v []*string) *DescribeUserIPSWhitelistResponseBodyWhitelists {
+	s.WhiteListValue = v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponseBodyWhitelists) SetWhiteType(v int64) *DescribeUserIPSWhitelistResponseBodyWhitelists {
+	s.WhiteType = &v
+	return s
+}
+
+type DescribeUserIPSWhitelistResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUserIPSWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserIPSWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserIPSWhitelistResponse) SetHeaders(v map[string]*string) *DescribeUserIPSWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponse) SetStatusCode(v int32) *DescribeUserIPSWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserIPSWhitelistResponse) SetBody(v *DescribeUserIPSWhitelistResponseBody) *DescribeUserIPSWhitelistResponse {
 	s.Body = v
 	return s
 }
@@ -9929,7 +10210,8 @@ type DescribeVulnerabilityProtectedListRequest struct {
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The order in which you want to sort the queried information. Valid values:
 	//
@@ -10919,6 +11201,123 @@ func (s *ModifyControlPolicyPositionResponse) SetBody(v *ModifyControlPolicyPosi
 	return s
 }
 
+type ModifyDefaultIPSConfigRequest struct {
+	AiRules        *string `json:"AiRules,omitempty" xml:"AiRules,omitempty"`
+	BasicRules     *string `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
+	CtiRules       *string `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
+	EnableAllPatch *string `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
+	EnableDefault  *string `json:"EnableDefault,omitempty" xml:"EnableDefault,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PatchRules     *string `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
+	RuleClass      *string `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
+	RunMode        *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s ModifyDefaultIPSConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDefaultIPSConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetAiRules(v string) *ModifyDefaultIPSConfigRequest {
+	s.AiRules = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetBasicRules(v string) *ModifyDefaultIPSConfigRequest {
+	s.BasicRules = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetCtiRules(v string) *ModifyDefaultIPSConfigRequest {
+	s.CtiRules = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetEnableAllPatch(v string) *ModifyDefaultIPSConfigRequest {
+	s.EnableAllPatch = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetEnableDefault(v string) *ModifyDefaultIPSConfigRequest {
+	s.EnableDefault = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetLang(v string) *ModifyDefaultIPSConfigRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetPatchRules(v string) *ModifyDefaultIPSConfigRequest {
+	s.PatchRules = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetRuleClass(v string) *ModifyDefaultIPSConfigRequest {
+	s.RuleClass = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetRunMode(v string) *ModifyDefaultIPSConfigRequest {
+	s.RunMode = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigRequest) SetSourceIp(v string) *ModifyDefaultIPSConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type ModifyDefaultIPSConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDefaultIPSConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDefaultIPSConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDefaultIPSConfigResponseBody) SetRequestId(v string) *ModifyDefaultIPSConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDefaultIPSConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDefaultIPSConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDefaultIPSConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDefaultIPSConfigResponse) SetHeaders(v map[string]*string) *ModifyDefaultIPSConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigResponse) SetStatusCode(v int32) *ModifyDefaultIPSConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDefaultIPSConfigResponse) SetBody(v *ModifyDefaultIPSConfigResponseBody) *ModifyDefaultIPSConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyFirewallV2RoutePolicySwitchRequest struct {
 	FirewallId                        *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
 	Lang                              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -11433,6 +11832,105 @@ func (s *ModifyTrFirewallV2RoutePolicyScopeResponse) SetStatusCode(v int32) *Mod
 }
 
 func (s *ModifyTrFirewallV2RoutePolicyScopeResponse) SetBody(v *ModifyTrFirewallV2RoutePolicyScopeResponseBody) *ModifyTrFirewallV2RoutePolicyScopeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyUserIPSWhitelistRequest struct {
+	Direction *int64  `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ListType  *int64  `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	WhiteType *int64  `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+}
+
+func (s ModifyUserIPSWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserIPSWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserIPSWhitelistRequest) SetDirection(v int64) *ModifyUserIPSWhitelistRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistRequest) SetIpVersion(v string) *ModifyUserIPSWhitelistRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistRequest) SetLang(v string) *ModifyUserIPSWhitelistRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistRequest) SetListType(v int64) *ModifyUserIPSWhitelistRequest {
+	s.ListType = &v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistRequest) SetListValue(v string) *ModifyUserIPSWhitelistRequest {
+	s.ListValue = &v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistRequest) SetSourceIp(v string) *ModifyUserIPSWhitelistRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistRequest) SetWhiteType(v int64) *ModifyUserIPSWhitelistRequest {
+	s.WhiteType = &v
+	return s
+}
+
+type ModifyUserIPSWhitelistResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyUserIPSWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserIPSWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserIPSWhitelistResponseBody) SetRequestId(v string) *ModifyUserIPSWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyUserIPSWhitelistResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyUserIPSWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyUserIPSWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserIPSWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserIPSWhitelistResponse) SetHeaders(v map[string]*string) *ModifyUserIPSWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistResponse) SetStatusCode(v int32) *ModifyUserIPSWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyUserIPSWhitelistResponse) SetBody(v *ModifyUserIPSWhitelistResponseBody) *ModifyUserIPSWhitelistResponse {
 	s.Body = v
 	return s
 }
@@ -14477,6 +14975,54 @@ func (client *Client) DescribeControlPolicy(request *DescribeControlPolicyReques
 	return _result, _err
 }
 
+func (client *Client) DescribeDefaultIPSConfigWithOptions(request *DescribeDefaultIPSConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDefaultIPSConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDefaultIPSConfig"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDefaultIPSConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDefaultIPSConfig(request *DescribeDefaultIPSConfigRequest) (_result *DescribeDefaultIPSConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDefaultIPSConfigResponse{}
+	_body, _err := client.DescribeDefaultIPSConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call the DescribeDomainResolve operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
  * ## Limits
@@ -15630,6 +16176,58 @@ func (client *Client) DescribeUserAssetIPTrafficInfo(request *DescribeUserAssetI
 	return _result, _err
 }
 
+func (client *Client) DescribeUserIPSWhitelistWithOptions(request *DescribeUserIPSWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeUserIPSWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserIPSWhitelist"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserIPSWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserIPSWhitelist(request *DescribeUserIPSWhitelistRequest) (_result *DescribeUserIPSWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserIPSWhitelistResponse{}
+	_body, _err := client.DescribeUserIPSWhitelistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
  * ## Limits
@@ -16715,6 +17313,86 @@ func (client *Client) ModifyControlPolicyPosition(request *ModifyControlPolicyPo
 	return _result, _err
 }
 
+func (client *Client) ModifyDefaultIPSConfigWithOptions(request *ModifyDefaultIPSConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDefaultIPSConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AiRules)) {
+		query["AiRules"] = request.AiRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BasicRules)) {
+		query["BasicRules"] = request.BasicRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CtiRules)) {
+		query["CtiRules"] = request.CtiRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAllPatch)) {
+		query["EnableAllPatch"] = request.EnableAllPatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableDefault)) {
+		query["EnableDefault"] = request.EnableDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PatchRules)) {
+		query["PatchRules"] = request.PatchRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleClass)) {
+		query["RuleClass"] = request.RuleClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunMode)) {
+		query["RunMode"] = request.RunMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDefaultIPSConfig"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDefaultIPSConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDefaultIPSConfig(request *ModifyDefaultIPSConfigRequest) (_result *ModifyDefaultIPSConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDefaultIPSConfigResponse{}
+	_body, _err := client.ModifyDefaultIPSConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyFirewallV2RoutePolicySwitchWithOptions(request *ModifyFirewallV2RoutePolicySwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyFirewallV2RoutePolicySwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17020,6 +17698,78 @@ func (client *Client) ModifyTrFirewallV2RoutePolicyScope(request *ModifyTrFirewa
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTrFirewallV2RoutePolicyScopeResponse{}
 	_body, _err := client.ModifyTrFirewallV2RoutePolicyScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyUserIPSWhitelistWithOptions(request *ModifyUserIPSWhitelistRequest, runtime *util.RuntimeOptions) (_result *ModifyUserIPSWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListType)) {
+		query["ListType"] = request.ListType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListValue)) {
+		query["ListValue"] = request.ListValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhiteType)) {
+		query["WhiteType"] = request.WhiteType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyUserIPSWhitelist"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyUserIPSWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyUserIPSWhitelist(request *ModifyUserIPSWhitelistRequest) (_result *ModifyUserIPSWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyUserIPSWhitelistResponse{}
+	_body, _err := client.ModifyUserIPSWhitelistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
