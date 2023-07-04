@@ -542,6 +542,105 @@ func (s *CheckMobilesCardSupportResponse) SetBody(v *CheckMobilesCardSupportResp
 	return s
 }
 
+type ConversionDataIntlRequest struct {
+	ConversionRate       *string `json:"ConversionRate,omitempty" xml:"ConversionRate,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ReportTime           *int64  `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ConversionDataIntlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConversionDataIntlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConversionDataIntlRequest) SetConversionRate(v string) *ConversionDataIntlRequest {
+	s.ConversionRate = &v
+	return s
+}
+
+func (s *ConversionDataIntlRequest) SetOwnerId(v int64) *ConversionDataIntlRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ConversionDataIntlRequest) SetReportTime(v int64) *ConversionDataIntlRequest {
+	s.ReportTime = &v
+	return s
+}
+
+func (s *ConversionDataIntlRequest) SetResourceOwnerAccount(v string) *ConversionDataIntlRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ConversionDataIntlRequest) SetResourceOwnerId(v int64) *ConversionDataIntlRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ConversionDataIntlResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ConversionDataIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConversionDataIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConversionDataIntlResponseBody) SetCode(v string) *ConversionDataIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ConversionDataIntlResponseBody) SetMessage(v string) *ConversionDataIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ConversionDataIntlResponseBody) SetRequestId(v string) *ConversionDataIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ConversionDataIntlResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConversionDataIntlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConversionDataIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConversionDataIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConversionDataIntlResponse) SetHeaders(v map[string]*string) *ConversionDataIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConversionDataIntlResponse) SetStatusCode(v int32) *ConversionDataIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConversionDataIntlResponse) SetBody(v *ConversionDataIntlResponseBody) *ConversionDataIntlResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCardSmsTemplateRequest struct {
 	Factorys     *string                `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
 	Memo         *string                `json:"Memo,omitempty" xml:"Memo,omitempty"`
@@ -689,6 +788,164 @@ func (s *CreateCardSmsTemplateResponse) SetStatusCode(v int32) *CreateCardSmsTem
 }
 
 func (s *CreateCardSmsTemplateResponse) SetBody(v *CreateCardSmsTemplateResponseBody) *CreateCardSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSmartShortUrlRequest struct {
+	Expiration           *int64  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumbers         *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceUrl            *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+}
+
+func (s CreateSmartShortUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmartShortUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmartShortUrlRequest) SetExpiration(v int64) *CreateSmartShortUrlRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlRequest) SetOwnerId(v int64) *CreateSmartShortUrlRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlRequest) SetPhoneNumbers(v string) *CreateSmartShortUrlRequest {
+	s.PhoneNumbers = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlRequest) SetResourceOwnerAccount(v string) *CreateSmartShortUrlRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlRequest) SetResourceOwnerId(v int64) *CreateSmartShortUrlRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlRequest) SetSourceName(v string) *CreateSmartShortUrlRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlRequest) SetSourceUrl(v string) *CreateSmartShortUrlRequest {
+	s.SourceUrl = &v
+	return s
+}
+
+type CreateSmartShortUrlResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     []*CreateSmartShortUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSmartShortUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmartShortUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmartShortUrlResponseBody) SetCode(v string) *CreateSmartShortUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponseBody) SetMessage(v string) *CreateSmartShortUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponseBody) SetModel(v []*CreateSmartShortUrlResponseBodyModel) *CreateSmartShortUrlResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponseBody) SetRequestId(v string) *CreateSmartShortUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSmartShortUrlResponseBodyModel struct {
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Expiration  *int64  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ShortName   *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
+	ShortUrl    *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+}
+
+func (s CreateSmartShortUrlResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmartShortUrlResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmartShortUrlResponseBodyModel) SetDomain(v string) *CreateSmartShortUrlResponseBodyModel {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponseBodyModel) SetExpiration(v int64) *CreateSmartShortUrlResponseBodyModel {
+	s.Expiration = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponseBodyModel) SetPhoneNumber(v string) *CreateSmartShortUrlResponseBodyModel {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponseBodyModel) SetShortName(v string) *CreateSmartShortUrlResponseBodyModel {
+	s.ShortName = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponseBodyModel) SetShortUrl(v string) *CreateSmartShortUrlResponseBodyModel {
+	s.ShortUrl = &v
+	return s
+}
+
+type CreateSmartShortUrlResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSmartShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSmartShortUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmartShortUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmartShortUrlResponse) SetHeaders(v map[string]*string) *CreateSmartShortUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponse) SetStatusCode(v int32) *CreateSmartShortUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSmartShortUrlResponse) SetBody(v *CreateSmartShortUrlResponseBody) *CreateSmartShortUrlResponse {
 	s.Body = v
 	return s
 }
@@ -2238,6 +2495,253 @@ func (s *QueryMobilesCardSupportResponse) SetStatusCode(v int32) *QueryMobilesCa
 }
 
 func (s *QueryMobilesCardSupportResponse) SetBody(v *QueryMobilesCardSupportResponseBody) *QueryMobilesCardSupportResponse {
+	s.Body = v
+	return s
+}
+
+type QueryPageSmartShortUrlLogRequest struct {
+	ClickState           *int64  `json:"ClickState,omitempty" xml:"ClickState,omitempty"`
+	CreateDateEnd        *int64  `json:"CreateDateEnd,omitempty" xml:"CreateDateEnd,omitempty"`
+	CreateDateStart      *int64  `json:"CreateDateStart,omitempty" xml:"CreateDateStart,omitempty"`
+	EndId                *int64  `json:"EndId,omitempty" xml:"EndId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ShortName            *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
+	ShortUrl             *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+	StartId              *int64  `json:"StartId,omitempty" xml:"StartId,omitempty"`
+}
+
+func (s QueryPageSmartShortUrlLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPageSmartShortUrlLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetClickState(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.ClickState = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetCreateDateEnd(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.CreateDateEnd = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetCreateDateStart(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.CreateDateStart = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetEndId(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.EndId = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetOwnerId(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetPageNo(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetPageSize(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetPhoneNumber(v string) *QueryPageSmartShortUrlLogRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetResourceOwnerAccount(v string) *QueryPageSmartShortUrlLogRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetResourceOwnerId(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetShortName(v string) *QueryPageSmartShortUrlLogRequest {
+	s.ShortName = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetShortUrl(v string) *QueryPageSmartShortUrlLogRequest {
+	s.ShortUrl = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogRequest) SetStartId(v int64) *QueryPageSmartShortUrlLogRequest {
+	s.StartId = &v
+	return s
+}
+
+type QueryPageSmartShortUrlLogResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *QueryPageSmartShortUrlLogResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryPageSmartShortUrlLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPageSmartShortUrlLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBody) SetCode(v string) *QueryPageSmartShortUrlLogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBody) SetMessage(v string) *QueryPageSmartShortUrlLogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBody) SetModel(v *QueryPageSmartShortUrlLogResponseBodyModel) *QueryPageSmartShortUrlLogResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBody) SetRequestId(v string) *QueryPageSmartShortUrlLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBody) SetSuccess(v bool) *QueryPageSmartShortUrlLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryPageSmartShortUrlLogResponseBodyModel struct {
+	List       []*QueryPageSmartShortUrlLogResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo     *int64                                            `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int64                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int64                                            `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s QueryPageSmartShortUrlLogResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPageSmartShortUrlLogResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModel) SetList(v []*QueryPageSmartShortUrlLogResponseBodyModelList) *QueryPageSmartShortUrlLogResponseBodyModel {
+	s.List = v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModel) SetPageNo(v int64) *QueryPageSmartShortUrlLogResponseBodyModel {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModel) SetPageSize(v int64) *QueryPageSmartShortUrlLogResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModel) SetTotalCount(v int64) *QueryPageSmartShortUrlLogResponseBodyModel {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModel) SetTotalPage(v int64) *QueryPageSmartShortUrlLogResponseBodyModel {
+	s.TotalPage = &v
+	return s
+}
+
+type QueryPageSmartShortUrlLogResponseBodyModelList struct {
+	ClickState  *int64  `json:"ClickState,omitempty" xml:"ClickState,omitempty"`
+	ClickTime   *int64  `json:"ClickTime,omitempty" xml:"ClickTime,omitempty"`
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ShortName   *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
+	ShortUrl    *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+}
+
+func (s QueryPageSmartShortUrlLogResponseBodyModelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPageSmartShortUrlLogResponseBodyModelList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModelList) SetClickState(v int64) *QueryPageSmartShortUrlLogResponseBodyModelList {
+	s.ClickState = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModelList) SetClickTime(v int64) *QueryPageSmartShortUrlLogResponseBodyModelList {
+	s.ClickTime = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModelList) SetCreateTime(v int64) *QueryPageSmartShortUrlLogResponseBodyModelList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModelList) SetPhoneNumber(v string) *QueryPageSmartShortUrlLogResponseBodyModelList {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModelList) SetShortName(v string) *QueryPageSmartShortUrlLogResponseBodyModelList {
+	s.ShortName = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponseBodyModelList) SetShortUrl(v string) *QueryPageSmartShortUrlLogResponseBodyModelList {
+	s.ShortUrl = &v
+	return s
+}
+
+type QueryPageSmartShortUrlLogResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryPageSmartShortUrlLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryPageSmartShortUrlLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPageSmartShortUrlLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPageSmartShortUrlLogResponse) SetHeaders(v map[string]*string) *QueryPageSmartShortUrlLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponse) SetStatusCode(v int32) *QueryPageSmartShortUrlLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryPageSmartShortUrlLogResponse) SetBody(v *QueryPageSmartShortUrlLogResponseBody) *QueryPageSmartShortUrlLogResponse {
 	s.Body = v
 	return s
 }
@@ -4153,6 +4657,111 @@ func (s *SendSmsResponse) SetBody(v *SendSmsResponseBody) *SendSmsResponse {
 	return s
 }
 
+type SmsConversionIntlRequest struct {
+	ConversionTime       *int64  `json:"ConversionTime,omitempty" xml:"ConversionTime,omitempty"`
+	Delivered            *bool   `json:"Delivered,omitempty" xml:"Delivered,omitempty"`
+	MessageId            *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s SmsConversionIntlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmsConversionIntlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SmsConversionIntlRequest) SetConversionTime(v int64) *SmsConversionIntlRequest {
+	s.ConversionTime = &v
+	return s
+}
+
+func (s *SmsConversionIntlRequest) SetDelivered(v bool) *SmsConversionIntlRequest {
+	s.Delivered = &v
+	return s
+}
+
+func (s *SmsConversionIntlRequest) SetMessageId(v string) *SmsConversionIntlRequest {
+	s.MessageId = &v
+	return s
+}
+
+func (s *SmsConversionIntlRequest) SetOwnerId(v int64) *SmsConversionIntlRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SmsConversionIntlRequest) SetResourceOwnerAccount(v string) *SmsConversionIntlRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SmsConversionIntlRequest) SetResourceOwnerId(v int64) *SmsConversionIntlRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type SmsConversionIntlResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SmsConversionIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmsConversionIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SmsConversionIntlResponseBody) SetCode(v string) *SmsConversionIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SmsConversionIntlResponseBody) SetMessage(v string) *SmsConversionIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SmsConversionIntlResponseBody) SetRequestId(v string) *SmsConversionIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SmsConversionIntlResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SmsConversionIntlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SmsConversionIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmsConversionIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SmsConversionIntlResponse) SetHeaders(v map[string]*string) *SmsConversionIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SmsConversionIntlResponse) SetStatusCode(v int32) *SmsConversionIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SmsConversionIntlResponse) SetBody(v *SmsConversionIntlResponseBody) *SmsConversionIntlResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProdCode             *string                   `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
@@ -4434,9 +5043,11 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	client.EndpointRule = tea.String("central")
 	client.EndpointMap = map[string]*string{
 		"ap-southeast-1": tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5": tea.String("dysmsapi-xman.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-5": tea.String("dysmsapi.ap-southeast-5.aliyuncs.com"),
 		"cn-beijing":     tea.String("dysmsapi-proxy.cn-beijing.aliyuncs.com"),
 		"cn-hongkong":    tea.String("dysmsapi-xman.cn-hongkong.aliyuncs.com"),
+		"eu-central-1":   tea.String("dysmsapi.eu-central-1.aliyuncs.com"),
+		"us-east-1":      tea.String("dysmsapi.us-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -4725,6 +5336,66 @@ func (client *Client) CheckMobilesCardSupport(request *CheckMobilesCardSupportRe
 	return _result, _err
 }
 
+func (client *Client) ConversionDataIntlWithOptions(request *ConversionDataIntlRequest, runtime *util.RuntimeOptions) (_result *ConversionDataIntlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversionRate)) {
+		query["ConversionRate"] = request.ConversionRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportTime)) {
+		query["ReportTime"] = request.ReportTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConversionDataIntl"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConversionDataIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConversionDataIntl(request *ConversionDataIntlRequest) (_result *ConversionDataIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConversionDataIntlResponse{}
+	_body, _err := client.ConversionDataIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateCardSmsTemplateWithOptions(tmpReq *CreateCardSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateCardSmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4780,6 +5451,74 @@ func (client *Client) CreateCardSmsTemplate(request *CreateCardSmsTemplateReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCardSmsTemplateResponse{}
 	_body, _err := client.CreateCardSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSmartShortUrlWithOptions(request *CreateSmartShortUrlRequest, runtime *util.RuntimeOptions) (_result *CreateSmartShortUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbers)) {
+		query["PhoneNumbers"] = request.PhoneNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
+		query["SourceName"] = request.SourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceUrl)) {
+		query["SourceUrl"] = request.SourceUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSmartShortUrl"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSmartShortUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSmartShortUrl(request *CreateSmartShortUrlRequest) (_result *CreateSmartShortUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSmartShortUrlResponse{}
+	_body, _err := client.CreateSmartShortUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5495,6 +6234,98 @@ func (client *Client) QueryMobilesCardSupport(request *QueryMobilesCardSupportRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMobilesCardSupportResponse{}
 	_body, _err := client.QueryMobilesCardSupportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryPageSmartShortUrlLogWithOptions(request *QueryPageSmartShortUrlLogRequest, runtime *util.RuntimeOptions) (_result *QueryPageSmartShortUrlLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClickState)) {
+		query["ClickState"] = request.ClickState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateDateEnd)) {
+		query["CreateDateEnd"] = request.CreateDateEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateDateStart)) {
+		query["CreateDateStart"] = request.CreateDateStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndId)) {
+		query["EndId"] = request.EndId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShortName)) {
+		query["ShortName"] = request.ShortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShortUrl)) {
+		query["ShortUrl"] = request.ShortUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartId)) {
+		query["StartId"] = request.StartId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPageSmartShortUrlLog"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryPageSmartShortUrlLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryPageSmartShortUrlLog(request *QueryPageSmartShortUrlLogRequest) (_result *QueryPageSmartShortUrlLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryPageSmartShortUrlLogResponse{}
+	_body, _err := client.QueryPageSmartShortUrlLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6271,6 +7102,70 @@ func (client *Client) SendSms(request *SendSmsRequest) (_result *SendSmsResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &SendSmsResponse{}
 	_body, _err := client.SendSmsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SmsConversionIntlWithOptions(request *SmsConversionIntlRequest, runtime *util.RuntimeOptions) (_result *SmsConversionIntlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversionTime)) {
+		query["ConversionTime"] = request.ConversionTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Delivered)) {
+		query["Delivered"] = request.Delivered
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["MessageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SmsConversionIntl"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SmsConversionIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SmsConversionIntl(request *SmsConversionIntlRequest) (_result *SmsConversionIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SmsConversionIntlResponse{}
+	_body, _err := client.SmsConversionIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
