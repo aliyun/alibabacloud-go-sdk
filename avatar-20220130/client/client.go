@@ -3034,9 +3034,10 @@ func (s *SubmitAudioTo3DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitAud
 }
 
 type SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo struct {
-	Angle  *int32  `json:"Angle,omitempty" xml:"Angle,omitempty"`
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Locate *int32  `json:"Locate,omitempty" xml:"Locate,omitempty"`
+	Angle        *int32  `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IndustryCode *string `json:"IndustryCode,omitempty" xml:"IndustryCode,omitempty"`
+	Locate       *int32  `json:"Locate,omitempty" xml:"Locate,omitempty"`
 }
 
 func (s SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) String() string {
@@ -3054,6 +3055,11 @@ func (s *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) SetAngle(v int32) *Sub
 
 func (s *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) SetCode(v string) *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo {
 	s.Code = &v
+	return s
+}
+
+func (s *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo) SetIndustryCode(v string) *SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo {
+	s.IndustryCode = &v
 	return s
 }
 
@@ -3589,12 +3595,16 @@ func (s *SubmitTextTo2DAvatarVideoTaskResponse) SetBody(v *SubmitTextTo2DAvatarV
 }
 
 type SubmitTextTo3DAvatarVideoTaskRequest struct {
-	App        *SubmitTextTo3DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	AvatarInfo *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
-	TenantId   *int64                                          `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Text       *string                                         `json:"Text,omitempty" xml:"Text,omitempty"`
-	Title      *string                                         `json:"Title,omitempty" xml:"Title,omitempty"`
-	VideoInfo  *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
+	App            *SubmitTextTo3DAvatarVideoTaskRequestApp        `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	AudioInfo      *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo  `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty" type:"Struct"`
+	AvatarInfo     *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty" type:"Struct"`
+	Callback       *bool                                           `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams *string                                         `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams      *string                                         `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	TenantId       *int64                                          `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Text           *string                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+	Title          *string                                         `json:"Title,omitempty" xml:"Title,omitempty"`
+	VideoInfo      *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo  `json:"VideoInfo,omitempty" xml:"VideoInfo,omitempty" type:"Struct"`
 }
 
 func (s SubmitTextTo3DAvatarVideoTaskRequest) String() string {
@@ -3610,8 +3620,28 @@ func (s *SubmitTextTo3DAvatarVideoTaskRequest) SetApp(v *SubmitTextTo3DAvatarVid
 	return s
 }
 
+func (s *SubmitTextTo3DAvatarVideoTaskRequest) SetAudioInfo(v *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) *SubmitTextTo3DAvatarVideoTaskRequest {
+	s.AudioInfo = v
+	return s
+}
+
 func (s *SubmitTextTo3DAvatarVideoTaskRequest) SetAvatarInfo(v *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo) *SubmitTextTo3DAvatarVideoTaskRequest {
 	s.AvatarInfo = v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequest) SetCallback(v bool) *SubmitTextTo3DAvatarVideoTaskRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequest) SetCallbackParams(v string) *SubmitTextTo3DAvatarVideoTaskRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequest) SetExtParams(v string) *SubmitTextTo3DAvatarVideoTaskRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -3652,10 +3682,46 @@ func (s *SubmitTextTo3DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitText
 	return s
 }
 
+type SubmitTextTo3DAvatarVideoTaskRequestAudioInfo struct {
+	PitchRate  *int32  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) SetPitchRate(v int32) *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo {
+	s.PitchRate = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) SetSpeechRate(v int32) *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) SetVoice(v string) *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo {
+	s.Voice = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo) SetVolume(v int32) *SubmitTextTo3DAvatarVideoTaskRequestAudioInfo {
+	s.Volume = &v
+	return s
+}
+
 type SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo struct {
-	Angle  *int32  `json:"Angle,omitempty" xml:"Angle,omitempty"`
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Locate *int32  `json:"Locate,omitempty" xml:"Locate,omitempty"`
+	Angle        *int32  `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IndustryCode *string `json:"IndustryCode,omitempty" xml:"IndustryCode,omitempty"`
+	Locate       *int32  `json:"Locate,omitempty" xml:"Locate,omitempty"`
 }
 
 func (s SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo) String() string {
@@ -3673,6 +3739,11 @@ func (s *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo) SetAngle(v int32) *Subm
 
 func (s *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo) SetCode(v string) *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo {
 	s.Code = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo) SetIndustryCode(v string) *SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo {
+	s.IndustryCode = &v
 	return s
 }
 
@@ -3724,7 +3795,11 @@ func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *
 
 type SubmitTextTo3DAvatarVideoTaskShrinkRequest struct {
 	AppShrink        *string `json:"App,omitempty" xml:"App,omitempty"`
+	AudioInfoShrink  *string `json:"AudioInfo,omitempty" xml:"AudioInfo,omitempty"`
 	AvatarInfoShrink *string `json:"AvatarInfo,omitempty" xml:"AvatarInfo,omitempty"`
+	Callback         *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	CallbackParams   *string `json:"CallbackParams,omitempty" xml:"CallbackParams,omitempty"`
+	ExtParams        *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
 	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Text             *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -3744,8 +3819,28 @@ func (s *SubmitTextTo3DAvatarVideoTaskShrinkRequest) SetAppShrink(v string) *Sub
 	return s
 }
 
+func (s *SubmitTextTo3DAvatarVideoTaskShrinkRequest) SetAudioInfoShrink(v string) *SubmitTextTo3DAvatarVideoTaskShrinkRequest {
+	s.AudioInfoShrink = &v
+	return s
+}
+
 func (s *SubmitTextTo3DAvatarVideoTaskShrinkRequest) SetAvatarInfoShrink(v string) *SubmitTextTo3DAvatarVideoTaskShrinkRequest {
 	s.AvatarInfoShrink = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskShrinkRequest) SetCallback(v bool) *SubmitTextTo3DAvatarVideoTaskShrinkRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskShrinkRequest) SetCallbackParams(v string) *SubmitTextTo3DAvatarVideoTaskShrinkRequest {
+	s.CallbackParams = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskShrinkRequest) SetExtParams(v string) *SubmitTextTo3DAvatarVideoTaskShrinkRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -4940,6 +5035,10 @@ func (client *Client) SubmitTextTo3DAvatarVideoTaskWithOptions(tmpReq *SubmitTex
 		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AudioInfo)) {
+		request.AudioInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AudioInfo, tea.String("AudioInfo"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.AvatarInfo)) {
 		request.AvatarInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvatarInfo, tea.String("AvatarInfo"), tea.String("json"))
 	}
@@ -4953,8 +5052,24 @@ func (client *Client) SubmitTextTo3DAvatarVideoTaskWithOptions(tmpReq *SubmitTex
 		query["App"] = request.AppShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AudioInfoShrink)) {
+		query["AudioInfo"] = request.AudioInfoShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AvatarInfoShrink)) {
 		query["AvatarInfo"] = request.AvatarInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Callback)) {
+		query["Callback"] = request.Callback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		query["CallbackParams"] = request.CallbackParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtParams)) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
