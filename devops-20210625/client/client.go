@@ -1636,6 +1636,99 @@ func (s *CreateOAuthTokenResponse) SetBody(v *CreateOAuthTokenResponseBody) *Cre
 	return s
 }
 
+type CreatePipelineRequest struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreatePipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequest) SetContent(v string) *CreatePipelineRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreatePipelineRequest) SetName(v string) *CreatePipelineRequest {
+	s.Name = &v
+	return s
+}
+
+type CreatePipelineResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	PipelinId    *int64  `json:"pipelinId,omitempty" xml:"pipelinId,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreatePipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineResponseBody) SetErrorCode(v string) *CreatePipelineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetErrorMessage(v string) *CreatePipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetPipelinId(v int64) *CreatePipelineResponseBody {
+	s.PipelinId = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetSuccess(v bool) *CreatePipelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePipelineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineResponse) SetHeaders(v map[string]*string) *CreatePipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePipelineResponse) SetStatusCode(v int32) *CreatePipelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreatePipelineResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePipelineGroupRequest struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
@@ -27099,6 +27192,99 @@ func (s *UpdateHostGroupResponse) SetBody(v *UpdateHostGroupResponseBody) *Updat
 	return s
 }
 
+type UpdatePipelineRequest struct {
+	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+}
+
+func (s UpdatePipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequest) SetContent(v string) *UpdatePipelineRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdatePipelineRequest) SetName(v string) *UpdatePipelineRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdatePipelineRequest) SetPipelineId(v string) *UpdatePipelineRequest {
+	s.PipelineId = &v
+	return s
+}
+
+type UpdatePipelineResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdatePipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineResponseBody) SetErrorCode(v string) *UpdatePipelineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdatePipelineResponseBody) SetErrorMessage(v string) *UpdatePipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdatePipelineResponseBody) SetRequestId(v string) *UpdatePipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePipelineResponseBody) SetSuccess(v bool) *UpdatePipelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePipelineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineResponse) SetHeaders(v map[string]*string) *UpdatePipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePipelineResponse) SetStatusCode(v int32) *UpdatePipelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePipelineResponse) SetBody(v *UpdatePipelineResponseBody) *UpdatePipelineResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePipelineBaseInfoRequest struct {
 	EnvId        *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
@@ -31044,6 +31230,56 @@ func (client *Client) CreateOAuthToken(request *CreateOAuthTokenRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &CreateOAuthTokenResponse{}
 	_body, _err := client.CreateOAuthTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineWithOptions(organizationId *string, request *CreatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePipeline"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePipeline(organizationId *string, request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38478,6 +38714,60 @@ func (client *Client) UpdateHostGroup(organizationId *string, id *string, reques
 	headers := make(map[string]*string)
 	_result = &UpdateHostGroupResponse{}
 	_body, _err := client.UpdateHostGroupWithOptions(organizationId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineWithOptions(organizationId *string, request *UpdatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		body["pipelineId"] = request.PipelineId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePipeline"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePipeline(organizationId *string, request *UpdatePipelineRequest) (_result *UpdatePipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePipelineResponse{}
+	_body, _err := client.UpdatePipelineWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
