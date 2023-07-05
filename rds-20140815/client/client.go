@@ -42548,6 +42548,7 @@ func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody
 }
 
 type ModifyDBInstanceSpecRequest struct {
+	AutoUseCoupon   *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	BurstingEnabled *bool   `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The ID of the dedicated cluster.
@@ -42607,6 +42608,11 @@ func (s ModifyDBInstanceSpecRequest) String() string {
 
 func (s ModifyDBInstanceSpecRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetAutoUseCoupon(v bool) *ModifyDBInstanceSpecRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *ModifyDBInstanceSpecRequest) SetBurstingEnabled(v bool) *ModifyDBInstanceSpecRequest {
@@ -42750,6 +42756,7 @@ func (s *ModifyDBInstanceSpecRequestServerlessConfiguration) SetSwitchForce(v bo
 }
 
 type ModifyDBInstanceSpecShrinkRequest struct {
+	AutoUseCoupon   *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	BurstingEnabled *bool   `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The ID of the dedicated cluster.
@@ -42809,6 +42816,11 @@ func (s ModifyDBInstanceSpecShrinkRequest) String() string {
 
 func (s ModifyDBInstanceSpecShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceSpecShrinkRequest) SetAutoUseCoupon(v bool) *ModifyDBInstanceSpecShrinkRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *ModifyDBInstanceSpecShrinkRequest) SetBurstingEnabled(v bool) *ModifyDBInstanceSpecShrinkRequest {
@@ -60567,6 +60579,7 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
 }
 
 /**
+ * @deprecated
  * > This operation is no longer maintained. You can use the [DescribeDiagnosticReportList](~~443006~~) operation of Database Autonomy Service (DAS) to query a list of diagnostic reports.
  * *   The returned diagnosis reports include data collection time, data generation time, and download URLs. The system retains the reports for 15 days.
  * *   This operation is not suitable for instances that run SQL Server 2017 on RDS Cluster Edition.
@@ -60575,6 +60588,7 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeDiagnosticReportListResponse
  */
+// Deprecated
 func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeDiagnosticReportListRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticReportListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60613,6 +60627,7 @@ func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeD
 }
 
 /**
+ * @deprecated
  * > This operation is no longer maintained. You can use the [DescribeDiagnosticReportList](~~443006~~) operation of Database Autonomy Service (DAS) to query a list of diagnostic reports.
  * *   The returned diagnosis reports include data collection time, data generation time, and download URLs. The system retains the reports for 15 days.
  * *   This operation is not suitable for instances that run SQL Server 2017 on RDS Cluster Edition.
@@ -60620,6 +60635,7 @@ func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeD
  * @param request DescribeDiagnosticReportListRequest
  * @return DescribeDiagnosticReportListResponse
  */
+// Deprecated
 func (client *Client) DescribeDiagnosticReportList(request *DescribeDiagnosticReportListRequest) (_result *DescribeDiagnosticReportListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosticReportListResponse{}
@@ -67963,6 +67979,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoUseCoupon)) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BurstingEnabled)) {
 		query["BurstingEnabled"] = request.BurstingEnabled
 	}
