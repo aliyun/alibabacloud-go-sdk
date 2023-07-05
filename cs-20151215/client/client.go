@@ -13862,6 +13862,47 @@ func (s *UntagResourcesRequest) SetTagKeys(v []*string) *UntagResourcesRequest {
 	return s
 }
 
+type UntagResourcesShrinkRequest struct {
+	All               *bool   `json:"all,omitempty" xml:"all,omitempty"`
+	RegionId          *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	ResourceIdsShrink *string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty"`
+	ResourceType      *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	TagKeysShrink     *string `json:"tag_keys,omitempty" xml:"tag_keys,omitempty"`
+}
+
+func (s UntagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesShrinkRequest) SetAll(v bool) *UntagResourcesShrinkRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetRegionId(v string) *UntagResourcesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceIdsShrink(v string) *UntagResourcesShrinkRequest {
+	s.ResourceIdsShrink = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceType(v string) *UntagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetTagKeysShrink(v string) *UntagResourcesShrinkRequest {
+	s.TagKeysShrink = &v
+	return s
+}
+
 type UntagResourcesResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19957,11 +19998,21 @@ func (client *Client) UnInstallClusterAddons(ClusterId *string, request *UnInsta
 	return _result, _err
 }
 
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIds)) {
+		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("resource_ids"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKeys)) {
+		request.TagKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKeys, tea.String("tag_keys"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.All)) {
 		query["all"] = request.All
@@ -19971,16 +20022,16 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		query["region_id"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
-		query["resource_ids"] = request.ResourceIds
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsShrink)) {
+		query["resource_ids"] = request.ResourceIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["resource_type"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
-		query["tag_keys"] = request.TagKeys
+	if !tea.BoolValue(util.IsUnset(request.TagKeysShrink)) {
+		query["tag_keys"] = request.TagKeysShrink
 	}
 
 	req := &openapi.OpenApiRequest{
