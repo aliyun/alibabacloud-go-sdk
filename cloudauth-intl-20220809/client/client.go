@@ -342,6 +342,117 @@ func (s *CheckResultResponse) SetBody(v *CheckResultResponseBody) *CheckResultRe
 	return s
 }
 
+type DeletePictureRequest struct {
+	DeletePicAfterQuery *string `json:"DeletePicAfterQuery,omitempty" xml:"DeletePicAfterQuery,omitempty"`
+	TransactionId       *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s DeletePictureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureRequest) SetDeletePicAfterQuery(v string) *DeletePictureRequest {
+	s.DeletePicAfterQuery = &v
+	return s
+}
+
+func (s *DeletePictureRequest) SetTransactionId(v string) *DeletePictureRequest {
+	s.TransactionId = &v
+	return s
+}
+
+type DeletePictureResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DeletePictureResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s DeletePictureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureResponseBody) SetCode(v string) *DeletePictureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePictureResponseBody) SetMessage(v string) *DeletePictureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePictureResponseBody) SetRequestId(v string) *DeletePictureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePictureResponseBody) SetResult(v *DeletePictureResponseBodyResult) *DeletePictureResponseBody {
+	s.Result = v
+	return s
+}
+
+type DeletePictureResponseBodyResult struct {
+	DeleteResult  *string `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s DeletePictureResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureResponseBodyResult) SetDeleteResult(v string) *DeletePictureResponseBodyResult {
+	s.DeleteResult = &v
+	return s
+}
+
+func (s *DeletePictureResponseBodyResult) SetTransactionId(v string) *DeletePictureResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type DeletePictureResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePictureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePictureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureResponse) SetHeaders(v map[string]*string) *DeletePictureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePictureResponse) SetStatusCode(v int32) *DeletePictureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePictureResponse) SetBody(v *DeletePictureResponseBody) *DeletePictureResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAddressLabelsRequest struct {
 	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	Coin          *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
@@ -1635,6 +1746,7 @@ func (s *FaceLivenessResponse) SetBody(v *FaceLivenessResponseBody) *FaceLivenes
 }
 
 type InitializeRequest struct {
+	Authorize         *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
 	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
@@ -1662,6 +1774,11 @@ func (s InitializeRequest) String() string {
 
 func (s InitializeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InitializeRequest) SetAuthorize(v string) *InitializeRequest {
+	s.Authorize = &v
+	return s
 }
 
 func (s *InitializeRequest) SetCrop(v string) *InitializeRequest {
@@ -2039,6 +2156,54 @@ func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckResultResponse{}
 	_body, _err := client.CheckResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePictureWithOptions(request *DeletePictureRequest, runtime *util.RuntimeOptions) (_result *DeletePictureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletePicAfterQuery)) {
+		query["DeletePicAfterQuery"] = request.DeletePicAfterQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionId)) {
+		query["TransactionId"] = request.TransactionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePicture"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePictureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePicture(request *DeletePictureRequest) (_result *DeletePictureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePictureResponse{}
+	_body, _err := client.DeletePictureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2540,6 +2705,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Authorize)) {
+		query["Authorize"] = request.Authorize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Crop)) {
 		query["Crop"] = request.Crop
 	}
