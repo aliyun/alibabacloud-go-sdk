@@ -2940,7 +2940,7 @@ func (s *WildcardRule) SetReplacement(v string) *WildcardRule {
 }
 
 type CreateAliasRequest struct {
-	Request *CreateAliasInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *CreateAliasInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAliasRequest) String() string {
@@ -2951,8 +2951,8 @@ func (s CreateAliasRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAliasRequest) SetRequest(v *CreateAliasInput) *CreateAliasRequest {
-	s.Request = v
+func (s *CreateAliasRequest) SetBody(v *CreateAliasInput) *CreateAliasRequest {
+	s.Body = v
 	return s
 }
 
@@ -2986,7 +2986,7 @@ func (s *CreateAliasResponse) SetBody(v *Alias) *CreateAliasResponse {
 }
 
 type CreateCustomDomainRequest struct {
-	Request *CreateCustomDomainInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *CreateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCustomDomainRequest) String() string {
@@ -2997,8 +2997,8 @@ func (s CreateCustomDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCustomDomainRequest) SetRequest(v *CreateCustomDomainInput) *CreateCustomDomainRequest {
-	s.Request = v
+func (s *CreateCustomDomainRequest) SetBody(v *CreateCustomDomainInput) *CreateCustomDomainRequest {
+	s.Body = v
 	return s
 }
 
@@ -3032,7 +3032,7 @@ func (s *CreateCustomDomainResponse) SetBody(v *CustomDomain) *CreateCustomDomai
 }
 
 type CreateFunctionRequest struct {
-	Request *CreateFunctionInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *CreateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFunctionRequest) String() string {
@@ -3043,8 +3043,8 @@ func (s CreateFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFunctionRequest) SetRequest(v *CreateFunctionInput) *CreateFunctionRequest {
-	s.Request = v
+func (s *CreateFunctionRequest) SetBody(v *CreateFunctionInput) *CreateFunctionRequest {
+	s.Body = v
 	return s
 }
 
@@ -3078,7 +3078,7 @@ func (s *CreateFunctionResponse) SetBody(v *Function) *CreateFunctionResponse {
 }
 
 type CreateLayerVersionRequest struct {
-	Request *CreateLayerVersionInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *CreateLayerVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLayerVersionRequest) String() string {
@@ -3089,8 +3089,8 @@ func (s CreateLayerVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLayerVersionRequest) SetRequest(v *CreateLayerVersionInput) *CreateLayerVersionRequest {
-	s.Request = v
+func (s *CreateLayerVersionRequest) SetBody(v *CreateLayerVersionInput) *CreateLayerVersionRequest {
+	s.Body = v
 	return s
 }
 
@@ -3124,7 +3124,7 @@ func (s *CreateLayerVersionResponse) SetBody(v *Layer) *CreateLayerVersionRespon
 }
 
 type CreateTriggerRequest struct {
-	Request *CreateTriggerInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *CreateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTriggerRequest) String() string {
@@ -3135,8 +3135,8 @@ func (s CreateTriggerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTriggerRequest) SetRequest(v *CreateTriggerInput) *CreateTriggerRequest {
-	s.Request = v
+func (s *CreateTriggerRequest) SetBody(v *CreateTriggerInput) *CreateTriggerRequest {
+	s.Body = v
 	return s
 }
 
@@ -3844,8 +3844,8 @@ func (s *InvokeFunctionHeaders) SetXFcLogType(v string) *InvokeFunctionHeaders {
 }
 
 type InvokeFunctionRequest struct {
+	Body      io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 	Qualifier *string   `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	Request   io.Reader `json:"request,omitempty" xml:"request,omitempty"`
 }
 
 func (s InvokeFunctionRequest) String() string {
@@ -3856,13 +3856,13 @@ func (s InvokeFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeFunctionRequest) SetQualifier(v string) *InvokeFunctionRequest {
-	s.Qualifier = &v
+func (s *InvokeFunctionRequest) SetBody(v io.Reader) *InvokeFunctionRequest {
+	s.Body = v
 	return s
 }
 
-func (s *InvokeFunctionRequest) SetRequest(v io.Reader) *InvokeFunctionRequest {
-	s.Request = v
+func (s *InvokeFunctionRequest) SetQualifier(v string) *InvokeFunctionRequest {
+	s.Qualifier = &v
 	return s
 }
 
@@ -4586,7 +4586,7 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersOutput) *ListTriggersRespo
 }
 
 type PublishFunctionVersionRequest struct {
-	Request *PublishVersionInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *PublishVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PublishFunctionVersionRequest) String() string {
@@ -4597,8 +4597,8 @@ func (s PublishFunctionVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PublishFunctionVersionRequest) SetRequest(v *PublishVersionInput) *PublishFunctionVersionRequest {
-	s.Request = v
+func (s *PublishFunctionVersionRequest) SetBody(v *PublishVersionInput) *PublishFunctionVersionRequest {
+	s.Body = v
 	return s
 }
 
@@ -4632,8 +4632,8 @@ func (s *PublishFunctionVersionResponse) SetBody(v *Version) *PublishFunctionVer
 }
 
 type PutAsyncInvokeConfigRequest struct {
+	Body      *PutAsyncInvokeConfigInput `json:"body,omitempty" xml:"body,omitempty"`
 	Qualifier *string                    `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	Request   *PutAsyncInvokeConfigInput `json:"request,omitempty" xml:"request,omitempty"`
 }
 
 func (s PutAsyncInvokeConfigRequest) String() string {
@@ -4644,13 +4644,13 @@ func (s PutAsyncInvokeConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PutAsyncInvokeConfigRequest) SetQualifier(v string) *PutAsyncInvokeConfigRequest {
-	s.Qualifier = &v
+func (s *PutAsyncInvokeConfigRequest) SetBody(v *PutAsyncInvokeConfigInput) *PutAsyncInvokeConfigRequest {
+	s.Body = v
 	return s
 }
 
-func (s *PutAsyncInvokeConfigRequest) SetRequest(v *PutAsyncInvokeConfigInput) *PutAsyncInvokeConfigRequest {
-	s.Request = v
+func (s *PutAsyncInvokeConfigRequest) SetQualifier(v string) *PutAsyncInvokeConfigRequest {
+	s.Qualifier = &v
 	return s
 }
 
@@ -4684,7 +4684,7 @@ func (s *PutAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *PutAsyncInvokeCo
 }
 
 type PutConcurrencyConfigRequest struct {
-	Request *PutConcurrencyInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *PutConcurrencyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PutConcurrencyConfigRequest) String() string {
@@ -4695,8 +4695,8 @@ func (s PutConcurrencyConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PutConcurrencyConfigRequest) SetRequest(v *PutConcurrencyInput) *PutConcurrencyConfigRequest {
-	s.Request = v
+func (s *PutConcurrencyConfigRequest) SetBody(v *PutConcurrencyInput) *PutConcurrencyConfigRequest {
+	s.Body = v
 	return s
 }
 
@@ -4770,8 +4770,8 @@ func (s *PutLayerACLResponse) SetStatusCode(v int32) *PutLayerACLResponse {
 }
 
 type PutProvisionConfigRequest struct {
+	Body      *PutProvisionConfigInput `json:"body,omitempty" xml:"body,omitempty"`
 	Qualifier *string                  `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	Request   *PutProvisionConfigInput `json:"request,omitempty" xml:"request,omitempty"`
 }
 
 func (s PutProvisionConfigRequest) String() string {
@@ -4782,13 +4782,13 @@ func (s PutProvisionConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PutProvisionConfigRequest) SetQualifier(v string) *PutProvisionConfigRequest {
-	s.Qualifier = &v
+func (s *PutProvisionConfigRequest) SetBody(v *PutProvisionConfigInput) *PutProvisionConfigRequest {
+	s.Body = v
 	return s
 }
 
-func (s *PutProvisionConfigRequest) SetRequest(v *PutProvisionConfigInput) *PutProvisionConfigRequest {
-	s.Request = v
+func (s *PutProvisionConfigRequest) SetQualifier(v string) *PutProvisionConfigRequest {
+	s.Qualifier = &v
 	return s
 }
 
@@ -4822,7 +4822,7 @@ func (s *PutProvisionConfigResponse) SetBody(v *ProvisionConfig) *PutProvisionCo
 }
 
 type TagResourceRequest struct {
-	Request *TagResourceInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *TagResourceInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourceRequest) String() string {
@@ -4833,8 +4833,8 @@ func (s TagResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TagResourceRequest) SetRequest(v *TagResourceInput) *TagResourceRequest {
-	s.Request = v
+func (s *TagResourceRequest) SetBody(v *TagResourceInput) *TagResourceRequest {
+	s.Body = v
 	return s
 }
 
@@ -4920,7 +4920,7 @@ func (s *UntagResourceResponse) SetStatusCode(v int32) *UntagResourceResponse {
 }
 
 type UpdateAliasRequest struct {
-	Request *UpdateAliasInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *UpdateAliasInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAliasRequest) String() string {
@@ -4931,8 +4931,8 @@ func (s UpdateAliasRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAliasRequest) SetRequest(v *UpdateAliasInput) *UpdateAliasRequest {
-	s.Request = v
+func (s *UpdateAliasRequest) SetBody(v *UpdateAliasInput) *UpdateAliasRequest {
+	s.Body = v
 	return s
 }
 
@@ -4966,7 +4966,7 @@ func (s *UpdateAliasResponse) SetBody(v *Alias) *UpdateAliasResponse {
 }
 
 type UpdateCustomDomainRequest struct {
-	Request *UpdateCustomDomainInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *UpdateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCustomDomainRequest) String() string {
@@ -4977,8 +4977,8 @@ func (s UpdateCustomDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCustomDomainRequest) SetRequest(v *UpdateCustomDomainInput) *UpdateCustomDomainRequest {
-	s.Request = v
+func (s *UpdateCustomDomainRequest) SetBody(v *UpdateCustomDomainInput) *UpdateCustomDomainRequest {
+	s.Body = v
 	return s
 }
 
@@ -5012,7 +5012,7 @@ func (s *UpdateCustomDomainResponse) SetBody(v *CustomDomain) *UpdateCustomDomai
 }
 
 type UpdateFunctionRequest struct {
-	Request *UpdateFunctionInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *UpdateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFunctionRequest) String() string {
@@ -5023,8 +5023,8 @@ func (s UpdateFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateFunctionRequest) SetRequest(v *UpdateFunctionInput) *UpdateFunctionRequest {
-	s.Request = v
+func (s *UpdateFunctionRequest) SetBody(v *UpdateFunctionInput) *UpdateFunctionRequest {
+	s.Body = v
 	return s
 }
 
@@ -5058,7 +5058,7 @@ func (s *UpdateFunctionResponse) SetBody(v *Function) *UpdateFunctionResponse {
 }
 
 type UpdateTriggerRequest struct {
-	Request *UpdateTriggerInput `json:"request,omitempty" xml:"request,omitempty"`
+	Body *UpdateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTriggerRequest) String() string {
@@ -5069,8 +5069,8 @@ func (s UpdateTriggerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateTriggerRequest) SetRequest(v *UpdateTriggerInput) *UpdateTriggerRequest {
-	s.Request = v
+func (s *UpdateTriggerRequest) SetBody(v *UpdateTriggerInput) *UpdateTriggerRequest {
+	s.Body = v
 	return s
 }
 
@@ -5165,7 +5165,7 @@ func (client *Client) CreateAliasWithOptions(functionName *string, request *Crea
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAlias"),
@@ -5220,7 +5220,7 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCustomDomain"),
@@ -5275,7 +5275,7 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateFunction"),
@@ -5330,7 +5330,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateLayerVersion"),
@@ -5385,7 +5385,7 @@ func (client *Client) CreateTriggerWithOptions(functionName *string, request *Cr
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTrigger"),
@@ -6503,8 +6503,8 @@ func (client *Client) InvokeFunctionWithOptions(functionName *string, request *I
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
-		Body:    request.Request,
-		Stream:  request.Request,
+		Body:    request.Body,
+		Stream:  request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InvokeFunction"),
@@ -7404,7 +7404,7 @@ func (client *Client) PublishFunctionVersionWithOptions(functionName *string, re
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PublishFunctionVersion"),
@@ -7465,7 +7465,7 @@ func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, requ
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutAsyncInvokeConfig"),
@@ -7520,7 +7520,7 @@ func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, requ
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutConcurrencyConfig"),
@@ -7641,7 +7641,7 @@ func (client *Client) PutProvisionConfigWithOptions(functionName *string, reques
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutProvisionConfig"),
@@ -7696,7 +7696,7 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResource"),
@@ -7819,7 +7819,7 @@ func (client *Client) UpdateAliasWithOptions(functionName *string, aliasName *st
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAlias"),
@@ -7874,7 +7874,7 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCustomDomain"),
@@ -7929,7 +7929,7 @@ func (client *Client) UpdateFunctionWithOptions(functionName *string, request *U
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateFunction"),
@@ -7984,7 +7984,7 @@ func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName
 	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Request),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTrigger"),
