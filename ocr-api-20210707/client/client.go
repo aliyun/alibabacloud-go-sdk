@@ -3740,8 +3740,9 @@ func (s *RecognizeInternationalIdcardResponse) SetBody(v *RecognizeInternational
 }
 
 type RecognizeInvoiceRequest struct {
-	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	PageNo *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	Url    *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body   io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInvoiceRequest) String() string {
@@ -3750,6 +3751,11 @@ func (s RecognizeInvoiceRequest) String() string {
 
 func (s RecognizeInvoiceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeInvoiceRequest) SetPageNo(v int32) *RecognizeInvoiceRequest {
+	s.PageNo = &v
+	return s
 }
 
 func (s *RecognizeInvoiceRequest) SetUrl(v string) *RecognizeInvoiceRequest {
@@ -4316,8 +4322,9 @@ func (s *RecognizeMedicalDeviceProduceLicenseResponse) SetBody(v *RecognizeMedic
 }
 
 type RecognizeMixedInvoicesRequest struct {
-	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	PageNo *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	Url    *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body   io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMixedInvoicesRequest) String() string {
@@ -4326,6 +4333,11 @@ func (s RecognizeMixedInvoicesRequest) String() string {
 
 func (s RecognizeMixedInvoicesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeMixedInvoicesRequest) SetPageNo(v int32) *RecognizeMixedInvoicesRequest {
+	s.PageNo = &v
+	return s
 }
 
 func (s *RecognizeMixedInvoicesRequest) SetUrl(v string) *RecognizeMixedInvoicesRequest {
@@ -8870,6 +8882,10 @@ func (client *Client) RecognizeInvoiceWithOptions(request *RecognizeInvoiceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
 	}
@@ -9182,6 +9198,10 @@ func (client *Client) RecognizeMixedInvoicesWithOptions(request *RecognizeMixedI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
 	}
