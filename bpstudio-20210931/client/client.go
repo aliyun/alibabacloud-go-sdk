@@ -13,11 +13,11 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
-	// rg-aek2ajbjoloa23q
+	// The ID of the new resource group.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// P7RMVSVM9LOVYQOM
+	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// APPLICATION
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -45,10 +45,13 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// No business data is returned for this parameter.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -118,7 +121,10 @@ type CreateApplicationRequest struct {
 	Configuration map[string]*string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
 	Instances []*CreateApplicationRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The name of the application that you want to create.
+	// The name of the application.
+	//
+	// *   The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-listapplication) operation to query the existing applications.
+	// *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with [http:// or https://. The name can contain letters, digits, underscores (\_), and hyphens (-).](http://https://。、（\_）、（-）。)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group to which the application you want to create belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -217,7 +223,10 @@ type CreateApplicationShrinkRequest struct {
 	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	// The name of the application that you want to create.
+	// The name of the application.
+	//
+	// *   The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-listapplication) operation to query the existing applications.
+	// *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with [http:// or https://. The name can contain letters, digits, underscores (\_), and hyphens (-).](http://https://。、（\_）、（-）。)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group to which the application you want to create belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -526,7 +535,7 @@ type ExecuteOperationASyncRequest struct {
 	Attributes      map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	Operation       *string            `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	ResourceGroupId *string            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The HTTP status code. A value of 200 indicates that the request is successful, and other values indicate that the request fails.
+	// The type of the service. If you want to perform operations on an Elastic Compute Service (ECS) instance, set ServiceType to ecs.
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
@@ -562,7 +571,7 @@ type ExecuteOperationASyncShrinkRequest struct {
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	Operation        *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The HTTP status code. A value of 200 indicates that the request is successful, and other values indicate that the request fails.
+	// The type of the service. If you want to perform operations on an Elastic Compute Service (ECS) instance, set ServiceType to ecs.
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
@@ -595,7 +604,8 @@ func (s *ExecuteOperationASyncShrinkRequest) SetServiceType(v string) *ExecuteOp
 }
 
 type ExecuteOperationASyncResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the operation.
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -685,8 +695,8 @@ func (s *GetApplicationRequest) SetResourceGroupId(v string) *GetApplicationRequ
 
 type GetApplicationResponseBody struct {
 	// The deployment result.
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the resource group.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the application.
 	Data *GetApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Possible application states:
 	//
@@ -727,7 +737,7 @@ func (s GetApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetApplicationResponseBody) SetCode(v int32) *GetApplicationResponseBody {
+func (s *GetApplicationResponseBody) SetCode(v string) *GetApplicationResponseBody {
 	s.Code = &v
 	return s
 }
@@ -758,11 +768,11 @@ type GetApplicationResponseBodyData struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The resource type.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The ID of the request.
+	// The URL of the image in the database.
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	// The URL of the image in the database.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the template associated with the application.
+	// The billing results.
 	PriceList []*GetApplicationResponseBodyDataPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
 	// 1411182597819805/topo-MCEXDI5EL2OM10NY.json
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -927,8 +937,12 @@ type GetApplicationResponseBodyDataPriceList struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The time when the application was created.
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// The total price.
+	// The instance type. This parameter indicates the information about the instance type. For example, 192.168.0.0/16 may be returned for a virtual private cloud (VPC), ecs.g5.large may be returned for an Elastic Compute Service (ECS) instance, and slb.s1.small may be returned for a Server Load Balancer (SLB) instance. If the resource does not have a specific type, an empty value is returned.
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// 创建类型：
+	// </br>新建-1
+	// </br>导入-2
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetApplicationResponseBodyDataPriceList) String() string {
@@ -1001,6 +1015,11 @@ func (s *GetApplicationResponseBodyDataPriceList) SetResourceCode(v string) *Get
 
 func (s *GetApplicationResponseBodyDataPriceList) SetSpecification(v string) *GetApplicationResponseBodyDataPriceList {
 	s.Specification = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPriceList) SetType(v string) *GetApplicationResponseBodyDataPriceList {
+	s.Type = &v
 	return s
 }
 
@@ -1128,7 +1147,7 @@ func (s *GetExecuteOperationResultRequest) SetResourceGroupId(v string) *GetExec
 type GetExecuteOperationResultResponseBody struct {
 	// The HTTP status code. A value of 200 indicates that the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the operation.
+	// The detailed result of the queried operation.
 	Data *GetExecuteOperationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -1262,7 +1281,8 @@ func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the template.
 	Data      *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1350,14 +1370,10 @@ func (s *GetTemplateResponseBodyData) SetVariables(v []*GetTemplateResponseBodyD
 }
 
 type GetTemplateResponseBodyDataVariables struct {
-	// 变量名
-	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// 变量类型
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// 默认值
+	Attribute    *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	DataType     *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// 变量值
-	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+	Variable     *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
 }
 
 func (s GetTemplateResponseBodyDataVariables) String() string {
@@ -1477,7 +1493,7 @@ func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
 type GetTokenResponseBodyData struct {
 	// The AccessKey ID that is used to access OSS.
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The AccessKey secret that is used to access OSS.
+	// The AccessKey secret used to access OSS.
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	// The OSS bucket that is used to store the architecture image.
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
@@ -1564,7 +1580,8 @@ type ListApplicationRequest struct {
 	NextToken       *int32  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OrderType       *int64  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the applications to be returned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListApplicationRequest) String() string {
@@ -1606,7 +1623,8 @@ func (s *ListApplicationRequest) SetStatus(v string) *ListApplicationRequest {
 }
 
 type ListApplicationResponseBody struct {
-	Code       *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the applications.
 	Data       []*ListApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	NextToken  *int32                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -1658,7 +1676,8 @@ type ListApplicationResponseBodyData struct {
 	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the application.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListApplicationResponseBodyData) String() string {
@@ -1927,16 +1946,19 @@ type ListTemplateRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The number of the page to return.
 	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The criterion by which the templates are sorted. Valid values:
+	// The criterion by which the returned templates are sorted. Valid values:
 	//
-	// *   1: modification time
-	// *   2: creation time
+	// *   1: The templates are sorted by the time when they are updated.
+	// *   2: The templates are sorted by the time when they are created.
+	// *   3: The templates are sorted by the system.
+	// *   4: The templates are sorted by the number of times that they are used.
+	// *   If you specify an integer other than 1, 2, 3, and 4 or do not specify any value, the templates are sorted by the system.
 	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag of the template.
+	// The tag that you want to use to query templates.
 	TagList *int32 `json:"TagList,omitempty" xml:"TagList,omitempty"`
-	// The type of the template.
+	// The type of the templates to be returned. Valid values: public and private
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2917,6 +2939,13 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+ *
+ * @param request DeleteApplicationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteApplicationResponse
+ */
 func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2954,6 +2983,12 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 	return _result, _err
 }
 
+/**
+ * Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+ *
+ * @param request DeleteApplicationRequest
+ * @return DeleteApplicationResponse
+ */
 func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationResponse{}
