@@ -1,3 +1,7 @@
+2023-07-06 Version: v3.0.0
+- Add OtsBackup APIs.
+- Add Policy APIs.
+
 2023-02-13 Version: v2.0.1
 - SearchHistoricalSnapshots.
 
