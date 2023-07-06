@@ -496,6 +496,7 @@ func (s *UsersDetailsVO) SetUserPublicKeyPem(v string) *UsersDetailsVO {
 }
 
 type AddDesensitizationRuleRequest struct {
+	// Algorithm parameters.
 	FunctionParams []map[string]*string `json:"FunctionParams,omitempty" xml:"FunctionParams,omitempty" type:"Repeated"`
 	// The type of the masking algorithm.
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
@@ -965,9 +966,9 @@ func (s *AddTaskFlowEdgesRequest) SetTid(v int64) *AddTaskFlowEdgesRequest {
 }
 
 type AddTaskFlowEdgesRequestEdges struct {
-	// The error code returned if the request failed.
+	// The ID of the node where the end node of the edge is located.
 	NodeEnd *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// The ID of the node where the start node of the edge is located.
 	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
 }
 
@@ -1024,13 +1025,19 @@ func (s *AddTaskFlowEdgesShrinkRequest) SetTid(v int64) *AddTaskFlowEdgesShrinkR
 }
 
 type AddTaskFlowEdgesResponseBody struct {
+	// The list of task flow edge IDs.
 	EdgeIds *AddTaskFlowEdgesResponseBodyEdgeIds `json:"EdgeIds,omitempty" xml:"EdgeIds,omitempty" type:"Struct"`
-	// AddTaskFlowEdges
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Adds directed edges for an existing task node.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddTaskFlowEdgesResponseBody) String() string {
@@ -1351,6 +1358,8 @@ func (s *AnalyzeSQLLineageResponse) SetBody(v *AnalyzeSQLLineageResponseBody) *A
 }
 
 type ApproveOrderRequest struct {
+	ApprovalNodeId  *int64  `json:"ApprovalNodeId,omitempty" xml:"ApprovalNodeId,omitempty"`
+	ApprovalNodePos *string `json:"ApprovalNodePos,omitempty" xml:"ApprovalNodePos,omitempty"`
 	// The action that you want to perform on the ticket. Valid values:
 	//
 	// *   AGREE: approve
@@ -1358,7 +1367,9 @@ type ApproveOrderRequest struct {
 	// *   REJECT: reject
 	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	// The description of the ticket.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	NewApprover *int64  `json:"NewApprover,omitempty" xml:"NewApprover,omitempty"`
+	OldApprover *int64  `json:"OldApprover,omitempty" xml:"OldApprover,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	// The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to obtain the ID of the approval process.
@@ -1373,6 +1384,16 @@ func (s ApproveOrderRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ApproveOrderRequest) SetApprovalNodeId(v int64) *ApproveOrderRequest {
+	s.ApprovalNodeId = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetApprovalNodePos(v string) *ApproveOrderRequest {
+	s.ApprovalNodePos = &v
+	return s
+}
+
 func (s *ApproveOrderRequest) SetApprovalType(v string) *ApproveOrderRequest {
 	s.ApprovalType = &v
 	return s
@@ -1380,6 +1401,16 @@ func (s *ApproveOrderRequest) SetApprovalType(v string) *ApproveOrderRequest {
 
 func (s *ApproveOrderRequest) SetComment(v string) *ApproveOrderRequest {
 	s.Comment = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetNewApprover(v int64) *ApproveOrderRequest {
+	s.NewApprover = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetOldApprover(v int64) *ApproveOrderRequest {
+	s.OldApprover = &v
 	return s
 }
 
@@ -1477,7 +1508,8 @@ type BackFillRequest struct {
 	// The end date of the date range for the data to be backfilled. This parameter is required if you specify a date range for data backfill.
 	BackFillDateEnd *string `json:"BackFillDateEnd,omitempty" xml:"BackFillDateEnd,omitempty"`
 	// The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
-	DagId         *int64   `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// Filter condition, which specifies the list of node IDs in the task flow that do not need to supplement data.
 	FilterNodeIds []*int64 `json:"FilterNodeIds,omitempty" xml:"FilterNodeIds,omitempty" type:"Repeated"`
 	// The ID of the historical task flow.
 	HistoryDagId *int64 `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
@@ -1569,7 +1601,8 @@ type BackFillShrinkRequest struct {
 	// The end date of the date range for the data to be backfilled. This parameter is required if you specify a date range for data backfill.
 	BackFillDateEnd *string `json:"BackFillDateEnd,omitempty" xml:"BackFillDateEnd,omitempty"`
 	// The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
-	DagId               *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// Filter condition, which specifies the list of node IDs in the task flow that do not need to supplement data.
 	FilterNodeIdsShrink *string `json:"FilterNodeIds,omitempty" xml:"FilterNodeIds,omitempty"`
 	// The ID of the historical task flow.
 	HistoryDagId *int64 `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
@@ -7896,9 +7929,9 @@ func (s *DeleteTaskFlowEdgesByConditionResponse) SetBody(v *DeleteTaskFlowEdgesB
 }
 
 type DeleteUserRequest struct {
-	// The tenant ID.
+	// The ID of the tenant.
 	//
-	// > To view the tenant ID, log on to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	// >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://www.alibabacloud.com/help/en/data-management-service/latest/manage-dms-tenants) topic.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	// The unique ID (UID) of Alibaba Cloud account to delete.
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -7927,10 +7960,12 @@ type DeleteUserResponseBody struct {
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// *   **true**: The account was deleted.
-	// *   **false**: The account failed to be deleted.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10565,6 +10600,7 @@ type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData 
 	NextFireTimeResult *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataNextFireTimeResult `json:"NextFireTimeResult,omitempty" xml:"NextFireTimeResult,omitempty" type:"Struct"`
 	PageIndex          *int64                                                                                        `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	PageSize           *int64                                                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TempTableNameMap   map[string]interface{}                                                                        `json:"TempTableNameMap,omitempty" xml:"TempTableNameMap,omitempty"`
 }
 
 func (s GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData) String() string {
@@ -10607,6 +10643,11 @@ func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraD
 
 func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData) SetPageSize(v int64) *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData) SetTempTableNameMap(v map[string]interface{}) *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData {
+	s.TempTableNameMap = v
 	return s
 }
 
@@ -12157,8 +12198,10 @@ func (s *GetDataCronClearConfigRequest) SetTid(v int64) *GetDataCronClearConfigR
 }
 
 type GetDataCronClearConfigResponseBody struct {
+	// Data configuration.
 	DataCronClearConfig *GetDataCronClearConfigResponseBodyDataCronClearConfig `json:"DataCronClearConfig,omitempty" xml:"DataCronClearConfig,omitempty" type:"Struct"`
-	ErrorCode           *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
@@ -13801,7 +13844,8 @@ type GetDatabaseResponseBodyDatabase struct {
 	// *   **stag**: STAG environment
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The endpoint that is used to connect to the database.
-	Host          *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The alias of the instance.
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -14452,7 +14496,12 @@ type GetInstanceResponseBodyInstance struct {
 	QueryTimeout *int32 `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
 	// The ID of the security rule set for the database instance.
 	SafeRuleId *string `json:"SafeRuleId,omitempty" xml:"SafeRuleId,omitempty"`
-	SellSitd   *string `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
+	// Whether sensitive data protection is enabled.  Valid values:
+	//
+	// - **true**: Enable.
+	//
+	// - **false**: Close.
+	SellSitd *string `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
 	// The SID of the database instance.
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	// The control mode of the database instance.
@@ -15970,6 +16019,7 @@ func (s *GetOnlineDDLProgressResponse) SetBody(v *GetOnlineDDLProgressResponseBo
 }
 
 type GetOpLogRequest struct {
+	// DatabaseName.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The end of the time range to query. Specify the time in the yyyy-MM-DD HH:mm:ss format.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -16011,7 +16061,8 @@ type GetOpLogRequest struct {
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-DD HH:mm:ss format.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// UserNick.
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
@@ -29120,7 +29171,8 @@ type ListSQLReviewOriginSQLResponseBodyOriginSQLList struct {
 	// The SQL statement.
 	SQLContent *string `json:"SQLContent,omitempty" xml:"SQLContent,omitempty"`
 	// The ID of the SQL statement.
-	SQLId   *int64  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	SQLId *int64 `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	// SQLName.
 	SQLName *string `json:"SQLName,omitempty" xml:"SQLName,omitempty"`
 	// The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://icms.alibaba-inc.com/content/dms/doc?l=1\&m=61777\&n=2712723\&spm) operation to query the details of optimization suggestions based on the key.
 	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
@@ -31031,7 +31083,7 @@ type ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator struct {
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	// The alias of the user.
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// 用户ID。
+	// userId.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -31278,7 +31330,20 @@ type ListTaskFlowInstanceRequest struct {
 	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
 	// The end of the time range to query the execution records of the task flow. Specify the time in the yyyy-MM-DD format.
 	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The running status of the task node. Valid values:
+	//
+	// - **0**: Waiting for scheduling
+	//
+	// - **1**: Running
+	//
+	// - **2**: Suspend
+	//
+	// - **3**: Failed to run
+	//
+	// - **4**: Run successfully
+	//
+	// - **5**: Completed
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	// The mode in which the task flow is triggered. Valid values:
@@ -31286,7 +31351,12 @@ type ListTaskFlowInstanceRequest struct {
 	// *   **0**: The task flow is automatically triggered based on periodic scheduling.
 	// *   **1**: The task flow is manually triggered.
 	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	UseBizDate  *bool  `json:"UseBizDate,omitempty" xml:"UseBizDate,omitempty"`
+	// Adjust filter conditions:
+	//
+	// - true: StartTimeBegin and StartTimeEnd are the time range for filtering services.
+	//
+	// - false: StartTimeBegin and StartTimeEnd are the time range for the task to run.
+	UseBizDate *bool `json:"UseBizDate,omitempty" xml:"UseBizDate,omitempty"`
 }
 
 func (s ListTaskFlowInstanceRequest) String() string {
@@ -31421,7 +31491,8 @@ type ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance struct {
 	// The ID of the task flow.
 	DagId *string `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	// The name of the task flow.
-	DagName    *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	// The version of the task flow.
 	DagVersion *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
 	// The time when the execution of the task flow was complete. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -31446,8 +31517,9 @@ type ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance struct {
 	//
 	// *   **0**: The task flow is automatically triggered based on periodic scheduling.
 	// *   **1**: The task flow is manually triggered.
-	TriggerType *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	StartTime   *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The time when the execution of the task flow was start. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) String() string {
@@ -31695,11 +31767,13 @@ func (s *ListTaskFlowTimeVariablesResponse) SetBody(v *ListTaskFlowTimeVariables
 }
 
 type ListTaskFlowsByPageRequest struct {
+	// Filter condition, task flow ID list.
 	DagIdList []*int64 `json:"DagIdList,omitempty" xml:"DagIdList,omitempty" type:"Repeated"`
 	// The number of the page to return.
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// The number of entries to return on each page.
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filter condition, application scenario ID.
 	ScenarioId *int64 `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
 	// The keyword that is used to search for task flow names.
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
@@ -31748,11 +31822,13 @@ func (s *ListTaskFlowsByPageRequest) SetTid(v int64) *ListTaskFlowsByPageRequest
 }
 
 type ListTaskFlowsByPageShrinkRequest struct {
+	// Filter condition, task flow ID list.
 	DagIdListShrink *string `json:"DagIdList,omitempty" xml:"DagIdList,omitempty"`
 	// The number of the page to return.
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// The number of entries to return on each page.
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filter condition, application scenario ID.
 	ScenarioId *int64 `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
 	// The keyword that is used to search for task flow names.
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
@@ -31878,13 +31954,23 @@ type ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow struct {
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The username of the user who created the task flow.
 	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
-	CronBeginDate   *string `json:"CronBeginDate,omitempty" xml:"CronBeginDate,omitempty"`
-	CronEndDate     *string `json:"CronEndDate,omitempty" xml:"CronEndDate,omitempty"`
-	CronStr         *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
-	CronSwitch      *bool   `json:"CronSwitch,omitempty" xml:"CronSwitch,omitempty"`
-	CronType        *int32  `json:"CronType,omitempty" xml:"CronType,omitempty"`
+	// The start time of scheduled scheduling. The task flow is not scheduled before this point in time.
+	CronBeginDate *string `json:"CronBeginDate,omitempty" xml:"CronBeginDate,omitempty"`
+	// The end time of scheduled scheduling. The task flow is not scheduled after this point in time.
+	CronEndDate *string `json:"CronEndDate,omitempty" xml:"CronEndDate,omitempty"`
+	// Scheduled Cron.
+	CronStr *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
+	// Whether to enable scheduled scheduling.
+	CronSwitch *bool `json:"CronSwitch,omitempty" xml:"CronSwitch,omitempty"`
+	// Scheduling cycle type. Valid values:
+	// - **2**: Hourly scheduling
+	// - **3**: Daily scheduling
+	// - **4**: Weekly scheduling
+	// - **5**: Monthly scheduling
+	CronType *int32 `json:"CronType,omitempty" xml:"CronType,omitempty"`
 	// The name of the task flow.
-	DagName    *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	// The user ID of the task flow owner.
 	DagOwnerId *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
 	// The username of the owner of the task flow.
 	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
@@ -31902,16 +31988,22 @@ type ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow struct {
 	LatestInstanceStatus *int32 `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
 	// The time when the last execution record was created.
 	LatestInstanceTime *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
-	ScenarioId         *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	ScheduleParam      *string `json:"ScheduleParam,omitempty" xml:"ScheduleParam,omitempty"`
+	// The ID of the application scenario.
+	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Event scheduling configuration, JSON string format.
+	ScheduleParam *string `json:"ScheduleParam,omitempty" xml:"ScheduleParam,omitempty"`
 	// The status of the task flow. Valid values:
 	//
 	// *   **0**: invalid
 	// *   **1**: scheduling disabled
 	// *   **2**: waiting to be scheduled
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimeZoneId  *string `json:"TimeZoneId,omitempty" xml:"TimeZoneId,omitempty"`
-	TriggerType *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Time zone setting. Default value: East 8(Asia/Shanghai).
+	TimeZoneId *string `json:"TimeZoneId,omitempty" xml:"TimeZoneId,omitempty"`
+	// The trigger type. Valid values:
+	// - **0**: Periodic scheduling
+	// - **1**: Run manually
+	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
 func (s ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) String() string {
@@ -40475,7 +40567,7 @@ type UpdateUserRequest struct {
 	MaxResultCount *int64 `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
 	// The DingTalk ID or mobile number of the user.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The roles that the user assumes. For more information about the valid values, see the Request parameters section in the [RegisterUser](~~141565~~) topic.
+	// The roles that the user assumes. For more information about the valid values, see the Request parameters section in the [UpdateUser](~~465812~~) topic.
 	RoleNames *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
 	// The ID of the tenant.
 	//
@@ -40854,7 +40946,9 @@ func (client *Client) AddLogicTableRouteConfig(request *AddLogicTableRouteConfig
 }
 
 /**
- * The ID of the node where the end node of the edge is located.
+ * When you add directed edges for a task node, take note of the following limits:
+ * 1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+ * 2. After a backward edge is added, the DAG does not contain loops.
  *
  * @param tmpReq AddTaskFlowEdgesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40908,7 +41002,9 @@ func (client *Client) AddTaskFlowEdgesWithOptions(tmpReq *AddTaskFlowEdgesReques
 }
 
 /**
- * The ID of the node where the end node of the edge is located.
+ * When you add directed edges for a task node, take note of the following limits:
+ * 1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+ * 2. After a backward edge is added, the DAG does not contain loops.
  *
  * @param request AddTaskFlowEdgesRequest
  * @return AddTaskFlowEdgesResponse
@@ -40982,12 +41078,28 @@ func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApprovalNodeId)) {
+		query["ApprovalNodeId"] = request.ApprovalNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApprovalNodePos)) {
+		query["ApprovalNodePos"] = request.ApprovalNodePos
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ApprovalType)) {
 		query["ApprovalType"] = request.ApprovalType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Comment)) {
 		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewApprover)) {
+		query["NewApprover"] = request.NewApprover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OldApprover)) {
+		query["OldApprover"] = request.OldApprover
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
@@ -43599,8 +43711,8 @@ func (client *Client) DeleteTaskFlowEdgesByCondition(request *DeleteTaskFlowEdge
 }
 
 /**
- * This operation corresponds to the feature of deleting a user on the Users page in the Data Management (DMS) console. An administrator of DMS Enterprise can call this operation to delete an Alibaba Cloud account that is no longer used in DMS Enterprise. After an Alibaba Cloud account is deleted, the permissions that are granted to the Alibaba Cloud account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled.
- * > This operation only removes the relationship between an Alibaba Cloud account and DMS Enterprise. The Alibaba Cloud account is not deleted. After you delete an Alibaba Cloud account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
+ * The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+ * >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
  *
  * @param request DeleteUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43644,8 +43756,8 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 }
 
 /**
- * This operation corresponds to the feature of deleting a user on the Users page in the Data Management (DMS) console. An administrator of DMS Enterprise can call this operation to delete an Alibaba Cloud account that is no longer used in DMS Enterprise. After an Alibaba Cloud account is deleted, the permissions that are granted to the Alibaba Cloud account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled.
- * > This operation only removes the relationship between an Alibaba Cloud account and DMS Enterprise. The Alibaba Cloud account is not deleted. After you delete an Alibaba Cloud account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
+ * The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+ * >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
  *
  * @param request DeleteUserRequest
  * @return DeleteUserResponse
