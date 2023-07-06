@@ -1,3 +1,7 @@
+2023-07-06 Version: v3.0.2
+- Update Sdk.
+- Add ForceTrans parameters to ModifyInstanceSpec, ModifyInstanceCapacity, DeleteShardingNode,AddShardingNode.
+
 2023-05-23 Version: v3.0.1
 - Update Golang Sdk.
 
