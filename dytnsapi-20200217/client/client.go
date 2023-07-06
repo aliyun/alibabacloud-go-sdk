@@ -150,7 +150,7 @@ type DescribePhoneNumberAnalysisRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	NumberType           *int32  `json:"NumberType,omitempty" xml:"NumberType,omitempty"`
+	NumberType           *int64  `json:"NumberType,omitempty" xml:"NumberType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Rate                 *int64  `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -180,7 +180,7 @@ func (s *DescribePhoneNumberAnalysisRequest) SetMask(v string) *DescribePhoneNum
 	return s
 }
 
-func (s *DescribePhoneNumberAnalysisRequest) SetNumberType(v int32) *DescribePhoneNumberAnalysisRequest {
+func (s *DescribePhoneNumberAnalysisRequest) SetNumberType(v int64) *DescribePhoneNumberAnalysisRequest {
 	s.NumberType = &v
 	return s
 }
@@ -206,10 +206,10 @@ func (s *DescribePhoneNumberAnalysisRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribePhoneNumberAnalysisResponseBody struct {
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribePhoneNumberAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribePhoneNumberAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneNumberAnalysisResponseBody) String() string {
@@ -225,7 +225,7 @@ func (s *DescribePhoneNumberAnalysisResponseBody) SetCode(v string) *DescribePho
 	return s
 }
 
-func (s *DescribePhoneNumberAnalysisResponseBody) SetData(v []*DescribePhoneNumberAnalysisResponseBodyData) *DescribePhoneNumberAnalysisResponseBody {
+func (s *DescribePhoneNumberAnalysisResponseBody) SetData(v *DescribePhoneNumberAnalysisResponseBodyData) *DescribePhoneNumberAnalysisResponseBody {
 	s.Data = v
 	return s
 }
@@ -241,8 +241,7 @@ func (s *DescribePhoneNumberAnalysisResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribePhoneNumberAnalysisResponseBodyData struct {
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	List []*DescribePhoneNumberAnalysisResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
 func (s DescribePhoneNumberAnalysisResponseBodyData) String() string {
@@ -253,12 +252,30 @@ func (s DescribePhoneNumberAnalysisResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePhoneNumberAnalysisResponseBodyData) SetCode(v string) *DescribePhoneNumberAnalysisResponseBodyData {
+func (s *DescribePhoneNumberAnalysisResponseBodyData) SetList(v []*DescribePhoneNumberAnalysisResponseBodyDataList) *DescribePhoneNumberAnalysisResponseBodyData {
+	s.List = v
+	return s
+}
+
+type DescribePhoneNumberAnalysisResponseBodyDataList struct {
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisResponseBodyDataList) SetCode(v string) *DescribePhoneNumberAnalysisResponseBodyDataList {
 	s.Code = &v
 	return s
 }
 
-func (s *DescribePhoneNumberAnalysisResponseBodyData) SetNumber(v string) *DescribePhoneNumberAnalysisResponseBodyData {
+func (s *DescribePhoneNumberAnalysisResponseBodyDataList) SetNumber(v string) *DescribePhoneNumberAnalysisResponseBodyDataList {
 	s.Number = &v
 	return s
 }
