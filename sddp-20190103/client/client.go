@@ -1741,6 +1741,319 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 	return s
 }
 
+type DescribeColumnsV2Request struct {
+	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RiskLevelId   *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
+	TableId       *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeColumnsV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsV2Request) SetCurrentPage(v int32) *DescribeColumnsV2Request {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetInstanceId(v int64) *DescribeColumnsV2Request {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetInstanceName(v string) *DescribeColumnsV2Request {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetLang(v string) *DescribeColumnsV2Request {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetName(v string) *DescribeColumnsV2Request {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetPageSize(v int32) *DescribeColumnsV2Request {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetProductCode(v string) *DescribeColumnsV2Request {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetRiskLevelId(v int64) *DescribeColumnsV2Request {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetRuleId(v int64) *DescribeColumnsV2Request {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetRuleName(v string) *DescribeColumnsV2Request {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetSensLevelName(v string) *DescribeColumnsV2Request {
+	s.SensLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetTableId(v string) *DescribeColumnsV2Request {
+	s.TableId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Request) SetTableName(v string) *DescribeColumnsV2Request {
+	s.TableName = &v
+	return s
+}
+
+type DescribeColumnsV2ResponseBody struct {
+	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribeColumnsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeColumnsV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsV2ResponseBody) SetCurrentPage(v int32) *DescribeColumnsV2ResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBody) SetItems(v []*DescribeColumnsV2ResponseBodyItems) *DescribeColumnsV2ResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBody) SetPageSize(v int32) *DescribeColumnsV2ResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBody) SetRequestId(v string) *DescribeColumnsV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBody) SetTotalCount(v int32) *DescribeColumnsV2ResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeColumnsV2ResponseBodyItems struct {
+	CreationTime       *int64                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataType           *string                                        `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Id                 *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId         *int64                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	ModelTags          []*DescribeColumnsV2ResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	Name               *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	OdpsRiskLevelName  *string                                        `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
+	OdpsRiskLevelValue *int32                                         `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
+	ProductCode        *string                                        `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RevisionId         *int64                                         `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
+	RevisionStatus     *int64                                         `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
+	RiskLevelId        *int64                                         `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName      *string                                        `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleId             *int64                                         `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SensLevelName      *string                                        `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
+	Sensitive          *bool                                          `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	TableId            *int64                                         `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName          *string                                        `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeColumnsV2ResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsV2ResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetCreationTime(v int64) *DescribeColumnsV2ResponseBodyItems {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetDataType(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.DataType = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetId(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetInstanceId(v int64) *DescribeColumnsV2ResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetInstanceName(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetModelTags(v []*DescribeColumnsV2ResponseBodyItemsModelTags) *DescribeColumnsV2ResponseBodyItems {
+	s.ModelTags = v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetName(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetOdpsRiskLevelName(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.OdpsRiskLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetOdpsRiskLevelValue(v int32) *DescribeColumnsV2ResponseBodyItems {
+	s.OdpsRiskLevelValue = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetProductCode(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetRevisionId(v int64) *DescribeColumnsV2ResponseBodyItems {
+	s.RevisionId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetRevisionStatus(v int64) *DescribeColumnsV2ResponseBodyItems {
+	s.RevisionStatus = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetRiskLevelId(v int64) *DescribeColumnsV2ResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetRiskLevelName(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetRuleId(v int64) *DescribeColumnsV2ResponseBodyItems {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetRuleName(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetSensLevelName(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.SensLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetSensitive(v bool) *DescribeColumnsV2ResponseBodyItems {
+	s.Sensitive = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetTableId(v int64) *DescribeColumnsV2ResponseBodyItems {
+	s.TableId = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItems) SetTableName(v string) *DescribeColumnsV2ResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+type DescribeColumnsV2ResponseBodyItemsModelTags struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeColumnsV2ResponseBodyItemsModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsV2ResponseBodyItemsModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsV2ResponseBodyItemsModelTags) SetId(v int64) *DescribeColumnsV2ResponseBodyItemsModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeColumnsV2ResponseBodyItemsModelTags) SetName(v string) *DescribeColumnsV2ResponseBodyItemsModelTags {
+	s.Name = &v
+	return s
+}
+
+type DescribeColumnsV2Response struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeColumnsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeColumnsV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsV2Response) SetHeaders(v map[string]*string) *DescribeColumnsV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeColumnsV2Response) SetStatusCode(v int32) *DescribeColumnsV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeColumnsV2Response) SetBody(v *DescribeColumnsV2ResponseBody) *DescribeColumnsV2Response {
+	s.Body = v
+	return s
+}
+
 type DescribeConfigsRequest struct {
 	// The language of the content within the request and response. Valid values:
 	//
@@ -4087,6 +4400,223 @@ func (s *DescribeDataObjectColumnDetailResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeDataObjectColumnDetailResponse) SetBody(v *DescribeDataObjectColumnDetailResponseBody) *DescribeDataObjectColumnDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataObjectColumnDetailV2Request struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailV2Request) SetCurrentPage(v int32) *DescribeDataObjectColumnDetailV2Request {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Request) SetId(v string) *DescribeDataObjectColumnDetailV2Request {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Request) SetLang(v string) *DescribeDataObjectColumnDetailV2Request {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Request) SetPageSize(v int32) *DescribeDataObjectColumnDetailV2Request {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Request) SetProductId(v int64) *DescribeDataObjectColumnDetailV2Request {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Request) SetTemplateId(v int64) *DescribeDataObjectColumnDetailV2Request {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailV2ResponseBody struct {
+	CurrentPage *int32                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribeDataObjectColumnDetailV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize    *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBody) SetCurrentPage(v int32) *DescribeDataObjectColumnDetailV2ResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBody) SetItems(v []*DescribeDataObjectColumnDetailV2ResponseBodyItems) *DescribeDataObjectColumnDetailV2ResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBody) SetPageSize(v int32) *DescribeDataObjectColumnDetailV2ResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBody) SetRequestId(v string) *DescribeDataObjectColumnDetailV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBody) SetTotalCount(v int32) *DescribeDataObjectColumnDetailV2ResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailV2ResponseBodyItems struct {
+	Categories    []*string                                                     `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	ColumnComment *string                                                       `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
+	ColumnName    *string                                                       `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DataType      *string                                                       `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Id            *string                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModelTags     []*DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	PrimaryKey    *bool                                                         `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	RiskLevelId   *int64                                                        `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName *string                                                       `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleId        *int64                                                        `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName      *string                                                       `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailV2ResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailV2ResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetCategories(v []*string) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.Categories = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetColumnComment(v string) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.ColumnComment = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetColumnName(v string) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetDataType(v string) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.DataType = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetId(v string) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetModelTags(v []*DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.ModelTags = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetPrimaryKey(v bool) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetRiskLevelId(v int64) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetRiskLevelName(v string) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetRuleId(v int64) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItems) SetRuleName(v string) *DescribeDataObjectColumnDetailV2ResponseBodyItems {
+	s.RuleName = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags) SetId(v int64) *DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags) SetName(v string) *DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags {
+	s.Name = &v
+	return s
+}
+
+type DescribeDataObjectColumnDetailV2Response struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataObjectColumnDetailV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataObjectColumnDetailV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataObjectColumnDetailV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataObjectColumnDetailV2Response) SetHeaders(v map[string]*string) *DescribeDataObjectColumnDetailV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Response) SetStatusCode(v int32) *DescribeDataObjectColumnDetailV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataObjectColumnDetailV2Response) SetBody(v *DescribeDataObjectColumnDetailV2ResponseBody) *DescribeDataObjectColumnDetailV2Response {
 	s.Body = v
 	return s
 }
@@ -6483,6 +7013,198 @@ func (s *DescribeOssObjectDetailResponse) SetStatusCode(v int32) *DescribeOssObj
 }
 
 func (s *DescribeOssObjectDetailResponse) SetBody(v *DescribeOssObjectDetailResponseBody) *DescribeOssObjectDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOssObjectDetailV2Request struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeOssObjectDetailV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssObjectDetailV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssObjectDetailV2Request) SetId(v string) *DescribeOssObjectDetailV2Request {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2Request) SetLang(v string) *DescribeOssObjectDetailV2Request {
+	s.Lang = &v
+	return s
+}
+
+type DescribeOssObjectDetailV2ResponseBody struct {
+	OssObjectDetail *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail `json:"OssObjectDetail,omitempty" xml:"OssObjectDetail,omitempty" type:"Struct"`
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOssObjectDetailV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssObjectDetailV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBody) SetOssObjectDetail(v *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) *DescribeOssObjectDetailV2ResponseBody {
+	s.OssObjectDetail = v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBody) SetRequestId(v string) *DescribeOssObjectDetailV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOssObjectDetailV2ResponseBodyOssObjectDetail struct {
+	BucketName    *string                                                         `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	CategoryName  *string                                                         `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	Name          *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId      *string                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RiskLevelName *string                                                         `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleList      []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetBucketName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.BucketName = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetCategoryName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetRegionId(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetRiskLevelName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetRuleList(v []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.RuleList = v
+	return s
+}
+
+type DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList struct {
+	CategoryName  *string                                                                  `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	Count         *int64                                                                   `json:"Count,omitempty" xml:"Count,omitempty"`
+	ModelTags     []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	RiskLevelId   *int64                                                                   `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName *string                                                                  `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleName      *string                                                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) SetCategoryName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) SetCount(v int64) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) SetModelTags(v []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList {
+	s.ModelTags = v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) SetRiskLevelId(v int64) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) SetRiskLevelName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) SetRuleName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList {
+	s.RuleName = &v
+	return s
+}
+
+type DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags) SetId(v int64) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags) SetName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags {
+	s.Name = &v
+	return s
+}
+
+type DescribeOssObjectDetailV2Response struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOssObjectDetailV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOssObjectDetailV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOssObjectDetailV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOssObjectDetailV2Response) SetHeaders(v map[string]*string) *DescribeOssObjectDetailV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2Response) SetStatusCode(v int32) *DescribeOssObjectDetailV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2Response) SetBody(v *DescribeOssObjectDetailV2ResponseBody) *DescribeOssObjectDetailV2Response {
 	s.Body = v
 	return s
 }
@@ -10289,6 +11011,98 @@ func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeColumnsV2WithOptions(request *DescribeColumnsV2Request, runtime *util.RuntimeOptions) (_result *DescribeColumnsV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevelId)) {
+		query["RiskLevelId"] = request.RiskLevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensLevelName)) {
+		query["SensLevelName"] = request.SensLevelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeColumnsV2"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeColumnsV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeColumnsV2(request *DescribeColumnsV2Request) (_result *DescribeColumnsV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeColumnsV2Response{}
+	_body, _err := client.DescribeColumnsV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeConfigsWithOptions(request *DescribeConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10864,6 +11678,70 @@ func (client *Client) DescribeDataObjectColumnDetail(request *DescribeDataObject
 	return _result, _err
 }
 
+func (client *Client) DescribeDataObjectColumnDetailV2WithOptions(request *DescribeDataObjectColumnDetailV2Request, runtime *util.RuntimeOptions) (_result *DescribeDataObjectColumnDetailV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		query["ProductId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataObjectColumnDetailV2"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataObjectColumnDetailV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataObjectColumnDetailV2(request *DescribeDataObjectColumnDetailV2Request) (_result *DescribeDataObjectColumnDetailV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataObjectColumnDetailV2Response{}
+	_body, _err := client.DescribeDataObjectColumnDetailV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObjectsRequest, runtime *util.RuntimeOptions) (_result *DescribeDataObjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11429,6 +12307,54 @@ func (client *Client) DescribeOssObjectDetail(request *DescribeOssObjectDetailRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOssObjectDetailResponse{}
 	_body, _err := client.DescribeOssObjectDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOssObjectDetailV2WithOptions(request *DescribeOssObjectDetailV2Request, runtime *util.RuntimeOptions) (_result *DescribeOssObjectDetailV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOssObjectDetailV2"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOssObjectDetailV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOssObjectDetailV2(request *DescribeOssObjectDetailV2Request) (_result *DescribeOssObjectDetailV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOssObjectDetailV2Response{}
+	_body, _err := client.DescribeOssObjectDetailV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
