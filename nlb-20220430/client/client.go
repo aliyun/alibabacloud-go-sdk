@@ -3690,11 +3690,20 @@ func (s *GetLoadBalancerAttributeResponse) SetBody(v *GetLoadBalancerAttributeRe
 }
 
 type ListListenerCertificatesRequest struct {
-	CertType   *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// *   You do not need to specify this parameter for the first request.
+	// *   You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListListenerCertificatesRequest) String() string {
@@ -3731,12 +3740,20 @@ func (s *ListListenerCertificatesRequest) SetRegionId(v string) *ListListenerCer
 }
 
 type ListListenerCertificatesResponseBody struct {
+	// The server certificates.
 	CertificateIds []*string                                           `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	Certificates   []*ListListenerCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	MaxResults     *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page. Valid values: **1** to **100**. Default value: **20**.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// *   You do not need to specify this parameter for the first request.
+	// *   You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListListenerCertificatesResponseBody) String() string {
@@ -5953,8 +5970,6 @@ func (s *ListSystemSecurityPolicyResponse) SetBody(v *ListSystemSecurityPolicyRe
 type ListTagResourcesRequest struct {
 	MaxResults   *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Page         *int32                        `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize     *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -5976,16 +5991,6 @@ func (s *ListTagResourcesRequest) SetMaxResults(v int32) *ListTagResourcesReques
 
 func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
 	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetPage(v int32) *ListTagResourcesRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetPageSize(v int32) *ListTagResourcesRequest {
-	s.PageSize = &v
 	return s
 }
 
@@ -7638,14 +7643,43 @@ func (s *UpdateLoadBalancerAttributeResponse) SetBody(v *UpdateLoadBalancerAttri
 }
 
 type UpdateLoadBalancerProtectionRequest struct {
-	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeletionProtectionEnabled    *bool   `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
-	DeletionProtectionReason     *string `json:"DeletionProtectionReason,omitempty" xml:"DeletionProtectionReason,omitempty"`
-	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	LoadBalancerId               *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable deletion protection. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
+	// The reason for enabling deletion protection. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+	//
+	// >  This parameter is valid only if you set **DeletionProtectionEnabled** to **true**.
+	DeletionProtectionReason *string `json:"DeletionProtectionReason,omitempty" xml:"DeletionProtectionReason,omitempty"`
+	// Specifies whether to perform only a dry run without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the NLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+	//
+	// >  This parameter takes effect only if you set **Status** to **ConsoleProtection**.
 	ModificationProtectionReason *string `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
+	// Specifies whether to enable the configuration read-only mode. Valid values:
+	//
+	// *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify **ModificationProtectionReason**. If you specify **ModificationProtectionReason**, the value is cleared.
+	// *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
+	//
+	// >  If you set this parameter to **ConsoleProtection**, you cannot modify instance configurations in the NLB console. However, you can modify instance configurations by calling API operations.
 	ModificationProtectionStatus *string `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the NLB instance.
+	//
+	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateLoadBalancerProtectionRequest) String() string {
@@ -7697,6 +7731,7 @@ func (s *UpdateLoadBalancerProtectionRequest) SetRegionId(v string) *UpdateLoadB
 }
 
 type UpdateLoadBalancerProtectionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10457,14 +10492,6 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		body["NextToken"] = request.NextToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		body["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
 	}
@@ -11305,6 +11332,13 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 	return _result, _err
 }
 
+/**
+ * >  You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details of deletion protection and the configuration read-only mode.
+ *
+ * @param request UpdateLoadBalancerProtectionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateLoadBalancerProtectionResponse
+ */
 func (client *Client) UpdateLoadBalancerProtectionWithOptions(request *UpdateLoadBalancerProtectionRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerProtectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11366,6 +11400,12 @@ func (client *Client) UpdateLoadBalancerProtectionWithOptions(request *UpdateLoa
 	return _result, _err
 }
 
+/**
+ * >  You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details of deletion protection and the configuration read-only mode.
+ *
+ * @param request UpdateLoadBalancerProtectionRequest
+ * @return UpdateLoadBalancerProtectionResponse
+ */
 func (client *Client) UpdateLoadBalancerProtection(request *UpdateLoadBalancerProtectionRequest) (_result *UpdateLoadBalancerProtectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLoadBalancerProtectionResponse{}
