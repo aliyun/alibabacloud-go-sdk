@@ -16307,10 +16307,13 @@ func (s *ListAvailableAccelerateAreasResponseBodyAreas) SetRegionList(v []*ListA
 }
 
 type ListAvailableAccelerateAreasResponseBodyAreasRegionList struct {
+	ChinaMainland *bool     `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
+	IspTypeList   []*string `json:"IspTypeList,omitempty" xml:"IspTypeList,omitempty" type:"Repeated"`
 	// The name of the acceleration region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID of the acceleration region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SupportIpv6 *bool   `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
 }
 
 func (s ListAvailableAccelerateAreasResponseBodyAreasRegionList) String() string {
@@ -16321,6 +16324,16 @@ func (s ListAvailableAccelerateAreasResponseBodyAreasRegionList) GoString() stri
 	return s.String()
 }
 
+func (s *ListAvailableAccelerateAreasResponseBodyAreasRegionList) SetChinaMainland(v bool) *ListAvailableAccelerateAreasResponseBodyAreasRegionList {
+	s.ChinaMainland = &v
+	return s
+}
+
+func (s *ListAvailableAccelerateAreasResponseBodyAreasRegionList) SetIspTypeList(v []*string) *ListAvailableAccelerateAreasResponseBodyAreasRegionList {
+	s.IspTypeList = v
+	return s
+}
+
 func (s *ListAvailableAccelerateAreasResponseBodyAreasRegionList) SetLocalName(v string) *ListAvailableAccelerateAreasResponseBodyAreasRegionList {
 	s.LocalName = &v
 	return s
@@ -16328,6 +16341,11 @@ func (s *ListAvailableAccelerateAreasResponseBodyAreasRegionList) SetLocalName(v
 
 func (s *ListAvailableAccelerateAreasResponseBodyAreasRegionList) SetRegionId(v string) *ListAvailableAccelerateAreasResponseBodyAreasRegionList {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListAvailableAccelerateAreasResponseBodyAreasRegionList) SetSupportIpv6(v bool) *ListAvailableAccelerateAreasResponseBodyAreasRegionList {
+	s.SupportIpv6 = &v
 	return s
 }
 
@@ -16411,6 +16429,7 @@ func (s *ListAvailableBusiRegionsResponseBody) SetRequestId(v string) *ListAvail
 }
 
 type ListAvailableBusiRegionsResponseBodyRegions struct {
+	ChinaMainland *bool `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
 	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// Indicates whether the region is a point of presence (PoP). Valid values:
@@ -16428,6 +16447,11 @@ func (s ListAvailableBusiRegionsResponseBodyRegions) String() string {
 
 func (s ListAvailableBusiRegionsResponseBodyRegions) GoString() string {
 	return s.String()
+}
+
+func (s *ListAvailableBusiRegionsResponseBodyRegions) SetChinaMainland(v bool) *ListAvailableBusiRegionsResponseBodyRegions {
+	s.ChinaMainland = &v
+	return s
 }
 
 func (s *ListAvailableBusiRegionsResponseBodyRegions) SetLocalName(v string) *ListAvailableBusiRegionsResponseBodyRegions {
@@ -20073,28 +20097,31 @@ func (s *ListEndpointGroupIpAddressCidrBlocksResponse) SetBody(v *ListEndpointGr
 type ListEndpointGroupsRequest struct {
 	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// Specifies whether the access logging feature is enabled. Default value: off. Valid values:
-	//
-	// *   **on:** enables the access logging feature.
-	// *   **off:** disables the access logging feature.
+	// The total number of entries returned.
 	AccessLogSwitch *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
-	// The ID of the endpoint group.
+	// The protocol that is used to monitor latency. Valid values:
+	//
+	// *   **icmp**: ICMP
+	// *   **tcp**: TCP
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The type of the endpoint group. Valid values:
 	//
-	// *   **default:** a default endpoint group.
-	// *   **virtual:** a virtual endpoint group.
+	// *   **default**
+	// *   **virtual**
 	// *   If you leave this parameter empty, all default and virtual endpoint groups are queried.
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	// The ID of the listener.
+	// The number of entries returned per page.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The protocol that is used by the backend service. Valid values:
+	//
+	// *   **HTTP**: HTTP
+	// *   **HTTPS**: HTTPS
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The endpoint port.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Tags of GA instances.
+	// The name of the endpoint group.
 	Tag []*ListEndpointGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -20152,9 +20179,13 @@ func (s *ListEndpointGroupsRequest) SetTag(v []*ListEndpointGroupsRequestTag) *L
 }
 
 type ListEndpointGroupsRequestTag struct {
-	// The tag key of the GA instance.
+	// The ID of the listener.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the GA instance.
+	// The type of the endpoint group. Valid values:
+	//
+	// *   **default**: a default endpoint group
+	// *   **virtual**: a virtual endpoint group
+	// *   If you leave this parameter empty, all default and virtual endpoint groups are queried.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -20177,15 +20208,18 @@ func (s *ListEndpointGroupsRequestTag) SetValue(v string) *ListEndpointGroupsReq
 }
 
 type ListEndpointGroupsResponseBody struct {
-	// Configurations of endpoint groups.
+	// The ID of the endpoint group.
 	EndpointGroups []*ListEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// Indicates whether the client IP address preservation feature is enabled. Valid values:
+	//
+	// *   **true**: The client IP address preservation feature is enabled.
+	// *   **false**: The client IP address preservation feature is disabled.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The weight of the endpoint.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of returned entries.
+	// The ID of the endpoint.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20223,68 +20257,41 @@ func (s *ListEndpointGroupsResponseBody) SetTotalCount(v int32) *ListEndpointGro
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroups struct {
-	// The ID of the GA instance.
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The description of the endpoint group.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Configurations of Endpoints.
+	AcceleratorId          *string                                                               `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Description            *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndpointConfigurations []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	// The ID of the endpoint group.
+	// The ID of an endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The list of endpoint group IP addresses.
+	// The mappings between ports.
 	EndpointGroupIpList []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
-	// The ID of the region where the endpoint group is deployed.
-	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	// The type of the endpoint group. Valid values:
-	//
-	// *   **default:** a default endpoint group.
-	// *   **virtual:** a virtual endpoint group.
-	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	// The list of endpoint group IP addresses to be confirmed after the GA instance is upgraded.
-	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	// The protocol that is used by the backend service. Valid values:
-	//
-	// *   **HTTP:** HTTP.
-	// *   **HTTPS:** HTTPS.
-	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	// IDs of forwarding rules that are associated with endpoint groups.
-	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	// Indicates whether the health check feature is enabled. Valid values:
 	//
-	// *   **true:** The health check feature is enabled.
-	// *   **false:** The health check feature is disabled.
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// *   **true**: The health check feature is enabled.
+	// *   **false**: The health check feature is disabled.
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointGroupType   *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds.
-	HealthCheckIntervalSeconds *int32 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	// The path to which health check probes are sent.
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// The port that is used for health checks.
-	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The protocol over which health check probes are sent. Valid values:
+	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
+	EndpointRequestProtocol        *string   `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	ForwardingRuleIds              []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
+	HealthCheckEnabled             *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckIntervalSeconds     *int32    `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	// The ID of the request.
+	HealthCheckPath     *string                                                      `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckPort     *int32                                                       `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	HealthCheckProtocol *string                                                      `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	ListenerId          *string                                                      `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortOverrides       []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	// The protocol over which health check requests are sent. Valid values:
 	//
-	// *   **tcp:** TCP.
-	// *   **http:** HTTP.
-	// *   **https:** HTTPS.
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The ID of the listener.
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The name of the endpoint group.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Mappings between ports.
-	PortOverrides []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	// The state of the endpoint group. Valid values:
-	//
-	// *   **init:** The endpoint group is being initialized.
-	// *   **active:** The endpoint group is running as expected.
-	// *   **updating:**The endpoint group is being updated.
-	// *   **deleteing:** The endpoint group is being deleted.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Tags of GA instances.
-	Tags []*ListEndpointGroupsResponseBodyEndpointGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
-	ThresholdCount *int32 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	// The weight of the endpoint group when the listener is associated with multiple endpoint groups.
-	TrafficPercentage *int32 `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	// *   **tcp**: TCP
+	// *   **http**: HTTP
+	// *   **https**: HTTPS
+	State             *string                                             `json:"State,omitempty" xml:"State,omitempty"`
+	Tags              []*ListEndpointGroupsResponseBodyEndpointGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ThresholdCount    *int32                                              `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage *int32                                              `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBodyEndpointGroups) String() string {
@@ -20406,34 +20413,13 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetTrafficPercentage(v in
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
-	// Indicates whether the client IP address preservation feature is enabled. Valid values:
-	//
-	// *   **true:** The client IP address preservation feature is enabled.
-	// *   **false:** The client IP address preservation feature is disabled.
-	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	// The IP address or domain name of the endpoint.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The ID of the endpoint.
-	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The port that is used to monitor latency.
-	ProbePort *int32 `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
-	// The protocol that is used to monitor latency. Valid values:
-	//
-	// *   **icmp:** ICMP.
-	// *   **tcp:** TCP.
-	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
-	// The type of the endpoint. Valid values:
-	//
-	// *   **Domain:** a custom domain name.
-	// *   **Ip:** a custom IP address.
-	// *   **PublicIp:** a public IP address provided by Alibaba Cloud.
-	// *   **ECS:** an Elastic Compute Service (ECS) instance.
-	// *   **SLB:** a Server Load Balancer (SLB) instance.
-	// *   **ALB:** an Application Load Balancer (ALB) instance.
-	// *   **OSS:** an Object Storage Service (OSS) bucket.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the endpoint.
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	EnableClientIPPreservation *bool   `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
+	Endpoint                   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EndpointId                 *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ProbePort                  *int32  `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
+	ProbeProtocol              *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) String() string {
@@ -20480,9 +20466,7 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Set
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides struct {
-	// The endpoint port.
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
-	// The listening port.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -20505,9 +20489,7 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) SetListenerP
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsTags struct {
-	// The tag key of the GA instance.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the GA instance.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
