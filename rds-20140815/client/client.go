@@ -13816,6 +13816,183 @@ func (s *DescribeCharacterSetNameResponse) SetBody(v *DescribeCharacterSetNameRe
 	return s
 }
 
+type DescribeClassDetailsRequest struct {
+	ClassCode            *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CommodityCode        *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeClassDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClassDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClassDetailsRequest) SetClassCode(v string) *DescribeClassDetailsRequest {
+	s.ClassCode = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetClientToken(v string) *DescribeClassDetailsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetCommodityCode(v string) *DescribeClassDetailsRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetEngine(v string) *DescribeClassDetailsRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetEngineVersion(v string) *DescribeClassDetailsRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetOwnerId(v int64) *DescribeClassDetailsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetRegionId(v string) *DescribeClassDetailsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetResourceOwnerAccount(v string) *DescribeClassDetailsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetResourceOwnerId(v int64) *DescribeClassDetailsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeClassDetailsResponseBody struct {
+	Category              *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClassCode             *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClassGroup            *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
+	Cpu                   *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	InstructionSetArch    *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
+	MaxConnections        *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOMBPS             *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
+	MaxIOPS               *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MemoryClass           *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
+	ReferencePrice        *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeClassDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClassDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClassDetailsResponseBody) SetCategory(v string) *DescribeClassDetailsResponseBody {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetClassCode(v string) *DescribeClassDetailsResponseBody {
+	s.ClassCode = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetClassGroup(v string) *DescribeClassDetailsResponseBody {
+	s.ClassGroup = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetCpu(v string) *DescribeClassDetailsResponseBody {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetDBInstanceStorageType(v string) *DescribeClassDetailsResponseBody {
+	s.DBInstanceStorageType = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetInstructionSetArch(v string) *DescribeClassDetailsResponseBody {
+	s.InstructionSetArch = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetMaxConnections(v string) *DescribeClassDetailsResponseBody {
+	s.MaxConnections = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetMaxIOMBPS(v string) *DescribeClassDetailsResponseBody {
+	s.MaxIOMBPS = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetMaxIOPS(v string) *DescribeClassDetailsResponseBody {
+	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetMemoryClass(v string) *DescribeClassDetailsResponseBody {
+	s.MemoryClass = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetReferencePrice(v string) *DescribeClassDetailsResponseBody {
+	s.ReferencePrice = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponseBody) SetRequestId(v string) *DescribeClassDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeClassDetailsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClassDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClassDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClassDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClassDetailsResponse) SetHeaders(v map[string]*string) *DescribeClassDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClassDetailsResponse) SetStatusCode(v int32) *DescribeClassDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClassDetailsResponse) SetBody(v *DescribeClassDetailsResponseBody) *DescribeClassDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCloudMigrationPrecheckResultRequest struct {
 	// The ID of the destination instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the IDs of instances.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
@@ -57164,6 +57341,82 @@ func (client *Client) DescribeCharacterSetName(request *DescribeCharacterSetName
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCharacterSetNameResponse{}
 	_body, _err := client.DescribeCharacterSetNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClassDetailsWithOptions(request *DescribeClassDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeClassDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassCode)) {
+		query["ClassCode"] = request.ClassCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClassDetails"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClassDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClassDetails(request *DescribeClassDetailsRequest) (_result *DescribeClassDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClassDetailsResponse{}
+	_body, _err := client.DescribeClassDetailsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
