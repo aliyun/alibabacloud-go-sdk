@@ -1,0 +1,4 @@
+2023-07-10 Version: v1.0.0
+- Support Network Access Endpoint Management.
+- Nodejs and Go Language first version sdk publish.
+
