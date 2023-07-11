@@ -1844,6 +1844,194 @@ func (s *QueryTimedResetOperateStatusResponse) SetBody(v *QueryTimedResetOperate
 	return s
 }
 
+type SendCommandRequest struct {
+	Code       *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Content    map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	Feedback   *bool                  `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	SessionId  *string                `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	TenantId   *int64                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UniqueCode *string                `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s SendCommandRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommandRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommandRequest) SetCode(v string) *SendCommandRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *SendCommandRequest) SetContent(v map[string]interface{}) *SendCommandRequest {
+	s.Content = v
+	return s
+}
+
+func (s *SendCommandRequest) SetFeedback(v bool) *SendCommandRequest {
+	s.Feedback = &v
+	return s
+}
+
+func (s *SendCommandRequest) SetSessionId(v string) *SendCommandRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendCommandRequest) SetTenantId(v int64) *SendCommandRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SendCommandRequest) SetUniqueCode(v string) *SendCommandRequest {
+	s.UniqueCode = &v
+	return s
+}
+
+type SendCommandShrinkRequest struct {
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Feedback      *bool   `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	TenantId      *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UniqueCode    *string `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s SendCommandShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommandShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommandShrinkRequest) SetCode(v string) *SendCommandShrinkRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *SendCommandShrinkRequest) SetContentShrink(v string) *SendCommandShrinkRequest {
+	s.ContentShrink = &v
+	return s
+}
+
+func (s *SendCommandShrinkRequest) SetFeedback(v bool) *SendCommandShrinkRequest {
+	s.Feedback = &v
+	return s
+}
+
+func (s *SendCommandShrinkRequest) SetSessionId(v string) *SendCommandShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendCommandShrinkRequest) SetTenantId(v int64) *SendCommandShrinkRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SendCommandShrinkRequest) SetUniqueCode(v string) *SendCommandShrinkRequest {
+	s.UniqueCode = &v
+	return s
+}
+
+type SendCommandResponseBody struct {
+	Code    *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *SendCommandResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendCommandResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommandResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommandResponseBody) SetCode(v string) *SendCommandResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendCommandResponseBody) SetData(v *SendCommandResponseBodyData) *SendCommandResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendCommandResponseBody) SetMessage(v string) *SendCommandResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendCommandResponseBody) SetRequestId(v string) *SendCommandResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendCommandResponseBody) SetSuccess(v bool) *SendCommandResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendCommandResponseBodyData struct {
+	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	UniqueCode *string `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s SendCommandResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommandResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommandResponseBodyData) SetSessionId(v string) *SendCommandResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendCommandResponseBodyData) SetUniqueCode(v string) *SendCommandResponseBodyData {
+	s.UniqueCode = &v
+	return s
+}
+
+type SendCommandResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendCommandResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommandResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommandResponse) SetHeaders(v map[string]*string) *SendCommandResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendCommandResponse) SetStatusCode(v int32) *SendCommandResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendCommandResponse) SetBody(v *SendCommandResponseBody) *SendCommandResponse {
+	s.Body = v
+	return s
+}
+
 type SendMessageRequest struct {
 	Feedback        *bool                              `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
 	SessionId       *string                            `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -2109,6 +2297,358 @@ func (s *SendMessageResponse) SetStatusCode(v int32) *SendMessageResponse {
 }
 
 func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageResponse {
+	s.Body = v
+	return s
+}
+
+type SendTextRequest struct {
+	Feedback        *bool                           `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	Interrupt       *bool                           `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
+	SessionId       *string                         `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	StreamExtension *SendTextRequestStreamExtension `json:"StreamExtension,omitempty" xml:"StreamExtension,omitempty" type:"Struct"`
+	TenantId        *int64                          `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Text            *string                         `json:"Text,omitempty" xml:"Text,omitempty"`
+	UniqueCode      *string                         `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s SendTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendTextRequest) SetFeedback(v bool) *SendTextRequest {
+	s.Feedback = &v
+	return s
+}
+
+func (s *SendTextRequest) SetInterrupt(v bool) *SendTextRequest {
+	s.Interrupt = &v
+	return s
+}
+
+func (s *SendTextRequest) SetSessionId(v string) *SendTextRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendTextRequest) SetStreamExtension(v *SendTextRequestStreamExtension) *SendTextRequest {
+	s.StreamExtension = v
+	return s
+}
+
+func (s *SendTextRequest) SetTenantId(v int64) *SendTextRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SendTextRequest) SetText(v string) *SendTextRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *SendTextRequest) SetUniqueCode(v string) *SendTextRequest {
+	s.UniqueCode = &v
+	return s
+}
+
+type SendTextRequestStreamExtension struct {
+	Index    *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	IsStream *bool   `json:"IsStream,omitempty" xml:"IsStream,omitempty"`
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+}
+
+func (s SendTextRequestStreamExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendTextRequestStreamExtension) GoString() string {
+	return s.String()
+}
+
+func (s *SendTextRequestStreamExtension) SetIndex(v int32) *SendTextRequestStreamExtension {
+	s.Index = &v
+	return s
+}
+
+func (s *SendTextRequestStreamExtension) SetIsStream(v bool) *SendTextRequestStreamExtension {
+	s.IsStream = &v
+	return s
+}
+
+func (s *SendTextRequestStreamExtension) SetPosition(v string) *SendTextRequestStreamExtension {
+	s.Position = &v
+	return s
+}
+
+type SendTextShrinkRequest struct {
+	Feedback              *bool   `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	Interrupt             *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
+	SessionId             *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	StreamExtensionShrink *string `json:"StreamExtension,omitempty" xml:"StreamExtension,omitempty"`
+	TenantId              *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Text                  *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	UniqueCode            *string `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s SendTextShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendTextShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendTextShrinkRequest) SetFeedback(v bool) *SendTextShrinkRequest {
+	s.Feedback = &v
+	return s
+}
+
+func (s *SendTextShrinkRequest) SetInterrupt(v bool) *SendTextShrinkRequest {
+	s.Interrupt = &v
+	return s
+}
+
+func (s *SendTextShrinkRequest) SetSessionId(v string) *SendTextShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendTextShrinkRequest) SetStreamExtensionShrink(v string) *SendTextShrinkRequest {
+	s.StreamExtensionShrink = &v
+	return s
+}
+
+func (s *SendTextShrinkRequest) SetTenantId(v int64) *SendTextShrinkRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SendTextShrinkRequest) SetText(v string) *SendTextShrinkRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *SendTextShrinkRequest) SetUniqueCode(v string) *SendTextShrinkRequest {
+	s.UniqueCode = &v
+	return s
+}
+
+type SendTextResponseBody struct {
+	Code    *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *SendTextResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendTextResponseBody) SetCode(v string) *SendTextResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendTextResponseBody) SetData(v *SendTextResponseBodyData) *SendTextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendTextResponseBody) SetMessage(v string) *SendTextResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendTextResponseBody) SetRequestId(v string) *SendTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendTextResponseBody) SetSuccess(v bool) *SendTextResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendTextResponseBodyData struct {
+	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	UniqueCode *string `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s SendTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendTextResponseBodyData) SetSessionId(v string) *SendTextResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendTextResponseBodyData) SetUniqueCode(v string) *SendTextResponseBodyData {
+	s.UniqueCode = &v
+	return s
+}
+
+type SendTextResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendTextResponse) SetHeaders(v map[string]*string) *SendTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendTextResponse) SetStatusCode(v int32) *SendTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendTextResponse) SetBody(v *SendTextResponseBody) *SendTextResponse {
+	s.Body = v
+	return s
+}
+
+type SendVamlRequest struct {
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	TenantId  *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Vaml      *string `json:"Vaml,omitempty" xml:"Vaml,omitempty"`
+}
+
+func (s SendVamlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVamlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendVamlRequest) SetSessionId(v string) *SendVamlRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendVamlRequest) SetTenantId(v int64) *SendVamlRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SendVamlRequest) SetVaml(v string) *SendVamlRequest {
+	s.Vaml = &v
+	return s
+}
+
+type SendVamlResponseBody struct {
+	Code    *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *SendVamlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendVamlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVamlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendVamlResponseBody) SetCode(v string) *SendVamlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendVamlResponseBody) SetData(v *SendVamlResponseBodyData) *SendVamlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendVamlResponseBody) SetMessage(v string) *SendVamlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendVamlResponseBody) SetRequestId(v string) *SendVamlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendVamlResponseBody) SetSuccess(v bool) *SendVamlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendVamlResponseBodyData struct {
+	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	UniqueCode *string `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s SendVamlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVamlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendVamlResponseBodyData) SetSessionId(v string) *SendVamlResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendVamlResponseBodyData) SetUniqueCode(v string) *SendVamlResponseBodyData {
+	s.UniqueCode = &v
+	return s
+}
+
+type SendVamlResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendVamlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendVamlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVamlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendVamlResponse) SetHeaders(v map[string]*string) *SendVamlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendVamlResponse) SetStatusCode(v int32) *SendVamlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendVamlResponse) SetBody(v *SendVamlResponseBody) *SendVamlResponse {
 	s.Body = v
 	return s
 }
@@ -4494,6 +5034,76 @@ func (client *Client) QueryTimedResetOperateStatus(request *QueryTimedResetOpera
 	return _result, _err
 }
 
+func (client *Client) SendCommandWithOptions(tmpReq *SendCommandRequest, runtime *util.RuntimeOptions) (_result *SendCommandResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendCommandShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Content)) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
+		query["Content"] = request.ContentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Feedback)) {
+		query["Feedback"] = request.Feedback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueCode)) {
+		query["UniqueCode"] = request.UniqueCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendCommand"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendCommandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendCommand(request *SendCommandRequest) (_result *SendCommandResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendCommandResponse{}
+	_body, _err := client.SendCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SendMessageWithOptions(tmpReq *SendMessageRequest, runtime *util.RuntimeOptions) (_result *SendMessageResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4565,6 +5175,132 @@ func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMes
 	runtime := &util.RuntimeOptions{}
 	_result = &SendMessageResponse{}
 	_body, _err := client.SendMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendTextWithOptions(tmpReq *SendTextRequest, runtime *util.RuntimeOptions) (_result *SendTextResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendTextShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamExtension)) {
+		request.StreamExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamExtension, tea.String("StreamExtension"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Feedback)) {
+		query["Feedback"] = request.Feedback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interrupt)) {
+		query["Interrupt"] = request.Interrupt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamExtensionShrink)) {
+		query["StreamExtension"] = request.StreamExtensionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueCode)) {
+		query["UniqueCode"] = request.UniqueCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendText"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendText(request *SendTextRequest) (_result *SendTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendTextResponse{}
+	_body, _err := client.SendTextWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendVamlWithOptions(request *SendVamlRequest, runtime *util.RuntimeOptions) (_result *SendVamlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vaml)) {
+		query["Vaml"] = request.Vaml
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendVaml"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendVamlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendVaml(request *SendVamlRequest) (_result *SendVamlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendVamlResponse{}
+	_body, _err := client.SendVamlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
