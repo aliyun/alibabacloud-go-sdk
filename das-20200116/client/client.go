@@ -472,6 +472,7 @@ type CreateCacheAnalysisJobRequest struct {
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Separators  *string `json:"Separators,omitempty" xml:"Separators,omitempty"`
 }
 
 func (s CreateCacheAnalysisJobRequest) String() string {
@@ -494,6 +495,11 @@ func (s *CreateCacheAnalysisJobRequest) SetInstanceId(v string) *CreateCacheAnal
 
 func (s *CreateCacheAnalysisJobRequest) SetNodeId(v string) *CreateCacheAnalysisJobRequest {
 	s.NodeId = &v
+	return s
+}
+
+func (s *CreateCacheAnalysisJobRequest) SetSeparators(v string) *CreateCacheAnalysisJobRequest {
+	s.Separators = &v
 	return s
 }
 
@@ -2032,6 +2038,230 @@ func (s *DescribeAutoScalingConfigResponse) SetStatusCode(v int32) *DescribeAuto
 }
 
 func (s *DescribeAutoScalingConfigResponse) SetBody(v *DescribeAutoScalingConfigResponseBody) *DescribeAutoScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAutoScalingHistoryRequest struct {
+	AutoScalingTaskType *string `json:"AutoScalingTaskType,omitempty" xml:"AutoScalingTaskType,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeAutoScalingHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingHistoryRequest) SetAutoScalingTaskType(v string) *DescribeAutoScalingHistoryRequest {
+	s.AutoScalingTaskType = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryRequest) SetEndTime(v int64) *DescribeAutoScalingHistoryRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryRequest) SetInstanceId(v string) *DescribeAutoScalingHistoryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryRequest) SetStartTime(v int64) *DescribeAutoScalingHistoryRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeAutoScalingHistoryResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// AutoScalingInstanceHistory
+	Data      *DescribeAutoScalingHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAutoScalingHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingHistoryResponseBody) SetCode(v string) *DescribeAutoScalingHistoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBody) SetData(v *DescribeAutoScalingHistoryResponseBodyData) *DescribeAutoScalingHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBody) SetMessage(v string) *DescribeAutoScalingHistoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBody) SetRequestId(v string) *DescribeAutoScalingHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBody) SetSuccess(v string) *DescribeAutoScalingHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAutoScalingHistoryResponseBodyData struct {
+	Bandwidth   []map[string]interface{}                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Repeated"`
+	InstanceId  *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Resource    []map[string]interface{}                                 `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+	Shard       []map[string]interface{}                                 `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Repeated"`
+	SpecHistory []*DescribeAutoScalingHistoryResponseBodyDataSpecHistory `json:"SpecHistory,omitempty" xml:"SpecHistory,omitempty" type:"Repeated"`
+	Storage     []map[string]interface{}                                 `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAutoScalingHistoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingHistoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyData) SetBandwidth(v []map[string]interface{}) *DescribeAutoScalingHistoryResponseBodyData {
+	s.Bandwidth = v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyData) SetInstanceId(v string) *DescribeAutoScalingHistoryResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyData) SetResource(v []map[string]interface{}) *DescribeAutoScalingHistoryResponseBodyData {
+	s.Resource = v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyData) SetShard(v []map[string]interface{}) *DescribeAutoScalingHistoryResponseBodyData {
+	s.Shard = v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyData) SetSpecHistory(v []*DescribeAutoScalingHistoryResponseBodyDataSpecHistory) *DescribeAutoScalingHistoryResponseBodyData {
+	s.SpecHistory = v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyData) SetStorage(v []map[string]interface{}) *DescribeAutoScalingHistoryResponseBodyData {
+	s.Storage = v
+	return s
+}
+
+type DescribeAutoScalingHistoryResponseBodyDataSpecHistory struct {
+	ErrorCode           *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	OriginCore          *int32   `json:"OriginCore,omitempty" xml:"OriginCore,omitempty"`
+	OriginInstanceClass *string  `json:"OriginInstanceClass,omitempty" xml:"OriginInstanceClass,omitempty"`
+	OriginMemory        *float64 `json:"OriginMemory,omitempty" xml:"OriginMemory,omitempty"`
+	ScaleType           *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	TargetCore          *int32   `json:"TargetCore,omitempty" xml:"TargetCore,omitempty"`
+	TargetInstanceClass *string  `json:"TargetInstanceClass,omitempty" xml:"TargetInstanceClass,omitempty"`
+	TargetMemory        *float64 `json:"TargetMemory,omitempty" xml:"TargetMemory,omitempty"`
+	TaskExcuteStatus    *bool    `json:"TaskExcuteStatus,omitempty" xml:"TaskExcuteStatus,omitempty"`
+	TaskTime            *int64   `json:"TaskTime,omitempty" xml:"TaskTime,omitempty"`
+}
+
+func (s DescribeAutoScalingHistoryResponseBodyDataSpecHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingHistoryResponseBodyDataSpecHistory) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetErrorCode(v string) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetOriginCore(v int32) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.OriginCore = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetOriginInstanceClass(v string) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.OriginInstanceClass = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetOriginMemory(v float64) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.OriginMemory = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetScaleType(v string) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetTargetCore(v int32) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.TargetCore = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetTargetInstanceClass(v string) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.TargetInstanceClass = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetTargetMemory(v float64) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.TargetMemory = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetTaskExcuteStatus(v bool) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.TaskExcuteStatus = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponseBodyDataSpecHistory) SetTaskTime(v int64) *DescribeAutoScalingHistoryResponseBodyDataSpecHistory {
+	s.TaskTime = &v
+	return s
+}
+
+type DescribeAutoScalingHistoryResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAutoScalingHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAutoScalingHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingHistoryResponse) SetHeaders(v map[string]*string) *DescribeAutoScalingHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponse) SetStatusCode(v int32) *DescribeAutoScalingHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAutoScalingHistoryResponse) SetBody(v *DescribeAutoScalingHistoryResponseBody) *DescribeAutoScalingHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -7240,6 +7470,140 @@ func (s *GetAutonomousNotifyEventsInRangeResponse) SetStatusCode(v int32) *GetAu
 }
 
 func (s *GetAutonomousNotifyEventsInRangeResponse) SetBody(v *GetAutonomousNotifyEventsInRangeResponseBody) *GetAutonomousNotifyEventsInRangeResponse {
+	s.Body = v
+	return s
+}
+
+type GetDBInstanceConnectivityDiagnosisRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SrcIp      *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+}
+
+func (s GetDBInstanceConnectivityDiagnosisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBInstanceConnectivityDiagnosisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisRequest) SetInstanceId(v string) *GetDBInstanceConnectivityDiagnosisRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisRequest) SetSrcIp(v string) *GetDBInstanceConnectivityDiagnosisRequest {
+	s.SrcIp = &v
+	return s
+}
+
+type GetDBInstanceConnectivityDiagnosisResponseBody struct {
+	Code      *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetDBInstanceConnectivityDiagnosisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDBInstanceConnectivityDiagnosisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBInstanceConnectivityDiagnosisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBody) SetCode(v string) *GetDBInstanceConnectivityDiagnosisResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBody) SetData(v *GetDBInstanceConnectivityDiagnosisResponseBodyData) *GetDBInstanceConnectivityDiagnosisResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBody) SetMessage(v string) *GetDBInstanceConnectivityDiagnosisResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBody) SetRequestId(v string) *GetDBInstanceConnectivityDiagnosisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBody) SetSuccess(v string) *GetDBInstanceConnectivityDiagnosisResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDBInstanceConnectivityDiagnosisResponseBodyData struct {
+	ConnCheckErrorCode    *string `json:"connCheckErrorCode,omitempty" xml:"connCheckErrorCode,omitempty"`
+	ConnCheckErrorMessage *string `json:"connCheckErrorMessage,omitempty" xml:"connCheckErrorMessage,omitempty"`
+	FailType              *string `json:"failType,omitempty" xml:"failType,omitempty"`
+	InstanceId            *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Success               *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDBInstanceConnectivityDiagnosisResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBInstanceConnectivityDiagnosisResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBodyData) SetConnCheckErrorCode(v string) *GetDBInstanceConnectivityDiagnosisResponseBodyData {
+	s.ConnCheckErrorCode = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBodyData) SetConnCheckErrorMessage(v string) *GetDBInstanceConnectivityDiagnosisResponseBodyData {
+	s.ConnCheckErrorMessage = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBodyData) SetFailType(v string) *GetDBInstanceConnectivityDiagnosisResponseBodyData {
+	s.FailType = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBodyData) SetInstanceId(v string) *GetDBInstanceConnectivityDiagnosisResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponseBodyData) SetSuccess(v bool) *GetDBInstanceConnectivityDiagnosisResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type GetDBInstanceConnectivityDiagnosisResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDBInstanceConnectivityDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDBInstanceConnectivityDiagnosisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDBInstanceConnectivityDiagnosisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponse) SetHeaders(v map[string]*string) *GetDBInstanceConnectivityDiagnosisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponse) SetStatusCode(v int32) *GetDBInstanceConnectivityDiagnosisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDBInstanceConnectivityDiagnosisResponse) SetBody(v *GetDBInstanceConnectivityDiagnosisResponseBody) *GetDBInstanceConnectivityDiagnosisResponse {
 	s.Body = v
 	return s
 }
@@ -17551,6 +17915,10 @@ func (client *Client) CreateCacheAnalysisJobWithOptions(request *CreateCacheAnal
 		query["NodeId"] = request.NodeId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Separators)) {
+		query["Separators"] = request.Separators
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18158,6 +18526,46 @@ func (client *Client) DescribeAutoScalingConfig(request *DescribeAutoScalingConf
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoScalingConfigResponse{}
 	_body, _err := client.DescribeAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAutoScalingHistoryWithOptions(request *DescribeAutoScalingHistoryRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoScalingHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAutoScalingHistory"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAutoScalingHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAutoScalingHistory(request *DescribeAutoScalingHistoryRequest) (_result *DescribeAutoScalingHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAutoScalingHistoryResponse{}
+	_body, _err := client.DescribeAutoScalingHistoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19566,6 +19974,54 @@ func (client *Client) GetAutonomousNotifyEventsInRange(request *GetAutonomousNot
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutonomousNotifyEventsInRangeResponse{}
 	_body, _err := client.GetAutonomousNotifyEventsInRangeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDBInstanceConnectivityDiagnosisWithOptions(request *GetDBInstanceConnectivityDiagnosisRequest, runtime *util.RuntimeOptions) (_result *GetDBInstanceConnectivityDiagnosisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcIp)) {
+		query["SrcIp"] = request.SrcIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDBInstanceConnectivityDiagnosis"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDBInstanceConnectivityDiagnosisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDBInstanceConnectivityDiagnosis(request *GetDBInstanceConnectivityDiagnosisRequest) (_result *GetDBInstanceConnectivityDiagnosisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDBInstanceConnectivityDiagnosisResponse{}
+	_body, _err := client.GetDBInstanceConnectivityDiagnosisWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
