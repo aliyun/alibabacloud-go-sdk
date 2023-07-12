@@ -1673,22 +1673,51 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateInstancesRequest struct {
-	// The ID of the request.
-	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BusinessInfo  *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	CouponNo      *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Specifies whether to enable automatic payment. Valid values:
+	//
+	// *   **true** (default).
+	// *   **false**. If automatic payment is disabled, you must perform the following steps to complete the payment in the ApsaraDB for Redis console: In the top navigation bar, choose **Expenses** > **Renewal Management**. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
+	//
+	// >  This parameter is valid only if the value of the **ChargeType** field in the **Instances** parameter is set to **PrePaid**.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	//
+	// >  This parameter is available only if **ChargeType** in the **Instances** parameter is set to **PrePaid**.
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The additional business information about the instance.
+	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The database engine version of the instance. Valid values: **4.0** and **5.0**.
+	//
+	// >  The default value is **5.0**.
+	//
+	// Valid values:
+	//
+	// *   2.8
+	// *   4.0
+	// *   5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The JSON-formatted configurations of the instance. For more information, see the "Description of the Instances parameter" section of this topic.
+	Instances    *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to restore the source instance from the recycle bin. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	//
+	// >  This parameter is valid only if the **SrcDBInstanceId** field in the **Instances** parameter is specified.
+	RebuildInstance *bool `json:"RebuildInstance,omitempty" xml:"RebuildInstance,omitempty"`
 	// The ID of the resource group to which to assign the instance.
-	Instances            *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RebuildInstance      *bool   `json:"RebuildInstance,omitempty" xml:"RebuildInstance,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The additional business information about the instance.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -1771,9 +1800,12 @@ func (s *CreateInstancesRequest) SetToken(v string) *CreateInstancesRequest {
 }
 
 type CreateInstancesResponseBody struct {
+	// The IDs of instances that were created.
 	InstanceIds *CreateInstancesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	OrderId     *string                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstancesResponseBody) String() string {
@@ -13746,6 +13778,105 @@ func (s *FlushInstanceResponse) SetBody(v *FlushInstanceResponseBody) *FlushInst
 	return s
 }
 
+type FlushInstanceForDBRequest struct {
+	DbIndex              *int32  `json:"DbIndex,omitempty" xml:"DbIndex,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s FlushInstanceForDBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlushInstanceForDBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlushInstanceForDBRequest) SetDbIndex(v int32) *FlushInstanceForDBRequest {
+	s.DbIndex = &v
+	return s
+}
+
+func (s *FlushInstanceForDBRequest) SetInstanceId(v string) *FlushInstanceForDBRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *FlushInstanceForDBRequest) SetOwnerAccount(v string) *FlushInstanceForDBRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *FlushInstanceForDBRequest) SetOwnerId(v int64) *FlushInstanceForDBRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FlushInstanceForDBRequest) SetResourceOwnerAccount(v string) *FlushInstanceForDBRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *FlushInstanceForDBRequest) SetResourceOwnerId(v int64) *FlushInstanceForDBRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *FlushInstanceForDBRequest) SetSecurityToken(v string) *FlushInstanceForDBRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type FlushInstanceForDBResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s FlushInstanceForDBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlushInstanceForDBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlushInstanceForDBResponseBody) SetRequestId(v string) *FlushInstanceForDBResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type FlushInstanceForDBResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FlushInstanceForDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FlushInstanceForDBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlushInstanceForDBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlushInstanceForDBResponse) SetHeaders(v map[string]*string) *FlushInstanceForDBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlushInstanceForDBResponse) SetStatusCode(v int32) *FlushInstanceForDBResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlushInstanceForDBResponse) SetBody(v *FlushInstanceForDBResponseBody) *FlushInstanceForDBResponse {
+	s.Body = v
+	return s
+}
+
 type GrantAccountPrivilegeRequest struct {
 	// GrantAccountPrivilege
 	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
@@ -19867,10 +19998,9 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 }
 
 /**
- * Specifies whether to enable automatic payment. Default value: true. Valid values:
- * *   **true**: yes
- * *   **false**: no If automatic payment is disabled, you must perform the following steps to complete the payment in the ApsaraDB for Redis console: In the top navigation bar, choose **Expenses** > **Renewal Management**. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
- * >  This parameter is available only if **ChargeType** in the **Instances** parameter is set to **PrePaid**.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+ * >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+ * To create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks, call [CreateTairInstance](~~208271~~).
  *
  * @param request CreateInstancesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19962,10 +20092,9 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 }
 
 /**
- * Specifies whether to enable automatic payment. Default value: true. Valid values:
- * *   **true**: yes
- * *   **false**: no If automatic payment is disabled, you must perform the following steps to complete the payment in the ApsaraDB for Redis console: In the top navigation bar, choose **Expenses** > **Renewal Management**. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
- * >  This parameter is available only if **ChargeType** in the **Instances** parameter is set to **PrePaid**.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+ * >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+ * To create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks, call [CreateTairInstance](~~208271~~).
  *
  * @param request CreateInstancesRequest
  * @return CreateInstancesResponse
@@ -24388,6 +24517,74 @@ func (client *Client) FlushInstance(request *FlushInstanceRequest) (_result *Flu
 	runtime := &util.RuntimeOptions{}
 	_result = &FlushInstanceResponse{}
 	_body, _err := client.FlushInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FlushInstanceForDBWithOptions(request *FlushInstanceForDBRequest, runtime *util.RuntimeOptions) (_result *FlushInstanceForDBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbIndex)) {
+		query["DbIndex"] = request.DbIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlushInstanceForDB"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlushInstanceForDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FlushInstanceForDB(request *FlushInstanceForDBRequest) (_result *FlushInstanceForDBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FlushInstanceForDBResponse{}
+	_body, _err := client.FlushInstanceForDBWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

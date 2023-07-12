@@ -1,3 +1,6 @@
+2023-07-12 Version: v3.0.3
+- Update Sdk.
+
 2023-07-06 Version: v3.0.2
 - Update Sdk.
 - Add ForceTrans parameters to ModifyInstanceSpec, ModifyInstanceCapacity, DeleteShardingNode,AddShardingNode.
