@@ -2402,6 +2402,264 @@ func (s *CreateAuthorityTemplateResponse) SetBody(v *CreateAuthorityTemplateResp
 	return s
 }
 
+type CreateDataArchiveOrderRequest struct {
+	Comment         *string                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Param           *CreateDataArchiveOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	ParentId        *int64                              `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PluginType      *string                             `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RelatedUserList []*string                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Tid             *int64                              `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataArchiveOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataArchiveOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataArchiveOrderRequest) SetComment(v string) *CreateDataArchiveOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequest) SetParam(v *CreateDataArchiveOrderRequestParam) *CreateDataArchiveOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequest) SetParentId(v int64) *CreateDataArchiveOrderRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequest) SetPluginType(v string) *CreateDataArchiveOrderRequest {
+	s.PluginType = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequest) SetRelatedUserList(v []*string) *CreateDataArchiveOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequest) SetTid(v int64) *CreateDataArchiveOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataArchiveOrderRequestParam struct {
+	ArchiveMethod    *string                                            `json:"ArchiveMethod,omitempty" xml:"ArchiveMethod,omitempty"`
+	DbSchema         *string                                            `json:"DbSchema,omitempty" xml:"DbSchema,omitempty"`
+	Logic            *bool                                              `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OrderAfter       []*string                                          `json:"OrderAfter,omitempty" xml:"OrderAfter,omitempty" type:"Repeated"`
+	RunMethod        *string                                            `json:"RunMethod,omitempty" xml:"RunMethod,omitempty"`
+	SourceDatabaseId *int64                                             `json:"SourceDatabaseId,omitempty" xml:"SourceDatabaseId,omitempty"`
+	TableIncludes    []*CreateDataArchiveOrderRequestParamTableIncludes `json:"TableIncludes,omitempty" xml:"TableIncludes,omitempty" type:"Repeated"`
+	TableMapping     []*string                                          `json:"TableMapping,omitempty" xml:"TableMapping,omitempty" type:"Repeated"`
+	TargetInstanceId *string                                            `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	Variables        []*string                                          `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataArchiveOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataArchiveOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetArchiveMethod(v string) *CreateDataArchiveOrderRequestParam {
+	s.ArchiveMethod = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetDbSchema(v string) *CreateDataArchiveOrderRequestParam {
+	s.DbSchema = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetLogic(v bool) *CreateDataArchiveOrderRequestParam {
+	s.Logic = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetOrderAfter(v []*string) *CreateDataArchiveOrderRequestParam {
+	s.OrderAfter = v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetRunMethod(v string) *CreateDataArchiveOrderRequestParam {
+	s.RunMethod = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetSourceDatabaseId(v int64) *CreateDataArchiveOrderRequestParam {
+	s.SourceDatabaseId = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetTableIncludes(v []*CreateDataArchiveOrderRequestParamTableIncludes) *CreateDataArchiveOrderRequestParam {
+	s.TableIncludes = v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetTableMapping(v []*string) *CreateDataArchiveOrderRequestParam {
+	s.TableMapping = v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetTargetInstanceId(v string) *CreateDataArchiveOrderRequestParam {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetVariables(v []*string) *CreateDataArchiveOrderRequestParam {
+	s.Variables = v
+	return s
+}
+
+type CreateDataArchiveOrderRequestParamTableIncludes struct {
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableWhere *string `json:"TableWhere,omitempty" xml:"TableWhere,omitempty"`
+}
+
+func (s CreateDataArchiveOrderRequestParamTableIncludes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataArchiveOrderRequestParamTableIncludes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataArchiveOrderRequestParamTableIncludes) SetTableName(v string) *CreateDataArchiveOrderRequestParamTableIncludes {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParamTableIncludes) SetTableWhere(v string) *CreateDataArchiveOrderRequestParamTableIncludes {
+	s.TableWhere = &v
+	return s
+}
+
+type CreateDataArchiveOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParentId              *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PluginType            *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataArchiveOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataArchiveOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataArchiveOrderShrinkRequest) SetComment(v string) *CreateDataArchiveOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderShrinkRequest) SetParamShrink(v string) *CreateDataArchiveOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderShrinkRequest) SetParentId(v int64) *CreateDataArchiveOrderShrinkRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderShrinkRequest) SetPluginType(v string) *CreateDataArchiveOrderShrinkRequest {
+	s.PluginType = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataArchiveOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderShrinkRequest) SetTid(v int64) *CreateDataArchiveOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataArchiveOrderResponseBody struct {
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataArchiveOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataArchiveOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataArchiveOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateDataArchiveOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+func (s *CreateDataArchiveOrderResponseBody) SetErrorCode(v string) *CreateDataArchiveOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderResponseBody) SetErrorMessage(v string) *CreateDataArchiveOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderResponseBody) SetRequestId(v string) *CreateDataArchiveOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderResponseBody) SetSuccess(v bool) *CreateDataArchiveOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataArchiveOrderResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDataArchiveOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataArchiveOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataArchiveOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataArchiveOrderResponse) SetHeaders(v map[string]*string) *CreateDataArchiveOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataArchiveOrderResponse) SetStatusCode(v int32) *CreateDataArchiveOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderResponse) SetBody(v *CreateDataArchiveOrderResponseBody) *CreateDataArchiveOrderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataCorrectOrderRequest struct {
 	// The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
 	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
@@ -10417,6 +10675,134 @@ func (s *GetDBTopologyResponse) SetStatusCode(v int32) *GetDBTopologyResponse {
 }
 
 func (s *GetDBTopologyResponse) SetBody(v *GetDBTopologyResponseBody) *GetDBTopologyResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataArchiveCountRequest struct {
+	OrderResultType *string `json:"OrderResultType,omitempty" xml:"OrderResultType,omitempty"`
+	PluginType      *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	SearchDateType  *string `json:"SearchDateType,omitempty" xml:"SearchDateType,omitempty"`
+	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataArchiveCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataArchiveCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataArchiveCountRequest) SetOrderResultType(v string) *GetDataArchiveCountRequest {
+	s.OrderResultType = &v
+	return s
+}
+
+func (s *GetDataArchiveCountRequest) SetPluginType(v string) *GetDataArchiveCountRequest {
+	s.PluginType = &v
+	return s
+}
+
+func (s *GetDataArchiveCountRequest) SetSearchDateType(v string) *GetDataArchiveCountRequest {
+	s.SearchDateType = &v
+	return s
+}
+
+func (s *GetDataArchiveCountRequest) SetTid(v int64) *GetDataArchiveCountRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataArchiveCountResponseBody struct {
+	Data      *GetDataArchiveCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataArchiveCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataArchiveCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataArchiveCountResponseBody) SetData(v *GetDataArchiveCountResponseBodyData) *GetDataArchiveCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDataArchiveCountResponseBody) SetRequestId(v string) *GetDataArchiveCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataArchiveCountResponseBody) SetSuccess(v bool) *GetDataArchiveCountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataArchiveCountResponseBodyData struct {
+	FailCount       *int64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	ProcessingCount *int64 `json:"ProcessingCount,omitempty" xml:"ProcessingCount,omitempty"`
+	SuccessCount    *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	TotalCount      *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetDataArchiveCountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataArchiveCountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataArchiveCountResponseBodyData) SetFailCount(v int64) *GetDataArchiveCountResponseBodyData {
+	s.FailCount = &v
+	return s
+}
+
+func (s *GetDataArchiveCountResponseBodyData) SetProcessingCount(v int64) *GetDataArchiveCountResponseBodyData {
+	s.ProcessingCount = &v
+	return s
+}
+
+func (s *GetDataArchiveCountResponseBodyData) SetSuccessCount(v int64) *GetDataArchiveCountResponseBodyData {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *GetDataArchiveCountResponseBodyData) SetTotalCount(v int64) *GetDataArchiveCountResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type GetDataArchiveCountResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataArchiveCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataArchiveCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataArchiveCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataArchiveCountResponse) SetHeaders(v map[string]*string) *GetDataArchiveCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataArchiveCountResponse) SetStatusCode(v int32) *GetDataArchiveCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataArchiveCountResponse) SetBody(v *GetDataArchiveCountResponseBody) *GetDataArchiveCountResponse {
 	s.Body = v
 	return s
 }
@@ -41561,6 +41947,80 @@ func (client *Client) CreateAuthorityTemplate(request *CreateAuthorityTemplateRe
 	return _result, _err
 }
 
+func (client *Client) CreateDataArchiveOrderWithOptions(tmpReq *CreateDataArchiveOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataArchiveOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataArchiveOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginType)) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataArchiveOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataArchiveOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataArchiveOrder(request *CreateDataArchiveOrderRequest) (_result *CreateDataArchiveOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataArchiveOrderResponse{}
+	_body, _err := client.CreateDataArchiveOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
  *
@@ -44562,6 +45022,62 @@ func (client *Client) GetDBTopology(request *GetDBTopologyRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDBTopologyResponse{}
 	_body, _err := client.GetDBTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataArchiveCountWithOptions(request *GetDataArchiveCountRequest, runtime *util.RuntimeOptions) (_result *GetDataArchiveCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderResultType)) {
+		query["OrderResultType"] = request.OrderResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginType)) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchDateType)) {
+		query["SearchDateType"] = request.SearchDateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataArchiveCount"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataArchiveCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataArchiveCount(request *GetDataArchiveCountRequest) (_result *GetDataArchiveCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataArchiveCountResponse{}
+	_body, _err := client.GetDataArchiveCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
