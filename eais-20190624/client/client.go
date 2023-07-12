@@ -99,6 +99,99 @@ func (s *AttachEaiResponse) SetBody(v *AttachEaiResponseBody) *AttachEaiResponse
 	return s
 }
 
+type AttachEaisEiRequest struct {
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	EiInstanceId     *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	EiInstanceType   *string `json:"EiInstanceType,omitempty" xml:"EiInstanceType,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AttachEaisEiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachEaisEiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachEaisEiRequest) SetClientInstanceId(v string) *AttachEaisEiRequest {
+	s.ClientInstanceId = &v
+	return s
+}
+
+func (s *AttachEaisEiRequest) SetEiInstanceId(v string) *AttachEaisEiRequest {
+	s.EiInstanceId = &v
+	return s
+}
+
+func (s *AttachEaisEiRequest) SetEiInstanceType(v string) *AttachEaisEiRequest {
+	s.EiInstanceType = &v
+	return s
+}
+
+func (s *AttachEaisEiRequest) SetRegionId(v string) *AttachEaisEiRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AttachEaisEiResponseBody struct {
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	EiInstanceId     *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachEaisEiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachEaisEiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachEaisEiResponseBody) SetClientInstanceId(v string) *AttachEaisEiResponseBody {
+	s.ClientInstanceId = &v
+	return s
+}
+
+func (s *AttachEaisEiResponseBody) SetEiInstanceId(v string) *AttachEaisEiResponseBody {
+	s.EiInstanceId = &v
+	return s
+}
+
+func (s *AttachEaisEiResponseBody) SetRequestId(v string) *AttachEaisEiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachEaisEiResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachEaisEiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachEaisEiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachEaisEiResponse) SetHeaders(v map[string]*string) *AttachEaisEiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachEaisEiResponse) SetStatusCode(v int32) *AttachEaisEiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachEaisEiResponse) SetBody(v *AttachEaisEiResponseBody) *AttachEaisEiResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -176,6 +269,7 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 
 type CreateEaiRequest struct {
 	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -194,6 +288,11 @@ func (s CreateEaiRequest) GoString() string {
 
 func (s *CreateEaiRequest) SetClientToken(v string) *CreateEaiRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEaiRequest) SetImage(v string) *CreateEaiRequest {
+	s.Image = &v
 	return s
 }
 
@@ -945,6 +1044,7 @@ func (s *CreateEaiEcsResponse) SetBody(v *CreateEaiEcsResponseBody) *CreateEaiEc
 
 type CreateEaiJupyterRequest struct {
 	ClientToken     *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EaisName        *string                                  `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
 	EaisType        *string                                  `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
 	EnvironmentVar  []*CreateEaiJupyterRequestEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
 	RegionId        *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -963,6 +1063,11 @@ func (s CreateEaiJupyterRequest) GoString() string {
 
 func (s *CreateEaiJupyterRequest) SetClientToken(v string) *CreateEaiJupyterRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEaiJupyterRequest) SetEaisName(v string) *CreateEaiJupyterRequest {
+	s.EaisName = &v
 	return s
 }
 
@@ -1021,6 +1126,7 @@ func (s *CreateEaiJupyterRequestEnvironmentVar) SetValue(v string) *CreateEaiJup
 
 type CreateEaiJupyterShrinkRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EaisName             *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
 	EaisType             *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
 	EnvironmentVarShrink *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1039,6 +1145,11 @@ func (s CreateEaiJupyterShrinkRequest) GoString() string {
 
 func (s *CreateEaiJupyterShrinkRequest) SetClientToken(v string) *CreateEaiJupyterShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEaiJupyterShrinkRequest) SetEaisName(v string) *CreateEaiJupyterShrinkRequest {
+	s.EaisName = &v
 	return s
 }
 
@@ -1120,6 +1231,111 @@ func (s *CreateEaiJupyterResponse) SetStatusCode(v int32) *CreateEaiJupyterRespo
 }
 
 func (s *CreateEaiJupyterResponse) SetBody(v *CreateEaiJupyterResponseBody) *CreateEaiJupyterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEaisEiRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateEaisEiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaisEiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaisEiRequest) SetClientToken(v string) *CreateEaisEiRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEaisEiRequest) SetInstanceName(v string) *CreateEaisEiRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateEaisEiRequest) SetInstanceType(v string) *CreateEaisEiRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateEaisEiRequest) SetRegionId(v string) *CreateEaisEiRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateEaisEiRequest) SetResourceGroupId(v string) *CreateEaisEiRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateEaisEiRequest) SetSecurityGroupId(v string) *CreateEaisEiRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEaisEiRequest) SetVSwitchId(v string) *CreateEaisEiRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaisEiResponseBody struct {
+	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEaisEiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaisEiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaisEiResponseBody) SetEiInstanceId(v string) *CreateEaisEiResponseBody {
+	s.EiInstanceId = &v
+	return s
+}
+
+func (s *CreateEaisEiResponseBody) SetRequestId(v string) *CreateEaisEiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEaisEiResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEaisEiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaisEiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaisEiResponse) SetHeaders(v map[string]*string) *CreateEaisEiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEaisEiResponse) SetStatusCode(v int32) *CreateEaisEiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEaisEiResponse) SetBody(v *CreateEaisEiResponseBody) *CreateEaisEiResponse {
 	s.Body = v
 	return s
 }
@@ -1270,6 +1486,81 @@ func (s *DeleteEaiAllResponse) SetStatusCode(v int32) *DeleteEaiAllResponse {
 }
 
 func (s *DeleteEaiAllResponse) SetBody(v *DeleteEaiAllResponseBody) *DeleteEaiAllResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEaisEiRequest struct {
+	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteEaisEiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEaisEiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEaisEiRequest) SetEiInstanceId(v string) *DeleteEaisEiRequest {
+	s.EiInstanceId = &v
+	return s
+}
+
+func (s *DeleteEaisEiRequest) SetForce(v bool) *DeleteEaisEiRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeleteEaisEiRequest) SetRegionId(v string) *DeleteEaisEiRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteEaisEiResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEaisEiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEaisEiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEaisEiResponseBody) SetRequestId(v string) *DeleteEaisEiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEaisEiResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEaisEiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEaisEiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEaisEiResponse) SetHeaders(v map[string]*string) *DeleteEaisEiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEaisEiResponse) SetStatusCode(v int32) *DeleteEaisEiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEaisEiResponse) SetBody(v *DeleteEaisEiResponseBody) *DeleteEaisEiResponse {
 	s.Body = v
 	return s
 }
@@ -1746,10 +2037,80 @@ func (s *DetachEaiResponse) SetBody(v *DetachEaiResponseBody) *DetachEaiResponse
 	return s
 }
 
+type DetachEaisEiRequest struct {
+	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DetachEaisEiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachEaisEiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachEaisEiRequest) SetEiInstanceId(v string) *DetachEaisEiRequest {
+	s.EiInstanceId = &v
+	return s
+}
+
+func (s *DetachEaisEiRequest) SetRegionId(v string) *DetachEaisEiRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DetachEaisEiResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachEaisEiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachEaisEiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachEaisEiResponseBody) SetRequestId(v string) *DetachEaisEiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachEaisEiResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachEaisEiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachEaisEiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachEaisEiResponse) SetHeaders(v map[string]*string) *DetachEaisEiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachEaisEiResponse) SetStatusCode(v int32) *DetachEaisEiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachEaisEiResponse) SetBody(v *DetachEaisEiResponseBody) *DetachEaisEiResponse {
+	s.Body = v
+	return s
+}
+
 type GetInstanceMetricsRequest struct {
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TimeStep   *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
 }
@@ -1774,6 +2135,11 @@ func (s *GetInstanceMetricsRequest) SetInstanceId(v string) *GetInstanceMetricsR
 
 func (s *GetInstanceMetricsRequest) SetMetricType(v string) *GetInstanceMetricsRequest {
 	s.MetricType = &v
+	return s
+}
+
+func (s *GetInstanceMetricsRequest) SetRegionId(v string) *GetInstanceMetricsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1888,6 +2254,144 @@ func (s *GetInstanceMetricsResponse) SetStatusCode(v int32) *GetInstanceMetricsR
 }
 
 func (s *GetInstanceMetricsResponse) SetBody(v *GetInstanceMetricsResponseBody) *GetInstanceMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type StartEaisEiRequest struct {
+	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartEaisEiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartEaisEiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartEaisEiRequest) SetEiInstanceId(v string) *StartEaisEiRequest {
+	s.EiInstanceId = &v
+	return s
+}
+
+func (s *StartEaisEiRequest) SetRegionId(v string) *StartEaisEiRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartEaisEiResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartEaisEiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartEaisEiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartEaisEiResponseBody) SetRequestId(v string) *StartEaisEiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartEaisEiResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartEaisEiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartEaisEiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartEaisEiResponse) SetHeaders(v map[string]*string) *StartEaisEiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartEaisEiResponse) SetStatusCode(v int32) *StartEaisEiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartEaisEiResponse) SetBody(v *StartEaisEiResponseBody) *StartEaisEiResponse {
+	s.Body = v
+	return s
+}
+
+type StopEaisEiRequest struct {
+	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopEaisEiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopEaisEiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopEaisEiRequest) SetEiInstanceId(v string) *StopEaisEiRequest {
+	s.EiInstanceId = &v
+	return s
+}
+
+func (s *StopEaisEiRequest) SetRegionId(v string) *StopEaisEiRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopEaisEiResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopEaisEiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopEaisEiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopEaisEiResponseBody) SetRequestId(v string) *StopEaisEiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopEaisEiResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopEaisEiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopEaisEiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopEaisEiResponse) SetHeaders(v map[string]*string) *StopEaisEiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopEaisEiResponse) SetStatusCode(v int32) *StopEaisEiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopEaisEiResponse) SetBody(v *StopEaisEiResponseBody) *StopEaisEiResponse {
 	s.Body = v
 	return s
 }
@@ -2044,6 +2548,62 @@ func (client *Client) AttachEai(request *AttachEaiRequest) (_result *AttachEaiRe
 	return _result, _err
 }
 
+func (client *Client) AttachEaisEiWithOptions(request *AttachEaisEiRequest, runtime *util.RuntimeOptions) (_result *AttachEaisEiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInstanceId)) {
+		query["ClientInstanceId"] = request.ClientInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EiInstanceId)) {
+		query["EiInstanceId"] = request.EiInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EiInstanceType)) {
+		query["EiInstanceType"] = request.EiInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachEaisEi"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachEaisEiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachEaisEi(request *AttachEaisEiRequest) (_result *AttachEaisEiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachEaisEiResponse{}
+	_body, _err := client.AttachEaisEiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2104,6 +2664,10 @@ func (client *Client) CreateEaiWithOptions(request *CreateEaiRequest, runtime *u
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
@@ -2455,6 +3019,10 @@ func (client *Client) CreateEaiJupyterWithOptions(tmpReq *CreateEaiJupyterReques
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EaisName)) {
+		query["EaisName"] = request.EaisName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EaisType)) {
 		query["EaisType"] = request.EaisType
 	}
@@ -2506,6 +3074,74 @@ func (client *Client) CreateEaiJupyter(request *CreateEaiJupyterRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEaiJupyterResponse{}
 	_body, _err := client.CreateEaiJupyterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEaisEiWithOptions(request *CreateEaisEiRequest, runtime *util.RuntimeOptions) (_result *CreateEaisEiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEaisEi"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEaisEiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEaisEi(request *CreateEaisEiRequest) (_result *CreateEaisEiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEaisEiResponse{}
+	_body, _err := client.CreateEaisEiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2610,6 +3246,58 @@ func (client *Client) DeleteEaiAll(request *DeleteEaiAllRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEaiAllResponse{}
 	_body, _err := client.DeleteEaiAllWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEaisEiWithOptions(request *DeleteEaisEiRequest, runtime *util.RuntimeOptions) (_result *DeleteEaisEiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EiInstanceId)) {
+		query["EiInstanceId"] = request.EiInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEaisEi"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEaisEiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEaisEi(request *DeleteEaisEiRequest) (_result *DeleteEaisEiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEaisEiResponse{}
+	_body, _err := client.DeleteEaisEiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2770,6 +3458,54 @@ func (client *Client) DetachEai(request *DetachEaiRequest) (_result *DetachEaiRe
 	return _result, _err
 }
 
+func (client *Client) DetachEaisEiWithOptions(request *DetachEaisEiRequest, runtime *util.RuntimeOptions) (_result *DetachEaisEiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EiInstanceId)) {
+		query["EiInstanceId"] = request.EiInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachEaisEi"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachEaisEiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachEaisEi(request *DetachEaisEiRequest) (_result *DetachEaisEiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachEaisEiResponse{}
+	_body, _err := client.DetachEaisEiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetInstanceMetricsWithOptions(request *GetInstanceMetricsRequest, runtime *util.RuntimeOptions) (_result *GetInstanceMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2786,6 +3522,10 @@ func (client *Client) GetInstanceMetricsWithOptions(request *GetInstanceMetricsR
 
 	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
 		query["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -2823,6 +3563,102 @@ func (client *Client) GetInstanceMetrics(request *GetInstanceMetricsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceMetricsResponse{}
 	_body, _err := client.GetInstanceMetricsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartEaisEiWithOptions(request *StartEaisEiRequest, runtime *util.RuntimeOptions) (_result *StartEaisEiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EiInstanceId)) {
+		query["EiInstanceId"] = request.EiInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartEaisEi"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartEaisEiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartEaisEi(request *StartEaisEiRequest) (_result *StartEaisEiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartEaisEiResponse{}
+	_body, _err := client.StartEaisEiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopEaisEiWithOptions(request *StopEaisEiRequest, runtime *util.RuntimeOptions) (_result *StopEaisEiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EiInstanceId)) {
+		query["EiInstanceId"] = request.EiInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopEaisEi"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopEaisEiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopEaisEi(request *StopEaisEiRequest) (_result *StopEaisEiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopEaisEiResponse{}
+	_body, _err := client.StopEaisEiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
