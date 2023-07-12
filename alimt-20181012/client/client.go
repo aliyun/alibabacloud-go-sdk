@@ -1746,8 +1746,9 @@ func (s *TranslateResponseBody) SetRequestId(v string) *TranslateResponseBody {
 }
 
 type TranslateResponseBodyData struct {
-	Translated *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
-	WordCount  *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	Translated       *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
+	WordCount        *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 
 func (s TranslateResponseBodyData) String() string {
@@ -1756,6 +1757,11 @@ func (s TranslateResponseBodyData) String() string {
 
 func (s TranslateResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *TranslateResponseBodyData) SetDetectedLanguage(v string) *TranslateResponseBodyData {
+	s.DetectedLanguage = &v
+	return s
 }
 
 func (s *TranslateResponseBodyData) SetTranslated(v string) *TranslateResponseBodyData {
@@ -2200,8 +2206,9 @@ func (s *TranslateGeneralResponseBody) SetRequestId(v string) *TranslateGeneralR
 }
 
 type TranslateGeneralResponseBodyData struct {
-	Translated *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
-	WordCount  *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	Translated       *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
+	WordCount        *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 
 func (s TranslateGeneralResponseBodyData) String() string {
@@ -2210,6 +2217,11 @@ func (s TranslateGeneralResponseBodyData) String() string {
 
 func (s TranslateGeneralResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *TranslateGeneralResponseBodyData) SetDetectedLanguage(v string) *TranslateGeneralResponseBodyData {
+	s.DetectedLanguage = &v
+	return s
 }
 
 func (s *TranslateGeneralResponseBodyData) SetTranslated(v string) *TranslateGeneralResponseBodyData {
@@ -3717,6 +3729,14 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 	return _result, _err
 }
 
+/**
+ * @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+ *
+ * @param request TranslateECommerceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TranslateECommerceResponse
+ */
+// Deprecated
 func (client *Client) TranslateECommerceWithOptions(request *TranslateECommerceRequest, runtime *util.RuntimeOptions) (_result *TranslateECommerceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3772,6 +3792,13 @@ func (client *Client) TranslateECommerceWithOptions(request *TranslateECommerceR
 	return _result, _err
 }
 
+/**
+ * @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+ *
+ * @param request TranslateECommerceRequest
+ * @return TranslateECommerceResponse
+ */
+// Deprecated
 func (client *Client) TranslateECommerce(request *TranslateECommerceRequest) (_result *TranslateECommerceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateECommerceResponse{}
