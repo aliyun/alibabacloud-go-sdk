@@ -11013,6 +11013,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
 	// The switching time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
 	// The type of the task. Valid values:
 	//
 	// *   **rds_apsaradb_ha**: primary/secondary switchover
@@ -11151,6 +11152,11 @@ func (s *DescribeActiveOperationTasksResponseBodyItems) SetSubInsNames(v []*stri
 
 func (s *DescribeActiveOperationTasksResponseBodyItems) SetSwitchTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
 	s.SwitchTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskParams(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.TaskParams = &v
 	return s
 }
 
@@ -47901,6 +47907,7 @@ type RestartDBInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -47922,6 +47929,11 @@ func (s *RestartDBInstanceRequest) SetClientToken(v string) *RestartDBInstanceRe
 
 func (s *RestartDBInstanceRequest) SetDBInstanceId(v string) *RestartDBInstanceRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *RestartDBInstanceRequest) SetNodeId(v string) *RestartDBInstanceRequest {
+	s.NodeId = &v
 	return s
 }
 
@@ -71503,6 +71515,10 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
