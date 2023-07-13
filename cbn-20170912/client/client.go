@@ -3771,65 +3771,59 @@ func (s *CreateTransitRouterMulticastDomainResponse) SetBody(v *CreateTransitRou
 }
 
 type CreateTransitRouterPeerAttachmentRequest struct {
-	// The tags.
+	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
+	//
+	// *   **false** (default): no
+	// *   **true**: yes
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The tag keys of the resources.
-	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
+	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the request.
-	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The tag values of the resources.
-	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
-	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The ID of the peer transit router.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The description of the inter-region connection.
-	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the inter-region connection.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
-	//
-	// *   **false** (default): checks the request. If the request passes the check, the inter-region connection is created.
-	// *   **true**: checks the request but does not perform the operation. The inter-region connection is not created after the request passes the check. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
-	PeerTransitRouterId *string `json:"PeerTransitRouterId,omitempty" xml:"PeerTransitRouterId,omitempty"`
 	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
 	//
 	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 	//
-	// **DataTransfer**: uses pay-by-data-transfer bandwidth.
+	// If this parameter is not set, the system allocates bandwidth that is used for testing purposes to the inter-region connection. The default bandwidth for testing purpose is 1 Kbit/s. You can use the bandwidth to test the connectivity of IPv4 networks.
+	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Default values:
+	//
+	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the peer transit router.
+	PeerTransitRouterId *string `json:"PeerTransitRouterId,omitempty" xml:"PeerTransitRouterId,omitempty"`
+	// The ID of the region where the peer transit router is deployed.
 	PeerTransitRouterRegionId *string `json:"PeerTransitRouterRegionId,omitempty" xml:"PeerTransitRouterRegionId,omitempty"`
-	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
+	// The ID of the region where the local Enterprise Edition transit router is deployed.
 	//
-	// *   **false** (default): no.
-	// *   **true**: yes.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 614519
+	// The information about the tags.
+	//
+	// You can specify at most 20 tags in each call.
 	Tag []*CreateTransitRouterPeerAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+	// The description of the inter-region connection.
 	//
-	// >  If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	// The name of the inter-region connection.
 	//
-	// *   If you set **BandwidthType** to **BandwidthPackage**, this parameter specifies the bandwidth that is available for the inter-region connection.
-	//
-	// <!---->
-	//
-	// *   If you set **BandwidthType** to **DataTransfer**, this parameter specifies the bandwidth limit of the inter-region connection.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the region where the peer transit router is deployed.
+	// The ID of the local Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
@@ -3932,25 +3926,17 @@ func (s *CreateTransitRouterPeerAttachmentRequest) SetTransitRouterId(v string) 
 }
 
 type CreateTransitRouterPeerAttachmentRequestTag struct {
-	// master
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// ## Background information
+	// The tag value.
 	//
-	// By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
+	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
-	//
-	// - **Allocate bandwidth resources from a bandwidth plan**:  You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createcenbandwidthpackage).
-	//
-	// - **Use pay-by-data-transfer bandwidth resources**:  You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Cross-region data transfers](https://www.alibabacloud.com/help/en/cloud-data-transmission/latest/cross-region-data-transfers).
-	//
-	//
-	// ## Usage notes
-	//
-	// **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns the inter-region connection ID but the operation is still being performed in the system background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
-	//
-	// - If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
-	// - If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3973,12 +3959,9 @@ func (s *CreateTransitRouterPeerAttachmentRequestTag) SetValue(v string) *Create
 }
 
 type CreateTransitRouterPeerAttachmentResponseBody struct {
-	// The ID of the region where the peer transit router is deployed.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
-	//
-	// *   **false** (default): checks the request. If the request passes the check, the inter-region connection is created.
-	// *   **true**: checks the request but does not perform the operation. The inter-region connection is not created after the request passes the check. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
+	// The ID of the inter-region connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
@@ -4191,18 +4174,40 @@ func (s *CreateTransitRouterPrefixListAssociationResponse) SetBody(v *CreateTran
 }
 
 type CreateTransitRouterRouteEntryRequest struct {
-	ClientToken                                 *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                                      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount                                *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount                        *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                             *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TransitRouterRouteEntryDescription          *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a precheck to check information such as the permissions and instance status. Valid values:
+	//
+	// *   **false** (default): sends the request. If the request passes the precheck, the route entry is added.
+	// *   **true**: sends a precheck request but does not add the route. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The description of the route.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
+	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
+	// The destination CIDR block of the route.
 	TransitRouterRouteEntryDestinationCidrBlock *string `json:"TransitRouterRouteEntryDestinationCidrBlock,omitempty" xml:"TransitRouterRouteEntryDestinationCidrBlock,omitempty"`
-	TransitRouterRouteEntryName                 *string `json:"TransitRouterRouteEntryName,omitempty" xml:"TransitRouterRouteEntryName,omitempty"`
-	TransitRouterRouteEntryNextHopId            *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
-	TransitRouterRouteEntryNextHopType          *string `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
-	TransitRouterRouteTableId                   *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
+	// The name of the route.
+	//
+	// The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
+	TransitRouterRouteEntryName *string `json:"TransitRouterRouteEntryName,omitempty" xml:"TransitRouterRouteEntryName,omitempty"`
+	// The ID of the network instance connection that you want to specify as the next hop.
+	TransitRouterRouteEntryNextHopId *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
+	// The type of the next hop. Valid values:
+	//
+	// *   **BlackHole**: routes network traffic to a black hole. All packets that match this route are dropped. If you select this option, you do not need to specify the next hop information.
+	// *   **Attachment**: routes network traffic to a network instance connection. If you select this option, you must specify the ID of the network instance connection. All packets that match this route are routed to the specified network instance connection.
+	TransitRouterRouteEntryNextHopType *string `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 }
 
 func (s CreateTransitRouterRouteEntryRequest) String() string {
@@ -4274,7 +4279,9 @@ func (s *CreateTransitRouterRouteEntryRequest) SetTransitRouterRouteTableId(v st
 }
 
 type CreateTransitRouterRouteEntryResponseBody struct {
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the route.
 	TransitRouterRouteEntryId *string `json:"TransitRouterRouteEntryId,omitempty" xml:"TransitRouterRouteEntryId,omitempty"`
 }
 
@@ -5364,6 +5371,7 @@ func (s *DeactiveFlowLogResponse) SetBody(v *DeactiveFlowLogResponseBody) *Deact
 }
 
 type DeleteCenRequest struct {
+	// The ID of the CEN instance.
 	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5405,6 +5413,7 @@ func (s *DeleteCenRequest) SetResourceOwnerId(v int64) *DeleteCenRequest {
 }
 
 type DeleteCenResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9819,6 +9828,7 @@ type DescribeCenInterRegionBandwidthLimitsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrRegionId           *string `json:"TrRegionId,omitempty" xml:"TrRegionId,omitempty"`
 }
 
 func (s DescribeCenInterRegionBandwidthLimitsRequest) String() string {
@@ -9861,6 +9871,11 @@ func (s *DescribeCenInterRegionBandwidthLimitsRequest) SetResourceOwnerAccount(v
 
 func (s *DescribeCenInterRegionBandwidthLimitsRequest) SetResourceOwnerId(v int64) *DescribeCenInterRegionBandwidthLimitsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeCenInterRegionBandwidthLimitsRequest) SetTrRegionId(v string) *DescribeCenInterRegionBandwidthLimitsRequest {
+	s.TrRegionId = &v
 	return s
 }
 
@@ -17946,6 +17961,8 @@ func (s *ListTransitRouterMulticastDomainsResponseBody) SetTransitRouterMulticas
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains struct {
+	CenId    *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// WB656982
 	Status          *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags            []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -17975,6 +17992,16 @@ func (s ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomai
 
 func (s ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) GoString() string {
 	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetCenId(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetRegionId(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.RegionId = &v
+	return s
 }
 
 func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetStatus(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
@@ -19313,8 +19340,9 @@ type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
 	//
 	// *   **true**: The route can be managed. You can delete the route.
 	// *   **false**: The route cannot be managed because it is automatically generated by the system.
-	OperationalMode *bool   `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
-	PrefixListId    *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	OperationalMode *bool                                                                             `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
+	PathAttributes  *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes `json:"PathAttributes,omitempty" xml:"PathAttributes,omitempty" type:"Struct"`
+	PrefixListId    *string                                                                           `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	// The tag of the route.
 	//
 	// Only **PermitVbr** may be returned, which indicates that the route is advertised only to the route table of the virtual border router (VBR) that is connected to the transit router.
@@ -19374,6 +19402,11 @@ func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) Set
 
 func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) SetOperationalMode(v bool) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries {
 	s.OperationalMode = &v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) SetPathAttributes(v *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries {
+	s.PathAttributes = v
 	return s
 }
 
@@ -19444,6 +19477,53 @@ func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) Set
 
 func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) SetTransitRouterRouteEntryType(v string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries {
 	s.TransitRouterRouteEntryType = &v
+	return s
+}
+
+type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes struct {
+	AsPaths            []*string `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Repeated"`
+	Communities        []*string `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Repeated"`
+	OriginInstanceId   *string   `json:"OriginInstanceId,omitempty" xml:"OriginInstanceId,omitempty"`
+	OriginInstanceType *string   `json:"OriginInstanceType,omitempty" xml:"OriginInstanceType,omitempty"`
+	OriginRouteType    *string   `json:"OriginRouteType,omitempty" xml:"OriginRouteType,omitempty"`
+	Preference         *int32    `json:"Preference,omitempty" xml:"Preference,omitempty"`
+}
+
+func (s ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) SetAsPaths(v []*string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes {
+	s.AsPaths = v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) SetCommunities(v []*string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes {
+	s.Communities = v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) SetOriginInstanceId(v string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes {
+	s.OriginInstanceId = &v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) SetOriginInstanceType(v string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes {
+	s.OriginInstanceType = &v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) SetOriginRouteType(v string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes {
+	s.OriginRouteType = &v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes) SetPreference(v int32) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes {
+	s.Preference = &v
 	return s
 }
 
@@ -24016,13 +24096,23 @@ func (s *ResolveAndRouteServiceInCenResponse) SetBody(v *ResolveAndRouteServiceI
 }
 
 type RevokeInstanceFromTransitRouterRequest struct {
-	// Revokes the permissions that a transit router uses to connect to network instances that belong to another Alibaba Cloud account.
-	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CenOwnerId           *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Enter the ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// The ID of the network instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// *   **VPC**: VPC
+	// *   **ExpressConnect**: VBR
+	// *   **VPN**: IPsec-VPN connection
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the network instance is deployed.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -24082,6 +24172,7 @@ func (s *RevokeInstanceFromTransitRouterRequest) SetResourceOwnerId(v int64) *Re
 }
 
 type RevokeInstanceFromTransitRouterResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28885,8 +28976,10 @@ func (client *Client) CreateTransitRouterMulticastDomain(request *CreateTransitR
 }
 
 /**
- * The name of the inter-region connection.
- * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). The name must start with a letter.
+ * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenbandwidthpackage).
+ * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+ * *   If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
+ * *   If an inter-region connection is in the **Attached** state, the inter-region connection is created.
  *
  * @param request CreateTransitRouterPeerAttachmentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28994,8 +29087,10 @@ func (client *Client) CreateTransitRouterPeerAttachmentWithOptions(request *Crea
 }
 
 /**
- * The name of the inter-region connection.
- * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). The name must start with a letter.
+ * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenbandwidthpackage).
+ * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+ * *   If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
+ * *   If an inter-region connection is in the **Attached** state, the inter-region connection is created.
  *
  * @param request CreateTransitRouterPeerAttachmentRequest
  * @return CreateTransitRouterPeerAttachmentResponse
@@ -29129,7 +29224,9 @@ func (client *Client) CreateTransitRouterPrefixListAssociation(request *CreateTr
 }
 
 /**
- * The ID of the request.
+ * **CreateTransitRouterRouteEntry** is an asynchronous operation. After you send a request, the route ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteEntries** to query the status of a route.
+ * *   If a route is in the **Creating** state, the route is being created. In this case, you can query the route but cannot perform other operations.
+ * *   If a route is in the **Active** state, the route is created.
  *
  * @param request CreateTransitRouterRouteEntryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29213,7 +29310,9 @@ func (client *Client) CreateTransitRouterRouteEntryWithOptions(request *CreateTr
 }
 
 /**
- * The ID of the request.
+ * **CreateTransitRouterRouteEntry** is an asynchronous operation. After you send a request, the route ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteEntries** to query the status of a route.
+ * *   If a route is in the **Creating** state, the route is being created. In this case, you can query the route but cannot perform other operations.
+ * *   If a route is in the **Active** state, the route is created.
  *
  * @param request CreateTransitRouterRouteEntryRequest
  * @return CreateTransitRouterRouteEntryResponse
@@ -29813,7 +29912,17 @@ func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result 
 }
 
 /**
- * DeleteCen
+ * **DeleteCen** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
+ * - If a CEN instance is in the **Deleting** state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
+ * - If a CEN instance cannot be found, the CEN instance is deleted.
+ * ## Prerequisites
+ * The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
+ * - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
+ *   - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
+ *   - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
+ *   - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+ * - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
+ * - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
  *
  * @param request DeleteCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29869,7 +29978,17 @@ func (client *Client) DeleteCenWithOptions(request *DeleteCenRequest, runtime *u
 }
 
 /**
- * DeleteCen
+ * **DeleteCen** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
+ * - If a CEN instance is in the **Deleting** state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
+ * - If a CEN instance cannot be found, the CEN instance is deleted.
+ * ## Prerequisites
+ * The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
+ * - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
+ *   - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
+ *   - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
+ *   - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+ * - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
+ * - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
  *
  * @param request DeleteCenRequest
  * @return DeleteCenResponse
@@ -32375,6 +32494,10 @@ func (client *Client) DescribeCenInterRegionBandwidthLimitsWithOptions(request *
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrRegionId)) {
+		query["TrRegionId"] = request.TrRegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -38197,7 +38320,14 @@ func (client *Client) ResolveAndRouteServiceInCen(request *ResolveAndRouteServic
 }
 
 /**
- * The operation that you want to perform. Set the value to **RevokeInstanceFromTransitRouter**.
+ * ## Usage notes
+ * `RevokeInstanceFromTransitRouter` disallows transit routers only from connecting to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections.
+ * If you want to disallow transit routers from connecting to Cloud Connect Network (CCN) instances, call the [RevokeInstanceFromCbn](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/revokeinstancefromcbn) operation.
+ * ## Prerequisites
+ * Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
+ * - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
+ * - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
+ * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
  *
  * @param request RevokeInstanceFromTransitRouterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38269,7 +38399,14 @@ func (client *Client) RevokeInstanceFromTransitRouterWithOptions(request *Revoke
 }
 
 /**
- * The operation that you want to perform. Set the value to **RevokeInstanceFromTransitRouter**.
+ * ## Usage notes
+ * `RevokeInstanceFromTransitRouter` disallows transit routers only from connecting to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections.
+ * If you want to disallow transit routers from connecting to Cloud Connect Network (CCN) instances, call the [RevokeInstanceFromCbn](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/revokeinstancefromcbn) operation.
+ * ## Prerequisites
+ * Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
+ * - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
+ * - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
+ * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
  *
  * @param request RevokeInstanceFromTransitRouterRequest
  * @return RevokeInstanceFromTransitRouterResponse
