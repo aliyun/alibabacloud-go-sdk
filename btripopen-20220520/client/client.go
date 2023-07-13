@@ -28966,6 +28966,7 @@ type HotelOrderPreValidateResponseBodyModuleRatePlanInfo struct {
 	BtripHotelCancelPolicyDTO *HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO `json:"btrip_hotel_cancel_policy_d_t_o,omitempty" xml:"btrip_hotel_cancel_policy_d_t_o,omitempty" type:"Struct"`
 	EarliestCheckInTime       *string                                                                       `json:"earliest_check_in_time,omitempty" xml:"earliest_check_in_time,omitempty"`
 	LatestCheckOutTime        *string                                                                       `json:"latest_check_out_time,omitempty" xml:"latest_check_out_time,omitempty"`
+	MaxBookingNum             *int32                                                                        `json:"max_booking_num,omitempty" xml:"max_booking_num,omitempty"`
 	MaxOccupancyNum           *int32                                                                        `json:"max_occupancy_num,omitempty" xml:"max_occupancy_num,omitempty"`
 	NeedCertificate           *bool                                                                         `json:"need_certificate,omitempty" xml:"need_certificate,omitempty"`
 	NeedEmail                 *bool                                                                         `json:"need_email,omitempty" xml:"need_email,omitempty"`
@@ -28999,6 +29000,11 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) SetEarliestCheckIn
 
 func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) SetLatestCheckOutTime(v string) *HotelOrderPreValidateResponseBodyModuleRatePlanInfo {
 	s.LatestCheckOutTime = &v
+	return s
+}
+
+func (s *HotelOrderPreValidateResponseBodyModuleRatePlanInfo) SetMaxBookingNum(v int32) *HotelOrderPreValidateResponseBodyModuleRatePlanInfo {
+	s.MaxBookingNum = &v
 	return s
 }
 
