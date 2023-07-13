@@ -19437,8 +19437,11 @@ func (s *DescribeMetricMetaListResponse) SetBody(v *DescribeMetricMetaListRespon
 
 type DescribeMetricRuleBlackListRequest struct {
 	// The ID of the blacklist policy.
-	Category *string   `json:"Category,omitempty" xml:"Category,omitempty"`
-	Ids      []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	Category    *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	Ids         []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	IsEnable    *bool     `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The timestamp when the blacklist policy expired.
 	//
 	// Unit: milliseconds.
@@ -19450,8 +19453,9 @@ type DescribeMetricRuleBlackListRequest struct {
 	// The name of the metric.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The categories of the Alibaba Cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s DescribeMetricRuleBlackListRequest) String() string {
@@ -19469,6 +19473,21 @@ func (s *DescribeMetricRuleBlackListRequest) SetCategory(v string) *DescribeMetr
 
 func (s *DescribeMetricRuleBlackListRequest) SetIds(v []*string) *DescribeMetricRuleBlackListRequest {
 	s.Ids = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetInstanceIds(v []*string) *DescribeMetricRuleBlackListRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetIsEnable(v bool) *DescribeMetricRuleBlackListRequest {
+	s.IsEnable = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetName(v string) *DescribeMetricRuleBlackListRequest {
+	s.Name = &v
 	return s
 }
 
@@ -19494,6 +19513,11 @@ func (s *DescribeMetricRuleBlackListRequest) SetPageSize(v int32) *DescribeMetri
 
 func (s *DescribeMetricRuleBlackListRequest) SetRegionId(v string) *DescribeMetricRuleBlackListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetScopeType(v string) *DescribeMetricRuleBlackListRequest {
+	s.ScopeType = &v
 	return s
 }
 
@@ -25543,33 +25567,25 @@ func (s *DescribeProductsOfActiveMetricRuleResponse) SetBody(v *DescribeProducts
 }
 
 type DescribeProjectMetaRequest struct {
-	// Indicates whether the call was successful. The value true indicates success. The value false indicates failure.
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The tags. Tags are used to filter services.
 	//
-	// Tags are returned in the following format: `[{"name":"Tag key","value":"Tag value"}, {"name":"Tag key","value":"Tag value"}]`. The following tags are commonly used:
+	// You can filter services only by the tag whose `name` is `product`. Example: {"name":"product","value":"ECS"}.
 	//
-	// *   alertUnit: the unit of the metric value in alerts.
+	// > We recommend that you do not use the special tags in the CloudMonitor console.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The page number.
 	//
-	//     If the unit is small, the original metric value may be too large. In this case, you can use the `alertUnit` tag to specify an appropriate unit. This tag is used in CloudMonitor.
+	// Valid values: 1 to 100.
 	//
-	// *   minAlertPeriod: the minimum time interval to report a new alert. The interval is usually set to 1 minute.
-	//
-	// *   metricCategory: the specification of the service. Example: kvstore_sharding.
-	//
-	//     An Alibaba Cloud service may have different specifications that are defined in the same namespace. You can use this parameter to distinguish between service specifications.
-	//
-	// *   is_alarm: specifies whether an alert rule can be set.
-	//
-	//     We recommend that you do not use the special tags in the CloudMonitor console.
+	// Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 10000.
 	//
 	// Default value: 30.
 	//
-	// >  The value of this parameter is not limited. You can view a large number of entries per page.
+	// > The value of this parameter is not limited. You can view a large number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -25597,31 +25613,23 @@ func (s *DescribeProjectMetaRequest) SetPageSize(v int32) *DescribeProjectMetaRe
 }
 
 type DescribeProjectMetaResponseBody struct {
-	// The tags. Tags are used to filter services.
+	// The status code.
 	//
-	// You can filter services only by the tag whose `name` is `product`. Example: {"name":"product","value":"ECS"}.
-	//
-	// >  We recommend that you do not use the special tags in the CloudMonitor console.
+	// > The status code 200 indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of the page to return.
-	//
-	// Valid values: 1 to 100.
-	//
-	// Default value: 1.
+	// The page number.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The details of the cloud service.
+	// The number of entries per page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeProjectMeta**.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned per page.
+	// The details of the cloud service.
 	Resources *DescribeProjectMetaResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The page number of the returned page.
+	// The total number of entries returned.
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -25691,9 +25699,18 @@ func (s *DescribeProjectMetaResponseBodyResources) SetResource(v []*DescribeProj
 }
 
 type DescribeProjectMetaResponseBodyResourcesResource struct {
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The ID of the request.
+	// The tags. Tags are used to filter services.
+	//
+	// Tags are returned in the following format: `[{"name":"Tag key","value":"Tag value"}, {"name":"Tag key","value":"Tag value"}]`. The following tags are commonly used:
+	//
+	// *   alertUnit: the unit of the metric value in alerts. If the unit is small, the original metric value may be too large. In this case, you can use the `alertUnit` tag to specify an appropriate unit. This tag is used in CloudMonitor.
+	// *   minAlertPeriod: the minimum time interval to report a new alert. The interval is usually set to 1 minute.
+	// *   metricCategory: the service specification. Example: kvstore_sharding. An Alibaba Cloud service may have different specifications that are defined in the same namespace. You can use this parameter to distinguish between service specifications.
+	// *   is_alarm: specifies whether an alert rule can be set. We recommend that you do not use the special tags in the CloudMonitor console.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The namespace of the cloud service. Format: `acs_Service name abbreviation`. For more information about namespaces, see [Appendix 1: Metrics](~~163515~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -26140,33 +26157,34 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) S
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
-	Assertions      *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
-	Attempts        *int64                                                                    `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	Authentication  *int32                                                                    `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	Cookie          *string                                                                   `json:"cookie,omitempty" xml:"cookie,omitempty"`
-	DiagnosisMtr    *bool                                                                     `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
-	DiagnosisPing   *bool                                                                     `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
-	DnsMatchRule    *string                                                                   `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
-	DnsServer       *string                                                                   `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	DnsType         *string                                                                   `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
-	ExpectValue     *string                                                                   `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
-	FailureRate     *float32                                                                  `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	Header          *string                                                                   `json:"header,omitempty" xml:"header,omitempty"`
-	HttpMethod      *string                                                                   `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	IsBase64Encode  *string                                                                   `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
-	MatchRule       *int32                                                                    `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
-	MinTlsVersion   *string                                                                   `json:"min_tls_version,omitempty" xml:"min_tls_version,omitempty"`
-	Password        *string                                                                   `json:"password,omitempty" xml:"password,omitempty"`
-	PingNum         *int32                                                                    `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	Port            *int32                                                                    `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol        *string                                                                   `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	RequestContent  *string                                                                   `json:"request_content,omitempty" xml:"request_content,omitempty"`
-	RequestFormat   *string                                                                   `json:"request_format,omitempty" xml:"request_format,omitempty"`
-	ResponseContent *string                                                                   `json:"response_content,omitempty" xml:"response_content,omitempty"`
-	ResponseFormat  *string                                                                   `json:"response_format,omitempty" xml:"response_format,omitempty"`
-	RetryDelay      *int32                                                                    `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	TimeOut         *int64                                                                    `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	Username        *string                                                                   `json:"username,omitempty" xml:"username,omitempty"`
+	Assertions         *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
+	Attempts           *int64                                                                    `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	Authentication     *int32                                                                    `json:"authentication,omitempty" xml:"authentication,omitempty"`
+	Cookie             *string                                                                   `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	DiagnosisMtr       *bool                                                                     `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	DiagnosisPing      *bool                                                                     `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
+	DnsHijackWhitelist *string                                                                   `json:"dns_hijack_whitelist,omitempty" xml:"dns_hijack_whitelist,omitempty"`
+	DnsMatchRule       *string                                                                   `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
+	DnsServer          *string                                                                   `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
+	DnsType            *string                                                                   `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	ExpectValue        *string                                                                   `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
+	FailureRate        *float32                                                                  `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
+	Header             *string                                                                   `json:"header,omitempty" xml:"header,omitempty"`
+	HttpMethod         *string                                                                   `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	IsBase64Encode     *string                                                                   `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
+	MatchRule          *int32                                                                    `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	MinTlsVersion      *string                                                                   `json:"min_tls_version,omitempty" xml:"min_tls_version,omitempty"`
+	Password           *string                                                                   `json:"password,omitempty" xml:"password,omitempty"`
+	PingNum            *int32                                                                    `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
+	Port               *int32                                                                    `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol           *string                                                                   `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	RequestContent     *string                                                                   `json:"request_content,omitempty" xml:"request_content,omitempty"`
+	RequestFormat      *string                                                                   `json:"request_format,omitempty" xml:"request_format,omitempty"`
+	ResponseContent    *string                                                                   `json:"response_content,omitempty" xml:"response_content,omitempty"`
+	ResponseFormat     *string                                                                   `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	RetryDelay         *int32                                                                    `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	TimeOut            *int64                                                                    `json:"time_out,omitempty" xml:"time_out,omitempty"`
+	Username           *string                                                                   `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) String() string {
@@ -26204,6 +26222,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDiag
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDiagnosisPing(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.DiagnosisPing = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDnsHijackWhitelist(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.DnsHijackWhitelist = &v
 	return s
 }
 
@@ -44204,6 +44227,18 @@ func (client *Client) DescribeMetricRuleBlackListWithOptions(request *DescribeMe
 		query["Ids"] = request.Ids
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEnable)) {
+		query["IsEnable"] = request.IsEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
 		query["Namespace"] = request.Namespace
 	}
@@ -44218,6 +44253,10 @@ func (client *Client) DescribeMetricRuleBlackListWithOptions(request *DescribeMe
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		query["ScopeType"] = request.ScopeType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -45532,7 +45571,7 @@ func (client *Client) DescribeProductsOfActiveMetricRule(request *DescribeProduc
 }
 
 /**
- * The description of the cloud service.
+ * The information obtained by this operation includes the service description, namespace, and tags.
  *
  * @param request DescribeProjectMetaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45580,7 +45619,7 @@ func (client *Client) DescribeProjectMetaWithOptions(request *DescribeProjectMet
 }
 
 /**
- * The description of the cloud service.
+ * The information obtained by this operation includes the service description, namespace, and tags.
  *
  * @param request DescribeProjectMetaRequest
  * @return DescribeProjectMetaResponse
