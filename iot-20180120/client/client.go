@@ -111,6 +111,203 @@ func (s *AddDataForApiSourceResponse) SetBody(v *AddDataForApiSourceResponseBody
 	return s
 }
 
+type AddDeviceToSharePromotionRequest struct {
+	DeviceSimpleInfoList     []*AddDeviceToSharePromotionRequestDeviceSimpleInfoList `json:"DeviceSimpleInfoList,omitempty" xml:"DeviceSimpleInfoList,omitempty" type:"Repeated"`
+	IotInstanceId            *string                                                 `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SharePromotionActivityId *string                                                 `json:"SharePromotionActivityId,omitempty" xml:"SharePromotionActivityId,omitempty"`
+	ShareTaskCode            *string                                                 `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+}
+
+func (s AddDeviceToSharePromotionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceToSharePromotionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceToSharePromotionRequest) SetDeviceSimpleInfoList(v []*AddDeviceToSharePromotionRequestDeviceSimpleInfoList) *AddDeviceToSharePromotionRequest {
+	s.DeviceSimpleInfoList = v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionRequest) SetIotInstanceId(v string) *AddDeviceToSharePromotionRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionRequest) SetSharePromotionActivityId(v string) *AddDeviceToSharePromotionRequest {
+	s.SharePromotionActivityId = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionRequest) SetShareTaskCode(v string) *AddDeviceToSharePromotionRequest {
+	s.ShareTaskCode = &v
+	return s
+}
+
+type AddDeviceToSharePromotionRequestDeviceSimpleInfoList struct {
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s AddDeviceToSharePromotionRequestDeviceSimpleInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceToSharePromotionRequestDeviceSimpleInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceToSharePromotionRequestDeviceSimpleInfoList) SetDeviceName(v string) *AddDeviceToSharePromotionRequestDeviceSimpleInfoList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionRequestDeviceSimpleInfoList) SetProductKey(v string) *AddDeviceToSharePromotionRequestDeviceSimpleInfoList {
+	s.ProductKey = &v
+	return s
+}
+
+type AddDeviceToSharePromotionResponseBody struct {
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *AddDeviceToSharePromotionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddDeviceToSharePromotionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceToSharePromotionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceToSharePromotionResponseBody) SetCode(v string) *AddDeviceToSharePromotionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponseBody) SetData(v *AddDeviceToSharePromotionResponseBodyData) *AddDeviceToSharePromotionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponseBody) SetErrorMessage(v string) *AddDeviceToSharePromotionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponseBody) SetRequestId(v string) *AddDeviceToSharePromotionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponseBody) SetSuccess(v bool) *AddDeviceToSharePromotionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddDeviceToSharePromotionResponseBodyData struct {
+	FailDeviceSimpleInfoList *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList `json:"FailDeviceSimpleInfoList,omitempty" xml:"FailDeviceSimpleInfoList,omitempty" type:"Struct"`
+}
+
+func (s AddDeviceToSharePromotionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceToSharePromotionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceToSharePromotionResponseBodyData) SetFailDeviceSimpleInfoList(v *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList) *AddDeviceToSharePromotionResponseBodyData {
+	s.FailDeviceSimpleInfoList = v
+	return s
+}
+
+type AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList struct {
+	Item []*AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem `json:"item,omitempty" xml:"item,omitempty" type:"Repeated"`
+}
+
+func (s AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList) SetItem(v []*AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem) *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList {
+	s.Item = v
+	return s
+}
+
+type AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem struct {
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	FailCode   *int32  `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem) SetDeviceName(v string) *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem) SetFailCode(v int32) *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem {
+	s.FailCode = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem) SetFailReason(v string) *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem {
+	s.FailReason = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem) SetProductKey(v string) *AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem {
+	s.ProductKey = &v
+	return s
+}
+
+type AddDeviceToSharePromotionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDeviceToSharePromotionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDeviceToSharePromotionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceToSharePromotionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceToSharePromotionResponse) SetHeaders(v map[string]*string) *AddDeviceToSharePromotionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponse) SetStatusCode(v int32) *AddDeviceToSharePromotionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDeviceToSharePromotionResponse) SetBody(v *AddDeviceToSharePromotionResponseBody) *AddDeviceToSharePromotionResponse {
+	s.Body = v
+	return s
+}
+
 type AddShareTaskDeviceRequest struct {
 	IotIdList     []*string `json:"IotIdList,omitempty" xml:"IotIdList,omitempty" type:"Repeated"`
 	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -1641,9 +1838,15 @@ func (s *BatchCheckDeviceNamesResponse) SetBody(v *BatchCheckDeviceNamesResponse
 }
 
 type BatchCheckImportDeviceRequest struct {
-	DeviceList    []*BatchCheckImportDeviceRequestDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Repeated"`
-	IotInstanceId *string                                    `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string                                    `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceList []*BatchCheckImportDeviceRequestDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Repeated"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The **ProductKey** of the gateway product to which the devices belong.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s BatchCheckImportDeviceRequest) String() string {
@@ -1699,11 +1902,19 @@ func (s *BatchCheckImportDeviceRequestDeviceList) SetSn(v string) *BatchCheckImp
 }
 
 type BatchCheckImportDeviceResponseBody struct {
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *BatchCheckImportDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned if the request succeeds. The data includes the information about devices that failed to be verified.
+	Data *BatchCheckImportDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchCheckImportDeviceResponseBody) String() string {
@@ -4105,9 +4316,15 @@ func (s *BatchGrayMigrationDeviceResponse) SetBody(v *BatchGrayMigrationDeviceRe
 }
 
 type BatchImportDeviceRequest struct {
-	DeviceList    []*BatchImportDeviceRequestDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Repeated"`
-	IotInstanceId *string                               `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string                               `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	DeviceList []*BatchImportDeviceRequestDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Repeated"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The **ProductKey** of the gateway product to which the devices belong.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s BatchImportDeviceRequest) String() string {
@@ -4163,11 +4380,19 @@ func (s *BatchImportDeviceRequestDeviceList) SetSn(v string) *BatchImportDeviceR
 }
 
 type BatchImportDeviceResponseBody struct {
-	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *BatchImportDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *BatchImportDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchImportDeviceResponseBody) String() string {
@@ -4204,6 +4429,7 @@ func (s *BatchImportDeviceResponseBody) SetSuccess(v bool) *BatchImportDeviceRes
 }
 
 type BatchImportDeviceResponseBodyData struct {
+	// The application ID returned if the request is successful.
 	ApplyId                 *int64                                                    `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
 	InvalidDetailList       *BatchImportDeviceResponseBodyDataInvalidDetailList       `json:"InvalidDetailList,omitempty" xml:"InvalidDetailList,omitempty" type:"Struct"`
 	InvalidDeviceNameList   *BatchImportDeviceResponseBodyDataInvalidDeviceNameList   `json:"InvalidDeviceNameList,omitempty" xml:"InvalidDeviceNameList,omitempty" type:"Struct"`
@@ -6450,9 +6676,14 @@ func (s *BindGatewayToEdgeInstanceResponse) SetBody(v *BindGatewayToEdgeInstance
 type BindLicenseDeviceRequest struct {
 	DeviceNameList []*string `json:"DeviceNameList,omitempty" xml:"DeviceNameList,omitempty" type:"Repeated"`
 	IotIdList      []*string `json:"IotIdList,omitempty" xml:"IotIdList,omitempty" type:"Repeated"`
-	IotInstanceId  *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	LicenseCode    *string   `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	ProductKey     *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The ID of the Enterprise Edition instance. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The license type that specifies the audio and video specifications. Valid values: **480P** and **720P**.
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// The **ProductKey** of the product to which the devices belong.
+	//
+	// You can go to the IoT Platform console or call the [QueryProductList](~~69271~~) operation to view the information about all products of the instance.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s BindLicenseDeviceRequest) String() string {
@@ -6489,11 +6720,19 @@ func (s *BindLicenseDeviceRequest) SetProductKey(v string) *BindLicenseDeviceReq
 }
 
 type BindLicenseDeviceResponseBody struct {
-	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *BindLicenseDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see the "Error codes" section in this topic.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the batch binding operation.
+	Data *BindLicenseDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BindLicenseDeviceResponseBody) String() string {
@@ -6530,11 +6769,16 @@ func (s *BindLicenseDeviceResponseBody) SetSuccess(v bool) *BindLicenseDeviceRes
 }
 
 type BindLicenseDeviceResponseBodyData struct {
+	// The unique ID that can be used to query the progress of the batch binding operation.
 	CheckProgressId *string `json:"CheckProgressId,omitempty" xml:"CheckProgressId,omitempty"`
-	FailSum         *int64  `json:"FailSum,omitempty" xml:"FailSum,omitempty"`
-	Progress        *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ResultCsvFile   *string `json:"ResultCsvFile,omitempty" xml:"ResultCsvFile,omitempty"`
-	SuccessSum      *int64  `json:"SuccessSum,omitempty" xml:"SuccessSum,omitempty"`
+	// The number of devices that failed to be bound to the license.
+	FailSum *int64 `json:"FailSum,omitempty" xml:"FailSum,omitempty"`
+	// The progress of the batch binding operation. The progress is a percentage. Valid values: 1 to 100.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The URL of the file that contains unbound devices. The devices failed to be bound to the license.
+	ResultCsvFile *string `json:"ResultCsvFile,omitempty" xml:"ResultCsvFile,omitempty"`
+	// The number of devices to which the license is successfully bound.
+	SuccessSum *int64 `json:"SuccessSum,omitempty" xml:"SuccessSum,omitempty"`
 }
 
 func (s BindLicenseDeviceResponseBodyData) String() string {
@@ -8276,9 +8520,18 @@ func (s *CopyThingModelResponse) SetBody(v *CopyThingModelResponseBody) *CopyThi
 }
 
 type CountSpeechBroadcastHourRequest struct {
-	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The end time of the hour in which you want to query the number of broadcasted speeches. Example: 2020090919, which indicates 19:00 on September 9, 2020.
 	QueryDateTimeHour *string `json:"QueryDateTimeHour,omitempty" xml:"QueryDateTimeHour,omitempty"`
-	ShareTaskCode     *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+	// The code that is used to share the speeches.
+	//
+	// You can obtain the **code** on the **Shared Corpus Management** page of **Speech Sending Voice Broadcasting Service**.
+	ShareTaskCode *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
 }
 
 func (s CountSpeechBroadcastHourRequest) String() string {
@@ -8305,11 +8558,19 @@ func (s *CountSpeechBroadcastHourRequest) SetShareTaskCode(v string) *CountSpeec
 }
 
 type CountSpeechBroadcastHourResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of shared speeches that were broadcasted in the specific hour.
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the request fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CountSpeechBroadcastHourResponseBody) String() string {
@@ -8843,12 +9104,53 @@ func (s *CreateDataAPIServiceResponse) SetBody(v *CreateDataAPIServiceResponseBo
 }
 
 type CreateDataSourceItemRequest struct {
-	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DataSourceId *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The instance ID. You can view the instance **ID** on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	ScopeType     *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The topic that you want to add to the data source in the rules engine. Format: `/${productKey}/${deviceName}/topicShortName`. `${productKey}` specifies the **ProductKey** of the product to which a device belongs. `${deviceName}` specifies the name of the device. `topicShortName` specifies the custom name of the topic.
+	//
+	// *   Basic communication topics or Thing Specification Language (TSL) communication topics are in the `/${productKey}/${deviceName}/topicShortName` format. You can replace `${deviceName}` with the plus sign (`+`) wildcard character. The wildcard character specifies that the topic applies to all devices in the product. Valid values of `topicShortName`:
+	//
+	//     *   `/thing/event/property/post`: submits the property data of a device.
+	//     *   `/thing/event/${tsl.event.identifier}/post`: submits the event data of a device. `${tsl.event.identifier}` specifies the identifier of an event in the TSL model.
+	//     *   `/thing/lifecycle`: submits device lifecycle changes.
+	//     *   `/thing/downlink/reply/message`: sends a response to a request from IoT Platform.
+	//     *   `/thing/list/found`: submits data when a gateway detects a new sub-device.
+	//     *   `/thing/topo/lifecycle`: submits device topology changes.
+	//     *   `/thing/event/property/history/post`: submits the historical property data of a device.
+	//     *   `/thing/event/${tsl.event.identifier}/post`: submits the historical event data of a device. `${tsl.event.identifier}` specifies the identifier of an event in the TSL model.
+	//     *   `/ota/upgrade`: submits the over-the-air (OTA) update status.
+	//     *   `/ota/version/post`: submits OTA module versions.
+	//     *   `/thing/deviceinfo/update`: submits device tag changes.
+	//
+	//     `/${productKey}/${packageId}/${jobId}/ota/job/status`: submits the status of each OTA update batch. This topic is a basic communication topic. `${packageId}` specifies the ID of the update package. `${jobId}` specifies the ID of the update batch.
+	//
+	// *   Custom topics are in the `/${productKey}/${deviceName}/user/#` format. Example: `/${productKey}/${deviceName}/user/get`.
+	//
+	//     You can call the [QueryProductTopic](~~69647~~) operation to view all custom topics of a product.
+	//
+	//     When you specify a custom topic, you can use the plus sign (`+`) and number sign (`#`) wildcard characters.
+	//
+	//     *   You can replace `${deviceName}` with the plus sign (`+`) wildcard character. The wildcard character specifies that the topic applies to all devices in the product.
+	//     *   You can replace the fields that follow ${deviceName} with `/user/#`. The number sign (`#`) wildcard character specifies that the topic applies to all fields that follow `/user`.
+	//
+	// *   Topics that are used to submit device status changes are in the `/as/mqtt/status/${productKey}/${deviceName}` format.
+	//
+	// You can use the plus sign (`+`) wildcard character to specify that the status changes of all devices in the product are submitted.
+	//
+	// For more information about how to use wildcard characters, see the "Custom topics with wildcard characters" section in [Use custom topics](~~85539~~).
+	//
+	// For more information about the data formats of topics, see [Data formats](~~73736~~).
+	//
+	// > You can add only the following topics to the data source in the rules engine for MQTT gateways, devices of MQTT gateways, and products and devices that use the open source MQTT protocol: custom topics, topics that are used to submit device status changes, and topics that are used to submit device lifecycle changes. For more information about custom topics, see the "Messaging" topic. If you set this parameter to a custom topic, you must specify ScopeType and ProductKey. If you set ScopeType to DEVICE, you must specify DeviceName.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s CreateDataSourceItemRequest) String() string {
@@ -11168,9 +11470,16 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateLoRaNodesTaskRequest struct {
-	DeviceInfo    []*CreateLoRaNodesTaskRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Repeated"`
-	IotInstanceId *string                                 `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string                                 `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The LoRaWAN devices.
+	DeviceInfo []*CreateLoRaNodesTaskRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Repeated"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The ProductKey of the product to which the devices belong.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s CreateLoRaNodesTaskRequest) String() string {
@@ -11197,7 +11506,9 @@ func (s *CreateLoRaNodesTaskRequest) SetProductKey(v string) *CreateLoRaNodesTas
 }
 
 type CreateLoRaNodesTaskRequestDeviceInfo struct {
-	DevEui  *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	// The DevEUI of the LoRaWAN device.
+	DevEui *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	// The PIN code of the LoRaWAN device. The value of the parameter is used to verify the DevEUI.
 	PinCode *string `json:"PinCode,omitempty" xml:"PinCode,omitempty"`
 }
 
@@ -11220,11 +11531,21 @@ func (s *CreateLoRaNodesTaskRequestDeviceInfo) SetPinCode(v string) *CreateLoRaN
 }
 
 type CreateLoRaNodesTaskResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The task ID returned if the request was successful.
+	//
+	// > Record the ID. You must use the ID to query the status of the device creation task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateLoRaNodesTaskResponseBody) String() string {
@@ -14371,6 +14692,246 @@ func (s *CreateSchedulePeriodResponse) SetStatusCode(v int32) *CreateSchedulePer
 }
 
 func (s *CreateSchedulePeriodResponse) SetBody(v *CreateSchedulePeriodResponseBody) *CreateSchedulePeriodResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSharePromotionActivityRequest struct {
+	EndTime                    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IotInstanceId              *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SharePromotionActivityName *string `json:"SharePromotionActivityName,omitempty" xml:"SharePromotionActivityName,omitempty"`
+	StartTime                  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateSharePromotionActivityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSharePromotionActivityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSharePromotionActivityRequest) SetEndTime(v int64) *CreateSharePromotionActivityRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityRequest) SetIotInstanceId(v string) *CreateSharePromotionActivityRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityRequest) SetSharePromotionActivityName(v string) *CreateSharePromotionActivityRequest {
+	s.SharePromotionActivityName = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityRequest) SetStartTime(v int64) *CreateSharePromotionActivityRequest {
+	s.StartTime = &v
+	return s
+}
+
+type CreateSharePromotionActivityResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSharePromotionActivityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSharePromotionActivityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSharePromotionActivityResponseBody) SetCode(v string) *CreateSharePromotionActivityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityResponseBody) SetData(v string) *CreateSharePromotionActivityResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityResponseBody) SetErrorMessage(v string) *CreateSharePromotionActivityResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityResponseBody) SetRequestId(v string) *CreateSharePromotionActivityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityResponseBody) SetSuccess(v bool) *CreateSharePromotionActivityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSharePromotionActivityResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSharePromotionActivityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSharePromotionActivityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSharePromotionActivityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSharePromotionActivityResponse) SetHeaders(v map[string]*string) *CreateSharePromotionActivityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSharePromotionActivityResponse) SetStatusCode(v int32) *CreateSharePromotionActivityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSharePromotionActivityResponse) SetBody(v *CreateSharePromotionActivityResponseBody) *CreateSharePromotionActivityResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSharePromotionSpeechModelRequest struct {
+	AudioFormat              *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	BizCode                  *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	IotInstanceId            *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SharePromotionActivityId *string `json:"SharePromotionActivityId,omitempty" xml:"SharePromotionActivityId,omitempty"`
+	ShareTaskCode            *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+	SpeechModelType          *string `json:"SpeechModelType,omitempty" xml:"SpeechModelType,omitempty"`
+	SpeechRate               *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Text                     *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice                    *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume                   *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s CreateSharePromotionSpeechModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSharePromotionSpeechModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetAudioFormat(v string) *CreateSharePromotionSpeechModelRequest {
+	s.AudioFormat = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetBizCode(v string) *CreateSharePromotionSpeechModelRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetIotInstanceId(v string) *CreateSharePromotionSpeechModelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetSharePromotionActivityId(v string) *CreateSharePromotionSpeechModelRequest {
+	s.SharePromotionActivityId = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetShareTaskCode(v string) *CreateSharePromotionSpeechModelRequest {
+	s.ShareTaskCode = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetSpeechModelType(v string) *CreateSharePromotionSpeechModelRequest {
+	s.SpeechModelType = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetSpeechRate(v int32) *CreateSharePromotionSpeechModelRequest {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetText(v string) *CreateSharePromotionSpeechModelRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetVoice(v string) *CreateSharePromotionSpeechModelRequest {
+	s.Voice = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelRequest) SetVolume(v int32) *CreateSharePromotionSpeechModelRequest {
+	s.Volume = &v
+	return s
+}
+
+type CreateSharePromotionSpeechModelResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSharePromotionSpeechModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSharePromotionSpeechModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSharePromotionSpeechModelResponseBody) SetCode(v string) *CreateSharePromotionSpeechModelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelResponseBody) SetErrorMessage(v string) *CreateSharePromotionSpeechModelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelResponseBody) SetRequestId(v string) *CreateSharePromotionSpeechModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelResponseBody) SetSuccess(v bool) *CreateSharePromotionSpeechModelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSharePromotionSpeechModelResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSharePromotionSpeechModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSharePromotionSpeechModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSharePromotionSpeechModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSharePromotionSpeechModelResponse) SetHeaders(v map[string]*string) *CreateSharePromotionSpeechModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelResponse) SetStatusCode(v int32) *CreateSharePromotionSpeechModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSharePromotionSpeechModelResponse) SetBody(v *CreateSharePromotionSpeechModelResponseBody) *CreateSharePromotionSpeechModelResponse {
 	s.Body = v
 	return s
 }
@@ -21740,11 +22301,19 @@ func (s *GetDestinationRequest) SetIotInstanceId(v string) *GetDestinationReques
 }
 
 type GetDestinationResponseBody struct {
-	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Destination  *GetDestinationResponseBodyDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
-	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the data destination.
+	Destination *GetDestinationResponseBodyDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDestinationResponseBody) String() string {
@@ -21781,13 +22350,32 @@ func (s *GetDestinationResponseBody) SetSuccess(v bool) *GetDestinationResponseB
 }
 
 type GetDestinationResponseBodyDestination struct {
+	// The configuration data of the data destination.
 	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The ID of the data destination.
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
-	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+	// Indicates whether the data destination is configured to receive error operation data. Error operation data is data that failed to be forwarded for two consecutive times.
+	//
+	// *   **true**: The data destination is configured to receive error operation data.
+	// *   **false**: The data destination is configured to receive regular data instead of error operation data.
+	//
+	// Default value: **false**.
+	IsFailover *bool `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	// The name of the data destination.
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The operation that is performed on the data of the data destination.
+	//
+	// *   **REPUBLISH**: forwards topic data that is processed by a parser script to an IoT Platform communication topic.
+	// *   **AMQP**: forwards topic data that is processed by a parser script to an Advanced Message Queuing Protocol (AMQP) consumer group.
+	// *   **DATAHUB**: forwards topic data to Alibaba Cloud DataHub for stream data processing.
+	// *   **ONS**: forwards topic data that is processed by a parser script to Message Queue for Apache RocketMQ for message distribution.
+	// *   **MNS**: forwards topic data to Message Service (MNS) for message transmission.
+	// *   **FC**: forwards topic data to Function Compute for event computing.
+	// *   **OTS**: forwards topic data to Tablestore for NoSQL data storage.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the data destination was created. The time is displayed in UTC. Format: `yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\"`.
+	UtcCreated *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
 }
 
 func (s GetDestinationResponseBodyDestination) String() string {
@@ -24128,8 +24716,14 @@ func (s *GetGatewayBySubDeviceResponse) SetBody(v *GetGatewayBySubDeviceResponse
 }
 
 type GetLoraNodesTaskRequest struct {
+	// The instance ID.
+	//
+	// You can obtain the **ID** of the instance on the **Overview** page in the IoT Platform console. If your instance has an ID, you must specify this parameter. Otherwise, the request fails.
+	//
+	// > The ID of a public instance may not be displayed on the Overview page. For more information about how to obtain the instance ID, see [How do I obtain an instance ID?](~~267533~~)
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task for creating the LoRaWAN devices. You can call the [CreateLoRaNodesTask](~~109299~~) operation and obtain the task ID from the value of the **TaskId** response parameter.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetLoraNodesTaskRequest) String() string {
@@ -24151,15 +24745,29 @@ func (s *GetLoraNodesTaskRequest) SetTaskId(v string) *GetLoraNodesTaskRequest {
 }
 
 type GetLoraNodesTaskResponseBody struct {
-	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorMessage   *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of devices that were created.
 	SuccessCount   *int64                                      `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 	SuccessDevEuis *GetLoraNodesTaskResponseBodySuccessDevEuis `json:"SuccessDevEuis,omitempty" xml:"SuccessDevEuis,omitempty" type:"Struct"`
-	TaskId         *string                                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskState      *string                                     `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	TotalCount     *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The task ID returned if the request is successful.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task status.
+	//
+	// *   **RUNNING**: The task is in progress.
+	// *   **FINISH**: The task is completed.
+	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// The total number of devices that you want to create.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetLoraNodesTaskResponseBody) String() string {
@@ -25742,6 +26350,11 @@ func (s *GetSpeechDeviceDetailResponse) SetBody(v *GetSpeechDeviceDetailResponse
 }
 
 type GetSpeechLicenseDeviceStatisticsRequest struct {
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
@@ -25759,11 +26372,19 @@ func (s *GetSpeechLicenseDeviceStatisticsRequest) SetIotInstanceId(v string) *Ge
 }
 
 type GetSpeechLicenseDeviceStatisticsResponseBody struct {
-	Code         *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *GetSpeechLicenseDeviceStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *GetSpeechLicenseDeviceStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSpeechLicenseDeviceStatisticsResponseBody) String() string {
@@ -25800,9 +26421,12 @@ func (s *GetSpeechLicenseDeviceStatisticsResponseBody) SetSuccess(v bool) *GetSp
 }
 
 type GetSpeechLicenseDeviceStatisticsResponseBodyData struct {
+	// The number of available licenses.
 	AvailableQuota *int32 `json:"AvailableQuota,omitempty" xml:"AvailableQuota,omitempty"`
-	ExpiredQuota   *int32 `json:"ExpiredQuota,omitempty" xml:"ExpiredQuota,omitempty"`
-	ExpiringQuota  *int32 `json:"ExpiringQuota,omitempty" xml:"ExpiringQuota,omitempty"`
+	// The number of expired licenses.
+	ExpiredQuota *int32 `json:"ExpiredQuota,omitempty" xml:"ExpiredQuota,omitempty"`
+	// The number of licenses that are about to expire.
+	ExpiringQuota *int32 `json:"ExpiringQuota,omitempty" xml:"ExpiringQuota,omitempty"`
 }
 
 func (s GetSpeechLicenseDeviceStatisticsResponseBodyData) String() string {
@@ -27463,12 +28087,36 @@ func (s *ImportDTDataResponse) SetBody(v *ImportDTDataResponseBody) *ImportDTDat
 }
 
 type ImportDeviceRequest struct {
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	DeviceSecret  *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
+	// The DeviceName of the device.
+	//
+	// The DeviceName must be 4 to 32 characters in length, and can contain letters, digits, hyphens (-), underscores (\_), at signs (@), periods (.), and colons (:).
+	//
+	// The DeviceName must be unique in the product.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The DeviceSecret of the device.
+	//
+	// The DeviceSecret must be 1 to 32 characters in length, and can contain letters, digits, hyphens (-), underscores (\_), at signs (@), periods (.), and colons (:).
+	DeviceSecret *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see [Overview](~~356505~~) of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	Nickname      *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	Sn            *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// The alias of the device.
+	//
+	// The alias must be 1 to 64 characters in length, and can contain letters, digits, and underscores (\_).
+	//
+	// > If you do not specify this parameter, IoT Platform does not generate an alias for the device.
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The **ProductKey** of the gateway product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The serial number (SN) of the device.
+	//
+	// The SN must be 1 to 64 characters in length, and can contain letters, digits, and underscores (\_).
+	//
+	// > If you do not specify this parameter, IoT Platform does not generate an SN for the device.
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
 }
 
 func (s ImportDeviceRequest) String() string {
@@ -27510,11 +28158,19 @@ func (s *ImportDeviceRequest) SetSn(v string) *ImportDeviceRequest {
 }
 
 type ImportDeviceResponseBody struct {
-	Code         *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *ImportDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The device information returned if the request is successful.
+	Data *ImportDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ImportDeviceResponseBody) String() string {
@@ -27551,12 +28207,28 @@ func (s *ImportDeviceResponseBody) SetSuccess(v bool) *ImportDeviceResponseBody 
 }
 
 type ImportDeviceResponseBodyData struct {
-	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The DeviceName of the device.
+	//
+	// >  Keep the information confidential.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The DeviceSecret of the device.
+	//
+	// >  Keep the information confidential.
 	DeviceSecret *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
-	IotId        *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	Nickname     *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
-	ProductKey   *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	Sn           *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// The ID of the device. The ID is a unique identifier that is issued by IoT Platform to the device.
+	//
+	// >  Keep the information confidential.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The alias of the device.
+	//
+	// > If you did not specify an alias for the device, the response parameter is empty.
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The SN of the device.
+	//
+	// > If you did not specify an SN for the device, the response parameter is empty.
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
 }
 
 func (s ImportDeviceResponseBodyData) String() string {
@@ -28509,7 +29181,15 @@ func (s *ListAnalyticsDataResponse) SetBody(v *ListAnalyticsDataResponseBody) *L
 }
 
 type ListDataSourceItemRequest struct {
-	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source ID.
+	//
+	// You can call the [ListParserDataSource](~~432676~~) operation to obtain the IDs of all data sources of the instance.
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	Page          *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -28550,14 +29230,25 @@ func (s *ListDataSourceItemRequest) SetSearchName(v string) *ListDataSourceItemR
 }
 
 type ListDataSourceItemResponseBody struct {
-	Code            *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the topics that are returned.
 	DataSourceItems *ListDataSourceItemResponseBodyDataSourceItems `json:"DataSourceItems,omitempty" xml:"DataSourceItems,omitempty" type:"Struct"`
-	ErrorMessage    *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Page            *int32                                         `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize        *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total           *int32                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The page number.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListDataSourceItemResponseBody) String() string {
@@ -28626,11 +29317,13 @@ func (s *ListDataSourceItemResponseBodyDataSourceItems) SetDataSourceItem(v []*L
 }
 
 type ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem struct {
+	// The ID of the topic of the data source.
 	DataSourceItemId *int64  `json:"DataSourceItemId,omitempty" xml:"DataSourceItemId,omitempty"`
 	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	ScopeType        *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The name of the topic of the data source.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) String() string {
@@ -28696,11 +29389,20 @@ func (s *ListDataSourceItemResponse) SetBody(v *ListDataSourceItemResponseBody) 
 }
 
 type ListDestinationRequest struct {
-	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	Page          *int32    `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchName    *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	Types         []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Page          *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchName    *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The actions of forwarding data to data destinations. Data is processed by using a parser script before the data is forwarded. Valid values:
+	//
+	// *   **REPUBLISH**: forwards topic data to an IoT Platform communication topic.
+	// *   **AMQP**: forwards topic data to an Advanced Message Queuing Protocol (AMQP) consumer group.
+	// *   **DATAHUB**: forwards topic data to Alibaba Cloud DataHub for stream data processing.
+	// *   **ONS**: forwards topic data to Message Queue for Apache RocketMQ for message distribution.
+	// *   **MNS**: forwards topic data to Message Service (MNS) for message transmission.
+	// *   **FC**: forwards topic data to Function Compute for event computing.
+	// *   **OTS**: forwards topic data to Tablestore for NoSQL data storage.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListDestinationRequest) String() string {
@@ -28737,14 +29439,25 @@ func (s *ListDestinationRequest) SetTypes(v []*string) *ListDestinationRequest {
 }
 
 type ListDestinationResponseBody struct {
-	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data destinations.
 	Destinations *ListDestinationResponseBodyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Struct"`
-	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Page         *int32                                   `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize     *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total        *int32                                   `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The page number.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListDestinationResponseBody) String() string {
@@ -28813,14 +29526,26 @@ func (s *ListDestinationResponseBodyDestinations) SetDestinations(v []*ListDesti
 }
 
 type ListDestinationResponseBodyDestinationsDestinations struct {
+	// The configuration data of the data destination.
 	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
-	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+	// The description of the data destination.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the data destination.
+	DestinationId *int64 `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	// Indicates whether the data destination is configured to receive error operation data. Error operation data is the data that failed to be forwarded for two consecutive times.
+	//
+	// *   **true**: The data destination is configured to receive error operation data.
+	// *   **false**: The data destination is configured to receive regular data instead of error operation data.
+	//
+	// Default value: **false**.
+	IsFailover *bool `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	// The name of the data destination.
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The action of forwarding data to the data destination.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the data destination was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the `yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\"` format.
+	UtcCreated *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
 }
 
 func (s ListDestinationResponseBodyDestinationsDestinations) String() string {
@@ -33906,6 +34631,117 @@ func (s *ListThingTemplatesResponse) SetBody(v *ListThingTemplatesResponseBody) 
 	return s
 }
 
+type ModifyOTAFirmwareRequest struct {
+	FirmwareDesc  *string `json:"FirmwareDesc,omitempty" xml:"FirmwareDesc,omitempty"`
+	FirmwareId    *string `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
+	FirmwareName  *string `json:"FirmwareName,omitempty" xml:"FirmwareName,omitempty"`
+	FirmwareUdi   *string `json:"FirmwareUdi,omitempty" xml:"FirmwareUdi,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s ModifyOTAFirmwareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOTAFirmwareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOTAFirmwareRequest) SetFirmwareDesc(v string) *ModifyOTAFirmwareRequest {
+	s.FirmwareDesc = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareRequest) SetFirmwareId(v string) *ModifyOTAFirmwareRequest {
+	s.FirmwareId = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareRequest) SetFirmwareName(v string) *ModifyOTAFirmwareRequest {
+	s.FirmwareName = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareRequest) SetFirmwareUdi(v string) *ModifyOTAFirmwareRequest {
+	s.FirmwareUdi = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareRequest) SetIotInstanceId(v string) *ModifyOTAFirmwareRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareRequest) SetProductKey(v string) *ModifyOTAFirmwareRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type ModifyOTAFirmwareResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyOTAFirmwareResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOTAFirmwareResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOTAFirmwareResponseBody) SetCode(v string) *ModifyOTAFirmwareResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareResponseBody) SetErrorMessage(v string) *ModifyOTAFirmwareResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareResponseBody) SetRequestId(v string) *ModifyOTAFirmwareResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareResponseBody) SetSuccess(v bool) *ModifyOTAFirmwareResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyOTAFirmwareResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyOTAFirmwareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyOTAFirmwareResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOTAFirmwareResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOTAFirmwareResponse) SetHeaders(v map[string]*string) *ModifyOTAFirmwareResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyOTAFirmwareResponse) SetStatusCode(v int32) *ModifyOTAFirmwareResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyOTAFirmwareResponse) SetBody(v *ModifyOTAFirmwareResponseBody) *ModifyOTAFirmwareResponse {
+	s.Body = v
+	return s
+}
+
 type NotifyAddThingTopoRequest struct {
 	// A JSON array of the sub-device identity information. You can use a combination of **ProductKey** and **DeviceName** or only **IotId** to specify a device, such as **\[{"productKey":"a1BwAGxxx","deviceName":"device1"},{"IotId":"Q7uOhxxx"}]**.
 	DeviceListStr *string `json:"DeviceListStr,omitempty" xml:"DeviceListStr,omitempty"`
@@ -34222,14 +35058,34 @@ func (s *PackageSoundCodeLabelBatchAudioResponse) SetBody(v *PackageSoundCodeLab
 }
 
 type PageQuerySharedSpeechOpenRequest struct {
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The DeviceName of the device.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The ID of the device.
+	//
+	// > If you specify this parameter, you do not need to specify **ProductKey** and **DeviceName**. **IotId** specifies the GUID of the device. The value of the IotId parameter is a combination of the values of the **ProductKey** and **DeviceName** parameters. If you specify the **IotId**, **ProductKey**, and **DeviceName** parameters, the value of the **IotId** parameter takes precedence.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The code that is used to share the speeches.
+	//
+	// You can obtain the **code** on the **Shared Corpus Management** page of **Speech Sending Voice Broadcasting Service**.
 	ShareTaskCode *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the speeches that you want to query. Valid values:
+	//
+	// *   **1**: The speeches are pending approval.
+	// *   **2**: The speeches are approved.
+	// *   **3**: The speeches are rejected.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PageQuerySharedSpeechOpenRequest) String() string {
@@ -34281,11 +35137,19 @@ func (s *PageQuerySharedSpeechOpenRequest) SetStatus(v int32) *PageQuerySharedSp
 }
 
 type PageQuerySharedSpeechOpenResponseBody struct {
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *PageQuerySharedSpeechOpenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result returned if the request was successful.
+	Data *PageQuerySharedSpeechOpenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PageQuerySharedSpeechOpenResponseBody) String() string {
@@ -34322,10 +35186,14 @@ func (s *PageQuerySharedSpeechOpenResponseBody) SetSuccess(v bool) *PageQuerySha
 }
 
 type PageQuerySharedSpeechOpenResponseBodyData struct {
-	PageId     *int32                                               `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize   *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The information about shared speeches.
 	ResultData *PageQuerySharedSpeechOpenResponseBodyDataResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
-	Total      *int32                                               `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s PageQuerySharedSpeechOpenResponseBodyData) String() string {
@@ -34374,14 +35242,26 @@ func (s *PageQuerySharedSpeechOpenResponseBodyDataResultData) SetData(v []*PageQ
 }
 
 type PageQuerySharedSpeechOpenResponseBodyDataResultDataData struct {
+	// The audio format. Valid values: **wav**, **mp3**, and **amr**.
 	AudioFormat *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
-	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	SpeechRate  *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Voice       *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume      *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// The unique identifier of the speech in the project.
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The unique identifier of the template.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The broadcasting speed. Valid values: -500 to 500.
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The status of the speeches. Valid values:
+	//
+	// *   **1**: The speeches are pending approval.
+	// *   **2**: The speeches are approved.
+	// *   **3**: The speeches are rejected.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The content of the speech.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The sound effect that is used to broadcast speeches.
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The volume. Valid values: 0 to 100.
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s PageQuerySharedSpeechOpenResponseBodyDataResultDataData) String() string {
@@ -34462,11 +35342,24 @@ func (s *PageQuerySharedSpeechOpenResponse) SetBody(v *PageQuerySharedSpeechOpen
 }
 
 type PageQuerySpeechBroadcastHourRequest struct {
-	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageToken         *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see [Overview](~~356505~~) of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 2000.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of **PageToken**.
+	//
+	// For example, if you want to query the results on Page n, you must set PageToken to the token that you obtained when you queried the results on Page n - 1.
+	PageToken *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// The end time of the hour in which you want to query data. Example: 2020090919, which specifies 19:00 on September 9, 2020.
 	QueryDateTimeHour *string `json:"QueryDateTimeHour,omitempty" xml:"QueryDateTimeHour,omitempty"`
-	ShareTaskCode     *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+	// The code of the speech sharing task.
+	//
+	// You can obtain the **code** on the **Shared Corpus Management** page of **Speech Sending Voice Broadcasting Service**.
+	ShareTaskCode *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
 }
 
 func (s PageQuerySpeechBroadcastHourRequest) String() string {
@@ -34503,11 +35396,19 @@ func (s *PageQuerySpeechBroadcastHourRequest) SetShareTaskCode(v string) *PageQu
 }
 
 type PageQuerySpeechBroadcastHourResponseBody struct {
-	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *PageQuerySpeechBroadcastHourResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result returned if the call is successful.
+	Data *PageQuerySpeechBroadcastHourResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PageQuerySpeechBroadcastHourResponseBody) String() string {
@@ -34544,11 +35445,18 @@ func (s *PageQuerySpeechBroadcastHourResponseBody) SetSuccess(v bool) *PageQuery
 }
 
 type PageQuerySpeechBroadcastHourResponseBodyData struct {
-	PageId     *int32                                                  `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageToken  *string                                                 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// If **PageToken** is empty, no next page exists.
+	PageToken *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// The shared speech broadcasting data returned.
 	ResultData *PageQuerySpeechBroadcastHourResponseBodyDataResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
-	Total      *int32                                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s PageQuerySpeechBroadcastHourResponseBodyData) String() string {
@@ -34602,14 +35510,26 @@ func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultData) SetData(v []*Pa
 }
 
 type PageQuerySpeechBroadcastHourResponseBodyDataResultDataData struct {
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	Msg           *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// Indicates whether the speech was successfully broadcasted. Valid values:
+	//
+	// *   **0**: The speech was successfully broadcasted.
+	// *   **1**: The speech was repeatedly broadcasted.
+	// *   **2**: The speech does not exist.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The DeviceName of the device.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The message that indicates the speech broadcasting result.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The code of the sharing task.
 	ShareTaskCode *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
-	SpeechId      *string `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
-	Speechs       *string `json:"Speechs,omitempty" xml:"Speechs,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the speech that was broadcasted.
+	SpeechId *string `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
+	// The content of the broadcasted speech. The parameter value is a JSON array.
+	Speechs *string `json:"Speechs,omitempty" xml:"Speechs,omitempty"`
+	// The start time of speech broadcasting. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) String() string {
@@ -34690,13 +35610,25 @@ func (s *PageQuerySpeechBroadcastHourResponse) SetBody(v *PageQuerySpeechBroadca
 }
 
 type PrintByTemplateRequest struct {
+	// The DeviceName of the device.
 	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	HistoryPrintTopic *bool   `json:"HistoryPrintTopic,omitempty" xml:"HistoryPrintTopic,omitempty"`
-	IotId             *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ParamsJsonString  *string `json:"ParamsJsonString,omitempty" xml:"ParamsJsonString,omitempty"`
-	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	TemplateBizCode   *string `json:"TemplateBizCode,omitempty" xml:"TemplateBizCode,omitempty"`
+	// The device ID.
+	//
+	// > If you specify this parameter, you do not need to specify the **ProductKey** and **DeviceName** parameters. **IotId** specifies a globally unique identifier (GUID) of the device, which corresponds to a combination of **ProductKey** and **DeviceName**. If you specify the **IotId**, **ProductKey**, and **DeviceName** parameters, the value of the **IotId** parameter takes precedence.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The instance ID.
+	//
+	// You do not need to specify this parameter.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The template parameters. You can obtain the template of receipts in the Letter Sending Service console, and configure parameters in the template to create a custom receipt that you want to print.
+	ParamsJsonString *string `json:"ParamsJsonString,omitempty" xml:"ParamsJsonString,omitempty"`
+	// The unique identifier of the product to which the device belongs.
+	//
+	// > If you specify the **ProductKey** parameter, you must also specify the **DeviceName** parameter.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The template identifier. You can obtain the template identifier in the Letter Sending Service console.
+	TemplateBizCode *string `json:"TemplateBizCode,omitempty" xml:"TemplateBizCode,omitempty"`
 }
 
 func (s PrintByTemplateRequest) String() string {
@@ -34743,11 +35675,19 @@ func (s *PrintByTemplateRequest) SetTemplateBizCode(v string) *PrintByTemplateRe
 }
 
 type PrintByTemplateResponseBody struct {
-	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *PrintByTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the printing operation.
+	Data *PrintByTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PrintByTemplateResponseBody) String() string {
@@ -34784,12 +35724,26 @@ func (s *PrintByTemplateResponseBody) SetSuccess(v bool) *PrintByTemplateRespons
 }
 
 type PrintByTemplateResponseBodyData struct {
-	DeviceErrorCode    *string `json:"DeviceErrorCode,omitempty" xml:"DeviceErrorCode,omitempty"`
+	// The error code returned by the printer. Valid values:
+	//
+	// *   2: The printer ran out of paper.
+	// *   3: A paper jam occurred in the printer.
+	DeviceErrorCode *string `json:"DeviceErrorCode,omitempty" xml:"DeviceErrorCode,omitempty"`
+	// The error message returned by the printer.
 	DeviceErrorMessage *string `json:"DeviceErrorMessage,omitempty" xml:"DeviceErrorMessage,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxRetryCount      *int32  `json:"MaxRetryCount,omitempty" xml:"MaxRetryCount,omitempty"`
-	RetryCount         *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the printing operation.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum number of retries. The value is fixed at 2, which indicates that up to two printing retries are supported.
+	//
+	// If the printer responds to the printing command with a failure or timeout error, IoT Platform delivers the printing command to the printer.
+	MaxRetryCount *int32 `json:"MaxRetryCount,omitempty" xml:"MaxRetryCount,omitempty"`
+	// The actual number of retries.
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// Indicates whether the printing operation was successful.
+	//
+	// *   **true**: The printing operation was successful.
+	// *   **false**: The printing operation failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PrintByTemplateResponseBodyData) String() string {
@@ -35941,7 +36895,13 @@ func (s *QueryBatchRegisterDeviceStatusResponse) SetBody(v *QueryBatchRegisterDe
 }
 
 type QueryCertUrlByApplyIdRequest struct {
-	ApplyId       *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	// The application ID. You can view the application ID in the result that is returned by the [BatchRegisterDeviceWithApplyId](~~69514~~) or [BatchRegisterDevice](~~69473~~) operation.
+	ApplyId *int64 `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	// The instance ID.
+	//
+	// You can obtain the **ID** of the instance on the **Overview** page in the IoT Platform console. If your instance has an ID, you must specify this parameter. Otherwise, the request fails.
+	//
+	// > The ID of a public instance may not be displayed on the Overview page. For information about how to obtain the instance ID, see [How do I obtain an instance ID?](~~267533~~)
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
@@ -35964,11 +36924,19 @@ func (s *QueryCertUrlByApplyIdRequest) SetIotInstanceId(v string) *QueryCertUrlB
 }
 
 type QueryCertUrlByApplyIdResponseBody struct {
-	CertUrl      *string `json:"CertUrl,omitempty" xml:"CertUrl,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The URL from which you can download the X.509 certificates of created devices.
+	CertUrl *string `json:"CertUrl,omitempty" xml:"CertUrl,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCertUrlByApplyIdResponseBody) String() string {
@@ -44494,15 +45462,36 @@ func (s *QueryDevicesHotStorageDataStatusResponse) SetBody(v *QueryDevicesHotSto
 }
 
 type QueryDynamicGroupDevicesRequest struct {
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	FuzzyName     *bool   `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The page number. Default value: 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The DeviceName of the device.
+	//
+	// If you specify this parameter and set **FuzzyName** to **true**, the value you specified is used as the prefix to fuzzy match the DeviceName. The value must be at least 4 characters in length.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// Specifies whether to fuzzy match devices by the value of the **DeviceName** parameter. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	FuzzyName *bool `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	// The ID of the group. The ID is the globally unique identifier (GUID) for the group.
+	//
+	// You can call the [QueryDeviceGroupList](~~93356~~) operation to query the **GroupId** parameter.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page. Valid values: 1 to 200. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The **ProductKey** of the product to which the devices belong.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The device status. Valid values:
+	//
+	// *   **ONLINE**: The device is online.
+	// *   **OFFLINE**: The device is offline.
+	// *   **UNACTIVE**: The device is not activated.
+	// *   **DISABLE**: The device is deactivated.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryDynamicGroupDevicesRequest) String() string {
@@ -44559,16 +45548,31 @@ func (s *QueryDynamicGroupDevicesRequest) SetStatus(v string) *QueryDynamicGroup
 }
 
 type QueryDynamicGroupDevicesResponseBody struct {
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *QueryDynamicGroupDevicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Page         *int32                                    `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageCount    *int32                                    `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total        *int32                                    `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The devices returned after the request succeeds. The information is included in the **SimpleDeviceInfo** field.
+	Data *QueryDynamicGroupDevicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// If NextToken is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The total number of pages returned.
+	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of devices.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryDynamicGroupDevicesResponseBody) String() string {
@@ -44647,17 +45651,39 @@ func (s *QueryDynamicGroupDevicesResponseBodyData) SetSimpleDeviceInfo(v []*Quer
 }
 
 type QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo struct {
-	ActiveTime        *string `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
-	CategoryKey       *string `json:"CategoryKey,omitempty" xml:"CategoryKey,omitempty"`
-	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId             *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	LastOnlineTime    *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
-	Nickname          *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
-	NodeType          *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UtcActiveTime     *string `json:"UtcActiveTime,omitempty" xml:"UtcActiveTime,omitempty"`
+	// The time when the device was activated.
+	ActiveTime *string `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	// The identifier of the category to which the product belongs.
+	//
+	// This parameter is returned if the product uses the Thing Specification Language (TSL) model of a standard category that is pre-defined by IoT Platform.
+	CategoryKey *string `json:"CategoryKey,omitempty" xml:"CategoryKey,omitempty"`
+	// The DeviceName of the device.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The ID of the device. The ID is a unique identifier that is issued by IoT Platform to the device.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The last time when the device went online.
+	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
+	// The alias of the device.
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The node type of the product. Valid values:
+	//
+	// *   **0**: device. A device can connect to IoT Platform directly, or be attached to a gateway as a sub-device and then connect to IoT Platform. Sub-devices cannot be attached to a device.
+	// *   **1**: gateway. Sub-devices can be attached to a gateway. A gateway can manage sub-devices, maintain topological relationships with sub-devices, and synchronize topological relationships to IoT Platform.
+	NodeType *int32 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The ProductName of the product to which the device belongs.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The device status. Valid values:
+	//
+	// *   **ONLINE**: The device is online.
+	// *   **OFFLINE**: The device is offline.
+	// *   **UNACTIVE**: The device is not activated.
+	// *   **DISABLE**: The device is deactivated.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the device was activated. The time is in the UTC format.
+	UtcActiveTime *string `json:"UtcActiveTime,omitempty" xml:"UtcActiveTime,omitempty"`
+	// The last time when the device went online. The time is in the UTC format.
 	UtcLastOnlineTime *string `json:"UtcLastOnlineTime,omitempty" xml:"UtcLastOnlineTime,omitempty"`
 }
 
@@ -47309,10 +48335,18 @@ func (s *QueryEdgeInstanceSceneRuleResponse) SetBody(v *QueryEdgeInstanceSceneRu
 }
 
 type QueryImportedDeviceByApplyIdRequest struct {
-	ApplyId       *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	// The application ID. You can call the [BatchImportDevice](~~433878~~) operation to obtain the application ID.
+	ApplyId *int64 `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Valid values: 1 to 10000.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 50.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryImportedDeviceByApplyIdRequest) String() string {
@@ -47344,15 +48378,27 @@ func (s *QueryImportedDeviceByApplyIdRequest) SetPageSize(v int32) *QueryImporte
 }
 
 type QueryImportedDeviceByApplyIdResponseBody struct {
-	Code         *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	DeviceList   *QueryImportedDeviceByApplyIdResponseBodyDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Struct"`
-	ErrorMessage *string                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PageNo       *int32                                              `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKey   *string                                             `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalPage    *int32                                              `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The queried devices.
+	DeviceList *QueryImportedDeviceByApplyIdResponseBodyDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The page number.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The **ProductKey** of the product to which the devices belong.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of pages returned.
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s QueryImportedDeviceByApplyIdResponseBody) String() string {
@@ -47426,10 +48472,20 @@ func (s *QueryImportedDeviceByApplyIdResponseBodyDeviceList) SetDevice(v []*Quer
 }
 
 type QueryImportedDeviceByApplyIdResponseBodyDeviceListDevice struct {
-	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The DeviceName of the device.
+	//
+	// >  Keep the information confidential.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The DeviceSecret of the device.
+	//
+	// >  Keep the information confidential.
 	DeviceSecret *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
-	ProductKey   *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	Sn           *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The serial number (SN) of the device.
+	//
+	// > If you did not specify an SN for the device, this parameter is empty.
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
 }
 
 func (s QueryImportedDeviceByApplyIdResponseBodyDeviceListDevice) String() string {
@@ -47974,14 +49030,30 @@ func (s *QueryJobStatisticsResponse) SetBody(v *QueryJobStatisticsResponseBody) 
 }
 
 type QueryLicenseDeviceListRequest struct {
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The end time of the time range in which the license is bound to the devices.The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, January 1, 1970.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the device.
+	//
+	// You can call the [QueryDevice](~~69905~~) operation to query the **IotId** values of all devices that belong to a specific product.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  You must specify this parameter for a public instance of the new version or an Enterprise Edition instance. You do not need to specify this parameter for a public instance of the previous version.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	LicenseCode   *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The license type that specifies the audio and video specifications. Valid values: **480P** and **720P**.
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The **ProductKey** of the product to which the devices belong.
+	//
+	// You can go to the IoT Platform console or call the [QueryProductList](~~69271~~) operation to view the information about all products of the instance.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The start time of the time range in which the license is bound to the devices. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, January 1, 1970.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryLicenseDeviceListRequest) String() string {
@@ -48033,11 +49105,19 @@ func (s *QueryLicenseDeviceListRequest) SetStartTime(v int64) *QueryLicenseDevic
 }
 
 type QueryLicenseDeviceListResponseBody struct {
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *QueryLicenseDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see the **"Error codes"** section in this topic.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	Data *QueryLicenseDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryLicenseDeviceListResponseBody) String() string {
@@ -48074,10 +49154,14 @@ func (s *QueryLicenseDeviceListResponseBody) SetSuccess(v bool) *QueryLicenseDev
 }
 
 type QueryLicenseDeviceListResponseBodyData struct {
+	// The information about the devices.
 	DeviceList *QueryLicenseDeviceListResponseBodyDataDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Struct"`
-	PageId     *int32                                            `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryLicenseDeviceListResponseBodyData) String() string {
@@ -48126,12 +49210,19 @@ func (s *QueryLicenseDeviceListResponseBodyDataDeviceList) SetItem(v []*QueryLic
 }
 
 type QueryLicenseDeviceListResponseBodyDataDeviceListItem struct {
-	DeviceName  *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	ExpiryTime  *int64  `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	IotId       *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The DeviceName of the device.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The expiration time of the license.
+	ExpiryTime *int64 `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	// The time when the license was bound to the device.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The device ID.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The license type that indicates the audio and video specifications. Valid values: **480P** and **720P**.
 	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	ProductKey  *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The ProductName of the product.
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 }
 
@@ -49805,8 +50896,14 @@ func (s *QueryProductResponse) SetBody(v *QueryProductResponseBody) *QueryProduc
 }
 
 type QueryProductCertInfoRequest struct {
+	// The ID of the instance. You can view the ID of the instance on the **Overview** page in the IoT Platform console.****
+	//
+	// >  If your instance has an ID, you must specify the ID for this parameter. If you do not specify the instance ID, the call fails. If no Overview page or ID is generated for your instance, you do not need to configure this parameter.
+	//
+	// For more information, see [Overview](~~356505~~).
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The ProductKey of the product.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s QueryProductCertInfoRequest) String() string {
@@ -49828,11 +50925,19 @@ func (s *QueryProductCertInfoRequest) SetProductKey(v string) *QueryProductCertI
 }
 
 type QueryProductCertInfoResponseBody struct {
-	Code            *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorMessage    *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned if the call fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The returned certificate information that includes the value of the **IssueModel** parameter.
 	ProductCertInfo *QueryProductCertInfoResponseBodyProductCertInfo `json:"ProductCertInfo,omitempty" xml:"ProductCertInfo,omitempty" type:"Struct"`
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   **true**: The call was successful.
+	// *   **false**: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryProductCertInfoResponseBody) String() string {
@@ -49869,6 +50974,10 @@ func (s *QueryProductCertInfoResponseBody) SetSuccess(v bool) *QueryProductCertI
 }
 
 type QueryProductCertInfoResponseBodyProductCertInfo struct {
+	// The source from which the X.509 certificate is issued.
+	//
+	// *   **1**: The X.509 certificate is issued by IoT Platform.
+	// *   **3**: The X.509 certificate is issued by a third-party platform.
 	IssueModel *int32 `json:"IssueModel,omitempty" xml:"IssueModel,omitempty"`
 }
 
@@ -50385,11 +51494,20 @@ func (s *QueryProductTopicResponse) SetBody(v *QueryProductTopicResponseBody) *Q
 }
 
 type QueryProjectShareDeviceListRequest struct {
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The keyword in the DeviceName of the devices that you want to query. Fuzzy match is supported.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The page number. Valid values: 1 to 10000.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 50. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The **ProductKey** of the product to which the devices belong.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s QueryProjectShareDeviceListRequest) String() string {
@@ -50426,11 +51544,19 @@ func (s *QueryProjectShareDeviceListRequest) SetProductKey(v string) *QueryProje
 }
 
 type QueryProjectShareDeviceListResponseBody struct {
-	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *QueryProjectShareDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the request.
+	Data *QueryProjectShareDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryProjectShareDeviceListResponseBody) String() string {
@@ -50467,10 +51593,14 @@ func (s *QueryProjectShareDeviceListResponseBody) SetSuccess(v bool) *QueryProje
 }
 
 type QueryProjectShareDeviceListResponseBodyData struct {
+	// The information about devices that you queried.
 	DeviceList *QueryProjectShareDeviceListResponseBodyDataDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Struct"`
-	PageId     *int32                                                 `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize   *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32                                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryProjectShareDeviceListResponseBodyData) String() string {
@@ -50519,10 +51649,17 @@ func (s *QueryProjectShareDeviceListResponseBodyDataDeviceList) SetItems(v []*Qu
 }
 
 type QueryProjectShareDeviceListResponseBodyDataDeviceListItems struct {
+	// The DeviceName of the device.
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId      *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The ID of the device. The ID is the unique identifier that is issued by IoT Platform to the device.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	Sharable   *int64  `json:"Sharable,omitempty" xml:"Sharable,omitempty"`
+	// Indicates whether the project was shared to the device.
+	//
+	// *   **1**: The project was shared.
+	// *   **0**: The project failed to be shared.
+	Sharable *int64 `json:"Sharable,omitempty" xml:"Sharable,omitempty"`
 }
 
 func (s QueryProjectShareDeviceListResponseBodyDataDeviceListItems) String() string {
@@ -50967,12 +52104,137 @@ func (s *QuerySchedulePeriodListResponse) SetBody(v *QuerySchedulePeriodListResp
 	return s
 }
 
+type QuerySharePromotionActivityAuditResultRequest struct {
+	IotInstanceId            *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SharePromotionActivityId *string `json:"SharePromotionActivityId,omitempty" xml:"SharePromotionActivityId,omitempty"`
+	ShareTaskCode            *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+}
+
+func (s QuerySharePromotionActivityAuditResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySharePromotionActivityAuditResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySharePromotionActivityAuditResultRequest) SetIotInstanceId(v string) *QuerySharePromotionActivityAuditResultRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultRequest) SetSharePromotionActivityId(v string) *QuerySharePromotionActivityAuditResultRequest {
+	s.SharePromotionActivityId = &v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultRequest) SetShareTaskCode(v string) *QuerySharePromotionActivityAuditResultRequest {
+	s.ShareTaskCode = &v
+	return s
+}
+
+type QuerySharePromotionActivityAuditResultResponseBody struct {
+	Code         *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySharePromotionActivityAuditResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySharePromotionActivityAuditResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySharePromotionActivityAuditResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponseBody) SetCode(v string) *QuerySharePromotionActivityAuditResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponseBody) SetData(v *QuerySharePromotionActivityAuditResultResponseBodyData) *QuerySharePromotionActivityAuditResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponseBody) SetErrorMessage(v string) *QuerySharePromotionActivityAuditResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponseBody) SetRequestId(v string) *QuerySharePromotionActivityAuditResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponseBody) SetSuccess(v bool) *QuerySharePromotionActivityAuditResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySharePromotionActivityAuditResultResponseBodyData struct {
+	AuditResult *int32 `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
+}
+
+func (s QuerySharePromotionActivityAuditResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySharePromotionActivityAuditResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponseBodyData) SetAuditResult(v int32) *QuerySharePromotionActivityAuditResultResponseBodyData {
+	s.AuditResult = &v
+	return s
+}
+
+type QuerySharePromotionActivityAuditResultResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySharePromotionActivityAuditResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySharePromotionActivityAuditResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySharePromotionActivityAuditResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponse) SetHeaders(v map[string]*string) *QuerySharePromotionActivityAuditResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponse) SetStatusCode(v int32) *QuerySharePromotionActivityAuditResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySharePromotionActivityAuditResultResponse) SetBody(v *QuerySharePromotionActivityAuditResultResponseBody) *QuerySharePromotionActivityAuditResultResponse {
+	s.Body = v
+	return s
+}
+
 type QueryShareTaskDeviceListRequest struct {
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The keyword in the DeviceName of the device that you want to query. Fuzzy match is supported.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see [Overview](~~356505~~) of IoT instances.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ShareTaskId   *string `json:"ShareTaskId,omitempty" xml:"ShareTaskId,omitempty"`
+	// The page number. Valid values: 1 to 10000.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 50. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the sharing task.
+	ShareTaskId *string `json:"ShareTaskId,omitempty" xml:"ShareTaskId,omitempty"`
 }
 
 func (s QueryShareTaskDeviceListRequest) String() string {
@@ -51009,11 +52271,19 @@ func (s *QueryShareTaskDeviceListRequest) SetShareTaskId(v string) *QueryShareTa
 }
 
 type QueryShareTaskDeviceListResponseBody struct {
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *QueryShareTaskDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the request.
+	Data *QueryShareTaskDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryShareTaskDeviceListResponseBody) String() string {
@@ -51050,10 +52320,14 @@ func (s *QueryShareTaskDeviceListResponseBody) SetSuccess(v bool) *QueryShareTas
 }
 
 type QueryShareTaskDeviceListResponseBodyData struct {
+	// The devices in the sharing task.
 	DeviceList *QueryShareTaskDeviceListResponseBodyDataDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Struct"`
-	PageId     *int32                                              `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize   *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32                                              `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryShareTaskDeviceListResponseBodyData) String() string {
@@ -51102,9 +52376,13 @@ func (s *QueryShareTaskDeviceListResponseBodyDataDeviceList) SetItems(v []*Query
 }
 
 type QueryShareTaskDeviceListResponseBodyDataDeviceListItems struct {
+	// The DeviceName of the device.
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	GmtAdded   *int64  `json:"GmtAdded,omitempty" xml:"GmtAdded,omitempty"`
-	IotId      *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The time when the device was added to the sharing task.
+	GmtAdded *int64 `json:"GmtAdded,omitempty" xml:"GmtAdded,omitempty"`
+	// The ID of the device. The ID is the unique identifier that is issued by IoT Platform to the device.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
@@ -52803,13 +54081,28 @@ func (s *QuerySpeechLicenseAvailableQuotaResponse) SetBody(v *QuerySpeechLicense
 }
 
 type QuerySpeechLicenseDeviceListRequest struct {
-	CheckGroupId      *string   `json:"CheckGroupId,omitempty" xml:"CheckGroupId,omitempty"`
-	DeviceName        *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotInstanceId     *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The ID of a device group. The InSpecifiedGroup response parameter indicates whether the devices belong to the specified group.
+	CheckGroupId *string `json:"CheckGroupId,omitempty" xml:"CheckGroupId,omitempty"`
+	// The keyword in the DeviceName of the device whose information you want to query. Fuzzy match is supported.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  You must specify this parameter for a public instance of the new version or an Enterprise Edition instance. You do not need to specify this parameter for a public instance of the previous version.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The license status.
+	//
+	// *   **NORMAL**: The license is valid.
+	// *   **EXPIRE**: The license is expired.
+	// *   **EXPIRING**: The license is about to expire.
 	LicenseStatusList []*string `json:"LicenseStatusList,omitempty" xml:"LicenseStatusList,omitempty" type:"Repeated"`
-	PageId            *int32    `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize          *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKey        *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The page number. Valid values: 1 to 10000.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 50. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The **ProductKey** of the product to which the devices belong.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s QuerySpeechLicenseDeviceListRequest) String() string {
@@ -52856,11 +54149,19 @@ func (s *QuerySpeechLicenseDeviceListRequest) SetProductKey(v string) *QuerySpee
 }
 
 type QuerySpeechLicenseDeviceListResponseBody struct {
-	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *QuerySpeechLicenseDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the request.
+	Data *QuerySpeechLicenseDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySpeechLicenseDeviceListResponseBody) String() string {
@@ -52897,10 +54198,14 @@ func (s *QuerySpeechLicenseDeviceListResponseBody) SetSuccess(v bool) *QuerySpee
 }
 
 type QuerySpeechLicenseDeviceListResponseBodyData struct {
+	// The information about devices.
 	DeviceList *QuerySpeechLicenseDeviceListResponseBodyDataDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Struct"`
-	PageId     *int32                                                  `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32                                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The page number.
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QuerySpeechLicenseDeviceListResponseBodyData) String() string {
@@ -52949,14 +54254,32 @@ func (s *QuerySpeechLicenseDeviceListResponseBodyDataDeviceList) SetItem(v []*Qu
 }
 
 type QuerySpeechLicenseDeviceListResponseBodyDataDeviceListItem struct {
-	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	DeviceStatus     *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	ExpiryTime       *int64  `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	InSpecifiedGroup *bool   `json:"InSpecifiedGroup,omitempty" xml:"InSpecifiedGroup,omitempty"`
-	IotId            *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	LicenseStatus    *string `json:"LicenseStatus,omitempty" xml:"LicenseStatus,omitempty"`
-	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName      *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The DeviceName of the device.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The status of the device.
+	//
+	// *   **ONLINE**: The device is online.
+	// *   **OFFLINE**: The device is offline.
+	// *   **UNACTIVE**: The device is not activated.
+	// *   **DISABLE**: The device is disabled.
+	// *   **DELETE**: The device is deleted.
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// The expiration time of the license.
+	ExpiryTime *int64 `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	// Indicates whether the device belongs to the specified device group.
+	InSpecifiedGroup *bool `json:"InSpecifiedGroup,omitempty" xml:"InSpecifiedGroup,omitempty"`
+	// The ID of the device. The ID is the unique identifier that is issued by IoT Platform to the device.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The license status.
+	//
+	// *   **NORMAL**: The license is valid.
+	// *   **EXPIRE**: The license is expired.
+	// *   **EXPIRING**: The license is about to expire.
+	LicenseStatus *string `json:"LicenseStatus,omitempty" xml:"LicenseStatus,omitempty"`
+	// The **ProductKey** of the product to which the device belongs.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The ProductName of the product to which the device belongs.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 }
 
 func (s QuerySpeechLicenseDeviceListResponseBodyDataDeviceListItem) String() string {
@@ -57191,10 +58514,22 @@ func (s *RRpcResponse) SetBody(v *RRpcResponseBody) *RRpcResponse {
 }
 
 type ReBindLicenseDeviceRequest struct {
+	// The **DeviceNames** of all devices to which you want to rebind a license.
+	//
+	// You can call the [QueryDevice](~~69905~~) operation to query the **DeviceNames** of all devices that belong to a specific product.
 	DeviceNameList []*string `json:"DeviceNameList,omitempty" xml:"DeviceNameList,omitempty" type:"Repeated"`
-	IotInstanceId  *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	LicenseCode    *string   `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	ProductKey     *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  You must specify the ID of a public instance of the new version or an Enterprise Edition instance. Otherwise, the request fails. You do not need to specify the ID of a public instance of the previous version.
+	//
+	// For more information, see [Overview](~~356505~~) of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The license type. Set the value to **LINK_SPEECH_COMMON_LICENSE**.
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// The **ProductKey** of the product to which the devices belong.
+	//
+	// You can go to the IoT Platform console or call the [QueryProductList](~~69271~~) operation to view the information about all products of the instance.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s ReBindLicenseDeviceRequest) String() string {
@@ -57226,11 +58561,19 @@ func (s *ReBindLicenseDeviceRequest) SetProductKey(v string) *ReBindLicenseDevic
 }
 
 type ReBindLicenseDeviceResponseBody struct {
-	Code         *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *ReBindLicenseDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the batch rebinding operation.
+	Data *ReBindLicenseDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReBindLicenseDeviceResponseBody) String() string {
@@ -57267,11 +58610,16 @@ func (s *ReBindLicenseDeviceResponseBody) SetSuccess(v bool) *ReBindLicenseDevic
 }
 
 type ReBindLicenseDeviceResponseBodyData struct {
+	// The unique ID that can be used to query the progress of the batch rebinding operation.
 	CheckProgressId *string `json:"CheckProgressId,omitempty" xml:"CheckProgressId,omitempty"`
-	FailSum         *int64  `json:"FailSum,omitempty" xml:"FailSum,omitempty"`
-	Progress        *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ResultCsvFile   *string `json:"ResultCsvFile,omitempty" xml:"ResultCsvFile,omitempty"`
-	SuccessSum      *int64  `json:"SuccessSum,omitempty" xml:"SuccessSum,omitempty"`
+	// The number of devices that failed to be rebound to the license.
+	FailSum *int64 `json:"FailSum,omitempty" xml:"FailSum,omitempty"`
+	// The progress of the batch rebinding operation. The progress is a percentage. Valid values: 1 to 100.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The URL of the file that contains unbound devices. The devices failed to be rebound with the license.
+	ResultCsvFile *string `json:"ResultCsvFile,omitempty" xml:"ResultCsvFile,omitempty"`
+	// The number of devices to which the license is rebound.
+	SuccessSum *int64 `json:"SuccessSum,omitempty" xml:"SuccessSum,omitempty"`
 }
 
 func (s ReBindLicenseDeviceResponseBodyData) String() string {
@@ -59905,9 +61253,19 @@ func (s *SetEdgeInstanceDriverConfigsResponse) SetBody(v *SetEdgeInstanceDriverC
 }
 
 type SetProductCertInfoRequest struct {
+	// The ID of the instance. You can view the ID of the instance on the **Overview** page in the IoT Platform console.****
+	//
+	// >  If your instance has an ID, you must specify the ID for the parameter. Otherwise, the call fails. If no Overview page or ID is generated for your instance, you do not need configure this parameter.
+	//
+	// For more information, see [Overview](~~356505~~).
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	IssueModel    *int32  `json:"IssueModel,omitempty" xml:"IssueModel,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The source from which the X.509 certificate is issued.
+	//
+	// *   **1**: The X.509 certificate is issued by IoT Platform.
+	// *   **3**: The X.509 certificate is issued by a third-party platform.
+	IssueModel *int32 `json:"IssueModel,omitempty" xml:"IssueModel,omitempty"`
+	// The **ProductKey** of the product.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s SetProductCertInfoRequest) String() string {
@@ -59934,10 +61292,17 @@ func (s *SetProductCertInfoRequest) SetProductKey(v string) *SetProductCertInfoR
 }
 
 type SetProductCertInfoResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned if the call fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the call fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   **true**: The call was successful.
+	// *   **false**: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetProductCertInfoResponseBody) String() string {
@@ -60260,13 +61625,36 @@ func (s *SetupStudioAppAuthModeOpenResponse) SetBody(v *SetupStudioAppAuthModeOp
 }
 
 type ShareSpeechByCombinationRequest struct {
-	AudioFormat     *string   `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	// The audio format. Valid values: **wav**, **mp3**, and **amr**.
+	AudioFormat *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	// The combined content that you want to broadcast. The following types of content can be broadcasted:
+	//
+	// *   The speeches that are pushed to the device. You must specify the identifiers of the speeches.
+	//
+	// *   The custom content that you specify based on the supported format of the device.
+	//
+	//     For example, you can create a custom speech about the amount of money in the format of `{$xxx}`. xxx is the specific amount. If you specify `{$1000}`, the device broadcasts **CNY 1000**.
+	//
+	// The device broadcasts the audio files in the sequence of the values that you specify in CombinationList.
 	CombinationList []*string `json:"CombinationList,omitempty" xml:"CombinationList,omitempty" type:"Repeated"`
-	DeviceName      *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId           *string   `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	IotInstanceId   *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey      *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	SpeechId        *string   `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
+	// The **DeviceName** of the device. If you specify this parameter, you must also specify the **ProductKey** parameter.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The ID of the device. You can call the [QuerySpeechDevice](~~280408~~) operation to obtain the ID.
+	//
+	// > If you specify this parameter, you do not need to specify the **ProductKey** and **DeviceName** parameters. **IotId** specifies a globally unique identifier (GUID) of the device, which corresponds to a combination of **ProductKey** and **DeviceName**. If you specify the **IotId**, **ProductKey**, and **DeviceName** parameters, the value of the **IotId** parameter takes precedence.
+	IotId *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	// The **ProductKey** of the product to which the device belongs. If you specify this parameter, you must also specify the **DeviceName** parameter.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The unique ID of the combined speech that you want to broadcast. This ID is issued by IoT Platform to the device.
+	//
+	// >  If you do not specify this parameter, IoT Platform automatically generates an ID. If you need to retry broadcasting the speech, you must specify the ID to prevent repeated broadcasting.
+	SpeechId *string `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
 }
 
 func (s ShareSpeechByCombinationRequest) String() string {
@@ -60313,10 +61701,17 @@ func (s *ShareSpeechByCombinationRequest) SetSpeechId(v string) *ShareSpeechByCo
 }
 
 type ShareSpeechByCombinationResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ShareSpeechByCombinationResponseBody) String() string {
@@ -62033,9 +63428,16 @@ func (s *UnbindDriverFromEdgeInstanceResponse) SetBody(v *UnbindDriverFromEdgeIn
 }
 
 type UnbindLicenseProductRequest struct {
+	// The ID of the Enterprise Edition instance. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	LicenseCode   *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The license type that specifies the audio and video specifications. Valid values: **480P** and **720P**.
+	//
+	// To view the license type of a product, choose **License Management > Product Authorization** in the **Real-time Communication Service** console.
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// The ProductKey of the product from which you want to unbind the license.
+	//
+	// You can choose **License Management > Product Authorization** in the **Real-Time Communication Service** console to view the **ProductKey** of the product.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s UnbindLicenseProductRequest) String() string {
@@ -62062,11 +63464,22 @@ func (s *UnbindLicenseProductRequest) SetProductKey(v string) *UnbindLicenseProd
 }
 
 type UnbindLicenseProductResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request fails. For more information, see the **Error codes** section of this topic.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the license was unbound from the product.
+	//
+	// *   **true**
+	// *   **false**
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the request fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UnbindLicenseProductResponseBody) String() string {
@@ -66003,14 +67416,30 @@ func (s *UpdateThingScriptResponse) SetBody(v *UpdateThingScriptResponseBody) *U
 }
 
 type UpdateTopicConfigRequest struct {
-	Codec                *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableBroadcast      *bool   `json:"EnableBroadcast,omitempty" xml:"EnableBroadcast,omitempty"`
-	EnableProxySubscribe *bool   `json:"EnableProxySubscribe,omitempty" xml:"EnableProxySubscribe,omitempty"`
-	IotInstanceId        *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	Operation            *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	ProductKey           *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	TopicFullName        *string `json:"TopicFullName,omitempty" xml:"TopicFullName,omitempty"`
+	Codec       *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the retained message broadcasting feature for a custom topic.
+	//
+	// *   **true**
+	// *   **false**
+	EnableBroadcast      *bool `json:"EnableBroadcast,omitempty" xml:"EnableBroadcast,omitempty"`
+	EnableProxySubscribe *bool `json:"EnableProxySubscribe,omitempty" xml:"EnableProxySubscribe,omitempty"`
+	// The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+	//
+	// >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+	//
+	// For more information, see the [Overview](~~356505~~) topic of IoT instances.
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Operation     *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The **ProductKey** of the product to which the device belongs. The device receives the retained message.
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// The custom topic for which you want to enable the retained message broadcasting feature.
+	//
+	// *   If you use an MQTT gateway device, set this parameter to the original custom topic of the device. For more information, see [Topics](~~433806~~).
+	// *   If you use a non-MQTT gateway device, set this parameter to a custom topic in the following format: `/broadcast/${productKey}/${Custom field}`. `${productKey}` is the value of the **ProductKey** request parameter. You can specify `${Custom field}` based on your business requirements.
+	//
+	// >  When you develop devices, use code to define a broadcast topic. You do not need to create a topic in the IoT Platform console. You must grant devices the Subscribe permission or the Publish and Subscribe permission on the topic.
+	TopicFullName *string `json:"TopicFullName,omitempty" xml:"TopicFullName,omitempty"`
 }
 
 func (s UpdateTopicConfigRequest) String() string {
@@ -66062,10 +67491,16 @@ func (s *UpdateTopicConfigRequest) SetTopicFullName(v string) *UpdateTopicConfig
 }
 
 type UpdateTopicConfigResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTopicConfigResponseBody) String() string {
@@ -66377,6 +67812,62 @@ func (client *Client) AddDataForApiSource(request *AddDataForApiSourceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataForApiSourceResponse{}
 	_body, _err := client.AddDataForApiSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddDeviceToSharePromotionWithOptions(request *AddDeviceToSharePromotionRequest, runtime *util.RuntimeOptions) (_result *AddDeviceToSharePromotionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceSimpleInfoList)) {
+		body["DeviceSimpleInfoList"] = request.DeviceSimpleInfoList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharePromotionActivityId)) {
+		body["SharePromotionActivityId"] = request.SharePromotionActivityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareTaskCode)) {
+		body["ShareTaskCode"] = request.ShareTaskCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDeviceToSharePromotion"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDeviceToSharePromotionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDeviceToSharePromotion(request *AddDeviceToSharePromotionRequest) (_result *AddDeviceToSharePromotionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDeviceToSharePromotionResponse{}
+	_body, _err := client.AddDeviceToSharePromotionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -67082,6 +68573,15 @@ func (client *Client) BatchCheckDeviceNames(request *BatchCheckDeviceNamesReques
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request BatchCheckImportDeviceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchCheckImportDeviceResponse
+ */
 func (client *Client) BatchCheckImportDeviceWithOptions(request *BatchCheckImportDeviceRequest, runtime *util.RuntimeOptions) (_result *BatchCheckImportDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67125,6 +68625,14 @@ func (client *Client) BatchCheckImportDeviceWithOptions(request *BatchCheckImpor
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request BatchCheckImportDeviceRequest
+ * @return BatchCheckImportDeviceResponse
+ */
 func (client *Client) BatchCheckImportDevice(request *BatchCheckImportDeviceRequest) (_result *BatchCheckImportDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchCheckImportDeviceResponse{}
@@ -68055,6 +69563,17 @@ func (client *Client) BatchGrayMigrationDevice(request *BatchGrayMigrationDevice
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request BatchImportDeviceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchImportDeviceResponse
+ */
 func (client *Client) BatchImportDeviceWithOptions(request *BatchImportDeviceRequest, runtime *util.RuntimeOptions) (_result *BatchImportDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68098,6 +69617,16 @@ func (client *Client) BatchImportDeviceWithOptions(request *BatchImportDeviceReq
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request BatchImportDeviceRequest
+ * @return BatchImportDeviceResponse
+ */
 func (client *Client) BatchImportDevice(request *BatchImportDeviceRequest) (_result *BatchImportDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchImportDeviceResponse{}
@@ -69066,6 +70595,19 @@ func (client *Client) BindGatewayToEdgeInstance(request *BindGatewayToEdgeInstan
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, make sure that the following steps are complete:
+ * 1.  A license is purchased. For more information, see [Purchase a license](~~427935~~).
+ * 2.  The license is bound to a product. The devices to which you want to bind the license belong to the product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request BindLicenseDeviceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BindLicenseDeviceResponse
+ */
 func (client *Client) BindLicenseDeviceWithOptions(request *BindLicenseDeviceRequest, runtime *util.RuntimeOptions) (_result *BindLicenseDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69117,6 +70659,18 @@ func (client *Client) BindLicenseDeviceWithOptions(request *BindLicenseDeviceReq
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, make sure that the following steps are complete:
+ * 1.  A license is purchased. For more information, see [Purchase a license](~~427935~~).
+ * 2.  The license is bound to a product. The devices to which you want to bind the license belong to the product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request BindLicenseDeviceRequest
+ * @return BindLicenseDeviceResponse
+ */
 func (client *Client) BindLicenseDevice(request *BindLicenseDeviceRequest) (_result *BindLicenseDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindLicenseDeviceResponse{}
@@ -70107,6 +71661,17 @@ func (client *Client) CopyThingModel(request *CopyThingModelRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call this operation to query the shared speeches that were broadcasted six hours ago. For example, if a speech was broadcasted at 07:15, you can query the speech after 13:15.
+ * ## QPS limits
+ * You can call this API operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request CountSpeechBroadcastHourRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CountSpeechBroadcastHourResponse
+ */
 func (client *Client) CountSpeechBroadcastHourWithOptions(request *CountSpeechBroadcastHourRequest, runtime *util.RuntimeOptions) (_result *CountSpeechBroadcastHourResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70150,6 +71715,16 @@ func (client *Client) CountSpeechBroadcastHourWithOptions(request *CountSpeechBr
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call this operation to query the shared speeches that were broadcasted six hours ago. For example, if a speech was broadcasted at 07:15, you can query the speech after 13:15.
+ * ## QPS limits
+ * You can call this API operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request CountSpeechBroadcastHourRequest
+ * @return CountSpeechBroadcastHourResponse
+ */
 func (client *Client) CountSpeechBroadcastHour(request *CountSpeechBroadcastHourRequest) (_result *CountSpeechBroadcastHourResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CountSpeechBroadcastHourResponse{}
@@ -70375,6 +71950,18 @@ func (client *Client) CreateDataAPIService(request *CreateDataAPIServiceRequest)
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, perform the following steps: First, create a data source. For information about how to create a data source, see Step 1 to Step 6 in the [Create a data source](~~270932~~) topic. Second, go to the **Data Source** tab on the **Message Forwarding** page of the instance that you want to manage in the IoT Platform console. Then, view and record the ID of the **data source** that you created.
+ * >  If you set Topic to a custom topic for a product or device that uses the open source Message Queuing Telemetry Transport (MQTT) protocol, you must specify ScopeType and ProductKey. If ScopeType is set to DEVICE, you must also specify DeviceName.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request CreateDataSourceItemRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDataSourceItemResponse
+ */
 func (client *Client) CreateDataSourceItemWithOptions(request *CreateDataSourceItemRequest, runtime *util.RuntimeOptions) (_result *CreateDataSourceItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70428,6 +72015,17 @@ func (client *Client) CreateDataSourceItemWithOptions(request *CreateDataSourceI
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, perform the following steps: First, create a data source. For information about how to create a data source, see Step 1 to Step 6 in the [Create a data source](~~270932~~) topic. Second, go to the **Data Source** tab on the **Message Forwarding** page of the instance that you want to manage in the IoT Platform console. Then, view and record the ID of the **data source** that you created.
+ * >  If you set Topic to a custom topic for a product or device that uses the open source Message Queuing Telemetry Transport (MQTT) protocol, you must specify ScopeType and ProductKey. If ScopeType is set to DEVICE, you must also specify DeviceName.
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request CreateDataSourceItemRequest
+ * @return CreateDataSourceItemResponse
+ */
 func (client *Client) CreateDataSourceItem(request *CreateDataSourceItemRequest) (_result *CreateDataSourceItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataSourceItemResponse{}
@@ -71510,6 +73108,17 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call this operation to create up to 500 devices.
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request CreateLoRaNodesTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLoRaNodesTaskResponse
+ */
 func (client *Client) CreateLoRaNodesTaskWithOptions(request *CreateLoRaNodesTaskRequest, runtime *util.RuntimeOptions) (_result *CreateLoRaNodesTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71551,6 +73160,16 @@ func (client *Client) CreateLoRaNodesTaskWithOptions(request *CreateLoRaNodesTas
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call this operation to create up to 500 devices.
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request CreateLoRaNodesTaskRequest
+ * @return CreateLoRaNodesTaskResponse
+ */
 func (client *Client) CreateLoRaNodesTask(request *CreateLoRaNodesTaskRequest) (_result *CreateLoRaNodesTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoRaNodesTaskResponse{}
@@ -72914,6 +74533,142 @@ func (client *Client) CreateSchedulePeriod(request *CreateSchedulePeriodRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSchedulePeriodResponse{}
 	_body, _err := client.CreateSchedulePeriodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSharePromotionActivityWithOptions(request *CreateSharePromotionActivityRequest, runtime *util.RuntimeOptions) (_result *CreateSharePromotionActivityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharePromotionActivityName)) {
+		body["SharePromotionActivityName"] = request.SharePromotionActivityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSharePromotionActivity"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSharePromotionActivityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSharePromotionActivity(request *CreateSharePromotionActivityRequest) (_result *CreateSharePromotionActivityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSharePromotionActivityResponse{}
+	_body, _err := client.CreateSharePromotionActivityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSharePromotionSpeechModelWithOptions(request *CreateSharePromotionSpeechModelRequest, runtime *util.RuntimeOptions) (_result *CreateSharePromotionSpeechModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
+		body["AudioFormat"] = request.AudioFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		body["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharePromotionActivityId)) {
+		body["SharePromotionActivityId"] = request.SharePromotionActivityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareTaskCode)) {
+		body["ShareTaskCode"] = request.ShareTaskCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechModelType)) {
+		body["SpeechModelType"] = request.SpeechModelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechRate)) {
+		body["SpeechRate"] = request.SpeechRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Voice)) {
+		body["Voice"] = request.Voice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		body["Volume"] = request.Volume
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSharePromotionSpeechModel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSharePromotionSpeechModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSharePromotionSpeechModel(request *CreateSharePromotionSpeechModelRequest) (_result *CreateSharePromotionSpeechModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSharePromotionSpeechModelResponse{}
+	_body, _err := client.CreateSharePromotionSpeechModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -77597,6 +79352,15 @@ func (client *Client) GetGatewayBySubDevice(request *GetGatewayBySubDeviceReques
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request GetLoraNodesTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetLoraNodesTaskResponse
+ */
 func (client *Client) GetLoraNodesTaskWithOptions(request *GetLoraNodesTaskRequest, runtime *util.RuntimeOptions) (_result *GetLoraNodesTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77634,6 +79398,14 @@ func (client *Client) GetLoraNodesTaskWithOptions(request *GetLoraNodesTaskReque
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request GetLoraNodesTaskRequest
+ * @return GetLoraNodesTaskResponse
+ */
 func (client *Client) GetLoraNodesTask(request *GetLoraNodesTaskRequest) (_result *GetLoraNodesTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoraNodesTaskResponse{}
@@ -78167,6 +79939,15 @@ func (client *Client) GetSpeechDeviceDetail(request *GetSpeechDeviceDetailReques
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request GetSpeechLicenseDeviceStatisticsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetSpeechLicenseDeviceStatisticsResponse
+ */
 func (client *Client) GetSpeechLicenseDeviceStatisticsWithOptions(request *GetSpeechLicenseDeviceStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetSpeechLicenseDeviceStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78200,6 +79981,14 @@ func (client *Client) GetSpeechLicenseDeviceStatisticsWithOptions(request *GetSp
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request GetSpeechLicenseDeviceStatisticsRequest
+ * @return GetSpeechLicenseDeviceStatisticsResponse
+ */
 func (client *Client) GetSpeechLicenseDeviceStatistics(request *GetSpeechLicenseDeviceStatisticsRequest) (_result *GetSpeechLicenseDeviceStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSpeechLicenseDeviceStatisticsResponse{}
@@ -78835,6 +80624,17 @@ func (client *Client) ImportDTData(request *ImportDTDataRequest) (_result *Impor
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ImportDeviceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ImportDeviceResponse
+ */
 func (client *Client) ImportDeviceWithOptions(request *ImportDeviceRequest, runtime *util.RuntimeOptions) (_result *ImportDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78888,6 +80688,16 @@ func (client *Client) ImportDeviceWithOptions(request *ImportDeviceRequest, runt
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ImportDeviceRequest
+ * @return ImportDeviceResponse
+ */
 func (client *Client) ImportDevice(request *ImportDeviceRequest) (_result *ImportDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportDeviceResponse{}
@@ -79334,6 +81144,15 @@ func (client *Client) ListAnalyticsData(request *ListAnalyticsDataRequest) (_res
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ListDataSourceItemRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDataSourceItemResponse
+ */
 func (client *Client) ListDataSourceItemWithOptions(request *ListDataSourceItemRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79383,6 +81202,14 @@ func (client *Client) ListDataSourceItemWithOptions(request *ListDataSourceItemR
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ListDataSourceItemRequest
+ * @return ListDataSourceItemResponse
+ */
 func (client *Client) ListDataSourceItem(request *ListDataSourceItemRequest) (_result *ListDataSourceItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataSourceItemResponse{}
@@ -80942,6 +82769,70 @@ func (client *Client) ListThingTemplates(request *ListThingTemplatesRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ModifyOTAFirmwareWithOptions(request *ModifyOTAFirmwareRequest, runtime *util.RuntimeOptions) (_result *ModifyOTAFirmwareResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirmwareDesc)) {
+		query["FirmwareDesc"] = request.FirmwareDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirmwareId)) {
+		query["FirmwareId"] = request.FirmwareId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirmwareName)) {
+		query["FirmwareName"] = request.FirmwareName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirmwareUdi)) {
+		query["FirmwareUdi"] = request.FirmwareUdi
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyOTAFirmware"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyOTAFirmwareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyOTAFirmware(request *ModifyOTAFirmwareRequest) (_result *ModifyOTAFirmwareResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyOTAFirmwareResponse{}
+	_body, _err := client.ModifyOTAFirmwareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * A successful response indicates that the command to add topological relationships is sent to the gateway. It does not indicate that the topological relationships are added.
  * When you develop the gateway, you must subscribe to the topic that is used to send notifications when you add topological relationships. For more information about the topic and message format, see [Manage topological relationships](~~89299~~).
@@ -81115,6 +83006,15 @@ func (client *Client) PackageSoundCodeLabelBatchAudio(request *PackageSoundCodeL
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request PageQuerySharedSpeechOpenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PageQuerySharedSpeechOpenResponse
+ */
 func (client *Client) PageQuerySharedSpeechOpenWithOptions(request *PageQuerySharedSpeechOpenRequest, runtime *util.RuntimeOptions) (_result *PageQuerySharedSpeechOpenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -81176,6 +83076,14 @@ func (client *Client) PageQuerySharedSpeechOpenWithOptions(request *PageQuerySha
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request PageQuerySharedSpeechOpenRequest
+ * @return PageQuerySharedSpeechOpenResponse
+ */
 func (client *Client) PageQuerySharedSpeechOpen(request *PageQuerySharedSpeechOpenRequest) (_result *PageQuerySharedSpeechOpenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PageQuerySharedSpeechOpenResponse{}
@@ -81187,6 +83095,17 @@ func (client *Client) PageQuerySharedSpeechOpen(request *PageQuerySharedSpeechOp
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call this operation to query only shared speech broadcasting data six hours ago. For example, if a shared speech was broadcasted at 07:15, you can query the speech after 13:15.
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request PageQuerySpeechBroadcastHourRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PageQuerySpeechBroadcastHourResponse
+ */
 func (client *Client) PageQuerySpeechBroadcastHourWithOptions(request *PageQuerySpeechBroadcastHourRequest, runtime *util.RuntimeOptions) (_result *PageQuerySpeechBroadcastHourResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -81238,6 +83157,16 @@ func (client *Client) PageQuerySpeechBroadcastHourWithOptions(request *PageQuery
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call this operation to query only shared speech broadcasting data six hours ago. For example, if a shared speech was broadcasted at 07:15, you can query the speech after 13:15.
+ * ## QPS limits
+ * You can call this operation up to 100 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request PageQuerySpeechBroadcastHourRequest
+ * @return PageQuerySpeechBroadcastHourResponse
+ */
 func (client *Client) PageQuerySpeechBroadcastHour(request *PageQuerySpeechBroadcastHourRequest) (_result *PageQuerySpeechBroadcastHourResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PageQuerySpeechBroadcastHourResponse{}
@@ -81249,6 +83178,17 @@ func (client *Client) PageQuerySpeechBroadcastHour(request *PageQuerySpeechBroad
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * Before you call this operation, a receipt template must be available in the Letter Sending Service console. Otherwise, the request fails.
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request PrintByTemplateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PrintByTemplateResponse
+ */
 func (client *Client) PrintByTemplateWithOptions(request *PrintByTemplateRequest, runtime *util.RuntimeOptions) (_result *PrintByTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -81306,6 +83246,16 @@ func (client *Client) PrintByTemplateWithOptions(request *PrintByTemplateRequest
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * Before you call this operation, a receipt template must be available in the Letter Sending Service console. Otherwise, the request fails.
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request PrintByTemplateRequest
+ * @return PrintByTemplateResponse
+ */
 func (client *Client) PrintByTemplate(request *PrintByTemplateRequest) (_result *PrintByTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PrintByTemplateResponse{}
@@ -81835,6 +83785,15 @@ func (client *Client) QueryBatchRegisterDeviceStatus(request *QueryBatchRegister
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryCertUrlByApplyIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryCertUrlByApplyIdResponse
+ */
 func (client *Client) QueryCertUrlByApplyIdWithOptions(request *QueryCertUrlByApplyIdRequest, runtime *util.RuntimeOptions) (_result *QueryCertUrlByApplyIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -81872,6 +83831,14 @@ func (client *Client) QueryCertUrlByApplyIdWithOptions(request *QueryCertUrlByAp
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryCertUrlByApplyIdRequest
+ * @return QueryCertUrlByApplyIdResponse
+ */
 func (client *Client) QueryCertUrlByApplyId(request *QueryCertUrlByApplyIdRequest) (_result *QueryCertUrlByApplyIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCertUrlByApplyIdResponse{}
@@ -84932,6 +86899,17 @@ func (client *Client) QueryDevicesHotStorageDataStatus(request *QueryDevicesHotS
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * *   The dynamic group feature is available for public instances and Enterprise Edition instances in the China (Shanghai) region. For more information, see [Manage instances](~~147356~~).
+ * *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+ *     **
+ *     **Note**The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryDynamicGroupDevicesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryDynamicGroupDevicesResponse
+ */
 func (client *Client) QueryDynamicGroupDevicesWithOptions(request *QueryDynamicGroupDevicesRequest, runtime *util.RuntimeOptions) (_result *QueryDynamicGroupDevicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -84997,6 +86975,16 @@ func (client *Client) QueryDynamicGroupDevicesWithOptions(request *QueryDynamicG
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * *   The dynamic group feature is available for public instances and Enterprise Edition instances in the China (Shanghai) region. For more information, see [Manage instances](~~147356~~).
+ * *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+ *     **
+ *     **Note**The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryDynamicGroupDevicesRequest
+ * @return QueryDynamicGroupDevicesResponse
+ */
 func (client *Client) QueryDynamicGroupDevices(request *QueryDynamicGroupDevicesRequest) (_result *QueryDynamicGroupDevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDynamicGroupDevicesResponse{}
@@ -85767,6 +87755,15 @@ func (client *Client) QueryEdgeInstanceSceneRule(request *QueryEdgeInstanceScene
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryImportedDeviceByApplyIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryImportedDeviceByApplyIdResponse
+ */
 func (client *Client) QueryImportedDeviceByApplyIdWithOptions(request *QueryImportedDeviceByApplyIdRequest, runtime *util.RuntimeOptions) (_result *QueryImportedDeviceByApplyIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -85812,6 +87809,14 @@ func (client *Client) QueryImportedDeviceByApplyIdWithOptions(request *QueryImpo
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryImportedDeviceByApplyIdRequest
+ * @return QueryImportedDeviceByApplyIdResponse
+ */
 func (client *Client) QueryImportedDeviceByApplyId(request *QueryImportedDeviceByApplyIdRequest) (_result *QueryImportedDeviceByApplyIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryImportedDeviceByApplyIdResponse{}
@@ -85911,6 +87916,15 @@ func (client *Client) QueryJobStatistics(request *QueryJobStatisticsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryLicenseDeviceListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryLicenseDeviceListResponse
+ */
 func (client *Client) QueryLicenseDeviceListWithOptions(request *QueryLicenseDeviceListRequest, runtime *util.RuntimeOptions) (_result *QueryLicenseDeviceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -85972,6 +87986,14 @@ func (client *Client) QueryLicenseDeviceListWithOptions(request *QueryLicenseDev
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryLicenseDeviceListRequest
+ * @return QueryLicenseDeviceListResponse
+ */
 func (client *Client) QueryLicenseDeviceList(request *QueryLicenseDeviceListRequest) (_result *QueryLicenseDeviceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryLicenseDeviceListResponse{}
@@ -86345,6 +88367,15 @@ func (client *Client) QueryProduct(request *QueryProductRequest) (_result *Query
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 30 times per second per account.
+ * >The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryProductCertInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryProductCertInfoResponse
+ */
 func (client *Client) QueryProductCertInfoWithOptions(request *QueryProductCertInfoRequest, runtime *util.RuntimeOptions) (_result *QueryProductCertInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -86382,6 +88413,14 @@ func (client *Client) QueryProductCertInfoWithOptions(request *QueryProductCertI
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 30 times per second per account.
+ * >The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryProductCertInfoRequest
+ * @return QueryProductCertInfoResponse
+ */
 func (client *Client) QueryProductCertInfo(request *QueryProductCertInfoRequest) (_result *QueryProductCertInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryProductCertInfoResponse{}
@@ -86539,6 +88578,15 @@ func (client *Client) QueryProductTopic(request *QueryProductTopicRequest) (_res
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryProjectShareDeviceListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryProjectShareDeviceListResponse
+ */
 func (client *Client) QueryProjectShareDeviceListWithOptions(request *QueryProjectShareDeviceListRequest, runtime *util.RuntimeOptions) (_result *QueryProjectShareDeviceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -86588,6 +88636,14 @@ func (client *Client) QueryProjectShareDeviceListWithOptions(request *QueryProje
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryProjectShareDeviceListRequest
+ * @return QueryProjectShareDeviceListResponse
+ */
 func (client *Client) QueryProjectShareDeviceList(request *QueryProjectShareDeviceListRequest) (_result *QueryProjectShareDeviceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryProjectShareDeviceListResponse{}
@@ -86711,6 +88767,67 @@ func (client *Client) QuerySchedulePeriodList(request *QuerySchedulePeriodListRe
 	return _result, _err
 }
 
+func (client *Client) QuerySharePromotionActivityAuditResultWithOptions(request *QuerySharePromotionActivityAuditResultRequest, runtime *util.RuntimeOptions) (_result *QuerySharePromotionActivityAuditResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharePromotionActivityId)) {
+		body["SharePromotionActivityId"] = request.SharePromotionActivityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareTaskCode)) {
+		body["ShareTaskCode"] = request.ShareTaskCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySharePromotionActivityAuditResult"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySharePromotionActivityAuditResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySharePromotionActivityAuditResult(request *QuerySharePromotionActivityAuditResultRequest) (_result *QuerySharePromotionActivityAuditResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySharePromotionActivityAuditResultResponse{}
+	_body, _err := client.QuerySharePromotionActivityAuditResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryShareTaskDeviceListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryShareTaskDeviceListResponse
+ */
 func (client *Client) QueryShareTaskDeviceListWithOptions(request *QueryShareTaskDeviceListRequest, runtime *util.RuntimeOptions) (_result *QueryShareTaskDeviceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -86760,6 +88877,14 @@ func (client *Client) QueryShareTaskDeviceListWithOptions(request *QueryShareTas
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QueryShareTaskDeviceListRequest
+ * @return QueryShareTaskDeviceListResponse
+ */
 func (client *Client) QueryShareTaskDeviceList(request *QueryShareTaskDeviceListRequest) (_result *QueryShareTaskDeviceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryShareTaskDeviceListResponse{}
@@ -87255,6 +89380,15 @@ func (client *Client) QuerySpeechLicenseAvailableQuota(request *QuerySpeechLicen
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QuerySpeechLicenseDeviceListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QuerySpeechLicenseDeviceListResponse
+ */
 func (client *Client) QuerySpeechLicenseDeviceListWithOptions(request *QuerySpeechLicenseDeviceListRequest, runtime *util.RuntimeOptions) (_result *QuerySpeechLicenseDeviceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -87314,6 +89448,14 @@ func (client *Client) QuerySpeechLicenseDeviceListWithOptions(request *QuerySpee
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to three times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request QuerySpeechLicenseDeviceListRequest
+ * @return QuerySpeechLicenseDeviceListResponse
+ */
 func (client *Client) QuerySpeechLicenseDeviceList(request *QuerySpeechLicenseDeviceListRequest) (_result *QuerySpeechLicenseDeviceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySpeechLicenseDeviceListResponse{}
@@ -88709,6 +90851,15 @@ func (client *Client) RRpc(request *RRpcRequest) (_result *RRpcResponse, _err er
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to five times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ReBindLicenseDeviceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReBindLicenseDeviceResponse
+ */
 func (client *Client) ReBindLicenseDeviceWithOptions(request *ReBindLicenseDeviceRequest, runtime *util.RuntimeOptions) (_result *ReBindLicenseDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -88756,6 +90907,14 @@ func (client *Client) ReBindLicenseDeviceWithOptions(request *ReBindLicenseDevic
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to five times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ReBindLicenseDeviceRequest
+ * @return ReBindLicenseDeviceResponse
+ */
 func (client *Client) ReBindLicenseDevice(request *ReBindLicenseDeviceRequest) (_result *ReBindLicenseDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReBindLicenseDeviceResponse{}
@@ -90128,6 +92287,15 @@ func (client *Client) SetEdgeInstanceDriverConfigs(request *SetEdgeInstanceDrive
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 30 times per second per account.
+ * >The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request SetProductCertInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetProductCertInfoResponse
+ */
 func (client *Client) SetProductCertInfoWithOptions(request *SetProductCertInfoRequest, runtime *util.RuntimeOptions) (_result *SetProductCertInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -90169,6 +92337,14 @@ func (client *Client) SetProductCertInfoWithOptions(request *SetProductCertInfoR
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 30 times per second per account.
+ * >The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request SetProductCertInfoRequest
+ * @return SetProductCertInfoResponse
+ */
 func (client *Client) SetProductCertInfo(request *SetProductCertInfoRequest) (_result *SetProductCertInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetProductCertInfoResponse{}
@@ -90284,6 +92460,15 @@ func (client *Client) SetupStudioAppAuthModeOpen(request *SetupStudioAppAuthMode
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ShareSpeechByCombinationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ShareSpeechByCombinationResponse
+ */
 func (client *Client) ShareSpeechByCombinationWithOptions(request *ShareSpeechByCombinationRequest, runtime *util.RuntimeOptions) (_result *ShareSpeechByCombinationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -90341,6 +92526,14 @@ func (client *Client) ShareSpeechByCombinationWithOptions(request *ShareSpeechBy
 	return _result, _err
 }
 
+/**
+ * ## QPS limits
+ * You can call this API operation up to 50 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request ShareSpeechByCombinationRequest
+ * @return ShareSpeechByCombinationResponse
+ */
 func (client *Client) ShareSpeechByCombination(request *ShareSpeechByCombinationRequest) (_result *ShareSpeechByCombinationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ShareSpeechByCombinationResponse{}
@@ -91263,6 +93456,17 @@ func (client *Client) UnbindDriverFromEdgeInstance(request *UnbindDriverFromEdge
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * A license is bound with a product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request UnbindLicenseProductRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UnbindLicenseProductResponse
+ */
 func (client *Client) UnbindLicenseProductWithOptions(request *UnbindLicenseProductRequest, runtime *util.RuntimeOptions) (_result *UnbindLicenseProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -91304,6 +93508,16 @@ func (client *Client) UnbindLicenseProductWithOptions(request *UnbindLicenseProd
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * A license is bound with a product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+ * ## QPS limits
+ * You can call this API operation up to 10 times per second per account.
+ * > The RAM users of an Alibaba Cloud account share the quota of the account.
+ *
+ * @param request UnbindLicenseProductRequest
+ * @return UnbindLicenseProductResponse
+ */
 func (client *Client) UnbindLicenseProduct(request *UnbindLicenseProductRequest) (_result *UnbindLicenseProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindLicenseProductResponse{}
@@ -93436,6 +95650,12 @@ func (client *Client) UpdateThingScript(request *UpdateThingScriptRequest) (_res
 	return _result, _err
 }
 
+/**
+ *
+ * @param request UpdateTopicConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateTopicConfigResponse
+ */
 func (client *Client) UpdateTopicConfigWithOptions(request *UpdateTopicConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateTopicConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -93497,6 +95717,11 @@ func (client *Client) UpdateTopicConfigWithOptions(request *UpdateTopicConfigReq
 	return _result, _err
 }
 
+/**
+ *
+ * @param request UpdateTopicConfigRequest
+ * @return UpdateTopicConfigResponse
+ */
 func (client *Client) UpdateTopicConfig(request *UpdateTopicConfigRequest) (_result *UpdateTopicConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTopicConfigResponse{}
