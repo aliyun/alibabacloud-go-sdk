@@ -1,3 +1,6 @@
+2023-07-14 Version: v4.0.17
+- GetStack returns StackOperationProgress and StackActionProgress in ResourceProgress if ShowResourceProgress is set to PercentageOnly.
+
 2023-06-25 Version: v4.0.16
 - GenerateTemplateByScratch adds a new input parameter TemplateType.
 

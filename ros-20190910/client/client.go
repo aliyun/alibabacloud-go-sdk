@@ -6629,7 +6629,9 @@ type GetStackResponseBodyResourceProgress struct {
 	// The progress details of resources that are being created.
 	InProgressResourceDetails []*GetStackResponseBodyResourceProgressInProgressResourceDetails `json:"InProgressResourceDetails,omitempty" xml:"InProgressResourceDetails,omitempty" type:"Repeated"`
 	// The number of resources to be created.
-	PendingResourceCount *int32 `json:"PendingResourceCount,omitempty" xml:"PendingResourceCount,omitempty"`
+	PendingResourceCount   *int32   `json:"PendingResourceCount,omitempty" xml:"PendingResourceCount,omitempty"`
+	StackActionProgress    *float32 `json:"StackActionProgress,omitempty" xml:"StackActionProgress,omitempty"`
+	StackOperationProgress *float32 `json:"StackOperationProgress,omitempty" xml:"StackOperationProgress,omitempty"`
 	// The number of resources that are created.
 	SuccessResourceCount *int32 `json:"SuccessResourceCount,omitempty" xml:"SuccessResourceCount,omitempty"`
 	// The total number of resources.
@@ -6661,6 +6663,16 @@ func (s *GetStackResponseBodyResourceProgress) SetInProgressResourceDetails(v []
 
 func (s *GetStackResponseBodyResourceProgress) SetPendingResourceCount(v int32) *GetStackResponseBodyResourceProgress {
 	s.PendingResourceCount = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetStackActionProgress(v float32) *GetStackResponseBodyResourceProgress {
+	s.StackActionProgress = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetStackOperationProgress(v float32) *GetStackResponseBodyResourceProgress {
+	s.StackOperationProgress = &v
 	return s
 }
 
