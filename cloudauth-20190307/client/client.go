@@ -1138,6 +1138,7 @@ func (s *DescribeFaceVerifyResponseBody) SetResultObject(v *DescribeFaceVerifyRe
 }
 
 type DescribeFaceVerifyResponseBodyResultObject struct {
+	DeviceRisk   *string `json:"DeviceRisk,omitempty" xml:"DeviceRisk,omitempty"`
 	DeviceToken  *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
 	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
@@ -1151,6 +1152,11 @@ func (s DescribeFaceVerifyResponseBodyResultObject) String() string {
 
 func (s DescribeFaceVerifyResponseBodyResultObject) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFaceVerifyResponseBodyResultObject) SetDeviceRisk(v string) *DescribeFaceVerifyResponseBodyResultObject {
+	s.DeviceRisk = &v
+	return s
 }
 
 func (s *DescribeFaceVerifyResponseBodyResultObject) SetDeviceToken(v string) *DescribeFaceVerifyResponseBodyResultObject {
