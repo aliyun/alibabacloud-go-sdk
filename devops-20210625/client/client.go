@@ -5862,6 +5862,194 @@ func (s *CreateWorkitemRecordResponse) SetBody(v *CreateWorkitemRecordResponseBo
 	return s
 }
 
+type CreateWorkitemV2Request struct {
+	AssignedTo             *string                                  `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	Category               *string                                  `json:"category,omitempty" xml:"category,omitempty"`
+	Description            *string                                  `json:"description,omitempty" xml:"description,omitempty"`
+	FieldValueList         []*CreateWorkitemV2RequestFieldValueList `json:"fieldValueList,omitempty" xml:"fieldValueList,omitempty" type:"Repeated"`
+	ParentIdentifier       *string                                  `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	Participants           []*string                                `json:"participants,omitempty" xml:"participants,omitempty" type:"Repeated"`
+	SpaceIdentifier        *string                                  `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SprintIdentifier       *string                                  `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
+	Subject                *string                                  `json:"subject,omitempty" xml:"subject,omitempty"`
+	Tags                   []*string                                `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Trackers               []*string                                `json:"trackers,omitempty" xml:"trackers,omitempty" type:"Repeated"`
+	Verifier               *string                                  `json:"verifier,omitempty" xml:"verifier,omitempty"`
+	Versions               []*string                                `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	WorkitemTypeIdentifier *string                                  `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s CreateWorkitemV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemV2Request) SetAssignedTo(v string) *CreateWorkitemV2Request {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetCategory(v string) *CreateWorkitemV2Request {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetDescription(v string) *CreateWorkitemV2Request {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetFieldValueList(v []*CreateWorkitemV2RequestFieldValueList) *CreateWorkitemV2Request {
+	s.FieldValueList = v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetParentIdentifier(v string) *CreateWorkitemV2Request {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetParticipants(v []*string) *CreateWorkitemV2Request {
+	s.Participants = v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetSpaceIdentifier(v string) *CreateWorkitemV2Request {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetSprintIdentifier(v string) *CreateWorkitemV2Request {
+	s.SprintIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetSubject(v string) *CreateWorkitemV2Request {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetTags(v []*string) *CreateWorkitemV2Request {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetTrackers(v []*string) *CreateWorkitemV2Request {
+	s.Trackers = v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetVerifier(v string) *CreateWorkitemV2Request {
+	s.Verifier = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetVersions(v []*string) *CreateWorkitemV2Request {
+	s.Versions = v
+	return s
+}
+
+func (s *CreateWorkitemV2Request) SetWorkitemTypeIdentifier(v string) *CreateWorkitemV2Request {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type CreateWorkitemV2RequestFieldValueList struct {
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateWorkitemV2RequestFieldValueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemV2RequestFieldValueList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemV2RequestFieldValueList) SetFieldIdentifier(v string) *CreateWorkitemV2RequestFieldValueList {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemV2RequestFieldValueList) SetValue(v string) *CreateWorkitemV2RequestFieldValueList {
+	s.Value = &v
+	return s
+}
+
+type CreateWorkitemV2ResponseBody struct {
+	ErrorCode          *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage       *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *string `json:"success,omitempty" xml:"success,omitempty"`
+	WorkitemIdentifier *string `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
+}
+
+func (s CreateWorkitemV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemV2ResponseBody) SetErrorCode(v string) *CreateWorkitemV2ResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateWorkitemV2ResponseBody) SetErrorMessage(v string) *CreateWorkitemV2ResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateWorkitemV2ResponseBody) SetRequestId(v string) *CreateWorkitemV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWorkitemV2ResponseBody) SetSuccess(v string) *CreateWorkitemV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateWorkitemV2ResponseBody) SetWorkitemIdentifier(v string) *CreateWorkitemV2ResponseBody {
+	s.WorkitemIdentifier = &v
+	return s
+}
+
+type CreateWorkitemV2Response struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWorkitemV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWorkitemV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemV2Response) SetHeaders(v map[string]*string) *CreateWorkitemV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWorkitemV2Response) SetStatusCode(v int32) *CreateWorkitemV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWorkitemV2Response) SetBody(v *CreateWorkitemV2ResponseBody) *CreateWorkitemV2Response {
+	s.Body = v
+	return s
+}
+
 type CreateWorkspaceRequest struct {
 	CodeUrl            *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
 	CodeVersion        *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
@@ -15451,6 +15639,134 @@ func (s *GetWorkItemWorkFlowInfoResponse) SetStatusCode(v int32) *GetWorkItemWor
 }
 
 func (s *GetWorkItemWorkFlowInfoResponse) SetBody(v *GetWorkItemWorkFlowInfoResponseBody) *GetWorkItemWorkFlowInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorkitemAttachmentCreatemetaRequest struct {
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+}
+
+func (s GetWorkitemAttachmentCreatemetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemAttachmentCreatemetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemAttachmentCreatemetaRequest) SetFileName(v string) *GetWorkitemAttachmentCreatemetaRequest {
+	s.FileName = &v
+	return s
+}
+
+type GetWorkitemAttachmentCreatemetaResponseBody struct {
+	ErrorCode    *string                                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *string                                                `json:"success,omitempty" xml:"success,omitempty"`
+	UploadInfo   *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo `json:"uploadInfo,omitempty" xml:"uploadInfo,omitempty" type:"Struct"`
+}
+
+func (s GetWorkitemAttachmentCreatemetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemAttachmentCreatemetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBody) SetErrorCode(v string) *GetWorkitemAttachmentCreatemetaResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBody) SetErrorMessage(v string) *GetWorkitemAttachmentCreatemetaResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBody) SetRequestId(v string) *GetWorkitemAttachmentCreatemetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBody) SetSuccess(v string) *GetWorkitemAttachmentCreatemetaResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBody) SetUploadInfo(v *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) *GetWorkitemAttachmentCreatemetaResponseBody {
+	s.UploadInfo = v
+	return s
+}
+
+type GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo struct {
+	Accessid  *string `json:"accessid,omitempty" xml:"accessid,omitempty"`
+	Dir       *string `json:"dir,omitempty" xml:"dir,omitempty"`
+	Host      *string `json:"host,omitempty" xml:"host,omitempty"`
+	Policy    *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+}
+
+func (s GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) SetAccessid(v string) *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo {
+	s.Accessid = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) SetDir(v string) *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo {
+	s.Dir = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) SetHost(v string) *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo {
+	s.Host = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) SetPolicy(v string) *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo {
+	s.Policy = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo) SetSignature(v string) *GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo {
+	s.Signature = &v
+	return s
+}
+
+type GetWorkitemAttachmentCreatemetaResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWorkitemAttachmentCreatemetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkitemAttachmentCreatemetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemAttachmentCreatemetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponse) SetHeaders(v map[string]*string) *GetWorkitemAttachmentCreatemetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponse) SetStatusCode(v int32) *GetWorkitemAttachmentCreatemetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWorkitemAttachmentCreatemetaResponse) SetBody(v *GetWorkitemAttachmentCreatemetaResponseBody) *GetWorkitemAttachmentCreatemetaResponse {
 	s.Body = v
 	return s
 }
@@ -30496,6 +30812,93 @@ func (s *UpdateWorkitemFieldResponse) SetBody(v *UpdateWorkitemFieldResponseBody
 	return s
 }
 
+type WorkitemAttachmentCreateRequest struct {
+	FileKey          *string `json:"fileKey,omitempty" xml:"fileKey,omitempty"`
+	OriginalFilename *string `json:"originalFilename,omitempty" xml:"originalFilename,omitempty"`
+}
+
+func (s WorkitemAttachmentCreateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WorkitemAttachmentCreateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *WorkitemAttachmentCreateRequest) SetFileKey(v string) *WorkitemAttachmentCreateRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *WorkitemAttachmentCreateRequest) SetOriginalFilename(v string) *WorkitemAttachmentCreateRequest {
+	s.OriginalFilename = &v
+	return s
+}
+
+type WorkitemAttachmentCreateResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s WorkitemAttachmentCreateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WorkitemAttachmentCreateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WorkitemAttachmentCreateResponseBody) SetErrorCode(v string) *WorkitemAttachmentCreateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *WorkitemAttachmentCreateResponseBody) SetErrorMessage(v string) *WorkitemAttachmentCreateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *WorkitemAttachmentCreateResponseBody) SetRequestId(v string) *WorkitemAttachmentCreateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WorkitemAttachmentCreateResponseBody) SetSuccess(v string) *WorkitemAttachmentCreateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type WorkitemAttachmentCreateResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *WorkitemAttachmentCreateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s WorkitemAttachmentCreateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WorkitemAttachmentCreateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *WorkitemAttachmentCreateResponse) SetHeaders(v map[string]*string) *WorkitemAttachmentCreateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *WorkitemAttachmentCreateResponse) SetStatusCode(v int32) *WorkitemAttachmentCreateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WorkitemAttachmentCreateResponse) SetBody(v *WorkitemAttachmentCreateResponseBody) *WorkitemAttachmentCreateResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -32372,6 +32775,104 @@ func (client *Client) CreateWorkitemRecord(organizationId *string, request *Crea
 	headers := make(map[string]*string)
 	_result = &CreateWorkitemRecordResponse{}
 	_body, _err := client.CreateWorkitemRecordWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateWorkitemV2WithOptions(organizationId *string, request *CreateWorkitemV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWorkitemV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssignedTo)) {
+		body["assignedTo"] = request.AssignedTo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValueList)) {
+		body["fieldValueList"] = request.FieldValueList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentIdentifier)) {
+		body["parentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Participants)) {
+		body["participants"] = request.Participants
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		body["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SprintIdentifier)) {
+		body["sprintIdentifier"] = request.SprintIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Trackers)) {
+		body["trackers"] = request.Trackers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verifier)) {
+		body["verifier"] = request.Verifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Versions)) {
+		body["versions"] = request.Versions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkitemTypeIdentifier)) {
+		body["workitemTypeIdentifier"] = request.WorkitemTypeIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWorkitemV2"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitem"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWorkitemV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateWorkitemV2(organizationId *string, request *CreateWorkitemV2Request) (_result *CreateWorkitemV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkitemV2Response{}
+	_body, _err := client.CreateWorkitemV2WithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35020,6 +35521,52 @@ func (client *Client) GetWorkItemWorkFlowInfo(organizationId *string, workitemId
 	headers := make(map[string]*string)
 	_result = &GetWorkItemWorkFlowInfoResponse{}
 	_body, _err := client.GetWorkItemWorkFlowInfoWithOptions(organizationId, workitemId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWorkitemAttachmentCreatemetaWithOptions(organizationId *string, workitemIdentifier *string, request *GetWorkitemAttachmentCreatemetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkitemAttachmentCreatemetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["fileName"] = request.FileName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkitemAttachmentCreatemeta"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitem/" + tea.StringValue(openapiutil.GetEncodeParam(workitemIdentifier)) + "/attachment/createmeta"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorkitemAttachmentCreatemetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkitemAttachmentCreatemeta(organizationId *string, workitemIdentifier *string, request *GetWorkitemAttachmentCreatemetaRequest) (_result *GetWorkitemAttachmentCreatemetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkitemAttachmentCreatemetaResponse{}
+	_body, _err := client.GetWorkitemAttachmentCreatemetaWithOptions(organizationId, workitemIdentifier, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39618,6 +40165,56 @@ func (client *Client) UpdateWorkitemField(organizationId *string, request *Updat
 	headers := make(map[string]*string)
 	_result = &UpdateWorkitemFieldResponse{}
 	_body, _err := client.UpdateWorkitemFieldWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) WorkitemAttachmentCreateWithOptions(organizationId *string, workitemIdentifier *string, request *WorkitemAttachmentCreateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WorkitemAttachmentCreateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["fileKey"] = request.FileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalFilename)) {
+		body["originalFilename"] = request.OriginalFilename
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("WorkitemAttachmentCreate"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitem/" + tea.StringValue(openapiutil.GetEncodeParam(workitemIdentifier)) + "/attachment"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &WorkitemAttachmentCreateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) WorkitemAttachmentCreate(organizationId *string, workitemIdentifier *string, request *WorkitemAttachmentCreateRequest) (_result *WorkitemAttachmentCreateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &WorkitemAttachmentCreateResponse{}
+	_body, _err := client.WorkitemAttachmentCreateWithOptions(organizationId, workitemIdentifier, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
