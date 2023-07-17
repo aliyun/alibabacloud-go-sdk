@@ -5317,7 +5317,8 @@ type GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes struct {
 	// The job ID.
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The job instance ID.
-	JobInstanceId *int64 `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
+	JobInstanceId *int64  `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
+	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The state of the job instance.
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The time when the job instance was scheduled to run.
@@ -5359,6 +5360,11 @@ func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetJobId(v int64
 
 func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetJobInstanceId(v int64) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
 	s.JobInstanceId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetJobName(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.JobName = &v
 	return s
 }
 
