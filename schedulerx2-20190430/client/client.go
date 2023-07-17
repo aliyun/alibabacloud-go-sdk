@@ -3883,7 +3883,9 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	// The job instance ID.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The job ID.
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId      *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName    *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The progress of the job instance.
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The execution results of the job instance.
@@ -3910,7 +3912,8 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	// *   **100**: api
 	//
 	// Enumeration class: com.alibaba.schedulerx.common.domain.TimeType
-	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	TimeType *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	TraceId  *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	// The trigger type of the job instance. Valid values:
 	//
 	// *   **1**: The job instance was triggered at the scheduled time.
@@ -3958,6 +3961,16 @@ func (s *GetJobInstanceResponseBodyDataJobInstanceDetail) SetJobId(v int64) *Get
 	return s
 }
 
+func (s *GetJobInstanceResponseBodyDataJobInstanceDetail) SetJobName(v string) *GetJobInstanceResponseBodyDataJobInstanceDetail {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetJobInstanceResponseBodyDataJobInstanceDetail) SetParameters(v string) *GetJobInstanceResponseBodyDataJobInstanceDetail {
+	s.Parameters = &v
+	return s
+}
+
 func (s *GetJobInstanceResponseBodyDataJobInstanceDetail) SetProgress(v string) *GetJobInstanceResponseBodyDataJobInstanceDetail {
 	s.Progress = &v
 	return s
@@ -3985,6 +3998,11 @@ func (s *GetJobInstanceResponseBodyDataJobInstanceDetail) SetStatus(v int32) *Ge
 
 func (s *GetJobInstanceResponseBodyDataJobInstanceDetail) SetTimeType(v int32) *GetJobInstanceResponseBodyDataJobInstanceDetail {
 	s.TimeType = &v
+	return s
+}
+
+func (s *GetJobInstanceResponseBodyDataJobInstanceDetail) SetTraceId(v string) *GetJobInstanceResponseBodyDataJobInstanceDetail {
+	s.TraceId = &v
 	return s
 }
 
@@ -5306,6 +5324,7 @@ type GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes struct {
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
 	// The time when the job instance started to run.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The server on which the job instance was run.
 	WorkAddr *string `json:"WorkAddr,omitempty" xml:"WorkAddr,omitempty"`
 }
@@ -5355,6 +5374,11 @@ func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetScheduleTime(
 
 func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetStartTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetStatus(v int32) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.Status = &v
 	return s
 }
 
