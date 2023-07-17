@@ -16,6 +16,7 @@ type BackendCallGroupRequest struct {
 	CalledNumber         []*string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty" type:"Repeated"`
 	CallerIdNumber       *string   `json:"CallerIdNumber,omitempty" xml:"CallerIdNumber,omitempty"`
 	CountryId            *string   `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
+	OutId                *string   `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PlayTimes            *int64    `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -49,6 +50,11 @@ func (s *BackendCallGroupRequest) SetCallerIdNumber(v string) *BackendCallGroupR
 
 func (s *BackendCallGroupRequest) SetCountryId(v string) *BackendCallGroupRequest {
 	s.CountryId = &v
+	return s
+}
+
+func (s *BackendCallGroupRequest) SetOutId(v string) *BackendCallGroupRequest {
+	s.OutId = &v
 	return s
 }
 
@@ -111,6 +117,7 @@ type BackendCallGroupShrinkRequest struct {
 	CalledNumberShrink   *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	CallerIdNumber       *string `json:"CallerIdNumber,omitempty" xml:"CallerIdNumber,omitempty"`
 	CountryId            *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PlayTimes            *int64  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -144,6 +151,11 @@ func (s *BackendCallGroupShrinkRequest) SetCallerIdNumber(v string) *BackendCall
 
 func (s *BackendCallGroupShrinkRequest) SetCountryId(v string) *BackendCallGroupShrinkRequest {
 	s.CountryId = &v
+	return s
+}
+
+func (s *BackendCallGroupShrinkRequest) SetOutId(v string) *BackendCallGroupShrinkRequest {
+	s.OutId = &v
 	return s
 }
 
@@ -270,6 +282,7 @@ type BackendCallSignalRequest struct {
 	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	CallerIdNumber       *string `json:"CallerIdNumber,omitempty" xml:"CallerIdNumber,omitempty"`
 	CountryId            *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PlayTimes            *int64  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -300,6 +313,11 @@ func (s *BackendCallSignalRequest) SetCallerIdNumber(v string) *BackendCallSigna
 
 func (s *BackendCallSignalRequest) SetCountryId(v string) *BackendCallSignalRequest {
 	s.CountryId = &v
+	return s
+}
+
+func (s *BackendCallSignalRequest) SetOutId(v string) *BackendCallSignalRequest {
+	s.OutId = &v
 	return s
 }
 
@@ -4813,7 +4831,6 @@ func (s *QueryHomeStatResponse) SetBody(v *QueryHomeStatResponseBody) *QueryHome
 type QueryRecordingEnableRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s QueryRecordingEnableRequest) String() string {
@@ -4831,11 +4848,6 @@ func (s *QueryRecordingEnableRequest) SetOwnerId(v int64) *QueryRecordingEnableR
 
 func (s *QueryRecordingEnableRequest) SetResourceOwnerAccount(v string) *QueryRecordingEnableRequest {
 	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryRecordingEnableRequest) SetResourceOwnerId(v int64) *QueryRecordingEnableRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -6674,6 +6686,10 @@ func (client *Client) BackendCallGroupWithOptions(tmpReq *BackendCallGroupReques
 		query["CountryId"] = request.CountryId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -6768,6 +6784,10 @@ func (client *Client) BackendCallSignalWithOptions(request *BackendCallSignalReq
 
 	if !tea.BoolValue(util.IsUnset(request.CountryId)) {
 		query["CountryId"] = request.CountryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -8580,10 +8600,6 @@ func (client *Client) QueryRecordingEnableWithOptions(request *QueryRecordingEna
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
