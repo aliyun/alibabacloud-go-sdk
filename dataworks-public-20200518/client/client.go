@@ -2955,7 +2955,8 @@ type CreateFileRequest struct {
 	// You can call the [UpdateDataSource](~~211432~~) operation to query the available data sources in the workspace.
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	// The code for the file. The code format varies based on the file type. To view the code format for a specific file type, go to Operation Center, right-click a node of the file type, and then select View Code.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content                 *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateFolderIfNotExists *bool   `json:"CreateFolderIfNotExists,omitempty" xml:"CreateFolderIfNotExists,omitempty"`
 	// The CRON expression that represents the automatic scheduling policy of the node. This parameter corresponds to the Cron Expression parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure the Scheduling Cycle and Run At parameters in the DataWorks console, DataWorks generates the value of the Cron Expression parameter.
 	//
 	// Examples:
@@ -3111,6 +3112,11 @@ func (s *CreateFileRequest) SetConnectionName(v string) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetContent(v string) *CreateFileRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetCreateFolderIfNotExists(v bool) *CreateFileRequest {
+	s.CreateFolderIfNotExists = &v
 	return s
 }
 
@@ -5218,6 +5224,141 @@ func (s *CreateRemindResponse) SetBody(v *CreateRemindResponseBody) *CreateRemin
 	return s
 }
 
+type CreateResourceFileRequest struct {
+	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FileDescription      *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	FileFolderPath       *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	FileName             *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileType             *int32  `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	OriginResourceName   *string `json:"OriginResourceName,omitempty" xml:"OriginResourceName,omitempty"`
+	Owner                *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ProjectId            *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegisterToCalcEngine *bool   `json:"RegisterToCalcEngine,omitempty" xml:"RegisterToCalcEngine,omitempty"`
+	ResourceFile         *string `json:"ResourceFile,omitempty" xml:"ResourceFile,omitempty"`
+	StorageURL           *string `json:"StorageURL,omitempty" xml:"StorageURL,omitempty"`
+	UploadMode           *bool   `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
+}
+
+func (s CreateResourceFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileRequest) SetContent(v string) *CreateResourceFileRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileDescription(v string) *CreateResourceFileRequest {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileFolderPath(v string) *CreateResourceFileRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileName(v string) *CreateResourceFileRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileType(v int32) *CreateResourceFileRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetOriginResourceName(v string) *CreateResourceFileRequest {
+	s.OriginResourceName = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetOwner(v string) *CreateResourceFileRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetProjectId(v int64) *CreateResourceFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetRegisterToCalcEngine(v bool) *CreateResourceFileRequest {
+	s.RegisterToCalcEngine = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetResourceFile(v string) *CreateResourceFileRequest {
+	s.ResourceFile = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetStorageURL(v string) *CreateResourceFileRequest {
+	s.StorageURL = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetUploadMode(v bool) *CreateResourceFileRequest {
+	s.UploadMode = &v
+	return s
+}
+
+type CreateResourceFileResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateResourceFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileResponseBody) SetData(v int64) *CreateResourceFileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateResourceFileResponseBody) SetRequestId(v string) *CreateResourceFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateResourceFileResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateResourceFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateResourceFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileResponse) SetHeaders(v map[string]*string) *CreateResourceFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceFileResponse) SetStatusCode(v int32) *CreateResourceFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateResourceFileResponse) SetBody(v *CreateResourceFileResponseBody) *CreateResourceFileResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTableRequest struct {
 	// The comment.
 	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
@@ -5820,7 +5961,8 @@ type CreateUdfFileRequest struct {
 	// The name of the class in which the function is defined. This parameter corresponds to the Class Name parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
 	// The syntax used for calling the function. This parameter corresponds to the Expression Syntax parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
-	CmdDescription *string `json:"CmdDescription,omitempty" xml:"CmdDescription,omitempty"`
+	CmdDescription          *string `json:"CmdDescription,omitempty" xml:"CmdDescription,omitempty"`
+	CreateFolderIfNotExists *bool   `json:"CreateFolderIfNotExists,omitempty" xml:"CreateFolderIfNotExists,omitempty"`
 	// The example for calling the function. This parameter corresponds to the Example parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
 	Example *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	// The path of the folder in which the file for the function is stored.
@@ -5860,6 +6002,11 @@ func (s *CreateUdfFileRequest) SetClassName(v string) *CreateUdfFileRequest {
 
 func (s *CreateUdfFileRequest) SetCmdDescription(v string) *CreateUdfFileRequest {
 	s.CmdDescription = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetCreateFolderIfNotExists(v bool) *CreateUdfFileRequest {
+	s.CreateFolderIfNotExists = &v
 	return s
 }
 
@@ -33711,14 +33858,18 @@ func (s *ListFileVersionsResponse) SetBody(v *ListFileVersionsResponseBody) *Lis
 }
 
 type ListFilesRequest struct {
+	ExactFileName *string `json:"ExactFileName,omitempty" xml:"ExactFileName,omitempty"`
 	// The path of the files.
 	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	FileIdIn       *string `json:"FileIdIn,omitempty" xml:"FileIdIn,omitempty"`
 	// The types of the code in the files.
 	//
 	// Valid values: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 23 (Data Integration), 24 (ODPS Script), 97 (PAI), 98 (node group), 99 (zero load), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1002 (PAI inner node), 1089 (cross-tenant collaboration), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment), 1106 (for-each), and 1221 (PyODPS 3).
 	FileTypes *string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty"`
 	// The keyword in the file names. The keyword is used to perform a fuzzy match. You can specify a keyword to query all files whose names contain the keyword.
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword                *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	NeedAbsoluteFolderPath *bool   `json:"NeedAbsoluteFolderPath,omitempty" xml:"NeedAbsoluteFolderPath,omitempty"`
+	NeedContent            *bool   `json:"NeedContent,omitempty" xml:"NeedContent,omitempty"`
 	// The ID of the node that is scheduled. You can call the [ListNodes](~~173979~~) operation to query the ID of the node.
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The owner of the files.
@@ -33754,8 +33905,18 @@ func (s ListFilesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListFilesRequest) SetExactFileName(v string) *ListFilesRequest {
+	s.ExactFileName = &v
+	return s
+}
+
 func (s *ListFilesRequest) SetFileFolderPath(v string) *ListFilesRequest {
 	s.FileFolderPath = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetFileIdIn(v string) *ListFilesRequest {
+	s.FileIdIn = &v
 	return s
 }
 
@@ -33766,6 +33927,16 @@ func (s *ListFilesRequest) SetFileTypes(v string) *ListFilesRequest {
 
 func (s *ListFilesRequest) SetKeyword(v string) *ListFilesRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetNeedAbsoluteFolderPath(v bool) *ListFilesRequest {
+	s.NeedAbsoluteFolderPath = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetNeedContent(v bool) *ListFilesRequest {
+	s.NeedContent = &v
 	return s
 }
 
@@ -33900,6 +34071,7 @@ func (s *ListFilesResponseBodyData) SetTotalCount(v int32) *ListFilesResponseBod
 }
 
 type ListFilesResponseBodyDataFiles struct {
+	AbsoluteFolderPath *string `json:"AbsoluteFolderPath,omitempty" xml:"AbsoluteFolderPath,omitempty"`
 	// Specifies whether the automatic parsing feature is enabled for the file. Valid values:
 	//
 	// *   true: The automatic parsing feature is enabled for the file.
@@ -33964,6 +34136,11 @@ func (s ListFilesResponseBodyDataFiles) String() string {
 
 func (s ListFilesResponseBodyDataFiles) GoString() string {
 	return s.String()
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetAbsoluteFolderPath(v string) *ListFilesResponseBodyDataFiles {
+	s.AbsoluteFolderPath = &v
+	return s
 }
 
 func (s *ListFilesResponseBodyDataFiles) SetAutoParsing(v bool) *ListFilesResponseBodyDataFiles {
@@ -52767,6 +52944,10 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 		body["Content"] = request.Content
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreateFolderIfNotExists)) {
+		body["CreateFolderIfNotExists"] = request.CreateFolderIfNotExists
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CronExpress)) {
 		body["CronExpress"] = request.CronExpress
 	}
@@ -53926,6 +54107,94 @@ func (client *Client) CreateRemind(request *CreateRemindRequest) (_result *Creat
 	return _result, _err
 }
 
+func (client *Client) CreateResourceFileWithOptions(request *CreateResourceFileRequest, runtime *util.RuntimeOptions) (_result *CreateResourceFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileDescription)) {
+		body["FileDescription"] = request.FileDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginResourceName)) {
+		body["OriginResourceName"] = request.OriginResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegisterToCalcEngine)) {
+		body["RegisterToCalcEngine"] = request.RegisterToCalcEngine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceFile)) {
+		body["ResourceFile"] = request.ResourceFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageURL)) {
+		body["StorageURL"] = request.StorageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadMode)) {
+		body["UploadMode"] = request.UploadMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceFile"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateResourceFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateResourceFile(request *CreateResourceFileRequest) (_result *CreateResourceFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateResourceFileResponse{}
+	_body, _err := client.CreateResourceFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateTableWithOptions(request *CreateTableRequest, runtime *util.RuntimeOptions) (_result *CreateTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54172,6 +54441,10 @@ func (client *Client) CreateUdfFileWithOptions(request *CreateUdfFileRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.CmdDescription)) {
 		body["CmdDescription"] = request.CmdDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFolderIfNotExists)) {
+		body["CreateFolderIfNotExists"] = request.CreateFolderIfNotExists
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Example)) {
@@ -61041,8 +61314,16 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *u
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExactFileName)) {
+		body["ExactFileName"] = request.ExactFileName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
 		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileIdIn)) {
+		body["FileIdIn"] = request.FileIdIn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FileTypes)) {
@@ -61051,6 +61332,14 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedAbsoluteFolderPath)) {
+		body["NeedAbsoluteFolderPath"] = request.NeedAbsoluteFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedContent)) {
+		body["NeedContent"] = request.NeedContent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
