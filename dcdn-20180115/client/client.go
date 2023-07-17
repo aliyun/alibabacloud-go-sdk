@@ -25264,6 +25264,123 @@ func (s *SetDcdnDomainSMCertificateResponse) SetBody(v *SetDcdnDomainSMCertifica
 	return s
 }
 
+type SetDcdnDomainSSLCertificateRequest struct {
+	CertId        *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertName      *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertRegion    *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	CertType      *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SSLPri        *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
+	SSLProtocol   *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
+	SSLPub        *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SetDcdnDomainSSLCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnDomainSSLCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetCertId(v int64) *SetDcdnDomainSSLCertificateRequest {
+	s.CertId = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetCertName(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetCertRegion(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.CertRegion = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetCertType(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.CertType = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetDomainName(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetOwnerId(v int64) *SetDcdnDomainSSLCertificateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetSSLPri(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.SSLPri = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetSSLProtocol(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.SSLProtocol = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetSSLPub(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.SSLPub = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetSecurityToken(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SetDcdnDomainSSLCertificateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDcdnDomainSSLCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnDomainSSLCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnDomainSSLCertificateResponseBody) SetRequestId(v string) *SetDcdnDomainSSLCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDcdnDomainSSLCertificateResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDcdnDomainSSLCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDcdnDomainSSLCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnDomainSSLCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnDomainSSLCertificateResponse) SetHeaders(v map[string]*string) *SetDcdnDomainSSLCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateResponse) SetStatusCode(v int32) *SetDcdnDomainSSLCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateResponse) SetBody(v *SetDcdnDomainSSLCertificateResponseBody) *SetDcdnDomainSSLCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type SetDcdnDomainStagingConfigRequest struct {
 	// The ID of the request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -38183,12 +38300,14 @@ func (client *Client) RollbackDcdnStagingConfig(request *RollbackDcdnStagingConf
 }
 
 /**
+ * @deprecated : SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
  * The name of the certificate.
  *
  * @param request SetDcdnDomainCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return SetDcdnDomainCertificateResponse
  */
+// Deprecated
 func (client *Client) SetDcdnDomainCertificateWithOptions(request *SetDcdnDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *SetDcdnDomainCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38259,11 +38378,13 @@ func (client *Client) SetDcdnDomainCertificateWithOptions(request *SetDcdnDomain
 }
 
 /**
+ * @deprecated : SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
  * The name of the certificate.
  *
  * @param request SetDcdnDomainCertificateRequest
  * @return SetDcdnDomainCertificateResponse
  */
+// Deprecated
 func (client *Client) SetDcdnDomainCertificate(request *SetDcdnDomainCertificateRequest) (_result *SetDcdnDomainCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDcdnDomainCertificateResponse{}
@@ -38341,6 +38462,86 @@ func (client *Client) SetDcdnDomainSMCertificate(request *SetDcdnDomainSMCertifi
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDcdnDomainSMCertificateResponse{}
 	_body, _err := client.SetDcdnDomainSMCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDcdnDomainSSLCertificateWithOptions(request *SetDcdnDomainSSLCertificateRequest, runtime *util.RuntimeOptions) (_result *SetDcdnDomainSSLCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertId)) {
+		query["CertId"] = request.CertId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertRegion)) {
+		query["CertRegion"] = request.CertRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPri)) {
+		query["SSLPri"] = request.SSLPri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDcdnDomainSSLCertificate"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDcdnDomainSSLCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDcdnDomainSSLCertificate(request *SetDcdnDomainSSLCertificateRequest) (_result *SetDcdnDomainSSLCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDcdnDomainSSLCertificateResponse{}
+	_body, _err := client.SetDcdnDomainSSLCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
