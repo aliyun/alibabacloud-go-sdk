@@ -201,6 +201,129 @@ func (s *DescribeImageResultExtResponse) SetBody(v *DescribeImageResultExtRespon
 	return s
 }
 
+type DescribeUploadTokenResponseBody struct {
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeUploadTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                              `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUploadTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUploadTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUploadTokenResponseBody) SetCode(v int32) *DescribeUploadTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBody) SetData(v *DescribeUploadTokenResponseBodyData) *DescribeUploadTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBody) SetMsg(v string) *DescribeUploadTokenResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBody) SetRequestId(v string) *DescribeUploadTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUploadTokenResponseBodyData struct {
+	AccessKeyId         *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret     *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	BucketName          *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Expiration          *int32  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	FileNamePrefix      *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
+	OssInternalEndPoint *string `json:"OssInternalEndPoint,omitempty" xml:"OssInternalEndPoint,omitempty"`
+	OssInternetEndPoint *string `json:"OssInternetEndPoint,omitempty" xml:"OssInternetEndPoint,omitempty"`
+	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeUploadTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUploadTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetAccessKeyId(v string) *DescribeUploadTokenResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetAccessKeySecret(v string) *DescribeUploadTokenResponseBodyData {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetBucketName(v string) *DescribeUploadTokenResponseBodyData {
+	s.BucketName = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetExpiration(v int32) *DescribeUploadTokenResponseBodyData {
+	s.Expiration = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetFileNamePrefix(v string) *DescribeUploadTokenResponseBodyData {
+	s.FileNamePrefix = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetOssInternalEndPoint(v string) *DescribeUploadTokenResponseBodyData {
+	s.OssInternalEndPoint = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetOssInternetEndPoint(v string) *DescribeUploadTokenResponseBodyData {
+	s.OssInternetEndPoint = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponseBodyData) SetSecurityToken(v string) *DescribeUploadTokenResponseBodyData {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeUploadTokenResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUploadTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUploadTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUploadTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUploadTokenResponse) SetHeaders(v map[string]*string) *DescribeUploadTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUploadTokenResponse) SetStatusCode(v int32) *DescribeUploadTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUploadTokenResponse) SetBody(v *DescribeUploadTokenResponseBody) *DescribeUploadTokenResponse {
+	s.Body = v
+	return s
+}
+
 type ImageModerationRequest struct {
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
@@ -957,6 +1080,39 @@ func (client *Client) DescribeImageResultExt(request *DescribeImageResultExtRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImageResultExtResponse{}
 	_body, _err := client.DescribeImageResultExtWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUploadTokenWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUploadTokenResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUploadToken"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUploadTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUploadTokenResponse{}
+	_body, _err := client.DescribeUploadTokenWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
