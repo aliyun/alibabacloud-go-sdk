@@ -1973,6 +1973,292 @@ func (s *DeployFunctionResponse) SetBody(v *DeployFunctionResponseBody) *DeployF
 	return s
 }
 
+type DescribeCdnDomainRequest struct {
+	SpaceId  *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCdnDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainRequest) SetSpaceId(v string) *DescribeCdnDomainRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *DescribeCdnDomainRequest) SetTenantId(v string) *DescribeCdnDomainRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DescribeCdnDomainRequest) SetType(v string) *DescribeCdnDomainRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeCdnDomainResponseBody struct {
+	AuthConfig    *DescribeCdnDomainResponseBodyAuthConfig    `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty" type:"Struct"`
+	CorsConfig    *DescribeCdnDomainResponseBodyCorsConfig    `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
+	DomainName    *string                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	IpConfig      *DescribeCdnDomainResponseBodyIpConfig      `json:"IpConfig,omitempty" xml:"IpConfig,omitempty" type:"Struct"`
+	RefererConfig *DescribeCdnDomainResponseBodyRefererConfig `json:"RefererConfig,omitempty" xml:"RefererConfig,omitempty" type:"Struct"`
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceStatus *string                                     `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	SpaceId       *string                                     `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	UaConfig      *DescribeCdnDomainResponseBodyUaConfig      `json:"UaConfig,omitempty" xml:"UaConfig,omitempty" type:"Struct"`
+}
+
+func (s DescribeCdnDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainResponseBody) SetAuthConfig(v *DescribeCdnDomainResponseBodyAuthConfig) *DescribeCdnDomainResponseBody {
+	s.AuthConfig = v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetCorsConfig(v *DescribeCdnDomainResponseBodyCorsConfig) *DescribeCdnDomainResponseBody {
+	s.CorsConfig = v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetDomainName(v string) *DescribeCdnDomainResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetIpConfig(v *DescribeCdnDomainResponseBodyIpConfig) *DescribeCdnDomainResponseBody {
+	s.IpConfig = v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetRefererConfig(v *DescribeCdnDomainResponseBodyRefererConfig) *DescribeCdnDomainResponseBody {
+	s.RefererConfig = v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetRequestId(v string) *DescribeCdnDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetServiceStatus(v string) *DescribeCdnDomainResponseBody {
+	s.ServiceStatus = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetSpaceId(v string) *DescribeCdnDomainResponseBody {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBody) SetUaConfig(v *DescribeCdnDomainResponseBodyUaConfig) *DescribeCdnDomainResponseBody {
+	s.UaConfig = v
+	return s
+}
+
+type DescribeCdnDomainResponseBodyAuthConfig struct {
+	AuthDelta *int32  `json:"AuthDelta,omitempty" xml:"AuthDelta,omitempty"`
+	AuthKey   *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	ConfigId  *string `json:"configId,omitempty" xml:"configId,omitempty"`
+}
+
+func (s DescribeCdnDomainResponseBodyAuthConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainResponseBodyAuthConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainResponseBodyAuthConfig) SetAuthDelta(v int32) *DescribeCdnDomainResponseBodyAuthConfig {
+	s.AuthDelta = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyAuthConfig) SetAuthKey(v string) *DescribeCdnDomainResponseBodyAuthConfig {
+	s.AuthKey = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyAuthConfig) SetAuthType(v string) *DescribeCdnDomainResponseBodyAuthConfig {
+	s.AuthType = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyAuthConfig) SetConfigId(v string) *DescribeCdnDomainResponseBodyAuthConfig {
+	s.ConfigId = &v
+	return s
+}
+
+type DescribeCdnDomainResponseBodyCorsConfig struct {
+	AccessOriginControl *bool   `json:"AccessOriginControl,omitempty" xml:"AccessOriginControl,omitempty"`
+	AllowOrigin         *string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty"`
+	ConfigId            *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+}
+
+func (s DescribeCdnDomainResponseBodyCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainResponseBodyCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainResponseBodyCorsConfig) SetAccessOriginControl(v bool) *DescribeCdnDomainResponseBodyCorsConfig {
+	s.AccessOriginControl = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyCorsConfig) SetAllowOrigin(v string) *DescribeCdnDomainResponseBodyCorsConfig {
+	s.AllowOrigin = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyCorsConfig) SetConfigId(v string) *DescribeCdnDomainResponseBodyCorsConfig {
+	s.ConfigId = &v
+	return s
+}
+
+type DescribeCdnDomainResponseBodyIpConfig struct {
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	IpList   *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCdnDomainResponseBodyIpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainResponseBodyIpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainResponseBodyIpConfig) SetConfigId(v string) *DescribeCdnDomainResponseBodyIpConfig {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyIpConfig) SetIpList(v string) *DescribeCdnDomainResponseBodyIpConfig {
+	s.IpList = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyIpConfig) SetType(v string) *DescribeCdnDomainResponseBodyIpConfig {
+	s.Type = &v
+	return s
+}
+
+type DescribeCdnDomainResponseBodyRefererConfig struct {
+	AllowEmpty *string `json:"AllowEmpty,omitempty" xml:"AllowEmpty,omitempty"`
+	ConfigId   *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	DisableAst *string `json:"DisableAst,omitempty" xml:"DisableAst,omitempty"`
+	ReferList  *string `json:"ReferList,omitempty" xml:"ReferList,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCdnDomainResponseBodyRefererConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainResponseBodyRefererConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainResponseBodyRefererConfig) SetAllowEmpty(v string) *DescribeCdnDomainResponseBodyRefererConfig {
+	s.AllowEmpty = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyRefererConfig) SetConfigId(v string) *DescribeCdnDomainResponseBodyRefererConfig {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyRefererConfig) SetDisableAst(v string) *DescribeCdnDomainResponseBodyRefererConfig {
+	s.DisableAst = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyRefererConfig) SetReferList(v string) *DescribeCdnDomainResponseBodyRefererConfig {
+	s.ReferList = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyRefererConfig) SetType(v string) *DescribeCdnDomainResponseBodyRefererConfig {
+	s.Type = &v
+	return s
+}
+
+type DescribeCdnDomainResponseBodyUaConfig struct {
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UaList   *string `json:"UaList,omitempty" xml:"UaList,omitempty"`
+}
+
+func (s DescribeCdnDomainResponseBodyUaConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainResponseBodyUaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainResponseBodyUaConfig) SetConfigId(v string) *DescribeCdnDomainResponseBodyUaConfig {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyUaConfig) SetType(v string) *DescribeCdnDomainResponseBodyUaConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponseBodyUaConfig) SetUaList(v string) *DescribeCdnDomainResponseBodyUaConfig {
+	s.UaList = &v
+	return s
+}
+
+type DescribeCdnDomainResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCdnDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainResponse) SetHeaders(v map[string]*string) *DescribeCdnDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdnDomainResponse) SetStatusCode(v int32) *DescribeCdnDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCdnDomainResponse) SetBody(v *DescribeCdnDomainResponseBody) *DescribeCdnDomainResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFCOpenStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -4510,6 +4796,7 @@ func (s *ListExtensionsResponse) SetBody(v *ListExtensionsResponseBody) *ListExt
 }
 
 type ListFileRequest struct {
+	AuthDelta *int32  `json:"AuthDelta,omitempty" xml:"AuthDelta,omitempty"`
 	FileId    *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Mode      *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -4525,6 +4812,11 @@ func (s ListFileRequest) String() string {
 
 func (s ListFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFileRequest) SetAuthDelta(v int32) *ListFileRequest {
+	s.AuthDelta = &v
+	return s
 }
 
 func (s *ListFileRequest) SetFileId(v string) *ListFileRequest {
@@ -4592,6 +4884,7 @@ func (s *ListFileResponseBody) SetRequestId(v string) *ListFileResponseBody {
 }
 
 type ListFileResponseBodyDataList struct {
+	AuthDelta   *int32  `json:"AuthDelta,omitempty" xml:"AuthDelta,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -4607,6 +4900,11 @@ func (s ListFileResponseBodyDataList) String() string {
 
 func (s ListFileResponseBodyDataList) GoString() string {
 	return s.String()
+}
+
+func (s *ListFileResponseBodyDataList) SetAuthDelta(v int32) *ListFileResponseBodyDataList {
+	s.AuthDelta = &v
+	return s
 }
 
 func (s *ListFileResponseBodyDataList) SetGmtCreate(v string) *ListFileResponseBodyDataList {
@@ -8025,6 +8323,111 @@ func (s *SaveAppAuthTokenResponse) SetBody(v *SaveAppAuthTokenResponseBody) *Sav
 	return s
 }
 
+type SaveCdnDomainConfigRequest struct {
+	AuthConfig    *string `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
+	CorsConfig    *string `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty"`
+	IpConfig      *string `json:"IpConfig,omitempty" xml:"IpConfig,omitempty"`
+	RefererConfig *string `json:"RefererConfig,omitempty" xml:"RefererConfig,omitempty"`
+	SpaceId       *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UaConfig      *string `json:"UaConfig,omitempty" xml:"UaConfig,omitempty"`
+}
+
+func (s SaveCdnDomainConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveCdnDomainConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveCdnDomainConfigRequest) SetAuthConfig(v string) *SaveCdnDomainConfigRequest {
+	s.AuthConfig = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigRequest) SetCorsConfig(v string) *SaveCdnDomainConfigRequest {
+	s.CorsConfig = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigRequest) SetIpConfig(v string) *SaveCdnDomainConfigRequest {
+	s.IpConfig = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigRequest) SetRefererConfig(v string) *SaveCdnDomainConfigRequest {
+	s.RefererConfig = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigRequest) SetSpaceId(v string) *SaveCdnDomainConfigRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigRequest) SetTenantId(v string) *SaveCdnDomainConfigRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigRequest) SetType(v string) *SaveCdnDomainConfigRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigRequest) SetUaConfig(v string) *SaveCdnDomainConfigRequest {
+	s.UaConfig = &v
+	return s
+}
+
+type SaveCdnDomainConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SaveCdnDomainConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveCdnDomainConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveCdnDomainConfigResponseBody) SetRequestId(v string) *SaveCdnDomainConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SaveCdnDomainConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveCdnDomainConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveCdnDomainConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveCdnDomainConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveCdnDomainConfigResponse) SetHeaders(v map[string]*string) *SaveCdnDomainConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveCdnDomainConfigResponse) SetStatusCode(v int32) *SaveCdnDomainConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveCdnDomainConfigResponse) SetBody(v *SaveCdnDomainConfigResponseBody) *SaveCdnDomainConfigResponse {
+	s.Body = v
+	return s
+}
+
 type SaveWebHostingCustomDomainConfigRequest struct {
 	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	ForceRedirectType *string `json:"ForceRedirectType,omitempty" xml:"ForceRedirectType,omitempty"`
@@ -10297,6 +10700,58 @@ func (client *Client) DeployFunction(request *DeployFunctionRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DescribeCdnDomainWithOptions(request *DescribeCdnDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
+		body["SpaceId"] = request.SpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdnDomain"),
+		Version:     tea.String("2019-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnDomain(request *DescribeCdnDomainRequest) (_result *DescribeCdnDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdnDomainResponse{}
+	_body, _err := client.DescribeCdnDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeFCOpenStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeFCOpenStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -11283,6 +11738,10 @@ func (client *Client) ListFileWithOptions(request *ListFileRequest, runtime *uti
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthDelta)) {
+		body["AuthDelta"] = request.AuthDelta
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileId)) {
 		body["FileId"] = request.FileId
 	}
@@ -12729,6 +13188,78 @@ func (client *Client) SaveAppAuthToken(request *SaveAppAuthTokenRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveAppAuthTokenResponse{}
 	_body, _err := client.SaveAppAuthTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveCdnDomainConfigWithOptions(request *SaveCdnDomainConfigRequest, runtime *util.RuntimeOptions) (_result *SaveCdnDomainConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthConfig)) {
+		body["AuthConfig"] = request.AuthConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorsConfig)) {
+		body["CorsConfig"] = request.CorsConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpConfig)) {
+		body["IpConfig"] = request.IpConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefererConfig)) {
+		body["RefererConfig"] = request.RefererConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
+		body["SpaceId"] = request.SpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UaConfig)) {
+		body["UaConfig"] = request.UaConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveCdnDomainConfig"),
+		Version:     tea.String("2019-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveCdnDomainConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveCdnDomainConfig(request *SaveCdnDomainConfigRequest) (_result *SaveCdnDomainConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveCdnDomainConfigResponse{}
+	_body, _err := client.SaveCdnDomainConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
