@@ -7516,6 +7516,129 @@ func (s *CreateParameterGroupResponse) SetBody(v *CreateParameterGroupResponseBo
 	return s
 }
 
+type CreatePostgresExtensionsRequest struct {
+	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBNames              *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	Extensions           *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SourceDatabase       *string `json:"SourceDatabase,omitempty" xml:"SourceDatabase,omitempty"`
+}
+
+func (s CreatePostgresExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostgresExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostgresExtensionsRequest) SetAccountName(v string) *CreatePostgresExtensionsRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetClientToken(v string) *CreatePostgresExtensionsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetDBInstanceId(v string) *CreatePostgresExtensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetDBNames(v string) *CreatePostgresExtensionsRequest {
+	s.DBNames = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetExtensions(v string) *CreatePostgresExtensionsRequest {
+	s.Extensions = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetOwnerAccount(v string) *CreatePostgresExtensionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetOwnerId(v int64) *CreatePostgresExtensionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetResourceGroupId(v string) *CreatePostgresExtensionsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetResourceOwnerAccount(v string) *CreatePostgresExtensionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetResourceOwnerId(v int64) *CreatePostgresExtensionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetSourceDatabase(v string) *CreatePostgresExtensionsRequest {
+	s.SourceDatabase = &v
+	return s
+}
+
+type CreatePostgresExtensionsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePostgresExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostgresExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostgresExtensionsResponseBody) SetRequestId(v string) *CreatePostgresExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePostgresExtensionsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePostgresExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePostgresExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostgresExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostgresExtensionsResponse) SetHeaders(v map[string]*string) *CreatePostgresExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePostgresExtensionsResponse) SetStatusCode(v int32) *CreatePostgresExtensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsResponse) SetBody(v *CreatePostgresExtensionsResponseBody) *CreatePostgresExtensionsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateReadOnlyDBInstanceRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable the auto-renewal feature for the read-only instance. If you set the PayType parameter to Prepaid, you must also specify this parameter. Valid values:
@@ -9543,6 +9666,117 @@ func (s *DeleteParameterGroupResponse) SetStatusCode(v int32) *DeleteParameterGr
 }
 
 func (s *DeleteParameterGroupResponse) SetBody(v *DeleteParameterGroupResponseBody) *DeleteParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePostgresExtensionsRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBNames              *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	Extensions           *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeletePostgresExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePostgresExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePostgresExtensionsRequest) SetClientToken(v string) *DeletePostgresExtensionsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetDBInstanceId(v string) *DeletePostgresExtensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetDBNames(v string) *DeletePostgresExtensionsRequest {
+	s.DBNames = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetExtensions(v string) *DeletePostgresExtensionsRequest {
+	s.Extensions = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetOwnerAccount(v string) *DeletePostgresExtensionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetOwnerId(v int64) *DeletePostgresExtensionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetResourceGroupId(v string) *DeletePostgresExtensionsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetResourceOwnerAccount(v string) *DeletePostgresExtensionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsRequest) SetResourceOwnerId(v int64) *DeletePostgresExtensionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeletePostgresExtensionsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePostgresExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePostgresExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePostgresExtensionsResponseBody) SetRequestId(v string) *DeletePostgresExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePostgresExtensionsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePostgresExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePostgresExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePostgresExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePostgresExtensionsResponse) SetHeaders(v map[string]*string) *DeletePostgresExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePostgresExtensionsResponse) SetStatusCode(v int32) *DeletePostgresExtensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePostgresExtensionsResponse) SetBody(v *DeletePostgresExtensionsResponseBody) *DeletePostgresExtensionsResponse {
 	s.Body = v
 	return s
 }
@@ -30871,6 +31105,247 @@ func (s *DescribeParametersResponse) SetBody(v *DescribeParametersResponseBody) 
 	return s
 }
 
+type DescribePostgresExtensionsRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribePostgresExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePostgresExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePostgresExtensionsRequest) SetClientToken(v string) *DescribePostgresExtensionsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsRequest) SetDBInstanceId(v string) *DescribePostgresExtensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsRequest) SetDBName(v string) *DescribePostgresExtensionsRequest {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsRequest) SetOwnerAccount(v string) *DescribePostgresExtensionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsRequest) SetOwnerId(v int64) *DescribePostgresExtensionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsRequest) SetResourceGroupId(v string) *DescribePostgresExtensionsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsRequest) SetResourceOwnerAccount(v string) *DescribePostgresExtensionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsRequest) SetResourceOwnerId(v int64) *DescribePostgresExtensionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribePostgresExtensionsResponseBody struct {
+	InstalledExtensions   []*DescribePostgresExtensionsResponseBodyInstalledExtensions   `json:"InstalledExtensions,omitempty" xml:"InstalledExtensions,omitempty" type:"Repeated"`
+	Overview              map[string]interface{}                                         `json:"Overview,omitempty" xml:"Overview,omitempty"`
+	RequestId             *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UninstalledExtensions []*DescribePostgresExtensionsResponseBodyUninstalledExtensions `json:"UninstalledExtensions,omitempty" xml:"UninstalledExtensions,omitempty" type:"Repeated"`
+}
+
+func (s DescribePostgresExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePostgresExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePostgresExtensionsResponseBody) SetInstalledExtensions(v []*DescribePostgresExtensionsResponseBodyInstalledExtensions) *DescribePostgresExtensionsResponseBody {
+	s.InstalledExtensions = v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBody) SetOverview(v map[string]interface{}) *DescribePostgresExtensionsResponseBody {
+	s.Overview = v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBody) SetRequestId(v string) *DescribePostgresExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBody) SetUninstalledExtensions(v []*DescribePostgresExtensionsResponseBodyUninstalledExtensions) *DescribePostgresExtensionsResponseBody {
+	s.UninstalledExtensions = v
+	return s
+}
+
+type DescribePostgresExtensionsResponseBodyInstalledExtensions struct {
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Comment          *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DefaultVersion   *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority         *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Requires         *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
+}
+
+func (s DescribePostgresExtensionsResponseBodyInstalledExtensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePostgresExtensionsResponseBodyInstalledExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetCategory(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetComment(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.Comment = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetDefaultVersion(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetInstalledVersion(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.InstalledVersion = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetName(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetOwner(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetPriority(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) SetRequires(v string) *DescribePostgresExtensionsResponseBodyInstalledExtensions {
+	s.Requires = &v
+	return s
+}
+
+type DescribePostgresExtensionsResponseBodyUninstalledExtensions struct {
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Comment          *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DefaultVersion   *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority         *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Requires         *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
+}
+
+func (s DescribePostgresExtensionsResponseBodyUninstalledExtensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePostgresExtensionsResponseBodyUninstalledExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetCategory(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetComment(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.Comment = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetDefaultVersion(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetInstalledVersion(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.InstalledVersion = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetName(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetOwner(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetPriority(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponseBodyUninstalledExtensions) SetRequires(v string) *DescribePostgresExtensionsResponseBodyUninstalledExtensions {
+	s.Requires = &v
+	return s
+}
+
+type DescribePostgresExtensionsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePostgresExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePostgresExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePostgresExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePostgresExtensionsResponse) SetHeaders(v map[string]*string) *DescribePostgresExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponse) SetStatusCode(v int32) *DescribePostgresExtensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePostgresExtensionsResponse) SetBody(v *DescribePostgresExtensionsResponseBody) *DescribePostgresExtensionsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePriceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -49877,6 +50352,117 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdatePostgresExtensionsRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBNames              *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	Extensions           *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdatePostgresExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePostgresExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetClientToken(v string) *UpdatePostgresExtensionsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetDBInstanceId(v string) *UpdatePostgresExtensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetDBNames(v string) *UpdatePostgresExtensionsRequest {
+	s.DBNames = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetExtensions(v string) *UpdatePostgresExtensionsRequest {
+	s.Extensions = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetOwnerAccount(v string) *UpdatePostgresExtensionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetOwnerId(v int64) *UpdatePostgresExtensionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetResourceGroupId(v string) *UpdatePostgresExtensionsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetResourceOwnerAccount(v string) *UpdatePostgresExtensionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsRequest) SetResourceOwnerId(v int64) *UpdatePostgresExtensionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdatePostgresExtensionsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePostgresExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePostgresExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePostgresExtensionsResponseBody) SetRequestId(v string) *UpdatePostgresExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePostgresExtensionsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePostgresExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePostgresExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePostgresExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePostgresExtensionsResponse) SetHeaders(v map[string]*string) *UpdatePostgresExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsResponse) SetStatusCode(v int32) *UpdatePostgresExtensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePostgresExtensionsResponse) SetBody(v *UpdatePostgresExtensionsResponseBody) *UpdatePostgresExtensionsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateUserBackupFileRequest struct {
 	// The ID of the backup file. You can call the [ListUserBackupFiles](~~257821~~) operation to query the ID of the backup file.
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
@@ -54373,6 +54959,90 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 	return _result, _err
 }
 
+func (client *Client) CreatePostgresExtensionsWithOptions(request *CreatePostgresExtensionsRequest, runtime *util.RuntimeOptions) (_result *CreatePostgresExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNames)) {
+		query["DBNames"] = request.DBNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extensions)) {
+		query["Extensions"] = request.Extensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDatabase)) {
+		query["SourceDatabase"] = request.SourceDatabase
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePostgresExtensions"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePostgresExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePostgresExtensions(request *CreatePostgresExtensionsRequest) (_result *CreatePostgresExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePostgresExtensionsResponse{}
+	_body, _err := client.CreatePostgresExtensionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * **Before you call this operation, take note of the following limits:**
  * *   The primary instance cannot belong to a dedicated cluster and must run one of the following database engine versions and RDS editions:
@@ -55736,6 +56406,82 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteParameterGroupResponse{}
 	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePostgresExtensionsWithOptions(request *DeletePostgresExtensionsRequest, runtime *util.RuntimeOptions) (_result *DeletePostgresExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNames)) {
+		query["DBNames"] = request.DBNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extensions)) {
+		query["Extensions"] = request.Extensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePostgresExtensions"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePostgresExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePostgresExtensions(request *DeletePostgresExtensionsRequest) (_result *DeletePostgresExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePostgresExtensionsResponse{}
+	_body, _err := client.DeletePostgresExtensionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62719,6 +63465,78 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParametersResponse{}
 	_body, _err := client.DescribeParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePostgresExtensionsWithOptions(request *DescribePostgresExtensionsRequest, runtime *util.RuntimeOptions) (_result *DescribePostgresExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBName)) {
+		query["DBName"] = request.DBName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePostgresExtensions"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePostgresExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePostgresExtensions(request *DescribePostgresExtensionsRequest) (_result *DescribePostgresExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePostgresExtensionsResponse{}
+	_body, _err := client.DescribePostgresExtensionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -72888,6 +73706,82 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePostgresExtensionsWithOptions(request *UpdatePostgresExtensionsRequest, runtime *util.RuntimeOptions) (_result *UpdatePostgresExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNames)) {
+		query["DBNames"] = request.DBNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extensions)) {
+		query["Extensions"] = request.Extensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePostgresExtensions"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePostgresExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePostgresExtensions(request *UpdatePostgresExtensionsRequest) (_result *UpdatePostgresExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePostgresExtensionsResponse{}
+	_body, _err := client.UpdatePostgresExtensionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
