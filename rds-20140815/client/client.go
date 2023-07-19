@@ -577,6 +577,134 @@ func (s *AllocateReadWriteSplittingConnectionResponse) SetBody(v *AllocateReadWr
 	return s
 }
 
+type AttachWhitelistTemplateToInstanceRequest struct {
+	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s AttachWhitelistTemplateToInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachWhitelistTemplateToInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachWhitelistTemplateToInstanceRequest) SetInsName(v string) *AttachWhitelistTemplateToInstanceRequest {
+	s.InsName = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceRequest) SetResourceOwnerAccount(v string) *AttachWhitelistTemplateToInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceRequest) SetResourceOwnerId(v int64) *AttachWhitelistTemplateToInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceRequest) SetTemplateId(v int32) *AttachWhitelistTemplateToInstanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type AttachWhitelistTemplateToInstanceResponseBody struct {
+	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *AttachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AttachWhitelistTemplateToInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachWhitelistTemplateToInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponseBody) SetCode(v string) *AttachWhitelistTemplateToInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponseBody) SetData(v *AttachWhitelistTemplateToInstanceResponseBodyData) *AttachWhitelistTemplateToInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponseBody) SetHttpStatusCode(v int32) *AttachWhitelistTemplateToInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponseBody) SetMessage(v string) *AttachWhitelistTemplateToInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponseBody) SetRequestId(v string) *AttachWhitelistTemplateToInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponseBody) SetSuccess(v bool) *AttachWhitelistTemplateToInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AttachWhitelistTemplateToInstanceResponseBodyData struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s AttachWhitelistTemplateToInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachWhitelistTemplateToInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponseBodyData) SetStatus(v string) *AttachWhitelistTemplateToInstanceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type AttachWhitelistTemplateToInstanceResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachWhitelistTemplateToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachWhitelistTemplateToInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachWhitelistTemplateToInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponse) SetHeaders(v map[string]*string) *AttachWhitelistTemplateToInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponse) SetStatusCode(v int32) *AttachWhitelistTemplateToInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceResponse) SetBody(v *AttachWhitelistTemplateToInstanceResponseBody) *AttachWhitelistTemplateToInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CalculateDBInstanceWeightRequest struct {
 	// The ID of the primary instance.
 	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -11434,6 +11562,223 @@ func (s *DescribeActiveOperationTasksResponse) SetStatusCode(v int32) *DescribeA
 }
 
 func (s *DescribeActiveOperationTasksResponse) SetBody(v *DescribeActiveOperationTasksResponseBody) *DescribeActiveOperationTasksResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAllWhitelistTemplateRequest struct {
+	FuzzySearch          *bool   `json:"FuzzySearch,omitempty" xml:"FuzzySearch,omitempty"`
+	MaxRecordsPerPage    *int32  `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
+	PageNumbers          *int32  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s DescribeAllWhitelistTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllWhitelistTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllWhitelistTemplateRequest) SetFuzzySearch(v bool) *DescribeAllWhitelistTemplateRequest {
+	s.FuzzySearch = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateRequest) SetMaxRecordsPerPage(v int32) *DescribeAllWhitelistTemplateRequest {
+	s.MaxRecordsPerPage = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateRequest) SetPageNumbers(v int32) *DescribeAllWhitelistTemplateRequest {
+	s.PageNumbers = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateRequest) SetResourceOwnerAccount(v string) *DescribeAllWhitelistTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateRequest) SetResourceOwnerId(v int64) *DescribeAllWhitelistTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateRequest) SetTemplateName(v string) *DescribeAllWhitelistTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type DescribeAllWhitelistTemplateResponseBody struct {
+	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DescribeAllWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAllWhitelistTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllWhitelistTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBody) SetCode(v string) *DescribeAllWhitelistTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBody) SetData(v *DescribeAllWhitelistTemplateResponseBodyData) *DescribeAllWhitelistTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBody) SetHttpStatusCode(v int32) *DescribeAllWhitelistTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBody) SetMessage(v string) *DescribeAllWhitelistTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBody) SetRequestId(v string) *DescribeAllWhitelistTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBody) SetSuccess(v bool) *DescribeAllWhitelistTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAllWhitelistTemplateResponseBodyData struct {
+	CurrPageNumbers   *int32                                                   `json:"CurrPageNumbers,omitempty" xml:"CurrPageNumbers,omitempty"`
+	HasNext           *bool                                                    `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasPrev           *bool                                                    `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
+	MaxRecordsPerPage *int32                                                   `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
+	Templates         []*DescribeAllWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalPageNumbers  *int32                                                   `json:"TotalPageNumbers,omitempty" xml:"TotalPageNumbers,omitempty"`
+	TotalRecords      *int32                                                   `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+}
+
+func (s DescribeAllWhitelistTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllWhitelistTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyData) SetCurrPageNumbers(v int32) *DescribeAllWhitelistTemplateResponseBodyData {
+	s.CurrPageNumbers = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyData) SetHasNext(v bool) *DescribeAllWhitelistTemplateResponseBodyData {
+	s.HasNext = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyData) SetHasPrev(v bool) *DescribeAllWhitelistTemplateResponseBodyData {
+	s.HasPrev = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyData) SetMaxRecordsPerPage(v int32) *DescribeAllWhitelistTemplateResponseBodyData {
+	s.MaxRecordsPerPage = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyData) SetTemplates(v []*DescribeAllWhitelistTemplateResponseBodyDataTemplates) *DescribeAllWhitelistTemplateResponseBodyData {
+	s.Templates = v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyData) SetTotalPageNumbers(v int32) *DescribeAllWhitelistTemplateResponseBodyData {
+	s.TotalPageNumbers = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyData) SetTotalRecords(v int32) *DescribeAllWhitelistTemplateResponseBodyData {
+	s.TotalRecords = &v
+	return s
+}
+
+type DescribeAllWhitelistTemplateResponseBodyDataTemplates struct {
+	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Ips          *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	TemplateId   *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	UserId       *int32  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeAllWhitelistTemplateResponseBodyDataTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllWhitelistTemplateResponseBodyDataTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyDataTemplates) SetId(v int32) *DescribeAllWhitelistTemplateResponseBodyDataTemplates {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyDataTemplates) SetIps(v string) *DescribeAllWhitelistTemplateResponseBodyDataTemplates {
+	s.Ips = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyDataTemplates) SetTemplateId(v int32) *DescribeAllWhitelistTemplateResponseBodyDataTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyDataTemplates) SetTemplateName(v string) *DescribeAllWhitelistTemplateResponseBodyDataTemplates {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponseBodyDataTemplates) SetUserId(v int32) *DescribeAllWhitelistTemplateResponseBodyDataTemplates {
+	s.UserId = &v
+	return s
+}
+
+type DescribeAllWhitelistTemplateResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAllWhitelistTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAllWhitelistTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllWhitelistTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllWhitelistTemplateResponse) SetHeaders(v map[string]*string) *DescribeAllWhitelistTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponse) SetStatusCode(v int32) *DescribeAllWhitelistTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateResponse) SetBody(v *DescribeAllWhitelistTemplateResponseBody) *DescribeAllWhitelistTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -27912,6 +28257,175 @@ func (s *DescribeInstanceKeywordsResponse) SetBody(v *DescribeInstanceKeywordsRe
 	return s
 }
 
+type DescribeInstanceLinkedWhitelistTemplateRequest struct {
+	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateRequest) SetInsName(v string) *DescribeInstanceLinkedWhitelistTemplateRequest {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateRequest) SetResourceOwnerAccount(v string) *DescribeInstanceLinkedWhitelistTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateRequest) SetResourceOwnerId(v int64) *DescribeInstanceLinkedWhitelistTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeInstanceLinkedWhitelistTemplateResponseBody struct {
+	Code           *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DescribeInstanceLinkedWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) SetCode(v string) *DescribeInstanceLinkedWhitelistTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) SetData(v *DescribeInstanceLinkedWhitelistTemplateResponseBodyData) *DescribeInstanceLinkedWhitelistTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) SetHttpStatusCode(v int32) *DescribeInstanceLinkedWhitelistTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) SetMessage(v string) *DescribeInstanceLinkedWhitelistTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) SetRequestId(v string) *DescribeInstanceLinkedWhitelistTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) SetSuccess(v bool) *DescribeInstanceLinkedWhitelistTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeInstanceLinkedWhitelistTemplateResponseBodyData struct {
+	InsName   *string                                                             `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	Templates []*DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyData) SetInsName(v string) *DescribeInstanceLinkedWhitelistTemplateResponseBodyData {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyData) SetTemplates(v []*DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) *DescribeInstanceLinkedWhitelistTemplateResponseBodyData {
+	s.Templates = v
+	return s
+}
+
+type DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates struct {
+	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Ips          *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	TemplateId   *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	UserId       *int32  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) SetId(v int32) *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) SetIps(v string) *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates {
+	s.Ips = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) SetTemplateId(v int32) *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) SetTemplateName(v string) *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) SetUserId(v int32) *DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates {
+	s.UserId = &v
+	return s
+}
+
+type DescribeInstanceLinkedWhitelistTemplateResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceLinkedWhitelistTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLinkedWhitelistTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponse) SetHeaders(v map[string]*string) *DescribeInstanceLinkedWhitelistTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponse) SetStatusCode(v int32) *DescribeInstanceLinkedWhitelistTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateResponse) SetBody(v *DescribeInstanceLinkedWhitelistTemplateResponseBody) *DescribeInstanceLinkedWhitelistTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLocalAvailableRecoveryTimeRequest struct {
 	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -37327,6 +37841,297 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 	return s
 }
 
+type DescribeWhitelistTemplateRequest struct {
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeWhitelistTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateRequest) SetResourceOwnerAccount(v string) *DescribeWhitelistTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateRequest) SetResourceOwnerId(v int64) *DescribeWhitelistTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateRequest) SetTemplateId(v int32) *DescribeWhitelistTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeWhitelistTemplateResponseBody struct {
+	Code           *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DescribeWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeWhitelistTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateResponseBody) SetCode(v string) *DescribeWhitelistTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBody) SetData(v *DescribeWhitelistTemplateResponseBodyData) *DescribeWhitelistTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBody) SetHttpStatusCode(v int32) *DescribeWhitelistTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBody) SetMessage(v string) *DescribeWhitelistTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBody) SetRequestId(v string) *DescribeWhitelistTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBody) SetSuccess(v bool) *DescribeWhitelistTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeWhitelistTemplateResponseBodyData struct {
+	Template *DescribeWhitelistTemplateResponseBodyDataTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+}
+
+func (s DescribeWhitelistTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateResponseBodyData) SetTemplate(v *DescribeWhitelistTemplateResponseBodyDataTemplate) *DescribeWhitelistTemplateResponseBodyData {
+	s.Template = v
+	return s
+}
+
+type DescribeWhitelistTemplateResponseBodyDataTemplate struct {
+	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Ips          *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	TemplateId   *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	UserId       *int32  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeWhitelistTemplateResponseBodyDataTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateResponseBodyDataTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateResponseBodyDataTemplate) SetId(v int32) *DescribeWhitelistTemplateResponseBodyDataTemplate {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBodyDataTemplate) SetIps(v string) *DescribeWhitelistTemplateResponseBodyDataTemplate {
+	s.Ips = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBodyDataTemplate) SetTemplateId(v int32) *DescribeWhitelistTemplateResponseBodyDataTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBodyDataTemplate) SetTemplateName(v string) *DescribeWhitelistTemplateResponseBodyDataTemplate {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponseBodyDataTemplate) SetUserId(v int32) *DescribeWhitelistTemplateResponseBodyDataTemplate {
+	s.UserId = &v
+	return s
+}
+
+type DescribeWhitelistTemplateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWhitelistTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWhitelistTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateResponse) SetHeaders(v map[string]*string) *DescribeWhitelistTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponse) SetStatusCode(v int32) *DescribeWhitelistTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateResponse) SetBody(v *DescribeWhitelistTemplateResponseBody) *DescribeWhitelistTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWhitelistTemplateLinkedInstanceRequest struct {
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceRequest) SetResourceOwnerAccount(v string) *DescribeWhitelistTemplateLinkedInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceRequest) SetResourceOwnerId(v int64) *DescribeWhitelistTemplateLinkedInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceRequest) SetTemplateId(v int32) *DescribeWhitelistTemplateLinkedInstanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeWhitelistTemplateLinkedInstanceResponseBody struct {
+	Code           *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DescribeWhitelistTemplateLinkedInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) SetCode(v string) *DescribeWhitelistTemplateLinkedInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) SetData(v *DescribeWhitelistTemplateLinkedInstanceResponseBodyData) *DescribeWhitelistTemplateLinkedInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) SetHttpStatusCode(v int32) *DescribeWhitelistTemplateLinkedInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) SetMessage(v string) *DescribeWhitelistTemplateLinkedInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) SetRequestId(v string) *DescribeWhitelistTemplateLinkedInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) SetSuccess(v bool) *DescribeWhitelistTemplateLinkedInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeWhitelistTemplateLinkedInstanceResponseBodyData struct {
+	InsName    []*string `json:"InsName,omitempty" xml:"InsName,omitempty" type:"Repeated"`
+	TemplateId *int32    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBodyData) SetInsName(v []*string) *DescribeWhitelistTemplateLinkedInstanceResponseBodyData {
+	s.InsName = v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponseBodyData) SetTemplateId(v int32) *DescribeWhitelistTemplateLinkedInstanceResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeWhitelistTemplateLinkedInstanceResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWhitelistTemplateLinkedInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhitelistTemplateLinkedInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponse) SetHeaders(v map[string]*string) *DescribeWhitelistTemplateLinkedInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponse) SetStatusCode(v int32) *DescribeWhitelistTemplateLinkedInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceResponse) SetBody(v *DescribeWhitelistTemplateLinkedInstanceResponseBody) *DescribeWhitelistTemplateLinkedInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DestroyDBInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -37500,6 +38305,134 @@ func (s *DetachGadInstanceMemberResponse) SetStatusCode(v int32) *DetachGadInsta
 }
 
 func (s *DetachGadInstanceMemberResponse) SetBody(v *DetachGadInstanceMemberResponseBody) *DetachGadInstanceMemberResponse {
+	s.Body = v
+	return s
+}
+
+type DetachWhitelistTemplateToInstanceRequest struct {
+	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DetachWhitelistTemplateToInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachWhitelistTemplateToInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachWhitelistTemplateToInstanceRequest) SetInsName(v string) *DetachWhitelistTemplateToInstanceRequest {
+	s.InsName = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceRequest) SetResourceOwnerAccount(v string) *DetachWhitelistTemplateToInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceRequest) SetResourceOwnerId(v int64) *DetachWhitelistTemplateToInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceRequest) SetTemplateId(v int32) *DetachWhitelistTemplateToInstanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DetachWhitelistTemplateToInstanceResponseBody struct {
+	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DetachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DetachWhitelistTemplateToInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachWhitelistTemplateToInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponseBody) SetCode(v string) *DetachWhitelistTemplateToInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponseBody) SetData(v *DetachWhitelistTemplateToInstanceResponseBodyData) *DetachWhitelistTemplateToInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponseBody) SetHttpStatusCode(v int32) *DetachWhitelistTemplateToInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponseBody) SetMessage(v string) *DetachWhitelistTemplateToInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponseBody) SetRequestId(v string) *DetachWhitelistTemplateToInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponseBody) SetSuccess(v bool) *DetachWhitelistTemplateToInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DetachWhitelistTemplateToInstanceResponseBodyData struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DetachWhitelistTemplateToInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachWhitelistTemplateToInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponseBodyData) SetStatus(v string) *DetachWhitelistTemplateToInstanceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DetachWhitelistTemplateToInstanceResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachWhitelistTemplateToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachWhitelistTemplateToInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachWhitelistTemplateToInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponse) SetHeaders(v map[string]*string) *DetachWhitelistTemplateToInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponse) SetStatusCode(v int32) *DetachWhitelistTemplateToInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceResponse) SetBody(v *DetachWhitelistTemplateToInstanceResponseBody) *DetachWhitelistTemplateToInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -46757,6 +47690,140 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 	return s
 }
 
+type ModifyWhitelistTemplateRequest struct {
+	IpWhitelist          *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ModifyWhitelistTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWhitelistTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWhitelistTemplateRequest) SetIpWhitelist(v string) *ModifyWhitelistTemplateRequest {
+	s.IpWhitelist = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateRequest) SetResourceOwnerAccount(v string) *ModifyWhitelistTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateRequest) SetResourceOwnerId(v int64) *ModifyWhitelistTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateRequest) SetTemplateId(v int32) *ModifyWhitelistTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateRequest) SetTemplateName(v string) *ModifyWhitelistTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type ModifyWhitelistTemplateResponseBody struct {
+	Code           *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ModifyWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyWhitelistTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWhitelistTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWhitelistTemplateResponseBody) SetCode(v string) *ModifyWhitelistTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateResponseBody) SetData(v *ModifyWhitelistTemplateResponseBodyData) *ModifyWhitelistTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateResponseBody) SetHttpStatusCode(v int32) *ModifyWhitelistTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateResponseBody) SetMessage(v string) *ModifyWhitelistTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateResponseBody) SetRequestId(v string) *ModifyWhitelistTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateResponseBody) SetSuccess(v bool) *ModifyWhitelistTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyWhitelistTemplateResponseBodyData struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyWhitelistTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWhitelistTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWhitelistTemplateResponseBodyData) SetStatus(v string) *ModifyWhitelistTemplateResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ModifyWhitelistTemplateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyWhitelistTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyWhitelistTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWhitelistTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWhitelistTemplateResponse) SetHeaders(v map[string]*string) *ModifyWhitelistTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateResponse) SetStatusCode(v int32) *ModifyWhitelistTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateResponse) SetBody(v *ModifyWhitelistTemplateResponseBody) *ModifyWhitelistTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type PurgeDBInstanceLogRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -51855,6 +52922,62 @@ func (client *Client) AllocateReadWriteSplittingConnection(request *AllocateRead
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateReadWriteSplittingConnectionResponse{}
 	_body, _err := client.AllocateReadWriteSplittingConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachWhitelistTemplateToInstanceWithOptions(request *AttachWhitelistTemplateToInstanceRequest, runtime *util.RuntimeOptions) (_result *AttachWhitelistTemplateToInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InsName)) {
+		query["InsName"] = request.InsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachWhitelistTemplateToInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachWhitelistTemplateToInstance(request *AttachWhitelistTemplateToInstanceRequest) (_result *AttachWhitelistTemplateToInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.AttachWhitelistTemplateToInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57174,6 +58297,70 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 	return _result, _err
 }
 
+func (client *Client) DescribeAllWhitelistTemplateWithOptions(request *DescribeAllWhitelistTemplateRequest, runtime *util.RuntimeOptions) (_result *DescribeAllWhitelistTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FuzzySearch)) {
+		query["FuzzySearch"] = request.FuzzySearch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxRecordsPerPage)) {
+		query["MaxRecordsPerPage"] = request.MaxRecordsPerPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumbers)) {
+		query["PageNumbers"] = request.PageNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAllWhitelistTemplate"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAllWhitelistTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAllWhitelistTemplate(request *DescribeAllWhitelistTemplateRequest) (_result *DescribeAllWhitelistTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAllWhitelistTemplateResponse{}
+	_body, _err := client.DescribeAllWhitelistTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAnalyticdbByPrimaryDBInstanceWithOptions(request *DescribeAnalyticdbByPrimaryDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeAnalyticdbByPrimaryDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62433,6 +63620,58 @@ func (client *Client) DescribeInstanceKeywords(request *DescribeInstanceKeywords
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceLinkedWhitelistTemplateWithOptions(request *DescribeInstanceLinkedWhitelistTemplateRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceLinkedWhitelistTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InsName)) {
+		query["InsName"] = request.InsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceLinkedWhitelistTemplate"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceLinkedWhitelistTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceLinkedWhitelistTemplate(request *DescribeInstanceLinkedWhitelistTemplateRequest) (_result *DescribeInstanceLinkedWhitelistTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceLinkedWhitelistTemplateResponse{}
+	_body, _err := client.DescribeInstanceLinkedWhitelistTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeLocalAvailableRecoveryTimeWithOptions(request *DescribeLocalAvailableRecoveryTimeRequest, runtime *util.RuntimeOptions) (_result *DescribeLocalAvailableRecoveryTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65558,6 +66797,112 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeWhitelistTemplateWithOptions(request *DescribeWhitelistTemplateRequest, runtime *util.RuntimeOptions) (_result *DescribeWhitelistTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWhitelistTemplate"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWhitelistTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWhitelistTemplate(request *DescribeWhitelistTemplateRequest) (_result *DescribeWhitelistTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWhitelistTemplateResponse{}
+	_body, _err := client.DescribeWhitelistTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWhitelistTemplateLinkedInstanceWithOptions(request *DescribeWhitelistTemplateLinkedInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeWhitelistTemplateLinkedInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWhitelistTemplateLinkedInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWhitelistTemplateLinkedInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWhitelistTemplateLinkedInstance(request *DescribeWhitelistTemplateLinkedInstanceRequest) (_result *DescribeWhitelistTemplateLinkedInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWhitelistTemplateLinkedInstanceResponse{}
+	_body, _err := client.DescribeWhitelistTemplateLinkedInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * The DestroyDBInstance operation is phased out.
  *
@@ -65695,6 +67040,62 @@ func (client *Client) DetachGadInstanceMember(request *DetachGadInstanceMemberRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachGadInstanceMemberResponse{}
 	_body, _err := client.DetachGadInstanceMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachWhitelistTemplateToInstanceWithOptions(request *DetachWhitelistTemplateToInstanceRequest, runtime *util.RuntimeOptions) (_result *DetachWhitelistTemplateToInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InsName)) {
+		query["InsName"] = request.InsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachWhitelistTemplateToInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachWhitelistTemplateToInstance(request *DetachWhitelistTemplateToInstanceRequest) (_result *DetachWhitelistTemplateToInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.DetachWhitelistTemplateToInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71259,6 +72660,66 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityIpsResponse{}
 	_body, _err := client.ModifySecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyWhitelistTemplateWithOptions(request *ModifyWhitelistTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyWhitelistTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpWhitelist)) {
+		query["IpWhitelist"] = request.IpWhitelist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWhitelistTemplate"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyWhitelistTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyWhitelistTemplate(request *ModifyWhitelistTemplateRequest) (_result *ModifyWhitelistTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyWhitelistTemplateResponse{}
+	_body, _err := client.ModifyWhitelistTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
