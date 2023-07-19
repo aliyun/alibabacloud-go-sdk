@@ -6726,19 +6726,23 @@ func (s *DescribeTrFirewallsV2DetailRequest) SetLang(v string) *DescribeTrFirewa
 }
 
 type DescribeTrFirewallsV2DetailResponseBody struct {
-	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	FirewallDescription  *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	FirewallEniId        *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
-	FirewallEniVpcId     *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
-	FirewallEniVswitchId *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
-	FirewallId           *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	FirewallName         *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	FirewallStatus       *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
-	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	RegionNo             *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RouteMode            *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	CenId                  *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	FirewallDescription    *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
+	FirewallEniId          *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
+	FirewallEniVpcId       *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
+	FirewallEniVswitchId   *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
+	FirewallId             *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	FirewallName           *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	FirewallStatus         *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
+	FirewallSubnetCidr     *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
+	FirewallSwitchStatus   *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	FirewallVpcCidr        *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
+	RegionNo               *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteMode              *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
+	TrAttachmentSlaveCidr  *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
+	TransitRouterId        *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2DetailResponseBody) String() string {
@@ -6789,8 +6793,18 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallStatus(v string) *D
 	return s
 }
 
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallSubnetCidr(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallSubnetCidr = &v
+	return s
+}
+
 func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallSwitchStatus(v string) *DescribeTrFirewallsV2DetailResponseBody {
 	s.FirewallSwitchStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallVpcCidr(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallVpcCidr = &v
 	return s
 }
 
@@ -6806,6 +6820,16 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) SetRequestId(v string) *Descri
 
 func (s *DescribeTrFirewallsV2DetailResponseBody) SetRouteMode(v string) *DescribeTrFirewallsV2DetailResponseBody {
 	s.RouteMode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentMasterCidr(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.TrAttachmentMasterCidr = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentSlaveCidr(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.TrAttachmentSlaveCidr = &v
 	return s
 }
 
@@ -12485,6 +12509,7 @@ func (s *ModifyVpcFirewallControlPolicyResponse) SetBody(v *ModifyVpcFirewallCon
 }
 
 type ModifyVpcFirewallControlPolicyPositionRequest struct {
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// The natural language of the request and response.
 	//
 	// Valid values:
@@ -12515,6 +12540,11 @@ func (s ModifyVpcFirewallControlPolicyPositionRequest) String() string {
 
 func (s ModifyVpcFirewallControlPolicyPositionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyVpcFirewallControlPolicyPositionRequest) SetAclUuid(v string) *ModifyVpcFirewallControlPolicyPositionRequest {
+	s.AclUuid = &v
+	return s
 }
 
 func (s *ModifyVpcFirewallControlPolicyPositionRequest) SetLang(v string) *ModifyVpcFirewallControlPolicyPositionRequest {
@@ -18138,6 +18168,10 @@ func (client *Client) ModifyVpcFirewallControlPolicyPositionWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclUuid)) {
+		query["AclUuid"] = request.AclUuid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
