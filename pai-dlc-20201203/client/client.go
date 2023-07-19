@@ -3569,6 +3569,76 @@ func (s *GetTensorboardResponse) SetBody(v *Tensorboard) *GetTensorboardResponse
 	return s
 }
 
+type GetWebTerminalRequest struct {
+	// Pod UID。
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+}
+
+func (s GetWebTerminalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebTerminalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebTerminalRequest) SetPodUid(v string) *GetWebTerminalRequest {
+	s.PodUid = &v
+	return s
+}
+
+type GetWebTerminalResponseBody struct {
+	URL       *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetWebTerminalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebTerminalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebTerminalResponseBody) SetURL(v string) *GetWebTerminalResponseBody {
+	s.URL = &v
+	return s
+}
+
+func (s *GetWebTerminalResponseBody) SetRequestId(v string) *GetWebTerminalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetWebTerminalResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWebTerminalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWebTerminalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebTerminalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebTerminalResponse) SetHeaders(v map[string]*string) *GetWebTerminalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWebTerminalResponse) SetStatusCode(v int32) *GetWebTerminalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWebTerminalResponse) SetBody(v *GetWebTerminalResponseBody) *GetWebTerminalResponse {
+	s.Body = v
+	return s
+}
+
 type ListEcsSpecsRequest struct {
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -5177,6 +5247,52 @@ func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorbo
 	headers := make(map[string]*string)
 	_result = &GetTensorboardResponse{}
 	_body, _err := client.GetTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, request *GetWebTerminalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWebTerminalResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PodUid)) {
+		query["PodUid"] = request.PodUid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWebTerminal"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/pods/" + tea.StringValue(openapiutil.GetEncodeParam(PodId)) + "/webterminal"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWebTerminalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWebTerminal(JobId *string, PodId *string, request *GetWebTerminalRequest) (_result *GetWebTerminalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWebTerminalResponse{}
+	_body, _err := client.GetWebTerminalWithOptions(JobId, PodId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
