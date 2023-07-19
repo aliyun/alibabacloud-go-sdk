@@ -1745,9 +1745,103 @@ func (s *FaceLivenessResponse) SetBody(v *FaceLivenessResponseBody) *FaceLivenes
 	return s
 }
 
+type FraudResultCallBackRequest struct {
+	CertifyId       *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	ResultCode      *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	VerifyDeployEnv *string `json:"VerifyDeployEnv,omitempty" xml:"VerifyDeployEnv,omitempty"`
+}
+
+func (s FraudResultCallBackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FraudResultCallBackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FraudResultCallBackRequest) SetCertifyId(v string) *FraudResultCallBackRequest {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *FraudResultCallBackRequest) SetResultCode(v string) *FraudResultCallBackRequest {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *FraudResultCallBackRequest) SetVerifyDeployEnv(v string) *FraudResultCallBackRequest {
+	s.VerifyDeployEnv = &v
+	return s
+}
+
+type FraudResultCallBackResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s FraudResultCallBackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FraudResultCallBackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FraudResultCallBackResponseBody) SetCode(v string) *FraudResultCallBackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FraudResultCallBackResponseBody) SetMessage(v string) *FraudResultCallBackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FraudResultCallBackResponseBody) SetRequestId(v string) *FraudResultCallBackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FraudResultCallBackResponseBody) SetSuccess(v bool) *FraudResultCallBackResponseBody {
+	s.Success = &v
+	return s
+}
+
+type FraudResultCallBackResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FraudResultCallBackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FraudResultCallBackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FraudResultCallBackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FraudResultCallBackResponse) SetHeaders(v map[string]*string) *FraudResultCallBackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FraudResultCallBackResponse) SetStatusCode(v int32) *FraudResultCallBackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FraudResultCallBackResponse) SetBody(v *FraudResultCallBackResponseBody) *FraudResultCallBackResponse {
+	s.Body = v
+	return s
+}
+
 type InitializeRequest struct {
 	Authorize         *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
 	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	DocScanMode       *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	FacePictureUrl    *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
@@ -1783,6 +1877,11 @@ func (s *InitializeRequest) SetAuthorize(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetCrop(v string) *InitializeRequest {
 	s.Crop = &v
+	return s
+}
+
+func (s *InitializeRequest) SetDocScanMode(v string) *InitializeRequest {
+	s.DocScanMode = &v
 	return s
 }
 
@@ -2699,6 +2798,58 @@ func (client *Client) FaceLiveness(request *FaceLivenessRequest) (_result *FaceL
 	return _result, _err
 }
 
+func (client *Client) FraudResultCallBackWithOptions(request *FraudResultCallBackRequest, runtime *util.RuntimeOptions) (_result *FraudResultCallBackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultCode)) {
+		query["ResultCode"] = request.ResultCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyDeployEnv)) {
+		query["VerifyDeployEnv"] = request.VerifyDeployEnv
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FraudResultCallBack"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FraudResultCallBackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FraudResultCallBack(request *FraudResultCallBackRequest) (_result *FraudResultCallBackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FraudResultCallBackResponse{}
+	_body, _err := client.FraudResultCallBackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime *util.RuntimeOptions) (_result *InitializeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2711,6 +2862,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Crop)) {
 		query["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocScanMode)) {
+		query["DocScanMode"] = request.DocScanMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DocType)) {
