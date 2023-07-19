@@ -3855,18 +3855,25 @@ func (s *ListCustomImagesResponse) SetBody(v *ListCustomImagesResponseBody) *Lis
 }
 
 type ListDisksRequest struct {
-	// The IDs of the disks. The value can be a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,).
-	DiskIds  *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// The IDs of the disks. The value can be a JSON array that consists of up to 100 disk IDs. Separate multiple disk IDs with commas (,).
+	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// 磁盘类型。可能值：
+	//
+	// - System：系统盘
+	//
+	// - Data：数据盘
+	//
+	// 默认全量查询
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// Maximum value: 100.
+	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -3913,15 +3920,15 @@ func (s *ListDisksRequest) SetRegionId(v string) *ListDisksRequest {
 }
 
 type ListDisksResponseBody struct {
-	// Details about the disks.
+	// The region ID of the disks.
 	Disks []*ListDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of disks.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3980,11 +3987,13 @@ type ListDisksResponseBodyDisks struct {
 	// *   Data: data disk
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the simple application server to which the disk is attached.
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 轻量应用服务器名称。
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The region ID of the server.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 磁盘备注。
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The size of the disk. Unit: GB.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The status of the disk. Valid values:
@@ -4737,6 +4746,7 @@ type ListInstancesRequest struct {
 	PublicIpAddresses *string `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty"`
 	// The region ID of the simple application servers.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -4774,6 +4784,11 @@ func (s *ListInstancesRequest) SetPublicIpAddresses(v string) *ListInstancesRequ
 
 func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
+	s.Status = &v
 	return s
 }
 
@@ -5476,21 +5491,21 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListSnapshotsRequest struct {
-	// The ID of the source disk.
+	// The disk ID.
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The ID of the simple application server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100.
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the simple application server.
+	// The region ID of the simple application server that corresponds to the snapshots.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the snapshots. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate the snapshot IDs with commas (,).
+	// The snapshot IDs. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate multiple snapshot IDs with commas (,).
 	SnapshotIds    *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
 }
@@ -5539,15 +5554,15 @@ func (s *ListSnapshotsRequest) SetSourceDiskType(v string) *ListSnapshotsRequest
 }
 
 type ListSnapshotsResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about the snapshots.
+	// The region ID of the simple application server.
 	Snapshots []*ListSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The total number of snapshots.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7424,6 +7439,94 @@ func (s *StartInstancesResponse) SetStatusCode(v int32) *StartInstancesResponse 
 }
 
 func (s *StartInstancesResponse) SetBody(v *StartInstancesResponseBody) *StartInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type StartTerminalSessionRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartTerminalSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTerminalSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartTerminalSessionRequest) SetInstanceId(v string) *StartTerminalSessionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartTerminalSessionRequest) SetRegionId(v string) *StartTerminalSessionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartTerminalSessionResponseBody struct {
+	// Id of the request
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	WebSocketUrl  *string `json:"WebSocketUrl,omitempty" xml:"WebSocketUrl,omitempty"`
+}
+
+func (s StartTerminalSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTerminalSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartTerminalSessionResponseBody) SetRequestId(v string) *StartTerminalSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartTerminalSessionResponseBody) SetSecurityToken(v string) *StartTerminalSessionResponseBody {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *StartTerminalSessionResponseBody) SetSessionId(v string) *StartTerminalSessionResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+func (s *StartTerminalSessionResponseBody) SetWebSocketUrl(v string) *StartTerminalSessionResponseBody {
+	s.WebSocketUrl = &v
+	return s
+}
+
+type StartTerminalSessionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartTerminalSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartTerminalSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTerminalSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartTerminalSessionResponse) SetHeaders(v map[string]*string) *StartTerminalSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartTerminalSessionResponse) SetStatusCode(v int32) *StartTerminalSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartTerminalSessionResponse) SetBody(v *StartTerminalSessionResponseBody) *StartTerminalSessionResponse {
 	s.Body = v
 	return s
 }
@@ -10160,9 +10263,8 @@ func (client *Client) ListCustomImages(request *ListCustomImagesRequest) (_resul
 }
 
 /**
+ * ## Usage notes
  * You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
- * ## QPS limits
- * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
  *
  * @param request ListDisksRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10222,9 +10324,8 @@ func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *u
 }
 
 /**
+ * ## Usage notes
  * You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
- * ## QPS limits
- * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
  *
  * @param request ListDisksRequest
  * @return ListDisksResponse
@@ -10546,6 +10647,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10774,9 +10879,10 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 }
 
 /**
- * You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
- * ## QPS limits
- * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ * ## Description
+ * You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
+ * ### QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~347607~~).
  *
  * @param request ListSnapshotsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10840,9 +10946,10 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 }
 
 /**
- * You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
- * ## QPS limits
- * The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+ * ## Description
+ * You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
+ * ### QPS limits
+ * You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~347607~~).
  *
  * @param request ListSnapshotsRequest
  * @return ListSnapshotsResponse
@@ -12077,6 +12184,54 @@ func (client *Client) StartInstances(request *StartInstancesRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &StartInstancesResponse{}
 	_body, _err := client.StartInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSessionRequest, runtime *util.RuntimeOptions) (_result *StartTerminalSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartTerminalSession"),
+		Version:     tea.String("2020-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartTerminalSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartTerminalSession(request *StartTerminalSessionRequest) (_result *StartTerminalSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartTerminalSessionResponse{}
+	_body, _err := client.StartTerminalSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
