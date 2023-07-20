@@ -519,6 +519,123 @@ func (s *AddClientUserDefineRuleResponse) SetBody(v *AddClientUserDefineRuleResp
 	return s
 }
 
+type AddImageVulWhiteListRequest struct {
+	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Target    *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
+}
+
+func (s AddImageVulWhiteListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddImageVulWhiteListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddImageVulWhiteListRequest) SetLang(v string) *AddImageVulWhiteListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListRequest) SetReason(v string) *AddImageVulWhiteListRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListRequest) SetTarget(v string) *AddImageVulWhiteListRequest {
+	s.Target = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListRequest) SetType(v string) *AddImageVulWhiteListRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListRequest) SetWhitelist(v string) *AddImageVulWhiteListRequest {
+	s.Whitelist = &v
+	return s
+}
+
+type AddImageVulWhiteListResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddImageVulWhiteListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddImageVulWhiteListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddImageVulWhiteListResponseBody) SetCode(v string) *AddImageVulWhiteListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListResponseBody) SetData(v bool) *AddImageVulWhiteListResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListResponseBody) SetHttpStatusCode(v int32) *AddImageVulWhiteListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListResponseBody) SetMessage(v string) *AddImageVulWhiteListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListResponseBody) SetRequestId(v string) *AddImageVulWhiteListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListResponseBody) SetSuccess(v bool) *AddImageVulWhiteListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddImageVulWhiteListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddImageVulWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddImageVulWhiteListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddImageVulWhiteListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddImageVulWhiteListResponse) SetHeaders(v map[string]*string) *AddImageVulWhiteListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddImageVulWhiteListResponse) SetStatusCode(v int32) *AddImageVulWhiteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListResponse) SetBody(v *AddImageVulWhiteListResponseBody) *AddImageVulWhiteListResponse {
+	s.Body = v
+	return s
+}
+
 type AddInstallCodeRequest struct {
 	// The validity period of the installation command. The value is a 13-digit timestamp.
 	//
@@ -1740,8 +1857,121 @@ func (s *CancelOnceTaskResponse) SetBody(v *CancelOnceTaskResponseBody) *CancelO
 	return s
 }
 
+type ChangeAssetRefreshTaskConfigRequest struct {
+	AssetRefreshConfigs []*ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs `json:"AssetRefreshConfigs,omitempty" xml:"AssetRefreshConfigs,omitempty" type:"Repeated"`
+	RegionId            *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ChangeAssetRefreshTaskConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAssetRefreshTaskConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAssetRefreshTaskConfigRequest) SetAssetRefreshConfigs(v []*ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs) *ChangeAssetRefreshTaskConfigRequest {
+	s.AssetRefreshConfigs = v
+	return s
+}
+
+func (s *ChangeAssetRefreshTaskConfigRequest) SetRegionId(v string) *ChangeAssetRefreshTaskConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs struct {
+	SchedulePeriod *int32 `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
+	Status         *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vendor         *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs) SetSchedulePeriod(v int32) *ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs {
+	s.SchedulePeriod = &v
+	return s
+}
+
+func (s *ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs) SetStatus(v int32) *ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs {
+	s.Status = &v
+	return s
+}
+
+func (s *ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs) SetVendor(v int32) *ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs {
+	s.Vendor = &v
+	return s
+}
+
+type ChangeAssetRefreshTaskConfigResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeAssetRefreshTaskConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAssetRefreshTaskConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAssetRefreshTaskConfigResponseBody) SetData(v bool) *ChangeAssetRefreshTaskConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ChangeAssetRefreshTaskConfigResponseBody) SetMessage(v string) *ChangeAssetRefreshTaskConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeAssetRefreshTaskConfigResponseBody) SetRequestId(v string) *ChangeAssetRefreshTaskConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeAssetRefreshTaskConfigResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeAssetRefreshTaskConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeAssetRefreshTaskConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAssetRefreshTaskConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAssetRefreshTaskConfigResponse) SetHeaders(v map[string]*string) *ChangeAssetRefreshTaskConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeAssetRefreshTaskConfigResponse) SetStatusCode(v int32) *ChangeAssetRefreshTaskConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeAssetRefreshTaskConfigResponse) SetBody(v *ChangeAssetRefreshTaskConfigResponseBody) *ChangeAssetRefreshTaskConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeCheckConfigRequest struct {
-	CycleDays []*int32 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
+	AddedCheck      []*ChangeCheckConfigRequestAddedCheck `json:"AddedCheck,omitempty" xml:"AddedCheck,omitempty" type:"Repeated"`
+	CycleDays       []*int32                              `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
+	EnableAddCheck  *bool                                 `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
+	EnableAutoCheck *bool                                 `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
 	// The end time of the check. The value specifies a point in time in a day. The time period that is specified by the start time and end time must be one of the following time periods:
 	//
 	// *   **00:00 to 06:00:** If you set the StartTime parameter to 0, you must set the EndTime parameter to 6.
@@ -1752,7 +1982,8 @@ type ChangeCheckConfigRequest struct {
 	// The region ID of the bastion host to query.
 	//
 	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemovedCheck []*ChangeCheckConfigRequestRemovedCheck `json:"RemovedCheck,omitempty" xml:"RemovedCheck,omitempty" type:"Repeated"`
 	// An array that consists of the information about the check item.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
 	// The start time of the check. The value specifies a point in time in a day.
@@ -1767,8 +1998,23 @@ func (s ChangeCheckConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChangeCheckConfigRequest) SetAddedCheck(v []*ChangeCheckConfigRequestAddedCheck) *ChangeCheckConfigRequest {
+	s.AddedCheck = v
+	return s
+}
+
 func (s *ChangeCheckConfigRequest) SetCycleDays(v []*int32) *ChangeCheckConfigRequest {
 	s.CycleDays = v
+	return s
+}
+
+func (s *ChangeCheckConfigRequest) SetEnableAddCheck(v bool) *ChangeCheckConfigRequest {
+	s.EnableAddCheck = &v
+	return s
+}
+
+func (s *ChangeCheckConfigRequest) SetEnableAutoCheck(v bool) *ChangeCheckConfigRequest {
+	s.EnableAutoCheck = &v
 	return s
 }
 
@@ -1782,6 +2028,11 @@ func (s *ChangeCheckConfigRequest) SetRegionId(v string) *ChangeCheckConfigReque
 	return s
 }
 
+func (s *ChangeCheckConfigRequest) SetRemovedCheck(v []*ChangeCheckConfigRequestRemovedCheck) *ChangeCheckConfigRequest {
+	s.RemovedCheck = v
+	return s
+}
+
 func (s *ChangeCheckConfigRequest) SetStandardIds(v []*int64) *ChangeCheckConfigRequest {
 	s.StandardIds = v
 	return s
@@ -1789,6 +2040,52 @@ func (s *ChangeCheckConfigRequest) SetStandardIds(v []*int64) *ChangeCheckConfig
 
 func (s *ChangeCheckConfigRequest) SetStartTime(v int32) *ChangeCheckConfigRequest {
 	s.StartTime = &v
+	return s
+}
+
+type ChangeCheckConfigRequestAddedCheck struct {
+	CheckId   *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	SectionId *int64 `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+}
+
+func (s ChangeCheckConfigRequestAddedCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckConfigRequestAddedCheck) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckConfigRequestAddedCheck) SetCheckId(v int64) *ChangeCheckConfigRequestAddedCheck {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ChangeCheckConfigRequestAddedCheck) SetSectionId(v int64) *ChangeCheckConfigRequestAddedCheck {
+	s.SectionId = &v
+	return s
+}
+
+type ChangeCheckConfigRequestRemovedCheck struct {
+	CheckId   *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	SectionId *int64 `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+}
+
+func (s ChangeCheckConfigRequestRemovedCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckConfigRequestRemovedCheck) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckConfigRequestRemovedCheck) SetCheckId(v int64) *ChangeCheckConfigRequestRemovedCheck {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ChangeCheckConfigRequestRemovedCheck) SetSectionId(v int64) *ChangeCheckConfigRequestRemovedCheck {
+	s.SectionId = &v
 	return s
 }
 
@@ -2352,9 +2649,11 @@ func (s *ConfirmVirusEventsResponse) SetBody(v *ConfirmVirusEventsResponseBody) 
 }
 
 type CreateAgentlessScanTaskRequest struct {
-	AutoDeleteDays *int32    `json:"AutoDeleteDays,omitempty" xml:"AutoDeleteDays,omitempty"`
-	TargetType     *int32    `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UuidList       []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	AutoDeleteDays   *int32    `json:"AutoDeleteDays,omitempty" xml:"AutoDeleteDays,omitempty"`
+	ReleaseAfterScan *bool     `json:"ReleaseAfterScan,omitempty" xml:"ReleaseAfterScan,omitempty"`
+	ScanDataDisk     *bool     `json:"ScanDataDisk,omitempty" xml:"ScanDataDisk,omitempty"`
+	TargetType       *int32    `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UuidList         []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s CreateAgentlessScanTaskRequest) String() string {
@@ -2367,6 +2666,16 @@ func (s CreateAgentlessScanTaskRequest) GoString() string {
 
 func (s *CreateAgentlessScanTaskRequest) SetAutoDeleteDays(v int32) *CreateAgentlessScanTaskRequest {
 	s.AutoDeleteDays = &v
+	return s
+}
+
+func (s *CreateAgentlessScanTaskRequest) SetReleaseAfterScan(v bool) *CreateAgentlessScanTaskRequest {
+	s.ReleaseAfterScan = &v
+	return s
+}
+
+func (s *CreateAgentlessScanTaskRequest) SetScanDataDisk(v bool) *CreateAgentlessScanTaskRequest {
+	s.ScanDataDisk = &v
 	return s
 }
 
@@ -3336,10 +3645,11 @@ func (s *CreateCycleTaskResponse) SetBody(v *CreateCycleTaskResponseBody) *Creat
 }
 
 type CreateFileDetectRequest struct {
+	// The URL that is used to download the file. You can specify this parameter to trigger file detection without the need to upload the file in advance.
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The identifier of the file. Only MD5 hash values are supported.
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// The key of the file that is stored in the Object Storage Service (OSS) bucket. You can call the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation to query the keys of files.
+	// The key of the file that is stored in the Object Storage Service (OSS) bucket. If you specify the DownloadUrl parameter, you can leave this parameter empty. You can call the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation to query the keys of files.
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
@@ -4044,7 +4354,11 @@ func (s *CreateHoneypotNodeResponse) SetBody(v *CreateHoneypotNodeResponseBody) 
 type CreateHoneypotPresetRequest struct {
 	// The name of the honeypot image.
 	HoneypotImageName *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The custom configurations of the honeypot template. The value is a JSON string that contains the following fields:
 	//
 	// *   **portrait_option**: Social Source Tracing
@@ -6601,6 +6915,81 @@ func (s *DeleteBackupPolicyMachineResponse) SetBody(v *DeleteBackupPolicyMachine
 	return s
 }
 
+type DeleteBinarySecurityPolicyRequest struct {
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DeleteBinarySecurityPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBinarySecurityPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBinarySecurityPolicyRequest) SetName(v string) *DeleteBinarySecurityPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteBinarySecurityPolicyRequest) SetResourceOwnerId(v int64) *DeleteBinarySecurityPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteBinarySecurityPolicyRequest) SetSourceIp(v string) *DeleteBinarySecurityPolicyRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DeleteBinarySecurityPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBinarySecurityPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBinarySecurityPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBinarySecurityPolicyResponseBody) SetRequestId(v string) *DeleteBinarySecurityPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBinarySecurityPolicyResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBinarySecurityPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBinarySecurityPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBinarySecurityPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBinarySecurityPolicyResponse) SetHeaders(v map[string]*string) *DeleteBinarySecurityPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBinarySecurityPolicyResponse) SetStatusCode(v int32) *DeleteBinarySecurityPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBinarySecurityPolicyResponse) SetBody(v *DeleteBinarySecurityPolicyResponseBody) *DeleteBinarySecurityPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteClientUserDefineRuleRequest struct {
 	// The IDs of the custom defense rules.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
@@ -6892,7 +7281,11 @@ type DeleteHoneypotRequest struct {
 	//
 	// > You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
 	HoneypotId *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteHoneypotRequest) String() string {
@@ -6992,6 +7385,10 @@ func (s *DeleteHoneypotResponse) SetBody(v *DeleteHoneypotResponseBody) *DeleteH
 }
 
 type DeleteHoneypotNodeRequest struct {
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the management node.
 	//
@@ -8330,8 +8727,10 @@ type DescribeAccessKeyLeakDetailResponseBody struct {
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Source               *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	TokenValid           *int32  `json:"TokenValid,omitempty" xml:"TokenValid,omitempty"`
 	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	WhitelistStatus      *string `json:"WhitelistStatus,omitempty" xml:"WhitelistStatus,omitempty"`
+	WhitelistTime        *int64  `json:"WhitelistTime,omitempty" xml:"WhitelistTime,omitempty"`
 }
 
 func (s DescribeAccessKeyLeakDetailResponseBody) String() string {
@@ -8432,6 +8831,11 @@ func (s *DescribeAccessKeyLeakDetailResponseBody) SetSource(v string) *DescribeA
 	return s
 }
 
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetTokenValid(v int32) *DescribeAccessKeyLeakDetailResponseBody {
+	s.TokenValid = &v
+	return s
+}
+
 func (s *DescribeAccessKeyLeakDetailResponseBody) SetType(v string) *DescribeAccessKeyLeakDetailResponseBody {
 	s.Type = &v
 	return s
@@ -8439,6 +8843,11 @@ func (s *DescribeAccessKeyLeakDetailResponseBody) SetType(v string) *DescribeAcc
 
 func (s *DescribeAccessKeyLeakDetailResponseBody) SetWhitelistStatus(v string) *DescribeAccessKeyLeakDetailResponseBody {
 	s.WhitelistStatus = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetWhitelistTime(v int64) *DescribeAccessKeyLeakDetailResponseBody {
+	s.WhitelistTime = &v
 	return s
 }
 
@@ -9963,7 +10372,8 @@ type DescribeAlarmEventStackInfoRequest struct {
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The ID of the alert event.
@@ -9989,6 +10399,11 @@ func (s *DescribeAlarmEventStackInfoRequest) SetEventName(v string) *DescribeAla
 
 func (s *DescribeAlarmEventStackInfoRequest) SetLang(v string) *DescribeAlarmEventStackInfoRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetResourceDirectoryAccountId(v int64) *DescribeAlarmEventStackInfoRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -11143,7 +11558,8 @@ type DescribeAssetDetailByUuidsRequest struct {
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The UUIDs of the ECS instances. Separate multiple UUIDs with commas (,).
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
@@ -11158,6 +11574,11 @@ func (s DescribeAssetDetailByUuidsRequest) GoString() string {
 
 func (s *DescribeAssetDetailByUuidsRequest) SetLang(v string) *DescribeAssetDetailByUuidsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAssetDetailByUuidsRequest) SetResourceDirectoryAccountId(v int64) *DescribeAssetDetailByUuidsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -15316,8 +15737,9 @@ type DescribeCloudCenterInstancesRequest struct {
 	// The number of entries to return on each page. Default value: **20**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region in which the asset resides.
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UseNextToken *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	UseNextToken               *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 }
 
 func (s DescribeCloudCenterInstancesRequest) String() string {
@@ -15375,6 +15797,11 @@ func (s *DescribeCloudCenterInstancesRequest) SetPageSize(v int32) *DescribeClou
 
 func (s *DescribeCloudCenterInstancesRequest) SetRegionId(v string) *DescribeCloudCenterInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesRequest) SetResourceDirectoryAccountId(v int64) *DescribeCloudCenterInstancesRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -21939,7 +22366,8 @@ type DescribeFieldStatisticsRequest struct {
 	// The total number of cloud services that are protected by Security Center.
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
 	// The number of regions to which the servers belong.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeFieldStatisticsRequest) String() string {
@@ -21957,6 +22385,11 @@ func (s *DescribeFieldStatisticsRequest) SetMachineTypes(v string) *DescribeFiel
 
 func (s *DescribeFieldStatisticsRequest) SetRegionId(v string) *DescribeFieldStatisticsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFieldStatisticsRequest) SetResourceDirectoryAccountId(v int64) *DescribeFieldStatisticsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -23630,7 +24063,8 @@ type DescribeGroupedVulRequest struct {
 	// *   **nntf**: low
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	// The number of entries per page. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize                   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The tag that is used to filter vulnerabilities. Valid values:
 	//
 	// *   Restart required
@@ -23713,6 +24147,11 @@ func (s *DescribeGroupedVulRequest) SetNecessity(v string) *DescribeGroupedVulRe
 
 func (s *DescribeGroupedVulRequest) SetPageSize(v int32) *DescribeGroupedVulRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGroupedVulRequest) SetResourceDirectoryAccountId(v int64) *DescribeGroupedVulRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -24135,6 +24574,10 @@ func (s *DescribeHoneyPotAuthResponse) SetBody(v *DescribeHoneyPotAuthResponseBo
 type DescribeHoneyPotSuspStatisticsRequest struct {
 	// The source of the request. Set the value to **honeypot**.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The time range of the data to query. Unit: days.
 	StatisticsDays *int32 `json:"StatisticsDays,omitempty" xml:"StatisticsDays,omitempty"`
@@ -31102,6 +31545,211 @@ func (s *DescribeImageVulListResponse) SetBody(v *DescribeImageVulListResponseBo
 	return s
 }
 
+type DescribeImageVulWhiteListRequest struct {
+	AliasName   *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeImageVulWhiteListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageVulWhiteListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageVulWhiteListRequest) SetAliasName(v string) *DescribeImageVulWhiteListRequest {
+	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListRequest) SetCurrentPage(v int32) *DescribeImageVulWhiteListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListRequest) SetLang(v string) *DescribeImageVulWhiteListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListRequest) SetPageSize(v int32) *DescribeImageVulWhiteListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeImageVulWhiteListResponseBody struct {
+	Code              *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode    *int32                                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	ImageVulWhitelist []*DescribeImageVulWhiteListResponseBodyImageVulWhitelist `json:"ImageVulWhitelist,omitempty" xml:"ImageVulWhitelist,omitempty" type:"Repeated"`
+	Message           *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo          *DescribeImageVulWhiteListResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TimeCost          *int64                                                    `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+}
+
+func (s DescribeImageVulWhiteListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageVulWhiteListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetCode(v string) *DescribeImageVulWhiteListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetHttpStatusCode(v int32) *DescribeImageVulWhiteListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetImageVulWhitelist(v []*DescribeImageVulWhiteListResponseBodyImageVulWhitelist) *DescribeImageVulWhiteListResponseBody {
+	s.ImageVulWhitelist = v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetMessage(v string) *DescribeImageVulWhiteListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetPageInfo(v *DescribeImageVulWhiteListResponseBodyPageInfo) *DescribeImageVulWhiteListResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetRequestId(v string) *DescribeImageVulWhiteListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetSuccess(v bool) *DescribeImageVulWhiteListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBody) SetTimeCost(v int64) *DescribeImageVulWhiteListResponseBody {
+	s.TimeCost = &v
+	return s
+}
+
+type DescribeImageVulWhiteListResponseBodyImageVulWhitelist struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Target    *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeImageVulWhiteListResponseBodyImageVulWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageVulWhiteListResponseBodyImageVulWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyImageVulWhitelist) SetAliasName(v string) *DescribeImageVulWhiteListResponseBodyImageVulWhitelist {
+	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyImageVulWhitelist) SetId(v int64) *DescribeImageVulWhiteListResponseBodyImageVulWhitelist {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyImageVulWhitelist) SetName(v string) *DescribeImageVulWhiteListResponseBodyImageVulWhitelist {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyImageVulWhitelist) SetReason(v string) *DescribeImageVulWhiteListResponseBodyImageVulWhitelist {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyImageVulWhitelist) SetTarget(v string) *DescribeImageVulWhiteListResponseBodyImageVulWhitelist {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyImageVulWhitelist) SetType(v string) *DescribeImageVulWhiteListResponseBodyImageVulWhitelist {
+	s.Type = &v
+	return s
+}
+
+type DescribeImageVulWhiteListResponseBodyPageInfo struct {
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeImageVulWhiteListResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageVulWhiteListResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyPageInfo) SetCount(v int32) *DescribeImageVulWhiteListResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeImageVulWhiteListResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyPageInfo) SetPageSize(v int32) *DescribeImageVulWhiteListResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponseBodyPageInfo) SetTotalCount(v int32) *DescribeImageVulWhiteListResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeImageVulWhiteListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImageVulWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImageVulWhiteListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageVulWhiteListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageVulWhiteListResponse) SetHeaders(v map[string]*string) *DescribeImageVulWhiteListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponse) SetStatusCode(v int32) *DescribeImageVulWhiteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListResponse) SetBody(v *DescribeImageVulWhiteListResponseBody) *DescribeImageVulWhiteListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstallCaptchaRequest struct {
 	// The validity period of the installation verification code. If this parameter is not specified, the validity period is 1 hour.
 	//
@@ -33089,6 +33737,58 @@ func (s *DescribeModuleConfigResponse) SetStatusCode(v int32) *DescribeModuleCon
 }
 
 func (s *DescribeModuleConfigResponse) SetBody(v *DescribeModuleConfigResponseBody) *DescribeModuleConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMonitorAccountsResponseBody struct {
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMonitorAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMonitorAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMonitorAccountsResponseBody) SetAccountIds(v []*string) *DescribeMonitorAccountsResponseBody {
+	s.AccountIds = v
+	return s
+}
+
+func (s *DescribeMonitorAccountsResponseBody) SetRequestId(v string) *DescribeMonitorAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMonitorAccountsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMonitorAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMonitorAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMonitorAccountsResponse) SetHeaders(v map[string]*string) *DescribeMonitorAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorAccountsResponse) SetStatusCode(v int32) *DescribeMonitorAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMonitorAccountsResponse) SetBody(v *DescribeMonitorAccountsResponseBody) *DescribeMonitorAccountsResponse {
 	s.Body = v
 	return s
 }
@@ -40805,7 +41505,46 @@ func (s *DescribeSecureSuggestionRequest) SetSourceIp(v string) *DescribeSecureS
 type DescribeSecureSuggestionResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the unhandled security risks.
+	// The sub-type of the unhandled risk. Valid values:
+	//
+	// *   **ALARM_HIGH**: Unhandled Urgency Alerts
+	// *   **ALARM_MEDIUM**: Unhandled Warning Alerts
+	// *   **ALARM_LOW**: Unhandled Reminder Alerts
+	// *   **VUL_EMR_UNCHECK**: Unchecked Urgent Vulnerabilities
+	// *   **VUL_EMR_UNFIX**: Unfixed Urgent Vulnerabilities
+	// *   **VUL_WIN**: Unfixed Windows Server Vulnerabilities
+	// *   **VUL_LINUX**: Unfixed Linux Server Vulnerabilities
+	// *   **VUL_CMS**: Unfixed CMS Vulnerabilities
+	// *   **ACCESSKEY_LEAK**: AccessKey Leakage Risks
+	// *   **HC_WARN**: Baseline Risks
+	// *   **HC_WEAK_EXPLOIT_WARN**: There is a risk of weak passwords exposed by the public network.
+	// *   **HC_WEAK_PASSWORD_WARN**: Risk of weak password
+	// *   **HC_HIGH_EXPLOIT_WARN**: There is a high risk of invasion
+	// *   **HC_OTHER_WARN**: Security Configuration risk
+	// *   **HC_DATABASE_WARN**: Database has security risks
+	// *   **CLOUD_HC_SAS_OPEN**: Security protection has not been installed on the server
+	// *   **CLOUD_HC_AEGIS_OFFLINE**: Server protection status is offline
+	// *   **CLOUD_HC_ACCOUNT_DOUBLE_CHECK**: Two-Factor Authentication not Enabled for Primary Account
+	// *   **CLOUD_HC_RDS**: RDS-database security policy failed, security risks
+	// *   **CLOUD_HC_DDOS**: Risks in Anti-DDoS Pro Back-to-Origin Settings
+	// *   **CLOUD_HC_HIGH_LEVEL**: Cloud product configuration has high risk
+	// *   **CLOUD_HC_OTHER_LEVEL**: Cloud product configuration has medium and low risk risks
+	// *   **OTHER_ATTACH**: Attacks
+	// *   **OTHER_DATABASE_ATTACH**: Database has security risks
+	// *   **REINFORCE_BASELINE**: Config Assessment
+	// *   **REINFORCE_SUSPICIOUS**: Antivirus
+	// *   **REINFORCE_ANALYSIS**: Log Analysis
+	// *   **REINFORCE_AK_LEAK**: AccessKey Leaked Intelligence Detection
+	// *   **REINFORCE_WEB_LOCK**: Website tamper-proofing capability not configured
+	// *   **REINFORCE_BRUTE_FORCE**: Anti brute force cracking
+	// *   **REINFORCE_XPRESS_INSTALL**: One-click client installation
+	// *   **REINFORCE_RANSOMWARE**: Enable anti-extortion strategy
+	// *   **REINFORCE_UNI_RANSOMWARE**: Anti-ransomware for Databases
+	// *   **REINFORCE_VIRUS_SCHEDULE_SCAN**: Periodic virus scan policies not configured
+	// *   **REINFORCE_IMAGE_REPO_SCAN**: No container image scan range configured
+	// *   **REINFORCE_IMAGE_SCAN_TASK**: Image security scan
+	// *   **REINFORCE_K8S_LOG_ANALYSIS**: Container K8s threat detection is disabled
+	// *   **REINFORCE_CONTAINER_NETWORK**: Container Visualization
 	Suggestions []*DescribeSecureSuggestionResponseBodySuggestions `json:"Suggestions,omitempty" xml:"Suggestions,omitempty" type:"Repeated"`
 	// The total number of unhandled security risks.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -44165,7 +44904,8 @@ type DescribeSuspEventDetailRequest struct {
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The ID of the exception.
@@ -44187,6 +44927,11 @@ func (s *DescribeSuspEventDetailRequest) SetFrom(v string) *DescribeSuspEventDet
 
 func (s *DescribeSuspEventDetailRequest) SetLang(v string) *DescribeSuspEventDetailRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeSuspEventDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribeSuspEventDetailRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -45025,7 +45770,8 @@ type DescribeSuspEventsRequest struct {
 	// The name of the alert or the information about the asset.
 	//
 	// >  Fuzzy search is supported. The asset information includes the name, public IP address, and private IP address of an asset.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The custom sorting field. Default value: **operateTime**. Valid values:
 	//
 	// *   **lastTime**: the latest occurrence time.
@@ -45181,6 +45927,11 @@ func (s *DescribeSuspEventsRequest) SetParentEventTypes(v string) *DescribeSuspE
 
 func (s *DescribeSuspEventsRequest) SetRemark(v string) *DescribeSuspEventsRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetResourceDirectoryAccountId(v int64) *DescribeSuspEventsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -49950,7 +50701,8 @@ type DescribeVulDetailsRequest struct {
 	// The name of the vulnerability.
 	//
 	// > You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) or [DescribeVulList](~~DescribeVulList~~) operation to query the names of vulnerabilities.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
 	// *   **cve**: Linux software vulnerability
@@ -49982,6 +50734,11 @@ func (s *DescribeVulDetailsRequest) SetLang(v string) *DescribeVulDetailsRequest
 
 func (s *DescribeVulDetailsRequest) SetName(v string) *DescribeVulDetailsRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeVulDetailsRequest) SetResourceDirectoryAccountId(v int64) *DescribeVulDetailsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -50563,7 +51320,8 @@ type DescribeVulListRequest struct {
 	// The number of entries per page. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The remarks for the asset affected by the vulnerability. The value can be the private IP address, public IP address, or name of the asset.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
 	// *   **cve**: Linux software vulnerability
@@ -50634,6 +51392,11 @@ func (s *DescribeVulListRequest) SetPageSize(v int32) *DescribeVulListRequest {
 
 func (s *DescribeVulListRequest) SetRemark(v string) *DescribeVulListRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeVulListRequest) SetResourceDirectoryAccountId(v int64) *DescribeVulListRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -52234,7 +52997,10 @@ type DescribeWarningMachinesRequest struct {
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	GroupId     *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the new server group to which the servers belong.
+	//
+	// >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Specifies whether risks were detected. Valid values:
 	//
 	// *   **1**: yes
@@ -52411,8 +53177,10 @@ type DescribeWarningMachinesResponseBodyWarningMachines struct {
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	Bind          *bool   `json:"Bind,omitempty" xml:"Bind,omitempty"`
-	ContainerId   *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// The ID of the container.
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// The name of container.
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// The number of **high-risk** items on the server.
 	HighWarningCount *int32 `json:"HighWarningCount,omitempty" xml:"HighWarningCount,omitempty"`
@@ -56218,12 +56986,15 @@ func (s *GenerateOnceTaskResponse) SetBody(v *GenerateOnceTaskResponseBody) *Gen
 }
 
 type GetAgentlessTaskCountResponseBody struct {
-	LastTaskTime  *int64  `json:"LastTaskTime,omitempty" xml:"LastTaskTime,omitempty"`
-	MaliciousFile *int32  `json:"MaliciousFile,omitempty" xml:"MaliciousFile,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RiskMachine   *int32  `json:"RiskMachine,omitempty" xml:"RiskMachine,omitempty"`
-	ScanMachine   *int32  `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
-	Vulnerability *int32  `json:"Vulnerability,omitempty" xml:"Vulnerability,omitempty"`
+	BaselineCheckCount *int32  `json:"BaselineCheckCount,omitempty" xml:"BaselineCheckCount,omitempty"`
+	CveVulCount        *int32  `json:"CveVulCount,omitempty" xml:"CveVulCount,omitempty"`
+	LastTaskTime       *int64  `json:"LastTaskTime,omitempty" xml:"LastTaskTime,omitempty"`
+	MaliciousFile      *int32  `json:"MaliciousFile,omitempty" xml:"MaliciousFile,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RiskMachine        *int32  `json:"RiskMachine,omitempty" xml:"RiskMachine,omitempty"`
+	ScaVulCount        *int32  `json:"ScaVulCount,omitempty" xml:"ScaVulCount,omitempty"`
+	ScanMachine        *int32  `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
+	Vulnerability      *int32  `json:"Vulnerability,omitempty" xml:"Vulnerability,omitempty"`
 }
 
 func (s GetAgentlessTaskCountResponseBody) String() string {
@@ -56232,6 +57003,16 @@ func (s GetAgentlessTaskCountResponseBody) String() string {
 
 func (s GetAgentlessTaskCountResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetAgentlessTaskCountResponseBody) SetBaselineCheckCount(v int32) *GetAgentlessTaskCountResponseBody {
+	s.BaselineCheckCount = &v
+	return s
+}
+
+func (s *GetAgentlessTaskCountResponseBody) SetCveVulCount(v int32) *GetAgentlessTaskCountResponseBody {
+	s.CveVulCount = &v
+	return s
 }
 
 func (s *GetAgentlessTaskCountResponseBody) SetLastTaskTime(v int64) *GetAgentlessTaskCountResponseBody {
@@ -56251,6 +57032,11 @@ func (s *GetAgentlessTaskCountResponseBody) SetRequestId(v string) *GetAgentless
 
 func (s *GetAgentlessTaskCountResponseBody) SetRiskMachine(v int32) *GetAgentlessTaskCountResponseBody {
 	s.RiskMachine = &v
+	return s
+}
+
+func (s *GetAgentlessTaskCountResponseBody) SetScaVulCount(v int32) *GetAgentlessTaskCountResponseBody {
+	s.ScaVulCount = &v
 	return s
 }
 
@@ -57788,7 +58574,9 @@ func (s *GetBackupStorageCountResponse) SetBody(v *GetBackupStorageCountResponse
 
 type GetCheckConfigResponseBody struct {
 	// An array that consists of days in a week on which an automatic check is performed.
-	CycleDays []*int32 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
+	CycleDays       []*int32 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
+	EnableAddCheck  *bool    `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
+	EnableAutoCheck *bool    `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
 	// The end time of the check. The value indicates a point in time. The time period that is specified by the start time and end time must be one of the following time periods:
 	//
 	// *   **00:00 to 06:00:** The StartTime parameter is set to 0 and the EndTime parameter is set to 6.
@@ -57797,7 +58585,8 @@ type GetCheckConfigResponseBody struct {
 	// *   **18:00 to 24:00:** The StartTime parameter is set to 18 and the EndTime parameter is set to 24.
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SelectedChecks []*GetCheckConfigResponseBodySelectedChecks `json:"SelectedChecks,omitempty" xml:"SelectedChecks,omitempty" type:"Repeated"`
 	// An array that consists of the information about the check items.
 	Standards []*GetCheckConfigResponseBodyStandards `json:"Standards,omitempty" xml:"Standards,omitempty" type:"Repeated"`
 	// The start time of the check. The value indicates a point in time.
@@ -57817,6 +58606,16 @@ func (s *GetCheckConfigResponseBody) SetCycleDays(v []*int32) *GetCheckConfigRes
 	return s
 }
 
+func (s *GetCheckConfigResponseBody) SetEnableAddCheck(v bool) *GetCheckConfigResponseBody {
+	s.EnableAddCheck = &v
+	return s
+}
+
+func (s *GetCheckConfigResponseBody) SetEnableAutoCheck(v bool) *GetCheckConfigResponseBody {
+	s.EnableAutoCheck = &v
+	return s
+}
+
 func (s *GetCheckConfigResponseBody) SetEndTime(v int32) *GetCheckConfigResponseBody {
 	s.EndTime = &v
 	return s
@@ -57827,6 +58626,11 @@ func (s *GetCheckConfigResponseBody) SetRequestId(v string) *GetCheckConfigRespo
 	return s
 }
 
+func (s *GetCheckConfigResponseBody) SetSelectedChecks(v []*GetCheckConfigResponseBodySelectedChecks) *GetCheckConfigResponseBody {
+	s.SelectedChecks = v
+	return s
+}
+
 func (s *GetCheckConfigResponseBody) SetStandards(v []*GetCheckConfigResponseBodyStandards) *GetCheckConfigResponseBody {
 	s.Standards = v
 	return s
@@ -57834,6 +58638,29 @@ func (s *GetCheckConfigResponseBody) SetStandards(v []*GetCheckConfigResponseBod
 
 func (s *GetCheckConfigResponseBody) SetStartTime(v int32) *GetCheckConfigResponseBody {
 	s.StartTime = &v
+	return s
+}
+
+type GetCheckConfigResponseBodySelectedChecks struct {
+	CheckId   *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	SectionId *int64 `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+}
+
+func (s GetCheckConfigResponseBodySelectedChecks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckConfigResponseBodySelectedChecks) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckConfigResponseBodySelectedChecks) SetCheckId(v int64) *GetCheckConfigResponseBodySelectedChecks {
+	s.CheckId = &v
+	return s
+}
+
+func (s *GetCheckConfigResponseBodySelectedChecks) SetSectionId(v int64) *GetCheckConfigResponseBodySelectedChecks {
+	s.SectionId = &v
 	return s
 }
 
@@ -58655,9 +59482,10 @@ func (s *GetCheckSummaryResponse) SetBody(v *GetCheckSummaryResponseBody) *GetCh
 }
 
 type GetClientRatioStatisticRequest struct {
-	StatisticTypes []*string `json:"StatisticTypes,omitempty" xml:"StatisticTypes,omitempty" type:"Repeated"`
-	TimeEnd        *int64    `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-	TimeStart      *int64    `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+	ResourceDirectoryAccountId *int64    `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	StatisticTypes             []*string `json:"StatisticTypes,omitempty" xml:"StatisticTypes,omitempty" type:"Repeated"`
+	TimeEnd                    *int64    `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	TimeStart                  *int64    `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
 }
 
 func (s GetClientRatioStatisticRequest) String() string {
@@ -58666,6 +59494,11 @@ func (s GetClientRatioStatisticRequest) String() string {
 
 func (s GetClientRatioStatisticRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetClientRatioStatisticRequest) SetResourceDirectoryAccountId(v int64) *GetClientRatioStatisticRequest {
+	s.ResourceDirectoryAccountId = &v
+	return s
 }
 
 func (s *GetClientRatioStatisticRequest) SetStatisticTypes(v []*string) *GetClientRatioStatisticRequest {
@@ -65002,6 +65835,124 @@ func (s *ListAgentlessTaskResponse) SetBody(v *ListAgentlessTaskResponseBody) *L
 	return s
 }
 
+type ListAssetRefreshTaskConfigRequest struct {
+	// The region where the Security Center instance is deployed.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAssetRefreshTaskConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssetRefreshTaskConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssetRefreshTaskConfigRequest) SetRegionId(v string) *ListAssetRefreshTaskConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAssetRefreshTaskConfigResponseBody struct {
+	// An array that consist of the configurations.
+	AssetRefreshConfig []*ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig `json:"AssetRefreshConfig,omitempty" xml:"AssetRefreshConfig,omitempty" type:"Repeated"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAssetRefreshTaskConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssetRefreshTaskConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssetRefreshTaskConfigResponseBody) SetAssetRefreshConfig(v []*ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig) *ListAssetRefreshTaskConfigResponseBody {
+	s.AssetRefreshConfig = v
+	return s
+}
+
+func (s *ListAssetRefreshTaskConfigResponseBody) SetRequestId(v string) *ListAssetRefreshTaskConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig struct {
+	// The synchronization cycle. Valid values:
+	//
+	// *   **60**: 60 minutes
+	// *   **180**: 3 hours
+	// *   **360**: 6 hours
+	// *   **720**: 12 hours
+	// *   **1440**: 1 day
+	// *   **10080**: 7 days
+	SchedulePeriod *int32 `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
+	// The status of asset synchonization. Valid values:
+	//
+	// *   **1**: enabled
+	// *   **0**: disabled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The service provider of the cloud asset. Valid values:
+	//
+	// *   **3**: Tencent Cloud
+	// *   **4**: HUAWEI CLOUD
+	// *   **7**: Amazon Web Services (AWS) Cloud
+	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig) SetSchedulePeriod(v int32) *ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig {
+	s.SchedulePeriod = &v
+	return s
+}
+
+func (s *ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig) SetStatus(v int32) *ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig) SetVendor(v int32) *ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig {
+	s.Vendor = &v
+	return s
+}
+
+type ListAssetRefreshTaskConfigResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAssetRefreshTaskConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAssetRefreshTaskConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssetRefreshTaskConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssetRefreshTaskConfigResponse) SetHeaders(v map[string]*string) *ListAssetRefreshTaskConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAssetRefreshTaskConfigResponse) SetStatusCode(v int32) *ListAssetRefreshTaskConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAssetRefreshTaskConfigResponse) SetBody(v *ListAssetRefreshTaskConfigResponseBody) *ListAssetRefreshTaskConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ListAssetSelectionSelectedTargetRequest struct {
 	SelectionKey *string   `json:"SelectionKey,omitempty" xml:"SelectionKey,omitempty"`
 	TargetList   []*string `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
@@ -65576,7 +66527,8 @@ type ListCheckInstanceResultResponseBodyBasicData struct {
 	// *   **CHECKING**
 	// *   **NOT_CHECK**
 	// *   **WHITELIST**
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 
 func (s ListCheckInstanceResultResponseBodyBasicData) String() string {
@@ -65609,6 +66561,11 @@ func (s *ListCheckInstanceResultResponseBodyBasicData) SetRegionId(v string) *Li
 
 func (s *ListCheckInstanceResultResponseBodyBasicData) SetStatus(v string) *ListCheckInstanceResultResponseBodyBasicData {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyBasicData) SetStatusMessage(v string) *ListCheckInstanceResultResponseBodyBasicData {
+	s.StatusMessage = &v
 	return s
 }
 
@@ -66308,8 +67265,11 @@ type ListCheckItemWarningSummaryResponseBodyList struct {
 	// *   **low**
 	CheckLevel *string `json:"CheckLevel,omitempty" xml:"CheckLevel,omitempty"`
 	// The type of the check item.
-	CheckType          *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	ContainerCheckItem *bool   `json:"ContainerCheckItem,omitempty" xml:"ContainerCheckItem,omitempty"`
+	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// Checks if the item belongs to the container runtime category.Valid values:
+	// *   **true**
+	// *  **false**
+	ContainerCheckItem *bool `json:"ContainerCheckItem,omitempty" xml:"ContainerCheckItem,omitempty"`
 	// The description of the check item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the baseline.
@@ -66459,6 +67419,7 @@ type ListCheckResultRequest struct {
 	CheckKey *string `json:"CheckKey,omitempty" xml:"CheckKey,omitempty"`
 	// The page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CustomParam *bool  `json:"CustomParam,omitempty" xml:"CustomParam,omitempty"`
 	// The instance IDs of the cloud services that you want to query. Separate multiple IDs with commas (,).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The asset type of the cloud services. Valid values:
@@ -66544,6 +67505,11 @@ func (s *ListCheckResultRequest) SetCheckKey(v string) *ListCheckResultRequest {
 
 func (s *ListCheckResultRequest) SetCurrentPage(v int32) *ListCheckResultRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetCustomParam(v bool) *ListCheckResultRequest {
+	s.CustomParam = &v
 	return s
 }
 
@@ -66714,7 +67680,8 @@ type ListCheckResultResponseBodyChecks struct {
 	// *   **CHECKING**
 	// *   **NOT_CHECK**
 	// *   **WHITELIST**
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 	// The ID of the check task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// Indicates whether the TRIAL permission is required.
@@ -66770,6 +67737,11 @@ func (s *ListCheckResultResponseBodyChecks) SetRiskLevel(v string) *ListCheckRes
 
 func (s *ListCheckResultResponseBodyChecks) SetStatus(v string) *ListCheckResultResponseBodyChecks {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetStatusMessage(v string) *ListCheckResultResponseBodyChecks {
+	s.StatusMessage = &v
 	return s
 }
 
@@ -83908,6 +84880,23 @@ func (s *StartVirusScanTaskResponse) SetBody(v *StartVirusScanTaskResponseBody) 
 	return s
 }
 
+type SubmitCheckRequest struct {
+	ScanRange *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+}
+
+func (s SubmitCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCheckRequest) SetScanRange(v string) *SubmitCheckRequest {
+	s.ScanRange = &v
+	return s
+}
+
 type SubmitCheckResponseBody struct {
 	Data      *SubmitCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -84210,7 +85199,11 @@ type UpdateHoneypotRequest struct {
 	HoneypotId *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
 	// The custom name of the honeypot.
 	HoneypotName *string `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The custom configuration of the honeypot.
 	//
 	// > You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to query the configurations of honeypots from the **Template** response parameter.
@@ -84516,7 +85509,11 @@ type UpdateHoneypotPresetRequest struct {
 	//
 	// > You can call the [ListHoneypotPreset](~~ListHoneypotPreset~~) operation to query the IDs of honeypot templates.
 	HoneypotPresetId *string `json:"HoneypotPresetId,omitempty" xml:"HoneypotPresetId,omitempty"`
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The custom configurations of the honeypot template. The value is a JSON string that contains the following fields:
 	//
 	// *   **portrait_option**: Social Source Tracing
@@ -84643,7 +85640,11 @@ type UpdateHoneypotProbeRequest struct {
 	Arp *bool `json:"Arp,omitempty" xml:"Arp,omitempty"`
 	// The name of the probe.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Specifies whether ping is enabled for the check type.
 	Ping *bool `json:"Ping,omitempty" xml:"Ping,omitempty"`
 	// The ID of the probe.
@@ -85048,10 +86049,17 @@ func (s *UpgradeBackupPolicyVersionResponse) SetBody(v *UpgradeBackupPolicyVersi
 }
 
 type ValidateHcWarningsRequest struct {
+	// The IDs of the check items. Separate multiple IDs with commas (,).
+	//
+	// > You can call the [DescribeCheckWarningSummary](~~116179~~) operation to query the IDs of check items.
 	CheckIds *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
-	// The IDs of risk items that you want to verify. Separate multiple IDs with commas (,).
+	// The list of IDs of the risk items that you want to verify. Separate multiple IDs with commas (,).
+	//
+	// > You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to query the IDs of risk items.
 	RiskIds *string `json:"RiskIds,omitempty" xml:"RiskIds,omitempty"`
-	// The UUIDs of servers on which you want to verify risk items.
+	// The UUIDs of the servers on which you want to verify the risk items. Separate multiple UUIDs with commas (,).
+	//
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
@@ -85079,7 +86087,7 @@ func (s *ValidateHcWarningsRequest) SetUuids(v string) *ValidateHcWarningsReques
 }
 
 type ValidateHcWarningsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -85689,6 +86697,66 @@ func (client *Client) AddClientUserDefineRule(request *AddClientUserDefineRuleRe
 	return _result, _err
 }
 
+func (client *Client) AddImageVulWhiteListWithOptions(request *AddImageVulWhiteListRequest, runtime *util.RuntimeOptions) (_result *AddImageVulWhiteListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Whitelist)) {
+		query["Whitelist"] = request.Whitelist
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddImageVulWhiteList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddImageVulWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddImageVulWhiteList(request *AddImageVulWhiteListRequest) (_result *AddImageVulWhiteListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddImageVulWhiteListResponse{}
+	_body, _err := client.AddImageVulWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddInstallCodeWithOptions(request *AddInstallCodeRequest, runtime *util.RuntimeOptions) (_result *AddInstallCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -86222,14 +87290,74 @@ func (client *Client) CancelOnceTask(request *CancelOnceTaskRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) ChangeAssetRefreshTaskConfigWithOptions(request *ChangeAssetRefreshTaskConfigRequest, runtime *util.RuntimeOptions) (_result *ChangeAssetRefreshTaskConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetRefreshConfigs)) {
+		query["AssetRefreshConfigs"] = request.AssetRefreshConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeAssetRefreshTaskConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeAssetRefreshTaskConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeAssetRefreshTaskConfig(request *ChangeAssetRefreshTaskConfigRequest) (_result *ChangeAssetRefreshTaskConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeAssetRefreshTaskConfigResponse{}
+	_body, _err := client.ChangeAssetRefreshTaskConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ChangeCheckConfigWithOptions(request *ChangeCheckConfigRequest, runtime *util.RuntimeOptions) (_result *ChangeCheckConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddedCheck)) {
+		query["AddedCheck"] = request.AddedCheck
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CycleDays)) {
 		query["CycleDays"] = request.CycleDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAddCheck)) {
+		query["EnableAddCheck"] = request.EnableAddCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAutoCheck)) {
+		query["EnableAutoCheck"] = request.EnableAutoCheck
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
@@ -86238,6 +87366,10 @@ func (client *Client) ChangeCheckConfigWithOptions(request *ChangeCheckConfigReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemovedCheck)) {
+		query["RemovedCheck"] = request.RemovedCheck
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StandardIds)) {
@@ -86534,6 +87666,14 @@ func (client *Client) CreateAgentlessScanTaskWithOptions(request *CreateAgentles
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoDeleteDays)) {
 		query["AutoDeleteDays"] = request.AutoDeleteDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseAfterScan)) {
+		query["ReleaseAfterScan"] = request.ReleaseAfterScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanDataDisk)) {
+		query["ScanDataDisk"] = request.ScanDataDisk
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
@@ -86958,7 +88098,10 @@ func (client *Client) CreateCycleTask(request *CreateCycleTaskRequest) (_result 
 
 /**
  * You can call this operation to push a file to the cloud for detection. Before you call this operation, make sure that the file is uploaded. You can call the CreateFileDetectUploadUrl operation to upload the file.
- * The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+ * The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only hexadecimal MD5 hash values of complete file content are supported. You must calculate the MD5 hash value before you call this operation.
+ * To calculate the hexadecimal MD5 hash value for a file, you can perform the following steps:
+ * 1\\. Use the MD5 algorithm to encrypt data and generate a 128-bit hash value. You can use a tool such as MessageDigest for Java and the hashlib module for Python.
+ * 2\\. Convert the hash value to a hexadecimal string. You can use a tool such as Codec for Java and the hex() function for Python.
  *
  * @param request CreateFileDetectRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -87015,7 +88158,10 @@ func (client *Client) CreateFileDetectWithOptions(request *CreateFileDetectReque
 
 /**
  * You can call this operation to push a file to the cloud for detection. Before you call this operation, make sure that the file is uploaded. You can call the CreateFileDetectUploadUrl operation to upload the file.
- * The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+ * The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only hexadecimal MD5 hash values of complete file content are supported. You must calculate the MD5 hash value before you call this operation.
+ * To calculate the hexadecimal MD5 hash value for a file, you can perform the following steps:
+ * 1\\. Use the MD5 algorithm to encrypt data and generate a 128-bit hash value. You can use a tool such as MessageDigest for Java and the hashlib module for Python.
+ * 2\\. Convert the hash value to a hexadecimal string. You can use a tool such as Codec for Java and the hex() function for Python.
  *
  * @param request CreateFileDetectRequest
  * @return CreateFileDetectResponse
@@ -88393,6 +89539,58 @@ func (client *Client) DeleteBackupPolicyMachine(request *DeleteBackupPolicyMachi
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackupPolicyMachineResponse{}
 	_body, _err := client.DeleteBackupPolicyMachineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBinarySecurityPolicyWithOptions(request *DeleteBinarySecurityPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteBinarySecurityPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBinarySecurityPolicy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBinarySecurityPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBinarySecurityPolicy(request *DeleteBinarySecurityPolicyRequest) (_result *DeleteBinarySecurityPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBinarySecurityPolicyResponse{}
+	_body, _err := client.DeleteBinarySecurityPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -89808,6 +91006,10 @@ func (client *Client) DescribeAlarmEventStackInfoWithOptions(request *DescribeAl
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -90132,6 +91334,10 @@ func (client *Client) DescribeAssetDetailByUuidsWithOptions(request *DescribeAss
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
@@ -91383,6 +92589,10 @@ func (client *Client) DescribeCloudCenterInstancesWithOptions(request *DescribeC
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UseNextToken)) {
@@ -93189,6 +94399,10 @@ func (client *Client) DescribeFieldStatisticsWithOptions(request *DescribeFieldS
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -93659,6 +94873,10 @@ func (client *Client) DescribeGroupedVulWithOptions(request *DescribeGroupedVulR
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SearchTags)) {
@@ -95407,6 +96625,62 @@ func (client *Client) DescribeImageVulList(request *DescribeImageVulListRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeImageVulWhiteListWithOptions(request *DescribeImageVulWhiteListRequest, runtime *util.RuntimeOptions) (_result *DescribeImageVulWhiteListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageVulWhiteList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImageVulWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImageVulWhiteList(request *DescribeImageVulWhiteListRequest) (_result *DescribeImageVulWhiteListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageVulWhiteListResponse{}
+	_body, _err := client.DescribeImageVulWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInstallCaptchaWithOptions(request *DescribeInstallCaptchaRequest, runtime *util.RuntimeOptions) (_result *DescribeInstallCaptchaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -96089,6 +97363,39 @@ func (client *Client) DescribeModuleConfig() (_result *DescribeModuleConfigRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeModuleConfigResponse{}
 	_body, _err := client.DescribeModuleConfigWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMonitorAccountsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeMonitorAccountsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMonitorAccounts"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMonitorAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMonitorAccounts() (_result *DescribeMonitorAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMonitorAccountsResponse{}
+	_body, _err := client.DescribeMonitorAccountsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -99228,6 +100535,10 @@ func (client *Client) DescribeSuspEventDetailWithOptions(request *DescribeSuspEv
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -99522,6 +100833,10 @@ func (client *Client) DescribeSuspEventsWithOptions(request *DescribeSuspEventsR
 
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
 		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortColumn)) {
@@ -100819,6 +102134,10 @@ func (client *Client) DescribeVulDetailsWithOptions(request *DescribeVulDetailsR
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -100991,6 +102310,10 @@ func (client *Client) DescribeVulListWithOptions(request *DescribeVulListRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
 		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -103470,6 +104793,10 @@ func (client *Client) GetClientRatioStatisticWithOptions(request *GetClientRatio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StatisticTypes)) {
 		query["StatisticTypes"] = request.StatisticTypes
 	}
@@ -105462,6 +106789,50 @@ func (client *Client) ListAgentlessTask(request *ListAgentlessTaskRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListAssetRefreshTaskConfigWithOptions(request *ListAssetRefreshTaskConfigRequest, runtime *util.RuntimeOptions) (_result *ListAssetRefreshTaskConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAssetRefreshTaskConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAssetRefreshTaskConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAssetRefreshTaskConfig(request *ListAssetRefreshTaskConfigRequest) (_result *ListAssetRefreshTaskConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAssetRefreshTaskConfigResponse{}
+	_body, _err := client.ListAssetRefreshTaskConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAssetSelectionSelectedTargetWithOptions(request *ListAssetSelectionSelectedTargetRequest, runtime *util.RuntimeOptions) (_result *ListAssetSelectionSelectedTargetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -105862,6 +107233,10 @@ func (client *Client) ListCheckResultWithOptions(request *ListCheckResultRequest
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomParam)) {
+		query["CustomParam"] = request.CustomParam
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
@@ -112931,8 +114306,19 @@ func (client *Client) StartVirusScanTask(request *StartVirusScanTaskRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) SubmitCheckWithOptions(runtime *util.RuntimeOptions) (_result *SubmitCheckResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) SubmitCheckWithOptions(request *SubmitCheckRequest, runtime *util.RuntimeOptions) (_result *SubmitCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ScanRange)) {
+		query["ScanRange"] = request.ScanRange
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitCheck"),
 		Version:     tea.String("2018-12-03"),
@@ -112953,10 +114339,10 @@ func (client *Client) SubmitCheckWithOptions(runtime *util.RuntimeOptions) (_res
 	return _result, _err
 }
 
-func (client *Client) SubmitCheck() (_result *SubmitCheckResponse, _err error) {
+func (client *Client) SubmitCheck(request *SubmitCheckRequest) (_result *SubmitCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitCheckResponse{}
-	_body, _err := client.SubmitCheckWithOptions(runtime)
+	_body, _err := client.SubmitCheckWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

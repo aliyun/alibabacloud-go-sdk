@@ -1,3 +1,6 @@
+2023-07-20 Version: v2.2.10
+- Support rd sdk.
+
 2023-07-11 Version: v2.2.9
 - Change ListAssetSelectionTarget Request.
 
