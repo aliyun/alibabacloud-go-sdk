@@ -13,23 +13,13 @@ import (
 )
 
 type AttachAlbServerGroupsRequest struct {
-	// Details of the ALB server group.
-	AlbServerGroups []*AttachAlbServerGroupsRequestAlbServerGroups `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
-	// Specifies whether to add the ECS instances in the scaling group to the ALB server group. Valid values:
-	//
-	// *   true: adds the ECS instances to the ALB server group and returns the value of the `ScalingActivityId` parameter. You can check whether the ECS instances are added to the ALB server group by using the ID of the scaling activity.
-	// *   false: does not add the ECS instances to the ALB server group.
-	//
-	// Default value: false.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Details of the ALB server group.
-	ForceAttach *bool  `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
-	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25965~~).
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	AlbServerGroups      []*AttachAlbServerGroupsRequestAlbServerGroups `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
+	ClientToken          *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceAttach          *bool                                          `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
+	OwnerId              *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string                                        `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s AttachAlbServerGroupsRequest) String() string {
@@ -76,14 +66,9 @@ func (s *AttachAlbServerGroupsRequest) SetScalingGroupId(v string) *AttachAlbSer
 }
 
 type AttachAlbServerGroupsRequestAlbServerGroups struct {
-	// The weight of the ECS instance as a backend server after the instance is added to the ALB server group.
-	//
-	// If you increase the weight of an ECS instance in an ALB server group, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
 	AlbServerGroupId *string `json:"AlbServerGroupId,omitempty" xml:"AlbServerGroupId,omitempty"`
-	// The ID of the scaling activity in which Auto Scaling associates the ALB server group with the scaling group and adds ECS instances in the scaling group to the ALB server group. This parameter is returned only if you set the `ForceAttach` parameter to `true`.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The port number used by the ECS instance after the ECS instance is added to the ALB server group. Valid values: 1 to 65535.
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Weight           *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AttachAlbServerGroupsRequestAlbServerGroups) String() string {
@@ -110,9 +95,7 @@ func (s *AttachAlbServerGroupsRequestAlbServerGroups) SetWeight(v int32) *Attach
 }
 
 type AttachAlbServerGroupsResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -164,25 +147,13 @@ func (s *AttachAlbServerGroupsResponse) SetBody(v *AttachAlbServerGroupsResponse
 }
 
 type AttachDBInstancesRequest struct {
-	// The ID of the ApsaraDB RDS instance.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the ApsaraDB RDS instance.
-	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25965~~).
-	ForceAttach *bool  `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
-	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// Specifies whether to add the private IP addresses of all instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstances          []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
+	ForceAttach          *bool     `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s AttachDBInstancesRequest) String() string {
@@ -229,7 +200,6 @@ func (s *AttachDBInstancesRequest) SetScalingGroupId(v string) *AttachDBInstance
 }
 
 type AttachDBInstancesResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -276,34 +246,16 @@ func (s *AttachDBInstancesResponse) SetBody(v *AttachDBInstancesResponseBody) *A
 }
 
 type AttachInstancesRequest struct {
-	// The IDs of the ECS instances or elastic container instances that you want to add.
-	Entrusted *bool `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
-	// The IDs of the ECS instances or elastic container instances that you want to add. You can specify 1 to 20 instance IDs.
-	//
-	// Examples:
-	//
-	// *   The ID of the ECS instance that you want to add is `i-28wt4****`.
-	// *   The ID of the elastic container instance that you want to add is `eci-bp17gw49eu09yiwm****`.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The region ID of the scaling group.
-	LifecycleHook *bool `json:"LifecycleHook,omitempty" xml:"LifecycleHook,omitempty"`
-	// The weights of the ECS instances or elastic container instances as the backend servers of the associated CLB instance. Valid values: 1 to 100. Default value: 50.
-	LoadBalancerWeights []*int32 `json:"LoadBalancerWeights,omitempty" xml:"LoadBalancerWeights,omitempty" type:"Repeated"`
-	OwnerAccount        *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId             *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the scaling activity.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether the scaling group manages the lifecycles of instances that are manually added to the scaling group. Valid values:
-	//
-	// *   true: The scaling group manages the lifecycles of instances that are manually added in a similar manner in which the scaling group manages the lifecycles of automatically created instances. After Auto Scaling removes instances from the scaling group, Auto Scaling releases the instances. After you call the DetachInstances operation to remove instances from the scaling group, Auto Scaling does not release the instances.
-	// *   false: The scaling group does not manage the lifecycles of instances that are manually added. After Auto Scaling removes instances from the scaling group, Auto Scaling does not release the instances.
-	//
-	// > You cannot specify this parameter for subscription instances.
-	//
-	// Default value: false.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	Entrusted            *bool     `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
+	InstanceIds          []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	LifecycleHook        *bool     `json:"LifecycleHook,omitempty" xml:"LifecycleHook,omitempty"`
+	LoadBalancerWeights  []*int32  `json:"LoadBalancerWeights,omitempty" xml:"LoadBalancerWeights,omitempty" type:"Repeated"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s AttachInstancesRequest) String() string {
@@ -365,9 +317,7 @@ func (s *AttachInstancesRequest) SetScalingGroupId(v string) *AttachInstancesReq
 }
 
 type AttachInstancesResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -419,29 +369,14 @@ func (s *AttachInstancesResponse) SetBody(v *AttachInstancesResponseBody) *Attac
 }
 
 type AttachLoadBalancersRequest struct {
-	// The IDs of the CLB instances.
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// Specifies whether to attach the CLB instance to the scaling group in an asynchronous manner. If you attach the CLB instance from the scaling group in an asynchronous manner, the call is successful only after all operations are successful. If a specific operation fails, the call fails. We recommend that you set this parameter to true. Valid values:
-	//
-	// *   true: attaches the CLB instance to the scaling group in an asynchronous manner. In this case, the ID of the scaling activity is returned.
-	// *   false: does not attach the CLB instance to the scaling group in an asynchronous manner.
-	//
-	// Default value: false.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ForceAttach         *bool                                            `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
-	LoadBalancerConfigs []*AttachLoadBalancersRequestLoadBalancerConfigs `json:"LoadBalancerConfigs,omitempty" xml:"LoadBalancerConfigs,omitempty" type:"Repeated"`
-	// The IDs of the CLB instances.
-	LoadBalancers        []*string `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// Specifies whether to add all instances in the scaling group to the vServer groups of the CLB instance. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	Async                *bool                                            `json:"Async,omitempty" xml:"Async,omitempty"`
+	ClientToken          *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceAttach          *bool                                            `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
+	LoadBalancerConfigs  []*AttachLoadBalancersRequestLoadBalancerConfigs `json:"LoadBalancerConfigs,omitempty" xml:"LoadBalancerConfigs,omitempty" type:"Repeated"`
+	LoadBalancers        []*string                                        `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+	OwnerId              *int64                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string                                          `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s AttachLoadBalancersRequest) String() string {
@@ -516,9 +451,7 @@ func (s *AttachLoadBalancersRequestLoadBalancerConfigs) SetWeight(v int32) *Atta
 }
 
 type AttachLoadBalancersResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -735,25 +668,13 @@ func (s *AttachServerGroupsResponse) SetBody(v *AttachServerGroupsResponseBody) 
 }
 
 type AttachVServerGroupsRequest struct {
-	// Specifies whether to add Elastic Compute Service (ECS) instances in the scaling group to the vServer group. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Details of the vServer groups.
-	ForceAttach *bool  `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
-	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25965~~).
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// Details of the vServer groups.
-	VServerGroups []*AttachVServerGroupsRequestVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
+	ClientToken          *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceAttach          *bool                                      `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
+	OwnerId              *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string                                    `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	VServerGroups        []*AttachVServerGroupsRequestVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
 }
 
 func (s AttachVServerGroupsRequest) String() string {
@@ -800,9 +721,7 @@ func (s *AttachVServerGroupsRequest) SetVServerGroups(v []*AttachVServerGroupsRe
 }
 
 type AttachVServerGroupsRequestVServerGroups struct {
-	// The ID of the request.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// Details of the vServer group attributes.
+	LoadBalancerId         *string                                                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	VServerGroupAttributes []*AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes `json:"VServerGroupAttributes,omitempty" xml:"VServerGroupAttributes,omitempty" type:"Repeated"`
 }
 
@@ -825,14 +744,9 @@ func (s *AttachVServerGroupsRequestVServerGroups) SetVServerGroupAttributes(v []
 }
 
 type AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes struct {
-	// The ID of the CLB instance to which the vServer group belongs.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The weight of an ECS instance as a backend server in the vServer group. Valid values: 0 to 100.
-	//
-	// Default value: 50.
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The port number that is used when Auto Scaling adds ECS instances to the vServer group. Valid values: 1 to 65535.
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight         *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes) String() string {
@@ -859,7 +773,6 @@ func (s *AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes) SetWeigh
 }
 
 type AttachVServerGroupsResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -906,18 +819,12 @@ func (s *AttachVServerGroupsResponse) SetBody(v *AttachVServerGroupsResponseBody
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the resource group that you want to use to replace the previous scaling group.
-	//
-	// > You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~)
-	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the scaling group.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scaling group whose resource group you want to change.
+	NewResourceGroupId   *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The type of the resource. Only scaling groups are supported. Set the value to scalinggroup.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -959,7 +866,6 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1130,116 +1036,25 @@ func (s *CompleteLifecycleActionResponse) SetBody(v *CompleteLifecycleActionResp
 }
 
 type CreateAlarmRequest struct {
-	// The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
-	AlarmActions []*string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
-	// The operator that is used to compare the metric value and the threshold. Valid values:
-	//
-	// *   If the metric value is greater than or equal to the threshold, set the value to: >=.
-	// *   If the metric value is less than or equal to the threshold, set the value to: <=.
-	// *   If the metric value is greater than the threshold, set the value to: >.
-	// *   If the metric value is less than the threshold, set the value to: <.
-	//
-	// Default value: >=.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The description of the event-triggered task.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metric dimensions.
-	Dimensions []*CreateAlarmRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The effective period of the event-triggered task. By default, the event-triggered task is in effect all the time.
-	//
-	// This parameter follows the cron expression format. The default format is `X X X X X ?`. In the format:
-	//
-	// *   X: a placeholder for a field, which represents seconds, minutes, hours, days, and months in sequence. X can be a definite value or a special character that has logical meaning. For information about the valid values of X, see [Cron expression](~~25907~~).
-	// *   ?: No value is specified.
-	//
-	// > By default, this parameter value is specified in **UTC+8**. You can specify the time zone in the `TZ=+yy` format before a cron expression. y indicates the time zone. For example, `TZ=+00 * * 1-2 * * ?` specifies that the event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
-	//
-	// Sample values:
-	//
-	// *   ` * * * * * ?  `: The event-triggered task is in effect all the time.
-	// *   ` * * 17-18 * * ?  `: The event-triggered task is in effect between 17:00 and 18:59 (UTC+8) every day.
-	// *   `TZ=+00 * * 1-2 * * ?`: The event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
-	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
-	//
-	// Default value: 3.
-	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The expressions that are specified in the multi-metric alert rule.
-	Expressions []*CreateAlarmRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	// The relationship between the trigger conditions in the multi-metric alert rule. Valid values:
-	//
-	// *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet the trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
-	// *   `||`: An alert is triggered if one of the metrics in the multi-metric alert rule meets the trigger conditions.
-	//
-	// Default value: `&&`.
-	ExpressionsLogicOperator *string `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
-	// The ID of the application group to which the custom metric belongs. If you set the MetricType parameter to custom, you must specify this parameter.
-	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the metric. The valid values vary based on the metric type.
-	//
-	// *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
-	//
-	// *   If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
-	//
-	//     *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-	//     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-	//     *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min.
-	//     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-	//     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	//     *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-	//     *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-	//     *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-	//     *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-	//     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-	//     *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
-	//     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-	//     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-	//     *   MemoryUtilization: the memory usage of an agent. Unit: %.
-	//     *   LoadAverage: the average system load of an agent.
-	//     *   TcpConnection: the total number of TCP connections of an agent.
-	//     *   TcpConnection: the number of established TCP connections of an agent.
-	//     *   PackagesNetOut: the number of packets that are sent by the internal network interface controller (NIC) used by an agent.
-	//     *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-	//     *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-	//     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
-	//
-	// For more information, see [Event-triggered task for system monitoring](~~74854~~).
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The type of the metric. Valid values:
-	//
-	// *   system: system metrics of CloudMonitor
-	// *   custom: custom metrics that are reported to CloudMonitor
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The name of the event-triggered task.
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The period during which the statistical value of the metric is collected. Unit: seconds. Valid values:
-	//
-	// *   15
-	// *   60
-	// *   120
-	// *   300
-	// *   900
-	//
-	// > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
-	//
-	// Default value: 300.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The scaling group ID of the event-triggered task.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The method that is used to aggregate statistics for the metric. Valid values:
-	//
-	// *   Average
-	// *   Minimum
-	// *   Maximum
-	//
-	// Default value: Average.
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold of the metric value. If the threshold is reached the specified number of times within the specified period, a scaling rule is executed.
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	AlarmActions             []*string                        `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
+	ComparisonOperator       *string                          `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	Description              *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Dimensions               []*CreateAlarmRequestDimensions  `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Effective                *string                          `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	EvaluationCount          *int32                           `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	Expressions              []*CreateAlarmRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	ExpressionsLogicOperator *string                          `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
+	GroupId                  *int32                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MetricName               *string                          `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType               *string                          `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	Name                     *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId                  *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Period                   *int32                           `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId                 *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount     *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId           *string                          `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	Statistics               *string                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold                *float32                         `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s CreateAlarmRequest) String() string {
@@ -1346,36 +1161,7 @@ func (s *CreateAlarmRequest) SetThreshold(v float32) *CreateAlarmRequest {
 }
 
 type CreateAlarmRequestDimensions struct {
-	// The key of the metric dimension. The valid values vary based on the metric type.
-	//
-	// *   If you set the MetricType parameter to custom, you can specify this parameter based on your business requirements.
-	//
-	// *   If you set the MetricType parameter to system, this parameter has the following valid values:
-	//
-	//     *   user_id: the ID of your Alibaba Cloud account
-	//     *   scaling_group: the scaling group that you want to monitor
-	//     *   device: the type of the NIC
-	//     *   state: the status of the TCP connection
-	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The value of the metric dimension. The valid values vary based on the value of the DimensionKey parameter.
-	//
-	// *   If you set the MetricType parameter to custom, you can specify this parameter based on your business requirements.
-	//
-	// *   If you set the MetricType parameter to system, the following rules apply:
-	//
-	//     *   If you set the DimensionKey parameter to user_id, the system specifies the value of the DimensionValue parameter.
-	//
-	//     *   If you set the DimensionKey parameter to scaling_group, the system specifies the value of the DimensionValue parameter.
-	//
-	//     *   If you set the DimensionKey parameter to device, you can set the DimensionValue parameter to eth0 or eth1.
-	//
-	//         *   For instances that reside in the classic network, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC.
-	//         *   For instances that reside in the classic network, eth1 specifies the public NIC.
-	//
-	//     *   If you set the DimensionKey parameter to state, you can set the DimensionValue parameter to TCP_TOTAL or ESTABLISHED.
-	//
-	//         *   TCP_TOTAL specifies the total number of TCP connections.
-	//         *   ESTABLISHED specifies the number of established TCP connections.
+	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
 }
 
@@ -1398,67 +1184,11 @@ func (s *CreateAlarmRequestDimensions) SetDimensionValue(v string) *CreateAlarmR
 }
 
 type CreateAlarmRequestExpressions struct {
-	// The operator that is used to compare the metric value and the threshold. Valid values:
-	//
-	// *   If the metric value is greater than or equal to the threshold, set the value to: >=.
-	// *   If the metric value is less than or equal to the threshold, set the value to: <=.
-	// *   If the metric value is greater than the threshold, set the value to: >.
-	// *   If the metric value is less than the threshold, set the value to: <.
-	//
-	// Default value: >=.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The names of the metrics that are specified in the multi-metric alert rule. The valid values of this parameter vary based on the metric type.
-	//
-	// *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
-	//
-	// *   If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
-	//
-	//     *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-	//     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-	//     *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	//     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-	//     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	//     *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-	//     *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-	//     *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-	//     *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-	//     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-	//     *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
-	//     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-	//     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-	//     *   MemoryUtilization: the memory usage of an agent. Unit: %.
-	//     *   LoadAverage: the average system load of an agent.
-	//     *   TcpConnection: the total number of TCP connections of an agent.
-	//     *   TcpConnection: the number of established TCP connections of an agent.
-	//     *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
-	//     *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-	//     *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-	//     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
-	//
-	// For more information, see [Event-triggered task for system monitoring](~~74854~~).
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The period during which the statistical values of the metrics that are specified in the multi-metric alert rule are collected. Unit: seconds. Valid values:
-	//
-	// *   15
-	// *   60
-	// *   120
-	// *   300
-	// *   900
-	//
-	// > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
-	//
-	// Default value: 300.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The method that is used to aggregate statistics about the metrics that are specified in the multi-metric alert rule. Valid values:
-	//
-	// *   Average
-	// *   Minimum
-	// *   Maximum
-	//
-	// Default value: Average.
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The thresholds of the metric values. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ComparisonOperator *string  `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	MetricName         *string  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Period             *int32   `json:"Period,omitempty" xml:"Period,omitempty"`
+	Statistics         *string  `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s CreateAlarmRequestExpressions) String() string {
@@ -1495,10 +1225,8 @@ func (s *CreateAlarmRequestExpressions) SetThreshold(v float32) *CreateAlarmRequ
 }
 
 type CreateAlarmResponseBody struct {
-	// The ID of the event-triggered task.
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAlarmResponseBody) String() string {
@@ -2994,7 +2722,8 @@ func (s *CreateEciScalingConfigurationRequestVolumesDiskVolume) SetFsType(v stri
 }
 
 type CreateEciScalingConfigurationRequestVolumesEmptyDirVolume struct {
-	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	Medium    *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	SizeLimit *string `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
 }
 
 func (s CreateEciScalingConfigurationRequestVolumesEmptyDirVolume) String() string {
@@ -3007,6 +2736,11 @@ func (s CreateEciScalingConfigurationRequestVolumesEmptyDirVolume) GoString() st
 
 func (s *CreateEciScalingConfigurationRequestVolumesEmptyDirVolume) SetMedium(v string) *CreateEciScalingConfigurationRequestVolumesEmptyDirVolume {
 	s.Medium = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequestVolumesEmptyDirVolume) SetSizeLimit(v string) *CreateEciScalingConfigurationRequestVolumesEmptyDirVolume {
+	s.SizeLimit = &v
 	return s
 }
 
@@ -3356,31 +3090,12 @@ func (s *CreateLifecycleHookResponse) SetBody(v *CreateLifecycleHookResponseBody
 }
 
 type CreateNotificationConfigurationRequest struct {
-	// The types of the notifications that you want to create. You can create one to eight notifications. Specify multiple values in the repeated list form.
-	//
-	// You can call the DescribeNotificationTypes operation to query the values of this parameter.
-	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The types of the notifications that you want to create. You can create one to eight notifications. Specify multiple values in the repeated list form.
-	//
-	// You can call the DescribeNotificationTypes operation to query the values of this parameter.
-	NotificationTypes []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
-	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
-	//
-	// *   If you use CloudMonitor as the notification method, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
-	// *   If you use an MNS queue as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
-	// *   If you use an MNS topic as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
-	//
-	// The variables in the preceding formats have the following meanings:
-	//
-	// *   region-id: the region ID of the scaling group.
-	// *   account-id: the ID of the Alibaba Cloud account.
-	// *   queuename: the name of the MNS queue.
-	// *   topicname: the name of the MNS topic.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	NotificationArn      *string   `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
+	NotificationTypes    []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s CreateNotificationConfigurationRequest) String() string {
@@ -3422,7 +3137,6 @@ func (s *CreateNotificationConfigurationRequest) SetScalingGroupId(v string) *Cr
 }
 
 type CreateNotificationConfigurationResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3472,80 +3186,80 @@ type CreateScalingConfigurationRequest struct {
 	ImageOptions       *CreateScalingConfigurationRequestImageOptions       `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
 	PrivatePoolOptions *CreateScalingConfigurationRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	SystemDisk         *CreateScalingConfigurationRequestSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
+	// Specifies whether to associate an ECS instance on a dedicated host with the dedicated host. Valid values:
 	//
-	// *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-	// *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, the instance cannot be started.
+	// *   default: does not associate the ECS instance with the dedicated host. If you start an ECS instance that was stopped in economical mode and the original dedicated host has insufficient resources, the ECS instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+	// *   host: associates the ECS instance with the dedicated host. If you start an ECS instance that was stopped in economical mode, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the ECS instance fails to start.
 	//
-	// Default value: default.
+	// Default value: default
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "[How to ensure the idempotence of a request](~~25693~~)" topic.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The number of vCPUs. Unit: cores.
+	// The number of vCPUs.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set CPU to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set CPU to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify Cpu and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify instance types in the scaling configuration.
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The performance mode of the burstable instance. Valid values:
 	//
-	// *   Standard: standard mode.
-	// *   Unlimited: unlimited mode.
+	// *   Standard: standard mode
+	// *   Unlimited: unlimited mode
 	//
-	// For more information, see the "Performance modes" section in the [Overview](~~59977~~) topic.
+	// For more information, see the "Performance modes" section in the "[Overview](~~59977~~)" topic.
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// Details of the data disks.
+	// The data disks.
 	DataDisks []*CreateScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// The dedicated host ID of the ECS instance. You cannot create preemptible instances on dedicated hosts. Therefore, if you configure the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
+	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The ID of the deployment set to which the ECS instances belong.
+	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The hostname of the instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
+	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
 	//
-	// *   Windows instances: The name must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The name cannot contain periods (.) or contain only digits.
-	// *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+	// *   Windows instances: The hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
+	// *   Other instances, such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances that are created by using the scaling configuration belong.
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
+	// The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
 	// The ID of the image that Auto Scaling uses to automatically create ECS instances.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image. Each image name must be unique in a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
+	// The name of the image. Each image name must be unique in a region. If you specify ImageId, ImageName is ignored.
 	//
-	// You cannot use the ImageName parameter to specify images that are purchased from Alibaba Cloud Marketplace.
+	// You cannot use ImageName to specify images that are purchased from Alibaba Cloud Marketplace.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The description of the ECS instance. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// The description of the ECS instance. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`.
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The name of an ECS instance that is automatically created based on the scaling configuration.
+	// The name of the ECS instance that Auto Scaling creates based on the scaling configuration.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+	// Details of the intelligent configuration settings that determine the range of instance types that meet the specified criteria.
 	InstancePatternInfos []*CreateScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
-	// The instance type of the ECS instance. For more information, see the "Instance family" topic.
+	// The instance type of the ECS instance. For more information, see the "Instance families" topic.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The information about the instance types.
+	// The instance types.
 	InstanceTypeOverrides []*CreateScalingConfigurationRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
-	// The instance types. If you specify the InstanceTypes parameter, the InstanceType parameter is ignored.
+	// The instance types. If you specify InstanceTypes, InstanceType is ignored.
 	//
-	// Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+	// Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The billing method for network usage. Valid values:
+	// The metering method for network usage. Valid values:
 	//
-	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-	// *   PayByTraffic: You are charged for the actual traffic that is used. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
+	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by InternetMaxBandwidthOut.
+	// *   PayByTraffic: You are charged based on the amount of transferred data. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
 	//
 	// For the classic network, the default value is PayByBandwidth. For VPCs, the default value is PayByTraffic.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
 	//
-	// Default value: 200. This parameter is not used for billing because inbound traffic to instances is free of charge.
+	// Default value: 200 This parameter is not used for billing because inbound traffic to instances is free of charge.
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
+	// *   Valid values if you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
+	// *   Valid values if you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// Specifies whether to create an I/O optimized instance. Valid values:
 	//
@@ -3555,30 +3269,30 @@ type CreateScalingConfigurationRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The name of the key pair that you use to log on to an ECS instance.
+	// The name of the key pair that you want to use to log on to an ECS instance.
 	//
-	// *   Windows instances do not use this parameter.
+	// *   Windows instances do not support this parameter.
 	// *   By default, the username and password authentication method is disabled for Linux instances.
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// The weight of an ECS instance as a backend server. Valid values: 1 to 100.
 	//
-	// Default value: 50.
+	// Default value: 50
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
 	// The memory size. Unit: GiB.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify Cpu and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify instance types in the scaling configuration.
 	Memory       *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password that you use to log on to an ECS instance. The password must be 8 to 30 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+	// The password that you want to use to log on to an ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
-	// \`()`  ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ `
+	// `` `() ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ ``
 	//
 	// The password of a Windows instance cannot start with a forward slash (/).
 	//
-	// > For security reasons, we recommend that you use HTTPS to send requests if the Password parameter is specified.
+	// > For security reasons, we recommend that you use HTTPS to send requests if you specify Password.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image. Valid values:
 	//
@@ -3587,14 +3301,14 @@ type CreateScalingConfigurationRequest struct {
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	// The name of the RAM role that you attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the resource group to which the ECS instance belongs.
+	// The ID of the resource group to which the ECS instances that are created by using the scaling configuration belong.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
 	//
-	// The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify this parameter, the scaling configuration ID is used.
+	// The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
 	ScalingConfigurationName *string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
-	// The ID of the scaling group in which you want to create the scaling configuration.
+	// The ID of the scaling group in which you want to create a scaling configuration.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The scheduler options.
 	SchedulerOptions map[string]interface{} `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty"`
@@ -3603,51 +3317,51 @@ type CreateScalingConfigurationRequest struct {
 	// *   Active: enables security hardening. This value is applicable only to public images.
 	// *   Deactive: disables security hardening. This value is applicable to all image types.
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The ID of the security group with which the ECS instance is associated. The ECS instances that are associated with the same security group can access each other.
+	// The ID of the security group with which ECS instances are associated. ECS instances that are associated with the same security group can access each other.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The IDs of the security groups with which you want to associate the ECS instance. For more information, see the "Security group limits" section of the [Limits](~~25412~~) topic.
+	// The IDs of the security groups with which you want to associate the ECS instances that are created by using the scaling configuration. For more information, see the "Security group limits" section of the "[Limits](~~25412~~)" topic.
 	//
-	// > If you specify the SecurityGroupId parameter, you cannot specify the SecurityGroupIds parameter.
+	// > If you specify SecurityGroupId, you cannot specify SecurityGroupIds.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The protection period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
+	// The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
 	//
 	// *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
 	// *   If you set this parameter to 0, no protection period is specified for the preemptible instance.
 	//
-	// Default value: 1.
+	// Default value: 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
+	// The interruption mode of the preemptible instance. Set the value to Terminate. The value specifies that the preemptible instance is to be released.
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
 	// The billing information of the preemptible instances.
 	SpotPriceLimits []*CreateScalingConfigurationRequestSpotPriceLimits `json:"SpotPriceLimits,omitempty" xml:"SpotPriceLimits,omitempty" type:"Repeated"`
-	// The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
+	// The preemption policy that you want to apply to pay-as-you-go and preemptible instances. Valid values:
 	//
 	// *   NoSpot: The instance is created as a pay-as-you-go instance.
 	// *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
 	// *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
 	//
-	// Default value: NoSpot.
+	// Default value: NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The categories of the system disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the system disks. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
 	//
-	// *   cloud: basic disk.
-	// *   cloud_efficiency: ultra disk.
-	// *   cloud_ssd: standard SSD.
-	// *   cloud_essd: ESSD.
+	// *   cloud: basic disk
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: standard SSD
+	// *   cloud_essd: ESSD
 	//
-	// > If you specify the SystemDiskCategories parameter, you cannot specify the `SystemDisk.Category` parameter.
+	// > If you specify SystemDiskCategories, you cannot specify `SystemDisk.Category`.
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
 	// The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
 	//
 	// *   A tag key can be up to 64 characters in length. The key cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
 	// *   A tag value can be up to 128 characters in length. The value cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// Specifies whether to create an instance on a dedicated host. Valid values:
+	// Specifies whether to create an ECS instance on a dedicated host. Valid values:
 	//
-	// *   default: does not create the instance on a dedicated host.
-	// *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
+	// *   default: does not create an ECS instance on a dedicated host.
+	// *   host: creates an ECS instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud selects a dedicated host for the ECS instance.
 	//
-	// Default value: default.
+	// Default value: default
 	Tenancy *string `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
 	// The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -3938,11 +3652,11 @@ func (s *CreateScalingConfigurationRequestImageOptions) SetLoginAsNonRoot(v bool
 type CreateScalingConfigurationRequestPrivatePoolOptions struct {
 	// The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
+	// The type of the private pool that you want to use to start ECS instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create ECS instances. Valid values:
 	//
-	// *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-	// *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-	// *   None: no private pool. The system does not use the resources of private pools to create instances.
+	// *   Open: open private pool. Auto Scaling selects a matching open private pool to start instances. If no matching open private pools are found, Auto Scaling uses the resources in the public pool to start instances. In this case, you do not need to specify PrivatePoolOptions.Id.
+	// *   Target: specified private pool. Auto Scaling uses the resources in the specified private pool to start ECS instances. If the specified private pool is unavailable, Auto Scaling cannot start ECS instances. If you set this parameter to Target, you must specify PrivatePoolOptions.Id.
+	// *   None: no private pool. Auto Scaling does not use the resources in private pools to start ECS instances.
 	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
 }
 
@@ -3972,47 +3686,50 @@ type CreateScalingConfigurationRequestSystemDisk struct {
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The category of the system disk. Valid values:
 	//
-	// *   cloud: basic disk.
-	// *   cloud_efficiency: ultra disk.
-	// *   cloud_ssd: standard SSD.
-	// *   ephemeral_ssd: local SSD.
-	// *   cloud_essd: enhanced SSD (ESSD).
-	// *   cloud_auto: ESSD AutoPL disk.
+	// *   cloud: basic disk
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: standard SSD
+	// *   ephemeral_ssd: local SSD
+	// *   cloud_essd: enhanced SSD (ESSD)
+	// *   cloud_auto: ESSD AutoPL disk
 	//
-	// If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+	// If you specify SystemDisk.Category, you cannot specify `SystemDiskCategories`. If you do not specify SystemDisk.Category or `SystemDiskCategories`, the default value of SystemDisk.Category is used.
+	//
+	// *   For I/O optimized instances, the default value is cloud_efficiency.
+	// *   For non-I/O optimized instances, the default value is cloud.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
+	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the system disk. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// The encryption algorithm that you want to use to encrypt the system disk. Valid values:
 	//
-	// *   AES-256.
-	// *   SM4-128.
+	// *   AES-256
+	// *   SM4-128
 	//
-	// Default value: AES-256.
+	// Default value: AES-256
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt the system disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// Default value: false.
+	// Default value: false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The ID of the KMS key that you want to use to encrypt the system disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The performance level (PL) of the system disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// Default value: PL0.
+	// Default value: PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The IOPS metric that is preconfigured for the system disk.
 	//
@@ -4020,15 +3737,15 @@ type CreateScalingConfigurationRequestSystemDisk struct {
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The size of the system disk. Unit: GiB.
 	//
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
+	// *   If you set SystemDisk.Category cloud: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
 	//
-	// The value of the SystemDisk.Size parameter must be greater than or equal to the value of the max{20, ImageSize} parameter.
+	// The value of SystemDisk.Size must be greater than or equal to the value of max{20, ImageSize}.
 	//
-	// Default value: max{40, ImageSize}.
+	// Default value: 40 or the size of the image, whichever is greater.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -4103,77 +3820,80 @@ type CreateScalingConfigurationRequestDataDisks struct {
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The categories of the data disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the data disks. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
 	//
-	// *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
+	// *   cloud: basic disk. For a basic disk that is created together with the instance, DeleteWithInstance is set to true.
 	// *   cloud_efficiency: ultra disk.
 	// *   cloud_ssd: standard SSD.
 	// *   cloud_essd: ESSD.
 	//
-	// > If you specify the Categories parameter, you cannot specify the `DataDisks.Category` parameter.
+	// > If you specify Categories, you cannot specify `DataDisks.Category`.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	// The category of the data disk. Valid values:
 	//
-	// *   cloud: basic disk.
-	// *   cloud_efficiency: ultra disk.
-	// *   cloud_ssd: standard SSD.
-	// *   cloud_essd: ESSD.
-	// *   ephemeral_ssd: local SSD.
-	// *   cloud_auto: ESSD AutoPL disk.
+	// *   cloud: basic disk
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: standard SSD
+	// *   cloud_essd: ESSD
+	// *   ephemeral_ssd: local SSD
+	// *   cloud_auto: ESSD AutoPL disk
 	//
-	// If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+	// If you specify this parameter, you cannot specify Categories. If you do not specify Category or Categories, the default value of Category is used.
+	//
+	// *   For I/O optimized instances, the default value is cloud_efficiency.
+	// *   For non-I/O optimized instances, the default value is cloud.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// This parameter is available only for independent disks whose DataDisks.Category parameter is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for other disks, an error is reported.
+	// This parameter is available only for independent disks whose value of Category is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for other disks, an error is reported.
 	//
-	// Default value: true.
+	// Default value: true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The description of the data disk. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// The description of the data disk. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mount target of the data disk. If you do not specify the Device parameter, a mount target is automatically created when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	// The mount target of the data disk. If you do not specify Device, a mount target is automatically assigned when Auto Scaling creates ECS instances. The names of mount targets range from /dev/xvdb to /dev/xvdz.
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// Specifies whether to encrypt the data disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// Default value: false.
+	// Default value: false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key that you want to use to encrypt the data disk.
+	// The ID of the KMS key that you want to use to encrypt the data disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The PL of the data disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// > For more information about how to choose ESSD PLs, see [ESSD](~~122389~~).
+	// > For more information about how to select ESSD PLs, see [ESSD](~~122389~~).
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The input/output operations per second (IOPS) metric that is preconfigured for the data disk.
+	// The IOPS metric that is preconfigured for the data disk.
 	//
-	// > IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+	// > IOPS measures the number of read and write operations that an EBS device can process per second.
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of the data disk. Unit: GiB.
+	// The size of the data disk. Unit: GiB. Valid values:
 	//
-	// *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
-	// *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
+	// *   If you set Categories to cloud: 5 to 2000.
+	// *   If you set Categories to cloud_efficiency: 20 to 32768.
+	// *   If you set Categories to cloud_essd: 20 to 32768.
+	// *   If you set Categories to ephemeral_ssd: 5 to 800.
 	//
-	// The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
+	// The size of the data disk must be greater than or equal to the size of the snapshot that is specified by SnapshotId.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot that you want to use to create data disks. If you specify this parameter, the DataDisks.Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+	// The ID of the snapshot that you want to use to create data disks. If you specify this parameter, DataDisks.Size is ignored. The size of the data disk is the same as the size of the specified snapshot.
 	//
-	// If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
+	// If you specify a snapshot that is created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -4272,32 +3992,32 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	// *   Include: includes burstable instance types.
 	// *   Required: includes only burstable instance types.
 	//
-	// Default value: Include.
+	// Default value: Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that is specified for an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the [Overview of instance families](~~25378~~) topic.
+	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the "[Instance families](~~25378~~)" topic.
 	//
-	// When you specify the Cores parameter, take note of the following items:
+	// Take note of the following items when you specify Cores:
 	//
-	// *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
-	// *   If you specify the InstancePatternInfos parameter, you must also specify the Cores and Memory parameters.
-	// *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
+	// *   InstancePatternInfos is available only for scaling groups that reside in VPCs.
+	// *   If you specify InstancePatternInfos, you must specify Cores and Memory.
+	// *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The instance type that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\*), to exclude an instance type or an instance family. Examples:
 	//
 	// *   ecs.c6.large: excludes the ecs.c6.large instance type.
 	// *   ecs.c6.\*: excludes the c6 instance family.
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
-	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter is available only if you set the `CostOptimization` parameter to true. Valid values:
+	// The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the [Shared instance families](~~108489~~) topic.
-	// *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](~~25378~~) topic.
-	// *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
+	// *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](~~108489~~)" topic.
+	// *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](~~25378~~)" topic.
+	// *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](~~59977~~)" topic of burstable instances.
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
 	//
-	// > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
+	// > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The memory size that is specified for an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -4345,17 +4065,17 @@ func (s *CreateScalingConfigurationRequestInstancePatternInfos) SetMemory(v floa
 }
 
 type CreateScalingConfigurationRequestInstanceTypeOverrides struct {
-	// The instance type that you want to use to override the instance type that is specified in the launch template.
+	// Instance type N that you want to use to override the instance type that is specified in the launch template.
 	//
-	// If you want to scale instances based on the weighted capacities of the instances, you must specify the InstanceType parameter and the WeightedCapacity parameter. You can specify 1 to 10 instance types by using the Extended Configurations feature of the launch template.
+	// If you want to trigger scale-outs based on the weighted capacities of instances, specify InstanceType and WeightedCapacity at the same time. You can specify N instance types by using the Extended Configurations feature. Valid values of N: 1 to 10.
 	//
-	// > This parameter is available only if you specify the LaunchTemplateId parameter.
+	// > This parameter takes effect only if you specify LaunchTemplateId.
 	//
-	// You can specify an instance type that is available for purchase as the value of the InstanceType parameter.
+	// You can specify an instance type that is available for purchase as the value of InstanceType.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+	// The weight of instance type N. If you want to trigger scale-outs based on the weighted capacities of instances, you must specify WeightedCapacity after you specify InstanceType.
 	//
-	// The weight of an instance type specifies the capacity of an instance of the instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
+	// The weight of an instance type specifies the capacity of an instance of the instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type is required to meet the expected capacity requirement.
 	//
 	// Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
 	//
@@ -4367,9 +4087,9 @@ type CreateScalingConfigurationRequestInstanceTypeOverrides struct {
 	//
 	// To meet the expected capacity requirement, Auto Scaling must create and add two ecs.c5.xlarge instances.
 	//
-	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by the MaxSize parameter and the maximum weight of the instance types.
+	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance types.
 	//
-	// Valid values of the WeightedCapacity parameter: 1 to 500.
+	// Valid values of WeightedCapacity: 1 to 500.
 	WeightedCapacity *int32 `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
 }
 
@@ -4392,9 +4112,9 @@ func (s *CreateScalingConfigurationRequestInstanceTypeOverrides) SetWeightedCapa
 }
 
 type CreateScalingConfigurationRequestSpotPriceLimits struct {
-	// The instance type of the preemptible instance. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The price limit of the preemptible instance. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The price limit of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	PriceLimit *float32 `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 }
 
@@ -4420,80 +4140,80 @@ type CreateScalingConfigurationShrinkRequest struct {
 	ImageOptions       *CreateScalingConfigurationShrinkRequestImageOptions       `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
 	PrivatePoolOptions *CreateScalingConfigurationShrinkRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	SystemDisk         *CreateScalingConfigurationShrinkRequestSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
+	// Specifies whether to associate an ECS instance on a dedicated host with the dedicated host. Valid values:
 	//
-	// *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-	// *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, the instance cannot be started.
+	// *   default: does not associate the ECS instance with the dedicated host. If you start an ECS instance that was stopped in economical mode and the original dedicated host has insufficient resources, the ECS instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+	// *   host: associates the ECS instance with the dedicated host. If you start an ECS instance that was stopped in economical mode, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the ECS instance fails to start.
 	//
-	// Default value: default.
+	// Default value: default
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "[How to ensure the idempotence of a request](~~25693~~)" topic.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The number of vCPUs. Unit: cores.
+	// The number of vCPUs.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set CPU to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set CPU to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify Cpu and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify instance types in the scaling configuration.
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The performance mode of the burstable instance. Valid values:
 	//
-	// *   Standard: standard mode.
-	// *   Unlimited: unlimited mode.
+	// *   Standard: standard mode
+	// *   Unlimited: unlimited mode
 	//
-	// For more information, see the "Performance modes" section in the [Overview](~~59977~~) topic.
+	// For more information, see the "Performance modes" section in the "[Overview](~~59977~~)" topic.
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// Details of the data disks.
+	// The data disks.
 	DataDisks []*CreateScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// The dedicated host ID of the ECS instance. You cannot create preemptible instances on dedicated hosts. Therefore, if you configure the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
+	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The ID of the deployment set to which the ECS instances belong.
+	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The hostname of the instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
+	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
 	//
-	// *   Windows instances: The name must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The name cannot contain periods (.) or contain only digits.
-	// *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+	// *   Windows instances: The hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
+	// *   Other instances, such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances that are created by using the scaling configuration belong.
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
+	// The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
 	// The ID of the image that Auto Scaling uses to automatically create ECS instances.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image. Each image name must be unique in a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
+	// The name of the image. Each image name must be unique in a region. If you specify ImageId, ImageName is ignored.
 	//
-	// You cannot use the ImageName parameter to specify images that are purchased from Alibaba Cloud Marketplace.
+	// You cannot use ImageName to specify images that are purchased from Alibaba Cloud Marketplace.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The description of the ECS instance. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// The description of the ECS instance. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`.
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The name of an ECS instance that is automatically created based on the scaling configuration.
+	// The name of the ECS instance that Auto Scaling creates based on the scaling configuration.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+	// Details of the intelligent configuration settings that determine the range of instance types that meet the specified criteria.
 	InstancePatternInfos []*CreateScalingConfigurationShrinkRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
-	// The instance type of the ECS instance. For more information, see the "Instance family" topic.
+	// The instance type of the ECS instance. For more information, see the "Instance families" topic.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The information about the instance types.
+	// The instance types.
 	InstanceTypeOverrides []*CreateScalingConfigurationShrinkRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
-	// The instance types. If you specify the InstanceTypes parameter, the InstanceType parameter is ignored.
+	// The instance types. If you specify InstanceTypes, InstanceType is ignored.
 	//
-	// Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+	// Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The billing method for network usage. Valid values:
+	// The metering method for network usage. Valid values:
 	//
-	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-	// *   PayByTraffic: You are charged for the actual traffic that is used. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
+	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by InternetMaxBandwidthOut.
+	// *   PayByTraffic: You are charged based on the amount of transferred data. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
 	//
 	// For the classic network, the default value is PayByBandwidth. For VPCs, the default value is PayByTraffic.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
 	//
-	// Default value: 200. This parameter is not used for billing because inbound traffic to instances is free of charge.
+	// Default value: 200 This parameter is not used for billing because inbound traffic to instances is free of charge.
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
+	// *   Valid values if you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
+	// *   Valid values if you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// Specifies whether to create an I/O optimized instance. Valid values:
 	//
@@ -4503,30 +4223,30 @@ type CreateScalingConfigurationShrinkRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The name of the key pair that you use to log on to an ECS instance.
+	// The name of the key pair that you want to use to log on to an ECS instance.
 	//
-	// *   Windows instances do not use this parameter.
+	// *   Windows instances do not support this parameter.
 	// *   By default, the username and password authentication method is disabled for Linux instances.
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// The weight of an ECS instance as a backend server. Valid values: 1 to 100.
 	//
-	// Default value: 50.
+	// Default value: 50
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
 	// The memory size. Unit: GiB.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify Cpu and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify instance types in the scaling configuration.
 	Memory       *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password that you use to log on to an ECS instance. The password must be 8 to 30 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+	// The password that you want to use to log on to an ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
-	// \`()`  ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ `
+	// `` `() ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ ``
 	//
 	// The password of a Windows instance cannot start with a forward slash (/).
 	//
-	// > For security reasons, we recommend that you use HTTPS to send requests if the Password parameter is specified.
+	// > For security reasons, we recommend that you use HTTPS to send requests if you specify Password.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image. Valid values:
 	//
@@ -4535,14 +4255,14 @@ type CreateScalingConfigurationShrinkRequest struct {
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	// The name of the RAM role that you attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the resource group to which the ECS instance belongs.
+	// The ID of the resource group to which the ECS instances that are created by using the scaling configuration belong.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
 	//
-	// The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify this parameter, the scaling configuration ID is used.
+	// The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
 	ScalingConfigurationName *string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
-	// The ID of the scaling group in which you want to create the scaling configuration.
+	// The ID of the scaling group in which you want to create a scaling configuration.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The scheduler options.
 	SchedulerOptionsShrink *string `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty"`
@@ -4551,51 +4271,51 @@ type CreateScalingConfigurationShrinkRequest struct {
 	// *   Active: enables security hardening. This value is applicable only to public images.
 	// *   Deactive: disables security hardening. This value is applicable to all image types.
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The ID of the security group with which the ECS instance is associated. The ECS instances that are associated with the same security group can access each other.
+	// The ID of the security group with which ECS instances are associated. ECS instances that are associated with the same security group can access each other.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The IDs of the security groups with which you want to associate the ECS instance. For more information, see the "Security group limits" section of the [Limits](~~25412~~) topic.
+	// The IDs of the security groups with which you want to associate the ECS instances that are created by using the scaling configuration. For more information, see the "Security group limits" section of the "[Limits](~~25412~~)" topic.
 	//
-	// > If you specify the SecurityGroupId parameter, you cannot specify the SecurityGroupIds parameter.
+	// > If you specify SecurityGroupId, you cannot specify SecurityGroupIds.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The protection period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
+	// The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
 	//
 	// *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
 	// *   If you set this parameter to 0, no protection period is specified for the preemptible instance.
 	//
-	// Default value: 1.
+	// Default value: 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
+	// The interruption mode of the preemptible instance. Set the value to Terminate. The value specifies that the preemptible instance is to be released.
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
 	// The billing information of the preemptible instances.
 	SpotPriceLimits []*CreateScalingConfigurationShrinkRequestSpotPriceLimits `json:"SpotPriceLimits,omitempty" xml:"SpotPriceLimits,omitempty" type:"Repeated"`
-	// The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
+	// The preemption policy that you want to apply to pay-as-you-go and preemptible instances. Valid values:
 	//
 	// *   NoSpot: The instance is created as a pay-as-you-go instance.
 	// *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
 	// *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
 	//
-	// Default value: NoSpot.
+	// Default value: NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The categories of the system disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the system disks. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
 	//
-	// *   cloud: basic disk.
-	// *   cloud_efficiency: ultra disk.
-	// *   cloud_ssd: standard SSD.
-	// *   cloud_essd: ESSD.
+	// *   cloud: basic disk
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: standard SSD
+	// *   cloud_essd: ESSD
 	//
-	// > If you specify the SystemDiskCategories parameter, you cannot specify the `SystemDisk.Category` parameter.
+	// > If you specify SystemDiskCategories, you cannot specify `SystemDisk.Category`.
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
 	// The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
 	//
 	// *   A tag key can be up to 64 characters in length. The key cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
 	// *   A tag value can be up to 128 characters in length. The value cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// Specifies whether to create an instance on a dedicated host. Valid values:
+	// Specifies whether to create an ECS instance on a dedicated host. Valid values:
 	//
-	// *   default: does not create the instance on a dedicated host.
-	// *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
+	// *   default: does not create an ECS instance on a dedicated host.
+	// *   host: creates an ECS instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud selects a dedicated host for the ECS instance.
 	//
-	// Default value: default.
+	// Default value: default
 	Tenancy *string `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
 	// The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -4886,11 +4606,11 @@ func (s *CreateScalingConfigurationShrinkRequestImageOptions) SetLoginAsNonRoot(
 type CreateScalingConfigurationShrinkRequestPrivatePoolOptions struct {
 	// The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
+	// The type of the private pool that you want to use to start ECS instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create ECS instances. Valid values:
 	//
-	// *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-	// *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-	// *   None: no private pool. The system does not use the resources of private pools to create instances.
+	// *   Open: open private pool. Auto Scaling selects a matching open private pool to start instances. If no matching open private pools are found, Auto Scaling uses the resources in the public pool to start instances. In this case, you do not need to specify PrivatePoolOptions.Id.
+	// *   Target: specified private pool. Auto Scaling uses the resources in the specified private pool to start ECS instances. If the specified private pool is unavailable, Auto Scaling cannot start ECS instances. If you set this parameter to Target, you must specify PrivatePoolOptions.Id.
+	// *   None: no private pool. Auto Scaling does not use the resources in private pools to start ECS instances.
 	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
 }
 
@@ -4920,47 +4640,50 @@ type CreateScalingConfigurationShrinkRequestSystemDisk struct {
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The category of the system disk. Valid values:
 	//
-	// *   cloud: basic disk.
-	// *   cloud_efficiency: ultra disk.
-	// *   cloud_ssd: standard SSD.
-	// *   ephemeral_ssd: local SSD.
-	// *   cloud_essd: enhanced SSD (ESSD).
-	// *   cloud_auto: ESSD AutoPL disk.
+	// *   cloud: basic disk
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: standard SSD
+	// *   ephemeral_ssd: local SSD
+	// *   cloud_essd: enhanced SSD (ESSD)
+	// *   cloud_auto: ESSD AutoPL disk
 	//
-	// If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+	// If you specify SystemDisk.Category, you cannot specify `SystemDiskCategories`. If you do not specify SystemDisk.Category or `SystemDiskCategories`, the default value of SystemDisk.Category is used.
+	//
+	// *   For I/O optimized instances, the default value is cloud_efficiency.
+	// *   For non-I/O optimized instances, the default value is cloud.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
+	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the system disk. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// The encryption algorithm that you want to use to encrypt the system disk. Valid values:
 	//
-	// *   AES-256.
-	// *   SM4-128.
+	// *   AES-256
+	// *   SM4-128
 	//
-	// Default value: AES-256.
+	// Default value: AES-256
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt the system disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// Default value: false.
+	// Default value: false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The ID of the KMS key that you want to use to encrypt the system disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The performance level (PL) of the system disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// Default value: PL0.
+	// Default value: PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The IOPS metric that is preconfigured for the system disk.
 	//
@@ -4968,15 +4691,15 @@ type CreateScalingConfigurationShrinkRequestSystemDisk struct {
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The size of the system disk. Unit: GiB.
 	//
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
+	// *   If you set SystemDisk.Category cloud: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
 	//
-	// The value of the SystemDisk.Size parameter must be greater than or equal to the value of the max{20, ImageSize} parameter.
+	// The value of SystemDisk.Size must be greater than or equal to the value of max{20, ImageSize}.
 	//
-	// Default value: max{40, ImageSize}.
+	// Default value: 40 or the size of the image, whichever is greater.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -5051,77 +4774,80 @@ type CreateScalingConfigurationShrinkRequestDataDisks struct {
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The categories of the data disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the data disks. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
 	//
-	// *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
+	// *   cloud: basic disk. For a basic disk that is created together with the instance, DeleteWithInstance is set to true.
 	// *   cloud_efficiency: ultra disk.
 	// *   cloud_ssd: standard SSD.
 	// *   cloud_essd: ESSD.
 	//
-	// > If you specify the Categories parameter, you cannot specify the `DataDisks.Category` parameter.
+	// > If you specify Categories, you cannot specify `DataDisks.Category`.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	// The category of the data disk. Valid values:
 	//
-	// *   cloud: basic disk.
-	// *   cloud_efficiency: ultra disk.
-	// *   cloud_ssd: standard SSD.
-	// *   cloud_essd: ESSD.
-	// *   ephemeral_ssd: local SSD.
-	// *   cloud_auto: ESSD AutoPL disk.
+	// *   cloud: basic disk
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: standard SSD
+	// *   cloud_essd: ESSD
+	// *   ephemeral_ssd: local SSD
+	// *   cloud_auto: ESSD AutoPL disk
 	//
-	// If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+	// If you specify this parameter, you cannot specify Categories. If you do not specify Category or Categories, the default value of Category is used.
+	//
+	// *   For I/O optimized instances, the default value is cloud_efficiency.
+	// *   For non-I/O optimized instances, the default value is cloud.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// This parameter is available only for independent disks whose DataDisks.Category parameter is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for other disks, an error is reported.
+	// This parameter is available only for independent disks whose value of Category is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for other disks, an error is reported.
 	//
-	// Default value: true.
+	// Default value: true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The description of the data disk. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// The description of the data disk. The description must be 2 to 256 characters in length. The description can contain letters and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mount target of the data disk. If you do not specify the Device parameter, a mount target is automatically created when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	// The mount target of the data disk. If you do not specify Device, a mount target is automatically assigned when Auto Scaling creates ECS instances. The names of mount targets range from /dev/xvdb to /dev/xvdz.
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// Specifies whether to encrypt the data disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// Default value: false.
+	// Default value: false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key that you want to use to encrypt the data disk.
+	// The ID of the KMS key that you want to use to encrypt the data disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The PL of the data disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// > For more information about how to choose ESSD PLs, see [ESSD](~~122389~~).
+	// > For more information about how to select ESSD PLs, see [ESSD](~~122389~~).
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The input/output operations per second (IOPS) metric that is preconfigured for the data disk.
+	// The IOPS metric that is preconfigured for the data disk.
 	//
-	// > IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+	// > IOPS measures the number of read and write operations that an EBS device can process per second.
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of the data disk. Unit: GiB.
+	// The size of the data disk. Unit: GiB. Valid values:
 	//
-	// *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
-	// *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
+	// *   If you set Categories to cloud: 5 to 2000.
+	// *   If you set Categories to cloud_efficiency: 20 to 32768.
+	// *   If you set Categories to cloud_essd: 20 to 32768.
+	// *   If you set Categories to ephemeral_ssd: 5 to 800.
 	//
-	// The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
+	// The size of the data disk must be greater than or equal to the size of the snapshot that is specified by SnapshotId.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot that you want to use to create data disks. If you specify this parameter, the DataDisks.Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+	// The ID of the snapshot that you want to use to create data disks. If you specify this parameter, DataDisks.Size is ignored. The size of the data disk is the same as the size of the specified snapshot.
 	//
-	// If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
+	// If you specify a snapshot that is created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -5220,32 +4946,32 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	// *   Include: includes burstable instance types.
 	// *   Required: includes only burstable instance types.
 	//
-	// Default value: Include.
+	// Default value: Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that is specified for an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the [Overview of instance families](~~25378~~) topic.
+	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the "[Instance families](~~25378~~)" topic.
 	//
-	// When you specify the Cores parameter, take note of the following items:
+	// Take note of the following items when you specify Cores:
 	//
-	// *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
-	// *   If you specify the InstancePatternInfos parameter, you must also specify the Cores and Memory parameters.
-	// *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
+	// *   InstancePatternInfos is available only for scaling groups that reside in VPCs.
+	// *   If you specify InstancePatternInfos, you must specify Cores and Memory.
+	// *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The instance type that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\*), to exclude an instance type or an instance family. Examples:
 	//
 	// *   ecs.c6.large: excludes the ecs.c6.large instance type.
 	// *   ecs.c6.\*: excludes the c6 instance family.
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
-	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter is available only if you set the `CostOptimization` parameter to true. Valid values:
+	// The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the [Shared instance families](~~108489~~) topic.
-	// *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](~~25378~~) topic.
-	// *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
+	// *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](~~108489~~)" topic.
+	// *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](~~25378~~)" topic.
+	// *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](~~59977~~)" topic of burstable instances.
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
 	//
-	// > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
+	// > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The memory size that is specified for an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -5293,17 +5019,17 @@ func (s *CreateScalingConfigurationShrinkRequestInstancePatternInfos) SetMemory(
 }
 
 type CreateScalingConfigurationShrinkRequestInstanceTypeOverrides struct {
-	// The instance type that you want to use to override the instance type that is specified in the launch template.
+	// Instance type N that you want to use to override the instance type that is specified in the launch template.
 	//
-	// If you want to scale instances based on the weighted capacities of the instances, you must specify the InstanceType parameter and the WeightedCapacity parameter. You can specify 1 to 10 instance types by using the Extended Configurations feature of the launch template.
+	// If you want to trigger scale-outs based on the weighted capacities of instances, specify InstanceType and WeightedCapacity at the same time. You can specify N instance types by using the Extended Configurations feature. Valid values of N: 1 to 10.
 	//
-	// > This parameter is available only if you specify the LaunchTemplateId parameter.
+	// > This parameter takes effect only if you specify LaunchTemplateId.
 	//
-	// You can specify an instance type that is available for purchase as the value of the InstanceType parameter.
+	// You can specify an instance type that is available for purchase as the value of InstanceType.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+	// The weight of instance type N. If you want to trigger scale-outs based on the weighted capacities of instances, you must specify WeightedCapacity after you specify InstanceType.
 	//
-	// The weight of an instance type specifies the capacity of an instance of the instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
+	// The weight of an instance type specifies the capacity of an instance of the instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type is required to meet the expected capacity requirement.
 	//
 	// Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
 	//
@@ -5315,9 +5041,9 @@ type CreateScalingConfigurationShrinkRequestInstanceTypeOverrides struct {
 	//
 	// To meet the expected capacity requirement, Auto Scaling must create and add two ecs.c5.xlarge instances.
 	//
-	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by the MaxSize parameter and the maximum weight of the instance types.
+	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance types.
 	//
-	// Valid values of the WeightedCapacity parameter: 1 to 500.
+	// Valid values of WeightedCapacity: 1 to 500.
 	WeightedCapacity *int32 `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
 }
 
@@ -5340,9 +5066,9 @@ func (s *CreateScalingConfigurationShrinkRequestInstanceTypeOverrides) SetWeight
 }
 
 type CreateScalingConfigurationShrinkRequestSpotPriceLimits struct {
-	// The instance type of the preemptible instance. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The price limit of the preemptible instance. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The price limit of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	PriceLimit *float32 `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 }
 
@@ -5566,8 +5292,11 @@ type CreateScalingGroupRequest struct {
 	// *   release: release mode.
 	//
 	// The ScalingPolicy parameter specifies the reclaim mode of the scaling group. The RemovePolicy parameter of the RemoveInstances operation specifies how to remove instances in a specific manner.
-	ScalingPolicy *string                                  `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
-	ServerGroups  []*CreateScalingGroupRequestServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
+	ScalingPolicy *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
+	// Details of the server groups.
+	//
+	// >  You cannot use the AlbServerGroups parameter and the ServerGroups parameter to specify the same server group.
+	ServerGroups []*CreateScalingGroupRequestServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter takes effect only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
 	//
 	// *   priority: Auto Scaling selects instance types based on the specified order of the instance types to create the required number of preemptible instances.
@@ -6015,10 +5744,19 @@ func (s *CreateScalingGroupRequestLoadBalancerConfigs) SetWeight(v int32) *Creat
 }
 
 type CreateScalingGroupRequestServerGroups struct {
-	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the server group. Valid values: 1 to 65535.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the server group.
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the server group. Valid values:
+	//
+	// *   ALB: Application Load Balancer (ALB) server group
+	// *   NLB: Network Load Balancer (NLB) server group
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of an Elastic Compute Service (ECS) instance in the scaling group as a backend server after Auto Scaling adds the ECS instance to the server group. Valid values: 0 to 100.
+	//
+	// If you increase the weight of an ECS instance in the server group, the number of access requests that are forwarded to the ECS instance also increases. If you set the Weight parameter of an ECS instance in the server group to 0, no access requests are forwarded to the ECS instance.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateScalingGroupRequestServerGroups) String() string {
@@ -6200,31 +5938,22 @@ type CreateScalingRuleRequest struct {
 	// *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the boundary values for the scaling group.
 	//
 	// Default value: SimpleScalingRule.
-	AdjustmentValue *int32                                     `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	// 监控项维度信息值，适用于目标追踪规则，当监控项需额外维度信息时设置，例如LoadBalancerRealServerAverageQps监控项需指定rulePool维度键值信息。
 	AlarmDimensions []*CreateScalingRuleRequestAlarmDimensions `json:"AlarmDimensions,omitempty" xml:"AlarmDimensions,omitempty" type:"Repeated"`
 	// The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
 	Cooldown *int32 `json:"Cooldown,omitempty" xml:"Cooldown,omitempty"`
-	// The number of consecutive times that the event-triggered task created for scale-in activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
+	// Specifies whether to disable scale-in. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule.
 	//
-	// Default value: 15.
+	// Default value: false
 	DisableScaleIn *bool `json:"DisableScaleIn,omitempty" xml:"DisableScaleIn,omitempty"`
-	// The predefined metric that you want to monitor. This parameter is required only if you set the ScalingRuleType parameter to TargetTrackingScalingRule or PredictiveScalingRule.
+	// The warmup period of an instance. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule. Auto Scaling adds ECS instances that are in the Warmup state to a scaling group but does not report the monitoring data of the ECS instances to CloudMonitor during the warmup period.
 	//
-	// Valid values if you set the ScalingRuleType parameter to TargetTrackingScalingRule:
+	// > Auto Scaling calculates the number of ECS instances that must be scaled. ECS instances in the Warmup state are not counted towards the current capacity of the scaling group.
 	//
-	// *   CpuUtilization: the average CPU utilization
-	// *   ClassicInternetRx: the average inbound Internet traffic over the classic network
-	// *   ClassicInternetTx: the average outbound Internet traffic over the classic network
-	// *   VpcInternetRx: the average inbound Internet traffic over the virtual private cloud (VPC)
-	// *   VpcInternetTx: the average outbound Internet traffic over the VPC
-	// *   IntranetRx: the average inbound traffic over the internal network
-	// *   IntranetTx: the average outbound traffic over the internal network
+	// Valid values: 0 to 86400. Unit: seconds.
 	//
-	// Valid values if you set the ScalingRuleType parameter to PredictiveScalingRule:
-	//
-	// *   CpuUtilization: the average CPU utilization
-	// *   IntranetRx: the average inbound traffic over the internal network
-	// *   IntranetTx: the average outbound traffic over the internal network
+	// Default value: 300
 	EstimatedInstanceWarmup *int32 `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
 	// Details of the step adjustments.
 	InitialMaxSize *int32 `json:"InitialMaxSize,omitempty" xml:"InitialMaxSize,omitempty"`
@@ -6280,13 +6009,14 @@ type CreateScalingRuleRequest struct {
 	//
 	// By default, this parameter is left empty.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	// The warmup period of an instance. This parameter is available only if you set the ScalingRuleType parameter to TargetTrackingScalingRule or PredictiveScalingRule. Auto Scaling adds ECS instances that are in the warmup state to a scaling group but does not report monitoring data to CloudMonitor during the warmup period.
+	// The type of the scaling rule. Valid values:
 	//
-	// > Auto Scaling calculates the number of ECS instances that must be scaled. ECS instances in the warmup state are not counted towards the current capacity of the scaling group.
+	// *   SimpleScalingRule: adjusts the number of ECS instances based on the values of AdjustmentType and AdjustmentValue.
+	// *   TargetTrackingScalingRule: calculates the number of ECS instances that need to be scaled in a dynamic manner and maintains the value of a predefined metric close to the value of TargetValue.
+	// *   StepScalingRule: scales ECS instances in steps based on the specified thresholds and metric values.
+	// *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of the predefined metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the boundary values for the scaling group.
 	//
-	// Valid values: 0 to 86400. Unit: seconds.
-	//
-	// Default value: 300.
+	// Default value: SimpleScalingRule
 	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 	// Details of the step adjustments.
 	StepAdjustments []*CreateScalingRuleRequestStepAdjustments `json:"StepAdjustments,omitempty" xml:"StepAdjustments,omitempty" type:"Repeated"`
@@ -6425,7 +6155,9 @@ func (s *CreateScalingRuleRequest) SetTargetValue(v float32) *CreateScalingRuleR
 }
 
 type CreateScalingRuleRequestAlarmDimensions struct {
-	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	// 监控项关联的维度信息键。
+	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	// 监控项关联的维度信息值。
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
 }
 
@@ -6541,71 +6273,23 @@ func (s *CreateScalingRuleResponse) SetBody(v *CreateScalingRuleResponseBody) *C
 }
 
 type CreateScheduledTaskRequest struct {
-	// The scaling rule that you want to execute when the scheduled task is triggered. Specify the unique identifier of the scaling rule. If you specify the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
-	//
-	// > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the scaling group whose number of instances must be modified when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter for a scheduled task, you must specify the minimum, maximum, or expected numbers of instances for a scaling group in the scheduled task. That is, you must specify at least one of the `MinValue`, `MaxValue`, and `DesiredCapacity` parameters.
-	//
-	// > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
-	DesiredCapacity *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
-	// The minimum number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	LaunchExpirationTime *int32 `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
-	// The interval at which the scheduled task is repeated. Valid values:
-	//
-	// *   Daily: The scheduled task is executed once every specified number of days.
-	// *   Weekly: The scheduled task is executed on each specified day of the week.
-	// *   Monthly: The scheduled task is executed on each specified day of the month.
-	// *   Cron: The scheduled task is executed based on the specified cron expression.
-	//
-	// You must specify the `RecurrenceType` and `RecurrenceValue` parameters at the same time.
-	LaunchTime *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	// The expected number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	//
-	// > You must specify the `DesiredCapacity` parameter when you create a scaling group.
-	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The maximum number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	MinValue     *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The point in time at which the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot enter a point in time that is later than 90 days from the point in time at which the scheduled task is created.
-	//
-	// *   If you specify the `RecurrenceType` parameter, the scheduled task is repeatedly executed at the point in time that is specified by the LaunchTime parameter.
-	// *   If you do not specify the `RecurrenceType` parameter, the task is executed only once at the point in time that is specified by the LaunchTime parameter.
-	RecurrenceEndTime *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
-	// The number of recurrences of the scheduled task.
-	//
-	// *   If you set the `RecurrenceType` parameter to `Daily`, you can specify only one value for this parameter. Valid values: 1 to 31.
-	// *   If you set the `RecurrenceType` parameter to `Weekly`, you can specify multiple values for this parameter. Separate the values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.``
-	// *   If you set the `RecurrenceType` parameter to `Monthly`, you can specify two values in the `A-B` format for this parameter. Valid values of A and B: 1 to 31. B must be greater than or equal to A.
-	// *   If you set the `RecurrenceType` parameter to `Cron`, you can specify a cron expression. A cron expression is written in UTC time and consists of the following fields: minute, hour, day, month, and week. The expression can contain the letters L and W and the following wildcard characters: commas (,), question marks (?), hyphens (-), asterisks (\*), number signs (#), and forward slashes (/).
-	//
-	// You must specify both the `RecurrenceType` parameter and the `RecurrenceValue` parameter.
-	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// Specifies whether to enable the scheduled task.
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: true.
-	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
-	// The name of the scheduled task. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit. The name of the scheduled task must be unique in the region and within the Alibaba Cloud account.
-	//
-	// If you do not specify this parameter, the value of the `ScheduledTaskId` parameter is used.
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DesiredCapacity      *int32  `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	LaunchExpirationTime *int32  `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
+	LaunchTime           *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	MaxValue             *int32  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue             *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecurrenceEndTime    *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
+	RecurrenceType       *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The globally unique ID of the scheduled task. The globally unique ID is generated by the system.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The end time of the scheduled task. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
-	//
-	// The time must be in UTC. You cannot enter a point in time that is later than 365 days from the point in time at which the scheduled task is created.
-	ScheduledAction *string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty"`
-	// The description of the scheduled task. The description must be 2 to 200 characters in length.
-	ScheduledTaskName *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
-	// The time period during which the failed scheduled task can be retried. Unit: seconds. Valid values: 0 to 1800.
-	//
-	// Default value: 600.
-	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScheduledAction      *string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty"`
+	ScheduledTaskName    *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
+	TaskEnabled          *bool   `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
 }
 
 func (s CreateScheduledTaskRequest) String() string {
@@ -6702,9 +6386,7 @@ func (s *CreateScheduledTaskRequest) SetTaskEnabled(v bool) *CreateScheduledTask
 }
 
 type CreateScheduledTaskResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScheduledTaskId *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
 }
 
@@ -6837,10 +6519,8 @@ func (s *DeactivateScalingConfigurationResponse) SetBody(v *DeactivateScalingCon
 }
 
 type DeleteAlarmRequest struct {
-	// The ID of the event-triggered task.
-	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the event-triggered task.
+	AlarmTaskId          *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -6874,10 +6554,8 @@ func (s *DeleteAlarmRequest) SetResourceOwnerAccount(v string) *DeleteAlarmReque
 }
 
 type DeleteAlarmResponseBody struct {
-	// The ID of the request.
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAlarmResponseBody) String() string {
@@ -6928,12 +6606,10 @@ func (s *DeleteAlarmResponse) SetBody(v *DeleteAlarmResponseBody) *DeleteAlarmRe
 }
 
 type DeleteEciScalingConfigurationRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request. This request ID is returned regardless of whether the request is successful.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The region ID of the scaling group.
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
 }
 
@@ -6971,7 +6647,6 @@ func (s *DeleteEciScalingConfigurationRequest) SetScalingConfigurationId(v strin
 }
 
 type DeleteEciScalingConfigurationResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7018,17 +6693,13 @@ func (s *DeleteEciScalingConfigurationResponse) SetBody(v *DeleteEciScalingConfi
 }
 
 type DeleteLifecycleHookRequest struct {
-	// The ID of the lifecycle hook.
-	LifecycleHookId *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
-	// The name of the lifecycle hook.
-	LifecycleHookName *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
-	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the scaling group.
+	LifecycleHookId      *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
+	LifecycleHookName    *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DeleteLifecycleHookRequest) String() string {
@@ -7075,7 +6746,6 @@ func (s *DeleteLifecycleHookRequest) SetScalingGroupId(v string) *DeleteLifecycl
 }
 
 type DeleteLifecycleHookResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7122,25 +6792,11 @@ func (s *DeleteLifecycleHookResponse) SetBody(v *DeleteLifecycleHookResponseBody
 }
 
 type DeleteNotificationConfigurationRequest struct {
-	// The region ID of the scaling group.
-	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	NotificationArn      *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
-	//
-	// *   If you use CloudMonitor as the notification party, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
-	// *   If you use an MNS queue as the notification party, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
-	// *   If you use an MNS topic as the notification party, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
-	//
-	// The variables in the preceding formats have the following meanings:
-	//
-	// *   region-id: the region ID of the scaling group.
-	// *   account-id: the ID of the Alibaba Cloud account.
-	// *   queuename: the name of the MNS queue.
-	// *   topicname: the name of the MNS topic.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DeleteNotificationConfigurationRequest) String() string {
@@ -7177,7 +6833,6 @@ func (s *DeleteNotificationConfigurationRequest) SetScalingGroupId(v string) *De
 }
 
 type DeleteNotificationConfigurationResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7224,10 +6879,9 @@ func (s *DeleteNotificationConfigurationResponse) SetBody(v *DeleteNotificationC
 }
 
 type DeleteScalingConfigurationRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the request.
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
 }
 
@@ -7260,7 +6914,6 @@ func (s *DeleteScalingConfigurationRequest) SetScalingConfigurationId(v string) 
 }
 
 type DeleteScalingConfigurationResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7307,24 +6960,12 @@ func (s *DeleteScalingConfigurationResponse) SetBody(v *DeleteScalingConfigurati
 }
 
 type DeleteScalingGroupRequest struct {
-	// The region ID of the scaling group.
-	ForceDelete  *bool   `json:"ForceDelete,omitempty" xml:"ForceDelete,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	ForceDelete          *bool   `json:"ForceDelete,omitempty" xml:"ForceDelete,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// Specifies whether to forcibly delete the scaling group and release Elastic Compute Service (ECS) instances in the scaling group when ECS instances or ongoing scaling activities exist in the scaling group. Valid values:
-	//
-	// *   true: forcibly deletes the scaling group. The scaling group is disabled and new scaling requests are rejected. After all existing scaling requests are processed, the ECS instances are removed from the scaling group. Then, the scaling group is deleted. If the ECS instances are manually added to the scaling group, the ECS instances are only removed from the scaling group. If the ECS instances are automatically created and added to the scaling group, the ECS instances are removed from the scaling group and then released.
-	//
-	// *   false: does not forcibly delete the scaling group. The scaling group is disabled and then deleted if the following conditions are met:
-	//
-	//     *   No scaling activities are in process in the scaling group.
-	//     *   The Total Capacity parameter is set to 0. A value of 0 specifies that no ECS instances exist in the scaling group.
-	//
-	// Default value: false.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DeleteScalingGroupRequest) String() string {
@@ -7366,7 +7007,6 @@ func (s *DeleteScalingGroupRequest) SetScalingGroupId(v string) *DeleteScalingGr
 }
 
 type DeleteScalingGroupResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7413,13 +7053,11 @@ func (s *DeleteScalingGroupResponse) SetBody(v *DeleteScalingGroupResponseBody) 
 }
 
 type DeleteScalingRuleRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The region ID of the scaling group.
-	ScalingRuleId *string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty"`
+	ScalingRuleId        *string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty"`
 }
 
 func (s DeleteScalingRuleRequest) String() string {
@@ -7456,7 +7094,6 @@ func (s *DeleteScalingRuleRequest) SetScalingRuleId(v string) *DeleteScalingRule
 }
 
 type DeleteScalingRuleResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7503,13 +7140,11 @@ func (s *DeleteScalingRuleResponse) SetBody(v *DeleteScalingRuleResponseBody) *D
 }
 
 type DeleteScheduledTaskRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The region ID of the scheduled task.
-	ScheduledTaskId *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
+	ScheduledTaskId      *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
 }
 
 func (s DeleteScheduledTaskRequest) String() string {
@@ -7546,7 +7181,6 @@ func (s *DeleteScheduledTaskRequest) SetScheduledTaskId(v string) *DeleteSchedul
 }
 
 type DeleteScheduledTaskResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7593,40 +7227,17 @@ func (s *DeleteScheduledTaskResponse) SetBody(v *DeleteScheduledTaskResponseBody
 }
 
 type DescribeAlarmsRequest struct {
-	// The ID of the event-triggered task.
-	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// Specifies whether to enable the event-triggered task. Valid values:
-	//
-	// *   true: enables the event-triggered task.
-	// *   false: disables the event-triggered task.
-	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-	// The name of the event-triggered task.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The type of the metric. Valid values:
-	//
-	// *   system: system metrics of CloudMonitor
-	// *   custom: custom metrics that are reported to CloudMonitor
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
-	//
-	// Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
-	//
-	// Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the event-triggered task.
+	AlarmTaskId          *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	IsEnable             *bool   `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+	MetricName           *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType           *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the scaling group with which the event-triggered task is associated.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The status of the event-triggered task. Valid values:
-	//
-	// *   ALARM: The alert condition is met and an alert is triggered.
-	// *   OK: The alert condition is not met.
-	// *   INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	State                *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeAlarmsRequest) String() string {
@@ -7693,16 +7304,11 @@ func (s *DescribeAlarmsRequest) SetState(v string) *DescribeAlarmsRequest {
 }
 
 type DescribeAlarmsResponseBody struct {
-	// The list of event-triggered tasks.
-	AlarmList []*DescribeAlarmsResponseBodyAlarmList `json:"AlarmList,omitempty" xml:"AlarmList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of event-triggered tasks.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AlarmList  []*DescribeAlarmsResponseBodyAlarmList `json:"AlarmList,omitempty" xml:"AlarmList,omitempty" type:"Repeated"`
+	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAlarmsResponseBody) String() string {
@@ -7739,95 +7345,24 @@ func (s *DescribeAlarmsResponseBody) SetTotalCount(v int32) *DescribeAlarmsRespo
 }
 
 type DescribeAlarmsResponseBodyAlarmList struct {
-	// The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
-	AlarmActions []*string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
-	// The ID of the event-triggered task.
-	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// The operator that is used to compare the metric value and the threshold.
-	//
-	// *   Valid value if the metric value is greater than or equal to the threshold: >=
-	// *   Valid value if the metric value is less than or equal to the threshold: <=
-	// *   Valid value if the metric value is greater than the threshold: >
-	// *   Valid value if the metric value is less than the threshold: <
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The description of the event-triggered task.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Details of the dimensions.
-	Dimensions []*DescribeAlarmsResponseBodyAlarmListDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// > This parameter is in invitational preview and is unavailable.
-	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// Indicates whether the event-triggered task is enabled. Valid values:
-	//
-	// *   true: The event-triggered task is enabled.
-	// *   false: The event-triggered task is disabled.
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
-	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The expressions that are specified in the multi-metric alert rule.
-	Expressions []*DescribeAlarmsResponseBodyAlarmListExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	// The relationship between the trigger conditions that are specified in the multi-metric alert rule. Valid values:
-	//
-	// *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet the trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
-	// *   `||`: An alert is triggered if one of the metrics in the multi-metric alert rule meets the trigger conditions.
-	ExpressionsLogicOperator *string `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
-	// The name of the metric. Valid values:
-	//
-	// *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-	// *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-	// *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	// *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-	// *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	// *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-	// *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-	// *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-	// *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-	// *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-	// *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-	// *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-	// *   MemoryUtilization: the memory usage of an agent. Unit: %.
-	// *   LoadAverage: the average system load of an agent.
-	// *   TcpConnection: the total number of TCP connections of an agent.
-	// *   TcpConnection: the number of established TCP connections of an agent.
-	// *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
-	// *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-	// *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-	// *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
-	//
-	// For more information, see [Event-triggered task for system monitoring](~~74854~~).
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The type of the metric. Valid values:
-	//
-	// *   system: system metrics of CloudMonitor
-	// *   custom: custom metrics that are reported to CloudMonitor
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The name of the event-triggered task.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The period of time during which statistics about the metric is collected. Unit: seconds. Valid values:
-	//
-	// *   15
-	// *   60
-	// *   120
-	// *   300
-	// *   900
-	//
-	// > If your scaling group is of the ECS type and the event-triggered task associated with your scaling group monitors CloudMonitor metrics, you can set the Period parameter to 15. In most cases, the name of a CloudMonitor metric contains Agent.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The scaling group ID of the event-triggered task.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The status of the event-triggered task. Valid values:
-	//
-	// *   ALARM: The alert condition is met and an alert is triggered.
-	// *   OK: The alert condition is not met.
-	// *   INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The method that is used to aggregate statistics for the metric. Valid values:
-	//
-	// *   Average
-	// *   Minimum
-	// *   Maximum
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold of the metric value. If the threshold is reached the specified times within the specified period, a scaling rule is executed.
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	AlarmActions             []*string                                         `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
+	AlarmTaskId              *string                                           `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	ComparisonOperator       *string                                           `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	Description              *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Dimensions               []*DescribeAlarmsResponseBodyAlarmListDimensions  `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Effective                *string                                           `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	Enable                   *bool                                             `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EvaluationCount          *int32                                            `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	Expressions              []*DescribeAlarmsResponseBodyAlarmListExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	ExpressionsLogicOperator *string                                           `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
+	MetricName               *string                                           `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType               *string                                           `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	Name                     *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Period                   *int32                                            `json:"Period,omitempty" xml:"Period,omitempty"`
+	ScalingGroupId           *string                                           `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	State                    *string                                           `json:"State,omitempty" xml:"State,omitempty"`
+	Statistics               *string                                           `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold                *float32                                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeAlarmsResponseBodyAlarmList) String() string {
@@ -7929,28 +7464,7 @@ func (s *DescribeAlarmsResponseBodyAlarmList) SetThreshold(v float32) *DescribeA
 }
 
 type DescribeAlarmsResponseBodyAlarmListDimensions struct {
-	// The key of the dimension. Valid values:
-	//
-	// *   user_id: the ID of your Alibaba Cloud account
-	// *   scaling_group: the scaling group that you want to monitor
-	// *   device: the type of the NIC
-	// *   state: the state of the TCP connection
-	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The value of the dimension. The value of the DimensionValue parameter varies based on the value of the DimensionKey parameter.
-	//
-	// *   If you set the DimensionKey parameter to `user_id`, the system specifies the value of the DimensionValue parameter.
-	//
-	// *   If you set the DimensionKey parameter to `scaling_group`, the system specifies the value of the DimensionValue parameter.
-	//
-	// *   If you set the DimensionKey parameter to `device`, you can set the DimensionValue parameter to eth0 or eth1.
-	//
-	//     *   For instances that reside in the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC.
-	//     *   For instances that reside in the classic network, eth1 specifies the public NIC.
-	//
-	// *   If you set the DimensionKey parameter to `state`, you can set the DimensionValue parameter to TCP_TOTAL or ESTABLISHED.
-	//
-	//     *   TCP_TOTAL specifies the total number of TCP connections.
-	//     *   ESTABLISHED specifies the number of established TCP connections.
+	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
 }
 
@@ -7973,59 +7487,11 @@ func (s *DescribeAlarmsResponseBodyAlarmListDimensions) SetDimensionValue(v stri
 }
 
 type DescribeAlarmsResponseBodyAlarmListExpressions struct {
-	// The operator that is used to compare the metric value and the threshold.
-	//
-	// *   Valid value if the metric value is greater than or equal to the threshold: >=
-	// *   Valid value if the metric value is less than or equal to the threshold: <=
-	// *   Valid value if the metric value is greater than the threshold: >
-	// *   Valid value if the metric value is less than the threshold: <
-	//
-	// Default value: >=.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The name of the metric that is specified in the multi-metric alert rule. Valid values:
-	//
-	// *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-	// *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-	// *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	// *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-	// *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	// *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-	// *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-	// *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-	// *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-	// *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-	// *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
-	// *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-	// *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-	// *   MemoryUtilization: the memory usage of an agent. Unit: %.
-	// *   LoadAverage: the average system load of an agent.
-	// *   TcpConnection: the total number of TCP connections of an agent.
-	// *   TcpConnection: the number of established TCP connections of an agent.
-	// *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
-	// *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-	// *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-	// *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
-	//
-	// For more information, see [Event-triggered task for system monitoring](~~74854~~).
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The period of time during which statistics about the metrics in the multi-metric alert rule is collected. Unit: seconds. Valid values:
-	//
-	// *   15
-	// *   60
-	// *   120
-	// *   300
-	// *   900
-	//
-	// > If your scaling group is of the ECS type and the event-triggered task associated with your scaling group monitors CloudMonitor metrics, you can set the Period parameter to 15. In most cases, the name of a CloudMonitor metric contains Agent.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The method that is used to aggregate statistics about the metrics in the multi-metric alert rule. Valid values:
-	//
-	// *   Average
-	// *   Minimum
-	// *   Maximum
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ComparisonOperator *string  `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	MetricName         *string  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Period             *int32   `json:"Period,omitempty" xml:"Period,omitempty"`
+	Statistics         *string  `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeAlarmsResponseBodyAlarmListExpressions) String() string {
@@ -9413,7 +8879,8 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes st
 	// The path to the Network File System (NFS) volume.
 	DiskVolumeFsType *string `json:"DiskVolumeFsType,omitempty" xml:"DiskVolumeFsType,omitempty"`
 	// The storage size of a disk volume. Unit: GiB.
-	EmptyDirVolumeMedium *string `json:"EmptyDirVolumeMedium,omitempty" xml:"EmptyDirVolumeMedium,omitempty"`
+	EmptyDirVolumeMedium    *string `json:"EmptyDirVolumeMedium,omitempty" xml:"EmptyDirVolumeMedium,omitempty"`
+	EmptyDirVolumeSizeLimit *string `json:"EmptyDirVolumeSizeLimit,omitempty" xml:"EmptyDirVolumeSizeLimit,omitempty"`
 	// The endpoint of the NFS server.
 	FlexVolumeDriver *string `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
 	// The FlexVolume driver name of the volume.
@@ -9469,6 +8936,11 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolume
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes) SetEmptyDirVolumeMedium(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes {
 	s.EmptyDirVolumeMedium = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes) SetEmptyDirVolumeSizeLimit(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes {
+	s.EmptyDirVolumeSizeLimit = &v
 	return s
 }
 
@@ -9574,26 +9046,13 @@ func (s *DescribeEciScalingConfigurationsResponse) SetBody(v *DescribeEciScaling
 }
 
 type DescribeLifecycleActionsRequest struct {
-	// The token that is used to specify the lifecycle action from which the query starts.
-	//
-	// For example, after the first 10 lifecycle actions are queried, the query starts from the 11th lifecycle action. Set this parameter to the NextToken value that is returned in the previous API call. If you do not specify this parameter, the query starts from the beginning.
 	LifecycleActionStatus *string `json:"LifecycleActionStatus,omitempty" xml:"LifecycleActionStatus,omitempty"`
-	// The region ID of the scaling group.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The maximum number of entries to return on each page. Valid values: 1 to 50.
-	//
-	// Default value: 10.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The query token returned in this call.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The status of the lifecycle action. Valid values:
-	//
-	// *   If a lifecycle action is in the Pending state, Elastic Compute Service (ECS) instances are waiting to be added to a scaling group or waiting to be removed from a scaling group.
-	// *   If a lifecycle action is in the Timeout state, the lifecycle hook that triggers the lifecycle action ends, and ECS instances are added to or removed from the scaling group.
-	// *   If a lifecycle action is in the Completed state, you manually end the lifecycle hook that triggers the lifecycle action ahead of schedule.
-	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	MaxResults            *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingActivityId     *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
 func (s DescribeLifecycleActionsRequest) String() string {
@@ -9640,16 +9099,11 @@ func (s *DescribeLifecycleActionsRequest) SetScalingActivityId(v string) *Descri
 }
 
 type DescribeLifecycleActionsResponseBody struct {
-	// The lifecycle actions.
 	LifecycleActions []*DescribeLifecycleActionsResponseBodyLifecycleActions `json:"LifecycleActions,omitempty" xml:"LifecycleActions,omitempty" type:"Repeated"`
-	// The lifecycle actions.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the request.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of the queried lifecycle actions.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The maximum number of entries returned per page.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults       *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLifecycleActionsResponseBody) String() string {
@@ -9686,19 +9140,11 @@ func (s *DescribeLifecycleActionsResponseBody) SetTotalCount(v int32) *DescribeL
 }
 
 type DescribeLifecycleActionsResponseBodyLifecycleActions struct {
-	// The IDs of the ECS instances to which the lifecycle hook applies.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The IDs of the ECS instances to which the lifecycle hook applies.
-	LifecycleActionResult *string `json:"LifecycleActionResult,omitempty" xml:"LifecycleActionResult,omitempty"`
-	// The action that is performed after the lifecycle action triggered by the lifecycle hook is complete. Valid values:
-	//
-	// *   CONTINUE: Auto Scaling continues to add ECS instances to the scaling group, or continues to remove ECS instances from the scaling group.
-	// *   ABANDON: Auto Scaling stops adding ECS instances to the scaling group and releases the ECS instances, or continues to respond to scale-in requests and remove ECS instances from the scaling group.
-	LifecycleActionStatus *string `json:"LifecycleActionStatus,omitempty" xml:"LifecycleActionStatus,omitempty"`
-	// The status of the lifecycle action.
-	LifecycleActionToken *string `json:"LifecycleActionToken,omitempty" xml:"LifecycleActionToken,omitempty"`
-	// The token of the lifecycle action.
-	LifecycleHookId *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
+	InstanceIds           []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	LifecycleActionResult *string   `json:"LifecycleActionResult,omitempty" xml:"LifecycleActionResult,omitempty"`
+	LifecycleActionStatus *string   `json:"LifecycleActionStatus,omitempty" xml:"LifecycleActionStatus,omitempty"`
+	LifecycleActionToken  *string   `json:"LifecycleActionToken,omitempty" xml:"LifecycleActionToken,omitempty"`
+	LifecycleHookId       *string   `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
 }
 
 func (s DescribeLifecycleActionsResponseBodyLifecycleActions) String() string {
@@ -9764,25 +9210,15 @@ func (s *DescribeLifecycleActionsResponse) SetBody(v *DescribeLifecycleActionsRe
 }
 
 type DescribeLifecycleHooksRequest struct {
-	// The ID of the lifecycle hook.
-	LifecycleHookIds []*string `json:"LifecycleHookIds,omitempty" xml:"LifecycleHookIds,omitempty" type:"Repeated"`
-	// The name of the lifecycle hook.
-	LifecycleHookName *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
-	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
-	//
-	// Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
-	//
-	// Default value: 50.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	LifecycleHookIds     []*string `json:"LifecycleHookIds,omitempty" xml:"LifecycleHookIds,omitempty" type:"Repeated"`
+	LifecycleHookName    *string   `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DescribeLifecycleHooksRequest) String() string {
@@ -9839,16 +9275,11 @@ func (s *DescribeLifecycleHooksRequest) SetScalingGroupId(v string) *DescribeLif
 }
 
 type DescribeLifecycleHooksResponseBody struct {
-	// Details of the lifecycle hooks.
 	LifecycleHooks []*DescribeLifecycleHooksResponseBodyLifecycleHooks `json:"LifecycleHooks,omitempty" xml:"LifecycleHooks,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of lifecycle hooks.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber     *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLifecycleHooksResponseBody) String() string {
@@ -9885,40 +9316,15 @@ func (s *DescribeLifecycleHooksResponseBody) SetTotalCount(v int32) *DescribeLif
 }
 
 type DescribeLifecycleHooksResponseBodyLifecycleHooks struct {
-	// The action that Auto Scaling performs after the lifecycle hook ends.
-	DefaultResult *string `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
-	// The period of time before the lifecycle hook ends. Auto Scaling performs the specified action after the lifecycle hook ends.
-	HeartbeatTimeout *int32 `json:"HeartbeatTimeout,omitempty" xml:"HeartbeatTimeout,omitempty"`
-	// The ID of the lifecycle hook.
-	LifecycleHookId *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
-	// The name of the lifecycle hook.
-	LifecycleHookName *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
-	// The status of the lifecycle hook. Valid values:
-	//
-	// *   Active
-	// *   InActive
-	LifecycleHookStatus *string `json:"LifecycleHookStatus,omitempty" xml:"LifecycleHookStatus,omitempty"`
-	// The type of the scaling activity to which the lifecycle hook applies.
-	LifecycleTransition *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the method that is used by Auto Scaling to send notifications when the lifecycle hook takes effect. Specify the value in one of the following formats:
-	//
-	// *   If you do not create a notification rule, specify the value in the `acs:ess:{region-id}:{account-id}:null/null` format.
-	// *   If you specify a Message Service (MNS) queue as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
-	// *   If you specify an MNS topic as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
-	// *   If you specify an Operation Orchestration Service (OOS) template as the notification method, specify the value in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
-	//
-	// The variables in the preceding parameter formats have the following meanings:
-	//
-	// *   region-id: the region ID of the scaling group.
-	// *   account-id: the ID of the Alibaba Cloud account.
-	// *   queuename: the name of the MNS queue.
-	// *   topicname: the name of the MNS topic.
-	// *   templatename: the name of the OOS template.
-	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect.
+	DefaultResult        *string `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
+	HeartbeatTimeout     *int32  `json:"HeartbeatTimeout,omitempty" xml:"HeartbeatTimeout,omitempty"`
+	LifecycleHookId      *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
+	LifecycleHookName    *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
+	LifecycleHookStatus  *string `json:"LifecycleHookStatus,omitempty" xml:"LifecycleHookStatus,omitempty"`
+	LifecycleTransition  *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
+	NotificationArn      *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" xml:"NotificationMetadata,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DescribeLifecycleHooksResponseBodyLifecycleHooks) String() string {
@@ -10157,12 +9563,10 @@ func (s *DescribeLimitationResponse) SetBody(v *DescribeLimitationResponseBody) 
 }
 
 type DescribeNotificationConfigurationsRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The region ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsRequest) String() string {
@@ -10194,10 +9598,8 @@ func (s *DescribeNotificationConfigurationsRequest) SetScalingGroupId(v string) 
 }
 
 type DescribeNotificationConfigurationsResponseBody struct {
-	// Details of the notifications.
 	NotificationConfigurationModels []*DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels `json:"NotificationConfigurationModels,omitempty" xml:"NotificationConfigurationModels,omitempty" type:"Repeated"`
-	// Details of the notifications.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                       *string                                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsResponseBody) String() string {
@@ -10219,12 +9621,9 @@ func (s *DescribeNotificationConfigurationsResponseBody) SetRequestId(v string) 
 }
 
 type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels struct {
-	// The ID of the scaling group.
-	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The types of the notifications.
+	NotificationArn   *string   `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
 	NotificationTypes []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
-	// The types of the notifications.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId    *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) String() string {
@@ -10303,28 +9702,8 @@ func (s *DescribeNotificationTypesRequest) SetResourceOwnerAccount(v string) *De
 }
 
 type DescribeNotificationTypesResponseBody struct {
-	// The types of the notifications.
-	//
-	// *   AUTOSCALING:SCALE_OUT_SUCCESS: The scale-out activity succeeds.
-	// *   AUTOSCALING:SCALE_IN_SUCCESS: The scale-in activity succeeds.
-	// *   AUTOSCALING:SCALE_OUT_ERROR: The scale-out activity fails.
-	// *   AUTOSCALING:SCALE_IN_ERROR: The scale-in activity fails.
-	// *   AUTOSCALING:SCALE_REJECT: The request for scaling activities is rejected.
-	// *   AUTOSCALING:SCALE_OUT_START: The scale-out activity starts.
-	// *   AUTOSCALING:SCALE_IN_START: The scale-in activity starts.
-	// *   AUTOSCALING:SCHEDULE_TASK_EXPIRING: Auto Scaling sends a notification when a scheduled task is about to expire.
 	NotificationTypes []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
-	// The types of the notifications.
-	//
-	// *   AUTOSCALING:SCALE_OUT_SUCCESS: The scale-out activity succeeds.
-	// *   AUTOSCALING:SCALE_IN_SUCCESS: The scale-in activity succeeds.
-	// *   AUTOSCALING:SCALE_OUT_ERROR: The scale-out activity fails.
-	// *   AUTOSCALING:SCALE_IN_ERROR: The scale-in activity fails.
-	// *   AUTOSCALING:SCALE_REJECT: The request for scaling activities is rejected.
-	// *   AUTOSCALING:SCALE_OUT_START: The scale-out activity starts.
-	// *   AUTOSCALING:SCALE_IN_START: The scale-in activity starts.
-	// *   AUTOSCALING:SCHEDULE_TASK_EXPIRING: Auto Scaling sends a notification when a scheduled task is about to expire.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNotificationTypesResponseBody) String() string {
@@ -10867,8 +10246,7 @@ type DescribeScalingActivityDetailRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
-	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	ScalingActivityId    *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
 func (s DescribeScalingActivityDetailRequest) String() string {
@@ -10900,11 +10278,8 @@ func (s *DescribeScalingActivityDetailRequest) SetScalingActivityId(v string) *D
 }
 
 type DescribeScalingActivityDetailResponseBody struct {
-	// auditing
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The ID of the scaling activity.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the scaling activity.
+	Detail            *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -10965,11 +10340,11 @@ type DescribeScalingConfigurationsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Pages start from page 1.
 	//
-	// Default value: 1.
+	// Default value: 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 50.
+	// The number of entries to return on each page. Maximum value: 50.
 	//
-	// Default value: 10.
+	// Default value: 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the scaling group to which the scaling configuration that you want to query belongs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -11128,8 +10503,12 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// The ID of the image that is used by Auto Scaling to create instances.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The name of the image file.
-	ImageName                  *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageOptionsLoginAsNonRoot *bool   `json:"ImageOptionsLoginAsNonRoot,omitempty" xml:"ImageOptionsLoginAsNonRoot,omitempty"`
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// ECS实例是否使用ecs-user用户登录。可能值：
+	//
+	// - true：是。
+	// - false：否。
+	ImageOptionsLoginAsNonRoot *bool `json:"ImageOptionsLoginAsNonRoot,omitempty" xml:"ImageOptionsLoginAsNonRoot,omitempty"`
 	// The source of the image. Valid values:
 	//
 	// *   system: public images provided by Alibaba Cloud
@@ -11943,41 +11322,18 @@ func (s *DescribeScalingConfigurationsResponse) SetBody(v *DescribeScalingConfig
 }
 
 type DescribeScalingGroupsRequest struct {
-	// The type of the instances that are managed by the scaling group. Valid values:
-	//
-	// *   ECS: Elastic Compute Service (ECS) instances.
-	// *   ECI: elastic container instances.
-	//
-	// Default value: ECS.
-	GroupType    *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
-	//
-	// Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
-	//
-	// Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the scaling group.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the scaling group you want to query belongs.
-	//
-	// > If the specified resource group contains no scaling groups, null is returned.
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the scaling groups that you want to query.
-	//
-	// The query result does not contain the IDs of inactive scaling groups, and no errors are returned.
-	ScalingGroupIds []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
-	// The name of the scaling group.
-	ScalingGroupName *string `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
-	// The names of the scaling groups that you want to query.
-	//
-	// The query result does not contain the names of inactive scaling groups, and no errors are returned.
-	ScalingGroupNames []*string `json:"ScalingGroupNames,omitempty" xml:"ScalingGroupNames,omitempty" type:"Repeated"`
+	GroupType            *string   `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingGroupIds      []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
+	ScalingGroupName     *string   `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
+	ScalingGroupNames    []*string `json:"ScalingGroupNames,omitempty" xml:"ScalingGroupNames,omitempty" type:"Repeated"`
 }
 
 func (s DescribeScalingGroupsRequest) String() string {
@@ -12049,16 +11405,11 @@ func (s *DescribeScalingGroupsRequest) SetScalingGroupNames(v []*string) *Descri
 }
 
 type DescribeScalingGroupsResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the scaling groups.
+	PageNumber    *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingGroups []*DescribeScalingGroupsResponseBodyScalingGroups `json:"ScalingGroups,omitempty" xml:"ScalingGroups,omitempty" type:"Repeated"`
-	// The total number of scaling groups.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount    *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponseBody) String() string {
@@ -12095,172 +11446,63 @@ func (s *DescribeScalingGroupsResponseBody) SetTotalCount(v int32) *DescribeScal
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroups struct {
-	// The number of ECS instances that are in the In Service state in the scaling group.
-	ActiveCapacity *int32 `json:"ActiveCapacity,omitempty" xml:"ActiveCapacity,omitempty"`
-	// The ID of the active scaling configuration in the scaling group.
-	ActiveScalingConfigurationId *string `json:"ActiveScalingConfigurationId,omitempty" xml:"ActiveScalingConfigurationId,omitempty"`
-	// Details of the Application Load Balancer (ALB) server groups.
-	AlbServerGroups []*DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
-	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create the required number of instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
-	//
-	// *   priority: Auto Scaling selects instance types based on the specified order of the instance types to create the required number of instances.
-	// *   lowestPrice: Auto Scaling selects instance types that have the lowest unit price of vCPUs to create the required number of instances.
-	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
-	// Indicates whether instances in the scaling group are evenly distributed across zones. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
-	//
-	// *   true
-	// *   false
-	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
-	// Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set the MultiAZPolicy parameter to COST_OPTIMIZED. Valid values:
-	//
-	// *   true
-	// *   false
-	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
-	// The time when the scaling group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// > This parameter is unavailable.
-	CurrentHostName *string `json:"CurrentHostName,omitempty" xml:"CurrentHostName,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the custom scale-in policy (Function). This parameter is available only if you specify CustomPolicy as the first step to remove instances.
-	CustomPolicyARN *string `json:"CustomPolicyARN,omitempty" xml:"CustomPolicyARN,omitempty"`
-	// The IDs of the ApsaraDB RDS instances that are associated with the scaling group.
-	DBInstanceIds []*string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
-	// The cooldown period of the scaling group. During the cooldown period, Auto Scaling executes only the scaling activities that are triggered by [CloudMonitor](~~35170~~) event-triggered tasks.
-	DefaultCooldown *int32 `json:"DefaultCooldown,omitempty" xml:"DefaultCooldown,omitempty"`
-	// The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances in the scaling group.
-	DesiredCapacity *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
-	// Indicates whether deletion protection is enabled for the scaling group. Valid values:
-	//
-	// *   true: Deletion protection is enabled for the scaling group. This way, the scaling group cannot be deleted.
-	// *   false: Deletion protection is disabled for the scaling group.
-	GroupDeletionProtection *bool `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
-	// The type of the instances that are managed by the scaling group.
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The health check mode of the scaling group. Valid values:
-	//
-	// *   NONE: Auto Scaling does not perform health checks.
-	// *   ECS: Auto Scaling performs health checks on ECS instances in the scaling group.
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The number of instances that are in the Initialized state before the instances are added to the scaling group.
-	InitCapacity *int32 `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
-	// > This parameter is unavailable.
-	IsElasticStrengthInAlarm *bool `json:"IsElasticStrengthInAlarm,omitempty" xml:"IsElasticStrengthInAlarm,omitempty"`
-	// The ID of the launch template that is used by the scaling group.
-	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The information about the instance types that are specified by using the Extended Configurations feature of the launch template.
-	LaunchTemplateOverrides []*DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
-	// The version of the launch template that is used by the scaling group.
-	LaunchTemplateVersion *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
-	// The status of the scaling group. Valid values:
-	//
-	// *   Active: The scaling group is active. Active scaling groups can receive requests to execute scaling rules and trigger scaling activities.
-	// *   Inactive: The scaling group is inactive. Inactive scaling groups cannot receive requests to execute scaling rules.
-	// *   Deleting: The scaling group is being deleted. Scaling groups that are being deleted cannot receive requests to execute scaling rules. In addition, the parameter settings of the scaling groups cannot be modified.
-	LifecycleState      *string                                                              `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
-	LoadBalancerConfigs []*DescribeScalingGroupsResponseBodyScalingGroupsLoadBalancerConfigs `json:"LoadBalancerConfigs,omitempty" xml:"LoadBalancerConfigs,omitempty" type:"Repeated"`
-	// The IDs of the SLB instances that are associated with the scaling group.
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// The maximum life span of an instance in the scaling group. Unit: seconds.
-	//
-	// Valid values: 0 or from 86400 to the value of the `Integer.maxValue` parameter. If you set this parameter to 0, the instance has an unlimited life span.
-	//
-	// Default value: null.
-	//
-	// > This parameter is unavailable for scaling groups that manage elastic container instances or scaling groups whose ScalingPolicy is set to recycle.
-	MaxInstanceLifetime *int32 `json:"MaxInstanceLifetime,omitempty" xml:"MaxInstanceLifetime,omitempty"`
-	// The maximum number of ECS instances that can be contained in the scaling group.
-	MaxSize *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	// The minimum number of ECS instances that must be contained in the scaling group.
-	MinSize *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
-	// The time when the scaling group was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The ID of the CloudMonitor application group that is associated with the scaling group.
-	MonitorGroupId *string `json:"MonitorGroupId,omitempty" xml:"MonitorGroupId,omitempty"`
-	// The scaling policy for the multi-zone scaling group that contains ECS instances. Valid values:
-	//
-	// *   PRIORITY: ECS instances are scaled based on the value of the VSwitchIds.N parameter. If Auto Scaling fails to create ECS instances in the zone where the vSwitch that has the highest priority resides, Auto Scaling creates ECS instances in the zone where the vSwitch that has the next highest priority resides.
-	//
-	// *   COST_OPTIMIZED: ECS instances are scaled based on the unit price of vCPUs. Auto Scaling preferentially creates ECS instances whose vCPUs have the lowest price. If preemptible instance types are specified in the scaling configuration, Auto Scaling preferentially creates preemptible instances. You can use the CompensateWithOnDemand parameter to specify whether to automatically create pay-as-you-go instances when preemptible instances cannot be created due to insufficient resources.
-	//
-	//     **
-	//
-	//     **Note**The COST_OPTIMIZED setting takes effect only when multiple instance types are specified or at least one preemptible instance type is specified.
-	//
-	// *   BALANCE: ECS instances are evenly distributed across zones that are specified for the scaling group. If ECS instances are unevenly distributed across the specified zones due to insufficient resources, you can call the RebalanceInstance operation to evenly redistribute the ECS instances across the zones.
-	MultiAZPolicy *string `json:"MultiAZPolicy,omitempty" xml:"MultiAZPolicy,omitempty"`
-	// The minimum number of pay-as-you-go instances that must be included in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
-	OnDemandBaseCapacity *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
-	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances reaches the requirement. Valid values: 0 to 100.
-	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
-	// The number of ECS instances that are being added to the scaling group and still being configured.
-	PendingCapacity *int32 `json:"PendingCapacity,omitempty" xml:"PendingCapacity,omitempty"`
-	// The number of ECS instances that are in the Pending Add state in the scaling group.
-	PendingWaitCapacity *int32 `json:"PendingWaitCapacity,omitempty" xml:"PendingWaitCapacity,omitempty"`
-	// The number of ECS instances that are in the Protected state in the scaling group.
-	ProtectedCapacity *int32 `json:"ProtectedCapacity,omitempty" xml:"ProtectedCapacity,omitempty"`
-	// The region ID of the scaling group.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Details of the policies that are used to remove ECS instances from the scaling group. Valid values:
-	//
-	// *   OldestInstance: ECS instances that are created at the earliest point in time are removed.
-	// *   NewestInstance: ECS instances that are created at the most recent point in time are removed.
-	// *   OldestScalingConfiguration: ECS instances that are created based on the earliest scaling configuration are removed.
-	RemovalPolicies []*string `json:"RemovalPolicies,omitempty" xml:"RemovalPolicies,omitempty" type:"Repeated"`
-	// The number of ECS instances that are being removed from the scaling group.
-	RemovingCapacity *int32 `json:"RemovingCapacity,omitempty" xml:"RemovingCapacity,omitempty"`
-	// The number of ECS instances that are in the Pending Remove state in the scaling group.
-	RemovingWaitCapacity *int32 `json:"RemovingWaitCapacity,omitempty" xml:"RemovingWaitCapacity,omitempty"`
-	// The ID of the resource group to which the scaling group belongs.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The name of the scaling group.
-	ScalingGroupName *string `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
-	// The reclaim mode of the scaling group. Valid values:
-	//
-	// *   recycle: economical mode.
-	// *   release: release mode.
-	ScalingPolicy *string                                                       `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
-	ServerGroups  []*DescribeScalingGroupsResponseBodyScalingGroupsServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
-	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
-	//
-	// *   priority: Auto Scaling selects instance types based on the specified order of the instance types to create the required number of preemptible instances.
-	// *   lowestPrice: Auto Scaling selects instance types that have the lowest unit price of vCPUs to create the required number of preemptible instances.
-	//
-	// Default value: priority.
-	SpotAllocationStrategy *string `json:"SpotAllocationStrategy,omitempty" xml:"SpotAllocationStrategy,omitempty"`
-	// The number of instance types that are specified. Auto Scaling evenly creates preemptible instances of multiple instance types that are provided at the lowest price across zones. Valid values: 0 to 10.
-	SpotInstancePools *int32 `json:"SpotInstancePools,omitempty" xml:"SpotInstancePools,omitempty"`
-	// Indicates whether preemptible instances can be supplemented. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives the system message which indicates that the preemptible instance is to be reclaimed.
-	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
-	// The number of instances that are in the Standby state in the scaling group.
-	StandbyCapacity *int32 `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
-	// The number of instances that are stopped in Economical Mode in the scaling group.
-	StoppedCapacity *int32 `json:"StoppedCapacity,omitempty" xml:"StoppedCapacity,omitempty"`
-	// The processes that are suspended. If no process is suspended, null is returned. Valid values:
-	//
-	// *   ScaleIn: scale-in
-	// *   ScaleOut: scale-out
-	// *   HealthCheck: health check
-	// *   AlarmNotification: event-triggered task
-	// *   ScheduledAction: scheduled task
-	SuspendedProcesses []*string `json:"SuspendedProcesses,omitempty" xml:"SuspendedProcesses,omitempty" type:"Repeated"`
-	// Indicates whether Auto Scaling stops executing scaling activities in the scaling group. Valid values:
-	//
-	// *   true: If the scaling activities fail for more than seven consecutive days, Auto Scaling stops executing scaling activities in the scaling group. You must modify the scaling group or scaling configuration to resume the execution of the scaling activities.
-	// *   false: Auto Scaling does not stop executing scaling activities in the scaling group.
-	SystemSuspended *bool `json:"SystemSuspended,omitempty" xml:"SystemSuspended,omitempty"`
-	// If the WeightedCapacity parameter is specified, the value of this parameter indicates the total weighted capacity of all ECS instances in the scaling group. In other cases, the value of this parameter indicates the total number of ECS instances in the scaling group.
-	TotalCapacity *int32 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
-	// The total number of ECS instances in the scaling group.
-	TotalInstanceCount *int32 `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
-	// The backend vServer groups.
-	VServerGroups []*DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
-	// The ID of the vSwitch that is associated with the scaling group.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The IDs of the vSwitches that are associated with the scaling group. If you specify the VSwitchIds parameter, the VSwitchId parameter is ignored.
-	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) in which the scaling group resides.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ActiveCapacity                      *int32                                                                   `json:"ActiveCapacity,omitempty" xml:"ActiveCapacity,omitempty"`
+	ActiveScalingConfigurationId        *string                                                                  `json:"ActiveScalingConfigurationId,omitempty" xml:"ActiveScalingConfigurationId,omitempty"`
+	AlbServerGroups                     []*DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups         `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
+	AllocationStrategy                  *string                                                                  `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
+	AzBalance                           *bool                                                                    `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	CompensateWithOnDemand              *bool                                                                    `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	CreationTime                        *string                                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CurrentHostName                     *string                                                                  `json:"CurrentHostName,omitempty" xml:"CurrentHostName,omitempty"`
+	CustomPolicyARN                     *string                                                                  `json:"CustomPolicyARN,omitempty" xml:"CustomPolicyARN,omitempty"`
+	DBInstanceIds                       []*string                                                                `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
+	DefaultCooldown                     *int32                                                                   `json:"DefaultCooldown,omitempty" xml:"DefaultCooldown,omitempty"`
+	DesiredCapacity                     *int32                                                                   `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	EnableDesiredCapacity               *bool                                                                    `json:"EnableDesiredCapacity,omitempty" xml:"EnableDesiredCapacity,omitempty"`
+	GroupDeletionProtection             *bool                                                                    `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
+	GroupType                           *string                                                                  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	HealthCheckType                     *string                                                                  `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	InitCapacity                        *int32                                                                   `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	IsElasticStrengthInAlarm            *bool                                                                    `json:"IsElasticStrengthInAlarm,omitempty" xml:"IsElasticStrengthInAlarm,omitempty"`
+	LaunchTemplateId                    *string                                                                  `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateOverrides             []*DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
+	LaunchTemplateVersion               *string                                                                  `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	LifecycleState                      *string                                                                  `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
+	LoadBalancerConfigs                 []*DescribeScalingGroupsResponseBodyScalingGroupsLoadBalancerConfigs     `json:"LoadBalancerConfigs,omitempty" xml:"LoadBalancerConfigs,omitempty" type:"Repeated"`
+	LoadBalancerIds                     []*string                                                                `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	MaxInstanceLifetime                 *int32                                                                   `json:"MaxInstanceLifetime,omitempty" xml:"MaxInstanceLifetime,omitempty"`
+	MaxSize                             *int32                                                                   `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	MinSize                             *int32                                                                   `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	ModificationTime                    *string                                                                  `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	MonitorGroupId                      *string                                                                  `json:"MonitorGroupId,omitempty" xml:"MonitorGroupId,omitempty"`
+	MultiAZPolicy                       *string                                                                  `json:"MultiAZPolicy,omitempty" xml:"MultiAZPolicy,omitempty"`
+	OnDemandBaseCapacity                *int32                                                                   `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int32                                                                   `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	PendingCapacity                     *int32                                                                   `json:"PendingCapacity,omitempty" xml:"PendingCapacity,omitempty"`
+	PendingWaitCapacity                 *int32                                                                   `json:"PendingWaitCapacity,omitempty" xml:"PendingWaitCapacity,omitempty"`
+	ProtectedCapacity                   *int32                                                                   `json:"ProtectedCapacity,omitempty" xml:"ProtectedCapacity,omitempty"`
+	RegionId                            *string                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemovalPolicies                     []*string                                                                `json:"RemovalPolicies,omitempty" xml:"RemovalPolicies,omitempty" type:"Repeated"`
+	RemovingCapacity                    *int32                                                                   `json:"RemovingCapacity,omitempty" xml:"RemovingCapacity,omitempty"`
+	RemovingWaitCapacity                *int32                                                                   `json:"RemovingWaitCapacity,omitempty" xml:"RemovingWaitCapacity,omitempty"`
+	ResourceGroupId                     *string                                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ScalingGroupId                      *string                                                                  `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupName                    *string                                                                  `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
+	ScalingPolicy                       *string                                                                  `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
+	ServerGroups                        []*DescribeScalingGroupsResponseBodyScalingGroupsServerGroups            `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
+	SpotAllocationStrategy              *string                                                                  `json:"SpotAllocationStrategy,omitempty" xml:"SpotAllocationStrategy,omitempty"`
+	SpotInstancePools                   *int32                                                                   `json:"SpotInstancePools,omitempty" xml:"SpotInstancePools,omitempty"`
+	SpotInstanceRemedy                  *bool                                                                    `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	StandbyCapacity                     *int32                                                                   `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
+	StoppedCapacity                     *int32                                                                   `json:"StoppedCapacity,omitempty" xml:"StoppedCapacity,omitempty"`
+	SuspendedProcesses                  []*string                                                                `json:"SuspendedProcesses,omitempty" xml:"SuspendedProcesses,omitempty" type:"Repeated"`
+	SystemSuspended                     *bool                                                                    `json:"SystemSuspended,omitempty" xml:"SystemSuspended,omitempty"`
+	TotalCapacity                       *int32                                                                   `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	TotalInstanceCount                  *int32                                                                   `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
+	VServerGroups                       []*DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups           `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
+	VSwitchId                           *string                                                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchIds                          []*string                                                                `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId                               *string                                                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponseBodyScalingGroups) String() string {
@@ -12328,6 +11570,11 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetDefaultCooldown(v in
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetDesiredCapacity(v int32) *DescribeScalingGroupsResponseBodyScalingGroups {
 	s.DesiredCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetEnableDesiredCapacity(v bool) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.EnableDesiredCapacity = &v
 	return s
 }
 
@@ -12552,12 +11799,9 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetVpcId(v string) *Des
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups struct {
-	// The ID of the ALB server group.
 	AlbServerGroupId *string `json:"AlbServerGroupId,omitempty" xml:"AlbServerGroupId,omitempty"`
-	// The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the ALB server group.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The weight of an ECS instance after Auto Scaling adds the ECS instance to the ALB server group as a backend server.
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Weight           *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups) String() string {
@@ -12584,14 +11828,9 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups) SetWeigh
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides struct {
-	// The instance type. The instance type that is specified by this parameter overrides the instance type that is specified in the launch template.
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum bid price of the instance type that is specified by the `InstanceType` parameter. You can specify 1 to 10 instance types by using the Extended Configurations feature of the launch template.
-	//
-	// > This parameter is available only if you specify the `LaunchTemplateId` parameter.
-	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
-	WeightedCapacity *int32 `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
+	InstanceType     *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	SpotPriceLimit   *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	WeightedCapacity *int32   `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides) String() string {
@@ -12676,9 +11915,7 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsServerGroups) SetWeight(v
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups struct {
-	// The ID of the Server Load Balancer (SLB) instance to which the backend vServer group belongs.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The attributes of the backend vServer groups.
+	LoadBalancerId         *string                                                                              `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	VServerGroupAttributes []*DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAttributes `json:"VServerGroupAttributes,omitempty" xml:"VServerGroupAttributes,omitempty" type:"Repeated"`
 }
 
@@ -12701,12 +11938,9 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups) SetVServer
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAttributes struct {
-	// The port number that is used by the SLB instance to provide external services.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the backend vServer group.
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The weight of the backend vServer group.
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight         *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAttributes) String() string {
@@ -12762,57 +11996,21 @@ func (s *DescribeScalingGroupsResponse) SetBody(v *DescribeScalingGroupsResponse
 }
 
 type DescribeScalingInstancesRequest struct {
-	// The method that is used to create the ECS instance. Valid values:
-	//
-	// *   AutoCreated: The ECS instance is automatically created by Auto Scaling based on the instance configuration source of the scaling group.
-	// *   Attached: The ECS instance is manually added to the scaling group.
-	CreationType *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
-	// The health status of the ECS instance in the scaling group. If ECS instances do not run as expected, Auto Scaling considers the ECS instances unhealthy. Valid values:
-	//
-	// *   Healthy
-	// *   Unhealthy
-	//
-	// Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases the automatically created instances among the unhealthy instances.
-	//
-	// Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of the instance lifecycles. If the lifecycles of the ECS instances are not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release the instances. If the lifecycles of the ECS instances are managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases the instances.
-	//
-	// >  Make sure that you have sufficient balance within your Alibaba Cloud account. If you have overdue payments within your Alibaba Cloud account, pay-as-you-go and preemptible instances are stopped or released. For information about how the states of ECS instances change when you have overdue payments within your Alibaba Cloud account, see [Overdue payments](~~170589~~).
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The IDs of the ECS instances.
-	//
-	// Invalid instance IDs are not displayed in the query result, and no error is reported.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The lifecycle state of the ECS instance in the scaling group. Valid values:
-	//
-	// *   InService: The ECS instance is added to the scaling group and provides services as expected.
-	// *   Pending: The ECS instance is being added to the scaling group. During this process, Auto Scaling adds the ECS instance to the backend server groups of the associated CLB instance and adds the private IP address of the ECS instance to the IP address whitelist of the associated ApsaraDB RDS instance.
-	// *   Pending:Wait: The ECS instance is pending to be added to the scaling group. If a lifecycle hook that applies to scale-out activities is created for the scaling group, the ECS instance enters the Pending:Wait state. The ECS instance is added to the scaling group only after the lifecycle hook times out.
-	// *   Protected: The ECS instance is being protected. The ECS instance can provide services as expected. However, Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance.
-	// *   Standby: The ECS instance is on standby. The ECS instance is out of service and the weight of the ECS instance as a backend server is set to zero. Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance.
-	// *   Stopped: The ECS instance is stopped. The ECS instance is stopped and cannot provide services.
-	// *   Removing: The ECS instance is being removed from the scaling group. During this process, Auto Scaling removes the ECS instance from the backend server groups of the associated CLB instance and removes the IP address of the ECS instance from the IP address whitelist of the associated ApsaraDB RDS instance.
-	// *   Removing:Wait: The ECS instance is being removed from the scaling group and enters the Removing:Wait state. If a lifecycle hook that applies to scale-in activities is created for the scaling group, the ECS instance enters the Removing:Wait state. The ECS instance is removed from the scaling group only after the lifecycle hook times out.
-	LifecycleState *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
-	//
-	// Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100.
-	//
-	// Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the scaling activity.
-	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
-	// The ID of the associated scaling configuration.
-	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	CreationType           *string   `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
+	CreationTypes          []*string `json:"CreationTypes,omitempty" xml:"CreationTypes,omitempty" type:"Repeated"`
+	HealthStatus           *string   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InstanceIds            []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	LifecycleState         *string   `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
+	OwnerAccount           *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber             *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount   *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingActivityId      *string   `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	ScalingConfigurationId *string   `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+	ScalingGroupId         *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DescribeScalingInstancesRequest) String() string {
@@ -12825,6 +12023,11 @@ func (s DescribeScalingInstancesRequest) GoString() string {
 
 func (s *DescribeScalingInstancesRequest) SetCreationType(v string) *DescribeScalingInstancesRequest {
 	s.CreationType = &v
+	return s
+}
+
+func (s *DescribeScalingInstancesRequest) SetCreationTypes(v []*string) *DescribeScalingInstancesRequest {
+	s.CreationTypes = v
 	return s
 }
 
@@ -12894,18 +12097,12 @@ func (s *DescribeScalingInstancesRequest) SetScalingGroupId(v string) *DescribeS
 }
 
 type DescribeScalingInstancesResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the ECS instances.
+	PageNumber       *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingInstances []*DescribeScalingInstancesResponseBodyScalingInstances `json:"ScalingInstances,omitempty" xml:"ScalingInstances,omitempty" type:"Repeated"`
-	// The total number of the ECS instances in the scaling group.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of preemptible instances that run as expected in the scaling group.
-	TotalSpotCount *int32 `json:"TotalSpotCount,omitempty" xml:"TotalSpotCount,omitempty"`
+	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalSpotCount   *int32                                                  `json:"TotalSpotCount,omitempty" xml:"TotalSpotCount,omitempty"`
 }
 
 func (s DescribeScalingInstancesResponseBody) String() string {
@@ -12947,71 +12144,23 @@ func (s *DescribeScalingInstancesResponseBody) SetTotalSpotCount(v int32) *Descr
 }
 
 type DescribeScalingInstancesResponseBodyScalingInstances struct {
-	// The time when the ECS instance was added to the scaling group. The value is accurate to seconds.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The time when the ECS instance was added to the scaling group. The value is accurate to minutes.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The method that is used to create the ECS instance. Valid values:
-	//
-	// *   AutoCreated: The ECS instance is automatically created by Auto Scaling based on the instance configuration source of the scaling group.
-	// *   Attached: The ECS instance is manually added to the scaling group.
-	CreationType *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
-	// Indicates whether the lifecycles of the ECS instances that are manually added to the scaling group are managed by the scaling group. If the scaling group manages the lifecycles of the ECS instances that are manually added, Auto Scaling releases the ECS instances after Auto Scaling removes the ECS instances from the scaling group. The release rule does not apply to ECS instances that are manually removed from the scaling group. Valid values:
-	//
-	// *   true
-	// *   false
-	Entrusted *bool `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
-	// The health status of the ECS instance in the scaling group. If the ECS instance does not run as expected, Auto Scaling considers the ECS instance unhealthy. Valid values:
-	//
-	// *   Healthy
-	// *   Unhealthy
-	//
-	// Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases the automatically created instances among the unhealthy instances.
-	//
-	// Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of the instance lifecycles. If the lifecycles of the ECS instances are not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release the instances. If the lifecycles of the ECS instances are managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases the instances.
-	//
-	// >  Make sure that you have sufficient balance within your Alibaba Cloud account. If you have overdue payments within your Alibaba Cloud account, pay-as-you-go and preemptible instances are stopped or released. For information about how the states of ECS instances change when you have overdue payments within your Alibaba Cloud account, see [Overdue payments](~~170589~~).
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The ID of the ECS instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the launch template.
-	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The version number of the launch template.
-	LaunchTemplateVersion *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
-	// The lifecycle state of the ECS instance in the scaling group. Valid values:
-	//
-	// *   InService: The ECS instance is added to the scaling group and provides services as expected.
-	// *   Pending: The ECS instance is being added to the scaling group. During this process, Auto Scaling adds the ECS instance to the backend server groups of the associated CLB instance and adds the private IP address of the ECS instance to the IP address whitelist of the associated ApsaraDB RDS instance.
-	// *   Pending:Wait: The ECS instance is pending to be added to the scaling group. If a lifecycle hook that applies to scale-out activities is created for the scaling group, the ECS instance enters the Pending:Wait state. The ECS instance is added to the scaling group only after the lifecycle hook times out.
-	// *   Protected: The ECS instance is being protected. The ECS instance can provide services as expected. However, Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance.
-	// *   Standby: The ECS instance is on standby. The ECS instance is out of service and the weight of the ECS instance as a backend server is set to zero. Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance.
-	// *   Stopped: The ECS instance is stopped. The ECS instance is stopped and cannot provide services.
-	// *   Removing: The ECS instance is being removed from the scaling group. During this process, Auto Scaling removes the ECS instance from the backend server groups of the associated CLB instance and removes the IP address of the ECS instance from the IP address whitelist of the associated ApsaraDB RDS instance.
-	// *   Removing:Wait: The ECS instance is being removed from the scaling group and enters the Removing:Wait state. If a lifecycle hook that applies to scale-in activities is created for the scaling group, the ECS instance enters the Removing:Wait state. The ECS instance is removed from the scaling group only after the lifecycle hook times out.
-	LifecycleState *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
-	// The weight of the ECS instance as a backend server.
-	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
-	// The ID of the scaling activity during which the ECS instance is added to the scaling group.
-	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
-	// The ID of the associated scaling configuration.
+	CreatedTime            *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreationTime           *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationType           *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
+	Entrusted              *bool   `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
+	HealthStatus           *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LaunchTemplateId       *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateVersion  *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	LifecycleState         *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
+	LoadBalancerWeight     *int32  `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
+	ScalingActivityId      *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
-	// The ID of the scaling group to which the ECS instance belongs.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The bidding policy for the preemptible instance. Valid values:
-	//
-	// *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
-	// *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The warmup state of the ECS instance. Valid values:
-	//
-	// *   NoNeedWarmup: The instance does not need to be warmed up.
-	// *   WaitingForInstanceWarmup: The instance is being warmed up.
-	// *   InstanceWarmupFinish: The instance is warmed up.
-	WarmupState *string `json:"WarmupState,omitempty" xml:"WarmupState,omitempty"`
-	// The weight of the instance type. The weight indicates the capacity of a single instance of the specified instance type in the scaling group. A higher weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
-	WeightedCapacity *int32 `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
-	// The zone ID of the ECS instance.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ScalingGroupId         *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	SpotStrategy           *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	WarmupState            *string `json:"WarmupState,omitempty" xml:"WarmupState,omitempty"`
+	WeightedCapacity       *int32  `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
+	ZoneId                 *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeScalingInstancesResponseBodyScalingInstances) String() string {
@@ -13139,11 +12288,13 @@ func (s *DescribeScalingInstancesResponse) SetBody(v *DescribeScalingInstancesRe
 type DescribeScalingRulesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. Pages start from page 1.
+	//
+	// Default value: 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: 50.
 	//
-	// Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the scaling group.
+	// Default value: 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of the page to return. Pages start from page 1.
 	//
@@ -13171,7 +12322,12 @@ type DescribeScalingRulesRequest struct {
 	//
 	// Default value: false.
 	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
-	// The IDs of the scaling rules that you want to query.
+	// Specifies whether to return the event-triggered tasks that are associated with the scaling rules. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false
 	ShowAlarmRules *bool `json:"ShowAlarmRules,omitempty" xml:"ShowAlarmRules,omitempty"`
 }
 
@@ -13255,7 +12411,7 @@ type DescribeScalingRulesResponseBody struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The page number of the returned page.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the scaling rules.
+	// The scaling rules.
 	ScalingRules []*DescribeScalingRulesResponseBodyScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 	// Details of the scaling rules.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -13298,7 +12454,8 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	// The maximum number of ECS instances in the scaling group. You must specify the InitialMaxSize and PredictiveValueBehavior parameters.
 	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
 	// The number of consecutive times that the event-triggered task created for scale-out activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
-	AdjustmentValue *int32                                                         `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	// 监控项维度信息值，适用于目标追踪规则，当监控项需额外维度信息时设置，例如LoadBalancerRealServerAverageQps监控项需指定rulePool维度信息。
 	AlarmDimensions []*DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions `json:"AlarmDimensions,omitempty" xml:"AlarmDimensions,omitempty" type:"Repeated"`
 	// The event-triggered tasks that are associated with the scaling rule. Event-triggered tasks that are associated with the scaling rule are returned only if you set the ShowAlarmRules parameter to true. Otherwise, an empty list is returned.
 	Alarms []*DescribeScalingRulesResponseBodyScalingRulesAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
@@ -13499,7 +12656,9 @@ func (s *DescribeScalingRulesResponseBodyScalingRules) SetTargetValue(v float32)
 }
 
 type DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions struct {
-	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	// 监控项关联的维度信息键。
+	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	// 监控项关联的维度信息值。
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
 }
 
@@ -13694,28 +12853,17 @@ func (s *DescribeScalingRulesResponse) SetBody(v *DescribeScalingRulesResponseBo
 }
 
 type DescribeScheduledTasksRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
-	//
-	// Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 50.
-	//
-	// Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the scaling group to which the scheduled task belongs.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the scaling group to which the scheduled task belongs.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The actions that you want Auto Scaling to perform when the scheduled task is triggered.
-	ScheduledActions []*string `json:"ScheduledActions,omitempty" xml:"ScheduledActions,omitempty" type:"Repeated"`
-	// The ID of the scheduled task that you want to query.
-	ScheduledTaskIds []*string `json:"ScheduledTaskIds,omitempty" xml:"ScheduledTaskIds,omitempty" type:"Repeated"`
-	// The names of the scheduled tasks that you want to query.
-	ScheduledTaskNames []*string `json:"ScheduledTaskNames,omitempty" xml:"ScheduledTaskNames,omitempty" type:"Repeated"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScheduledActions     []*string `json:"ScheduledActions,omitempty" xml:"ScheduledActions,omitempty" type:"Repeated"`
+	ScheduledTaskIds     []*string `json:"ScheduledTaskIds,omitempty" xml:"ScheduledTaskIds,omitempty" type:"Repeated"`
+	ScheduledTaskNames   []*string `json:"ScheduledTaskNames,omitempty" xml:"ScheduledTaskNames,omitempty" type:"Repeated"`
 }
 
 func (s DescribeScheduledTasksRequest) String() string {
@@ -13782,16 +12930,11 @@ func (s *DescribeScheduledTasksRequest) SetScheduledTaskNames(v []*string) *Desc
 }
 
 type DescribeScheduledTasksResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the scheduled tasks.
+	PageNumber     *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScheduledTasks []*DescribeScheduledTasksResponseBodyScheduledTasks `json:"ScheduledTasks,omitempty" xml:"ScheduledTasks,omitempty" type:"Repeated"`
-	// The total number of scheduled tasks.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount     *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeScheduledTasksResponseBody) String() string {
@@ -13828,39 +12971,20 @@ func (s *DescribeScheduledTasksResponseBody) SetTotalCount(v int32) *DescribeSch
 }
 
 type DescribeScheduledTasksResponseBodyScheduledTasks struct {
-	// The description of the scheduled task.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expected number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	DesiredCapacity *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
-	// The time period during which the failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600.
-	LaunchExpirationTime *int32 `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
-	// The point in time at which the scheduled task is triggered.
-	LaunchTime *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	// The maximum number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	MinValue *int32 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The end time of the recurrence of the scheduled task.
-	RecurrenceEndTime *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
-	// The interval at which the scheduled task is repeated.
-	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The number of recurrences of the scheduled task.
-	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
-	// The ID of the scaling group to which the scheduled task belongs.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The scaling rule that is executed when the scheduled task is triggered. This parameter is returned only after a scaling rule is specified for the scheduled task.
-	ScheduledAction *string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty"`
-	// The ID of the scheduled task.
-	ScheduledTaskId *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
-	// The name of the scheduled task.
-	ScheduledTaskName *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
-	// Indicates whether the scheduled task is enabled.
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: true.
-	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DesiredCapacity      *int32  `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	LaunchExpirationTime *int32  `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
+	LaunchTime           *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	MaxValue             *int32  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue             *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	RecurrenceEndTime    *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
+	RecurrenceType       *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScheduledAction      *string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty"`
+	ScheduledTaskId      *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
+	ScheduledTaskName    *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
+	TaskEnabled          *bool   `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
 }
 
 func (s DescribeScheduledTasksResponseBodyScheduledTasks) String() string {
@@ -13971,25 +13095,13 @@ func (s *DescribeScheduledTasksResponse) SetBody(v *DescribeScheduledTasksRespon
 }
 
 type DetachAlbServerGroupsRequest struct {
-	// Details of the ALB server groups.
-	AlbServerGroups []*DetachAlbServerGroupsRequestAlbServerGroups `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
-	// Specifies whether to remove existing Elastic Compute Service (ECS) instances from the ALB server group that you want to disassociate from the scaling group. Valid values:
-	//
-	// *   true: removes existing ECS instances and returns the value of the `ScalingActivityId` parameter. You can use the scaling activity ID to check whether the ECS instances are removed.
-	// *   false: does not remove existing ECS instances.
-	//
-	// Default value: false.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Details of the ALB server groups.
-	ForceDetach *bool  `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
-	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25965~~).
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	AlbServerGroups      []*DetachAlbServerGroupsRequestAlbServerGroups `json:"AlbServerGroups,omitempty" xml:"AlbServerGroups,omitempty" type:"Repeated"`
+	ClientToken          *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceDetach          *bool                                          `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
+	OwnerId              *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string                                        `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DetachAlbServerGroupsRequest) String() string {
@@ -14036,10 +13148,8 @@ func (s *DetachAlbServerGroupsRequest) SetScalingGroupId(v string) *DetachAlbSer
 }
 
 type DetachAlbServerGroupsRequestAlbServerGroups struct {
-	// The port number used by the ECS instances in the ALB server group.
 	AlbServerGroupId *string `json:"AlbServerGroupId,omitempty" xml:"AlbServerGroupId,omitempty"`
-	// The ID of the scaling activity in which the ALB server group is disassociated from the scaling group and the ECS instances in the ALB server group are removed from the ALB server group. This parameter is returned only after you set the `ForceDetach` parameter to `true`.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DetachAlbServerGroupsRequestAlbServerGroups) String() string {
@@ -14061,9 +13171,7 @@ func (s *DetachAlbServerGroupsRequestAlbServerGroups) SetPort(v int32) *DetachAl
 }
 
 type DetachAlbServerGroupsResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -14115,25 +13223,13 @@ func (s *DetachAlbServerGroupsResponse) SetBody(v *DetachAlbServerGroupsResponse
 }
 
 type DetachDBInstancesRequest struct {
-	// The IDs of the ApsaraDB RDS instances. You can specify up to five ApsaraDB RDS instances.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The IDs of the ApsaraDB RDS instances. You can specify up to five ApsaraDB RDS instances.
-	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ForceDetach *bool  `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
-	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// Specifies whether to remove the private IP addresses of instances in the scaling group from the whitelist that manages access to the ApsaraDB RDS instance with which the scaling group is associated. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstances          []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
+	ForceDetach          *bool     `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DetachDBInstancesRequest) String() string {
@@ -14180,7 +13276,6 @@ func (s *DetachDBInstancesRequest) SetScalingGroupId(v string) *DetachDBInstance
 }
 
 type DetachDBInstancesResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14227,32 +13322,15 @@ func (s *DetachDBInstancesResponse) SetBody(v *DetachDBInstancesResponseBody) *D
 }
 
 type DetachInstancesRequest struct {
-	// Specifies whether to remove the instances from the default server group and vServer groups of the Classic Load Balancer (CLB) instance that is associated with the scaling group, and whether to remove the IP addresses of the instances from the whitelist that manages access to the ApsaraDB RDS instance that is associated with the scaling group.
-	//
-	// If you set this parameter to both, the instances are removed from the default sever group and vServer groups of the associated CLB instance, and the IP addresses of the instances are removed from the whitelist that manages access to the associated ApsaraDB RDS instance.
-	DecreaseDesiredCapacity *bool `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
-	// The IDs of the ECS instances or elastic container instances that you want to remove from the scaling group.
-	DetachOption *string `json:"DetachOption,omitempty" xml:"DetachOption,omitempty"`
-	// The IDs of the ECS instances or elastic container instances that you want to remove from the scaling group. You can specify 1 to 20 instance IDs.
-	//
-	// Examples:
-	//
-	// *   The ID of the ECS instance that you want to remove is `i-bp109k5j3dum1ce6****`.
-	// *   The ID of the elastic container instance that you want to remove is `eci-bp17gw49eu09yiwm****`.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the scaling activity.
-	LifecycleHook        *bool   `json:"LifecycleHook,omitempty" xml:"LifecycleHook,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to adjust the expected number of instances in the scaling group. Valid values:
-	//
-	// *   true: After a specific number of instances are removed from the scaling group, the expected number of instances in the scaling group decreases.
-	// *   false: After a specific number of instances are removed from the scaling group, the expected number of instances in the scaling group remains unchanged.
-	//
-	// Default value: true.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	DecreaseDesiredCapacity *bool     `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
+	DetachOption            *string   `json:"DetachOption,omitempty" xml:"DetachOption,omitempty"`
+	InstanceIds             []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	LifecycleHook           *bool     `json:"LifecycleHook,omitempty" xml:"LifecycleHook,omitempty"`
+	OwnerAccount            *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount    *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId         *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingGroupId          *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DetachInstancesRequest) String() string {
@@ -14309,9 +13387,7 @@ func (s *DetachInstancesRequest) SetScalingGroupId(v string) *DetachInstancesReq
 }
 
 type DetachInstancesResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -14363,32 +13439,14 @@ func (s *DetachInstancesResponse) SetBody(v *DetachInstancesResponseBody) *Detac
 }
 
 type DetachLoadBalancersRequest struct {
-	// Specifies whether to detach the CLB instance from the scaling group in an asynchronous manner. If you detach the CLB instance from the scaling group in an asynchronous manner, the call is successful only after all operations are successful. If a specific operation fails, the call fails. We recommend that you set this parameter to true.
-	//
-	// Valid values:
-	//
-	// *   true: detaches the CLB instance from the scaling group in an asynchronous manner. In this case, the ID of the scaling activity is returned.
-	// *   false: does not detach the CLB instance from the scaling group in an asynchronous manner.
-	//
-	// Default value: false.
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of the CLB instance. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	ForceDetach *bool `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
-	// The IDs of the CLB instances. You can specify up to five instance IDs.
-	LoadBalancers []*string `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
-	OwnerId       *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	Async                *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceDetach          *bool     `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
+	LoadBalancers        []*string `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DetachLoadBalancersRequest) String() string {
@@ -14440,9 +13498,7 @@ func (s *DetachLoadBalancersRequest) SetScalingGroupId(v string) *DetachLoadBala
 }
 
 type DetachLoadBalancersResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scaling activity. The value of this parameter is returned only if you set the Async parameter to true. You can call the describescalingactivities operation to query all scaling activity IDs and use the scaling activity IDs to check the status of the scaling activities.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -14650,25 +13706,13 @@ func (s *DetachServerGroupsResponse) SetBody(v *DetachServerGroupsResponseBody) 
 }
 
 type DetachVServerGroupsRequest struct {
-	// Specifies whether to remove ECS instances in your scaling group from the vServer group.
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Details of the vServer groups.
-	ForceDetach *bool  `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
-	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the scaling group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// Details of the vServer groups.
-	VServerGroups []*DetachVServerGroupsRequestVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
+	ClientToken          *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceDetach          *bool                                      `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
+	OwnerId              *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string                                    `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	VServerGroups        []*DetachVServerGroupsRequestVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
 }
 
 func (s DetachVServerGroupsRequest) String() string {
@@ -14715,9 +13759,7 @@ func (s *DetachVServerGroupsRequest) SetVServerGroups(v []*DetachVServerGroupsRe
 }
 
 type DetachVServerGroupsRequestVServerGroups struct {
-	// The ID of the request.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// Details of the vServer group attributes.
+	LoadBalancerId         *string                                                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	VServerGroupAttributes []*DetachVServerGroupsRequestVServerGroupsVServerGroupAttributes `json:"VServerGroupAttributes,omitempty" xml:"VServerGroupAttributes,omitempty" type:"Repeated"`
 }
 
@@ -14740,9 +13782,7 @@ func (s *DetachVServerGroupsRequestVServerGroups) SetVServerGroupAttributes(v []
 }
 
 type DetachVServerGroupsRequestVServerGroupsVServerGroupAttributes struct {
-	// The ID of the Classic Load Balancer (CLB) instance to which the vServer group belongs.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The port number that is used when Auto Scaling adds ECS instances to the vServer group. Valid values: 1 to 65535.
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -14765,7 +13805,6 @@ func (s *DetachVServerGroupsRequestVServerGroupsVServerGroupAttributes) SetVServ
 }
 
 type DetachVServerGroupsResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14812,10 +13851,8 @@ func (s *DetachVServerGroupsResponse) SetBody(v *DetachVServerGroupsResponseBody
 }
 
 type DisableAlarmRequest struct {
-	// The ID of the request.
-	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the event-triggered task.
+	AlarmTaskId          *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -14849,7 +13886,6 @@ func (s *DisableAlarmRequest) SetResourceOwnerAccount(v string) *DisableAlarmReq
 }
 
 type DisableAlarmResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14900,8 +13936,7 @@ type DisableScalingGroupRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DisableScalingGroupRequest) String() string {
@@ -14938,7 +13973,6 @@ func (s *DisableScalingGroupRequest) SetScalingGroupId(v string) *DisableScaling
 }
 
 type DisableScalingGroupResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14985,10 +14019,8 @@ func (s *DisableScalingGroupResponse) SetBody(v *DisableScalingGroupResponseBody
 }
 
 type EnableAlarmRequest struct {
-	// The ID of the request.
-	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the event-triggered task.
+	AlarmTaskId          *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -15022,7 +14054,6 @@ func (s *EnableAlarmRequest) SetResourceOwnerAccount(v string) *EnableAlarmReque
 }
 
 type EnableAlarmResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15269,21 +14300,12 @@ func (s *EnableScalingGroupResponse) SetBody(v *EnableScalingGroupResponseBody) 
 }
 
 type EnterStandbyRequest struct {
-	// Specifies whether to asynchronously set the ECS instances to the Standby state. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The IDs of the ECS instances.
+	Async                *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	InstanceIds          []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s EnterStandbyRequest) String() string {
@@ -15325,9 +14347,7 @@ func (s *EnterStandbyRequest) SetScalingGroupId(v string) *EnterStandbyRequest {
 }
 
 type EnterStandbyResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scaling activity.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -15379,20 +14399,15 @@ func (s *EnterStandbyResponse) SetBody(v *EnterStandbyResponseBody) *EnterStandb
 }
 
 type ExecuteScalingRuleRequest struct {
-	// The metric value specified when the step scaling rule is executed. Valid values: -9.999999E18 to 9.999999E18.
-	BreachThreshold *float32 `json:"BreachThreshold,omitempty" xml:"BreachThreshold,omitempty"`
-	// The threshold specified when the step scaling rule is executed. Valid values: -9.999999E18 to 9.999999E18.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region ID of the scaling group.
-	MetricValue  *float32 `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the scaling activity.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ScalingRuleAri *string `json:"ScalingRuleAri,omitempty" xml:"ScalingRuleAri,omitempty"`
+	BreachThreshold      *float32 `json:"BreachThreshold,omitempty" xml:"BreachThreshold,omitempty"`
+	ClientToken          *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	MetricValue          *float32 `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	OwnerAccount         *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingRuleAri       *string  `json:"ScalingRuleAri,omitempty" xml:"ScalingRuleAri,omitempty"`
 }
 
 func (s ExecuteScalingRuleRequest) String() string {
@@ -15449,9 +14464,7 @@ func (s *ExecuteScalingRuleRequest) SetScalingRuleAri(v string) *ExecuteScalingR
 }
 
 type ExecuteScalingRuleResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -15503,19 +14516,17 @@ func (s *ExecuteScalingRuleResponse) SetBody(v *ExecuteScalingRuleResponseBody) 
 }
 
 type ExitStandbyRequest struct {
-	// The region ID of the scaling group.
+	// Moves an Elastic Compute Service (ECS) instance out of the Standby state.
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
+	// The ID of the scaling activity.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
+	// The ID of the scaling group.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// ExitStandby
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
+	// The region ID of the scaling group.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
@@ -15563,9 +14574,8 @@ func (s *ExitStandbyRequest) SetScalingGroupId(v string) *ExitStandbyRequest {
 }
 
 type ExitStandbyResponseBody struct {
-	// The ID of the scaling activity.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// auditing
+	// 330440
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -15617,18 +14627,12 @@ func (s *ExitStandbyResponse) SetBody(v *ExitStandbyResponseBody) *ExitStandbyRe
 }
 
 type ListTagKeysRequest struct {
-	// The number of entries to return on each page. Maximum value: 50.
-	//
-	// Default value: 10.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the Auto Scaling resource. Set the value to scalinggroup. This indicates that the tags are added to scaling groups.
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -15670,14 +14674,10 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	// Details of the tag keys.
-	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// The ID of the request.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Details of the tag keys.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Keys      []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -15738,18 +14738,13 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	// The token that determines the start point of the next query.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Auto Scaling resource. You can call the DescribeRegions operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
-	ResourceIds          []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The type of the Auto Scaling resource. Only scaling groups are supported. Set the value to scalinggroup.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Details of the tags.
-	Tags []*ListTagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	NextToken            *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId              *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceIds          []*string                      `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceType         *string                        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                 []*ListTagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -15796,15 +14791,7 @@ func (s *ListTagResourcesRequest) SetTags(v []*ListTagResourcesRequestTags) *Lis
 }
 
 type ListTagResourcesRequestTags struct {
-	// The key of the tag. The key is used to perform an exact match of Auto Scaling resources. The key must be 1 to 128 characters in length.
-	//
-	// `Tags` is used to perform an exact match of Auto Scaling resources to which the specified tags are added. Specify a tag in the key-value pair format.
-	//
-	// *   If you specify only `Tags.Key`, all resources whose tags contain the specified tag key are returned.
-	// *   If you specify only `Tags.Value`, the `MissingParameter.TagKey` error is reported.
-	// *   If you specify multiple key-value pairs at the same time, only Auto Scaling resources that match all the tag keys and tag values are returned.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The value is used to perform an exact match of Auto Scaling resources. The value can be up to 128 characters in length.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15827,11 +14814,8 @@ func (s *ListTagResourcesRequestTags) SetValue(v string) *ListTagResourcesReques
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that determines the start point of the next query.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the resource and tags, such as the resource ID, the resource type, tag keys, and tag values.
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -15859,19 +14843,11 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// Indicates whether the tag can be propagated.
-	//
-	// *   true: The tag can be propagated only to instances that are to be added to the scaling group. The tag cannot be propagated to instances that are already running in the scaling group.
-	// *   false: The tag cannot be propagated to an instance.
-	Propagate *bool `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
-	// The ID of the resource.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	Propagate    *bool   `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -15937,20 +14913,13 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
-	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
-	//
-	// Default value: 10.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The key of the tag.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the Auto Scaling resource. Set the value to scalinggroup. This indicates that the tag is added to a scaling group.
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -15997,14 +14966,10 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
-	// The ID of the request.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Details of the tag values.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the tag values.
-	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s ListTagValuesResponseBody) String() string {
@@ -16065,27 +15030,64 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 }
 
 type ModifyAlarmRequest struct {
-	// The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
+	// The unique identifiers of the scaling rules that are associated with the event-triggered task.
 	AlarmActions []*string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
-	// The name of the event-triggered task.
+	// The ID of the event-triggered task.
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
+	// The operator that is used to compare the metric value and the metric threshold. Valid values:
+	//
+	// *   If the metric value is greater than or equal to the metric threshold, set the value to `>=`.
+	// *   If the metric value is less than or equal to the metric threshold, set the value to `<=`.
+	// *   If the metric value is greater than the metric threshold, set the value to `>`.
+	// *   If the metric value is less than the metric threshold, set the value to `<`.
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The name of the metric. The valid values vary based on the metric type.
+	// The description of the event-triggered task.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dimensions of the metric.
+	Dimensions []*ModifyAlarmRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	// The effective period of the event-triggered task.
 	//
-	// *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
+	// The Effective value follows the cron expression format. The default format is `X X X X X ?`. In the format:
 	//
-	// *   If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
+	// *   X: a placeholder for a field, which represents seconds, minutes, hours, days, and months in sequence. X can be a definite value or a special character that has logical meaning. For information about the valid values of X, see [Cron expression](~~25907~~).
+	// *   ?: No value is specified.
 	//
-	//     *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
+	// > By default, the value of this parameter is specified in **UTC+8**. You can specify the time zone in the `TZ=+yy` format before a cron expression. y indicates the time zone. For example, `TZ=+00 * * 1-2 * * ?` specifies that the event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
+	//
+	// Examples:
+	//
+	// *   ` * * * * * ?  `: The event-triggered task is in effect at all times.
+	// *   ` * * 17-18 * * ?  `: The event-triggered task is in effect between 17:00:00 and 18:59:00 (UTC+8) every day.
+	// *   `TZ=+00 * * 1-2 * * ?`: The event-triggered task is in effect between 01:00:00 and 02:59:00 (UTC+0) every day.
+	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The expressions that are specified in the multi-metric alert rule.
+	Expressions []*ModifyAlarmRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	// The relationship between the trigger conditions in the multi-metric alert rule. Valid values:
+	//
+	// *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet the trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
+	// *   \`\`: An alert is triggered as long as one of the metrics in the multi-metric alert rule meets the trigger condition.
+	//
+	// Default value: `&&`
+	ExpressionsLogicOperator *string `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
+	// The ID of the application group to which the custom metric belongs. This parameter must be specified when MetricType is set to custom.
+	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the metric. Valid values of MetricName vary based on the value of MetricType.
+	//
+	// *   If you set MetricType to custom, the valid values of MetricName are your custom metrics.
+	//
+	// *   If you set MetricType to system, MetricName has the following valid values:
+	//
+	//     *   CpuUtilization: (ECS) the CPU utilization. Unit: %.
 	//     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-	//     *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min.
-	//     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
+	//     *   IntranetRx: the inbound traffic over the internal network to an ECS instance. Unit: KB/min.
+	//     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min.
 	//     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-	//     *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-	//     *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-	//     *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-	//     *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
+	//     *   SystemDiskReadBps: the number of bytes read from the system disk that is used by an ECS instance per second.
+	//     *   SystemDiskWriteBps: the number of bytes written to the system disk that is used by an ECS instance per second.
+	//     *   SystemDiskReadOps: the number of read operations on the system disk that is used by an ECS instance per second.
+	//     *   SystemDiskWriteOps: the number of write operations on the system disk that is used by an ECS instance per second.
 	//     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
 	//     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
 	//     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
@@ -16099,37 +15101,15 @@ type ModifyAlarmRequest struct {
 	//     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
 	//
 	// For more information, see [Event-triggered task for system monitoring](~~74854~~).
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Details of the dimensions.
-	Dimensions []*ModifyAlarmRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
-	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The ID of the application group to which the custom metric belongs. If you set the MetricType parameter to custom, you must specify this parameter.
-	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The expressions that are specified in the multi-metric alert rule.
-	Expressions []*ModifyAlarmRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	// The ID of the event-triggered task.
-	ExpressionsLogicOperator *string `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
-	// The effective period of the event-triggered task.
-	//
-	// This parameter follows the cron expression format. The default format is `X X X X X ?`, in which:
-	//
-	// *   X: a placeholder for a field, which represents seconds, minutes, hours, days, and months in sequence. X can be a definite value or a special character that has logical meaning. For information about the valid values of X, see [Cron expression](~~25907~~).
-	// *   ?: No value is specified.
-	//
-	// > By default, the value of this parameter is specified in **UTC+8**. You can specify the time zone in the `TZ=+yy` format before a cron expression. y indicates the time zone. For example, `TZ=+00 * * 1-2 * * ?` specifies that the event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
-	//
-	// Examples:
-	//
-	// *   ` * * * * * ?  `: The event-triggered task is in effect all the time.
-	// *   ` * * 17-18 * * ?  `: The event-triggered task is in effect between 17:00 and 18:59 (UTC+8) every day.
-	// *   `TZ=+00 * * 1-2 * * ?`: The event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
-	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The type of the metric. Valid values:
 	//
 	// *   system: system metrics of CloudMonitor
 	// *   custom: custom metrics that are reported to CloudMonitor
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The name of the event-triggered task.
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The period of time during which statistics about the metric is collected. Unit: seconds. Valid values:
 	//
 	// *   15
@@ -16138,28 +15118,18 @@ type ModifyAlarmRequest struct {
 	// *   300
 	// *   900
 	//
-	// > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The description of the event-triggered task.
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set Period to 15. In other cases, you can set Period to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID of the event-triggered task.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The method that is used to aggregate statistics for the metric. Valid values:
 	//
 	// *   Average
 	// *   Minimum
 	// *   Maximum
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the event-triggered task.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The operator that is used to compare the metric value and the threshold. Valid values:
-	//
-	// *   If the metric value is greater than or equal to the threshold, set the value to `>=`.
-	// *   If the metric value is less than or equal to the threshold, set the value to `<=`.
-	// *   If the metric value is greater than the threshold, set the value to `>`.
-	// *   If the metric value is less than the threshold, set the value to `<`.
+	// The threshold of a metric in the multi-metric alert rule. If the threshold is reached the specified number of times within the specified period, a scaling rule is executed.
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -16267,27 +15237,36 @@ func (s *ModifyAlarmRequest) SetThreshold(v float32) *ModifyAlarmRequest {
 }
 
 type ModifyAlarmRequestDimensions struct {
-	// The value of the dimension. The valid values vary based on the value of the DimensionKey parameter.
+	// The dimension key of the metric. Valid values of DimensionKey vary based on the value of MetricType.
 	//
-	// *   If you set the MetricType parameter to custom, you can specify this parameter based on your business requirements.
+	// *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
 	//
-	// *   If you set the MetricType parameter to system, this parameter has the following valid values:
+	// *   If you set MetricType to system, DimensionKey has the following valid values:
 	//
-	//     *   If you set the DimensionKey parameter to user_id, the system specifies the value
+	//     *   user_id: the ID of your Alibaba Cloud account
+	//     *   scaling_group: the scaling group that is monitored by the event-triggered task.
+	//     *   device: the type of the NIC.
+	//     *   state: the state of the TCP connection
+	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	// The dimension value of the metric. Valid values of DimensionValue vary based on the value of DimensionKey.
 	//
-	//     *   scaling_group: The system specifies the value of the DimensionValue parameter.
+	// *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
 	//
-	//     *   If you set the DimensionKey parameter to device, you can set the DimensionValue parameter to eth0 or eth1.
+	// *   If you set MetricType to system, DimensionKey has the following valid values:
 	//
-	//         *   For instances that reside in the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC.
+	//     *   user_id: The system specifies the value.
+	//
+	//     *   scaling_group: The system specifies the value.
+	//
+	//     *   If you set DimensionKey to device, you can set DimensionValue to eth0 or eth1.
+	//
+	//         *   For instances that reside in the classic network, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC.
 	//         *   For instances that reside in the classic network, eth1 specifies the public NIC.
 	//
-	//     *   If you set the DimensionKey parameter to state, you can set the DimensionValue parameter to TCP_TOTAL or ESTABLISHED.
+	//     *   If you set DimensionKey to state, you can set DimensionValue to TCP_TOTAL or ESTABLISHED.
 	//
 	//         *   TCP_TOTAL specifies the total number of TCP connections.
 	//         *   ESTABLISHED specifies the number of established TCP connections.
-	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The expressions that are specified in the multi-metric alert rule.
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
 }
 
@@ -16310,7 +15289,46 @@ func (s *ModifyAlarmRequestDimensions) SetDimensionValue(v string) *ModifyAlarmR
 }
 
 type ModifyAlarmRequestExpressions struct {
-	// The period of time during which statistics about the metrics in the multi-metric alert rule is collected. Unit: seconds. Valid values:
+	// The operator that is used to compare the metric value and the metric threshold. Valid values:
+	//
+	// *   If the metric value is greater than or equal to the metric threshold, set the value to `>=`.
+	// *   If the metric value is less than or equal to the metric threshold, set the value to `<=`.
+	// *   If the metric value is greater than the metric threshold, set the value to `>`.
+	// *   If the metric value is less than the metric threshold, set the value to `<`.
+	//
+	// Default value: >=
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	// The name of the metric that is specified in the multi-metric alert rule. Valid values of MetricName vary based on the value of MetricType.
+	//
+	// *   If you set MetricType to custom, the valid values of MetricName are your custom metrics.
+	//
+	// *   If you set MetricType to system, MetricName has the following valid values:
+	//
+	//     *   CpuUtilization: (ECS) the CPU utilization. Unit: %.
+	//     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
+	//     *   IntranetRx: the inbound traffic over the internal network to an ECS instance. Unit: KB/min.
+	//     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
+	//     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
+	//     *   SystemDiskReadBps: the number of bytes read from the system disk that is used by an ECS instance per second.
+	//     *   SystemDiskWriteBps: the number of bytes written to the system disk that is used by an ECS instance per second.
+	//     *   SystemDiskReadOps: the number of read operations on the system disk that is used by an ECS instance per second.
+	//     *   SystemDiskWriteOps: the number of write operations on the system disk that is used by an ECS instance per second.
+	//     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
+	//     *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
+	//     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
+	//     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
+	//     *   MemoryUtilization: the memory usage of an agent. Unit: %.
+	//     *   LoadAverage: the average system load of an agent.
+	//     *   TcpConnection: the total number of TCP connections of an agent.
+	//     *   TcpConnection: the number of established TCP connections of an agent.
+	//     *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
+	//     *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
+	//     *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
+	//     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+	//
+	// For more information, see [Event-triggered task for system monitoring](~~74854~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The period of time during which the statistics of a metric in the multi-metric alert rule is collected. Unit: seconds. Valid values:
 	//
 	// *   15
 	// *   60
@@ -16318,33 +15336,17 @@ type ModifyAlarmRequestExpressions struct {
 	// *   300
 	// *   900
 	//
-	// > If your scaling group is of the ECS type and the event-triggered task associated with your scaling group monitors CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+	// > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set Period to 15. In other cases, you can set Period to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
 	//
-	// Default value: 300.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The operator that is used to compare the metric value and the threshold. Valid values:
-	//
-	// *   If the metric value is greater than or equal to the threshold, set the value to `>=`.
-	// *   If the metric value is less than or equal to the threshold, set the value to `<=`.
-	// *   If the metric value is greater than the threshold, set the value to `>`.
-	// *   If the metric value is less than the threshold, set the value to `<`.
-	//
-	// Default value: >=.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The method that is used to aggregate statistics about the metrics that are specified in the multi-metric alert rule. Valid values:
+	// Default value: 300
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The method that is used to aggregate the statistics of a metric that is specified in the multi-metric alert rule. Valid values:
 	//
 	// *   Average
 	// *   Minimum
 	// *   Maximum
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The relationship between the trigger conditions in the multi-metric alert rule. Valid values:
-	//
-	// *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet the trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
-	// *   \`\`: An alert is triggered if one of the metrics in the multi-metric alert rule meets the trigger condition.
-	//
-	// Default value: `&&`.
+	// The threshold of a metric in the multi-metric alert rule. If the threshold is reached the specified number of times within the specified period, a scaling rule is executed.
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -16382,9 +15384,9 @@ func (s *ModifyAlarmRequestExpressions) SetThreshold(v float32) *ModifyAlarmRequ
 }
 
 type ModifyAlarmResponseBody struct {
-	// The ID of the request.
+	// The ID of the event-triggered task.
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// auditing
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17912,7 +16914,8 @@ func (s *ModifyEciScalingConfigurationRequestVolumesDiskVolume) SetFsType(v stri
 }
 
 type ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume struct {
-	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	Medium    *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	SizeLimit *string `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
 }
 
 func (s ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume) String() string {
@@ -17925,6 +16928,11 @@ func (s ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume) GoString() st
 
 func (s *ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume) SetMedium(v string) *ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume {
 	s.Medium = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume) SetSizeLimit(v string) *ModifyEciScalingConfigurationRequestVolumesEmptyDirVolume {
+	s.SizeLimit = &v
 	return s
 }
 
@@ -18267,31 +17275,12 @@ func (s *ModifyLifecycleHookResponse) SetBody(v *ModifyLifecycleHookResponseBody
 }
 
 type ModifyNotificationConfigurationRequest struct {
-	// The types of the notifications that you want to modify. You can modify one to eight notifications. Specify multiple values in the repeated list form.
-	//
-	// You can call the DescribeNotificationTypes operation to query the values of this parameter.
-	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The types of the notifications that you want to modify. You can modify one to eight notifications. Specify multiple values in the repeated list form.
-	//
-	// You can call the DescribeNotificationTypes operation to query the values of this parameter.
-	NotificationTypes []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
-	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
-	//
-	// *   If you use CloudMonitor as the notification method, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
-	// *   If you use an MNS queue as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
-	// *   If you use an MNS topic as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
-	//
-	// The variables in the preceding formats have the following meanings:
-	//
-	// *   region-id: the region ID of the scaling group.
-	// *   account-id: the ID of the Alibaba Cloud account.
-	// *   queuename: the name of the MNS queue.
-	// *   topicname: the name of the MNS topic.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	NotificationArn      *string   `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
+	NotificationTypes    []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s ModifyNotificationConfigurationRequest) String() string {
@@ -18333,7 +17322,6 @@ func (s *ModifyNotificationConfigurationRequest) SetScalingGroupId(v string) *Mo
 }
 
 type ModifyNotificationConfigurationResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18383,68 +17371,68 @@ type ModifyScalingConfigurationRequest struct {
 	ImageOptions       *ModifyScalingConfigurationRequestImageOptions       `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
 	PrivatePoolOptions *ModifyScalingConfigurationRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	SystemDisk         *ModifyScalingConfigurationRequestSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
+	// Specifies whether to associate an ECS instance on a dedicated host with the dedicated host. Valid values:
 	//
-	// *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-	// *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the instance cannot be started.
+	// *   default: does not associate the ECS instance with the dedicated host. If you start an instance that is stopped in economical mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+	// *   host: associates the ECS instance with the dedicated host. If you start an ECS instance that is stopped in economical mode, the ECS instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the ECS instance fails to start.
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// The number of vCPUs. Unit: cores.
+	// The number of vCPUs.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify CPU and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify an instance type in the scaling configuration.
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The performance mode of the burstable instance. Valid values:
 	//
 	// *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
 	// *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// Details of the data disks.
+	// The data disks.
 	DataDisks []*ModifyScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// The ID of the dedicated host on which you want to create the ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
+	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
-	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
+	// You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The ID of the deployment set to which the ECS instance belongs.
+	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
+	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
 	//
 	// *   Windows instances: The hostname must be 2 to 15 characters in length, and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
-	// *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+	// *   Other instances, such as Linux instances: The hostname must be 2 to 64 characters in length. Separate a hostname into multiple segments with periods (.). Each segment can contain letters, digits, and hyphens (-).
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances belong.
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
+	// The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The ID of the image that Auto Scaling uses to automatically create ECS instances.
+	// The ID of the image that is used by Auto Scaling to automatically create ECS instances.
 	//
 	// > If the image that is specified in the scaling configuration contains system disks and data disks, the data that is stored in the data disks is cleared after you modify the image.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image. Each image name must be unique in a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
+	// The name of the image. Each image name must be unique in a region. If you specify ImageId, ImageName is ignored.
 	//
-	// You cannot use the ImageName parameter to specify Alibaba Cloud Marketplace images.
+	// You cannot use ImageName to specify images from Alibaba Cloud Marketplace.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The description of the ECS instance. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The name of the Elastic Compute Service (ECS) instance that is automatically created based on the scaling configuration.
+	// The name of the Elastic Compute Service (ECS) instance that is automatically created by using the scaling configuration.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+	// The intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
 	InstancePatternInfos []*ModifyScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
-	// The information about the instance types.
+	// The instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
-	// The instance types. If you specify this parameter, the InstanceType parameter is ignored. Valid values of N: 1 to 10.
+	// The instance type. If you specify InstanceTypes, InstanceType is ignored.
 	//
-	// The first instance type has the highest priority. The priority decreases based on the specified order of the instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+	// Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The billing method for network usage. Valid values:
+	// The metering method for network usage. Valid values:
 	//
-	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-	// *   PayByTraffic: You are charged for the actual data transfer. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
+	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by InternetMaxBandwidthOut.
+	// *   PayByTraffic: You are charged for the actual data transfer. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
+	// *   If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
+	// *   If you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// Specifies whether to create an I/O optimized instance. Valid values:
 	//
@@ -18453,18 +17441,18 @@ type ModifyScalingConfigurationRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The name of the key pair that you use to log on to an ECS instance.
+	// The name of the key pair that you can use to log on to an ECS instance.
 	//
-	// *   Windows instances do not use this parameter.
+	// *   Windows instances do not support this parameter.
 	// *   By default, the username and password authentication method is disabled for Linux instances.
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The weight of a backend server. Valid values: 1 to 100.
+	// The weight of an ECS instance as a backend server. Valid values: 1 to 100.
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
 	// The memory size. Unit: GiB.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify CPU and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify an instance type in the scaling configuration.
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// Specifies whether to overwrite existing data. Valid values:
 	//
@@ -18475,20 +17463,20 @@ type ModifyScalingConfigurationRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
+	// The name of the RAM role that you want to attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the resource group to which the ECS instance belongs.
+	// The ID of the resource group to which the ECS instances belong.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling configuration that you want to modify.
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
-	// The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). It must start with a letter or a digit.
+	// The name of the scaling configuration. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
 	//
-	// The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify the ScalingConfigurationName parameter, the scaling configuration ID is used.
+	// The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
 	ScalingConfigurationName *string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
-	// The options of the scheduler.
+	// The scheduler options.
 	SchedulerOptions map[string]interface{} `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty"`
-	// The ID of the security group with which the ECS instance is associated. The ECS instances that are associated with the same security group can access each other.
+	// The ID of the security group with which ECS instances are associated. The ECS instances that are associated with the same security group can access each other.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
@@ -18497,9 +17485,9 @@ type ModifyScalingConfigurationRequest struct {
 	// *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
 	// *   If you set this parameter to 0, no retention period is specified for the preemptible instance.
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
+	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate. This value specifies that the preemptible instance is to be released.
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	// The information about the preemptible instance types.
+	// The preemptible instance types.
 	SpotPriceLimits []*ModifyScalingConfigurationRequestSpotPriceLimits `json:"SpotPriceLimits,omitempty" xml:"SpotPriceLimits,omitempty" type:"Repeated"`
 	// The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
 	//
@@ -18507,28 +17495,28 @@ type ModifyScalingConfigurationRequest struct {
 	// *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
 	// *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The categories of the system disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the system disks. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
 	//
 	// *   cloud: basic disk
 	// *   cloud_efficiency: ultra disk
 	// *   cloud_ssd: standard SSD
 	// *   cloud_essd: ESSD
 	//
-	// > You cannot specify both the SystemDiskCategories parameter and the `SystemDisk.Category` parameter.
+	// > If you specify SystemDiskCategories, you cannot specify `SystemDisk.Category`.
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
-	// The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. The following rules apply to tag keys and tag values:
+	// The tags of the ECS instance. Specify the tags as key-value pairs. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
 	//
-	// *   A tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
-	// *   A tag value can be up to 128 characters in length. The value cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
+	// *   A tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag key cannot be an empty string.
+	// *   A tag value can be up to 128 characters in length. The value cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag value can be an empty string.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// Specifies whether to create an instance on a dedicated host. Valid values:
+	// Specifies whether to create an ECS instance on a dedicated host. Valid values:
 	//
-	// *   default: does not create the instance on a dedicated host.
-	// *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
+	// *   default: does not create the ECS instance on a dedicated host.
+	// *   host: creates the ECS instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud selects a dedicated host for the ECS instance.
 	Tenancy *string `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
 	// The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the zone where the ECS instance resides.
+	// The zone ID of the ECS instances that are created by using the scaling configuration.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -18795,11 +17783,11 @@ func (s *ModifyScalingConfigurationRequestImageOptions) SetLoginAsNonRoot(v bool
 type ModifyScalingConfigurationRequestPrivatePoolOptions struct {
 	// The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
+	// The type of the private pool that you want to use to start instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool for Auto Scaling to start instances. Valid values:
 	//
-	// *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-	// *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-	// *   None: no private pool. The system does not use the resources in private pools to create instances.
+	// *   Open: open private pool. Auto Scaling selects a matching open private pool to start instances. If no matching open private pools exist, Auto Scaling uses the resources in the public pool to start instances. In this case, you do not need to specify PrivatePoolOptions.Id.
+	// *   Target: specified private pool. Auto Scaling uses the resources in the specified private pool to start instances. If the private pool is unavailable, Auto Scaling cannot start the instances. If you set this parameter to Target, you must specify PrivatePoolOptions.Id.
+	// *   None: no private pool: Auto Scaling does not use the resources in private pools to start instances.
 	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
 }
 
@@ -18829,7 +17817,7 @@ type ModifyScalingConfigurationRequestSystemDisk struct {
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The category of the system disk. Valid values:
 	//
@@ -18839,50 +17827,50 @@ type ModifyScalingConfigurationRequestSystemDisk struct {
 	// *   cloud_essd: enhanced SSD (ESSD)
 	// *   ephemeral_ssd: local SSD
 	//
-	// You cannot specify both the SystemDisk.Category and `SystemDiskCategories` parameters. If you do not specify the SystemDisk.Category or `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. The default value of this parameter for non-I/O optimized instances of Generation I instance types is cloud. The default value of this parameter for instances of other types is cloud_efficiency.
+	// If you specify SystemDisk.Category, you cannot specify `SystemDiskCategories`. If you do not specify SystemDisk.Category or `SystemDiskCategories`, the default value of SystemDisk.Category is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with [http:// or https://. Default value: null.](http://https://。、（:）、（\_）（-）。：)
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The encryption algorithm that you want to use to encrypt the system disk. Valid values:
+	// The algorithm that you want to use to encrypt the system disk. Valid values:
 	//
 	// *   AES-256
 	// *   SM4-128
 	//
-	// Default value: AES-256.
+	// Default value: AES-256
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt the system disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// Default value: false.
+	// Default value: false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The ID of the KMS key that you want to use to encrypt the system disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The performance level (PL) of the system disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// > For more information about how to choose ESSD PLs, see [ESSD](~~122389~~).
+	// > For more information about how to select ESSD PLs, see [ESSD](~~122389~~).
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The IOPS metric that is preconfigured for the system disk.
 	//
 	// > IOPS measures the number of read and write operations that an EBS device can process per second.
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of the system disk. Unit: GiB.
+	// The size of the system disk. Unit: GiB. Valid values:
 	//
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
+	// *   If you set SystemDisk.Category to ephemeral_ssd: 20 to 500.
 	//
-	// The value of the SystemDisk.Size parameter must be greater than or equal to max{20, ImageSize}.
+	// The value of SystemDisk.Size must be greater than or equal to max{20, ImageSize}.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -18950,47 +17938,47 @@ func (s *ModifyScalingConfigurationRequestSystemDisk) SetSize(v int32) *ModifySc
 }
 
 type ModifyScalingConfigurationRequestDataDisks struct {
-	// The ID of the automatic snapshot policy that you want to apply to data disk N. Valid values of N: 1 to 16.
+	// The ID of the automatic snapshot policy that you want to apply to the data disk.
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// Specifies whether to enable the burst feature for the system disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The categories of data disk N. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the data disks. Valid values:
 	//
-	// *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
+	// *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
 	// *   cloud_efficiency: ultra disk.
 	// *   cloud_ssd: standard SSD.
 	// *   cloud_essd: ESSD.
 	//
-	// > If you specify the Categories parameter, you cannot specify the `Category` parameter.
+	// > If you specify Categories, you cannot specify `DataDisk.Category`.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The category of data disk N. Valid values of N: 1 to 16. Valid values:
+	// The category of the data disk. Valid values:
 	//
-	// *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
+	// *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
 	// *   cloud_efficiency: ultra disk.
 	// *   cloud_ssd: standard SSD.
 	// *   ephemeral_ssd: local SSD.
 	// *   cloud_essd: ESSD.
 	//
-	// If you specify the `Categories` parameter, you cannot specify the Category parameter. If you do not specify the Category or `Categories` parameter, the default value of the Category parameter is used.
+	// If you specify Category, you cannot specify `Categories`. If you do not specify Category or `Categories`, the default value of Category is used:
 	//
-	// *   For I/O optimized instances, the default value of this parameter is cloud_efficiency.
-	// *   For non-I/O optimized instances, the default value of this parameter is cloud.
+	// *   For I/O optimized instances, the default value is cloud_efficiency.
+	// *   For non-I/O optimized instances, the default value is cloud.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to release data disk N when the instance to which data disk N is attached is released. Valid values of N: 1 to 16. Valid values:
+	// Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for other disks, an error is returned.
+	// This parameter is available only for independent disks whose Category is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for other disks, an error is reported.
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
 	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	// The mount target of the data disk. If you do not specify Device, a mount target is automatically assigned when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
@@ -18999,34 +17987,34 @@ type ModifyScalingConfigurationRequestDataDisks struct {
 	// *   true
 	// *   false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key that you want to use to encrypt data disk N. Valid values of N: 1 to 16.
+	// The ID of the Key Management Service (KMS) key that you want to use to encrypt the data disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The PL of the data disk that is an ESSD. If you set the Category parameter to cloud_essd, you must use this parameter to specify the PL of the same ESSD. Valid values:
+	// The PL of the data disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// > For more information about how to choose ESSD PLs, see [ESSD](~~122389~~).
+	// > For more information about how to select ESSD PLs, see [ESSD](~~122389~~).
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The input/output operations per second (IOPS) metric that is preconfigured for the data disk.
+	// The IOPS metric that is preconfigured for the data disk.
 	//
 	// > IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of data disk N. Unit: GiB. Valid values of N: 1 to 16.
+	// The size of the data disk. Unit: GiB. Valid values:
 	//
-	// *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
-	// *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to cloud_ssd: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
+	// *   If you set Categories cloud: 5 to 2000.
+	// *   If you set Categories to cloud_efficiency: 20 to 32768.
+	// *   If you set Categories to cloud_ssd: 20 to 32768.
+	// *   If you set Categories to cloud_essd: 20 to 32768.
+	// *   If you set Categories to ephemeral_ssd: 5 to 800.
 	//
-	// The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
+	// The size of the data disk must be greater than or equal to the size of the snapshot that is specified by SnapshotId.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+	// The ID of the snapshot that you want to use to create data disks. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot.
 	//
-	// If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
+	// If you specify a snapshot that is created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -19109,7 +18097,7 @@ func (s *ModifyScalingConfigurationRequestDataDisks) SetSnapshotId(v string) *Mo
 }
 
 type ModifyScalingConfigurationRequestInstancePatternInfos struct {
-	// The architectures of the instance types. Valid values:
+	// The architectures of the instance types.
 	//
 	// *   X86: x86 architecture.
 	// *   Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
@@ -19125,32 +18113,32 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	// *   Include: includes burstable instance types.
 	// *   Required: includes only burstable instance types.
 	//
-	// Default value: Include.
+	// Default value: Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that are specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](~~25378~~). You can specify 1 to 10 vCPUs.
+	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](~~25378~~).
 	//
-	// When you specify the Cores parameter, take note of the following items:
+	// When you specify this parameter, take note of the following items:
 	//
-	// *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
-	// *   You must specify the InstancePatternInfos, Cores, and Memory parameters at the same time.
-	// *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
+	// *   InstancePatternInfo is available only for scaling groups that reside in VPCs.
+	// *   If you specify InstancePatternInfo, you must also specify Cores and Memory.
+	// *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
 	//
-	// *   ecs.c6.large: excludes the ecs.c6.large instance type
+	// *   ecs.c6.large: excludes the ecs.c6.large instance type.
 	// *   ecs.c6.\*: excludes the c6 instance family.
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
-	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
+	// The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
-	// *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](~~25378~~).
-	// *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](~~59977~~) of burstable instances.
+	// *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
+	// *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](~~25378~~) topic.
+	// *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](~~59977~~) of burstable instances.
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
 	//
-	// > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
+	// > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The memory size that is specified for an instance type in the intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -19198,15 +18186,15 @@ func (s *ModifyScalingConfigurationRequestInstancePatternInfos) SetMemory(v floa
 }
 
 type ModifyScalingConfigurationRequestInstanceTypeOverrides struct {
-	// The instance type that you specify by using the Extended Configurations feature of the launch template. If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+	// The instance type. If you want to specify the capacity of instance types in the scaling configuration, specify InstanceType and WeightedCapacity at the same time.
 	//
-	// You can use this parameter to specify 1 to 10 instance types.
+	// You can use InstanceType to specify multiple instance types and WeightedCapacity to specify the weights of the instance types.
 	//
-	// > If you specify the InstanceType parameter, you cannot specify the InstanceTypes parameter.
+	// > If you specify InstanceType, you cannot specify InstanceTypes.
 	//
-	// You can use the InstanceType parameter to specify only instance types that are available for purchase.
+	// You can use InstanceType to specify only instance types that are available for purchase.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want to scale instances based on the weights of the instance types, you must specify this parameter after you specify the InstanceType parameter. After you use the InstanceType parameter to specify an instance type, you can use the WeightedCapacity parameter to specify weight for the same instance type.
+	// The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances in the scaling group based on the weighted capacity of the instances, specify WeightedCapacity after you specify InstanceType.
 	//
 	// A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
 	//
@@ -19220,9 +18208,9 @@ type ModifyScalingConfigurationRequestInstanceTypeOverrides struct {
 	//
 	// To meet the expected capacity requirement, Auto Scaling must create and add two ecs.c5.xlarge instances.
 	//
-	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by the MaxSize parameter and the maximum weight of the instance types.
+	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance types.
 	//
-	// Valid values of the WeightedCapacity parameter: 1 to 500.
+	// Valid values of WeightedCapacity: 1 to 500.
 	WeightedCapacity *int32 `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
 }
 
@@ -19245,9 +18233,9 @@ func (s *ModifyScalingConfigurationRequestInstanceTypeOverrides) SetWeightedCapa
 }
 
 type ModifyScalingConfigurationRequestSpotPriceLimits struct {
-	// The instance type of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The price limit of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The price limit of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	PriceLimit *float32 `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 }
 
@@ -19273,68 +18261,68 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	ImageOptions       *ModifyScalingConfigurationShrinkRequestImageOptions       `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
 	PrivatePoolOptions *ModifyScalingConfigurationShrinkRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	SystemDisk         *ModifyScalingConfigurationShrinkRequestSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
+	// Specifies whether to associate an ECS instance on a dedicated host with the dedicated host. Valid values:
 	//
-	// *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-	// *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the instance cannot be started.
+	// *   default: does not associate the ECS instance with the dedicated host. If you start an instance that is stopped in economical mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+	// *   host: associates the ECS instance with the dedicated host. If you start an ECS instance that is stopped in economical mode, the ECS instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the ECS instance fails to start.
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// The number of vCPUs. Unit: cores.
+	// The number of vCPUs.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify CPU and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify an instance type in the scaling configuration.
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The performance mode of the burstable instance. Valid values:
 	//
 	// *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
 	// *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// Details of the data disks.
+	// The data disks.
 	DataDisks []*ModifyScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// The ID of the dedicated host on which you want to create the ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
+	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
-	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
+	// You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The ID of the deployment set to which the ECS instance belongs.
+	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
+	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
 	//
 	// *   Windows instances: The hostname must be 2 to 15 characters in length, and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
-	// *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+	// *   Other instances, such as Linux instances: The hostname must be 2 to 64 characters in length. Separate a hostname into multiple segments with periods (.). Each segment can contain letters, digits, and hyphens (-).
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances belong.
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
+	// The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The ID of the image that Auto Scaling uses to automatically create ECS instances.
+	// The ID of the image that is used by Auto Scaling to automatically create ECS instances.
 	//
 	// > If the image that is specified in the scaling configuration contains system disks and data disks, the data that is stored in the data disks is cleared after you modify the image.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image. Each image name must be unique in a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
+	// The name of the image. Each image name must be unique in a region. If you specify ImageId, ImageName is ignored.
 	//
-	// You cannot use the ImageName parameter to specify Alibaba Cloud Marketplace images.
+	// You cannot use ImageName to specify images from Alibaba Cloud Marketplace.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The description of the ECS instance. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The name of the Elastic Compute Service (ECS) instance that is automatically created based on the scaling configuration.
+	// The name of the Elastic Compute Service (ECS) instance that is automatically created by using the scaling configuration.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+	// The intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
 	InstancePatternInfos []*ModifyScalingConfigurationShrinkRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
-	// The information about the instance types.
+	// The instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
-	// The instance types. If you specify this parameter, the InstanceType parameter is ignored. Valid values of N: 1 to 10.
+	// The instance type. If you specify InstanceTypes, InstanceType is ignored.
 	//
-	// The first instance type has the highest priority. The priority decreases based on the specified order of the instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+	// Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The billing method for network usage. Valid values:
+	// The metering method for network usage. Valid values:
 	//
-	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-	// *   PayByTraffic: You are charged for the actual data transfer. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
+	// *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by InternetMaxBandwidthOut.
+	// *   PayByTraffic: You are charged for the actual data transfer. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-	// *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
+	// *   If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
+	// *   If you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// Specifies whether to create an I/O optimized instance. Valid values:
 	//
@@ -19343,18 +18331,18 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The name of the key pair that you use to log on to an ECS instance.
+	// The name of the key pair that you can use to log on to an ECS instance.
 	//
-	// *   Windows instances do not use this parameter.
+	// *   Windows instances do not support this parameter.
 	// *   By default, the username and password authentication method is disabled for Linux instances.
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The weight of a backend server. Valid values: 1 to 100.
+	// The weight of an ECS instance as a backend server. Valid values: 1 to 100.
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
 	// The memory size. Unit: GiB.
 	//
-	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
-	// > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// > You can specify CPU and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify an instance type in the scaling configuration.
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// Specifies whether to overwrite existing data. Valid values:
 	//
@@ -19365,20 +18353,20 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
+	// The name of the RAM role that you want to attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the resource group to which the ECS instance belongs.
+	// The ID of the resource group to which the ECS instances belong.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling configuration that you want to modify.
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
-	// The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). It must start with a letter or a digit.
+	// The name of the scaling configuration. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
 	//
-	// The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify the ScalingConfigurationName parameter, the scaling configuration ID is used.
+	// The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
 	ScalingConfigurationName *string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
-	// The options of the scheduler.
+	// The scheduler options.
 	SchedulerOptionsShrink *string `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty"`
-	// The ID of the security group with which the ECS instance is associated. The ECS instances that are associated with the same security group can access each other.
+	// The ID of the security group with which ECS instances are associated. The ECS instances that are associated with the same security group can access each other.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
@@ -19387,9 +18375,9 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
 	// *   If you set this parameter to 0, no retention period is specified for the preemptible instance.
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
+	// The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate. This value specifies that the preemptible instance is to be released.
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	// The information about the preemptible instance types.
+	// The preemptible instance types.
 	SpotPriceLimits []*ModifyScalingConfigurationShrinkRequestSpotPriceLimits `json:"SpotPriceLimits,omitempty" xml:"SpotPriceLimits,omitempty" type:"Repeated"`
 	// The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
 	//
@@ -19397,28 +18385,28 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
 	// *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The categories of the system disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the system disks. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
 	//
 	// *   cloud: basic disk
 	// *   cloud_efficiency: ultra disk
 	// *   cloud_ssd: standard SSD
 	// *   cloud_essd: ESSD
 	//
-	// > You cannot specify both the SystemDiskCategories parameter and the `SystemDisk.Category` parameter.
+	// > If you specify SystemDiskCategories, you cannot specify `SystemDisk.Category`.
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
-	// The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. The following rules apply to tag keys and tag values:
+	// The tags of the ECS instance. Specify the tags as key-value pairs. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
 	//
-	// *   A tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
-	// *   A tag value can be up to 128 characters in length. The value cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
+	// *   A tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag key cannot be an empty string.
+	// *   A tag value can be up to 128 characters in length. The value cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag value can be an empty string.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// Specifies whether to create an instance on a dedicated host. Valid values:
+	// Specifies whether to create an ECS instance on a dedicated host. Valid values:
 	//
-	// *   default: does not create the instance on a dedicated host.
-	// *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
+	// *   default: does not create the ECS instance on a dedicated host.
+	// *   host: creates the ECS instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud selects a dedicated host for the ECS instance.
 	Tenancy *string `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
 	// The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the zone where the ECS instance resides.
+	// The zone ID of the ECS instances that are created by using the scaling configuration.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -19685,11 +18673,11 @@ func (s *ModifyScalingConfigurationShrinkRequestImageOptions) SetLoginAsNonRoot(
 type ModifyScalingConfigurationShrinkRequestPrivatePoolOptions struct {
 	// The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
+	// The type of the private pool that you want to use to start instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool for Auto Scaling to start instances. Valid values:
 	//
-	// *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-	// *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-	// *   None: no private pool. The system does not use the resources in private pools to create instances.
+	// *   Open: open private pool. Auto Scaling selects a matching open private pool to start instances. If no matching open private pools exist, Auto Scaling uses the resources in the public pool to start instances. In this case, you do not need to specify PrivatePoolOptions.Id.
+	// *   Target: specified private pool. Auto Scaling uses the resources in the specified private pool to start instances. If the private pool is unavailable, Auto Scaling cannot start the instances. If you set this parameter to Target, you must specify PrivatePoolOptions.Id.
+	// *   None: no private pool: Auto Scaling does not use the resources in private pools to start instances.
 	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
 }
 
@@ -19719,7 +18707,7 @@ type ModifyScalingConfigurationShrinkRequestSystemDisk struct {
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The category of the system disk. Valid values:
 	//
@@ -19729,50 +18717,50 @@ type ModifyScalingConfigurationShrinkRequestSystemDisk struct {
 	// *   cloud_essd: enhanced SSD (ESSD)
 	// *   ephemeral_ssd: local SSD
 	//
-	// You cannot specify both the SystemDisk.Category and `SystemDiskCategories` parameters. If you do not specify the SystemDisk.Category or `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. The default value of this parameter for non-I/O optimized instances of Generation I instance types is cloud. The default value of this parameter for instances of other types is cloud_efficiency.
+	// If you specify SystemDisk.Category, you cannot specify `SystemDiskCategories`. If you do not specify SystemDisk.Category or `SystemDiskCategories`, the default value of SystemDisk.Category is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with [http:// or https://. Default value: null.](http://https://。、（:）、（\_）（-）。：)
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The encryption algorithm that you want to use to encrypt the system disk. Valid values:
+	// The algorithm that you want to use to encrypt the system disk. Valid values:
 	//
 	// *   AES-256
 	// *   SM4-128
 	//
-	// Default value: AES-256.
+	// Default value: AES-256
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt the system disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// Default value: false.
+	// Default value: false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The ID of the KMS key that you want to use to encrypt the system disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The performance level (PL) of the system disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// > For more information about how to choose ESSD PLs, see [ESSD](~~122389~~).
+	// > For more information about how to select ESSD PLs, see [ESSD](~~122389~~).
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The IOPS metric that is preconfigured for the system disk.
 	//
 	// > IOPS measures the number of read and write operations that an EBS device can process per second.
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of the system disk. Unit: GiB.
+	// The size of the system disk. Unit: GiB. Valid values:
 	//
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
-	// *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
+	// *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
+	// *   If you set SystemDisk.Category to ephemeral_ssd: 20 to 500.
 	//
-	// The value of the SystemDisk.Size parameter must be greater than or equal to max{20, ImageSize}.
+	// The value of SystemDisk.Size must be greater than or equal to max{20, ImageSize}.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -19840,47 +18828,47 @@ func (s *ModifyScalingConfigurationShrinkRequestSystemDisk) SetSize(v int32) *Mo
 }
 
 type ModifyScalingConfigurationShrinkRequestDataDisks struct {
-	// The ID of the automatic snapshot policy that you want to apply to data disk N. Valid values of N: 1 to 16.
+	// The ID of the automatic snapshot policy that you want to apply to the data disk.
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// Specifies whether to enable the burst feature for the system disk. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
+	// > This parameter is available only if you set `SystemDisk.Category` to `cloud_auto`.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The categories of data disk N. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
+	// The categories of the data disks. Valid values:
 	//
-	// *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
+	// *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
 	// *   cloud_efficiency: ultra disk.
 	// *   cloud_ssd: standard SSD.
 	// *   cloud_essd: ESSD.
 	//
-	// > If you specify the Categories parameter, you cannot specify the `Category` parameter.
+	// > If you specify Categories, you cannot specify `DataDisk.Category`.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The category of data disk N. Valid values of N: 1 to 16. Valid values:
+	// The category of the data disk. Valid values:
 	//
-	// *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
+	// *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
 	// *   cloud_efficiency: ultra disk.
 	// *   cloud_ssd: standard SSD.
 	// *   ephemeral_ssd: local SSD.
 	// *   cloud_essd: ESSD.
 	//
-	// If you specify the `Categories` parameter, you cannot specify the Category parameter. If you do not specify the Category or `Categories` parameter, the default value of the Category parameter is used.
+	// If you specify Category, you cannot specify `Categories`. If you do not specify Category or `Categories`, the default value of Category is used:
 	//
-	// *   For I/O optimized instances, the default value of this parameter is cloud_efficiency.
-	// *   For non-I/O optimized instances, the default value of this parameter is cloud.
+	// *   For I/O optimized instances, the default value is cloud_efficiency.
+	// *   For non-I/O optimized instances, the default value is cloud.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to release data disk N when the instance to which data disk N is attached is released. Valid values of N: 1 to 16. Valid values:
+	// Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
 	//
 	// *   true
 	// *   false
 	//
-	// This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for other disks, an error is returned.
+	// This parameter is available only for independent disks whose Category is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for other disks, an error is reported.
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
 	// The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	// The mount target of the data disk. If you do not specify Device, a mount target is automatically assigned when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
@@ -19889,34 +18877,34 @@ type ModifyScalingConfigurationShrinkRequestDataDisks struct {
 	// *   true
 	// *   false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key that you want to use to encrypt data disk N. Valid values of N: 1 to 16.
+	// The ID of the Key Management Service (KMS) key that you want to use to encrypt the data disk.
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The PL of the data disk that is an ESSD. If you set the Category parameter to cloud_essd, you must use this parameter to specify the PL of the same ESSD. Valid values:
+	// The PL of the data disk that is an ESSD. Valid values:
 	//
-	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-	// *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
-	// > For more information about how to choose ESSD PLs, see [ESSD](~~122389~~).
+	// > For more information about how to select ESSD PLs, see [ESSD](~~122389~~).
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The input/output operations per second (IOPS) metric that is preconfigured for the data disk.
+	// The IOPS metric that is preconfigured for the data disk.
 	//
 	// > IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of data disk N. Unit: GiB. Valid values of N: 1 to 16.
+	// The size of the data disk. Unit: GiB. Valid values:
 	//
-	// *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
-	// *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to cloud_ssd: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
-	// *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
+	// *   If you set Categories cloud: 5 to 2000.
+	// *   If you set Categories to cloud_efficiency: 20 to 32768.
+	// *   If you set Categories to cloud_ssd: 20 to 32768.
+	// *   If you set Categories to cloud_essd: 20 to 32768.
+	// *   If you set Categories to ephemeral_ssd: 5 to 800.
 	//
-	// The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
+	// The size of the data disk must be greater than or equal to the size of the snapshot that is specified by SnapshotId.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+	// The ID of the snapshot that you want to use to create data disks. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot.
 	//
-	// If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
+	// If you specify a snapshot that is created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -19999,7 +18987,7 @@ func (s *ModifyScalingConfigurationShrinkRequestDataDisks) SetSnapshotId(v strin
 }
 
 type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
-	// The architectures of the instance types. Valid values:
+	// The architectures of the instance types.
 	//
 	// *   X86: x86 architecture.
 	// *   Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
@@ -20015,32 +19003,32 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	// *   Include: includes burstable instance types.
 	// *   Required: includes only burstable instance types.
 	//
-	// Default value: Include.
+	// Default value: Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that are specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](~~25378~~). You can specify 1 to 10 vCPUs.
+	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](~~25378~~).
 	//
-	// When you specify the Cores parameter, take note of the following items:
+	// When you specify this parameter, take note of the following items:
 	//
-	// *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
-	// *   You must specify the InstancePatternInfos, Cores, and Memory parameters at the same time.
-	// *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
+	// *   InstancePatternInfo is available only for scaling groups that reside in VPCs.
+	// *   If you specify InstancePatternInfo, you must also specify Cores and Memory.
+	// *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
 	//
-	// *   ecs.c6.large: excludes the ecs.c6.large instance type
+	// *   ecs.c6.large: excludes the ecs.c6.large instance type.
 	// *   ecs.c6.\*: excludes the c6 instance family.
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
-	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
+	// The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
-	// *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](~~25378~~).
-	// *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](~~59977~~) of burstable instances.
+	// *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
+	// *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](~~25378~~) topic.
+	// *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](~~59977~~) of burstable instances.
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
 	//
-	// > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
+	// > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The memory size that is specified for an instance type in the intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -20088,15 +19076,15 @@ func (s *ModifyScalingConfigurationShrinkRequestInstancePatternInfos) SetMemory(
 }
 
 type ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides struct {
-	// The instance type that you specify by using the Extended Configurations feature of the launch template. If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+	// The instance type. If you want to specify the capacity of instance types in the scaling configuration, specify InstanceType and WeightedCapacity at the same time.
 	//
-	// You can use this parameter to specify 1 to 10 instance types.
+	// You can use InstanceType to specify multiple instance types and WeightedCapacity to specify the weights of the instance types.
 	//
-	// > If you specify the InstanceType parameter, you cannot specify the InstanceTypes parameter.
+	// > If you specify InstanceType, you cannot specify InstanceTypes.
 	//
-	// You can use the InstanceType parameter to specify only instance types that are available for purchase.
+	// You can use InstanceType to specify only instance types that are available for purchase.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want to scale instances based on the weights of the instance types, you must specify this parameter after you specify the InstanceType parameter. After you use the InstanceType parameter to specify an instance type, you can use the WeightedCapacity parameter to specify weight for the same instance type.
+	// The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances in the scaling group based on the weighted capacity of the instances, specify WeightedCapacity after you specify InstanceType.
 	//
 	// A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
 	//
@@ -20110,9 +19098,9 @@ type ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides struct {
 	//
 	// To meet the expected capacity requirement, Auto Scaling must create and add two ecs.c5.xlarge instances.
 	//
-	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by the MaxSize parameter and the maximum weight of the instance types.
+	// > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance types.
 	//
-	// Valid values of the WeightedCapacity parameter: 1 to 500.
+	// Valid values of WeightedCapacity: 1 to 500.
 	WeightedCapacity *int32 `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
 }
 
@@ -20135,9 +19123,9 @@ func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides) SetWeight
 }
 
 type ModifyScalingConfigurationShrinkRequestSpotPriceLimits struct {
-	// The instance type of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The price limit of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	// The price limit of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	PriceLimit *float32 `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 }
 
@@ -20592,7 +19580,8 @@ type ModifyScalingRuleRequest struct {
 	// > Auto Scaling calculates the number of ECS instances that need to be scaled. ECS instances in the warmup state are not counted towards the current capacity of the scaling group.
 	//
 	// Valid values: 0 to 86400. Unit: seconds.
-	AdjustmentValue *int32                                     `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	// 监控项维度信息值，适用于目标追踪规则，当监控项需额外维度信息时设置，例如LoadBalancerRealServerAverageQps监控项需指定rulePool维度信息。
 	AlarmDimensions []*ModifyScalingRuleRequestAlarmDimensions `json:"AlarmDimensions,omitempty" xml:"AlarmDimensions,omitempty" type:"Repeated"`
 	// The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
 	Cooldown *int32 `json:"Cooldown,omitempty" xml:"Cooldown,omitempty"`
@@ -20651,9 +19640,7 @@ type ModifyScalingRuleRequest struct {
 	ScaleOutEvaluationCount *int32 `json:"ScaleOutEvaluationCount,omitempty" xml:"ScaleOutEvaluationCount,omitempty"`
 	// The name of the scaling rule. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit. The name of a scaling rule must be unique in the scaling group to which the scaling rule belongs and within an Alibaba Cloud account.
 	ScalingRuleId *string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty"`
-	// The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule.
-	//
-	// Valid values: 0 to 86400. Unit: seconds.
+	// The name of the scaling rule. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). It must start with a letter or a digit. The name of a scaling rule must be unique within an Alibaba Cloud account in a region.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 	// Details of the step adjustments.
 	StepAdjustments []*ModifyScalingRuleRequestStepAdjustments `json:"StepAdjustments,omitempty" xml:"StepAdjustments,omitempty" type:"Repeated"`
@@ -20785,7 +19772,9 @@ func (s *ModifyScalingRuleRequest) SetTargetValue(v float32) *ModifyScalingRuleR
 }
 
 type ModifyScalingRuleRequestAlarmDimensions struct {
-	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	// 监控项关联的维度信息键。
+	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	// 监控项关联的维度信息值。
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
 }
 
@@ -20887,68 +19876,24 @@ func (s *ModifyScalingRuleResponse) SetBody(v *ModifyScalingRuleResponseBody) *M
 }
 
 type ModifyScheduledTaskRequest struct {
-	// The scaling rule that you want to execute when the scheduled task is triggered. Specify the unique identifier of the scaling rule. If you specify the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
-	//
-	// > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the scaling group whose number of instances must be modified when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter for a scheduled task, you must specify the minimum, maximum, or expected numbers of instances for a scaling group in the scheduled task. That is, you must specify at least one of the `MinValue`, `MaxValue`, and `DesiredCapacity` parameters.
-	//
-	// > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
-	DesiredCapacity *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
-	// The minimum number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	LaunchExpirationTime *int32 `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
-	// The interval at which the scheduled task is repeated. Valid values:
-	//
-	// *   Daily: The scheduled task is executed once every specified number of days.
-	// *   Weekly: The scheduled task is executed on each specified day of the week.
-	// *   Monthly: The scheduled task is executed on each specified day of the month.
-	// *   Cron: The scheduled task is executed based on the specified cron expression.
-	//
-	// After you modify the scheduled task, the values that you specify for the `RecurrenceType` and `RecurrenceValue` parameters must be valid at the same time.
-	LaunchTime *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	// The expected number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	//
-	// > You must specify the `DesiredCapacity` parameter when you create a scaling group.
-	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The maximum number of instances in the scaling group if you specify the ScalingGroupId parameter.
-	MinValue     *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The point in time at which the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot enter a time point later than 90 days from the point in time at which the scheduled task is modified.
-	//
-	// *   If you specify the `RecurrenceType` parameter, the task is repeatedly executed at the time point that is specified by the LaunchTime parameter.
-	// *   If you do not specify the `RecurrenceType` parameter, the task is executed only once at the point in time that is specified by the LaunchTime parameter.
-	RecurrenceEndTime *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
-	// The number of recurrences of the scheduled task.
-	//
-	// *   If you set the `RecurrenceType` parameter to `Daily`, you can specify only one value for this parameter. Valid values: 1 to 31.
-	// *   If you set the `RecurrenceType` parameter to `Weekly`, you can specify multiple values for this parameter. Separate the values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.``
-	// *   If you set the `RecurrenceType` parameter to `Monthly`, you can specify two values in the `A-B` format for this parameter. Valid values of A and B: 1 to 31. B must be greater than or equal to A.
-	// *   If you set the `RecurrenceType` parameter to `Cron`, you can specify a cron expression. A cron expression is written in UTC time and consists of the following fields: minute, hour, day, month, and week. The expression can contain the letters L and W and the following wildcard characters: commas (,), question marks (?), hyphens (-), asterisks (\*), number signs (#), and forward slashes (/).
-	//
-	// After you modify the scheduled task, the values that you specify for the `RecurrenceType` and `RecurrenceValue` parameters must be valid at the same time.
-	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// Specifies whether to enable the scheduled task. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: true.
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DesiredCapacity      *int32  `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	LaunchExpirationTime *int32  `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
+	LaunchTime           *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	MaxValue             *int32  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue             *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecurrenceEndTime    *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
+	RecurrenceType       *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
 	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The end time of the scheduled task. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot enter a point in time that is later than 365 days from the point in time at which the scheduled task is modified.
-	ScheduledAction *string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty"`
-	// The name of the scheduled task. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). It must start with a letter or a digit. The name of the scheduled task must be unique in the region and within the Alibaba Cloud account.
-	ScheduledTaskId *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
-	// The description of the scheduled task. The description must be 2 to 200 characters in length.
-	ScheduledTaskName *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
-	// The time period during which the failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800.
-	//
-	// Default value: 600.
-	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScheduledAction      *string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty"`
+	ScheduledTaskId      *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
+	ScheduledTaskName    *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
+	TaskEnabled          *bool   `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
 }
 
 func (s ModifyScheduledTaskRequest) String() string {
@@ -21050,7 +19995,6 @@ func (s *ModifyScheduledTaskRequest) SetTaskEnabled(v bool) *ModifyScheduledTask
 }
 
 type ModifyScheduledTaskResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21097,14 +20041,12 @@ func (s *ModifyScheduledTaskResponse) SetBody(v *ModifyScheduledTaskResponseBody
 }
 
 type RebalanceInstancesRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the scaling activity.
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The region ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s RebalanceInstancesRequest) String() string {
@@ -21146,9 +20088,7 @@ func (s *RebalanceInstancesRequest) SetScalingGroupId(v string) *RebalanceInstan
 }
 
 type RebalanceInstancesResponseBody struct {
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -21200,21 +20140,13 @@ func (s *RebalanceInstancesResponse) SetBody(v *RebalanceInstancesResponseBody) 
 }
 
 type RecordLifecycleActionHeartbeatRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The region ID of the scaling group.
-	HeartbeatTimeout *int32 `json:"heartbeatTimeout,omitempty" xml:"heartbeatTimeout,omitempty"`
-	// The period of time before the lifecycle hook ends. Auto Scaling performs the specified action after the lifecycle hook ends. Valid values: 30 to 21600. Unit: seconds.
-	//
-	// You can call this operation to prolong the length of a lifecycle hook. You can also call the CompleteLifecycleAction operation to end a lifecycle hook ahead of schedule.
-	//
-	// Default value: 600.
+	HeartbeatTimeout     *int32  `json:"heartbeatTimeout,omitempty" xml:"heartbeatTimeout,omitempty"`
 	LifecycleActionToken *string `json:"lifecycleActionToken,omitempty" xml:"lifecycleActionToken,omitempty"`
-	// The token of the lifecycle hook. You can obtain this token by using a Message Service (MNS) queue or an MNS topic that is specified for the lifecycle hook.
-	LifecycleHookId *string `json:"lifecycleHookId,omitempty" xml:"lifecycleHookId,omitempty"`
+	LifecycleHookId      *string `json:"lifecycleHookId,omitempty" xml:"lifecycleHookId,omitempty"`
 }
 
 func (s RecordLifecycleActionHeartbeatRequest) String() string {
@@ -21261,7 +20193,6 @@ func (s *RecordLifecycleActionHeartbeatRequest) SetLifecycleHookId(v string) *Re
 }
 
 type RecordLifecycleActionHeartbeatResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21308,42 +20239,15 @@ func (s *RecordLifecycleActionHeartbeatResponse) SetBody(v *RecordLifecycleActio
 }
 
 type RemoveInstancesRequest struct {
-	// Specifies whether to adjust the expected number of ECS instances in the scaling group. Valid values:
-	//
-	// *   true: After ECS instances are removed from the scaling group, the expected number of ECS instances in the scaling group decreases.
-	// *   false: After ECS instances are removed from the scaling group, the expected number of ECS instances in the scaling group remains unchanged.
-	//
-	// Default value: true.
-	DecreaseDesiredCapacity *bool `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
-	// The IDs of the ECS instances that you want to remove from the scaling group.
-	InstanceIds  []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the scaling group.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The action that you want Auto Scaling to perform after the ECS instance is removed from the scaling group. Valid values:
-	//
-	// *   recycle: puts the ECS instance into economical mode.
-	//
-	//     **
-	//
-	//     **Note**This setting takes effect only if you set the ScalingPolicy parameter to recycle.
-	//
-	// *   release: releases the ECS instance.
-	//
-	// The ScalingPolicy parameter that you specify when you call the CreateScalingGroup operation specifies the reclaim mode of the scaling group. The RemovePolicy parameter that you specify when you call the RemoveInstances operation specifies the action to be performed on ECS instances after the ECS instances are removed. Example:
-	//
-	// *   If you set both the ScalingPolicy parameter and the RemovePolicy parameter to recycle, the ECS instances are put into economical mode after the ECS instances are removed from the scaling group.
-	// *   If you set the ScalingPolicy parameter to recycle and the RemovePolicy parameter to release, the ECS instances are released after the ECS instances are removed from the scaling group.
-	// *   If you set the ScalingPolicy parameter to release and the RemovePolicy parameter to recycle, the ECS instances are released after the ECS instances are removed from the scaling group.
-	// *   If you set both the ScalingPolicy parameter and the RemovePolicy parameter to release, the ECS instances are released after the ECS instances are removed from the scaling group.
-	//
-	// Default value: release.
-	RemovePolicy         *string `json:"RemovePolicy,omitempty" xml:"RemovePolicy,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	DecreaseDesiredCapacity *bool     `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
+	InstanceIds             []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	OwnerAccount            *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemovePolicy            *string   `json:"RemovePolicy,omitempty" xml:"RemovePolicy,omitempty"`
+	ResourceOwnerAccount    *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId         *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingGroupId          *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s RemoveInstancesRequest) String() string {
@@ -21400,9 +20304,7 @@ func (s *RemoveInstancesRequest) SetScalingGroupId(v string) *RemoveInstancesReq
 }
 
 type RemoveInstancesResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scaling activity.
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -21454,26 +20356,12 @@ func (s *RemoveInstancesResponse) SetBody(v *RemoveInstancesResponseBody) *Remov
 }
 
 type ResumeProcessesRequest struct {
-	// Details of the processes that you want to resume.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the process that you want to resume. Valid values:
-	//
-	// *   ScaleIn
-	// *   ScaleOut
-	// *   HealthCheck
-	// *   AlarmNotification
-	// *   ScheduledAction
-	//
-	// You can resume five processes of the preceding types at the same time. If you try to resume more than five processes at the same time, Auto Scaling automatically removes the duplicate processes.
-	Processes []*string `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
-	// The ID of the request
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Processes            []*string `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s ResumeProcessesRequest) String() string {
@@ -21515,7 +20403,6 @@ func (s *ResumeProcessesRequest) SetScalingGroupId(v string) *ResumeProcessesReq
 }
 
 type ResumeProcessesResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21562,34 +20449,19 @@ func (s *ResumeProcessesResponse) SetBody(v *ResumeProcessesResponseBody) *Resum
 }
 
 type ScaleWithAdjustmentRequest struct {
-	// The type of the scaling policy. Valid values:
-	//
-	// *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
-	// *   PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group.
-	// *   TotalCapacity: adjusts the number of ECS instances in the scaling group to a specified number.
-	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	// The number of instances in each adjustment. The number of ECS instances in each adjustment cannot exceed 1,000.
-	//
-	// *   Valid values if you set the AdjustmentType parameter to QuantityChangeInCapacity: -1000 to 1000.
-	// *   Valid values if you set the AdjustmentType parameter to PercentChangeInCapacity: -100 to 10000.
-	// *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
-	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
+	// The ID of the request.
+	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	// Scales instances in a scaling group based on the specified scaling policy.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
+	// The ID of the scaling group.
 	MinAdjustmentMagnitude *int32  `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the scaling group.
+	// The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
-	//
-	// *   true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed.
-	// *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result.
-	//
-	// > For more information about the Expected Number of Instances feature, see [Expected number of instances](~~146231~~).
-	//
-	// Default value: false.
+	// ScaleWithAdjustment
 	SyncActivity *bool `json:"SyncActivity,omitempty" xml:"SyncActivity,omitempty"`
 }
 
@@ -21642,13 +20514,8 @@ func (s *ScaleWithAdjustmentRequest) SetSyncActivity(v bool) *ScaleWithAdjustmen
 }
 
 type ScaleWithAdjustmentResponseBody struct {
-	// The type of scaling activity.
-	//
-	// When the ActivityType is CapacityChange, it means that the scaling activity corresponding to the return value ScalingActivityId only modifies the expected number of instances of the scaling group, and does not perform scaling immediately. Scope of application: scaling groups of the expected number of instances.
-	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scaling activity.
+	ActivityType      *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -21705,14 +20572,11 @@ func (s *ScaleWithAdjustmentResponse) SetBody(v *ScaleWithAdjustmentResponseBody
 }
 
 type SetGroupDeletionProtectionRequest struct {
-	// The ID of the scaling group.
-	GroupDeletionProtection *bool  `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
-	OwnerId                 *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The region ID of the scaling group.
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	GroupDeletionProtection *bool   `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
+	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId          *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s SetGroupDeletionProtectionRequest) String() string {
@@ -21749,7 +20613,6 @@ func (s *SetGroupDeletionProtectionRequest) SetScalingGroupId(v string) *SetGrou
 }
 
 type SetGroupDeletionProtectionResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21796,12 +20659,7 @@ func (s *SetGroupDeletionProtectionResponse) SetBody(v *SetGroupDeletionProtecti
 }
 
 type SetInstanceHealthRequest struct {
-	// The ID of the request.
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The health status of the ECS instance. Valid values:
-	//
-	// *   Healthy
-	// *   Unhealthy
+	HealthStatus         *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -21836,7 +20694,6 @@ func (s *SetInstanceHealthRequest) SetResourceOwnerAccount(v string) *SetInstanc
 }
 
 type SetInstanceHealthResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21883,17 +20740,11 @@ func (s *SetInstanceHealthResponse) SetBody(v *SetInstanceHealthResponseBody) *S
 }
 
 type SetInstancesProtectionRequest struct {
-	// The IDs of the ECS instances.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IDs of the ECS instances.
-	ProtectedFromScaleIn *bool   `json:"ProtectedFromScaleIn,omitempty" xml:"ProtectedFromScaleIn,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// Specifies whether to put ECS instances into the Protected state. Auto Scaling does not remove ECS instances in the Protected state from scaling groups during scale-in activities.
-	//
-	// *   true
-	// *   false
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	InstanceIds          []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProtectedFromScaleIn *bool     `json:"ProtectedFromScaleIn,omitempty" xml:"ProtectedFromScaleIn,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s SetInstancesProtectionRequest) String() string {
@@ -21930,7 +20781,6 @@ func (s *SetInstancesProtectionRequest) SetScalingGroupId(v string) *SetInstance
 }
 
 type SetInstancesProtectionResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21977,34 +20827,12 @@ func (s *SetInstancesProtectionResponse) SetBody(v *SetInstancesProtectionRespon
 }
 
 type SuspendProcessesRequest struct {
-	// The types of the processes that you want to suspend. Valid values:
-	//
-	// *   scalein
-	// *   scaleout
-	// *   healthcheck
-	// *   alarmnotification
-	// *   scheduledaction
-	//
-	// You can suspend five processes of the preceding types at the same time. If you try to suspend more than five processes at the same time, Auto Scaling automatically removes duplicate processes.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The types of the processes that you want to suspend. Valid values:
-	//
-	// *   scalein
-	// *   scaleout
-	// *   healthcheck
-	// *   alarmnotification
-	// *   scheduledaction
-	//
-	// You can suspend five processes of the preceding types at the same time. If you try to suspend more than five processes at the same time, Auto Scaling automatically removes duplicate processes.
-	Processes []*string `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Processes            []*string `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s SuspendProcessesRequest) String() string {
@@ -22046,7 +20874,6 @@ func (s *SuspendProcessesRequest) SetScalingGroupId(v string) *SuspendProcessesR
 }
 
 type SuspendProcessesResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22093,16 +20920,12 @@ func (s *SuspendProcessesResponse) SetBody(v *SuspendProcessesResponseBody) *Sus
 }
 
 type TagResourcesRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the Auto Scaling resource. Only scaling groups are supported. Set the value to scalinggroup.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource.
-	ResourceIds          []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the resource.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Details of the tags.
-	Tags []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	OwnerId              *int64                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceIds          []*string                  `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceType         *string                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                 []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -22144,19 +20967,9 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 }
 
 type TagResourcesRequestTags struct {
-	// The value of the tag that you want to add to the Auto Scaling resource.
-	//
-	// You can specify empty strings as tag values. The tag value must be 0 to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the request.
-	Propagate *bool `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
-	// Specifies whether to propagate the tag that you want to add. Valid values:
-	//
-	// *   true: propagates the tag only to instances that are newly created and does not propagate the tag to instances that are already running in the scaling group.
-	// *   false: does not propagate the tag to any instances.
-	//
-	// Default value: false.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Propagate *bool   `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s TagResourcesRequestTags) String() string {
@@ -22183,7 +20996,6 @@ func (s *TagResourcesRequestTags) SetValue(v string) *TagResourcesRequestTags {
 }
 
 type TagResourcesResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22230,23 +21042,13 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
-	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the resource. Only scaling groups are supported. Set the value to scalinggroup.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
+	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceIds          []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// Specifies whether to remove all tags from the Auto Scaling resource. This parameter takes effect only if you do not specify the `TagKeys` parameter. Valid values:
-	//
-	// *   true: removes all tags from the Auto Scaling resource.
-	// *   false: does not remove tags from the Auto Scaling resource.
-	//
-	// Default value: false.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags that you want to remove from the Auto Scaling resource. You can specify 1 to 20 tag keys.
-	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKeys              []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -22293,7 +21095,6 @@ func (s *UntagResourcesRequest) SetTagKeys(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22428,6 +21229,7 @@ func (s *VerifyAuthenticationResponse) SetBody(v *VerifyAuthenticationResponseBo
 
 type VerifyUserRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -22442,6 +21244,11 @@ func (s VerifyUserRequest) GoString() string {
 
 func (s *VerifyUserRequest) SetOwnerId(v int64) *VerifyUserRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *VerifyUserRequest) SetRegionId(v string) *VerifyUserRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -22594,13 +21401,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * Associates one or more Application Load Balancer (ALB) server groups with a scaling group.
- *
- * @param request AttachAlbServerGroupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachAlbServerGroupsResponse
- */
 func (client *Client) AttachAlbServerGroupsWithOptions(request *AttachAlbServerGroupsRequest, runtime *util.RuntimeOptions) (_result *AttachAlbServerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22658,12 +21458,6 @@ func (client *Client) AttachAlbServerGroupsWithOptions(request *AttachAlbServerG
 	return _result, _err
 }
 
-/**
- * Associates one or more Application Load Balancer (ALB) server groups with a scaling group.
- *
- * @param request AttachAlbServerGroupsRequest
- * @return AttachAlbServerGroupsResponse
- */
 func (client *Client) AttachAlbServerGroups(request *AttachAlbServerGroupsRequest) (_result *AttachAlbServerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachAlbServerGroupsResponse{}
@@ -22675,13 +21469,6 @@ func (client *Client) AttachAlbServerGroups(request *AttachAlbServerGroupsReques
 	return _result, _err
 }
 
-/**
- * Associates one or more ApsaraDB RDS instances with a scaling group.
- *
- * @param request AttachDBInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachDBInstancesResponse
- */
 func (client *Client) AttachDBInstancesWithOptions(request *AttachDBInstancesRequest, runtime *util.RuntimeOptions) (_result *AttachDBInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22739,12 +21526,6 @@ func (client *Client) AttachDBInstancesWithOptions(request *AttachDBInstancesReq
 	return _result, _err
 }
 
-/**
- * Associates one or more ApsaraDB RDS instances with a scaling group.
- *
- * @param request AttachDBInstancesRequest
- * @return AttachDBInstancesResponse
- */
 func (client *Client) AttachDBInstances(request *AttachDBInstancesRequest) (_result *AttachDBInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachDBInstancesResponse{}
@@ -22756,13 +21537,6 @@ func (client *Client) AttachDBInstances(request *AttachDBInstancesRequest) (_res
 	return _result, _err
 }
 
-/**
- * Manually adds Elastic Compute Service (ECS) instances or elastic container instances to a scaling group.
- *
- * @param request AttachInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachInstancesResponse
- */
 func (client *Client) AttachInstancesWithOptions(request *AttachInstancesRequest, runtime *util.RuntimeOptions) (_result *AttachInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22832,12 +21606,6 @@ func (client *Client) AttachInstancesWithOptions(request *AttachInstancesRequest
 	return _result, _err
 }
 
-/**
- * Manually adds Elastic Compute Service (ECS) instances or elastic container instances to a scaling group.
- *
- * @param request AttachInstancesRequest
- * @return AttachInstancesResponse
- */
 func (client *Client) AttachInstances(request *AttachInstancesRequest) (_result *AttachInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachInstancesResponse{}
@@ -22849,13 +21617,6 @@ func (client *Client) AttachInstances(request *AttachInstancesRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Attaches one or more Classic Load Balancer (CLB) instances to a scaling group.
- *
- * @param request AttachLoadBalancersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachLoadBalancersResponse
- */
 func (client *Client) AttachLoadBalancersWithOptions(request *AttachLoadBalancersRequest, runtime *util.RuntimeOptions) (_result *AttachLoadBalancersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22917,12 +21678,6 @@ func (client *Client) AttachLoadBalancersWithOptions(request *AttachLoadBalancer
 	return _result, _err
 }
 
-/**
- * Attaches one or more Classic Load Balancer (CLB) instances to a scaling group.
- *
- * @param request AttachLoadBalancersRequest
- * @return AttachLoadBalancersResponse
- */
 func (client *Client) AttachLoadBalancers(request *AttachLoadBalancersRequest) (_result *AttachLoadBalancersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachLoadBalancersResponse{}
@@ -23002,13 +21757,6 @@ func (client *Client) AttachServerGroups(request *AttachServerGroupsRequest) (_r
 	return _result, _err
 }
 
-/**
- * Attaches one or more vServer groups of a Classic Load Balancer (CLB) instance to a scaling group.
- *
- * @param request AttachVServerGroupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachVServerGroupsResponse
- */
 func (client *Client) AttachVServerGroupsWithOptions(request *AttachVServerGroupsRequest, runtime *util.RuntimeOptions) (_result *AttachVServerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23066,12 +21814,6 @@ func (client *Client) AttachVServerGroupsWithOptions(request *AttachVServerGroup
 	return _result, _err
 }
 
-/**
- * Attaches one or more vServer groups of a Classic Load Balancer (CLB) instance to a scaling group.
- *
- * @param request AttachVServerGroupsRequest
- * @return AttachVServerGroupsResponse
- */
 func (client *Client) AttachVServerGroups(request *AttachVServerGroupsRequest) (_result *AttachVServerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachVServerGroupsResponse{}
@@ -23083,13 +21825,6 @@ func (client *Client) AttachVServerGroups(request *AttachVServerGroupsRequest) (
 	return _result, _err
 }
 
-/**
- * A resource is an entity of cloud services that you create on Alibaba Cloud. For example, a scaling group is a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources, monitor resources, and perform operations in a centralized manner. This way, you do not need to view and check your Alibaba Cloud resources in each Alibaba Cloud service.
- *
- * @param request ChangeResourceGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ChangeResourceGroupResponse
- */
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23143,12 +21878,6 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
-/**
- * A resource is an entity of cloud services that you create on Alibaba Cloud. For example, a scaling group is a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources, monitor resources, and perform operations in a centralized manner. This way, you do not need to view and check your Alibaba Cloud resources in each Alibaba Cloud service.
- *
- * @param request ChangeResourceGroupRequest
- * @return ChangeResourceGroupResponse
- */
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -23245,17 +21974,6 @@ func (client *Client) CompleteLifecycleAction(request *CompleteLifecycleActionRe
 	return _result, _err
 }
 
-/**
- * *   If you set the MetricType parameter to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
- * *   When you create an event-triggered task, you must specify the MetricName, DimensionKey, and DimensionValue parameters to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances or elastic container instances in a scaling group within an Alibaba Cloud account.
- *     *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
- *     *   For information about the supported metrics when you set the MetricType parameter to system, see [Event-triggered task for system monitoring](~~74854~~).
- * > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see the `DimensionKey` and `DimensionValue` parameters in the "Request parameters" section of this topic.
- *
- * @param request CreateAlarmRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAlarmResponse
- */
 func (client *Client) CreateAlarmWithOptions(request *CreateAlarmRequest, runtime *util.RuntimeOptions) (_result *CreateAlarmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23361,16 +22079,6 @@ func (client *Client) CreateAlarmWithOptions(request *CreateAlarmRequest, runtim
 	return _result, _err
 }
 
-/**
- * *   If you set the MetricType parameter to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
- * *   When you create an event-triggered task, you must specify the MetricName, DimensionKey, and DimensionValue parameters to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances or elastic container instances in a scaling group within an Alibaba Cloud account.
- *     *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
- *     *   For information about the supported metrics when you set the MetricType parameter to system, see [Event-triggered task for system monitoring](~~74854~~).
- * > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see the `DimensionKey` and `DimensionValue` parameters in the "Request parameters" section of this topic.
- *
- * @param request CreateAlarmRequest
- * @return CreateAlarmResponse
- */
 func (client *Client) CreateAlarm(request *CreateAlarmRequest) (_result *CreateAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAlarmResponse{}
@@ -23712,13 +22420,6 @@ func (client *Client) CreateLifecycleHook(request *CreateLifecycleHookRequest) (
 	return _result, _err
 }
 
-/**
- * Creates a notification.
- *
- * @param request CreateNotificationConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateNotificationConfigurationResponse
- */
 func (client *Client) CreateNotificationConfigurationWithOptions(request *CreateNotificationConfigurationRequest, runtime *util.RuntimeOptions) (_result *CreateNotificationConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23772,12 +22473,6 @@ func (client *Client) CreateNotificationConfigurationWithOptions(request *Create
 	return _result, _err
 }
 
-/**
- * Creates a notification.
- *
- * @param request CreateNotificationConfigurationRequest
- * @return CreateNotificationConfigurationResponse
- */
 func (client *Client) CreateNotificationConfiguration(request *CreateNotificationConfigurationRequest) (_result *CreateNotificationConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNotificationConfigurationResponse{}
@@ -23791,12 +22486,12 @@ func (client *Client) CreateNotificationConfiguration(request *CreateNotificatio
 
 /**
  * Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
- * *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the lowest-priced instance type based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces the failures of scale-outs caused by insufficient inventory of instance types.
+ * *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
  * *   InstanceType: In this mode, you must specify one instance type.
  * *   InstanceTypes: In this mode, you can specify more than one instance type.
  * *   InstanceTypeOverrides: In this mode, you can specify multiple instance types and weights for the instance types.
- * *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances of the lowest-priced instance type. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
- * > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory parameters at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify the InstanceType and InstancePatternInfos parameters or specify the InstanceTypes and InstancePatternInfos parameters at the same time, Auto Scaling preferentially uses the instance types that are specified by the InstanceType or InstanceTypes parameter for scale-outs. If the instance types that are specified by the InstanceType or InstanceTypes parameter do not have sufficient inventory, Auto Scaling uses the instance types that are specified by the InstancePatternInfos parameter for scale-outs.
+ * *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances by using the lowest-priced instance type. This mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+ * > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfos at the same time, Auto Scaling preferentially uses the instance types that are specified by InstanceType or InstanceTypes for scale-outs. If the instance types that are specified by InstanceType or InstanceTypes do not have sufficient inventory, Auto Scaling uses the instance types that are specified by InstancePatternInfos for scale-outs.
  *
  * @param tmpReq CreateScalingConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24043,12 +22738,12 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 
 /**
  * Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
- * *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the lowest-priced instance type based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces the failures of scale-outs caused by insufficient inventory of instance types.
+ * *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
  * *   InstanceType: In this mode, you must specify one instance type.
  * *   InstanceTypes: In this mode, you can specify more than one instance type.
  * *   InstanceTypeOverrides: In this mode, you can specify multiple instance types and weights for the instance types.
- * *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances of the lowest-priced instance type. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
- * > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory parameters at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify the InstanceType and InstancePatternInfos parameters or specify the InstanceTypes and InstancePatternInfos parameters at the same time, Auto Scaling preferentially uses the instance types that are specified by the InstanceType or InstanceTypes parameter for scale-outs. If the instance types that are specified by the InstanceType or InstanceTypes parameter do not have sufficient inventory, Auto Scaling uses the instance types that are specified by the InstancePatternInfos parameter for scale-outs.
+ * *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances by using the lowest-priced instance type. This mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+ * > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfos at the same time, Auto Scaling preferentially uses the instance types that are specified by InstanceType or InstanceTypes for scale-outs. If the instance types that are specified by InstanceType or InstanceTypes do not have sufficient inventory, Auto Scaling uses the instance types that are specified by InstancePatternInfos for scale-outs.
  *
  * @param request CreateScalingConfigurationRequest
  * @return CreateScalingConfigurationResponse
@@ -24332,7 +23027,18 @@ func (client *Client) CreateScalingGroup(request *CreateScalingGroupRequest) (_r
 }
 
 /**
- * Creates a scaling rule.
+ * A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling calculates the number of ECS instances that need to be added or removed. This ensures that the number of ECS instances can be maintained within the valid range after the scaling rule is executed. Examples:
+ * *   If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified.
+ * *   If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified.
+ * Before you call this operation, take note of the following items:
+ * *   If you set AdjustmentType to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of AdjustmentValue must be greater than or equal to 0.
+ * *   If you set AdjustmentType to QuantityChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
+ * *   If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
+ * *   If you specify a cooldown period for the scaling rule, the specified cooldown period takes effect after the rule is executed. Otherwise, the value of DefaultCooldown of the scaling group takes effect.
+ * *   You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
+ * *   The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
+ *     *   ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+ *     *   CreateScheduledTask: You can call this operation to create a scheduled task. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to associate with the scheduled task.
  *
  * @param request CreateScalingRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24464,7 +23170,18 @@ func (client *Client) CreateScalingRuleWithOptions(request *CreateScalingRuleReq
 }
 
 /**
- * Creates a scaling rule.
+ * A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling calculates the number of ECS instances that need to be added or removed. This ensures that the number of ECS instances can be maintained within the valid range after the scaling rule is executed. Examples:
+ * *   If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified.
+ * *   If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified.
+ * Before you call this operation, take note of the following items:
+ * *   If you set AdjustmentType to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of AdjustmentValue must be greater than or equal to 0.
+ * *   If you set AdjustmentType to QuantityChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
+ * *   If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
+ * *   If you specify a cooldown period for the scaling rule, the specified cooldown period takes effect after the rule is executed. Otherwise, the value of DefaultCooldown of the scaling group takes effect.
+ * *   You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
+ * *   The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
+ *     *   ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+ *     *   CreateScheduledTask: You can call this operation to create a scheduled task. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to associate with the scheduled task.
  *
  * @param request CreateScalingRuleRequest
  * @return CreateScalingRuleResponse
@@ -24480,13 +23197,6 @@ func (client *Client) CreateScalingRule(request *CreateScalingRuleRequest) (_res
 	return _result, _err
 }
 
-/**
- * Creates a scheduled task.
- *
- * @param request CreateScheduledTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateScheduledTaskResponse
- */
 func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTaskRequest, runtime *util.RuntimeOptions) (_result *CreateScheduledTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24584,12 +23294,6 @@ func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTas
 	return _result, _err
 }
 
-/**
- * Creates a scheduled task.
- *
- * @param request CreateScheduledTaskRequest
- * @return CreateScheduledTaskResponse
- */
 func (client *Client) CreateScheduledTask(request *CreateScheduledTaskRequest) (_result *CreateScheduledTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateScheduledTaskResponse{}
@@ -24713,13 +23417,6 @@ func (client *Client) DeleteAlarm(request *DeleteAlarmRequest) (_result *DeleteA
 	return _result, _err
 }
 
-/**
- * Deletes a scaling configuration that is used to create elastic container instances.
- *
- * @param request DeleteEciScalingConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteEciScalingConfigurationResponse
- */
 func (client *Client) DeleteEciScalingConfigurationWithOptions(request *DeleteEciScalingConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteEciScalingConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24769,12 +23466,6 @@ func (client *Client) DeleteEciScalingConfigurationWithOptions(request *DeleteEc
 	return _result, _err
 }
 
-/**
- * Deletes a scaling configuration that is used to create elastic container instances.
- *
- * @param request DeleteEciScalingConfigurationRequest
- * @return DeleteEciScalingConfigurationResponse
- */
 func (client *Client) DeleteEciScalingConfiguration(request *DeleteEciScalingConfigurationRequest) (_result *DeleteEciScalingConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEciScalingConfigurationResponse{}
@@ -24786,15 +23477,6 @@ func (client *Client) DeleteEciScalingConfiguration(request *DeleteEciScalingCon
 	return _result, _err
 }
 
-/**
- * If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
- * *   Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
- * *   Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
- *
- * @param request DeleteLifecycleHookRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteLifecycleHookResponse
- */
 func (client *Client) DeleteLifecycleHookWithOptions(request *DeleteLifecycleHookRequest, runtime *util.RuntimeOptions) (_result *DeleteLifecycleHookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24852,14 +23534,6 @@ func (client *Client) DeleteLifecycleHookWithOptions(request *DeleteLifecycleHoo
 	return _result, _err
 }
 
-/**
- * If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
- * *   Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
- * *   Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
- *
- * @param request DeleteLifecycleHookRequest
- * @return DeleteLifecycleHookResponse
- */
 func (client *Client) DeleteLifecycleHook(request *DeleteLifecycleHookRequest) (_result *DeleteLifecycleHookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLifecycleHookResponse{}
@@ -24931,13 +23605,6 @@ func (client *Client) DeleteNotificationConfiguration(request *DeleteNotificatio
 	return _result, _err
 }
 
-/**
- * Deletes a scaling configuration that is used to create Elastic Compute Service (ECS) instances.
- *
- * @param request DeleteScalingConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteScalingConfigurationResponse
- */
 func (client *Client) DeleteScalingConfigurationWithOptions(request *DeleteScalingConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteScalingConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24983,12 +23650,6 @@ func (client *Client) DeleteScalingConfigurationWithOptions(request *DeleteScali
 	return _result, _err
 }
 
-/**
- * Deletes a scaling configuration that is used to create Elastic Compute Service (ECS) instances.
- *
- * @param request DeleteScalingConfigurationRequest
- * @return DeleteScalingConfigurationResponse
- */
 func (client *Client) DeleteScalingConfiguration(request *DeleteScalingConfigurationRequest) (_result *DeleteScalingConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteScalingConfigurationResponse{}
@@ -25000,13 +23661,6 @@ func (client *Client) DeleteScalingConfiguration(request *DeleteScalingConfigura
 	return _result, _err
 }
 
-/**
- * Deletes a scaling group.
- *
- * @param request DeleteScalingGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteScalingGroupResponse
- */
 func (client *Client) DeleteScalingGroupWithOptions(request *DeleteScalingGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteScalingGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25060,12 +23714,6 @@ func (client *Client) DeleteScalingGroupWithOptions(request *DeleteScalingGroupR
 	return _result, _err
 }
 
-/**
- * Deletes a scaling group.
- *
- * @param request DeleteScalingGroupRequest
- * @return DeleteScalingGroupResponse
- */
 func (client *Client) DeleteScalingGroup(request *DeleteScalingGroupRequest) (_result *DeleteScalingGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteScalingGroupResponse{}
@@ -25361,13 +24009,6 @@ func (client *Client) DescribeEciScalingConfigurations(request *DescribeEciScali
 	return _result, _err
 }
 
-/**
- * Queries lifecycle actions.
- *
- * @param request DescribeLifecycleActionsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeLifecycleActionsResponse
- */
 func (client *Client) DescribeLifecycleActionsWithOptions(request *DescribeLifecycleActionsRequest, runtime *util.RuntimeOptions) (_result *DescribeLifecycleActionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25425,12 +24066,6 @@ func (client *Client) DescribeLifecycleActionsWithOptions(request *DescribeLifec
 	return _result, _err
 }
 
-/**
- * Queries lifecycle actions.
- *
- * @param request DescribeLifecycleActionsRequest
- * @return DescribeLifecycleActionsResponse
- */
 func (client *Client) DescribeLifecycleActions(request *DescribeLifecycleActionsRequest) (_result *DescribeLifecycleActionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLifecycleActionsResponse{}
@@ -25442,16 +24077,6 @@ func (client *Client) DescribeLifecycleActions(request *DescribeLifecycleActions
 	return _result, _err
 }
 
-/**
- * You can use one of the following methods to query lifecycle hooks:
- * *   Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
- * *   Specify the scaling group ID by using the ScalingGroupId parameter.
- * *   Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter at the same time.
- *
- * @param request DescribeLifecycleHooksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeLifecycleHooksResponse
- */
 func (client *Client) DescribeLifecycleHooksWithOptions(request *DescribeLifecycleHooksRequest, runtime *util.RuntimeOptions) (_result *DescribeLifecycleHooksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25517,15 +24142,6 @@ func (client *Client) DescribeLifecycleHooksWithOptions(request *DescribeLifecyc
 	return _result, _err
 }
 
-/**
- * You can use one of the following methods to query lifecycle hooks:
- * *   Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
- * *   Specify the scaling group ID by using the ScalingGroupId parameter.
- * *   Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter at the same time.
- *
- * @param request DescribeLifecycleHooksRequest
- * @return DescribeLifecycleHooksResponse
- */
 func (client *Client) DescribeLifecycleHooks(request *DescribeLifecycleHooksRequest) (_result *DescribeLifecycleHooksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLifecycleHooksResponse{}
@@ -26066,13 +24682,6 @@ func (client *Client) DescribeScalingGroups(request *DescribeScalingGroupsReques
 	return _result, _err
 }
 
-/**
- * You can query ECS instances by scaling group ID, scaling configuration ID, health status, lifecycle status, and instance creation method.
- *
- * @param request DescribeScalingInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeScalingInstancesResponse
- */
 func (client *Client) DescribeScalingInstancesWithOptions(request *DescribeScalingInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeScalingInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26081,6 +24690,10 @@ func (client *Client) DescribeScalingInstancesWithOptions(request *DescribeScali
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreationType)) {
 		query["CreationType"] = request.CreationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreationTypes)) {
+		query["CreationTypes"] = request.CreationTypes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HealthStatus)) {
@@ -26158,12 +24771,6 @@ func (client *Client) DescribeScalingInstancesWithOptions(request *DescribeScali
 	return _result, _err
 }
 
-/**
- * You can query ECS instances by scaling group ID, scaling configuration ID, health status, lifecycle status, and instance creation method.
- *
- * @param request DescribeScalingInstancesRequest
- * @return DescribeScalingInstancesResponse
- */
 func (client *Client) DescribeScalingInstances(request *DescribeScalingInstancesRequest) (_result *DescribeScalingInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScalingInstancesResponse{}
@@ -26176,7 +24783,7 @@ func (client *Client) DescribeScalingInstances(request *DescribeScalingInstances
 }
 
 /**
- * Queries all scaling rules in a scaling group.
+ * You can specify a scaling group ID to query the information about all scaling rules in a scaling group. You can also specify the scaling rule ID, name, unique identifier, or type in the request parameters as filter conditions.
  *
  * @param request DescribeScalingRulesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26264,7 +24871,7 @@ func (client *Client) DescribeScalingRulesWithOptions(request *DescribeScalingRu
 }
 
 /**
- * Queries all scaling rules in a scaling group.
+ * You can specify a scaling group ID to query the information about all scaling rules in a scaling group. You can also specify the scaling rule ID, name, unique identifier, or type in the request parameters as filter conditions.
  *
  * @param request DescribeScalingRulesRequest
  * @return DescribeScalingRulesResponse
@@ -26280,13 +24887,6 @@ func (client *Client) DescribeScalingRules(request *DescribeScalingRulesRequest)
 	return _result, _err
 }
 
-/**
- * You can query scheduled tasks by scaling rule, task ID, or task name.
- *
- * @param request DescribeScheduledTasksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeScheduledTasksResponse
- */
 func (client *Client) DescribeScheduledTasksWithOptions(request *DescribeScheduledTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeScheduledTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26360,12 +24960,6 @@ func (client *Client) DescribeScheduledTasksWithOptions(request *DescribeSchedul
 	return _result, _err
 }
 
-/**
- * You can query scheduled tasks by scaling rule, task ID, or task name.
- *
- * @param request DescribeScheduledTasksRequest
- * @return DescribeScheduledTasksResponse
- */
 func (client *Client) DescribeScheduledTasks(request *DescribeScheduledTasksRequest) (_result *DescribeScheduledTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScheduledTasksResponse{}
@@ -26513,13 +25107,6 @@ func (client *Client) DetachDBInstances(request *DetachDBInstancesRequest) (_res
 	return _result, _err
 }
 
-/**
- * Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
- *
- * @param request DetachInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachInstancesResponse
- */
 func (client *Client) DetachInstancesWithOptions(request *DetachInstancesRequest, runtime *util.RuntimeOptions) (_result *DetachInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26585,12 +25172,6 @@ func (client *Client) DetachInstancesWithOptions(request *DetachInstancesRequest
 	return _result, _err
 }
 
-/**
- * Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
- *
- * @param request DetachInstancesRequest
- * @return DetachInstancesResponse
- */
 func (client *Client) DetachInstances(request *DetachInstancesRequest) (_result *DetachInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachInstancesResponse{}
@@ -26742,13 +25323,6 @@ func (client *Client) DetachServerGroups(request *DetachServerGroupsRequest) (_r
 	return _result, _err
 }
 
-/**
- * Detaches one or more vServer groups of a Classic Load Balancer (CLB) instance from a scaling group.
- *
- * @param request DetachVServerGroupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachVServerGroupsResponse
- */
 func (client *Client) DetachVServerGroupsWithOptions(request *DetachVServerGroupsRequest, runtime *util.RuntimeOptions) (_result *DetachVServerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26806,12 +25380,6 @@ func (client *Client) DetachVServerGroupsWithOptions(request *DetachVServerGroup
 	return _result, _err
 }
 
-/**
- * Detaches one or more vServer groups of a Classic Load Balancer (CLB) instance from a scaling group.
- *
- * @param request DetachVServerGroupsRequest
- * @return DetachVServerGroupsResponse
- */
 func (client *Client) DetachVServerGroups(request *DetachVServerGroupsRequest) (_result *DetachVServerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachVServerGroupsResponse{}
@@ -26879,13 +25447,6 @@ func (client *Client) DisableAlarm(request *DisableAlarmRequest) (_result *Disab
 	return _result, _err
 }
 
-/**
- * Disables a scaling group.
- *
- * @param request DisableScalingGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableScalingGroupResponse
- */
 func (client *Client) DisableScalingGroupWithOptions(request *DisableScalingGroupRequest, runtime *util.RuntimeOptions) (_result *DisableScalingGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26935,12 +25496,6 @@ func (client *Client) DisableScalingGroupWithOptions(request *DisableScalingGrou
 	return _result, _err
 }
 
-/**
- * Disables a scaling group.
- *
- * @param request DisableScalingGroupRequest
- * @return DisableScalingGroupResponse
- */
 func (client *Client) DisableScalingGroup(request *DisableScalingGroupRequest) (_result *DisableScalingGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableScalingGroupResponse{}
@@ -27117,16 +25672,6 @@ func (client *Client) EnableScalingGroup(request *EnableScalingGroupRequest) (_r
 	return _result, _err
 }
 
-/**
- * *   If you call the operation to set an Elastic Compute Service (ECS) instance in a scaling group that is associated with a Server Load Balancer (SLB) instance to the Standby state, the weight of the ECS instance as a backend server of the SLB instance is set to 0.
- * *   You can remove an ECS instance that is in the Standby state from a scaling group and release the instance.
- * *   When scale-in activities are triggered by changes in the number of scaling groups or by event-triggered tasks, the ECS instances that are in the Standby state are not removed from the scaling groups.
- * *   If Auto Scaling considers an ECS instance that is in the Standby state unhealthy, such as in the Stopping or Restarting state, Auto Scaling does not update the health check status of the ECS instance or trigger scale-in activities to remove the ECS instance from the scaling group. Auto Scaling updates the health check status of the ECS instance only when the ECS instance is no longer in the Standby state.
- *
- * @param request EnterStandbyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnterStandbyResponse
- */
 func (client *Client) EnterStandbyWithOptions(request *EnterStandbyRequest, runtime *util.RuntimeOptions) (_result *EnterStandbyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27180,15 +25725,6 @@ func (client *Client) EnterStandbyWithOptions(request *EnterStandbyRequest, runt
 	return _result, _err
 }
 
-/**
- * *   If you call the operation to set an Elastic Compute Service (ECS) instance in a scaling group that is associated with a Server Load Balancer (SLB) instance to the Standby state, the weight of the ECS instance as a backend server of the SLB instance is set to 0.
- * *   You can remove an ECS instance that is in the Standby state from a scaling group and release the instance.
- * *   When scale-in activities are triggered by changes in the number of scaling groups or by event-triggered tasks, the ECS instances that are in the Standby state are not removed from the scaling groups.
- * *   If Auto Scaling considers an ECS instance that is in the Standby state unhealthy, such as in the Stopping or Restarting state, Auto Scaling does not update the health check status of the ECS instance or trigger scale-in activities to remove the ECS instance from the scaling group. Auto Scaling updates the health check status of the ECS instance only when the ECS instance is no longer in the Standby state.
- *
- * @param request EnterStandbyRequest
- * @return EnterStandbyResponse
- */
 func (client *Client) EnterStandby(request *EnterStandbyRequest) (_result *EnterStandbyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnterStandbyResponse{}
@@ -27200,13 +25736,6 @@ func (client *Client) EnterStandby(request *EnterStandbyRequest) (_result *Enter
 	return _result, _err
 }
 
-/**
- * Executes a scaling rule.
- *
- * @param request ExecuteScalingRuleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ExecuteScalingRuleResponse
- */
 func (client *Client) ExecuteScalingRuleWithOptions(request *ExecuteScalingRuleRequest, runtime *util.RuntimeOptions) (_result *ExecuteScalingRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27272,12 +25801,6 @@ func (client *Client) ExecuteScalingRuleWithOptions(request *ExecuteScalingRuleR
 	return _result, _err
 }
 
-/**
- * Executes a scaling rule.
- *
- * @param request ExecuteScalingRuleRequest
- * @return ExecuteScalingRuleResponse
- */
 func (client *Client) ExecuteScalingRule(request *ExecuteScalingRuleRequest) (_result *ExecuteScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteScalingRuleResponse{}
@@ -27290,7 +25813,7 @@ func (client *Client) ExecuteScalingRule(request *ExecuteScalingRuleRequest) (_r
 }
 
 /**
- * If the scaling group is associated with a load balancing instance, the ECS instance weight will be set to the weight value defined in the scaling configuration.
+ * The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
  *
  * @param request ExitStandbyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27354,7 +25877,7 @@ func (client *Client) ExitStandbyWithOptions(request *ExitStandbyRequest, runtim
 }
 
 /**
- * If the scaling group is associated with a load balancing instance, the ECS instance weight will be set to the weight value defined in the scaling configuration.
+ * The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
  *
  * @param request ExitStandbyRequest
  * @return ExitStandbyResponse
@@ -27571,7 +26094,11 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 }
 
 /**
- * Modifies an event-triggered task.
+ * *   If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using the custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
+ * *   When you create an event-triggered task, you must specify MetricName, DimensionKey, and DimensionValue to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances in a scaling group within an Alibaba Cloud account.
+ *     *   If you set MetricType to custom, the valid values are your custom metrics.
+ *     *   For information about the metrics that are supported if you set MetricType to system, see [Event-triggered task for system monitoring](~~74854~~).
+ * > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `DimensionKey` and `DimensionValue` in the "Request parameters" section of this topic.
  *
  * @param request ModifyAlarmRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27683,7 +26210,11 @@ func (client *Client) ModifyAlarmWithOptions(request *ModifyAlarmRequest, runtim
 }
 
 /**
- * Modifies an event-triggered task.
+ * *   If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using the custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
+ * *   When you create an event-triggered task, you must specify MetricName, DimensionKey, and DimensionValue to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances in a scaling group within an Alibaba Cloud account.
+ *     *   If you set MetricType to custom, the valid values are your custom metrics.
+ *     *   For information about the metrics that are supported if you set MetricType to system, see [Event-triggered task for system monitoring](~~74854~~).
+ * > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `DimensionKey` and `DimensionValue` in the "Request parameters" section of this topic.
  *
  * @param request ModifyAlarmRequest
  * @return ModifyAlarmResponse
@@ -28106,7 +26637,7 @@ func (client *Client) ModifyNotificationConfiguration(request *ModifyNotificatio
 }
 
 /**
- * If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+ * You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
  *
  * @param tmpReq ModifyScalingConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28336,7 +26867,7 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 }
 
 /**
- * If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+ * You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
  *
  * @param request ModifyScalingConfigurationRequest
  * @return ModifyScalingConfigurationResponse
@@ -28352,13 +26883,6 @@ func (client *Client) ModifyScalingConfiguration(request *ModifyScalingConfigura
 	return _result, _err
 }
 
-/**
- * Modifies a scaling group.
- *
- * @param request ModifyScalingGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyScalingGroupResponse
- */
 func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyScalingGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28504,12 +27028,6 @@ func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupR
 	return _result, _err
 }
 
-/**
- * Modifies a scaling group.
- *
- * @param request ModifyScalingGroupRequest
- * @return ModifyScalingGroupResponse
- */
 func (client *Client) ModifyScalingGroup(request *ModifyScalingGroupRequest) (_result *ModifyScalingGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyScalingGroupResponse{}
@@ -28653,13 +27171,6 @@ func (client *Client) ModifyScalingRule(request *ModifyScalingRuleRequest) (_res
 	return _result, _err
 }
 
-/**
- * Modifies a scheduled task.
- *
- * @param request ModifyScheduledTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyScheduledTaskResponse
- */
 func (client *Client) ModifyScheduledTaskWithOptions(request *ModifyScheduledTaskRequest, runtime *util.RuntimeOptions) (_result *ModifyScheduledTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28761,12 +27272,6 @@ func (client *Client) ModifyScheduledTaskWithOptions(request *ModifyScheduledTas
 	return _result, _err
 }
 
-/**
- * Modifies a scheduled task.
- *
- * @param request ModifyScheduledTaskRequest
- * @return ModifyScheduledTaskResponse
- */
 func (client *Client) ModifyScheduledTask(request *ModifyScheduledTaskRequest) (_result *ModifyScheduledTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyScheduledTaskResponse{}
@@ -28778,13 +27283,6 @@ func (client *Client) ModifyScheduledTask(request *ModifyScheduledTaskRequest) (
 	return _result, _err
 }
 
-/**
- * Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group across zones.
- *
- * @param request RebalanceInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RebalanceInstancesResponse
- */
 func (client *Client) RebalanceInstancesWithOptions(request *RebalanceInstancesRequest, runtime *util.RuntimeOptions) (_result *RebalanceInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28838,12 +27336,6 @@ func (client *Client) RebalanceInstancesWithOptions(request *RebalanceInstancesR
 	return _result, _err
 }
 
-/**
- * Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group across zones.
- *
- * @param request RebalanceInstancesRequest
- * @return RebalanceInstancesResponse
- */
 func (client *Client) RebalanceInstances(request *RebalanceInstancesRequest) (_result *RebalanceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RebalanceInstancesResponse{}
@@ -28855,13 +27347,6 @@ func (client *Client) RebalanceInstances(request *RebalanceInstancesRequest) (_r
 	return _result, _err
 }
 
-/**
- * Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
- *
- * @param request RecordLifecycleActionHeartbeatRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RecordLifecycleActionHeartbeatResponse
- */
 func (client *Client) RecordLifecycleActionHeartbeatWithOptions(request *RecordLifecycleActionHeartbeatRequest, runtime *util.RuntimeOptions) (_result *RecordLifecycleActionHeartbeatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28919,12 +27404,6 @@ func (client *Client) RecordLifecycleActionHeartbeatWithOptions(request *RecordL
 	return _result, _err
 }
 
-/**
- * Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
- *
- * @param request RecordLifecycleActionHeartbeatRequest
- * @return RecordLifecycleActionHeartbeatResponse
- */
 func (client *Client) RecordLifecycleActionHeartbeat(request *RecordLifecycleActionHeartbeatRequest) (_result *RecordLifecycleActionHeartbeatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecordLifecycleActionHeartbeatResponse{}
@@ -28936,20 +27415,6 @@ func (client *Client) RecordLifecycleActionHeartbeat(request *RecordLifecycleAct
 	return _result, _err
 }
 
-/**
- * *   Before you call this operation, make sure that the following requirements are met:
- *     *   The scaling group is in the Active state.
- *     *   No scaling activity is in progress within the scaling group.
- * > If no scaling activity is in progress within the scaling group, you can call the operation even within the cooldown period.
- * *   If an ECS instance is automatically created by Auto Scaling, or if an ECS instance is manually added to a scaling group and managed by the scaling group, the ECS instance is stopped in economical mode or is released after the instance is removed from the scaling group.
- * *   If an ECS instance is manually added to a scaling group and is not managed by the scaling group, the ECS instance is not stopped or released after the instance is removed from the scaling group.
- * *   If the difference between the number of existing ECS instances specified by the TotalCapacity parameter and the number of ECS instances that you call this operation to remove is less than the value of the MinSize parameter, the call fails.
- * A successful call only means that Auto Scaling accepts the request. The scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
- *
- * @param request RemoveInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveInstancesResponse
- */
 func (client *Client) RemoveInstancesWithOptions(request *RemoveInstancesRequest, runtime *util.RuntimeOptions) (_result *RemoveInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29015,19 +27480,6 @@ func (client *Client) RemoveInstancesWithOptions(request *RemoveInstancesRequest
 	return _result, _err
 }
 
-/**
- * *   Before you call this operation, make sure that the following requirements are met:
- *     *   The scaling group is in the Active state.
- *     *   No scaling activity is in progress within the scaling group.
- * > If no scaling activity is in progress within the scaling group, you can call the operation even within the cooldown period.
- * *   If an ECS instance is automatically created by Auto Scaling, or if an ECS instance is manually added to a scaling group and managed by the scaling group, the ECS instance is stopped in economical mode or is released after the instance is removed from the scaling group.
- * *   If an ECS instance is manually added to a scaling group and is not managed by the scaling group, the ECS instance is not stopped or released after the instance is removed from the scaling group.
- * *   If the difference between the number of existing ECS instances specified by the TotalCapacity parameter and the number of ECS instances that you call this operation to remove is less than the value of the MinSize parameter, the call fails.
- * A successful call only means that Auto Scaling accepts the request. The scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
- *
- * @param request RemoveInstancesRequest
- * @return RemoveInstancesResponse
- */
 func (client *Client) RemoveInstances(request *RemoveInstancesRequest) (_result *RemoveInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveInstancesResponse{}
@@ -29104,14 +27556,7 @@ func (client *Client) ResumeProcesses(request *ResumeProcessesRequest) (_result 
 }
 
 /**
- * Compared with the ExecuteScalingRule operation, the ScaleWithAdjustment operation does not require a scaling rule to be created in advance. Before you call the ScaleWithAdjustment operation, take note of the following items:
- * *   The following conditions must be met:
- *     *   The scaling group is in the Active state.
- *     *   No scaling activities in the scaling group are in progress.
- * *   If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
- * *   If the addition of a specified number of Elastic Compute Service (ECS) instances to a scaling group causes the total number of ECS instances in the scaling group to exceed the maximum number of instances allowed, Auto Scaling adds only a specific number of ECS instances to ensure that the total number of instances is equal to the maximum number of instances.
- * *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
- * A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
+ * The ID of the scaling activity.
  *
  * @param request ScaleWithAdjustmentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29179,14 +27624,7 @@ func (client *Client) ScaleWithAdjustmentWithOptions(request *ScaleWithAdjustmen
 }
 
 /**
- * Compared with the ExecuteScalingRule operation, the ScaleWithAdjustment operation does not require a scaling rule to be created in advance. Before you call the ScaleWithAdjustment operation, take note of the following items:
- * *   The following conditions must be met:
- *     *   The scaling group is in the Active state.
- *     *   No scaling activities in the scaling group are in progress.
- * *   If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
- * *   If the addition of a specified number of Elastic Compute Service (ECS) instances to a scaling group causes the total number of ECS instances in the scaling group to exceed the maximum number of instances allowed, Auto Scaling adds only a specific number of ECS instances to ensure that the total number of instances is equal to the maximum number of instances.
- * *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
- * A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
+ * The ID of the scaling activity.
  *
  * @param request ScaleWithAdjustmentRequest
  * @return ScaleWithAdjustmentResponse
@@ -29262,13 +27700,6 @@ func (client *Client) SetGroupDeletionProtection(request *SetGroupDeletionProtec
 	return _result, _err
 }
 
-/**
- * Configures the health check feature for Elastic Compute Service (ECS) instances.
- *
- * @param request SetInstanceHealthRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetInstanceHealthResponse
- */
 func (client *Client) SetInstanceHealthWithOptions(request *SetInstanceHealthRequest, runtime *util.RuntimeOptions) (_result *SetInstanceHealthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29314,12 +27745,6 @@ func (client *Client) SetInstanceHealthWithOptions(request *SetInstanceHealthReq
 	return _result, _err
 }
 
-/**
- * Configures the health check feature for Elastic Compute Service (ECS) instances.
- *
- * @param request SetInstanceHealthRequest
- * @return SetInstanceHealthResponse
- */
 func (client *Client) SetInstanceHealth(request *SetInstanceHealthRequest) (_result *SetInstanceHealthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetInstanceHealthResponse{}
@@ -29331,13 +27756,6 @@ func (client *Client) SetInstanceHealth(request *SetInstanceHealthRequest) (_res
 	return _result, _err
 }
 
-/**
- * Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
- *
- * @param request SetInstancesProtectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetInstancesProtectionResponse
- */
 func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesProtectionRequest, runtime *util.RuntimeOptions) (_result *SetInstancesProtectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29387,12 +27805,6 @@ func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesPro
 	return _result, _err
 }
 
-/**
- * Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
- *
- * @param request SetInstancesProtectionRequest
- * @return SetInstancesProtectionResponse
- */
 func (client *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) (_result *SetInstancesProtectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetInstancesProtectionResponse{}
@@ -29668,6 +28080,10 @@ func (client *Client) VerifyUserWithOptions(request *VerifyUserRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
