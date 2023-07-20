@@ -1117,6 +1117,7 @@ type AssociateEnsEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Standby      *bool   `json:"Standby,omitempty" xml:"Standby,omitempty"`
 }
 
 func (s AssociateEnsEipAddressRequest) String() string {
@@ -1139,6 +1140,11 @@ func (s *AssociateEnsEipAddressRequest) SetInstanceId(v string) *AssociateEnsEip
 
 func (s *AssociateEnsEipAddressRequest) SetInstanceType(v string) *AssociateEnsEipAddressRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *AssociateEnsEipAddressRequest) SetStandby(v bool) *AssociateEnsEipAddressRequest {
+	s.Standby = &v
 	return s
 }
 
@@ -2781,14 +2787,15 @@ func (s *CreateFileSystemResponse) SetBody(v *CreateFileSystemResponseBody) *Cre
 }
 
 type CreateForwardEntryRequest struct {
-	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	HealthCheckPort  *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	InternalPort     *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	NatGatewayId     *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	ExternalIp        *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalPort      *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	ForwardEntryName  *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	HealthCheckPort   *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	InternalIp        *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort      *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	IpProtocol        *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId      *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
 }
 
 func (s CreateForwardEntryRequest) String() string {
@@ -2836,6 +2843,11 @@ func (s *CreateForwardEntryRequest) SetIpProtocol(v string) *CreateForwardEntryR
 
 func (s *CreateForwardEntryRequest) SetNatGatewayId(v string) *CreateForwardEntryRequest {
 	s.NatGatewayId = &v
+	return s
+}
+
+func (s *CreateForwardEntryRequest) SetStandbyExternalIp(v string) *CreateForwardEntryRequest {
+	s.StandbyExternalIp = &v
 	return s
 }
 
@@ -4740,6 +4752,7 @@ type CreateSnatEntryRequest struct {
 	SourceCIDR      *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
 	SourceNetworkId *string `json:"SourceNetworkId,omitempty" xml:"SourceNetworkId,omitempty"`
 	SourceVSwitchId *string `json:"SourceVSwitchId,omitempty" xml:"SourceVSwitchId,omitempty"`
+	StandbySnatIp   *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
 }
 
 func (s CreateSnatEntryRequest) String() string {
@@ -4777,6 +4790,11 @@ func (s *CreateSnatEntryRequest) SetSourceNetworkId(v string) *CreateSnatEntryRe
 
 func (s *CreateSnatEntryRequest) SetSourceVSwitchId(v string) *CreateSnatEntryRequest {
 	s.SourceVSwitchId = &v
+	return s
+}
+
+func (s *CreateSnatEntryRequest) SetStandbySnatIp(v string) *CreateSnatEntryRequest {
+	s.StandbySnatIp = &v
 	return s
 }
 
@@ -9677,6 +9695,7 @@ type DescribeDisksResponseBodyDisksDisks struct {
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Portable       *bool   `json:"Portable,omitempty" xml:"Portable,omitempty"`
+	SerialId       *string `json:"SerialId,omitempty" xml:"SerialId,omitempty"`
 	Size           *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -9733,6 +9752,11 @@ func (s *DescribeDisksResponseBodyDisksDisks) SetInstanceName(v string) *Describ
 
 func (s *DescribeDisksResponseBodyDisksDisks) SetPortable(v bool) *DescribeDisksResponseBodyDisksDisks {
 	s.Portable = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisks) SetSerialId(v string) *DescribeDisksResponseBodyDisksDisks {
+	s.SerialId = &v
 	return s
 }
 
@@ -10233,6 +10257,7 @@ type DescribeEnsEipAddressesRequest struct {
 	EnsRegionId            *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	PageNumber             *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Standby                *string `json:"Standby,omitempty" xml:"Standby,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesRequest) String() string {
@@ -10280,6 +10305,11 @@ func (s *DescribeEnsEipAddressesRequest) SetPageNumber(v int32) *DescribeEnsEipA
 
 func (s *DescribeEnsEipAddressesRequest) SetPageSize(v int32) *DescribeEnsEipAddressesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesRequest) SetStandby(v string) *DescribeEnsEipAddressesRequest {
+	s.Standby = &v
 	return s
 }
 
@@ -10352,8 +10382,10 @@ type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
 	InstanceType       *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	IpStatus           *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
 	Isp                *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Standby            *bool   `json:"Standby,omitempty" xml:"Standby,omitempty"`
 	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10415,6 +10447,11 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetIpAddress
 	return s
 }
 
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetIpStatus(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
+	s.IpStatus = &v
+	return s
+}
+
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetIsp(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
 	s.Isp = &v
 	return s
@@ -10422,6 +10459,11 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetIsp(v str
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetName(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetStandby(v bool) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
+	s.Standby = &v
 	return s
 }
 
@@ -11680,6 +11722,7 @@ func (s *DescribeEnsRouteEntryListResponse) SetBody(v *DescribeEnsRouteEntryList
 type DescribeEnsSaleControlRequest struct {
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
@@ -11699,6 +11742,11 @@ func (s *DescribeEnsSaleControlRequest) SetAliUidAccount(v string) *DescribeEnsS
 
 func (s *DescribeEnsSaleControlRequest) SetCommodityCode(v string) *DescribeEnsSaleControlRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlRequest) SetCustomAccount(v string) *DescribeEnsSaleControlRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -11986,6 +12034,7 @@ func (s *DescribeEnsSaleControlResponse) SetBody(v *DescribeEnsSaleControlRespon
 
 type DescribeEnsSaleControlAvailableResourceRequest struct {
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
 
@@ -11999,6 +12048,11 @@ func (s DescribeEnsSaleControlAvailableResourceRequest) GoString() string {
 
 func (s *DescribeEnsSaleControlAvailableResourceRequest) SetCommodityCode(v string) *DescribeEnsSaleControlAvailableResourceRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceRequest) SetCustomAccount(v string) *DescribeEnsSaleControlAvailableResourceRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -12102,8 +12156,11 @@ func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailable
 
 type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion struct {
 	Area          *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	City          *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country       *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	EnsRegionId   *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	EnsRegionName *string `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
+	Isp           *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	Province      *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
@@ -12120,6 +12177,16 @@ func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailable
 	return s
 }
 
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetCity(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
+	s.City = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetCountry(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
+	s.Country = &v
+	return s
+}
+
 func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetEnsRegionId(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
 	s.EnsRegionId = &v
 	return s
@@ -12127,6 +12194,11 @@ func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailable
 
 func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetEnsRegionName(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
 	s.EnsRegionName = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetIsp(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
+	s.Isp = &v
 	return s
 }
 
@@ -12277,6 +12349,7 @@ func (s *DescribeEnsSaleControlAvailableResourceResponse) SetBody(v *DescribeEns
 type DescribeEnsSaleControlStockRequest struct {
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
@@ -12296,6 +12369,11 @@ func (s *DescribeEnsSaleControlStockRequest) SetAliUidAccount(v string) *Describ
 
 func (s *DescribeEnsSaleControlStockRequest) SetCommodityCode(v string) *DescribeEnsSaleControlStockRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockRequest) SetCustomAccount(v string) *DescribeEnsSaleControlStockRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -14035,16 +14113,18 @@ func (s *DescribeForwardTableEntriesResponseBody) SetTotalCount(v string) *Descr
 }
 
 type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
-	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	HealthCheckPort  *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	InternalPort     *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	NatGatewayId     *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ExternalIp        *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalPort      *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	ForwardEntryId    *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	ForwardEntryName  *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	HealthCheckPort   *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	InternalIp        *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort      *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	IpProtocol        *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId      *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
+	StandbyStatus     *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeForwardTableEntriesResponseBodyForwardTableEntries) String() string {
@@ -14097,6 +14177,16 @@ func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetIpProtoc
 
 func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetNatGatewayId(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
 	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetStandbyExternalIp(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.StandbyExternalIp = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetStandbyStatus(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.StandbyStatus = &v
 	return s
 }
 
@@ -23180,6 +23270,8 @@ type DescribeSnatAttributeResponseBody struct {
 	SnatIp        *string                                     `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 	SnatIps       []*DescribeSnatAttributeResponseBodySnatIps `json:"SnatIps,omitempty" xml:"SnatIps,omitempty" type:"Repeated"`
 	SourceCIDR    *string                                     `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	StandbySnatIp *string                                     `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
+	StandbyStatus *string                                     `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
 	Status        *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -23228,6 +23320,16 @@ func (s *DescribeSnatAttributeResponseBody) SetSnatIps(v []*DescribeSnatAttribut
 
 func (s *DescribeSnatAttributeResponseBody) SetSourceCIDR(v string) *DescribeSnatAttributeResponseBody {
 	s.SourceCIDR = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetStandbySnatIp(v string) *DescribeSnatAttributeResponseBody {
+	s.StandbySnatIp = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetStandbyStatus(v string) *DescribeSnatAttributeResponseBody {
+	s.StandbyStatus = &v
 	return s
 }
 
@@ -23394,6 +23496,8 @@ type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
 	SnatIp        *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 	SourceCIDR    *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	StandbySnatIp *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
+	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -23427,6 +23531,16 @@ func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSnatIp(v strin
 
 func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSourceCIDR(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
 	s.SourceCIDR = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetStandbySnatIp(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.StandbySnatIp = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetStandbyStatus(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.StandbyStatus = &v
 	return s
 }
 
@@ -32856,6 +32970,10 @@ func (client *Client) AssociateEnsEipAddressWithOptions(request *AssociateEnsEip
 		query["InstanceType"] = request.InstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Standby)) {
+		query["Standby"] = request.Standby
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -33830,6 +33948,10 @@ func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryR
 
 	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
 		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyExternalIp)) {
+		query["StandbyExternalIp"] = request.StandbyExternalIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35036,6 +35158,10 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SourceVSwitchId)) {
 		query["SourceVSwitchId"] = request.SourceVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbySnatIp)) {
+		query["StandbySnatIp"] = request.StandbySnatIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37205,6 +37331,10 @@ func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEip
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Standby)) {
+		query["Standby"] = request.Standby
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37686,6 +37816,10 @@ func (client *Client) DescribeEnsSaleControlWithOptions(request *DescribeEnsSale
 		query["CommodityCode"] = request.CommodityCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomAccount)) {
+		query["CustomAccount"] = request.CustomAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
 		query["ModuleCode"] = request.ModuleCode
 	}
@@ -37738,6 +37872,10 @@ func (client *Client) DescribeEnsSaleControlAvailableResourceWithOptions(request
 		query["CommodityCode"] = request.CommodityCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomAccount)) {
+		query["CustomAccount"] = request.CustomAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
 		query["OrderType"] = request.OrderType
 	}
@@ -37788,6 +37926,10 @@ func (client *Client) DescribeEnsSaleControlStockWithOptions(request *DescribeEn
 
 	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
 		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomAccount)) {
+		query["CustomAccount"] = request.CustomAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
@@ -40195,7 +40337,11 @@ func (client *Client) DescribeSnatAttributeWithOptions(request *DescribeSnatAttr
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryId)) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -40204,7 +40350,7 @@ func (client *Client) DescribeSnatAttributeWithOptions(request *DescribeSnatAttr
 		Version:     tea.String("2017-11-10"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
