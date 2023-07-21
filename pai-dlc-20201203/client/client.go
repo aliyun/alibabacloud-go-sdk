@@ -3588,8 +3588,8 @@ func (s *GetWebTerminalRequest) SetPodUid(v string) *GetWebTerminalRequest {
 }
 
 type GetWebTerminalResponseBody struct {
-	URL       *string `json:"URL,omitempty" xml:"URL,omitempty"`
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WebTerminalUrl *string `json:"WebTerminalUrl,omitempty" xml:"WebTerminalUrl,omitempty"`
 }
 
 func (s GetWebTerminalResponseBody) String() string {
@@ -3600,13 +3600,13 @@ func (s GetWebTerminalResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetWebTerminalResponseBody) SetURL(v string) *GetWebTerminalResponseBody {
-	s.URL = &v
+func (s *GetWebTerminalResponseBody) SetRequestId(v string) *GetWebTerminalResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetWebTerminalResponseBody) SetRequestId(v string) *GetWebTerminalResponseBody {
-	s.RequestId = &v
+func (s *GetWebTerminalResponseBody) SetWebTerminalUrl(v string) *GetWebTerminalResponseBody {
+	s.WebTerminalUrl = &v
 	return s
 }
 

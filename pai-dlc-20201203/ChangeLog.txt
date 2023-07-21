@@ -1,3 +1,6 @@
+2023-07-21 Version: v1.2.9
+- Change the API -- GetWebTerminal.
+
 2023-07-19 Version: v1.2.8
 - Open the API.
 
