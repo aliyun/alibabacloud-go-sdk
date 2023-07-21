@@ -2506,6 +2506,7 @@ func (s *ConfirmNotifyResponse) SetBody(v *ConfirmNotifyResponseBody) *ConfirmNo
 
 type CopyDatabaseRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -2520,6 +2521,11 @@ func (s CopyDatabaseRequest) GoString() string {
 
 func (s *CopyDatabaseRequest) SetOwnerId(v int64) *CopyDatabaseRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CopyDatabaseRequest) SetResourceGroupId(v string) *CopyDatabaseRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9298,6 +9304,7 @@ type DeleteDBNodesRequest struct {
 	DBNodeId             []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -9335,6 +9342,11 @@ func (s *DeleteDBNodesRequest) SetOwnerId(v int64) *DeleteDBNodesRequest {
 	return s
 }
 
+func (s *DeleteDBNodesRequest) SetResourceGroupId(v string) *DeleteDBNodesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DeleteDBNodesRequest) SetResourceOwnerAccount(v string) *DeleteDBNodesRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -9356,6 +9368,7 @@ type DeleteDBNodesShrinkRequest struct {
 	DBNodeIdShrink       *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -9390,6 +9403,11 @@ func (s *DeleteDBNodesShrinkRequest) SetOwnerAccount(v string) *DeleteDBNodesShr
 
 func (s *DeleteDBNodesShrinkRequest) SetOwnerId(v int64) *DeleteDBNodesShrinkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDBNodesShrinkRequest) SetResourceGroupId(v string) *DeleteDBNodesShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -14281,6 +14299,7 @@ type DescribeCharacterSetNameRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -14310,6 +14329,11 @@ func (s *DescribeCharacterSetNameRequest) SetOwnerId(v int64) *DescribeCharacter
 
 func (s *DescribeCharacterSetNameRequest) SetRegionId(v string) *DescribeCharacterSetNameRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCharacterSetNameRequest) SetResourceGroupId(v string) *DescribeCharacterSetNameRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33415,6 +33439,7 @@ type DescribeRenewalPriceRequest struct {
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The renewal cycle of the instance. Valid values:
@@ -33484,6 +33509,11 @@ func (s *DescribeRenewalPriceRequest) SetQuantity(v int32) *DescribeRenewalPrice
 
 func (s *DescribeRenewalPriceRequest) SetRegionId(v string) *DescribeRenewalPriceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetResourceGroupId(v string) *DescribeRenewalPriceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -53938,6 +53968,10 @@ func (client *Client) CopyDatabaseWithOptions(request *CopyDatabaseRequest, runt
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -57206,6 +57240,10 @@ func (client *Client) DeleteDBNodesWithOptions(tmpReq *DeleteDBNodesRequest, run
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -59249,6 +59287,10 @@ func (client *Client) DescribeCharacterSetNameWithOptions(request *DescribeChara
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -65255,6 +65297,10 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
