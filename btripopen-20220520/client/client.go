@@ -6814,7 +6814,9 @@ type CarOrderQueryResponseBodyModuleCarInfo struct {
 	CancelTime        *int64  `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
 	CarInfo           *string `json:"car_info,omitempty" xml:"car_info,omitempty"`
 	CarLevel          *int32  `json:"car_level,omitempty" xml:"car_level,omitempty"`
+	DriverCard        *string `json:"driver_card,omitempty" xml:"driver_card,omitempty"`
 	DriverConfirmTime *int64  `json:"driver_confirm_time,omitempty" xml:"driver_confirm_time,omitempty"`
+	DriverName        *string `json:"driver_name,omitempty" xml:"driver_name,omitempty"`
 	EstimatePrice     *int64  `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
 	FromAddress       *string `json:"from_address,omitempty" xml:"from_address,omitempty"`
 	FromCityName      *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
@@ -6862,8 +6864,18 @@ func (s *CarOrderQueryResponseBodyModuleCarInfo) SetCarLevel(v int32) *CarOrderQ
 	return s
 }
 
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetDriverCard(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.DriverCard = &v
+	return s
+}
+
 func (s *CarOrderQueryResponseBodyModuleCarInfo) SetDriverConfirmTime(v int64) *CarOrderQueryResponseBodyModuleCarInfo {
 	s.DriverConfirmTime = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetDriverName(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.DriverName = &v
 	return s
 }
 
@@ -34075,6 +34087,7 @@ func (s *MonthBillGetResponseBodyModule) SetUrl(v string) *MonthBillGetResponseB
 }
 
 type MonthBillGetResponseBodyModuleMonthAccountBillDetail struct {
+	BillConfirmed *int32 `json:"billConfirmed,omitempty" xml:"billConfirmed,omitempty"`
 	// 用车金额（单位：元）
 	CarAmount *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
 	// 违约金金额（单位：元）
@@ -34101,6 +34114,11 @@ func (s MonthBillGetResponseBodyModuleMonthAccountBillDetail) String() string {
 
 func (s MonthBillGetResponseBodyModuleMonthAccountBillDetail) GoString() string {
 	return s.String()
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetBillConfirmed(v int32) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.BillConfirmed = &v
+	return s
 }
 
 func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetCarAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
