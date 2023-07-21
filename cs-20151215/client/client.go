@@ -639,6 +639,70 @@ func (s *CancelWorkflowResponse) SetStatusCode(v int32) *CancelWorkflowResponse 
 	return s
 }
 
+type CheckControlPlaneLogEnableResponseBody struct {
+	Aliuid     *string   `json:"aliuid,omitempty" xml:"aliuid,omitempty"`
+	Components []*string `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	LogProject *string   `json:"log_project,omitempty" xml:"log_project,omitempty"`
+	LogTtl     *string   `json:"log_ttl,omitempty" xml:"log_ttl,omitempty"`
+}
+
+func (s CheckControlPlaneLogEnableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckControlPlaneLogEnableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckControlPlaneLogEnableResponseBody) SetAliuid(v string) *CheckControlPlaneLogEnableResponseBody {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *CheckControlPlaneLogEnableResponseBody) SetComponents(v []*string) *CheckControlPlaneLogEnableResponseBody {
+	s.Components = v
+	return s
+}
+
+func (s *CheckControlPlaneLogEnableResponseBody) SetLogProject(v string) *CheckControlPlaneLogEnableResponseBody {
+	s.LogProject = &v
+	return s
+}
+
+func (s *CheckControlPlaneLogEnableResponseBody) SetLogTtl(v string) *CheckControlPlaneLogEnableResponseBody {
+	s.LogTtl = &v
+	return s
+}
+
+type CheckControlPlaneLogEnableResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckControlPlaneLogEnableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckControlPlaneLogEnableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckControlPlaneLogEnableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckControlPlaneLogEnableResponse) SetHeaders(v map[string]*string) *CheckControlPlaneLogEnableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckControlPlaneLogEnableResponse) SetStatusCode(v int32) *CheckControlPlaneLogEnableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckControlPlaneLogEnableResponse) SetBody(v *CheckControlPlaneLogEnableResponseBody) *CheckControlPlaneLogEnableResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAutoscalingConfigRequest struct {
 	CoolDownDuration           *string `json:"cool_down_duration,omitempty" xml:"cool_down_duration,omitempty"`
 	DaemonsetEvictionForNodes  *bool   `json:"daemonset_eviction_for_nodes,omitempty" xml:"daemonset_eviction_for_nodes,omitempty"`
@@ -8200,6 +8264,7 @@ func (s *DescribeExternalAgentResponse) SetBody(v *DescribeExternalAgentResponse
 type DescribeKubernetesVersionMetadataRequest struct {
 	ClusterType       *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
+	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	Profile           *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Runtime           *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
@@ -8220,6 +8285,11 @@ func (s *DescribeKubernetesVersionMetadataRequest) SetClusterType(v string) *Des
 
 func (s *DescribeKubernetesVersionMetadataRequest) SetKubernetesVersion(v string) *DescribeKubernetesVersionMetadataRequest {
 	s.KubernetesVersion = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetMode(v string) *DescribeKubernetesVersionMetadataRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -8268,12 +8338,14 @@ func (s *DescribeKubernetesVersionMetadataResponse) SetBody(v []*DescribeKuberne
 }
 
 type DescribeKubernetesVersionMetadataResponseBody struct {
-	Capabilities map[string]interface{}                                 `json:"capabilities,omitempty" xml:"capabilities,omitempty"`
-	Images       []*DescribeKubernetesVersionMetadataResponseBodyImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	MetaData     map[string]interface{}                                 `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
-	Runtimes     []*Runtime                                             `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
-	Version      *string                                                `json:"version,omitempty" xml:"version,omitempty"`
-	MultiAz      *string                                                `json:"multi_az,omitempty" xml:"multi_az,omitempty"`
+	Capabilities   map[string]interface{}                                 `json:"capabilities,omitempty" xml:"capabilities,omitempty"`
+	Images         []*DescribeKubernetesVersionMetadataResponseBodyImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	MetaData       map[string]interface{}                                 `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
+	Runtimes       []*Runtime                                             `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
+	Version        *string                                                `json:"version,omitempty" xml:"version,omitempty"`
+	ReleaseDate    *string                                                `json:"release_date,omitempty" xml:"release_date,omitempty"`
+	ExpirationDate *string                                                `json:"expiration_date,omitempty" xml:"expiration_date,omitempty"`
+	Creatable      *bool                                                  `json:"creatable,omitempty" xml:"creatable,omitempty"`
 }
 
 func (s DescribeKubernetesVersionMetadataResponseBody) String() string {
@@ -8309,8 +8381,18 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) SetVersion(v string) *De
 	return s
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) SetMultiAz(v string) *DescribeKubernetesVersionMetadataResponseBody {
-	s.MultiAz = &v
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetReleaseDate(v string) *DescribeKubernetesVersionMetadataResponseBody {
+	s.ReleaseDate = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetExpirationDate(v string) *DescribeKubernetesVersionMetadataResponseBody {
+	s.ExpirationDate = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetCreatable(v bool) *DescribeKubernetesVersionMetadataResponseBody {
+	s.Creatable = &v
 	return s
 }
 
@@ -13973,6 +14055,64 @@ func (s *UpdateContactGroupForAlertResponse) SetStatusCode(v int32) *UpdateConta
 	return s
 }
 
+type UpdateControlPlaneLogRequest struct {
+	Aliuid     *string   `json:"aliuid,omitempty" xml:"aliuid,omitempty"`
+	Components []*string `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	LogProject *string   `json:"log_project,omitempty" xml:"log_project,omitempty"`
+	LogTtl     *string   `json:"log_ttl,omitempty" xml:"log_ttl,omitempty"`
+}
+
+func (s UpdateControlPlaneLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPlaneLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPlaneLogRequest) SetAliuid(v string) *UpdateControlPlaneLogRequest {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogRequest) SetComponents(v []*string) *UpdateControlPlaneLogRequest {
+	s.Components = v
+	return s
+}
+
+func (s *UpdateControlPlaneLogRequest) SetLogProject(v string) *UpdateControlPlaneLogRequest {
+	s.LogProject = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogRequest) SetLogTtl(v string) *UpdateControlPlaneLogRequest {
+	s.LogTtl = &v
+	return s
+}
+
+type UpdateControlPlaneLogResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateControlPlaneLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPlaneLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPlaneLogResponse) SetHeaders(v map[string]*string) *UpdateControlPlaneLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateControlPlaneLogResponse) SetStatusCode(v int32) *UpdateControlPlaneLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateK8sClusterUserConfigExpireRequest struct {
 	ExpireHour *int64  `json:"expire_hour,omitempty" xml:"expire_hour,omitempty"`
 	User       *string `json:"user,omitempty" xml:"user,omitempty"`
@@ -14691,6 +14831,42 @@ func (client *Client) CancelWorkflow(workflowName *string, request *CancelWorkfl
 	headers := make(map[string]*string)
 	_result = &CancelWorkflowResponse{}
 	_body, _err := client.CancelWorkflowWithOptions(workflowName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckControlPlaneLogEnableWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckControlPlaneLogEnableResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckControlPlaneLogEnable"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/controlplanelog"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckControlPlaneLogEnableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckControlPlaneLogEnable(ClusterId *string) (_result *CheckControlPlaneLogEnableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckControlPlaneLogEnableResponse{}
+	_body, _err := client.CheckControlPlaneLogEnableWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17306,6 +17482,10 @@ func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
 		query["KubernetesVersion"] = request.KubernetesVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Profile)) {
@@ -20099,6 +20279,64 @@ func (client *Client) UpdateContactGroupForAlert(ClusterId *string) (_result *Up
 	headers := make(map[string]*string)
 	_result = &UpdateContactGroupForAlertResponse{}
 	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateControlPlaneLogWithOptions(ClusterId *string, request *UpdateControlPlaneLogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateControlPlaneLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Aliuid)) {
+		body["aliuid"] = request.Aliuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Components)) {
+		body["components"] = request.Components
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogProject)) {
+		body["log_project"] = request.LogProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogTtl)) {
+		body["log_ttl"] = request.LogTtl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateControlPlaneLog"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/controlplanelog"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateControlPlaneLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateControlPlaneLog(ClusterId *string, request *UpdateControlPlaneLogRequest) (_result *UpdateControlPlaneLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateControlPlaneLogResponse{}
+	_body, _err := client.UpdateControlPlaneLogWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
