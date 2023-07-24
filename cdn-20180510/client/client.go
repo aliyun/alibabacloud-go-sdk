@@ -5591,12 +5591,6 @@ func (s *DescribeCdnUserBillHistoryResponse) SetBody(v *DescribeCdnUserBillHisto
 }
 
 type DescribeCdnUserBillPredictionRequest struct {
-	// The ID of the request.
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The start time of the estimation.
-	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The end time of the estimation.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The billable region. Valid values:
 	//
 	// *   **CN**: the Chinese mainland
@@ -5612,6 +5606,14 @@ type DescribeCdnUserBillPredictionRequest struct {
 	// By default, the value of this parameter is determined by the metering method that is currently used. Regions inside and outside the Chinese mainland are classified into the **CN** and **OverSeas** billable regions. Billable regions inside the Chinese mainland include **CN**. Billable regions outside the Chinese mainland include **AP1**, **AP2**, **AP3**, **NA**, **SA**, **EU**, and **MEAA**.
 	//
 	// > For more information about billable regions, see [Billable regions](~~142221~~).
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The billable item. A value of flow specifies bandwidth.
+	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// The end time of the estimation. The default value is the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// > The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the estimation. The default value is 00:00 on the first day of the current month. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5644,10 +5646,8 @@ func (s *DescribeCdnUserBillPredictionRequest) SetStartTime(v string) *DescribeC
 }
 
 type DescribeCdnUserBillPredictionResponseBody struct {
-	// The billable region.
+	// The estimated bill data.
 	BillPredictionData *DescribeCdnUserBillPredictionResponseBodyBillPredictionData `json:"BillPredictionData,omitempty" xml:"BillPredictionData,omitempty" type:"Struct"`
-	// The time when the value used as the estimated value is generated. This parameter is returned only if the metering method is pay by 95th percentile, pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00, or pay by 4th peak bandwidth per month.
-	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	// The metering method.
 	//
 	// > If the metering method ends with \_overseas, the billable region is outside the Chinese mainland. For example, BillType": "month_avg_day_bandwidth_overseas specifies a billable region outside the Chinese mainland and that the metering method is pay by daily peak bandwidth per month.
@@ -5663,10 +5663,12 @@ type DescribeCdnUserBillPredictionResponseBody struct {
 	// *   month\_95\_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00.
 	// *   hour_vas: pay by value-added services per hour
 	// *   day_count: pay by daily requests
+	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// The end time of the estimation.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The estimated value.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The estimated bill data.
+	// The start time of the estimation.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5721,9 +5723,12 @@ func (s *DescribeCdnUserBillPredictionResponseBodyBillPredictionData) SetBillPre
 }
 
 type DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionDataItem struct {
-	Area    *string  `json:"Area,omitempty" xml:"Area,omitempty"`
-	TimeStp *string  `json:"TimeStp,omitempty" xml:"TimeStp,omitempty"`
-	Value   *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The billable region.
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The time when the value used as the estimated value is generated. This parameter is returned only if the metering method is pay by 95th percentile, pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00, or pay by 4th peak bandwidth per month.
+	TimeStp *string `json:"TimeStp,omitempty" xml:"TimeStp,omitempty"`
+	// The estimated value.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionDataItem) String() string {
@@ -8563,27 +8568,27 @@ func (s *DescribeDomainCustomLogConfigResponse) SetBody(v *DescribeDomainCustomL
 }
 
 type DescribeDomainDetailDataByLayerRequest struct {
-	// The domain name that you want to query. You can specify multiple domain names and separate them with commas (,). You can specify up to 30 domain names in each call.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  The end time must be later than the start time. The maximum time range that can be specified is 1 hour.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The metric that you want to query. You can specify one or more metrics and separate them with commas (,). Valid values: **bps**, **qps**, **traf**, **acc**, **ipv6\_traf**, **ipv6\_bps**, **ipv6\_acc**, **ipv6\_qps**, and **http_code**.
-	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+	// The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
 	//
 	// If you do not specify an ISP, data of all ISPs is queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The protocol by which you want to query data. Valid values: **http**, **https**, **quic**, and **all**.
 	//
-	// Default value: **all**.
+	// The default value is **all**.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The ID of the request.
+	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	// The amount of network traffic. Unit: bytes.
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query region names.
+	// The detailed data of the accelerated domain names.
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
 	//
 	// If you do not specify a region, data in all regions is queried.
-	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -8631,9 +8636,9 @@ func (s *DescribeDomainDetailDataByLayerRequest) SetStartTime(v string) *Describ
 }
 
 type DescribeDomainDetailDataByLayerResponseBody struct {
-	// Details about the accelerated domain names.
+	// The number of IPv6 requests per second.
 	Data *DescribeDomainDetailDataByLayerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The number of queries per second.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8673,27 +8678,38 @@ func (s *DescribeDomainDetailDataByLayerResponseBodyData) SetDataModule(v []*Des
 }
 
 type DescribeDomainDetailDataByLayerResponseBodyDataDataModule struct {
-	// The number of requests.
+	// The timestamp of the data returned.
 	Acc *int64 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The bandwidth. Unit: bit/s.
+	// The bandwidth of IPv6 requests. Unit: bit/s.
 	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The domain name.
+	// The number of requests.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The distribution of HTTP status codes.
+	// - You can call this operation up to 20 times per second per account.
+	// - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+	//
+	// **Time granularity**
+	//
+	// The following table describes the time granularity, the time period within which historical data is available, and the data delay, which vary with the maximum time range per query.
+	//
+	// | Time granularity | Maximum time range per query | Historical data available | Data delay |
+	// | ---------------- | ---------------------------- | ------------------------- | ---------- |
+	// | 5 minutes | 3 days | 93 days | 15 minutes |
+	// | 1 hour | 31 days | 186 days | 4 hours |
+	// | 1 days | 366 days | 366 days | 04:00 on the next day |
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The number of IPv6 requests.
+	// The bandwidth. Unit: bit/s.
 	Ipv6Acc *int64 `json:"Ipv6Acc,omitempty" xml:"Ipv6Acc,omitempty"`
-	// The IPv6 bandwidth. Unit: bit/s.
+	// The number of IPv6 requests.
 	Ipv6Bps *float32 `json:"Ipv6Bps,omitempty" xml:"Ipv6Bps,omitempty"`
-	// The QPS over IPv6.
+	// The amount of network traffic generated by IPv6 requests. Unit: bytes.
 	Ipv6Qps *float32 `json:"Ipv6Qps,omitempty" xml:"Ipv6Qps,omitempty"`
-	// The IPv6 traffic. Unit: bytes.
+	// The proportions of HTTP status codes.
 	Ipv6Traf *int64 `json:"Ipv6Traf,omitempty" xml:"Ipv6Traf,omitempty"`
-	// The QPS.
+	// The number of requests.
 	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The timestamp of the returned data.
+	// The domain name.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The amount of network traffic. Unit: bytes.
+	// The bandwidth of IPv6 requests. Unit: bit/s.
 	Traf *int64 `json:"Traf,omitempty" xml:"Traf,omitempty"`
 }
 
@@ -8785,6 +8801,218 @@ func (s *DescribeDomainDetailDataByLayerResponse) SetStatusCode(v int32) *Descri
 }
 
 func (s *DescribeDomainDetailDataByLayerResponse) SetBody(v *DescribeDomainDetailDataByLayerResponseBody) *DescribeDomainDetailDataByLayerResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainFileSizeProportionDataRequest struct {
+	// The accelerated domain name. You can specify only one domain name in each request.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// The end time must be later than the start time.
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainFileSizeProportionDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainFileSizeProportionDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainFileSizeProportionDataRequest) SetDomainName(v string) *DescribeDomainFileSizeProportionDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataRequest) SetEndTime(v string) *DescribeDomainFileSizeProportionDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataRequest) SetOwnerId(v int64) *DescribeDomainFileSizeProportionDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataRequest) SetSecurityToken(v string) *DescribeDomainFileSizeProportionDataRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataRequest) SetStartTime(v string) *DescribeDomainFileSizeProportionDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainFileSizeProportionDataResponseBody struct {
+	// The time interval between the data entries returned. Unit: seconds.
+	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range during which data was queried.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The proportions of files in different sizes.
+	FileSizeProportionDataInterval *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval `json:"FileSizeProportionDataInterval,omitempty" xml:"FileSizeProportionDataInterval,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range that was queried.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBody) SetDataInterval(v string) *DescribeDomainFileSizeProportionDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBody) SetDomainName(v string) *DescribeDomainFileSizeProportionDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBody) SetEndTime(v string) *DescribeDomainFileSizeProportionDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBody) SetFileSizeProportionDataInterval(v *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) *DescribeDomainFileSizeProportionDataResponseBody {
+	s.FileSizeProportionDataInterval = v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBody) SetRequestId(v string) *DescribeDomainFileSizeProportionDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBody) SetStartTime(v string) *DescribeDomainFileSizeProportionDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval struct {
+	UsageData []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData `json:"UsageData,omitempty" xml:"UsageData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) SetUsageData(v []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval {
+	s.UsageData = v
+	return s
+}
+
+type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData struct {
+	// The timestamp of the returned data.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The proportions of files in different sizes.
+	Value *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) SetTimeStamp(v string) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) SetValue(v *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData {
+	s.Value = v
+	return s
+}
+
+type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue struct {
+	FileSizeProportionData []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData `json:"FileSizeProportionData,omitempty" xml:"FileSizeProportionData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) SetFileSizeProportionData(v []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue {
+	s.FileSizeProportionData = v
+	return s
+}
+
+type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData struct {
+	// The size of the file.
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The proportion of the file.
+	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) SetFileSize(v string) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData {
+	s.FileSize = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) SetProportion(v string) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData {
+	s.Proportion = &v
+	return s
+}
+
+type DescribeDomainFileSizeProportionDataResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDomainFileSizeProportionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDomainFileSizeProportionDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainFileSizeProportionDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponse) SetHeaders(v map[string]*string) *DescribeDomainFileSizeProportionDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponse) SetStatusCode(v int32) *DescribeDomainFileSizeProportionDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainFileSizeProportionDataResponse) SetBody(v *DescribeDomainFileSizeProportionDataResponseBody) *DescribeDomainFileSizeProportionDataResponse {
 	s.Body = v
 	return s
 }
@@ -15340,7 +15568,7 @@ func (s *DescribeDomainTrafficDataResponse) SetBody(v *DescribeDomainTrafficData
 }
 
 type DescribeDomainUsageDataRequest struct {
-	// The ID of the billable region. Valid values:
+	// The billable region. Valid values:
 	//
 	// *   **CN** (default): inside the Chinese mainland
 	// *   **OverSeas**: outside the Chinese mainland
@@ -15355,8 +15583,8 @@ type DescribeDomainUsageDataRequest struct {
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	// The protocol of the data that you want to query. Valid values:
 	//
-	// *   **http**: HTTP
-	// *   **https**: HTTPS
+	// *   **http:** HTTP
+	// *   **https:** HTTPS
 	// *   **quic**: QUIC
 	// *   **all** (default): HTTP, HTTPS, and QUIC
 	DataProtocol *string `json:"DataProtocol,omitempty" xml:"DataProtocol,omitempty"`
@@ -25755,18 +25983,13 @@ func (client *Client) DescribeCdnUserBillHistory(request *DescribeCdnUserBillHis
 }
 
 /**
- * The billable region. Valid values:
- * *   **CN**: the Chinese mainland
- * *   **OverSeas**: outside the Chinese mainland
- * *   **AP1**: Asia Pacific 1
- * *   **AP2**: Asia Pacific 2
- * *   **AP3**: Asia Pacific 3
- * *   **NA**: North America
- * *   **SA**: South America
- * *   **EU**: Europe
- * *   **MEAA**: Middle East and Africa
- * By default, the value of this parameter is determined by the metering method that is currently used. Regions inside and outside the Chinese mainland are classified into the **CN** and **OverSeas** billable regions. Billable regions inside the Chinese mainland include **CN**. Billable regions outside the Chinese mainland include **AP1**, **AP2**, **AP3**, **NA**, **SA**, **EU**, and **MEAA**.
- * > For more information about billable regions, see [Billable regions](~~142221~~).
+ * You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the current month. You can call this operation to estimate resource usage only of the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the current month and ends 2 hours earlier than the current time.
+ * *   Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+ * *   Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
+ * *   Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
+ * *   Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
+ * *   Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+ * > You can call this operation only once per second per account.
  *
  * @param request DescribeCdnUserBillPredictionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25818,18 +26041,13 @@ func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *Describe
 }
 
 /**
- * The billable region. Valid values:
- * *   **CN**: the Chinese mainland
- * *   **OverSeas**: outside the Chinese mainland
- * *   **AP1**: Asia Pacific 1
- * *   **AP2**: Asia Pacific 2
- * *   **AP3**: Asia Pacific 3
- * *   **NA**: North America
- * *   **SA**: South America
- * *   **EU**: Europe
- * *   **MEAA**: Middle East and Africa
- * By default, the value of this parameter is determined by the metering method that is currently used. Regions inside and outside the Chinese mainland are classified into the **CN** and **OverSeas** billable regions. Billable regions inside the Chinese mainland include **CN**. Billable regions outside the Chinese mainland include **AP1**, **AP2**, **AP3**, **NA**, **SA**, **EU**, and **MEAA**.
- * > For more information about billable regions, see [Billable regions](~~142221~~).
+ * You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the current month. You can call this operation to estimate resource usage only of the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the current month and ends 2 hours earlier than the current time.
+ * *   Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+ * *   Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
+ * *   Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
+ * *   Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
+ * *   Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+ * > You can call this operation only once per second per account.
  *
  * @param request DescribeCdnUserBillPredictionRequest
  * @return DescribeCdnUserBillPredictionResponse
@@ -26933,8 +27151,7 @@ func (client *Client) DescribeDomainCustomLogConfig(request *DescribeDomainCusto
 }
 
 /**
- * *   You can call this operation up to 20 times per second per account.
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+ * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDomainDetailDataByLayerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26970,8 +27187,7 @@ func (client *Client) DescribeDomainDetailDataByLayerWithOptions(request *Descri
 }
 
 /**
- * *   You can call this operation up to 20 times per second per account.
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+ * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDomainDetailDataByLayerRequest
  * @return DescribeDomainDetailDataByLayerResponse
@@ -26980,6 +27196,83 @@ func (client *Client) DescribeDomainDetailDataByLayer(request *DescribeDomainDet
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainDetailDataByLayerResponse{}
 	_body, _err := client.DescribeDomainDetailDataByLayerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * >
+ * *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request DescribeDomainFileSizeProportionDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDomainFileSizeProportionDataResponse
+ */
+func (client *Client) DescribeDomainFileSizeProportionDataWithOptions(request *DescribeDomainFileSizeProportionDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainFileSizeProportionDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainFileSizeProportionData"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainFileSizeProportionDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * >
+ * *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request DescribeDomainFileSizeProportionDataRequest
+ * @return DescribeDomainFileSizeProportionDataResponse
+ */
+func (client *Client) DescribeDomainFileSizeProportionData(request *DescribeDomainFileSizeProportionDataRequest) (_result *DescribeDomainFileSizeProportionDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainFileSizeProportionDataResponse{}
+	_body, _err := client.DescribeDomainFileSizeProportionDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32494,6 +32787,7 @@ func (client *Client) SetCdnDomainStagingConfig(request *SetCdnDomainStagingConf
 }
 
 /**
+ * @deprecated : SetDomainServerCertificate is deprecated, please use Cdn::2018-05-10::SetCdnDomainSSLCertificate instead.
  * *   You can call this operation up to 10 times per second per user.
  * *   Method: POST.
  *
@@ -32501,6 +32795,7 @@ func (client *Client) SetCdnDomainStagingConfig(request *SetCdnDomainStagingConf
  * @param runtime runtime options for this request RuntimeOptions
  * @return SetDomainServerCertificateResponse
  */
+// Deprecated
 func (client *Client) SetDomainServerCertificateWithOptions(request *SetDomainServerCertificateRequest, runtime *util.RuntimeOptions) (_result *SetDomainServerCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32567,12 +32862,14 @@ func (client *Client) SetDomainServerCertificateWithOptions(request *SetDomainSe
 }
 
 /**
+ * @deprecated : SetDomainServerCertificate is deprecated, please use Cdn::2018-05-10::SetCdnDomainSSLCertificate instead.
  * *   You can call this operation up to 10 times per second per user.
  * *   Method: POST.
  *
  * @param request SetDomainServerCertificateRequest
  * @return SetDomainServerCertificateResponse
  */
+// Deprecated
 func (client *Client) SetDomainServerCertificate(request *SetDomainServerCertificateRequest) (_result *SetDomainServerCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDomainServerCertificateResponse{}
