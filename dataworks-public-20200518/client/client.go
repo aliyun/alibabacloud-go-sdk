@@ -5307,6 +5307,89 @@ func (s *CreateResourceFileRequest) SetUploadMode(v bool) *CreateResourceFileReq
 	return s
 }
 
+type CreateResourceFileAdvanceRequest struct {
+	Content              *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	FileDescription      *string   `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	FileFolderPath       *string   `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	FileName             *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileType             *int32    `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	OriginResourceName   *string   `json:"OriginResourceName,omitempty" xml:"OriginResourceName,omitempty"`
+	Owner                *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ProjectId            *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegisterToCalcEngine *bool     `json:"RegisterToCalcEngine,omitempty" xml:"RegisterToCalcEngine,omitempty"`
+	ResourceFileObject   io.Reader `json:"ResourceFile,omitempty" xml:"ResourceFile,omitempty"`
+	StorageURL           *string   `json:"StorageURL,omitempty" xml:"StorageURL,omitempty"`
+	UploadMode           *bool     `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
+}
+
+func (s CreateResourceFileAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetContent(v string) *CreateResourceFileAdvanceRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileDescription(v string) *CreateResourceFileAdvanceRequest {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileFolderPath(v string) *CreateResourceFileAdvanceRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileName(v string) *CreateResourceFileAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileType(v int32) *CreateResourceFileAdvanceRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetOriginResourceName(v string) *CreateResourceFileAdvanceRequest {
+	s.OriginResourceName = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetOwner(v string) *CreateResourceFileAdvanceRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetProjectId(v int64) *CreateResourceFileAdvanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetRegisterToCalcEngine(v bool) *CreateResourceFileAdvanceRequest {
+	s.RegisterToCalcEngine = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetResourceFileObject(v io.Reader) *CreateResourceFileAdvanceRequest {
+	s.ResourceFileObject = v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetStorageURL(v string) *CreateResourceFileAdvanceRequest {
+	s.StorageURL = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetUploadMode(v bool) *CreateResourceFileAdvanceRequest {
+	s.UploadMode = &v
+	return s
+}
+
 type CreateResourceFileResponseBody struct {
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -54192,6 +54275,112 @@ func (client *Client) CreateResourceFile(request *CreateResourceFileRequest) (_r
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvanceRequest, runtime *util.RuntimeOptions) (_result *CreateResourceFileResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("dataworks-public"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	createResourceFileReq := &CreateResourceFileRequest{}
+	openapiutil.Convert(request, createResourceFileReq)
+	if !tea.BoolValue(util.IsUnset(request.ResourceFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ResourceFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		createResourceFileReq.ResourceFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	createResourceFileResp, _err := client.CreateResourceFileWithOptions(createResourceFileReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = createResourceFileResp
 	return _result, _err
 }
 
