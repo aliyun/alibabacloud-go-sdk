@@ -666,6 +666,177 @@ func (s *BatchCopyVpcFirewallControlPolicyResponse) SetBody(v *BatchCopyVpcFirew
 	return s
 }
 
+type CreateNatFirewallControlPolicyRequest struct {
+	AclAction           *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	Description         *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestPort            *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	DestPortGroup       *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	DestPortType        *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	Destination         *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType     *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	Direction           *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	DomainResolveType   *int32    `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	IpVersion           *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId        *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NewOrder            *string   `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
+	Proto               *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	Release             *string   `json:"Release,omitempty" xml:"Release,omitempty"`
+	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType          *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s CreateNatFirewallControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatFirewallControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetAclAction(v string) *CreateNatFirewallControlPolicyRequest {
+	s.AclAction = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetApplicationNameList(v []*string) *CreateNatFirewallControlPolicyRequest {
+	s.ApplicationNameList = v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDescription(v string) *CreateNatFirewallControlPolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDestPort(v string) *CreateNatFirewallControlPolicyRequest {
+	s.DestPort = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDestPortGroup(v string) *CreateNatFirewallControlPolicyRequest {
+	s.DestPortGroup = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDestPortType(v string) *CreateNatFirewallControlPolicyRequest {
+	s.DestPortType = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDestination(v string) *CreateNatFirewallControlPolicyRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDestinationType(v string) *CreateNatFirewallControlPolicyRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDirection(v string) *CreateNatFirewallControlPolicyRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetDomainResolveType(v int32) *CreateNatFirewallControlPolicyRequest {
+	s.DomainResolveType = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetIpVersion(v string) *CreateNatFirewallControlPolicyRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetLang(v string) *CreateNatFirewallControlPolicyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetNatGatewayId(v string) *CreateNatFirewallControlPolicyRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetNewOrder(v string) *CreateNatFirewallControlPolicyRequest {
+	s.NewOrder = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetProto(v string) *CreateNatFirewallControlPolicyRequest {
+	s.Proto = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetRelease(v string) *CreateNatFirewallControlPolicyRequest {
+	s.Release = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetSource(v string) *CreateNatFirewallControlPolicyRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetSourceType(v string) *CreateNatFirewallControlPolicyRequest {
+	s.SourceType = &v
+	return s
+}
+
+type CreateNatFirewallControlPolicyResponseBody struct {
+	AclUuid   *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNatFirewallControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatFirewallControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatFirewallControlPolicyResponseBody) SetAclUuid(v string) *CreateNatFirewallControlPolicyResponseBody {
+	s.AclUuid = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyResponseBody) SetRequestId(v string) *CreateNatFirewallControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNatFirewallControlPolicyResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateNatFirewallControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatFirewallControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *CreateNatFirewallControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyResponse) SetStatusCode(v int32) *CreateNatFirewallControlPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyResponse) SetBody(v *CreateNatFirewallControlPolicyResponseBody) *CreateNatFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTrFirewallV2Request struct {
 	CenId                  *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	FirewallDescription    *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
@@ -1864,6 +2035,87 @@ func (s *DeleteInstanceMembersResponse) SetStatusCode(v int32) *DeleteInstanceMe
 }
 
 func (s *DeleteInstanceMembersResponse) SetBody(v *DeleteInstanceMembersResponseBody) *DeleteInstanceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNatFirewallControlPolicyRequest struct {
+	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+}
+
+func (s DeleteNatFirewallControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatFirewallControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatFirewallControlPolicyRequest) SetAclUuid(v string) *DeleteNatFirewallControlPolicyRequest {
+	s.AclUuid = &v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyRequest) SetDirection(v string) *DeleteNatFirewallControlPolicyRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyRequest) SetLang(v string) *DeleteNatFirewallControlPolicyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyRequest) SetNatGatewayId(v string) *DeleteNatFirewallControlPolicyRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+type DeleteNatFirewallControlPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNatFirewallControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatFirewallControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatFirewallControlPolicyResponseBody) SetRequestId(v string) *DeleteNatFirewallControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNatFirewallControlPolicyResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNatFirewallControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatFirewallControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *DeleteNatFirewallControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyResponse) SetStatusCode(v int32) *DeleteNatFirewallControlPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNatFirewallControlPolicyResponse) SetBody(v *DeleteNatFirewallControlPolicyResponseBody) *DeleteNatFirewallControlPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -4472,6 +4724,326 @@ func (s *DescribeInvadeEventListResponse) SetStatusCode(v int32) *DescribeInvade
 }
 
 func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResponseBody) *DescribeInvadeEventListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNatFirewallControlPolicyRequest struct {
+	AclAction    *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	CurrentPage  *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Destination  *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Proto        *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	Release      *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s DescribeNatFirewallControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetAclAction(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.AclAction = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetAclUuid(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.AclUuid = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetCurrentPage(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetDescription(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetDestination(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetDirection(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetLang(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetNatGatewayId(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetPageSize(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetProto(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetRelease(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.Release = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetSource(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.Source = &v
+	return s
+}
+
+type DescribeNatFirewallControlPolicyResponseBody struct {
+	Policys    []*DescribeNatFirewallControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeNatFirewallControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBody) SetPolicys(v []*DescribeNatFirewallControlPolicyResponseBodyPolicys) *DescribeNatFirewallControlPolicyResponseBody {
+	s.Policys = v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBody) SetRequestId(v string) *DescribeNatFirewallControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBody) SetTotalCount(v string) *DescribeNatFirewallControlPolicyResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
+	AclAction             *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	AclUuid               *string   `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	ApplicationNameList   []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	CreateTime            *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description           *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestPort              *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	DestPortGroup         *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	DestPortGroupPorts    []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
+	DestPortType          *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	Destination           *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
+	DestinationGroupType  *string   `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
+	DestinationType       *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DnsResult             *string   `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
+	DnsResultTime         *int64    `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
+	DomainResolveType     *int32    `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	HitLastTime           *int64    `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
+	HitTimes              *int32    `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
+	ModifyTime            *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	NatGatewayId          *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	Order                 *int32    `json:"Order,omitempty" xml:"Order,omitempty"`
+	Proto                 *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	Release               *string   `json:"Release,omitempty" xml:"Release,omitempty"`
+	Source                *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceGroupCidrs      []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
+	SourceGroupType       *string   `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
+	SourceType            *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpreadCnt             *string   `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
+}
+
+func (s DescribeNatFirewallControlPolicyResponseBodyPolicys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallControlPolicyResponseBodyPolicys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetAclAction(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.AclAction = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetAclUuid(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.AclUuid = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetApplicationNameList(v []*string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.ApplicationNameList = v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetCreateTime(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDescription(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestPort(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DestPort = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestPortGroup(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DestPortGroup = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestPortGroupPorts(v []*string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DestPortGroupPorts = v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestPortType(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DestPortType = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestination(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.Destination = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestinationGroupCidrs(v []*string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DestinationGroupCidrs = v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestinationGroupType(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DestinationGroupType = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDestinationType(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDnsResult(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DnsResult = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDnsResultTime(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DnsResultTime = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDomainResolveType(v int32) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.DomainResolveType = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetHitLastTime(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.HitLastTime = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetHitTimes(v int32) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.HitTimes = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetModifyTime(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetNatGatewayId(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetOrder(v int32) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetProto(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetRelease(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.Release = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSource(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSourceGroupCidrs(v []*string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.SourceGroupCidrs = v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSourceGroupType(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.SourceGroupType = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSourceType(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSpreadCnt(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.SpreadCnt = &v
+	return s
+}
+
+type DescribeNatFirewallControlPolicyResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNatFirewallControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *DescribeNatFirewallControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponse) SetStatusCode(v int32) *DescribeNatFirewallControlPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponse) SetBody(v *DescribeNatFirewallControlPolicyResponseBody) *DescribeNatFirewallControlPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -11519,6 +12091,240 @@ func (s *ModifyInstanceMemberAttributesResponse) SetBody(v *ModifyInstanceMember
 	return s
 }
 
+type ModifyNatFirewallControlPolicyRequest struct {
+	AclAction           *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	AclUuid             *string   `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	Description         *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestPort            *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	DestPortGroup       *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	DestPortType        *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	Destination         *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType     *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DomainResolveType   *string   `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId        *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	Proto               *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	Release             *string   `json:"Release,omitempty" xml:"Release,omitempty"`
+	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType          *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ModifyNatFirewallControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNatFirewallControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetAclAction(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.AclAction = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetAclUuid(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.AclUuid = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetApplicationNameList(v []*string) *ModifyNatFirewallControlPolicyRequest {
+	s.ApplicationNameList = v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDescription(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDestPort(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.DestPort = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDestPortGroup(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.DestPortGroup = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDestPortType(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.DestPortType = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDestination(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDestinationType(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDomainResolveType(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.DomainResolveType = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetLang(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetNatGatewayId(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetProto(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.Proto = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetRelease(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.Release = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetSource(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetSourceType(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.SourceType = &v
+	return s
+}
+
+type ModifyNatFirewallControlPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyNatFirewallControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNatFirewallControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNatFirewallControlPolicyResponseBody) SetRequestId(v string) *ModifyNatFirewallControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyNatFirewallControlPolicyResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyNatFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyNatFirewallControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNatFirewallControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNatFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *ModifyNatFirewallControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyResponse) SetStatusCode(v int32) *ModifyNatFirewallControlPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyResponse) SetBody(v *ModifyNatFirewallControlPolicyResponseBody) *ModifyNatFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyNatFirewallControlPolicyPositionRequest struct {
+	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NewOrder     *int32  `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
+}
+
+func (s ModifyNatFirewallControlPolicyPositionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNatFirewallControlPolicyPositionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionRequest) SetAclUuid(v string) *ModifyNatFirewallControlPolicyPositionRequest {
+	s.AclUuid = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionRequest) SetLang(v string) *ModifyNatFirewallControlPolicyPositionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionRequest) SetNatGatewayId(v string) *ModifyNatFirewallControlPolicyPositionRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionRequest) SetNewOrder(v int32) *ModifyNatFirewallControlPolicyPositionRequest {
+	s.NewOrder = &v
+	return s
+}
+
+type ModifyNatFirewallControlPolicyPositionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyNatFirewallControlPolicyPositionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNatFirewallControlPolicyPositionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionResponseBody) SetRequestId(v string) *ModifyNatFirewallControlPolicyPositionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyNatFirewallControlPolicyPositionResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyNatFirewallControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyNatFirewallControlPolicyPositionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNatFirewallControlPolicyPositionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionResponse) SetHeaders(v map[string]*string) *ModifyNatFirewallControlPolicyPositionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionResponse) SetStatusCode(v int32) *ModifyNatFirewallControlPolicyPositionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionResponse) SetBody(v *ModifyNatFirewallControlPolicyPositionResponseBody) *ModifyNatFirewallControlPolicyPositionResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyPolicyAdvancedConfigRequest struct {
 	// Specifies whether to enable the strict mode for the access control policy. Valid values:
 	//
@@ -13707,6 +14513,118 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 	return _result, _err
 }
 
+func (client *Client) CreateNatFirewallControlPolicyWithOptions(request *CreateNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateNatFirewallControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclAction)) {
+		query["AclAction"] = request.AclAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationNameList)) {
+		query["ApplicationNameList"] = request.ApplicationNameList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestPort)) {
+		query["DestPort"] = request.DestPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestPortGroup)) {
+		query["DestPortGroup"] = request.DestPortGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestPortType)) {
+		query["DestPortType"] = request.DestPortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveType)) {
+		query["DomainResolveType"] = request.DomainResolveType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewOrder)) {
+		query["NewOrder"] = request.NewOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Proto)) {
+		query["Proto"] = request.Proto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Release)) {
+		query["Release"] = request.Release
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNatFirewallControlPolicy"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNatFirewallControlPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateNatFirewallControlPolicy(request *CreateNatFirewallControlPolicyRequest) (_result *CreateNatFirewallControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNatFirewallControlPolicyResponse{}
+	_body, _err := client.CreateNatFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateTrFirewallV2WithOptions(request *CreateTrFirewallV2Request, runtime *util.RuntimeOptions) (_result *CreateTrFirewallV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14444,6 +15362,62 @@ func (client *Client) DeleteInstanceMembers(request *DeleteInstanceMembersReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceMembersResponse{}
 	_body, _err := client.DeleteInstanceMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNatFirewallControlPolicyWithOptions(request *DeleteNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteNatFirewallControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclUuid)) {
+		query["AclUuid"] = request.AclUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNatFirewallControlPolicy"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNatFirewallControlPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNatFirewallControlPolicy(request *DeleteNatFirewallControlPolicyRequest) (_result *DeleteNatFirewallControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNatFirewallControlPolicyResponse{}
+	_body, _err := client.DeleteNatFirewallControlPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15384,6 +16358,94 @@ func (client *Client) DescribeInvadeEventList(request *DescribeInvadeEventListRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInvadeEventListResponse{}
 	_body, _err := client.DescribeInvadeEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeNatFirewallControlPolicyWithOptions(request *DescribeNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeNatFirewallControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclAction)) {
+		query["AclAction"] = request.AclAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclUuid)) {
+		query["AclUuid"] = request.AclUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Proto)) {
+		query["Proto"] = request.Proto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Release)) {
+		query["Release"] = request.Release
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNatFirewallControlPolicy"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNatFirewallControlPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNatFirewallControlPolicy(request *DescribeNatFirewallControlPolicyRequest) (_result *DescribeNatFirewallControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNatFirewallControlPolicyResponse{}
+	_body, _err := client.DescribeNatFirewallControlPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17537,6 +18599,166 @@ func (client *Client) ModifyInstanceMemberAttributes(request *ModifyInstanceMemb
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceMemberAttributesResponse{}
 	_body, _err := client.ModifyInstanceMemberAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyNatFirewallControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclAction)) {
+		query["AclAction"] = request.AclAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclUuid)) {
+		query["AclUuid"] = request.AclUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationNameList)) {
+		query["ApplicationNameList"] = request.ApplicationNameList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestPort)) {
+		query["DestPort"] = request.DestPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestPortGroup)) {
+		query["DestPortGroup"] = request.DestPortGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestPortType)) {
+		query["DestPortType"] = request.DestPortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveType)) {
+		query["DomainResolveType"] = request.DomainResolveType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Proto)) {
+		query["Proto"] = request.Proto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Release)) {
+		query["Release"] = request.Release
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyNatFirewallControlPolicy"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyNatFirewallControlPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyNatFirewallControlPolicy(request *ModifyNatFirewallControlPolicyRequest) (_result *ModifyNatFirewallControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyNatFirewallControlPolicyResponse{}
+	_body, _err := client.ModifyNatFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyNatFirewallControlPolicyPositionWithOptions(request *ModifyNatFirewallControlPolicyPositionRequest, runtime *util.RuntimeOptions) (_result *ModifyNatFirewallControlPolicyPositionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclUuid)) {
+		query["AclUuid"] = request.AclUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewOrder)) {
+		query["NewOrder"] = request.NewOrder
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyNatFirewallControlPolicyPosition"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyNatFirewallControlPolicyPositionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyNatFirewallControlPolicyPosition(request *ModifyNatFirewallControlPolicyPositionRequest) (_result *ModifyNatFirewallControlPolicyPositionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyNatFirewallControlPolicyPositionResponse{}
+	_body, _err := client.ModifyNatFirewallControlPolicyPositionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
