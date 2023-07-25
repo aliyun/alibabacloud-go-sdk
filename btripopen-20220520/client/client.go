@@ -25731,13 +25731,14 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc) SetTit
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO struct {
-	BeforeDiscountPrice *int64  `json:"before_discount_price,omitempty" xml:"before_discount_price,omitempty"`
-	Breakfast           *string `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
-	DiscountPrice       *int64  `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
-	LastDiscountsPrice  *int64  `json:"last_discounts_price,omitempty" xml:"last_discounts_price,omitempty"`
-	LastNum             *int32  `json:"last_num,omitempty" xml:"last_num,omitempty"`
-	RateStartTime       *string `json:"rate_start_time,omitempty" xml:"rate_start_time,omitempty"`
-	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	BeforeDiscountPrice        *int64  `json:"before_discount_price,omitempty" xml:"before_discount_price,omitempty"`
+	Breakfast                  *string `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
+	DiscountPrice              *int64  `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
+	LastDiscountsPrice         *int64  `json:"last_discounts_price,omitempty" xml:"last_discounts_price,omitempty"`
+	LastDiscountsRoundingPrice *int64  `json:"last_discounts_rounding_price,omitempty" xml:"last_discounts_rounding_price,omitempty"`
+	LastNum                    *int32  `json:"last_num,omitempty" xml:"last_num,omitempty"`
+	RateStartTime              *string `json:"rate_start_time,omitempty" xml:"rate_start_time,omitempty"`
+	Status                     *int32  `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO) String() string {
@@ -25765,6 +25766,11 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO) Set
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO) SetLastDiscountsPrice(v int64) *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO {
 	s.LastDiscountsPrice = &v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO) SetLastDiscountsRoundingPrice(v int64) *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO {
+	s.LastDiscountsRoundingPrice = &v
 	return s
 }
 
