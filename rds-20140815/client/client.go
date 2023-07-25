@@ -1194,6 +1194,7 @@ type CheckCreateDdrDBInstanceRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the destination instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list of region IDs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The point in time to which you want to restore data. The point in time that you specify must be earlier than the current time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
@@ -1257,6 +1258,11 @@ func (s *CheckCreateDdrDBInstanceRequest) SetOwnerId(v int64) *CheckCreateDdrDBI
 
 func (s *CheckCreateDdrDBInstanceRequest) SetRegionId(v string) *CheckCreateDdrDBInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CheckCreateDdrDBInstanceRequest) SetResourceGroupId(v string) *CheckCreateDdrDBInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2306,6 +2312,7 @@ type CloneParameterGroupRequest struct {
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// The ID of the source region to which the parameter template belongs. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the destination region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
@@ -2342,6 +2349,11 @@ func (s *CloneParameterGroupRequest) SetParameterGroupName(v string) *CloneParam
 
 func (s *CloneParameterGroupRequest) SetRegionId(v string) *CloneParameterGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CloneParameterGroupRequest) SetResourceGroupId(v string) *CloneParameterGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7539,6 +7551,7 @@ type CreateParameterGroupRequest struct {
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID of the parameter template. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -7583,6 +7596,11 @@ func (s *CreateParameterGroupRequest) SetParameters(v string) *CreateParameterGr
 
 func (s *CreateParameterGroupRequest) SetRegionId(v string) *CreateParameterGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetResourceGroupId(v string) *CreateParameterGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9651,7 +9669,8 @@ type DeleteGadInstanceRequest struct {
 	// The ID of the global active database cluster. You can call the [DescribeGadInstances](~~330105~~) operation to query the IDs of global active database clusters.
 	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
 	// The region ID of the central node of the global active database cluster. You can call the [DescribeGadInstances](~~330105~~) operation to query the region IDs of global active database clusters.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteGadInstanceRequest) String() string {
@@ -9669,6 +9688,11 @@ func (s *DeleteGadInstanceRequest) SetGadInstanceName(v string) *DeleteGadInstan
 
 func (s *DeleteGadInstanceRequest) SetRegionId(v string) *DeleteGadInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteGadInstanceRequest) SetResourceGroupId(v string) *DeleteGadInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9725,6 +9749,7 @@ type DeleteParameterGroupRequest struct {
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -9749,6 +9774,11 @@ func (s *DeleteParameterGroupRequest) SetParameterGroupId(v string) *DeleteParam
 
 func (s *DeleteParameterGroupRequest) SetRegionId(v string) *DeleteParameterGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetResourceGroupId(v string) *DeleteParameterGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9941,6 +9971,7 @@ type DeleteSecretRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~446624~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account. You can call the [CreateSecret](~~446607~~) operation to obtain the value of this parameter.
@@ -9987,6 +10018,11 @@ func (s *DeleteSecretRequest) SetOwnerId(v int64) *DeleteSecretRequest {
 
 func (s *DeleteSecretRequest) SetRegionId(v string) *DeleteSecretRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetResourceGroupId(v string) *DeleteSecretRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10231,6 +10267,7 @@ type DeleteUserBackupFileRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -10255,6 +10292,11 @@ func (s *DeleteUserBackupFileRequest) SetOwnerId(v int64) *DeleteUserBackupFileR
 
 func (s *DeleteUserBackupFileRequest) SetRegionId(v string) *DeleteUserBackupFileRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteUserBackupFileRequest) SetResourceGroupId(v string) *DeleteUserBackupFileRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10350,6 +10392,7 @@ type DescibeImportsFromDatabaseRequest struct {
 	//
 	// Default value: **30**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
@@ -10406,6 +10449,11 @@ func (s *DescibeImportsFromDatabaseRequest) SetPageNumber(v int32) *DescibeImpor
 
 func (s *DescibeImportsFromDatabaseRequest) SetPageSize(v int32) *DescibeImportsFromDatabaseRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescibeImportsFromDatabaseRequest) SetResourceGroupId(v string) *DescibeImportsFromDatabaseRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -11054,6 +11102,7 @@ type DescribeActionEventPolicyRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -11073,6 +11122,11 @@ func (s *DescribeActionEventPolicyRequest) SetOwnerId(v int64) *DescribeActionEv
 
 func (s *DescribeActionEventPolicyRequest) SetRegionId(v string) *DescribeActionEventPolicyRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeActionEventPolicyRequest) SetResourceGroupId(v string) *DescribeActionEventPolicyRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -14433,6 +14487,7 @@ type DescribeClassDetailsRequest struct {
 	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -14477,6 +14532,11 @@ func (s *DescribeClassDetailsRequest) SetOwnerId(v int64) *DescribeClassDetailsR
 
 func (s *DescribeClassDetailsRequest) SetRegionId(v string) *DescribeClassDetailsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClassDetailsRequest) SetResourceGroupId(v string) *DescribeClassDetailsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -22099,6 +22159,7 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tag that is added to the instance. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. You can specify a maximum of five tags in the following format for each request: `{"key1":"value1","key2":"value2"...}`.
@@ -22147,6 +22208,11 @@ func (s *DescribeDBInstancesByExpireTimeRequest) SetPageSize(v int32) *DescribeD
 
 func (s *DescribeDBInstancesByExpireTimeRequest) SetRegionId(v string) *DescribeDBInstancesByExpireTimeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesByExpireTimeRequest) SetResourceGroupId(v string) *DescribeDBInstancesByExpireTimeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -38273,7 +38339,8 @@ type DetachGadInstanceMemberRequest struct {
 	// The ID of the instance that serves as the unit node you want to remove. You can call the [DescribeGadInstances](~~330105~~) query the ID of the instance.
 	MemberInstanceName *string `json:"MemberInstanceName,omitempty" xml:"MemberInstanceName,omitempty"`
 	// The region ID of the central node. You can call the [DescribeGadInstances](~~330105~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DetachGadInstanceMemberRequest) String() string {
@@ -38296,6 +38363,11 @@ func (s *DetachGadInstanceMemberRequest) SetMemberInstanceName(v string) *Detach
 
 func (s *DetachGadInstanceMemberRequest) SetRegionId(v string) *DetachGadInstanceMemberRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DetachGadInstanceMemberRequest) SetResourceGroupId(v string) *DetachGadInstanceMemberRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -39192,6 +39264,7 @@ type ImportUserBackupFileRequest struct {
 	//
 	// *   The value of this parameter must be consistent with the value of **BucketRegion**.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The amount of storage that is required to restore the data of the full backup file. Unit: GB.
@@ -39249,6 +39322,11 @@ func (s *ImportUserBackupFileRequest) SetOwnerId(v int64) *ImportUserBackupFileR
 
 func (s *ImportUserBackupFileRequest) SetRegionId(v string) *ImportUserBackupFileRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ImportUserBackupFileRequest) SetResourceGroupId(v string) *ImportUserBackupFileRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -39789,6 +39867,7 @@ type ListUserBackupFilesRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the full backup file. Valid values:
@@ -39833,6 +39912,11 @@ func (s *ListUserBackupFilesRequest) SetOwnerId(v int64) *ListUserBackupFilesReq
 
 func (s *ListUserBackupFilesRequest) SetRegionId(v string) *ListUserBackupFilesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListUserBackupFilesRequest) SetResourceGroupId(v string) *ListUserBackupFilesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -46728,6 +46812,7 @@ type ModifyParameterGroupRequest struct {
 	//
 	// > The region of a parameter template cannot be changed. You can call the [CloneParameterGroup](~~144581~~) operation to replicate a parameter template to a specific region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -46772,6 +46857,11 @@ func (s *ModifyParameterGroupRequest) SetParameters(v string) *ModifyParameterGr
 
 func (s *ModifyParameterGroupRequest) SetRegionId(v string) *ModifyParameterGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetResourceGroupId(v string) *ModifyParameterGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -46991,6 +47081,7 @@ type ModifyReadonlyInstanceDelayReplicationTimeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latency at which to replicate data from the primary instance to the read-only instance. Unit: seconds.
 	ReadSQLReplicationTime *string `json:"ReadSQLReplicationTime,omitempty" xml:"ReadSQLReplicationTime,omitempty"`
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -47015,6 +47106,11 @@ func (s *ModifyReadonlyInstanceDelayReplicationTimeRequest) SetOwnerId(v int64) 
 
 func (s *ModifyReadonlyInstanceDelayReplicationTimeRequest) SetReadSQLReplicationTime(v string) *ModifyReadonlyInstanceDelayReplicationTimeRequest {
 	s.ReadSQLReplicationTime = &v
+	return s
+}
+
+func (s *ModifyReadonlyInstanceDelayReplicationTimeRequest) SetResourceGroupId(v string) *ModifyReadonlyInstanceDelayReplicationTimeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -48989,6 +49085,7 @@ type RemoveTagsFromResourceRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// A set of a TagKey and a TagValue that you use to unbind the tag. Format: {"key1":"value1"}.
@@ -49034,6 +49131,11 @@ func (s *RemoveTagsFromResourceRequest) SetOwnerId(v int64) *RemoveTagsFromResou
 
 func (s *RemoveTagsFromResourceRequest) SetRegionId(v string) *RemoveTagsFromResourceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RemoveTagsFromResourceRequest) SetResourceGroupId(v string) *RemoveTagsFromResourceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -50755,6 +50857,7 @@ type SwitchGuardToMasterInstanceRequest struct {
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -50779,6 +50882,11 @@ func (s *SwitchGuardToMasterInstanceRequest) SetOwnerAccount(v string) *SwitchGu
 
 func (s *SwitchGuardToMasterInstanceRequest) SetOwnerId(v int64) *SwitchGuardToMasterInstanceRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *SwitchGuardToMasterInstanceRequest) SetResourceGroupId(v string) *SwitchGuardToMasterInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -51575,6 +51683,7 @@ type UpdateUserBackupFileRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new retention period of the full backup file. Unit: days. Valid values: any non-zero positive integer.
@@ -51606,6 +51715,11 @@ func (s *UpdateUserBackupFileRequest) SetOwnerId(v int64) *UpdateUserBackupFileR
 
 func (s *UpdateUserBackupFileRequest) SetRegionId(v string) *UpdateUserBackupFileRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateUserBackupFileRequest) SetResourceGroupId(v string) *UpdateUserBackupFileRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -53358,6 +53472,10 @@ func (client *Client) CheckCreateDdrDBInstanceWithOptions(request *CheckCreateDd
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -53836,6 +53954,10 @@ func (client *Client) CloneParameterGroupWithOptions(request *CloneParameterGrou
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -56074,6 +56196,10 @@ func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGr
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -57460,6 +57586,10 @@ func (client *Client) DeleteGadInstanceWithOptions(request *DeleteGadInstanceReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -57528,6 +57658,10 @@ func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -57681,6 +57815,10 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -57851,6 +57989,10 @@ func (client *Client) DeleteUserBackupFileWithOptions(request *DeleteUserBackupF
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -57948,6 +58090,10 @@ func (client *Client) DescibeImportsFromDatabaseWithOptions(request *DescibeImpo
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -58175,6 +58321,10 @@ func (client *Client) DescribeActionEventPolicyWithOptions(request *DescribeActi
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -59374,6 +59524,10 @@ func (client *Client) DescribeClassDetailsWithOptions(request *DescribeClassDeta
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -61674,6 +61828,10 @@ func (client *Client) DescribeDBInstancesByExpireTimeWithOptions(request *Descri
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -67088,6 +67246,10 @@ func (client *Client) DetachGadInstanceMemberWithOptions(request *DetachGadInsta
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -67620,6 +67782,10 @@ func (client *Client) ImportUserBackupFileWithOptions(request *ImportUserBackupF
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -67862,6 +68028,10 @@ func (client *Client) ListUserBackupFilesWithOptions(request *ListUserBackupFile
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -72099,6 +72269,10 @@ func (client *Client) ModifyParameterGroupWithOptions(request *ModifyParameterGr
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -72276,6 +72450,10 @@ func (client *Client) ModifyReadonlyInstanceDelayReplicationTimeWithOptions(requ
 
 	if !tea.BoolValue(util.IsUnset(request.ReadSQLReplicationTime)) {
 		query["ReadSQLReplicationTime"] = request.ReadSQLReplicationTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -73525,6 +73703,10 @@ func (client *Client) RemoveTagsFromResourceWithOptions(request *RemoveTagsFromR
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -74790,6 +74972,10 @@ func (client *Client) SwitchGuardToMasterInstanceWithOptions(request *SwitchGuar
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -75359,6 +75545,10 @@ func (client *Client) UpdateUserBackupFileWithOptions(request *UpdateUserBackupF
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
