@@ -12,101 +12,27 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AddBuDBInstanceRelationRequest struct {
-	BusinessUnit *string `json:"BusinessUnit,omitempty" xml:"BusinessUnit,omitempty"`
+type AllocateInstancePublicConnectionRequest struct {
+	// The network type of the endpoint. Valid values:
+	//
+	// *   **primary**: primary endpoint
+	// *   **cluster**: instance endpoint. This value is supported only for an instance that contains multiple coordinator nodes.
+	//
+	// >  The default value is primary.
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The prefix of the endpoint.
+	//
+	// Specify a prefix for the endpoint. Example: `gp-bp12ga6v69h86****`. In this example, the endpoint is `gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com`.
+	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s AddBuDBInstanceRelationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBuDBInstanceRelationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddBuDBInstanceRelationRequest) SetBusinessUnit(v string) *AddBuDBInstanceRelationRequest {
-	s.BusinessUnit = &v
-	return s
-}
-
-func (s *AddBuDBInstanceRelationRequest) SetDBInstanceId(v string) *AddBuDBInstanceRelationRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *AddBuDBInstanceRelationRequest) SetOwnerId(v int64) *AddBuDBInstanceRelationRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type AddBuDBInstanceRelationResponseBody struct {
-	BusinessUnit   *string `json:"BusinessUnit,omitempty" xml:"BusinessUnit,omitempty"`
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddBuDBInstanceRelationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBuDBInstanceRelationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddBuDBInstanceRelationResponseBody) SetBusinessUnit(v string) *AddBuDBInstanceRelationResponseBody {
-	s.BusinessUnit = &v
-	return s
-}
-
-func (s *AddBuDBInstanceRelationResponseBody) SetDBInstanceName(v string) *AddBuDBInstanceRelationResponseBody {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *AddBuDBInstanceRelationResponseBody) SetRequestId(v string) *AddBuDBInstanceRelationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddBuDBInstanceRelationResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddBuDBInstanceRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddBuDBInstanceRelationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBuDBInstanceRelationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddBuDBInstanceRelationResponse) SetHeaders(v map[string]*string) *AddBuDBInstanceRelationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddBuDBInstanceRelationResponse) SetStatusCode(v int32) *AddBuDBInstanceRelationResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddBuDBInstanceRelationResponse) SetBody(v *AddBuDBInstanceRelationResponseBody) *AddBuDBInstanceRelationResponse {
-	s.Body = v
-	return s
-}
-
-type AllocateInstancePublicConnectionRequest struct {
-	AddressType            *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Port                   *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The port number. Example: 5432.
+	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s AllocateInstancePublicConnectionRequest) String() string {
@@ -153,6 +79,7 @@ func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *A
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -199,6 +126,7 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 }
 
 type CheckServiceLinkedRoleRequest struct {
+	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -216,9 +144,12 @@ func (s *CheckServiceLinkedRoleRequest) SetRegionId(v string) *CheckServiceLinke
 }
 
 type CheckServiceLinkedRoleResponseBody struct {
+	// Indicates whether an SLR is created.
 	HasServiceLinkedRole *string `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckServiceLinkedRoleResponseBody) String() string {
@@ -274,13 +205,30 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 }
 
 type CreateAccountRequest struct {
+	// The description of the privileged account.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword    *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DatabaseName       *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the privileged account.
+	//
+	// *   The name can contain lowercase letters, digits, and underscores (\_).
+	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	// *   The name cannot start with gp.
+	// *   The name must be 2 to 16 characters in length.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the privileged account.
+	//
+	// *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+	// *   The password must be 8 to 32 characters in length.
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {
@@ -327,6 +275,7 @@ func (s *CreateAccountRequest) SetResourceGroupId(v string) *CreateAccountReques
 }
 
 type CreateAccountResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -372,38 +321,324 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 	return s
 }
 
+type CreateCollectionRequest struct {
+	Collection              *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Dimension               *int64  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
+	ManagerAccount          *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword  *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Namespace               *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCollectionRequest) SetCollection(v string) *CreateCollectionRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetDBInstanceId(v string) *CreateCollectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetDimension(v int64) *CreateCollectionRequest {
+	s.Dimension = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetFullTextRetrievalFields(v string) *CreateCollectionRequest {
+	s.FullTextRetrievalFields = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetManagerAccount(v string) *CreateCollectionRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetManagerAccountPassword(v string) *CreateCollectionRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetMetadata(v string) *CreateCollectionRequest {
+	s.Metadata = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetNamespace(v string) *CreateCollectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetOwnerId(v int64) *CreateCollectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetParser(v string) *CreateCollectionRequest {
+	s.Parser = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetRegionId(v string) *CreateCollectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateCollectionResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCollectionResponseBody) SetMessage(v string) *CreateCollectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateCollectionResponseBody) SetRequestId(v string) *CreateCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCollectionResponseBody) SetStatus(v string) *CreateCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateCollectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCollectionResponse) SetHeaders(v map[string]*string) *CreateCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCollectionResponse) SetStatusCode(v int32) *CreateCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCollectionResponse) SetBody(v *CreateCollectionResponseBody) *CreateCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDBInstanceRequest struct {
-	ClientToken           *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateSampleData      *bool                         `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
-	DBInstanceCategory    *string                       `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceClass       *string                       `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	DBInstanceDescription *string                       `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceGroupCount  *string                       `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	DBInstanceMode        *string                       `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	Engine                *string                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	IdleTime              *int32                        `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	InstanceNetworkType   *string                       `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	InstanceSpec          *string                       `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	MasterNodeNum         *string                       `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	OwnerId               *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType               *string                       `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period                *string                       `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrivateIpAddress      *string                       `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId              *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityIPList        *string                       `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SegNodeNum            *string                       `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	SegStorageType        *string                       `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
-	ServerlessMode        *string                       `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	ServerlessResource    *int32                        `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
-	StorageSize           *int64                        `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	StorageType           *string                       `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tag                   []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UsedTime              *string                       `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VPCId                 *string                       `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId             *string                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                *string                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to load a sample dataset after the instance is created. Valid values:
+	//
+	// - **true**
+	// - **false**
+	//
+	// If you do not specify this parameter, no sample dataset is loaded.
+	CreateSampleData *bool `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// - **HighAvailability**: High-availability Edition.
+	// - **Basic**: Basic Edition.
+	//
+	// > This parameter must be specified when you create an instance in elastic storage mode.
+	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	// The instance type of the instance. For information, see [Instance types](~~86942~~).
+	//
+	// > This parameter must be specified when you create an instance in reserved storage mode.
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The number of compute groups. Valid values: 2, 4, 8, 12, 16, 24, 32, 64, 96, and 128.
+	//
+	// > This parameter must be specified when you create an instance in reserved storage mode.
+	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
+	// The resource type of the instance. Valid values:
+	//
+	// - **StorageElastic**: elastic storage mode.
+	// - **Serverless**: Serverless mode.
+	// - **Classic**: reserved storage mode.
+	//
+	// > This parameter must be specified.
+	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	// The ID of the encryption key.
+	//
+	// > If EncryptionType is set to CloudDisk, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The encryption type. Valid values:
+	//
+	// - **NULL** (default): Encryption is disabled.
+	// - **CloudDisk**: Encryption is enabled on cloud disks, and EncryptionKey is used to specify an encryption key.
+	//
+	// > Disk encryption cannot be disabled after it is enabled.
+	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The database engine of the instance. Set the value to gpdb.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine. Valid values:
+	//
+	// - 6.0
+	// - 7.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The wait time for the instance that has no traffic to become idle. Minimum value: 60. Default value: 600. Unit: seconds.
+	//
+	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
+	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
+	// The network type of the instance. Set the value to VPC.
+	//
+	// >
+	// - Only the Virtual Private Cloud (VPC) type is supported.
+	// - If you do not specify this parameter, VPC is used.
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The specifications of compute nodes.
+	//
+	// Valid values for High-availability Edition instances in elastic storage mode:
+	//
+	// - **2C16G**
+	// - **4C32G**
+	// - **16C128G**
+	//
+	// Valid values for Basic Edition instances in elastic storage mode:
+	//
+	// - **2C8G**
+	// - **4C16G**
+	// - **8C32G**
+	// - **16C64G**
+	//
+	// Valid values for instances in Serverless mode:
+	//
+	// - **4C16G**
+	// - **8C32G**
+	//
+	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The number of coordinator nodes. Valid values: 1 and 2.
+	//
+	// > If you do not specify this parameter, 1 is used.
+	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go.
+	// - **Prepaid**: subscription.
+	// >
+	// - If you do not specify this parameter, Postpaid is used.
+	// - You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// - **Month**
+	// - **Year**
+	// > This parameter must be specified when PayType is set to Prepaid.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The private IP address of the instance.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The IP address whitelist of the instance.
+	//
+	// A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](~~86928~~) operation to modify the IP address whitelist after you create an instance.
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The performance level of ESSDs. Valid values:
+	//
+	// - **pl0**
+	// - **pl1**
+	// - **pl2**
+	// >
+	// - This parameter takes effect only when SegStorageType is set to cloud_essd.
+	// - If you do not specify this parameter, pl1 is used.
+	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
+	// The number of compute nodes.
+	//
+	// - Valid values for High-availability Edition instances in elastic storage mode: multiples of 4 in the range of 4 to 512.
+	// - Valid values for Basic Edition instances in elastic storage mode: multiples of 2 in the range of 2 to 512.
+	// - Valid values for instances in Serverless mode: multiples of 2 in the range of 2 to 512.
+	//
+	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
+	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	// The disk storage type of the instance. Only enhanced SSDs (ESSDs) are supported. Set the value to cloud_essd.
+	//
+	// > This parameter must be specified when you create an instance in elastic storage mode.
+	SegStorageType *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
+	// The type of the Serverless mode. Valid values:
+	//
+	// - **Manual** (default): manual scheduling.
+	// - **Auto**: automatic scheduling.
+	//
+	// > This parameter must be specified only when you create an instance in Serverless mode.
+	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
+	// The threshold of computing resources. Unit: AnalyticDB compute unit (ACU). Valid values: 8 to 32. The value must be in increments of 8 ACUs. Default value: 32.
+	//
+	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
+	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
+	// The storage capacity of the instance. Unit: GB. Valid values: 50 to 4000.
+	//
+	// > This parameter must be specified when you create an instance in elastic storage mode.
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// This parameter is no longer used.
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The list of tags.
+	Tag []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The subscription duration.
+	//
+	// - Valid values when Period is set to Month: 1 to 9.
+	// - Valid values when Period is set to Year: 1 to 3.
+	// > This parameter must be specified when PayType is set to Prepaid.
+	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The VPC ID of the instance.
+	//
+	// >
+	// - This parameter must be specified.
+	// - The region where the VPC resides must be the same as the region that is specified by RegionId.
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID of the instance.
+	//
+	// >
+	// - This parameter must be specified.
+	// - The zone where the vSwitch resides must be the same as the zone that is specified by ZoneId.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Specifies whether to enable vector engine optimization. Valid values:
+	//
+	// - **enabled**
+	// - **disabled** (default)
+	//
+	// >
+	// - We recommend that you do not enable vector engine optimization in mainstream analysis and real-time data warehousing scenarios.
+	// - We recommend that you enable vector engine optimization in AI Generated Content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
+	// The zone ID of the read-only instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDBInstanceRequest) String() string {
@@ -446,6 +681,16 @@ func (s *CreateDBInstanceRequest) SetDBInstanceGroupCount(v string) *CreateDBIns
 
 func (s *CreateDBInstanceRequest) SetDBInstanceMode(v string) *CreateDBInstanceRequest {
 	s.DBInstanceMode = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetEncryptionKey(v string) *CreateDBInstanceRequest {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetEncryptionType(v string) *CreateDBInstanceRequest {
+	s.EncryptionType = &v
 	return s
 }
 
@@ -514,6 +759,11 @@ func (s *CreateDBInstanceRequest) SetSecurityIPList(v string) *CreateDBInstanceR
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetSegDiskPerformanceLevel(v string) *CreateDBInstanceRequest {
+	s.SegDiskPerformanceLevel = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetSegNodeNum(v string) *CreateDBInstanceRequest {
 	s.SegNodeNum = &v
 	return s
@@ -564,13 +814,28 @@ func (s *CreateDBInstanceRequest) SetVSwitchId(v string) *CreateDBInstanceReques
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetVectorConfigurationStatus(v string) *CreateDBInstanceRequest {
+	s.VectorConfigurationStatus = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 	s.ZoneId = &v
 	return s
 }
 
 type CreateDBInstanceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N. Take note of the following requirements:
+	//
+	// - The tag key cannot be an empty string.
+	// - The tag key can be up to 128 characters in length.
+	// - The tag key cannot start with `aliyun` or `acs:`, and contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N. Take note of the following requirements:
+	//
+	// - The tag key cannot be an empty string.
+	// - The tag key can be up to 128 characters in length.
+	// - The tag key cannot start with `aliyun` or `acs:`, and contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -593,11 +858,20 @@ func (s *CreateDBInstanceRequestTag) SetValue(v string) *CreateDBInstanceRequest
 }
 
 type CreateDBInstanceResponseBody struct {
+	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the endpoint that is used to connect to the instance.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance ID.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the port number that is used to connect to the instance.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDBInstanceResponseBody) String() string {
@@ -663,15 +937,41 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 }
 
 type CreateDBInstancePlanRequest struct {
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlanConfig       *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
-	PlanDesc         *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
-	PlanEndDate      *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
-	PlanName         *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The ID of instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of the **PlanType** and **PlanScheduleType** parameters. The following section describes the PlanConfig parameter.
+	PlanConfig *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
+	// The description of the plan.
+	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
+	// The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// > *   This parameter is required only if the **PlanScheduleType** parameter is set to **Regular**.
+	// > *   If you do not specify this parameter, the plan does not end.
+	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
+	// The name of the plan.
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The execution mode of the plan. Valid values:
+	//
+	// *   **Postpone**: The plan is executed later.
+	// *   **Regular**: The plan is executed periodically.
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
-	PlanStartDate    *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
-	PlanType         *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// >  *   This parameter is required only if the **PlanScheduleType** parameter is set to **Regular**.
+	// >  *   If you do not specify this parameter, the plan is executed immediately.
+	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
+	// The type of the plan. Valid values:
+	//
+	// *   **PauseResume**: pauses and resumes an instance.
+	// *   **Resize**: changes the number of compute nodes.
+	// *   **ModifySpec**: changes compute node specifications.
+	//
+	// > *   You can specify the value to Resize only for instances in Serverless mode.
+	// > *   You can specify the value to ModifySpec only for instances in elastic storage mode.
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 }
 
 func (s CreateDBInstancePlanRequest) String() string {
@@ -728,11 +1028,20 @@ func (s *CreateDBInstancePlanRequest) SetPlanType(v string) *CreateDBInstancePla
 }
 
 type CreateDBInstancePlanResponseBody struct {
+	// The ID of instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message.
+	//
+	// This parameter is returned only if the operation fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PlanId       *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the operation.
+	//
+	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateDBInstancePlanResponseBody) String() string {
@@ -797,273 +1106,121 @@ func (s *CreateDBInstancePlanResponse) SetBody(v *CreateDBInstancePlanResponseBo
 	return s
 }
 
-type CreateECSDBInstanceRequest struct {
-	BackupId              *string                          `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	ClientToken           *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBInstanceCategory    *string                          `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceDescription *string                          `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	EncryptionKey         *string                          `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType        *string                          `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	Engine                *string                          `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string                          `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	InstanceNetworkType   *string                          `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	InstanceSpec          *string                          `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	MasterNodeNum         *int32                           `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	OwnerId               *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType               *string                          `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period                *string                          `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrivateIpAddress      *string                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId              *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityIPList        *string                          `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SegNodeNum            *int32                           `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	SegStorageType        *string                          `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
-	SrcDbInstanceName     *string                          `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
-	StorageSize           *int32                           `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	Tag                   []*CreateECSDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UsedTime              *string                          `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VPCId                 *string                          `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId             *string                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                *string                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+type CreateNamespaceRequest struct {
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword      *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s CreateECSDBInstanceRequest) String() string {
+func (s CreateNamespaceRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateECSDBInstanceRequest) GoString() string {
+func (s CreateNamespaceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateECSDBInstanceRequest) SetBackupId(v string) *CreateECSDBInstanceRequest {
-	s.BackupId = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetClientToken(v string) *CreateECSDBInstanceRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetDBInstanceCategory(v string) *CreateECSDBInstanceRequest {
-	s.DBInstanceCategory = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetDBInstanceDescription(v string) *CreateECSDBInstanceRequest {
-	s.DBInstanceDescription = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetEncryptionKey(v string) *CreateECSDBInstanceRequest {
-	s.EncryptionKey = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetEncryptionType(v string) *CreateECSDBInstanceRequest {
-	s.EncryptionType = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetEngine(v string) *CreateECSDBInstanceRequest {
-	s.Engine = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetEngineVersion(v string) *CreateECSDBInstanceRequest {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetInstanceNetworkType(v string) *CreateECSDBInstanceRequest {
-	s.InstanceNetworkType = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetInstanceSpec(v string) *CreateECSDBInstanceRequest {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetMasterNodeNum(v int32) *CreateECSDBInstanceRequest {
-	s.MasterNodeNum = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetOwnerId(v int64) *CreateECSDBInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetPayType(v string) *CreateECSDBInstanceRequest {
-	s.PayType = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetPeriod(v string) *CreateECSDBInstanceRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetPrivateIpAddress(v string) *CreateECSDBInstanceRequest {
-	s.PrivateIpAddress = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetRegionId(v string) *CreateECSDBInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetResourceGroupId(v string) *CreateECSDBInstanceRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetSecurityIPList(v string) *CreateECSDBInstanceRequest {
-	s.SecurityIPList = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetSegNodeNum(v int32) *CreateECSDBInstanceRequest {
-	s.SegNodeNum = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetSegStorageType(v string) *CreateECSDBInstanceRequest {
-	s.SegStorageType = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetSrcDbInstanceName(v string) *CreateECSDBInstanceRequest {
-	s.SrcDbInstanceName = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetStorageSize(v int32) *CreateECSDBInstanceRequest {
-	s.StorageSize = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetTag(v []*CreateECSDBInstanceRequestTag) *CreateECSDBInstanceRequest {
-	s.Tag = v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetUsedTime(v string) *CreateECSDBInstanceRequest {
-	s.UsedTime = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetVPCId(v string) *CreateECSDBInstanceRequest {
-	s.VPCId = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetVSwitchId(v string) *CreateECSDBInstanceRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequest) SetZoneId(v string) *CreateECSDBInstanceRequest {
-	s.ZoneId = &v
-	return s
-}
-
-type CreateECSDBInstanceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateECSDBInstanceRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateECSDBInstanceRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *CreateECSDBInstanceRequestTag) SetKey(v string) *CreateECSDBInstanceRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceRequestTag) SetValue(v string) *CreateECSDBInstanceRequestTag {
-	s.Value = &v
-	return s
-}
-
-type CreateECSDBInstanceResponseBody struct {
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateECSDBInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateECSDBInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateECSDBInstanceResponseBody) SetConnectionString(v string) *CreateECSDBInstanceResponseBody {
-	s.ConnectionString = &v
-	return s
-}
-
-func (s *CreateECSDBInstanceResponseBody) SetDBInstanceId(v string) *CreateECSDBInstanceResponseBody {
+func (s *CreateNamespaceRequest) SetDBInstanceId(v string) *CreateNamespaceRequest {
 	s.DBInstanceId = &v
 	return s
 }
 
-func (s *CreateECSDBInstanceResponseBody) SetOrderId(v string) *CreateECSDBInstanceResponseBody {
-	s.OrderId = &v
+func (s *CreateNamespaceRequest) SetManagerAccount(v string) *CreateNamespaceRequest {
+	s.ManagerAccount = &v
 	return s
 }
 
-func (s *CreateECSDBInstanceResponseBody) SetPort(v string) *CreateECSDBInstanceResponseBody {
-	s.Port = &v
+func (s *CreateNamespaceRequest) SetManagerAccountPassword(v string) *CreateNamespaceRequest {
+	s.ManagerAccountPassword = &v
 	return s
 }
 
-func (s *CreateECSDBInstanceResponseBody) SetRequestId(v string) *CreateECSDBInstanceResponseBody {
+func (s *CreateNamespaceRequest) SetNamespace(v string) *CreateNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetNamespacePassword(v string) *CreateNamespaceRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetOwnerId(v int64) *CreateNamespaceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateNamespaceResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceResponseBody) SetMessage(v string) *CreateNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type CreateECSDBInstanceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateECSDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *CreateNamespaceResponseBody) SetStatus(v string) *CreateNamespaceResponseBody {
+	s.Status = &v
+	return s
 }
 
-func (s CreateECSDBInstanceResponse) String() string {
+type CreateNamespaceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateNamespaceResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateECSDBInstanceResponse) GoString() string {
+func (s CreateNamespaceResponse) GoString() string {
 	return s.String()
 }
 
-func (s *CreateECSDBInstanceResponse) SetHeaders(v map[string]*string) *CreateECSDBInstanceResponse {
+func (s *CreateNamespaceResponse) SetHeaders(v map[string]*string) *CreateNamespaceResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *CreateECSDBInstanceResponse) SetStatusCode(v int32) *CreateECSDBInstanceResponse {
+func (s *CreateNamespaceResponse) SetStatusCode(v int32) *CreateNamespaceResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *CreateECSDBInstanceResponse) SetBody(v *CreateECSDBInstanceResponseBody) *CreateECSDBInstanceResponse {
+func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *CreateNamespaceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateSampleDataRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -1087,10 +1244,17 @@ func (s *CreateSampleDataRequest) SetOwnerId(v int64) *CreateSampleDataRequest {
 }
 
 type CreateSampleDataResponseBody struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message returned if an error occurs. This message does not affect the execution of the operation.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution state of the operation. Valid values:
+	//
+	// *   **false**: The operation fails.
+	// *   **true**: The operation is successful.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateSampleDataResponseBody) String() string {
@@ -1151,7 +1315,8 @@ func (s *CreateSampleDataResponse) SetBody(v *CreateSampleDataResponseBody) *Cre
 }
 
 type CreateServiceLinkedRoleRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1174,6 +1339,7 @@ func (s *CreateServiceLinkedRoleRequest) SetRegionId(v string) *CreateServiceLin
 }
 
 type CreateServiceLinkedRoleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1219,10 +1385,367 @@ func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResp
 	return s
 }
 
+type CreateVectorIndexRequest struct {
+	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Dimension              *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	// Distance Metrics。
+	Metrics   *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateVectorIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVectorIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVectorIndexRequest) SetCollection(v string) *CreateVectorIndexRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetDBInstanceId(v string) *CreateVectorIndexRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetDimension(v int32) *CreateVectorIndexRequest {
+	s.Dimension = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetManagerAccount(v string) *CreateVectorIndexRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetManagerAccountPassword(v string) *CreateVectorIndexRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetMetrics(v string) *CreateVectorIndexRequest {
+	s.Metrics = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetNamespace(v string) *CreateVectorIndexRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetOwnerId(v int64) *CreateVectorIndexRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetRegionId(v string) *CreateVectorIndexRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateVectorIndexResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateVectorIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVectorIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVectorIndexResponseBody) SetMessage(v string) *CreateVectorIndexResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateVectorIndexResponseBody) SetRequestId(v string) *CreateVectorIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVectorIndexResponseBody) SetStatus(v string) *CreateVectorIndexResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateVectorIndexResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVectorIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateVectorIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVectorIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVectorIndexResponse) SetHeaders(v map[string]*string) *CreateVectorIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVectorIndexResponse) SetStatusCode(v int32) *CreateVectorIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVectorIndexResponse) SetBody(v *CreateVectorIndexResponseBody) *CreateVectorIndexResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCollectionRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionRequest) SetCollection(v string) *DeleteCollectionRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DeleteCollectionRequest) SetDBInstanceId(v string) *DeleteCollectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteCollectionRequest) SetNamespace(v string) *DeleteCollectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteCollectionRequest) SetNamespacePassword(v string) *DeleteCollectionRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DeleteCollectionRequest) SetOwnerId(v int64) *DeleteCollectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteCollectionRequest) SetRegionId(v string) *DeleteCollectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCollectionResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionResponseBody) SetMessage(v string) *DeleteCollectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCollectionResponseBody) SetRequestId(v string) *DeleteCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCollectionResponseBody) SetStatus(v string) *DeleteCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteCollectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionResponse) SetHeaders(v map[string]*string) *DeleteCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCollectionResponse) SetStatusCode(v int32) *DeleteCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCollectionResponse) SetBody(v *DeleteCollectionResponseBody) *DeleteCollectionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCollectionDataRequest struct {
+	Collection           *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	CollectionData       *string `json:"CollectionData,omitempty" xml:"CollectionData,omitempty"`
+	CollectionDataFilter *string `json:"CollectionDataFilter,omitempty" xml:"CollectionDataFilter,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword    *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCollectionDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionDataRequest) SetCollection(v string) *DeleteCollectionDataRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetCollectionData(v string) *DeleteCollectionDataRequest {
+	s.CollectionData = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetCollectionDataFilter(v string) *DeleteCollectionDataRequest {
+	s.CollectionDataFilter = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetDBInstanceId(v string) *DeleteCollectionDataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetNamespace(v string) *DeleteCollectionDataRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetNamespacePassword(v string) *DeleteCollectionDataRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetOwnerId(v int64) *DeleteCollectionDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetRegionId(v string) *DeleteCollectionDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCollectionDataResponseBody struct {
+	AppliedRows *int64  `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteCollectionDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionDataResponseBody) SetAppliedRows(v int64) *DeleteCollectionDataResponseBody {
+	s.AppliedRows = &v
+	return s
+}
+
+func (s *DeleteCollectionDataResponseBody) SetMessage(v string) *DeleteCollectionDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCollectionDataResponseBody) SetRequestId(v string) *DeleteCollectionDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCollectionDataResponseBody) SetStatus(v string) *DeleteCollectionDataResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteCollectionDataResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCollectionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCollectionDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionDataResponse) SetHeaders(v map[string]*string) *DeleteCollectionDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCollectionDataResponse) SetStatusCode(v int32) *DeleteCollectionDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCollectionDataResponse) SetBody(v *DeleteCollectionDataResponseBody) *DeleteCollectionDataResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDBInstanceRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1255,6 +1778,7 @@ func (s *DeleteDBInstanceRequest) SetResourceGroupId(v string) *DeleteDBInstance
 }
 
 type DeleteDBInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1301,9 +1825,15 @@ func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *Del
 }
 
 type DeleteDBInstancePlanRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlanId       *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the plan.
+	//
+	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 }
 
 func (s DeleteDBInstancePlanRequest) String() string {
@@ -1330,11 +1860,20 @@ func (s *DeleteDBInstancePlanRequest) SetPlanId(v string) *DeleteDBInstancePlanR
 }
 
 type DeleteDBInstancePlanResponseBody struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message returned.
+	//
+	// This parameter is returned only when the operation fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PlanId       *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the operation.
+	//
+	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteDBInstancePlanResponseBody) String() string {
@@ -1399,83 +1938,228 @@ func (s *DeleteDBInstancePlanResponse) SetBody(v *DeleteDBInstancePlanResponseBo
 	return s
 }
 
-type DeleteDatabaseRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBName          *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+type DeleteNamespaceRequest struct {
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s DeleteDatabaseRequest) String() string {
+func (s DeleteNamespaceRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteDatabaseRequest) GoString() string {
+func (s DeleteNamespaceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDatabaseRequest) SetDBInstanceId(v string) *DeleteDatabaseRequest {
+func (s *DeleteNamespaceRequest) SetDBInstanceId(v string) *DeleteNamespaceRequest {
 	s.DBInstanceId = &v
 	return s
 }
 
-func (s *DeleteDatabaseRequest) SetDBName(v string) *DeleteDatabaseRequest {
-	s.DBName = &v
+func (s *DeleteNamespaceRequest) SetManagerAccount(v string) *DeleteNamespaceRequest {
+	s.ManagerAccount = &v
 	return s
 }
 
-func (s *DeleteDatabaseRequest) SetResourceGroupId(v string) *DeleteDatabaseRequest {
-	s.ResourceGroupId = &v
+func (s *DeleteNamespaceRequest) SetManagerAccountPassword(v string) *DeleteNamespaceRequest {
+	s.ManagerAccountPassword = &v
 	return s
 }
 
-type DeleteDatabaseResponseBody struct {
+func (s *DeleteNamespaceRequest) SetNamespace(v string) *DeleteNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteNamespaceRequest) SetOwnerId(v int64) *DeleteNamespaceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteNamespaceRequest) SetRegionId(v string) *DeleteNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteNamespaceResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s DeleteDatabaseResponseBody) String() string {
+func (s DeleteNamespaceResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteDatabaseResponseBody) GoString() string {
+func (s DeleteNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDatabaseResponseBody) SetRequestId(v string) *DeleteDatabaseResponseBody {
+func (s *DeleteNamespaceResponseBody) SetMessage(v string) *DeleteNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponseBody) SetRequestId(v string) *DeleteNamespaceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type DeleteDatabaseResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *DeleteNamespaceResponseBody) SetStatus(v string) *DeleteNamespaceResponseBody {
+	s.Status = &v
+	return s
 }
 
-func (s DeleteDatabaseResponse) String() string {
+type DeleteNamespaceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNamespaceResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteDatabaseResponse) GoString() string {
+func (s DeleteNamespaceResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDatabaseResponse) SetHeaders(v map[string]*string) *DeleteDatabaseResponse {
+func (s *DeleteNamespaceResponse) SetHeaders(v map[string]*string) *DeleteNamespaceResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeleteDatabaseResponse) SetStatusCode(v int32) *DeleteDatabaseResponse {
+func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DeleteDatabaseResponse) SetBody(v *DeleteDatabaseResponseBody) *DeleteDatabaseResponse {
+func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *DeleteNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVectorIndexRequest struct {
+	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteVectorIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVectorIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVectorIndexRequest) SetCollection(v string) *DeleteVectorIndexRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DeleteVectorIndexRequest) SetDBInstanceId(v string) *DeleteVectorIndexRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteVectorIndexRequest) SetManagerAccount(v string) *DeleteVectorIndexRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *DeleteVectorIndexRequest) SetManagerAccountPassword(v string) *DeleteVectorIndexRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *DeleteVectorIndexRequest) SetNamespace(v string) *DeleteVectorIndexRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteVectorIndexRequest) SetOwnerId(v int64) *DeleteVectorIndexRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteVectorIndexRequest) SetRegionId(v string) *DeleteVectorIndexRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteVectorIndexResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteVectorIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVectorIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVectorIndexResponseBody) SetMessage(v string) *DeleteVectorIndexResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteVectorIndexResponseBody) SetRequestId(v string) *DeleteVectorIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteVectorIndexResponseBody) SetStatus(v string) *DeleteVectorIndexResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteVectorIndexResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVectorIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteVectorIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVectorIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVectorIndexResponse) SetHeaders(v map[string]*string) *DeleteVectorIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVectorIndexResponse) SetStatusCode(v int32) *DeleteVectorIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVectorIndexResponse) SetBody(v *DeleteVectorIndexResponseBody) *DeleteVectorIndexResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeAccountsRequest struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The name of the account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -1498,8 +2182,10 @@ func (s *DescribeAccountsRequest) SetDBInstanceId(v string) *DescribeAccountsReq
 }
 
 type DescribeAccountsResponseBody struct {
-	Accounts  *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the account.
+	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAccountsResponseBody) String() string {
@@ -1538,10 +2224,18 @@ func (s *DescribeAccountsResponseBodyAccounts) SetDBInstanceAccount(v []*Describ
 }
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
+	// The description of the account.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountStatus      *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The state of the account.
+	//
+	// *   **0**: The account is being created.
+	// *   **1**: The account is in use.
+	// *   **3**: The account is being deleted.
+	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsDBInstanceAccount) String() string {
@@ -1602,9 +2296,19 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 }
 
 type DescribeAvailableResourcesRequest struct {
+	// The billing method. Valid values:
+	//
+	// *   **Postpaid**: pay-as-you-go
+	// *   **Prepaid**: subscription
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the zone.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourcesRequest) String() string {
@@ -1631,8 +2335,11 @@ func (s *DescribeAvailableResourcesRequest) SetZoneId(v string) *DescribeAvailab
 }
 
 type DescribeAvailableResourcesResponseBody struct {
-	RegionId  *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the available resources.
 	Resources []*DescribeAvailableResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -1660,8 +2367,10 @@ func (s *DescribeAvailableResourcesResponseBody) SetResources(v []*DescribeAvail
 }
 
 type DescribeAvailableResourcesResponseBodyResources struct {
+	// The available engine version and specifications.
 	SupportedEngines []*DescribeAvailableResourcesResponseBodyResourcesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
-	ZoneId           *string                                                            `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourcesResponseBodyResources) String() string {
@@ -1683,8 +2392,14 @@ func (s *DescribeAvailableResourcesResponseBodyResources) SetZoneId(v string) *D
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEngines struct {
-	Mode                     *string                                                                                    `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	SupportedEngineVersion   *string                                                                                    `json:"SupportedEngineVersion,omitempty" xml:"SupportedEngineVersion,omitempty"`
+	// The instance resource type. Valid values:
+	//
+	// *   **ecs**: elastic storage mode
+	// *   **serverless**: Serverless mode
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The available engine version.
+	SupportedEngineVersion *string `json:"SupportedEngineVersion,omitempty" xml:"SupportedEngineVersion,omitempty"`
+	// The available specifications.
 	SupportedInstanceClasses []*DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses `json:"SupportedInstanceClasses,omitempty" xml:"SupportedInstanceClasses,omitempty" type:"Repeated"`
 }
 
@@ -1712,13 +2427,27 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEngines) SetSup
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses struct {
-	Category      *string                                                                                             `json:"Category,omitempty" xml:"Category,omitempty"`
-	Description   *string                                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayClass  *string                                                                                             `json:"DisplayClass,omitempty" xml:"DisplayClass,omitempty"`
-	InstanceClass *string                                                                                             `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	NodeCount     *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount   `json:"NodeCount,omitempty" xml:"NodeCount,omitempty" type:"Struct"`
-	StorageSize   *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize `json:"StorageSize,omitempty" xml:"StorageSize,omitempty" type:"Struct"`
-	StorageType   *string                                                                                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The instance edition. Valid values:
+	//
+	// *   **HighAvailability**: High-availability Edition
+	// *   **Basic**: Basic Edition
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The description of compute node specifications.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The specifications of each compute node.
+	DisplayClass *string `json:"DisplayClass,omitempty" xml:"DisplayClass,omitempty"`
+	// The specifications of each compute node.
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// Details about the compute nodes.
+	NodeCount *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount `json:"NodeCount,omitempty" xml:"NodeCount,omitempty" type:"Struct"`
+	// Details about the storage capacity of compute nodes.
+	StorageSize *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize `json:"StorageSize,omitempty" xml:"StorageSize,omitempty" type:"Struct"`
+	// The storage type. Valid values:
+	//
+	// *   **cloud_essd**: enhanced SSD (ESSD)
+	// *   **cloud_efficiency**: ultra disk
+	// *   **oss**: Object Storage Service (OSS)
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses) String() string {
@@ -1765,9 +2494,14 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupporte
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount struct {
+	// The maximum number of compute nodes.
 	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The minimum number of compute nodes.
 	MinCount *string `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	Step     *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// The step size for adding compute nodes.
+	//
+	// For example, if the value of this parameter is 4, compute nodes must be added by multiples of 4.
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
 }
 
 func (s DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount) String() string {
@@ -1794,9 +2528,12 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupporte
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize struct {
+	// The maximum storage capacity of each compute node.
 	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The minimum storage capacity of each compute node.
 	MinCount *string `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	Step     *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// The step size for adding storage capacity for compute nodes.
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
 }
 
 func (s DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize) String() string {
@@ -1852,6 +2589,9 @@ func (s *DescribeAvailableResourcesResponse) SetBody(v *DescribeAvailableResourc
 }
 
 type DescribeBackupPolicyRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -1869,12 +2609,34 @@ func (s *DescribeBackupPolicyRequest) SetDBInstanceId(v string) *DescribeBackupP
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	BackupRetentionPeriod *int32  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	EnableRecoveryPoint   *bool   `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
+	// The number of days for which data backup files are retained.
+	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// Indicates whether automatic point-in-time backup is enabled. Valid values:
+	//
+	// *   **true**: Automatic point-in-time backup is enabled.
+	// *   **false**: Automatic point-in-time backup is disabled.
+	EnableRecoveryPoint *bool `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
+	// The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid values:
+	//
+	// *   **Monday**
+	// *   **Tuesday**
+	// *   **Wednesday**
+	// *   **Thursday**
+	// *   **Friday**
+	// *   **Saturday**
+	// *   **Sunday**
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime   *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	RecoveryPointPeriod   *string `json:"RecoveryPointPeriod,omitempty" xml:"RecoveryPointPeriod,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The backup time. The time is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC.
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The frequency of the point-in-time backup. Valid values:
+	//
+	// *   **1**: per hour
+	// *   **2**: per 2 hours
+	// *   **4**: per 4 hours
+	// *   **8**: per 8 hours
+	RecoveryPointPeriod *string `json:"RecoveryPointPeriod,omitempty" xml:"RecoveryPointPeriod,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -1944,9 +2706,172 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 	return s
 }
 
+type DescribeCollectionRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCollectionRequest) SetCollection(v string) *DescribeCollectionRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DescribeCollectionRequest) SetDBInstanceId(v string) *DescribeCollectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeCollectionRequest) SetNamespace(v string) *DescribeCollectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeCollectionRequest) SetNamespacePassword(v string) *DescribeCollectionRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DescribeCollectionRequest) SetOwnerId(v int64) *DescribeCollectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeCollectionRequest) SetRegionId(v string) *DescribeCollectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCollectionResponseBody struct {
+	DBInstanceId            *string            `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Dimension               *int32             `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	FullTextRetrievalFields *string            `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
+	Message                 *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Metadata                map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Distance Metrics。
+	Metrics   *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Parser    *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCollectionResponseBody) SetDBInstanceId(v string) *DescribeCollectionResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetDimension(v int32) *DescribeCollectionResponseBody {
+	s.Dimension = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetFullTextRetrievalFields(v string) *DescribeCollectionResponseBody {
+	s.FullTextRetrievalFields = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetMessage(v string) *DescribeCollectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetMetadata(v map[string]*string) *DescribeCollectionResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetMetrics(v string) *DescribeCollectionResponseBody {
+	s.Metrics = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetNamespace(v string) *DescribeCollectionResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetParser(v string) *DescribeCollectionResponseBody {
+	s.Parser = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetRegionId(v string) *DescribeCollectionResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetRequestId(v string) *DescribeCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetStatus(v string) *DescribeCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeCollectionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCollectionResponse) SetHeaders(v map[string]*string) *DescribeCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCollectionResponse) SetStatusCode(v int32) *DescribeCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCollectionResponse) SetBody(v *DescribeCollectionResponseBody) *DescribeCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBClusterNodeRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The node type. Valid values:
+	//
+	// *   **master**: coordinator node
+	// *   **segment**: compute node
+	//
+	// >  If you do not specify this parameter, the information of all nodes is returned.
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s DescribeDBClusterNodeRequest) String() string {
@@ -1968,9 +2893,12 @@ func (s *DescribeDBClusterNodeRequest) SetNodeType(v string) *DescribeDBClusterN
 }
 
 type DescribeDBClusterNodeResponseBody struct {
-	DBClusterId *string                                   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Nodes       []*DescribeDBClusterNodeResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the instance.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The information of nodes.
+	Nodes []*DescribeDBClusterNodeResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBClusterNodeResponseBody) String() string {
@@ -1997,6 +2925,7 @@ func (s *DescribeDBClusterNodeResponseBody) SetRequestId(v string) *DescribeDBCl
 }
 
 type DescribeDBClusterNodeResponseBodyNodes struct {
+	// The name of the node.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2043,12 +2972,36 @@ func (s *DescribeDBClusterNodeResponse) SetBody(v *DescribeDBClusterNodeResponse
 }
 
 type DescribeDBClusterPerformanceRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Nodes        *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
+	//
+	// >  The end time must be later than the start time. The interval cannot be more than seven days.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The node type. Valid values:
+	//
+	// *   **master**: coordinator node
+	// *   **segment**: compute node
+	//
+	// >  If you do not specify this parameter, the performance metrics of all nodes are returned.
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](~~390136~~) operation to query the names of nodes.
+	//
+	// The nodes can also be filtered based on their metric values. Valid values:
+	//
+	// *   **top10**: the 10 nodes that have the highest metric values
+	// *   **top20**: the 20 nodes that have the highest metric values
+	// *   **bottom10**: the 10 nodes that have the lowest metric values
+	// *   **bottom20**: the 20 nodes that have the lowest metric values
+	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
+	//
+	// >  You can query monitoring information only within the last 30 days.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceRequest) String() string {
@@ -2090,11 +3043,16 @@ func (s *DescribeDBClusterPerformanceRequest) SetStartTime(v string) *DescribeDB
 }
 
 type DescribeDBClusterPerformanceResponseBody struct {
-	DBClusterId     *string                                                    `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EndTime         *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Details of the performance metrics of the instance.
 	PerformanceKeys []*DescribeDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
-	RequestId       *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime       *string                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceResponseBody) String() string {
@@ -2131,9 +3089,12 @@ func (s *DescribeDBClusterPerformanceResponseBody) SetStartTime(v string) *Descr
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeys struct {
-	Name   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Details of the performance metric of a node.
 	Series []*DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
-	Unit   *string                                                          `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The unit of the performance metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceResponseBodyPerformanceKeys) String() string {
@@ -2160,8 +3121,15 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeys) SetUnit(v stri
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries struct {
-	Name   *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role   *string                                                                `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The name of the compute node or compute group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The role of the node. Valid values:
+	//
+	// *   **master**: primary coordinator node
+	// *   **standby**: standby coordinator node
+	// *   **segment**: compute node
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The value of the performance metric collected at a point in time.
 	Values []*DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2189,6 +3157,7 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries) SetValue
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues struct {
+	// The value of the performance metric and the time when the metric value was collected.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 
@@ -2235,8 +3204,12 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2264,8 +3237,10 @@ func (s *DescribeDBInstanceAttributeRequest) SetResourceGroupId(v string) *Descr
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	Items     *DescribeDBInstanceAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried instance.
+	Items *DescribeDBInstanceAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBody) String() string {
@@ -2304,66 +3279,224 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) SetDBInstanceAttribute(v 
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
-	AvailabilityValue     *string                                                              `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
-	ConnectionMode        *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	ConnectionString      *string                                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	CoreVersion           *string                                                              `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
-	CpuCores              *int32                                                               `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CpuCoresPerNode       *int32                                                               `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
-	CreationTime          *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DBInstanceCategory    *string                                                              `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceClass       *string                                                              `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	DBInstanceClassType   *string                                                              `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	DBInstanceCpuCores    *int32                                                               `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
-	DBInstanceDescription *string                                                              `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceDiskMBPS    *int64                                                               `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
-	DBInstanceGroupCount  *string                                                              `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	DBInstanceId          *string                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMemory      *int64                                                               `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	DBInstanceMode        *string                                                              `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	DBInstanceNetType     *string                                                              `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	DBInstanceStatus      *string                                                              `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStorage     *int64                                                               `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	EncryptionKey         *string                                                              `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType        *string                                                              `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	Engine                *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime            *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	HostType              *string                                                              `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	IdleTime              *int32                                                               `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	InstanceNetworkType   *string                                                              `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	LockMode              *string                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason            *string                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTime       *string                                                              `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime     *string                                                              `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MasterNodeNum         *int32                                                               `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	MaxConnections        *int32                                                               `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	MemoryPerNode         *int32                                                               `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
-	MemorySize            *int64                                                               `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	MemoryUnit            *string                                                              `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
-	MinorVersion          *string                                                              `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	PayType               *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                  *string                                                              `json:"Port,omitempty" xml:"Port,omitempty"`
-	ReadDelayTime         *string                                                              `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
-	RegionId              *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RunningTime           *string                                                              `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	SecurityIPList        *string                                                              `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SegNodeNum            *int32                                                               `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	SegmentCounts         *int32                                                               `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
-	ServerlessMode        *string                                                              `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	ServerlessResource    *int32                                                               `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
-	StartTime             *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StoragePerNode        *int32                                                               `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
-	StorageSize           *int64                                                               `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	StorageType           *string                                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	StorageUnit           *string                                                              `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
-	SupportRestore        *bool                                                                `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
-	Tags                  *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// vSwitch ID。
+	// The service availability of the instance. Unit: %.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
+	// The access mode of the instance. Valid values:
+	//
+	// *   **Performance**: standard mode.
+	// *   **Safety**: safe mode.
+	// *   **LVS**: Linux Virtual Server (LVS) mode.
+	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	// The endpoint that is used to connect to the instance.
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The number of the minor version.
+	CoreVersion *string `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
+	// The number of CPU cores per compute node.
+	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	// The number of CPU cores per node.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	CpuCoresPerNode *int32 `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
+	// The time when the instance was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **Basic**: Basic Edition.
+	// *   **HighAvailability**: High-availability Edition.
+	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	// The instance type of the instance.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The instance family of the instance. Valid values:
+	//
+	// *   **s**: shared.
+	// *   **x**: general-purpose.
+	// *   **d**: dedicated.
+	// *   **h**: dedicated host.
+	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
+	// The number of CPU cores.
+	DBInstanceCpuCores *int32 `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The maximum disk throughput of the compute group. Unit: Mbit/s.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	DBInstanceDiskMBPS *int64 `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
+	// The number of compute groups.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
+	// The instance ID.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The memory capacity per compute node.
+	//
+	// >  For instances in reserved storage mode, the unit of this parameter is MB. For instances in elastic storage mode and Serverless mode, the unit of this parameter is GB.
+	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	// The resource type of the instance. Valid values:
+	//
+	// *   **Serverless**: Serverless mode.
+	// *   **StorageElastic**: elastic storage mode.
+	// *   **Classic**: reserved storage mode.
+	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	// The type of the network interface card (NIC) that is used by the instance. Valid values:
+	//
+	// *   **0**: Internet.
+	// *   **1**: internal network.
+	// *   **2**: VPC.
+	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	// The state of the instance. For more information, see [Instance statuses](~~86944~~).
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The maximum storage capacity per node. Unit: GB.
+	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	// The encryption key.
+	//
+	// >  This parameter is returned only for instances for which disk encryption is enabled.
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The encryption type. Valid values:
+	//
+	// *   **CloudDisk**: disk encryption.
+	//
+	// >  This parameter is returned only for instances for which disk encryption is enabled.
+	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The database engine of the instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The expiration time of the instance. The time is displayed in UTC.
+	//
+	// >  For pay-as-you-go instances, `2999-09-08T16:00:00Z` is returned.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The disk type of the compute group. Valid values:
+	//
+	// *   **0**: SSD.
+	// *   **1**: HDD.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	// The wait period for the instance that has no traffic to become idle. Unit: seconds.
+	//
+	// >  This parameter is returned only for instances in automatic Serverless mode.
+	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// *   **Classic**: classic network.
+	// *   **VPC**: VPC.
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The lock mode of the instance. Valid values:
+	//
+	// *   **Unlock**: The instance is not locked.
+	// *   **ManualLock**: The cluster is manually locked.
+	// *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
+	// *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
+	// *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The end time of the maintenance window.
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the maintenance window.
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The number of coordinator nodes.
+	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	// The maximum number of concurrent connections to the instance.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// The memory capacity per node. The unit can be one of the valid values of the **MemoryUnit** parameter.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	MemoryPerNode *int32 `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
+	// The memory capacity per compute node.
+	//
+	// >  For instances in reserved storage mode, the unit of this parameter is MB. For instances in elastic storage mode and Serverless mode, the unit of this parameter is GB.
+	MemorySize *int64 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The unit of the memory capacity.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	MemoryUnit *string `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
+	// The minor version of the instance.
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   **Postpaid**: pay-as-you-go.
+	// *   **Prepaid**: subscription.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The port number that is used to connect to the instance.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	ReadDelayTime *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The running duration of the instance.
+	RunningTime *string `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
+	// The IP address whitelist of the instance.
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The performance level of ESSDs. Only **PL1** is supported.
+	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
+	// The number of compute nodes.
+	//
+	// >  This parameter is available only for instances in elastic storage mode or manual Serverless mode.
+	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	// The number of compute groups.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	SegmentCounts *int32 `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
+	// The type of the Serverless mode. Valid values:
+	//
+	// *   **Manual**: manual scheduling.
+	// *   **Auto**: automatic scheduling.
+	//
+	// >  This parameter is returned only for instances in Serverless mode.
+	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
+	// The threshold of computing resources. Unit: AnalyticDB compute unit (ACU).
+	//
+	// >  This parameter is returned only for instances in automatic Serverless mode.
+	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
+	// The time when the instance started to run.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The storage capacity per node. The unit can be one of the valid values of the **StorageUnit** parameter.
+	//
+	// >  This parameter is available only for instances in reserved storage mode.
+	StoragePerNode *int32 `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
+	// The storage capacity. Unit: GB.
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The storage type of the instance. Valid values:
+	//
+	// - **cloud_essd**: enhanced SSD (ESSD).
+	// - **cloud_efficiency**: ultra disk.
+	//
+	// >  This parameter is available only for instances in elastic storage mode.
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The unit of the storage capacity. Valid values:
+	//
+	// *   **GB SSD**
+	// *   **TB SSD**
+	// *   **GB HDD**
+	//
+	// >  This parameter is available only for instances in reserved storage mode or Serverless mode.
+	StorageUnit *string `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
+	// Indicates whether the instance supports backup and restoration.
+	//
+	// *   **true**
+	// *   **false**
+	SupportRestore *bool `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
+	// The tags of the instance. Each tag is a key-value pair.
+	Tags *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The vSwitch ID of the instance.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Indicates whether vector engine optimization is enabled. Valid values:
+	//
+	// *   **enabled**
+	// *   **disabled**
+	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
+	// The virtual private cloud (VPC) ID of the instance.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID of the instance.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2600,6 +3733,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSec
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegDiskPerformanceLevel(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.SegDiskPerformanceLevel = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegNodeNum(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.SegNodeNum = &v
 	return s
@@ -2660,6 +3798,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetVSw
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetVectorConfigurationStatus(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.VectorConfigurationStatus = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetVpcId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.VpcId = &v
 	return s
@@ -2688,7 +3831,9 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) Se
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2740,9 +3885,20 @@ func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttri
 }
 
 type DescribeDBInstanceDataBloatRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDBInstanceDataBloatRequest) String() string {
@@ -2769,10 +3925,14 @@ func (s *DescribeDBInstanceDataBloatRequest) SetPageSize(v int32) *DescribeDBIns
 }
 
 type DescribeDBInstanceDataBloatResponseBody struct {
-	Items      []*DescribeDBInstanceDataBloatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details of data bloat.
+	Items []*DescribeDBInstanceDataBloatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDBInstanceDataBloatResponseBody) String() string {
@@ -2804,17 +3964,36 @@ func (s *DescribeDBInstanceDataBloatResponseBody) SetTotalCount(v int32) *Descri
 }
 
 type DescribeDBInstanceDataBloatResponseBodyItems struct {
-	BloatCeoff       *string `json:"BloatCeoff,omitempty" xml:"BloatCeoff,omitempty"`
-	BloatSize        *string `json:"BloatSize,omitempty" xml:"BloatSize,omitempty"`
-	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	ExpectTableSize  *string `json:"ExpectTableSize,omitempty" xml:"ExpectTableSize,omitempty"`
-	RealTableSize    *string `json:"RealTableSize,omitempty" xml:"RealTableSize,omitempty"`
-	SchemaName       *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	Sequence         *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	StorageType      *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	SuggestedAction  *string `json:"SuggestedAction,omitempty" xml:"SuggestedAction,omitempty"`
-	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TimeLastUpdated  *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
+	// The coefficient of data bloat. It is calculated by using the following formula:
+	//
+	// Bloat coefficient = Number of dead rows/Number of active rows.
+	BloatCeoff *string `json:"BloatCeoff,omitempty" xml:"BloatCeoff,omitempty"`
+	// The bloat size of the table. It indicates the amount of space that can be released.
+	BloatSize *string `json:"BloatSize,omitempty" xml:"BloatSize,omitempty"`
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The expected size of the table.
+	//
+	// It indicates the size of the table that has no data bloat.
+	ExpectTableSize *string `json:"ExpectTableSize,omitempty" xml:"ExpectTableSize,omitempty"`
+	// The actual size of the table.
+	RealTableSize *string `json:"RealTableSize,omitempty" xml:"RealTableSize,omitempty"`
+	// The name of the schema.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The sequence number.
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The storage type of the table. Valid values:
+	//
+	// *   **Heap**: heap table
+	// *   **AO**: append-optimized (AO) table
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// This parameter is not returned.
+	SuggestedAction *string `json:"SuggestedAction,omitempty" xml:"SuggestedAction,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The time when the table was last deleted, inserted, or updated.
+	TimeLastUpdated *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
+	// The time when the table was last vacuumed. The time is displayed in UTC.
 	TimeLastVacuumed *string `json:"TimeLastVacuumed,omitempty" xml:"TimeLastVacuumed,omitempty"`
 }
 
@@ -2916,9 +4095,20 @@ func (s *DescribeDBInstanceDataBloatResponse) SetBody(v *DescribeDBInstanceDataB
 }
 
 type DescribeDBInstanceDataSkewRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **20**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDBInstanceDataSkewRequest) String() string {
@@ -2945,10 +4135,14 @@ func (s *DescribeDBInstanceDataSkewRequest) SetPageSize(v int32) *DescribeDBInst
 }
 
 type DescribeDBInstanceDataSkewResponseBody struct {
-	Items      []*DescribeDBInstanceDataSkewResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details about data skew.
+	Items []*DescribeDBInstanceDataSkewResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDBInstanceDataSkewResponseBody) String() string {
@@ -2980,14 +4174,23 @@ func (s *DescribeDBInstanceDataSkewResponseBody) SetTotalCount(v int32) *Describ
 }
 
 type DescribeDBInstanceDataSkewResponseBodyItems struct {
-	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	DistributeKey   *string `json:"DistributeKey,omitempty" xml:"DistributeKey,omitempty"`
-	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	Sequence        *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	TableName       *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableSize       *string `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
-	TableSkew       *string `json:"TableSkew,omitempty" xml:"TableSkew,omitempty"`
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The distribution key of the table.
+	DistributeKey *string `json:"DistributeKey,omitempty" xml:"DistributeKey,omitempty"`
+	// The owner of the table.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the schema.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The sequence number of the data skew case. All data skew cases are sorted by severity in descending order.
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The total number of rows in the table.
+	TableSize *string `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
+	// The skew ratio of the table. Valid values: 0 to 100. Unit: %. A greater value indicates that the table is more severely skewed. A smaller value indicates less impact on query performance. A value of 0 indicates no data skew.
+	TableSkew *string `json:"TableSkew,omitempty" xml:"TableSkew,omitempty"`
+	// The time when the table was last deleted, inserted, or updated.
 	TimeLastUpdated *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
 }
 
@@ -3074,12 +4277,39 @@ func (s *DescribeDBInstanceDataSkewResponse) SetBody(v *DescribeDBInstanceDataSk
 }
 
 type DescribeDBInstanceDiagnosisSummaryRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RolePreferd  *string `json:"RolePreferd,omitempty" xml:"RolePreferd,omitempty"`
-	StartStatus  *string `json:"StartStatus,omitempty" xml:"StartStatus,omitempty"`
-	SyncMode     *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **20**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The role state of the node. It indicates whether a primary/secondary switchover occurs. Valid values:
+	//
+	// *   **normal**: The node role is normal. No primary/secondary switchover occurs.
+	// *   **reverse**: The node role is reversed. A primary/secondary switchover occurs.
+	RolePreferd *string `json:"RolePreferd,omitempty" xml:"RolePreferd,omitempty"`
+	// The running state of the node. Valid values:
+	//
+	// *   **UP**: The node is running.
+	// *   **DOWN**: The node is faulty.
+	//
+	// If this parameter is not specified, information of nodes in all running states is returned.
+	StartStatus *string `json:"StartStatus,omitempty" xml:"StartStatus,omitempty"`
+	// The data synchronization state of the node. Valid values:
+	//
+	// *   **synced**: The node data is synchronized.
+	// *   **notSyncing**: The node data is not synchronized.
+	//
+	// If this parameter is not specified, information of nodes in all synchronization states is returned.
+	SyncMode *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
 }
 
 func (s DescribeDBInstanceDiagnosisSummaryRequest) String() string {
@@ -3121,12 +4351,18 @@ func (s *DescribeDBInstanceDiagnosisSummaryRequest) SetSyncMode(v string) *Descr
 }
 
 type DescribeDBInstanceDiagnosisSummaryResponseBody struct {
-	Items             []*DescribeDBInstanceDiagnosisSummaryResponseBodyItems           `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	MasterStatusInfo  *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo  `json:"MasterStatusInfo,omitempty" xml:"MasterStatusInfo,omitempty" type:"Struct"`
-	PageNumber        *string                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RequestId         *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of instance nodes.
+	Items []*DescribeDBInstanceDiagnosisSummaryResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// State statistics of the coordinator node.
+	MasterStatusInfo *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo `json:"MasterStatusInfo,omitempty" xml:"MasterStatusInfo,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// State statistics of compute nodes.
 	SegmentStatusInfo *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo `json:"SegmentStatusInfo,omitempty" xml:"SegmentStatusInfo,omitempty" type:"Struct"`
-	TotalCount        *string                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries returned.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDBInstanceDiagnosisSummaryResponseBody) String() string {
@@ -3168,17 +4404,47 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetTotalCount(v string)
 }
 
 type DescribeDBInstanceDiagnosisSummaryResponseBodyItems struct {
-	Hostname            *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	NodeAddress         *string `json:"NodeAddress,omitempty" xml:"NodeAddress,omitempty"`
-	NodeCID             *string `json:"NodeCID,omitempty" xml:"NodeCID,omitempty"`
-	NodeID              *string `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
-	NodeName            *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodePort            *string `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
-	NodePreferredRole   *string `json:"NodePreferredRole,omitempty" xml:"NodePreferredRole,omitempty"`
+	// The name of the node.
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The IP address of the node.
+	NodeAddress *string `json:"NodeAddress,omitempty" xml:"NodeAddress,omitempty"`
+	// The ID of the node group.
+	NodeCID *string `json:"NodeCID,omitempty" xml:"NodeCID,omitempty"`
+	// The ID of the node.
+	NodeID *string `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
+	// The name of the host where the node resides.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The port number of the node.
+	NodePort *string `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
+	// The initial role of the node. Valid values:
+	//
+	// *   **primary**: primary node
+	// *   **mirror**: secondary node
+	//
+	// If the value of this parameter is the same as that of **NodeRole**, no primary/secondary switchover occurs. If the value of this parameter is not the same as that of **NodeRole**, a primary/secondary switchover occurs.
+	NodePreferredRole *string `json:"NodePreferredRole,omitempty" xml:"NodePreferredRole,omitempty"`
+	// The data synchronization state of the node. Valid values:
+	//
+	// *   **Synced**: The node data is synchronized.
+	// *   **Not Syncing**: The node data is not synchronized.
+	// *   **No sync required**: Data synchronization is not required. This value may be returned only for the coordinator node.
 	NodeReplicationMode *string `json:"NodeReplicationMode,omitempty" xml:"NodeReplicationMode,omitempty"`
-	NodeRole            *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
-	NodeStatus          *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	NodeType            *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The current role of the node. Valid values:
+	//
+	// *   **primary**: primary node
+	// *   **mirror**: secondary node
+	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
+	// The running state of the node. Valid values:
+	//
+	// *   **UP**: The node is running.
+	// *   **DOWN**: The node is faulty.
+	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The type of the node. Valid values:
+	//
+	// *   **master**: primary coordinator node
+	// *   **slave**: standby coordinator node
+	// *   **segment**: compute node
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s DescribeDBInstanceDiagnosisSummaryResponseBodyItems) String() string {
@@ -3245,12 +4511,18 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeType(v stri
 }
 
 type DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo struct {
-	ExceptionNodeNum    *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
-	NormalNodeNum       *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
+	// The number of abnormal nodes.
+	ExceptionNodeNum *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
+	// The number of normal nodes.
+	NormalNodeNum *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
+	// The number of nodes whose roles are reversed.
 	NotPreferredNodeNum *int32 `json:"NotPreferredNodeNum,omitempty" xml:"NotPreferredNodeNum,omitempty"`
-	NotSyncingNodeNum   *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
-	PreferredNodeNum    *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
-	SyncedNodeNum       *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
+	// The number of unsynchronized nodes.
+	NotSyncingNodeNum *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
+	// The number of nodes whose roles are normal.
+	PreferredNodeNum *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
+	// The number of synchronized nodes.
+	SyncedNodeNum *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
 }
 
 func (s DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) String() string {
@@ -3292,12 +4564,18 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetSync
 }
 
 type DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo struct {
-	ExceptionNodeNum    *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
-	NormalNodeNum       *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
+	// The number of abnormal nodes.
+	ExceptionNodeNum *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
+	// The number of normal nodes.
+	NormalNodeNum *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
+	// The number of nodes whose roles are reversed.
 	NotPreferredNodeNum *int32 `json:"NotPreferredNodeNum,omitempty" xml:"NotPreferredNodeNum,omitempty"`
-	NotSyncingNodeNum   *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
-	PreferredNodeNum    *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
-	SyncedNodeNum       *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
+	// The number of unsynchronized nodes.
+	NotSyncingNodeNum *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
+	// The number of nodes whose roles are normal.
+	PreferredNodeNum *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
+	// The number of synchronized nodes.
+	SyncedNodeNum *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
 }
 
 func (s DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) String() string {
@@ -3368,16 +4646,39 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponse) SetBody(v *DescribeDBInstan
 }
 
 type DescribeDBInstanceErrorLogRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Keywords     *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	LogLevel     *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User         *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is not supported in Alibaba Cloud public cloud.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// One or more keywords that can be used to query error logs.
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The level of the logs to query. Valid values:
+	//
+	// *   **ALL**: queries all error logs.
+	// *   **PANIC**: queries only abnormal-level logs.
+	// *   **FATAL**: queries only critical-level logs.
+	// *   **ERROR**: queries only error-level logs.
+	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **20**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeDBInstanceErrorLogRequest) String() string {
@@ -3439,10 +4740,14 @@ func (s *DescribeDBInstanceErrorLogRequest) SetUser(v string) *DescribeDBInstanc
 }
 
 type DescribeDBInstanceErrorLogResponseBody struct {
-	Items      []*DescribeDBInstanceErrorLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details of the error logs.
+	Items []*DescribeDBInstanceErrorLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDBInstanceErrorLogResponseBody) String() string {
@@ -3474,12 +4779,18 @@ func (s *DescribeDBInstanceErrorLogResponseBody) SetTotalCount(v int32) *Describ
 }
 
 type DescribeDBInstanceErrorLogResponseBodyItems struct {
-	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// This parameter is not supported.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The content of the error log.
 	LogContext *string `json:"LogContext,omitempty" xml:"LogContext,omitempty"`
-	LogLevel   *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
-	Time       *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-	User       *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The level of the queried log.
+	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	// The time when the log was generated. The time is displayed in UTC.
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeDBInstanceErrorLogResponseBodyItems) String() string {
@@ -3550,7 +4861,11 @@ func (s *DescribeDBInstanceErrorLogResponse) SetBody(v *DescribeDBInstanceErrorL
 }
 
 type DescribeDBInstanceIPArrayListRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3573,8 +4888,10 @@ func (s *DescribeDBInstanceIPArrayListRequest) SetResourceGroupId(v string) *Des
 }
 
 type DescribeDBInstanceIPArrayListResponseBody struct {
-	Items     *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the IP address whitelists.
+	Items *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceIPArrayListResponseBody) String() string {
@@ -3613,9 +4930,16 @@ func (s *DescribeDBInstanceIPArrayListResponseBodyItems) SetDBInstanceIPArray(v 
 }
 
 type DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray struct {
+	// The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute does not appear in the console.
 	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
-	DBInstanceIPArrayName      *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
-	SecurityIPList             *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The name of the IP address whitelist.
+	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
+	// The IP addresses listed in the whitelist. You can add up to 1,000 IP addresses to the whitelist. Separate multiple IP addresses with commas (,). The IP addresses must use one of the following formats:
+	//
+	// *   0.0.0.0/0
+	// *   10.23.12.24. This is a standard IP address.
+	// *   10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
 func (s DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) String() string {
@@ -3671,9 +4995,20 @@ func (s *DescribeDBInstanceIPArrayListResponse) SetBody(v *DescribeDBInstanceIPA
 }
 
 type DescribeDBInstanceIndexUsageRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **20**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDBInstanceIndexUsageRequest) String() string {
@@ -3700,10 +5035,14 @@ func (s *DescribeDBInstanceIndexUsageRequest) SetPageSize(v int32) *DescribeDBIn
 }
 
 type DescribeDBInstanceIndexUsageResponseBody struct {
-	Items      []*DescribeDBInstanceIndexUsageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details of index usage.
+	Items []*DescribeDBInstanceIndexUsageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDBInstanceIndexUsageResponseBody) String() string {
@@ -3735,16 +5074,29 @@ func (s *DescribeDBInstanceIndexUsageResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeDBInstanceIndexUsageResponseBodyItems struct {
-	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IndexDef         *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
-	IndexName        *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	IndexScanTimes   *int32  `json:"IndexScanTimes,omitempty" xml:"IndexScanTimes,omitempty"`
-	IndexSize        *string `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
-	IsPartitionTable *bool   `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
-	ParentTableName  *string `json:"ParentTableName,omitempty" xml:"ParentTableName,omitempty"`
-	SchemaName       *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TimeLastUpdated  *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The definition of the index.
+	IndexDef *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
+	// The name of the index.
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The number of index scans.
+	IndexScanTimes *int32 `json:"IndexScanTimes,omitempty" xml:"IndexScanTimes,omitempty"`
+	// The size of the index. Unit: bytes.
+	IndexSize *string `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	// Indicates whether the table is a partitioned table. Valid values:
+	//
+	// *   **true**: The table is a partitioned table.
+	// *   **false**: The table is not a partitioned table.
+	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	// The name of the parent table.
+	ParentTableName *string `json:"ParentTableName,omitempty" xml:"ParentTableName,omitempty"`
+	// The name of the schema.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The time when the table was last deleted, inserted, or updated.
+	TimeLastUpdated *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
 }
 
 func (s DescribeDBInstanceIndexUsageResponseBodyItems) String() string {
@@ -3835,6 +5187,9 @@ func (s *DescribeDBInstanceIndexUsageResponse) SetBody(v *DescribeDBInstanceInde
 }
 
 type DescribeDBInstanceNetInfoRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -3852,9 +5207,15 @@ func (s *DescribeDBInstanceNetInfoRequest) SetDBInstanceId(v string) *DescribeDB
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	DBInstanceNetInfos  *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
-	InstanceNetworkType *string                                                  `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	RequestId           *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The connection information of the instance.
+	DBInstanceNetInfos *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
+	// The network type of the instance.
+	//
+	// *   **VPC**: a virtual private cloud (VPC)
+	// *   **Classic**: classic network
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBody) String() string {
@@ -3898,14 +5259,24 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetDBInstanceN
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo struct {
-	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The IP address type of the instance.
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The endpoint used to connect to the instance.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	IPType           *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// VPC ID。
-	VPCId         *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The IP address of the instance.
+	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	// The type of IP address.
+	//
+	// *   Valid values for instances in the classic network: Inner and Public
+	// *   Valid values for instances in a virtual private cloud (VPC): Private and Public
+	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	// The port number used to connect to the instance.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the VPC.
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The ID of the vSwitch. Multiple IDs are separated by commas (,).
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC.
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -3986,343 +5357,19 @@ func (s *DescribeDBInstanceNetInfoResponse) SetBody(v *DescribeDBInstanceNetInfo
 	return s
 }
 
-type DescribeDBInstanceOnECSAttributeRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeDBInstanceOnECSAttributeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceOnECSAttributeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceOnECSAttributeRequest) SetDBInstanceId(v string) *DescribeDBInstanceOnECSAttributeRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeRequest) SetOwnerId(v int64) *DescribeDBInstanceOnECSAttributeRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeDBInstanceOnECSAttributeResponseBody struct {
-	Items     *DescribeDBInstanceOnECSAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBody) SetItems(v *DescribeDBInstanceOnECSAttributeResponseBodyItems) *DescribeDBInstanceOnECSAttributeResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBody) SetRequestId(v string) *DescribeDBInstanceOnECSAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeDBInstanceOnECSAttributeResponseBodyItems struct {
-	DBInstanceAttribute []*DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute `json:"DBInstanceAttribute,omitempty" xml:"DBInstanceAttribute,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItems) SetDBInstanceAttribute(v []*DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) *DescribeDBInstanceOnECSAttributeResponseBodyItems {
-	s.DBInstanceAttribute = v
-	return s
-}
-
-type DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute struct {
-	ConnectionMode        *string                                                                   `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	ConnectionString      *string                                                                   `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	CpuCores              *int32                                                                    `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CreationTime          *string                                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DBInstanceCategory    *string                                                                   `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceClass       *string                                                                   `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	DBInstanceDescription *string                                                                   `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string                                                                   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceStatus      *string                                                                   `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	EncryptionKey         *string                                                                   `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType        *string                                                                   `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	Engine                *string                                                                   `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string                                                                   `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime            *string                                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceDeployType    *string                                                                   `json:"InstanceDeployType,omitempty" xml:"InstanceDeployType,omitempty"`
-	InstanceNetworkType   *string                                                                   `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	LockMode              *string                                                                   `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	MasterNodeNum         *int32                                                                    `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	MemorySize            *int32                                                                    `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	MinorVersion          *string                                                                   `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	PayType               *string                                                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                  *string                                                                   `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId              *string                                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SegNodeNum            *int32                                                                    `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	StorageSize           *int32                                                                    `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	StorageType           *string                                                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	SupportRestore        *bool                                                                     `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
-	Tags                  *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// vSwitch ID。
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetConnectionMode(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ConnectionMode = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetConnectionString(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ConnectionString = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetCpuCores(v int32) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.CpuCores = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetCreationTime(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceCategory(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceCategory = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceClass(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceClass = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceDescription(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceDescription = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceId(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceStatus(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.DBInstanceStatus = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetEncryptionKey(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.EncryptionKey = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetEncryptionType(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.EncryptionType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetEngine(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetEngineVersion(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetExpireTime(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetInstanceDeployType(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.InstanceDeployType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetInstanceNetworkType(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.InstanceNetworkType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetLockMode(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.LockMode = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetMasterNodeNum(v int32) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.MasterNodeNum = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetMemorySize(v int32) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.MemorySize = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetMinorVersion(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.MinorVersion = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetPayType(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetRegionId(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetSegNodeNum(v int32) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.SegNodeNum = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetStorageSize(v int32) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.StorageSize = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetStorageType(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.StorageType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetSupportRestore(v bool) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.SupportRestore = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetTags(v *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetVSwitchId(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetVpcId(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetZoneId(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags struct {
-	Tag []*DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags) SetTag(v []*DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags {
-	s.Tag = v
-	return s
-}
-
-type DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag) SetKey(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag) SetValue(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTagsTag {
-	s.Value = &v
-	return s
-}
-
-type DescribeDBInstanceOnECSAttributeResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceOnECSAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceOnECSAttributeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceOnECSAttributeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponse) SetStatusCode(v int32) *DescribeDBInstanceOnECSAttributeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDBInstanceOnECSAttributeResponse) SetBody(v *DescribeDBInstanceOnECSAttributeResponseBody) *DescribeDBInstanceOnECSAttributeResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDBInstancePerformanceRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBInstancePerformanceRequest) String() string {
@@ -4359,12 +5406,18 @@ func (s *DescribeDBInstancePerformanceRequest) SetStartTime(v string) *DescribeD
 }
 
 type DescribeDBInstancePerformanceResponseBody struct {
-	DBInstanceId    *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime         *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Engine          *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end time of the query.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The database engine of the instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Details of the performance metrics. Format: {perf1, perf2, perf3, …}.
 	PerformanceKeys []*string `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
-	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBody) String() string {
@@ -4435,13 +5488,29 @@ func (s *DescribeDBInstancePerformanceResponse) SetBody(v *DescribeDBInstancePer
 }
 
 type DescribeDBInstancePlansRequest struct {
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlanCreateDate   *string `json:"PlanCreateDate,omitempty" xml:"PlanCreateDate,omitempty"`
-	PlanDesc         *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
-	PlanId           *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time used to filter plans. If you specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format, the plans created before this time are returned. The time must be in UTC. If you do not specify this parameter, all plans are returned.
+	PlanCreateDate *string `json:"PlanCreateDate,omitempty" xml:"PlanCreateDate,omitempty"`
+	// The description of the plan.
+	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
+	// The ID of the plan.
+	//
+	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The execution mode of the plan. Valid values:
+	//
+	// *   **Postpone**: The plan is executed later.
+	// *   **Regular**: The plan is executed periodically.
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
-	PlanType         *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The type of the plan. Valid values:
+	//
+	// *   **PauseResume**: pauses and resumes an instance.
+	// *   **Resize**: scales an instance.
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 }
 
 func (s DescribeDBInstancePlansRequest) String() string {
@@ -4488,13 +5557,24 @@ func (s *DescribeDBInstancePlansRequest) SetPlanType(v string) *DescribeDBInstan
 }
 
 type DescribeDBInstancePlansResponseBody struct {
-	ErrorMessage     *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Items            *DescribeDBInstancePlansResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber       *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                    `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status           *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalRecordCount *int32                                    `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	// The error message returned.
+	//
+	// This parameter is returned only when the operation fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Details of the plans.
+	Items *DescribeDBInstancePlansResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the operation.
+	//
+	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of entries.
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDBInstancePlansResponseBody) String() string {
@@ -4558,16 +5638,41 @@ func (s *DescribeDBInstancePlansResponseBodyItems) SetPlanList(v []*DescribeDBIn
 }
 
 type DescribeDBInstancePlansResponseBodyItemsPlanList struct {
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PlanConfig       *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
-	PlanDesc         *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
-	PlanEndDate      *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
-	PlanId           *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanName         *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The execution information of the plan.
+	PlanConfig *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
+	// The description of the plan.
+	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
+	// The end time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	//
+	// >  This parameter is returned only for periodically executed plans.
+	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The name of the plan.
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The execution mode of the plan. Valid values:
+	//
+	// *   **Postpone**: The plan is executed later.
+	// *   **Regular**: The plan is executed periodically.
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
-	PlanStartDate    *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
-	PlanStatus       *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
-	PlanType         *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	//
+	// >  This parameter is returned only for periodically executed plans.
+	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
+	// The state of the plan. Valid values:
+	//
+	// *   **active**: The plan is running.
+	// *   **cancel**: The plan is canceled.
+	// *   **deleted**: The plan is deleted.
+	// *   **finished**: The plan execution is complete.
+	PlanStatus *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
+	// The type of the plan. Valid values:
+	//
+	// *   **PauseResume**: pauses and resumes an instance.
+	// *   **Resize**: scales an instance.
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 }
 
 func (s DescribeDBInstancePlansResponseBodyItemsPlanList) String() string {
@@ -4657,153 +5762,8 @@ func (s *DescribeDBInstancePlansResponse) SetBody(v *DescribeDBInstancePlansResp
 	return s
 }
 
-type DescribeDBInstanceSQLPatternsRequest struct {
-	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database      *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
-	SourceIP      *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User          *string `json:"User,omitempty" xml:"User,omitempty"`
-}
-
-func (s DescribeDBInstanceSQLPatternsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceSQLPatternsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceSQLPatternsRequest) SetDBInstanceId(v string) *DescribeDBInstanceSQLPatternsRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsRequest) SetDatabase(v string) *DescribeDBInstanceSQLPatternsRequest {
-	s.Database = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsRequest) SetEndTime(v string) *DescribeDBInstanceSQLPatternsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsRequest) SetQueryKeywords(v string) *DescribeDBInstanceSQLPatternsRequest {
-	s.QueryKeywords = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsRequest) SetSourceIP(v string) *DescribeDBInstanceSQLPatternsRequest {
-	s.SourceIP = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsRequest) SetStartTime(v string) *DescribeDBInstanceSQLPatternsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsRequest) SetUser(v string) *DescribeDBInstanceSQLPatternsRequest {
-	s.User = &v
-	return s
-}
-
-type DescribeDBInstanceSQLPatternsResponseBody struct {
-	DBClusterId *string                                              `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EndTime     *string                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Patterns    []*DescribeDBInstanceSQLPatternsResponseBodyPatterns `json:"Patterns,omitempty" xml:"Patterns,omitempty" type:"Repeated"`
-	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime   *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeDBInstanceSQLPatternsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceSQLPatternsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponseBody) SetDBClusterId(v string) *DescribeDBInstanceSQLPatternsResponseBody {
-	s.DBClusterId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponseBody) SetEndTime(v string) *DescribeDBInstanceSQLPatternsResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponseBody) SetPatterns(v []*DescribeDBInstanceSQLPatternsResponseBodyPatterns) *DescribeDBInstanceSQLPatternsResponseBody {
-	s.Patterns = v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponseBody) SetRequestId(v string) *DescribeDBInstanceSQLPatternsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponseBody) SetStartTime(v string) *DescribeDBInstanceSQLPatternsResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeDBInstanceSQLPatternsResponseBodyPatterns struct {
-	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Values map[string]interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
-}
-
-func (s DescribeDBInstanceSQLPatternsResponseBodyPatterns) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceSQLPatternsResponseBodyPatterns) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponseBodyPatterns) SetName(v string) *DescribeDBInstanceSQLPatternsResponseBodyPatterns {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponseBodyPatterns) SetValues(v map[string]interface{}) *DescribeDBInstanceSQLPatternsResponseBodyPatterns {
-	s.Values = v
-	return s
-}
-
-type DescribeDBInstanceSQLPatternsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceSQLPatternsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDBInstanceSQLPatternsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceSQLPatternsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceSQLPatternsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponse) SetStatusCode(v int32) *DescribeDBInstanceSQLPatternsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSQLPatternsResponse) SetBody(v *DescribeDBInstanceSQLPatternsResponseBody) *DescribeDBInstanceSQLPatternsResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDBInstanceSSLRequest struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -4821,11 +5781,17 @@ func (s *DescribeDBInstanceSSLRequest) SetDBInstanceId(v string) *DescribeDBInst
 }
 
 type DescribeDBInstanceSSLResponseBody struct {
+	// The name of the SSL certificate.
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the instance.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SSLEnabled     *bool   `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether SSL encryption is enabled.
+	SSLEnabled *bool `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The expiration time of the SSL certificate.
 	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 }
 
@@ -4897,19 +5863,54 @@ func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponse
 }
 
 type DescribeDBInstancesRequest struct {
-	DBInstanceCategories  []*string                        `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty" type:"Repeated"`
-	DBInstanceDescription *string                          `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceIds         *string                          `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
-	DBInstanceModes       []*string                        `json:"DBInstanceModes,omitempty" xml:"DBInstanceModes,omitempty" type:"Repeated"`
-	DBInstanceStatuses    []*string                        `json:"DBInstanceStatuses,omitempty" xml:"DBInstanceStatuses,omitempty" type:"Repeated"`
-	InstanceDeployTypes   []*string                        `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty" type:"Repeated"`
-	InstanceNetworkType   *string                          `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	OwnerId               *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber            *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId              *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                   []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The edition of the instance. Separate multiple values with commas (,). Valid values:
+	//
+	// *   **basic**: Basic Edition
+	// *   **highavailability**: High-availability Edition
+	// *   **finance**: Enterprise Edition
+	DBInstanceCategories []*string `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty" type:"Repeated"`
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The ID of the instance. Separate multiple IDs with commas (,).
+	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	// The resource type of the instance. Separate multiple values with commas (,). Valid values:
+	//
+	// *   **serverless**: Serverless mode
+	// *   **storageelastic**: elastic storage mode
+	// *   **classic**: reserved storage mode
+	DBInstanceModes []*string `json:"DBInstanceModes,omitempty" xml:"DBInstanceModes,omitempty" type:"Repeated"`
+	// The state of the instance. Separate multiple values with commas (,). For more information, see [Instance statuses](~~86944~~).
+	//
+	// >  The value of this parameter must be in lowercase.
+	DBInstanceStatuses []*string `json:"DBInstanceStatuses,omitempty" xml:"DBInstanceStatuses,omitempty" type:"Repeated"`
+	// This parameter is no longer used.
+	InstanceDeployTypes []*string `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty" type:"Repeated"`
+	// The network type of the instance. Valid values:
+	//
+	// *   **VPC**
+	// *   **Classic**
+	//
+	// >  If you do not specify this parameter, instances of both network types are returned.
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags.
+	Tag []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -4986,7 +5987,9 @@ func (s *DescribeDBInstancesRequest) SetTag(v []*DescribeDBInstancesRequestTag) 
 }
 
 type DescribeDBInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5009,19 +6012,54 @@ func (s *DescribeDBInstancesRequestTag) SetValue(v string) *DescribeDBInstancesR
 }
 
 type DescribeDBInstancesShrinkRequest struct {
-	DBInstanceCategoriesShrink *string                                `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty"`
-	DBInstanceDescription      *string                                `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceIds              *string                                `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
-	DBInstanceModesShrink      *string                                `json:"DBInstanceModes,omitempty" xml:"DBInstanceModes,omitempty"`
-	DBInstanceStatusesShrink   *string                                `json:"DBInstanceStatuses,omitempty" xml:"DBInstanceStatuses,omitempty"`
-	InstanceDeployTypesShrink  *string                                `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty"`
-	InstanceNetworkType        *string                                `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	OwnerId                    *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber                 *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId                   *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId            *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                        []*DescribeDBInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The edition of the instance. Separate multiple values with commas (,). Valid values:
+	//
+	// *   **basic**: Basic Edition
+	// *   **highavailability**: High-availability Edition
+	// *   **finance**: Enterprise Edition
+	DBInstanceCategoriesShrink *string `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty"`
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The ID of the instance. Separate multiple IDs with commas (,).
+	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	// The resource type of the instance. Separate multiple values with commas (,). Valid values:
+	//
+	// *   **serverless**: Serverless mode
+	// *   **storageelastic**: elastic storage mode
+	// *   **classic**: reserved storage mode
+	DBInstanceModesShrink *string `json:"DBInstanceModes,omitempty" xml:"DBInstanceModes,omitempty"`
+	// The state of the instance. Separate multiple values with commas (,). For more information, see [Instance statuses](~~86944~~).
+	//
+	// >  The value of this parameter must be in lowercase.
+	DBInstanceStatusesShrink *string `json:"DBInstanceStatuses,omitempty" xml:"DBInstanceStatuses,omitempty"`
+	// This parameter is no longer used.
+	InstanceDeployTypesShrink *string `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// *   **VPC**
+	// *   **Classic**
+	//
+	// >  If you do not specify this parameter, instances of both network types are returned.
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags.
+	Tag []*DescribeDBInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstancesShrinkRequest) String() string {
@@ -5098,7 +6136,9 @@ func (s *DescribeDBInstancesShrinkRequest) SetTag(v []*DescribeDBInstancesShrink
 }
 
 type DescribeDBInstancesShrinkRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5121,11 +6161,16 @@ func (s *DescribeDBInstancesShrinkRequestTag) SetValue(v string) *DescribeDBInst
 }
 
 type DescribeDBInstancesResponseBody struct {
-	Items            *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	// Details of the instance.
+	Items *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBody) String() string {
@@ -5179,34 +6224,101 @@ func (s *DescribeDBInstancesResponseBodyItems) SetDBInstance(v []*DescribeDBInst
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstance struct {
-	ConnectionMode        *string                                             `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	CreateTime            *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBInstanceCategory    *string                                             `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceDescription *string                                             `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string                                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMode        *string                                             `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	DBInstanceNetType     *string                                             `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	DBInstanceStatus      *string                                             `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	Engine                *string                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string                                             `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime            *string                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceDeployType    *string                                             `json:"InstanceDeployType,omitempty" xml:"InstanceDeployType,omitempty"`
-	InstanceNetworkType   *string                                             `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	LockMode              *string                                             `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason            *string                                             `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MasterNodeNum         *int32                                              `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	PayType               *string                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId              *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SegNodeNum            *string                                             `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	ServerlessMode        *string                                             `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	StorageSize           *string                                             `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	StorageType           *string                                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags                  *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// vSwitch ID。
+	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the access mode of an instance.
+	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	// The time when the instance was created. The time is displayed in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **Basic**: Basic Edition
+	// *   **HighAvailability**: High-availability Edition
+	// *   **Finance**: Enterprise Edition
+	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The resource type of the instance. Valid values:
+	//
+	// *   **Serverless**: Serverless mode
+	// *   **StorageElastic**: elastic storage mode
+	// *   **Classic**: reserved storage mode
+	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	// The type of the network interface card (NIC) that is used by the instance. Valid values:
+	//
+	// *   **0**: Internet
+	// *   **1**: internal network
+	// *   **2**: VPC
+	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	// The state of the instance. For more information, see [Instance statuses](~~86944~~).
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The database engine that the instance runs.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The expiration time of the instance. The time is displayed in UTC.
+	//
+	// >  For pay-as-you-go instances, `2999-09-08T16:00:00Z` is returned.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The resource type of the instance. Valid values:
+	//
+	// *   **cluster**: elastic storage mode or Serverless mode
+	// *   **replicaSet**: reserved storage mode
+	InstanceDeployType *string `json:"InstanceDeployType,omitempty" xml:"InstanceDeployType,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// *   **Classic**
+	// *   **VPC**
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The lock mode of the instance. Valid values:
+	//
+	// *   **Unlock**: The instance is not locked.
+	// *   **ManualLock**: The instance is manually locked.
+	// *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
+	// *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
+	// *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
+	// *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The reason why the cluster is locked.
+	//
+	// >  This parameter is returned only when the cluster is locked. The value is **instance_expire**.
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The number of coordinator nodes.
+	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   **Postpaid**: pay-as-you-go
+	// *   **Prepaid**: subscription
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of compute nodes.
+	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	// The type of the Serverless mode. Valid values:
+	//
+	// *   **Manual**: manual scheduling
+	// *   **Auto**: automatic scheduling
+	//
+	// >  This parameter is returned only for instances in Serverless mode.
+	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
+	// The storage capacity. Unit: GB.
+	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The storage type of the instance. Valid values:
+	//
+	// *   **cloud_essd**: enhanced SSD (ESSD)
+	// *   **cloud_efficiency**: ultra disk
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The tags of the instance. Each tag is a key-value pair.
+	Tags *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID of the instance.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5371,7 +6483,9 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstanceTags) SetTag(v []*Describ
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5423,15 +6537,45 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeDataBackupsRequest struct {
-	BackupId     *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupMode   *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The ID of the backup set. If you specify the BackupId parameter, the details of the backup set are returned.
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The backup mode. Valid values:
+	//
+	// *   Automated: automatic backup
+	// *   Manual: manual backup
+	//
+	// If you do not specify this parameter, the records of the backup sets in all modes are returned.
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The status of the backup set. Valid values:
+	//
+	// *   Success: The backup is complete.
+	// *   Failed: The backup task fails.
+	//
+	// If you do not specify this parameter, the records of the backup sets in all states are returned.
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DataType     *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the backup. Valid values:
+	//
+	// *   DATA: full backup
+	// *   RESTOREPOI: point-in-time backup
+	//
+	// If you do not specify this parameter, the records of the full backup set are returned.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of the page to return. The value must be an integer that is larger than 0. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   30
+	// *   50
+	// *   100
+	//
+	// Default value: 30.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDataBackupsRequest) String() string {
@@ -5488,11 +6632,16 @@ func (s *DescribeDataBackupsRequest) SetStartTime(v string) *DescribeDataBackups
 }
 
 type DescribeDataBackupsResponseBody struct {
-	Items      []*DescribeDataBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details about the backup sets.
+	Items []*DescribeDataBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of backup sets on the page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataBackupsResponseBody) String() string {
@@ -5529,18 +6678,48 @@ func (s *DescribeDataBackupsResponseBody) SetTotalCount(v int32) *DescribeDataBa
 }
 
 type DescribeDataBackupsResponseBodyItems struct {
-	BackupEndTime        *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupEndTimeLocal   *string `json:"BackupEndTimeLocal,omitempty" xml:"BackupEndTimeLocal,omitempty"`
-	BackupMode           *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupSetId          *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	BackupSize           *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	BackupStartTime      *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The UTC time when the backup ended. The time is in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	// The local time when the backup ended. The time is in the yyyy-MM-dd HH:mm:ss format. The time is your local time.
+	BackupEndTimeLocal *string `json:"BackupEndTimeLocal,omitempty" xml:"BackupEndTimeLocal,omitempty"`
+	// The backup mode.
+	//
+	// Valid values for full backup:
+	//
+	// *   Automated: automatic backup
+	// *   Manual: manual backup
+	//
+	// Valid values for point-in-time backup:
+	//
+	// *   Automated: point-in-time backup after full backup
+	// *   Manual: manual point-in-time backup
+	// *   Period: point-in-time backup that is triggered by a backup policy
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The ID of the backup set.
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// The size of the backup file. Unit: bytes.
+	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// The UTC time when the backup started. The time is in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The local time when the backup started. The time is in the yyyy-MM-dd HH:mm:ss format. The time is your local time.
 	BackupStartTimeLocal *string `json:"BackupStartTimeLocal,omitempty" xml:"BackupStartTimeLocal,omitempty"`
-	BackupStatus         *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	BaksetName           *string `json:"BaksetName,omitempty" xml:"BaksetName,omitempty"`
-	ConsistentTime       *int64  `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DataType             *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The status of the backup set. Valid values:
+	//
+	// *   Success
+	// *   Failure
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The name of a point-in-time backup set or the full backup set.
+	BaksetName *string `json:"BaksetName,omitempty" xml:"BaksetName,omitempty"`
+	// *   For full backup, this parameter indicates the point in time at which the data in the data backup file is consistent.
+	// *   For point-in-time backup, this parameter indicates that the returned point in time is a timestamp.
+	ConsistentTime *int64 `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The type of the backup. Valid values:
+	//
+	// *   DATA: full backup
+	// *   RESTOREPOI: point-in-time backup
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 }
 
 func (s DescribeDataBackupsResponseBodyItems) String() string {
@@ -5640,13 +6819,150 @@ func (s *DescribeDataBackupsResponse) SetBody(v *DescribeDataBackupsResponseBody
 	return s
 }
 
+type DescribeDataReDistributeInfoRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDataReDistributeInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataReDistributeInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataReDistributeInfoRequest) SetDBInstanceId(v string) *DescribeDataReDistributeInfoRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoRequest) SetOwnerId(v int64) *DescribeDataReDistributeInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDataReDistributeInfoResponseBody struct {
+	DataReDistributeInfo *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo `json:"DataReDistributeInfo,omitempty" xml:"DataReDistributeInfo,omitempty" type:"Struct"`
+	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDataReDistributeInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataReDistributeInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataReDistributeInfoResponseBody) SetDataReDistributeInfo(v *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) *DescribeDataReDistributeInfoResponseBody {
+	s.DataReDistributeInfo = v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponseBody) SetRequestId(v string) *DescribeDataReDistributeInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Progress   *int64  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RemainTime *string `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) SetMessage(v string) *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) SetProgress(v int64) *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) SetRemainTime(v string) *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo {
+	s.RemainTime = &v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) SetStartTime(v string) *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) SetStatus(v string) *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo) SetType(v string) *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo {
+	s.Type = &v
+	return s
+}
+
+type DescribeDataReDistributeInfoResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataReDistributeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataReDistributeInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataReDistributeInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataReDistributeInfoResponse) SetHeaders(v map[string]*string) *DescribeDataReDistributeInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponse) SetStatusCode(v int32) *DescribeDataReDistributeInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataReDistributeInfoResponse) SetBody(v *DescribeDataReDistributeInfoResponseBody) *DescribeDataReDistributeInfoResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDataShareInstancesRequest struct {
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: 30.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// The keyword used to filter instances, which can be an instance ID or instance description.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs and instance descriptions.
+	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
 }
 
 func (s DescribeDataShareInstancesRequest) String() string {
@@ -5688,11 +7004,16 @@ func (s *DescribeDataShareInstancesRequest) SetSearchValue(v string) *DescribeDa
 }
 
 type DescribeDataShareInstancesResponseBody struct {
-	Items            *DescribeDataShareInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	// Details of the instances.
+	Items *DescribeDataShareInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDataShareInstancesResponseBody) String() string {
@@ -5746,12 +7067,27 @@ func (s *DescribeDataShareInstancesResponseBodyItems) SetDBInstance(v []*Describ
 }
 
 type DescribeDataShareInstancesResponseBodyItemsDBInstance struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMode  *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The resource type of the instance. Valid values:
+	//
+	// *   **Serverless**: Serverless mode
+	// *   **StorageElasic**: elastic storage mode
+	// *   **Classic**: reserved storage mode
+	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	// The state of data sharing. Valid values:
+	//
+	// *   **opening**: Data sharing is being enabled.
+	// *   **opened**: Data sharing is enabled.
+	// *   **closing**: Data sharing is being disabled.
+	// *   **closed**: Data sharing is disabled.
 	DataShareStatus *string `json:"DataShareStatus,omitempty" xml:"DataShareStatus,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The description of the instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID of the instance.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDataShareInstancesResponseBodyItemsDBInstance) String() string {
@@ -5822,11 +7158,21 @@ func (s *DescribeDataShareInstancesResponse) SetBody(v *DescribeDataShareInstanc
 }
 
 type DescribeDataSharePerformanceRequest struct {
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the performance metric. Separate multiple values with commas (,). Valid values:
+	//
+	// *   **adbpg_datashare_topic_count**: the number of shared topics.
+	// *   **adbpg_datashare_data_size_mb**: the amount of data shared.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDataSharePerformanceRequest) String() string {
@@ -5863,11 +7209,16 @@ func (s *DescribeDataSharePerformanceRequest) SetStartTime(v string) *DescribeDa
 }
 
 type DescribeDataSharePerformanceResponseBody struct {
-	DBClusterId     *string                                                    `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EndTime         *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the query.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Details of data sharing performance metrics.
 	PerformanceKeys []*DescribeDataSharePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
-	RequestId       *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime       *string                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDataSharePerformanceResponseBody) String() string {
@@ -5904,9 +7255,12 @@ func (s *DescribeDataSharePerformanceResponseBody) SetStartTime(v string) *Descr
 }
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeys struct {
-	Name   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the performance metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Details of the performance metric.
 	Series []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
-	Unit   *string                                                          `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The unit of the performance metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s DescribeDataSharePerformanceResponseBodyPerformanceKeys) String() string {
@@ -5933,7 +7287,9 @@ func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeys) SetUnit(v stri
 }
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries struct {
-	Name   *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the performance metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// One or more values of the performance metric.
 	Values []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5956,6 +7312,7 @@ func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) SetValue
 }
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues struct {
+	// The value of the performance metric at a point in time.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 
@@ -6002,6 +7359,9 @@ func (s *DescribeDataSharePerformanceResponse) SetBody(v *DescribeDataSharePerfo
 }
 
 type DescribeDiagnosisDimensionsRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -6019,8 +7379,11 @@ func (s *DescribeDiagnosisDimensionsRequest) SetDBInstanceId(v string) *Describe
 }
 
 type DescribeDiagnosisDimensionsResponseBody struct {
+	// The name of the database.
 	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the database account.
 	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 
@@ -6077,12 +7440,32 @@ func (s *DescribeDiagnosisDimensionsResponse) SetBody(v *DescribeDiagnosisDimens
 }
 
 type DescribeDiagnosisMonitorPerformanceRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter condition on queries. Specify the value in the JSON format. Valid values:
+	//
+	// *   `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
+	//
+	// *   `{"Type":"status","Value":"finished"}`: filters completed queries.
+	//
+	// *   `{"Type":"status","Value":"running"}`: filters running queries.
+	//
+	// *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
+	//
+	//     *   If only **Min** is specified, the queries that consume a period of time that is greater than or equal to the Min value are filtered.
+	//     *   If only **Max** is specified, the queries that consume a period of time that is less than the Max value are filtered.
+	//     *   If both **Min** and **Max** are specified, the queries that consume a period of time that is greater than or equal to the **Min** value and less than the **Max** value are filtered.
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeDiagnosisMonitorPerformanceRequest) String() string {
@@ -6124,10 +7507,17 @@ func (s *DescribeDiagnosisMonitorPerformanceRequest) SetUser(v string) *Describe
 }
 
 type DescribeDiagnosisMonitorPerformanceResponseBody struct {
-	Performances          []*DescribeDiagnosisMonitorPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
-	PerformancesThreshold *int32                                                         `json:"PerformancesThreshold,omitempty" xml:"PerformancesThreshold,omitempty"`
-	PerformancesTruncated *bool                                                          `json:"PerformancesTruncated,omitempty" xml:"PerformancesTruncated,omitempty"`
-	RequestId             *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of query execution.
+	Performances []*DescribeDiagnosisMonitorPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
+	// The threshold for the number of queries.
+	PerformancesThreshold *int32 `json:"PerformancesThreshold,omitempty" xml:"PerformancesThreshold,omitempty"`
+	// Indicates whether the queries are truncated when the number of queries exceeds the threshold. Valid values:
+	//
+	// *   **true**: The queries are truncated.
+	// *   **false**: The queries are not truncated.
+	PerformancesTruncated *bool `json:"PerformancesTruncated,omitempty" xml:"PerformancesTruncated,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDiagnosisMonitorPerformanceResponseBody) String() string {
@@ -6159,12 +7549,21 @@ func (s *DescribeDiagnosisMonitorPerformanceResponseBody) SetRequestId(v string)
 }
 
 type DescribeDiagnosisMonitorPerformanceResponseBodyPerformances struct {
-	Cost      *int32  `json:"Cost,omitempty" xml:"Cost,omitempty"`
-	Database  *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	QueryID   *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	User      *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The execution duration of the query. Unit: milliseconds.
+	Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The ID of the query. It is a unique identifier of the query.
+	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **running**: The query is being executed.
+	// *   **finished**: The query is complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) String() string {
@@ -6235,16 +7634,46 @@ func (s *DescribeDiagnosisMonitorPerformanceResponse) SetBody(v *DescribeDiagnos
 }
 
 type DescribeDiagnosisRecordsRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The keyword of the SQL statement.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The order of fields in the console. You do not need to specify this parameter.
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The filter condition on queries. Specify the value in the JSON format. Valid values:
+	//
+	// *   `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
+	//
+	// *   `{"Type":"status","Value":"finished"}`: filters completed queries.
+	//
+	// *   `{"Type":"status","Value":"running"}`: filters running queries.
+	//
+	// *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
+	//
+	//     *   If only **Min** is specified, the queries that consume a period of time that is greater than or equal to the Min value are filtered.
+	//     *   If only **Max** is specified, the queries that consume a period of time that is less than the Max value are filtered.
+	//     *   If both **Min** and **Max** are specified, the queries that consume a period of time that is greater than or equal to the **Min** value and less than the **Max** value are filtered.
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeDiagnosisRecordsRequest) String() string {
@@ -6306,10 +7735,14 @@ func (s *DescribeDiagnosisRecordsRequest) SetUser(v string) *DescribeDiagnosisRe
 }
 
 type DescribeDiagnosisRecordsResponseBody struct {
-	Items      []*DescribeDiagnosisRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details of SQL queries.
+	Items []*DescribeDiagnosisRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDiagnosisRecordsResponseBody) String() string {
@@ -6341,16 +7774,32 @@ func (s *DescribeDiagnosisRecordsResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 type DescribeDiagnosisRecordsResponseBodyItems struct {
-	Database              *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	Duration              *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	QueryID               *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
-	SQLStmt               *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
-	SQLTruncated          *bool   `json:"SQLTruncated,omitempty" xml:"SQLTruncated,omitempty"`
-	SQLTruncatedThreshold *int32  `json:"SQLTruncatedThreshold,omitempty" xml:"SQLTruncatedThreshold,omitempty"`
-	SessionID             *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
-	StartTime             *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	User                  *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The execution duration of the query. Unit: seconds.
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the query. It is a unique identifier of the query.
+	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	// The SQL statement.
+	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	// Indicates whether the SQL statement needs to be truncated. Valid values:
+	//
+	// *   **true**: The SQL statement needs to be truncated.
+	// *   **false**: The SQL statement does not need to be truncated.
+	SQLTruncated *bool `json:"SQLTruncated,omitempty" xml:"SQLTruncated,omitempty"`
+	// The threshold used to determine whether an SQL statement must be truncated. The value is the number of characters.
+	SQLTruncatedThreshold *int32 `json:"SQLTruncatedThreshold,omitempty" xml:"SQLTruncatedThreshold,omitempty"`
+	// The ID of the session that contains the query.
+	SessionID *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **running**: The query is being executed.
+	// *   **finished**: The query is complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeDiagnosisRecordsResponseBodyItems) String() string {
@@ -6441,9 +7890,16 @@ func (s *DescribeDiagnosisRecordsResponse) SetBody(v *DescribeDiagnosisRecordsRe
 }
 
 type DescribeDiagnosisSQLInfoRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	QueryID      *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The ID of the query. It is a unique identifier of the query.
+	//
+	// >  You can call the [DescribeDiagnosisRecords](~~450511~~) operation to query the query ID.
+	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
 }
 
 func (s DescribeDiagnosisSQLInfoRequest) String() string {
@@ -6470,19 +7926,35 @@ func (s *DescribeDiagnosisSQLInfoRequest) SetQueryID(v string) *DescribeDiagnosi
 }
 
 type DescribeDiagnosisSQLInfoResponseBody struct {
-	Database      *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The execution duration of the query. Unit: seconds.
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The maximum number of output rows.
 	MaxOutputRows *string `json:"MaxOutputRows,omitempty" xml:"MaxOutputRows,omitempty"`
-	QueryID       *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
-	QueryPlan     *string `json:"QueryPlan,omitempty" xml:"QueryPlan,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SQLStmt       *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
-	SessionID     *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	// The ID of the query.
+	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	// The information of the operator.
+	QueryPlan *string `json:"QueryPlan,omitempty" xml:"QueryPlan,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SQL statement.
+	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	// The ID of the session that contains the query.
+	SessionID *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	// The sequence of metrics.
 	SortedMetrics *string `json:"SortedMetrics,omitempty" xml:"SortedMetrics,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TextPlan      *string `json:"TextPlan,omitempty" xml:"TextPlan,omitempty"`
-	User          *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **running**: The query is being executed.
+	// *   **finished**: The query execution is complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The information of the execution plan.
+	TextPlan *string `json:"TextPlan,omitempty" xml:"TextPlan,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeDiagnosisSQLInfoResponseBody) String() string {
@@ -6588,6 +8060,9 @@ func (s *DescribeDiagnosisSQLInfoResponse) SetBody(v *DescribeDiagnosisSQLInfoRe
 }
 
 type DescribeDownloadRecordsRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -6605,8 +8080,10 @@ func (s *DescribeDownloadRecordsRequest) SetDBInstanceId(v string) *DescribeDown
 }
 
 type DescribeDownloadRecordsResponseBody struct {
-	Records   []*DescribeDownloadRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the download records.
+	Records []*DescribeDownloadRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDownloadRecordsResponseBody) String() string {
@@ -6628,11 +8105,20 @@ func (s *DescribeDownloadRecordsResponseBody) SetRequestId(v string) *DescribeDo
 }
 
 type DescribeDownloadRecordsResponseBodyRecords struct {
-	DownloadId   *int64  `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	DownloadUrl  *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The ID of the download record.
+	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	// The URL that can be used to download the file.
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The error message returned.
 	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the file.
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The state of the upload task. After you call the DownloadDiagnosisRecords operation, query diagnostic information is first uploaded to Object Storage Service (OSS). After the upload task is complete, the query diagnostic information can be downloaded. Valid values:
+	//
+	// *   **running**: uploading
+	// *   **finished**: uploaded
+	// *   **failed**: failed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDownloadRecordsResponseBodyRecords) String() string {
@@ -6697,9 +8183,123 @@ func (s *DescribeDownloadRecordsResponse) SetBody(v *DescribeDownloadRecordsResp
 	return s
 }
 
-type DescribeHealthStatusRequest struct {
+type DescribeDownloadSQLLogsRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s DescribeDownloadSQLLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadSQLLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadSQLLogsRequest) SetDBInstanceId(v string) *DescribeDownloadSQLLogsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type DescribeDownloadSQLLogsResponseBody struct {
+	Records   []*DescribeDownloadSQLLogsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDownloadSQLLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadSQLLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadSQLLogsResponseBody) SetRecords(v []*DescribeDownloadSQLLogsResponseBodyRecords) *DescribeDownloadSQLLogsResponseBody {
+	s.Records = v
+	return s
+}
+
+func (s *DescribeDownloadSQLLogsResponseBody) SetRequestId(v string) *DescribeDownloadSQLLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDownloadSQLLogsResponseBodyRecords struct {
+	DownloadId   *int64  `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	DownloadUrl  *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDownloadSQLLogsResponseBodyRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadSQLLogsResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadSQLLogsResponseBodyRecords) SetDownloadId(v int64) *DescribeDownloadSQLLogsResponseBodyRecords {
+	s.DownloadId = &v
+	return s
+}
+
+func (s *DescribeDownloadSQLLogsResponseBodyRecords) SetDownloadUrl(v string) *DescribeDownloadSQLLogsResponseBodyRecords {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DescribeDownloadSQLLogsResponseBodyRecords) SetExceptionMsg(v string) *DescribeDownloadSQLLogsResponseBodyRecords {
+	s.ExceptionMsg = &v
+	return s
+}
+
+func (s *DescribeDownloadSQLLogsResponseBodyRecords) SetFileName(v string) *DescribeDownloadSQLLogsResponseBodyRecords {
+	s.FileName = &v
+	return s
+}
+
+func (s *DescribeDownloadSQLLogsResponseBodyRecords) SetStatus(v string) *DescribeDownloadSQLLogsResponseBodyRecords {
+	s.Status = &v
+	return s
+}
+
+type DescribeDownloadSQLLogsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDownloadSQLLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDownloadSQLLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadSQLLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadSQLLogsResponse) SetHeaders(v map[string]*string) *DescribeDownloadSQLLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDownloadSQLLogsResponse) SetStatusCode(v int32) *DescribeDownloadSQLLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDownloadSQLLogsResponse) SetBody(v *DescribeDownloadSQLLogsResponseBody) *DescribeDownloadSQLLogsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHealthStatusRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s DescribeHealthStatusRequest) String() string {
@@ -6721,9 +8321,14 @@ func (s *DescribeHealthStatusRequest) SetKey(v string) *DescribeHealthStatusRequ
 }
 
 type DescribeHealthStatusResponseBody struct {
-	DBClusterId *string                                 `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *DescribeHealthStatusResponseBodyStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	// The ID of instance.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of performance metrics. Each performance metric consists of the parameter name, status, and metric value. The metric information is returned only for the performance parameters specified by **Key**. For example, if you set **Key** to **adbpg_status**, only the metric information of **adbpg_status** is returned.
+	//
+	// For more information about performance parameters, see [Performance parameters](~~86943~~).
+	Status *DescribeHealthStatusResponseBodyStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
 func (s DescribeHealthStatusResponseBody) String() string {
@@ -6750,18 +8355,43 @@ func (s *DescribeHealthStatusResponseBody) SetStatus(v *DescribeHealthStatusResp
 }
 
 type DescribeHealthStatusResponseBodyStatus struct {
+	// The information of maximum compute node storage usage.
+	//
+	// >  This parameter value is returned only for instances in elastic storage mode.
 	AdbgpSegmentDiskUsagePercentMax *DescribeHealthStatusResponseBodyStatusAdbgpSegmentDiskUsagePercentMax `json:"adbgp_segment_disk_usage_percent_max,omitempty" xml:"adbgp_segment_disk_usage_percent_max,omitempty" type:"Struct"`
-	AdbpgConnectionStatus           *DescribeHealthStatusResponseBodyStatusAdbpgConnectionStatus           `json:"adbpg_connection_status,omitempty" xml:"adbpg_connection_status,omitempty" type:"Struct"`
-	AdbpgDiskStatus                 *DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus                 `json:"adbpg_disk_status,omitempty" xml:"adbpg_disk_status,omitempty" type:"Struct"`
-	AdbpgDiskUsagePercent           *DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent           `json:"adbpg_disk_usage_percent,omitempty" xml:"adbpg_disk_usage_percent,omitempty" type:"Struct"`
-	AdbpgMasterDiskUsagePercentMax  *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax  `json:"adbpg_master_disk_usage_percent_max,omitempty" xml:"adbpg_master_disk_usage_percent_max,omitempty" type:"Struct"`
-	AdbpgMasterStatus               *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus               `json:"adbpg_master_status,omitempty" xml:"adbpg_master_status,omitempty" type:"Struct"`
-	AdbpgSegmentStatus              *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus              `json:"adbpg_segment_status,omitempty" xml:"adbpg_segment_status,omitempty" type:"Struct"`
-	AdbpgStatus                     *DescribeHealthStatusResponseBodyStatusAdbpgStatus                     `json:"adbpg_status,omitempty" xml:"adbpg_status,omitempty" type:"Struct"`
-	NodeMasterConnectionStatus      *DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus      `json:"node_master_connection_status,omitempty" xml:"node_master_connection_status,omitempty" type:"Struct"`
-	NodeMasterStatus                *DescribeHealthStatusResponseBodyStatusNodeMasterStatus                `json:"node_master_status,omitempty" xml:"node_master_status,omitempty" type:"Struct"`
-	NodeSegmentConnectionStatus     *DescribeHealthStatusResponseBodyStatusNodeSegmentConnectionStatus     `json:"node_segment_connection_status,omitempty" xml:"node_segment_connection_status,omitempty" type:"Struct"`
-	NodeSegmentDiskStatus           *DescribeHealthStatusResponseBodyStatusNodeSegmentDiskStatus           `json:"node_segment_disk_status,omitempty" xml:"node_segment_disk_status,omitempty" type:"Struct"`
+	// The information of instance connection health status.
+	AdbpgConnectionStatus *DescribeHealthStatusResponseBodyStatusAdbpgConnectionStatus `json:"adbpg_connection_status,omitempty" xml:"adbpg_connection_status,omitempty" type:"Struct"`
+	// The information of instance storage status.
+	//
+	// >  This parameter value is returned only for instances in elastic storage mode.
+	AdbpgDiskStatus *DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus `json:"adbpg_disk_status,omitempty" xml:"adbpg_disk_status,omitempty" type:"Struct"`
+	// The information of instance storage usage.
+	//
+	// >  This parameter value is returned only for instances in elastic storage mode.
+	AdbpgDiskUsagePercent    *DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent    `json:"adbpg_disk_usage_percent,omitempty" xml:"adbpg_disk_usage_percent,omitempty" type:"Struct"`
+	AdbpgInstanceColdDataGb  *DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb  `json:"adbpg_instance_cold_data_gb,omitempty" xml:"adbpg_instance_cold_data_gb,omitempty" type:"Struct"`
+	AdbpgInstanceHotDataGb   *DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb   `json:"adbpg_instance_hot_data_gb,omitempty" xml:"adbpg_instance_hot_data_gb,omitempty" type:"Struct"`
+	AdbpgInstanceTotalDataGb *DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb `json:"adbpg_instance_total_data_gb,omitempty" xml:"adbpg_instance_total_data_gb,omitempty" type:"Struct"`
+	// The information of maximum coordinator node storage usage.
+	//
+	// >  This parameter value is returned only for instances in elastic storage mode.
+	AdbpgMasterDiskUsagePercentMax *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax `json:"adbpg_master_disk_usage_percent_max,omitempty" xml:"adbpg_master_disk_usage_percent_max,omitempty" type:"Struct"`
+	// The information of coordinator node availability status.
+	AdbpgMasterStatus *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus `json:"adbpg_master_status,omitempty" xml:"adbpg_master_status,omitempty" type:"Struct"`
+	// The information of compute node availability status.
+	AdbpgSegmentStatus *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus `json:"adbpg_segment_status,omitempty" xml:"adbpg_segment_status,omitempty" type:"Struct"`
+	// The information of instance health status.
+	AdbpgStatus *DescribeHealthStatusResponseBodyStatusAdbpgStatus `json:"adbpg_status,omitempty" xml:"adbpg_status,omitempty" type:"Struct"`
+	// The information of coordinator node connection health status.
+	NodeMasterConnectionStatus *DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus `json:"node_master_connection_status,omitempty" xml:"node_master_connection_status,omitempty" type:"Struct"`
+	// The information of coordinator node health status.
+	NodeMasterStatus *DescribeHealthStatusResponseBodyStatusNodeMasterStatus `json:"node_master_status,omitempty" xml:"node_master_status,omitempty" type:"Struct"`
+	// The information of compute node connection health status.
+	NodeSegmentConnectionStatus *DescribeHealthStatusResponseBodyStatusNodeSegmentConnectionStatus `json:"node_segment_connection_status,omitempty" xml:"node_segment_connection_status,omitempty" type:"Struct"`
+	// The information of compute node storage status.
+	//
+	// >  This parameter value is returned only for instances in elastic storage mode.
+	NodeSegmentDiskStatus *DescribeHealthStatusResponseBodyStatusNodeSegmentDiskStatus `json:"node_segment_disk_status,omitempty" xml:"node_segment_disk_status,omitempty" type:"Struct"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatus) String() string {
@@ -6789,6 +8419,21 @@ func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgDiskStatus(v *DescribeH
 
 func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgDiskUsagePercent(v *DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent) *DescribeHealthStatusResponseBodyStatus {
 	s.AdbpgDiskUsagePercent = v
+	return s
+}
+
+func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgInstanceColdDataGb(v *DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb) *DescribeHealthStatusResponseBodyStatus {
+	s.AdbpgInstanceColdDataGb = v
+	return s
+}
+
+func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgInstanceHotDataGb(v *DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb) *DescribeHealthStatusResponseBodyStatus {
+	s.AdbpgInstanceHotDataGb = v
+	return s
+}
+
+func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgInstanceTotalDataGb(v *DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb) *DescribeHealthStatusResponseBodyStatus {
+	s.AdbpgInstanceTotalDataGb = v
 	return s
 }
 
@@ -6833,8 +8478,16 @@ func (s *DescribeHealthStatusResponseBodyStatus) SetNodeSegmentDiskStatus(v *Des
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbgpSegmentDiskUsagePercentMax struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The status corresponding to the maximum storage usage among all compute nodes. Valid values:
+	//
+	// *   **critical**: The compute node storage usage is greater than or equal to 90%. In this case, the instance is locked.
+	// *   **warning**: The compute node storage usage is greater than or equal to 80% and less than 90%.
+	// *   **healthy**: The compute node storage usage is less than 80%.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of maximum compute node storage usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbgpSegmentDiskUsagePercentMax) String() string {
@@ -6856,8 +8509,18 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbgpSegmentDiskUsagePercentMax) 
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbpgConnectionStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The connection health status of the instance. Valid values:
+	//
+	// *   **critical**: The instance connection usage is greater than 95%. In this case, this metric is marked in red in the console.
+	// *   **warning**: The instance connection usage is greater than 90% and less than or equal to 95%. In this case, this metric is marked in yellow in the console.
+	// *   **healthy**: The instance connection usage is less than or equal to 90%. In this case, this metric is marked in green in the console.
+	//
+	// >  The instance connection usage is the maximum connection usage among all the coordinator and compute nodes.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of instance connection usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbpgConnectionStatus) String() string {
@@ -6879,8 +8542,18 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgConnectionStatus) SetValue(v
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The storage status of the instance. Valid values:
+	//
+	// *   **critical**: The instance storage usage is greater than or equal to 90%. In this case, this metric is marked in red in the console and the instance is locked.
+	// *   **warning**: The instance storage usage is greater than or equal to 70% and less than 90%. In this case, this metric is marked in yellow in the console.
+	// *   **healthy**: The instance storage usage is less than 70%. In this case, this metric is marked in green in the console.
+	//
+	// >  The instance storage usage is the average storage usage of all compute nodes.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of instance storage usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus) String() string {
@@ -6902,8 +8575,18 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus) SetValue(v float
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The status corresponding to the storage usage of the instance. Valid values:
+	//
+	// *   **critical**: The instance storage usage is greater than or equal to 90%. In this case, the instance is locked.
+	// *   **warning**: The instance storage usage is greater than or equal to 70% and less than 90%.
+	// *   **healthy**: The instance storage usage is less than 70%.
+	//
+	// >  The instance storage usage is the average storage usage of all compute nodes.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of instance storage usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent) String() string {
@@ -6924,9 +8607,68 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent) SetValue(v
 	return s
 }
 
+type DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb) SetValue(v float32) *DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb {
+	s.Value = &v
+	return s
+}
+
+type DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb) SetValue(v float32) *DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb {
+	s.Value = &v
+	return s
+}
+
+type DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb) SetValue(v float32) *DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb {
+	s.Value = &v
+	return s
+}
+
 type DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The status corresponding to the maximum storage usage of the coordinator node. Valid values:
+	//
+	// *   **critical**: The coordinator node storage usage is greater than or equal to 90%. In this case, the instance is locked.
+	// *   **warning**: The coordinator node storage usage is greater than or equal to 70% and less than 90%.
+	// *   **healthy**: The coordinator node storage usage is less than 70%.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of maximum coordinator node storage usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax) String() string {
@@ -6948,8 +8690,14 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax) S
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The availability status of the coordinator node. Valid values:
+	//
+	// *   **critical**: Both the primary and standby coordinator nodes are unavailable. In this case, this metric is marked in red in the console.
+	// *   **warning**: The primary or standby coordinator node is unavailable. In this case, this metric is marked in yellow in the console.
+	// *   **healthy**: Both the primary and standby coordinator nodes are available. In this case, this metric is marked in green in the console.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of coordinator node availability status. Valid values:
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) String() string {
@@ -6971,8 +8719,14 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) SetValue(v flo
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The availability status of compute nodes. Valid values:
+	//
+	// *   **critical**: All the primary and secondary compute nodes are unavailable. In this case, this metric is marked in red in the console.
+	// *   **warning**: Fifty percent or more than fifty percent of compute nodes are unavailable. In this case, this metric is marked in yellow in the console.
+	// *   **healthy**: All compute nodes are available. In this case, this metric is marked in green in the console.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of compute node availability status.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) String() string {
@@ -6994,8 +8748,16 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) SetValue(v fl
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbpgStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The health status of the instance. Valid values:
+	//
+	// *   **critical**: The coordinator node or a compute node is unavailable. In this case, this metric is marked in red in the console.
+	// *   **healthy**: All nodes are available. In this case, this metric is marked in green in the console.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of instance health status. Valid values:
+	//
+	// *   **1**: healthy
+	// *   **0**: critical
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusAdbpgStatus) String() string {
@@ -7017,8 +8779,18 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgStatus) SetValue(v float32) 
 }
 
 type DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The connection health status of the coordinator node. Valid values:
+	//
+	// *   **critical**: The coordinator node connection usage is greater than 95%. In this case, this metric is marked in red in the console.
+	// *   **warning**: The coordinator node connection usage is greater than or equal to 90% and less than 95%. In this case, this metric is marked in yellow in the console.
+	// *   **healthy**: The coordinator node connection usage is less than 90%. In this case, this metric is marked in green in the console.
+	//
+	// >  The coordinator node connection usage is the maximum connection usage of the coordinator node.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of coordinator node connection usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus) String() string {
@@ -7040,8 +8812,16 @@ func (s *DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus) SetVa
 }
 
 type DescribeHealthStatusResponseBodyStatusNodeMasterStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The health status of the coordinator node. Valid values:
+	//
+	// *   **critical**: The primary or standby coordinator node is unavailable. In this case, this metric is marked in red in the console.
+	// *   **healthy**: Both the primary and standby coordinator nodes are available. In this case, this metric is marked in green in the console.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of coordinator node health status. Valid values:
+	//
+	// *   **1**: healthy
+	// *   **0**: critical
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusNodeMasterStatus) String() string {
@@ -7063,8 +8843,18 @@ func (s *DescribeHealthStatusResponseBodyStatusNodeMasterStatus) SetValue(v floa
 }
 
 type DescribeHealthStatusResponseBodyStatusNodeSegmentConnectionStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The connection health status of compute nodes. Valid values:
+	//
+	// *   **critical**: The compute node connection usage is greater than or equal to 95%. In this case, this metric is marked in red in the console.
+	// *   **warning**: The compute node connection usage is greater than or equal to 90% and less than 95%. In this case, this metric is marked in yellow in the console.
+	// *   **healthy**: The compute node connection usage is less than 90%. In this case, this metric is marked in green in the console.
+	//
+	// >  The compute node connection usage is the maximum connection usage among all compute nodes.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of maximum compute node connection usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusNodeSegmentConnectionStatus) String() string {
@@ -7086,8 +8876,18 @@ func (s *DescribeHealthStatusResponseBodyStatusNodeSegmentConnectionStatus) SetV
 }
 
 type DescribeHealthStatusResponseBodyStatusNodeSegmentDiskStatus struct {
-	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The storage status of compute nodes. Valid values:
+	//
+	// *   **critical**: The compute node storage usage is greater than or equal to 90%. In this case, this metric is marked in red in the console and the instance is locked.
+	// *   **warning**: The compute node storage usage is greater than or equal to 80% and less than 90%. In this case, this metric is marked in yellow in the console.
+	// *   **healthy**: The compute node storage usage is less than 80%. In this case, this metric is marked in green in the console.
+	//
+	// >  The compute node storage usage is the maximum storage usage among all compute nodes.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metric value of maximum compute node storage usage.
+	//
+	// Unit: %.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyStatusNodeSegmentDiskStatus) String() string {
@@ -7138,11 +8938,24 @@ func (s *DescribeHealthStatusResponse) SetBody(v *DescribeHealthStatusResponseBo
 }
 
 type DescribeLogBackupsRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeLogBackupsRequest) String() string {
@@ -7179,12 +8992,18 @@ func (s *DescribeLogBackupsRequest) SetStartTime(v string) *DescribeLogBackupsRe
 }
 
 type DescribeLogBackupsResponseBody struct {
-	Items        []*DescribeLogBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber   *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalLogSize *int64                                 `json:"TotalLogSize,omitempty" xml:"TotalLogSize,omitempty"`
+	// Details of the backup sets.
+	Items []*DescribeLogBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of backup sets on the current page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total size of logs in the time range. Unit: bytes.
+	TotalLogSize *int64 `json:"TotalLogSize,omitempty" xml:"TotalLogSize,omitempty"`
 }
 
 func (s DescribeLogBackupsResponseBody) String() string {
@@ -7226,12 +9045,18 @@ func (s *DescribeLogBackupsResponseBody) SetTotalLogSize(v int64) *DescribeLogBa
 }
 
 type DescribeLogBackupsResponseBodyItems struct {
-	BackupId     *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the backup set.
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the coordinator node.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	LogFileName  *string `json:"LogFileName,omitempty" xml:"LogFileName,omitempty"`
-	LogFileSize  *int64  `json:"LogFileSize,omitempty" xml:"LogFileSize,omitempty"`
-	LogTime      *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	SegmentName  *string `json:"SegmentName,omitempty" xml:"SegmentName,omitempty"`
+	// The name of the log backup set that is stored in Object Storage Service (OSS).
+	LogFileName *string `json:"LogFileName,omitempty" xml:"LogFileName,omitempty"`
+	// The size of the log backup set. Unit: bytes.
+	LogFileSize *int64 `json:"LogFileSize,omitempty" xml:"LogFileSize,omitempty"`
+	// The timestamp of the log.
+	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The name of the compute node.
+	SegmentName *string `json:"SegmentName,omitempty" xml:"SegmentName,omitempty"`
 }
 
 func (s DescribeLogBackupsResponseBodyItems) String() string {
@@ -7302,9 +9127,12 @@ func (s *DescribeLogBackupsResponse) SetBody(v *DescribeLogBackupsResponseBody) 
 }
 
 type DescribeModifyParameterLogRequest struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range to query.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeModifyParameterLogRequest) String() string {
@@ -7331,8 +9159,10 @@ func (s *DescribeModifyParameterLogRequest) SetStartTime(v string) *DescribeModi
 }
 
 type DescribeModifyParameterLogResponseBody struct {
+	// Details about the parameter reconfiguration logs.
 	Changelogs []*DescribeModifyParameterLogResponseBodyChangelogs `json:"Changelogs,omitempty" xml:"Changelogs,omitempty" type:"Repeated"`
-	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeModifyParameterLogResponseBody) String() string {
@@ -7354,10 +9184,15 @@ func (s *DescribeModifyParameterLogResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeModifyParameterLogResponseBodyChangelogs struct {
-	EffectTime           *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterValid       *string `json:"ParameterValid,omitempty" xml:"ParameterValid,omitempty"`
-	ParameterValueAfter  *string `json:"ParameterValueAfter,omitempty" xml:"ParameterValueAfter,omitempty"`
+	// The time when the configuration change takes effect.
+	EffectTime *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// Indicates whether the configuration change takes effect.
+	ParameterValid *string `json:"ParameterValid,omitempty" xml:"ParameterValid,omitempty"`
+	// The original value of the parameter.
+	ParameterValueAfter *string `json:"ParameterValueAfter,omitempty" xml:"ParameterValueAfter,omitempty"`
+	// The new value of the parameter.
 	ParameterValueBefore *string `json:"ParameterValueBefore,omitempty" xml:"ParameterValueBefore,omitempty"`
 }
 
@@ -7423,7 +9258,139 @@ func (s *DescribeModifyParameterLogResponse) SetBody(v *DescribeModifyParameterL
 	return s
 }
 
+type DescribeNamespaceRequest struct {
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespaceRequest) SetDBInstanceId(v string) *DescribeNamespaceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeNamespaceRequest) SetManagerAccount(v string) *DescribeNamespaceRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *DescribeNamespaceRequest) SetManagerAccountPassword(v string) *DescribeNamespaceRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *DescribeNamespaceRequest) SetNamespace(v string) *DescribeNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeNamespaceRequest) SetOwnerId(v int64) *DescribeNamespaceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeNamespaceRequest) SetRegionId(v string) *DescribeNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeNamespaceResponseBody struct {
+	DBInstanceId  *string            `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Message       *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace     *string            `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceInfo map[string]*string `json:"NamespaceInfo,omitempty" xml:"NamespaceInfo,omitempty"`
+	RegionId      *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId     *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status        *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespaceResponseBody) SetDBInstanceId(v string) *DescribeNamespaceResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeNamespaceResponseBody) SetMessage(v string) *DescribeNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeNamespaceResponseBody) SetNamespace(v string) *DescribeNamespaceResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeNamespaceResponseBody) SetNamespaceInfo(v map[string]*string) *DescribeNamespaceResponseBody {
+	s.NamespaceInfo = v
+	return s
+}
+
+func (s *DescribeNamespaceResponseBody) SetRegionId(v string) *DescribeNamespaceResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeNamespaceResponseBody) SetRequestId(v string) *DescribeNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNamespaceResponseBody) SetStatus(v string) *DescribeNamespaceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeNamespaceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespaceResponse) SetHeaders(v map[string]*string) *DescribeNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNamespaceResponse) SetStatusCode(v int32) *DescribeNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNamespaceResponse) SetBody(v *DescribeNamespaceResponseBody) *DescribeNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeParametersRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -7441,8 +9408,10 @@ func (s *DescribeParametersRequest) SetDBInstanceId(v string) *DescribeParameter
 }
 
 type DescribeParametersResponseBody struct {
+	// Details of the parameters.
 	Parameters []*DescribeParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeParametersResponseBody) String() string {
@@ -7464,13 +9433,26 @@ func (s *DescribeParametersResponseBody) SetRequestId(v string) *DescribeParamet
 }
 
 type DescribeParametersResponseBodyParameters struct {
-	CurrentValue         *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
+	// The current value of the parameter.
+	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
+	// Indicates whether a restart is required for parameter modifications to take effect. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	ForceRestartInstance *string `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
-	IsChangeableConfig   *string `json:"IsChangeableConfig,omitempty" xml:"IsChangeableConfig,omitempty"`
-	OptionalRange        *string `json:"OptionalRange,omitempty" xml:"OptionalRange,omitempty"`
+	// Indicates whether the parameter can be modified. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IsChangeableConfig *string `json:"IsChangeableConfig,omitempty" xml:"IsChangeableConfig,omitempty"`
+	// The valid values of the parameter.
+	OptionalRange *string `json:"OptionalRange,omitempty" xml:"OptionalRange,omitempty"`
+	// The description of the parameter.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The default value of the parameter.
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyParameters) String() string {
@@ -7546,15 +9528,26 @@ func (s *DescribeParametersResponse) SetBody(v *DescribeParametersResponseBody) 
 }
 
 type DescribeRdsVSwitchsRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of virtual private cloud (VPC).
+	//
+	// > *   You can call the [DescribeRdsVpcs](~~208327~~) operation to query the available VPCs.
+	// > *   This parameter is required.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRdsVSwitchsRequest) String() string {
@@ -7611,7 +9604,9 @@ func (s *DescribeRdsVSwitchsRequest) SetZoneId(v string) *DescribeRdsVSwitchsReq
 }
 
 type DescribeRdsVSwitchsResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the vSwitches.
 	VSwitches *DescribeRdsVSwitchsResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
@@ -7634,6 +9629,7 @@ func (s *DescribeRdsVSwitchsResponseBody) SetVSwitches(v *DescribeRdsVSwitchsRes
 }
 
 type DescribeRdsVSwitchsResponseBodyVSwitches struct {
+	// Details of the vSwitch.
 	VSwitch []*DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch `json:"VSwitch,omitempty" xml:"VSwitch,omitempty" type:"Repeated"`
 }
 
@@ -7651,17 +9647,30 @@ func (s *DescribeRdsVSwitchsResponseBodyVSwitches) SetVSwitch(v []*DescribeRdsVS
 }
 
 type DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch struct {
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Bid         *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the vSwitch.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	IzNo        *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	RegionNo    *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// vSwitch ID。
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the zone.
+	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The state of the vSwitch. If **Available** is returned, the vSwitch is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -7758,14 +9767,19 @@ func (s *DescribeRdsVSwitchsResponse) SetBody(v *DescribeRdsVSwitchsResponseBody
 }
 
 type DescribeRdsVpcsRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRdsVpcsRequest) String() string {
@@ -7817,8 +9831,10 @@ func (s *DescribeRdsVpcsRequest) SetZoneId(v string) *DescribeRdsVpcsRequest {
 }
 
 type DescribeRdsVpcsResponseBody struct {
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Vpcs      *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the VPCs.
+	Vpcs *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
 }
 
 func (s DescribeRdsVpcsResponseBody) String() string {
@@ -7840,6 +9856,7 @@ func (s *DescribeRdsVpcsResponseBody) SetVpcs(v *DescribeRdsVpcsResponseBodyVpcs
 }
 
 type DescribeRdsVpcsResponseBodyVpcs struct {
+	// Details of the VPC.
 	Vpc []*DescribeRdsVpcsResponseBodyVpcsVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
 }
 
@@ -7857,17 +9874,30 @@ func (s *DescribeRdsVpcsResponseBodyVpcs) SetVpc(v []*DescribeRdsVpcsResponseBod
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpc struct {
-	AliUid      *string                                       `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Bid         *string                                       `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	CidrBlock   *string                                       `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	GmtCreate   *string                                       `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified *string                                       `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IsDefault   *bool                                         `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	RegionNo    *string                                       `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	Status      *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchs    []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
-	// VPC ID。
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the VPC.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the VPC is the default VPC. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the region.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The state of the VPC. If **Available** is returned, the VPC is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Details of the vSwitches.
+	VSwitchs []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	// The ID of VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
@@ -7935,14 +9965,24 @@ func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetVpcName(v string) *DescribeRdsVp
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The CIDR block of the vSwitch.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// An invalid parameter. It is no longer returned when you call this operation.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	IzNo        *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// vSwitch ID。
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the zone to which the vSwitch belongs.
+	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The state of the vSwitch. If **Available** is returned, the vSwitch is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -8024,6 +10064,9 @@ func (s *DescribeRdsVpcsResponse) SetBody(v *DescribeRdsVpcsResponseBody) *Descr
 }
 
 type DescribeRegionsRequest struct {
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -8041,8 +10084,10 @@ func (s *DescribeRegionsRequest) SetRegion(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the regions.
+	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -8081,8 +10126,10 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	RegionId *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Zones    *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Details of the zones.
+	Zones *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -8121,8 +10168,13 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) SetZone(v []*DescribeReg
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
-	VpcEnabled *bool   `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Indicates whether Virtual Private Cloud (VPC) is available.
+	//
+	// *   **true**: VPC is available.
+	// *   **false**: VPC is unavailable.
+	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegionZonesZone) String() string {
@@ -8172,370 +10224,50 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 	return s
 }
 
-type DescribeResourceUsageRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-}
-
-func (s DescribeResourceUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeResourceUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeResourceUsageRequest) SetDBInstanceId(v string) *DescribeResourceUsageRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-type DescribeResourceUsageResponseBody struct {
-	BackupSize   *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DataSize     *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	DiskUsed     *int64  `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
-	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	LogSize      *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeResourceUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeResourceUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeResourceUsageResponseBody) SetBackupSize(v int64) *DescribeResourceUsageResponseBody {
-	s.BackupSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetDBInstanceId(v string) *DescribeResourceUsageResponseBody {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetDataSize(v int64) *DescribeResourceUsageResponseBody {
-	s.DataSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetDiskUsed(v int64) *DescribeResourceUsageResponseBody {
-	s.DiskUsed = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetEngine(v string) *DescribeResourceUsageResponseBody {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetLogSize(v int64) *DescribeResourceUsageResponseBody {
-	s.LogSize = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponseBody) SetRequestId(v string) *DescribeResourceUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeResourceUsageResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeResourceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeResourceUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeResourceUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeResourceUsageResponse) SetHeaders(v map[string]*string) *DescribeResourceUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeResourceUsageResponse) SetStatusCode(v int32) *DescribeResourceUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeResourceUsageResponse) SetBody(v *DescribeResourceUsageResponseBody) *DescribeResourceUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLCollectorPolicyRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-}
-
-func (s DescribeSQLCollectorPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLCollectorPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLCollectorPolicyRequest) SetDBInstanceId(v string) *DescribeSQLCollectorPolicyRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-type DescribeSQLCollectorPolicyResponseBody struct {
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
-}
-
-func (s DescribeSQLCollectorPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLCollectorPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLCollectorPolicyResponseBody) SetRequestId(v string) *DescribeSQLCollectorPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLCollectorPolicyResponseBody) SetSQLCollectorStatus(v string) *DescribeSQLCollectorPolicyResponseBody {
-	s.SQLCollectorStatus = &v
-	return s
-}
-
-type DescribeSQLCollectorPolicyResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSQLCollectorPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLCollectorPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLCollectorPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLCollectorPolicyResponse) SetHeaders(v map[string]*string) *DescribeSQLCollectorPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLCollectorPolicyResponse) SetStatusCode(v int32) *DescribeSQLCollectorPolicyResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSQLCollectorPolicyResponse) SetBody(v *DescribeSQLCollectorPolicyResponseBody) *DescribeSQLCollectorPolicyResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLLogByQueryIdRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	QueryId      *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-}
-
-func (s DescribeSQLLogByQueryIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogByQueryIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogByQueryIdRequest) SetDBInstanceId(v string) *DescribeSQLLogByQueryIdRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdRequest) SetQueryId(v string) *DescribeSQLLogByQueryIdRequest {
-	s.QueryId = &v
-	return s
-}
-
-type DescribeSQLLogByQueryIdResponseBody struct {
-	Items     []*DescribeSQLLogByQueryIdResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeSQLLogByQueryIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogByQueryIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBody) SetItems(v []*DescribeSQLLogByQueryIdResponseBodyItems) *DescribeSQLLogByQueryIdResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBody) SetRequestId(v string) *DescribeSQLLogByQueryIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeSQLLogByQueryIdResponseBodyItems struct {
-	AccountName          *string   `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBName               *string   `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DBRole               *string   `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	ExecuteCost          *float32  `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState         *string   `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	OperationClass       *string   `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationExecuteTime *string   `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
-	OperationType        *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	QueryId              *string   `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	ReturnRowCounts      *int64    `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLPlan              *string   `json:"SQLPlan,omitempty" xml:"SQLPlan,omitempty"`
-	SQLText              *string   `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	ScanRowCounts        *int64    `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
-	SliceIds             []*string `json:"SliceIds,omitempty" xml:"SliceIds,omitempty" type:"Repeated"`
-	SourceIP             *string   `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	SourcePort           *int32    `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-}
-
-func (s DescribeSQLLogByQueryIdResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogByQueryIdResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetAccountName(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetDBName(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetDBRole(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.DBRole = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetExecuteCost(v float32) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.ExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetExecuteState(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.ExecuteState = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetOperationClass(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.OperationClass = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetOperationExecuteTime(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.OperationExecuteTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetOperationType(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.OperationType = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetQueryId(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.QueryId = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetReturnRowCounts(v int64) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.ReturnRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetSQLPlan(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.SQLPlan = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetSQLText(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetScanRowCounts(v int64) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.ScanRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetSliceIds(v []*string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.SliceIds = v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetSourceIP(v string) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.SourceIP = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponseBodyItems) SetSourcePort(v int32) *DescribeSQLLogByQueryIdResponseBodyItems {
-	s.SourcePort = &v
-	return s
-}
-
-type DescribeSQLLogByQueryIdResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSQLLogByQueryIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogByQueryIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogByQueryIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogByQueryIdResponse) SetHeaders(v map[string]*string) *DescribeSQLLogByQueryIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponse) SetStatusCode(v int32) *DescribeSQLLogByQueryIdResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSQLLogByQueryIdResponse) SetBody(v *DescribeSQLLogByQueryIdResponseBody) *DescribeSQLLogByQueryIdResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeSQLLogCountRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecuteCost    *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState   *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time. Their interval cannot be more than seven days.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The execution duration of the query. Unit: seconds.
+	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	// The maximum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
+	// The minimum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
 	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
+	// The type of the query language. Valid values:
+	//
+	// *   **DQL**
+	// *   **DML**
+	// *   **DDL**
+	// *   **DCL**
+	// *   **TCL**
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationType  *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	QueryKeywords  *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
-	SourceIP       *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The type of the SQL statement.
+	//
+	// > *   If the **OperationClass** parameter is specified, the **OperationType** value must belong to the corresponding query language. For example, if the **OperationClass** value is **DQL**, the **OperationType** value must be a **DQL** SQL statement such as **SELECT**.
+	// >*   If the **OperationClass** parameter is not specified, the **OperationType** value can be an SQL statement of all query languages.
+	// >*   If neither of the **OperationClass** and **OperationType** parameters is specified, all types of SQL statements are returned.
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The keywords used to query.
+	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
+	// The source IP address.
+	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The username that is used to log on to the database.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeSQLLogCountRequest) String() string {
@@ -8612,11 +10344,16 @@ func (s *DescribeSQLLogCountRequest) SetUser(v string) *DescribeSQLLogCountReque
 }
 
 type DescribeSQLLogCountResponseBody struct {
-	DBClusterId *string                                 `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EndTime     *string                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Items       []*DescribeSQLLogCountResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime   *string                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the instance.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the query.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Details of the audit logs of the instance.
+	Items []*DescribeSQLLogCountResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSQLLogCountResponseBody) String() string {
@@ -8653,7 +10390,9 @@ func (s *DescribeSQLLogCountResponseBody) SetStartTime(v string) *DescribeSQLLog
 }
 
 type DescribeSQLLogCountResponseBodyItems struct {
-	Name   *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the table.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Details of the audit logs.
 	Series []*DescribeSQLLogCountResponseBodyItemsSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
 }
 
@@ -8676,6 +10415,7 @@ func (s *DescribeSQLLogCountResponseBodyItems) SetSeries(v []*DescribeSQLLogCoun
 }
 
 type DescribeSQLLogCountResponseBodyItemsSeries struct {
+	// Details of the audit logs.
 	Values []*DescribeSQLLogCountResponseBodyItemsSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -8693,6 +10433,7 @@ func (s *DescribeSQLLogCountResponseBodyItemsSeries) SetValues(v []*DescribeSQLL
 }
 
 type DescribeSQLLogCountResponseBodyItemsSeriesValues struct {
+	// The time when the audit logs were generated and the number of the audit logs.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 
@@ -8738,847 +10479,60 @@ func (s *DescribeSQLLogCountResponse) SetBody(v *DescribeSQLLogCountResponseBody
 	return s
 }
 
-type DescribeSQLLogFilesRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s DescribeSQLLogFilesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogFilesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogFilesRequest) SetDBInstanceId(v string) *DescribeSQLLogFilesRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesRequest) SetFileName(v string) *DescribeSQLLogFilesRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesRequest) SetPageNumber(v int32) *DescribeSQLLogFilesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesRequest) SetPageSize(v int32) *DescribeSQLLogFilesRequest {
-	s.PageSize = &v
-	return s
-}
-
-type DescribeSQLLogFilesResponseBody struct {
-	Items            *DescribeSQLLogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber       *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                                `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-}
-
-func (s DescribeSQLLogFilesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogFilesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogFilesResponseBody) SetItems(v *DescribeSQLLogFilesResponseBodyItems) *DescribeSQLLogFilesResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBody) SetPageNumber(v int32) *DescribeSQLLogFilesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBody) SetPageRecordCount(v int32) *DescribeSQLLogFilesResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBody) SetRequestId(v string) *DescribeSQLLogFilesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogFilesResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-type DescribeSQLLogFilesResponseBodyItems struct {
-	LogFile []*DescribeSQLLogFilesResponseBodyItemsLogFile `json:"LogFile,omitempty" xml:"LogFile,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSQLLogFilesResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogFilesResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogFilesResponseBodyItems) SetLogFile(v []*DescribeSQLLogFilesResponseBodyItemsLogFile) *DescribeSQLLogFilesResponseBodyItems {
-	s.LogFile = v
-	return s
-}
-
-type DescribeSQLLogFilesResponseBodyItemsLogFile struct {
-	FileID         *string `json:"FileID,omitempty" xml:"FileID,omitempty"`
-	LogDownloadURL *string `json:"LogDownloadURL,omitempty" xml:"LogDownloadURL,omitempty"`
-	LogEndTime     *string `json:"LogEndTime,omitempty" xml:"LogEndTime,omitempty"`
-	LogSize        *string `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	LogStartTime   *string `json:"LogStartTime,omitempty" xml:"LogStartTime,omitempty"`
-	LogStatus      *string `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
-}
-
-func (s DescribeSQLLogFilesResponseBodyItemsLogFile) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogFilesResponseBodyItemsLogFile) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogFilesResponseBodyItemsLogFile) SetFileID(v string) *DescribeSQLLogFilesResponseBodyItemsLogFile {
-	s.FileID = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBodyItemsLogFile) SetLogDownloadURL(v string) *DescribeSQLLogFilesResponseBodyItemsLogFile {
-	s.LogDownloadURL = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBodyItemsLogFile) SetLogEndTime(v string) *DescribeSQLLogFilesResponseBodyItemsLogFile {
-	s.LogEndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBodyItemsLogFile) SetLogSize(v string) *DescribeSQLLogFilesResponseBodyItemsLogFile {
-	s.LogSize = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBodyItemsLogFile) SetLogStartTime(v string) *DescribeSQLLogFilesResponseBodyItemsLogFile {
-	s.LogStartTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponseBodyItemsLogFile) SetLogStatus(v string) *DescribeSQLLogFilesResponseBodyItemsLogFile {
-	s.LogStatus = &v
-	return s
-}
-
-type DescribeSQLLogFilesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSQLLogFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogFilesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogFilesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogFilesResponse) SetHeaders(v map[string]*string) *DescribeSQLLogFilesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponse) SetStatusCode(v int32) *DescribeSQLLogFilesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSQLLogFilesResponse) SetBody(v *DescribeSQLLogFilesResponseBody) *DescribeSQLLogFilesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLLogRecordsRequest struct {
-	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database      *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Form          *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User          *string `json:"User,omitempty" xml:"User,omitempty"`
-}
-
-func (s DescribeSQLLogRecordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetDBInstanceId(v string) *DescribeSQLLogRecordsRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetDatabase(v string) *DescribeSQLLogRecordsRequest {
-	s.Database = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetEndTime(v string) *DescribeSQLLogRecordsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetForm(v string) *DescribeSQLLogRecordsRequest {
-	s.Form = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetPageNumber(v int32) *DescribeSQLLogRecordsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetPageSize(v int32) *DescribeSQLLogRecordsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetQueryKeywords(v string) *DescribeSQLLogRecordsRequest {
-	s.QueryKeywords = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetStartTime(v string) *DescribeSQLLogRecordsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetUser(v string) *DescribeSQLLogRecordsRequest {
-	s.User = &v
-	return s
-}
-
-type DescribeSQLLogRecordsResponseBody struct {
-	Items            *DescribeSQLLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber       *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                  `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                                  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-}
-
-func (s DescribeSQLLogRecordsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetItems(v *DescribeSQLLogRecordsResponseBodyItems) *DescribeSQLLogRecordsResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetPageNumber(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetPageRecordCount(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetRequestId(v string) *DescribeSQLLogRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetTotalRecordCount(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-type DescribeSQLLogRecordsResponseBodyItems struct {
-	SQLRecord []*DescribeSQLLogRecordsResponseBodyItemsSQLRecord `json:"SQLRecord,omitempty" xml:"SQLRecord,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItems) SetSQLRecord(v []*DescribeSQLLogRecordsResponseBodyItemsSQLRecord) *DescribeSQLLogRecordsResponseBodyItems {
-	s.SQLRecord = v
-	return s
-}
-
-type DescribeSQLLogRecordsResponseBodyItemsSQLRecord struct {
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBName              *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	ExecuteTime         *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	HostAddress         *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	ReturnRowCounts     *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLText             *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	ThreadID            *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
-	TotalExecutionTimes *int64  `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItemsSQLRecord) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItemsSQLRecord) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetAccountName(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetDBName(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetExecuteTime(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.ExecuteTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetHostAddress(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.HostAddress = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetReturnRowCounts(v int64) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.ReturnRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetSQLText(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetThreadID(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.ThreadID = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLRecord) SetTotalExecutionTimes(v int64) *DescribeSQLLogRecordsResponseBodyItemsSQLRecord {
-	s.TotalExecutionTimes = &v
-	return s
-}
-
-type DescribeSQLLogRecordsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSQLLogRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogRecordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponse) SetHeaders(v map[string]*string) *DescribeSQLLogRecordsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponse) SetStatusCode(v int32) *DescribeSQLLogRecordsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponse) SetBody(v *DescribeSQLLogRecordsResponseBody) *DescribeSQLLogRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLLogsRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecuteCost    *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState   *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
-	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
-	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationType  *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryKeywords  *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
-	SourceIP       *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User           *string `json:"User,omitempty" xml:"User,omitempty"`
-}
-
-func (s DescribeSQLLogsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsRequest) SetDBInstanceId(v string) *DescribeSQLLogsRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetDatabase(v string) *DescribeSQLLogsRequest {
-	s.Database = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetEndTime(v string) *DescribeSQLLogsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetExecuteCost(v string) *DescribeSQLLogsRequest {
-	s.ExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetExecuteState(v string) *DescribeSQLLogsRequest {
-	s.ExecuteState = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetMaxExecuteCost(v string) *DescribeSQLLogsRequest {
-	s.MaxExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetMinExecuteCost(v string) *DescribeSQLLogsRequest {
-	s.MinExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetOperationClass(v string) *DescribeSQLLogsRequest {
-	s.OperationClass = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetOperationType(v string) *DescribeSQLLogsRequest {
-	s.OperationType = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetPageNumber(v int32) *DescribeSQLLogsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetPageSize(v int32) *DescribeSQLLogsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetQueryKeywords(v string) *DescribeSQLLogsRequest {
-	s.QueryKeywords = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetSourceIP(v string) *DescribeSQLLogsRequest {
-	s.SourceIP = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetStartTime(v string) *DescribeSQLLogsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogsRequest) SetUser(v string) *DescribeSQLLogsRequest {
-	s.User = &v
-	return s
-}
-
-type DescribeSQLLogsResponseBody struct {
-	Items           []*DescribeSQLLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber      *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount *int32                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId       *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeSQLLogsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsResponseBody) SetItems(v []*DescribeSQLLogsResponseBodyItems) *DescribeSQLLogsResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBody) SetPageNumber(v int32) *DescribeSQLLogsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBody) SetPageRecordCount(v int32) *DescribeSQLLogsResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBody) SetRequestId(v string) *DescribeSQLLogsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeSQLLogsResponseBodyItems struct {
-	AccountName          *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBName               *string  `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DBRole               *string  `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	ExecuteCost          *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState         *string  `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	OperationClass       *string  `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationExecuteTime *string  `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
-	OperationType        *string  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	ReturnRowCounts      *int64   `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLPlan              *string  `json:"SQLPlan,omitempty" xml:"SQLPlan,omitempty"`
-	SQLText              *string  `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	ScanRowCounts        *int64   `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
-	SourceIP             *string  `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	SourcePort           *int32   `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-}
-
-func (s DescribeSQLLogsResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetAccountName(v string) *DescribeSQLLogsResponseBodyItems {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetDBName(v string) *DescribeSQLLogsResponseBodyItems {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetDBRole(v string) *DescribeSQLLogsResponseBodyItems {
-	s.DBRole = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetExecuteCost(v float32) *DescribeSQLLogsResponseBodyItems {
-	s.ExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetExecuteState(v string) *DescribeSQLLogsResponseBodyItems {
-	s.ExecuteState = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetOperationClass(v string) *DescribeSQLLogsResponseBodyItems {
-	s.OperationClass = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetOperationExecuteTime(v string) *DescribeSQLLogsResponseBodyItems {
-	s.OperationExecuteTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetOperationType(v string) *DescribeSQLLogsResponseBodyItems {
-	s.OperationType = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetReturnRowCounts(v int64) *DescribeSQLLogsResponseBodyItems {
-	s.ReturnRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetSQLPlan(v string) *DescribeSQLLogsResponseBodyItems {
-	s.SQLPlan = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetSQLText(v string) *DescribeSQLLogsResponseBodyItems {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetScanRowCounts(v int64) *DescribeSQLLogsResponseBodyItems {
-	s.ScanRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetSourceIP(v string) *DescribeSQLLogsResponseBodyItems {
-	s.SourceIP = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponseBodyItems) SetSourcePort(v int32) *DescribeSQLLogsResponseBodyItems {
-	s.SourcePort = &v
-	return s
-}
-
-type DescribeSQLLogsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSQLLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsResponse) SetHeaders(v map[string]*string) *DescribeSQLLogsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogsResponse) SetStatusCode(v int32) *DescribeSQLLogsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSQLLogsResponse) SetBody(v *DescribeSQLLogsResponseBody) *DescribeSQLLogsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLLogsOnSliceRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ExecuteState   *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
-	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryId        *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	SliceId        *string `json:"SliceId,omitempty" xml:"SliceId,omitempty"`
-}
-
-func (s DescribeSQLLogsOnSliceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsOnSliceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetDBInstanceId(v string) *DescribeSQLLogsOnSliceRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetExecuteState(v string) *DescribeSQLLogsOnSliceRequest {
-	s.ExecuteState = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetMaxExecuteCost(v string) *DescribeSQLLogsOnSliceRequest {
-	s.MaxExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetMinExecuteCost(v string) *DescribeSQLLogsOnSliceRequest {
-	s.MinExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetPageNumber(v int32) *DescribeSQLLogsOnSliceRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetPageSize(v int32) *DescribeSQLLogsOnSliceRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetQueryId(v string) *DescribeSQLLogsOnSliceRequest {
-	s.QueryId = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceRequest) SetSliceId(v string) *DescribeSQLLogsOnSliceRequest {
-	s.SliceId = &v
-	return s
-}
-
-type DescribeSQLLogsOnSliceResponseBody struct {
-	PageNumber      *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount *int32                                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SliceLogItems   []*DescribeSQLLogsOnSliceResponseBodySliceLogItems `json:"SliceLogItems,omitempty" xml:"SliceLogItems,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSQLLogsOnSliceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsOnSliceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBody) SetPageNumber(v int32) *DescribeSQLLogsOnSliceResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBody) SetPageRecordCount(v int32) *DescribeSQLLogsOnSliceResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBody) SetRequestId(v string) *DescribeSQLLogsOnSliceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBody) SetSliceLogItems(v []*DescribeSQLLogsOnSliceResponseBodySliceLogItems) *DescribeSQLLogsOnSliceResponseBody {
-	s.SliceLogItems = v
-	return s
-}
-
-type DescribeSQLLogsOnSliceResponseBodySliceLogItems struct {
-	ExecuteCost             *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteStatus           *string  `json:"ExecuteStatus,omitempty" xml:"ExecuteStatus,omitempty"`
-	OperationExecuteEndTime *string  `json:"OperationExecuteEndTime,omitempty" xml:"OperationExecuteEndTime,omitempty"`
-	OperationExecuteTime    *string  `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
-	PeakMemory              *float32 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
-	ReturnRowCounts         *int64   `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// Segment ID。
-	SegmentId   *string `json:"SegmentId,omitempty" xml:"SegmentId,omitempty"`
-	SegmentName *string `json:"SegmentName,omitempty" xml:"SegmentName,omitempty"`
-}
-
-func (s DescribeSQLLogsOnSliceResponseBodySliceLogItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsOnSliceResponseBodySliceLogItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetExecuteCost(v float32) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.ExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetExecuteStatus(v string) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.ExecuteStatus = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetOperationExecuteEndTime(v string) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.OperationExecuteEndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetOperationExecuteTime(v string) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.OperationExecuteTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetPeakMemory(v float32) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.PeakMemory = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetReturnRowCounts(v int64) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.ReturnRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetSegmentId(v string) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.SegmentId = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponseBodySliceLogItems) SetSegmentName(v string) *DescribeSQLLogsOnSliceResponseBodySliceLogItems {
-	s.SegmentName = &v
-	return s
-}
-
-type DescribeSQLLogsOnSliceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSQLLogsOnSliceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogsOnSliceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogsOnSliceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogsOnSliceResponse) SetHeaders(v map[string]*string) *DescribeSQLLogsOnSliceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponse) SetStatusCode(v int32) *DescribeSQLLogsOnSliceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSQLLogsOnSliceResponse) SetBody(v *DescribeSQLLogsOnSliceResponseBody) *DescribeSQLLogsOnSliceResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeSQLLogsV2Request struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database        *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecuteCost     *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState    *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	MaxExecuteCost  *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
-	MinExecuteCost  *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
-	OperationClass  *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationType   *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryKeywords   *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time. The interval cannot be more than 24 hours.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The execution duration of the query. Unit: seconds.
+	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	// The maximum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
+	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
+	// The minimum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
+	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
+	// The type of the query language. Valid values:
+	//
+	// *   **DQL**
+	// *   **DML**
+	// *   **DDL**
+	// *   **DCL**
+	// *   **TCL**
+	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
+	// The type of the SQL statement.
+	//
+	// > *   If the **OperationClass** parameter is specified, the **OperationType** value must belong to the corresponding query language. For example, if the **OperationClass** value is **DQL**, the **OperationType** value must be a **DQL** SQL statement such as **SELECT**.
+	// >*   If the **OperationClass** parameter is not specified, the **OperationType** value can be an SQL statement of all query languages.
+	// >*   If neither of the **OperationClass** and **OperationType** parameters is specified, all types of SQL statements are returned.
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The number of entries to return on each page.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of the page to return. The maximum value is 200.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keywords of the SQL statement.
+	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIP        *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User            *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The source IP address.
+	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	// The beginning of the time range. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeSQLLogsV2Request) String() string {
@@ -9675,10 +10629,14 @@ func (s *DescribeSQLLogsV2Request) SetUser(v string) *DescribeSQLLogsV2Request {
 }
 
 type DescribeSQLLogsV2ResponseBody struct {
-	Items           []*DescribeSQLLogsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber      *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the SQL logs.
+	Items []*DescribeSQLLogsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSQLLogsV2ResponseBody) String() string {
@@ -9710,19 +10668,35 @@ func (s *DescribeSQLLogsV2ResponseBody) SetRequestId(v string) *DescribeSQLLogsV
 }
 
 type DescribeSQLLogsV2ResponseBodyItems struct {
-	AccountName          *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBName               *string  `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DBRole               *string  `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	ExecuteCost          *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState         *string  `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	OperationClass       *string  `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationExecuteTime *string  `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
-	OperationType        *string  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	ReturnRowCounts      *int64   `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLText              *string  `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	ScanRowCounts        *int64   `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
-	SourceIP             *string  `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	SourcePort           *int32   `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// The database account that executes the SQL statement.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The name of the database.
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The role of the database.
+	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
+	// The execution duration of the query.
+	ExecuteCost *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	// The type of the query language.
+	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
+	// The time when the SQL statement was executed.
+	OperationExecuteTime *string `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
+	// The type of the SQL statement.
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The number of entries returned.
+	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	// The SQL statement.
+	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	// The number of entries scanned.
+	ScanRowCounts *int64 `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
+	// The source IP address.
+	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	// The number of the source port.
+	SourcePort *int32 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
 }
 
 func (s DescribeSQLLogsV2ResponseBodyItems) String() string {
@@ -9828,6 +10802,9 @@ func (s *DescribeSQLLogsV2Response) SetBody(v *DescribeSQLLogsV2ResponseBody) *D
 }
 
 type DescribeSampleDataRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -9851,10 +10828,17 @@ func (s *DescribeSampleDataRequest) SetOwnerId(v int64) *DescribeSampleDataReque
 }
 
 type DescribeSampleDataResponseBody struct {
-	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HasSampleData *bool   `json:"HasSampleData,omitempty" xml:"HasSampleData,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message returned if an error occurs. This message does not affect the execution of the operation.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Indicates whether a sample dataset is loaded to the instance. Valid values:
+	//
+	// *   **true**: A sample dataset is loaded.
+	// *   **false**: No sample dataset is loaded.
+	HasSampleData *bool `json:"HasSampleData,omitempty" xml:"HasSampleData,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSampleDataResponseBody) String() string {
@@ -9914,647 +10898,10 @@ func (s *DescribeSampleDataResponse) SetBody(v *DescribeSampleDataResponseBody) 
 	return s
 }
 
-type DescribeSlowLogRecordsRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// SQL ID。
-	SQLId     *int64  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeSlowLogRecordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowLogRecordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowLogRecordsRequest) SetDBInstanceId(v string) *DescribeSlowLogRecordsRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsRequest) SetDBName(v string) *DescribeSlowLogRecordsRequest {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsRequest) SetEndTime(v string) *DescribeSlowLogRecordsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsRequest) SetPageNumber(v int32) *DescribeSlowLogRecordsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsRequest) SetPageSize(v int32) *DescribeSlowLogRecordsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsRequest) SetSQLId(v int64) *DescribeSlowLogRecordsRequest {
-	s.SQLId = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsRequest) SetStartTime(v string) *DescribeSlowLogRecordsRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeSlowLogRecordsResponseBody struct {
-	Engine           *string                                  `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	Items            *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber       *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-}
-
-func (s DescribeSlowLogRecordsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowLogRecordsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetEngine(v string) *DescribeSlowLogRecordsResponseBody {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetItems(v *DescribeSlowLogRecordsResponseBodyItems) *DescribeSlowLogRecordsResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetPageNumber(v int32) *DescribeSlowLogRecordsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetPageRecordCount(v int32) *DescribeSlowLogRecordsResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetRequestId(v string) *DescribeSlowLogRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBody) SetTotalRecordCount(v int32) *DescribeSlowLogRecordsResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-type DescribeSlowLogRecordsResponseBodyItems struct {
-	SQLSlowRecord []*DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord `json:"SQLSlowRecord,omitempty" xml:"SQLSlowRecord,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSlowLogRecordsResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowLogRecordsResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItems) SetSQLSlowRecord(v []*DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) *DescribeSlowLogRecordsResponseBodyItems {
-	s.SQLSlowRecord = v
-	return s
-}
-
-type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
-	DBName             *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
-	HostAddress        *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	LockTimes          *int64  `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
-	ParseRowCounts     *int64  `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
-	QueryTimes         *int64  `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
-	ReturnRowCounts    *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLText            *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-}
-
-func (s DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetDBName(v string) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetExecutionStartTime(v string) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.ExecutionStartTime = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetHostAddress(v string) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.HostAddress = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetLockTimes(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.LockTimes = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetParseRowCounts(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.ParseRowCounts = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetQueryTimes(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.QueryTimes = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetReturnRowCounts(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.ReturnRowCounts = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetSQLText(v string) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
-	s.SQLText = &v
-	return s
-}
-
-type DescribeSlowLogRecordsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlowLogRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSlowLogRecordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowLogRecordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowLogRecordsResponse) SetHeaders(v map[string]*string) *DescribeSlowLogRecordsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponse) SetStatusCode(v int32) *DescribeSlowLogRecordsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSlowLogRecordsResponse) SetBody(v *DescribeSlowLogRecordsResponseBody) *DescribeSlowLogRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSlowSQLLogsRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecuteState   *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
-	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
-	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationType  *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryKeywords  *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
-	SourceIP       *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User           *string `json:"User,omitempty" xml:"User,omitempty"`
-}
-
-func (s DescribeSlowSQLLogsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowSQLLogsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetDBInstanceId(v string) *DescribeSlowSQLLogsRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetDatabase(v string) *DescribeSlowSQLLogsRequest {
-	s.Database = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetEndTime(v string) *DescribeSlowSQLLogsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetExecuteState(v string) *DescribeSlowSQLLogsRequest {
-	s.ExecuteState = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetMaxExecuteCost(v string) *DescribeSlowSQLLogsRequest {
-	s.MaxExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetMinExecuteCost(v string) *DescribeSlowSQLLogsRequest {
-	s.MinExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetOperationClass(v string) *DescribeSlowSQLLogsRequest {
-	s.OperationClass = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetOperationType(v string) *DescribeSlowSQLLogsRequest {
-	s.OperationType = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetPageNumber(v int32) *DescribeSlowSQLLogsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetPageSize(v int32) *DescribeSlowSQLLogsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetQueryKeywords(v string) *DescribeSlowSQLLogsRequest {
-	s.QueryKeywords = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetSourceIP(v string) *DescribeSlowSQLLogsRequest {
-	s.SourceIP = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetStartTime(v string) *DescribeSlowSQLLogsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsRequest) SetUser(v string) *DescribeSlowSQLLogsRequest {
-	s.User = &v
-	return s
-}
-
-type DescribeSlowSQLLogsResponseBody struct {
-	Items           []*DescribeSlowSQLLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber      *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount *int32                                  `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeSlowSQLLogsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowSQLLogsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowSQLLogsResponseBody) SetItems(v []*DescribeSlowSQLLogsResponseBodyItems) *DescribeSlowSQLLogsResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBody) SetPageNumber(v int32) *DescribeSlowSQLLogsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBody) SetPageRecordCount(v int32) *DescribeSlowSQLLogsResponseBody {
-	s.PageRecordCount = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBody) SetRequestId(v string) *DescribeSlowSQLLogsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeSlowSQLLogsResponseBodyItems struct {
-	AccountName          *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBName               *string  `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DBRole               *string  `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	ExecuteCost          *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState         *string  `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	OperationClass       *string  `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationExecuteTime *string  `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
-	OperationType        *string  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	QueryId              *string  `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	ReturnRowCounts      *int64   `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLPlan              *string  `json:"SQLPlan,omitempty" xml:"SQLPlan,omitempty"`
-	SQLText              *string  `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	ScanRowCounts        *int64   `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
-	SourceIP             *string  `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	SourcePort           *int32   `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-}
-
-func (s DescribeSlowSQLLogsResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowSQLLogsResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetAccountName(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetDBName(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetDBRole(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.DBRole = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetExecuteCost(v float32) *DescribeSlowSQLLogsResponseBodyItems {
-	s.ExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetExecuteState(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.ExecuteState = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetOperationClass(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.OperationClass = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetOperationExecuteTime(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.OperationExecuteTime = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetOperationType(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.OperationType = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetQueryId(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.QueryId = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetReturnRowCounts(v int64) *DescribeSlowSQLLogsResponseBodyItems {
-	s.ReturnRowCounts = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetSQLPlan(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.SQLPlan = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetSQLText(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetScanRowCounts(v int64) *DescribeSlowSQLLogsResponseBodyItems {
-	s.ScanRowCounts = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetSourceIP(v string) *DescribeSlowSQLLogsResponseBodyItems {
-	s.SourceIP = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponseBodyItems) SetSourcePort(v int32) *DescribeSlowSQLLogsResponseBodyItems {
-	s.SourcePort = &v
-	return s
-}
-
-type DescribeSlowSQLLogsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlowSQLLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSlowSQLLogsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSlowSQLLogsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSlowSQLLogsResponse) SetHeaders(v map[string]*string) *DescribeSlowSQLLogsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponse) SetStatusCode(v int32) *DescribeSlowSQLLogsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSlowSQLLogsResponse) SetBody(v *DescribeSlowSQLLogsResponseBody) *DescribeSlowSQLLogsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSpecificationRequest struct {
-	CpuCores     *int32  `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StorageType  *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	TotalNodeNum *int32  `json:"TotalNodeNum,omitempty" xml:"TotalNodeNum,omitempty"`
-}
-
-func (s DescribeSpecificationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSpecificationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSpecificationRequest) SetCpuCores(v int32) *DescribeSpecificationRequest {
-	s.CpuCores = &v
-	return s
-}
-
-func (s *DescribeSpecificationRequest) SetDBInstanceId(v string) *DescribeSpecificationRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSpecificationRequest) SetOwnerId(v int64) *DescribeSpecificationRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSpecificationRequest) SetStorageType(v string) *DescribeSpecificationRequest {
-	s.StorageType = &v
-	return s
-}
-
-func (s *DescribeSpecificationRequest) SetTotalNodeNum(v int32) *DescribeSpecificationRequest {
-	s.TotalNodeNum = &v
-	return s
-}
-
-type DescribeSpecificationResponseBody struct {
-	DBInstanceClass      []*DescribeSpecificationResponseBodyDBInstanceClass      `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty" type:"Repeated"`
-	DBInstanceGroupCount []*DescribeSpecificationResponseBodyDBInstanceGroupCount `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty" type:"Repeated"`
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StorageNotice        []*DescribeSpecificationResponseBodyStorageNotice        `json:"StorageNotice,omitempty" xml:"StorageNotice,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSpecificationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSpecificationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSpecificationResponseBody) SetDBInstanceClass(v []*DescribeSpecificationResponseBodyDBInstanceClass) *DescribeSpecificationResponseBody {
-	s.DBInstanceClass = v
-	return s
-}
-
-func (s *DescribeSpecificationResponseBody) SetDBInstanceGroupCount(v []*DescribeSpecificationResponseBodyDBInstanceGroupCount) *DescribeSpecificationResponseBody {
-	s.DBInstanceGroupCount = v
-	return s
-}
-
-func (s *DescribeSpecificationResponseBody) SetRequestId(v string) *DescribeSpecificationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSpecificationResponseBody) SetStorageNotice(v []*DescribeSpecificationResponseBodyStorageNotice) *DescribeSpecificationResponseBody {
-	s.StorageNotice = v
-	return s
-}
-
-type DescribeSpecificationResponseBodyDBInstanceClass struct {
-	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeSpecificationResponseBodyDBInstanceClass) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSpecificationResponseBodyDBInstanceClass) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSpecificationResponseBodyDBInstanceClass) SetText(v string) *DescribeSpecificationResponseBodyDBInstanceClass {
-	s.Text = &v
-	return s
-}
-
-func (s *DescribeSpecificationResponseBodyDBInstanceClass) SetValue(v string) *DescribeSpecificationResponseBodyDBInstanceClass {
-	s.Value = &v
-	return s
-}
-
-type DescribeSpecificationResponseBodyDBInstanceGroupCount struct {
-	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeSpecificationResponseBodyDBInstanceGroupCount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSpecificationResponseBodyDBInstanceGroupCount) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSpecificationResponseBodyDBInstanceGroupCount) SetText(v string) *DescribeSpecificationResponseBodyDBInstanceGroupCount {
-	s.Text = &v
-	return s
-}
-
-func (s *DescribeSpecificationResponseBodyDBInstanceGroupCount) SetValue(v string) *DescribeSpecificationResponseBodyDBInstanceGroupCount {
-	s.Value = &v
-	return s
-}
-
-type DescribeSpecificationResponseBodyStorageNotice struct {
-	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeSpecificationResponseBodyStorageNotice) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSpecificationResponseBodyStorageNotice) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSpecificationResponseBodyStorageNotice) SetText(v string) *DescribeSpecificationResponseBodyStorageNotice {
-	s.Text = &v
-	return s
-}
-
-func (s *DescribeSpecificationResponseBodyStorageNotice) SetValue(v string) *DescribeSpecificationResponseBodyStorageNotice {
-	s.Value = &v
-	return s
-}
-
-type DescribeSpecificationResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSpecificationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSpecificationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSpecificationResponse) SetHeaders(v map[string]*string) *DescribeSpecificationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSpecificationResponse) SetStatusCode(v int32) *DescribeSpecificationResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSpecificationResponse) SetBody(v *DescribeSpecificationResponseBody) *DescribeSpecificationResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeSupportFeaturesRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -10578,8 +10925,14 @@ func (s *DescribeSupportFeaturesRequest) SetOwnerId(v int64) *DescribeSupportFea
 }
 
 type DescribeSupportFeaturesResponseBody struct {
-	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The features supported by the instance. Valid values:
+	//
+	// *   sample_data: sample dataset. For more information, see [Sample dataset](~~452278~~).
+	// *   diagnose_and_optimize: diagnostics and optimization. For more information, see [Diagnostics and optimization](~~323453~~).
 	SupportFeatureList *string `json:"SupportFeatureList,omitempty" xml:"SupportFeatureList,omitempty"`
 }
 
@@ -10636,13 +10989,18 @@ func (s *DescribeSupportFeaturesResponse) SetBody(v *DescribeSupportFeaturesResp
 }
 
 type DescribeTagsRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The type of the resource. Set the value to **instance**.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeTagsRequest) String() string {
@@ -10689,8 +11047,10 @@ func (s *DescribeTagsRequest) SetResourceType(v string) *DescribeTagsRequest {
 }
 
 type DescribeTagsResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the tags.
+	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTagsResponseBody) String() string {
@@ -10712,7 +11072,9 @@ func (s *DescribeTagsResponseBody) SetTags(v []*DescribeTagsResponseBodyTags) *D
 }
 
 type DescribeTagsResponseBodyTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -10764,9 +11126,12 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 }
 
 type DescribeUserEncryptionKeyListRequest struct {
+	// The number of the page to return. Default value: 1.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of KMS keys to return on each page. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeUserEncryptionKeyListRequest) String() string {
@@ -10793,8 +11158,10 @@ func (s *DescribeUserEncryptionKeyListRequest) SetRegionId(v string) *DescribeUs
 }
 
 type DescribeUserEncryptionKeyListResponseBody struct {
-	KmsKeys   []*DescribeUserEncryptionKeyListResponseBodyKmsKeys `json:"KmsKeys,omitempty" xml:"KmsKeys,omitempty" type:"Repeated"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the KMS keys.
+	KmsKeys []*DescribeUserEncryptionKeyListResponseBodyKmsKeys `json:"KmsKeys,omitempty" xml:"KmsKeys,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUserEncryptionKeyListResponseBody) String() string {
@@ -10816,6 +11183,7 @@ func (s *DescribeUserEncryptionKeyListResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeUserEncryptionKeyListResponseBodyKmsKeys struct {
+	// The ID of the KMS key.
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
@@ -10862,9 +11230,16 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 }
 
 type DescribeWaitingSQLInfoRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	PID          *string `json:"PID,omitempty" xml:"PID,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The ID of the process that uniquely identifies the query.
+	//
+	// >  You can call the [DescribeWaitingSQLRecords](~~461735~~) operation to obtain the process IDs of lock-waiting queries.
+	PID *string `json:"PID,omitempty" xml:"PID,omitempty"`
 }
 
 func (s DescribeWaitingSQLInfoRequest) String() string {
@@ -10891,9 +11266,12 @@ func (s *DescribeWaitingSQLInfoRequest) SetPID(v string) *DescribeWaitingSQLInfo
 }
 
 type DescribeWaitingSQLInfoResponseBody struct {
-	Database  *string                                    `json:"Database,omitempty" xml:"Database,omitempty"`
-	Items     []*DescribeWaitingSQLInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// Details of the lock-waiting query.
+	Items []*DescribeWaitingSQLInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeWaitingSQLInfoResponseBody) String() string {
@@ -10920,16 +11298,26 @@ func (s *DescribeWaitingSQLInfoResponseBody) SetRequestId(v string) *DescribeWai
 }
 
 type DescribeWaitingSQLInfoResponseBodyItems struct {
-	Application          *string `json:"Application,omitempty" xml:"Application,omitempty"`
+	// The application that sent the query.
+	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
+	// The application that sent the blocking query.
 	BlockedByApplication *string `json:"BlockedByApplication,omitempty" xml:"BlockedByApplication,omitempty"`
-	BlockedByPID         *string `json:"BlockedByPID,omitempty" xml:"BlockedByPID,omitempty"`
-	BlockedBySQLStmt     *string `json:"BlockedBySQLStmt,omitempty" xml:"BlockedBySQLStmt,omitempty"`
-	BlockedByUser        *string `json:"BlockedByUser,omitempty" xml:"BlockedByUser,omitempty"`
-	GrantLocks           *string `json:"GrantLocks,omitempty" xml:"GrantLocks,omitempty"`
-	NotGrantLocks        *string `json:"NotGrantLocks,omitempty" xml:"NotGrantLocks,omitempty"`
-	PID                  *string `json:"PID,omitempty" xml:"PID,omitempty"`
-	SQLStmt              *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
-	User                 *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The process ID of the blocking query.
+	BlockedByPID *string `json:"BlockedByPID,omitempty" xml:"BlockedByPID,omitempty"`
+	// The SQL statement of the blocking query.
+	BlockedBySQLStmt *string `json:"BlockedBySQLStmt,omitempty" xml:"BlockedBySQLStmt,omitempty"`
+	// The database account that is used to perform the blocking query.
+	BlockedByUser *string `json:"BlockedByUser,omitempty" xml:"BlockedByUser,omitempty"`
+	// The authorized locks.
+	GrantLocks *string `json:"GrantLocks,omitempty" xml:"GrantLocks,omitempty"`
+	// The unauthorized locks.
+	NotGrantLocks *string `json:"NotGrantLocks,omitempty" xml:"NotGrantLocks,omitempty"`
+	// The ID of the process that uniquely identifies the query.
+	PID *string `json:"PID,omitempty" xml:"PID,omitempty"`
+	// The SQL statement of the query.
+	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	// The database account that is used to perform the query.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeWaitingSQLInfoResponseBodyItems) String() string {
@@ -11020,16 +11408,44 @@ func (s *DescribeWaitingSQLInfoResponse) SetBody(v *DescribeWaitingSQLInfoRespon
 }
 
 type DescribeWaitingSQLRecordsRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// If this parameter is not specified, all lock diagnostics records that are generated after the query start time are returned. If the query start time is not specified either, all lock diagnostics records are returned.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The keyword used to filter queries.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The field used to sort lock diagnostics records and the sorting order.
+	//
+	// Default value: `{"Field":"StartTime","Type":"Desc"}`, which indicates that lock diagnostics records are sorted by the start time in descending order. No other values are supported.
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The filter condition on queries. Valid values:
+	//
+	// *   `{"Type":"maxCost","Value":"10"}`: filters the top 10 longest-waiting queries.
+	// *   `{"Type":"status","Value":"LockWaiting"}`: filters lock-waiting queries.
+	// *   `{"Type":"status","Value":"ResourceWaiting"}`: filters resource-waiting queries.
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// If this parameter is not specified, all lock diagnostics records that are generated before the query end time are returned. If the query end time is not specified either, all lock diagnostics records are returned.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the database account. If this parameter is not specified, the lock diagnostics records of all database accounts are queried.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeWaitingSQLRecordsRequest) String() string {
@@ -11091,10 +11507,14 @@ func (s *DescribeWaitingSQLRecordsRequest) SetUser(v string) *DescribeWaitingSQL
 }
 
 type DescribeWaitingSQLRecordsResponseBody struct {
-	Items      []*DescribeWaitingSQLRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of lock diagnostics records.
+	Items []*DescribeWaitingSQLRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeWaitingSQLRecordsResponseBody) String() string {
@@ -11126,14 +11546,25 @@ func (s *DescribeWaitingSQLRecordsResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeWaitingSQLRecordsResponseBodyItems struct {
-	Database    *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	PID         *string `json:"PID,omitempty" xml:"PID,omitempty"`
-	SQLStmt     *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
-	SessionID   *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	User        *string `json:"User,omitempty" xml:"User,omitempty"`
-	WaitingTime *int64  `json:"WaitingTime,omitempty" xml:"WaitingTime,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The ID of the process that uniquely identifies the query.
+	PID *string `json:"PID,omitempty" xml:"PID,omitempty"`
+	// The SQL statement of the query.
+	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	// The ID of the session that contains the query.
+	SessionID *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	// The start time of the query. This value is in the timestamp format. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The waiting state of the query. Valid values:
+	//
+	// *   **LockWaiting**
+	// *   **ResourceWaiting**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The database account that is used to perform the query.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The waiting period of the query. Unit: milliseconds.
+	WaitingTime *int64 `json:"WaitingTime,omitempty" xml:"WaitingTime,omitempty"`
 }
 
 func (s DescribeWaitingSQLRecordsResponseBodyItems) String() string {
@@ -11214,14 +11645,37 @@ func (s *DescribeWaitingSQLRecordsResponse) SetBody(v *DescribeWaitingSQLRecords
 }
 
 type DownloadDiagnosisRecordsRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database        *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	QueryCondition  *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the file that contains the query diagnostic information. Valid values:
+	//
+	// *   **zh**: simplified Chinese
+	// *   **en**: English
+	// *   **ja**: Japanese
+	// *   **zh-tw**: traditional Chinese
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The filter condition on queries. The value is in the JSON format. Valid values:
+	//
+	// *   `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
+	// *   `{"Type":"status","Value":"finished"}`: filters completed queries.
+	// *   `{"Type":"status","Value":"running"}`: filters running queries.
+	// *   `{"Type":"cost","Max":"200"}`: filters the queries that consume less than 200 milliseconds.
+	// *   `{"Type":"cost","Min":"200","Max":"60000"}`: filters the queries that consume 200 milliseconds or more and less than 1 minute.
+	// *   `{"Type":"cost","Min":"60000"}`: filters the queries that consume 1 minute or more.
+	// *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
+	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User            *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DownloadDiagnosisRecordsRequest) String() string {
@@ -11273,9 +11727,12 @@ func (s *DownloadDiagnosisRecordsRequest) SetUser(v string) *DownloadDiagnosisRe
 }
 
 type DownloadDiagnosisRecordsResponseBody struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DownloadId   *string `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the download task.
+	DownloadId *string `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DownloadDiagnosisRecordsResponseBody) String() string {
@@ -11330,16 +11787,592 @@ func (s *DownloadDiagnosisRecordsResponse) SetBody(v *DownloadDiagnosisRecordsRe
 	return s
 }
 
+type DownloadSQLLogsRecordsRequest struct {
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteCost    *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	ExecuteState   *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
+	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
+	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
+	OperationType  *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryKeywords  *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
+	SourceIP       *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DownloadSQLLogsRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadSQLLogsRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetDBInstanceId(v string) *DownloadSQLLogsRecordsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetDatabase(v string) *DownloadSQLLogsRecordsRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetEndTime(v string) *DownloadSQLLogsRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetExecuteCost(v string) *DownloadSQLLogsRecordsRequest {
+	s.ExecuteCost = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetExecuteState(v string) *DownloadSQLLogsRecordsRequest {
+	s.ExecuteState = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetLang(v string) *DownloadSQLLogsRecordsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetMaxExecuteCost(v string) *DownloadSQLLogsRecordsRequest {
+	s.MaxExecuteCost = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetMinExecuteCost(v string) *DownloadSQLLogsRecordsRequest {
+	s.MinExecuteCost = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetOperationClass(v string) *DownloadSQLLogsRecordsRequest {
+	s.OperationClass = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetOperationType(v string) *DownloadSQLLogsRecordsRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetPageNumber(v int32) *DownloadSQLLogsRecordsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetPageSize(v int32) *DownloadSQLLogsRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetQueryKeywords(v string) *DownloadSQLLogsRecordsRequest {
+	s.QueryKeywords = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetSourceIP(v string) *DownloadSQLLogsRecordsRequest {
+	s.SourceIP = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetStartTime(v string) *DownloadSQLLogsRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsRequest) SetUser(v string) *DownloadSQLLogsRecordsRequest {
+	s.User = &v
+	return s
+}
+
+type DownloadSQLLogsRecordsResponseBody struct {
+	DownloadId *int64  `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DownloadSQLLogsRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadSQLLogsRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadSQLLogsRecordsResponseBody) SetDownloadId(v int64) *DownloadSQLLogsRecordsResponseBody {
+	s.DownloadId = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsResponseBody) SetRequestId(v string) *DownloadSQLLogsRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DownloadSQLLogsRecordsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadSQLLogsRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DownloadSQLLogsRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadSQLLogsRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadSQLLogsRecordsResponse) SetHeaders(v map[string]*string) *DownloadSQLLogsRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsResponse) SetStatusCode(v int32) *DownloadSQLLogsRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DownloadSQLLogsRecordsResponse) SetBody(v *DownloadSQLLogsRecordsResponseBody) *DownloadSQLLogsRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type GrantCollectionRequest struct {
+	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	GrantToNamespace       *string `json:"GrantToNamespace,omitempty" xml:"GrantToNamespace,omitempty"`
+	GrantType              *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GrantCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantCollectionRequest) SetCollection(v string) *GrantCollectionRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetDBInstanceId(v string) *GrantCollectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetGrantToNamespace(v string) *GrantCollectionRequest {
+	s.GrantToNamespace = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetGrantType(v string) *GrantCollectionRequest {
+	s.GrantType = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetManagerAccount(v string) *GrantCollectionRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetManagerAccountPassword(v string) *GrantCollectionRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetNamespace(v string) *GrantCollectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetOwnerId(v int64) *GrantCollectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GrantCollectionRequest) SetRegionId(v string) *GrantCollectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GrantCollectionResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GrantCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantCollectionResponseBody) SetMessage(v string) *GrantCollectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GrantCollectionResponseBody) SetRequestId(v string) *GrantCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GrantCollectionResponseBody) SetStatus(v string) *GrantCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GrantCollectionResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GrantCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantCollectionResponse) SetHeaders(v map[string]*string) *GrantCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantCollectionResponse) SetStatusCode(v int32) *GrantCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantCollectionResponse) SetBody(v *GrantCollectionResponseBody) *GrantCollectionResponse {
+	s.Body = v
+	return s
+}
+
+type ListCollectionsRequest struct {
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCollectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionsRequest) SetDBInstanceId(v string) *ListCollectionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListCollectionsRequest) SetNamespace(v string) *ListCollectionsRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListCollectionsRequest) SetNamespacePassword(v string) *ListCollectionsRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *ListCollectionsRequest) SetOwnerId(v int64) *ListCollectionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListCollectionsRequest) SetRegionId(v string) *ListCollectionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCollectionsResponseBody struct {
+	Collections  *ListCollectionsResponseBodyCollections `json:"Collections,omitempty" xml:"Collections,omitempty" type:"Struct"`
+	Count        *int32                                  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DBInstanceId *string                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace    *string                                 `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId     *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCollectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionsResponseBody) SetCollections(v *ListCollectionsResponseBodyCollections) *ListCollectionsResponseBody {
+	s.Collections = v
+	return s
+}
+
+func (s *ListCollectionsResponseBody) SetCount(v int32) *ListCollectionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListCollectionsResponseBody) SetDBInstanceId(v string) *ListCollectionsResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListCollectionsResponseBody) SetMessage(v string) *ListCollectionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCollectionsResponseBody) SetNamespace(v string) *ListCollectionsResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListCollectionsResponseBody) SetRegionId(v string) *ListCollectionsResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListCollectionsResponseBody) SetRequestId(v string) *ListCollectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCollectionsResponseBody) SetStatus(v string) *ListCollectionsResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListCollectionsResponseBodyCollections struct {
+	Collection []*string `json:"Collection,omitempty" xml:"Collection,omitempty" type:"Repeated"`
+}
+
+func (s ListCollectionsResponseBodyCollections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionsResponseBodyCollections) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionsResponseBodyCollections) SetCollection(v []*string) *ListCollectionsResponseBodyCollections {
+	s.Collection = v
+	return s
+}
+
+type ListCollectionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCollectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCollectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionsResponse) SetHeaders(v map[string]*string) *ListCollectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCollectionsResponse) SetStatusCode(v int32) *ListCollectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListCollectionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListNamespacesRequest struct {
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListNamespacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesRequest) SetDBInstanceId(v string) *ListNamespacesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetManagerAccount(v string) *ListNamespacesRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetManagerAccountPassword(v string) *ListNamespacesRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetOwnerId(v int64) *ListNamespacesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetRegionId(v string) *ListNamespacesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListNamespacesResponseBody struct {
+	Count        *int32                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	DBInstanceId *string                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Message      *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespaces   *ListNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Struct"`
+	RegionId     *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListNamespacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponseBody) SetCount(v int32) *ListNamespacesResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBody) SetDBInstanceId(v string) *ListNamespacesResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBody) SetMessage(v string) *ListNamespacesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBody) SetNamespaces(v *ListNamespacesResponseBodyNamespaces) *ListNamespacesResponseBody {
+	s.Namespaces = v
+	return s
+}
+
+func (s *ListNamespacesResponseBody) SetRegionId(v string) *ListNamespacesResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBody) SetRequestId(v string) *ListNamespacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBody) SetStatus(v string) *ListNamespacesResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListNamespacesResponseBodyNamespaces struct {
+	Namespace []*string `json:"Namespace,omitempty" xml:"Namespace,omitempty" type:"Repeated"`
+}
+
+func (s ListNamespacesResponseBodyNamespaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponseBodyNamespaces) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponseBodyNamespaces) SetNamespace(v []*string) *ListNamespacesResponseBodyNamespaces {
+	s.Namespace = v
+	return s
+}
+
+type ListNamespacesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNamespacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponse) SetHeaders(v map[string]*string) *ListNamespacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNamespacesResponse) SetStatusCode(v int32) *ListNamespacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNamespacesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
-	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The token used to perform the next query.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of instance N. Valid values of N: 1 to 50.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The storage mode of the instance. Valid values:
+	//
+	// *   `instance`: reserved storage mode
+	// *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -11396,7 +12429,15 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N. The key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+	//
+	// You can use `Tag.N.Key and Tag.N.Value` to query AnalyticDB for PostgreSQL instances to which specific tags are bound.
+	//
+	// *   If you specify only `Tag.N.Key`, the instances whose tags contain the specified tag keys are returned.
+	// *   If you specify only `Tag.N.Value`, `InvalidParameter.TagValue` is returned.
+	// *   If you specify multiple tag key-value pairs at a time, the instances to which all the specified tags are bound are returned.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N. The value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11419,8 +12460,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token used to perform the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the instances and tags, including the instance IDs, instance modes, and tag key-value pairs.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -11465,10 +12509,14 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the instance.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The storage mode of the instance.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -11529,9 +12577,19 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyAccountDescriptionRequest struct {
+	// The description of the account. The description must meet the following requirements:
+	//
+	// *   The description must start with a letter.
+	// *   The description can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The description cannot start with `http://` or `https://`.
+	// *   The description must be 2 to 256 characters in length.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database account.
+	//
+	// > You can call the [DescribeAccounts](~~~~) operation to query the information about database accounts in a cluster, including the database account name.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s ModifyAccountDescriptionRequest) String() string {
@@ -11558,6 +12616,7 @@ func (s *ModifyAccountDescriptionRequest) SetDBInstanceId(v string) *ModifyAccou
 }
 
 type ModifyAccountDescriptionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11604,12 +12663,38 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 }
 
 type ModifyBackupPolicyRequest struct {
-	BackupRetentionPeriod *int32  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EnableRecoveryPoint   *bool   `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
+	// The number of days for which data backup files are retained. Default value: 7. Maximum value: 7. Valid values: 1 to 7.
+	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to enable automatic point-in-time backup.
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: true.
+	EnableRecoveryPoint *bool `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
+	// The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
+	//
+	// *   Monday
+	// *   Tuesday
+	// *   Wednesday
+	// *   Thursday
+	// *   Friday
+	// *   Saturday
+	// *   Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime   *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	RecoveryPointPeriod   *string `json:"RecoveryPointPeriod,omitempty" xml:"RecoveryPointPeriod,omitempty"`
+	// The backup window. Specify the backup window in the HH:mmZ-HH:mmZ format. The backup window must be in UTC. Default value: 00:00-01:00.
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The frequency of point-in-time backup.
+	//
+	// *   1: per hour
+	// *   2: per 2 hours
+	// *   4: per 4 hours
+	// *   8: per 8 hours
+	//
+	// Default value: 8.
+	RecoveryPointPeriod *string `json:"RecoveryPointPeriod,omitempty" xml:"RecoveryPointPeriod,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequest) String() string {
@@ -11651,6 +12736,7 @@ func (s *ModifyBackupPolicyRequest) SetRecoveryPointPeriod(v string) *ModifyBack
 }
 
 type ModifyBackupPolicyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11696,80 +12782,134 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 	return s
 }
 
-type ModifyDBInstanceConnectionModeRequest struct {
-	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+type ModifyDBInstanceConfigRequest struct {
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The wait period for the instance that has no traffic to become idle. Minimum value: 60. Default value: 600. Unit: seconds.
+	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The threshold of computing resources. Valid values: 8 to 32. Unit: AnalyticDB Compute Units (ACUs).
+	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 }
 
-func (s ModifyDBInstanceConnectionModeRequest) String() string {
+func (s ModifyDBInstanceConfigRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyDBInstanceConnectionModeRequest) GoString() string {
+func (s ModifyDBInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDBInstanceConnectionModeRequest) SetConnectionMode(v string) *ModifyDBInstanceConnectionModeRequest {
-	s.ConnectionMode = &v
+func (s *ModifyDBInstanceConfigRequest) SetDBInstanceDescription(v string) *ModifyDBInstanceConfigRequest {
+	s.DBInstanceDescription = &v
 	return s
 }
 
-func (s *ModifyDBInstanceConnectionModeRequest) SetDBInstanceId(v string) *ModifyDBInstanceConnectionModeRequest {
+func (s *ModifyDBInstanceConfigRequest) SetDBInstanceId(v string) *ModifyDBInstanceConfigRequest {
 	s.DBInstanceId = &v
 	return s
 }
 
-type ModifyDBInstanceConnectionModeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+func (s *ModifyDBInstanceConfigRequest) SetIdleTime(v int32) *ModifyDBInstanceConfigRequest {
+	s.IdleTime = &v
+	return s
 }
 
-func (s ModifyDBInstanceConnectionModeResponseBody) String() string {
+func (s *ModifyDBInstanceConfigRequest) SetResourceGroupId(v string) *ModifyDBInstanceConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetServerlessResource(v int32) *ModifyDBInstanceConfigRequest {
+	s.ServerlessResource = &v
+	return s
+}
+
+type ModifyDBInstanceConfigResponseBody struct {
+	// The ID of the instance.
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The error message returned if the operation fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the operation. Valid values:
+	//
+	// *   **0**: The operation failed.
+	// *   **1**: The operation is successful.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyDBInstanceConfigResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyDBInstanceConnectionModeResponseBody) GoString() string {
+func (s ModifyDBInstanceConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDBInstanceConnectionModeResponseBody) SetRequestId(v string) *ModifyDBInstanceConnectionModeResponseBody {
+func (s *ModifyDBInstanceConfigResponseBody) SetDbInstanceId(v string) *ModifyDBInstanceConfigResponseBody {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigResponseBody) SetErrorMessage(v string) *ModifyDBInstanceConfigResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigResponseBody) SetRequestId(v string) *ModifyDBInstanceConfigResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ModifyDBInstanceConnectionModeResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDBInstanceConnectionModeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *ModifyDBInstanceConfigResponseBody) SetStatus(v bool) *ModifyDBInstanceConfigResponseBody {
+	s.Status = &v
+	return s
 }
 
-func (s ModifyDBInstanceConnectionModeResponse) String() string {
+type ModifyDBInstanceConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDBInstanceConfigResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyDBInstanceConnectionModeResponse) GoString() string {
+func (s ModifyDBInstanceConfigResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDBInstanceConnectionModeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceConnectionModeResponse {
+func (s *ModifyDBInstanceConfigResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceConfigResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ModifyDBInstanceConnectionModeResponse) SetStatusCode(v int32) *ModifyDBInstanceConnectionModeResponse {
+func (s *ModifyDBInstanceConfigResponse) SetStatusCode(v int32) *ModifyDBInstanceConfigResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *ModifyDBInstanceConnectionModeResponse) SetBody(v *ModifyDBInstanceConnectionModeResponseBody) *ModifyDBInstanceConnectionModeResponse {
+func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigResponseBody) *ModifyDBInstanceConfigResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
-	ConnectionStringPrefix  *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The new endpoint of the instance.
+	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The original endpoint of the instance.
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Port                    *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The new port number of the instance.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringRequest) String() string {
@@ -11801,6 +12941,7 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetPort(v string) *ModifyDBIns
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11847,9 +12988,16 @@ func (s *ModifyDBInstanceConnectionStringResponse) SetBody(v *ModifyDBInstanceCo
 }
 
 type ModifyDBInstanceDescriptionRequest struct {
+	// The description of the instance.
+	//
+	// The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDBInstanceDescriptionRequest) String() string {
@@ -11876,6 +13024,7 @@ func (s *ModifyDBInstanceDescriptionRequest) SetResourceGroupId(v string) *Modif
 }
 
 type ModifyDBInstanceDescriptionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11922,10 +13071,16 @@ func (s *ModifyDBInstanceDescriptionResponse) SetBody(v *ModifyDBInstanceDescrip
 }
 
 type ModifyDBInstanceMaintainTimeRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end time of the maintenance window. The end time must be later than the start time. Specify the time in the HH:mmZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ModifyDBInstanceMaintainTimeRequest) String() string {
@@ -11957,6 +13112,7 @@ func (s *ModifyDBInstanceMaintainTimeRequest) SetStartTime(v string) *ModifyDBIn
 }
 
 type ModifyDBInstanceMaintainTimeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12002,99 +13158,16 @@ func (s *ModifyDBInstanceMaintainTimeResponse) SetBody(v *ModifyDBInstanceMainta
 	return s
 }
 
-type ModifyDBInstanceNetworkTypeRequest struct {
-	DBInstanceId        *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	PrivateIpAddress    *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// VPC ID。
-	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-}
-
-func (s ModifyDBInstanceNetworkTypeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceNetworkTypeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceNetworkTypeRequest) SetDBInstanceId(v string) *ModifyDBInstanceNetworkTypeRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceNetworkTypeRequest) SetInstanceNetworkType(v string) *ModifyDBInstanceNetworkTypeRequest {
-	s.InstanceNetworkType = &v
-	return s
-}
-
-func (s *ModifyDBInstanceNetworkTypeRequest) SetPrivateIpAddress(v string) *ModifyDBInstanceNetworkTypeRequest {
-	s.PrivateIpAddress = &v
-	return s
-}
-
-func (s *ModifyDBInstanceNetworkTypeRequest) SetVPCId(v string) *ModifyDBInstanceNetworkTypeRequest {
-	s.VPCId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceNetworkTypeRequest) SetVSwitchId(v string) *ModifyDBInstanceNetworkTypeRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-type ModifyDBInstanceNetworkTypeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyDBInstanceNetworkTypeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceNetworkTypeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceNetworkTypeResponseBody) SetRequestId(v string) *ModifyDBInstanceNetworkTypeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyDBInstanceNetworkTypeResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDBInstanceNetworkTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyDBInstanceNetworkTypeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceNetworkTypeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceNetworkTypeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceNetworkTypeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyDBInstanceNetworkTypeResponse) SetStatusCode(v int32) *ModifyDBInstanceNetworkTypeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyDBInstanceNetworkTypeResponse) SetBody(v *ModifyDBInstanceNetworkTypeResponseBody) *ModifyDBInstanceNetworkTypeResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyDBInstanceResourceGroupRequest struct {
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	NewResourceGroupId   *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the resource group to which you want to move the instance. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12144,6 +13217,7 @@ func (s *ModifyDBInstanceResourceGroupRequest) SetResourceOwnerId(v int64) *Modi
 }
 
 type ModifyDBInstanceResourceGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12190,9 +13264,16 @@ func (s *ModifyDBInstanceResourceGroupResponse) SetBody(v *ModifyDBInstanceResou
 }
 
 type ModifyDBInstanceSSLRequest struct {
+	// The encrypted endpoint. By default, the wildcards are used for instances that are hosted on ECS instances. This way, the endpoints that can be resolved to the same IP address are encrypted.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	SSLEnabled       *int32  `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The status of SSL encryption. Valid values:
+	//
+	// *   0: disables SSL encryption.
+	// *   1: enables SSL encryption.
+	// *   2: updates SSL encryption.
+	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 }
 
 func (s ModifyDBInstanceSSLRequest) String() string {
@@ -12219,6 +13300,7 @@ func (s *ModifyDBInstanceSSLRequest) SetSSLEnabled(v int32) *ModifyDBInstanceSSL
 }
 
 type ModifyDBInstanceSSLResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12265,9 +13347,19 @@ func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody
 }
 
 type ModifyParametersRequest struct {
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ForceRestartInstance *bool   `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
-	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to forcibly restart the instance. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	ForceRestartInstance *bool `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
+	// The name and value of the parameter to be modified. Specify the parameter in the `<Parameter name>:<Parameter value>` format.
+	//
+	// You can call the [DescribeParameters](~~208310~~) operation to query the parameters that can be modified.
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 
 func (s ModifyParametersRequest) String() string {
@@ -12294,6 +13386,7 @@ func (s *ModifyParametersRequest) SetParameters(v string) *ModifyParametersReque
 }
 
 type ModifyParametersResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12340,7 +13433,12 @@ func (s *ModifyParametersResponse) SetBody(v *ModifyParametersResponseBody) *Mod
 }
 
 type ModifySQLCollectorPolicyRequest struct {
-	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to enable or disable SQL collection.
+	//
+	// *   Enable: enables SQL collection.
+	// *   Disabled: disables SQL collection.
 	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
 }
 
@@ -12363,6 +13461,7 @@ func (s *ModifySQLCollectorPolicyRequest) SetSQLCollectorStatus(v string) *Modif
 }
 
 type ModifySQLCollectorPolicyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12409,11 +13508,30 @@ func (s *ModifySQLCollectorPolicyResponse) SetBody(v *ModifySQLCollectorPolicyRe
 }
 
 type ModifySecurityIpsRequest struct {
+	// The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute does not appear in the console.
 	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
-	DBInstanceIPArrayName      *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
-	DBInstanceId               *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ResourceGroupId            *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityIPList             *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The name of the whitelist. If you do not enter a name, IP addresses are added to the default whitelist.
+	//
+	// >  You can create up to 50 whitelists for an instance.
+	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The method of modification. Valid values:
+	//
+	// *   **Cover**: overwrites the whitelist.
+	// *   **Append**: appends data to the whitelist.
+	// *   **Delete**: deletes the whitelist.
+	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The IP addresses listed in the whitelist. You can add up to 1,000 IP addresses to the whitelist. Separate multiple IP addresses with commas (,). The IP addresses must use one of the following formats:
+	//
+	// *   0.0.0.0/0
+	// *   10.23.12.24. This is a standard IP address.
+	// *   10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
 func (s ModifySecurityIpsRequest) String() string {
@@ -12439,6 +13557,11 @@ func (s *ModifySecurityIpsRequest) SetDBInstanceId(v string) *ModifySecurityIpsR
 	return s
 }
 
+func (s *ModifySecurityIpsRequest) SetModifyMode(v string) *ModifySecurityIpsRequest {
+	s.ModifyMode = &v
+	return s
+}
+
 func (s *ModifySecurityIpsRequest) SetResourceGroupId(v string) *ModifySecurityIpsRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -12450,6 +13573,7 @@ func (s *ModifySecurityIpsRequest) SetSecurityIPList(v string) *ModifySecurityIp
 }
 
 type ModifySecurityIpsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12495,7 +13619,122 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 	return s
 }
 
+type ModifyVectorConfigurationRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to enable vector engine optimization. Valid values:
+	//
+	// *   **enabled**
+	// *   **disabled**
+	//
+	// > *   We recommend that you **do not enable** vector engine optimization in mainstream analysis and real-time data warehousing scenarios.
+	// > *   We recommend that you **enable** vector engine optimization in AI Generated Content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
+}
+
+func (s ModifyVectorConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVectorConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVectorConfigurationRequest) SetDBInstanceId(v string) *ModifyVectorConfigurationRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyVectorConfigurationRequest) SetOwnerId(v int64) *ModifyVectorConfigurationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyVectorConfigurationRequest) SetVectorConfigurationStatus(v string) *ModifyVectorConfigurationRequest {
+	s.VectorConfigurationStatus = &v
+	return s
+}
+
+type ModifyVectorConfigurationResponseBody struct {
+	// The instance ID.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message that is returned.
+	//
+	// This parameter is returned only if the request fails.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyVectorConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVectorConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVectorConfigurationResponseBody) SetDBInstanceId(v string) *ModifyVectorConfigurationResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyVectorConfigurationResponseBody) SetErrorMessage(v string) *ModifyVectorConfigurationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ModifyVectorConfigurationResponseBody) SetRequestId(v string) *ModifyVectorConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyVectorConfigurationResponseBody) SetStatus(v bool) *ModifyVectorConfigurationResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ModifyVectorConfigurationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVectorConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyVectorConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVectorConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVectorConfigurationResponse) SetHeaders(v map[string]*string) *ModifyVectorConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyVectorConfigurationResponse) SetStatusCode(v int32) *ModifyVectorConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyVectorConfigurationResponse) SetBody(v *ModifyVectorConfigurationResponseBody) *ModifyVectorConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type PauseInstanceRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -12519,10 +13758,19 @@ func (s *PauseInstanceRequest) SetOwnerId(v int64) *PauseInstanceRequest {
 }
 
 type PauseInstanceResponseBody struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message returned.
+	//
+	// This parameter is returned only if **false** is returned for the **Status** parameter.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **false**: The request failed.
+	// *   **true**: The request was successful.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PauseInstanceResponseBody) String() string {
@@ -12582,8 +13830,277 @@ func (s *PauseInstanceResponse) SetBody(v *PauseInstanceResponseBody) *PauseInst
 	return s
 }
 
+type QueryCollectionDataRequest struct {
+	Collection        *string    `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content           *string    `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId      *string    `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter            *string    `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Namespace         *string    `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string    `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TopK              *int64     `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	Vector            []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+}
+
+func (s QueryCollectionDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataRequest) SetCollection(v string) *QueryCollectionDataRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetContent(v string) *QueryCollectionDataRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetDBInstanceId(v string) *QueryCollectionDataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetFilter(v string) *QueryCollectionDataRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetNamespace(v string) *QueryCollectionDataRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetNamespacePassword(v string) *QueryCollectionDataRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetOwnerId(v int64) *QueryCollectionDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetRegionId(v string) *QueryCollectionDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetTopK(v int64) *QueryCollectionDataRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetVector(v []*float64) *QueryCollectionDataRequest {
+	s.Vector = v
+	return s
+}
+
+type QueryCollectionDataShrinkRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter            *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TopK              *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	VectorShrink      *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
+}
+
+func (s QueryCollectionDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetCollection(v string) *QueryCollectionDataShrinkRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetContent(v string) *QueryCollectionDataShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetDBInstanceId(v string) *QueryCollectionDataShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetFilter(v string) *QueryCollectionDataShrinkRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetNamespace(v string) *QueryCollectionDataShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetNamespacePassword(v string) *QueryCollectionDataShrinkRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetOwnerId(v int64) *QueryCollectionDataShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetRegionId(v string) *QueryCollectionDataShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetTopK(v int64) *QueryCollectionDataShrinkRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetVectorShrink(v string) *QueryCollectionDataShrinkRequest {
+	s.VectorShrink = &v
+	return s
+}
+
+type QueryCollectionDataResponseBody struct {
+	Matches   *QueryCollectionDataResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryCollectionDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponseBody) SetMatches(v *QueryCollectionDataResponseBodyMatches) *QueryCollectionDataResponseBody {
+	s.Matches = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBody) SetRequestId(v string) *QueryCollectionDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBody) SetStatus(v string) *QueryCollectionDataResponseBody {
+	s.Status = &v
+	return s
+}
+
+type QueryCollectionDataResponseBodyMatches struct {
+	Match []*QueryCollectionDataResponseBodyMatchesMatch `json:"match,omitempty" xml:"match,omitempty" type:"Repeated"`
+}
+
+func (s QueryCollectionDataResponseBodyMatches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataResponseBodyMatches) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponseBodyMatches) SetMatch(v []*QueryCollectionDataResponseBodyMatchesMatch) *QueryCollectionDataResponseBodyMatches {
+	s.Match = v
+	return s
+}
+
+type QueryCollectionDataResponseBodyMatchesMatch struct {
+	Id       *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata map[string]*string                                 `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Values   *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatch) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatch) SetId(v string) *QueryCollectionDataResponseBodyMatchesMatch {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatch) SetMetadata(v map[string]*string) *QueryCollectionDataResponseBodyMatchesMatch {
+	s.Metadata = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatch) SetValues(v *QueryCollectionDataResponseBodyMatchesMatchValues) *QueryCollectionDataResponseBodyMatchesMatch {
+	s.Values = v
+	return s
+}
+
+type QueryCollectionDataResponseBodyMatchesMatchValues struct {
+	Value []*float64 `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchValues) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchValues) SetValue(v []*float64) *QueryCollectionDataResponseBodyMatchesMatchValues {
+	s.Value = v
+	return s
+}
+
+type QueryCollectionDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCollectionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCollectionDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponse) SetHeaders(v map[string]*string) *QueryCollectionDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCollectionDataResponse) SetStatusCode(v int32) *QueryCollectionDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCollectionDataResponse) SetBody(v *QueryCollectionDataResponseBody) *QueryCollectionDataResponse {
+	s.Body = v
+	return s
+}
+
 type RebalanceDBInstanceRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
+	//
+	// The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// For more information, see [How to ensure idempotence](~~134212~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -12606,6 +14123,7 @@ func (s *RebalanceDBInstanceRequest) SetDBInstanceId(v string) *RebalanceDBInsta
 }
 
 type RebalanceDBInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12652,9 +14170,19 @@ func (s *RebalanceDBInstanceResponse) SetBody(v *RebalanceDBInstanceResponseBody
 }
 
 type ReleaseInstancePublicConnectionRequest struct {
-	AddressType             *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The type of the endpoint. Default value: primary. Valid values:
+	//
+	// *   **primary**: primary endpoint.
+	// *   **cluster**: cluster endpoint. This type of endpoints can be created only for instances that have multiple coordinator nodes.
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The public endpoint of the instance.
+	//
+	// You can log on to the AnalyticDB for PostgreSQL console and go to the **Basic Information** page of the instance to view the **public endpoint** in the **Database Connection** section.
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s ReleaseInstancePublicConnectionRequest) String() string {
@@ -12681,6 +14209,7 @@ func (s *ReleaseInstancePublicConnectionRequest) SetDBInstanceId(v string) *Rele
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12727,9 +14256,15 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 }
 
 type ResetAccountPasswordRequest struct {
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID of the instance.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The name of the account.
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Before you call this operation, make sure that the following requirements are met:
+	//
+	// *   The instance is in the running state.
+	// *   The instance is not locked.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s ResetAccountPasswordRequest) String() string {
@@ -12756,6 +14291,7 @@ func (s *ResetAccountPasswordRequest) SetDBInstanceId(v string) *ResetAccountPas
 }
 
 type ResetAccountPasswordResponseBody struct {
+	// The new password for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12802,7 +14338,11 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type RestartDBInstanceRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -12825,6 +14365,7 @@ func (s *RestartDBInstanceRequest) SetDBInstanceId(v string) *RestartDBInstanceR
 }
 
 type RestartDBInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12871,6 +14412,9 @@ func (s *RestartDBInstanceResponse) SetBody(v *RestartDBInstanceResponseBody) *R
 }
 
 type ResumeInstanceRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -12894,10 +14438,19 @@ func (s *ResumeInstanceRequest) SetOwnerId(v int64) *ResumeInstanceRequest {
 }
 
 type ResumeInstanceResponseBody struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message returned.
+	//
+	// This parameter is returned only if **false** is returned for the **Status** parameter.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **false**: The request failed.
+	// *   **true**: The request was successful.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ResumeInstanceResponseBody) String() string {
@@ -12958,10 +14511,20 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 }
 
 type SetDBInstancePlanStatusRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlanId       *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanStatus   *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
+	// The ID of the plan.
+	//
+	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// Specifies whether to enable or disable the plan. Valid values:
+	//
+	// *   **disable**: disables the plan.
+	// *   **enable**: enables the plan.
+	PlanStatus *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
 }
 
 func (s SetDBInstancePlanStatusRequest) String() string {
@@ -12993,10 +14556,18 @@ func (s *SetDBInstancePlanStatusRequest) SetPlanStatus(v string) *SetDBInstanceP
 }
 
 type SetDBInstancePlanStatusResponseBody struct {
+	// The error message returned.
+	//
+	// This parameter is returned only when the operation fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PlanId       *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the operation.
+	//
+	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetDBInstancePlanStatusResponseBody) String() string {
@@ -13057,10 +14628,20 @@ func (s *SetDBInstancePlanStatusResponse) SetBody(v *SetDBInstancePlanStatusResp
 }
 
 type SetDataShareInstanceRequest struct {
-	InstanceList  []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	OperationType *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	OwnerId       *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the AnalyticDB for PostgreSQL instance in Serverless mode.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	InstanceList []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	// Specifies whether to enable or disable data sharing. Valid values:
+	//
+	// *   **add**: enables data sharing.
+	// *   **remove**: disables data sharing.
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetDataShareInstanceRequest) String() string {
@@ -13092,10 +14673,20 @@ func (s *SetDataShareInstanceRequest) SetRegionId(v string) *SetDataShareInstanc
 }
 
 type SetDataShareInstanceShrinkRequest struct {
+	// The ID of the AnalyticDB for PostgreSQL instance in Serverless mode.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	InstanceListShrink *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
-	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable or disable data sharing. Valid values:
+	//
+	// *   **add**: enables data sharing.
+	// *   **remove**: disables data sharing.
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetDataShareInstanceShrinkRequest) String() string {
@@ -13127,9 +14718,15 @@ func (s *SetDataShareInstanceShrinkRequest) SetRegionId(v string) *SetDataShareI
 }
 
 type SetDataShareInstanceResponseBody struct {
+	// The error message returned if the operation fails.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the operation. Valid values:
+	//
+	// *   **success**: The operation is successful.
+	// *   **failed**: The operation fails.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetDataShareInstanceResponseBody) String() string {
@@ -13185,9 +14782,15 @@ func (s *SetDataShareInstanceResponse) SetBody(v *SetDataShareInstanceResponseBo
 }
 
 type SwitchDBInstanceNetTypeRequest struct {
+	// The prefix of the custom endpoint. The prefix must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter. A valid endpoint is in the following format: Prefix.Database engine.rds.aliyuncs.com. Example: test1234.mysql.rds.aliyuncs.com.
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Port                   *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The port number. Valid values: 3000 to 5999.
+	//
+	// >
+	// *   Only ApsaraDB PolarDB MySQL-compatible edition clusters support this parameter. If you leave this parameter empty, the default port 3306 is used.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s SwitchDBInstanceNetTypeRequest) String() string {
@@ -13214,6 +14817,7 @@ func (s *SwitchDBInstanceNetTypeRequest) SetPort(v string) *SwitchDBInstanceNetT
 }
 
 type SwitchDBInstanceNetTypeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13260,14 +14864,21 @@ func (s *SwitchDBInstanceNetTypeResponse) SetBody(v *SwitchDBInstanceNetTypeResp
 }
 
 type TagResourcesRequest struct {
-	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query region IDs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of an instance. Valid values of N: 1 to 50.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The mode of the instance. Valid values:
+	//
+	// *   `instance`: reserved storage mode
+	// *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -13319,7 +14930,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of a tag. Valid values of N: 1 to 20. This parameter value cannot be an empty string. A tag key can contain a maximum of 128 characters. It cannot start with `aliyun` or`  acs: ` and cannot contain `http://` or`  https:// `.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag. Valid values of N: 1 to 20. This parameter value can be an empty string. A tag value can contain a maximum of 128 characters. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13342,6 +14955,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13388,6 +15002,9 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnloadSampleDataRequest struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -13411,10 +15028,17 @@ func (s *UnloadSampleDataRequest) SetOwnerId(v int64) *UnloadSampleDataRequest {
 }
 
 type UnloadSampleDataResponseBody struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message returned if an error occurs. This message does not affect the execution of the operation.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution state of the operation. Valid values:
+	//
+	// *   **false**: The operation fails.
+	// *   **true**: The operation is successful.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UnloadSampleDataResponseBody) String() string {
@@ -13475,15 +15099,26 @@ func (s *UnloadSampleDataResponse) SetBody(v *UnloadSampleDataResponseBody) *Unl
 }
 
 type UntagResourcesRequest struct {
-	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to unbind all tags from an instance. This parameter is valid only when the TagKey.N parameter is not specified. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
 	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The storage mode of the instance. Valid values:
+	//
+	// *   `instance`: reserved storage mode
+	// *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -13540,6 +15175,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13586,13 +15222,28 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateDBInstancePlanRequest struct {
-	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlanConfig    *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
-	PlanDesc      *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
-	PlanEndDate   *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
-	PlanId        *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanName      *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType** and **PlanScheduleType**. The following section describes the PlanConfig parameter.
+	PlanConfig *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
+	// The description of the plan.
+	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
+	// The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// >  This parameter is required only for **periodically executed** plans.
+	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
+	// The ID of the plan.
+	//
+	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The name of the plan.
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	//
+	// >  This parameter is required only for **periodically executed** plans.
 	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
 }
 
@@ -13645,11 +15296,20 @@ func (s *UpdateDBInstancePlanRequest) SetPlanStartDate(v string) *UpdateDBInstan
 }
 
 type UpdateDBInstancePlanResponseBody struct {
+	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The error message returned.
+	//
+	// This parameter is returned only when the operation fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PlanId       *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the plan.
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the operation.
+	//
+	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateDBInstancePlanResponseBody) String() string {
@@ -13715,18 +15375,61 @@ func (s *UpdateDBInstancePlanResponse) SetBody(v *UpdateDBInstancePlanResponseBo
 }
 
 type UpgradeDBInstanceRequest struct {
-	DBInstanceClass      *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// This parameter is no longer used.
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// This parameter is no longer used.
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	InstanceSpec         *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	MasterNodeNum        *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SegNodeNum           *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	StorageSize          *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	UpgradeType          *int64  `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The specifications of each compute node. For information about the supported specifications, see [Instance specifications](~~35406~~).
+	//
+	// >  This parameter is available only for instances in elastic storage mode.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The number of coordinator nodes. Valid values: 1 and 2.
+	//
+	// >  This parameter is available only on the China site (aliyun.com).
+	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is no longer used.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The performance level of enhanced SSDs (ESSDs). Valid values:
+	//
+	// *   **pl0**
+	// *   **pl1**
+	// *   **pl2**
+	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
+	// The number of compute nodes. The number of compute nodes varies based on the instance resource type and edition.
+	//
+	// *   Valid values for High-availability Edition instances in elastic storage mode: 4 to 512, in 4 increments
+	// *   Valid values for High-performance Edition instances in elastic storage mode: 2 to 512, in 2 increments
+	// *   Valid values for instances in manual Serverless mode: 2 to 512, in 2 increments
+	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	// The disk storage type of the instance after the change. The disk storage type can be changed only to ESSD. Set the value to **cloud_essd**.
+	SegStorageType *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
+	// The storage capacity of each compute node. Unit: GB. Valid values: 50 to 6000, in 50 increments.
+	//
+	// >  This parameter is available only for instances in elastic storage mode.
+	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The type of the instance configuration change. Valid values:
+	//
+	// *   **0** (default): changes the number of compute nodes.
+	// *   **1**: changes the specifications and storage capacity of each compute node.
+	// *   **2**: changes the number of coordinator nodes.
+	// *   **3**: changes the disk storage type and ESSD performance level of the instance.
+	//
+	// > *   The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Precautions](~~50956~~)" section of the Change compute node configurations topic.
+	// > *   After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType** to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
+	// > *   The number of coordinator nodes can be changed only on the China site (aliyun.com).
+	// > *   The disk storage type can be changed only from ultra disks to ESSDs.
+	UpgradeType *int64 `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
 }
 
 func (s UpgradeDBInstanceRequest) String() string {
@@ -13782,8 +15485,18 @@ func (s *UpgradeDBInstanceRequest) SetResourceGroupId(v string) *UpgradeDBInstan
 	return s
 }
 
+func (s *UpgradeDBInstanceRequest) SetSegDiskPerformanceLevel(v string) *UpgradeDBInstanceRequest {
+	s.SegDiskPerformanceLevel = &v
+	return s
+}
+
 func (s *UpgradeDBInstanceRequest) SetSegNodeNum(v string) *UpgradeDBInstanceRequest {
 	s.SegNodeNum = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetSegStorageType(v string) *UpgradeDBInstanceRequest {
+	s.SegStorageType = &v
 	return s
 }
 
@@ -13798,9 +15511,12 @@ func (s *UpgradeDBInstanceRequest) SetUpgradeType(v int64) *UpgradeDBInstanceReq
 }
 
 type UpgradeDBInstanceResponseBody struct {
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpgradeDBInstanceResponseBody) String() string {
@@ -13856,12 +15572,18 @@ func (s *UpgradeDBInstanceResponse) SetBody(v *UpgradeDBInstanceResponseBody) *U
 }
 
 type UpgradeDBVersionRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	MajorVersion   *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	MinorVersion   *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SwitchTime     *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The major version of the instance.
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// The minor version of the instance.
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The upgrade time.
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The upgrade method.
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 }
 
@@ -13909,10 +15631,14 @@ func (s *UpgradeDBVersionRequest) SetSwitchTimeMode(v string) *UpgradeDBVersionR
 }
 
 type UpgradeDBVersionResponseBody struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the instance.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeDBVersionResponseBody) String() string {
@@ -13968,6 +15694,199 @@ func (s *UpgradeDBVersionResponse) SetStatusCode(v int32) *UpgradeDBVersionRespo
 }
 
 func (s *UpgradeDBVersionResponse) SetBody(v *UpgradeDBVersionResponseBody) *UpgradeDBVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpsertCollectionDataRequest struct {
+	Collection        *string                            `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string                            `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string                            `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string                            `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Rows              []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+}
+
+func (s UpsertCollectionDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataRequest) SetCollection(v string) *UpsertCollectionDataRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpsertCollectionDataRequest) SetDBInstanceId(v string) *UpsertCollectionDataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataRequest) SetNamespace(v string) *UpsertCollectionDataRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpsertCollectionDataRequest) SetNamespacePassword(v string) *UpsertCollectionDataRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpsertCollectionDataRequest) SetOwnerId(v int64) *UpsertCollectionDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataRequest) SetRegionId(v string) *UpsertCollectionDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataRequest) SetRows(v []*UpsertCollectionDataRequestRows) *UpsertCollectionDataRequest {
+	s.Rows = v
+	return s
+}
+
+type UpsertCollectionDataRequestRows struct {
+	Id       *string            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Vector   []*float64         `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+}
+
+func (s UpsertCollectionDataRequestRows) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataRequestRows) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataRequestRows) SetId(v string) *UpsertCollectionDataRequestRows {
+	s.Id = &v
+	return s
+}
+
+func (s *UpsertCollectionDataRequestRows) SetMetadata(v map[string]*string) *UpsertCollectionDataRequestRows {
+	s.Metadata = v
+	return s
+}
+
+func (s *UpsertCollectionDataRequestRows) SetVector(v []*float64) *UpsertCollectionDataRequestRows {
+	s.Vector = v
+	return s
+}
+
+type UpsertCollectionDataShrinkRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RowsShrink        *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+}
+
+func (s UpsertCollectionDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetCollection(v string) *UpsertCollectionDataShrinkRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetDBInstanceId(v string) *UpsertCollectionDataShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetNamespace(v string) *UpsertCollectionDataShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetNamespacePassword(v string) *UpsertCollectionDataShrinkRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetOwnerId(v int64) *UpsertCollectionDataShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetRegionId(v string) *UpsertCollectionDataShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetRowsShrink(v string) *UpsertCollectionDataShrinkRequest {
+	s.RowsShrink = &v
+	return s
+}
+
+type UpsertCollectionDataResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpsertCollectionDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataResponseBody) SetMessage(v string) *UpsertCollectionDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpsertCollectionDataResponseBody) SetRequestId(v string) *UpsertCollectionDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataResponseBody) SetStatus(v string) *UpsertCollectionDataResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UpsertCollectionDataResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpsertCollectionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpsertCollectionDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataResponse) SetHeaders(v map[string]*string) *UpsertCollectionDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpsertCollectionDataResponse) SetStatusCode(v int32) *UpsertCollectionDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpsertCollectionDataResponse) SetBody(v *UpsertCollectionDataResponseBody) *UpsertCollectionDataResponse {
 	s.Body = v
 	return s
 }
@@ -14035,72 +15954,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 }
 
 /**
- * @deprecated
+ * You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
- * @param request AddBuDBInstanceRelationRequest
+ * @param request AllocateInstancePublicConnectionRequest
  * @param runtime runtime options for this request RuntimeOptions
- * @return AddBuDBInstanceRelationResponse
+ * @return AllocateInstancePublicConnectionResponse
  */
-// Deprecated
-func (client *Client) AddBuDBInstanceRelationWithOptions(request *AddBuDBInstanceRelationRequest, runtime *util.RuntimeOptions) (_result *AddBuDBInstanceRelationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BusinessUnit)) {
-		query["BusinessUnit"] = request.BusinessUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddBuDBInstanceRelation"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddBuDBInstanceRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request AddBuDBInstanceRelationRequest
- * @return AddBuDBInstanceRelationResponse
- */
-// Deprecated
-func (client *Client) AddBuDBInstanceRelation(request *AddBuDBInstanceRelationRequest) (_result *AddBuDBInstanceRelationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddBuDBInstanceRelationResponse{}
-	_body, _err := client.AddBuDBInstanceRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AllocateInstancePublicConnectionWithOptions(request *AllocateInstancePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14158,6 +16019,14 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 	return _result, _err
 }
 
+/**
+ * You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request AllocateInstancePublicConnectionRequest
+ * @return AllocateInstancePublicConnectionResponse
+ */
 func (client *Client) AllocateInstancePublicConnection(request *AllocateInstancePublicConnectionRequest) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateInstancePublicConnectionResponse{}
@@ -14213,6 +16082,16 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 	return _result, _err
 }
 
+/**
+ * *   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+ * *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateAccountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAccountResponse
+ */
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14270,6 +16149,15 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+/**
+ * *   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+ * *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateAccountRequest
+ * @return CreateAccountResponse
+ */
 func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccountResponse{}
@@ -14281,6 +16169,100 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) CreateCollectionWithOptions(request *CreateCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
+		query["Dimension"] = request.Dimension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FullTextRetrievalFields)) {
+		query["FullTextRetrievalFields"] = request.FullTextRetrievalFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
+		query["Metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parser)) {
+		query["Parser"] = request.Parser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCollection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCollection(request *CreateCollectionRequest) (_result *CreateCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCollectionResponse{}
+	_body, _err := client.CreateCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+ * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateDBInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDBInstanceResponse
+ */
 func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14313,6 +16295,14 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceMode)) {
 		query["DBInstanceMode"] = request.DBInstanceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionKey)) {
+		query["EncryptionKey"] = request.EncryptionKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionType)) {
+		query["EncryptionType"] = request.EncryptionType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Engine)) {
@@ -14367,6 +16357,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["SecurityIPList"] = request.SecurityIPList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SegDiskPerformanceLevel)) {
+		query["SegDiskPerformanceLevel"] = request.SegDiskPerformanceLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SegNodeNum)) {
 		query["SegNodeNum"] = request.SegNodeNum
 	}
@@ -14407,6 +16401,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["VSwitchId"] = request.VSwitchId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VectorConfigurationStatus)) {
+		query["VectorConfigurationStatus"] = request.VectorConfigurationStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
 		query["ZoneId"] = request.ZoneId
 	}
@@ -14434,6 +16432,15 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 	return _result, _err
 }
 
+/**
+ * You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+ * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateDBInstanceRequest
+ * @return CreateDBInstanceResponse
+ */
 func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_result *CreateDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstanceResponse{}
@@ -14445,6 +16452,16 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to create a plan for an AnalyticDB for PostgreSQL instance. For example, you can create a plan to pause and resume an instance, change the number of compute nodes, or change compute node specifications.
+ * >  This operation is applicable only to pay-as-you-go instances.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateDBInstancePlanRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDBInstancePlanResponse
+ */
 func (client *Client) CreateDBInstancePlanWithOptions(request *CreateDBInstancePlanRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstancePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14510,6 +16527,15 @@ func (client *Client) CreateDBInstancePlanWithOptions(request *CreateDBInstanceP
 	return _result, _err
 }
 
+/**
+ * You can call this operation to create a plan for an AnalyticDB for PostgreSQL instance. For example, you can create a plan to pause and resume an instance, change the number of compute nodes, or change compute node specifications.
+ * >  This operation is applicable only to pay-as-you-go instances.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateDBInstancePlanRequest
+ * @return CreateDBInstancePlanResponse
+ */
 func (client *Client) CreateDBInstancePlan(request *CreateDBInstancePlanRequest) (_result *CreateDBInstancePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstancePlanResponse{}
@@ -14521,125 +16547,45 @@ func (client *Client) CreateDBInstancePlan(request *CreateDBInstancePlanRequest)
 	return _result, _err
 }
 
-func (client *Client) CreateECSDBInstanceWithOptions(request *CreateECSDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateECSDBInstanceResponse, _err error) {
+func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
-		query["BackupId"] = request.BackupId
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceCategory)) {
-		query["DBInstanceCategory"] = request.DBInstanceCategory
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceDescription)) {
-		query["DBInstanceDescription"] = request.DBInstanceDescription
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EncryptionKey)) {
-		query["EncryptionKey"] = request.EncryptionKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EncryptionType)) {
-		query["EncryptionType"] = request.EncryptionType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Engine)) {
-		query["Engine"] = request.Engine
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
-		query["EngineVersion"] = request.EngineVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceNetworkType)) {
-		query["InstanceNetworkType"] = request.InstanceNetworkType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
-		query["InstanceSpec"] = request.InstanceSpec
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterNodeNum)) {
-		query["MasterNodeNum"] = request.MasterNodeNum
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PayType)) {
-		query["PayType"] = request.PayType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Period)) {
-		query["Period"] = request.Period
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
-		query["PrivateIpAddress"] = request.PrivateIpAddress
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
-		query["SecurityIPList"] = request.SecurityIPList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SegNodeNum)) {
-		query["SegNodeNum"] = request.SegNodeNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SegStorageType)) {
-		query["SegStorageType"] = request.SegStorageType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SrcDbInstanceName)) {
-		query["SrcDbInstanceName"] = request.SrcDbInstanceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
-		query["StorageSize"] = request.StorageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
-		query["UsedTime"] = request.UsedTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VPCId)) {
-		query["VPCId"] = request.VPCId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
-		query["VSwitchId"] = request.VSwitchId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		query["ZoneId"] = request.ZoneId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("CreateECSDBInstance"),
+		Action:      tea.String("CreateNamespace"),
 		Version:     tea.String("2016-05-03"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -14649,7 +16595,7 @@ func (client *Client) CreateECSDBInstanceWithOptions(request *CreateECSDBInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateECSDBInstanceResponse{}
+	_result = &CreateNamespaceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14658,10 +16604,10 @@ func (client *Client) CreateECSDBInstanceWithOptions(request *CreateECSDBInstanc
 	return _result, _err
 }
 
-func (client *Client) CreateECSDBInstance(request *CreateECSDBInstanceRequest) (_result *CreateECSDBInstanceResponse, _err error) {
+func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &CreateECSDBInstanceResponse{}
-	_body, _err := client.CreateECSDBInstanceWithOptions(request, runtime)
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14669,6 +16615,20 @@ func (client *Client) CreateECSDBInstance(request *CreateECSDBInstanceRequest) (
 	return _result, _err
 }
 
+/**
+ * You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+ * ## Precautions
+ * - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
+ * - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
+ * - The sample dataset contains a database named `ADB_SampleData_TPCH`. Make sure that your instance does not have a database with the same name. Otherwise, the dataset may fail to be loaded.
+ * - It may take 6 to 8 minutes to load the sample dataset. During this period, operations on your instance such as adding nodes or changing node specifications may be affected.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateSampleDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateSampleDataResponse
+ */
 func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataRequest, runtime *util.RuntimeOptions) (_result *CreateSampleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14706,6 +16666,19 @@ func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataReque
 	return _result, _err
 }
 
+/**
+ * You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+ * ## Precautions
+ * - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
+ * - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
+ * - The sample dataset contains a database named `ADB_SampleData_TPCH`. Make sure that your instance does not have a database with the same name. Otherwise, the dataset may fail to be loaded.
+ * - It may take 6 to 8 minutes to load the sample dataset. During this period, operations on your instance such as adding nodes or changing node specifications may be affected.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateSampleDataRequest
+ * @return CreateSampleDataResponse
+ */
 func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_result *CreateSampleDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSampleDataResponse{}
@@ -14765,6 +16738,228 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 	return _result, _err
 }
 
+func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexRequest, runtime *util.RuntimeOptions) (_result *CreateVectorIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
+		query["Dimension"] = request.Dimension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVectorIndex"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVectorIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateVectorIndex(request *CreateVectorIndexRequest) (_result *CreateVectorIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVectorIndexResponse{}
+	_body, _err := client.CreateVectorIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCollectionWithOptions(request *DeleteCollectionRequest, runtime *util.RuntimeOptions) (_result *DeleteCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCollection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCollection(request *DeleteCollectionRequest) (_result *DeleteCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCollectionResponse{}
+	_body, _err := client.DeleteCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCollectionDataWithOptions(request *DeleteCollectionDataRequest, runtime *util.RuntimeOptions) (_result *DeleteCollectionDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CollectionData)) {
+		query["CollectionData"] = request.CollectionData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CollectionDataFilter)) {
+		query["CollectionDataFilter"] = request.CollectionDataFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCollectionData"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCollectionDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCollectionData(request *DeleteCollectionDataRequest) (_result *DeleteCollectionDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCollectionDataResponse{}
+	_body, _err := client.DeleteCollectionDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   Subscription instances cannot be manually released. They are automatically released when they expire.
+ * *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteDBInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDBInstanceResponse
+ */
 func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14810,6 +17005,15 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 	return _result, _err
 }
 
+/**
+ * *   Subscription instances cannot be manually released. They are automatically released when they expire.
+ * *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteDBInstanceRequest
+ * @return DeleteDBInstanceResponse
+ */
 func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_result *DeleteDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstanceResponse{}
@@ -14821,6 +17025,15 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteDBInstancePlanRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDBInstancePlanResponse
+ */
 func (client *Client) DeleteDBInstancePlanWithOptions(request *DeleteDBInstancePlanRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstancePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14862,6 +17075,14 @@ func (client *Client) DeleteDBInstancePlanWithOptions(request *DeleteDBInstanceP
 	return _result, _err
 }
 
+/**
+ * If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteDBInstancePlanRequest
+ * @return DeleteDBInstancePlanResponse
+ */
 func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest) (_result *DeleteDBInstancePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstancePlanResponse{}
@@ -14873,15 +17094,7 @@ func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest)
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request DeleteDatabaseRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDatabaseResponse
- */
-// Deprecated
-func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, runtime *util.RuntimeOptions) (_result *DeleteDatabaseResponse, _err error) {
+func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14891,19 +17104,31 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DBName)) {
-		query["DBName"] = request.DBName
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeleteDatabase"),
+		Action:      tea.String("DeleteNamespace"),
 		Version:     tea.String("2016-05-03"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -14913,7 +17138,7 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDatabaseResponse{}
+	_result = &DeleteNamespaceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14922,17 +17147,10 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request DeleteDatabaseRequest
- * @return DeleteDatabaseResponse
- */
-// Deprecated
-func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *DeleteDatabaseResponse, _err error) {
+func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDatabaseResponse{}
-	_body, _err := client.DeleteDatabaseWithOptions(request, runtime)
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14940,6 +17158,83 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteVectorIndexWithOptions(request *DeleteVectorIndexRequest, runtime *util.RuntimeOptions) (_result *DeleteVectorIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVectorIndex"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVectorIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_result *DeleteVectorIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVectorIndexResponse{}
+	_body, _err := client.DeleteVectorIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+ * ## Limit
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeAccountsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeAccountsResponse
+ */
 func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14977,6 +17272,14 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 	return _result, _err
 }
 
+/**
+ * This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+ * ## Limit
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeAccountsRequest
+ * @return DescribeAccountsResponse
+ */
 func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_result *DescribeAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountsResponse{}
@@ -14988,6 +17291,15 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a specific zone.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeAvailableResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeAvailableResourcesResponse
+ */
 func (client *Client) DescribeAvailableResourcesWithOptions(request *DescribeAvailableResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15029,6 +17341,14 @@ func (client *Client) DescribeAvailableResourcesWithOptions(request *DescribeAva
 	return _result, _err
 }
 
+/**
+ * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a specific zone.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeAvailableResourcesRequest
+ * @return DescribeAvailableResourcesResponse
+ */
 func (client *Client) DescribeAvailableResources(request *DescribeAvailableResourcesRequest) (_result *DescribeAvailableResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourcesResponse{}
@@ -15040,6 +17360,15 @@ func (client *Client) DescribeAvailableResources(request *DescribeAvailableResou
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeBackupPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeBackupPolicyResponse
+ */
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15073,6 +17402,14 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeBackupPolicyRequest
+ * @return DescribeBackupPolicyResponse
+ */
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -15084,6 +17421,79 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeCollectionWithOptions(request *DescribeCollectionRequest, runtime *util.RuntimeOptions) (_result *DescribeCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCollection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_result *DescribeCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCollectionResponse{}
+	_body, _err := client.DescribeCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * This operation is called to query the information of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBClusterNodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBClusterNodeResponse
+ */
 func (client *Client) DescribeDBClusterNodeWithOptions(request *DescribeDBClusterNodeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15121,6 +17531,14 @@ func (client *Client) DescribeDBClusterNodeWithOptions(request *DescribeDBCluste
 	return _result, _err
 }
 
+/**
+ * This operation is called to query the information of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBClusterNodeRequest
+ * @return DescribeDBClusterNodeResponse
+ */
 func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeRequest) (_result *DescribeDBClusterNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterNodeResponse{}
@@ -15132,6 +17550,16 @@ func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeReques
 	return _result, _err
 }
 
+/**
+ * This operation is called to query the performance metrics of an AnalyticDB for PostgreSQL instance, such as the number of connections, memory usage, CPU utilization, I/O throughput, read IOPS, write IOPS, and disk space usage.
+ * You can query monitoring information only within the last 30 days.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBClusterPerformanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBClusterPerformanceResponse
+ */
 func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeDBClusterPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15185,6 +17613,15 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 	return _result, _err
 }
 
+/**
+ * This operation is called to query the performance metrics of an AnalyticDB for PostgreSQL instance, such as the number of connections, memory usage, CPU utilization, I/O throughput, read IOPS, write IOPS, and disk space usage.
+ * You can query monitoring information only within the last 30 days.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBClusterPerformanceRequest
+ * @return DescribeDBClusterPerformanceResponse
+ */
 func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPerformanceRequest) (_result *DescribeDBClusterPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterPerformanceResponse{}
@@ -15196,6 +17633,15 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DescribeDBInstanceAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstanceAttributeResponse
+ */
 func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDBInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15237,6 +17683,14 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DescribeDBInstanceAttributeRequest
+ * @return DescribeDBInstanceAttributeResponse
+ */
 func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttributeRequest) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceAttributeResponse{}
@@ -15248,6 +17702,15 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceDataBloatRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstanceDataBloatResponse
+ */
 func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDBInstanceDataBloatRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDataBloatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15289,6 +17752,14 @@ func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceDataBloatRequest
+ * @return DescribeDBInstanceDataBloatResponse
+ */
 func (client *Client) DescribeDBInstanceDataBloat(request *DescribeDBInstanceDataBloatRequest) (_result *DescribeDBInstanceDataBloatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceDataBloatResponse{}
@@ -15300,6 +17771,15 @@ func (client *Client) DescribeDBInstanceDataBloat(request *DescribeDBInstanceDat
 	return _result, _err
 }
 
+/**
+ * To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceDataSkewRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstanceDataSkewResponse
+ */
 func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBInstanceDataSkewRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDataSkewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15341,6 +17821,14 @@ func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBI
 	return _result, _err
 }
 
+/**
+ * To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceDataSkewRequest
+ * @return DescribeDBInstanceDataSkewResponse
+ */
 func (client *Client) DescribeDBInstanceDataSkew(request *DescribeDBInstanceDataSkewRequest) (_result *DescribeDBInstanceDataSkewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceDataSkewResponse{}
@@ -15352,6 +17840,15 @@ func (client *Client) DescribeDBInstanceDataSkew(request *DescribeDBInstanceData
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the distribution and states of coordinator and compute nodes on an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceDiagnosisSummaryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstanceDiagnosisSummaryResponse
+ */
 func (client *Client) DescribeDBInstanceDiagnosisSummaryWithOptions(request *DescribeDBInstanceDiagnosisSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDiagnosisSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15405,6 +17902,14 @@ func (client *Client) DescribeDBInstanceDiagnosisSummaryWithOptions(request *Des
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the distribution and states of coordinator and compute nodes on an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceDiagnosisSummaryRequest
+ * @return DescribeDBInstanceDiagnosisSummaryResponse
+ */
 func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInstanceDiagnosisSummaryRequest) (_result *DescribeDBInstanceDiagnosisSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceDiagnosisSummaryResponse{}
@@ -15416,6 +17921,15 @@ func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInst
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceErrorLogRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstanceErrorLogResponse
+ */
 func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBInstanceErrorLogRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceErrorLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15485,6 +17999,14 @@ func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBI
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceErrorLogRequest
+ * @return DescribeDBInstanceErrorLogResponse
+ */
 func (client *Client) DescribeDBInstanceErrorLog(request *DescribeDBInstanceErrorLogRequest) (_result *DescribeDBInstanceErrorLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceErrorLogResponse{}
@@ -15496,6 +18018,15 @@ func (client *Client) DescribeDBInstanceErrorLog(request *DescribeDBInstanceErro
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceIPArrayListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstanceIPArrayListResponse
+ */
 func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *DescribeDBInstanceIPArrayListRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceIPArrayListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15533,6 +18064,14 @@ func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceIPArrayListRequest
+ * @return DescribeDBInstanceIPArrayListResponse
+ */
 func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceIPArrayListRequest) (_result *DescribeDBInstanceIPArrayListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceIPArrayListResponse{}
@@ -15544,6 +18083,16 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 	return _result, _err
 }
 
+/**
+ * Appropriate indexes can improve the database query speed. You can call this operation to query the details of index usage on an AnalyticDB for PostgreSQL instance.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceIndexUsageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstanceIndexUsageResponse
+ */
 func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeDBInstanceIndexUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceIndexUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15585,6 +18134,15 @@ func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeD
 	return _result, _err
 }
 
+/**
+ * Appropriate indexes can improve the database query speed. You can call this operation to query the details of index usage on an AnalyticDB for PostgreSQL instance.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstanceIndexUsageRequest
+ * @return DescribeDBInstanceIndexUsageResponse
+ */
 func (client *Client) DescribeDBInstanceIndexUsage(request *DescribeDBInstanceIndexUsageRequest) (_result *DescribeDBInstanceIndexUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceIndexUsageResponse{}
@@ -15633,54 +18191,6 @@ func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetIn
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceNetInfoResponse{}
 	_body, _err := client.DescribeDBInstanceNetInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDBInstanceOnECSAttributeWithOptions(request *DescribeDBInstanceOnECSAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceOnECSAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDBInstanceOnECSAttribute"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDBInstanceOnECSAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDBInstanceOnECSAttribute(request *DescribeDBInstanceOnECSAttributeRequest) (_result *DescribeDBInstanceOnECSAttributeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDBInstanceOnECSAttributeResponse{}
-	_body, _err := client.DescribeDBInstanceOnECSAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15748,6 +18258,15 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstancePlansRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstancePlansResponse
+ */
 func (client *Client) DescribeDBInstancePlansWithOptions(request *DescribeDBInstancePlansRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancePlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15805,78 +18324,18 @@ func (client *Client) DescribeDBInstancePlansWithOptions(request *DescribeDBInst
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstancePlansRequest
+ * @return DescribeDBInstancePlansResponse
+ */
 func (client *Client) DescribeDBInstancePlans(request *DescribeDBInstancePlansRequest) (_result *DescribeDBInstancePlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancePlansResponse{}
 	_body, _err := client.DescribeDBInstancePlansWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDBInstanceSQLPatternsWithOptions(request *DescribeDBInstanceSQLPatternsRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceSQLPatternsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Database)) {
-		query["Database"] = request.Database
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
-		query["QueryKeywords"] = request.QueryKeywords
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIP)) {
-		query["SourceIP"] = request.SourceIP
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.User)) {
-		query["User"] = request.User
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDBInstanceSQLPatterns"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDBInstanceSQLPatternsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDBInstanceSQLPatterns(request *DescribeDBInstanceSQLPatternsRequest) (_result *DescribeDBInstanceSQLPatternsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDBInstanceSQLPatternsResponse{}
-	_body, _err := client.DescribeDBInstanceSQLPatternsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15928,6 +18387,15 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a specific region.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param tmpReq DescribeDBInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDBInstancesResponse
+ */
 func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16027,6 +18495,14 @@ func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstances
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a specific region.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDBInstancesRequest
+ * @return DescribeDBInstancesResponse
+ */
 func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (_result *DescribeDBInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancesResponse{}
@@ -16114,6 +18590,63 @@ func (client *Client) DescribeDataBackups(request *DescribeDataBackupsRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeDataReDistributeInfoWithOptions(request *DescribeDataReDistributeInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDataReDistributeInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataReDistributeInfo"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataReDistributeInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataReDistributeInfo(request *DescribeDataReDistributeInfoRequest) (_result *DescribeDataReDistributeInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataReDistributeInfoResponse{}
+	_body, _err := client.DescribeDataReDistributeInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can call this operation to query the state of data sharing for AnalyticDB for PostgreSQL instances in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataShareInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDataShareInstancesResponse
+ */
 func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDataShareInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDataShareInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16167,6 +18700,14 @@ func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDat
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the state of data sharing for AnalyticDB for PostgreSQL instances in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataShareInstancesRequest
+ * @return DescribeDataShareInstancesResponse
+ */
 func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInstancesRequest) (_result *DescribeDataShareInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataShareInstancesResponse{}
@@ -16178,6 +18719,15 @@ func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInsta
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataSharePerformanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDataSharePerformanceResponse
+ */
 func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeDataSharePerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDataSharePerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16227,6 +18777,14 @@ func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeD
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDataSharePerformanceRequest
+ * @return DescribeDataSharePerformanceResponse
+ */
 func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePerformanceRequest) (_result *DescribeDataSharePerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataSharePerformanceResponse{}
@@ -16238,6 +18796,15 @@ func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePer
 	return _result, _err
 }
 
+/**
+ * To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisDimensionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDiagnosisDimensionsResponse
+ */
 func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDiagnosisDimensionsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisDimensionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16271,6 +18838,14 @@ func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDi
 	return _result, _err
 }
 
+/**
+ * To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisDimensionsRequest
+ * @return DescribeDiagnosisDimensionsResponse
+ */
 func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDimensionsRequest) (_result *DescribeDiagnosisDimensionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisDimensionsResponse{}
@@ -16282,6 +18857,15 @@ func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDime
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisMonitorPerformanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDiagnosisMonitorPerformanceResponse
+ */
 func (client *Client) DescribeDiagnosisMonitorPerformanceWithOptions(request *DescribeDiagnosisMonitorPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisMonitorPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16335,6 +18919,14 @@ func (client *Client) DescribeDiagnosisMonitorPerformanceWithOptions(request *De
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisMonitorPerformanceRequest
+ * @return DescribeDiagnosisMonitorPerformanceResponse
+ */
 func (client *Client) DescribeDiagnosisMonitorPerformance(request *DescribeDiagnosisMonitorPerformanceRequest) (_result *DescribeDiagnosisMonitorPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisMonitorPerformanceResponse{}
@@ -16346,6 +18938,15 @@ func (client *Client) DescribeDiagnosisMonitorPerformance(request *DescribeDiagn
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisRecordsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDiagnosisRecordsResponse
+ */
 func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagnosisRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16415,6 +19016,14 @@ func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagn
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisRecordsRequest
+ * @return DescribeDiagnosisRecordsResponse
+ */
 func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecordsRequest) (_result *DescribeDiagnosisRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisRecordsResponse{}
@@ -16426,6 +19035,16 @@ func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecords
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of a specified query on an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisSQLInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDiagnosisSQLInfoResponse
+ */
 func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagnosisSQLInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisSQLInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16467,6 +19086,15 @@ func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagn
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of a specified query on an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDiagnosisSQLInfoRequest
+ * @return DescribeDiagnosisSQLInfoResponse
+ */
 func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfoRequest) (_result *DescribeDiagnosisSQLInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisSQLInfoResponse{}
@@ -16478,6 +19106,16 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 	return _result, _err
 }
 
+/**
+ * You must call the [DownloadDiagnosisRecords](~~447700~~) operation to obtain a download record before you can call this operation to query and download the query diagnostic information.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDownloadRecordsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDownloadRecordsResponse
+ */
 func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownloadRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDownloadRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16511,6 +19149,15 @@ func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownlo
 	return _result, _err
 }
 
+/**
+ * You must call the [DownloadDiagnosisRecords](~~447700~~) operation to obtain a download record before you can call this operation to query and download the query diagnostic information.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeDownloadRecordsRequest
+ * @return DescribeDownloadRecordsResponse
+ */
 func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRequest) (_result *DescribeDownloadRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDownloadRecordsResponse{}
@@ -16522,6 +19169,59 @@ func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRe
 	return _result, _err
 }
 
+func (client *Client) DescribeDownloadSQLLogsWithOptions(request *DescribeDownloadSQLLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeDownloadSQLLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDownloadSQLLogs"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDownloadSQLLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRequest) (_result *DescribeDownloadSQLLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDownloadSQLLogsResponse{}
+	_body, _err := client.DescribeDownloadSQLLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeHealthStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeHealthStatusResponse
+ */
 func (client *Client) DescribeHealthStatusWithOptions(request *DescribeHealthStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeHealthStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16559,6 +19259,14 @@ func (client *Client) DescribeHealthStatusWithOptions(request *DescribeHealthSta
 	return _result, _err
 }
 
+/**
+ * This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeHealthStatusRequest
+ * @return DescribeHealthStatusResponse
+ */
 func (client *Client) DescribeHealthStatus(request *DescribeHealthStatusRequest) (_result *DescribeHealthStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHealthStatusResponse{}
@@ -16682,6 +19390,79 @@ func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParamete
 	return _result, _err
 }
 
+func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceRequest, runtime *util.RuntimeOptions) (_result *DescribeNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNamespace"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_result *DescribeNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNamespaceResponse{}
+	_body, _err := client.DescribeNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeParametersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeParametersResponse
+ */
 func (client *Client) DescribeParametersWithOptions(request *DescribeParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16715,6 +19496,14 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 	return _result, _err
 }
 
+/**
+ * This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeParametersRequest
+ * @return DescribeParametersResponse
+ */
 func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_result *DescribeParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParametersResponse{}
@@ -16726,6 +19515,15 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 	return _result, _err
 }
 
+/**
+ * When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRdsVSwitchsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeRdsVSwitchsResponse
+ */
 func (client *Client) DescribeRdsVSwitchsWithOptions(request *DescribeRdsVSwitchsRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsVSwitchsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16791,6 +19589,14 @@ func (client *Client) DescribeRdsVSwitchsWithOptions(request *DescribeRdsVSwitch
 	return _result, _err
 }
 
+/**
+ * When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRdsVSwitchsRequest
+ * @return DescribeRdsVSwitchsResponse
+ */
 func (client *Client) DescribeRdsVSwitchs(request *DescribeRdsVSwitchsRequest) (_result *DescribeRdsVSwitchsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsVSwitchsResponse{}
@@ -16802,6 +19608,15 @@ func (client *Client) DescribeRdsVSwitchs(request *DescribeRdsVSwitchsRequest) (
 	return _result, _err
 }
 
+/**
+ * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRdsVpcsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeRdsVpcsResponse
+ */
 func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsVpcsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16863,6 +19678,14 @@ func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest
 	return _result, _err
 }
 
+/**
+ * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRdsVpcsRequest
+ * @return DescribeRdsVpcsResponse
+ */
 func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result *DescribeRdsVpcsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsVpcsResponse{}
@@ -16874,6 +19697,15 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+ * ## Limit
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRegionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeRegionsResponse
+ */
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16907,146 +19739,18 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+/**
+ * Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+ * ## Limit
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeRegionsRequest
+ * @return DescribeRegionsResponse
+ */
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeResourceUsageWithOptions(request *DescribeResourceUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeResourceUsage"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeResourceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeResourceUsage(request *DescribeResourceUsageRequest) (_result *DescribeResourceUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeResourceUsageResponse{}
-	_body, _err := client.DescribeResourceUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLCollectorPolicyWithOptions(request *DescribeSQLCollectorPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLCollectorPolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLCollectorPolicy"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLCollectorPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLCollectorPolicy(request *DescribeSQLCollectorPolicyRequest) (_result *DescribeSQLCollectorPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLCollectorPolicyResponse{}
-	_body, _err := client.DescribeSQLCollectorPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogByQueryIdWithOptions(request *DescribeSQLLogByQueryIdRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogByQueryIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
-		query["QueryId"] = request.QueryId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLLogByQueryId"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLLogByQueryIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogByQueryId(request *DescribeSQLLogByQueryIdRequest) (_result *DescribeSQLLogByQueryIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogByQueryIdResponse{}
-	_body, _err := client.DescribeSQLLogByQueryIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17146,310 +19850,15 @@ func (client *Client) DescribeSQLLogCount(request *DescribeSQLLogCountRequest) (
 	return _result, _err
 }
 
-func (client *Client) DescribeSQLLogFilesWithOptions(request *DescribeSQLLogFilesRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogFilesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
-		query["FileName"] = request.FileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLLogFiles"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLLogFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogFiles(request *DescribeSQLLogFilesRequest) (_result *DescribeSQLLogFilesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogFilesResponse{}
-	_body, _err := client.DescribeSQLLogFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogRecordsWithOptions(request *DescribeSQLLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogRecordsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Database)) {
-		query["Database"] = request.Database
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Form)) {
-		query["Form"] = request.Form
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
-		query["QueryKeywords"] = request.QueryKeywords
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.User)) {
-		query["User"] = request.User
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLLogRecords"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLLogRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogRecords(request *DescribeSQLLogRecordsRequest) (_result *DescribeSQLLogRecordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogRecordsResponse{}
-	_body, _err := client.DescribeSQLLogRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogsWithOptions(request *DescribeSQLLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Database)) {
-		query["Database"] = request.Database
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExecuteCost)) {
-		query["ExecuteCost"] = request.ExecuteCost
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExecuteState)) {
-		query["ExecuteState"] = request.ExecuteState
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxExecuteCost)) {
-		query["MaxExecuteCost"] = request.MaxExecuteCost
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MinExecuteCost)) {
-		query["MinExecuteCost"] = request.MinExecuteCost
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperationClass)) {
-		query["OperationClass"] = request.OperationClass
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
-		query["OperationType"] = request.OperationType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
-		query["QueryKeywords"] = request.QueryKeywords
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIP)) {
-		query["SourceIP"] = request.SourceIP
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.User)) {
-		query["User"] = request.User
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLLogs"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogs(request *DescribeSQLLogsRequest) (_result *DescribeSQLLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogsResponse{}
-	_body, _err := client.DescribeSQLLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogsOnSliceWithOptions(request *DescribeSQLLogsOnSliceRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogsOnSliceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExecuteState)) {
-		query["ExecuteState"] = request.ExecuteState
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxExecuteCost)) {
-		query["MaxExecuteCost"] = request.MaxExecuteCost
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MinExecuteCost)) {
-		query["MinExecuteCost"] = request.MinExecuteCost
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
-		query["QueryId"] = request.QueryId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SliceId)) {
-		query["SliceId"] = request.SliceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLLogsOnSlice"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLLogsOnSliceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogsOnSlice(request *DescribeSQLLogsOnSliceRequest) (_result *DescribeSQLLogsOnSliceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogsOnSliceResponse{}
-	_body, _err := client.DescribeSQLLogsOnSliceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+/**
+ * You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeSQLLogsV2Request
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeSQLLogsV2Response
+ */
 func (client *Client) DescribeSQLLogsV2WithOptions(request *DescribeSQLLogsV2Request, runtime *util.RuntimeOptions) (_result *DescribeSQLLogsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17547,6 +19956,14 @@ func (client *Client) DescribeSQLLogsV2WithOptions(request *DescribeSQLLogsV2Req
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeSQLLogsV2Request
+ * @return DescribeSQLLogsV2Response
+ */
 func (client *Client) DescribeSQLLogsV2(request *DescribeSQLLogsV2Request) (_result *DescribeSQLLogsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLLogsV2Response{}
@@ -17558,6 +19975,13 @@ func (client *Client) DescribeSQLLogsV2(request *DescribeSQLLogsV2Request) (_res
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeSampleDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeSampleDataResponse
+ */
 func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSampleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17595,234 +20019,16 @@ func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataR
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeSampleDataRequest
+ * @return DescribeSampleDataResponse
+ */
 func (client *Client) DescribeSampleData(request *DescribeSampleDataRequest) (_result *DescribeSampleDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSampleDataResponse{}
 	_body, _err := client.DescribeSampleDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBName)) {
-		query["DBName"] = request.DBName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SQLId)) {
-		query["SQLId"] = request.SQLId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSlowLogRecords"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSlowLogRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequest) (_result *DescribeSlowLogRecordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSlowLogRecordsResponse{}
-	_body, _err := client.DescribeSlowLogRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSlowSQLLogsWithOptions(request *DescribeSlowSQLLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeSlowSQLLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Database)) {
-		query["Database"] = request.Database
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExecuteState)) {
-		query["ExecuteState"] = request.ExecuteState
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxExecuteCost)) {
-		query["MaxExecuteCost"] = request.MaxExecuteCost
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MinExecuteCost)) {
-		query["MinExecuteCost"] = request.MinExecuteCost
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperationClass)) {
-		query["OperationClass"] = request.OperationClass
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
-		query["OperationType"] = request.OperationType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
-		query["QueryKeywords"] = request.QueryKeywords
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIP)) {
-		query["SourceIP"] = request.SourceIP
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.User)) {
-		query["User"] = request.User
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSlowSQLLogs"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSlowSQLLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSlowSQLLogs(request *DescribeSlowSQLLogsRequest) (_result *DescribeSlowSQLLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSlowSQLLogsResponse{}
-	_body, _err := client.DescribeSlowSQLLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSpecificationWithOptions(request *DescribeSpecificationRequest, runtime *util.RuntimeOptions) (_result *DescribeSpecificationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CpuCores)) {
-		query["CpuCores"] = request.CpuCores
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
-		query["StorageType"] = request.StorageType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TotalNodeNum)) {
-		query["TotalNodeNum"] = request.TotalNodeNum
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSpecification"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSpecificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSpecification(request *DescribeSpecificationRequest) (_result *DescribeSpecificationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSpecificationResponse{}
-	_body, _err := client.DescribeSpecificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17998,6 +20204,15 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeWaitingSQLInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeWaitingSQLInfoResponse
+ */
 func (client *Client) DescribeWaitingSQLInfoWithOptions(request *DescribeWaitingSQLInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeWaitingSQLInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18039,6 +20254,14 @@ func (client *Client) DescribeWaitingSQLInfoWithOptions(request *DescribeWaiting
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeWaitingSQLInfoRequest
+ * @return DescribeWaitingSQLInfoResponse
+ */
 func (client *Client) DescribeWaitingSQLInfo(request *DescribeWaitingSQLInfoRequest) (_result *DescribeWaitingSQLInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWaitingSQLInfoResponse{}
@@ -18050,6 +20273,15 @@ func (client *Client) DescribeWaitingSQLInfo(request *DescribeWaitingSQLInfoRequ
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeWaitingSQLRecordsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeWaitingSQLRecordsResponse
+ */
 func (client *Client) DescribeWaitingSQLRecordsWithOptions(request *DescribeWaitingSQLRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeWaitingSQLRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18119,6 +20351,14 @@ func (client *Client) DescribeWaitingSQLRecordsWithOptions(request *DescribeWait
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeWaitingSQLRecordsRequest
+ * @return DescribeWaitingSQLRecordsResponse
+ */
 func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecordsRequest) (_result *DescribeWaitingSQLRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWaitingSQLRecordsResponse{}
@@ -18130,6 +20370,16 @@ func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecor
 	return _result, _err
 }
 
+/**
+ * You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DownloadDiagnosisRecordsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DownloadDiagnosisRecordsResponse
+ */
 func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagnosisRecordsRequest, runtime *util.RuntimeOptions) (_result *DownloadDiagnosisRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18191,10 +20441,319 @@ func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagn
 	return _result, _err
 }
 
+/**
+ * You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
+ * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DownloadDiagnosisRecordsRequest
+ * @return DownloadDiagnosisRecordsResponse
+ */
 func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecordsRequest) (_result *DownloadDiagnosisRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadDiagnosisRecordsResponse{}
 	_body, _err := client.DownloadDiagnosisRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DownloadSQLLogsRecordsWithOptions(request *DownloadSQLLogsRecordsRequest, runtime *util.RuntimeOptions) (_result *DownloadSQLLogsRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteCost)) {
+		query["ExecuteCost"] = request.ExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteState)) {
+		query["ExecuteState"] = request.ExecuteState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxExecuteCost)) {
+		query["MaxExecuteCost"] = request.MaxExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinExecuteCost)) {
+		query["MinExecuteCost"] = request.MinExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationClass)) {
+		query["OperationClass"] = request.OperationClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
+		query["QueryKeywords"] = request.QueryKeywords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIP)) {
+		query["SourceIP"] = request.SourceIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadSQLLogsRecords"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DownloadSQLLogsRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequest) (_result *DownloadSQLLogsRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DownloadSQLLogsRecordsResponse{}
+	_body, _err := client.DownloadSQLLogsRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GrantCollectionWithOptions(request *GrantCollectionRequest, runtime *util.RuntimeOptions) (_result *GrantCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrantToNamespace)) {
+		query["GrantToNamespace"] = request.GrantToNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrantType)) {
+		query["GrantType"] = request.GrantType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantCollection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GrantCollection(request *GrantCollectionRequest) (_result *GrantCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantCollectionResponse{}
+	_body, _err := client.GrantCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest, runtime *util.RuntimeOptions) (_result *ListCollectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCollections"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCollectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCollections(request *ListCollectionsRequest) (_result *ListCollectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCollectionsResponse{}
+	_body, _err := client.ListCollectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *util.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNamespaces"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNamespacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *ListNamespacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNamespacesResponse{}
+	_body, _err := client.ListNamespacesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18394,25 +20953,37 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) ModifyDBInstanceConnectionModeWithOptions(request *ModifyDBInstanceConnectionModeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConnectionModeResponse, _err error) {
+func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConnectionMode)) {
-		query["ConnectionMode"] = request.ConnectionMode
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceDescription)) {
+		query["DBInstanceDescription"] = request.DBInstanceDescription
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdleTime)) {
+		query["IdleTime"] = request.IdleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessResource)) {
+		query["ServerlessResource"] = request.ServerlessResource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ModifyDBInstanceConnectionMode"),
+		Action:      tea.String("ModifyDBInstanceConfig"),
 		Version:     tea.String("2016-05-03"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -18422,7 +20993,7 @@ func (client *Client) ModifyDBInstanceConnectionModeWithOptions(request *ModifyD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBInstanceConnectionModeResponse{}
+	_result = &ModifyDBInstanceConfigResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18431,10 +21002,10 @@ func (client *Client) ModifyDBInstanceConnectionModeWithOptions(request *ModifyD
 	return _result, _err
 }
 
-func (client *Client) ModifyDBInstanceConnectionMode(request *ModifyDBInstanceConnectionModeRequest) (_result *ModifyDBInstanceConnectionModeResponse, _err error) {
+func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequest) (_result *ModifyDBInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDBInstanceConnectionModeResponse{}
-	_body, _err := client.ModifyDBInstanceConnectionModeWithOptions(request, runtime)
+	_result = &ModifyDBInstanceConfigResponse{}
+	_body, _err := client.ModifyDBInstanceConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18498,6 +21069,15 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 	return _result, _err
 }
 
+/**
+ * To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyDBInstanceDescriptionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDBInstanceDescriptionResponse
+ */
 func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBInstanceDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18539,6 +21119,14 @@ func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBIn
 	return _result, _err
 }
 
+/**
+ * To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyDBInstanceDescriptionRequest
+ * @return ModifyDBInstanceDescriptionResponse
+ */
 func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescriptionRequest) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceDescriptionResponse{}
@@ -18550,6 +21138,15 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	return _result, _err
 }
 
+/**
+ * The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyDBInstanceMaintainTimeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDBInstanceMaintainTimeResponse
+ */
 func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBInstanceMaintainTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18595,6 +21192,14 @@ func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBI
 	return _result, _err
 }
 
+/**
+ * The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyDBInstanceMaintainTimeRequest
+ * @return ModifyDBInstanceMaintainTimeResponse
+ */
 func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMaintainTimeRequest) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceMaintainTimeResponse{}
@@ -18606,66 +21211,13 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 	return _result, _err
 }
 
-func (client *Client) ModifyDBInstanceNetworkTypeWithOptions(request *ModifyDBInstanceNetworkTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceNetworkTypeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceNetworkType)) {
-		query["InstanceNetworkType"] = request.InstanceNetworkType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
-		query["PrivateIpAddress"] = request.PrivateIpAddress
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VPCId)) {
-		query["VPCId"] = request.VPCId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
-		query["VSwitchId"] = request.VSwitchId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDBInstanceNetworkType"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyDBInstanceNetworkTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetworkTypeRequest) (_result *ModifyDBInstanceNetworkTypeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDBInstanceNetworkTypeResponse{}
-	_body, _err := client.ModifyDBInstanceNetworkTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+/**
+ * Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+ *
+ * @param request ModifyDBInstanceResourceGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDBInstanceResourceGroupResponse
+ */
 func (client *Client) ModifyDBInstanceResourceGroupWithOptions(request *ModifyDBInstanceResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18723,6 +21275,12 @@ func (client *Client) ModifyDBInstanceResourceGroupWithOptions(request *ModifyDB
 	return _result, _err
 }
 
+/**
+ * Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+ *
+ * @param request ModifyDBInstanceResourceGroupRequest
+ * @return ModifyDBInstanceResourceGroupResponse
+ */
 func (client *Client) ModifyDBInstanceResourceGroup(request *ModifyDBInstanceResourceGroupRequest) (_result *ModifyDBInstanceResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceResourceGroupResponse{}
@@ -18786,6 +21344,15 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 	return _result, _err
 }
 
+/**
+ * This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyParametersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyParametersResponse
+ */
 func (client *Client) ModifyParametersWithOptions(request *ModifyParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18827,6 +21394,14 @@ func (client *Client) ModifyParametersWithOptions(request *ModifyParametersReque
 	return _result, _err
 }
 
+/**
+ * This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyParametersRequest
+ * @return ModifyParametersResponse
+ */
 func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_result *ModifyParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyParametersResponse{}
@@ -18886,6 +21461,15 @@ func (client *Client) ModifySQLCollectorPolicy(request *ModifySQLCollectorPolicy
 	return _result, _err
 }
 
+/**
+ * To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifySecurityIpsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifySecurityIpsResponse
+ */
 func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsRequest, runtime *util.RuntimeOptions) (_result *ModifySecurityIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18902,6 +21486,10 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyMode)) {
+		query["ModifyMode"] = request.ModifyMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -18935,6 +21523,14 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 	return _result, _err
 }
 
+/**
+ * To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifySecurityIpsRequest
+ * @return ModifySecurityIpsResponse
+ */
 func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_result *ModifySecurityIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityIpsResponse{}
@@ -18946,6 +21542,69 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ModifyVectorConfigurationWithOptions(request *ModifyVectorConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyVectorConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectorConfigurationStatus)) {
+		query["VectorConfigurationStatus"] = request.VectorConfigurationStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyVectorConfiguration"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyVectorConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyVectorConfiguration(request *ModifyVectorConfigurationRequest) (_result *ModifyVectorConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyVectorConfigurationResponse{}
+	_body, _err := client.ModifyVectorConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running** state.
+ * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PauseInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PauseInstanceResponse
+ */
 func (client *Client) PauseInstanceWithOptions(request *PauseInstanceRequest, runtime *util.RuntimeOptions) (_result *PauseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18983,10 +21642,106 @@ func (client *Client) PauseInstanceWithOptions(request *PauseInstanceRequest, ru
 	return _result, _err
 }
 
+/**
+ * You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running** state.
+ * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PauseInstanceRequest
+ * @return PauseInstanceResponse
+ */
 func (client *Client) PauseInstance(request *PauseInstanceRequest) (_result *PauseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseInstanceResponse{}
 	_body, _err := client.PauseInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionDataRequest, runtime *util.RuntimeOptions) (_result *QueryCollectionDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryCollectionDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Vector)) {
+		request.VectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Vector, tea.String("Vector"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopK)) {
+		query["TopK"] = request.TopK
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectorShrink)) {
+		query["Vector"] = request.VectorShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCollectionData"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCollectionDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (_result *QueryCollectionDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCollectionDataResponse{}
+	_body, _err := client.QueryCollectionDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19146,6 +21901,15 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	return _result, _err
 }
 
+/**
+ * A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+ * ## Limit
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request RestartDBInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RestartDBInstanceResponse
+ */
 func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19183,6 +21947,14 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 	return _result, _err
 }
 
+/**
+ * A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+ * ## Limit
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request RestartDBInstanceRequest
+ * @return RestartDBInstanceResponse
+ */
 func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_result *RestartDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDBInstanceResponse{}
@@ -19194,6 +21966,17 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 	return _result, _err
 }
 
+/**
+ * You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused** state.
+ * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ResumeInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResumeInstanceResponse
+ */
 func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, runtime *util.RuntimeOptions) (_result *ResumeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19231,6 +22014,16 @@ func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused** state.
+ * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+ * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ResumeInstanceRequest
+ * @return ResumeInstanceResponse
+ */
 func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *ResumeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeInstanceResponse{}
@@ -19242,6 +22035,15 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 	return _result, _err
 }
 
+/**
+ * You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request SetDBInstancePlanStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDBInstancePlanStatusResponse
+ */
 func (client *Client) SetDBInstancePlanStatusWithOptions(request *SetDBInstancePlanStatusRequest, runtime *util.RuntimeOptions) (_result *SetDBInstancePlanStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19287,6 +22089,14 @@ func (client *Client) SetDBInstancePlanStatusWithOptions(request *SetDBInstanceP
 	return _result, _err
 }
 
+/**
+ * You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request SetDBInstancePlanStatusRequest
+ * @return SetDBInstancePlanStatusResponse
+ */
 func (client *Client) SetDBInstancePlanStatus(request *SetDBInstancePlanStatusRequest) (_result *SetDBInstancePlanStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDBInstancePlanStatusResponse{}
@@ -19298,6 +22108,15 @@ func (client *Client) SetDBInstancePlanStatus(request *SetDBInstancePlanStatusRe
 	return _result, _err
 }
 
+/**
+ * This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param tmpReq SetDataShareInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDataShareInstanceResponse
+ */
 func (client *Client) SetDataShareInstanceWithOptions(tmpReq *SetDataShareInstanceRequest, runtime *util.RuntimeOptions) (_result *SetDataShareInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19349,6 +22168,14 @@ func (client *Client) SetDataShareInstanceWithOptions(tmpReq *SetDataShareInstan
 	return _result, _err
 }
 
+/**
+ * This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request SetDataShareInstanceRequest
+ * @return SetDataShareInstanceResponse
+ */
 func (client *Client) SetDataShareInstance(request *SetDataShareInstanceRequest) (_result *SetDataShareInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataShareInstanceResponse{}
@@ -19484,6 +22311,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+/**
+ * You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UnloadSampleDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UnloadSampleDataResponse
+ */
 func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataRequest, runtime *util.RuntimeOptions) (_result *UnloadSampleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19521,6 +22357,14 @@ func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataReque
 	return _result, _err
 }
 
+/**
+ * You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UnloadSampleDataRequest
+ * @return UnloadSampleDataResponse
+ */
 func (client *Client) UnloadSampleData(request *UnloadSampleDataRequest) (_result *UnloadSampleDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnloadSampleDataResponse{}
@@ -19608,6 +22452,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpdateDBInstancePlanRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateDBInstancePlanResponse
+ */
 func (client *Client) UpdateDBInstancePlanWithOptions(request *UpdateDBInstancePlanRequest, runtime *util.RuntimeOptions) (_result *UpdateDBInstancePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19669,6 +22522,14 @@ func (client *Client) UpdateDBInstancePlanWithOptions(request *UpdateDBInstanceP
 	return _result, _err
 }
 
+/**
+ * You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpdateDBInstancePlanRequest
+ * @return UpdateDBInstancePlanResponse
+ */
 func (client *Client) UpdateDBInstancePlan(request *UpdateDBInstancePlanRequest) (_result *UpdateDBInstancePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDBInstancePlanResponse{}
@@ -19680,6 +22541,17 @@ func (client *Client) UpdateDBInstancePlan(request *UpdateDBInstancePlanRequest)
 	return _result, _err
 }
 
+/**
+ * You can call this operation to change the configurations of an AnalyticDB for PostgreSQL instance.
+ * >  This operation is not supported for instances in reserved storage mode.
+ * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpgradeDBInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpgradeDBInstanceResponse
+ */
 func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19722,8 +22594,16 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SegDiskPerformanceLevel)) {
+		query["SegDiskPerformanceLevel"] = request.SegDiskPerformanceLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SegNodeNum)) {
 		query["SegNodeNum"] = request.SegNodeNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SegStorageType)) {
+		query["SegStorageType"] = request.SegStorageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
@@ -19757,6 +22637,16 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 	return _result, _err
 }
 
+/**
+ * You can call this operation to change the configurations of an AnalyticDB for PostgreSQL instance.
+ * >  This operation is not supported for instances in reserved storage mode.
+ * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+ * ## Limits
+ * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpgradeDBInstanceRequest
+ * @return UpgradeDBInstanceResponse
+ */
 func (client *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (_result *UpgradeDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBInstanceResponse{}
@@ -19829,6 +22719,80 @@ func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBVersionResponse{}
 	_body, _err := client.UpgradeDBVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpsertCollectionDataWithOptions(tmpReq *UpsertCollectionDataRequest, runtime *util.RuntimeOptions) (_result *UpsertCollectionDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpsertCollectionDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rows)) {
+		request.RowsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rows, tea.String("Rows"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RowsShrink)) {
+		query["Rows"] = request.RowsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpsertCollectionData"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpsertCollectionDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpsertCollectionData(request *UpsertCollectionDataRequest) (_result *UpsertCollectionDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpsertCollectionDataResponse{}
+	_body, _err := client.UpsertCollectionDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
