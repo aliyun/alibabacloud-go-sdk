@@ -3569,6 +3569,87 @@ func (s *GetTensorboardResponse) SetBody(v *Tensorboard) *GetTensorboardResponse
 	return s
 }
 
+type GetTokenRequest struct {
+	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s GetTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTokenRequest) SetExpireTime(v int64) *GetTokenRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetTokenRequest) SetTargetId(v string) *GetTokenRequest {
+	s.TargetId = &v
+	return s
+}
+
+func (s *GetTokenRequest) SetTargetType(v string) *GetTokenRequest {
+	s.TargetType = &v
+	return s
+}
+
+type GetTokenResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTokenResponseBody) SetToken(v string) *GetTokenResponseBody {
+	s.Token = &v
+	return s
+}
+
+type GetTokenResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTokenResponse) SetHeaders(v map[string]*string) *GetTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTokenResponse) SetStatusCode(v int32) *GetTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
+	s.Body = v
+	return s
+}
+
 type GetWebTerminalRequest struct {
 	// Pod UID。
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
@@ -5247,6 +5328,60 @@ func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorbo
 	headers := make(map[string]*string)
 	_result = &GetTensorboardResponse{}
 	_body, _err := client.GetTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetToken"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tokens"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTokenResponse{}
+	_body, _err := client.GetTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
