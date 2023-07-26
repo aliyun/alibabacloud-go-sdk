@@ -13,10 +13,14 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the resource group to which you want to move the resource.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. Set the value to backupplan.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -48,13 +52,26 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrCode    *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the resource was successfully moved. Valid values:
+	//
+	// *   **true**: The resource was successfully moved.
+	// *   **false**: The resource failed to be moved.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the request failed.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The additional information.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeResourceGroupResponseBody) String() string {
@@ -130,26 +147,28 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateDownloadRequest struct {
-	// The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to obtain the ID of the backup set.
+	// The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
 	//
-	// >  This parameter is required if the BakSetType parameter is set to full.
+	// > This parameter is required if the BakSetType parameter is set to full.
 	BakSetId *string `json:"BakSetId,omitempty" xml:"BakSetId,omitempty"`
-	// The size of the full backup set. You can call the [DescribeBackups](~~26273~~) operation to query the size of the full backup set. Unit: bytes.
+	// The size of the full backup set. Unit: bytes. You can call the [DescribeBackups](~~26273~~) operation to query the size of the full backup set.
 	BakSetSize *string `json:"BakSetSize,omitempty" xml:"BakSetSize,omitempty"`
 	// The type of the download task. Valid values:
 	//
 	// *   **full**: downloads a full backup set.
 	// *   **pitr**: downloads a backup set at a specific point in time.
 	BakSetType *string `json:"BakSetType,omitempty" xml:"BakSetType,omitempty"`
-	// The point in time at which the backup set is downloaded. The UNIX timestamp of the LONG type. Unit: milliseconds.
+	// The point in time at which the backup set is downloaded. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  This parameter is required if the BakSetType parameter is set to pitr.
+	// > This parameter is required if the BakSetType parameter is set to pitr.
 	DownloadPointInTime *string `json:"DownloadPointInTime,omitempty" xml:"DownloadPointInTime,omitempty"`
-	// The destination format to which the downloaded backup set is converted. Valid values:
+	// The format to which the downloaded backup set is converted. Valid values:
 	//
-	// *   **csv**
+	// *   **CSV**
 	// *   **SQL**
 	// *   **Parquet**
+	//
+	// > This parameter is required.
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	// The ID of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -158,17 +177,17 @@ type CreateDownloadRequest struct {
 	// The name of the OSS bucket that is used to store the backup set.
 	//
 	// *   This parameter is required if the TargetType parameter is set to OSS.
-	// *   Make sure that your account has the **AliyunDBSDefaultRole** permission. For more information, see [Use RAM for resource authorization](~~26307~~). You can also grant permissions based on the operation instructions in the RAM console.
+	// *   Make sure that your account is granted the **AliyunDBSDefaultRole** permission. For more information, see [Use RAM for resource authorization](~~26307~~). You can also grant permissions based on the operation instructions in the Resource Access Management (RAM) console.
 	TargetBucket *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
 	// The region in which the OSS bucket resides.
 	//
-	// >  This parameter is required if the TargetType parameter is set to OSS.
+	// > This parameter is required if the TargetType parameter is set to OSS.
 	TargetOssRegion *string `json:"TargetOssRegion,omitempty" xml:"TargetOssRegion,omitempty"`
-	// The destination path of the downloaded data.
+	// The destination path to which the backup set is downloaded.
 	//
-	// >  This parameter is required if the TargetType parameter is set to OSS.
+	// > This parameter is required if the TargetType parameter is set to OSS.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The type of the method in which the backup set is downloaded. Valid values:
+	// The type of the destination to which the backup set is downloaded. Valid values:
 	//
 	// *   **OSS**
 	// *   **URL**
@@ -239,22 +258,22 @@ func (s *CreateDownloadRequest) SetTargetType(v string) *CreateDownloadRequest {
 }
 
 type CreateDownloadResponseBody struct {
-	// The error code.
+	// The status code returned.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *CreateDownloadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request is successful.
-	// *   **false**: The request fails.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -302,42 +321,42 @@ func (s *CreateDownloadResponseBody) SetSuccess(v string) *CreateDownloadRespons
 }
 
 type CreateDownloadResponseBodyData struct {
-	// The point in time of the backup set if the task is used to download a backup set at a specific point in time. The value is a timestamp.
+	// The point in time of the backup set if the task is used to download a backup set at a specific point in time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	BackupSetTime *int64 `json:"BackupSetTime,omitempty" xml:"BackupSetTime,omitempty"`
 	// The ID of the full backup set.
 	BakSetId *string `json:"BakSetId,omitempty" xml:"BakSetId,omitempty"`
-	// The database and table information that is returned if the download task is a database and table filtering task.
+	// The database and table information that is returned if databases and tables are filtered by the download task.
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The status of the download task. Valid values:
+	// The state of the download task. Valid values:
 	//
-	// *   Initializing: The download task is being initialized.
-	// *   queuing: The download task is queuing.
-	// *   running: The download task is running.
-	// *   failed: The download task fails.
-	// *   finished: The download task is complete.
-	// *   expired: The download task expires.
+	// *   initializing: The download task was being initialized.
+	// *   queuing: The download task was queuing.
+	// *   running: The download task was running.
+	// *   failed: The download task failed.
+	// *   finished: The download task was complete.
+	// *   expired: The download task expired.
 	//
-	// >  The download task expires in three days after the task is complete if the TargetType parameter is set to URL.
+	// > If the TargetType parameter is set to URL, the download task expires in three days after the task is complete.
 	DownloadStatus *string `json:"DownloadStatus,omitempty" xml:"DownloadStatus,omitempty"`
-	// The amount of output data. Unit: bytes.
+	// The size of the downloaded data. Unit: bytes.
 	ExportDataSize *int64 `json:"ExportDataSize,omitempty" xml:"ExportDataSize,omitempty"`
 	// The format to which the downloaded data is converted.
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The time when the download task was created. The value is a timestamp.
+	// The time when the download task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The amount of data that is processed. Unit: bytes.
+	// The size of the processed data. Unit: bytes.
 	ImportDataSize *int64 `json:"ImportDataSize,omitempty" xml:"ImportDataSize,omitempty"`
 	// The number of tables that have been downloaded and the total number of tables to be downloaded.
 	//
-	// >  If the task is in the preparation stage, 0/0 is returned.
+	// > If the task is in the preparation stage, 0/0 is returned.
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The ID of the region in which the instance resides.
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The destination path of the downloaded data.
+	// The destination path to which the backup set is downloaded.
 	//
-	// >  This parameter is returned if the TargetType parameter is set to OSS.
+	// > This parameter is returned if the TargetType parameter is set to OSS.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The type of the method in which the backup set is downloaded.
+	// The type of the destination to which the backup set is downloaded.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The ID of the download task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -448,15 +467,15 @@ func (s *CreateDownloadResponse) SetBody(v *CreateDownloadResponseBody) *CreateD
 type CreateSandboxInstanceRequest struct {
 	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule.
 	//
-	// >  If your instance is an ApsaraDB RDS for MySQL instance, you can configure [automatic access to the instance](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The ID of the backup set to be restored, which is the point in time when a snapshot was created. You can call the [DescribeSandboxBackupSets](~~437256~~) operation to obtain the ID.
 	//
-	// >  You need to specify only one of the **BackupSetId** and **RestoreTime** parameters.
+	// > You need to specify only one of the **BackupSetId** and **RestoreTime** parameters.
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// The point in time of the sandbox instance to be restored. You can call the [DescribeSandboxRecoveryTime](~~437258~~) operation to view the recoverable time range. Specify the time in the format of *yyyy-MM-ddTHH:mm:ssZ*. The time must be in UTC.
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The name of the sandbox instance.
+	// The custom name of the sandbox instance.
 	SandboxInstanceName *string `json:"SandboxInstanceName,omitempty" xml:"SandboxInstanceName,omitempty"`
 	// The password of the privileged account created in the sandbox instance.
 	SandboxPassword *string `json:"SandboxPassword,omitempty" xml:"SandboxPassword,omitempty"`
@@ -471,13 +490,13 @@ type CreateSandboxInstanceRequest struct {
 	// *   **MYSQL\_8C\_16M_SD**: 8 CPU cores and 16 GB of memory.
 	// *   **MYSQL\_8C\_32M_SD**: 8 CPU cores and 32 GB of memory.
 	//
-	// >  Different specifications have little impact on the recovery speed. High-specification instances provide better performance after restoration. For more information, see [Sandbox instance fees](~~201466~~).
+	// > Different specifications have little impact on the recovery speed. High-specification instances provide better performance after restoration. For more information, see [DBS sandbox fees](~~201466~~).
 	SandboxSpecification *string `json:"SandboxSpecification,omitempty" xml:"SandboxSpecification,omitempty"`
 	// The type of the sandbox instance. You can call this operation only to create an instance of the **Sandbox** type. After the sandbox instance is created, the MySQL endpoint of the instance is provided.
 	SandboxType *string `json:"SandboxType,omitempty" xml:"SandboxType,omitempty"`
 	// The privileged account created in the sandbox instance.
 	//
-	// *   After you specify this parameter, the system creates a privileged account in the sandbox instance. The account has the permissions on all databases in the instance.
+	// *   After you specify this parameter, the system creates a privileged account in the sandbox instance. The account is granted the permissions on all databases in the instance.
 	//
 	// The account of the source database is retained in the sandbox instance.
 	//
@@ -485,7 +504,7 @@ type CreateSandboxInstanceRequest struct {
 	SandboxUser *string `json:"SandboxUser,omitempty" xml:"SandboxUser,omitempty"`
 	// The ID of the virtual private cloud (VPC) that is used to connect to the sandbox instance. If you want to connect to the sandbox instance by using Elastic Compute Service (ECS) instances, you must set this parameter to the VPC in which the ECS instances reside.
 	//
-	// >  You can set this parameter if you want to use it in a recovery drill scenario.
+	// > You can set this parameter if you want to use it in a recovery drill scenario.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the VSwitch that is used to connect to the sandbox instance.
 	VpcSwitchId *string `json:"VpcSwitchId,omitempty" xml:"VpcSwitchId,omitempty"`
@@ -550,19 +569,19 @@ func (s *CreateSandboxInstanceRequest) SetVpcSwitchId(v string) *CreateSandboxIn
 }
 
 type CreateSandboxInstanceResponseBody struct {
-	// The error code.
+	// The error code returned if the request fails.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	Data *CreateSandboxInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request fails.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -610,7 +629,7 @@ func (s *CreateSandboxInstanceResponseBody) SetSuccess(v string) *CreateSandboxI
 }
 
 type CreateSandboxInstanceResponseBodyData struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The ID of the sandbox instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -664,11 +683,11 @@ func (s *CreateSandboxInstanceResponse) SetBody(v *CreateSandboxInstanceResponse
 }
 
 type DeleteSandboxInstanceRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule.
+	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to query the ID of the backup schedule.
 	//
-	// >  If your instance is an ApsaraDB RDS for MySQL instance, you can configure [automatic access to the instance](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The ID of the sandbox instance. You can call the [DescribeSandboxInstances](~~437257~~) operation to obtain the ID of the sandbox instance.
+	// The ID of the sandbox instance. You can call the [DescribeSandboxInstances](~~437257~~) operation to query the ID of the sandbox instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -691,19 +710,19 @@ func (s *DeleteSandboxInstanceRequest) SetInstanceId(v string) *DeleteSandboxIns
 }
 
 type DeleteSandboxInstanceResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
+	// The error code returned if the request failed.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -782,7 +801,6 @@ func (s *DeleteSandboxInstanceResponse) SetBody(v *DeleteSandboxInstanceResponse
 type DescribeDBTablesRecoveryBackupSetRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBTablesRecoveryBackupSetRequest) String() string {
@@ -800,11 +818,6 @@ func (s *DescribeDBTablesRecoveryBackupSetRequest) SetInstanceId(v string) *Desc
 
 func (s *DescribeDBTablesRecoveryBackupSetRequest) SetRegionCode(v string) *DescribeDBTablesRecoveryBackupSetRequest {
 	s.RegionCode = &v
-	return s
-}
-
-func (s *DescribeDBTablesRecoveryBackupSetRequest) SetRegionId(v string) *DescribeDBTablesRecoveryBackupSetRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -893,7 +906,6 @@ func (s *DescribeDBTablesRecoveryBackupSetResponse) SetBody(v *DescribeDBTablesR
 type DescribeDBTablesRecoveryStateRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBTablesRecoveryStateRequest) String() string {
@@ -911,11 +923,6 @@ func (s *DescribeDBTablesRecoveryStateRequest) SetInstanceId(v string) *Describe
 
 func (s *DescribeDBTablesRecoveryStateRequest) SetRegionCode(v string) *DescribeDBTablesRecoveryStateRequest {
 	s.RegionCode = &v
-	return s
-}
-
-func (s *DescribeDBTablesRecoveryStateRequest) SetRegionId(v string) *DescribeDBTablesRecoveryStateRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1004,7 +1011,6 @@ func (s *DescribeDBTablesRecoveryStateResponse) SetBody(v *DescribeDBTablesRecov
 type DescribeDBTablesRecoveryTimeRangeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBTablesRecoveryTimeRangeRequest) String() string {
@@ -1022,11 +1028,6 @@ func (s *DescribeDBTablesRecoveryTimeRangeRequest) SetInstanceId(v string) *Desc
 
 func (s *DescribeDBTablesRecoveryTimeRangeRequest) SetRegionCode(v string) *DescribeDBTablesRecoveryTimeRangeRequest {
 	s.RegionCode = &v
-	return s
-}
-
-func (s *DescribeDBTablesRecoveryTimeRangeRequest) SetRegionId(v string) *DescribeDBTablesRecoveryTimeRangeRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1115,22 +1116,22 @@ func (s *DescribeDBTablesRecoveryTimeRangeResponse) SetBody(v *DescribeDBTablesR
 type DescribeDownloadBackupSetStorageInfoRequest struct {
 	// The ID of the backup set.
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// Set this parameter if the Download Destination parameter is set to URL.
+	// The validity period of the URL that is used as the download destination. Take note of the following items:
 	//
-	// *   By default, a URL is valid for 2 hours, which is equal to 7,200 seconds.
-	// *   The valid duration is 5 minutes (300 seconds) to 1 day (86,400 seconds).
-	// *   Before you set this parameter, convert the time to seconds. For example, if you want to set the validity period of the link to 5 minutes, enter 300.
+	// *   Default value: 7200. This means that the URL is valid for 2 hours by default.
+	// *   Valid values: 300 to 86400. Unit: seconds. This means that you can specify a validity period in the range of 5 minutes to 1 day.
+	// *   Before you specify this parameter, convert the validity period to seconds. For example, if you want to set the validity period of the URL to 5 minutes, enter 300.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The ID of the instance.
 	//
-	// >  The **BackupSetId** parameter is required if you specify the **InstanceName** parameter.
+	// > The **BackupSetId** parameter is required if you specify the **InstanceName** parameter.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	// The ID of the download task.
 	//
 	// *   The **BackupSetId** and **InstanceName** parameters are required if you do not specify the **TaskId** parameter.
-	// *   You can find the instance and click **Backup and Restoration**. On the **Backup Download** tab, view the **task ID**.
+	// *   You can go to the instance details page in the Alibaba Cloud Management Console and click **Backup and Restoration** in the left-side navigation pane. On the **Backup Download** tab, view the task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1168,22 +1169,22 @@ func (s *DescribeDownloadBackupSetStorageInfoRequest) SetTaskId(v string) *Descr
 }
 
 type DescribeDownloadBackupSetStorageInfoResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *DescribeDownloadBackupSetStorageInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: the request is successful.
-	// *   **false**: the request fails.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1231,9 +1232,9 @@ func (s *DescribeDownloadBackupSetStorageInfoResponseBody) SetSuccess(v string) 
 }
 
 type DescribeDownloadBackupSetStorageInfoResponseBodyData struct {
-	// The expiration time of the URL.
+	// The validity period of the URL.
 	//
-	// >  The return value is in the timestamp format.
+	// > This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	// The private download URL of the backup set.
 	PrivateUrl *string `json:"PrivateUrl,omitempty" xml:"PrivateUrl,omitempty"`
@@ -1319,25 +1320,25 @@ func (s *DescribeDownloadSupportRequest) SetRegionCode(v string) *DescribeDownlo
 }
 
 type DescribeDownloadSupportResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the advanced download feature is supported. Valid values:
 	//
 	// *   **true**: The advanced download feature is supported.
 	// *   **false**: The advanced download feature is not supported.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request fails.
+	// The error code returned if the request failed.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the request failed.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request is successful.
-	// *   **false**: The request fails.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1414,7 +1415,7 @@ func (s *DescribeDownloadSupportResponse) SetBody(v *DescribeDownloadSupportResp
 }
 
 type DescribeDownloadTaskRequest struct {
-	// The ID of the backup set generated when you create the download task. You can call the [DescribeBackups](~~26273~~) operation to query the backup set ID. Unit: bytes.
+	// The ID of the backup set generated when you create a download task. You can call the [DescribeBackups](~~26273~~) operation to query the ID.
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// The page number of the page to return.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -1423,13 +1424,15 @@ type DescribeDownloadTaskRequest struct {
 	// The end of the time range to query. Specify this parameter as a timestamp of the LONG type. Unit: milliseconds.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// > This parameter is required.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The column based on which the entries are sorted. By default, the entries are sorted by the creation time. Set the value to **gmt_create**.
+	// The column based on which the entries are sorted. By default, the entries are sorted by the time when the download task was created. Set the value to **gmt_create**.
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
 	// The order in which you want to sort the entries. Valid values:
 	//
-	// *   **asc**: sorts the retrieved entries by time in ascending order.
-	// *   **desc**: sorts the retrieved entries by time in descending order. This is the default value.
+	// *   **asc**: the ascending order.
+	// *   **desc**: the descending order. This is the default value.
 	OrderDirect *string `json:"OrderDirect,omitempty" xml:"OrderDirect,omitempty"`
 	// The number of entries to return on each page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -1437,13 +1440,14 @@ type DescribeDownloadTaskRequest struct {
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	// The beginning of the time range to query. Specify this parameter as a timestamp of the LONG type. Unit: milliseconds.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the download task. Valid values:
+	// The state of the download task. Valid values:
 	//
 	// *   **Initializing**: The download task is being initialized.
 	// *   **queuing**: The download task is queuing.
 	// *   **running**: The download task is running.
 	// *   **failed**: The download task fails.
 	// *   **finished**: The download task is complete.
+	// *   **expired**: The download task expires.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The type of the download task. Valid values:
 	//
@@ -1521,22 +1525,22 @@ func (s *DescribeDownloadTaskRequest) SetTaskType(v string) *DescribeDownloadTas
 }
 
 type DescribeDownloadTaskResponseBody struct {
-	// The error code.
+	// The error code returned if the request fails.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the download tasks.
+	// The details of the download task.
 	Data *DescribeDownloadTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request fails.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request is successful.
-	// *   **false**: The request fails.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1584,13 +1588,16 @@ func (s *DescribeDownloadTaskResponseBody) SetSuccess(v string) *DescribeDownloa
 }
 
 type DescribeDownloadTaskResponseBodyData struct {
-	// The details of the download tasks.
+	// The details of the download task.
 	Content *DescribeDownloadTaskResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// The extra description of the download task.
-	Extra         *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalElements *int64  `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The extra description of the download tasks.
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of full backup tasks.
+	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
 	// The total number of returned pages.
 	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
@@ -1655,16 +1662,16 @@ type DescribeDownloadTaskResponseBodyDataContentList struct {
 	BackupSetTime *string `json:"BackupSetTime,omitempty" xml:"BackupSetTime,omitempty"`
 	// The ID of the full backup set.
 	BakSetId *string `json:"BakSetId,omitempty" xml:"BakSetId,omitempty"`
-	// The details of the databases.
+	// The databases.
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The status of the download task. Valid values:
+	// The state of the download task. Valid values:
 	//
-	// *   **Initializing**: The download task is being initialized.
-	// *   **queuing**: The download task is queuing.
-	// *   **running**: The download task is running.
-	// *   **failed**: The download task fails.
-	// *   **finished**: The download task is complete.
-	// *   **expired**: The download task expires.
+	// *   **Initializing**: The download task was being initialized.
+	// *   **queuing**: The download task was queuing.
+	// *   **running**: The download task was running.
+	// *   **failed**: The download task failed.
+	// *   **finished**: The download task was complete.
+	// *   **expired**: The download task expired.
 	DownloadStatus *string `json:"DownloadStatus,omitempty" xml:"DownloadStatus,omitempty"`
 	// The amount of output data. Unit: bytes.
 	ExportDataSize *string `json:"ExportDataSize,omitempty" xml:"ExportDataSize,omitempty"`
@@ -1796,19 +1803,19 @@ func (s *DescribeDownloadTaskResponse) SetBody(v *DescribeDownloadTaskResponseBo
 }
 
 type DescribeSandboxBackupSetsRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule.
+	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to query the ID of the backup schedule.
 	//
-	// >  If your instance is an ApsaraDB RDS for MySQL instance, you can configure [automatic access to the instance](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The ID of the backup set. If this parameter is specified, only the snapshot of the backup set is returned. If this parameter is not specified, all the snapshots of the backup schedule are returned.
+	// The ID of the backup set. If this parameter is specified, only the snapshot of the specified backup set is returned. If this parameter is not specified, all the snapshots of the backup schedule are returned.
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+	// The number of the page to return. Pages start from page 1. Default value: 1.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   30 (default value)
-	// *   50
-	// *   100
+	// *   30: This is the default value.
+	// *   50\.
+	// *   100\.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -1841,24 +1848,24 @@ func (s *DescribeSandboxBackupSetsRequest) SetPageSize(v string) *DescribeSandbo
 }
 
 type DescribeSandboxBackupSetsResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data. The following parameters are contained:
 	//
 	// *   **backupSetTime**: the point in time when the snapshot was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
 	// *   **backupSetId**: the ID of the backup set.
 	// *   **backupSetType**: the type of the snapshot. A value of **Full** indicates that the snapshot is a full backup snapshot. A value of **Inc** indicates that the snapshot is an incremental backup snapshot.
 	// *   **backupPlanId**: the ID of the backup schedule.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
+	// The error code returned if the request failed.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1937,15 +1944,15 @@ func (s *DescribeSandboxBackupSetsResponse) SetBody(v *DescribeSandboxBackupSets
 type DescribeSandboxInstancesRequest struct {
 	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule.
 	//
-	// >  If your instance is an ApsaraDB RDS for MySQL instance, you can configure [automatic access to the instance](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The ID of the sandbox instance. You can call the [CreateSandboxInstance](~~437252~~) parameter to obtain the ID of the sandbox instance.
+	// The ID of the sandbox instance. You can call the [CreateSandboxInstance](~~437252~~) operation to obtain the ID of the sandbox instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   30 (default value)
+	// *   30\. This is the default value.
 	// *   50
 	// *   100
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -1980,7 +1987,7 @@ func (s *DescribeSandboxInstancesRequest) SetPageSize(v string) *DescribeSandbox
 }
 
 type DescribeSandboxInstancesResponseBody struct {
-	// The error code.
+	// The error code returned if the request fails.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	//
@@ -1996,15 +2003,15 @@ type DescribeSandboxInstancesResponseBody struct {
 	// *   **sandboxSpecification**: the specifications of the sandbox instance.
 	// *   **status**: the status of the sandbox instance. Valid values: **running**, **check_pass**, and **stop**.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
+	// The error code returned if the request fails.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2083,7 +2090,7 @@ func (s *DescribeSandboxInstancesResponse) SetBody(v *DescribeSandboxInstancesRe
 type DescribeSandboxRecoveryTimeRequest struct {
 	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule. If you set this parameter to the backup schedule ID obtained by calling the DescribeBackupPlanList operation, the dbs prefix must be removed. Otherwise, the call fails.
 	//
-	// >  If your instance is an ApsaraDB RDS for MySQL instance, you can configure [automatic access to the instance](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 }
 
@@ -2101,19 +2108,19 @@ func (s *DescribeSandboxRecoveryTimeRequest) SetBackupPlanId(v string) *Describe
 }
 
 type DescribeSandboxRecoveryTimeResponseBody struct {
-	// The error code.
+	// The error code returned if the request fails.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	Data *DescribeSandboxRecoveryTimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request fails.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2225,7 +2232,6 @@ type ModifyDBTablesRecoveryStateRequest struct {
 	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Retention  *string `json:"Retention,omitempty" xml:"Retention,omitempty"`
 }
 
@@ -2249,11 +2255,6 @@ func (s *ModifyDBTablesRecoveryStateRequest) SetInstanceId(v string) *ModifyDBTa
 
 func (s *ModifyDBTablesRecoveryStateRequest) SetRegionCode(v string) *ModifyDBTablesRecoveryStateRequest {
 	s.RegionCode = &v
-	return s
-}
-
-func (s *ModifyDBTablesRecoveryStateRequest) SetRegionId(v string) *ModifyDBTablesRecoveryStateRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2347,7 +2348,6 @@ func (s *ModifyDBTablesRecoveryStateResponse) SetBody(v *ModifyDBTablesRecoveryS
 type SupportDBTableRecoveryRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SupportDBTableRecoveryRequest) String() string {
@@ -2365,11 +2365,6 @@ func (s *SupportDBTableRecoveryRequest) SetInstanceId(v string) *SupportDBTableR
 
 func (s *SupportDBTableRecoveryRequest) SetRegionCode(v string) *SupportDBTableRecoveryRequest {
 	s.RegionCode = &v
-	return s
-}
-
-func (s *SupportDBTableRecoveryRequest) SetRegionId(v string) *SupportDBTableRecoveryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2584,7 +2579,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * For ApsaraDB RDS for MySQL instances that use standard SSDs or enhanced SSDs (ESSDs) and meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request CreateDownloadRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -2664,7 +2659,7 @@ func (client *Client) CreateDownloadWithOptions(request *CreateDownloadRequest, 
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * For ApsaraDB RDS for MySQL instances that use standard SSDs or enhanced SSDs (ESSDs) and meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request CreateDownloadRequest
  * @return CreateDownloadResponse
@@ -2681,7 +2676,7 @@ func (client *Client) CreateDownload(request *CreateDownloadRequest) (_result *C
 }
 
 /**
- * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Create a sandbox instance for emergency disaster recovery of an ApsaraDB RDS for MySQL database](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request CreateSandboxInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -2757,7 +2752,7 @@ func (client *Client) CreateSandboxInstanceWithOptions(request *CreateSandboxIns
 }
 
 /**
- * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Create a sandbox instance for emergency disaster recovery of an ApsaraDB RDS for MySQL database](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request CreateSandboxInstanceRequest
  * @return CreateSandboxInstanceResponse
@@ -2774,7 +2769,7 @@ func (client *Client) CreateSandboxInstance(request *CreateSandboxInstanceReques
 }
 
 /**
- * The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DeleteSandboxInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -2818,7 +2813,7 @@ func (client *Client) DeleteSandboxInstanceWithOptions(request *DeleteSandboxIns
 }
 
 /**
- * The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DeleteSandboxInstanceRequest
  * @return DeleteSandboxInstanceResponse
@@ -2846,10 +2841,6 @@ func (client *Client) DescribeDBTablesRecoveryBackupSetWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
 		query["RegionCode"] = request.RegionCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2900,10 +2891,6 @@ func (client *Client) DescribeDBTablesRecoveryStateWithOptions(request *Describe
 		query["RegionCode"] = request.RegionCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2952,10 +2939,6 @@ func (client *Client) DescribeDBTablesRecoveryTimeRangeWithOptions(request *Desc
 		query["RegionCode"] = request.RegionCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2991,7 +2974,7 @@ func (client *Client) DescribeDBTablesRecoveryTimeRange(request *DescribeDBTable
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request DescribeDownloadBackupSetStorageInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3047,7 +3030,7 @@ func (client *Client) DescribeDownloadBackupSetStorageInfoWithOptions(request *D
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request DescribeDownloadBackupSetStorageInfoRequest
  * @return DescribeDownloadBackupSetStorageInfoResponse
@@ -3064,7 +3047,7 @@ func (client *Client) DescribeDownloadBackupSetStorageInfo(request *DescribeDown
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request DescribeDownloadSupportRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3108,7 +3091,7 @@ func (client *Client) DescribeDownloadSupportWithOptions(request *DescribeDownlo
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request DescribeDownloadSupportRequest
  * @return DescribeDownloadSupportResponse
@@ -3125,7 +3108,7 @@ func (client *Client) DescribeDownloadSupport(request *DescribeDownloadSupportRe
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * You can create an advanced download task by point in time or backup set. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request DescribeDownloadTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3209,7 +3192,7 @@ func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadT
 }
 
 /**
- * You can create an advanced download task by point in time or backup file. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Advanced download](~~98819~~).
+ * You can create an advanced download task by point in time or backup set. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
  *
  * @param request DescribeDownloadTaskRequest
  * @return DescribeDownloadTaskResponse
@@ -3226,7 +3209,7 @@ func (client *Client) DescribeDownloadTask(request *DescribeDownloadTaskRequest)
 }
 
 /**
- * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Create a sandbox instance for emergency disaster recovery of an ApsaraDB RDS for MySQL database](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DescribeSandboxBackupSetsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3278,7 +3261,7 @@ func (client *Client) DescribeSandboxBackupSetsWithOptions(request *DescribeSand
 }
 
 /**
- * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Create a sandbox instance for emergency disaster recovery of an ApsaraDB RDS for MySQL database](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DescribeSandboxBackupSetsRequest
  * @return DescribeSandboxBackupSetsResponse
@@ -3295,7 +3278,7 @@ func (client *Client) DescribeSandboxBackupSets(request *DescribeSandboxBackupSe
 }
 
 /**
- * The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DescribeSandboxInstancesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3347,7 +3330,7 @@ func (client *Client) DescribeSandboxInstancesWithOptions(request *DescribeSandb
 }
 
 /**
- * The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DescribeSandboxInstancesRequest
  * @return DescribeSandboxInstancesResponse
@@ -3364,7 +3347,7 @@ func (client *Client) DescribeSandboxInstances(request *DescribeSandboxInstances
 }
 
 /**
- * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Create a sandbox instance for emergency disaster recovery of an ApsaraDB RDS for MySQL database](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DescribeSandboxRecoveryTimeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3404,7 +3387,7 @@ func (client *Client) DescribeSandboxRecoveryTimeWithOptions(request *DescribeSa
 }
 
 /**
- * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Create a sandbox instance for emergency disaster recovery of an ApsaraDB RDS for MySQL database](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). The API operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+ * Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
  *
  * @param request DescribeSandboxRecoveryTimeRequest
  * @return DescribeSandboxRecoveryTimeResponse
@@ -3436,10 +3419,6 @@ func (client *Client) ModifyDBTablesRecoveryStateWithOptions(request *ModifyDBTa
 
 	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
 		query["RegionCode"] = request.RegionCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Retention)) {
@@ -3492,10 +3471,6 @@ func (client *Client) SupportDBTableRecoveryWithOptions(request *SupportDBTableR
 
 	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
 		query["RegionCode"] = request.RegionCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
