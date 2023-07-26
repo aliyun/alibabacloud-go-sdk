@@ -1,3 +1,6 @@
+2023-07-26 Version: v3.0.39
+- Add new API DescribeUserClusterNamespaces.
+
 2023-07-21 Version: v3.0.38
 - Update API.
 

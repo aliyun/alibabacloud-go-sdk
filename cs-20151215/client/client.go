@@ -10105,6 +10105,35 @@ func (s *DescribeTriggerResponseBody) SetToken(v string) *DescribeTriggerRespons
 	return s
 }
 
+type DescribeUserClusterNamespacesResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*string          `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeUserClusterNamespacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserClusterNamespacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserClusterNamespacesResponse) SetHeaders(v map[string]*string) *DescribeUserClusterNamespacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserClusterNamespacesResponse) SetStatusCode(v int32) *DescribeUserClusterNamespacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserClusterNamespacesResponse) SetBody(v []*string) *DescribeUserClusterNamespacesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUserPermissionResponse struct {
 	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -18027,6 +18056,42 @@ func (client *Client) DescribeTrigger(clusterId *string, request *DescribeTrigge
 	headers := make(map[string]*string)
 	_result = &DescribeTriggerResponse{}
 	_body, _err := client.DescribeTriggerWithOptions(clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUserClusterNamespacesWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeUserClusterNamespacesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserClusterNamespaces"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/k8s/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/namespaces"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &DescribeUserClusterNamespacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserClusterNamespaces(ClusterId *string) (_result *DescribeUserClusterNamespacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeUserClusterNamespacesResponse{}
+	_body, _err := client.DescribeUserClusterNamespacesWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
