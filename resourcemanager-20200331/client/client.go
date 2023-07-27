@@ -9404,7 +9404,8 @@ type ListResourcesRequest struct {
 	// The resource type.
 	//
 	// For more information about the supported resource types, see the **Resource type** column in [Alibaba Cloud services that support resource groups](~~94479~~).
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType  *string                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceTypes []*ListResourcesRequestResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 	// The ID of the Alibaba Cloud service.
 	//
 	// You can obtain the ID from the **Service code** column in [Alibaba Cloud services that support resource groups](~~94479~~).
@@ -9449,7 +9450,35 @@ func (s *ListResourcesRequest) SetResourceType(v string) *ListResourcesRequest {
 	return s
 }
 
+func (s *ListResourcesRequest) SetResourceTypes(v []*ListResourcesRequestResourceTypes) *ListResourcesRequest {
+	s.ResourceTypes = v
+	return s
+}
+
 func (s *ListResourcesRequest) SetService(v string) *ListResourcesRequest {
+	s.Service = &v
+	return s
+}
+
+type ListResourcesRequestResourceTypes struct {
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Service      *string `json:"Service,omitempty" xml:"Service,omitempty"`
+}
+
+func (s ListResourcesRequestResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesRequestResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesRequestResourceTypes) SetResourceType(v string) *ListResourcesRequestResourceTypes {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListResourcesRequestResourceTypes) SetService(v string) *ListResourcesRequestResourceTypes {
 	s.Service = &v
 	return s
 }
@@ -11933,6 +11962,7 @@ func (s *SetMemberDeletionPermissionResponse) SetBody(v *SetMemberDeletionPermis
 }
 
 type TagResourcesRequest struct {
+	// The ID of a resource group or member.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the objects to which you want to add tags. Valid values:
 	//
@@ -11940,8 +11970,9 @@ type TagResourcesRequest struct {
 	// *   Account: member.
 	//
 	// >  This parameter is required if you add tags to members in a resource directory.
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -16753,6 +16784,10 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Service)) {
