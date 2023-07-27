@@ -44300,7 +44300,8 @@ type ModifyDBInstanceSpecRequest struct {
 	// The minimum number of RCUs.
 	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
 	// The response parameters.
-	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	SwitchTime         *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
 	// The ID of the order.
 	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The RDS edition of the instance. Valid values:
@@ -44422,6 +44423,11 @@ func (s *ModifyDBInstanceSpecRequest) SetSwitchTime(v string) *ModifyDBInstanceS
 	return s
 }
 
+func (s *ModifyDBInstanceSpecRequest) SetTargetMinorVersion(v string) *ModifyDBInstanceSpecRequest {
+	s.TargetMinorVersion = &v
+	return s
+}
+
 func (s *ModifyDBInstanceSpecRequest) SetUsedTime(v int64) *ModifyDBInstanceSpecRequest {
 	s.UsedTime = &v
 	return s
@@ -44508,7 +44514,8 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// The minimum number of RCUs.
 	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
 	// The response parameters.
-	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	SwitchTime         *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
 	// The ID of the order.
 	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The RDS edition of the instance. Valid values:
@@ -44627,6 +44634,11 @@ func (s *ModifyDBInstanceSpecShrinkRequest) SetSourceBiz(v string) *ModifyDBInst
 
 func (s *ModifyDBInstanceSpecShrinkRequest) SetSwitchTime(v string) *ModifyDBInstanceSpecShrinkRequest {
 	s.SwitchTime = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecShrinkRequest) SetTargetMinorVersion(v string) *ModifyDBInstanceSpecShrinkRequest {
+	s.TargetMinorVersion = &v
 	return s
 }
 
@@ -70791,6 +70803,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 
 	if !tea.BoolValue(util.IsUnset(request.SwitchTime)) {
 		query["SwitchTime"] = request.SwitchTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetMinorVersion)) {
+		query["TargetMinorVersion"] = request.TargetMinorVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
