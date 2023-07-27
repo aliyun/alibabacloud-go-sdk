@@ -1,0 +1,53 @@
+2023-07-27 Version: v1.0.0
+- Disable Backup.
+- Disable DescribeBackups.
+- Change  lake house resource api  to private.
+- Support DB Sync.
+- Support APS Hive And Datasource API.
+- Support Datasource And Hive.
+- Add ErrorCode.
+- Support PolarDB Across Account.
+- DescribeApsWorkloads response parameter MaxRT  adapt type.
+- StartFormationCrawler add response parameter success.
+- Add error code.
+- Support error code.
+- Published ADB Spark error codes.
+- Add error code for Spark relate APIs.
+- Adapt input column parameter.
+- Supported asign to default resourge group when scale up.
+- Add LeftComputeResource.
+- Add API DescribeClusterResourceDetail.
+- Add API DescribeJobResourceUsage.
+- Add API DescribeStorageResourceUsage.
+- Add API DescribeComputeResourceUsage.
+- Add API DescribeClusterResourceUsage.
+- Add parameter MaxLimit for execution async sql.
+- Fix DescribeApsRdsInstances.
+- Support describe elastic plan with the type.
+- Support ram id validate.
+- Support job resource group delete check.
+- Remove unused input params Key for DescribePatternPerformance.
+- Set Order as required.
+- Supported prefix and mapping for ModifyApsDbSyncJob.
+- Supported prefix and mapping for DescribeApsDbSyncJob.
+- Supported prefix and mapping for CreateApsDbSyncJob.
+- Supported Create Data Source Param.
+- Append error code to every Spark related POP APIs.
+- Support ResourceGroupId parameter for ModifyDBCluster.
+- Support ResourceGroupId for ModifyDBCluster.
+- Fix ProxyUser type.
+- Support Kafka .
+- Support Api TagList.
+- Add new error code.
+- Add DescribeNotebookStatementUI.
+- Add DescribeSQLWebSocketDomain.
+- Supported One Click Copy.
+- Support Workload Copy.
+- Modify DescribeAsyncStatusByJobId.
+- Update GetSparkAppLog time out limit to 60 seconds.
+- Set GetSparkAppLog time out limit to 10s.
+- Support ZeroEtl API.
+- Add error code to SubmitSparkApp.
+- Add errorCode to spark apis.
+- Support tag.
+
