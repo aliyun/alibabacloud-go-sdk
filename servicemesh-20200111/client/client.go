@@ -611,12 +611,22 @@ func (s *CreateIstioGatewayDomainsResponse) SetBody(v *CreateIstioGatewayDomains
 }
 
 type CreateIstioGatewayRoutesRequest struct {
-	Description      *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	GatewayRoute     *CreateIstioGatewayRoutesRequestGatewayRoute `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty" type:"Struct"`
-	IstioGatewayName *string                                      `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	Priority         *int32                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ServiceMeshId    *string                                      `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Status           *int32                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the routing rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the routing rule to be created for the ASM gateway.
+	GatewayRoute *CreateIstioGatewayRoutesRequestGatewayRoute `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty" type:"Struct"`
+	// The name of the ASM gateway.
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ASM instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The status of the routing rule. Valid values:
+	//
+	// *   `0`: The routing rule is valid.
+	// *   `1`: The routing rule is invalid.
+	// *   `2`: An error occurs during the creation or update of the routing rule.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequest) String() string {
@@ -658,13 +668,20 @@ func (s *CreateIstioGatewayRoutesRequest) SetStatus(v int32) *CreateIstioGateway
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRoute struct {
-	Domains             []*string                                                       `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// The advanced settings for routing HTTP traffic.
 	HTTPAdvancedOptions *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
-	MatchRequest        *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
-	Namespace           *string                                                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RouteDestinations   []*CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
-	RouteName           *string                                                         `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	RouteType           *string                                                         `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The matching rules for traffic routing.
+	MatchRequest *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	// The name of the namespace.
+	Namespace  *string     `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RawVSRoute interface{} `json:"RawVSRoute,omitempty" xml:"RawVSRoute,omitempty"`
+	// The endpoints of destination services for Layer 4 weighted routing.
+	RouteDestinations []*CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
+	// The name of the routing rule.
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The type of the traffic to be routed. Valid values: `HTTP`, `TLS`, and `TCP`.
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRoute) String() string {
@@ -695,6 +712,11 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetNamespace(v string) *Cr
 	return s
 }
 
+func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetRawVSRoute(v interface{}) *CreateIstioGatewayRoutesRequestGatewayRoute {
+	s.RawVSRoute = v
+	return s
+}
+
 func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetRouteDestinations(v []*CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) *CreateIstioGatewayRoutesRequestGatewayRoute {
 	s.RouteDestinations = v
 	return s
@@ -711,14 +733,22 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetRouteType(v string) *Cr
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions struct {
-	Delegate         *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate         `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
-	Fault            *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault            `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
-	HTTPRedirect     *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect     `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
-	Mirror           *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror           `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	// The virtual service that defines traffic routing.
+	Delegate *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
+	// The configurations of fault injection.
+	Fault *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
+	// The HTTP redirect rule.
+	HTTPRedirect *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
+	// The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
+	Mirror *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	// The percentage of requests that are mirrored to another destination except for the original destination.
 	MirrorPercentage *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage `json:"MirrorPercentage,omitempty" xml:"MirrorPercentage,omitempty" type:"Struct"`
-	Retries          *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries          `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
-	Rewrite          *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite          `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
-	Timeout          *string                                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The configurations of retries for failed requests.
+	Retries *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
+	// The configurations for rewriting the virtual service.
+	Rewrite *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
+	// The timeout period for requests.
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) String() string {
@@ -770,7 +800,9 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetTime
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the virtual service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace to which the virtual service belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -793,7 +825,9 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate)
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault struct {
+	// The configurations for aborting requests with specified error codes.
 	Abort *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort `json:"Abort,omitempty" xml:"Abort,omitempty" type:"Struct"`
+	// The duration to delay a request.
 	Delay *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay `json:"Delay,omitempty" xml:"Delay,omitempty" type:"Struct"`
 }
 
@@ -816,7 +850,9 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) Se
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort struct {
-	HttpStatus *int32                                                                              `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	// The HTTP status code.
+	HttpStatus *int32 `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	// The percentage of requests that are aborted with the specified error code.
 	Percentage *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
 }
 
@@ -839,6 +875,7 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbor
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage struct {
+	// The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -856,7 +893,9 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbor
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay struct {
-	FixedDelay *string                                                                             `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	// The fixed duration for request delay.
+	FixedDelay *string `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	// The percentage of requests to which the delay fault is injected.
 	Percentage *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
 }
 
@@ -879,6 +918,7 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDela
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage struct {
+	// The percentage of requests to which the delay fault is injected, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -896,9 +936,12 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDela
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect struct {
-	Authority    *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	RedirectCode *int32  `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
-	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The value to be used to overwrite the value of the Authority or Host header during redirection.``
+	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	// The HTTP status code to be used to indicate URL redirection. Default value: 301.
+	RedirectCode *int32 `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
+	// The value to be used to overwrite the URL path during redirection.
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) String() string {
@@ -925,7 +968,9 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedir
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror struct {
-	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The name of the service defined in the service registry.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The name of the service subset.
 	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
 }
 
@@ -948,6 +993,7 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) S
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage struct {
+	// The percentage of requests that are mirrored to another destination except for the original destination, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -965,9 +1011,13 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPer
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries struct {
-	Attempts              *int32                                                                                      `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
-	PerTryTimeout         *string                                                                                     `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
-	RetryOn               *string                                                                                     `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	// The number of retries allowed for a request.
+	Attempts *int32 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	// The timeout period for each retry. Example: `5s`.
+	PerTryTimeout *string `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
+	// The condition for retries. Example: `connect-failure,refused-stream,503`.
+	RetryOn *string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	// Specifies whether to allow retries to other localities.
 	RetryRemoteLocalities *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities `json:"RetryRemoteLocalities,omitempty" xml:"RetryRemoteLocalities,omitempty" type:"Struct"`
 }
 
@@ -1000,6 +1050,12 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) 
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities struct {
+	// Specifies whether to allow retries to other localities. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
 	Value *bool `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1017,8 +1073,10 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRe
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite struct {
+	// The value to be used to overwrite the value of the Authority or Host header.
 	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The value to be used to overwrite the path or prefix of the URI.
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) String() string {
@@ -1040,10 +1098,14 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) 
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest struct {
-	Headers            []*CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders            `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	Ports              []*int32                                                                     `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The request headers to be matched.
+	Headers []*CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// The ports of destination services for Layer 4 weighted routing.
+	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The matching rule for Transport Layer Security (TLS) traffic.
 	TLSMatchAttributes []*CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes `json:"TLSMatchAttributes,omitempty" xml:"TLSMatchAttributes,omitempty" type:"Repeated"`
-	URI                *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI                  `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
+	// The matching rule for URIs.
+	URI *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) String() string {
@@ -1075,9 +1137,16 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetURI(v *Crea
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders struct {
+	// The header value to be matched.
 	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
-	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The matching mode for the header value. Valid values:
+	//
+	// *   `exact`: exact match
+	// *   `prefix`: match by prefix
+	// *   `regex`: match by regular expression
+	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	// The header key to be matched.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) String() string {
@@ -1104,8 +1173,10 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetName
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes struct {
+	// The Server Name Indication (SNI) values to be matched.
 	SNIHosts []*string `json:"SNIHosts,omitempty" xml:"SNIHosts,omitempty" type:"Repeated"`
-	TLSPort  *int32    `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
+	// The TLS port.
+	TLSPort *int32 `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) String() string {
@@ -1127,8 +1198,14 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttribut
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI struct {
+	// The content to be matched.
 	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
-	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	// The matching mode for the routing rule. Valid values:
+	//
+	// *   `exact`: exact match
+	// *   `prefix`: match by prefix
+	// *   `regex`: match by regular expression
+	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) String() string {
@@ -1150,8 +1227,10 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) SetMatching
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations struct {
+	// The unique endpoint of the destination service to which the specified requests are sent.
 	Destination *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
-	Weight      *int32                                                                   `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The weight of the service subset.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) String() string {
@@ -1173,9 +1252,11 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetWeight
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination struct {
-	Host   *string                                                                      `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port   *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
-	Subset *string                                                                      `json:"Subset,omitempty" xml:"Subset,omitempty"`
+	// The name of the service defined in the service registry.
+	Host *string                                                                      `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
+	// The name of the service subset.
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) String() string {
@@ -1219,12 +1300,22 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination
 }
 
 type CreateIstioGatewayRoutesShrinkRequest struct {
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the routing rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the routing rule to be created for the ASM gateway.
 	GatewayRouteShrink *string `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty"`
-	IstioGatewayName   *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	Priority           *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the ASM gateway.
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ASM instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The status of the routing rule. Valid values:
+	//
+	// *   `0`: The routing rule is valid.
+	// *   `1`: The routing rule is invalid.
+	// *   `2`: An error occurs during the creation or update of the routing rule.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateIstioGatewayRoutesShrinkRequest) String() string {
@@ -1266,6 +1357,7 @@ func (s *CreateIstioGatewayRoutesShrinkRequest) SetStatus(v int32) *CreateIstioG
 }
 
 type CreateIstioGatewayRoutesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1312,305 +1404,304 @@ func (s *CreateIstioGatewayRoutesResponse) SetBody(v *CreateIstioGatewayRoutesRe
 }
 
 type CreateServiceMeshRequest struct {
-	// Specifies whether to use a custom Prometheus instance. Valid values:
+	// Specifies whether to enable access log collection. Valid values:
 	//
-	// *   `true`: uses a custom Prometheus instance.
-	// *   `false`: does not use a custom Prometheus instance.
+	// *   `true`
+	// *   `false`
 	//
 	// Default value: `false`.
 	AccessLogEnabled *bool `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
-	// The name of the Log Service project that is used to collect access logs.
+	// Specifies whether to enable access log collection. Valid values:
+	//
+	// *   "": disables access log collection.
+	// *   `/dev/stdout`: enables access log collection. Access logs are written to /dev/stdout.
 	AccessLogFile *string `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
-	// Specifies whether to enable access logging. Valid values:
-	//
-	// *   "": disables access logging.
-	// *   `/dev/stdout`: enables access logging. Access logs are written to /dev/stdout.
+	// Custom fields of access logs. To set this parameter, you must enable access log collection. Otherwise, you cannot set this parameter. The value must be a JSON string. The following key values must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
 	AccessLogFormat *string `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
-	// Specifies whether to enable the rollback feature for Istio resources. Valid values:
-	//
-	// *   `true`: enables the rollback feature for Istio resources.
-	// *   `false`: disables the rollback feature for Istio resources.
-	//
-	// Default value: `false`.
+	// The SLS project from which access logs are collected.
 	AccessLogProject *string `json:"AccessLogProject,omitempty" xml:"AccessLogProject,omitempty"`
-	// The endpoint of gRPC ALS for Envoy.
+	// Specifies whether to enable gRPC Access Log Service (ALS) of Envoy. gRPC is short for Google Remote Procedure Call. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
 	AccessLogServiceEnabled *bool `json:"AccessLogServiceEnabled,omitempty" xml:"AccessLogServiceEnabled,omitempty"`
-	// The port of gRPC ALS for Envoy.
+	// The endpoint of Envoy\"s gRPC ALS.
 	AccessLogServiceHost *string `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
-	// Specifies whether to enable Gateway API. Valid values:
-	//
-	// *   `true`: enables Gateway API.
-	// *   `false`: disables Gateway API.
-	//
-	// Default value: `false`.
+	// The port of Envoy\"s gRPC ALS.
 	AccessLogServicePort *int32 `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
-	// The instance type of the SLB instance bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
+	// The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
 	ApiServerLoadBalancerSpec *string `json:"ApiServerLoadBalancerSpec,omitempty" xml:"ApiServerLoadBalancerSpec,omitempty"`
-	// Specifies whether to enable the Tracing Analysis feature. Valid values:
+	// Specifies whether to expose the API server to the Internet. Valid values:
 	//
-	// *   `true`: enables the Tracing Analysis feature.
-	// *   `false`: disables the Tracing Analysis feature.
+	// *   `true`
+	// *   `false`
 	//
 	// Default value: `false`.
+	//
+	// > If you set this parameter to `false`, the API server cannot be accessed over the Internet.
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-	// The number of CPU cores that are requested by the proxy container.
-	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	// The auto-renewal period of the SLB instance. This parameter is valid only if the `ChargeType` parameter is set to `PrePaid`. If the subscription period of the SLB instance is less than one year, the value of this parameter indicates the number of months for auto-renewal. If the subscription period of the SLB instance is more than one year, the value of this parameter indicates the number of years for auto-renewal.
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The specification of the ASM instance. Valid values:
-	//
-	// *   `standard`: Standard Edition
-	// *   `enterprise`: Enterprise Edition
-	// *   `ultimate`: Ultimate Edition
-	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// Specifies whether to enable Application High Availability Service (AHAS)-based throttling. Valid values:
-	//
-	// *   `true`: enables AHAS-based throttling.
-	// *   `false`: disables AHAS-based throttling.
-	//
-	// Default value: `false`.
-	CRAggregationEnabled *bool `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
-	// The subscription period of the SLB instance. Unit: month. This parameter is valid only if the ChargeType parameter is set to PrePaid. For example, if the subscription period is one year, set this parameter to 12.
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether to enable MultiBuffer-based Transport Layer Security (TLS) acceleration. Valid values:
-	//
-	// *   `true`: enables MultiBuffer-based TLS acceleration.
-	// *   `false`: disables MultiBuffer-based TLS acceleration.
-	//
-	// Default value: `true`
-	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The instance ID of the Nacos registry.
-	ConfigSourceEnabled *bool `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
-	// Specifies whether to enable Dubbo Filter. Valid values:
-	//
-	// *   `true`: enables Dubbo Filter.
-	// *   `false`: disables Dubbo Filter.
-	//
-	// Default value: `false`.
-	ConfigSourceNacosID *string `json:"ConfigSourceNacosID,omitempty" xml:"ConfigSourceNacosID,omitempty"`
-	// The name of the Log Service project that is used to collect the logs of the control plane.
-	ControlPlaneLogEnabled *bool `json:"ControlPlaneLogEnabled,omitempty" xml:"ControlPlaneLogEnabled,omitempty"`
-	// The custom format of access logs. To set this parameter, you must enable access log collection. Otherwise, you cannot set this parameter. The value must be a JSON string. The following key names must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
-	ControlPlaneLogProject *string `json:"ControlPlaneLogProject,omitempty" xml:"ControlPlaneLogProject,omitempty"`
-	// The endpoint of the custom Prometheus instance.
-	CustomizedPrometheus *bool `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
-	// Specifies whether to route traffic to the nearest instance. Valid values:
-	//
-	// *   `true`: routes traffic to the nearest instance.
-	// *   `false`: does not route traffic to the nearest instance.
-	//
-	// Default value: `false`.
-	CustomizedZipkin *bool `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
-	// The edition of the ASM instance.
-	DNSProxyingEnabled *bool `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
-	// Specifies whether to enable gateway configuration filtering. Valid values:
-	//
-	// *   `true`: enables gateway configuration filtering.
-	// *   `false`: disables gateway configuration filtering.
-	//
-	// Default value: `false`.
-	DubboFilterEnabled *bool `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
-	// Specifies whether to enable the external service registry. Valid values:
-	//
-	// *   `true`: enables the external service registry.
-	// *   `false`: disables the external service registry.
-	//
-	// Default value: `false`.
-	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The name of the Log Service project that is used for mesh audit.
 	//
 	// Default value: mesh-log-{ASM instance ID}.
-	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
-	// Specifies whether to allow the Kubernetes API of clusters on the data plane to access Istio resources. To use this feature, the version of the ASM instance must be V1.9.7.93 or later. Valid values:
-	//
-	// *   `true`: allows the Kubernetes API of clusters on the data plane to access Istio resources.
-	// *   `false`: does not allow the Kubernetes API of clusters on the data plane to access Istio resources.
-	//
-	// Default value: `false`.
-	EnableCRHistory *bool `json:"EnableCRHistory,omitempty" xml:"EnableCRHistory,omitempty"`
-	// Specifies whether to enable gRPC Access Log Service (ALS) for Envoy. Valid values:
-	//
-	// *   `true`: enables gRPC ALS.
-	// *   `false`: disables gRPC ALS.
-	//
-	// Default value: `false`.
-	EnableSDSServer *bool `json:"EnableSDSServer,omitempty" xml:"EnableSDSServer,omitempty"`
-	// The outbound ports to be excluded from redirection to the sidecar proxies in the ASM instance. Separate multiple port numbers with commas (,).
-	ExcludeIPRanges *string `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
-	// Specifies whether to enable the OPA plug-in. Valid values:
-	//
-	// *   `true`: enables the OPA plug-in.
-	// *   `false`: disables the OPA plug-in.
-	//
-	// Default value: `false`.
-	ExcludeInboundPorts *string `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
-	// The inbound ports to be excluded from redirection to the sidecar proxies in the ASM instance. Separate multiple port numbers with commas (,).
-	ExcludeOutboundPorts *string `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
-	// The existing CA key, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-key.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
-	ExistingCaCert *string `json:"ExistingCaCert,omitempty" xml:"ExistingCaCert,omitempty"`
-	// The type of the existing CA certificate. Valid values:
-	//
-	// *   1: Self-signed certificate generated by Istiod. The certificate corresponds to the secret named istio-ca-secret in the istio-system namespace. If you use this type of certificate, you must set `ExistingCaCert` and `ExsitingCaKey` parameters.
-	// *   2: Administrator-specified certificate. For more information, see [plugin ca cert](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/). In most cases, the certificate corresponds to the secret named cacerts in the istio-system namespace. If you use this type of certificate, you must set `ExisingRootCaCert` and `ExisingRootCaKey` parameters.
-	ExistingCaKey *string `json:"ExistingCaKey,omitempty" xml:"ExistingCaKey,omitempty"`
-	// The existing root certificate, which is encoded in Base64.
-	ExistingCaType *string `json:"ExistingCaType,omitempty" xml:"ExistingCaType,omitempty"`
-	// The private key that corresponds to the root certificate, which is encoded in Base64.
-	ExistingRootCaCert *string `json:"ExistingRootCaCert,omitempty" xml:"ExistingRootCaCert,omitempty"`
-	// The ID of the request.
-	ExistingRootCaKey *string `json:"ExistingRootCaKey,omitempty" xml:"ExistingRootCaKey,omitempty"`
-	// Specifies whether to enable Secret Discovery Service (SDS). Valid values:
-	//
-	// *   `true`: enables SDS.
-	// *   `false`: disables SDS.
-	//
-	// Default value: `false`.
-	FilterGatewayClusterConfig *bool `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
-	// Specifies whether to enable the collection of control-plane logs. Valid values:
-	//
-	// *   `true`: enables the collection of control-plane logs.
-	// *   `false`: disables the collection of control-plane logs.
-	//
-	// Default value: `false`.
-	GatewayAPIEnabled *bool `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
-	// The IP ranges in CIDR form to be excluded from redirection to sidecar proxies in the ASM instance.
-	IncludeIPRanges *string `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	IstioVersion *string `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
-	// Specifies whether to enable access log collection. Valid values:
-	//
-	// *   `true`: enables access log collection.
-	// *   `false`: disables access log collection.
-	//
-	// Default value: `false`.
-	KialiEnabled *bool `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
-	// Specifies whether to enable Prometheus monitoring. We recommend that you use Prometheus Service of [Application Real-Time Monitoring Service (ARMS)](https://arms.console.aliyun.com/). Valid values:
-	//
-	// *   `true`: enables Prometheus monitoring.
-	// *   `false`: does not enable Prometheus monitoring.
-	//
-	// Default value: `false`.
-	LocalityLBConf *string `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
-	// The configurations for the access to the nearest instance.
-	LocalityLoadBalancing *bool `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
-	// Specifies whether to enable the DNS proxy feature. Valid values:
-	//
-	// *   `true`: enables the DNS proxy feature.
-	// *   `false`: disables the DNS proxy feature.
-	//
-	// Default value: `false`.
-	MSEEnabled *bool `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
-	// The pull-request latency. Default value: `30`. Unit: seconds.
-	MultiBufferEnabled *bool `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
-	// Specifies whether to use an existing CA certificate and private key.
-	MultiBufferPollDelay *string `json:"MultiBufferPollDelay,omitempty" xml:"MultiBufferPollDelay,omitempty"`
-	// Specifies whether to enable Thrift Filter. Valid values:
-	//
-	// *   `true`: enables Thrift Filter.
-	// *   `false`: disables Thrift Filter.
-	//
-	// Default value: `false`.
-	MysqlFilterEnabled *bool `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
-	// The ID of the vSwitch to which the ASM instance is connected.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum size of the memory that is available for OPA. You can specify the parameter value in the standard quantity representation used by Kubernetes. For example, a value of 1 Mi represents a memory size of 1,024 KB.
-	OPALimitCPU *string `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
-	// Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
-	//
-	// *   `true`: enables the mesh audit feature.
-	// *   `false`: disables the mesh audit feature.
-	//
-	// Default value: `false`.
-	OPALimitMemory *string `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
-	// The number of CPU cores that are requested by OPA. You can specify the parameter value in the standard representation form of CPUs in Kubernetes. For example, a value of 1 represents one CPU core.
-	OPALogLevel *string `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
-	// The size of the memory that is requested by OPA. You can specify the parameter value in the standard quantity representation used by Kubernetes. For example, a value of 1 Mi represents a memory size of 1,024 KB.
-	OPARequestCPU *string `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
-	// The maximum number of CPU cores that are available for OPA.
-	OPARequestMemory *string `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
-	// Specifies whether to enable the mesh topology feature. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, you must set this parameter to `false`. Valid values:
-	//
-	// *   `true`: enables the mesh topology feature.
-	// *   `false`: disables the mesh topology feature.
-	//
-	// Default value: `false`.
-	OpaEnabled *bool `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
-	// The log level of OPA.
-	OpenAgentPolicy *bool `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
+	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
 	// Specifies whether to enable auto-renewal for the SLB instance if the SLB instance uses the subscription billing method. Valid values:
 	//
-	// *   `true`: enables auto-renewal.
-	// *   `false`: disables auto-renewal.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// - true
+	//
+	// - false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal period of the SLB instance. This parameter is valid only if the `ChargeType` parameter is set to `PrePay`. If the original subscription period of the SLB instance is less than one year, the value of this parameter indicates the number of months for auto-renewal. If the original subscription period of the SLB instance is more than one year, the value of this parameter indicates the number of years for auto-renewal.
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// Specifies whether to allow the Kubernetes API of clusters on the data plane to access Istio resources. The version of the ASM instance must be V1.9.7.93 or later. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	CRAggregationEnabled *bool `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
 	// The billing method of the SLB instance. Valid values:
-	//
 	// *   `PayOnDemand`: pay-as-you-go.
-	// *   `PrePaid`: subscription.
-	PilotLoadBalancerSpec *string `json:"PilotLoadBalancerSpec,omitempty" xml:"PilotLoadBalancerSpec,omitempty"`
-	// Specifies whether to enable Redis Filter. Valid values:
+	// *   `PrePay`: subscription.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The edition of the ASM instance. Valid values:
 	//
-	// *   `true`: enables Redis Filter.
-	// *   `false`: disables Redis Filter.
+	// - `standard`: Standard Edition
 	//
-	// Default value: `false`.
-	PrometheusUrl *string `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
-	// The maximum size of the memory that is available for the proxy container.
-	ProxyLimitCPU *string `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
-	// The IP ranges in CIDR form to redirect to sidecar proxies in the ASM instance.
-	ProxyLimitMemory *string `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
-	// The size of the memory that is requested by the proxy container.
-	ProxyRequestCPU *string `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
-	// The maximum number of CPU cores that are available for the proxy container.
-	ProxyRequestMemory *string `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
-	// Specifies whether to enable MySQL Filter. Valid values:
+	// - `enterprise`: Enterprise Edition
 	//
-	// *   `true`: enables MySQL Filter.
-	// *   `false`: disables MySQL Filter.
+	// - `ultimate`: Ultimate Edition
+	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// Specifies whether to enable the external service registry. Valid values:
+	//
+	// *   `true`
+	// *   `false`
 	//
 	// Default value: `false`.
-	RedisFilterEnabled *bool `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
-	// The Istio version of the ASM instance.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
+	ConfigSourceEnabled *bool `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
+	// The instance ID of the Nacos registry.
+	ConfigSourceNacosID *string `json:"ConfigSourceNacosID,omitempty" xml:"ConfigSourceNacosID,omitempty"`
+	// Specifies whether to enable the collection of control plane logs. Valid values:
 	//
-	// *   `true`: installs the OPA plug-in.
-	// *   `false`: does not install the OPA plug-in.
-	//
-	// Default value: `false`.
-	Telemetry *bool `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	// Specifies whether to enable WebAssembly Filter. Valid values:
-	//
-	// *   `true`: enables WebAssembly Filter.
-	// *   `false`: disables WebAssembly Filter.
+	// *   `true`
+	// *   `false`
 	//
 	// Default value: `false`.
-	ThriftFilterEnabled *bool `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
+	ControlPlaneLogEnabled *bool `json:"ControlPlaneLogEnabled,omitempty" xml:"ControlPlaneLogEnabled,omitempty"`
+	// The name of the Log Service project that is used to collect the logs of the control plane.
+	ControlPlaneLogProject *string `json:"ControlPlaneLogProject,omitempty" xml:"ControlPlaneLogProject,omitempty"`
+	// Specifies whether to use a custom Prometheus instance. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	CustomizedPrometheus *bool `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
 	// Specifies whether to use a self-managed Zipkin system to collect tracing data. Valid values:
 	//
 	// *   `true`: uses a self-managed Zipkin system to collect tracing data.
 	// *   `false`: uses Alibaba Cloud Tracing Analysis to collect tracing data.
 	//
 	// Default value: `false`.
-	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
-	// The name of the ASM instance.
-	Tracing *bool `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
-	// The existing CA certificate, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-cert.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
-	UseExistingCA *bool `json:"UseExistingCA,omitempty" xml:"UseExistingCA,omitempty"`
-	// The sampling percentage of tracing analysis.
-	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
-	// Specifies whether to expose the API server to the Internet. Valid values:
+	CustomizedZipkin *bool `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
+	// Specifies whether to enable the DNS proxy feature. Valid values:
 	//
-	// *   `true`: exposes the API server to the Internet.
-	// *   `false`: does not expose the API server to the Internet.
+	// *   `true`
+	// *   `false`
 	//
 	// Default value: `false`.
+	DNSProxyingEnabled *bool `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
+	// Specifies whether to enable Dubbo Filter. Valid values:
 	//
-	// >  If you set this parameter to `false`, the API server cannot be accessed over the Internet.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	DubboFilterEnabled *bool `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
+	// The edition of the ASM instance.
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	// Specifies whether to enable the rollback feature for Istio resources. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	EnableCRHistory *bool `json:"EnableCRHistory,omitempty" xml:"EnableCRHistory,omitempty"`
+	// Specifies whether to enable Secret Discovery Service (SDS). Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	EnableSDSServer *bool `json:"EnableSDSServer,omitempty" xml:"EnableSDSServer,omitempty"`
+	// The IP ranges in CIDR form to be excluded from redirection to the sidecar proxy in the ASM instance.
+	ExcludeIPRanges *string `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
+	// The inbound ports to be excluded from redirection to the sidecar proxy in the ASM instance. Separate multiple port numbers with commas (,).
+	ExcludeInboundPorts *string `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
+	// The outbound ports to be excluded from redirection to the sidecar proxy in the ASM instance. Separate multiple port numbers with commas (,).
+	ExcludeOutboundPorts *string `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
+	// The existing CA certificate, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-cert.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
+	ExistingCaCert *string `json:"ExistingCaCert,omitempty" xml:"ExistingCaCert,omitempty"`
+	// The existing CA key, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-key.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
+	ExistingCaKey *string `json:"ExistingCaKey,omitempty" xml:"ExistingCaKey,omitempty"`
+	// The type of the existing CA certificate. Valid values:
+	//
+	// *   1: Self-signed certificate generated by istiod. The certificate corresponds to the secret named istio-ca-secret in the istio-system namespace. If you use this type of certificate, you must set the `ExistingCaCert` and `ExsitingCaKey` parameters.
+	// *   2: Administrator-specified certificate. For more information, see [plugin ca cert](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/). In most cases, the certificate corresponds to the secret named cacerts in the istio-system namespace. If you use this type of certificate, you must set the `ExisingRootCaCert` and `ExisingRootCaKey` parameters.
+	ExistingCaType *string `json:"ExistingCaType,omitempty" xml:"ExistingCaType,omitempty"`
+	// The existing root certificate, which is encoded in Base64.
+	ExistingRootCaCert *string `json:"ExistingRootCaCert,omitempty" xml:"ExistingRootCaCert,omitempty"`
+	// The private key that corresponds to the root certificate, which is encoded in Base64.
+	ExistingRootCaKey *string `json:"ExistingRootCaKey,omitempty" xml:"ExistingRootCaKey,omitempty"`
+	// Specifies whether to enable gateway configuration filtering. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	FilterGatewayClusterConfig *bool `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
+	// Specifies whether to enable Gateway API. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	GatewayAPIEnabled *bool `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
+	// The IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
+	IncludeIPRanges *string `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
+	// The Istio version of the ASM instance.
+	IstioVersion *string `json:"IstioVersion,omitempty" xml:"IstioVersion,omitempty"`
+	// Specifies whether to enable the mesh topology feature. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, you must set this parameter to `false`.`` Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	KialiEnabled *bool `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
+	// The configurations for the access to the nearest instance.
+	LocalityLBConf *string `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
+	// Specifies whether to route traffic to the nearest instance. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	LocalityLoadBalancing *bool `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
 	// Specifies whether to enable Microservices Engine (MSE). Valid values:
 	//
-	// *   `true`: enables MSE.
-	// *   `false`: disables MSE.
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	MSEEnabled *bool `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	// Specifies whether to enable MultiBuffer-based Transport Layer Security (TLS) acceleration. Valid values:
+	//
+	// - `true`
+	//
+	// - `false`
+	//
+	//
+	// Default value: `true`
+	MultiBufferEnabled *bool `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
+	// The pull-request latency. Default value: 30. Unit: seconds.
+	MultiBufferPollDelay *string `json:"MultiBufferPollDelay,omitempty" xml:"MultiBufferPollDelay,omitempty"`
+	// Specifies whether to enable MySQL Filter. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	MysqlFilterEnabled *bool `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
+	// The name of the ASM instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of CPU cores that are available to the OPA container.
+	OPALimitCPU *string `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
+	// The maximum size of the memory that is available to the OPA container. You can specify the parameter value in the standard quantity representation form used by Kubernetes. 1 Mi equals 1,024 KB.
+	OPALimitMemory *string `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
+	// The log level of the OPA container.
+	OPALogLevel *string `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
+	// The minimum number of CPU cores that are required by the OPA container. You can specify the parameter value in the standard representation form of CPUs in Kubernetes. For example, if you set the value to 1, one CPU core is required.
+	OPARequestCPU *string `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
+	// The minimum size of the memory that is required by the OPA container. You can specify the parameter value in the standard quantity representation form used by Kubernetes. 1 Mi equals 1,024 KB.
+	OPARequestMemory *string `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
+	// Specifies whether to enable the OPA plug-in. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	OpaEnabled *bool `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
+	// Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	OpenAgentPolicy *bool `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
+	// The subscription period of the SLB instance. Unit: month. This parameter is valid only if the ChargeType parameter is set to PrePay. For example, if the subscription period is one year, set this parameter to 12.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
+	PilotLoadBalancerSpec *string `json:"PilotLoadBalancerSpec,omitempty" xml:"PilotLoadBalancerSpec,omitempty"`
+	// The endpoint of the custom Prometheus instance.
+	PrometheusUrl *string `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
+	// The maximum number of CPU cores that are available to the proxy container.
+	ProxyLimitCPU *string `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
+	// The maximum size of the memory that is available to the proxy container.
+	ProxyLimitMemory *string `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
+	// The minimum number of CPU cores that are required by the proxy container.
+	ProxyRequestCPU *string `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
+	// The minimum size of the memory that is required by the proxy container.
+	ProxyRequestMemory *string `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
+	// Specifies whether to enable Redis Filter. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	RedisFilterEnabled *bool `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
+	// The ID of the region in which the ASM instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable Prometheus monitoring. We recommend that you use Prometheus Service of [Application Real-Time Monitoring Service (ARMS)](https://arms.console.aliyun.com/). Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	Telemetry *bool `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
+	// Specifies whether to enable Thrift Filter. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	ThriftFilterEnabled *bool `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
+	// The sampling percentage of Tracing Analysis.
+	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
+	// Specifies whether to enable the Tracing Analysis feature. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
+	Tracing *bool `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
+	// Specifies whether to use an existing CA certificate and private key.
+	UseExistingCA *bool `json:"UseExistingCA,omitempty" xml:"UseExistingCA,omitempty"`
+	// The ID of the vSwitch to which the ASM instance is connected.
+	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	// The ID of the virtual private cloud (VPC) in which the ASM instance resides.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Specifies whether to enable WebAssembly Filter. Valid values:
+	//
+	// *   `true`
+	// *   `false`
 	//
 	// Default value: `false`.
 	WebAssemblyFilterEnabled *bool `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
@@ -1980,8 +2071,9 @@ func (s *CreateServiceMeshRequest) SetWebAssemblyFilterEnabled(v bool) *CreateSe
 }
 
 type CreateServiceMeshResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the ASM instance.
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -2133,13 +2225,15 @@ func (s *CreateSwimLaneResponse) SetBody(v *CreateSwimLaneResponseBody) *CreateS
 }
 
 type CreateSwimLaneGroupRequest struct {
-	// The ID of the request.
-	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
-	IngressType        *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
-	// The type of the ingress. Only ingress gateways are supported. Set the value to ASM.
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The name of the lane group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The name of the ingress gateway.
+	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
+	// The type of the gateway for ingress traffic. Only ASM ingress gateways are supported.
+	IngressType *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// A list of services associated with the lane group. The value is a JSON array. The format of a service is `$Cluster name/$Cluster ID/$Namespace/$Service name`.
 	ServicesList *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
 }
 
@@ -2177,6 +2271,7 @@ func (s *CreateSwimLaneGroupRequest) SetServicesList(v string) *CreateSwimLaneGr
 }
 
 type CreateSwimLaneGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2488,16 +2583,16 @@ func (s *DeleteIstioGatewayDomainsResponse) SetBody(v *DeleteIstioGatewayDomains
 }
 
 type DeleteServiceMeshRequest struct {
-	// A JSON string that can be parsed into a string array. You can use this JSON string to specify the IDs of the resource instances that need to be retained when the ASM instance is deleted.
-	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The ID of the request.
-	RetainResources *string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
 	// Specifies whether to forcibly delete the ASM instance. Valid values:
 	//
 	// *   `true`: forcibly deletes the ASM instance.
 	// *   `false`: does not forcibly delete the ASM instance.
 	//
 	// Default value: false.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// A JSON string that can be parsed into a string array. You can use this JSON string to specify the IDs of the resource instances that need to be retained when the ASM instance is deleted.
+	RetainResources *string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
+	// The ID of the ASM instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -2525,6 +2620,7 @@ func (s *DeleteServiceMeshRequest) SetServiceMeshId(v string) *DeleteServiceMesh
 }
 
 type DeleteServiceMeshResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3415,7 +3511,7 @@ func (s *DescribeCrTemplatesRequest) SetKind(v string) *DescribeCrTemplatesReque
 }
 
 type DescribeCrTemplatesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The common YAML templates for the specified type of Istio resource.
 	Templates []*DescribeCrTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
@@ -4104,9 +4200,9 @@ func (s *DescribeGuestClusterPodsResponse) SetBody(v *DescribeGuestClusterPodsRe
 }
 
 type DescribeImportedServicesDetailRequest struct {
-	// The name of the ASM gateway.
+	// The name of the service.
 	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
-	// The ID of the ASM instance.
+	// The details of the services.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The namespace in which the service resides.
 	ServiceNamespace *string `json:"ServiceNamespace,omitempty" xml:"ServiceNamespace,omitempty"`
@@ -4136,9 +4232,9 @@ func (s *DescribeImportedServicesDetailRequest) SetServiceNamespace(v string) *D
 }
 
 type DescribeImportedServicesDetailResponseBody struct {
-	// The details of the services.
+	// The IDs of the clusters to which the service belongs.
 	Details []*DescribeImportedServicesDetailResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The labels of the service.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4161,17 +4257,17 @@ func (s *DescribeImportedServicesDetailResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeImportedServicesDetailResponseBodyDetails struct {
-	// The IDs of the clusters to which the service belongs.
+	// The name of the port.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
-	// The labels of the service.
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The namespace in which the service resides.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ports declared for the service.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Kubernetes
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The port number.
 	Ports []*DescribeImportedServicesDetailResponseBodyDetailsPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The name of the service.
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The protocol of the port.
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
@@ -4214,16 +4310,13 @@ func (s *DescribeImportedServicesDetailResponseBodyDetails) SetServiceType(v str
 }
 
 type DescribeImportedServicesDetailResponseBodyDetailsPorts struct {
-	// The name of the port.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The node port.
-	NodePort *int32 `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
-	// The port number.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol of the port.
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The container port.
-	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodePort *int32  `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The node port.
+	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	TargetPort *int32  `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
 func (s DescribeImportedServicesDetailResponseBodyDetailsPorts) String() string {
@@ -4284,78 +4377,6 @@ func (s *DescribeImportedServicesDetailResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeImportedServicesDetailResponse) SetBody(v *DescribeImportedServicesDetailResponseBody) *DescribeImportedServicesDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeIngressGatewaysRequest struct {
-	// The ID of the ASM instance.
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s DescribeIngressGatewaysRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIngressGatewaysRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIngressGatewaysRequest) SetServiceMeshId(v string) *DescribeIngressGatewaysRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type DescribeIngressGatewaysResponseBody struct {
-	// The information about the ingress gateways of the ASM instance.
-	IngressGateways []map[string]interface{} `json:"IngressGateways,omitempty" xml:"IngressGateways,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeIngressGatewaysResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIngressGatewaysResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIngressGatewaysResponseBody) SetIngressGateways(v []map[string]interface{}) *DescribeIngressGatewaysResponseBody {
-	s.IngressGateways = v
-	return s
-}
-
-func (s *DescribeIngressGatewaysResponseBody) SetRequestId(v string) *DescribeIngressGatewaysResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeIngressGatewaysResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIngressGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeIngressGatewaysResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIngressGatewaysResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIngressGatewaysResponse) SetHeaders(v map[string]*string) *DescribeIngressGatewaysResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeIngressGatewaysResponse) SetStatusCode(v int32) *DescribeIngressGatewaysResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeIngressGatewaysResponse) SetBody(v *DescribeIngressGatewaysResponseBody) *DescribeIngressGatewaysResponse {
 	s.Body = v
 	return s
 }
@@ -4430,7 +4451,8 @@ type DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails struct {
 	// The details of the domain name in the JSON format.
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The domain name.
-	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	Domains       []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	GatewayCRName *string   `json:"GatewayCRName,omitempty" xml:"GatewayCRName,omitempty"`
 	// The namespace in which the ASM gateway resides.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the port.
@@ -4459,6 +4481,11 @@ func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetDetail(
 
 func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetDomains(v []*string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
 	s.Domains = v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetGatewayCRName(v string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
+	s.GatewayCRName = &v
 	return s
 }
 
@@ -4507,11 +4534,11 @@ func (s *DescribeIstioGatewayDomainsResponse) SetBody(v *DescribeIstioGatewayDom
 }
 
 type DescribeIstioGatewayRouteDetailRequest struct {
-	// The fixed duration for request delay.
+	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	// The duration for request delay is expressed as 2 raised to the power of x. You must specify the value of x.
+	// The name of the routing rule.
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The duration to delay a request.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -4539,13 +4566,22 @@ func (s *DescribeIstioGatewayRouteDetailRequest) SetServiceMeshId(v string) *Des
 }
 
 type DescribeIstioGatewayRouteDetailResponseBody struct {
+	// The description of the routing rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Priority    *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The percentage of requests to which the delay fault is injected.
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The detailed information about the routing rule.
 	RouteDetail *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail `json:"RouteDetail,omitempty" xml:"RouteDetail,omitempty" type:"Struct"`
-	Status      *int32                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the routing rule. Valid values:
+	//
+	// *   `0`: The routing rule is valid.
+	// *   `1`: The routing rule is invalid.
+	// *   `2`: An error occurs during the creation or update of the routing rule.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeIstioGatewayRouteDetailResponseBody) String() string {
@@ -4588,14 +4624,17 @@ func (s *DescribeIstioGatewayRouteDetailResponseBody) SetStatus(v int32) *Descri
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetail struct {
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// The ports of the specified hosts from which the traffic is routed.
+	// The advanced settings for routing HTTP traffic.
 	HTTPAdvancedOptions *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
-	// The specified HTTP error code.
-	MatchRequest      *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	HasUnsafeFeatures   *bool                                                                      `json:"HasUnsafeFeatures,omitempty" xml:"HasUnsafeFeatures,omitempty"`
+	// The matching rules for traffic routing.
+	MatchRequest *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	RawVSRoute   *string                                                             `json:"RawVSRoute,omitempty" xml:"RawVSRoute,omitempty"`
+	// The endpoints of destination services for Layer 4 weighted routing.
 	RouteDestinations []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
-	// The percentage of requests that are aborted with specified error codes, expressed as a decimal.
+	// The name of the routing rule.
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The configurations for aborting requests with specified error codes.
+	// The type of the traffic to be routed. Valid values: `HTTP`, `TLS`, and `TCP`.
 	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
@@ -4617,8 +4656,18 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetHTTPAdvanced
 	return s
 }
 
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetHasUnsafeFeatures(v bool) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
+	s.HasUnsafeFeatures = &v
+	return s
+}
+
 func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetMatchRequest(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
 	s.MatchRequest = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetRawVSRoute(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
+	s.RawVSRoute = &v
 	return s
 }
 
@@ -4638,18 +4687,21 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetRouteType(v 
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions struct {
-	// The header key to be used to overwrite the original header key.
+	// The virtual service that defines traffic routing.
 	Delegate *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
-	Fault    *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault    `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
-	// The port of the specified host to which the traffic is routed.
-	HTTPRedirect     *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect     `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
-	Mirror           *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror           `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	// The configurations of fault injection.
+	Fault *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
+	// The HTTP redirection rule.
+	HTTPRedirect *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
+	// The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
+	Mirror *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	// The percentage of requests that are aborted with the specified error code.
 	MirrorPercentage *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage `json:"MirrorPercentage,omitempty" xml:"MirrorPercentage,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The configurations of retries for failed requests.
 	Retries *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
-	// The processing of the headers of the response that is to be returned.
+	// The configurations for rewriting the virtual service.
 	Rewrite *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
-	// The key to be deleted.
+	// The timeout period for requests.
 	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -4702,9 +4754,9 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate struct {
-	// The values to be added to the header key.
+	// The name of the virtual service.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The key to be deleted.
+	// The namespace to which the virtual service belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -4727,7 +4779,9 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault struct {
+	// The configurations for aborting requests with specified error codes.
 	Abort *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort `json:"Abort,omitempty" xml:"Abort,omitempty" type:"Struct"`
+	// The duration to delay a request.
 	Delay *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay `json:"Delay,omitempty" xml:"Delay,omitempty" type:"Struct"`
 }
 
@@ -4750,7 +4804,9 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort struct {
-	HttpStatus *int32                                                                                         `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	// The HTTP status code.
+	HttpStatus *int32 `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	// The percentage of requests that are aborted with the specified error code.
 	Percentage *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
 }
 
@@ -4773,6 +4829,7 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage struct {
+	// The percentage of requests that are mirrored to another destination except for the original destination, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4790,9 +4847,12 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay struct {
-	ExponentialDelay *string                                                                                        `json:"ExponentialDelay,omitempty" xml:"ExponentialDelay,omitempty"`
-	FixedDelay       *string                                                                                        `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
-	Percentage       *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
+	// The duration for request delay is expressed as 2 raised to the power of x. You must specify the value of x.
+	ExponentialDelay *string `json:"ExponentialDelay,omitempty" xml:"ExponentialDelay,omitempty"`
+	// The fixed duration for request delay.
+	FixedDelay *string `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	// The percentage of requests to which the delay fault is injected.
+	Percentage *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
 }
 
 func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay) String() string {
@@ -4819,6 +4879,7 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage struct {
+	// The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4836,11 +4897,11 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect struct {
-	// The request headers to be matched.
+	// The value to be used to overwrite the value of the Authority or Host header during redirection.
 	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	// The request header to be matched.
+	// The HTTP status code to be used to indicate URL redirection. Default value: 301.
 	RedirectCode *int32 `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
-	// The traffic weight. Valid values: 1 to 100.
+	// The value to be used to overwrite the URL path during redirection.
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -4868,7 +4929,9 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror struct {
-	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The name of the service defined in the service registry.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The name of the service subset.
 	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
 }
 
@@ -4891,6 +4954,7 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage struct {
+	// The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4908,16 +4972,13 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries struct {
-	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
+	// The number of retries that are allowed for a request.
 	Attempts *int32 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
-	// The status of the routing rule. Valid values:
-	//
-	// - `0`: The routing rule is valid.
-	// - `1`: The routing rule is invalid.
-	// - `2`: An error occurs during the creation or update of the routing rule.
+	// The timeout period for each retry.
 	PerTryTimeout *string `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
-	// The description of the routing rule.
-	RetryOn               *string                                                                                                `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	// The condition for retries. Example: `connect-failure,refused-stream,503`.
+	RetryOn *string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	// Specifies whether to allow retries to other localities.
 	RetryRemoteLocalities *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities `json:"RetryRemoteLocalities,omitempty" xml:"RetryRemoteLocalities,omitempty" type:"Struct"`
 }
 
@@ -4950,6 +5011,12 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities struct {
+	// Specifies whether to allow retries to other localities. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
 	Value *bool `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4967,9 +5034,9 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite struct {
-	// The values to be added to the header key.
+	// The value to be used to overwrite the value of the Authority or Host header.
 	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	// The header key to be used to overwrite the original header key.
+	// The value to be used to overwrite the path or prefix of the URI.
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -4992,13 +5059,13 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptio
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest struct {
-	// The name of the service defined in the service registry.
+	// The request headers to be matched.
 	Headers []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	// The name of the service subset.
+	// The ports.
 	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The endpoints of service instances for Layer 4 weighted routing.
+	// The matching rules for Transport Layer Security (TLS) traffic.
 	TLSMatchAttributes []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes `json:"TLSMatchAttributes,omitempty" xml:"TLSMatchAttributes,omitempty" type:"Repeated"`
-	// The percentage of requests that are aborted with the specified error code.
+	// The matching rule for URIs.
 	URI *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
 }
 
@@ -5031,11 +5098,15 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) Set
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders struct {
-	// The percentage of requests that are mirrored to another destination except for the original destination, expressed as a decimal.
+	// The header value to be matched.
 	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
-	// The percentage of requests that are mirrored to another destination except for the original destination.
+	// The matching mode for the header value. Valid values:
+	//
+	// *   `exact`: exact match
+	// *   `prefix`: match by prefix
+	// *   `regex`: match by regular expression
 	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
-	// The name of the service subset.
+	// The header key to be matched.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -5063,9 +5134,9 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeade
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes struct {
-	// The name of the service defined in the service registry.
+	// The Server Name Indication (SNI) values to be matched.
 	SNIHosts []*string `json:"SNIHosts,omitempty" xml:"SNIHosts,omitempty" type:"Repeated"`
-	// The unique endpoint of the service instance to which the specified requests are sent.
+	// The TLS port.
 	TLSPort *int32 `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
 }
 
@@ -5088,9 +5159,13 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMa
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI struct {
-	// The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
+	// The content to be matched.
 	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
-	// The percentage of requests that are aborted with the specified error code, expressed as a decimal.
+	// The matching mode. Valid values:
+	//
+	// *   `exact`: exact match
+	// *   `prefix`: match by prefix
+	// *   `regex`: match by regular expression
 	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
 }
 
@@ -5113,9 +5188,12 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI) 
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations struct {
+	// The unique endpoint of the destination service to which the specified requests are sent.
 	Destination *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
-	Headers     *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders     `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	Weight      *int32                                                                              `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The request headers to be matched.
+	Headers *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The traffic weight. Valid values: 1 to 100.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations) String() string {
@@ -5142,9 +5220,12 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination struct {
-	Host   *string                                                                                 `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port   *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
-	Subset *string                                                                                 `json:"Subset,omitempty" xml:"Subset,omitempty"`
+	// The name of the service defined in the service registry.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The ports.
+	Port *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
+	// The name of the service subset.
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
 }
 
 func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination) String() string {
@@ -5171,6 +5252,7 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort struct {
+	// The ports of the specified hosts to which the traffic is routed.
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
@@ -5188,7 +5270,9 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders struct {
-	Request  *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest  `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+	// The request header to be matched.
+	Request *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+	// The processing of the headers of the response that is to be returned.
 	Response *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 }
 
@@ -5211,9 +5295,12 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest struct {
-	Add    map[string]interface{} `json:"Add,omitempty" xml:"Add,omitempty"`
-	Remove []*string              `json:"Remove,omitempty" xml:"Remove,omitempty" type:"Repeated"`
-	Set    map[string]*string     `json:"Set,omitempty" xml:"Set,omitempty"`
+	// The values to be added to the header key.
+	Add map[string]interface{} `json:"Add,omitempty" xml:"Add,omitempty"`
+	// The header value to be deleted.
+	Remove []*string `json:"Remove,omitempty" xml:"Remove,omitempty" type:"Repeated"`
+	// The header key to be used to overwrite the original header key.
+	Set map[string]*string `json:"Set,omitempty" xml:"Set,omitempty"`
 }
 
 func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest) String() string {
@@ -5240,9 +5327,12 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations
 }
 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse struct {
-	Add    map[string]interface{} `json:"Add,omitempty" xml:"Add,omitempty"`
-	Remove []*string              `json:"Remove,omitempty" xml:"Remove,omitempty" type:"Repeated"`
-	Set    map[string]interface{} `json:"Set,omitempty" xml:"Set,omitempty"`
+	// The values to be added to the header key.
+	Add map[string]interface{} `json:"Add,omitempty" xml:"Add,omitempty"`
+	// The header value to be deleted.
+	Remove []*string `json:"Remove,omitempty" xml:"Remove,omitempty" type:"Repeated"`
+	// The header key to be used to overwrite the original header key.
+	Set map[string]interface{} `json:"Set,omitempty" xml:"Set,omitempty"`
 }
 
 func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse) String() string {
@@ -5300,7 +5390,7 @@ func (s *DescribeIstioGatewayRouteDetailResponse) SetBody(v *DescribeIstioGatewa
 type DescribeIstioGatewayRoutesRequest struct {
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	// The routing rules.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -5323,9 +5413,10 @@ func (s *DescribeIstioGatewayRoutesRequest) SetServiceMeshId(v string) *Describe
 }
 
 type DescribeIstioGatewayRoutesResponseBody struct {
-	// The name of the routing rule.
+	// The routing rules.
 	ManagementRoutes []*DescribeIstioGatewayRoutesResponseBodyManagementRoutes `json:"ManagementRoutes,omitempty" xml:"ManagementRoutes,omitempty" type:"Repeated"`
-	RequestId        *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIstioGatewayRoutesResponseBody) String() string {
@@ -5347,23 +5438,25 @@ func (s *DescribeIstioGatewayRoutesResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeIstioGatewayRoutesResponseBodyManagementRoutes struct {
-	// The path that is used to match request URLs.
-	ASMGatewayName    *string   `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
+	// The name of the ASM gateway.
+	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
+	// The description of the routing rule.
 	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestinationHost   []*string `json:"DestinationHost,omitempty" xml:"DestinationHost,omitempty" type:"Repeated"`
 	DestinationSubSet []*string `json:"DestinationSubSet,omitempty" xml:"DestinationSubSet,omitempty" type:"Repeated"`
-	Namespace         *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the request.
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The name of the routing rule.
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The path that is used to match request URLs.
+	RoutePath *string `json:"RoutePath,omitempty" xml:"RoutePath,omitempty"`
 	// The status of the routing rule. Valid values:
 	//
 	// *   `0`: The routing rule is valid.
 	// *   `1`: The routing rule is invalid.
 	// *   `2`: An error occurs during the creation or update of the routing rule.
-	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
-	RoutePath *string `json:"RoutePath,omitempty" xml:"RoutePath,omitempty"`
-	// The description of the routing rule.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5596,7 +5689,7 @@ func (s *DescribeMetadataResponse) SetBody(v *DescribeMetadataResponseBody) *Des
 }
 
 type DescribeNamespaceScopeSidecarConfigRequest struct {
-	// The name of the namespace.
+	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the ASM instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -5621,9 +5714,9 @@ func (s *DescribeNamespaceScopeSidecarConfigRequest) SetServiceMeshId(v string) 
 }
 
 type DescribeNamespaceScopeSidecarConfigResponseBody struct {
-	// The namespace-level sidecar configurations.
+	// The namespace-level sidecar proxy configurations.
 	ConfigPatches *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches `json:"ConfigPatches,omitempty" xml:"ConfigPatches,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5646,53 +5739,53 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBody) SetRequestId(v string)
 }
 
 type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches struct {
-	// The number of worker threads running in the sidecar proxy.
+	// The number of worker threads to run in the istio-proxy container.
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// The port that the inbound traffic of the sidecar proxy does not pass through.
+	// The inbound ports to be excluded from redirection to the sidecar proxy in the ASM instance.
 	ExcludeInboundPorts *string `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
-	// The IP address from which the outbound traffic does not pass through the sidecar proxy.
+	// The outbound IP ranges in CIDR form to be excluded from redirection to the sidecar proxy in the ASM instance.
 	ExcludeOutboundIPRanges *string `json:"ExcludeOutboundIPRanges,omitempty" xml:"ExcludeOutboundIPRanges,omitempty"`
-	// The port that the outbound traffic of the sidecar proxy does not pass through.
+	// The outbound ports to be excluded from redirection to the sidecar proxy in the ASM instance.
 	ExcludeOutboundPorts *string `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
-	// Indicates whether applications can be started only after Istio Proxy starts. Valid values:
+	// Indicates whether applications can be started only after the istio-proxy container starts. Valid values:
 	//
-	// *   `true`: Applications can be started only after Istio Proxy starts.
-	// *   false: Applications can be started before Istio Proxy starts.
+	// *   `true`
+	// *   false
 	HoldApplicationUntilProxyStarts *bool `json:"HoldApplicationUntilProxyStarts,omitempty" xml:"HoldApplicationUntilProxyStarts,omitempty"`
-	// The port that the inbound traffic of the sidecar proxy passes through.
+	// The inbound ports for which traffic is to be redirected to the sidecar proxy in the ASM instance.
 	IncludeInboundPorts *string `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
-	// The IP address from which the outbound traffic passes through the sidecar proxy.
+	// The outbound IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
 	IncludeOutboundIPRanges *string `json:"IncludeOutboundIPRanges,omitempty" xml:"IncludeOutboundIPRanges,omitempty"`
-	// The port that the outbound traffic of the sidecar proxy passes through.
+	// The outbound ports for which traffic is to be redirected to the sidecar proxy in the ASM instance.
 	IncludeOutboundPorts *string `json:"IncludeOutboundPorts,omitempty" xml:"IncludeOutboundPorts,omitempty"`
 	// The mode in which the sidecar proxy intercepts inbound traffic. Valid values:
 	//
-	// *   `REDIRECT`: The sidecar proxy intercepts inbound traffic in the REDIRECT mode.
-	// *   `TPROXY`: The sidecar proxy intercepts inbound traffic in the TPROXY mode.
+	// *   `REDIRECT` (default): In this mode, source IP addresses are lost during traffic redirection to the sidecar proxy.
+	// *   `TPROXY`: In this mode, both the source and destination IP addresses and ports are preserved.
 	InterceptionMode *string `json:"InterceptionMode,omitempty" xml:"InterceptionMode,omitempty"`
 	// Indicates whether the Domain Name System (DNS) proxy feature is enabled. Valid values:
 	//
-	// *   `true`: The DNS proxy feature is enabled.
-	// *   `false`: The DNS proxy feature is disabled.
+	// *   `true`
+	// *   `false`
 	IstioDNSProxyEnabled *bool `json:"IstioDNSProxyEnabled,omitempty" xml:"IstioDNSProxyEnabled,omitempty"`
 	// The JSON string that describes the lifecycle of the sidecar proxy.
 	LifecycleStr *string `json:"LifecycleStr,omitempty" xml:"LifecycleStr,omitempty"`
 	// The log level. Valid values: `info`, `debug`, `trace`, and `error`.
 	LogLevel      *string            `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
 	ProxyMetadata map[string]*string `json:"ProxyMetadata,omitempty" xml:"ProxyMetadata,omitempty"`
-	// The monitoring metrics for data collected by Envoy proxies.
+	// The custom Envoy statistics that are reported by the sidecar proxy.
 	ProxyStatsMatcher              *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher              `json:"ProxyStatsMatcher,omitempty" xml:"ProxyStatsMatcher,omitempty" type:"Struct"`
 	SidecarProxyAckSloResource     *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyAckSloResource     `json:"SidecarProxyAckSloResource,omitempty" xml:"SidecarProxyAckSloResource,omitempty" type:"Struct"`
 	SidecarProxyInitAckSloResource *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitAckSloResource `json:"SidecarProxyInitAckSloResource,omitempty" xml:"SidecarProxyInitAckSloResource,omitempty" type:"Struct"`
-	// The maximum size of resources that are available to the sidecar proxy init container.
+	// The maximum size of resources that are available to the istio-init container in the pod into which the sidecar proxy is injected. The istio-init container is used in this topic.
 	SidecarProxyInitResourceLimit *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitResourceLimit `json:"SidecarProxyInitResourceLimit,omitempty" xml:"SidecarProxyInitResourceLimit,omitempty" type:"Struct"`
-	// The minimum size of resources that are requested by the sidecar proxy init container.
+	// The minimum size of resources that are required by the istio-init container.
 	SidecarProxyInitResourceRequest *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitResourceRequest `json:"SidecarProxyInitResourceRequest,omitempty" xml:"SidecarProxyInitResourceRequest,omitempty" type:"Struct"`
 	// The maximum size of resources that are available to the sidecar proxy container.
 	SidecarProxyResourceLimit *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceLimit `json:"SidecarProxyResourceLimit,omitempty" xml:"SidecarProxyResourceLimit,omitempty" type:"Struct"`
-	// The minimum size of resources that are requested by the sidecar proxy container.
+	// The minimum size of resources that are required by the sidecar proxy container.
 	SidecarProxyResourceRequest *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceRequest `json:"SidecarProxyResourceRequest,omitempty" xml:"SidecarProxyResourceRequest,omitempty" type:"Struct"`
-	// The maximum period of time that the sidecar proxy waits for a request to end.
+	// The maximum period of time allowed for connections to complete on sidecar proxy shutdown.
 	TerminationDrainDuration *string `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
 	// The custom configurations of Tracing Analysis.
 	Tracing *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing `json:"Tracing,omitempty" xml:"Tracing,omitempty" type:"Struct"`
@@ -5817,11 +5910,11 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetTracin
 }
 
 type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher struct {
-	// The prefix of the monitoring metrics for data collected by Envoy proxies.
+	// The prefixes of the custom Envoy statistics that are reported by the sidecar proxy.
 	InclusionPrefixes []*string `json:"InclusionPrefixes,omitempty" xml:"InclusionPrefixes,omitempty" type:"Repeated"`
-	// The regular expression of the monitoring metrics for data collected by Envoy proxies.
+	// The regular expressions for specifying the custom Envoy statistics that are reported by the sidecar proxy.
 	InclusionRegexps []*string `json:"InclusionRegexps,omitempty" xml:"InclusionRegexps,omitempty" type:"Repeated"`
-	// The suffix of the monitoring metrics for data collected by Envoy proxies.
+	// The suffixes of the custom Envoy statistics that are reported by the sidecar proxy.
 	InclusionSuffixes []*string `json:"InclusionSuffixes,omitempty" xml:"InclusionSuffixes,omitempty" type:"Repeated"`
 }
 
@@ -5998,11 +6091,8 @@ type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing struct 
 	// The custom tags added to reported spans. The key of a tag is of the string type. The value of a tag is in the JSON format. A custom tag can belong to one of the following types:
 	//
 	// *   `literal`: The tag value is a fixed value in the JSON format. This tag must contain the `value` field that specifies a literal. Example: `{"value":"test"}`.
-	//
-	// <!---->
-	//
-	// *   `header`: The tag value is a request header in the JSON format. This tag must contain the `name` field and `defaultValue` field.The name field indicates the name of the request header. The defaultValue field indicates the default value that is used when no request header is available. Example: `{"name":"test","defaultValue":"test"}`.
-	// *   `environment`: The tag value is an environment variable in the JSON format. This tag must contain the `name` field and `defaultValue` field. The name field indicates the name of the environment variable. The defaultValue field indicates the environment variable that is used when no environment variable is available. Example: `{"name":"test","defaultValue":"test"}`.
+	// *   `header`: The tag value is a request header in the JSON format. This tag must contain the `name` field and the `defaultValue` field. The name field indicates the name of the request header. The defaultValue field indicates the default value that is used when no request header is available. Example: `{"name":"test","defaultValue":"test"}`.
+	// *   `environment`: The tag value is an environment variable in the JSON format. This tag must contain the `name` field and the `defaultValue` field. The name field indicates the name of the environment variable. The defaultValue field indicates the environment variable that is used when no environment variable is available. Example: `{"name":"test","defaultValue":"test"}`.
 	CustomTags map[string]interface{} `json:"CustomTags,omitempty" xml:"CustomTags,omitempty"`
 	// The maximum tag length.
 	MaxPathTagLength *int32 `json:"MaxPathTagLength,omitempty" xml:"MaxPathTagLength,omitempty"`
@@ -6063,7 +6153,7 @@ func (s *DescribeNamespaceScopeSidecarConfigResponse) SetBody(v *DescribeNamespa
 }
 
 type DescribeNodesInstanceTypeRequest struct {
-	// The ID of the request.
+	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -6081,8 +6171,10 @@ func (s *DescribeNodesInstanceTypeRequest) SetServiceMeshId(v string) *DescribeN
 }
 
 type DescribeNodesInstanceTypeResponseBody struct {
+	// The instance types of the nodes.
 	InstanceTypes []*DescribeNodesInstanceTypeResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNodesInstanceTypeResponseBody) String() string {
@@ -6104,10 +6196,15 @@ func (s *DescribeNodesInstanceTypeResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeNodesInstanceTypeResponseBodyInstanceTypes struct {
-	Key                *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	MultiBufferEnabled *bool   `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
-	NodeType           *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Indicates whether the instance type supports Multi-Buffer acceleration. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	MultiBufferEnabled *bool `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
+	// The instance type of the node.
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeNodesInstanceTypeResponseBodyInstanceTypes) String() string {
@@ -6275,15 +6372,12 @@ func (s *DescribeReusableSlbResponse) SetBody(v *DescribeReusableSlbResponseBody
 }
 
 type DescribeServiceMeshAdditionalStatusRequest struct {
-	// The check result of the SLB instance. Valid values:
+	// The check mode of the ASM instance. Valid values:
 	//
-	// *   `exist`: The SLB instance exists.
-	// *   `not_exist`: The SLB instance does not exist.
-	// *   `conflict`: Conflicts are detected.
-	// *   `failed`: The check fails.
-	// *   `time_out`: The check times out.
+	// *   `normal`: checks the Server Load Balancer (SLB) instances created for exposing the API server and Istio Pilot, audit logs, and installation of Logtail for clusters on the data plane.
+	// *   `full`: checks control plane logs, access logs, security groups, and the elastic IP addresses (EIPs) of the API server in addition to the check items in normal mode.
 	CheckMode *string `json:"CheckMode,omitempty" xml:"CheckMode,omitempty"`
-	// The check results of the SLB instances created for exposing the API server.
+	// The ID of the ASM instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -6306,16 +6400,9 @@ func (s *DescribeServiceMeshAdditionalStatusRequest) SetServiceMeshId(v string) 
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBody struct {
-	// Indicates whether the SLB instance is reused. Valid values:
-	//
-	// *   `true`: The SLB instance is reused.
-	// *   `false`: The SLB instance is not reused.
+	// The status of the cluster.
 	ClusterStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty" type:"Struct"`
-	// The check result of the number of SLB instances created for exposing the API server. Valid values:
-	//
-	// *   `too_much`: An excessive number of SLB instances are created.
-	// *   `num_exact`: A proper number of SLB instances are created.
-	// *   `too_little`: The number of SLB instances falls short.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6338,13 +6425,13 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBody) SetRequestId(v string)
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus struct {
-	AccessLogProjectStatus *string `json:"AccessLogProjectStatus,omitempty" xml:"AccessLogProjectStatus,omitempty"`
-	ApiServerEIPStatus     *string `json:"ApiServerEIPStatus,omitempty" xml:"ApiServerEIPStatus,omitempty"`
-	// Indicates whether the SLB instance is locked. Valid values:
+	// Indicates whether access logs exist. Valid values:
 	//
-	// *   `true`: The SLB instance is locked.
-	// *   `false`: The SLB instance is not locked.
-	ApiServerLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus `json:"ApiServerLoadBalancerStatus,omitempty" xml:"ApiServerLoadBalancerStatus,omitempty" type:"Struct"`
+	// *   `exist`: Access logs exist.
+	// *   `not_exist`: Access logs do not exist.
+	// *   `failed`: The check fails.
+	// *   `time_out`: The check times out.
+	AccessLogProjectStatus *string `json:"AccessLogProjectStatus,omitempty" xml:"AccessLogProjectStatus,omitempty"`
 	// The check result of the EIP associated with the API server. Valid values:
 	//
 	// *   `exist`: The EIP exists.
@@ -6353,22 +6440,34 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus struct {
 	// *   `time_out`: The check times out.
 	// *   `not_in_use`: The EIP is not associated with the API Server.
 	// *   `locked`: The EIP is locked.
+	ApiServerEIPStatus *string `json:"ApiServerEIPStatus,omitempty" xml:"ApiServerEIPStatus,omitempty"`
+	// The check results of the SLB instance created for exposing the API server.
+	ApiServerLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus `json:"ApiServerLoadBalancerStatus,omitempty" xml:"ApiServerLoadBalancerStatus,omitempty" type:"Struct"`
+	// Indicates whether audit logs exist. Valid values:
+	//
+	// *   `exist`
+	// *   `not exist`
 	AuditProjectStatus            *string                                                                                    `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
 	CanaryPilotLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus `json:"CanaryPilotLoadBalancerStatus,omitempty" xml:"CanaryPilotLoadBalancerStatus,omitempty" type:"Struct"`
-	ControlPlaneProjectStatus     *string                                                                                    `json:"ControlPlaneProjectStatus,omitempty" xml:"ControlPlaneProjectStatus,omitempty"`
-	// The check result of access logs. Valid values:
+	// Indicates whether control plane logs exist. Valid values:
 	//
-	// *   `exist`: Access logs exist.
-	// *   `not_exist`: Access logs do not exist.
+	// *   `exist`: Control plane logs exist.
+	// *   `not_exist`: Control plane logs do not exist.
 	// *   `failed`: The check fails.
 	// *   `time_out`: The check times out.
+	ControlPlaneProjectStatus *string `json:"ControlPlaneProjectStatus,omitempty" xml:"ControlPlaneProjectStatus,omitempty"`
+	// Indicates whether Logtail is installed in clusters on the data plane.
 	LogtailStatusRecord map[string]interface{} `json:"LogtailStatusRecord,omitempty" xml:"LogtailStatusRecord,omitempty"`
-	// Indicates whether the SLB instance is locked. Valid values:
-	//
-	// *   `true`: The SLB instance is locked.
-	// *   `false`: The SLB instance is not locked.
+	// The check results of the SLB instance created for exposing Istio Pilot.
 	PilotLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus `json:"PilotLoadBalancerStatus,omitempty" xml:"PilotLoadBalancerStatus,omitempty" type:"Struct"`
-	SgStatus                *string                                                                              `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
+	RAMApplicationStatus    *string                                                                              `json:"RAMApplicationStatus,omitempty" xml:"RAMApplicationStatus,omitempty"`
+	// Indicates whether the security group is reused. Valid values:
+	//
+	// *   `reused`: The security group is reused.
+	// *   `not_reused`: The security group is not reused.
+	// *   `failed`: The check fails.
+	// *   `time_out`: The check times out.
+	SgStatus *string `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
 }
 
 func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) String() string {
@@ -6419,23 +6518,38 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetPilotL
 	return s
 }
 
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetRAMApplicationStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
+	s.RAMApplicationStatus = &v
+	return s
+}
+
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetSgStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
 	s.SgStatus = &v
 	return s
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus struct {
-	// The check result of the number of SLB instances created for exposing Istio Pilot. Valid values:
+	// Indicates whether the SLB instance is locked. Valid values:
 	//
-	// *   `too_much`: An excessive number of SLB instances are created.
-	// *   `num_exact`: A proper number of SLB instances are created.
-	// *   `too_little`: The number of SLB instances falls short.
+	// *   `true`
+	// *   `false`
 	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	// The billing method of the SLB instance. Valid values:
+	//
+	// *   `PrePay`: subscription
+	// *   `PayOnDemand`: pay-as-you-go
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// Indicates whether the SLB instance is reused. Valid values:
 	//
-	// *   `true`: The SLB instance is reused.
-	// *   `false`: The SLB instance is not reused.
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// *   `true`
+	// *   `false`
+	Reused *bool `json:"Reused,omitempty" xml:"Reused,omitempty"`
+	// The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+	//
+	// *   `too_much`: An excessive number of backend servers are created.
+	// *   `num_exact`: A proper number of backend servers are created.
+	// *   `too_little`: The number of backend servers falls short.
+	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
 	// The check result of the SLB instance. Valid values:
 	//
 	// *   `exist`: The SLB instance exists.
@@ -6443,13 +6557,6 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBa
 	// *   `conflict`: Conflicts are detected.
 	// *   `failed`: The check fails.
 	// *   `time_out`: The check times out.
-	Reused *bool `json:"Reused,omitempty" xml:"Reused,omitempty"`
-	// The check results of the SLB instances created for exposing Istio Pilot.
-	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
-	// The billing method of the SLB instance. Valid values:
-	//
-	// *   `PrePay`: subscription
-	// *   `PayOnDemand`: pay-as-you-go
 	SLBExistStatus *string `json:"SLBExistStatus,omitempty" xml:"SLBExistStatus,omitempty"`
 }
 
@@ -6528,31 +6635,34 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilot
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus struct {
-	// The check result of control plane logs. Valid values:
+	// Indicates whether the SLB instance is locked. Valid values:
 	//
-	// *   `exist`: Control plane logs exist.
-	// *   `not_exist`: Control plane logs do not exist.
-	// *   `failed`: The check fails.
-	// *   `time_out`: The check times out.
+	// *   `true`
+	// *   `false`
 	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// Indicates whether the security group is reused. Valid values:
-	//
-	// *   `reused`: The security group is reused.
-	// *   `not_reused`: The security group is not reused.
-	// *   `failed`: The check fails.
-	// *   `time_out`: The check times out.
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The check results of the Logtail installation for clusters on the data plane.
-	Reused *bool `json:"Reused,omitempty" xml:"Reused,omitempty"`
-	// The check result of audit logs. Valid values:
-	//
-	// *   `exist`: Audit logs exist.
-	// *   `not exist`: Audit logs do not exist.
-	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
 	// The billing method of the SLB instance. Valid values:
 	//
 	// *   `PrePay`: subscription
 	// *   `PayOnDemand`: pay-as-you-go
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Indicates whether the SLB instance is reused. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	Reused *bool `json:"Reused,omitempty" xml:"Reused,omitempty"`
+	// The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+	//
+	// *   `too_much`: An excessive number of backend servers are created.
+	// *   `num_exact`: A proper number of backend servers are created.
+	// *   `too_little`: The number of backend servers falls short.
+	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
+	// The check result of the SLB instance. Valid values:
+	//
+	// *   `exist`: The SLB instance exists.
+	// *   `not_exist`: The SLB instance does not exist.
+	// *   `conflict`: Conflicts are detected.
+	// *   `failed`: The check fails.
+	// *   `time_out`: The check times out.
 	SLBExistStatus *string `json:"SLBExistStatus,omitempty" xml:"SLBExistStatus,omitempty"`
 }
 
@@ -6619,9 +6729,11 @@ func (s *DescribeServiceMeshAdditionalStatusResponse) SetBody(v *DescribeService
 }
 
 type DescribeServiceMeshClustersRequest struct {
-	Limit  *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The maximum number of clusters in a cluster list.
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The position where the query starts.
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the ASM instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -6649,10 +6761,10 @@ func (s *DescribeServiceMeshClustersRequest) SetServiceMeshId(v string) *Describ
 }
 
 type DescribeServiceMeshClustersResponseBody struct {
-	// The point in time when the cluster was last modified.
+	// The queried clusters.
 	Clusters         []*DescribeServiceMeshClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	NumberOfClusters *int64                                             `json:"NumberOfClusters,omitempty" xml:"NumberOfClusters,omitempty"`
-	// The point in time when the cluster was created.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6680,27 +6792,16 @@ func (s *DescribeServiceMeshClustersResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeServiceMeshClustersResponseBodyClusters struct {
-	// The ID of the cluster.
-	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterType   *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The ID of the ASM instance.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The domain name of the cluster.
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ForbiddenFlag *int64  `json:"ForbiddenFlag,omitempty" xml:"ForbiddenFlag,omitempty"`
-	ForbiddenInfo *string `json:"ForbiddenInfo,omitempty" xml:"ForbiddenInfo,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the cluster.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the cluster.
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster type.
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The time when the cluster was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The error message about the cluster.
-	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	// The version number of the cluster.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the region in which the cluster resides.
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// Indicates that the cluster is available or the reason why the cluster cannot be added to the ASM instance. Valid values:
 	//
 	// *   `0`: The cluster can be added to the ASM instance.
@@ -6708,14 +6809,29 @@ type DescribeServiceMeshClustersResponseBodyClusters struct {
 	// *   `2`: The cluster cannot be added to the ASM instance because the cluster and the ASM instance reside in different VPCs between which no private connections are built.
 	// *   `3`: The CIDR block of the cluster conflicts with that of the ASM instance.
 	// *   `4`: The cluster has a namespace that is named istio system.
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The status of the cluster. Valid values:
+	ForbiddenFlag *int64  `json:"ForbiddenFlag,omitempty" xml:"ForbiddenFlag,omitempty"`
+	ForbiddenInfo *string `json:"ForbiddenInfo,omitempty" xml:"ForbiddenInfo,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region in which the cluster resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the ASM instance.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The ID of the security group.
+	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	// The state of the cluster. Valid values:
 	//
 	// *   `running`: The cluster is running.
 	// *   `starting`: The cluster is starting.
 	// *   `stopping`: The cluster is being stopped.
 	// *   `stopped`: The cluster is stopped.
 	// *   `failed`: The cluster fails to be run.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The time when the cluster was last modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The version number of the cluster.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the virtual private cloud (VPC).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -10431,9 +10547,9 @@ func (s *DescribeVMsInServiceMeshResponse) SetBody(v *DescribeVMsInServiceMeshRe
 }
 
 type DescribeVSwitchesRequest struct {
-	// The maximum number of entries returned on a single page.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of the queried vSwitches.
+	// The VPC ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -10456,21 +10572,15 @@ func (s *DescribeVSwitchesRequest) SetVpcId(v string) *DescribeVSwitchesRequest 
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// Indicates whether the vSwitch is the default vSwitch. Valid values:
-	//
-	// *   `true`: yes
-	// *   `false`: no
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The status of the vSwitch. Valid values:
-	//
-	// *   `Pending`: The vSwitch is being configured.
-	// *   `Available`: The vSwitch is available for use.
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the vSwitch.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VPC in which the vSwitch is deployed.
+	// The total number of vSwitches that are deployed in the VPC in the region. This parameter is optional and is not returned by default.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The name of the vSwitch.
+	// The available vSwitches.
 	VSwitches []*DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 }
 
@@ -10508,12 +10618,24 @@ func (s *DescribeVSwitchesResponseBody) SetVSwitches(v []*DescribeVSwitchesRespo
 }
 
 type DescribeVSwitchesResponseBodyVSwitches struct {
-	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The state of the vSwitch. Valid values:
+	//
+	// *   `Pending`: The vSwitch is being configured.
+	// *   `Available`: The vSwitch is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the VPC to which the vSwitch belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// 交换机所属的可用区。
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitches) String() string {
@@ -10876,12 +10998,18 @@ func (s *GetCaCertResponse) SetBody(v *GetCaCertResponseBody) *GetCaCertResponse
 }
 
 type GetDeploymentBySelectorRequest struct {
-	GuestCluster  *string            `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	// The name of the cluster.
+	GuestCluster *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	// The label selector information.
 	LabelSelector map[string]*string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
-	Limit         *int64             `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Mark          *string            `json:"Mark,omitempty" xml:"Mark,omitempty"`
-	NameSpace     *string            `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	ServiceMeshId *string            `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The maximum number of returned data entries.
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The marker of data queried last time.
+	Mark *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
+	// The namespace.
+	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
 func (s GetDeploymentBySelectorRequest) String() string {
@@ -10923,12 +11051,18 @@ func (s *GetDeploymentBySelectorRequest) SetServiceMeshId(v string) *GetDeployme
 }
 
 type GetDeploymentBySelectorShrinkRequest struct {
-	GuestCluster        *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	// The name of the cluster.
+	GuestCluster *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	// The label selector information.
 	LabelSelectorShrink *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
-	Limit               *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Mark                *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
-	NameSpace           *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	ServiceMeshId       *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The maximum number of returned data entries.
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The marker of data queried last time.
+	Mark *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
+	// The namespace.
+	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
 func (s GetDeploymentBySelectorShrinkRequest) String() string {
@@ -10970,9 +11104,12 @@ func (s *GetDeploymentBySelectorShrinkRequest) SetServiceMeshId(v string) *GetDe
 }
 
 type GetDeploymentBySelectorResponseBody struct {
+	// The queried workloads.
 	DeploymentNameList [][]byte `json:"DeploymentNameList,omitempty" xml:"DeploymentNameList,omitempty" type:"Repeated"`
-	Mark               *string  `json:"Mark,omitempty" xml:"Mark,omitempty"`
-	RequestId          *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The end-of-data marker.
+	Mark *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeploymentBySelectorResponseBody) String() string {
@@ -11557,7 +11694,7 @@ func (s *GetSwimLaneDetailResponse) SetBody(v *GetSwimLaneDetailResponseBody) *G
 }
 
 type GetSwimLaneGroupListRequest struct {
-	// A list of services associated with the lane group.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -11575,8 +11712,9 @@ func (s *GetSwimLaneGroupListRequest) SetServiceMeshId(v string) *GetSwimLaneGro
 }
 
 type GetSwimLaneGroupListResponseBody struct {
-	// The ingress type. Traffic routing rules can be configured only in an ingress gateway. Fixed value: ASM.
-	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the lane groups.
 	SwimLaneGroupList []*GetSwimLaneGroupListResponseBodySwimLaneGroupList `json:"SwimLaneGroupList,omitempty" xml:"SwimLaneGroupList,omitempty" type:"Repeated"`
 }
 
@@ -11599,11 +11737,14 @@ func (s *GetSwimLaneGroupListResponseBody) SetSwimLaneGroupList(v []*GetSwimLane
 }
 
 type GetSwimLaneGroupListResponseBodySwimLaneGroupList struct {
+	// The name of the lane group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The name of the ingress gateway.
-	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
-	IngressType        *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
-	ServiceList        *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
+	// The ingress type. Traffic routing rules can be configured only in an ingress gateway.
+	IngressType *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	// A list of services associated with the lane group.
+	ServiceList *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
 }
 
 func (s GetSwimLaneGroupListResponseBodySwimLaneGroupList) String() string {
@@ -12009,6 +12150,8 @@ type GrantUserPermissionsRequest struct {
 	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The ID of the RAM user or RAM role.
 	SubAccountUserId *string `json:"SubAccountUserId,omitempty" xml:"SubAccountUserId,omitempty"`
+	// The ID list of the RAM user or RAM role.
+	SubAccountUserIds []*string `json:"SubAccountUserIds,omitempty" xml:"SubAccountUserIds,omitempty" type:"Repeated"`
 }
 
 func (s GrantUserPermissionsRequest) String() string {
@@ -12026,6 +12169,48 @@ func (s *GrantUserPermissionsRequest) SetPermissions(v string) *GrantUserPermiss
 
 func (s *GrantUserPermissionsRequest) SetSubAccountUserId(v string) *GrantUserPermissionsRequest {
 	s.SubAccountUserId = &v
+	return s
+}
+
+func (s *GrantUserPermissionsRequest) SetSubAccountUserIds(v []*string) *GrantUserPermissionsRequest {
+	s.SubAccountUserIds = v
+	return s
+}
+
+type GrantUserPermissionsShrinkRequest struct {
+	// The permissions that are granted to an entity. The content is a string that consists of JSON arrays. You must specify all permissions that you want to grant to an entity. You can add or remove permissions by modifying the content. Field definition of the sample code:
+	//
+	// *   `IsCustom`: a parameter that is required by the system. Set the value to `true`.
+	// *   `Cluster`: the ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	// *   `RoleName`: the name of the permissions. Valid values: `istio-admin`, `istio-ops`, and `istio-readonly`. A value of istio-admin indicates the permissions of ASM administrators. A value of istio-ops indicates the permissions of ASM restricted users. A value of istio-readonly indicates the read-only permissions.
+	// *   `IsRamRole`: the entity to which you want to grant the permissions. To grant the permissions to a RAM role, set the value to `true`. Otherwise, set the value to `false`.
+	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// The ID of the RAM user or RAM role.
+	SubAccountUserId *string `json:"SubAccountUserId,omitempty" xml:"SubAccountUserId,omitempty"`
+	// The ID list of the RAM user or RAM role.
+	SubAccountUserIdsShrink *string `json:"SubAccountUserIds,omitempty" xml:"SubAccountUserIds,omitempty"`
+}
+
+func (s GrantUserPermissionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionsShrinkRequest) SetPermissions(v string) *GrantUserPermissionsShrinkRequest {
+	s.Permissions = &v
+	return s
+}
+
+func (s *GrantUserPermissionsShrinkRequest) SetSubAccountUserId(v string) *GrantUserPermissionsShrinkRequest {
+	s.SubAccountUserId = &v
+	return s
+}
+
+func (s *GrantUserPermissionsShrinkRequest) SetSubAccountUserIdsShrink(v string) *GrantUserPermissionsShrinkRequest {
+	s.SubAccountUserIdsShrink = &v
 	return s
 }
 
@@ -12720,7 +12905,9 @@ func (s *UpdateASMGatewayImportedServicesResponse) SetBody(v *UpdateASMGatewayIm
 }
 
 type UpdateASMNamespaceFromGuestClusterRequest struct {
-	K8sClusterId  *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	// The ID of the Kubernetes cluster whose namespace information you want to synchronize to ASM. The Kubernetes cluster is added to the ASM instance that is specified by the ServiceMeshId parameter.
+	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -12743,6 +12930,7 @@ func (s *UpdateASMNamespaceFromGuestClusterRequest) SetServiceMeshId(v string) *
 }
 
 type UpdateASMNamespaceFromGuestClusterResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12789,12 +12977,22 @@ func (s *UpdateASMNamespaceFromGuestClusterResponse) SetBody(v *UpdateASMNamespa
 }
 
 type UpdateIstioGatewayRoutesRequest struct {
-	Description      *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	GatewayRoute     *UpdateIstioGatewayRoutesRequestGatewayRoute `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty" type:"Struct"`
-	IstioGatewayName *string                                      `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	Priority         *int32                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ServiceMeshId    *string                                      `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Status           *int32                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the routing rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the routing rule to be updated for the ASM gateway.
+	GatewayRoute *UpdateIstioGatewayRoutesRequestGatewayRoute `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty" type:"Struct"`
+	// The name of the ASM gateway.
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ASM instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The status of the routing rule. Valid values:
+	//
+	// *   `0`: The routing rule is valid.
+	// *   `1`: The routing rule is invalid.
+	// *   `2`: An error occurs during the creation or update of the routing rule.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequest) String() string {
@@ -12836,13 +13034,20 @@ func (s *UpdateIstioGatewayRoutesRequest) SetStatus(v int32) *UpdateIstioGateway
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRoute struct {
-	Domains             []*string                                                       `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// The advanced settings for routing HTTP traffic.
 	HTTPAdvancedOptions *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
-	MatchRequest        *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
-	Namespace           *string                                                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RouteDestinations   []*UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
-	RouteName           *string                                                         `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	RouteType           *string                                                         `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The matching rules for traffic routing.
+	MatchRequest *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	// The namespace in which the destination service resides.
+	Namespace  *string     `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RawVSRoute interface{} `json:"RawVSRoute,omitempty" xml:"RawVSRoute,omitempty"`
+	// The endpoints of destination services for Layer 4 weighted routing.
+	RouteDestinations []*UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
+	// The name of the routing rule.
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The type of the traffic to be routed. Valid values: `HTTP`, `TLS`, and `TCP`.
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRoute) String() string {
@@ -12873,6 +13078,11 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetNamespace(v string) *Up
 	return s
 }
 
+func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetRawVSRoute(v interface{}) *UpdateIstioGatewayRoutesRequestGatewayRoute {
+	s.RawVSRoute = v
+	return s
+}
+
 func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetRouteDestinations(v []*UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) *UpdateIstioGatewayRoutesRequestGatewayRoute {
 	s.RouteDestinations = v
 	return s
@@ -12889,14 +13099,22 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetRouteType(v string) *Up
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions struct {
-	Delegate         *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate         `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
-	Fault            *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault            `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
-	HTTPRedirect     *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect     `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
-	Mirror           *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror           `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	// The virtual service that defines traffic routing.
+	Delegate *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
+	// The configurations of fault injection.
+	Fault *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
+	// The HTTP redirection rule.
+	HTTPRedirect *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
+	// The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
+	Mirror *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	// The percentage of requests that are mirrored to another destination except for the original destination.
 	MirrorPercentage *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage `json:"MirrorPercentage,omitempty" xml:"MirrorPercentage,omitempty" type:"Struct"`
-	Retries          *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries          `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
-	Rewrite          *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite          `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
-	Timeout          *string                                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The configurations of retries for failed requests.
+	Retries *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
+	// The configurations for rewriting the virtual service.
+	Rewrite *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
+	// The timeout period for requests.
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) String() string {
@@ -12948,7 +13166,9 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetTime
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the virtual service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace to which the virtual service belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -12971,7 +13191,9 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate)
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault struct {
+	// The configurations for aborting requests with specified error codes.
 	Abort *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort `json:"Abort,omitempty" xml:"Abort,omitempty" type:"Struct"`
+	// The duration to delay a request.
 	Delay *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay `json:"Delay,omitempty" xml:"Delay,omitempty" type:"Struct"`
 }
 
@@ -12994,7 +13216,9 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) Se
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort struct {
-	HttpStatus *int32                                                                              `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	// The HTTP status code.
+	HttpStatus *int32 `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	// The percentage of requests that are aborted with the specified error code.
 	Percentage *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
 }
 
@@ -13017,6 +13241,7 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbor
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage struct {
+	// The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13034,7 +13259,9 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbor
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay struct {
-	FixedDelay *string                                                                             `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	// The fixed duration for request delay.
+	FixedDelay *string `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	// The percentage of requests to which the delay fault is injected.
 	Percentage *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
 }
 
@@ -13057,6 +13284,7 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDela
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage struct {
+	// The percentage of requests to which the delay fault is injected, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13074,9 +13302,12 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDela
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect struct {
-	Authority    *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	RedirectCode *int32  `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
-	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The value to be used to overwrite the value of the Authority or Host header during redirection.
+	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	// The HTTP status code to be used to indicate URL redirection. Default value: 301.
+	RedirectCode *int32 `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
+	// The value to be used to overwrite the URL path during redirection.
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) String() string {
@@ -13103,7 +13334,9 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedir
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror struct {
-	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The name of the service defined in the service registry.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The name of the service subset.
 	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
 }
 
@@ -13126,6 +13359,7 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) S
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage struct {
+	// The percentage of requests that are mirrored to another destination except for the original destination, which is expressed as a decimal.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13143,9 +13377,13 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPer
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries struct {
-	Attempts              *int32                                                                                      `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
-	PerTryTimeout         *string                                                                                     `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
-	RetryOn               *string                                                                                     `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	// The number of retries allowed for a request.
+	Attempts *int32 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	// The timeout period for each retry.
+	PerTryTimeout *string `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
+	// The condition for retries. Example: `connect-failure,refused-stream,503`.
+	RetryOn *string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	// Specifies whether to allow retries to other localities.
 	RetryRemoteLocalities *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities `json:"RetryRemoteLocalities,omitempty" xml:"RetryRemoteLocalities,omitempty" type:"Struct"`
 }
 
@@ -13178,6 +13416,12 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) 
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities struct {
+	// Specifies whether to allow retries to other localities. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	//
+	// Default value: `false`.
 	Value *bool `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13195,8 +13439,10 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRe
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite struct {
+	// The value to be used to overwrite the value of the Authority or Host header.
 	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The value to be used to overwrite the path or prefix of the URI.
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) String() string {
@@ -13218,10 +13464,14 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) 
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest struct {
-	Headers            []*UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders            `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	Ports              []*int32                                                                     `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The request headers to be matched.
+	Headers []*UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// The ports.
+	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The matching rule for Transport Layer Security (TLS) traffic.
 	TLSMatchAttributes []*UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes `json:"TLSMatchAttributes,omitempty" xml:"TLSMatchAttributes,omitempty" type:"Repeated"`
-	URI                *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI                  `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
+	// The matching rule for URIs.
+	URI *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) String() string {
@@ -13253,9 +13503,16 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetURI(v *Upda
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders struct {
+	// The header value to be matched.
 	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
-	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The matching mode for the header value. Valid values:
+	//
+	// *   `exact`: exact match
+	// *   `prefix`: match by prefix
+	// *   `regex`: match by regular expression
+	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	// The header key to be matched.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) String() string {
@@ -13282,8 +13539,10 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetName
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes struct {
+	// The Server Name Indication (SNI) values to be matched.
 	SNIHosts []*string `json:"SNIHosts,omitempty" xml:"SNIHosts,omitempty" type:"Repeated"`
-	TLSPort  *int32    `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
+	// The TLS port.
+	TLSPort *int32 `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) String() string {
@@ -13305,8 +13564,14 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttribut
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI struct {
+	// The content to be matched.
 	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
-	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	// The matching mode for the routing rule. Valid values:
+	//
+	// *   `exact`: exact match
+	// *   `prefix`: match by prefix
+	// *   `regex`: match by regular expression
+	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) String() string {
@@ -13328,8 +13593,10 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) SetMatching
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations struct {
+	// The unique endpoint of the destination service to which the specified requests are sent.
 	Destination *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
-	Weight      *int32                                                                   `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The weight of the service subset.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) String() string {
@@ -13351,9 +13618,11 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetWeight
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination struct {
-	Host   *string                                                                      `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port   *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
-	Subset *string                                                                      `json:"Subset,omitempty" xml:"Subset,omitempty"`
+	// The name of the service defined in the service registry.
+	Host *string                                                                      `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
+	// The name of the service subset.
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) String() string {
@@ -13397,12 +13666,22 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination
 }
 
 type UpdateIstioGatewayRoutesShrinkRequest struct {
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the routing rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the routing rule to be updated for the ASM gateway.
 	GatewayRouteShrink *string `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty"`
-	IstioGatewayName   *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	Priority           *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the ASM gateway.
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	// The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ASM instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// The status of the routing rule. Valid values:
+	//
+	// *   `0`: The routing rule is valid.
+	// *   `1`: The routing rule is invalid.
+	// *   `2`: An error occurs during the creation or update of the routing rule.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateIstioGatewayRoutesShrinkRequest) String() string {
@@ -13444,6 +13723,7 @@ func (s *UpdateIstioGatewayRoutesShrinkRequest) SetStatus(v int32) *UpdateIstioG
 }
 
 type UpdateIstioGatewayRoutesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13493,7 +13773,8 @@ type UpdateIstioInjectionConfigRequest struct {
 	// Specifies whether to enable Istio automatic sidecar injection.
 	EnableIstioInjection *bool `json:"EnableIstioInjection,omitempty" xml:"EnableIstioInjection,omitempty"`
 	// Specifies whether to enable automatic sidecar injection by using SidecarSet.
-	EnableSidecarSetInjection *bool `json:"EnableSidecarSetInjection,omitempty" xml:"EnableSidecarSetInjection,omitempty"`
+	EnableSidecarSetInjection *bool   `json:"EnableSidecarSetInjection,omitempty" xml:"EnableSidecarSetInjection,omitempty"`
+	IstioRev                  *string `json:"IstioRev,omitempty" xml:"IstioRev,omitempty"`
 	// The namespace for which you want to modify the sidecar injection setting.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the ASM instance.
@@ -13515,6 +13796,11 @@ func (s *UpdateIstioInjectionConfigRequest) SetEnableIstioInjection(v bool) *Upd
 
 func (s *UpdateIstioInjectionConfigRequest) SetEnableSidecarSetInjection(v bool) *UpdateIstioInjectionConfigRequest {
 	s.EnableSidecarSetInjection = &v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetIstioRev(v string) *UpdateIstioInjectionConfigRequest {
+	s.IstioRev = &v
 	return s
 }
 
@@ -13795,230 +14081,250 @@ func (s *UpdateMeshCRAggregationResponse) SetBody(v *UpdateMeshCRAggregationResp
 }
 
 type UpdateMeshFeatureRequest struct {
-	// Specifies whether to enable Microservice Engine (MSE). Valid values:
+	// Specifies whether to enable access log collection. Valid values:
 	//
-	// *   `true`: MSE is enabled.
-	// *   `false`: MSE is disabled.
+	// *   `true`: enables access log collection.
+	// *   `false`: disables access log collection.
 	//
 	// Default value: `false`.
 	AccessLogEnabled *bool `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
-	// The custom project on which the Log Service collects logs.
-	AccessLogFile *string `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
 	// Specifies whether to enable access logging. Valid values:
 	//
-	// *   `""`: Access logging is disabled.
-	// *   `/dev/stdout`: Access logging is enabled. Access logs are written to /dev/stdout.
-	AccessLogFormat *string `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
-	// The retention period for the access logs of the sidecar proxy. Unit: day. The logs are collected by using the Log Service. For example, `30` indicates 30 days.
-	AccessLogGatewayLifecycle *int32 `json:"AccessLogGatewayLifecycle,omitempty" xml:"AccessLogGatewayLifecycle,omitempty"`
-	// Specifies whether to enable the rollback feature for Istio resources.
-	AccessLogProject *string `json:"AccessLogProject,omitempty" xml:"AccessLogProject,omitempty"`
-	// The endpoint of gRPC ALS for Envoy.
-	AccessLogServiceEnabled *bool `json:"AccessLogServiceEnabled,omitempty" xml:"AccessLogServiceEnabled,omitempty"`
-	// The port of gRPC ALS for Envoy.
-	AccessLogServiceHost *string `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
-	// Specifies whether to enable Gateway API. Valid values:
-	//
-	// *   `true`: Gateway API is enabled.
-	// *   `false`: Gateway API is disabled.
-	//
-	// Default value: `false`.
-	AccessLogServicePort *int32 `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
-	// Specifies whether to enable automatic diagnosis for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed when you modify Istio resources in the ASM instance.
-	AccessLogSidecarLifecycle *int32 `json:"AccessLogSidecarLifecycle,omitempty" xml:"AccessLogSidecarLifecycle,omitempty"`
-	// Specifies whether to use a self-managed Zipkin system to collect tracing data. Valid values:
-	//
-	// *   `true`: A self-managed Zipkin system is used.
-	// *   `false`: No self-managed Zipkin system is used.
-	//
-	// Default value: `false`.
-	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	// The number of CPU cores that are requested by the sidecar injector pod.
-	AutoInjectionPolicyEnabled *bool `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
-	// The maximum period of time that the sidecar proxy waits for requests to be processed before the proxy is stopped. For example, if you want to specify a period of 5 seconds, set this parameter to 5s.
-	CRAggregationEnabled *bool `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
-	// Specifies whether to enable the feature of controlling the OPA injection scope. Valid values:
-	//
-	// *   `true`: The feature is enabled.
-	// *   `false`: The feature is disabled.
-	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The namespaces to be excluded for the CNI plug-in.
-	CniEnabled *bool `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
-	// Specifies whether to enable the OPA plug-in. Valid values:
-	//
-	// *   `true`: The OPA plug-in is enabled.
-	// *   `false`: The OPA plug-in is disabled.
-	//
-	// Default value: `false`.
-	CniExcludeNamespaces *string `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
-	// Specifies whether to delay application container startup until the sidecar proxy container is started in a pod.
-	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// The instance ID of the Nacos registry.
-	ConfigSourceEnabled *bool `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
+	// *   `""`: disables access logging.
+	// *   `/dev/stdout`: enables access logging. Access logs are written to /dev/stdout.
+	AccessLogFile *string `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
 	// The custom format of access logs. To set this parameter, make sure that you have enabled access log collection. The value must be a JSON string. The following key names must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
-	ConfigSourceNacosID *string `json:"ConfigSourceNacosID,omitempty" xml:"ConfigSourceNacosID,omitempty"`
-	// The endpoint of Prometheus monitoring. If you use ARMS Prometheus, set this parameter to the endpoint of Prometheus provided by ARMS.
-	CustomizedPrometheus *bool `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
-	// The policy of handling outbound traffic. Valid values:
+	AccessLogFormat *string `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
+	// The retention period for the access logs of the sidecar proxy. Unit: day. The logs are collected by using Log Service. For example, `30` indicates 30 days.
+	AccessLogGatewayLifecycle *int32 `json:"AccessLogGatewayLifecycle,omitempty" xml:"AccessLogGatewayLifecycle,omitempty"`
+	// The custom project on which the Log Service collects logs.
+	AccessLogProject *string `json:"AccessLogProject,omitempty" xml:"AccessLogProject,omitempty"`
+	// Specifies whether to enable gRPC Access Log Service (ALS) for Envoy. Valid values:
 	//
-	// *   `ALLOW_ANY`: Outbound traffic to all external services is allowed.
-	// *   `REGISTRY_ONLY`: Outbound traffic is allowed to only external services that are defined in the service registry of the ASM instance.
-	CustomizedZipkin *bool `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
-	// Specifies whether to enable Dubbo Filter. Valid values:
-	//
-	// *   `true`: Dubbo Filter is enabled.
-	// *   `false`: Dubbo Filter is disabled.
+	// *   `true`: enables gRPC ALS for Envoy.
+	// *   `false`: disables gRPC ALS for Envoy.
 	//
 	// Default value: `false`.
-	DNSProxyingEnabled              *bool   `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
-	DefaultComponentsScheduleConfig *string `json:"DefaultComponentsScheduleConfig,omitempty" xml:"DefaultComponentsScheduleConfig,omitempty"`
-	// Specifies whether to enable Application High Availability Service (AHAS)-based throttling. Valid values:
-	//
-	// *   `true`: AHAS-based throttling is enabled.
-	// *   `false`: AHAS-based throttling is disabled.
-	//
-	// Default value: `false`.
-	DiscoverySelectors *string `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty"`
-	// Specifies whether to enable gateway configuration filtering. Valid values:
-	//
-	// *   `true`: Gateway configuration filtering is enabled.
-	// *   `false`: Gateway configuration filtering is disabled.
-	//
-	// Default value: `false`.
-	DubboFilterEnabled *bool `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
+	AccessLogServiceEnabled *bool `json:"AccessLogServiceEnabled,omitempty" xml:"AccessLogServiceEnabled,omitempty"`
+	// The endpoint of gRPC ALS for Envoy.
+	AccessLogServiceHost *string `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
+	// The port of gRPC ALS for Envoy.
+	AccessLogServicePort *int32 `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
+	// Specifies whether to enable automatic diagnostics for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed when you modify Istio resources in the ASM instance.
+	AccessLogSidecarLifecycle *int32 `json:"AccessLogSidecarLifecycle,omitempty" xml:"AccessLogSidecarLifecycle,omitempty"`
 	// The name of the Log Service project that is used for mesh audit.
 	//
 	// Default value: `mesh-log-{ASM instance ID}`.
-	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
-	// The outbound ports for which traffic is to be redirected to the sidecar proxy.
-	EnableAutoDiagnosis     *bool `json:"EnableAutoDiagnosis,omitempty" xml:"EnableAutoDiagnosis,omitempty"`
-	EnableBootstrapXdsAgent *bool `json:"EnableBootstrapXdsAgent,omitempty" xml:"EnableBootstrapXdsAgent,omitempty"`
-	// Specifies whether to use the Kubernetes API of clusters on the data plane to access Istio resources. To use this feature, the version of the ASM instance must be V1.9.7.93 or later.
-	EnableCRHistory *bool `json:"EnableCRHistory,omitempty" xml:"EnableCRHistory,omitempty"`
-	// Specifies whether automatic sidecar injection can be enabled by using pod annotations. Valid values:
+	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
+	// Specifies whether to enable automatic sidecar proxy injection by using pod annotations. Valid values:
 	//
-	// *   `true`: Automatic sidecar injection can be enabled by using pod annotations.
-	// *   `false`: Automatic sidecar injection cannot be enabled by using pod annotations.
+	// *   `true`: enables automatic sidecar proxy injection by using pod annotations.
+	// *   `false`: disables automatic sidecar proxy injection by using pod annotations.
+	//
+	// Default value: `false`.
+	AutoInjectionPolicyEnabled *bool `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
+	// Specifies whether to use the Kubernetes API of clusters on the data plane to access Istio resources. To use this feature, the version of the ASM instance must be V1.9.7.93 or later.
+	CRAggregationEnabled *bool `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
+	// Specifies whether to enable the feature of controlling the OPA injection scope. Valid values:
+	//
+	// *   `true`: enables the feature.
+	// *   `false`: disables the feature.
+	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// Specifies whether to enable the Container Network Interface (CNI) plug-in. Valid values:
+	//
+	// *   `true`: enables the CNI plug-in.
+	// *   `false`: disables the CNI plug-in.
+	//
+	// Default value: `false`.
+	CniEnabled *bool `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
+	// The namespaces to be excluded for the CNI plug-in.
+	CniExcludeNamespaces *string `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
+	// Specifies whether to delay application container startup until the sidecar proxy container is started in a pod.
+	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// Specifies whether to enable the external service registry. Valid values:
+	//
+	// *   `true`: enables the external service registry.
+	// *   `false`: disables the external service registry.
+	//
+	// Default value: `false`.
+	ConfigSourceEnabled *bool `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
+	// The instance ID of the Nacos registry.
+	ConfigSourceNacosID *string `json:"ConfigSourceNacosID,omitempty" xml:"ConfigSourceNacosID,omitempty"`
+	// Specifies whether to use a custom Prometheus instance. Valid values:
+	//
+	// *   `true`: uses a custom Prometheus instance.
+	// *   `false`: does not use a custom Prometheus instance.
+	//
+	// Default value: `false`.
+	CustomizedPrometheus *bool `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
+	// Specifies whether to use a self-managed Zipkin system to collect tracing data. Valid values:
+	//
+	// *   `true`: uses a self-managed Zipkin system.
+	// *   `false`: does not use a self-managed Zipkin system.
+	//
+	// Default value: `false`.
+	CustomizedZipkin *bool `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
+	// Specifies whether to enable DNS proxy. Valid values:
+	//
+	// *   `true`: enables the DNS proxy feature.
+	// *   `false`: disables the DNS proxy feature.
+	//
+	// Default value: `false`.
+	DNSProxyingEnabled *bool `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
+	// Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure nodeSelector and tolerations in the JSON format.
+	//
+	//
+	// >* Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter.
+	// >* The configurations specified by this parameter do not apply to the ASM gateway. You can configure scheduling on the ASM gateway.
+	DefaultComponentsScheduleConfig *string `json:"DefaultComponentsScheduleConfig,omitempty" xml:"DefaultComponentsScheduleConfig,omitempty"`
+	// The label selectors used to specify the namespaces of the clusters on the data plane for selective service discovery.
+	DiscoverySelectors *string `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty"`
+	// Specifies whether to enable Dubbo Filter. Valid values:
+	//
+	// *   `true`: enables Dubbo Filter.
+	// *   `false`: disables Dubbo Filter.
+	//
+	// Default value: `false`.
+	DubboFilterEnabled *bool `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
+	// Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
+	//
+	// *   `true`: enables the mesh audit feature.
+	// *   `false`: disables the mesh audit feature.
+	//
+	// Default value: `false`.
+	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	// The ports for which outbound traffic is redirected to the sidecar proxy.
+	EnableAutoDiagnosis *bool `json:"EnableAutoDiagnosis,omitempty" xml:"EnableAutoDiagnosis,omitempty"`
+	// Specifies the authentication token of an ARMS Prometheus instance when the Mesh Topology feature is enabled and ARMS Prometheus is used to collect monitoring metrics. The token is used to allow Mesh Topology to access the ARMS Prometheus instance. The token is in the JSON format. The key in the JSON object is the ID of the cluster on the data plane, and the value is the authentication token of the ARMS Prometheus instance deployed in the cluster.
+	EnableBootstrapXdsAgent *bool `json:"EnableBootstrapXdsAgent,omitempty" xml:"EnableBootstrapXdsAgent,omitempty"`
+	// Specifies whether to enable the rollback feature for Istio resources.
+	EnableCRHistory *bool `json:"EnableCRHistory,omitempty" xml:"EnableCRHistory,omitempty"`
+	// Specifies whether to enable automatic sidecar proxy injection for all namespaces. Valid values:
+	//
+	// *   `true`: enables automatic sidecar proxy injection for all namespaces.
+	// *   `false`: disables automatic sidecar proxy injection for all namespaces.
 	//
 	// Default value: `false`.
 	EnableNamespacesByDefault *bool `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
-	// Specifies whether to enable gRPC Access Log Service (ALS) for Envoy. Valid values:
+	// Specifies whether to enable Secret Discovery Service (SDS). Valid values:
 	//
-	// *   `true`: gRPC ALS for Envoy is enabled.
-	// *   `false`: gRPC ALS for Envoy is disabled.
+	// *   `true`: enables SDS.
+	// *   `false`: disables SDS.
 	//
 	// Default value: `false`.
 	EnableSDSServer *bool `json:"EnableSDSServer,omitempty" xml:"EnableSDSServer,omitempty"`
-	// The outbound ports. Separate multiple port numbers with commas (,).
+	// The IP addresses of external services to which traffic is not intercepted.
 	ExcludeIPRanges *string `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
-	// Specifies whether to enable automatic sidecar injection for all namespaces. Valid values:
-	//
-	// *   `true`: Automatic sidecar injection for all namespaces is enabled.
-	// *   `false`: Automatic sidecar injection for all namespaces is disabled.
-	//
-	// Default value: `false`.
+	// The ports for which inbound traffic is not redirected to the sidecar proxy. Separate multiple ports with commas (,).
 	ExcludeInboundPorts *string `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
-	// The inbound ports for which traffic is to be redirected to the sidecar proxy.
+	// The ports for which outbound traffic is not redirected to the sidecar proxy. Separate multiple ports with commas (,).
 	ExcludeOutboundPorts *string `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
-	// Specifies whether to enable Secret Discovery Service (SDS). Valid values:
+	// Specifies whether to enable gateway configuration filtering. Valid values:
 	//
-	// *   `true`: SDS is enabled.
-	// *   `false`: SDS is disabled.
+	// *   `true`: enables gateway configuration filtering.
+	// *   `false`: disables gateway configuration filtering.
 	//
 	// Default value: `false`.
 	FilterGatewayClusterConfig *bool `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
-	// Specifies whether to enable the external service registry. Valid values:
+	// Specifies whether to enable Gateway API. Valid values:
 	//
-	// *   `true`: The external service registry is enabled.
-	// *   `false`: The external service registry is disabled.
+	// *   `true`: enables Gateway API.
+	// *   `false`: disables Gateway API.
 	//
 	// Default value: `false`.
 	GatewayAPIEnabled *bool `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
 	// Other metrics of the sidecar proxy on the data plane.
 	HoldApplicationUntilProxyStarts *bool `json:"HoldApplicationUntilProxyStarts,omitempty" xml:"HoldApplicationUntilProxyStarts,omitempty"`
-	// Specifies whether to enable Mesh Topology. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, the value of this parameter must be `false`. Valid values:``
+	// Specifies whether to support HTTP 1.0. Valid values:
 	//
-	// *   `true`: Mesh Topology is enabled.
-	// *   `false`: Mesh Topology is disabled.
+	// *   `true`: supports HTTP 1.0.
+	// *   `false`: does not support HTTP 1.0.
 	//
 	// Default value: `false`.
 	Http10Enabled *bool `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
-	// The IP addresses of external services to which traffic is not intercepted.
+	// The IP addresses of external services to which traffic is intercepted.
 	IncludeIPRanges *string `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
-	// The inbound ports. Separate multiple port numbers with commas (,).
+	// The ports for which inbound traffic is redirected to the sidecar proxy.
 	IncludeInboundPorts *string `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
-	// The log level of the sidecar proxy on the data plane. Log levels include `none`, `error`, `warn`, `info`, and `debug`. The levels correspond to different amounts of information reported by the logs. For example, none-level logs report the least information while debug-level logs report the most information.
+	// The log level of the sidecar proxy on the data plane. Log levels include `none`, `error`, `warn`, `info`, and `debug`. The levels correspond to different amounts of information reported by the logs. For example, none-level logs report the least information, while debug-level logs report the most information.
 	IncludeOutboundPorts *string `json:"IncludeOutboundPorts,omitempty" xml:"IncludeOutboundPorts,omitempty"`
 	// Specifies whether to enable Node Feature Discovery (NFD).
 	IntegrateKiali *bool `json:"IntegrateKiali,omitempty" xml:"IntegrateKiali,omitempty"`
-	// The ID of the request.
-	InterceptionMode    *string `json:"InterceptionMode,omitempty" xml:"InterceptionMode,omitempty"`
-	KialiArmsAuthTokens *string `json:"KialiArmsAuthTokens,omitempty" xml:"KialiArmsAuthTokens,omitempty"`
-	// Specifies whether to use a custom Prometheus instance. Valid values:
+	// Specifies whether to load the bootstrap configuration before the sidecar proxy is started.
+	InterceptionMode *string `json:"InterceptionMode,omitempty" xml:"InterceptionMode,omitempty"`
+	// Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure `nodeSelector` and tolerations in the JSON format.
 	//
-	// *   `true`: A custom Prometheus instance is used.
-	// *   `false`: No custom Prometheus instance is used.
+	// > *   Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter.
+	// >*   The configurations specified by this parameter do not apply to the ASM gateway. You can configure gateway-specific scheduling on the ASM gateway.
+	KialiArmsAuthTokens *string `json:"KialiArmsAuthTokens,omitempty" xml:"KialiArmsAuthTokens,omitempty"`
+	// Specifies whether to enable the Mesh Topology feature. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, the Mesh Topology feature must be disabled. Valid values:````
+	//
+	// *   `true`: enables the Mesh Topology feature.
+	// *   `false`: disables the Mesh Topology feature.
 	//
 	// Default value: `false`.
 	KialiEnabled *bool `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
-	// Specifies whether to enable Transport Layer Security (TLS) acceleration based on MultiBuffer.
+	// 当开启网格拓扑且为访问网格拓扑创建CLB时，通过此参数使用Annotation配置不同集群中网格拓扑服务的CLB。
+	//
+	// 参数格式为JSON编码的字符串，JSON对象中的键为数据面集群的集群ID，值为数据面集群中网格拓扑服务的Annotation内容。
+	//
+	// 有关如何通过注解配置CLB，参考 [通过Annotation配置传统型负载均衡CLB](https://help.aliyun.com/document_detail/86531.html)。
+	KialiServiceAnnotations *string `json:"KialiServiceAnnotations,omitempty" xml:"KialiServiceAnnotations,omitempty"`
+	// The lifecycle of the sidecar proxy.
 	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
-	// Specifies whether to enable Prometheus monitoring. We recommend that you enable [ARMS Prometheus](https://arms.console.aliyun.com/). Valid values:
-	//
-	// *   `true`: Prometheus monitoring is enabled.
-	// *   `false`: Prometheus monitoring is disabled.
-	//
-	// Default value: `false`.
-	LocalityLBConf *string `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
 	// The configurations of cross-region load balancing. Valid values:
 	//
 	// *   `failover`: the configurations of cross-region failover. Example:
 	//
-	//     ```
+	// <!---->
 	//
-	//         failover: [// The struct that indicates the configurations of cross-region failover.
+	//     failover: [// Cross-region failover configurations of the struct type.
 	//             {
 	//                 // If a service fails in the China (Beijing) region, the traffic is redirected to the same service in the China (Hangzhou) region.
 	//                 from: "cn-beijing",
 	//                 to: "cn-hangzhou",
 	//             }
 	//         ]
-	//     ```
 	//
 	// *   `distribute`: the configurations of cross-region traffic distribution. Example:
 	//
-	// ```
+	// <!---->
 	//
-	// distribute: [ // The struct that indicates the configurations of cross-region traffic distribution.
-	//         {
-	//             // For traffic that is routed to the China (Beijing) region, 70% of the traffic is allocated to the China (Beijing) region and the rest of the traffic is redirected to the China (Hangzhou) region.
-	//             "from": "cn-beijing",
-	//             "to": {
-	//                 "cn-beijing": 70,
-	//                 "cn-hangzhou": 30,
+	//     distribute: [// Cross-region traffic distribution configurations of the struct type.
+	//             {
+	//                 // For traffic that is routed to the China (Beijing) region, 70% of the traffic is allocated to the China (Beijing) region and the rest of the traffic is redirected to the China (Hangzhou) region.
+	//                 "from": "cn-beijing",
+	//                 "to": {
+	//                     "cn-beijing": 70,
+	//                     "cn-hangzhou": 30,
+	//                 }
 	//             }
-	//         }
-	//     ]
-	// ```
+	//         ]
+	LocalityLBConf *string `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
+	// Specifies whether to enable cross-region load balancing. Valid values:
+	//
+	// *   `true`: enables cross-region load balancing.
+	// *   `false`: disables cross-region load balancing.
+	//
+	// Default value: `false`.
 	LocalityLoadBalancing *bool `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
 	// The number of worker threads used by the sidecar proxy on the data plane.
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
-	// Specifies whether to enable Redis Filter. Valid values:
+	// Specifies whether to enable Microservice Engine (MSE). Valid values:
 	//
-	// *   `true`: Redis Filter is enabled.
+	// *   `true`: enables MSE.
+	// *   `false`: disables MSE.
 	//
-	// *   `false`: Redis Filter is disabled.
-	//
-	//     Default value: `false`.
+	// Default value: `false`.
 	MSEEnabled *bool `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
-	// The pull-request latency. By default, this parameter is left empty.
+	// Specifies whether to enable Transport Layer Security (TLS) acceleration based on MultiBuffer.
 	MultiBufferEnabled *bool `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
-	// The label selectors used to specify the namespaces of the clusters on the data plane for selective service discovery.
+	// The pull-request latency. By default, this parameter is left empty.
 	MultiBufferPollDelay *string `json:"MultiBufferPollDelay,omitempty" xml:"MultiBufferPollDelay,omitempty"`
-	// Specifies whether to enable Thrift Filter. Valid values:
+	// Specifies whether to enable MySQL Filter. Valid values:
 	//
-	// *   `true`: Thrift Filter is enabled.
-	// *   `false`: Thrift Filter is disabled.
+	// *   `true`: enables MySQL Filter.
+	// *   `false`: disables MySQL Filter.
 	//
 	// Default value: `false`.
 	MysqlFilterEnabled *bool `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
@@ -14026,173 +14332,155 @@ type UpdateMeshFeatureRequest struct {
 	//
 	// This parameter is valid only when the `NFDEnabled` parameter is set to `false`.
 	NFDEnabled *bool `json:"NFDEnabled,omitempty" xml:"NFDEnabled,omitempty"`
-	// The minimum number of CPU cores requested by the proxy that exports trace data. For example, `1000m` indicates one CPU core.
+	// The minimum number of CPU cores requested by the proxy service that exports Tracing Analysis data. For example, `1000m` indicates one CPU core.
 	NFDLabelPruned *bool `json:"NFDLabelPruned,omitempty" xml:"NFDLabelPruned,omitempty"`
-	// The maximum size of the memory that is available to the pod to which the OPA proxy container is injected. For example, `1024Mi` indicates 1024 MB.
+	// The maximum size of the memory that is available to the pod that injects OPA proxies into application pods. For example, `1024Mi` indicates 1024 MB.
 	OPAInjectorCPULimit *string `json:"OPAInjectorCPULimit,omitempty" xml:"OPAInjectorCPULimit,omitempty"`
-	// The minimum size of the memory requested by the pod to which the OPA proxy container is injected. For example, `50 Mi` indicates 50 MB.
+	// The minimum size of the memory requested by the pod that injects OPA proxies into application pods. For example, `50 Mi` indicates 50 MB.
 	OPAInjectorCPURequirement *string `json:"OPAInjectorCPURequirement,omitempty" xml:"OPAInjectorCPURequirement,omitempty"`
 	// Specifies whether to create an SLB instance for accessing the ASM mesh topology.
 	OPAInjectorMemoryLimit *string `json:"OPAInjectorMemoryLimit,omitempty" xml:"OPAInjectorMemoryLimit,omitempty"`
-	// The maximum number of CPU cores that are available to the pod to which the OPA proxy container is injected. For example, `1000m` indicates one CPU core.
+	// The maximum number of CPU cores that are available to the pod that injects OPA proxies into application pods. For example, `1000m` indicates one CPU core.
 	OPAInjectorMemoryRequirement *string `json:"OPAInjectorMemoryRequirement,omitempty" xml:"OPAInjectorMemoryRequirement,omitempty"`
-	// The maximum size of the memory that is available to the OPA proxy container.
-	OPALimitCPU *string `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
-	// Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
-	//
-	// *   `true`: The mesh audit feature is enabled.
-	// *   `false`: The mesh audit feature is disabled.
-	//
-	// Default value: `false`.
-	OPALimitMemory *string `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
-	// The number of CPU cores that are requested by the OPA proxy container.
-	OPALogLevel *string `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
-	// The size of the memory that is requested by the OPA proxy container.
-	OPARequestCPU *string `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
 	// The maximum number of CPU cores that are available to the OPA proxy container.
-	OPARequestMemory *string `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
-	// The minimum number of CPU cores requested by the pod to which the OPA proxy container is injected. For example, `1000m` indicates one CPU core.
-	OPAScopeInjected *bool `json:"OPAScopeInjected,omitempty" xml:"OPAScopeInjected,omitempty"`
-	// Specifies whether to enable the support for HTTP 1.0. Valid values:
+	OPALimitCPU *string `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
+	// The maximum size of the memory that is available to the OPA proxy container.
+	OPALimitMemory *string `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
+	// The log level of the OPA proxy container.
 	//
-	// *   `true`: HTTP 1.0 is supported.
-	// *   `false`: HTTP 1.0 is not supported.
+	// *   `info`: outputs all information.
+	// *   `debug`: outputs debugging and error information.
+	// *   `error`: outputs only error information.
+	OPALogLevel *string `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
+	// The number of CPU cores that are requested by the OPA proxy container.
+	OPARequestCPU *string `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
+	// The size of the memory that is requested by the OPA proxy container.
+	OPARequestMemory *string `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
+	// The minimum number of CPU cores requested by the pod that injects OPA proxies into application pods. For example, `1000m` indicates one CPU core.
+	OPAScopeInjected *bool `json:"OPAScopeInjected,omitempty" xml:"OPAScopeInjected,omitempty"`
+	// Specifies whether to enable the OPA plug-in. Valid values:
+	//
+	// *   `true`: enables the OPA plug-in.
+	// *   `false`: disables the OPA plug-in.
 	//
 	// Default value: `false`.
 	OpaEnabled *bool `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
-	// The log level of the OPA proxy container.
+	// Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
 	//
-	// *   `info`: All information is reported.
-	// *   `debug`: Debugging and error information is reported.
-	// *   `error`: Only error information is reported.
-	OpenAgentPolicy *bool `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	// The number of CPU cores that are requested by the sidecar proxy container.
-	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
-	// Specifies whether to enable access log collection. Valid values:
-	//
-	// *   `true`: Access log collection is enabled.
-	// *   `false`: Access log collection is disabled.
+	// *   `true`: installs the OPA plug-in.
+	// *   `false`: does not install the OPA plug-in.
 	//
 	// Default value: `false`.
+	OpenAgentPolicy *bool `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
+	// The policy for accessing external services. Valid values:
+	//
+	// *   `ALLOW_ANY`: allows access to all external services.
+	// *   `REGISTRY_ONLY`: allows access to only the external services that are defined in the ServiceEntry of the ASM instance.
+	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
+	// The endpoint of Prometheus monitoring. If you use ARMS Prometheus, set this parameter to the endpoint of Prometheus provided by ARMS.
 	PrometheusUrl *string `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
-	// The maximum size of the memory that is available to the istio-init container.
+	// The maximum number of CPU cores that are available to the istio-init container.
 	ProxyInitCPUResourceLimit *string `json:"ProxyInitCPUResourceLimit,omitempty" xml:"ProxyInitCPUResourceLimit,omitempty"`
-	// The size of the memory that is requested by the istio-init container.
-	ProxyInitCPUResourceRequest *string `json:"ProxyInitCPUResourceRequest,omitempty" xml:"ProxyInitCPUResourceRequest,omitempty"`
 	// The number of CPU cores that are requested by the istio-init container.
+	ProxyInitCPUResourceRequest *string `json:"ProxyInitCPUResourceRequest,omitempty" xml:"ProxyInitCPUResourceRequest,omitempty"`
+	// The maximum size of the memory that is available to the istio-init container.
 	ProxyInitMemoryResourceLimit *string `json:"ProxyInitMemoryResourceLimit,omitempty" xml:"ProxyInitMemoryResourceLimit,omitempty"`
-	// The lifecycle of the sidecar proxy.
+	// The size of the memory that is requested by the istio-init container.
 	ProxyInitMemoryResourceRequest *string `json:"ProxyInitMemoryResourceRequest,omitempty" xml:"ProxyInitMemoryResourceRequest,omitempty"`
-	// The maximum size of the memory that is available to the sidecar proxy container.
-	ProxyLimitCPU *string `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
-	// The IP addresses of external services to which traffic is intercepted.
-	ProxyLimitMemory *string `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
-	// The size of the memory that is requested by the sidecar proxy container.
-	ProxyRequestCPU *string `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
 	// The maximum number of CPU cores that are available to the sidecar proxy container.
+	ProxyLimitCPU *string `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
+	// The maximum size of the memory that is available to the sidecar proxy container.
+	ProxyLimitMemory *string `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
+	// The number of CPU cores that are requested by the sidecar proxy container.
+	ProxyRequestCPU *string `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
+	// The size of the memory that is requested by the sidecar proxy container.
 	ProxyRequestMemory *string `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
 	// The mode in which the sidecar proxy intercepts inbound traffic. Valid values:
 	//
 	// *   `REDIRECT`: The sidecar proxy intercepts inbound traffic in the REDIRECT mode.
 	// *   `TPROXY`: The sidecar proxy intercepts inbound traffic in the TPROXY mode.
 	ProxyStatsMatcher *string `json:"ProxyStatsMatcher,omitempty" xml:"ProxyStatsMatcher,omitempty"`
-	// Specifies whether to enable MySQL Filter. Valid values:
+	// Specifies whether to enable Redis Filter. Valid values:
 	//
-	// *   `true`: MySQL Filter is enabled.
-	// *   `false`: MySQL Filter is disabled.
+	// *   `true`: enables Redis Filter.
+	// *   `false`: disables Redis Filter.
 	//
 	// Default value: `false`.
 	RedisFilterEnabled *bool `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
-	// Specifies whether to enable the Tracing Analysis feature. To enable this feature, make sure that you have activated [Tracing Analysis](https://tracing-analysis.console.aliyun.com/). Valid values:
-	//
-	// *   `true`: The Tracing Analysis feature is enabled.
-	// *   `false`: The Tracing Analysis feature is disabled.
-	//
-	// Default value: `false`.
+	// The ID of the ASM instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	// The maximum size of the memory that is available to the sidecar injector pod.
+	// The maximum number of CPU cores that are available to the pod where a sidecar proxy injector resides.
 	SidecarInjectorLimitCPU *string `json:"SidecarInjectorLimitCPU,omitempty" xml:"SidecarInjectorLimitCPU,omitempty"`
-	// Other configurations of automatic sidecar injection, in the YAML format.
+	// The maximum size of the memory that is available to the pod where a sidecar proxy injector resides.
 	SidecarInjectorLimitMemory *string `json:"SidecarInjectorLimitMemory,omitempty" xml:"SidecarInjectorLimitMemory,omitempty"`
-	// The size of the memory that is requested by the sidecar injector pod.
+	// The number of CPU cores that are requested by the pod where a sidecar proxy injector resides.
 	SidecarInjectorRequestCPU *string `json:"SidecarInjectorRequestCPU,omitempty" xml:"SidecarInjectorRequestCPU,omitempty"`
-	// The maximum number of CPU cores that are available to the sidecar injector pod.
+	// The size of the memory that is requested by the pod where a sidecar proxy injector resides.
 	SidecarInjectorRequestMemory *string `json:"SidecarInjectorRequestMemory,omitempty" xml:"SidecarInjectorRequestMemory,omitempty"`
-	// Specifies whether to enable the Container Network Interface (CNI) plug-in. Valid values:
-	//
-	// *   `true`: The CNI plug-in is enabled.
-	// *   `false`: The CNI plug-in is disabled.
-	//
-	// Default value: `false`.
+	// Other configurations of automatic sidecar proxy injection, in the YAML format.
 	SidecarInjectorWebhookAsYaml *string `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty"`
-	// Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
+	// Specifies whether to enable Prometheus monitoring. We recommend that you enable [ARMS Prometheus](https://arms.console.aliyun.com/). Valid values:
 	//
-	// *   `true`: The OPA plug-in is installed.
-	// *   `false`: The OPA plug-in is not installed.
+	// *   `true`: enables Prometheus monitoring.
+	// *   `false`: disables Prometheus monitoring.
 	//
 	// Default value: `false`.
 	Telemetry *bool `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	// The maximum number of CPU cores that are available to the istio-init container.
+	// The maximum period of time that the sidecar proxy waits for requests to be processed before the proxy is stopped. For example, if you want to specify a period of 5 seconds, set this parameter to 5s.
 	TerminationDrainDuration *string `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
-	// Specifies whether to enable WebAssembly Filter. Valid values:
+	// Specifies whether to enable Thrift Filter. Valid values:
 	//
-	// *   `true`:WebAssembly Filter is enabled.
-	// *   `false`: WebAssembly Filter is disabled.
+	// *   `true`: enables Thrift Filter.
+	// *   `false`: disables Thrift Filter.
 	//
 	// Default value: `false`.
 	ThriftFilterEnabled *bool `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
-	// The maximum length of the request path contained in the HttpUrl span tag. Default value: `256`.
-	TraceCustomTags *string `json:"TraceCustomTags,omitempty" xml:"TraceCustomTags,omitempty"`
-	// Specifies whether to enable cross-region load balancing. Valid values:
+	// The custom tag of Tracing Analysis. Specify this parameter in the JSON format.
 	//
-	// *   `true`: Cross-region load balancing is enabled.
-	// *   `false`: Cross-region load balancing is disabled.
+	//     {
+	//         "name1": CustomTag,
+	//         "name2": CustomTag
+	//     }
+	//
+	// Tag key: literal, header, or environment.
+	//
+	//     {
+	//         "literal": {
+	//             "value": "Fixed value"
+	//         }
+	//         "header": {
+	//             "name": "Header name"
+	//             "defaultValue": "Default value that is used if the specified header does not exist"
+	//         }
+	//         "environment": {
+	//             "name": "Environment variable name"
+	//             "defaultValue": "Default value that is used if the specified environment variable does not exist"
+	//         }
+	//     }
+	TraceCustomTags *string `json:"TraceCustomTags,omitempty" xml:"TraceCustomTags,omitempty"`
+	// The maximum length of the request path contained in the HttpUrl span tag. Default value: `256`.
+	TraceMaxPathTagLength *string `json:"TraceMaxPathTagLength,omitempty" xml:"TraceMaxPathTagLength,omitempty"`
+	// The sampling percentage of Tracing Analysis.
+	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
+	// Specifies whether to enable the Tracing Analysis feature. To enable this feature, make sure that you have activated [Tracing Analysis](https://tracing-analysis.console.aliyun.com/). Valid values:
+	//
+	// *   `true`: enables the Tracing Analysis feature.
+	// *   `false`: disables the Tracing Analysis feature.
 	//
 	// Default value: `false`.
-	TraceMaxPathTagLength *string `json:"TraceMaxPathTagLength,omitempty" xml:"TraceMaxPathTagLength,omitempty"`
-	// The custom tag of Tracing Analysis. The value is in the JSON format.
-	//
-	// ```
-	//
-	// {
-	//     "name1": CustomTag,
-	//     "name2": CustomTag
-	// }
-	// ```
-	//
-	// Tag structure: literal, header, or environment.
-	//
-	// ```
-	//
-	// {
-	//     "literal": {
-	//         "value": "Fixed value"
-	//     }
-	//     "header": {
-	//         "name": "Header name"
-	//         "defaultValue": "Default value that is used if the specified header does not exist"
-	//     }
-	//     "environment": {
-	//         "name": "Environment variable name"
-	//         "defaultValue": "Default value that is used if the specified environment variable does not exist"
-	//     }
-	// }
-	// ```
-	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
-	// The sampling percentage of Tracing Analysis.
 	Tracing *bool `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
-	// The maximum size of the memory that is available to the proxy that exports trace data. For example, `1Mi` indicates 1 MB.
+	// The maximum size of the memory that is available to the proxy service that exports Tracing Analysis data. For example, `1Mi` indicates 1 MB.
 	TracingOnExtZipkinLimitCPU *string `json:"TracingOnExtZipkinLimitCPU,omitempty" xml:"TracingOnExtZipkinLimitCPU,omitempty"`
-	// The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using the Log Service. For example, `30` indicates 30 days.
+	// The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using Log Service. For example, `30` indicates 30 days.
 	TracingOnExtZipkinLimitMemory *string `json:"TracingOnExtZipkinLimitMemory,omitempty" xml:"TracingOnExtZipkinLimitMemory,omitempty"`
-	// The minimum size of the memory requested by the proxy that exports trace data. For example, `1Mi` indicates 1 MB.
+	// The minimum size of the memory requested by the proxy service that exports Tracing Analysis data. For example, `1Mi` indicates 1 MB.
 	TracingOnExtZipkinRequestCPU *string `json:"TracingOnExtZipkinRequestCPU,omitempty" xml:"TracingOnExtZipkinRequestCPU,omitempty"`
-	// The maximum number of CPU cores that are available to the proxy that exports trace data. For example, `1000m` indicates one CPU core.
+	// The maximum number of CPU cores that are available to the proxy service that exports Tracing Analysis data. For example, `1000m` indicates one CPU core.
 	TracingOnExtZipkinRequestMemory *string `json:"TracingOnExtZipkinRequestMemory,omitempty" xml:"TracingOnExtZipkinRequestMemory,omitempty"`
-	// Specifies whether to enable DNS proxying. Valid values:
+	// Specifies whether to enable WebAssembly Filter. Valid values:
 	//
-	// *   `true`: DNS proxying is enabled.
-	// *   `false`: DNS proxying is disabled.
+	// *   `true`: enables WebAssembly Filter.
+	// *   `false`: disables WebAssembly Filter.
 	//
 	// Default value: `false`.
 	WebAssemblyFilterEnabled *bool `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
@@ -14423,6 +14711,11 @@ func (s *UpdateMeshFeatureRequest) SetKialiArmsAuthTokens(v string) *UpdateMeshF
 
 func (s *UpdateMeshFeatureRequest) SetKialiEnabled(v bool) *UpdateMeshFeatureRequest {
 	s.KialiEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetKialiServiceAnnotations(v string) *UpdateMeshFeatureRequest {
+	s.KialiServiceAnnotations = &v
 	return s
 }
 
@@ -14687,6 +14980,7 @@ func (s *UpdateMeshFeatureRequest) SetWebAssemblyFilterEnabled(v bool) *UpdateMe
 }
 
 type UpdateMeshFeatureResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15230,11 +15524,21 @@ func (s *UpdateSwimLaneGroupResponse) SetBody(v *UpdateSwimLaneGroupResponseBody
 }
 
 type UpgradeMeshEditionPartiallyRequest struct {
+	// Specifies whether to upgrade the ASM gateways for the ASM instance. Valid values:
+	//
+	// *   `true`
+	// *   `false`
 	ASMGatewayContinue *bool   `json:"ASMGatewayContinue,omitempty" xml:"ASMGatewayContinue,omitempty"`
 	ExpectedVersion    *string `json:"ExpectedVersion,omitempty" xml:"ExpectedVersion,omitempty"`
-	// The ID of the request.
-	ServiceMeshId         *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	SwitchToPro           *bool   `json:"SwitchToPro,omitempty" xml:"SwitchToPro,omitempty"`
+	// 执行升级检查。如果该值设置为true，则只会执行升级检查，并不会实际升级。
+	PreCheck *bool `json:"PreCheck,omitempty" xml:"PreCheck,omitempty"`
+	// The ASM instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	// Deprecated
+	// *   ``
+	// *   ``
+	SwitchToPro *bool `json:"SwitchToPro,omitempty" xml:"SwitchToPro,omitempty"`
+	// Specifies the ASM gateways to be upgraded. Separate multiple ASM gateways with commas (,).
 	UpgradeGatewayRecords *string `json:"UpgradeGatewayRecords,omitempty" xml:"UpgradeGatewayRecords,omitempty"`
 }
 
@@ -15256,6 +15560,11 @@ func (s *UpgradeMeshEditionPartiallyRequest) SetExpectedVersion(v string) *Upgra
 	return s
 }
 
+func (s *UpgradeMeshEditionPartiallyRequest) SetPreCheck(v bool) *UpgradeMeshEditionPartiallyRequest {
+	s.PreCheck = &v
+	return s
+}
+
 func (s *UpgradeMeshEditionPartiallyRequest) SetServiceMeshId(v string) *UpgradeMeshEditionPartiallyRequest {
 	s.ServiceMeshId = &v
 	return s
@@ -15272,6 +15581,7 @@ func (s *UpgradeMeshEditionPartiallyRequest) SetUpgradeGatewayRecords(v string) 
 }
 
 type UpgradeMeshEditionPartiallyResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15318,6 +15628,7 @@ func (s *UpgradeMeshEditionPartiallyResponse) SetBody(v *UpgradeMeshEditionParti
 }
 
 type UpgradeMeshVersionRequest struct {
+	PreCheck *bool `json:"PreCheck,omitempty" xml:"PreCheck,omitempty"`
 	// The ID of the ASM instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
@@ -15328,6 +15639,11 @@ func (s UpgradeMeshVersionRequest) String() string {
 
 func (s UpgradeMeshVersionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeMeshVersionRequest) SetPreCheck(v bool) *UpgradeMeshVersionRequest {
+	s.PreCheck = &v
+	return s
 }
 
 func (s *UpgradeMeshVersionRequest) SetServiceMeshId(v string) *UpgradeMeshVersionRequest {
@@ -15482,6 +15798,14 @@ func (client *Client) AddClusterIntoServiceMesh(request *AddClusterIntoServiceMe
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request AddVMIntoServiceMeshRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddVMIntoServiceMeshResponse
+ */
+// Deprecated
 func (client *Client) AddVMIntoServiceMeshWithOptions(request *AddVMIntoServiceMeshRequest, runtime *util.RuntimeOptions) (_result *AddVMIntoServiceMeshResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15519,6 +15843,13 @@ func (client *Client) AddVMIntoServiceMeshWithOptions(request *AddVMIntoServiceM
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request AddVMIntoServiceMeshRequest
+ * @return AddVMIntoServiceMeshResponse
+ */
+// Deprecated
 func (client *Client) AddVMIntoServiceMesh(request *AddVMIntoServiceMeshRequest) (_result *AddVMIntoServiceMeshResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddVMIntoServiceMeshResponse{}
@@ -17192,46 +17523,6 @@ func (client *Client) DescribeImportedServicesDetail(request *DescribeImportedSe
 	return _result, _err
 }
 
-func (client *Client) DescribeIngressGatewaysWithOptions(request *DescribeIngressGatewaysRequest, runtime *util.RuntimeOptions) (_result *DescribeIngressGatewaysResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeIngressGateways"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeIngressGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeIngressGateways(request *DescribeIngressGatewaysRequest) (_result *DescribeIngressGatewaysResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeIngressGatewaysResponse{}
-	_body, _err := client.DescribeIngressGatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeIstioGatewayDomainsWithOptions(request *DescribeIstioGatewayDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeIstioGatewayDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17897,6 +18188,14 @@ func (client *Client) DescribeServiceMeshUpgradeStatus(request *DescribeServiceM
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeServiceMeshVMsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeServiceMeshVMsResponse
+ */
+// Deprecated
 func (client *Client) DescribeServiceMeshVMsWithOptions(request *DescribeServiceMeshVMsRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceMeshVMsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17930,6 +18229,13 @@ func (client *Client) DescribeServiceMeshVMsWithOptions(request *DescribeService
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeServiceMeshVMsRequest
+ * @return DescribeServiceMeshVMsResponse
+ */
+// Deprecated
 func (client *Client) DescribeServiceMeshVMs(request *DescribeServiceMeshVMsRequest) (_result *DescribeServiceMeshVMsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServiceMeshVMsResponse{}
@@ -18106,6 +18412,14 @@ func (client *Client) DescribeUsersWithPermissions(request *DescribeUsersWithPer
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeVMsInServiceMeshRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVMsInServiceMeshResponse
+ */
+// Deprecated
 func (client *Client) DescribeVMsInServiceMeshWithOptions(request *DescribeVMsInServiceMeshRequest, runtime *util.RuntimeOptions) (_result *DescribeVMsInServiceMeshResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18139,6 +18453,13 @@ func (client *Client) DescribeVMsInServiceMeshWithOptions(request *DescribeVMsIn
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeVMsInServiceMeshRequest
+ * @return DescribeVMsInServiceMeshResponse
+ */
+// Deprecated
 func (client *Client) DescribeVMsInServiceMesh(request *DescribeVMsInServiceMeshRequest) (_result *DescribeVMsInServiceMeshResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVMsInServiceMeshResponse{}
@@ -18689,6 +19010,14 @@ func (client *Client) GetSwimLaneList(request *GetSwimLaneListRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetVmAppMeshInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetVmAppMeshInfoResponse
+ */
+// Deprecated
 func (client *Client) GetVmAppMeshInfoWithOptions(request *GetVmAppMeshInfoRequest, runtime *util.RuntimeOptions) (_result *GetVmAppMeshInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18718,6 +19047,13 @@ func (client *Client) GetVmAppMeshInfoWithOptions(request *GetVmAppMeshInfoReque
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetVmAppMeshInfoRequest
+ * @return GetVmAppMeshInfoResponse
+ */
+// Deprecated
 func (client *Client) GetVmAppMeshInfo(request *GetVmAppMeshInfoRequest) (_result *GetVmAppMeshInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVmAppMeshInfoResponse{}
@@ -18729,6 +19065,14 @@ func (client *Client) GetVmAppMeshInfo(request *GetVmAppMeshInfoRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetVmMetaRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetVmMetaResponse
+ */
+// Deprecated
 func (client *Client) GetVmMetaWithOptions(request *GetVmMetaRequest, runtime *util.RuntimeOptions) (_result *GetVmMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18758,6 +19102,13 @@ func (client *Client) GetVmMetaWithOptions(request *GetVmMetaRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetVmMetaRequest
+ * @return GetVmMetaResponse
+ */
+// Deprecated
 func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVmMetaResponse{}
@@ -18769,11 +19120,17 @@ func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaRe
 	return _result, _err
 }
 
-func (client *Client) GrantUserPermissionsWithOptions(request *GrantUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GrantUserPermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubAccountUserIds)) {
+		request.SubAccountUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubAccountUserIds, tea.String("SubAccountUserIds"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
 		body["Permissions"] = request.Permissions
@@ -18781,6 +19138,10 @@ func (client *Client) GrantUserPermissionsWithOptions(request *GrantUserPermissi
 
 	if !tea.BoolValue(util.IsUnset(request.SubAccountUserId)) {
 		body["SubAccountUserId"] = request.SubAccountUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubAccountUserIdsShrink)) {
+		body["SubAccountUserIds"] = request.SubAccountUserIdsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -19030,6 +19391,14 @@ func (client *Client) RemoveClusterFromServiceMesh(request *RemoveClusterFromSer
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request RemoveVMFromServiceMeshRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveVMFromServiceMeshResponse
+ */
+// Deprecated
 func (client *Client) RemoveVMFromServiceMeshWithOptions(request *RemoveVMFromServiceMeshRequest, runtime *util.RuntimeOptions) (_result *RemoveVMFromServiceMeshResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19067,6 +19436,13 @@ func (client *Client) RemoveVMFromServiceMeshWithOptions(request *RemoveVMFromSe
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request RemoveVMFromServiceMeshRequest
+ * @return RemoveVMFromServiceMeshResponse
+ */
+// Deprecated
 func (client *Client) RemoveVMFromServiceMesh(request *RemoveVMFromServiceMeshRequest) (_result *RemoveVMFromServiceMeshResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveVMFromServiceMeshResponse{}
@@ -19364,6 +19740,10 @@ func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstio
 
 	if !tea.BoolValue(util.IsUnset(request.EnableSidecarSetInjection)) {
 		body["EnableSidecarSetInjection"] = request.EnableSidecarSetInjection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioRev)) {
+		body["IstioRev"] = request.IstioRev
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
@@ -19722,6 +20102,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.KialiEnabled)) {
 		body["KialiEnabled"] = request.KialiEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KialiServiceAnnotations)) {
+		body["KialiServiceAnnotations"] = request.KialiServiceAnnotations
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lifecycle)) {
@@ -20280,6 +20664,10 @@ func (client *Client) UpgradeMeshEditionPartiallyWithOptions(request *UpgradeMes
 		body["ExpectedVersion"] = request.ExpectedVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PreCheck)) {
+		body["PreCheck"] = request.PreCheck
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		body["ServiceMeshId"] = request.ServiceMeshId
 	}
@@ -20332,6 +20720,10 @@ func (client *Client) UpgradeMeshVersionWithOptions(request *UpgradeMeshVersionR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PreCheck)) {
+		query["PreCheck"] = request.PreCheck
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		query["ServiceMeshId"] = request.ServiceMeshId
 	}
