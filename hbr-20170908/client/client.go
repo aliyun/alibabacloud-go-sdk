@@ -2506,9 +2506,9 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetUdmDeta
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail struct {
 	// Whether delete inventory file after backup.
-	// - **NO_CLEANUP**：Do not delete.
-	// - **DELETE_CURRENT**：Delete current.
-	// - **DELETE_CURRENT_AND_PREVIOUS**：Delete all.
+	// - **NO_CLEANUP**: Do not delete.
+	// - **DELETE_CURRENT**: Delete current.
+	// - **DELETE_CURRENT_AND_PREVIOUS**: Delete all.
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
 	// OSS inventory name.
 	// - If you want to back up more than 100 million OSS objects, we recommend that you use inventories to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
@@ -14347,10 +14347,12 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The files that record the information about backup failures, including the information about partially completed backups.
 	ErrorFile *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	Exclude   *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	// The time when the snapshot expired. The value is a UNIX timestamp. Unit: seconds.
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include      *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the Tablestore instance.
@@ -14477,6 +14479,11 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetErrorFile(v 
 	return s
 }
 
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetExclude(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.Exclude = &v
+	return s
+}
+
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetExpireTime(v int64) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
 	s.ExpireTime = &v
 	return s
@@ -14484,6 +14491,11 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetExpireTime(v
 
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetFileSystemId(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetInclude(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.Include = &v
 	return s
 }
 
@@ -15882,6 +15894,123 @@ func (s *UpdateClientSettingsResponse) SetStatusCode(v int32) *UpdateClientSetti
 }
 
 func (s *UpdateClientSettingsResponse) SetBody(v *UpdateClientSettingsResponseBody) *UpdateClientSettingsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateContainerClusterRequest struct {
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	RenewToken  *bool   `json:"RenewToken,omitempty" xml:"RenewToken,omitempty"`
+}
+
+func (s UpdateContainerClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerClusterRequest) SetClusterId(v string) *UpdateContainerClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateContainerClusterRequest) SetDescription(v string) *UpdateContainerClusterRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateContainerClusterRequest) SetName(v string) *UpdateContainerClusterRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateContainerClusterRequest) SetNetworkType(v string) *UpdateContainerClusterRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *UpdateContainerClusterRequest) SetRenewToken(v bool) *UpdateContainerClusterRequest {
+	s.RenewToken = &v
+	return s
+}
+
+type UpdateContainerClusterResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	TokenUpdated *bool   `json:"TokenUpdated,omitempty" xml:"TokenUpdated,omitempty"`
+}
+
+func (s UpdateContainerClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerClusterResponseBody) SetCode(v string) *UpdateContainerClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateContainerClusterResponseBody) SetMessage(v string) *UpdateContainerClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateContainerClusterResponseBody) SetRequestId(v string) *UpdateContainerClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateContainerClusterResponseBody) SetSuccess(v bool) *UpdateContainerClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateContainerClusterResponseBody) SetToken(v string) *UpdateContainerClusterResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *UpdateContainerClusterResponseBody) SetTokenUpdated(v bool) *UpdateContainerClusterResponseBody {
+	s.TokenUpdated = &v
+	return s
+}
+
+type UpdateContainerClusterResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateContainerClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerClusterResponse) SetHeaders(v map[string]*string) *UpdateContainerClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateContainerClusterResponse) SetStatusCode(v int32) *UpdateContainerClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateContainerClusterResponse) SetBody(v *UpdateContainerClusterResponseBody) *UpdateContainerClusterResponse {
 	s.Body = v
 	return s
 }
@@ -22580,6 +22709,66 @@ func (client *Client) UpdateClientSettings(request *UpdateClientSettingsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateClientSettingsResponse{}
 	_body, _err := client.UpdateClientSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateContainerClusterWithOptions(request *UpdateContainerClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateContainerClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewToken)) {
+		query["RenewToken"] = request.RenewToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateContainerCluster"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateContainerClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateContainerCluster(request *UpdateContainerClusterRequest) (_result *UpdateContainerClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateContainerClusterResponse{}
+	_body, _err := client.UpdateContainerClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
