@@ -310,6 +310,7 @@ func (s *BatchSendMailResponse) SetBody(v *BatchSendMailResponseBody) *BatchSend
 }
 
 type CheckDomainRequest struct {
+	// The ID of the domain name.
 	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -345,8 +346,16 @@ func (s *CheckDomainRequest) SetResourceOwnerId(v int64) *CheckDomainRequest {
 }
 
 type CheckDomainResponseBody struct {
-	DomainStatus *int32  `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the domain name. Indicates whether the domain name is verified and available.
+	//
+	// *   0: indicates that the domain name is verified and available.
+	// *   1: indicates that the domain name fails to be verified and is unavailable.
+	// *   2: indicates that the domain name is available, but not filed or configured with a CNAME record.
+	// *   3: indicates that the domain name is available but not filed.
+	// *   4: indicates that the domain name is available but not configured with a CNAME record.
+	DomainStatus *int32 `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckDomainResponseBody) String() string {
@@ -942,6 +951,87 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 	return s
 }
 
+type DeleteInvalidAddressRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ToAddress            *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+}
+
+func (s DeleteInvalidAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvalidAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvalidAddressRequest) SetOwnerId(v int64) *DeleteInvalidAddressRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteInvalidAddressRequest) SetResourceOwnerAccount(v string) *DeleteInvalidAddressRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteInvalidAddressRequest) SetResourceOwnerId(v int64) *DeleteInvalidAddressRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteInvalidAddressRequest) SetToAddress(v string) *DeleteInvalidAddressRequest {
+	s.ToAddress = &v
+	return s
+}
+
+type DeleteInvalidAddressResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInvalidAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvalidAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvalidAddressResponseBody) SetRequestId(v string) *DeleteInvalidAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInvalidAddressResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInvalidAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInvalidAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvalidAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvalidAddressResponse) SetHeaders(v map[string]*string) *DeleteInvalidAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInvalidAddressResponse) SetStatusCode(v int32) *DeleteInvalidAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInvalidAddressResponse) SetBody(v *DeleteInvalidAddressResponseBody) *DeleteInvalidAddressResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIpfilterByEdmIdRequest struct {
 	FromType             *int32  `json:"FromType,omitempty" xml:"FromType,omitempty"`
 	Id                   *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -1111,7 +1201,8 @@ func (s *DeleteMailAddressResponse) SetBody(v *DeleteMailAddressResponseBody) *D
 }
 
 type DeleteReceiverRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the recipient list.
 	ReceiverId           *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1146,6 +1237,7 @@ func (s *DeleteReceiverRequest) SetResourceOwnerId(v int64) *DeleteReceiverReque
 }
 
 type DeleteReceiverResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1282,7 +1374,8 @@ type DeleteTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TagId                *int32  `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The ID of the tag.
+	TagId *int32 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
 func (s DeleteTagRequest) String() string {
@@ -1314,6 +1407,7 @@ func (s *DeleteTagRequest) SetTagId(v int32) *DeleteTagRequest {
 }
 
 type DeleteTagResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1565,6 +1659,9 @@ type DescDomainResponseBody struct {
 	CnameRecord        *string `json:"CnameRecord,omitempty" xml:"CnameRecord,omitempty"`
 	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DefaultDomain      *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
+	DkimAuthStatus     *string `json:"DkimAuthStatus,omitempty" xml:"DkimAuthStatus,omitempty"`
+	DkimPublicKey      *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
+	DkimRR             *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
 	DnsMx              *string `json:"DnsMx,omitempty" xml:"DnsMx,omitempty"`
 	DnsSpf             *string `json:"DnsSpf,omitempty" xml:"DnsSpf,omitempty"`
 	DnsTxt             *string `json:"DnsTxt,omitempty" xml:"DnsTxt,omitempty"`
@@ -1578,6 +1675,7 @@ type DescDomainResponseBody struct {
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpfAuthStatus      *string `json:"SpfAuthStatus,omitempty" xml:"SpfAuthStatus,omitempty"`
 	SpfRecord          *string `json:"SpfRecord,omitempty" xml:"SpfRecord,omitempty"`
+	SpfRecordV2        *string `json:"SpfRecordV2,omitempty" xml:"SpfRecordV2,omitempty"`
 	TlDomainName       *string `json:"TlDomainName,omitempty" xml:"TlDomainName,omitempty"`
 	TracefRecord       *string `json:"TracefRecord,omitempty" xml:"TracefRecord,omitempty"`
 }
@@ -1612,6 +1710,21 @@ func (s *DescDomainResponseBody) SetCreateTime(v string) *DescDomainResponseBody
 
 func (s *DescDomainResponseBody) SetDefaultDomain(v string) *DescDomainResponseBody {
 	s.DefaultDomain = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDkimAuthStatus(v string) *DescDomainResponseBody {
+	s.DkimAuthStatus = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDkimPublicKey(v string) *DescDomainResponseBody {
+	s.DkimPublicKey = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDkimRR(v string) *DescDomainResponseBody {
+	s.DkimRR = &v
 	return s
 }
 
@@ -1677,6 +1790,11 @@ func (s *DescDomainResponseBody) SetSpfAuthStatus(v string) *DescDomainResponseB
 
 func (s *DescDomainResponseBody) SetSpfRecord(v string) *DescDomainResponseBody {
 	s.SpfRecord = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetSpfRecordV2(v string) *DescDomainResponseBody {
+	s.SpfRecordV2 = &v
 	return s
 }
 
@@ -2545,9 +2663,11 @@ func (s *ModifyMailAddressResponse) SetBody(v *ModifyMailAddressResponseBody) *M
 }
 
 type ModifyPWByDomainRequest struct {
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DomainName           *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyPWByDomainRequest) String() string {
@@ -2563,12 +2683,22 @@ func (s *ModifyPWByDomainRequest) SetDomainName(v string) *ModifyPWByDomainReque
 	return s
 }
 
+func (s *ModifyPWByDomainRequest) SetOwnerId(v int64) *ModifyPWByDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ModifyPWByDomainRequest) SetPassword(v string) *ModifyPWByDomainRequest {
 	s.Password = &v
 	return s
 }
 
-func (s *ModifyPWByDomainRequest) SetResourceOwnerId(v string) *ModifyPWByDomainRequest {
+func (s *ModifyPWByDomainRequest) SetResourceOwnerAccount(v string) *ModifyPWByDomainRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyPWByDomainRequest) SetResourceOwnerId(v int64) *ModifyPWByDomainRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
@@ -2641,8 +2771,10 @@ type ModifyTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TagId                *int32  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The ID of the tag.
+	TagId *int32 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The name of the tag.
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s ModifyTagRequest) String() string {
@@ -2679,6 +2811,7 @@ func (s *ModifyTagRequest) SetTagName(v string) *ModifyTagRequest {
 }
 
 type ModifyTagResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5604,6 +5737,62 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+func (client *Client) DeleteInvalidAddressWithOptions(request *DeleteInvalidAddressRequest, runtime *util.RuntimeOptions) (_result *DeleteInvalidAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToAddress)) {
+		query["ToAddress"] = request.ToAddress
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInvalidAddress"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInvalidAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInvalidAddress(request *DeleteInvalidAddressRequest) (_result *DeleteInvalidAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteInvalidAddressResponse{}
+	_body, _err := client.DeleteInvalidAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteIpfilterByEdmIdWithOptions(request *DeleteIpfilterByEdmIdRequest, runtime *util.RuntimeOptions) (_result *DeleteIpfilterByEdmIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6354,8 +6543,16 @@ func (client *Client) ModifyPWByDomainWithOptions(request *ModifyPWByDomainReque
 		query["DomainName"] = request.DomainName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
 		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
