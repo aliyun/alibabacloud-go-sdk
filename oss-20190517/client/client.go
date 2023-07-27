@@ -54,6 +54,87 @@ func (s *AccessControlPolicy) SetOwner(v *Owner) *AccessControlPolicy {
 	return s
 }
 
+type AccessMonitorConfiguration struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s AccessMonitorConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessMonitorConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *AccessMonitorConfiguration) SetStatus(v string) *AccessMonitorConfiguration {
+	s.Status = &v
+	return s
+}
+
+type AccessPoint struct {
+	AccessPointName  *string                      `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	Alias            *string                      `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Bucket           *string                      `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	NetworkOrigin    *string                      `json:"NetworkOrigin,omitempty" xml:"NetworkOrigin,omitempty"`
+	Status           *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcConfiguration *AccessPointVpcConfiguration `json:"VpcConfiguration,omitempty" xml:"VpcConfiguration,omitempty"`
+}
+
+func (s AccessPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPoint) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPoint) SetAccessPointName(v string) *AccessPoint {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *AccessPoint) SetAlias(v string) *AccessPoint {
+	s.Alias = &v
+	return s
+}
+
+func (s *AccessPoint) SetBucket(v string) *AccessPoint {
+	s.Bucket = &v
+	return s
+}
+
+func (s *AccessPoint) SetNetworkOrigin(v string) *AccessPoint {
+	s.NetworkOrigin = &v
+	return s
+}
+
+func (s *AccessPoint) SetStatus(v string) *AccessPoint {
+	s.Status = &v
+	return s
+}
+
+func (s *AccessPoint) SetVpcConfiguration(v *AccessPointVpcConfiguration) *AccessPoint {
+	s.VpcConfiguration = v
+	return s
+}
+
+type AccessPointVpcConfiguration struct {
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s AccessPointVpcConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessPointVpcConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *AccessPointVpcConfiguration) SetVpcId(v string) *AccessPointVpcConfiguration {
+	s.VpcId = &v
+	return s
+}
+
 type ApplyServerSideEncryptionByDefault struct {
 	KMSDataEncryption *string `json:"KMSDataEncryption,omitempty" xml:"KMSDataEncryption,omitempty"`
 	KMSMasterKeyID    *string `json:"KMSMasterKeyID,omitempty" xml:"KMSMasterKeyID,omitempty"`
@@ -90,6 +171,7 @@ type Bucket struct {
 	Location         *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	StorageClass     *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 
@@ -131,8 +213,316 @@ func (s *Bucket) SetRegion(v string) *Bucket {
 	return s
 }
 
+func (s *Bucket) SetResourceGroupId(v string) *Bucket {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *Bucket) SetStorageClass(v string) *Bucket {
 	s.StorageClass = &v
+	return s
+}
+
+type BucketAntiDDOSConfiguration struct {
+	Cnames *BucketAntiDDOSConfigurationCnames `json:"Cnames,omitempty" xml:"Cnames,omitempty" type:"Struct"`
+}
+
+func (s BucketAntiDDOSConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketAntiDDOSConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *BucketAntiDDOSConfiguration) SetCnames(v *BucketAntiDDOSConfigurationCnames) *BucketAntiDDOSConfiguration {
+	s.Cnames = v
+	return s
+}
+
+type BucketAntiDDOSConfigurationCnames struct {
+	Domain []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
+}
+
+func (s BucketAntiDDOSConfigurationCnames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketAntiDDOSConfigurationCnames) GoString() string {
+	return s.String()
+}
+
+func (s *BucketAntiDDOSConfigurationCnames) SetDomain(v []*string) *BucketAntiDDOSConfigurationCnames {
+	s.Domain = v
+	return s
+}
+
+type BucketAntiDDOSInfo struct {
+	ActiveTime *int64                    `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	Bucket     *string                   `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Cnames     *BucketAntiDDOSInfoCnames `json:"Cnames,omitempty" xml:"Cnames,omitempty" type:"Struct"`
+	Ctime      *int64                    `json:"Ctime,omitempty" xml:"Ctime,omitempty"`
+	InstanceId *string                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Mtime      *int64                    `json:"Mtime,omitempty" xml:"Mtime,omitempty"`
+	Owner      *string                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Status     *string                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string                   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s BucketAntiDDOSInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketAntiDDOSInfo) GoString() string {
+	return s.String()
+}
+
+func (s *BucketAntiDDOSInfo) SetActiveTime(v int64) *BucketAntiDDOSInfo {
+	s.ActiveTime = &v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetBucket(v string) *BucketAntiDDOSInfo {
+	s.Bucket = &v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetCnames(v *BucketAntiDDOSInfoCnames) *BucketAntiDDOSInfo {
+	s.Cnames = v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetCtime(v int64) *BucketAntiDDOSInfo {
+	s.Ctime = &v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetInstanceId(v string) *BucketAntiDDOSInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetMtime(v int64) *BucketAntiDDOSInfo {
+	s.Mtime = &v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetOwner(v string) *BucketAntiDDOSInfo {
+	s.Owner = &v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetStatus(v string) *BucketAntiDDOSInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *BucketAntiDDOSInfo) SetType(v string) *BucketAntiDDOSInfo {
+	s.Type = &v
+	return s
+}
+
+type BucketAntiDDOSInfoCnames struct {
+	Domain []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
+}
+
+func (s BucketAntiDDOSInfoCnames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketAntiDDOSInfoCnames) GoString() string {
+	return s.String()
+}
+
+func (s *BucketAntiDDOSInfoCnames) SetDomain(v []*string) *BucketAntiDDOSInfoCnames {
+	s.Domain = v
+	return s
+}
+
+type BucketCnameConfiguration struct {
+	Cname *BucketCnameConfigurationCname `json:"Cname,omitempty" xml:"Cname,omitempty" type:"Struct"`
+}
+
+func (s BucketCnameConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketCnameConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *BucketCnameConfiguration) SetCname(v *BucketCnameConfigurationCname) *BucketCnameConfiguration {
+	s.Cname = v
+	return s
+}
+
+type BucketCnameConfigurationCname struct {
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s BucketCnameConfigurationCname) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketCnameConfigurationCname) GoString() string {
+	return s.String()
+}
+
+func (s *BucketCnameConfigurationCname) SetDomain(v string) *BucketCnameConfigurationCname {
+	s.Domain = &v
+	return s
+}
+
+type BucketInfo struct {
+	Bucket *BucketInfoBucket `json:"Bucket,omitempty" xml:"Bucket,omitempty" type:"Struct"`
+}
+
+func (s BucketInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketInfo) GoString() string {
+	return s.String()
+}
+
+func (s *BucketInfo) SetBucket(v *BucketInfoBucket) *BucketInfo {
+	s.Bucket = v
+	return s
+}
+
+type BucketInfoBucket struct {
+	AccessControlList        *AccessControlList                        `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty"`
+	AccessMonitor            *string                                   `json:"AccessMonitor,omitempty" xml:"AccessMonitor,omitempty"`
+	BucketPolicy             *LoggingEnabled                           `json:"BucketPolicy,omitempty" xml:"BucketPolicy,omitempty"`
+	CreationDate             *string                                   `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	CrossRegionReplication   *string                                   `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
+	DataRedundancyType       *string                                   `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
+	ExtranetEndpoint         *string                                   `json:"ExtranetEndpoint,omitempty" xml:"ExtranetEndpoint,omitempty"`
+	IntranetEndpoint         *string                                   `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	Location                 *string                                   `json:"Location,omitempty" xml:"Location,omitempty"`
+	Name                     *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner                    *Owner                                    `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ResourceGroupId          *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerSideEncryptionRule *BucketInfoBucketServerSideEncryptionRule `json:"ServerSideEncryptionRule,omitempty" xml:"ServerSideEncryptionRule,omitempty" type:"Struct"`
+	StorageClass             *string                                   `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	TransferAcceleration     *string                                   `json:"TransferAcceleration,omitempty" xml:"TransferAcceleration,omitempty"`
+	Versioning               *string                                   `json:"Versioning,omitempty" xml:"Versioning,omitempty"`
+}
+
+func (s BucketInfoBucket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketInfoBucket) GoString() string {
+	return s.String()
+}
+
+func (s *BucketInfoBucket) SetAccessControlList(v *AccessControlList) *BucketInfoBucket {
+	s.AccessControlList = v
+	return s
+}
+
+func (s *BucketInfoBucket) SetAccessMonitor(v string) *BucketInfoBucket {
+	s.AccessMonitor = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetBucketPolicy(v *LoggingEnabled) *BucketInfoBucket {
+	s.BucketPolicy = v
+	return s
+}
+
+func (s *BucketInfoBucket) SetCreationDate(v string) *BucketInfoBucket {
+	s.CreationDate = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetCrossRegionReplication(v string) *BucketInfoBucket {
+	s.CrossRegionReplication = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetDataRedundancyType(v string) *BucketInfoBucket {
+	s.DataRedundancyType = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetExtranetEndpoint(v string) *BucketInfoBucket {
+	s.ExtranetEndpoint = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetIntranetEndpoint(v string) *BucketInfoBucket {
+	s.IntranetEndpoint = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetLocation(v string) *BucketInfoBucket {
+	s.Location = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetName(v string) *BucketInfoBucket {
+	s.Name = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetOwner(v *Owner) *BucketInfoBucket {
+	s.Owner = v
+	return s
+}
+
+func (s *BucketInfoBucket) SetResourceGroupId(v string) *BucketInfoBucket {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetServerSideEncryptionRule(v *BucketInfoBucketServerSideEncryptionRule) *BucketInfoBucket {
+	s.ServerSideEncryptionRule = v
+	return s
+}
+
+func (s *BucketInfoBucket) SetStorageClass(v string) *BucketInfoBucket {
+	s.StorageClass = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetTransferAcceleration(v string) *BucketInfoBucket {
+	s.TransferAcceleration = &v
+	return s
+}
+
+func (s *BucketInfoBucket) SetVersioning(v string) *BucketInfoBucket {
+	s.Versioning = &v
+	return s
+}
+
+type BucketInfoBucketServerSideEncryptionRule struct {
+	KMSDataEncryption *string `json:"KMSDataEncryption,omitempty" xml:"KMSDataEncryption,omitempty"`
+	KMSMasterKeyID    *string `json:"KMSMasterKeyID,omitempty" xml:"KMSMasterKeyID,omitempty"`
+	SSEAlgorithm      *string `json:"SSEAlgorithm,omitempty" xml:"SSEAlgorithm,omitempty"`
+}
+
+func (s BucketInfoBucketServerSideEncryptionRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketInfoBucketServerSideEncryptionRule) GoString() string {
+	return s.String()
+}
+
+func (s *BucketInfoBucketServerSideEncryptionRule) SetKMSDataEncryption(v string) *BucketInfoBucketServerSideEncryptionRule {
+	s.KMSDataEncryption = &v
+	return s
+}
+
+func (s *BucketInfoBucketServerSideEncryptionRule) SetKMSMasterKeyID(v string) *BucketInfoBucketServerSideEncryptionRule {
+	s.KMSMasterKeyID = &v
+	return s
+}
+
+func (s *BucketInfoBucketServerSideEncryptionRule) SetSSEAlgorithm(v string) *BucketInfoBucketServerSideEncryptionRule {
+	s.SSEAlgorithm = &v
 	return s
 }
 
@@ -150,6 +540,130 @@ func (s BucketLoggingStatus) GoString() string {
 
 func (s *BucketLoggingStatus) SetLoggingEnabled(v *LoggingEnabled) *BucketLoggingStatus {
 	s.LoggingEnabled = v
+	return s
+}
+
+type BucketResourceGroupConfiguration struct {
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s BucketResourceGroupConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketResourceGroupConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *BucketResourceGroupConfiguration) SetResourceGroupId(v string) *BucketResourceGroupConfiguration {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type BucketStat struct {
+	ArchiveObjectCount          *int64 `json:"ArchiveObjectCount,omitempty" xml:"ArchiveObjectCount,omitempty"`
+	ArchiveRealStorage          *int64 `json:"ArchiveRealStorage,omitempty" xml:"ArchiveRealStorage,omitempty"`
+	ArchiveStorage              *int64 `json:"ArchiveStorage,omitempty" xml:"ArchiveStorage,omitempty"`
+	ColdArchiveObjectCount      *int64 `json:"ColdArchiveObjectCount,omitempty" xml:"ColdArchiveObjectCount,omitempty"`
+	ColdArchiveRealStorage      *int64 `json:"ColdArchiveRealStorage,omitempty" xml:"ColdArchiveRealStorage,omitempty"`
+	ColdArchiveStorage          *int64 `json:"ColdArchiveStorage,omitempty" xml:"ColdArchiveStorage,omitempty"`
+	InfrequentAccessObjectCount *int64 `json:"InfrequentAccessObjectCount,omitempty" xml:"InfrequentAccessObjectCount,omitempty"`
+	InfrequentAccessRealStorage *int64 `json:"InfrequentAccessRealStorage,omitempty" xml:"InfrequentAccessRealStorage,omitempty"`
+	InfrequentAccessStorage     *int64 `json:"InfrequentAccessStorage,omitempty" xml:"InfrequentAccessStorage,omitempty"`
+	LastModifiedTime            *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	LiveChannelCount            *int64 `json:"LiveChannelCount,omitempty" xml:"LiveChannelCount,omitempty"`
+	MultipartUploadCount        *int64 `json:"MultipartUploadCount,omitempty" xml:"MultipartUploadCount,omitempty"`
+	ObjectCount                 *int64 `json:"ObjectCount,omitempty" xml:"ObjectCount,omitempty"`
+	StandardObjectCount         *int64 `json:"StandardObjectCount,omitempty" xml:"StandardObjectCount,omitempty"`
+	StandardStorage             *int64 `json:"StandardStorage,omitempty" xml:"StandardStorage,omitempty"`
+	Storage                     *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
+}
+
+func (s BucketStat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketStat) GoString() string {
+	return s.String()
+}
+
+func (s *BucketStat) SetArchiveObjectCount(v int64) *BucketStat {
+	s.ArchiveObjectCount = &v
+	return s
+}
+
+func (s *BucketStat) SetArchiveRealStorage(v int64) *BucketStat {
+	s.ArchiveRealStorage = &v
+	return s
+}
+
+func (s *BucketStat) SetArchiveStorage(v int64) *BucketStat {
+	s.ArchiveStorage = &v
+	return s
+}
+
+func (s *BucketStat) SetColdArchiveObjectCount(v int64) *BucketStat {
+	s.ColdArchiveObjectCount = &v
+	return s
+}
+
+func (s *BucketStat) SetColdArchiveRealStorage(v int64) *BucketStat {
+	s.ColdArchiveRealStorage = &v
+	return s
+}
+
+func (s *BucketStat) SetColdArchiveStorage(v int64) *BucketStat {
+	s.ColdArchiveStorage = &v
+	return s
+}
+
+func (s *BucketStat) SetInfrequentAccessObjectCount(v int64) *BucketStat {
+	s.InfrequentAccessObjectCount = &v
+	return s
+}
+
+func (s *BucketStat) SetInfrequentAccessRealStorage(v int64) *BucketStat {
+	s.InfrequentAccessRealStorage = &v
+	return s
+}
+
+func (s *BucketStat) SetInfrequentAccessStorage(v int64) *BucketStat {
+	s.InfrequentAccessStorage = &v
+	return s
+}
+
+func (s *BucketStat) SetLastModifiedTime(v int64) *BucketStat {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *BucketStat) SetLiveChannelCount(v int64) *BucketStat {
+	s.LiveChannelCount = &v
+	return s
+}
+
+func (s *BucketStat) SetMultipartUploadCount(v int64) *BucketStat {
+	s.MultipartUploadCount = &v
+	return s
+}
+
+func (s *BucketStat) SetObjectCount(v int64) *BucketStat {
+	s.ObjectCount = &v
+	return s
+}
+
+func (s *BucketStat) SetStandardObjectCount(v int64) *BucketStat {
+	s.StandardObjectCount = &v
+	return s
+}
+
+func (s *BucketStat) SetStandardStorage(v int64) *BucketStat {
+	s.StandardStorage = &v
+	return s
+}
+
+func (s *BucketStat) SetStorage(v int64) *BucketStat {
+	s.Storage = &v
 	return s
 }
 
@@ -293,6 +807,164 @@ func (s *CSVOutput) SetRecordDelimiter(v string) *CSVOutput {
 	return s
 }
 
+type CnameCertificate struct {
+	CertId         *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CreationDate   *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	Fingerprint    *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ValidEndDate   *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
+	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+}
+
+func (s CnameCertificate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CnameCertificate) GoString() string {
+	return s.String()
+}
+
+func (s *CnameCertificate) SetCertId(v string) *CnameCertificate {
+	s.CertId = &v
+	return s
+}
+
+func (s *CnameCertificate) SetCreationDate(v string) *CnameCertificate {
+	s.CreationDate = &v
+	return s
+}
+
+func (s *CnameCertificate) SetFingerprint(v string) *CnameCertificate {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *CnameCertificate) SetStatus(v string) *CnameCertificate {
+	s.Status = &v
+	return s
+}
+
+func (s *CnameCertificate) SetType(v string) *CnameCertificate {
+	s.Type = &v
+	return s
+}
+
+func (s *CnameCertificate) SetValidEndDate(v string) *CnameCertificate {
+	s.ValidEndDate = &v
+	return s
+}
+
+func (s *CnameCertificate) SetValidStartDate(v string) *CnameCertificate {
+	s.ValidStartDate = &v
+	return s
+}
+
+type CnameInfo struct {
+	Certificate  *CnameCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	Domain       *string           `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	LastModified *string           `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Status       *string           `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CnameInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CnameInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CnameInfo) SetCertificate(v *CnameCertificate) *CnameInfo {
+	s.Certificate = v
+	return s
+}
+
+func (s *CnameInfo) SetDomain(v string) *CnameInfo {
+	s.Domain = &v
+	return s
+}
+
+func (s *CnameInfo) SetLastModified(v string) *CnameInfo {
+	s.LastModified = &v
+	return s
+}
+
+func (s *CnameInfo) SetStatus(v string) *CnameInfo {
+	s.Status = &v
+	return s
+}
+
+type CnameSummary struct {
+	Certificate  *CnameCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	Domain       *string           `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	LastModified *string           `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Status       *string           `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CnameSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CnameSummary) GoString() string {
+	return s.String()
+}
+
+func (s *CnameSummary) SetCertificate(v *CnameCertificate) *CnameSummary {
+	s.Certificate = v
+	return s
+}
+
+func (s *CnameSummary) SetDomain(v string) *CnameSummary {
+	s.Domain = &v
+	return s
+}
+
+func (s *CnameSummary) SetLastModified(v string) *CnameSummary {
+	s.LastModified = &v
+	return s
+}
+
+func (s *CnameSummary) SetStatus(v string) *CnameSummary {
+	s.Status = &v
+	return s
+}
+
+type CnameToken struct {
+	Bucket     *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Cname      *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s CnameToken) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CnameToken) GoString() string {
+	return s.String()
+}
+
+func (s *CnameToken) SetBucket(v string) *CnameToken {
+	s.Bucket = &v
+	return s
+}
+
+func (s *CnameToken) SetCname(v string) *CnameToken {
+	s.Cname = &v
+	return s
+}
+
+func (s *CnameToken) SetExpireTime(v string) *CnameToken {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CnameToken) SetToken(v string) *CnameToken {
+	s.Token = &v
+	return s
+}
+
 type CommonPrefix struct {
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 }
@@ -370,6 +1042,58 @@ func (s *CopyPartResult) SetETag(v string) *CopyPartResult {
 
 func (s *CopyPartResult) SetLastModified(v string) *CopyPartResult {
 	s.LastModified = &v
+	return s
+}
+
+type CreateAccessPointConfiguration struct {
+	AccessPointName  *string                      `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	NetworkOrigin    *string                      `json:"NetworkOrigin,omitempty" xml:"NetworkOrigin,omitempty"`
+	VpcConfiguration *AccessPointVpcConfiguration `json:"VpcConfiguration,omitempty" xml:"VpcConfiguration,omitempty"`
+}
+
+func (s CreateAccessPointConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPointConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPointConfiguration) SetAccessPointName(v string) *CreateAccessPointConfiguration {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *CreateAccessPointConfiguration) SetNetworkOrigin(v string) *CreateAccessPointConfiguration {
+	s.NetworkOrigin = &v
+	return s
+}
+
+func (s *CreateAccessPointConfiguration) SetVpcConfiguration(v *AccessPointVpcConfiguration) *CreateAccessPointConfiguration {
+	s.VpcConfiguration = v
+	return s
+}
+
+type CreateAccessPointResult struct {
+	AccessPointArn *string `json:"AccessPointArn,omitempty" xml:"AccessPointArn,omitempty"`
+	Alias          *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+}
+
+func (s CreateAccessPointResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPointResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPointResult) SetAccessPointArn(v string) *CreateAccessPointResult {
+	s.AccessPointArn = &v
+	return s
+}
+
+func (s *CreateAccessPointResult) SetAlias(v string) *CreateAccessPointResult {
+	s.Alias = &v
 	return s
 }
 
@@ -567,6 +1291,94 @@ func (s ExtendWormConfiguration) GoString() string {
 
 func (s *ExtendWormConfiguration) SetRetentionPeriodInDays(v int32) *ExtendWormConfiguration {
 	s.RetentionPeriodInDays = &v
+	return s
+}
+
+type GetAccessPointResult struct {
+	AccessPointArn   *string                        `json:"AccessPointArn,omitempty" xml:"AccessPointArn,omitempty"`
+	AccessPointName  *string                        `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	AccountId        *string                        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Alias            *string                        `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Bucket           *string                        `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Endpoints        *GetAccessPointResultEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	InternalEndpoint *string                        `json:"InternalEndpoint,omitempty" xml:"InternalEndpoint,omitempty"`
+	NetworkOrigin    *string                        `json:"NetworkOrigin,omitempty" xml:"NetworkOrigin,omitempty"`
+	Status           *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcConfiguration *AccessPointVpcConfiguration   `json:"VpcConfiguration,omitempty" xml:"VpcConfiguration,omitempty"`
+}
+
+func (s GetAccessPointResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessPointResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessPointResult) SetAccessPointArn(v string) *GetAccessPointResult {
+	s.AccessPointArn = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetAccessPointName(v string) *GetAccessPointResult {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetAccountId(v string) *GetAccessPointResult {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetAlias(v string) *GetAccessPointResult {
+	s.Alias = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetBucket(v string) *GetAccessPointResult {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetEndpoints(v *GetAccessPointResultEndpoints) *GetAccessPointResult {
+	s.Endpoints = v
+	return s
+}
+
+func (s *GetAccessPointResult) SetInternalEndpoint(v string) *GetAccessPointResult {
+	s.InternalEndpoint = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetNetworkOrigin(v string) *GetAccessPointResult {
+	s.NetworkOrigin = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetStatus(v string) *GetAccessPointResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAccessPointResult) SetVpcConfiguration(v *AccessPointVpcConfiguration) *GetAccessPointResult {
+	s.VpcConfiguration = v
+	return s
+}
+
+type GetAccessPointResultEndpoints struct {
+	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+}
+
+func (s GetAccessPointResultEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessPointResultEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessPointResultEndpoints) SetPublicEndpoint(v string) *GetAccessPointResultEndpoints {
+	s.PublicEndpoint = &v
 	return s
 }
 
@@ -902,12 +1714,13 @@ func (s *LifecycleConfiguration) SetRule(v []*LifecycleRule) *LifecycleConfigura
 type LifecycleRule struct {
 	LifecycleAbortMultipartUpload *LifecycleRuleLifecycleAbortMultipartUpload `json:"AbortMultipartUpload,omitempty" xml:"AbortMultipartUpload,omitempty" type:"Struct"`
 	LifecycleExpiration           *LifecycleRuleLifecycleExpiration           `json:"Expiration,omitempty" xml:"Expiration,omitempty" type:"Struct"`
+	Filter                        *LifecycleRuleFilter                        `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
 	ID                            *string                                     `json:"ID,omitempty" xml:"ID,omitempty"`
 	NoncurrentVersionExpiration   *LifecycleRuleNoncurrentVersionExpiration   `json:"NoncurrentVersionExpiration,omitempty" xml:"NoncurrentVersionExpiration,omitempty" type:"Struct"`
 	NoncurrentVersionTransition   []*LifecycleRuleNoncurrentVersionTransition `json:"NoncurrentVersionTransition,omitempty" xml:"NoncurrentVersionTransition,omitempty" type:"Repeated"`
 	Prefix                        *string                                     `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	Status                        *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag                           []*LifecycleRuleTag                         `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag                           []*Tag                                      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	LifecycleTransition           []*LifecycleRuleLifecycleTransition         `json:"Transition,omitempty" xml:"Transition,omitempty" type:"Repeated"`
 }
 
@@ -926,6 +1739,11 @@ func (s *LifecycleRule) SetLifecycleAbortMultipartUpload(v *LifecycleRuleLifecyc
 
 func (s *LifecycleRule) SetLifecycleExpiration(v *LifecycleRuleLifecycleExpiration) *LifecycleRule {
 	s.LifecycleExpiration = v
+	return s
+}
+
+func (s *LifecycleRule) SetFilter(v *LifecycleRuleFilter) *LifecycleRule {
+	s.Filter = v
 	return s
 }
 
@@ -954,7 +1772,7 @@ func (s *LifecycleRule) SetStatus(v string) *LifecycleRule {
 	return s
 }
 
-func (s *LifecycleRule) SetTag(v []*LifecycleRuleTag) *LifecycleRule {
+func (s *LifecycleRule) SetTag(v []*Tag) *LifecycleRule {
 	s.Tag = v
 	return s
 }
@@ -1016,6 +1834,46 @@ func (s *LifecycleRuleLifecycleExpiration) SetExpiredObjectDeleteMarker(v bool) 
 	return s
 }
 
+type LifecycleRuleFilter struct {
+	Not *LifecycleRuleFilterNot `json:"Not,omitempty" xml:"Not,omitempty" type:"Struct"`
+}
+
+func (s LifecycleRuleFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LifecycleRuleFilter) GoString() string {
+	return s.String()
+}
+
+func (s *LifecycleRuleFilter) SetNot(v *LifecycleRuleFilterNot) *LifecycleRuleFilter {
+	s.Not = v
+	return s
+}
+
+type LifecycleRuleFilterNot struct {
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Tag    *Tag    `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s LifecycleRuleFilterNot) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LifecycleRuleFilterNot) GoString() string {
+	return s.String()
+}
+
+func (s *LifecycleRuleFilterNot) SetPrefix(v string) *LifecycleRuleFilterNot {
+	s.Prefix = &v
+	return s
+}
+
+func (s *LifecycleRuleFilterNot) SetTag(v *Tag) *LifecycleRuleFilterNot {
+	s.Tag = v
+	return s
+}
+
 type LifecycleRuleNoncurrentVersionExpiration struct {
 	NoncurrentDays *int32 `json:"NoncurrentDays,omitempty" xml:"NoncurrentDays,omitempty"`
 }
@@ -1034,8 +1892,11 @@ func (s *LifecycleRuleNoncurrentVersionExpiration) SetNoncurrentDays(v int32) *L
 }
 
 type LifecycleRuleNoncurrentVersionTransition struct {
-	NoncurrentDays *int32  `json:"NoncurrentDays,omitempty" xml:"NoncurrentDays,omitempty"`
-	StorageClass   *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	AllowSmallFile       *bool   `json:"AllowSmallFile,omitempty" xml:"AllowSmallFile,omitempty"`
+	IsAccessTime         *bool   `json:"IsAccessTime,omitempty" xml:"IsAccessTime,omitempty"`
+	NoncurrentDays       *int32  `json:"NoncurrentDays,omitempty" xml:"NoncurrentDays,omitempty"`
+	ReturnToStdWhenVisit *bool   `json:"ReturnToStdWhenVisit,omitempty" xml:"ReturnToStdWhenVisit,omitempty"`
+	StorageClass         *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 
 func (s LifecycleRuleNoncurrentVersionTransition) String() string {
@@ -1046,8 +1907,23 @@ func (s LifecycleRuleNoncurrentVersionTransition) GoString() string {
 	return s.String()
 }
 
+func (s *LifecycleRuleNoncurrentVersionTransition) SetAllowSmallFile(v bool) *LifecycleRuleNoncurrentVersionTransition {
+	s.AllowSmallFile = &v
+	return s
+}
+
+func (s *LifecycleRuleNoncurrentVersionTransition) SetIsAccessTime(v bool) *LifecycleRuleNoncurrentVersionTransition {
+	s.IsAccessTime = &v
+	return s
+}
+
 func (s *LifecycleRuleNoncurrentVersionTransition) SetNoncurrentDays(v int32) *LifecycleRuleNoncurrentVersionTransition {
 	s.NoncurrentDays = &v
+	return s
+}
+
+func (s *LifecycleRuleNoncurrentVersionTransition) SetReturnToStdWhenVisit(v bool) *LifecycleRuleNoncurrentVersionTransition {
+	s.ReturnToStdWhenVisit = &v
 	return s
 }
 
@@ -1056,33 +1932,13 @@ func (s *LifecycleRuleNoncurrentVersionTransition) SetStorageClass(v string) *Li
 	return s
 }
 
-type LifecycleRuleTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s LifecycleRuleTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LifecycleRuleTag) GoString() string {
-	return s.String()
-}
-
-func (s *LifecycleRuleTag) SetKey(v string) *LifecycleRuleTag {
-	s.Key = &v
-	return s
-}
-
-func (s *LifecycleRuleTag) SetValue(v string) *LifecycleRuleTag {
-	s.Value = &v
-	return s
-}
-
 type LifecycleRuleLifecycleTransition struct {
-	CreatedBeforeDate *string `json:"CreatedBeforeDate,omitempty" xml:"CreatedBeforeDate,omitempty"`
-	Days              *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	StorageClass      *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	AllowSmallFile       *bool   `json:"AllowSmallFile,omitempty" xml:"AllowSmallFile,omitempty"`
+	CreatedBeforeDate    *string `json:"CreatedBeforeDate,omitempty" xml:"CreatedBeforeDate,omitempty"`
+	Days                 *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
+	IsAccessTime         *bool   `json:"IsAccessTime,omitempty" xml:"IsAccessTime,omitempty"`
+	ReturnToStdWhenVisit *bool   `json:"ReturnToStdWhenVisit,omitempty" xml:"ReturnToStdWhenVisit,omitempty"`
+	StorageClass         *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 
 func (s LifecycleRuleLifecycleTransition) String() string {
@@ -1091,6 +1947,11 @@ func (s LifecycleRuleLifecycleTransition) String() string {
 
 func (s LifecycleRuleLifecycleTransition) GoString() string {
 	return s.String()
+}
+
+func (s *LifecycleRuleLifecycleTransition) SetAllowSmallFile(v bool) *LifecycleRuleLifecycleTransition {
+	s.AllowSmallFile = &v
+	return s
 }
 
 func (s *LifecycleRuleLifecycleTransition) SetCreatedBeforeDate(v string) *LifecycleRuleLifecycleTransition {
@@ -1103,8 +1964,53 @@ func (s *LifecycleRuleLifecycleTransition) SetDays(v int32) *LifecycleRuleLifecy
 	return s
 }
 
+func (s *LifecycleRuleLifecycleTransition) SetIsAccessTime(v bool) *LifecycleRuleLifecycleTransition {
+	s.IsAccessTime = &v
+	return s
+}
+
+func (s *LifecycleRuleLifecycleTransition) SetReturnToStdWhenVisit(v bool) *LifecycleRuleLifecycleTransition {
+	s.ReturnToStdWhenVisit = &v
+	return s
+}
+
 func (s *LifecycleRuleLifecycleTransition) SetStorageClass(v string) *LifecycleRuleLifecycleTransition {
 	s.StorageClass = &v
+	return s
+}
+
+type ListAccessPointsResult struct {
+	AccessPoints          []*AccessPoint `json:"AccessPoints,omitempty" xml:"AccessPoints,omitempty" type:"Repeated"`
+	AccountId             *string        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	IsTruncated           *string        `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	NextContinuationToken *string        `json:"NextContinuationToken,omitempty" xml:"NextContinuationToken,omitempty"`
+}
+
+func (s ListAccessPointsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessPointsResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessPointsResult) SetAccessPoints(v []*AccessPoint) *ListAccessPointsResult {
+	s.AccessPoints = v
+	return s
+}
+
+func (s *ListAccessPointsResult) SetAccountId(v string) *ListAccessPointsResult {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListAccessPointsResult) SetIsTruncated(v string) *ListAccessPointsResult {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *ListAccessPointsResult) SetNextContinuationToken(v string) *ListAccessPointsResult {
+	s.NextContinuationToken = &v
 	return s
 }
 
@@ -1456,6 +2362,262 @@ func (s *LoggingEnabled) SetTargetPrefix(v string) *LoggingEnabled {
 	return s
 }
 
+type MetaQuery struct {
+	Aggregations *MetaQueryAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Struct"`
+	MaxResults   *int64                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order        *string                `json:"Order,omitempty" xml:"Order,omitempty"`
+	Query        *string                `json:"Query,omitempty" xml:"Query,omitempty"`
+	Sort         *string                `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s MetaQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQuery) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQuery) SetAggregations(v *MetaQueryAggregations) *MetaQuery {
+	s.Aggregations = v
+	return s
+}
+
+func (s *MetaQuery) SetMaxResults(v int64) *MetaQuery {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *MetaQuery) SetNextToken(v string) *MetaQuery {
+	s.NextToken = &v
+	return s
+}
+
+func (s *MetaQuery) SetOrder(v string) *MetaQuery {
+	s.Order = &v
+	return s
+}
+
+func (s *MetaQuery) SetQuery(v string) *MetaQuery {
+	s.Query = &v
+	return s
+}
+
+func (s *MetaQuery) SetSort(v string) *MetaQuery {
+	s.Sort = &v
+	return s
+}
+
+type MetaQueryAggregations struct {
+	Aggregation []*MetaQueryAggregation `json:"Aggregation,omitempty" xml:"Aggregation,omitempty" type:"Repeated"`
+}
+
+func (s MetaQueryAggregations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQueryAggregations) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQueryAggregations) SetAggregation(v []*MetaQueryAggregation) *MetaQueryAggregations {
+	s.Aggregation = v
+	return s
+}
+
+type MetaQueryAggregation struct {
+	Field     *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+}
+
+func (s MetaQueryAggregation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQueryAggregation) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQueryAggregation) SetField(v string) *MetaQueryAggregation {
+	s.Field = &v
+	return s
+}
+
+func (s *MetaQueryAggregation) SetOperation(v string) *MetaQueryAggregation {
+	s.Operation = &v
+	return s
+}
+
+type MetaQueryFile struct {
+	ETag                                  *string                   `json:"ETag,omitempty" xml:"ETag,omitempty"`
+	FileModifiedTime                      *string                   `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
+	Filename                              *string                   `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	OSSCRC64                              *string                   `json:"OSSCRC64,omitempty" xml:"OSSCRC64,omitempty"`
+	OSSObjectType                         *string                   `json:"OSSObjectType,omitempty" xml:"OSSObjectType,omitempty"`
+	OSSStorageClass                       *string                   `json:"OSSStorageClass,omitempty" xml:"OSSStorageClass,omitempty"`
+	OSSTagging                            *MetaQueryFileOSSTagging  `json:"OSSTagging,omitempty" xml:"OSSTagging,omitempty" type:"Struct"`
+	OSSTaggingCount                       *int64                    `json:"OSSTaggingCount,omitempty" xml:"OSSTaggingCount,omitempty"`
+	OSSUserMeta                           *MetaQueryFileOSSUserMeta `json:"OSSUserMeta,omitempty" xml:"OSSUserMeta,omitempty" type:"Struct"`
+	ObjectACL                             *string                   `json:"ObjectACL,omitempty" xml:"ObjectACL,omitempty"`
+	ServerSideEncryption                  *string                   `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
+	ServerSideEncryptionCustomerAlgorithm *string                   `json:"ServerSideEncryptionCustomerAlgorithm,omitempty" xml:"ServerSideEncryptionCustomerAlgorithm,omitempty"`
+	Size                                  *int64                    `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s MetaQueryFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQueryFile) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQueryFile) SetETag(v string) *MetaQueryFile {
+	s.ETag = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetFileModifiedTime(v string) *MetaQueryFile {
+	s.FileModifiedTime = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetFilename(v string) *MetaQueryFile {
+	s.Filename = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetOSSCRC64(v string) *MetaQueryFile {
+	s.OSSCRC64 = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetOSSObjectType(v string) *MetaQueryFile {
+	s.OSSObjectType = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetOSSStorageClass(v string) *MetaQueryFile {
+	s.OSSStorageClass = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetOSSTagging(v *MetaQueryFileOSSTagging) *MetaQueryFile {
+	s.OSSTagging = v
+	return s
+}
+
+func (s *MetaQueryFile) SetOSSTaggingCount(v int64) *MetaQueryFile {
+	s.OSSTaggingCount = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetOSSUserMeta(v *MetaQueryFileOSSUserMeta) *MetaQueryFile {
+	s.OSSUserMeta = v
+	return s
+}
+
+func (s *MetaQueryFile) SetObjectACL(v string) *MetaQueryFile {
+	s.ObjectACL = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetServerSideEncryption(v string) *MetaQueryFile {
+	s.ServerSideEncryption = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetServerSideEncryptionCustomerAlgorithm(v string) *MetaQueryFile {
+	s.ServerSideEncryptionCustomerAlgorithm = &v
+	return s
+}
+
+func (s *MetaQueryFile) SetSize(v int64) *MetaQueryFile {
+	s.Size = &v
+	return s
+}
+
+type MetaQueryFileOSSTagging struct {
+	Tagging []*MetaQueryTagging `json:"Tagging,omitempty" xml:"Tagging,omitempty" type:"Repeated"`
+}
+
+func (s MetaQueryFileOSSTagging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQueryFileOSSTagging) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQueryFileOSSTagging) SetTagging(v []*MetaQueryTagging) *MetaQueryFileOSSTagging {
+	s.Tagging = v
+	return s
+}
+
+type MetaQueryFileOSSUserMeta struct {
+	UserMeta []*MetaQueryUserMeta `json:"UserMeta,omitempty" xml:"UserMeta,omitempty" type:"Repeated"`
+}
+
+func (s MetaQueryFileOSSUserMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQueryFileOSSUserMeta) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQueryFileOSSUserMeta) SetUserMeta(v []*MetaQueryUserMeta) *MetaQueryFileOSSUserMeta {
+	s.UserMeta = v
+	return s
+}
+
+type MetaQueryTagging struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s MetaQueryTagging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQueryTagging) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQueryTagging) SetKey(v string) *MetaQueryTagging {
+	s.Key = &v
+	return s
+}
+
+func (s *MetaQueryTagging) SetValue(v string) *MetaQueryTagging {
+	s.Value = &v
+	return s
+}
+
+type MetaQueryUserMeta struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s MetaQueryUserMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaQueryUserMeta) GoString() string {
+	return s.String()
+}
+
+func (s *MetaQueryUserMeta) SetKey(v string) *MetaQueryUserMeta {
+	s.Key = &v
+	return s
+}
+
+func (s *MetaQueryUserMeta) SetValue(v string) *MetaQueryUserMeta {
+	s.Value = &v
+	return s
+}
+
 type ObjectIdentifier struct {
 	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
@@ -1484,6 +2646,7 @@ type ObjectSummary struct {
 	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
 	Owner        *Owner  `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ResoreInfo   *string `json:"ResoreInfo,omitempty" xml:"ResoreInfo,omitempty"`
 	Size         *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -1514,6 +2677,11 @@ func (s *ObjectSummary) SetLastModified(v string) *ObjectSummary {
 
 func (s *ObjectSummary) SetOwner(v *Owner) *ObjectSummary {
 	s.Owner = v
+	return s
+}
+
+func (s *ObjectSummary) SetResoreInfo(v string) *ObjectSummary {
+	s.ResoreInfo = &v
 	return s
 }
 
@@ -1696,10 +2864,28 @@ func (s *Part) SetSize(v int64) *Part {
 	return s
 }
 
+type RTC struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s RTC) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RTC) GoString() string {
+	return s.String()
+}
+
+func (s *RTC) SetStatus(v string) *RTC {
+	s.Status = &v
+	return s
+}
+
 type RefererConfiguration struct {
 	AllowEmptyReferer        *bool                            `json:"AllowEmptyReferer,omitempty" xml:"AllowEmptyReferer,omitempty"`
 	AllowTruncateQueryString *bool                            `json:"AllowTruncateQueryString,omitempty" xml:"AllowTruncateQueryString,omitempty"`
 	RefererList              *RefererConfigurationRefererList `json:"RefererList,omitempty" xml:"RefererList,omitempty" type:"Struct"`
+	TruncatePath             *bool                            `json:"TruncatePath,omitempty" xml:"TruncatePath,omitempty"`
 }
 
 func (s RefererConfiguration) String() string {
@@ -1722,6 +2908,11 @@ func (s *RefererConfiguration) SetAllowTruncateQueryString(v bool) *RefererConfi
 
 func (s *RefererConfiguration) SetRefererList(v *RefererConfigurationRefererList) *RefererConfiguration {
 	s.RefererList = v
+	return s
+}
+
+func (s *RefererConfiguration) SetTruncatePath(v bool) *RefererConfiguration {
+	s.TruncatePath = &v
 	return s
 }
 
@@ -2340,6 +3531,29 @@ func (s *RoutingRuleRedirectMirrorHeadersSet) SetValue(v string) *RoutingRuleRed
 	return s
 }
 
+type RtcConfiguration struct {
+	ID  *string `json:"ID,omitempty" xml:"ID,omitempty"`
+	RTC *RTC    `json:"RTC,omitempty" xml:"RTC,omitempty"`
+}
+
+func (s RtcConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RtcConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *RtcConfiguration) SetID(v string) *RtcConfiguration {
+	s.ID = &v
+	return s
+}
+
+func (s *RtcConfiguration) SetRTC(v *RTC) *RtcConfiguration {
+	s.RTC = v
+	return s
+}
+
 type SSEKMS struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
@@ -2519,6 +3733,58 @@ func (s *ServerSideEncryptionRule) SetApplyServerSideEncryptionByDefault(v *Appl
 	return s
 }
 
+type Style struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s Style) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Style) GoString() string {
+	return s.String()
+}
+
+func (s *Style) SetContent(v string) *Style {
+	s.Content = &v
+	return s
+}
+
+type StyleInfo struct {
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s StyleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StyleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *StyleInfo) SetContent(v string) *StyleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *StyleInfo) SetCreateTime(v string) *StyleInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *StyleInfo) SetLastModifyTime(v string) *StyleInfo {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *StyleInfo) SetName(v string) *StyleInfo {
+	s.Name = &v
+	return s
+}
+
 type Tag struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2619,6 +3885,53 @@ func (s *Upload) SetKey(v string) *Upload {
 
 func (s *Upload) SetUploadId(v string) *Upload {
 	s.UploadId = &v
+	return s
+}
+
+type UserAntiDDOSInfo struct {
+	ActiveTime *int64  `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	Ctime      *int64  `json:"Ctime,omitempty" xml:"Ctime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Mtime      *int64  `json:"Mtime,omitempty" xml:"Mtime,omitempty"`
+	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UserAntiDDOSInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserAntiDDOSInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UserAntiDDOSInfo) SetActiveTime(v int64) *UserAntiDDOSInfo {
+	s.ActiveTime = &v
+	return s
+}
+
+func (s *UserAntiDDOSInfo) SetCtime(v int64) *UserAntiDDOSInfo {
+	s.Ctime = &v
+	return s
+}
+
+func (s *UserAntiDDOSInfo) SetInstanceId(v string) *UserAntiDDOSInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UserAntiDDOSInfo) SetMtime(v int64) *UserAntiDDOSInfo {
+	s.Mtime = &v
+	return s
+}
+
+func (s *UserAntiDDOSInfo) SetOwner(v string) *UserAntiDDOSInfo {
+	s.Owner = &v
+	return s
+}
+
+func (s *UserAntiDDOSInfo) SetStatus(v string) *UserAntiDDOSInfo {
+	s.Status = &v
 	return s
 }
 
@@ -2935,9 +4248,9 @@ func (s *CompleteMultipartUploadHeaders) SetForbidOverwrite(v string) *CompleteM
 }
 
 type CompleteMultipartUploadRequest struct {
-	CompleteMultipartUpload *CompleteMultipartUpload `json:"completeMultipartUpload,omitempty" xml:"completeMultipartUpload,omitempty"`
-	EncodingType            *string                  `json:"encoding-type,omitempty" xml:"encoding-type,omitempty"`
-	UploadId                *string                  `json:"uploadId,omitempty" xml:"uploadId,omitempty"`
+	Body         *CompleteMultipartUpload `json:"CompleteMultipartUpload,omitempty" xml:"CompleteMultipartUpload,omitempty"`
+	EncodingType *string                  `json:"encoding-type,omitempty" xml:"encoding-type,omitempty"`
+	UploadId     *string                  `json:"uploadId,omitempty" xml:"uploadId,omitempty"`
 }
 
 func (s CompleteMultipartUploadRequest) String() string {
@@ -2948,8 +4261,8 @@ func (s CompleteMultipartUploadRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CompleteMultipartUploadRequest) SetCompleteMultipartUpload(v *CompleteMultipartUpload) *CompleteMultipartUploadRequest {
-	s.CompleteMultipartUpload = v
+func (s *CompleteMultipartUploadRequest) SetBody(v *CompleteMultipartUpload) *CompleteMultipartUploadRequest {
+	s.Body = v
 	return s
 }
 
@@ -3187,7 +4500,7 @@ func (s *CopyObjectResponse) SetBody(v *CopyObjectResponseBody) *CopyObjectRespo
 }
 
 type CreateSelectObjectMetaRequest struct {
-	SelectMetaRequest *SelectMetaRequest `json:"body,omitempty" xml:"body,omitempty"`
+	SelectMetaRequest *SelectMetaRequest `json:"SelectMetaRequest,omitempty" xml:"SelectMetaRequest,omitempty"`
 }
 
 func (s CreateSelectObjectMetaRequest) String() string {
@@ -3519,6 +4832,29 @@ func (s *DeleteLiveChannelResponse) SetStatusCode(v int32) *DeleteLiveChannelRes
 	return s
 }
 
+type DeleteMultipleObjectsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ContentMd5    *string            `json:"content-md5,omitempty" xml:"content-md5,omitempty"`
+}
+
+func (s DeleteMultipleObjectsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultipleObjectsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultipleObjectsHeaders) SetCommonHeaders(v map[string]*string) *DeleteMultipleObjectsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteMultipleObjectsHeaders) SetContentMd5(v string) *DeleteMultipleObjectsHeaders {
+	s.ContentMd5 = &v
+	return s
+}
+
 type DeleteMultipleObjectsRequest struct {
 	Delete       *Delete `json:"Delete,omitempty" xml:"Delete,omitempty"`
 	EncodingType *string `json:"encoding-type,omitempty" xml:"encoding-type,omitempty"`
@@ -3738,8 +5074,8 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type ExtendBucketWormRequest struct {
-	ExtendWormConfiguration *ExtendWormConfiguration `json:"extendWormConfiguration,omitempty" xml:"extendWormConfiguration,omitempty"`
-	WormId                  *string                  `json:"wormId,omitempty" xml:"wormId,omitempty"`
+	Body   *ExtendWormConfiguration `json:"ExtendWormConfiguration,omitempty" xml:"ExtendWormConfiguration,omitempty"`
+	WormId *string                  `json:"wormId,omitempty" xml:"wormId,omitempty"`
 }
 
 func (s ExtendBucketWormRequest) String() string {
@@ -3750,8 +5086,8 @@ func (s ExtendBucketWormRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExtendBucketWormRequest) SetExtendWormConfiguration(v *ExtendWormConfiguration) *ExtendBucketWormRequest {
-	s.ExtendWormConfiguration = v
+func (s *ExtendBucketWormRequest) SetBody(v *ExtendWormConfiguration) *ExtendBucketWormRequest {
+	s.Body = v
 	return s
 }
 
@@ -3950,121 +5286,10 @@ func (s *GetBucketEncryptionResponse) SetBody(v *GetBucketEncryptionResponseBody
 	return s
 }
 
-type GetBucketInfoResponseBody struct {
-	BucketInfo *GetBucketInfoResponseBodyBucketInfo `json:"Bucket,omitempty" xml:"Bucket,omitempty" type:"Struct"`
-}
-
-func (s GetBucketInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBucketInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetBucketInfoResponseBody) SetBucketInfo(v *GetBucketInfoResponseBodyBucketInfo) *GetBucketInfoResponseBody {
-	s.BucketInfo = v
-	return s
-}
-
-type GetBucketInfoResponseBodyBucketInfo struct {
-	AccessControlList      *GetBucketInfoResponseBodyBucketInfoAccessControlList `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Struct"`
-	Comment                *string                                               `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreationDate           *string                                               `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-	CrossRegionReplication *string                                               `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
-	ExtranetEndpoint       *string                                               `json:"ExtranetEndpoint,omitempty" xml:"ExtranetEndpoint,omitempty"`
-	IntranetEndpoint       *string                                               `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	Location               *string                                               `json:"Location,omitempty" xml:"Location,omitempty"`
-	Name                   *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                  *Owner                                                `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	StorageClass           *string                                               `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	TransferAcceleration   *string                                               `json:"TransferAcceleration,omitempty" xml:"TransferAcceleration,omitempty"`
-}
-
-func (s GetBucketInfoResponseBodyBucketInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBucketInfoResponseBodyBucketInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetAccessControlList(v *GetBucketInfoResponseBodyBucketInfoAccessControlList) *GetBucketInfoResponseBodyBucketInfo {
-	s.AccessControlList = v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetComment(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.Comment = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetCreationDate(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.CreationDate = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetCrossRegionReplication(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.CrossRegionReplication = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetExtranetEndpoint(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.ExtranetEndpoint = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetIntranetEndpoint(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.IntranetEndpoint = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetLocation(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.Location = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetName(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetOwner(v *Owner) *GetBucketInfoResponseBodyBucketInfo {
-	s.Owner = v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetStorageClass(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.StorageClass = &v
-	return s
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfo) SetTransferAcceleration(v string) *GetBucketInfoResponseBodyBucketInfo {
-	s.TransferAcceleration = &v
-	return s
-}
-
-type GetBucketInfoResponseBodyBucketInfoAccessControlList struct {
-	Grant *string `json:"Grant,omitempty" xml:"Grant,omitempty"`
-}
-
-func (s GetBucketInfoResponseBodyBucketInfoAccessControlList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBucketInfoResponseBodyBucketInfoAccessControlList) GoString() string {
-	return s.String()
-}
-
-func (s *GetBucketInfoResponseBodyBucketInfoAccessControlList) SetGrant(v string) *GetBucketInfoResponseBodyBucketInfoAccessControlList {
-	s.Grant = &v
-	return s
-}
-
 type GetBucketInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetBucketInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BucketInfo        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetBucketInfoResponse) String() string {
@@ -4085,7 +5310,7 @@ func (s *GetBucketInfoResponse) SetStatusCode(v int32) *GetBucketInfoResponse {
 	return s
 }
 
-func (s *GetBucketInfoResponse) SetBody(v *GetBucketInfoResponseBody) *GetBucketInfoResponse {
+func (s *GetBucketInfoResponse) SetBody(v *BucketInfo) *GetBucketInfoResponse {
 	s.Body = v
 	return s
 }
@@ -4373,50 +5598,10 @@ func (s *GetBucketPolicyResponse) SetBody(v string) *GetBucketPolicyResponse {
 	return s
 }
 
-type GetBucketRefererResponseBody struct {
-	AllowEmptyReferer *bool                                    `json:"AllowEmptyReferer,omitempty" xml:"AllowEmptyReferer,omitempty"`
-	RefererList       *GetBucketRefererResponseBodyRefererList `json:"RefererList,omitempty" xml:"RefererList,omitempty" type:"Struct"`
-}
-
-func (s GetBucketRefererResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBucketRefererResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetBucketRefererResponseBody) SetAllowEmptyReferer(v bool) *GetBucketRefererResponseBody {
-	s.AllowEmptyReferer = &v
-	return s
-}
-
-func (s *GetBucketRefererResponseBody) SetRefererList(v *GetBucketRefererResponseBodyRefererList) *GetBucketRefererResponseBody {
-	s.RefererList = v
-	return s
-}
-
-type GetBucketRefererResponseBodyRefererList struct {
-	Referer []*string `json:"Referer,omitempty" xml:"Referer,omitempty" type:"Repeated"`
-}
-
-func (s GetBucketRefererResponseBodyRefererList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBucketRefererResponseBodyRefererList) GoString() string {
-	return s.String()
-}
-
-func (s *GetBucketRefererResponseBodyRefererList) SetReferer(v []*string) *GetBucketRefererResponseBodyRefererList {
-	s.Referer = v
-	return s
-}
-
 type GetBucketRefererResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetBucketRefererResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefererConfiguration `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetBucketRefererResponse) String() string {
@@ -4437,7 +5622,7 @@ func (s *GetBucketRefererResponse) SetStatusCode(v int32) *GetBucketRefererRespo
 	return s
 }
 
-func (s *GetBucketRefererResponse) SetBody(v *GetBucketRefererResponseBody) *GetBucketRefererResponse {
+func (s *GetBucketRefererResponse) SetBody(v *RefererConfiguration) *GetBucketRefererResponse {
 	s.Body = v
 	return s
 }
@@ -5118,13 +6303,39 @@ func (s *GetLiveChannelStatResponse) SetBody(v *GetLiveChannelStatResponseBody) 
 }
 
 type GetObjectHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	AcceptEncoding    *string            `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
-	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	IfModifiedSince   *string            `json:"If-Modified-Since,omitempty" xml:"If-Modified-Since,omitempty"`
-	IfNoneMatch       *string            `json:"If-None-Match,omitempty" xml:"If-None-Match,omitempty"`
-	IfUnmodifiedSince *string            `json:"If-Unmodified-Since,omitempty" xml:"If-Unmodified-Since,omitempty"`
-	Range             *string            `json:"Range,omitempty" xml:"Range,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The encoding type at the client side.
+	// If you want an object to be returned in the GZIP format, you must include the Accept-Encoding:gzip header in your request. OSS determines whether to return the object compressed in the GZip format based on the Content-Type header and whether the size of the object is larger than or equal to 1 KB.
+	//
+	// > If an object is compressed in the GZip format, the response OSS returns does not include the ETag value of the object.
+	// >   - OSS supports the following Content-Type values to compress the object in the GZip format: text/cache-manifest, text/xml, text/plain, text/css, application/javascript, application/x-javascript, application/rss+xml, application/json, and text/json.
+	//
+	// Default value: null
+	AcceptEncoding *string `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
+	// If the ETag specified in the request matches the ETag value of the object, OSS transmits the object and returns 200 OK. If the ETag specified in the request does not match the ETag value of the object, OSS returns 412 Precondition Failed.
+	// The ETag value of an object is used to check whether the content of the object has changed. You can check data integrity by using the ETag value.
+	// Default value: null
+	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	// If the time specified in this header is earlier than the object modified time or is invalid, OSS returns the object and 200 OK. If the time specified in this header is later than or the same as the object modified time, OSS returns 304 Not Modified.
+	// The time must be in GMT. Example: `Fri, 13 Nov 2015 14:47:53 GMT`.
+	// Default value: null
+	IfModifiedSince *string `json:"If-Modified-Since,omitempty" xml:"If-Modified-Since,omitempty"`
+	// If the ETag specified in the request does not match the ETag value of the object, OSS transmits the object and returns 200 OK. If the ETag specified in the request matches the ETag value of the object, OSS returns 304 Not Modified.
+	// You can specify both the **If-Match** and **If-None-Match** headers in a request.
+	// Default value: null
+	IfNoneMatch *string `json:"If-None-Match,omitempty" xml:"If-None-Match,omitempty"`
+	// If the time specified in this header is the same as or later than the object modified time, OSS returns the object and 200 OK. If the time specified in this header is earlier than the object modified time, OSS returns 412 Precondition Failed.
+	//
+	// The time must be in GMT. Example: `Fri, 13 Nov 2015 14:47:53 GMT`.
+	// You can specify both the **If-Modified-Since** and **If-Unmodified-Since** headers in a request.
+	// Default value: null
+	IfUnmodifiedSince *string `json:"If-Unmodified-Since,omitempty" xml:"If-Unmodified-Since,omitempty"`
+	// The range of data of the object to be returned.
+	//   - If the value of Range is valid, OSS returns the response that includes the total size of the object and the range of data returned. For example, Content-Range: bytes 0~9/44 indicates that the total size of the object is 44 bytes, and the range of data returned is the first 10 bytes.
+	//   - However, if the value of Range is invalid, the entire object is returned, and the response returned by OSS excludes Content-Range.
+	//
+	// Default value: null
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
 }
 
 func (s GetObjectHeaders) String() string {
@@ -5171,12 +6382,18 @@ func (s *GetObjectHeaders) SetRange(v string) *GetObjectHeaders {
 }
 
 type GetObjectRequest struct {
-	ResponseCacheControl       *string `json:"response-cache-control,omitempty" xml:"response-cache-control,omitempty"`
+	// The cache-control header in the response that OSS returns.
+	ResponseCacheControl *string `json:"response-cache-control,omitempty" xml:"response-cache-control,omitempty"`
+	// The content-disposition header in the response that OSS returns.
 	ResponseContentDisposition *string `json:"response-content-disposition,omitempty" xml:"response-content-disposition,omitempty"`
-	ResponseContentEncoding    *string `json:"response-content-encoding,omitempty" xml:"response-content-encoding,omitempty"`
-	ResponseContentLanguage    *string `json:"response-content-language,omitempty" xml:"response-content-language,omitempty"`
-	ResponseContentType        *string `json:"response-content-type,omitempty" xml:"response-content-type,omitempty"`
-	ResponseExpires            *string `json:"response-expires,omitempty" xml:"response-expires,omitempty"`
+	// The content-encoding header in the response that OSS returns.
+	ResponseContentEncoding *string `json:"response-content-encoding,omitempty" xml:"response-content-encoding,omitempty"`
+	// The content-language header in the response that OSS returns.
+	ResponseContentLanguage *string `json:"response-content-language,omitempty" xml:"response-content-language,omitempty"`
+	// The content-type header in the response that OSS returns.
+	ResponseContentType *string `json:"response-content-type,omitempty" xml:"response-content-type,omitempty"`
+	// The expires header in the response that OSS returns.
+	ResponseExpires *string `json:"response-expires,omitempty" xml:"response-expires,omitempty"`
 }
 
 func (s GetObjectRequest) String() string {
@@ -5528,11 +6745,19 @@ func (s *GetVodPlaylistResponse) SetBody(v io.Reader) *GetVodPlaylistResponse {
 }
 
 type HeadObjectHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	IfModifiedSince   *string            `json:"If-Modified-Since,omitempty" xml:"If-Modified-Since,omitempty"`
-	IfNoneMatch       *string            `json:"If-None-Match,omitempty" xml:"If-None-Match,omitempty"`
-	IfUnmodifiedSince *string            `json:"If-Unmodified-Since,omitempty" xml:"If-Unmodified-Since,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// If the ETag value that is specified in the request matches the ETag value of the object, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 412 precondition failed.
+	// Default value: null.
+	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	// If the time that is specified in the request is earlier than the time when the object is modified, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 304 not modified.
+	// Default value: null.
+	IfModifiedSince *string `json:"If-Modified-Since,omitempty" xml:"If-Modified-Since,omitempty"`
+	// If the ETag value that is specified in the request does not match the ETag value of the object, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 304 Not Modified.
+	// Default value: null.
+	IfNoneMatch *string `json:"If-None-Match,omitempty" xml:"If-None-Match,omitempty"`
+	// If the time that is specified in the request is later than or the same as the time when the object is modified, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 412 precondition failed.
+	// Default value: null.
+	IfUnmodifiedSince *string `json:"If-Unmodified-Since,omitempty" xml:"If-Unmodified-Since,omitempty"`
 }
 
 func (s HeadObjectHeaders) String() string {
@@ -5569,6 +6794,7 @@ func (s *HeadObjectHeaders) SetIfUnmodifiedSince(v string) *HeadObjectHeaders {
 }
 
 type HeadObjectRequest struct {
+	// The version ID of the object for which you want to query metadata.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
@@ -5649,17 +6875,48 @@ func (s *InitiateBucketWormResponse) SetStatusCode(v int32) *InitiateBucketWormR
 }
 
 type InitiateMultipartUploadHeaders struct {
-	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	CacheControl         *string            `json:"Cache-Control,omitempty" xml:"Cache-Control,omitempty"`
-	ContentDisposition   *string            `json:"Content-Disposition,omitempty" xml:"Content-Disposition,omitempty"`
-	ContentEncoding      *string            `json:"Content-Encoding,omitempty" xml:"Content-Encoding,omitempty"`
-	Expires              *string            `json:"Expires,omitempty" xml:"Expires,omitempty"`
-	ForbidOverwrite      *string            `json:"x-oss-forbid-overwrite,omitempty" xml:"x-oss-forbid-overwrite,omitempty"`
-	SseDataEncryption    *string            `json:"x-oss-server-side-data-encryption,omitempty" xml:"x-oss-server-side-data-encryption,omitempty"`
-	ServerSideEncryption *string            `json:"x-oss-server-side-encryption,omitempty" xml:"x-oss-server-side-encryption,omitempty"`
-	SseKeyId             *string            `json:"x-oss-server-side-encryption-key-id,omitempty" xml:"x-oss-server-side-encryption-key-id,omitempty"`
-	StorageClass         *string            `json:"x-oss-storage-class,omitempty" xml:"x-oss-storage-class,omitempty"`
-	Tagging              *string            `json:"x-oss-tagging,omitempty" xml:"x-oss-tagging,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The caching behavior of the web page when the object is downloaded. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**.
+	// Default value: null.
+	CacheControl *string `json:"Cache-Control,omitempty" xml:"Cache-Control,omitempty"`
+	// The name of the object when the object is downloaded. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**.
+	// Default value: null.
+	ContentDisposition *string `json:"Content-Disposition,omitempty" xml:"Content-Disposition,omitempty"`
+	// The content encoding format of the object when the object is downloaded. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**.
+	// Default value: null.
+	ContentEncoding *string `json:"Content-Encoding,omitempty" xml:"Content-Encoding,omitempty"`
+	// The expiration time of the request. Unit: milliseconds. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**.
+	// Default value: null.
+	Expires *string `json:"Expires,omitempty" xml:"Expires,omitempty"`
+	// Specifies whether the InitiateMultipartUpload operation overwrites the existing object that has the same name as the object that you want to upload. When versioning is enabled or suspended for the bucket to which you want to upload the object, the **x-oss-forbid-overwrite** header does not take effect. In this case, the InitiateMultipartUpload operation overwrites the existing object that has the same name as the object that you want to upload.
+	//   - If you do not specify the **x-oss-forbid-overwrite** header or set the **x-oss-forbid-overwrite** header to **false**, the object that is uploaded by calling the PutObject operation overwrites the existing object that has the same name.
+	//   - If the value of **x-oss-forbid-overwrite** is set to **true**, existing objects cannot be overwritten by objects that have the same names.
+	//
+	// If you specify the **x-oss-forbid-overwrite** request header, the queries per second (QPS) performance of OSS is degraded. If you want to use the **x-oss-forbid-overwrite** request header to perform a large number of operations (QPS greater than 1,000), contact technical support
+	ForbidOverwrite *string `json:"x-oss-forbid-overwrite,omitempty" xml:"x-oss-forbid-overwrite,omitempty"`
+	// The algorithm that is used to encrypt the object that you want to upload. If this header is not specified, the object is encrypted by using AES-256. This header is valid only when **x-oss-server-side-encryption** is set to KMS.
+	// Valid value: SM4.
+	SseDataEncryption *string `json:"x-oss-server-side-data-encryption,omitempty" xml:"x-oss-server-side-data-encryption,omitempty"`
+	// The server-side encryption method that is used to encrypt each part of the object that you want to upload.
+	// Valid values: **AES256**, **KMS**, and **SM4**.
+	// > You must activate Key Management Service (KMS) before you set this header to KMS.
+	//
+	//
+	// If you specify this header in the request, this header is included in the response. OSS uses the method specified by this header to encrypt each uploaded part. When you download the object, the x-oss-server-side-encryption header is included in the response and the header value is set to the algorithm that is used to encrypt the object.
+	ServerSideEncryption *string `json:"x-oss-server-side-encryption,omitempty" xml:"x-oss-server-side-encryption,omitempty"`
+	// The ID of the CMK that is managed by KMS.
+	// This header is valid only when **x-oss-server-side-encryption** is set to KMS.
+	SseKeyId *string `json:"x-oss-server-side-encryption-key-id,omitempty" xml:"x-oss-server-side-encryption-key-id,omitempty"`
+	// The storage class of the bucket. Default value: Standard.  Valid values:
+	//
+	// - Standard
+	// - IA
+	// - Archive
+	// - ColdArchive
+	StorageClass *string `json:"x-oss-storage-class,omitempty" xml:"x-oss-storage-class,omitempty"`
+	// The tag of the object. You can configure multiple tags for the object. Example: TagA=A&amp;TagB=B.
+	// > The key and value of a tag must be URL-encoded. If a tag does not contain an equal sign (=), the value of the tag is considered an empty string.
+	Tagging *string `json:"x-oss-tagging,omitempty" xml:"x-oss-tagging,omitempty"`
 }
 
 func (s InitiateMultipartUploadHeaders) String() string {
@@ -5726,6 +6983,8 @@ func (s *InitiateMultipartUploadHeaders) SetTagging(v string) *InitiateMultipart
 }
 
 type InitiateMultipartUploadRequest struct {
+	// The method used to encode the object name in the response. Only URL encoding is supported. The object name can contain characters encoded in UTF-8. However, the XML 1.0 standard cannot be used to parse specific control characters, such as characters whose ASCII values range from 0 to 10. You can configure the encoding-type parameter to encode object names that include characters that cannot be parsed by XML 1.0 in the response.
+	// <br>Default value: null
 	EncodingType *string `json:"encoding-type,omitempty" xml:"encoding-type,omitempty"`
 }
 
@@ -5743,10 +7002,14 @@ func (s *InitiateMultipartUploadRequest) SetEncodingType(v string) *InitiateMult
 }
 
 type InitiateMultipartUploadResponseBody struct {
-	Bucket       *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The name of the bucket to which the object is uploaded by the multipart upload task.
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The encoding type of the object name in the response. If the encoding-type parameter is specified in the request, the object name in the response is encoded.
 	EncodingType *string `json:"EncodingType,omitempty" xml:"EncodingType,omitempty"`
-	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	UploadId     *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// The name of the object that is uploaded by the multipart upload task.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The Upload ID that uniquely identifies the multipart upload task. The Upload ID is used to call UploadPart and CompleteMultipartUpload later.
+	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
 }
 
 func (s InitiateMultipartUploadResponseBody) String() string {
@@ -5881,6 +7144,29 @@ func (s *ListBucketInventoryResponse) SetBody(v *ListBucketInventoryResponseBody
 	return s
 }
 
+type ListBucketsHeaders struct {
+	CommonHeaders       map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XOssResourceGroupId *string            `json:"x-oss-resource-group-id,omitempty" xml:"x-oss-resource-group-id,omitempty"`
+}
+
+func (s ListBucketsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsHeaders) SetCommonHeaders(v map[string]*string) *ListBucketsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListBucketsHeaders) SetXOssResourceGroupId(v string) *ListBucketsHeaders {
+	s.XOssResourceGroupId = &v
+	return s
+}
+
 type ListBucketsRequest struct {
 	Marker  *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	MaxKeys *int64  `json:"max-keys,omitempty" xml:"max-keys,omitempty"`
@@ -5911,13 +7197,13 @@ func (s *ListBucketsRequest) SetPrefix(v string) *ListBucketsRequest {
 }
 
 type ListBucketsResponseBody struct {
-	Buckets     *ListBucketsResponseBodyBuckets `json:"Buckets,omitempty" xml:"Buckets,omitempty" type:"Struct"`
-	IsTruncated *bool                           `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                         `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxKeys     *int64                          `json:"MaxKeys,omitempty" xml:"MaxKeys,omitempty"`
-	NextMarker  *string                         `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
-	Owner       *Owner                          `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Prefix      *string                         `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Buckets     []*Bucket `json:"buckets,omitempty" xml:"buckets,omitempty" type:"Repeated"`
+	IsTruncated *bool     `json:"isTruncated,omitempty" xml:"isTruncated,omitempty"`
+	Marker      *string   `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxKeys     *int64    `json:"maxKeys,omitempty" xml:"maxKeys,omitempty"`
+	NextMarker  *string   `json:"nextMarker,omitempty" xml:"nextMarker,omitempty"`
+	Owner       *Owner    `json:"owner,omitempty" xml:"owner,omitempty"`
+	Prefix      *string   `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
 func (s ListBucketsResponseBody) String() string {
@@ -5928,7 +7214,7 @@ func (s ListBucketsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListBucketsResponseBody) SetBuckets(v *ListBucketsResponseBodyBuckets) *ListBucketsResponseBody {
+func (s *ListBucketsResponseBody) SetBuckets(v []*Bucket) *ListBucketsResponseBody {
 	s.Buckets = v
 	return s
 }
@@ -5960,23 +7246,6 @@ func (s *ListBucketsResponseBody) SetOwner(v *Owner) *ListBucketsResponseBody {
 
 func (s *ListBucketsResponseBody) SetPrefix(v string) *ListBucketsResponseBody {
 	s.Prefix = &v
-	return s
-}
-
-type ListBucketsResponseBodyBuckets struct {
-	Buckets []*Bucket `json:"Bucket,omitempty" xml:"Bucket,omitempty" type:"Repeated"`
-}
-
-func (s ListBucketsResponseBodyBuckets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBucketsResponseBodyBuckets) GoString() string {
-	return s.String()
-}
-
-func (s *ListBucketsResponseBodyBuckets) SetBuckets(v []*Bucket) *ListBucketsResponseBodyBuckets {
-	s.Buckets = v
 	return s
 }
 
@@ -7030,8 +8299,9 @@ func (s *PostVodPlaylistResponse) SetStatusCode(v int32) *PostVodPlaylistRespons
 }
 
 type PutBucketHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Acl           *string            `json:"x-oss-acl,omitempty" xml:"x-oss-acl,omitempty"`
+	CommonHeaders       map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Acl                 *string            `json:"x-oss-acl,omitempty" xml:"x-oss-acl,omitempty"`
+	XOssResourceGroupId *string            `json:"x-oss-resource-group-id,omitempty" xml:"x-oss-resource-group-id,omitempty"`
 }
 
 func (s PutBucketHeaders) String() string {
@@ -7049,6 +8319,11 @@ func (s *PutBucketHeaders) SetCommonHeaders(v map[string]*string) *PutBucketHead
 
 func (s *PutBucketHeaders) SetAcl(v string) *PutBucketHeaders {
 	s.Acl = &v
+	return s
+}
+
+func (s *PutBucketHeaders) SetXOssResourceGroupId(v string) *PutBucketHeaders {
+	s.XOssResourceGroupId = &v
 	return s
 }
 
@@ -7219,6 +8494,7 @@ func (s *PutBucketEncryptionResponse) SetStatusCode(v int32) *PutBucketEncryptio
 }
 
 type PutBucketInventoryRequest struct {
+	// 存储清单配置信息的容器。
 	InventoryConfiguration *InventoryConfiguration `json:"InventoryConfiguration,omitempty" xml:"InventoryConfiguration,omitempty"`
 	InventoryId            *string                 `json:"inventoryId,omitempty" xml:"inventoryId,omitempty"`
 }
@@ -8348,18 +9624,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) AbortBucketWorm(bucket *string) (_result *AbortBucketWormResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AbortBucketWormResponse{}
-	_body, _err := client.AbortBucketWormWithOptions(bucket, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AbortBucketWormWithOptions(bucket *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AbortBucketWormResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["bucket"] = bucket
@@ -8387,11 +9651,11 @@ func (client *Client) AbortBucketWormWithOptions(bucket *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) AbortMultipartUpload(bucket *string, key *string, request *AbortMultipartUploadRequest) (_result *AbortMultipartUploadResponse, _err error) {
+func (client *Client) AbortBucketWorm(bucket *string) (_result *AbortBucketWormResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AbortMultipartUploadResponse{}
-	_body, _err := client.AbortMultipartUploadWithOptions(bucket, key, request, headers, runtime)
+	_result = &AbortBucketWormResponse{}
+	_body, _err := client.AbortBucketWormWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8436,11 +9700,11 @@ func (client *Client) AbortMultipartUploadWithOptions(bucket *string, key *strin
 	return _result, _err
 }
 
-func (client *Client) AppendObject(bucket *string, key *string, request *AppendObjectRequest) (_result *AppendObjectResponse, _err error) {
+func (client *Client) AbortMultipartUpload(bucket *string, key *string, request *AbortMultipartUploadRequest) (_result *AbortMultipartUploadResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AppendObjectHeaders{}
-	_result = &AppendObjectResponse{}
-	_body, _err := client.AppendObjectWithOptions(bucket, key, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &AbortMultipartUploadResponse{}
+	_body, _err := client.AbortMultipartUploadWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8528,11 +9792,11 @@ func (client *Client) AppendObjectWithOptions(bucket *string, key *string, reque
 	return _result, _err
 }
 
-func (client *Client) CompleteBucketWorm(bucket *string, request *CompleteBucketWormRequest) (_result *CompleteBucketWormResponse, _err error) {
+func (client *Client) AppendObject(bucket *string, key *string, request *AppendObjectRequest) (_result *AppendObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CompleteBucketWormResponse{}
-	_body, _err := client.CompleteBucketWormWithOptions(bucket, request, headers, runtime)
+	headers := &AppendObjectHeaders{}
+	_result = &AppendObjectResponse{}
+	_body, _err := client.AppendObjectWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8577,11 +9841,11 @@ func (client *Client) CompleteBucketWormWithOptions(bucket *string, request *Com
 	return _result, _err
 }
 
-func (client *Client) CompleteMultipartUpload(bucket *string, key *string, request *CompleteMultipartUploadRequest) (_result *CompleteMultipartUploadResponse, _err error) {
+func (client *Client) CompleteBucketWorm(bucket *string, request *CompleteBucketWormRequest) (_result *CompleteBucketWormResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CompleteMultipartUploadHeaders{}
-	_result = &CompleteMultipartUploadResponse{}
-	_body, _err := client.CompleteMultipartUploadWithOptions(bucket, key, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &CompleteBucketWormResponse{}
+	_body, _err := client.CompleteBucketWormWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8605,11 +9869,6 @@ func (client *Client) CompleteMultipartUploadWithOptions(bucket *string, key *st
 		query["uploadId"] = request.UploadId
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CompleteMultipartUpload))) {
-		body["completeMultipartUpload"] = request.CompleteMultipartUpload
-	}
-
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -8627,7 +9886,7 @@ func (client *Client) CompleteMultipartUploadWithOptions(bucket *string, key *st
 		HostMap: hostMap,
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CompleteMultipartUpload"),
@@ -8649,11 +9908,11 @@ func (client *Client) CompleteMultipartUploadWithOptions(bucket *string, key *st
 	return _result, _err
 }
 
-func (client *Client) CopyObject(bucket *string, key *string) (_result *CopyObjectResponse, _err error) {
+func (client *Client) CompleteMultipartUpload(bucket *string, key *string, request *CompleteMultipartUploadRequest) (_result *CompleteMultipartUploadResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CopyObjectHeaders{}
-	_result = &CopyObjectResponse{}
-	_body, _err := client.CopyObjectWithOptions(bucket, key, headers, runtime)
+	headers := &CompleteMultipartUploadHeaders{}
+	_result = &CompleteMultipartUploadResponse{}
+	_body, _err := client.CompleteMultipartUploadWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8749,11 +10008,11 @@ func (client *Client) CopyObjectWithOptions(bucket *string, key *string, headers
 	return _result, _err
 }
 
-func (client *Client) CreateSelectObjectMeta(bucket *string, key *string, request *CreateSelectObjectMetaRequest) (_result *CreateSelectObjectMetaResponse, _err error) {
+func (client *Client) CopyObject(bucket *string, key *string) (_result *CopyObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateSelectObjectMetaResponse{}
-	_body, _err := client.CreateSelectObjectMetaWithOptions(bucket, key, request, headers, runtime)
+	headers := &CopyObjectHeaders{}
+	_result = &CopyObjectResponse{}
+	_body, _err := client.CopyObjectWithOptions(bucket, key, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8771,7 +10030,7 @@ func (client *Client) CreateSelectObjectMetaWithOptions(bucket *string, key *str
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.SelectMetaRequest)),
+		Body:    openapiutil.ParseToMap(request.SelectMetaRequest),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSelectObjectMeta"),
@@ -8793,11 +10052,11 @@ func (client *Client) CreateSelectObjectMetaWithOptions(bucket *string, key *str
 	return _result, _err
 }
 
-func (client *Client) DeleteBucket(bucket *string) (_result *DeleteBucketResponse, _err error) {
+func (client *Client) CreateSelectObjectMeta(bucket *string, key *string, request *CreateSelectObjectMetaRequest) (_result *CreateSelectObjectMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketResponse{}
-	_body, _err := client.DeleteBucketWithOptions(bucket, headers, runtime)
+	_result = &CreateSelectObjectMetaResponse{}
+	_body, _err := client.CreateSelectObjectMetaWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8832,11 +10091,11 @@ func (client *Client) DeleteBucketWithOptions(bucket *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketCors(bucket *string) (_result *DeleteBucketCorsResponse, _err error) {
+func (client *Client) DeleteBucket(bucket *string) (_result *DeleteBucketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketCorsResponse{}
-	_body, _err := client.DeleteBucketCorsWithOptions(bucket, headers, runtime)
+	_result = &DeleteBucketResponse{}
+	_body, _err := client.DeleteBucketWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8871,11 +10130,11 @@ func (client *Client) DeleteBucketCorsWithOptions(bucket *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketEncryption(bucket *string) (_result *DeleteBucketEncryptionResponse, _err error) {
+func (client *Client) DeleteBucketCors(bucket *string) (_result *DeleteBucketCorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketEncryptionResponse{}
-	_body, _err := client.DeleteBucketEncryptionWithOptions(bucket, headers, runtime)
+	_result = &DeleteBucketCorsResponse{}
+	_body, _err := client.DeleteBucketCorsWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8910,11 +10169,11 @@ func (client *Client) DeleteBucketEncryptionWithOptions(bucket *string, headers 
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketInventory(bucket *string, request *DeleteBucketInventoryRequest) (_result *DeleteBucketInventoryResponse, _err error) {
+func (client *Client) DeleteBucketEncryption(bucket *string) (_result *DeleteBucketEncryptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketInventoryResponse{}
-	_body, _err := client.DeleteBucketInventoryWithOptions(bucket, request, headers, runtime)
+	_result = &DeleteBucketEncryptionResponse{}
+	_body, _err := client.DeleteBucketEncryptionWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8959,11 +10218,11 @@ func (client *Client) DeleteBucketInventoryWithOptions(bucket *string, request *
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketLifecycle(bucket *string) (_result *DeleteBucketLifecycleResponse, _err error) {
+func (client *Client) DeleteBucketInventory(bucket *string, request *DeleteBucketInventoryRequest) (_result *DeleteBucketInventoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketLifecycleResponse{}
-	_body, _err := client.DeleteBucketLifecycleWithOptions(bucket, headers, runtime)
+	_result = &DeleteBucketInventoryResponse{}
+	_body, _err := client.DeleteBucketInventoryWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8998,11 +10257,11 @@ func (client *Client) DeleteBucketLifecycleWithOptions(bucket *string, headers m
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketLogging(bucket *string) (_result *DeleteBucketLoggingResponse, _err error) {
+func (client *Client) DeleteBucketLifecycle(bucket *string) (_result *DeleteBucketLifecycleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketLoggingResponse{}
-	_body, _err := client.DeleteBucketLoggingWithOptions(bucket, headers, runtime)
+	_result = &DeleteBucketLifecycleResponse{}
+	_body, _err := client.DeleteBucketLifecycleWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9037,11 +10296,11 @@ func (client *Client) DeleteBucketLoggingWithOptions(bucket *string, headers map
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketPolicy(bucket *string) (_result *DeleteBucketPolicyResponse, _err error) {
+func (client *Client) DeleteBucketLogging(bucket *string) (_result *DeleteBucketLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketPolicyResponse{}
-	_body, _err := client.DeleteBucketPolicyWithOptions(bucket, headers, runtime)
+	_result = &DeleteBucketLoggingResponse{}
+	_body, _err := client.DeleteBucketLoggingWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9076,11 +10335,11 @@ func (client *Client) DeleteBucketPolicyWithOptions(bucket *string, headers map[
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketReplication(bucket *string, request *DeleteBucketReplicationRequest) (_result *DeleteBucketReplicationResponse, _err error) {
+func (client *Client) DeleteBucketPolicy(bucket *string) (_result *DeleteBucketPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketReplicationResponse{}
-	_body, _err := client.DeleteBucketReplicationWithOptions(bucket, request, headers, runtime)
+	_result = &DeleteBucketPolicyResponse{}
+	_body, _err := client.DeleteBucketPolicyWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9098,7 +10357,7 @@ func (client *Client) DeleteBucketReplicationWithOptions(bucket *string, request
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteBucketReplication"),
@@ -9120,11 +10379,11 @@ func (client *Client) DeleteBucketReplicationWithOptions(bucket *string, request
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketTags(bucket *string) (_result *DeleteBucketTagsResponse, _err error) {
+func (client *Client) DeleteBucketReplication(bucket *string, request *DeleteBucketReplicationRequest) (_result *DeleteBucketReplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketTagsResponse{}
-	_body, _err := client.DeleteBucketTagsWithOptions(bucket, headers, runtime)
+	_result = &DeleteBucketReplicationResponse{}
+	_body, _err := client.DeleteBucketReplicationWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9159,11 +10418,11 @@ func (client *Client) DeleteBucketTagsWithOptions(bucket *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) DeleteBucketWebsite(bucket *string) (_result *DeleteBucketWebsiteResponse, _err error) {
+func (client *Client) DeleteBucketTags(bucket *string) (_result *DeleteBucketTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBucketWebsiteResponse{}
-	_body, _err := client.DeleteBucketWebsiteWithOptions(bucket, headers, runtime)
+	_result = &DeleteBucketTagsResponse{}
+	_body, _err := client.DeleteBucketTagsWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9198,11 +10457,11 @@ func (client *Client) DeleteBucketWebsiteWithOptions(bucket *string, headers map
 	return _result, _err
 }
 
-func (client *Client) DeleteLiveChannel(bucket *string, channel *string) (_result *DeleteLiveChannelResponse, _err error) {
+func (client *Client) DeleteBucketWebsite(bucket *string) (_result *DeleteBucketWebsiteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteLiveChannelResponse{}
-	_body, _err := client.DeleteLiveChannelWithOptions(bucket, channel, headers, runtime)
+	_result = &DeleteBucketWebsiteResponse{}
+	_body, _err := client.DeleteBucketWebsiteWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9237,11 +10496,11 @@ func (client *Client) DeleteLiveChannelWithOptions(bucket *string, channel *stri
 	return _result, _err
 }
 
-func (client *Client) DeleteMultipleObjects(bucket *string, request *DeleteMultipleObjectsRequest) (_result *DeleteMultipleObjectsResponse, _err error) {
+func (client *Client) DeleteLiveChannel(bucket *string, channel *string) (_result *DeleteLiveChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteMultipleObjectsResponse{}
-	_body, _err := client.DeleteMultipleObjectsWithOptions(bucket, request, headers, runtime)
+	_result = &DeleteLiveChannelResponse{}
+	_body, _err := client.DeleteLiveChannelWithOptions(bucket, channel, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9249,7 +10508,7 @@ func (client *Client) DeleteMultipleObjects(bucket *string, request *DeleteMulti
 	return _result, _err
 }
 
-func (client *Client) DeleteMultipleObjectsWithOptions(bucket *string, request *DeleteMultipleObjectsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMultipleObjectsResponse, _err error) {
+func (client *Client) DeleteMultipleObjectsWithOptions(bucket *string, request *DeleteMultipleObjectsRequest, headers *DeleteMultipleObjectsHeaders, runtime *util.RuntimeOptions) (_result *DeleteMultipleObjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9261,11 +10520,20 @@ func (client *Client) DeleteMultipleObjectsWithOptions(bucket *string, request *
 		query["encoding-type"] = request.EncodingType
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ContentMd5)) {
+		realHeaders["content-md5"] = util.ToJSONString(headers.ContentMd5)
+	}
+
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Delete)),
+		Body:    openapiutil.ParseToMap(request.Delete),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMultipleObjects"),
@@ -9287,11 +10555,11 @@ func (client *Client) DeleteMultipleObjectsWithOptions(bucket *string, request *
 	return _result, _err
 }
 
-func (client *Client) DeleteObject(bucket *string, key *string, request *DeleteObjectRequest) (_result *DeleteObjectResponse, _err error) {
+func (client *Client) DeleteMultipleObjects(bucket *string, request *DeleteMultipleObjectsRequest) (_result *DeleteMultipleObjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteObjectResponse{}
-	_body, _err := client.DeleteObjectWithOptions(bucket, key, request, headers, runtime)
+	headers := &DeleteMultipleObjectsHeaders{}
+	_result = &DeleteMultipleObjectsResponse{}
+	_body, _err := client.DeleteMultipleObjectsWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9336,11 +10604,11 @@ func (client *Client) DeleteObjectWithOptions(bucket *string, key *string, reque
 	return _result, _err
 }
 
-func (client *Client) DeleteObjectTagging(bucket *string, key *string, request *DeleteObjectTaggingRequest) (_result *DeleteObjectTaggingResponse, _err error) {
+func (client *Client) DeleteObject(bucket *string, key *string, request *DeleteObjectRequest) (_result *DeleteObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteObjectTaggingResponse{}
-	_body, _err := client.DeleteObjectTaggingWithOptions(bucket, key, request, headers, runtime)
+	_result = &DeleteObjectResponse{}
+	_body, _err := client.DeleteObjectWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9385,11 +10653,11 @@ func (client *Client) DeleteObjectTaggingWithOptions(bucket *string, key *string
 	return _result, _err
 }
 
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DeleteObjectTagging(bucket *string, key *string, request *DeleteObjectTaggingRequest) (_result *DeleteObjectTaggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
+	_result = &DeleteObjectTaggingResponse{}
+	_body, _err := client.DeleteObjectTaggingWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9431,11 +10699,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
-func (client *Client) ExtendBucketWorm(bucket *string, request *ExtendBucketWormRequest) (_result *ExtendBucketWormResponse, _err error) {
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ExtendBucketWormResponse{}
-	_body, _err := client.ExtendBucketWormWithOptions(bucket, request, headers, runtime)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9455,16 +10723,11 @@ func (client *Client) ExtendBucketWormWithOptions(bucket *string, request *Exten
 		query["wormId"] = request.WormId
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ExtendWormConfiguration))) {
-		body["extendWormConfiguration"] = request.ExtendWormConfiguration
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ExtendBucketWorm"),
@@ -9486,11 +10749,11 @@ func (client *Client) ExtendBucketWormWithOptions(bucket *string, request *Exten
 	return _result, _err
 }
 
-func (client *Client) GetBucketAcl(bucket *string) (_result *GetBucketAclResponse, _err error) {
+func (client *Client) ExtendBucketWorm(bucket *string, request *ExtendBucketWormRequest) (_result *ExtendBucketWormResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketAclResponse{}
-	_body, _err := client.GetBucketAclWithOptions(bucket, headers, runtime)
+	_result = &ExtendBucketWormResponse{}
+	_body, _err := client.ExtendBucketWormWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9525,11 +10788,11 @@ func (client *Client) GetBucketAclWithOptions(bucket *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) GetBucketCors(bucket *string) (_result *GetBucketCorsResponse, _err error) {
+func (client *Client) GetBucketAcl(bucket *string) (_result *GetBucketAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketCorsResponse{}
-	_body, _err := client.GetBucketCorsWithOptions(bucket, headers, runtime)
+	_result = &GetBucketAclResponse{}
+	_body, _err := client.GetBucketAclWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9564,11 +10827,11 @@ func (client *Client) GetBucketCorsWithOptions(bucket *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) GetBucketEncryption(bucket *string) (_result *GetBucketEncryptionResponse, _err error) {
+func (client *Client) GetBucketCors(bucket *string) (_result *GetBucketCorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketEncryptionResponse{}
-	_body, _err := client.GetBucketEncryptionWithOptions(bucket, headers, runtime)
+	_result = &GetBucketCorsResponse{}
+	_body, _err := client.GetBucketCorsWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9603,11 +10866,11 @@ func (client *Client) GetBucketEncryptionWithOptions(bucket *string, headers map
 	return _result, _err
 }
 
-func (client *Client) GetBucketInfo(bucket *string) (_result *GetBucketInfoResponse, _err error) {
+func (client *Client) GetBucketEncryption(bucket *string) (_result *GetBucketEncryptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketInfoResponse{}
-	_body, _err := client.GetBucketInfoWithOptions(bucket, headers, runtime)
+	_result = &GetBucketEncryptionResponse{}
+	_body, _err := client.GetBucketEncryptionWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9642,11 +10905,11 @@ func (client *Client) GetBucketInfoWithOptions(bucket *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) GetBucketInventory(bucket *string, request *GetBucketInventoryRequest) (_result *GetBucketInventoryResponse, _err error) {
+func (client *Client) GetBucketInfo(bucket *string) (_result *GetBucketInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketInventoryResponse{}
-	_body, _err := client.GetBucketInventoryWithOptions(bucket, request, headers, runtime)
+	_result = &GetBucketInfoResponse{}
+	_body, _err := client.GetBucketInfoWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9691,11 +10954,11 @@ func (client *Client) GetBucketInventoryWithOptions(bucket *string, request *Get
 	return _result, _err
 }
 
-func (client *Client) GetBucketLifecycle(bucket *string) (_result *GetBucketLifecycleResponse, _err error) {
+func (client *Client) GetBucketInventory(bucket *string, request *GetBucketInventoryRequest) (_result *GetBucketInventoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketLifecycleResponse{}
-	_body, _err := client.GetBucketLifecycleWithOptions(bucket, headers, runtime)
+	_result = &GetBucketInventoryResponse{}
+	_body, _err := client.GetBucketInventoryWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9730,11 +10993,11 @@ func (client *Client) GetBucketLifecycleWithOptions(bucket *string, headers map[
 	return _result, _err
 }
 
-func (client *Client) GetBucketLocation(bucket *string) (_result *GetBucketLocationResponse, _err error) {
+func (client *Client) GetBucketLifecycle(bucket *string) (_result *GetBucketLifecycleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketLocationResponse{}
-	_body, _err := client.GetBucketLocationWithOptions(bucket, headers, runtime)
+	_result = &GetBucketLifecycleResponse{}
+	_body, _err := client.GetBucketLifecycleWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9769,11 +11032,11 @@ func (client *Client) GetBucketLocationWithOptions(bucket *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) GetBucketLogging(bucket *string) (_result *GetBucketLoggingResponse, _err error) {
+func (client *Client) GetBucketLocation(bucket *string) (_result *GetBucketLocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketLoggingResponse{}
-	_body, _err := client.GetBucketLoggingWithOptions(bucket, headers, runtime)
+	_result = &GetBucketLocationResponse{}
+	_body, _err := client.GetBucketLocationWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9808,11 +11071,11 @@ func (client *Client) GetBucketLoggingWithOptions(bucket *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) GetBucketPolicy(bucket *string) (_result *GetBucketPolicyResponse, _err error) {
+func (client *Client) GetBucketLogging(bucket *string) (_result *GetBucketLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketPolicyResponse{}
-	_body, _err := client.GetBucketPolicyWithOptions(bucket, headers, runtime)
+	_result = &GetBucketLoggingResponse{}
+	_body, _err := client.GetBucketLoggingWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9847,11 +11110,11 @@ func (client *Client) GetBucketPolicyWithOptions(bucket *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) GetBucketReferer(bucket *string) (_result *GetBucketRefererResponse, _err error) {
+func (client *Client) GetBucketPolicy(bucket *string) (_result *GetBucketPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketRefererResponse{}
-	_body, _err := client.GetBucketRefererWithOptions(bucket, headers, runtime)
+	_result = &GetBucketPolicyResponse{}
+	_body, _err := client.GetBucketPolicyWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9875,7 +11138,7 @@ func (client *Client) GetBucketRefererWithOptions(bucket *string, headers map[st
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("xml"),
-		BodyType:    tea.String("xml"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBucketRefererResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -9886,11 +11149,11 @@ func (client *Client) GetBucketRefererWithOptions(bucket *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) GetBucketReplication(bucket *string) (_result *GetBucketReplicationResponse, _err error) {
+func (client *Client) GetBucketReferer(bucket *string) (_result *GetBucketRefererResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketReplicationResponse{}
-	_body, _err := client.GetBucketReplicationWithOptions(bucket, headers, runtime)
+	_result = &GetBucketRefererResponse{}
+	_body, _err := client.GetBucketRefererWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9925,11 +11188,11 @@ func (client *Client) GetBucketReplicationWithOptions(bucket *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) GetBucketReplicationLocation(bucket *string) (_result *GetBucketReplicationLocationResponse, _err error) {
+func (client *Client) GetBucketReplication(bucket *string) (_result *GetBucketReplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketReplicationLocationResponse{}
-	_body, _err := client.GetBucketReplicationLocationWithOptions(bucket, headers, runtime)
+	_result = &GetBucketReplicationResponse{}
+	_body, _err := client.GetBucketReplicationWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9964,11 +11227,11 @@ func (client *Client) GetBucketReplicationLocationWithOptions(bucket *string, he
 	return _result, _err
 }
 
-func (client *Client) GetBucketReplicationProgress(bucket *string, request *GetBucketReplicationProgressRequest) (_result *GetBucketReplicationProgressResponse, _err error) {
+func (client *Client) GetBucketReplicationLocation(bucket *string) (_result *GetBucketReplicationLocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketReplicationProgressResponse{}
-	_body, _err := client.GetBucketReplicationProgressWithOptions(bucket, request, headers, runtime)
+	_result = &GetBucketReplicationLocationResponse{}
+	_body, _err := client.GetBucketReplicationLocationWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10013,11 +11276,11 @@ func (client *Client) GetBucketReplicationProgressWithOptions(bucket *string, re
 	return _result, _err
 }
 
-func (client *Client) GetBucketRequestPayment(bucket *string) (_result *GetBucketRequestPaymentResponse, _err error) {
+func (client *Client) GetBucketReplicationProgress(bucket *string, request *GetBucketReplicationProgressRequest) (_result *GetBucketReplicationProgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketRequestPaymentResponse{}
-	_body, _err := client.GetBucketRequestPaymentWithOptions(bucket, headers, runtime)
+	_result = &GetBucketReplicationProgressResponse{}
+	_body, _err := client.GetBucketReplicationProgressWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10052,11 +11315,11 @@ func (client *Client) GetBucketRequestPaymentWithOptions(bucket *string, headers
 	return _result, _err
 }
 
-func (client *Client) GetBucketTags(bucket *string) (_result *GetBucketTagsResponse, _err error) {
+func (client *Client) GetBucketRequestPayment(bucket *string) (_result *GetBucketRequestPaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketTagsResponse{}
-	_body, _err := client.GetBucketTagsWithOptions(bucket, headers, runtime)
+	_result = &GetBucketRequestPaymentResponse{}
+	_body, _err := client.GetBucketRequestPaymentWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10091,11 +11354,11 @@ func (client *Client) GetBucketTagsWithOptions(bucket *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) GetBucketTransferAcceleration(bucket *string) (_result *GetBucketTransferAccelerationResponse, _err error) {
+func (client *Client) GetBucketTags(bucket *string) (_result *GetBucketTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketTransferAccelerationResponse{}
-	_body, _err := client.GetBucketTransferAccelerationWithOptions(bucket, headers, runtime)
+	_result = &GetBucketTagsResponse{}
+	_body, _err := client.GetBucketTagsWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10130,11 +11393,11 @@ func (client *Client) GetBucketTransferAccelerationWithOptions(bucket *string, h
 	return _result, _err
 }
 
-func (client *Client) GetBucketVersioning(bucket *string) (_result *GetBucketVersioningResponse, _err error) {
+func (client *Client) GetBucketTransferAcceleration(bucket *string) (_result *GetBucketTransferAccelerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketVersioningResponse{}
-	_body, _err := client.GetBucketVersioningWithOptions(bucket, headers, runtime)
+	_result = &GetBucketTransferAccelerationResponse{}
+	_body, _err := client.GetBucketTransferAccelerationWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10169,11 +11432,11 @@ func (client *Client) GetBucketVersioningWithOptions(bucket *string, headers map
 	return _result, _err
 }
 
-func (client *Client) GetBucketWebsite(bucket *string) (_result *GetBucketWebsiteResponse, _err error) {
+func (client *Client) GetBucketVersioning(bucket *string) (_result *GetBucketVersioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketWebsiteResponse{}
-	_body, _err := client.GetBucketWebsiteWithOptions(bucket, headers, runtime)
+	_result = &GetBucketVersioningResponse{}
+	_body, _err := client.GetBucketVersioningWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10208,11 +11471,11 @@ func (client *Client) GetBucketWebsiteWithOptions(bucket *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) GetBucketWorm(bucket *string) (_result *GetBucketWormResponse, _err error) {
+func (client *Client) GetBucketWebsite(bucket *string) (_result *GetBucketWebsiteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBucketWormResponse{}
-	_body, _err := client.GetBucketWormWithOptions(bucket, headers, runtime)
+	_result = &GetBucketWebsiteResponse{}
+	_body, _err := client.GetBucketWebsiteWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10247,11 +11510,11 @@ func (client *Client) GetBucketWormWithOptions(bucket *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) GetLiveChannelHistory(bucket *string, channel *string) (_result *GetLiveChannelHistoryResponse, _err error) {
+func (client *Client) GetBucketWorm(bucket *string) (_result *GetBucketWormResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLiveChannelHistoryResponse{}
-	_body, _err := client.GetLiveChannelHistoryWithOptions(bucket, channel, headers, runtime)
+	_result = &GetBucketWormResponse{}
+	_body, _err := client.GetBucketWormWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10286,11 +11549,11 @@ func (client *Client) GetLiveChannelHistoryWithOptions(bucket *string, channel *
 	return _result, _err
 }
 
-func (client *Client) GetLiveChannelInfo(bucket *string, channel *string) (_result *GetLiveChannelInfoResponse, _err error) {
+func (client *Client) GetLiveChannelHistory(bucket *string, channel *string) (_result *GetLiveChannelHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLiveChannelInfoResponse{}
-	_body, _err := client.GetLiveChannelInfoWithOptions(bucket, channel, headers, runtime)
+	_result = &GetLiveChannelHistoryResponse{}
+	_body, _err := client.GetLiveChannelHistoryWithOptions(bucket, channel, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10325,11 +11588,11 @@ func (client *Client) GetLiveChannelInfoWithOptions(bucket *string, channel *str
 	return _result, _err
 }
 
-func (client *Client) GetLiveChannelStat(bucket *string, channel *string) (_result *GetLiveChannelStatResponse, _err error) {
+func (client *Client) GetLiveChannelInfo(bucket *string, channel *string) (_result *GetLiveChannelInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLiveChannelStatResponse{}
-	_body, _err := client.GetLiveChannelStatWithOptions(bucket, channel, headers, runtime)
+	_result = &GetLiveChannelInfoResponse{}
+	_body, _err := client.GetLiveChannelInfoWithOptions(bucket, channel, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10364,11 +11627,11 @@ func (client *Client) GetLiveChannelStatWithOptions(bucket *string, channel *str
 	return _result, _err
 }
 
-func (client *Client) GetObject(bucket *string, key *string, request *GetObjectRequest) (_result *GetObjectResponse, _err error) {
+func (client *Client) GetLiveChannelStat(bucket *string, channel *string) (_result *GetLiveChannelStatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetObjectHeaders{}
-	_result = &GetObjectResponse{}
-	_body, _err := client.GetObjectWithOptions(bucket, key, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &GetLiveChannelStatResponse{}
+	_body, _err := client.GetLiveChannelStatWithOptions(bucket, channel, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10376,6 +11639,19 @@ func (client *Client) GetObject(bucket *string, key *string, request *GetObjectR
 	return _result, _err
 }
 
+/**
+ * **Usage notes**
+ * - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+ * - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+ * **Versioning**
+ * By default, only the current version of an object is returned after GetObject is called.
+ * If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+ *
+ * @param request GetObjectRequest
+ * @param headers GetObjectHeaders
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetObjectResponse
+ */
 func (client *Client) GetObjectWithOptions(bucket *string, key *string, request *GetObjectRequest, headers *GetObjectHeaders, runtime *util.RuntimeOptions) (_result *GetObjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10462,11 +11738,22 @@ func (client *Client) GetObjectWithOptions(bucket *string, key *string, request 
 	return _result, _err
 }
 
-func (client *Client) GetObjectAcl(bucket *string, key *string, request *GetObjectAclRequest) (_result *GetObjectAclResponse, _err error) {
+/**
+ * **Usage notes**
+ * - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+ * - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+ * **Versioning**
+ * By default, only the current version of an object is returned after GetObject is called.
+ * If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+ *
+ * @param request GetObjectRequest
+ * @return GetObjectResponse
+ */
+func (client *Client) GetObject(bucket *string, key *string, request *GetObjectRequest) (_result *GetObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetObjectAclResponse{}
-	_body, _err := client.GetObjectAclWithOptions(bucket, key, request, headers, runtime)
+	headers := &GetObjectHeaders{}
+	_result = &GetObjectResponse{}
+	_body, _err := client.GetObjectWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10511,11 +11798,11 @@ func (client *Client) GetObjectAclWithOptions(bucket *string, key *string, reque
 	return _result, _err
 }
 
-func (client *Client) GetObjectMeta(bucket *string, key *string, request *GetObjectMetaRequest) (_result *GetObjectMetaResponse, _err error) {
+func (client *Client) GetObjectAcl(bucket *string, key *string, request *GetObjectAclRequest) (_result *GetObjectAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetObjectMetaResponse{}
-	_body, _err := client.GetObjectMetaWithOptions(bucket, key, request, headers, runtime)
+	_result = &GetObjectAclResponse{}
+	_body, _err := client.GetObjectAclWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10560,11 +11847,11 @@ func (client *Client) GetObjectMetaWithOptions(bucket *string, key *string, requ
 	return _result, _err
 }
 
-func (client *Client) GetObjectTagging(bucket *string, key *string, request *GetObjectTaggingRequest) (_result *GetObjectTaggingResponse, _err error) {
+func (client *Client) GetObjectMeta(bucket *string, key *string, request *GetObjectMetaRequest) (_result *GetObjectMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetObjectTaggingResponse{}
-	_body, _err := client.GetObjectTaggingWithOptions(bucket, key, request, headers, runtime)
+	_result = &GetObjectMetaResponse{}
+	_body, _err := client.GetObjectMetaWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10609,11 +11896,11 @@ func (client *Client) GetObjectTaggingWithOptions(bucket *string, key *string, r
 	return _result, _err
 }
 
-func (client *Client) GetSymlink(bucket *string, key *string, request *GetSymlinkRequest) (_result *GetSymlinkResponse, _err error) {
+func (client *Client) GetObjectTagging(bucket *string, key *string, request *GetObjectTaggingRequest) (_result *GetObjectTaggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSymlinkResponse{}
-	_body, _err := client.GetSymlinkWithOptions(bucket, key, request, headers, runtime)
+	_result = &GetObjectTaggingResponse{}
+	_body, _err := client.GetObjectTaggingWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10658,11 +11945,11 @@ func (client *Client) GetSymlinkWithOptions(bucket *string, key *string, request
 	return _result, _err
 }
 
-func (client *Client) GetVodPlaylist(bucket *string, channel *string, request *GetVodPlaylistRequest) (_result *GetVodPlaylistResponse, _err error) {
+func (client *Client) GetSymlink(bucket *string, key *string, request *GetSymlinkRequest) (_result *GetSymlinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetVodPlaylistResponse{}
-	_body, _err := client.GetVodPlaylistWithOptions(bucket, channel, request, headers, runtime)
+	_result = &GetSymlinkResponse{}
+	_body, _err := client.GetSymlinkWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10711,11 +11998,11 @@ func (client *Client) GetVodPlaylistWithOptions(bucket *string, channel *string,
 	return _result, _err
 }
 
-func (client *Client) HeadObject(bucket *string, key *string, request *HeadObjectRequest) (_result *HeadObjectResponse, _err error) {
+func (client *Client) GetVodPlaylist(bucket *string, channel *string, request *GetVodPlaylistRequest) (_result *GetVodPlaylistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &HeadObjectHeaders{}
-	_result = &HeadObjectResponse{}
-	_body, _err := client.HeadObjectWithOptions(bucket, key, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &GetVodPlaylistResponse{}
+	_body, _err := client.GetVodPlaylistWithOptions(bucket, channel, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10723,6 +12010,15 @@ func (client *Client) HeadObject(bucket *string, key *string, request *HeadObjec
 	return _result, _err
 }
 
+/**
+ * - When you call this operation, the object content is not returned in the results.
+ * - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+ *
+ * @param request HeadObjectRequest
+ * @param headers HeadObjectHeaders
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return HeadObjectResponse
+ */
 func (client *Client) HeadObjectWithOptions(bucket *string, key *string, request *HeadObjectRequest, headers *HeadObjectHeaders, runtime *util.RuntimeOptions) (_result *HeadObjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10781,11 +12077,18 @@ func (client *Client) HeadObjectWithOptions(bucket *string, key *string, request
 	return _result, _err
 }
 
-func (client *Client) InitiateBucketWorm(bucket *string, request *InitiateBucketWormRequest) (_result *InitiateBucketWormResponse, _err error) {
+/**
+ * - When you call this operation, the object content is not returned in the results.
+ * - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+ *
+ * @param request HeadObjectRequest
+ * @return HeadObjectResponse
+ */
+func (client *Client) HeadObject(bucket *string, key *string, request *HeadObjectRequest) (_result *HeadObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &InitiateBucketWormResponse{}
-	_body, _err := client.InitiateBucketWormWithOptions(bucket, request, headers, runtime)
+	headers := &HeadObjectHeaders{}
+	_result = &HeadObjectResponse{}
+	_body, _err := client.HeadObjectWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10803,7 +12106,7 @@ func (client *Client) InitiateBucketWormWithOptions(bucket *string, request *Ini
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.InitiateWormConfiguration)),
+		Body:    openapiutil.ParseToMap(request.InitiateWormConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InitiateBucketWorm"),
@@ -10825,11 +12128,11 @@ func (client *Client) InitiateBucketWormWithOptions(bucket *string, request *Ini
 	return _result, _err
 }
 
-func (client *Client) InitiateMultipartUpload(bucket *string, key *string, request *InitiateMultipartUploadRequest) (_result *InitiateMultipartUploadResponse, _err error) {
+func (client *Client) InitiateBucketWorm(bucket *string, request *InitiateBucketWormRequest) (_result *InitiateBucketWormResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &InitiateMultipartUploadHeaders{}
-	_result = &InitiateMultipartUploadResponse{}
-	_body, _err := client.InitiateMultipartUploadWithOptions(bucket, key, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &InitiateBucketWormResponse{}
+	_body, _err := client.InitiateBucketWormWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10837,6 +12140,16 @@ func (client *Client) InitiateMultipartUpload(bucket *string, key *string, reque
 	return _result, _err
 }
 
+/**
+ * - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+ * - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+ * - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+ *
+ * @param request InitiateMultipartUploadRequest
+ * @param headers InitiateMultipartUploadHeaders
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InitiateMultipartUploadResponse
+ */
 func (client *Client) InitiateMultipartUploadWithOptions(bucket *string, key *string, request *InitiateMultipartUploadRequest, headers *InitiateMultipartUploadHeaders, runtime *util.RuntimeOptions) (_result *InitiateMultipartUploadResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10919,11 +12232,19 @@ func (client *Client) InitiateMultipartUploadWithOptions(bucket *string, key *st
 	return _result, _err
 }
 
-func (client *Client) ListBucketInventory(bucket *string, request *ListBucketInventoryRequest) (_result *ListBucketInventoryResponse, _err error) {
+/**
+ * - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+ * - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+ * - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+ *
+ * @param request InitiateMultipartUploadRequest
+ * @return InitiateMultipartUploadResponse
+ */
+func (client *Client) InitiateMultipartUpload(bucket *string, key *string, request *InitiateMultipartUploadRequest) (_result *InitiateMultipartUploadResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListBucketInventoryResponse{}
-	_body, _err := client.ListBucketInventoryWithOptions(bucket, request, headers, runtime)
+	headers := &InitiateMultipartUploadHeaders{}
+	_result = &InitiateMultipartUploadResponse{}
+	_body, _err := client.InitiateMultipartUploadWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10968,11 +12289,11 @@ func (client *Client) ListBucketInventoryWithOptions(bucket *string, request *Li
 	return _result, _err
 }
 
-func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBucketsResponse, _err error) {
+func (client *Client) ListBucketInventory(bucket *string, request *ListBucketInventoryRequest) (_result *ListBucketInventoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListBucketsResponse{}
-	_body, _err := client.ListBucketsWithOptions(request, headers, runtime)
+	_result = &ListBucketInventoryResponse{}
+	_body, _err := client.ListBucketInventoryWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10980,7 +12301,7 @@ func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBuc
 	return _result, _err
 }
 
-func (client *Client) ListBucketsWithOptions(request *ListBucketsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListBucketsResponse, _err error) {
+func (client *Client) ListBucketsWithOptions(request *ListBucketsRequest, headers *ListBucketsHeaders, runtime *util.RuntimeOptions) (_result *ListBucketsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -10998,8 +12319,17 @@ func (client *Client) ListBucketsWithOptions(request *ListBucketsRequest, header
 		query["prefix"] = request.Prefix
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XOssResourceGroupId)) {
+		realHeaders["x-oss-resource-group-id"] = util.ToJSONString(headers.XOssResourceGroupId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -11022,11 +12352,11 @@ func (client *Client) ListBucketsWithOptions(request *ListBucketsRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListLiveChannel(bucket *string, request *ListLiveChannelRequest) (_result *ListLiveChannelResponse, _err error) {
+func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBucketsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListLiveChannelResponse{}
-	_body, _err := client.ListLiveChannelWithOptions(bucket, request, headers, runtime)
+	headers := &ListBucketsHeaders{}
+	_result = &ListBucketsResponse{}
+	_body, _err := client.ListBucketsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11079,11 +12409,11 @@ func (client *Client) ListLiveChannelWithOptions(bucket *string, request *ListLi
 	return _result, _err
 }
 
-func (client *Client) ListMultipartUploads(bucket *string, request *ListMultipartUploadsRequest) (_result *ListMultipartUploadsResponse, _err error) {
+func (client *Client) ListLiveChannel(bucket *string, request *ListLiveChannelRequest) (_result *ListLiveChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListMultipartUploadsResponse{}
-	_body, _err := client.ListMultipartUploadsWithOptions(bucket, request, headers, runtime)
+	_result = &ListLiveChannelResponse{}
+	_body, _err := client.ListLiveChannelWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11148,11 +12478,11 @@ func (client *Client) ListMultipartUploadsWithOptions(bucket *string, request *L
 	return _result, _err
 }
 
-func (client *Client) ListObjectVersions(bucket *string, request *ListObjectVersionsRequest) (_result *ListObjectVersionsResponse, _err error) {
+func (client *Client) ListMultipartUploads(bucket *string, request *ListMultipartUploadsRequest) (_result *ListMultipartUploadsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListObjectVersionsResponse{}
-	_body, _err := client.ListObjectVersionsWithOptions(bucket, request, headers, runtime)
+	_result = &ListMultipartUploadsResponse{}
+	_body, _err := client.ListMultipartUploadsWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11217,11 +12547,11 @@ func (client *Client) ListObjectVersionsWithOptions(bucket *string, request *Lis
 	return _result, _err
 }
 
-func (client *Client) ListObjects(bucket *string, request *ListObjectsRequest) (_result *ListObjectsResponse, _err error) {
+func (client *Client) ListObjectVersions(bucket *string, request *ListObjectVersionsRequest) (_result *ListObjectVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListObjectsResponse{}
-	_body, _err := client.ListObjectsWithOptions(bucket, request, headers, runtime)
+	_result = &ListObjectVersionsResponse{}
+	_body, _err := client.ListObjectVersionsWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11282,11 +12612,11 @@ func (client *Client) ListObjectsWithOptions(bucket *string, request *ListObject
 	return _result, _err
 }
 
-func (client *Client) ListObjectsV2(bucket *string, request *ListObjectsV2Request) (_result *ListObjectsV2Response, _err error) {
+func (client *Client) ListObjects(bucket *string, request *ListObjectsRequest) (_result *ListObjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListObjectsV2Response{}
-	_body, _err := client.ListObjectsV2WithOptions(bucket, request, headers, runtime)
+	_result = &ListObjectsResponse{}
+	_body, _err := client.ListObjectsWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11355,11 +12685,11 @@ func (client *Client) ListObjectsV2WithOptions(bucket *string, request *ListObje
 	return _result, _err
 }
 
-func (client *Client) ListParts(bucket *string, key *string, request *ListPartsRequest) (_result *ListPartsResponse, _err error) {
+func (client *Client) ListObjectsV2(bucket *string, request *ListObjectsV2Request) (_result *ListObjectsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPartsResponse{}
-	_body, _err := client.ListPartsWithOptions(bucket, key, request, headers, runtime)
+	_result = &ListObjectsV2Response{}
+	_body, _err := client.ListObjectsV2WithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11422,11 +12752,11 @@ func (client *Client) ListPartsWithOptions(bucket *string, key *string, tmpReq *
 	return _result, _err
 }
 
-func (client *Client) OptionObject(bucket *string, key *string) (_result *OptionObjectResponse, _err error) {
+func (client *Client) ListParts(bucket *string, key *string, request *ListPartsRequest) (_result *ListPartsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &OptionObjectHeaders{}
-	_result = &OptionObjectResponse{}
-	_body, _err := client.OptionObjectWithOptions(bucket, key, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &ListPartsResponse{}
+	_body, _err := client.ListPartsWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11478,11 +12808,11 @@ func (client *Client) OptionObjectWithOptions(bucket *string, key *string, heade
 	return _result, _err
 }
 
-func (client *Client) PostObject(bucket *string) (_result *PostObjectResponse, _err error) {
+func (client *Client) OptionObject(bucket *string, key *string) (_result *OptionObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PostObjectResponse{}
-	_body, _err := client.PostObjectWithOptions(bucket, headers, runtime)
+	headers := &OptionObjectHeaders{}
+	_result = &OptionObjectResponse{}
+	_body, _err := client.OptionObjectWithOptions(bucket, key, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11490,6 +12820,34 @@ func (client *Client) PostObject(bucket *string) (_result *PostObjectResponse, _
 	return _result, _err
 }
 
+/**
+ * -
+ *   The object that is uploaded by calling the PostObject operation cannot be
+ *   larger than 5 GB in size.
+ * -
+ *   To initiate a PostObject request to a bucket, you must have write permissions
+ *   on the bucket. If the ACL of the bucket to which you want to initiate a
+ *   PostObject request is public-read-write, you do not need to sign the
+ *   PostObject request. In other cases, Object Storage Service (OSS) verifies the
+ *   signature information contained in the request.
+ * -
+ *   Unlike the PutObject operation, the PostObject operation uses an AccessKey
+ *   secret to calculate the signature for the policy form field. The calculated
+ *   signature string is used as the value of the Signature form field. OSS checks
+ *   this value to verify the validity of the signature.
+ * -
+ *   The URL of the submitted form is the domain name of the bucket. You do not
+ *   need to specify the object that you want to upload in the URL. In other words,
+ *   the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+ *   /ObjectName HTTP/1.1`.
+ * -
+ *   OSS does not check the signature information that is contained in headers or
+ *   URLs in PostObject requests.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PostObjectResponse
+ */
 func (client *Client) PostObjectWithOptions(bucket *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PostObjectResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["bucket"] = bucket
@@ -11517,11 +12875,37 @@ func (client *Client) PostObjectWithOptions(bucket *string, headers map[string]*
 	return _result, _err
 }
 
-func (client *Client) PostVodPlaylist(bucket *string, channel *string, playlist *string, request *PostVodPlaylistRequest) (_result *PostVodPlaylistResponse, _err error) {
+/**
+ * -
+ *   The object that is uploaded by calling the PostObject operation cannot be
+ *   larger than 5 GB in size.
+ * -
+ *   To initiate a PostObject request to a bucket, you must have write permissions
+ *   on the bucket. If the ACL of the bucket to which you want to initiate a
+ *   PostObject request is public-read-write, you do not need to sign the
+ *   PostObject request. In other cases, Object Storage Service (OSS) verifies the
+ *   signature information contained in the request.
+ * -
+ *   Unlike the PutObject operation, the PostObject operation uses an AccessKey
+ *   secret to calculate the signature for the policy form field. The calculated
+ *   signature string is used as the value of the Signature form field. OSS checks
+ *   this value to verify the validity of the signature.
+ * -
+ *   The URL of the submitted form is the domain name of the bucket. You do not
+ *   need to specify the object that you want to upload in the URL. In other words,
+ *   the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+ *   /ObjectName HTTP/1.1`.
+ * -
+ *   OSS does not check the signature information that is contained in headers or
+ *   URLs in PostObject requests.
+ *
+ * @return PostObjectResponse
+ */
+func (client *Client) PostObject(bucket *string) (_result *PostObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PostVodPlaylistResponse{}
-	_body, _err := client.PostVodPlaylistWithOptions(bucket, channel, playlist, request, headers, runtime)
+	_result = &PostObjectResponse{}
+	_body, _err := client.PostObjectWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11570,11 +12954,11 @@ func (client *Client) PostVodPlaylistWithOptions(bucket *string, channel *string
 	return _result, _err
 }
 
-func (client *Client) PutBucket(bucket *string, request *PutBucketRequest) (_result *PutBucketResponse, _err error) {
+func (client *Client) PostVodPlaylist(bucket *string, channel *string, playlist *string, request *PostVodPlaylistRequest) (_result *PostVodPlaylistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PutBucketHeaders{}
-	_result = &PutBucketResponse{}
-	_body, _err := client.PutBucketWithOptions(bucket, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &PostVodPlaylistResponse{}
+	_body, _err := client.PostVodPlaylistWithOptions(bucket, channel, playlist, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11598,10 +12982,14 @@ func (client *Client) PutBucketWithOptions(bucket *string, request *PutBucketReq
 		realHeaders["x-oss-acl"] = util.ToJSONString(headers.Acl)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XOssResourceGroupId)) {
+		realHeaders["x-oss-resource-group-id"] = util.ToJSONString(headers.XOssResourceGroupId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.CreateBucketConfiguration)),
+		Body:    openapiutil.ParseToMap(request.CreateBucketConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucket"),
@@ -11623,11 +13011,11 @@ func (client *Client) PutBucketWithOptions(bucket *string, request *PutBucketReq
 	return _result, _err
 }
 
-func (client *Client) PutBucketAcl(bucket *string) (_result *PutBucketAclResponse, _err error) {
+func (client *Client) PutBucket(bucket *string, request *PutBucketRequest) (_result *PutBucketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PutBucketAclHeaders{}
-	_result = &PutBucketAclResponse{}
-	_body, _err := client.PutBucketAclWithOptions(bucket, headers, runtime)
+	headers := &PutBucketHeaders{}
+	_result = &PutBucketResponse{}
+	_body, _err := client.PutBucketWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11671,11 +13059,11 @@ func (client *Client) PutBucketAclWithOptions(bucket *string, headers *PutBucket
 	return _result, _err
 }
 
-func (client *Client) PutBucketCors(bucket *string, request *PutBucketCorsRequest) (_result *PutBucketCorsResponse, _err error) {
+func (client *Client) PutBucketAcl(bucket *string) (_result *PutBucketAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PutBucketCorsResponse{}
-	_body, _err := client.PutBucketCorsWithOptions(bucket, request, headers, runtime)
+	headers := &PutBucketAclHeaders{}
+	_result = &PutBucketAclResponse{}
+	_body, _err := client.PutBucketAclWithOptions(bucket, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11693,7 +13081,7 @@ func (client *Client) PutBucketCorsWithOptions(bucket *string, request *PutBucke
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.CORSConfiguration)),
+		Body:    openapiutil.ParseToMap(request.CORSConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketCors"),
@@ -11715,11 +13103,11 @@ func (client *Client) PutBucketCorsWithOptions(bucket *string, request *PutBucke
 	return _result, _err
 }
 
-func (client *Client) PutBucketEncryption(bucket *string, request *PutBucketEncryptionRequest) (_result *PutBucketEncryptionResponse, _err error) {
+func (client *Client) PutBucketCors(bucket *string, request *PutBucketCorsRequest) (_result *PutBucketCorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketEncryptionResponse{}
-	_body, _err := client.PutBucketEncryptionWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketCorsResponse{}
+	_body, _err := client.PutBucketCorsWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11737,7 +13125,7 @@ func (client *Client) PutBucketEncryptionWithOptions(bucket *string, request *Pu
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.ServerSideEncryptionRule)),
+		Body:    openapiutil.ParseToMap(request.ServerSideEncryptionRule),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketEncryption"),
@@ -11759,11 +13147,11 @@ func (client *Client) PutBucketEncryptionWithOptions(bucket *string, request *Pu
 	return _result, _err
 }
 
-func (client *Client) PutBucketInventory(bucket *string, request *PutBucketInventoryRequest) (_result *PutBucketInventoryResponse, _err error) {
+func (client *Client) PutBucketEncryption(bucket *string, request *PutBucketEncryptionRequest) (_result *PutBucketEncryptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketInventoryResponse{}
-	_body, _err := client.PutBucketInventoryWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketEncryptionResponse{}
+	_body, _err := client.PutBucketEncryptionWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11787,7 +13175,7 @@ func (client *Client) PutBucketInventoryWithOptions(bucket *string, request *Put
 		HostMap: hostMap,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.InventoryConfiguration)),
+		Body:    openapiutil.ParseToMap(request.InventoryConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketInventory"),
@@ -11809,11 +13197,11 @@ func (client *Client) PutBucketInventoryWithOptions(bucket *string, request *Put
 	return _result, _err
 }
 
-func (client *Client) PutBucketLifecycle(bucket *string, request *PutBucketLifecycleRequest) (_result *PutBucketLifecycleResponse, _err error) {
+func (client *Client) PutBucketInventory(bucket *string, request *PutBucketInventoryRequest) (_result *PutBucketInventoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketLifecycleResponse{}
-	_body, _err := client.PutBucketLifecycleWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketInventoryResponse{}
+	_body, _err := client.PutBucketInventoryWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11831,7 +13219,7 @@ func (client *Client) PutBucketLifecycleWithOptions(bucket *string, request *Put
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.LifecycleConfiguration)),
+		Body:    openapiutil.ParseToMap(request.LifecycleConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketLifecycle"),
@@ -11853,11 +13241,11 @@ func (client *Client) PutBucketLifecycleWithOptions(bucket *string, request *Put
 	return _result, _err
 }
 
-func (client *Client) PutBucketLogging(bucket *string, request *PutBucketLoggingRequest) (_result *PutBucketLoggingResponse, _err error) {
+func (client *Client) PutBucketLifecycle(bucket *string, request *PutBucketLifecycleRequest) (_result *PutBucketLifecycleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketLoggingResponse{}
-	_body, _err := client.PutBucketLoggingWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketLifecycleResponse{}
+	_body, _err := client.PutBucketLifecycleWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11875,7 +13263,7 @@ func (client *Client) PutBucketLoggingWithOptions(bucket *string, request *PutBu
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.BucketLoggingStatus)),
+		Body:    openapiutil.ParseToMap(request.BucketLoggingStatus),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketLogging"),
@@ -11897,11 +13285,11 @@ func (client *Client) PutBucketLoggingWithOptions(bucket *string, request *PutBu
 	return _result, _err
 }
 
-func (client *Client) PutBucketPolicy(bucket *string, request *PutBucketPolicyRequest) (_result *PutBucketPolicyResponse, _err error) {
+func (client *Client) PutBucketLogging(bucket *string, request *PutBucketLoggingRequest) (_result *PutBucketLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketPolicyResponse{}
-	_body, _err := client.PutBucketPolicyWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketLoggingResponse{}
+	_body, _err := client.PutBucketLoggingWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11941,11 +13329,11 @@ func (client *Client) PutBucketPolicyWithOptions(bucket *string, request *PutBuc
 	return _result, _err
 }
 
-func (client *Client) PutBucketReferer(bucket *string, request *PutBucketRefererRequest) (_result *PutBucketRefererResponse, _err error) {
+func (client *Client) PutBucketPolicy(bucket *string, request *PutBucketPolicyRequest) (_result *PutBucketPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketRefererResponse{}
-	_body, _err := client.PutBucketRefererWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketPolicyResponse{}
+	_body, _err := client.PutBucketPolicyWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11963,7 +13351,7 @@ func (client *Client) PutBucketRefererWithOptions(bucket *string, request *PutBu
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.RefererConfiguration)),
+		Body:    openapiutil.ParseToMap(request.RefererConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketReferer"),
@@ -11985,11 +13373,11 @@ func (client *Client) PutBucketRefererWithOptions(bucket *string, request *PutBu
 	return _result, _err
 }
 
-func (client *Client) PutBucketReplication(bucket *string, request *PutBucketReplicationRequest) (_result *PutBucketReplicationResponse, _err error) {
+func (client *Client) PutBucketReferer(bucket *string, request *PutBucketRefererRequest) (_result *PutBucketRefererResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketReplicationResponse{}
-	_body, _err := client.PutBucketReplicationWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketRefererResponse{}
+	_body, _err := client.PutBucketRefererWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12007,7 +13395,7 @@ func (client *Client) PutBucketReplicationWithOptions(bucket *string, request *P
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.ReplicationConfiguration)),
+		Body:    openapiutil.ParseToMap(request.ReplicationConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketReplication"),
@@ -12029,11 +13417,11 @@ func (client *Client) PutBucketReplicationWithOptions(bucket *string, request *P
 	return _result, _err
 }
 
-func (client *Client) PutBucketRequestPayment(bucket *string, request *PutBucketRequestPaymentRequest) (_result *PutBucketRequestPaymentResponse, _err error) {
+func (client *Client) PutBucketReplication(bucket *string, request *PutBucketReplicationRequest) (_result *PutBucketReplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketRequestPaymentResponse{}
-	_body, _err := client.PutBucketRequestPaymentWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketReplicationResponse{}
+	_body, _err := client.PutBucketReplicationWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12051,7 +13439,7 @@ func (client *Client) PutBucketRequestPaymentWithOptions(bucket *string, request
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.RequestPaymentConfiguration)),
+		Body:    openapiutil.ParseToMap(request.RequestPaymentConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketRequestPayment"),
@@ -12073,11 +13461,11 @@ func (client *Client) PutBucketRequestPaymentWithOptions(bucket *string, request
 	return _result, _err
 }
 
-func (client *Client) PutBucketTags(bucket *string, request *PutBucketTagsRequest) (_result *PutBucketTagsResponse, _err error) {
+func (client *Client) PutBucketRequestPayment(bucket *string, request *PutBucketRequestPaymentRequest) (_result *PutBucketRequestPaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketTagsResponse{}
-	_body, _err := client.PutBucketTagsWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketRequestPaymentResponse{}
+	_body, _err := client.PutBucketRequestPaymentWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12095,7 +13483,7 @@ func (client *Client) PutBucketTagsWithOptions(bucket *string, request *PutBucke
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Tagging)),
+		Body:    openapiutil.ParseToMap(request.Tagging),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketTags"),
@@ -12117,11 +13505,11 @@ func (client *Client) PutBucketTagsWithOptions(bucket *string, request *PutBucke
 	return _result, _err
 }
 
-func (client *Client) PutBucketTransferAcceleration(bucket *string, request *PutBucketTransferAccelerationRequest) (_result *PutBucketTransferAccelerationResponse, _err error) {
+func (client *Client) PutBucketTags(bucket *string, request *PutBucketTagsRequest) (_result *PutBucketTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketTransferAccelerationResponse{}
-	_body, _err := client.PutBucketTransferAccelerationWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketTagsResponse{}
+	_body, _err := client.PutBucketTagsWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12139,7 +13527,7 @@ func (client *Client) PutBucketTransferAccelerationWithOptions(bucket *string, r
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.TransferAccelerationConfiguration)),
+		Body:    openapiutil.ParseToMap(request.TransferAccelerationConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketTransferAcceleration"),
@@ -12161,11 +13549,11 @@ func (client *Client) PutBucketTransferAccelerationWithOptions(bucket *string, r
 	return _result, _err
 }
 
-func (client *Client) PutBucketVersioning(bucket *string, request *PutBucketVersioningRequest) (_result *PutBucketVersioningResponse, _err error) {
+func (client *Client) PutBucketTransferAcceleration(bucket *string, request *PutBucketTransferAccelerationRequest) (_result *PutBucketTransferAccelerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketVersioningResponse{}
-	_body, _err := client.PutBucketVersioningWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketTransferAccelerationResponse{}
+	_body, _err := client.PutBucketTransferAccelerationWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12183,7 +13571,7 @@ func (client *Client) PutBucketVersioningWithOptions(bucket *string, request *Pu
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.VersioningConfiguration)),
+		Body:    openapiutil.ParseToMap(request.VersioningConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketVersioning"),
@@ -12205,11 +13593,11 @@ func (client *Client) PutBucketVersioningWithOptions(bucket *string, request *Pu
 	return _result, _err
 }
 
-func (client *Client) PutBucketWebsite(bucket *string, request *PutBucketWebsiteRequest) (_result *PutBucketWebsiteResponse, _err error) {
+func (client *Client) PutBucketVersioning(bucket *string, request *PutBucketVersioningRequest) (_result *PutBucketVersioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutBucketWebsiteResponse{}
-	_body, _err := client.PutBucketWebsiteWithOptions(bucket, request, headers, runtime)
+	_result = &PutBucketVersioningResponse{}
+	_body, _err := client.PutBucketVersioningWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12227,7 +13615,7 @@ func (client *Client) PutBucketWebsiteWithOptions(bucket *string, request *PutBu
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.WebsiteConfiguration)),
+		Body:    openapiutil.ParseToMap(request.WebsiteConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucketWebsite"),
@@ -12249,11 +13637,11 @@ func (client *Client) PutBucketWebsiteWithOptions(bucket *string, request *PutBu
 	return _result, _err
 }
 
-func (client *Client) PutLiveChannel(bucket *string, channel *string, request *PutLiveChannelRequest) (_result *PutLiveChannelResponse, _err error) {
+func (client *Client) PutBucketWebsite(bucket *string, request *PutBucketWebsiteRequest) (_result *PutBucketWebsiteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutLiveChannelResponse{}
-	_body, _err := client.PutLiveChannelWithOptions(bucket, channel, request, headers, runtime)
+	_result = &PutBucketWebsiteResponse{}
+	_body, _err := client.PutBucketWebsiteWithOptions(bucket, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12271,7 +13659,7 @@ func (client *Client) PutLiveChannelWithOptions(bucket *string, channel *string,
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.LiveChannelConfiguration)),
+		Body:    openapiutil.ParseToMap(request.LiveChannelConfiguration),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutLiveChannel"),
@@ -12293,11 +13681,11 @@ func (client *Client) PutLiveChannelWithOptions(bucket *string, channel *string,
 	return _result, _err
 }
 
-func (client *Client) PutLiveChannelStatus(bucket *string, channel *string, request *PutLiveChannelStatusRequest) (_result *PutLiveChannelStatusResponse, _err error) {
+func (client *Client) PutLiveChannel(bucket *string, channel *string, request *PutLiveChannelRequest) (_result *PutLiveChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutLiveChannelStatusResponse{}
-	_body, _err := client.PutLiveChannelStatusWithOptions(bucket, channel, request, headers, runtime)
+	_result = &PutLiveChannelResponse{}
+	_body, _err := client.PutLiveChannelWithOptions(bucket, channel, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12342,11 +13730,11 @@ func (client *Client) PutLiveChannelStatusWithOptions(bucket *string, channel *s
 	return _result, _err
 }
 
-func (client *Client) PutObject(bucket *string, key *string, request *PutObjectRequest) (_result *PutObjectResponse, _err error) {
+func (client *Client) PutLiveChannelStatus(bucket *string, channel *string, request *PutLiveChannelStatusRequest) (_result *PutLiveChannelStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PutObjectHeaders{}
-	_result = &PutObjectResponse{}
-	_body, _err := client.PutObjectWithOptions(bucket, key, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &PutLiveChannelStatusResponse{}
+	_body, _err := client.PutLiveChannelStatusWithOptions(bucket, channel, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12424,11 +13812,11 @@ func (client *Client) PutObjectWithOptions(bucket *string, key *string, request 
 	return _result, _err
 }
 
-func (client *Client) PutObjectAcl(bucket *string, key *string, request *PutObjectAclRequest) (_result *PutObjectAclResponse, _err error) {
+func (client *Client) PutObject(bucket *string, key *string, request *PutObjectRequest) (_result *PutObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PutObjectAclHeaders{}
-	_result = &PutObjectAclResponse{}
-	_body, _err := client.PutObjectAclWithOptions(bucket, key, request, headers, runtime)
+	headers := &PutObjectHeaders{}
+	_result = &PutObjectResponse{}
+	_body, _err := client.PutObjectWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12482,11 +13870,11 @@ func (client *Client) PutObjectAclWithOptions(bucket *string, key *string, reque
 	return _result, _err
 }
 
-func (client *Client) PutObjectTagging(bucket *string, key *string, request *PutObjectTaggingRequest) (_result *PutObjectTaggingResponse, _err error) {
+func (client *Client) PutObjectAcl(bucket *string, key *string, request *PutObjectAclRequest) (_result *PutObjectAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PutObjectTaggingResponse{}
-	_body, _err := client.PutObjectTaggingWithOptions(bucket, key, request, headers, runtime)
+	headers := &PutObjectAclHeaders{}
+	_result = &PutObjectAclResponse{}
+	_body, _err := client.PutObjectAclWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12510,7 +13898,7 @@ func (client *Client) PutObjectTaggingWithOptions(bucket *string, key *string, r
 		HostMap: hostMap,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Tagging)),
+		Body:    openapiutil.ParseToMap(request.Tagging),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutObjectTagging"),
@@ -12532,11 +13920,11 @@ func (client *Client) PutObjectTaggingWithOptions(bucket *string, key *string, r
 	return _result, _err
 }
 
-func (client *Client) PutSymlink(bucket *string, key *string) (_result *PutSymlinkResponse, _err error) {
+func (client *Client) PutObjectTagging(bucket *string, key *string, request *PutObjectTaggingRequest) (_result *PutObjectTaggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PutSymlinkHeaders{}
-	_result = &PutSymlinkResponse{}
-	_body, _err := client.PutSymlinkWithOptions(bucket, key, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &PutObjectTaggingResponse{}
+	_body, _err := client.PutObjectTaggingWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12592,11 +13980,11 @@ func (client *Client) PutSymlinkWithOptions(bucket *string, key *string, headers
 	return _result, _err
 }
 
-func (client *Client) RestoreObject(bucket *string, key *string, request *RestoreObjectRequest) (_result *RestoreObjectResponse, _err error) {
+func (client *Client) PutSymlink(bucket *string, key *string) (_result *PutSymlinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RestoreObjectResponse{}
-	_body, _err := client.RestoreObjectWithOptions(bucket, key, request, headers, runtime)
+	headers := &PutSymlinkHeaders{}
+	_result = &PutSymlinkResponse{}
+	_body, _err := client.PutSymlinkWithOptions(bucket, key, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12620,7 +14008,7 @@ func (client *Client) RestoreObjectWithOptions(bucket *string, key *string, requ
 		HostMap: hostMap,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.RestoreRequest)),
+		Body:    openapiutil.ParseToMap(request.RestoreRequest),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RestoreObject"),
@@ -12642,11 +14030,11 @@ func (client *Client) RestoreObjectWithOptions(bucket *string, key *string, requ
 	return _result, _err
 }
 
-func (client *Client) SelectObject(bucket *string, key *string, request *SelectObjectRequest) (_result *SelectObjectResponse, _err error) {
+func (client *Client) RestoreObject(bucket *string, key *string, request *RestoreObjectRequest) (_result *RestoreObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SelectObjectResponse{}
-	_body, _err := client.SelectObjectWithOptions(bucket, key, request, headers, runtime)
+	_result = &RestoreObjectResponse{}
+	_body, _err := client.RestoreObjectWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12664,7 +14052,7 @@ func (client *Client) SelectObjectWithOptions(bucket *string, key *string, reque
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.SelectRequest)),
+		Body:    openapiutil.ParseToMap(request.SelectRequest),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SelectObject"),
@@ -12686,11 +14074,11 @@ func (client *Client) SelectObjectWithOptions(bucket *string, key *string, reque
 	return _result, _err
 }
 
-func (client *Client) UploadPart(bucket *string, key *string, request *UploadPartRequest) (_result *UploadPartResponse, _err error) {
+func (client *Client) SelectObject(bucket *string, key *string, request *SelectObjectRequest) (_result *SelectObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UploadPartResponse{}
-	_body, _err := client.UploadPartWithOptions(bucket, key, request, headers, runtime)
+	_result = &SelectObjectResponse{}
+	_body, _err := client.SelectObjectWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12741,11 +14129,11 @@ func (client *Client) UploadPartWithOptions(bucket *string, key *string, request
 	return _result, _err
 }
 
-func (client *Client) UploadPartCopy(bucket *string, key *string, request *UploadPartCopyRequest) (_result *UploadPartCopyResponse, _err error) {
+func (client *Client) UploadPart(bucket *string, key *string, request *UploadPartRequest) (_result *UploadPartResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &UploadPartCopyHeaders{}
-	_result = &UploadPartCopyResponse{}
-	_body, _err := client.UploadPartCopyWithOptions(bucket, key, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &UploadPartResponse{}
+	_body, _err := client.UploadPartWithOptions(bucket, key, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12820,5 +14208,17 @@ func (client *Client) UploadPartCopyWithOptions(bucket *string, key *string, req
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadPartCopy(bucket *string, key *string, request *UploadPartCopyRequest) (_result *UploadPartCopyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UploadPartCopyHeaders{}
+	_result = &UploadPartCopyResponse{}
+	_body, _err := client.UploadPartCopyWithOptions(bucket, key, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
