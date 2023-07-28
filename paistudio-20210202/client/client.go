@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -997,7 +997,8 @@ func (s *GetAlgorithmDefsResponse) SetBody(v *GetAlgorithmDefsResponseBody) *Get
 }
 
 type GetAlgorithmTreeRequest struct {
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetAlgorithmTreeRequest) String() string {
@@ -1010,6 +1011,11 @@ func (s GetAlgorithmTreeRequest) GoString() string {
 
 func (s *GetAlgorithmTreeRequest) SetSource(v string) *GetAlgorithmTreeRequest {
 	s.Source = &v
+	return s
+}
+
+func (s *GetAlgorithmTreeRequest) SetWorkspaceId(v string) *GetAlgorithmTreeRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -1260,11 +1266,13 @@ func (s *GetExperimentFolderChildrenResponseBody) SetTotalCount(v int32) *GetExp
 }
 
 type GetExperimentFolderChildrenResponseBodyItems struct {
-	Empty *bool   `json:"Empty,omitempty" xml:"Empty,omitempty"`
-	Icon  *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Empty           *bool   `json:"Empty,omitempty" xml:"Empty,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Icon            *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetExperimentFolderChildrenResponseBodyItems) String() string {
@@ -1277,6 +1285,16 @@ func (s GetExperimentFolderChildrenResponseBodyItems) GoString() string {
 
 func (s *GetExperimentFolderChildrenResponseBodyItems) SetEmpty(v bool) *GetExperimentFolderChildrenResponseBodyItems {
 	s.Empty = &v
+	return s
+}
+
+func (s *GetExperimentFolderChildrenResponseBodyItems) SetGmtCreateTime(v string) *GetExperimentFolderChildrenResponseBodyItems {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetExperimentFolderChildrenResponseBodyItems) SetGmtModifiedTime(v string) *GetExperimentFolderChildrenResponseBodyItems {
+	s.GmtModifiedTime = &v
 	return s
 }
 
@@ -2480,15 +2498,36 @@ func (s *GetNodeVisualizationResponse) SetBody(v *GetNodeVisualizationResponseBo
 	return s
 }
 
+type GetTemplateRequest struct {
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s GetTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateRequest) SetVerbose(v bool) *GetTemplateRequest {
+	s.Verbose = &v
+	return s
+}
+
 type GetTemplateResponseBody struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Detail      *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	DocLink     *string `json:"DocLink,omitempty" xml:"DocLink,omitempty"`
-	ImageLink   *string `json:"ImageLink,omitempty" xml:"ImageLink,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Content      *string                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	Description  *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Detail       *string                  `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	DocLink      *string                  `json:"DocLink,omitempty" xml:"DocLink,omitempty"`
+	ImageLink    *string                  `json:"ImageLink,omitempty" xml:"ImageLink,omitempty"`
+	Labels       []map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Name         *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceId     *string                  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType   *string                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TemplateId   *string                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType *string                  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -2524,6 +2563,11 @@ func (s *GetTemplateResponseBody) SetImageLink(v string) *GetTemplateResponseBod
 	return s
 }
 
+func (s *GetTemplateResponseBody) SetLabels(v []map[string]interface{}) *GetTemplateResponseBody {
+	s.Labels = v
+	return s
+}
+
 func (s *GetTemplateResponseBody) SetName(v string) *GetTemplateResponseBody {
 	s.Name = &v
 	return s
@@ -2534,8 +2578,23 @@ func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBod
 	return s
 }
 
+func (s *GetTemplateResponseBody) SetSourceId(v string) *GetTemplateResponseBody {
+	s.SourceId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetSourceType(v string) *GetTemplateResponseBody {
+	s.SourceType = &v
+	return s
+}
+
 func (s *GetTemplateResponseBody) SetTemplateId(v string) *GetTemplateResponseBody {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateType(v string) *GetTemplateResponseBody {
+	s.TemplateType = &v
 	return s
 }
 
@@ -3748,13 +3807,19 @@ func (s *ListRecentExperimentsResponse) SetBody(v *ListRecentExperimentsResponse
 }
 
 type ListTemplatesRequest struct {
-	List       *string `json:"List,omitempty" xml:"List,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	TagId      *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TypeId     *string `json:"TypeId,omitempty" xml:"TypeId,omitempty"`
+	Label        *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	List         *string `json:"List,omitempty" xml:"List,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy       *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	TagId        *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TypeId       *string `json:"TypeId,omitempty" xml:"TypeId,omitempty"`
+	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -3765,8 +3830,18 @@ func (s ListTemplatesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTemplatesRequest) SetLabel(v string) *ListTemplatesRequest {
+	s.Label = &v
+	return s
+}
+
 func (s *ListTemplatesRequest) SetList(v string) *ListTemplatesRequest {
 	s.List = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetName(v string) *ListTemplatesRequest {
+	s.Name = &v
 	return s
 }
 
@@ -3785,6 +3860,11 @@ func (s *ListTemplatesRequest) SetPageSize(v int32) *ListTemplatesRequest {
 	return s
 }
 
+func (s *ListTemplatesRequest) SetSortBy(v string) *ListTemplatesRequest {
+	s.SortBy = &v
+	return s
+}
+
 func (s *ListTemplatesRequest) SetSource(v string) *ListTemplatesRequest {
 	s.Source = &v
 	return s
@@ -3795,8 +3875,23 @@ func (s *ListTemplatesRequest) SetTagId(v string) *ListTemplatesRequest {
 	return s
 }
 
+func (s *ListTemplatesRequest) SetTemplateType(v string) *ListTemplatesRequest {
+	s.TemplateType = &v
+	return s
+}
+
 func (s *ListTemplatesRequest) SetTypeId(v string) *ListTemplatesRequest {
 	s.TypeId = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetVerbose(v bool) *ListTemplatesRequest {
+	s.Verbose = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetWorkspaceId(v string) *ListTemplatesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -3859,13 +3954,17 @@ func (s *ListTemplatesResponseBodyTemplateData) SetTemplateType(v *ListTemplates
 }
 
 type ListTemplatesResponseBodyTemplateDataTemplate struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Detail      *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	DocLink     *string `json:"DocLink,omitempty" xml:"DocLink,omitempty"`
-	ImageLink   *string `json:"ImageLink,omitempty" xml:"ImageLink,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Content         *string                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	Creator         *string                  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Description     *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Detail          *string                  `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	DocLink         *string                  `json:"DocLink,omitempty" xml:"DocLink,omitempty"`
+	GmtCreateTime   *string                  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string                  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ImageLink       *string                  `json:"ImageLink,omitempty" xml:"ImageLink,omitempty"`
+	Labels          []map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Name            *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId      *string                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplateDataTemplate) String() string {
@@ -3878,6 +3977,11 @@ func (s ListTemplatesResponseBodyTemplateDataTemplate) GoString() string {
 
 func (s *ListTemplatesResponseBodyTemplateDataTemplate) SetContent(v string) *ListTemplatesResponseBodyTemplateDataTemplate {
 	s.Content = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplateDataTemplate) SetCreator(v string) *ListTemplatesResponseBodyTemplateDataTemplate {
+	s.Creator = &v
 	return s
 }
 
@@ -3896,8 +4000,23 @@ func (s *ListTemplatesResponseBodyTemplateDataTemplate) SetDocLink(v string) *Li
 	return s
 }
 
+func (s *ListTemplatesResponseBodyTemplateDataTemplate) SetGmtCreateTime(v string) *ListTemplatesResponseBodyTemplateDataTemplate {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplateDataTemplate) SetGmtModifiedTime(v string) *ListTemplatesResponseBodyTemplateDataTemplate {
+	s.GmtModifiedTime = &v
+	return s
+}
+
 func (s *ListTemplatesResponseBodyTemplateDataTemplate) SetImageLink(v string) *ListTemplatesResponseBodyTemplateDataTemplate {
 	s.ImageLink = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplateDataTemplate) SetLabels(v []map[string]interface{}) *ListTemplatesResponseBodyTemplateDataTemplate {
+	s.Labels = v
 	return s
 }
 
@@ -4227,6 +4346,7 @@ func (s *MigrateExperimentsResponse) SetBody(v *MigrateExperimentsResponseBody) 
 
 type PreviewMCTableRequest struct {
 	Endpoint    *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Limit       *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	Partition   *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -4241,6 +4361,11 @@ func (s PreviewMCTableRequest) GoString() string {
 
 func (s *PreviewMCTableRequest) SetEndpoint(v string) *PreviewMCTableRequest {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *PreviewMCTableRequest) SetLimit(v int32) *PreviewMCTableRequest {
+	s.Limit = &v
 	return s
 }
 
@@ -5063,18 +5188,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddImageResponse{}
-	_body, _err := client.AddImageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5121,11 +5234,11 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsRequest) (_result *AddImageLabelsResponse, _err error) {
+func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddImageLabelsResponse{}
-	_body, _err := client.AddImageLabelsWithOptions(ImageId, request, headers, runtime)
+	_result = &AddImageResponse{}
+	_body, _err := client.AddImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5138,7 +5251,6 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 	if _err != nil {
 		return _result, _err
 	}
-	ImageId = openapiutil.GetEncodeParam(ImageId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		body["Labels"] = request.Labels
@@ -5152,7 +5264,7 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 		Action:      tea.String("AddImageLabels"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(ImageId) + "/labels"),
+		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(openapiutil.GetEncodeParam(ImageId)) + "/labels"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5168,11 +5280,11 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 	return _result, _err
 }
 
-func (client *Client) CopyExperiment(ExperimentId *string, request *CopyExperimentRequest) (_result *CopyExperimentResponse, _err error) {
+func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsRequest) (_result *AddImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CopyExperimentResponse{}
-	_body, _err := client.CopyExperimentWithOptions(ExperimentId, request, headers, runtime)
+	_result = &AddImageLabelsResponse{}
+	_body, _err := client.AddImageLabelsWithOptions(ImageId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5185,7 +5297,6 @@ func (client *Client) CopyExperimentWithOptions(ExperimentId *string, request *C
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		body["Accessibility"] = request.Accessibility
@@ -5219,7 +5330,7 @@ func (client *Client) CopyExperimentWithOptions(ExperimentId *string, request *C
 		Action:      tea.String("CopyExperiment"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/[ExperimentId]/copy"),
+		Pathname:    tea.String("/api/v1/experiments/%5BExperimentId%5D/copy"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5235,11 +5346,11 @@ func (client *Client) CopyExperimentWithOptions(ExperimentId *string, request *C
 	return _result, _err
 }
 
-func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_result *CreateExperimentResponse, _err error) {
+func (client *Client) CopyExperiment(ExperimentId *string, request *CopyExperimentRequest) (_result *CopyExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateExperimentResponse{}
-	_body, _err := client.CreateExperimentWithOptions(request, headers, runtime)
+	_result = &CopyExperimentResponse{}
+	_body, _err := client.CopyExperimentWithOptions(ExperimentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5309,11 +5420,11 @@ func (client *Client) CreateExperimentWithOptions(request *CreateExperimentReque
 	return _result, _err
 }
 
-func (client *Client) CreateExperimentFolder(request *CreateExperimentFolderRequest) (_result *CreateExperimentFolderResponse, _err error) {
+func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_result *CreateExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateExperimentFolderResponse{}
-	_body, _err := client.CreateExperimentFolderWithOptions(request, headers, runtime)
+	_result = &CreateExperimentResponse{}
+	_body, _err := client.CreateExperimentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5371,11 +5482,11 @@ func (client *Client) CreateExperimentFolderWithOptions(request *CreateExperimen
 	return _result, _err
 }
 
-func (client *Client) CreateExperimentMigrateValidation(request *CreateExperimentMigrateValidationRequest) (_result *CreateExperimentMigrateValidationResponse, _err error) {
+func (client *Client) CreateExperimentFolder(request *CreateExperimentFolderRequest) (_result *CreateExperimentFolderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateExperimentMigrateValidationResponse{}
-	_body, _err := client.CreateExperimentMigrateValidationWithOptions(request, headers, runtime)
+	_result = &CreateExperimentFolderResponse{}
+	_body, _err := client.CreateExperimentFolderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5417,11 +5528,11 @@ func (client *Client) CreateExperimentMigrateValidationWithOptions(request *Crea
 	return _result, _err
 }
 
-func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
+func (client *Client) CreateExperimentMigrateValidation(request *CreateExperimentMigrateValidationRequest) (_result *CreateExperimentMigrateValidationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateJobResponse{}
-	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
+	_result = &CreateExperimentMigrateValidationResponse{}
+	_body, _err := client.CreateExperimentMigrateValidationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5475,6 +5586,42 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 	return _result, _err
 }
 
+func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateJobResponse{}
+	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExperiment"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteExperiment(ExperimentId *string) (_result *DeleteExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5487,23 +5634,22 @@ func (client *Client) DeleteExperiment(ExperimentId *string) (_result *DeleteExp
 	return _result, _err
 }
 
-func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
+func (client *Client) DeleteExperimentFolderWithOptions(FolderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentFolderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeleteExperiment"),
+		Action:      tea.String("DeleteExperimentFolder"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId)),
+		Pathname:    tea.String("/api/v1/experimentfolders/" + tea.StringValue(openapiutil.GetEncodeParam(FolderId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteExperimentResponse{}
+	_result = &DeleteExperimentFolderResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5517,43 +5663,6 @@ func (client *Client) DeleteExperimentFolder(FolderId *string) (_result *DeleteE
 	headers := make(map[string]*string)
 	_result = &DeleteExperimentFolderResponse{}
 	_body, _err := client.DeleteExperimentFolderWithOptions(FolderId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteExperimentFolderWithOptions(FolderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentFolderResponse, _err error) {
-	FolderId = openapiutil.GetEncodeParam(FolderId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteExperimentFolder"),
-		Version:     tea.String("2021-02-02"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experimentfolders/" + tea.StringValue(FolderId)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteExperimentFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAlgoTree(request *GetAlgoTreeRequest) (_result *GetAlgoTreeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAlgoTreeResponse{}
-	_body, _err := client.GetAlgoTreeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5595,11 +5704,11 @@ func (client *Client) GetAlgoTreeWithOptions(request *GetAlgoTreeRequest, header
 	return _result, _err
 }
 
-func (client *Client) GetAlgorithmDef(request *GetAlgorithmDefRequest) (_result *GetAlgorithmDefResponse, _err error) {
+func (client *Client) GetAlgoTree(request *GetAlgoTreeRequest) (_result *GetAlgoTreeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAlgorithmDefResponse{}
-	_body, _err := client.GetAlgorithmDefWithOptions(request, headers, runtime)
+	_result = &GetAlgoTreeResponse{}
+	_body, _err := client.GetAlgoTreeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5653,11 +5762,11 @@ func (client *Client) GetAlgorithmDefWithOptions(request *GetAlgorithmDefRequest
 	return _result, _err
 }
 
-func (client *Client) GetAlgorithmDefs(request *GetAlgorithmDefsRequest) (_result *GetAlgorithmDefsResponse, _err error) {
+func (client *Client) GetAlgorithmDef(request *GetAlgorithmDefRequest) (_result *GetAlgorithmDefResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAlgorithmDefsResponse{}
-	_body, _err := client.GetAlgorithmDefsWithOptions(request, headers, runtime)
+	_result = &GetAlgorithmDefResponse{}
+	_body, _err := client.GetAlgorithmDefWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5711,11 +5820,11 @@ func (client *Client) GetAlgorithmDefsWithOptions(request *GetAlgorithmDefsReque
 	return _result, _err
 }
 
-func (client *Client) GetAlgorithmTree(request *GetAlgorithmTreeRequest) (_result *GetAlgorithmTreeResponse, _err error) {
+func (client *Client) GetAlgorithmDefs(request *GetAlgorithmDefsRequest) (_result *GetAlgorithmDefsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAlgorithmTreeResponse{}
-	_body, _err := client.GetAlgorithmTreeWithOptions(request, headers, runtime)
+	_result = &GetAlgorithmDefsResponse{}
+	_body, _err := client.GetAlgorithmDefsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5731,6 +5840,10 @@ func (client *Client) GetAlgorithmTreeWithOptions(request *GetAlgorithmTreeReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5757,11 +5870,11 @@ func (client *Client) GetAlgorithmTreeWithOptions(request *GetAlgorithmTreeReque
 	return _result, _err
 }
 
-func (client *Client) GetExperiment(ExperimentId *string) (_result *GetExperimentResponse, _err error) {
+func (client *Client) GetAlgorithmTree(request *GetAlgorithmTreeRequest) (_result *GetAlgorithmTreeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetExperimentResponse{}
-	_body, _err := client.GetExperimentWithOptions(ExperimentId, headers, runtime)
+	_result = &GetAlgorithmTreeResponse{}
+	_body, _err := client.GetAlgorithmTreeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5770,7 +5883,6 @@ func (client *Client) GetExperiment(ExperimentId *string) (_result *GetExperimen
 }
 
 func (client *Client) GetExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5778,7 +5890,7 @@ func (client *Client) GetExperimentWithOptions(ExperimentId *string, headers map
 		Action:      tea.String("GetExperiment"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId)),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5794,11 +5906,11 @@ func (client *Client) GetExperimentWithOptions(ExperimentId *string, headers map
 	return _result, _err
 }
 
-func (client *Client) GetExperimentFolderChildren(FolderId *string, request *GetExperimentFolderChildrenRequest) (_result *GetExperimentFolderChildrenResponse, _err error) {
+func (client *Client) GetExperiment(ExperimentId *string) (_result *GetExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetExperimentFolderChildrenResponse{}
-	_body, _err := client.GetExperimentFolderChildrenWithOptions(FolderId, request, headers, runtime)
+	_result = &GetExperimentResponse{}
+	_body, _err := client.GetExperimentWithOptions(ExperimentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5811,7 +5923,6 @@ func (client *Client) GetExperimentFolderChildrenWithOptions(FolderId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	FolderId = openapiutil.GetEncodeParam(FolderId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		query["Accessibility"] = request.Accessibility
@@ -5841,7 +5952,7 @@ func (client *Client) GetExperimentFolderChildrenWithOptions(FolderId *string, r
 		Action:      tea.String("GetExperimentFolderChildren"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experimentfolders/" + tea.StringValue(FolderId) + "/children"),
+		Pathname:    tea.String("/api/v1/experimentfolders/" + tea.StringValue(openapiutil.GetEncodeParam(FolderId)) + "/children"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5849,6 +5960,42 @@ func (client *Client) GetExperimentFolderChildrenWithOptions(FolderId *string, r
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetExperimentFolderChildrenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetExperimentFolderChildren(FolderId *string, request *GetExperimentFolderChildrenRequest) (_result *GetExperimentFolderChildrenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetExperimentFolderChildrenResponse{}
+	_body, _err := client.GetExperimentFolderChildrenWithOptions(FolderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetExperimentMetaWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentMetaResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetExperimentMeta"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/meta"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetExperimentMetaResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5869,23 +6016,22 @@ func (client *Client) GetExperimentMeta(ExperimentId *string) (_result *GetExper
 	return _result, _err
 }
 
-func (client *Client) GetExperimentMetaWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentMetaResponse, _err error) {
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
+func (client *Client) GetExperimentStatusWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetExperimentMeta"),
+		Action:      tea.String("GetExperimentStatus"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/meta"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/status"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetExperimentMetaResponse{}
+	_result = &GetExperimentStatusResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5906,49 +6052,11 @@ func (client *Client) GetExperimentStatus(ExperimentId *string) (_result *GetExp
 	return _result, _err
 }
 
-func (client *Client) GetExperimentStatusWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentStatusResponse, _err error) {
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetExperimentStatus"),
-		Version:     tea.String("2021-02-02"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/status"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetExperimentStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetExperimentVisualizationMeta(ExperimentId *string, request *GetExperimentVisualizationMetaRequest) (_result *GetExperimentVisualizationMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentVisualizationMetaResponse{}
-	_body, _err := client.GetExperimentVisualizationMetaWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetExperimentVisualizationMetaWithOptions(ExperimentId *string, request *GetExperimentVisualizationMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentVisualizationMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
 		query["NodeIds"] = request.NodeIds
@@ -5962,7 +6070,7 @@ func (client *Client) GetExperimentVisualizationMetaWithOptions(ExperimentId *st
 		Action:      tea.String("GetExperimentVisualizationMeta"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/visualizationMeta"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/visualizationMeta"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5978,11 +6086,11 @@ func (client *Client) GetExperimentVisualizationMetaWithOptions(ExperimentId *st
 	return _result, _err
 }
 
-func (client *Client) GetExperimentsStatistics(request *GetExperimentsStatisticsRequest) (_result *GetExperimentsStatisticsResponse, _err error) {
+func (client *Client) GetExperimentVisualizationMeta(ExperimentId *string, request *GetExperimentVisualizationMetaRequest) (_result *GetExperimentVisualizationMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetExperimentsStatisticsResponse{}
-	_body, _err := client.GetExperimentsStatisticsWithOptions(request, headers, runtime)
+	_result = &GetExperimentVisualizationMetaResponse{}
+	_body, _err := client.GetExperimentVisualizationMetaWithOptions(ExperimentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6028,11 +6136,11 @@ func (client *Client) GetExperimentsStatisticsWithOptions(request *GetExperiment
 	return _result, _err
 }
 
-func (client *Client) GetExperimentsUsersStatistics(request *GetExperimentsUsersStatisticsRequest) (_result *GetExperimentsUsersStatisticsResponse, _err error) {
+func (client *Client) GetExperimentsStatistics(request *GetExperimentsStatisticsRequest) (_result *GetExperimentsStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetExperimentsUsersStatisticsResponse{}
-	_body, _err := client.GetExperimentsUsersStatisticsWithOptions(request, headers, runtime)
+	_result = &GetExperimentsStatisticsResponse{}
+	_body, _err := client.GetExperimentsStatisticsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6078,11 +6186,11 @@ func (client *Client) GetExperimentsUsersStatisticsWithOptions(request *GetExper
 	return _result, _err
 }
 
-func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_result *GetImageResponse, _err error) {
+func (client *Client) GetExperimentsUsersStatistics(request *GetExperimentsUsersStatisticsRequest) (_result *GetExperimentsUsersStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetImageResponse{}
-	_body, _err := client.GetImageWithOptions(ImageId, request, headers, runtime)
+	_result = &GetExperimentsUsersStatisticsResponse{}
+	_body, _err := client.GetExperimentsUsersStatisticsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6095,7 +6203,6 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 	if _err != nil {
 		return _result, _err
 	}
-	ImageId = openapiutil.GetEncodeParam(ImageId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
 		query["Verbose"] = request.Verbose
@@ -6109,7 +6216,7 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 		Action:      tea.String("GetImage"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(ImageId)),
+		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(openapiutil.GetEncodeParam(ImageId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6117,6 +6224,52 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_result *GetImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetImageResponse{}
+	_body, _err := client.GetImageWithOptions(ImageId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJob"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6137,15 +6290,14 @@ func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *Ge
 	return _result, _err
 }
 
-func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
+func (client *Client) GetMCTableSchemaWithOptions(TableName *string, request *GetMCTableSchemaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMCTableSchemaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	JobId = openapiutil.GetEncodeParam(JobId)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
-		query["Verbose"] = request.Verbose
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6153,17 +6305,17 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetJob"),
+		Action:      tea.String("GetMCTableSchema"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId)),
+		Pathname:    tea.String("/api/v1/datasources/maxcompute/tables/" + tea.StringValue(openapiutil.GetEncodeParam(TableName)) + "/schema"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetJobResponse{}
+	_result = &GetMCTableSchemaResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6184,15 +6336,18 @@ func (client *Client) GetMCTableSchema(TableName *string, request *GetMCTableSch
 	return _result, _err
 }
 
-func (client *Client) GetMCTableSchemaWithOptions(TableName *string, request *GetMCTableSchemaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMCTableSchemaResponse, _err error) {
+func (client *Client) GetNodeInputSchemaWithOptions(ExperimentId *string, NodeId *string, request *GetNodeInputSchemaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeInputSchemaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	TableName = openapiutil.GetEncodeParam(TableName)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
-		query["WorkspaceId"] = request.WorkspaceId
+	if !tea.BoolValue(util.IsUnset(request.InputId)) {
+		query["InputId"] = request.InputId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputIndex)) {
+		query["InputIndex"] = request.InputIndex
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6200,17 +6355,17 @@ func (client *Client) GetMCTableSchemaWithOptions(TableName *string, request *Ge
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetMCTableSchema"),
+		Action:      tea.String("GetNodeInputSchema"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/datasources/maxcompute/tables/" + tea.StringValue(TableName) + "/schema"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId)) + "/schema"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMCTableSchemaResponse{}
+	_result = &GetNodeInputSchemaResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6231,20 +6386,14 @@ func (client *Client) GetNodeInputSchema(ExperimentId *string, NodeId *string, r
 	return _result, _err
 }
 
-func (client *Client) GetNodeInputSchemaWithOptions(ExperimentId *string, NodeId *string, request *GetNodeInputSchemaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeInputSchemaResponse, _err error) {
+func (client *Client) GetNodeOutputWithOptions(ExperimentId *string, NodeId *string, OutputId *string, request *GetNodeOutputRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeOutputResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InputId)) {
-		query["InputId"] = request.InputId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InputIndex)) {
-		query["InputIndex"] = request.InputIndex
+	if !tea.BoolValue(util.IsUnset(request.OutputIndex)) {
+		query["OutputIndex"] = request.OutputIndex
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6252,17 +6401,17 @@ func (client *Client) GetNodeInputSchemaWithOptions(ExperimentId *string, NodeId
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetNodeInputSchema"),
+		Action:      tea.String("GetNodeOutput"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/nodes/" + tea.StringValue(NodeId) + "/schema"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId)) + "/outputs/" + tea.StringValue(openapiutil.GetEncodeParam(OutputId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNodeInputSchemaResponse{}
+	_result = &GetNodeOutputResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6283,17 +6432,14 @@ func (client *Client) GetNodeOutput(ExperimentId *string, NodeId *string, Output
 	return _result, _err
 }
 
-func (client *Client) GetNodeOutputWithOptions(ExperimentId *string, NodeId *string, OutputId *string, request *GetNodeOutputRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeOutputResponse, _err error) {
+func (client *Client) GetNodeVisualizationWithOptions(ExperimentId *string, NodeId *string, VisualizationId *string, request *GetNodeVisualizationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeVisualizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
-	OutputId = openapiutil.GetEncodeParam(OutputId)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OutputIndex)) {
-		query["OutputIndex"] = request.OutputIndex
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6301,17 +6447,17 @@ func (client *Client) GetNodeOutputWithOptions(ExperimentId *string, NodeId *str
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetNodeOutput"),
+		Action:      tea.String("GetNodeVisualization"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/nodes/" + tea.StringValue(NodeId) + "/outputs/" + tea.StringValue(OutputId)),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId)) + "/visualizations/" + tea.StringValue(openapiutil.GetEncodeParam(VisualizationId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNodeOutputResponse{}
+	_result = &GetNodeVisualizationResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6332,17 +6478,14 @@ func (client *Client) GetNodeVisualization(ExperimentId *string, NodeId *string,
 	return _result, _err
 }
 
-func (client *Client) GetNodeVisualizationWithOptions(ExperimentId *string, NodeId *string, VisualizationId *string, request *GetNodeVisualizationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeVisualizationResponse, _err error) {
+func (client *Client) GetTemplateWithOptions(TemplateId *string, request *GetTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
-	VisualizationId = openapiutil.GetEncodeParam(VisualizationId)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Config)) {
-		query["Config"] = request.Config
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6350,47 +6493,10 @@ func (client *Client) GetNodeVisualizationWithOptions(ExperimentId *string, Node
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetNodeVisualization"),
-		Version:     tea.String("2021-02-02"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/nodes/" + tea.StringValue(NodeId) + "/visualizations/" + tea.StringValue(VisualizationId)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetNodeVisualizationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTemplate(TemplateId *string) (_result *GetTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTemplateResponse{}
-	_body, _err := client.GetTemplateWithOptions(TemplateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTemplateWithOptions(TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
-	TemplateId = openapiutil.GetEncodeParam(TemplateId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
 		Action:      tea.String("GetTemplate"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/templates/" + tea.StringValue(TemplateId)),
+		Pathname:    tea.String("/api/v1/templates/" + tea.StringValue(openapiutil.GetEncodeParam(TemplateId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6406,11 +6512,11 @@ func (client *Client) GetTemplateWithOptions(TemplateId *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) ListAlgoDefs(request *ListAlgoDefsRequest) (_result *ListAlgoDefsResponse, _err error) {
+func (client *Client) GetTemplate(TemplateId *string, request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAlgoDefsResponse{}
-	_body, _err := client.ListAlgoDefsWithOptions(request, headers, runtime)
+	_result = &GetTemplateResponse{}
+	_body, _err := client.GetTemplateWithOptions(TemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6447,11 +6553,11 @@ func (client *Client) ListAlgoDefsWithOptions(request *ListAlgoDefsRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListAuthRoles(request *ListAuthRolesRequest) (_result *ListAuthRolesResponse, _err error) {
+func (client *Client) ListAlgoDefs(request *ListAlgoDefsRequest) (_result *ListAlgoDefsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAuthRolesResponse{}
-	_body, _err := client.ListAuthRolesWithOptions(request, headers, runtime)
+	_result = &ListAlgoDefsResponse{}
+	_body, _err := client.ListAlgoDefsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6497,11 +6603,11 @@ func (client *Client) ListAuthRolesWithOptions(request *ListAuthRolesRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result *ListExperimentsResponse, _err error) {
+func (client *Client) ListAuthRoles(request *ListAuthRolesRequest) (_result *ListAuthRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListExperimentsResponse{}
-	_body, _err := client.ListExperimentsWithOptions(request, headers, runtime)
+	_result = &ListAuthRolesResponse{}
+	_body, _err := client.ListAuthRolesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6575,11 +6681,11 @@ func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest
 	return _result, _err
 }
 
-func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result *ListImageLabelsResponse, _err error) {
+func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result *ListExperimentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListImageLabelsResponse{}
-	_body, _err := client.ListImageLabelsWithOptions(request, headers, runtime)
+	_result = &ListExperimentsResponse{}
+	_body, _err := client.ListExperimentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6629,11 +6735,11 @@ func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest
 	return _result, _err
 }
 
-func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
+func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result *ListImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListImagesResponse{}
-	_body, _err := client.ListImagesWithOptions(request, headers, runtime)
+	_result = &ListImageLabelsResponse{}
+	_body, _err := client.ListImageLabelsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6699,11 +6805,11 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
+	_result = &ListImagesResponse{}
+	_body, _err := client.ListImagesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6761,11 +6867,11 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) ListNodeOutputs(ExperimentId *string, NodeId *string) (_result *ListNodeOutputsResponse, _err error) {
+func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListNodeOutputsResponse{}
-	_body, _err := client.ListNodeOutputsWithOptions(ExperimentId, NodeId, headers, runtime)
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6774,8 +6880,6 @@ func (client *Client) ListNodeOutputs(ExperimentId *string, NodeId *string) (_re
 }
 
 func (client *Client) ListNodeOutputsWithOptions(ExperimentId *string, NodeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListNodeOutputsResponse, _err error) {
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6783,7 +6887,7 @@ func (client *Client) ListNodeOutputsWithOptions(ExperimentId *string, NodeId *s
 		Action:      tea.String("ListNodeOutputs"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/nodes/" + tea.StringValue(NodeId) + "/outputs"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId)) + "/outputs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6799,11 +6903,11 @@ func (client *Client) ListNodeOutputsWithOptions(ExperimentId *string, NodeId *s
 	return _result, _err
 }
 
-func (client *Client) ListRecentExperiments(request *ListRecentExperimentsRequest) (_result *ListRecentExperimentsResponse, _err error) {
+func (client *Client) ListNodeOutputs(ExperimentId *string, NodeId *string) (_result *ListNodeOutputsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRecentExperimentsResponse{}
-	_body, _err := client.ListRecentExperimentsWithOptions(request, headers, runtime)
+	_result = &ListNodeOutputsResponse{}
+	_body, _err := client.ListNodeOutputsWithOptions(ExperimentId, NodeId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6865,11 +6969,11 @@ func (client *Client) ListRecentExperimentsWithOptions(request *ListRecentExperi
 	return _result, _err
 }
 
-func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
+func (client *Client) ListRecentExperiments(request *ListRecentExperimentsRequest) (_result *ListRecentExperimentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.ListTemplatesWithOptions(request, headers, runtime)
+	_result = &ListRecentExperimentsResponse{}
+	_body, _err := client.ListRecentExperimentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6883,8 +6987,16 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.List)) {
 		query["List"] = request.List
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
@@ -6899,6 +7011,10 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -6907,8 +7023,20 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 		query["TagId"] = request.TagId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TypeId)) {
 		query["TypeId"] = request.TypeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6935,11 +7063,11 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 	return _result, _err
 }
 
-func (client *Client) MigrateExperimentFolders(request *MigrateExperimentFoldersRequest) (_result *MigrateExperimentFoldersResponse, _err error) {
+func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &MigrateExperimentFoldersResponse{}
-	_body, _err := client.MigrateExperimentFoldersWithOptions(request, headers, runtime)
+	_result = &ListTemplatesResponse{}
+	_body, _err := client.ListTemplatesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6989,11 +7117,11 @@ func (client *Client) MigrateExperimentFoldersWithOptions(request *MigrateExperi
 	return _result, _err
 }
 
-func (client *Client) MigrateExperiments(request *MigrateExperimentsRequest) (_result *MigrateExperimentsResponse, _err error) {
+func (client *Client) MigrateExperimentFolders(request *MigrateExperimentFoldersRequest) (_result *MigrateExperimentFoldersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &MigrateExperimentsResponse{}
-	_body, _err := client.MigrateExperimentsWithOptions(request, headers, runtime)
+	_result = &MigrateExperimentFoldersResponse{}
+	_body, _err := client.MigrateExperimentFoldersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7055,11 +7183,11 @@ func (client *Client) MigrateExperimentsWithOptions(request *MigrateExperimentsR
 	return _result, _err
 }
 
-func (client *Client) PreviewMCTable(TableName *string, request *PreviewMCTableRequest) (_result *PreviewMCTableResponse, _err error) {
+func (client *Client) MigrateExperiments(request *MigrateExperimentsRequest) (_result *MigrateExperimentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PreviewMCTableResponse{}
-	_body, _err := client.PreviewMCTableWithOptions(TableName, request, headers, runtime)
+	_result = &MigrateExperimentsResponse{}
+	_body, _err := client.MigrateExperimentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7072,10 +7200,13 @@ func (client *Client) PreviewMCTableWithOptions(TableName *string, request *Prev
 	if _err != nil {
 		return _result, _err
 	}
-	TableName = openapiutil.GetEncodeParam(TableName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
 		query["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Partition)) {
@@ -7094,7 +7225,7 @@ func (client *Client) PreviewMCTableWithOptions(TableName *string, request *Prev
 		Action:      tea.String("PreviewMCTable"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/datasources/maxcompute/tables/" + tea.StringValue(TableName) + "/preview"),
+		Pathname:    tea.String("/api/v1/datasources/maxcompute/tables/" + tea.StringValue(openapiutil.GetEncodeParam(TableName)) + "/preview"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7102,6 +7233,52 @@ func (client *Client) PreviewMCTableWithOptions(TableName *string, request *Prev
 		BodyType:    tea.String("json"),
 	}
 	_result = &PreviewMCTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PreviewMCTable(TableName *string, request *PreviewMCTableRequest) (_result *PreviewMCTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PreviewMCTableResponse{}
+	_body, _err := client.PreviewMCTableWithOptions(TableName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PublishExperimentWithOptions(ExperimentId *string, request *PublishExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishExperimentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishExperiment"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/publish"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishExperimentResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7122,33 +7299,27 @@ func (client *Client) PublishExperiment(ExperimentId *string, request *PublishEx
 	return _result, _err
 }
 
-func (client *Client) PublishExperimentWithOptions(ExperimentId *string, request *PublishExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishExperimentResponse, _err error) {
+func (client *Client) QueryExperimentVisualizationDataWithOptions(ExperimentId *string, request *QueryExperimentVisualizationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryExperimentVisualizationDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
-		body["FolderId"] = request.FolderId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("PublishExperiment"),
+		Action:      tea.String("QueryExperimentVisualizationData"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/publish"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/visualizationDataQuery"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PublishExperimentResponse{}
+	_result = &QueryExperimentVisualizationDataResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7169,28 +7340,22 @@ func (client *Client) QueryExperimentVisualizationData(ExperimentId *string, req
 	return _result, _err
 }
 
-func (client *Client) QueryExperimentVisualizationDataWithOptions(ExperimentId *string, request *QueryExperimentVisualizationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryExperimentVisualizationDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
+func (client *Client) RemoveImageWithOptions(ImageId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("QueryExperimentVisualizationData"),
+		Action:      tea.String("RemoveImage"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/visualizationDataQuery"),
-		Method:      tea.String("PUT"),
+		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(openapiutil.GetEncodeParam(ImageId))),
+		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryExperimentVisualizationDataResponse{}
+	_result = &RemoveImageResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7211,23 +7376,22 @@ func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse
 	return _result, _err
 }
 
-func (client *Client) RemoveImageWithOptions(ImageId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageResponse, _err error) {
-	ImageId = openapiutil.GetEncodeParam(ImageId)
+func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageLabelsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("RemoveImage"),
+		Action:      tea.String("RemoveImageLabels"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(ImageId)),
+		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(openapiutil.GetEncodeParam(ImageId)) + "/labels/" + tea.StringValue(openapiutil.GetEncodeParam(LabelKey))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveImageResponse{}
+	_result = &RemoveImageLabelsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7241,44 +7405,6 @@ func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string) (_res
 	headers := make(map[string]*string)
 	_result = &RemoveImageLabelsResponse{}
 	_body, _err := client.RemoveImageLabelsWithOptions(ImageId, LabelKey, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageLabelsResponse, _err error) {
-	ImageId = openapiutil.GetEncodeParam(ImageId)
-	LabelKey = openapiutil.GetEncodeParam(LabelKey)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RemoveImageLabels"),
-		Version:     tea.String("2021-02-02"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(ImageId) + "/labels/" + tea.StringValue(LabelKey)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RemoveImageLabelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SearchMCTables(request *SearchMCTablesRequest) (_result *SearchMCTablesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SearchMCTablesResponse{}
-	_body, _err := client.SearchMCTablesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7324,6 +7450,42 @@ func (client *Client) SearchMCTablesWithOptions(request *SearchMCTablesRequest, 
 	return _result, _err
 }
 
+func (client *Client) SearchMCTables(request *SearchMCTablesRequest) (_result *SearchMCTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchMCTablesResponse{}
+	_body, _err := client.SearchMCTablesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopExperimentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopExperiment"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) StopExperiment(ExperimentId *string) (_result *StopExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7336,23 +7498,22 @@ func (client *Client) StopExperiment(ExperimentId *string) (_result *StopExperim
 	return _result, _err
 }
 
-func (client *Client) StopExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopExperimentResponse, _err error) {
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
+func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopJobResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("StopExperiment"),
+		Action:      tea.String("StopJob"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/stop"),
-		Method:      tea.String("POST"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/stop"),
+		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopExperimentResponse{}
+	_result = &StopJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7373,23 +7534,36 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 	return _result, _err
 }
 
-func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopJobResponse, _err error) {
-	JobId = openapiutil.GetEncodeParam(JobId)
+func (client *Client) UpdateExperimentContentWithOptions(ExperimentId *string, request *UpdateExperimentContentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		body["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("StopJob"),
+		Action:      tea.String("UpdateExperimentContent"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/stop"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/content"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopJobResponse{}
+	_result = &UpdateExperimentContentResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7410,19 +7584,18 @@ func (client *Client) UpdateExperimentContent(ExperimentId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateExperimentContentWithOptions(ExperimentId *string, request *UpdateExperimentContentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentContentResponse, _err error) {
+func (client *Client) UpdateExperimentFolderWithOptions(FolderId *string, request *UpdateExperimentFolderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentFolderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		body["Content"] = request.Content
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		body["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
+		body["ParentFolderId"] = request.ParentFolderId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7430,17 +7603,17 @@ func (client *Client) UpdateExperimentContentWithOptions(ExperimentId *string, r
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("UpdateExperimentContent"),
+		Action:      tea.String("UpdateExperimentFolder"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/content"),
+		Pathname:    tea.String("/api/v1/experimentfolders/" + tea.StringValue(openapiutil.GetEncodeParam(FolderId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateExperimentContentResponse{}
+	_result = &UpdateExperimentFolderResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7461,63 +7634,11 @@ func (client *Client) UpdateExperimentFolder(FolderId *string, request *UpdateEx
 	return _result, _err
 }
 
-func (client *Client) UpdateExperimentFolderWithOptions(FolderId *string, request *UpdateExperimentFolderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentFolderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	FolderId = openapiutil.GetEncodeParam(FolderId)
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
-		body["ParentFolderId"] = request.ParentFolderId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateExperimentFolder"),
-		Version:     tea.String("2021-02-02"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experimentfolders/" + tea.StringValue(FolderId)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateExperimentFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateExperimentMeta(ExperimentId *string, request *UpdateExperimentMetaRequest) (_result *UpdateExperimentMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateExperimentMetaResponse{}
-	_body, _err := client.UpdateExperimentMetaWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateExperimentMetaWithOptions(ExperimentId *string, request *UpdateExperimentMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	ExperimentId = openapiutil.GetEncodeParam(ExperimentId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		body["Accessibility"] = request.Accessibility
@@ -7547,7 +7668,7 @@ func (client *Client) UpdateExperimentMetaWithOptions(ExperimentId *string, requ
 		Action:      tea.String("UpdateExperimentMeta"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(ExperimentId) + "/meta"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/meta"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7560,5 +7681,17 @@ func (client *Client) UpdateExperimentMetaWithOptions(ExperimentId *string, requ
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateExperimentMeta(ExperimentId *string, request *UpdateExperimentMetaRequest) (_result *UpdateExperimentMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateExperimentMetaResponse{}
+	_body, _err := client.UpdateExperimentMetaWithOptions(ExperimentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
