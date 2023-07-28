@@ -2930,6 +2930,92 @@ func (s *DescribeCdnCertificateListResponse) SetBody(v *DescribeCdnCertificateLi
 	return s
 }
 
+type DescribeCdnConditionIPBInfoRequest struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+}
+
+func (s DescribeCdnConditionIPBInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnConditionIPBInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnConditionIPBInfoRequest) SetDataId(v string) *DescribeCdnConditionIPBInfoRequest {
+	s.DataId = &v
+	return s
+}
+
+type DescribeCdnConditionIPBInfoResponseBody struct {
+	Datas     []*DescribeCdnConditionIPBInfoResponseBodyDatas `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCdnConditionIPBInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnConditionIPBInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnConditionIPBInfoResponseBody) SetDatas(v []*DescribeCdnConditionIPBInfoResponseBodyDatas) *DescribeCdnConditionIPBInfoResponseBody {
+	s.Datas = v
+	return s
+}
+
+func (s *DescribeCdnConditionIPBInfoResponseBody) SetRequestId(v string) *DescribeCdnConditionIPBInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCdnConditionIPBInfoResponseBodyDatas struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCdnConditionIPBInfoResponseBodyDatas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnConditionIPBInfoResponseBodyDatas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnConditionIPBInfoResponseBodyDatas) SetValue(v string) *DescribeCdnConditionIPBInfoResponseBodyDatas {
+	s.Value = &v
+	return s
+}
+
+type DescribeCdnConditionIPBInfoResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCdnConditionIPBInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCdnConditionIPBInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnConditionIPBInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnConditionIPBInfoResponse) SetHeaders(v map[string]*string) *DescribeCdnConditionIPBInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdnConditionIPBInfoResponse) SetStatusCode(v int32) *DescribeCdnConditionIPBInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCdnConditionIPBInfoResponse) SetBody(v *DescribeCdnConditionIPBInfoResponseBody) *DescribeCdnConditionIPBInfoResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCdnDeletedDomainsRequest struct {
 	// The number of the page to return. Valid values: **1** to **100000**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -20667,6 +20753,186 @@ func (s *ListRealtimeLogDeliveryInfosResponse) SetBody(v *ListRealtimeLogDeliver
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TagOwnerBid  *string                       `json:"TagOwnerBid,omitempty" xml:"TagOwnerBid,omitempty"`
+	TagOwnerUid  *string                       `json:"TagOwnerUid,omitempty" xml:"TagOwnerUid,omitempty"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTagOwnerBid(v string) *ListTagResourcesRequest {
+	s.TagOwnerBid = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTagOwnerUid(v string) *ListTagResourcesRequest {
+	s.TagOwnerUid = &v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserCustomLogConfigResponseBody struct {
 	// The list of log configuration IDs.
 	ConfigIds *ListUserCustomLogConfigResponseBodyConfigIds `json:"ConfigIds,omitempty" xml:"ConfigIds,omitempty" type:"Struct"`
@@ -20836,6 +21102,93 @@ func (s *ModifyCdnDomainResponse) SetStatusCode(v int32) *ModifyCdnDomainRespons
 }
 
 func (s *ModifyCdnDomainResponse) SetBody(v *ModifyCdnDomainResponseBody) *ModifyCdnDomainResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyCdnDomainOwnerRequest struct {
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyCdnDomainOwnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCdnDomainOwnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCdnDomainOwnerRequest) SetDomainName(v string) *ModifyCdnDomainOwnerRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ModifyCdnDomainOwnerRequest) SetOwnerAccount(v string) *ModifyCdnDomainOwnerRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyCdnDomainOwnerRequest) SetOwnerId(v int64) *ModifyCdnDomainOwnerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyCdnDomainOwnerRequest) SetSecurityToken(v string) *ModifyCdnDomainOwnerRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyCdnDomainOwnerResponseBody struct {
+	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCdnDomainOwnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCdnDomainOwnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCdnDomainOwnerResponseBody) SetContent(v map[string]interface{}) *ModifyCdnDomainOwnerResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ModifyCdnDomainOwnerResponseBody) SetRequestId(v string) *ModifyCdnDomainOwnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCdnDomainOwnerResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyCdnDomainOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyCdnDomainOwnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCdnDomainOwnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCdnDomainOwnerResponse) SetHeaders(v map[string]*string) *ModifyCdnDomainOwnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCdnDomainOwnerResponse) SetStatusCode(v int32) *ModifyCdnDomainOwnerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCdnDomainOwnerResponse) SetBody(v *ModifyCdnDomainOwnerResponseBody) *ModifyCdnDomainOwnerResponse {
 	s.Body = v
 	return s
 }
@@ -24897,6 +25250,50 @@ func (client *Client) DescribeCdnCertificateList(request *DescribeCdnCertificate
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCdnCertificateListResponse{}
 	_body, _err := client.DescribeCdnCertificateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnConditionIPBInfoWithOptions(request *DescribeCdnConditionIPBInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnConditionIPBInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		query["DataId"] = request.DataId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdnConditionIPBInfo"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCdnConditionIPBInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnConditionIPBInfo(request *DescribeCdnConditionIPBInfoRequest) (_result *DescribeCdnConditionIPBInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdnConditionIPBInfoResponse{}
+	_body, _err := client.DescribeCdnConditionIPBInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31889,6 +32286,70 @@ func (client *Client) ListRealtimeLogDeliveryInfos() (_result *ListRealtimeLogDe
 	return _result, _err
 }
 
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagOwnerBid)) {
+		query["TagOwnerBid"] = request.TagOwnerBid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagOwnerUid)) {
+		query["TagOwnerUid"] = request.TagOwnerUid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > You can call this operation up to 100 times per second per account.
  *
@@ -32004,6 +32465,46 @@ func (client *Client) ModifyCdnDomain(request *ModifyCdnDomainRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCdnDomainResponse{}
 	_body, _err := client.ModifyCdnDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyCdnDomainOwnerWithOptions(request *ModifyCdnDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *ModifyCdnDomainOwnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCdnDomainOwner"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCdnDomainOwnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyCdnDomainOwner(request *ModifyCdnDomainOwnerRequest) (_result *ModifyCdnDomainOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCdnDomainOwnerResponse{}
+	_body, _err := client.ModifyCdnDomainOwnerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
