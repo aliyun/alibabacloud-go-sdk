@@ -7054,8 +7054,12 @@ func (s *CreateRetcodeAppRequestTags) SetValue(v string) *CreateRetcodeAppReques
 }
 
 type CreateRetcodeAppResponseBody struct {
+	Code               *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *string                                         `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RetcodeAppDataBean *CreateRetcodeAppResponseBodyRetcodeAppDataBean `json:"RetcodeAppDataBean,omitempty" xml:"RetcodeAppDataBean,omitempty" type:"Struct"`
+	Success            *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateRetcodeAppResponseBody) String() string {
@@ -7066,6 +7070,21 @@ func (s CreateRetcodeAppResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRetcodeAppResponseBody) SetCode(v int32) *CreateRetcodeAppResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRetcodeAppResponseBody) SetData(v string) *CreateRetcodeAppResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateRetcodeAppResponseBody) SetMessage(v string) *CreateRetcodeAppResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *CreateRetcodeAppResponseBody) SetRequestId(v string) *CreateRetcodeAppResponseBody {
 	s.RequestId = &v
 	return s
@@ -7073,6 +7092,11 @@ func (s *CreateRetcodeAppResponseBody) SetRequestId(v string) *CreateRetcodeAppR
 
 func (s *CreateRetcodeAppResponseBody) SetRetcodeAppDataBean(v *CreateRetcodeAppResponseBodyRetcodeAppDataBean) *CreateRetcodeAppResponseBody {
 	s.RetcodeAppDataBean = v
+	return s
+}
+
+func (s *CreateRetcodeAppResponseBody) SetSuccess(v bool) *CreateRetcodeAppResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9998,8 +10022,11 @@ func (s *DeleteRetcodeAppRequest) SetRegionId(v string) *DeleteRetcodeAppRequest
 }
 
 type DeleteRetcodeAppResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteRetcodeAppResponseBody) String() string {
@@ -10010,13 +10037,28 @@ func (s DeleteRetcodeAppResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteRetcodeAppResponseBody) SetCode(v int32) *DeleteRetcodeAppResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteRetcodeAppResponseBody) SetData(v string) *DeleteRetcodeAppResponseBody {
 	s.Data = &v
 	return s
 }
 
+func (s *DeleteRetcodeAppResponseBody) SetMessage(v string) *DeleteRetcodeAppResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *DeleteRetcodeAppResponseBody) SetRequestId(v string) *DeleteRetcodeAppResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRetcodeAppResponseBody) SetSuccess(v bool) *DeleteRetcodeAppResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -26373,17 +26415,38 @@ func (s *SearchAlertHistoriesResponse) SetBody(v *SearchAlertHistoriesResponseBo
 }
 
 type SearchAlertRulesRequest struct {
-	AlertRuleId     *string                        `json:"AlertRuleId,omitempty" xml:"AlertRuleId,omitempty"`
-	AppType         *string                        `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	CurrentPage     *int32                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize        *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Pid             *string                        `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SystemRegionId  *string                        `json:"SystemRegionId,omitempty" xml:"SystemRegionId,omitempty"`
-	Tags            []*SearchAlertRulesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Title           *string                        `json:"Title,omitempty" xml:"Title,omitempty"`
-	Type            *string                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	AlertRuleId *string `json:"AlertRuleId,omitempty" xml:"AlertRuleId,omitempty"`
+	// The type of the application that is associated with the alert rule. Valid values:
+	//
+	// *   `TRACE`: application
+	// *   `RETCODE`: browser
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The page number of the page to return. Default value: `1`.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return per page. Default value: `10`.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The process identifier (PID) of the application that is associated with the alert rule. For more information about how to obtain the PID, see [Obtain the PID of an application](https://help.aliyun.com/document_detail/186100.html?spm=a2c4g.11186623.6.792.1b50654cqcDPyk#title-imy-7gj-qhr).
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The region ID of the alert data. For more information about the mappings between **RegionId** and **SystemRegionId**, see the detailed description below the table.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The region ID of the alert rule. For more information about the mappings between **RegionId** and **SystemRegionId**, see the detailed description below the table.
+	SystemRegionId *string `json:"SystemRegionId,omitempty" xml:"SystemRegionId,omitempty"`
+	// The list of tags.
+	Tags []*SearchAlertRulesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The alert rule name.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The alert rule type. Valid values:
+	//
+	// *   `1`: custom alert rules that are used to monitor drill-down data sets
+	// *   `3`: custom alert rules that are used to monitor tiled data sets
+	// *   `4`: alert rules that are used to monitor the browser, including the default frontend alert rules
+	// *   `5`: alert rules that are used to monitor applications, including the default application alert rules
+	// *   `6`: the default browser alert rules
+	// *   `7`: the default application alert rules
+	// *   `8`: Tracing Analysis alert rules
+	// *   `101`: Prometheus alert rules
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SearchAlertRulesRequest) String() string {
@@ -26450,7 +26513,20 @@ func (s *SearchAlertRulesRequest) SetType(v string) *SearchAlertRulesRequest {
 }
 
 type SearchAlertRulesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. The following system preset fields are provided:
+	//
+	// *   traceId: the ID of the trace.
+	// *   serverApp: the name of the server application.
+	// *   clientApp: the name of the client application.
+	// *   service: the name of the operation.
+	// *   rpc: the type of the call.
+	// *   msOfSpan: the duration exceeds a specific value.
+	// *   clientIp: the IP address of the client.
+	// *   serverIp: the IP address of the server.
+	// *   isError: specifies whether the call is abnormal.
+	// *   hasTprof: contains only thread profiling.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26473,8 +26549,10 @@ func (s *SearchAlertRulesRequestTags) SetValue(v string) *SearchAlertRulesReques
 }
 
 type SearchAlertRulesResponseBody struct {
-	PageBean  *SearchAlertRulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned struct.
+	PageBean *SearchAlertRulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SearchAlertRulesResponseBody) String() string {
@@ -26496,10 +26574,14 @@ func (s *SearchAlertRulesResponseBody) SetRequestId(v string) *SearchAlertRulesR
 }
 
 type SearchAlertRulesResponseBodyPageBean struct {
+	// The details of the alert rules.
 	AlertRules []*SearchAlertRulesResponseBodyPageBeanAlertRules `json:"AlertRules,omitempty" xml:"AlertRules,omitempty" type:"Repeated"`
-	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchAlertRulesResponseBodyPageBean) String() string {
@@ -26531,29 +26613,73 @@ func (s *SearchAlertRulesResponseBodyPageBean) SetTotalCount(v int32) *SearchAle
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRules struct {
-	AlarmContext       *SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext `json:"AlarmContext,omitempty" xml:"AlarmContext,omitempty" type:"Struct"`
-	AlertLevel         *string                                                     `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	AlertRule          *SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule    `json:"AlertRule,omitempty" xml:"AlertRule,omitempty" type:"Struct"`
-	AlertTitle         *string                                                     `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertType          *int32                                                      `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertVersion       *int32                                                      `json:"AlertVersion,omitempty" xml:"AlertVersion,omitempty"`
-	AlertWays          []*string                                                   `json:"AlertWays,omitempty" xml:"AlertWays,omitempty" type:"Repeated"`
-	Config             *string                                                     `json:"Config,omitempty" xml:"Config,omitempty"`
-	ContactGroupIdList *string                                                     `json:"ContactGroupIdList,omitempty" xml:"ContactGroupIdList,omitempty"`
-	ContactGroupIds    *string                                                     `json:"ContactGroupIds,omitempty" xml:"ContactGroupIds,omitempty"`
-	CreateTime         *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HostByAlertManager *bool                                                       `json:"HostByAlertManager,omitempty" xml:"HostByAlertManager,omitempty"`
-	Id                 *int64                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	MetricParam        *SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam  `json:"MetricParam,omitempty" xml:"MetricParam,omitempty" type:"Struct"`
-	Notice             *SearchAlertRulesResponseBodyPageBeanAlertRulesNotice       `json:"Notice,omitempty" xml:"Notice,omitempty" type:"Struct"`
-	RegionId           *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId    *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status             *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId             *int64                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus         *string                                                     `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	Title              *string                                                     `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateTime         *int64                                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId             *string                                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The format of the alert notification.
+	AlarmContext *SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext `json:"AlarmContext,omitempty" xml:"AlarmContext,omitempty" type:"Struct"`
+	// The severity of the alerts. Only the value `WARN` is supported.
+	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The conditions of the alert rule. Multiple conditions are separated by the AND or OR logical operators.
+	AlertRule *SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule `json:"AlertRule,omitempty" xml:"AlertRule,omitempty" type:"Struct"`
+	// The name of the alert rule.
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// The type of the alert rule. Valid values:
+	//
+	// *   `1`: custom alert rules that are used to monitor drill-down data sets
+	// *   `3`: custom alert rules that are used to monitor tiled data sets
+	// *   `4`: alert rules that are used to monitor the browser, including the default frontend alert rules
+	// *   `5`: alert rules that are used to monitor applications, including the default application alert rules
+	// *   `6`: the default browser alert rules
+	// *   `7`: the default application alert rules
+	// *   `8`: Tracing Analysis alert rules
+	// *   `101`: Prometheus alert rules
+	AlertType *int32 `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The version of the alert rule. Default value: `1`.
+	AlertVersion *int32    `json:"AlertVersion,omitempty" xml:"AlertVersion,omitempty"`
+	AlertWays    []*string `json:"AlertWays,omitempty" xml:"AlertWays,omitempty" type:"Repeated"`
+	// The configuration items of the alert rule. The value is a JSON string.
+	//
+	// The configuration item **continuous** indicates whether alert notifications are continuously sent. Valid values:
+	//
+	// *   `true`: Alert notifications are sent every minute.
+	// *   `false`: The alert silence feature is enabled.
+	//
+	// The configuration item **dataRevision** indicates the data revision policy that is used if no data is obtained or the data is null. Default value: 2. Valid values:
+	//
+	// *   `0`: overwrites the data by using the value 0
+	// *   `1`: overwrites the data by using the value 1
+	// *   `2`: overwrites the data by using the value null. This value indicates that no alert is triggered if no data exists
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the contact group. Multiple IDs are separated by commas (,).
+	ContactGroupIdList *string `json:"ContactGroupIdList,omitempty" xml:"ContactGroupIdList,omitempty"`
+	// The IDs of the alert contact groups. The value is a JSON array.
+	ContactGroupIds *string `json:"ContactGroupIds,omitempty" xml:"ContactGroupIds,omitempty"`
+	// The timestamp that shows when the alert rule was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the alert is sent through the alert center. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	HostByAlertManager *bool `json:"HostByAlertManager,omitempty" xml:"HostByAlertManager,omitempty"`
+	// The ID of the alert rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The information about the application that is associated with the alert rule.
+	MetricParam *SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam `json:"MetricParam,omitempty" xml:"MetricParam,omitempty" type:"Struct"`
+	// The time ranges when the alert rule takes effect and when alert notifications are sent.
+	Notice *SearchAlertRulesResponseBodyPageBeanAlertRulesNotice `json:"Notice,omitempty" xml:"Notice,omitempty" type:"Struct"`
+	// The ID of the region to which the alert rule belongs.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the alert rule. `RUNNING`: The alert rule is enabled. `STOPPED`: The alert rule is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the Application Real-Time Monitoring Service (ARMS) task that is associated with the alert rule.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The status of the task. This parameter is hidden from users.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The name of the alert.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The timestamp that shows when the alert rule was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user to which the alert rule belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s SearchAlertRulesResponseBodyPageBeanAlertRules) String() string {
@@ -26680,10 +26806,14 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRules) SetUserId(v string) *Se
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext struct {
+	// The sub-title of the alert notification content.
 	AlarmContentSubTitle *string `json:"AlarmContentSubTitle,omitempty" xml:"AlarmContentSubTitle,omitempty"`
+	// The template of the alert notification.
 	AlarmContentTemplate *string `json:"AlarmContentTemplate,omitempty" xml:"AlarmContentTemplate,omitempty"`
-	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SubTitle             *string `json:"SubTitle,omitempty" xml:"SubTitle,omitempty"`
+	// The content of the alert notification.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The sub-title of the alert notification.
+	SubTitle *string `json:"SubTitle,omitempty" xml:"SubTitle,omitempty"`
 }
 
 func (s SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext) String() string {
@@ -26715,8 +26845,10 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext) SetSubTitle
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule struct {
-	Operator *string                                                         `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Rules    []*SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The logical operator between conditions. Valid values: `&`: AND. `|`: OR.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The condition of the alert rule.
+	Rules []*SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule) String() string {
@@ -26738,12 +26870,32 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule) SetRules(v []*
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules struct {
-	Aggregates *string  `json:"Aggregates,omitempty" xml:"Aggregates,omitempty"`
-	Alias      *string  `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	Measure    *string  `json:"Measure,omitempty" xml:"Measure,omitempty"`
-	NValue     *int32   `json:"NValue,omitempty" xml:"NValue,omitempty"`
-	Operator   *string  `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value      *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The aggregation logic of the metric data of the alert rule. Valid values:
+	//
+	// *   `AVG`: calculates the average value for each minute
+	// *   `SUM`: calculates the total value for each minute
+	// *   `MAX`: calculates the maximum value for each minute
+	// *   `MIN`: calculates the minimum value for each minute
+	Aggregates *string `json:"Aggregates,omitempty" xml:"Aggregates,omitempty"`
+	// The displayed description of the alert metric.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The metric based on which alerts are triggered. For more information, see the "[Alert metrics](https://help.aliyun.com/document_detail/175825.html#h2-url-4)" section in this topic.
+	Measure *string `json:"Measure,omitempty" xml:"Measure,omitempty"`
+	// The time range when data is requested. Unit: minutes. For example, a value of 5 indicates that the alert rule applies to the data in the last 5 minutes.
+	NValue *int32 `json:"NValue,omitempty" xml:"NValue,omitempty"`
+	// The operation logic of the condition. Valid values:
+	//
+	// *   CURRENT_GTE: greater than or equal to
+	// *   CURRENT_LTE: less than or equal to
+	// *   PREVIOUS_UP: the increase percentage compared with the last period
+	// *   PREVIOUS_DOWN: the decrease percentage compared with the last period
+	// *   HOH_UP: the increase percentage compared with the last hour
+	// *   HOH_DOWN: the decrease percentage compared with the last hour
+	// *   DOD_UP: the increase percentage compared with the last day
+	// *   DOD_DOWN: the decrease percentage compared with the last day
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold of the condition.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules) String() string {
@@ -26785,11 +26937,23 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules) SetValue(
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam struct {
-	AppGroupId *string                                                                `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
-	AppId      *string                                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application group that is associated with the alert rule. This parameter is applicable to Enterprise Distributed Application Service (EDAS) applications.
+	AppGroupId *string `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The auto-increment ID of the ARMS application. You can ignore this ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The dimensions in the condition.
 	Dimensions []*SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParamDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	Pid        *string                                                                `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Type       *string                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The PID of the application that is associated with the alert rule.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The type of the metric. Valid values:
+	//
+	// *   `txn`: the number of API calls during application monitoring
+	// *   `txn_type`: the types of API calls during application monitoring
+	// *   `db`: database metrics
+	// *   `jvm`: Java virtual machine (JVM) metrics
+	// *   `host`: host metrics
+	// *   `exception`: API call errors
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam) String() string {
@@ -26826,8 +26990,20 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam) SetType(v st
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParamDimensions struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The key of the dimension. Valid values:
+	//
+	// *   `rpc`: the name of the API
+	// *   `rpcType`: the type of the API call, such as HTTP or DUBBO
+	// *   `endpoint`: the name of the database
+	// *   `rootIp`: the IP address of the host
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The type of the dimension. Valid values:
+	//
+	// *   `STATIC`: checks only the value of this dimension. In this case, you must set the **dimensions.value** parameter.
+	// *   `ALL`: checks the values of all dimensions. The metrics of all API calls are checked. If an API call triggers an alert, the name of the API is displayed in the alert notification. In this case, you do not need to set the **dimensions.value** parameter.
+	// *   `DISABLE`: aggregates the values of all dimensions. In this case, you do not need to set the **dimensions.value** parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the dimension.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26855,10 +27031,14 @@ func (s *SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParamDimensions) Se
 }
 
 type SearchAlertRulesResponseBodyPageBeanAlertRulesNotice struct {
-	EndTime         *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	NoticeEndTime   *int64 `json:"NoticeEndTime,omitempty" xml:"NoticeEndTime,omitempty"`
+	// The end of the time range when the alert rule takes effect within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range when alert notifications are sent based on the alert rule within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
+	NoticeEndTime *int64 `json:"NoticeEndTime,omitempty" xml:"NoticeEndTime,omitempty"`
+	// The beginning of the time range when alert notifications are sent based on the alert rule within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
 	NoticeStartTime *int64 `json:"NoticeStartTime,omitempty" xml:"NoticeStartTime,omitempty"`
-	StartTime       *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range when the alert rule takes effect within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s SearchAlertRulesResponseBodyPageBeanAlertRulesNotice) String() string {
@@ -29121,9 +29301,19 @@ func (s *SyncRecordingRulesResponse) SetBody(v *SyncRecordingRulesResponseBody) 
 }
 
 type TagResourcesRequest struct {
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Schema of Response
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// WEB-front-end monitoring
+	// APPLICATION-Application Monitoring
+	// PROMETHEUS-PROM monitoring
+	// SYNTHETICTASK-Cloud dial test
+	// ALERTRULE - Application Monitoring Similar
+	// PROMETHEUSALERTRULE - Prometheus monitoring
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The returned result.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -29150,6 +29340,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// http://arms.${regionId}.aliyun-inc.com:8099/tag/TagResources.json
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -29173,7 +29364,8 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -39737,7 +39929,7 @@ func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest)
 }
 
 /**
- * Queries alert rules.
+ * The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
  *
  * @param request SearchAlertRulesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39817,7 +40009,7 @@ func (client *Client) SearchAlertRulesWithOptions(request *SearchAlertRulesReque
 }
 
 /**
- * Queries alert rules.
+ * The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
  *
  * @param request SearchAlertRulesRequest
  * @return SearchAlertRulesResponse
