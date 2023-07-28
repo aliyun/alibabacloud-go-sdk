@@ -2201,6 +2201,160 @@ func (s *BatchSetDcdnWafDomainConfigsResponse) SetBody(v *BatchSetDcdnWafDomainC
 	return s
 }
 
+type BatchStartDcdnDomainRequest struct {
+	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s BatchStartDcdnDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchStartDcdnDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchStartDcdnDomainRequest) SetDomainNames(v string) *BatchStartDcdnDomainRequest {
+	s.DomainNames = &v
+	return s
+}
+
+func (s *BatchStartDcdnDomainRequest) SetOwnerId(v int64) *BatchStartDcdnDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BatchStartDcdnDomainRequest) SetSecurityToken(v string) *BatchStartDcdnDomainRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type BatchStartDcdnDomainResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchStartDcdnDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchStartDcdnDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchStartDcdnDomainResponseBody) SetRequestId(v string) *BatchStartDcdnDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchStartDcdnDomainResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchStartDcdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchStartDcdnDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchStartDcdnDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchStartDcdnDomainResponse) SetHeaders(v map[string]*string) *BatchStartDcdnDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchStartDcdnDomainResponse) SetStatusCode(v int32) *BatchStartDcdnDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchStartDcdnDomainResponse) SetBody(v *BatchStartDcdnDomainResponseBody) *BatchStartDcdnDomainResponse {
+	s.Body = v
+	return s
+}
+
+type BatchStopDcdnDomainRequest struct {
+	// The accelerated domain names. If you need to specify multiple accelerated domain names, separate domain names with commas (,).
+	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s BatchStopDcdnDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchStopDcdnDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchStopDcdnDomainRequest) SetDomainNames(v string) *BatchStopDcdnDomainRequest {
+	s.DomainNames = &v
+	return s
+}
+
+func (s *BatchStopDcdnDomainRequest) SetOwnerId(v int64) *BatchStopDcdnDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BatchStopDcdnDomainRequest) SetSecurityToken(v string) *BatchStopDcdnDomainRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type BatchStopDcdnDomainResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchStopDcdnDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchStopDcdnDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchStopDcdnDomainResponseBody) SetRequestId(v string) *BatchStopDcdnDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchStopDcdnDomainResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchStopDcdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchStopDcdnDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchStopDcdnDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchStopDcdnDomainResponse) SetHeaders(v map[string]*string) *BatchStopDcdnDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchStopDcdnDomainResponse) SetStatusCode(v int32) *BatchStopDcdnDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchStopDcdnDomainResponse) SetBody(v *BatchStopDcdnDomainResponseBody) *BatchStopDcdnDomainResponse {
+	s.Body = v
+	return s
+}
+
 type CheckDcdnProjectExistRequest struct {
 	// The name of a real-time log delivery project.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -3491,6 +3645,71 @@ func (s *DeleteDcdnKvResponse) SetStatusCode(v int32) *DeleteDcdnKvResponse {
 }
 
 func (s *DeleteDcdnKvResponse) SetBody(v *DeleteDcdnKvResponseBody) *DeleteDcdnKvResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDcdnKvNamespaceRequest struct {
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DeleteDcdnKvNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnKvNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnKvNamespaceRequest) SetNamespace(v string) *DeleteDcdnKvNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+type DeleteDcdnKvNamespaceResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDcdnKvNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnKvNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnKvNamespaceResponseBody) SetRequestId(v string) *DeleteDcdnKvNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDcdnKvNamespaceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDcdnKvNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDcdnKvNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnKvNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnKvNamespaceResponse) SetHeaders(v map[string]*string) *DeleteDcdnKvNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDcdnKvNamespaceResponse) SetStatusCode(v int32) *DeleteDcdnKvNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDcdnKvNamespaceResponse) SetBody(v *DeleteDcdnKvNamespaceResponseBody) *DeleteDcdnKvNamespaceResponse {
 	s.Body = v
 	return s
 }
@@ -15375,6 +15594,319 @@ func (s *DescribeDcdnIpaUserDomainsResponse) SetBody(v *DescribeDcdnIpaUserDomai
 	return s
 }
 
+type DescribeDcdnKvAccountResponseBody struct {
+	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	// Details about the namespaces.
+	NamespaceList []*DescribeDcdnKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	// The maximum number of namespaces that you can apply for by using your account.
+	NamespaceQuota *int32 `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
+	// The number of namespaces that you applied for by using your account.
+	NamespaceUsed *int32 `json:"NamespaceUsed,omitempty" xml:"NamespaceUsed,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the account.
+	//
+	// *   **online**: enabled
+	// *   **offline**: disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDcdnKvAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetCapacityString(v string) *DescribeDcdnKvAccountResponseBody {
+	s.CapacityString = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetCapacityUsedString(v string) *DescribeDcdnKvAccountResponseBody {
+	s.CapacityUsedString = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetNamespaceList(v []*DescribeDcdnKvAccountResponseBodyNamespaceList) *DescribeDcdnKvAccountResponseBody {
+	s.NamespaceList = v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetNamespaceQuota(v int32) *DescribeDcdnKvAccountResponseBody {
+	s.NamespaceQuota = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetNamespaceUsed(v int32) *DescribeDcdnKvAccountResponseBody {
+	s.NamespaceUsed = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetRequestId(v string) *DescribeDcdnKvAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetStatus(v string) *DescribeDcdnKvAccountResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeDcdnKvAccountResponseBodyNamespaceList struct {
+	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// *   **online**: normal
+	// *   **delete**: pending delete
+	// *   **deleting**: being deleted
+	// *   **deleted**: deleted
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDcdnKvAccountResponseBodyNamespaceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvAccountResponseBodyNamespaceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvAccountResponseBodyNamespaceList) SetCapacityString(v string) *DescribeDcdnKvAccountResponseBodyNamespaceList {
+	s.CapacityString = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBodyNamespaceList) SetCapacityUsedString(v string) *DescribeDcdnKvAccountResponseBodyNamespaceList {
+	s.CapacityUsedString = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBodyNamespaceList) SetDescription(v string) *DescribeDcdnKvAccountResponseBodyNamespaceList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBodyNamespaceList) SetNamespace(v string) *DescribeDcdnKvAccountResponseBodyNamespaceList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBodyNamespaceList) SetNamespaceId(v string) *DescribeDcdnKvAccountResponseBodyNamespaceList {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBodyNamespaceList) SetStatus(v string) *DescribeDcdnKvAccountResponseBodyNamespaceList {
+	s.Status = &v
+	return s
+}
+
+type DescribeDcdnKvAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnKvAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnKvAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvAccountResponse) SetHeaders(v map[string]*string) *DescribeDcdnKvAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponse) SetStatusCode(v int32) *DescribeDcdnKvAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponse) SetBody(v *DescribeDcdnKvAccountResponseBody) *DescribeDcdnKvAccountResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnKvAccountStatusResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the account.
+	//
+	// *   **online**
+	// *   **offline**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDcdnKvAccountStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvAccountStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvAccountStatusResponseBody) SetRequestId(v string) *DescribeDcdnKvAccountStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountStatusResponseBody) SetStatus(v string) *DescribeDcdnKvAccountStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeDcdnKvAccountStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnKvAccountStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnKvAccountStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvAccountStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvAccountStatusResponse) SetHeaders(v map[string]*string) *DescribeDcdnKvAccountStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountStatusResponse) SetStatusCode(v int32) *DescribeDcdnKvAccountStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountStatusResponse) SetBody(v *DescribeDcdnKvAccountStatusResponseBody) *DescribeDcdnKvAccountStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnKvNamespaceRequest struct {
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DescribeDcdnKvNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvNamespaceRequest) SetNamespace(v string) *DescribeDcdnKvNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+type DescribeDcdnKvNamespaceResponseBody struct {
+	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// *   **online**: normal
+	// *   **delete**: pending delete
+	// *   **deleting**: being deleted
+	// *   **deleted**: deleted
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDcdnKvNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvNamespaceResponseBody) SetCapacityString(v string) *DescribeDcdnKvNamespaceResponseBody {
+	s.CapacityString = &v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponseBody) SetCapacityUsedString(v string) *DescribeDcdnKvNamespaceResponseBody {
+	s.CapacityUsedString = &v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponseBody) SetDescription(v string) *DescribeDcdnKvNamespaceResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponseBody) SetNamespace(v string) *DescribeDcdnKvNamespaceResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponseBody) SetNamespaceId(v string) *DescribeDcdnKvNamespaceResponseBody {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponseBody) SetRequestId(v string) *DescribeDcdnKvNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponseBody) SetStatus(v string) *DescribeDcdnKvNamespaceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeDcdnKvNamespaceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnKvNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnKvNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnKvNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnKvNamespaceResponse) SetHeaders(v map[string]*string) *DescribeDcdnKvNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponse) SetStatusCode(v int32) *DescribeDcdnKvNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnKvNamespaceResponse) SetBody(v *DescribeDcdnKvNamespaceResponseBody) *DescribeDcdnKvNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnL2IpsResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -24213,6 +24745,145 @@ func (s *GetDcdnKvResponse) SetBody(v *GetDcdnKvResponseBody) *GetDcdnKvResponse
 	return s
 }
 
+type ListDcdnKvRequest struct {
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The number of the page to return. The product of PageNumber and PageSize cannot exceed 50,000.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 50. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The prefix to query.
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+}
+
+func (s ListDcdnKvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnKvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnKvRequest) SetNamespace(v string) *ListDcdnKvRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListDcdnKvRequest) SetPageNumber(v int32) *ListDcdnKvRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDcdnKvRequest) SetPageSize(v int32) *ListDcdnKvRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDcdnKvRequest) SetPrefix(v string) *ListDcdnKvRequest {
+	s.Prefix = &v
+	return s
+}
+
+type ListDcdnKvResponseBody struct {
+	// The keys obtained in this traversal.
+	Keys []*ListDcdnKvResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The total number of pages returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDcdnKvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnKvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnKvResponseBody) SetKeys(v []*ListDcdnKvResponseBodyKeys) *ListDcdnKvResponseBody {
+	s.Keys = v
+	return s
+}
+
+func (s *ListDcdnKvResponseBody) SetPageNumber(v int32) *ListDcdnKvResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDcdnKvResponseBody) SetPageSize(v int32) *ListDcdnKvResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDcdnKvResponseBody) SetRequestId(v string) *ListDcdnKvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDcdnKvResponseBody) SetTotalCount(v int32) *ListDcdnKvResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDcdnKvResponseBodyKeys struct {
+	// The name of the key.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the key was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListDcdnKvResponseBodyKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnKvResponseBodyKeys) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnKvResponseBodyKeys) SetName(v string) *ListDcdnKvResponseBodyKeys {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDcdnKvResponseBodyKeys) SetUpdateTime(v string) *ListDcdnKvResponseBodyKeys {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListDcdnKvResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDcdnKvResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDcdnKvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnKvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnKvResponse) SetHeaders(v map[string]*string) *ListDcdnKvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDcdnKvResponse) SetStatusCode(v int32) *ListDcdnKvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDcdnKvResponse) SetBody(v *ListDcdnKvResponseBody) *ListDcdnKvResponse {
+	s.Body = v
+	return s
+}
+
 type ListDcdnRealTimeDeliveryProjectRequest struct {
 	// The type of the collected logs. Default value: cdn_log_access_l1. Valid values:
 	//
@@ -24492,6 +25163,81 @@ func (s *ModifyDCdnDomainSchdmByPropertyResponse) SetStatusCode(v int32) *Modify
 }
 
 func (s *ModifyDCdnDomainSchdmByPropertyResponse) SetBody(v *ModifyDCdnDomainSchdmByPropertyResponseBody) *ModifyDCdnDomainSchdmByPropertyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDcdnWafGroupRequest struct {
+	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s ModifyDcdnWafGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafGroupRequest) SetId(v int64) *ModifyDcdnWafGroupRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyDcdnWafGroupRequest) SetName(v string) *ModifyDcdnWafGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyDcdnWafGroupRequest) SetRules(v string) *ModifyDcdnWafGroupRequest {
+	s.Rules = &v
+	return s
+}
+
+type ModifyDcdnWafGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDcdnWafGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafGroupResponseBody) SetRequestId(v string) *ModifyDcdnWafGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDcdnWafGroupResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDcdnWafGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDcdnWafGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafGroupResponse) SetHeaders(v map[string]*string) *ModifyDcdnWafGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDcdnWafGroupResponse) SetStatusCode(v int32) *ModifyDcdnWafGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDcdnWafGroupResponse) SetBody(v *ModifyDcdnWafGroupResponseBody) *ModifyDcdnWafGroupResponse {
 	s.Body = v
 	return s
 }
@@ -25277,6 +26023,111 @@ func (s *PutDcdnKvResponse) SetStatusCode(v int32) *PutDcdnKvResponse {
 }
 
 func (s *PutDcdnKvResponse) SetBody(v *PutDcdnKvResponseBody) *PutDcdnKvResponse {
+	s.Body = v
+	return s
+}
+
+type PutDcdnKvNamespaceRequest struct {
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace. The name can contain letters, digits, hyphens (-), and underscores (\_).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s PutDcdnKvNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvNamespaceRequest) SetDescription(v string) *PutDcdnKvNamespaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *PutDcdnKvNamespaceRequest) SetNamespace(v string) *PutDcdnKvNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+type PutDcdnKvNamespaceResponseBody struct {
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// *   **online**: normal
+	// *   **delete**: pending delete
+	// *   **deleting**: being deleted
+	// *   **deleted**: deleted
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PutDcdnKvNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvNamespaceResponseBody) SetDescription(v string) *PutDcdnKvNamespaceResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *PutDcdnKvNamespaceResponseBody) SetNamespace(v string) *PutDcdnKvNamespaceResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *PutDcdnKvNamespaceResponseBody) SetNamespaceId(v string) *PutDcdnKvNamespaceResponseBody {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *PutDcdnKvNamespaceResponseBody) SetRequestId(v string) *PutDcdnKvNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PutDcdnKvNamespaceResponseBody) SetStatus(v string) *PutDcdnKvNamespaceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type PutDcdnKvNamespaceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutDcdnKvNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutDcdnKvNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvNamespaceResponse) SetHeaders(v map[string]*string) *PutDcdnKvNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutDcdnKvNamespaceResponse) SetStatusCode(v int32) *PutDcdnKvNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutDcdnKvNamespaceResponse) SetBody(v *PutDcdnKvNamespaceResponseBody) *PutDcdnKvNamespaceResponse {
 	s.Body = v
 	return s
 }
@@ -28022,9 +28873,8 @@ func (client *Client) BatchCreateDcdnWafRules(request *BatchCreateDcdnWafRulesRe
 }
 
 /**
- * >
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * > - You can specify up to 50 domain names in each request.
+ * > - You can call this operation up to 30 times per second per account.
  *
  * @param request BatchDeleteDcdnDomainConfigsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28080,9 +28930,8 @@ func (client *Client) BatchDeleteDcdnDomainConfigsWithOptions(request *BatchDele
 }
 
 /**
- * >
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * > - You can specify up to 50 domain names in each request.
+ * > - You can call this operation up to 30 times per second per account.
  *
  * @param request BatchDeleteDcdnDomainConfigsRequest
  * @return BatchDeleteDcdnDomainConfigsResponse
@@ -28160,7 +29009,6 @@ func (client *Client) BatchDeleteDcdnWafRules(request *BatchDeleteDcdnWafRulesRe
 }
 
 /**
- * ## Usage notes
  * You can call this operation up to 20 times per second per account.
  *
  * @param request BatchModifyDcdnWafRulesRequest
@@ -28205,7 +29053,6 @@ func (client *Client) BatchModifyDcdnWafRulesWithOptions(request *BatchModifyDcd
 }
 
 /**
- * ## Usage notes
  * You can call this operation up to 20 times per second per account.
  *
  * @param request BatchModifyDcdnWafRulesRequest
@@ -28521,6 +29368,148 @@ func (client *Client) BatchSetDcdnWafDomainConfigs(request *BatchSetDcdnWafDomai
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchSetDcdnWafDomainConfigsResponse{}
 	_body, _err := client.BatchSetDcdnWafDomainConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * >
+ * *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+ * *   You can specify up to 50 domain names in each request.
+ * *   You can call this operation up to 30 times per second per account.
+ *
+ * @param request BatchStartDcdnDomainRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchStartDcdnDomainResponse
+ */
+func (client *Client) BatchStartDcdnDomainWithOptions(request *BatchStartDcdnDomainRequest, runtime *util.RuntimeOptions) (_result *BatchStartDcdnDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchStartDcdnDomain"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchStartDcdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * >
+ * *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+ * *   You can specify up to 50 domain names in each request.
+ * *   You can call this operation up to 30 times per second per account.
+ *
+ * @param request BatchStartDcdnDomainRequest
+ * @return BatchStartDcdnDomainResponse
+ */
+func (client *Client) BatchStartDcdnDomain(request *BatchStartDcdnDomainRequest) (_result *BatchStartDcdnDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchStartDcdnDomainResponse{}
+	_body, _err := client.BatchStartDcdnDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * >
+ * *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+ * *   You can specify up to 50 domain names in each request.
+ * *   You can call this operation up to 30 times per second per account.
+ *
+ * @param request BatchStopDcdnDomainRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchStopDcdnDomainResponse
+ */
+func (client *Client) BatchStopDcdnDomainWithOptions(request *BatchStopDcdnDomainRequest, runtime *util.RuntimeOptions) (_result *BatchStopDcdnDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchStopDcdnDomain"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchStopDcdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * >
+ * *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+ * *   You can specify up to 50 domain names in each request.
+ * *   You can call this operation up to 30 times per second per account.
+ *
+ * @param request BatchStopDcdnDomainRequest
+ * @return BatchStopDcdnDomainResponse
+ */
+func (client *Client) BatchStopDcdnDomain(request *BatchStopDcdnDomainRequest) (_result *BatchStopDcdnDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchStopDcdnDomainResponse{}
+	_body, _err := client.BatchStopDcdnDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29389,6 +30378,50 @@ func (client *Client) DeleteDcdnKv(request *DeleteDcdnKvRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDcdnKvResponse{}
 	_body, _err := client.DeleteDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDcdnKvNamespaceWithOptions(request *DeleteDcdnKvNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteDcdnKvNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDcdnKvNamespace"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDcdnKvNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDcdnKvNamespace(request *DeleteDcdnKvNamespaceRequest) (_result *DeleteDcdnKvNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDcdnKvNamespaceResponse{}
+	_body, _err := client.DeleteDcdnKvNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32228,11 +33261,16 @@ func (client *Client) DescribeDcdnDomainRealTimeBpsData(request *DescribeDcdnDom
 }
 
 /**
- * # Usage notes
- * *   You can call this operation up to 10 times per second per account.
- * *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. | Time granularity | Maximum time range per query | Historical data available | Data delay | |---------------|--------| | 1 minute | 1 hour | 7 days | 5 minutes | | 5 minutes | 3 days | 93 days | 15 minutes | | 1 hour | 31 days | 186 days | 4 hours |
+ * * You can call this operation up to 10 times per second per account.
+ * * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * | Time granularity | Maximum time range per query | Historical data available | Data delay |
+ * |----|------|-----|--------|
+ * | 1 minute | 1 hour | 7 days | 5 minutes |
+ * | 5 minutes | 3 days | 93 days | 15 minutes |
+ * | 1 hour | 31 days | 186 days | 4 hours |
  *
  * @param request DescribeDcdnDomainRealTimeByteHitRateDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32268,11 +33306,16 @@ func (client *Client) DescribeDcdnDomainRealTimeByteHitRateDataWithOptions(reque
 }
 
 /**
- * # Usage notes
- * *   You can call this operation up to 10 times per second per account.
- * *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. | Time granularity | Maximum time range per query | Historical data available | Data delay | |---------------|--------| | 1 minute | 1 hour | 7 days | 5 minutes | | 5 minutes | 3 days | 93 days | 15 minutes | | 1 hour | 31 days | 186 days | 4 hours |
+ * * You can call this operation up to 10 times per second per account.
+ * * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * | Time granularity | Maximum time range per query | Historical data available | Data delay |
+ * |----|------|-----|--------|
+ * | 1 minute | 1 hour | 7 days | 5 minutes |
+ * | 5 minutes | 3 days | 93 days | 15 minutes |
+ * | 1 hour | 31 days | 186 days | 4 hours |
  *
  * @param request DescribeDcdnDomainRealTimeByteHitRateDataRequest
  * @return DescribeDcdnDomainRealTimeByteHitRateDataResponse
@@ -32561,10 +33604,14 @@ func (client *Client) DescribeDcdnDomainRealTimeReqHitRateData(request *Describe
 }
 
 /**
- * #
  * *   You can call this operation up to 10 times per second per account.
  * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. | Time granularity | Maximum time range per query | Historical data available | Data delay | |---------------|--------| | 1 minute | 1 hour | 7 days | 5 minutes | | 5 minutes | 3 days | 93 days | 15 minutes | | 1 hour | 31 days | 186 days | 4 hours |
+ * **Time granularity**
+ * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * | Time granularity | Maximum time range per query | Historical data available | Data delay |
+ * |-----|-----|-----|--------|
+ * | 1 minute | 1 hour | 7 days | 5 minutes |
+ * | 5 minutes | 3 days | 93 days | 15 minutes | | 1 hour | 31 days | 186 days | 4 hours |
  *
  * @param request DescribeDcdnDomainRealTimeSrcBpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32612,10 +33659,14 @@ func (client *Client) DescribeDcdnDomainRealTimeSrcBpsDataWithOptions(request *D
 }
 
 /**
- * #
  * *   You can call this operation up to 10 times per second per account.
  * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. | Time granularity | Maximum time range per query | Historical data available | Data delay | |---------------|--------| | 1 minute | 1 hour | 7 days | 5 minutes | | 5 minutes | 3 days | 93 days | 15 minutes | | 1 hour | 31 days | 186 days | 4 hours |
+ * **Time granularity**
+ * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * | Time granularity | Maximum time range per query | Historical data available | Data delay |
+ * |-----|-----|-----|--------|
+ * | 1 minute | 1 hour | 7 days | 5 minutes |
+ * | 5 minutes | 3 days | 93 days | 15 minutes | | 1 hour | 31 days | 186 days | 4 hours |
  *
  * @param request DescribeDcdnDomainRealTimeSrcBpsDataRequest
  * @return DescribeDcdnDomainRealTimeSrcBpsDataResponse
@@ -34266,6 +35317,112 @@ func (client *Client) DescribeDcdnIpaUserDomains(request *DescribeDcdnIpaUserDom
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnIpaUserDomainsResponse{}
 	_body, _err := client.DescribeDcdnIpaUserDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnKvAccountWithOptions(runtime *util.RuntimeOptions) (_result *DescribeDcdnKvAccountResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnKvAccount"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnKvAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnKvAccount() (_result *DescribeDcdnKvAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnKvAccountResponse{}
+	_body, _err := client.DescribeDcdnKvAccountWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnKvAccountStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeDcdnKvAccountStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnKvAccountStatus"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnKvAccountStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnKvAccountStatus() (_result *DescribeDcdnKvAccountStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnKvAccountStatusResponse{}
+	_body, _err := client.DescribeDcdnKvAccountStatusWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnKvNamespaceWithOptions(request *DescribeDcdnKvNamespaceRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnKvNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnKvNamespace"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnKvNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnKvNamespace(request *DescribeDcdnKvNamespaceRequest) (_result *DescribeDcdnKvNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnKvNamespaceResponse{}
+	_body, _err := client.DescribeDcdnKvNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38055,6 +39212,46 @@ func (client *Client) GetDcdnKv(request *GetDcdnKvRequest) (_result *GetDcdnKvRe
 	return _result, _err
 }
 
+func (client *Client) ListDcdnKvWithOptions(request *ListDcdnKvRequest, runtime *util.RuntimeOptions) (_result *ListDcdnKvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDcdnKv"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDcdnKvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDcdnKv(request *ListDcdnKvRequest) (_result *ListDcdnKvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDcdnKvResponse{}
+	_body, _err := client.ListDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > You can call this operation up to 100 times per second per account.
  *
@@ -38178,6 +39375,58 @@ func (client *Client) ModifyDCdnDomainSchdmByProperty(request *ModifyDCdnDomainS
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDCdnDomainSchdmByPropertyResponse{}
 	_body, _err := client.ModifyDCdnDomainSchdmByPropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafGroupWithOptions(request *ModifyDcdnWafGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDcdnWafGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		body["Rules"] = request.Rules
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDcdnWafGroup"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDcdnWafGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafGroup(request *ModifyDcdnWafGroupRequest) (_result *ModifyDcdnWafGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDcdnWafGroupResponse{}
+	_body, _err := client.ModifyDcdnWafGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38757,6 +40006,54 @@ func (client *Client) PutDcdnKv(request *PutDcdnKvRequest) (_result *PutDcdnKvRe
 	runtime := &util.RuntimeOptions{}
 	_result = &PutDcdnKvResponse{}
 	_body, _err := client.PutDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutDcdnKvNamespaceWithOptions(request *PutDcdnKvNamespaceRequest, runtime *util.RuntimeOptions) (_result *PutDcdnKvNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutDcdnKvNamespace"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutDcdnKvNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutDcdnKvNamespace(request *PutDcdnKvNamespaceRequest) (_result *PutDcdnKvNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutDcdnKvNamespaceResponse{}
+	_body, _err := client.PutDcdnKvNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
