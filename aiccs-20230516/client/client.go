@@ -209,6 +209,8 @@ func (s *AddBlacklistResponse) SetBody(v *AddBlacklistResponseBody) *AddBlacklis
 type AddTaskRequest struct {
 	// 外呼时间
 	CallTimeList []*AddTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
+	// 回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
@@ -254,6 +256,11 @@ func (s AddTaskRequest) GoString() string {
 
 func (s *AddTaskRequest) SetCallTimeList(v []*AddTaskRequestCallTimeList) *AddTaskRequest {
 	s.CallTimeList = v
+	return s
+}
+
+func (s *AddTaskRequest) SetCallbackUrl(v string) *AddTaskRequest {
+	s.CallbackUrl = &v
 	return s
 }
 
@@ -367,7 +374,7 @@ func (s *AddTaskRequestCallTimeList) SetCallTime(v []*string) *AddTaskRequestCal
 type AddTaskRequestSendSmsPlan struct {
 	// 意向标签
 	IntentTags []*string `json:"IntentTags,omitempty" xml:"IntentTags,omitempty" type:"Repeated"`
-	// 重呼条件
+	// 短信模板ID
 	SmsTemplateId *int64 `json:"SmsTemplateId,omitempty" xml:"SmsTemplateId,omitempty"`
 }
 
@@ -392,6 +399,8 @@ func (s *AddTaskRequestSendSmsPlan) SetSmsTemplateId(v int64) *AddTaskRequestSen
 type AddTaskShrinkRequest struct {
 	// 外呼时间
 	CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
+	// 回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
@@ -437,6 +446,11 @@ func (s AddTaskShrinkRequest) GoString() string {
 
 func (s *AddTaskShrinkRequest) SetCallTimeListShrink(v string) *AddTaskShrinkRequest {
 	s.CallTimeListShrink = &v
+	return s
+}
+
+func (s *AddTaskShrinkRequest) SetCallbackUrl(v string) *AddTaskShrinkRequest {
+	s.CallbackUrl = &v
 	return s
 }
 
@@ -1461,6 +1475,8 @@ func (s *DetailsResponse) SetBody(v *DetailsResponseBody) *DetailsResponse {
 type EditTaskRequest struct {
 	// 外呼时间
 	CallTimeList []*EditTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
+	// 回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
@@ -1506,6 +1522,11 @@ func (s EditTaskRequest) GoString() string {
 
 func (s *EditTaskRequest) SetCallTimeList(v []*EditTaskRequestCallTimeList) *EditTaskRequest {
 	s.CallTimeList = v
+	return s
+}
+
+func (s *EditTaskRequest) SetCallbackUrl(v string) *EditTaskRequest {
+	s.CallbackUrl = &v
 	return s
 }
 
@@ -1644,6 +1665,8 @@ func (s *EditTaskRequestSendSmsPlan) SetSmsTemplateId(v int64) *EditTaskRequestS
 type EditTaskShrinkRequest struct {
 	// 外呼时间
 	CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
+	// 回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
@@ -1689,6 +1712,11 @@ func (s EditTaskShrinkRequest) GoString() string {
 
 func (s *EditTaskShrinkRequest) SetCallTimeListShrink(v string) *EditTaskShrinkRequest {
 	s.CallTimeListShrink = &v
+	return s
+}
+
+func (s *EditTaskShrinkRequest) SetCallbackUrl(v string) *EditTaskShrinkRequest {
+	s.CallbackUrl = &v
 	return s
 }
 
@@ -5054,6 +5082,10 @@ func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *util.R
 		query["CallTimeList"] = request.CallTimeListShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		query["CallbackUrl"] = request.CallbackUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
 		query["MaxConcurrency"] = request.MaxConcurrency
 	}
@@ -5440,6 +5472,10 @@ func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *util
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CallTimeListShrink)) {
 		query["CallTimeList"] = request.CallTimeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		query["CallbackUrl"] = request.CallbackUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
