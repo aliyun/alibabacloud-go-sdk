@@ -10367,6 +10367,7 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// When the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The name of the metric.
 	//
 	// > For more information about the metrics of different cloud services, see [Appendix 1: Metrics](~~163515~~).
@@ -10453,6 +10454,11 @@ func (s *DescribeAlertLogCountRequest) SetSearchKey(v string) *DescribeAlertLogC
 
 func (s *DescribeAlertLogCountRequest) SetSendStatus(v string) *DescribeAlertLogCountRequest {
 	s.SendStatus = &v
+	return s
+}
+
+func (s *DescribeAlertLogCountRequest) SetSourceType(v string) *DescribeAlertLogCountRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -10644,6 +10650,7 @@ type DescribeAlertLogHistogramRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The name of the alert rule.
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The number of the page to return. Default value: 1
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -10728,6 +10735,11 @@ func (s *DescribeAlertLogHistogramRequest) SetSearchKey(v string) *DescribeAlert
 
 func (s *DescribeAlertLogHistogramRequest) SetSendStatus(v string) *DescribeAlertLogHistogramRequest {
 	s.SendStatus = &v
+	return s
+}
+
+func (s *DescribeAlertLogHistogramRequest) SetSourceType(v string) *DescribeAlertLogHistogramRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -10894,6 +10906,7 @@ type DescribeAlertLogListRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The sending results of alert notifications.
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// Indicates whether the alert level was changed. Valid values:
 	//
 	// *   `P4->OK`: The alert level was changed from P4 to OK.
@@ -10986,6 +10999,11 @@ func (s *DescribeAlertLogListRequest) SetSearchKey(v string) *DescribeAlertLogLi
 
 func (s *DescribeAlertLogListRequest) SetSendStatus(v string) *DescribeAlertLogListRequest {
 	s.SendStatus = &v
+	return s
+}
+
+func (s *DescribeAlertLogListRequest) SetSourceType(v string) *DescribeAlertLogListRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -25030,6 +25048,7 @@ type DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus struct 
 	AutoInstall *bool `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
 	// The ID of the request.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OsMonitorConfig      *string `json:"OsMonitorConfig,omitempty" xml:"OsMonitorConfig,omitempty"`
 	OsMonitorErrorCode   *string `json:"OsMonitorErrorCode,omitempty" xml:"OsMonitorErrorCode,omitempty"`
 	OsMonitorErrorDetail *string `json:"OsMonitorErrorDetail,omitempty" xml:"OsMonitorErrorDetail,omitempty"`
 	// For more information about common request parameters, see [Common parameters](~~199331~~).
@@ -25061,6 +25080,11 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) Se
 
 func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetInstanceId(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetOsMonitorConfig(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
+	s.OsMonitorConfig = &v
 	return s
 }
 
@@ -42176,6 +42200,10 @@ func (client *Client) DescribeAlertLogCountWithOptions(request *DescribeAlertLog
 		query["SendStatus"] = request.SendStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -42287,6 +42315,10 @@ func (client *Client) DescribeAlertLogHistogramWithOptions(request *DescribeAler
 
 	if !tea.BoolValue(util.IsUnset(request.SendStatus)) {
 		query["SendStatus"] = request.SendStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -42406,6 +42438,10 @@ func (client *Client) DescribeAlertLogListWithOptions(request *DescribeAlertLogL
 
 	if !tea.BoolValue(util.IsUnset(request.SendStatus)) {
 		query["SendStatus"] = request.SendStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -47871,6 +47907,14 @@ func (client *Client) ModifySiteMonitor(request *ModifySiteMonitorRequest) (_res
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request OpenCmsServiceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OpenCmsServiceResponse
+ */
+// Deprecated
 func (client *Client) OpenCmsServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenCmsServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -47893,6 +47937,12 @@ func (client *Client) OpenCmsServiceWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return OpenCmsServiceResponse
+ */
+// Deprecated
 func (client *Client) OpenCmsService() (_result *OpenCmsServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenCmsServiceResponse{}
