@@ -1968,10 +1968,12 @@ func (s *ChangeAssetRefreshTaskConfigResponse) SetBody(v *ChangeAssetRefreshTask
 }
 
 type ChangeCheckConfigRequest struct {
-	AddedCheck      []*ChangeCheckConfigRequestAddedCheck `json:"AddedCheck,omitempty" xml:"AddedCheck,omitempty" type:"Repeated"`
-	CycleDays       []*int32                              `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
-	EnableAddCheck  *bool                                 `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
-	EnableAutoCheck *bool                                 `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
+	AddedCheck           []*ChangeCheckConfigRequestAddedCheck         `json:"AddedCheck,omitempty" xml:"AddedCheck,omitempty" type:"Repeated"`
+	ConfigRequirementIds *ChangeCheckConfigRequestConfigRequirementIds `json:"ConfigRequirementIds,omitempty" xml:"ConfigRequirementIds,omitempty" type:"Struct"`
+	ConfigStandardIds    *ChangeCheckConfigRequestConfigStandardIds    `json:"ConfigStandardIds,omitempty" xml:"ConfigStandardIds,omitempty" type:"Struct"`
+	CycleDays            []*int32                                      `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
+	EnableAddCheck       *bool                                         `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
+	EnableAutoCheck      *bool                                         `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
 	// The end time of the check. The value specifies a point in time in a day. The time period that is specified by the start time and end time must be one of the following time periods:
 	//
 	// *   **00:00 to 06:00:** If you set the StartTime parameter to 0, you must set the EndTime parameter to 6.
@@ -2000,6 +2002,16 @@ func (s ChangeCheckConfigRequest) GoString() string {
 
 func (s *ChangeCheckConfigRequest) SetAddedCheck(v []*ChangeCheckConfigRequestAddedCheck) *ChangeCheckConfigRequest {
 	s.AddedCheck = v
+	return s
+}
+
+func (s *ChangeCheckConfigRequest) SetConfigRequirementIds(v *ChangeCheckConfigRequestConfigRequirementIds) *ChangeCheckConfigRequest {
+	s.ConfigRequirementIds = v
+	return s
+}
+
+func (s *ChangeCheckConfigRequest) SetConfigStandardIds(v *ChangeCheckConfigRequestConfigStandardIds) *ChangeCheckConfigRequest {
+	s.ConfigStandardIds = v
 	return s
 }
 
@@ -2066,6 +2078,52 @@ func (s *ChangeCheckConfigRequestAddedCheck) SetSectionId(v int64) *ChangeCheckC
 	return s
 }
 
+type ChangeCheckConfigRequestConfigRequirementIds struct {
+	AddIds    []*int64 `json:"AddIds,omitempty" xml:"AddIds,omitempty" type:"Repeated"`
+	RemoveIds []*int64 `json:"RemoveIds,omitempty" xml:"RemoveIds,omitempty" type:"Repeated"`
+}
+
+func (s ChangeCheckConfigRequestConfigRequirementIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckConfigRequestConfigRequirementIds) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckConfigRequestConfigRequirementIds) SetAddIds(v []*int64) *ChangeCheckConfigRequestConfigRequirementIds {
+	s.AddIds = v
+	return s
+}
+
+func (s *ChangeCheckConfigRequestConfigRequirementIds) SetRemoveIds(v []*int64) *ChangeCheckConfigRequestConfigRequirementIds {
+	s.RemoveIds = v
+	return s
+}
+
+type ChangeCheckConfigRequestConfigStandardIds struct {
+	AddIds    []*int64 `json:"AddIds,omitempty" xml:"AddIds,omitempty" type:"Repeated"`
+	RemoveIds []*int64 `json:"RemoveIds,omitempty" xml:"RemoveIds,omitempty" type:"Repeated"`
+}
+
+func (s ChangeCheckConfigRequestConfigStandardIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckConfigRequestConfigStandardIds) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckConfigRequestConfigStandardIds) SetAddIds(v []*int64) *ChangeCheckConfigRequestConfigStandardIds {
+	s.AddIds = v
+	return s
+}
+
+func (s *ChangeCheckConfigRequestConfigStandardIds) SetRemoveIds(v []*int64) *ChangeCheckConfigRequestConfigStandardIds {
+	s.RemoveIds = v
+	return s
+}
+
 type ChangeCheckConfigRequestRemovedCheck struct {
 	CheckId   *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	SectionId *int64 `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
@@ -2085,6 +2143,140 @@ func (s *ChangeCheckConfigRequestRemovedCheck) SetCheckId(v int64) *ChangeCheckC
 }
 
 func (s *ChangeCheckConfigRequestRemovedCheck) SetSectionId(v int64) *ChangeCheckConfigRequestRemovedCheck {
+	s.SectionId = &v
+	return s
+}
+
+type ChangeCheckConfigShrinkRequest struct {
+	AddedCheck                 []*ChangeCheckConfigShrinkRequestAddedCheck `json:"AddedCheck,omitempty" xml:"AddedCheck,omitempty" type:"Repeated"`
+	ConfigRequirementIdsShrink *string                                     `json:"ConfigRequirementIds,omitempty" xml:"ConfigRequirementIds,omitempty"`
+	ConfigStandardIdsShrink    *string                                     `json:"ConfigStandardIds,omitempty" xml:"ConfigStandardIds,omitempty"`
+	CycleDays                  []*int32                                    `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
+	EnableAddCheck             *bool                                       `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
+	EnableAutoCheck            *bool                                       `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
+	// The end time of the check. The value specifies a point in time in a day. The time period that is specified by the start time and end time must be one of the following time periods:
+	//
+	// *   **00:00 to 06:00:** If you set the StartTime parameter to 0, you must set the EndTime parameter to 6.
+	// *   **06:00 to 12:00**: If you set the StartTime parameter to 6, you must set the EndTime parameter to 12.
+	// *   **12:00 to 18:00**: If you set the StartTime parameter to 12, you must set the EndTime parameter to 18.
+	// *  **18:00 to 24:00:** If you set the StartTime parameter to 18, you must set the EndTime parameter to 24.
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region ID of the bastion host to query.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId     *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemovedCheck []*ChangeCheckConfigShrinkRequestRemovedCheck `json:"RemovedCheck,omitempty" xml:"RemovedCheck,omitempty" type:"Repeated"`
+	// An array that consists of the information about the check item.
+	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
+	// The start time of the check. The value specifies a point in time in a day.
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ChangeCheckConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetAddedCheck(v []*ChangeCheckConfigShrinkRequestAddedCheck) *ChangeCheckConfigShrinkRequest {
+	s.AddedCheck = v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetConfigRequirementIdsShrink(v string) *ChangeCheckConfigShrinkRequest {
+	s.ConfigRequirementIdsShrink = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetConfigStandardIdsShrink(v string) *ChangeCheckConfigShrinkRequest {
+	s.ConfigStandardIdsShrink = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetCycleDays(v []*int32) *ChangeCheckConfigShrinkRequest {
+	s.CycleDays = v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetEnableAddCheck(v bool) *ChangeCheckConfigShrinkRequest {
+	s.EnableAddCheck = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetEnableAutoCheck(v bool) *ChangeCheckConfigShrinkRequest {
+	s.EnableAutoCheck = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetEndTime(v int32) *ChangeCheckConfigShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetRegionId(v string) *ChangeCheckConfigShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetRemovedCheck(v []*ChangeCheckConfigShrinkRequestRemovedCheck) *ChangeCheckConfigShrinkRequest {
+	s.RemovedCheck = v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetStandardIds(v []*int64) *ChangeCheckConfigShrinkRequest {
+	s.StandardIds = v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetStartTime(v int32) *ChangeCheckConfigShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ChangeCheckConfigShrinkRequestAddedCheck struct {
+	CheckId   *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	SectionId *int64 `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+}
+
+func (s ChangeCheckConfigShrinkRequestAddedCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckConfigShrinkRequestAddedCheck) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckConfigShrinkRequestAddedCheck) SetCheckId(v int64) *ChangeCheckConfigShrinkRequestAddedCheck {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequestAddedCheck) SetSectionId(v int64) *ChangeCheckConfigShrinkRequestAddedCheck {
+	s.SectionId = &v
+	return s
+}
+
+type ChangeCheckConfigShrinkRequestRemovedCheck struct {
+	CheckId   *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	SectionId *int64 `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+}
+
+func (s ChangeCheckConfigShrinkRequestRemovedCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckConfigShrinkRequestRemovedCheck) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckConfigShrinkRequestRemovedCheck) SetCheckId(v int64) *ChangeCheckConfigShrinkRequestRemovedCheck {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequestRemovedCheck) SetSectionId(v int64) *ChangeCheckConfigShrinkRequestRemovedCheck {
 	s.SectionId = &v
 	return s
 }
@@ -12010,6 +12202,122 @@ func (s *DescribeAssetsSecurityEventSummaryResponse) SetStatusCode(v int32) *Des
 }
 
 func (s *DescribeAssetsSecurityEventSummaryResponse) SetBody(v *DescribeAssetsSecurityEventSummaryResponseBody) *DescribeAssetsSecurityEventSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAttachRecordsRequest struct {
+	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	EcsUUIDList   []*string `json:"EcsUUIDList,omitempty" xml:"EcsUUIDList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAttachRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAttachRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAttachRecordsRequest) SetApplicationId(v string) *DescribeAttachRecordsRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *DescribeAttachRecordsRequest) SetEcsUUIDList(v []*string) *DescribeAttachRecordsRequest {
+	s.EcsUUIDList = v
+	return s
+}
+
+type DescribeAttachRecordsResponseBody struct {
+	AccessList []*DescribeAttachRecordsResponseBodyAccessList `json:"AccessList,omitempty" xml:"AccessList,omitempty" type:"Repeated"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAttachRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAttachRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAttachRecordsResponseBody) SetAccessList(v []*DescribeAttachRecordsResponseBodyAccessList) *DescribeAttachRecordsResponseBody {
+	s.AccessList = v
+	return s
+}
+
+func (s *DescribeAttachRecordsResponseBody) SetRequestId(v string) *DescribeAttachRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAttachRecordsResponseBodyAccessList struct {
+	AttachState  *int64  `json:"AttachState,omitempty" xml:"AttachState,omitempty"`
+	AttachSwitch *string `json:"AttachSwitch,omitempty" xml:"AttachSwitch,omitempty"`
+	EcsUUID      *string `json:"EcsUUID,omitempty" xml:"EcsUUID,omitempty"`
+	InstallMsg   *string `json:"InstallMsg,omitempty" xml:"InstallMsg,omitempty"`
+	InstallState *int64  `json:"InstallState,omitempty" xml:"InstallState,omitempty"`
+}
+
+func (s DescribeAttachRecordsResponseBodyAccessList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAttachRecordsResponseBodyAccessList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAttachRecordsResponseBodyAccessList) SetAttachState(v int64) *DescribeAttachRecordsResponseBodyAccessList {
+	s.AttachState = &v
+	return s
+}
+
+func (s *DescribeAttachRecordsResponseBodyAccessList) SetAttachSwitch(v string) *DescribeAttachRecordsResponseBodyAccessList {
+	s.AttachSwitch = &v
+	return s
+}
+
+func (s *DescribeAttachRecordsResponseBodyAccessList) SetEcsUUID(v string) *DescribeAttachRecordsResponseBodyAccessList {
+	s.EcsUUID = &v
+	return s
+}
+
+func (s *DescribeAttachRecordsResponseBodyAccessList) SetInstallMsg(v string) *DescribeAttachRecordsResponseBodyAccessList {
+	s.InstallMsg = &v
+	return s
+}
+
+func (s *DescribeAttachRecordsResponseBodyAccessList) SetInstallState(v int64) *DescribeAttachRecordsResponseBodyAccessList {
+	s.InstallState = &v
+	return s
+}
+
+type DescribeAttachRecordsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAttachRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAttachRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAttachRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAttachRecordsResponse) SetHeaders(v map[string]*string) *DescribeAttachRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAttachRecordsResponse) SetStatusCode(v int32) *DescribeAttachRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAttachRecordsResponse) SetBody(v *DescribeAttachRecordsResponseBody) *DescribeAttachRecordsResponse {
 	s.Body = v
 	return s
 }
@@ -64981,6 +65289,75 @@ func (s *InstallPmAgentResponse) SetBody(v *InstallPmAgentResponseBody) *Install
 	return s
 }
 
+type InstallRaspAttachRequest struct {
+	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	EcsUUIDList   []*string `json:"EcsUUIDList,omitempty" xml:"EcsUUIDList,omitempty" type:"Repeated"`
+}
+
+func (s InstallRaspAttachRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallRaspAttachRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallRaspAttachRequest) SetApplicationId(v string) *InstallRaspAttachRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *InstallRaspAttachRequest) SetEcsUUIDList(v []*string) *InstallRaspAttachRequest {
+	s.EcsUUIDList = v
+	return s
+}
+
+type InstallRaspAttachResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InstallRaspAttachResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallRaspAttachResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallRaspAttachResponseBody) SetRequestId(v string) *InstallRaspAttachResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InstallRaspAttachResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallRaspAttachResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InstallRaspAttachResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallRaspAttachResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstallRaspAttachResponse) SetHeaders(v map[string]*string) *InstallRaspAttachResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InstallRaspAttachResponse) SetStatusCode(v int32) *InstallRaspAttachResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InstallRaspAttachResponse) SetBody(v *InstallRaspAttachResponseBody) *InstallRaspAttachResponse {
+	s.Body = v
+	return s
+}
+
 type InstallUniBackupAgentRequest struct {
 	// The ID of the anti-ransomware policy.
 	//
@@ -65831,6 +66208,93 @@ func (s *ListAgentlessTaskResponse) SetStatusCode(v int32) *ListAgentlessTaskRes
 }
 
 func (s *ListAgentlessTaskResponse) SetBody(v *ListAgentlessTaskResponseBody) *ListAgentlessTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ListAssetCleanConfigResponseBody struct {
+	Count     *int32                                  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data      []*ListAssetCleanConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAssetCleanConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssetCleanConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssetCleanConfigResponseBody) SetCount(v int32) *ListAssetCleanConfigResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListAssetCleanConfigResponseBody) SetData(v []*ListAssetCleanConfigResponseBodyData) *ListAssetCleanConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAssetCleanConfigResponseBody) SetRequestId(v string) *ListAssetCleanConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAssetCleanConfigResponseBodyData struct {
+	CleanDays *int32 `json:"CleanDays,omitempty" xml:"CleanDays,omitempty"`
+	Status    *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type      *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListAssetCleanConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssetCleanConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssetCleanConfigResponseBodyData) SetCleanDays(v int32) *ListAssetCleanConfigResponseBodyData {
+	s.CleanDays = &v
+	return s
+}
+
+func (s *ListAssetCleanConfigResponseBodyData) SetStatus(v int32) *ListAssetCleanConfigResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAssetCleanConfigResponseBodyData) SetType(v int32) *ListAssetCleanConfigResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type ListAssetCleanConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAssetCleanConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAssetCleanConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssetCleanConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssetCleanConfigResponse) SetHeaders(v map[string]*string) *ListAssetCleanConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAssetCleanConfigResponse) SetStatusCode(v int32) *ListAssetCleanConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAssetCleanConfigResponse) SetBody(v *ListAssetCleanConfigResponseBody) *ListAssetCleanConfigResponse {
 	s.Body = v
 	return s
 }
@@ -68711,6 +69175,146 @@ func (s *ListCloudAssetInstancesResponse) SetStatusCode(v int32) *ListCloudAsset
 }
 
 func (s *ListCloudAssetInstancesResponse) SetBody(v *ListCloudAssetInstancesResponseBody) *ListCloudAssetInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudVendorRegionsRequest struct {
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s ListCloudVendorRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudVendorRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudVendorRegionsRequest) SetLang(v string) *ListCloudVendorRegionsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsRequest) SetVendor(v string) *ListCloudVendorRegionsRequest {
+	s.Vendor = &v
+	return s
+}
+
+type ListCloudVendorRegionsResponseBody struct {
+	Code           *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count          *int32                                    `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data           []*ListCloudVendorRegionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCloudVendorRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudVendorRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudVendorRegionsResponseBody) SetCode(v string) *ListCloudVendorRegionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBody) SetCount(v int32) *ListCloudVendorRegionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBody) SetData(v []*ListCloudVendorRegionsResponseBodyData) *ListCloudVendorRegionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBody) SetHttpStatusCode(v int32) *ListCloudVendorRegionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBody) SetMessage(v string) *ListCloudVendorRegionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBody) SetRequestId(v string) *ListCloudVendorRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBody) SetSuccess(v bool) *ListCloudVendorRegionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCloudVendorRegionsResponseBodyData struct {
+	Area     *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	Disable  *int32  `json:"Disable,omitempty" xml:"Disable,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Selected *int32  `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s ListCloudVendorRegionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudVendorRegionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudVendorRegionsResponseBodyData) SetArea(v string) *ListCloudVendorRegionsResponseBodyData {
+	s.Area = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBodyData) SetDisable(v int32) *ListCloudVendorRegionsResponseBodyData {
+	s.Disable = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBodyData) SetRegionId(v string) *ListCloudVendorRegionsResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponseBodyData) SetSelected(v int32) *ListCloudVendorRegionsResponseBodyData {
+	s.Selected = &v
+	return s
+}
+
+type ListCloudVendorRegionsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCloudVendorRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCloudVendorRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudVendorRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudVendorRegionsResponse) SetHeaders(v map[string]*string) *ListCloudVendorRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponse) SetStatusCode(v int32) *ListCloudVendorRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudVendorRegionsResponse) SetBody(v *ListCloudVendorRegionsResponseBody) *ListCloudVendorRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -74812,6 +75416,104 @@ func (s *ModifyAppVulScanCycleResponse) SetStatusCode(v int32) *ModifyAppVulScan
 }
 
 func (s *ModifyAppVulScanCycleResponse) SetBody(v *ModifyAppVulScanCycleResponseBody) *ModifyAppVulScanCycleResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAssetCleanConfigRequest struct {
+	AssetCleanConfigs []*ModifyAssetCleanConfigRequestAssetCleanConfigs `json:"AssetCleanConfigs,omitempty" xml:"AssetCleanConfigs,omitempty" type:"Repeated"`
+}
+
+func (s ModifyAssetCleanConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAssetCleanConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAssetCleanConfigRequest) SetAssetCleanConfigs(v []*ModifyAssetCleanConfigRequestAssetCleanConfigs) *ModifyAssetCleanConfigRequest {
+	s.AssetCleanConfigs = v
+	return s
+}
+
+type ModifyAssetCleanConfigRequestAssetCleanConfigs struct {
+	CleanDays *int32 `json:"CleanDays,omitempty" xml:"CleanDays,omitempty"`
+	Status    *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type      *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyAssetCleanConfigRequestAssetCleanConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAssetCleanConfigRequestAssetCleanConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAssetCleanConfigRequestAssetCleanConfigs) SetCleanDays(v int32) *ModifyAssetCleanConfigRequestAssetCleanConfigs {
+	s.CleanDays = &v
+	return s
+}
+
+func (s *ModifyAssetCleanConfigRequestAssetCleanConfigs) SetStatus(v int32) *ModifyAssetCleanConfigRequestAssetCleanConfigs {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyAssetCleanConfigRequestAssetCleanConfigs) SetType(v int32) *ModifyAssetCleanConfigRequestAssetCleanConfigs {
+	s.Type = &v
+	return s
+}
+
+type ModifyAssetCleanConfigResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAssetCleanConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAssetCleanConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAssetCleanConfigResponseBody) SetData(v bool) *ModifyAssetCleanConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyAssetCleanConfigResponseBody) SetRequestId(v string) *ModifyAssetCleanConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAssetCleanConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAssetCleanConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAssetCleanConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAssetCleanConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAssetCleanConfigResponse) SetHeaders(v map[string]*string) *ModifyAssetCleanConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAssetCleanConfigResponse) SetStatusCode(v int32) *ModifyAssetCleanConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAssetCleanConfigResponse) SetBody(v *ModifyAssetCleanConfigResponseBody) *ModifyAssetCleanConfigResponse {
 	s.Body = v
 	return s
 }
@@ -85125,6 +85827,75 @@ func (s *UninstallBackupClientResponse) SetBody(v *UninstallBackupClientResponse
 	return s
 }
 
+type UninstallRaspAttachRequest struct {
+	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	EcsUUIDList   []*string `json:"EcsUUIDList,omitempty" xml:"EcsUUIDList,omitempty" type:"Repeated"`
+}
+
+func (s UninstallRaspAttachRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallRaspAttachRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallRaspAttachRequest) SetApplicationId(v string) *UninstallRaspAttachRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *UninstallRaspAttachRequest) SetEcsUUIDList(v []*string) *UninstallRaspAttachRequest {
+	s.EcsUUIDList = v
+	return s
+}
+
+type UninstallRaspAttachResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UninstallRaspAttachResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallRaspAttachResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallRaspAttachResponseBody) SetRequestId(v string) *UninstallRaspAttachResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UninstallRaspAttachResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UninstallRaspAttachResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UninstallRaspAttachResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallRaspAttachResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallRaspAttachResponse) SetHeaders(v map[string]*string) *UninstallRaspAttachResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UninstallRaspAttachResponse) SetStatusCode(v int32) *UninstallRaspAttachResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UninstallRaspAttachResponse) SetBody(v *UninstallRaspAttachResponseBody) *UninstallRaspAttachResponse {
+	s.Body = v
+	return s
+}
+
 type UninstallUniBackupAgentRequest struct {
 	// The ID of the anti-ransomware policy.
 	//
@@ -87338,14 +88109,32 @@ func (client *Client) ChangeAssetRefreshTaskConfig(request *ChangeAssetRefreshTa
 	return _result, _err
 }
 
-func (client *Client) ChangeCheckConfigWithOptions(request *ChangeCheckConfigRequest, runtime *util.RuntimeOptions) (_result *ChangeCheckConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ChangeCheckConfigWithOptions(tmpReq *ChangeCheckConfigRequest, runtime *util.RuntimeOptions) (_result *ChangeCheckConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ChangeCheckConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConfigRequirementIds)) {
+		request.ConfigRequirementIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRequirementIds, tea.String("ConfigRequirementIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConfigStandardIds)) {
+		request.ConfigStandardIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigStandardIds, tea.String("ConfigStandardIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AddedCheck)) {
 		query["AddedCheck"] = request.AddedCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRequirementIdsShrink)) {
+		query["ConfigRequirementIds"] = request.ConfigRequirementIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigStandardIdsShrink)) {
+		query["ConfigStandardIds"] = request.ConfigStandardIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CycleDays)) {
@@ -91464,6 +92253,54 @@ func (client *Client) DescribeAssetsSecurityEventSummary(request *DescribeAssets
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAssetsSecurityEventSummaryResponse{}
 	_body, _err := client.DescribeAssetsSecurityEventSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAttachRecordsWithOptions(request *DescribeAttachRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeAttachRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsUUIDList)) {
+		query["EcsUUIDList"] = request.EcsUUIDList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAttachRecords"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAttachRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAttachRecords(request *DescribeAttachRecordsRequest) (_result *DescribeAttachRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAttachRecordsResponse{}
+	_body, _err := client.DescribeAttachRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -106444,6 +107281,54 @@ func (client *Client) InstallPmAgent(request *InstallPmAgentRequest) (_result *I
 	return _result, _err
 }
 
+func (client *Client) InstallRaspAttachWithOptions(request *InstallRaspAttachRequest, runtime *util.RuntimeOptions) (_result *InstallRaspAttachResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsUUIDList)) {
+		query["EcsUUIDList"] = request.EcsUUIDList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallRaspAttach"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InstallRaspAttachResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InstallRaspAttach(request *InstallRaspAttachRequest) (_result *InstallRaspAttachResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InstallRaspAttachResponse{}
+	_body, _err := client.InstallRaspAttachWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InstallUniBackupAgentWithOptions(request *InstallUniBackupAgentRequest, runtime *util.RuntimeOptions) (_result *InstallUniBackupAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106782,6 +107667,39 @@ func (client *Client) ListAgentlessTask(request *ListAgentlessTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAgentlessTaskResponse{}
 	_body, _err := client.ListAgentlessTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAssetCleanConfigWithOptions(runtime *util.RuntimeOptions) (_result *ListAssetCleanConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListAssetCleanConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAssetCleanConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAssetCleanConfig() (_result *ListAssetCleanConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAssetCleanConfigResponse{}
+	_body, _err := client.ListAssetCleanConfigWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -107527,6 +108445,54 @@ func (client *Client) ListCloudAssetInstances(request *ListCloudAssetInstancesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCloudAssetInstancesResponse{}
 	_body, _err := client.ListCloudAssetInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCloudVendorRegionsWithOptions(request *ListCloudVendorRegionsRequest, runtime *util.RuntimeOptions) (_result *ListCloudVendorRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vendor)) {
+		query["Vendor"] = request.Vendor
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudVendorRegions"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudVendorRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCloudVendorRegions(request *ListCloudVendorRegionsRequest) (_result *ListCloudVendorRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudVendorRegionsResponse{}
+	_body, _err := client.ListCloudVendorRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -109127,6 +110093,50 @@ func (client *Client) ModifyAppVulScanCycle(request *ModifyAppVulScanCycleReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppVulScanCycleResponse{}
 	_body, _err := client.ModifyAppVulScanCycleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAssetCleanConfigWithOptions(request *ModifyAssetCleanConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyAssetCleanConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetCleanConfigs)) {
+		query["AssetCleanConfigs"] = request.AssetCleanConfigs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAssetCleanConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAssetCleanConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAssetCleanConfig(request *ModifyAssetCleanConfigRequest) (_result *ModifyAssetCleanConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAssetCleanConfigResponse{}
+	_body, _err := client.ModifyAssetCleanConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -114460,6 +115470,54 @@ func (client *Client) UninstallBackupClient(request *UninstallBackupClientReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UninstallBackupClientResponse{}
 	_body, _err := client.UninstallBackupClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UninstallRaspAttachWithOptions(request *UninstallRaspAttachRequest, runtime *util.RuntimeOptions) (_result *UninstallRaspAttachResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsUUIDList)) {
+		query["EcsUUIDList"] = request.EcsUUIDList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UninstallRaspAttach"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UninstallRaspAttachResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UninstallRaspAttach(request *UninstallRaspAttachRequest) (_result *UninstallRaspAttachResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UninstallRaspAttachResponse{}
+	_body, _err := client.UninstallRaspAttachWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
