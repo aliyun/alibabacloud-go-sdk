@@ -39663,6 +39663,7 @@ func (s *TrainOrderListQueryResponseBody) SetTraceId(v string) *TrainOrderListQu
 type TrainOrderListQueryResponseBodyModule struct {
 	ApplyId              *int64                                                    `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrCity              *string                                                   `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityAdCode        *string                                                   `json:"arr_city_ad_code,omitempty" xml:"arr_city_ad_code,omitempty"`
 	ArrStation           *string                                                   `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
 	ArrTime              *string                                                   `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
 	BtripTitle           *string                                                   `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
@@ -39671,6 +39672,7 @@ type TrainOrderListQueryResponseBodyModule struct {
 	CorpName             *string                                                   `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	CostCenter           *TrainOrderListQueryResponseBodyModuleCostCenter          `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
 	DepCity              *string                                                   `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityAdCode        *string                                                   `json:"dep_city_ad_code,omitempty" xml:"dep_city_ad_code,omitempty"`
 	DepStation           *string                                                   `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
 	DepTime              *string                                                   `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	DepartId             *string                                                   `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
@@ -39717,6 +39719,11 @@ func (s *TrainOrderListQueryResponseBodyModule) SetArrCity(v string) *TrainOrder
 	return s
 }
 
+func (s *TrainOrderListQueryResponseBodyModule) SetArrCityAdCode(v string) *TrainOrderListQueryResponseBodyModule {
+	s.ArrCityAdCode = &v
+	return s
+}
+
 func (s *TrainOrderListQueryResponseBodyModule) SetArrStation(v string) *TrainOrderListQueryResponseBodyModule {
 	s.ArrStation = &v
 	return s
@@ -39754,6 +39761,11 @@ func (s *TrainOrderListQueryResponseBodyModule) SetCostCenter(v *TrainOrderListQ
 
 func (s *TrainOrderListQueryResponseBodyModule) SetDepCity(v string) *TrainOrderListQueryResponseBodyModule {
 	s.DepCity = &v
+	return s
+}
+
+func (s *TrainOrderListQueryResponseBodyModule) SetDepCityAdCode(v string) *TrainOrderListQueryResponseBodyModule {
+	s.DepCityAdCode = &v
 	return s
 }
 
