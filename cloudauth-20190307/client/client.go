@@ -1144,6 +1144,7 @@ type DescribeFaceVerifyResponseBodyResultObject struct {
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
 	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
 	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	Success      *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFaceVerifyResponseBodyResultObject) String() string {
@@ -1181,6 +1182,11 @@ func (s *DescribeFaceVerifyResponseBodyResultObject) SetPassed(v string) *Descri
 
 func (s *DescribeFaceVerifyResponseBodyResultObject) SetSubCode(v string) *DescribeFaceVerifyResponseBodyResultObject {
 	s.SubCode = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyResponseBodyResultObject) SetSuccess(v string) *DescribeFaceVerifyResponseBodyResultObject {
+	s.Success = &v
 	return s
 }
 
@@ -2144,12 +2150,14 @@ func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBo
 
 type InitFaceVerifyRequest struct {
 	AuthId                     *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	Birthday                   *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
 	CallbackToken              *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
 	CallbackUrl                *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	CertName                   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	CertNo                     *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
 	CertType                   *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	CertifyId                  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	CertifyUrlStyle            *string `json:"CertifyUrlStyle,omitempty" xml:"CertifyUrlStyle,omitempty"`
 	CertifyUrlType             *string `json:"CertifyUrlType,omitempty" xml:"CertifyUrlType,omitempty"`
 	Crop                       *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	EncryptType                *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
@@ -2158,16 +2166,19 @@ type InitFaceVerifyRequest struct {
 	Ip                         *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	MetaInfo                   *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
 	Mobile                     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mode                       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	Model                      *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	OssBucketName              *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
 	OssObjectName              *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
 	OuterOrderNo               *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProcedurePriority          *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	ProductCode                *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ReadImg                    *string `json:"ReadImg,omitempty" xml:"ReadImg,omitempty"`
 	ReturnUrl                  *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneId                    *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SuitableType               *string `json:"SuitableType,omitempty" xml:"SuitableType,omitempty"`
 	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ValidityDate               *string `json:"ValidityDate,omitempty" xml:"ValidityDate,omitempty"`
 	VoluntaryCustomizedContent *string `json:"VoluntaryCustomizedContent,omitempty" xml:"VoluntaryCustomizedContent,omitempty"`
 }
 
@@ -2181,6 +2192,11 @@ func (s InitFaceVerifyRequest) GoString() string {
 
 func (s *InitFaceVerifyRequest) SetAuthId(v string) *InitFaceVerifyRequest {
 	s.AuthId = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetBirthday(v string) *InitFaceVerifyRequest {
+	s.Birthday = &v
 	return s
 }
 
@@ -2211,6 +2227,11 @@ func (s *InitFaceVerifyRequest) SetCertType(v string) *InitFaceVerifyRequest {
 
 func (s *InitFaceVerifyRequest) SetCertifyId(v string) *InitFaceVerifyRequest {
 	s.CertifyId = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetCertifyUrlStyle(v string) *InitFaceVerifyRequest {
+	s.CertifyUrlStyle = &v
 	return s
 }
 
@@ -2254,6 +2275,11 @@ func (s *InitFaceVerifyRequest) SetMobile(v string) *InitFaceVerifyRequest {
 	return s
 }
 
+func (s *InitFaceVerifyRequest) SetMode(v string) *InitFaceVerifyRequest {
+	s.Mode = &v
+	return s
+}
+
 func (s *InitFaceVerifyRequest) SetModel(v string) *InitFaceVerifyRequest {
 	s.Model = &v
 	return s
@@ -2284,6 +2310,11 @@ func (s *InitFaceVerifyRequest) SetProductCode(v string) *InitFaceVerifyRequest 
 	return s
 }
 
+func (s *InitFaceVerifyRequest) SetReadImg(v string) *InitFaceVerifyRequest {
+	s.ReadImg = &v
+	return s
+}
+
 func (s *InitFaceVerifyRequest) SetReturnUrl(v string) *InitFaceVerifyRequest {
 	s.ReturnUrl = &v
 	return s
@@ -2301,6 +2332,11 @@ func (s *InitFaceVerifyRequest) SetSuitableType(v string) *InitFaceVerifyRequest
 
 func (s *InitFaceVerifyRequest) SetUserId(v string) *InitFaceVerifyRequest {
 	s.UserId = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetValidityDate(v string) *InitFaceVerifyRequest {
+	s.ValidityDate = &v
 	return s
 }
 
@@ -3908,6 +3944,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Birthday)) {
+		query["Birthday"] = request.Birthday
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CallbackToken)) {
 		query["CallbackToken"] = request.CallbackToken
 	}
@@ -3930,6 +3970,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
 		query["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertifyUrlStyle)) {
+		query["CertifyUrlStyle"] = request.CertifyUrlStyle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CertifyUrlType)) {
@@ -3956,6 +4000,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 		query["Mobile"] = request.Mobile
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
 		query["OssBucketName"] = request.OssBucketName
 	}
@@ -3976,6 +4024,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 		query["ProductCode"] = request.ProductCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReadImg)) {
+		query["ReadImg"] = request.ReadImg
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReturnUrl)) {
 		query["ReturnUrl"] = request.ReturnUrl
 	}
@@ -3990,6 +4042,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidityDate)) {
+		query["ValidityDate"] = request.ValidityDate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VoluntaryCustomizedContent)) {
