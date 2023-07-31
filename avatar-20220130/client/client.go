@@ -303,6 +303,245 @@ func (s *CloseTimedResetOperateResponse) SetBody(v *CloseTimedResetOperateRespon
 	return s
 }
 
+type Create2dAvatarRequest struct {
+	Callback    *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Image       *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Orientation *int32  `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
+	Portrait    *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	TenantId    *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Transparent *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	Video       *string `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s Create2dAvatarRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Create2dAvatarRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Create2dAvatarRequest) SetCallback(v bool) *Create2dAvatarRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetDescription(v string) *Create2dAvatarRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetImage(v string) *Create2dAvatarRequest {
+	s.Image = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetName(v string) *Create2dAvatarRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetOrientation(v int32) *Create2dAvatarRequest {
+	s.Orientation = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetPortrait(v string) *Create2dAvatarRequest {
+	s.Portrait = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetTenantId(v int64) *Create2dAvatarRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetTransparent(v bool) *Create2dAvatarRequest {
+	s.Transparent = &v
+	return s
+}
+
+func (s *Create2dAvatarRequest) SetVideo(v string) *Create2dAvatarRequest {
+	s.Video = &v
+	return s
+}
+
+type Create2dAvatarResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *Create2dAvatarResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s Create2dAvatarResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Create2dAvatarResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Create2dAvatarResponseBody) SetCode(v string) *Create2dAvatarResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Create2dAvatarResponseBody) SetData(v *Create2dAvatarResponseBodyData) *Create2dAvatarResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *Create2dAvatarResponseBody) SetMessage(v string) *Create2dAvatarResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Create2dAvatarResponseBody) SetRequestId(v string) *Create2dAvatarResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Create2dAvatarResponseBody) SetSuccess(v bool) *Create2dAvatarResponseBody {
+	s.Success = &v
+	return s
+}
+
+type Create2dAvatarResponseBodyData struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s Create2dAvatarResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Create2dAvatarResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *Create2dAvatarResponseBodyData) SetCode(v string) *Create2dAvatarResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+type Create2dAvatarResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Create2dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s Create2dAvatarResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Create2dAvatarResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Create2dAvatarResponse) SetHeaders(v map[string]*string) *Create2dAvatarResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Create2dAvatarResponse) SetStatusCode(v int32) *Create2dAvatarResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Create2dAvatarResponse) SetBody(v *Create2dAvatarResponseBody) *Create2dAvatarResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAvatarRequest struct {
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DeleteAvatarRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAvatarRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAvatarRequest) SetCode(v string) *DeleteAvatarRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAvatarRequest) SetTenantId(v int64) *DeleteAvatarRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteAvatarResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAvatarResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAvatarResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAvatarResponseBody) SetCode(v string) *DeleteAvatarResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAvatarResponseBody) SetMessage(v string) *DeleteAvatarResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAvatarResponseBody) SetRequestId(v string) *DeleteAvatarResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAvatarResponseBody) SetSuccess(v bool) *DeleteAvatarResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAvatarResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAvatarResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAvatarResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAvatarResponse) SetHeaders(v map[string]*string) *DeleteAvatarResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAvatarResponse) SetStatusCode(v int32) *DeleteAvatarResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAvatarResponse) SetBody(v *DeleteAvatarResponseBody) *DeleteAvatarResponse {
+	s.Body = v
+	return s
+}
+
 type DuplexDecisionRequest struct {
 	AppId          *string                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BizRequestId   *string                             `json:"BizRequestId,omitempty" xml:"BizRequestId,omitempty"`
@@ -1008,6 +1247,8 @@ type QueryAvatarResponseBodyData struct {
 	AvatarType           *string                                          `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
 	Description          *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	Image                *string                                          `json:"Image,omitempty" xml:"Image,omitempty"`
+	MakeFailReason       *string                                          `json:"MakeFailReason,omitempty" xml:"MakeFailReason,omitempty"`
+	MakeStatus           *string                                          `json:"MakeStatus,omitempty" xml:"MakeStatus,omitempty"`
 	ModelType            *string                                          `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Name                 *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
 	Portrait             *string                                          `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
@@ -1034,6 +1275,16 @@ func (s *QueryAvatarResponseBodyData) SetDescription(v string) *QueryAvatarRespo
 
 func (s *QueryAvatarResponseBodyData) SetImage(v string) *QueryAvatarResponseBodyData {
 	s.Image = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetMakeFailReason(v string) *QueryAvatarResponseBodyData {
+	s.MakeFailReason = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetMakeStatus(v string) *QueryAvatarResponseBodyData {
+	s.MakeStatus = &v
 	return s
 }
 
@@ -1289,6 +1540,8 @@ type QueryAvatarListResponseBodyDataList struct {
 	Code                 *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description          *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
 	Image                *string                                                  `json:"Image,omitempty" xml:"Image,omitempty"`
+	MakeFailReason       *string                                                  `json:"MakeFailReason,omitempty" xml:"MakeFailReason,omitempty"`
+	MakeStatus           *string                                                  `json:"MakeStatus,omitempty" xml:"MakeStatus,omitempty"`
 	ModelType            *string                                                  `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Name                 *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	Portrait             *string                                                  `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
@@ -1320,6 +1573,16 @@ func (s *QueryAvatarListResponseBodyDataList) SetDescription(v string) *QueryAva
 
 func (s *QueryAvatarListResponseBodyDataList) SetImage(v string) *QueryAvatarListResponseBodyDataList {
 	s.Image = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetMakeFailReason(v string) *QueryAvatarListResponseBodyDataList {
+	s.MakeFailReason = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetMakeStatus(v string) *QueryAvatarListResponseBodyDataList {
+	s.MakeStatus = &v
 	return s
 }
 
@@ -4491,6 +4754,164 @@ func (s *SubmitTextTo3DAvatarVideoTaskResponse) SetBody(v *SubmitTextTo3DAvatarV
 	return s
 }
 
+type Update2dAvatarRequest struct {
+	Callback    *bool   `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Image       *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Orientation *int32  `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
+	Portrait    *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	TenantId    *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Transparent *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	Video       *string `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s Update2dAvatarRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Update2dAvatarRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Update2dAvatarRequest) SetCallback(v bool) *Update2dAvatarRequest {
+	s.Callback = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetCode(v string) *Update2dAvatarRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetDescription(v string) *Update2dAvatarRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetImage(v string) *Update2dAvatarRequest {
+	s.Image = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetName(v string) *Update2dAvatarRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetOrientation(v int32) *Update2dAvatarRequest {
+	s.Orientation = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetPortrait(v string) *Update2dAvatarRequest {
+	s.Portrait = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetTenantId(v int64) *Update2dAvatarRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetTransparent(v bool) *Update2dAvatarRequest {
+	s.Transparent = &v
+	return s
+}
+
+func (s *Update2dAvatarRequest) SetVideo(v string) *Update2dAvatarRequest {
+	s.Video = &v
+	return s
+}
+
+type Update2dAvatarResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *Update2dAvatarResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s Update2dAvatarResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Update2dAvatarResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Update2dAvatarResponseBody) SetCode(v string) *Update2dAvatarResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Update2dAvatarResponseBody) SetData(v *Update2dAvatarResponseBodyData) *Update2dAvatarResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *Update2dAvatarResponseBody) SetMessage(v string) *Update2dAvatarResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Update2dAvatarResponseBody) SetRequestId(v string) *Update2dAvatarResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Update2dAvatarResponseBody) SetSuccess(v bool) *Update2dAvatarResponseBody {
+	s.Success = &v
+	return s
+}
+
+type Update2dAvatarResponseBodyData struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s Update2dAvatarResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Update2dAvatarResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *Update2dAvatarResponseBodyData) SetCode(v string) *Update2dAvatarResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+type Update2dAvatarResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Update2dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s Update2dAvatarResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Update2dAvatarResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Update2dAvatarResponse) SetHeaders(v map[string]*string) *Update2dAvatarResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Update2dAvatarResponse) SetStatusCode(v int32) *Update2dAvatarResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Update2dAvatarResponse) SetBody(v *Update2dAvatarResponseBody) *Update2dAvatarResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4637,6 +5058,130 @@ func (client *Client) CloseTimedResetOperate(request *CloseTimedResetOperateRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseTimedResetOperateResponse{}
 	_body, _err := client.CloseTimedResetOperateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Create2dAvatarWithOptions(request *Create2dAvatarRequest, runtime *util.RuntimeOptions) (_result *Create2dAvatarResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Callback)) {
+		query["Callback"] = request.Callback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Orientation)) {
+		query["Orientation"] = request.Orientation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Portrait)) {
+		query["Portrait"] = request.Portrait
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transparent)) {
+		query["Transparent"] = request.Transparent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Create2dAvatar"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Create2dAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Create2dAvatar(request *Create2dAvatarRequest) (_result *Create2dAvatarResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Create2dAvatarResponse{}
+	_body, _err := client.Create2dAvatarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAvatarWithOptions(request *DeleteAvatarRequest, runtime *util.RuntimeOptions) (_result *DeleteAvatarResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAvatar"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAvatar(request *DeleteAvatarRequest) (_result *DeleteAvatarResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAvatarResponse{}
+	_body, _err := client.DeleteAvatarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4837,7 +5382,15 @@ func (client *Client) QueryAvatarWithOptions(request *QueryAvatarRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4846,7 +5399,7 @@ func (client *Client) QueryAvatarWithOptions(request *QueryAvatarRequest, runtim
 		Version:     tea.String("2022-01-30"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -5851,6 +6404,86 @@ func (client *Client) SubmitTextTo3DAvatarVideoTask(request *SubmitTextTo3DAvata
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitTextTo3DAvatarVideoTaskResponse{}
 	_body, _err := client.SubmitTextTo3DAvatarVideoTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Update2dAvatarWithOptions(request *Update2dAvatarRequest, runtime *util.RuntimeOptions) (_result *Update2dAvatarResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Callback)) {
+		query["Callback"] = request.Callback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Orientation)) {
+		query["Orientation"] = request.Orientation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Portrait)) {
+		query["Portrait"] = request.Portrait
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transparent)) {
+		query["Transparent"] = request.Transparent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Update2dAvatar"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Update2dAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Update2dAvatar(request *Update2dAvatarRequest) (_result *Update2dAvatarResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Update2dAvatarResponse{}
+	_body, _err := client.Update2dAvatarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
