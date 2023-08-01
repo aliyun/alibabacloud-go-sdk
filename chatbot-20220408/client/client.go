@@ -4972,6 +4972,111 @@ func (s *GenerateUserAccessTokenResponse) SetBody(v *GenerateUserAccessTokenResp
 	return s
 }
 
+type GetAgentInfoRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetAgentInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInfoRequest) SetInstanceId(v string) *GetAgentInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetAgentInfoResponseBody struct {
+	Data    *GetAgentInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAgentInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInfoResponseBody) SetData(v *GetAgentInfoResponseBodyData) *GetAgentInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAgentInfoResponseBody) SetMessage(v string) *GetAgentInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAgentInfoResponseBody) SetRequestId(v string) *GetAgentInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAgentInfoResponseBody) SetSuccess(v bool) *GetAgentInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAgentInfoResponseBodyData struct {
+	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+}
+
+func (s GetAgentInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInfoResponseBodyData) SetAgentKey(v string) *GetAgentInfoResponseBodyData {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetAgentInfoResponseBodyData) SetAgentName(v string) *GetAgentInfoResponseBodyData {
+	s.AgentName = &v
+	return s
+}
+
+type GetAgentInfoResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAgentInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAgentInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInfoResponse) SetHeaders(v map[string]*string) *GetAgentInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAgentInfoResponse) SetStatusCode(v int32) *GetAgentInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAgentInfoResponse) SetBody(v *GetAgentInfoResponseBody) *GetAgentInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetAsyncResultRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -6753,6 +6858,269 @@ func (s *ListLgfResponse) SetStatusCode(v int32) *ListLgfResponse {
 }
 
 func (s *ListLgfResponse) SetBody(v *ListLgfResponseBody) *ListLgfResponse {
+	s.Body = v
+	return s
+}
+
+type ListSaasInfoRequest struct {
+	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	SaasGroupCodes *string `json:"SaasGroupCodes,omitempty" xml:"SaasGroupCodes,omitempty"`
+	SaasName       *string `json:"SaasName,omitempty" xml:"SaasName,omitempty"`
+}
+
+func (s ListSaasInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasInfoRequest) SetAgentKey(v string) *ListSaasInfoRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListSaasInfoRequest) SetSaasGroupCodes(v string) *ListSaasInfoRequest {
+	s.SaasGroupCodes = &v
+	return s
+}
+
+func (s *ListSaasInfoRequest) SetSaasName(v string) *ListSaasInfoRequest {
+	s.SaasName = &v
+	return s
+}
+
+type ListSaasInfoResponseBody struct {
+	Data []*ListSaasInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SaasToken *string `json:"SaasToken,omitempty" xml:"SaasToken,omitempty"`
+}
+
+func (s ListSaasInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasInfoResponseBody) SetData(v []*ListSaasInfoResponseBodyData) *ListSaasInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSaasInfoResponseBody) SetRequestId(v string) *ListSaasInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSaasInfoResponseBody) SetSaasToken(v string) *ListSaasInfoResponseBody {
+	s.SaasToken = &v
+	return s
+}
+
+type ListSaasInfoResponseBodyData struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	EnName     *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ServiceUrl *string `json:"ServiceUrl,omitempty" xml:"ServiceUrl,omitempty"`
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListSaasInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasInfoResponseBodyData) SetCode(v string) *ListSaasInfoResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSaasInfoResponseBodyData) SetEnName(v string) *ListSaasInfoResponseBodyData {
+	s.EnName = &v
+	return s
+}
+
+func (s *ListSaasInfoResponseBodyData) SetName(v string) *ListSaasInfoResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSaasInfoResponseBodyData) SetServiceUrl(v string) *ListSaasInfoResponseBodyData {
+	s.ServiceUrl = &v
+	return s
+}
+
+func (s *ListSaasInfoResponseBodyData) SetUrl(v string) *ListSaasInfoResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type ListSaasInfoResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSaasInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSaasInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasInfoResponse) SetHeaders(v map[string]*string) *ListSaasInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSaasInfoResponse) SetStatusCode(v int32) *ListSaasInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSaasInfoResponse) SetBody(v *ListSaasInfoResponseBody) *ListSaasInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ListSaasPermissionGroupInfosRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+}
+
+func (s ListSaasPermissionGroupInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasPermissionGroupInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasPermissionGroupInfosRequest) SetAgentKey(v string) *ListSaasPermissionGroupInfosRequest {
+	s.AgentKey = &v
+	return s
+}
+
+type ListSaasPermissionGroupInfosResponseBody struct {
+	Data []*ListSaasPermissionGroupInfosResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSaasPermissionGroupInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasPermissionGroupInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBody) SetData(v []*ListSaasPermissionGroupInfosResponseBodyData) *ListSaasPermissionGroupInfosResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBody) SetRequestId(v string) *ListSaasPermissionGroupInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSaasPermissionGroupInfosResponseBodyData struct {
+	EnName   *string                                                `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	Name     *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	PgInfos  []*ListSaasPermissionGroupInfosResponseBodyDataPgInfos `json:"PgInfos,omitempty" xml:"PgInfos,omitempty" type:"Repeated"`
+	SaasCode *string                                                `json:"SaasCode,omitempty" xml:"SaasCode,omitempty"`
+}
+
+func (s ListSaasPermissionGroupInfosResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasPermissionGroupInfosResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBodyData) SetEnName(v string) *ListSaasPermissionGroupInfosResponseBodyData {
+	s.EnName = &v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBodyData) SetName(v string) *ListSaasPermissionGroupInfosResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBodyData) SetPgInfos(v []*ListSaasPermissionGroupInfosResponseBodyDataPgInfos) *ListSaasPermissionGroupInfosResponseBodyData {
+	s.PgInfos = v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBodyData) SetSaasCode(v string) *ListSaasPermissionGroupInfosResponseBodyData {
+	s.SaasCode = &v
+	return s
+}
+
+type ListSaasPermissionGroupInfosResponseBodyDataPgInfos struct {
+	PgCode   *string `json:"PgCode,omitempty" xml:"PgCode,omitempty"`
+	PgEnName *string `json:"PgEnName,omitempty" xml:"PgEnName,omitempty"`
+	PgName   *string `json:"PgName,omitempty" xml:"PgName,omitempty"`
+}
+
+func (s ListSaasPermissionGroupInfosResponseBodyDataPgInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasPermissionGroupInfosResponseBodyDataPgInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBodyDataPgInfos) SetPgCode(v string) *ListSaasPermissionGroupInfosResponseBodyDataPgInfos {
+	s.PgCode = &v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBodyDataPgInfos) SetPgEnName(v string) *ListSaasPermissionGroupInfosResponseBodyDataPgInfos {
+	s.PgEnName = &v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponseBodyDataPgInfos) SetPgName(v string) *ListSaasPermissionGroupInfosResponseBodyDataPgInfos {
+	s.PgName = &v
+	return s
+}
+
+type ListSaasPermissionGroupInfosResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSaasPermissionGroupInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSaasPermissionGroupInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSaasPermissionGroupInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSaasPermissionGroupInfosResponse) SetHeaders(v map[string]*string) *ListSaasPermissionGroupInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponse) SetStatusCode(v int32) *ListSaasPermissionGroupInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSaasPermissionGroupInfosResponse) SetBody(v *ListSaasPermissionGroupInfosResponseBody) *ListSaasPermissionGroupInfosResponse {
 	s.Body = v
 	return s
 }
@@ -11606,6 +11974,50 @@ func (client *Client) GenerateUserAccessToken(request *GenerateUserAccessTokenRe
 	return _result, _err
 }
 
+func (client *Client) GetAgentInfoWithOptions(request *GetAgentInfoRequest, runtime *util.RuntimeOptions) (_result *GetAgentInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAgentInfo"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAgentInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAgentInfo(request *GetAgentInfoRequest) (_result *GetAgentInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAgentInfoResponse{}
+	_body, _err := client.GetAgentInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAsyncResultWithOptions(request *GetAsyncResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12327,6 +12739,102 @@ func (client *Client) ListLgf(request *ListLgfRequest) (_result *ListLgfResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLgfResponse{}
 	_body, _err := client.ListLgfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSaasInfoWithOptions(request *ListSaasInfoRequest, runtime *util.RuntimeOptions) (_result *ListSaasInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaasGroupCodes)) {
+		query["SaasGroupCodes"] = request.SaasGroupCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaasName)) {
+		query["SaasName"] = request.SaasName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSaasInfo"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSaasInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSaasInfo(request *ListSaasInfoRequest) (_result *ListSaasInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSaasInfoResponse{}
+	_body, _err := client.ListSaasInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSaasPermissionGroupInfosWithOptions(request *ListSaasPermissionGroupInfosRequest, runtime *util.RuntimeOptions) (_result *ListSaasPermissionGroupInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSaasPermissionGroupInfos"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSaasPermissionGroupInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSaasPermissionGroupInfos(request *ListSaasPermissionGroupInfosRequest) (_result *ListSaasPermissionGroupInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSaasPermissionGroupInfosResponse{}
+	_body, _err := client.ListSaasPermissionGroupInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
