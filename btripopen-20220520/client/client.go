@@ -2831,6 +2831,7 @@ func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetTrafficType(v 
 }
 
 type ApplyListQueryResponseBodyModuleListTravelerList struct {
+	JobNo    *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
@@ -2841,6 +2842,11 @@ func (s ApplyListQueryResponseBodyModuleListTravelerList) String() string {
 
 func (s ApplyListQueryResponseBodyModuleListTravelerList) GoString() string {
 	return s.String()
+}
+
+func (s *ApplyListQueryResponseBodyModuleListTravelerList) SetJobNo(v string) *ApplyListQueryResponseBodyModuleListTravelerList {
+	s.JobNo = &v
+	return s
 }
 
 func (s *ApplyListQueryResponseBodyModuleListTravelerList) SetUserId(v string) *ApplyListQueryResponseBodyModuleListTravelerList {
@@ -6234,6 +6240,7 @@ type CarOrderListQueryResponseBodyModule struct {
 	DriverConfirmTime    *string                                                 `json:"driver_confirm_time,omitempty" xml:"driver_confirm_time,omitempty"`
 	EstimatePrice        *float64                                                `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
 	FromAddress          *string                                                 `json:"from_address,omitempty" xml:"from_address,omitempty"`
+	FromCityAdCode       *string                                                 `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
 	FromCityName         *string                                                 `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
 	GmtCreate            *string                                                 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModified          *string                                                 `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
@@ -6252,8 +6259,10 @@ type CarOrderListQueryResponseBodyModule struct {
 	Provider             *int32                                                  `json:"provider,omitempty" xml:"provider,omitempty"`
 	PublishTime          *string                                                 `json:"publish_time,omitempty" xml:"publish_time,omitempty"`
 	RealFromAddress      *string                                                 `json:"real_from_address,omitempty" xml:"real_from_address,omitempty"`
+	RealFromCityAdCode   *string                                                 `json:"real_from_city_ad_code,omitempty" xml:"real_from_city_ad_code,omitempty"`
 	RealFromCityName     *string                                                 `json:"real_from_city_name,omitempty" xml:"real_from_city_name,omitempty"`
 	RealToAddress        *string                                                 `json:"real_to_address,omitempty" xml:"real_to_address,omitempty"`
+	RealToCityAdCode     *string                                                 `json:"real_to_city_ad_code,omitempty" xml:"real_to_city_ad_code,omitempty"`
 	RealToCityName       *string                                                 `json:"real_to_city_name,omitempty" xml:"real_to_city_name,omitempty"`
 	ServiceType          *int32                                                  `json:"service_type,omitempty" xml:"service_type,omitempty"`
 	SpecialTypes         []*string                                               `json:"special_types,omitempty" xml:"special_types,omitempty" type:"Repeated"`
@@ -6261,6 +6270,7 @@ type CarOrderListQueryResponseBodyModule struct {
 	ThirdpartApplyId     *string                                                 `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartItineraryId *string                                                 `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
 	ToAddress            *string                                                 `json:"to_address,omitempty" xml:"to_address,omitempty"`
+	ToCityAdCode         *string                                                 `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
 	ToCityName           *string                                                 `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
 	TravelDistance       *float64                                                `json:"travel_distance,omitempty" xml:"travel_distance,omitempty"`
 	UserAffiliateList    []*CarOrderListQueryResponseBodyModuleUserAffiliateList `json:"user_affiliate_list,omitempty" xml:"user_affiliate_list,omitempty" type:"Repeated"`
@@ -6362,6 +6372,11 @@ func (s *CarOrderListQueryResponseBodyModule) SetFromAddress(v string) *CarOrder
 	return s
 }
 
+func (s *CarOrderListQueryResponseBodyModule) SetFromCityAdCode(v string) *CarOrderListQueryResponseBodyModule {
+	s.FromCityAdCode = &v
+	return s
+}
+
 func (s *CarOrderListQueryResponseBodyModule) SetFromCityName(v string) *CarOrderListQueryResponseBodyModule {
 	s.FromCityName = &v
 	return s
@@ -6452,6 +6467,11 @@ func (s *CarOrderListQueryResponseBodyModule) SetRealFromAddress(v string) *CarO
 	return s
 }
 
+func (s *CarOrderListQueryResponseBodyModule) SetRealFromCityAdCode(v string) *CarOrderListQueryResponseBodyModule {
+	s.RealFromCityAdCode = &v
+	return s
+}
+
 func (s *CarOrderListQueryResponseBodyModule) SetRealFromCityName(v string) *CarOrderListQueryResponseBodyModule {
 	s.RealFromCityName = &v
 	return s
@@ -6459,6 +6479,11 @@ func (s *CarOrderListQueryResponseBodyModule) SetRealFromCityName(v string) *Car
 
 func (s *CarOrderListQueryResponseBodyModule) SetRealToAddress(v string) *CarOrderListQueryResponseBodyModule {
 	s.RealToAddress = &v
+	return s
+}
+
+func (s *CarOrderListQueryResponseBodyModule) SetRealToCityAdCode(v string) *CarOrderListQueryResponseBodyModule {
+	s.RealToCityAdCode = &v
 	return s
 }
 
@@ -6494,6 +6519,11 @@ func (s *CarOrderListQueryResponseBodyModule) SetThirdpartItineraryId(v string) 
 
 func (s *CarOrderListQueryResponseBodyModule) SetToAddress(v string) *CarOrderListQueryResponseBodyModule {
 	s.ToAddress = &v
+	return s
+}
+
+func (s *CarOrderListQueryResponseBodyModule) SetToCityAdCode(v string) *CarOrderListQueryResponseBodyModule {
+	s.ToCityAdCode = &v
 	return s
 }
 
@@ -6810,30 +6840,34 @@ func (s *CarOrderQueryResponseBodyModule) SetPriceInfoList(v []*CarOrderQueryRes
 }
 
 type CarOrderQueryResponseBodyModuleCarInfo struct {
-	BusinessCategory  *string `json:"business_category,omitempty" xml:"business_category,omitempty"`
-	CancelTime        *int64  `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
-	CarInfo           *string `json:"car_info,omitempty" xml:"car_info,omitempty"`
-	CarLevel          *int32  `json:"car_level,omitempty" xml:"car_level,omitempty"`
-	DriverCard        *string `json:"driver_card,omitempty" xml:"driver_card,omitempty"`
-	DriverConfirmTime *int64  `json:"driver_confirm_time,omitempty" xml:"driver_confirm_time,omitempty"`
-	DriverName        *string `json:"driver_name,omitempty" xml:"driver_name,omitempty"`
-	EstimatePrice     *int64  `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
-	FromAddress       *string `json:"from_address,omitempty" xml:"from_address,omitempty"`
-	FromCityName      *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
-	IsSpecial         *bool   `json:"is_special,omitempty" xml:"is_special,omitempty"`
-	Memo              *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	PayTime           *int64  `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
-	PublishTime       *int64  `json:"publish_time,omitempty" xml:"publish_time,omitempty"`
-	RealFromAddress   *string `json:"real_from_address,omitempty" xml:"real_from_address,omitempty"`
-	RealFromCityName  *string `json:"real_from_city_name,omitempty" xml:"real_from_city_name,omitempty"`
-	RealToAddress     *string `json:"real_to_address,omitempty" xml:"real_to_address,omitempty"`
-	RealToCityName    *string `json:"real_to_city_name,omitempty" xml:"real_to_city_name,omitempty"`
-	ServiceType       *int32  `json:"service_type,omitempty" xml:"service_type,omitempty"`
-	SpecialTypes      *string `json:"special_types,omitempty" xml:"special_types,omitempty"`
-	TakenTime         *int64  `json:"taken_time,omitempty" xml:"taken_time,omitempty"`
-	ToAddress         *string `json:"to_address,omitempty" xml:"to_address,omitempty"`
-	ToCityName        *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
-	TravelDistance    *string `json:"travel_distance,omitempty" xml:"travel_distance,omitempty"`
+	BusinessCategory   *string `json:"business_category,omitempty" xml:"business_category,omitempty"`
+	CancelTime         *int64  `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
+	CarInfo            *string `json:"car_info,omitempty" xml:"car_info,omitempty"`
+	CarLevel           *int32  `json:"car_level,omitempty" xml:"car_level,omitempty"`
+	DriverCard         *string `json:"driver_card,omitempty" xml:"driver_card,omitempty"`
+	DriverConfirmTime  *int64  `json:"driver_confirm_time,omitempty" xml:"driver_confirm_time,omitempty"`
+	DriverName         *string `json:"driver_name,omitempty" xml:"driver_name,omitempty"`
+	EstimatePrice      *int64  `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
+	FromAddress        *string `json:"from_address,omitempty" xml:"from_address,omitempty"`
+	FromCityAdCode     *string `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
+	FromCityName       *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	IsSpecial          *bool   `json:"is_special,omitempty" xml:"is_special,omitempty"`
+	Memo               *string `json:"memo,omitempty" xml:"memo,omitempty"`
+	PayTime            *int64  `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	PublishTime        *int64  `json:"publish_time,omitempty" xml:"publish_time,omitempty"`
+	RealFromAddress    *string `json:"real_from_address,omitempty" xml:"real_from_address,omitempty"`
+	RealFromCityAdCode *string `json:"real_from_city_ad_code,omitempty" xml:"real_from_city_ad_code,omitempty"`
+	RealFromCityName   *string `json:"real_from_city_name,omitempty" xml:"real_from_city_name,omitempty"`
+	RealToAddress      *string `json:"real_to_address,omitempty" xml:"real_to_address,omitempty"`
+	RealToCityAdCode   *string `json:"real_to_city_ad_code,omitempty" xml:"real_to_city_ad_code,omitempty"`
+	RealToCityName     *string `json:"real_to_city_name,omitempty" xml:"real_to_city_name,omitempty"`
+	ServiceType        *int32  `json:"service_type,omitempty" xml:"service_type,omitempty"`
+	SpecialTypes       *string `json:"special_types,omitempty" xml:"special_types,omitempty"`
+	TakenTime          *int64  `json:"taken_time,omitempty" xml:"taken_time,omitempty"`
+	ToAddress          *string `json:"to_address,omitempty" xml:"to_address,omitempty"`
+	ToCityAdCode       *string `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
+	ToCityName         *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+	TravelDistance     *string `json:"travel_distance,omitempty" xml:"travel_distance,omitempty"`
 }
 
 func (s CarOrderQueryResponseBodyModuleCarInfo) String() string {
@@ -6889,6 +6923,11 @@ func (s *CarOrderQueryResponseBodyModuleCarInfo) SetFromAddress(v string) *CarOr
 	return s
 }
 
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetFromCityAdCode(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.FromCityAdCode = &v
+	return s
+}
+
 func (s *CarOrderQueryResponseBodyModuleCarInfo) SetFromCityName(v string) *CarOrderQueryResponseBodyModuleCarInfo {
 	s.FromCityName = &v
 	return s
@@ -6919,6 +6958,11 @@ func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealFromAddress(v string) *C
 	return s
 }
 
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealFromCityAdCode(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.RealFromCityAdCode = &v
+	return s
+}
+
 func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealFromCityName(v string) *CarOrderQueryResponseBodyModuleCarInfo {
 	s.RealFromCityName = &v
 	return s
@@ -6926,6 +6970,11 @@ func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealFromCityName(v string) *
 
 func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealToAddress(v string) *CarOrderQueryResponseBodyModuleCarInfo {
 	s.RealToAddress = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealToCityAdCode(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.RealToCityAdCode = &v
 	return s
 }
 
@@ -6951,6 +7000,11 @@ func (s *CarOrderQueryResponseBodyModuleCarInfo) SetTakenTime(v int64) *CarOrder
 
 func (s *CarOrderQueryResponseBodyModuleCarInfo) SetToAddress(v string) *CarOrderQueryResponseBodyModuleCarInfo {
 	s.ToAddress = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetToCityAdCode(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.ToCityAdCode = &v
 	return s
 }
 
@@ -14735,6 +14789,7 @@ type FlightOrderListQueryResponseBodyModule struct {
 	ApplyId              *int64                                                     `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrAirport           *string                                                    `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
 	ArrCity              *string                                                    `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityAdCode        *string                                                    `json:"arr_city_ad_code,omitempty" xml:"arr_city_ad_code,omitempty"`
 	BtripTitle           *string                                                    `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
 	CabinClass           *string                                                    `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
 	ContactName          *string                                                    `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
@@ -14743,6 +14798,7 @@ type FlightOrderListQueryResponseBodyModule struct {
 	CostCenter           *FlightOrderListQueryResponseBodyModuleCostCenter          `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
 	DepAirport           *string                                                    `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
 	DepCity              *string                                                    `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityAdCode        *string                                                    `json:"dep_city_ad_code,omitempty" xml:"dep_city_ad_code,omitempty"`
 	DepDate              *string                                                    `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	DepartId             *string                                                    `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName           *string                                                    `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
@@ -14793,6 +14849,11 @@ func (s *FlightOrderListQueryResponseBodyModule) SetArrCity(v string) *FlightOrd
 	return s
 }
 
+func (s *FlightOrderListQueryResponseBodyModule) SetArrCityAdCode(v string) *FlightOrderListQueryResponseBodyModule {
+	s.ArrCityAdCode = &v
+	return s
+}
+
 func (s *FlightOrderListQueryResponseBodyModule) SetBtripTitle(v string) *FlightOrderListQueryResponseBodyModule {
 	s.BtripTitle = &v
 	return s
@@ -14830,6 +14891,11 @@ func (s *FlightOrderListQueryResponseBodyModule) SetDepAirport(v string) *Flight
 
 func (s *FlightOrderListQueryResponseBodyModule) SetDepCity(v string) *FlightOrderListQueryResponseBodyModule {
 	s.DepCity = &v
+	return s
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) SetDepCityAdCode(v string) *FlightOrderListQueryResponseBodyModule {
+	s.DepCityAdCode = &v
 	return s
 }
 
@@ -15479,6 +15545,7 @@ type FlightOrderQueryResponseBodyModuleFlightInfoList struct {
 	AirlineName    *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	ArrAirportName *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
+	ArrCityAdCode  *string `json:"arr_city_ad_code,omitempty" xml:"arr_city_ad_code,omitempty"`
 	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	ArrCityName    *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
 	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
@@ -15486,6 +15553,7 @@ type FlightOrderQueryResponseBodyModuleFlightInfoList struct {
 	CabinLevel     *string `json:"cabin_level,omitempty" xml:"cabin_level,omitempty"`
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
 	DepAirportName *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
+	DepCityAdCode  *string `json:"dep_city_ad_code,omitempty" xml:"dep_city_ad_code,omitempty"`
 	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	DepCityName    *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
 	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
@@ -15521,6 +15589,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetArrAirportName(v s
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetArrCityAdCode(v string) *FlightOrderQueryResponseBodyModuleFlightInfoList {
+	s.ArrCityAdCode = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetArrCityCode(v string) *FlightOrderQueryResponseBodyModuleFlightInfoList {
 	s.ArrCityCode = &v
 	return s
@@ -15553,6 +15626,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetDepAirportCode(v s
 
 func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetDepAirportName(v string) *FlightOrderQueryResponseBodyModuleFlightInfoList {
 	s.DepAirportName = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetDepCityAdCode(v string) *FlightOrderQueryResponseBodyModuleFlightInfoList {
+	s.DepCityAdCode = &v
 	return s
 }
 
@@ -27869,6 +27947,7 @@ type HotelOrderListQueryResponseBodyModule struct {
 	CheckIn                    *string                                                   `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	CheckOut                   *string                                                   `json:"check_out,omitempty" xml:"check_out,omitempty"`
 	City                       *string                                                   `json:"city,omitempty" xml:"city,omitempty"`
+	CityAdCode                 *string                                                   `json:"city_ad_code,omitempty" xml:"city_ad_code,omitempty"`
 	ContactName                *string                                                   `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
 	CorpId                     *string                                                   `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	CorpName                   *string                                                   `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
@@ -27932,6 +28011,11 @@ func (s *HotelOrderListQueryResponseBodyModule) SetCheckOut(v string) *HotelOrde
 
 func (s *HotelOrderListQueryResponseBodyModule) SetCity(v string) *HotelOrderListQueryResponseBodyModule {
 	s.City = &v
+	return s
+}
+
+func (s *HotelOrderListQueryResponseBodyModule) SetCityAdCode(v string) *HotelOrderListQueryResponseBodyModule {
+	s.CityAdCode = &v
 	return s
 }
 
@@ -29266,6 +29350,7 @@ type HotelOrderQueryResponseBodyModuleHotelInfo struct {
 	CheckIn                    *int64  `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	CheckOut                   *int64  `json:"check_out,omitempty" xml:"check_out,omitempty"`
 	City                       *string `json:"city,omitempty" xml:"city,omitempty"`
+	CityAdCode                 *string `json:"city_ad_code,omitempty" xml:"city_ad_code,omitempty"`
 	HotelName                  *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
 	HotelSupportVatInvoiceType *int32  `json:"hotel_support_vat_invoice_type,omitempty" xml:"hotel_support_vat_invoice_type,omitempty"`
 	Night                      *int32  `json:"night,omitempty" xml:"night,omitempty"`
@@ -29293,6 +29378,11 @@ func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCheckOut(v int64) *Hotel
 
 func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCity(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
 	s.City = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCityAdCode(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.CityAdCode = &v
 	return s
 }
 
@@ -40853,8 +40943,10 @@ func (s *TrainOrderQueryResponseBodyModuleTicketInfoList) SetUserId(v string) *T
 type TrainOrderQueryResponseBodyModuleTrainInfo struct {
 	ArrTime         *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
 	DepTime         *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FromCityAdCode  *string `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
 	FromStationName *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
 	RunTime         *int64  `json:"run_time,omitempty" xml:"run_time,omitempty"`
+	ToCityAdCode    *string `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
 	ToStationName   *string `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
 	TrainNo         *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
@@ -40877,6 +40969,11 @@ func (s *TrainOrderQueryResponseBodyModuleTrainInfo) SetDepTime(v string) *Train
 	return s
 }
 
+func (s *TrainOrderQueryResponseBodyModuleTrainInfo) SetFromCityAdCode(v string) *TrainOrderQueryResponseBodyModuleTrainInfo {
+	s.FromCityAdCode = &v
+	return s
+}
+
 func (s *TrainOrderQueryResponseBodyModuleTrainInfo) SetFromStationName(v string) *TrainOrderQueryResponseBodyModuleTrainInfo {
 	s.FromStationName = &v
 	return s
@@ -40884,6 +40981,11 @@ func (s *TrainOrderQueryResponseBodyModuleTrainInfo) SetFromStationName(v string
 
 func (s *TrainOrderQueryResponseBodyModuleTrainInfo) SetRunTime(v int64) *TrainOrderQueryResponseBodyModuleTrainInfo {
 	s.RunTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryResponseBodyModuleTrainInfo) SetToCityAdCode(v string) *TrainOrderQueryResponseBodyModuleTrainInfo {
+	s.ToCityAdCode = &v
 	return s
 }
 
@@ -41592,11 +41694,13 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) SetTrainTransferInfo
 type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList struct {
 	ArrTime         *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
 	DepTime         *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FromCityAdCode  *string `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
 	FromCityName    *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
 	FromStationName *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
 	// itemId
 	ItemId           *int64                                                                            `json:"item_id,omitempty" xml:"item_id,omitempty"`
 	RunTime          *int64                                                                            `json:"run_time,omitempty" xml:"run_time,omitempty"`
+	ToCityAdCode     *string                                                                           `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
 	ToCityName       *string                                                                           `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
 	ToStationName    *string                                                                           `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
 	TrainNo          *string                                                                           `json:"train_no,omitempty" xml:"train_no,omitempty"`
@@ -41621,6 +41725,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetDepT
 	return s
 }
 
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetFromCityAdCode(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.FromCityAdCode = &v
+	return s
+}
+
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetFromCityName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
 	s.FromCityName = &v
 	return s
@@ -41638,6 +41747,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetItem
 
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetRunTime(v int64) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
 	s.RunTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetToCityAdCode(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.ToCityAdCode = &v
 	return s
 }
 
@@ -41793,18 +41907,21 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTick
 }
 
 type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo struct {
-	CostTime        *string `json:"cost_time,omitempty" xml:"cost_time,omitempty"`
-	EndTime         *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	FromCityName    *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
-	FromStationName *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
-	MiddleCity      *string `json:"middle_city,omitempty" xml:"middle_city,omitempty"`
-	MiddleDate      *string `json:"middle_date,omitempty" xml:"middle_date,omitempty"`
-	MiddleStation   *string `json:"middle_station,omitempty" xml:"middle_station,omitempty"`
-	MiddleType      *string `json:"middle_type,omitempty" xml:"middle_type,omitempty"`
-	StartTime       *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	ToCityName      *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
-	ToStationName   *string `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
-	WaitTime        *string `json:"wait_time,omitempty" xml:"wait_time,omitempty"`
+	CostTime         *string `json:"cost_time,omitempty" xml:"cost_time,omitempty"`
+	EndTime          *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	FromCityAdCode   *string `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
+	FromCityName     *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	FromStationName  *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
+	MiddleCity       *string `json:"middle_city,omitempty" xml:"middle_city,omitempty"`
+	MiddleCityAdCode *string `json:"middle_city_ad_code,omitempty" xml:"middle_city_ad_code,omitempty"`
+	MiddleDate       *string `json:"middle_date,omitempty" xml:"middle_date,omitempty"`
+	MiddleStation    *string `json:"middle_station,omitempty" xml:"middle_station,omitempty"`
+	MiddleType       *string `json:"middle_type,omitempty" xml:"middle_type,omitempty"`
+	StartTime        *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	ToCityAdCode     *string `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
+	ToCityName       *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+	ToStationName    *string `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
+	WaitTime         *string `json:"wait_time,omitempty" xml:"wait_time,omitempty"`
 }
 
 func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) String() string {
@@ -41825,6 +41942,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) Set
 	return s
 }
 
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetFromCityAdCode(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.FromCityAdCode = &v
+	return s
+}
+
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetFromCityName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
 	s.FromCityName = &v
 	return s
@@ -41837,6 +41959,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) Set
 
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetMiddleCity(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
 	s.MiddleCity = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetMiddleCityAdCode(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.MiddleCityAdCode = &v
 	return s
 }
 
@@ -41857,6 +41984,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) Set
 
 func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetStartTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
 	s.StartTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetToCityAdCode(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.ToCityAdCode = &v
 	return s
 }
 
