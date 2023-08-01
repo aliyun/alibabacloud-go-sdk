@@ -153,6 +153,8 @@ type GrafanaWorkspace struct {
 	NtmId                   *string                 `json:"ntmId,omitempty" xml:"ntmId,omitempty"`
 	PersonalDomain          *string                 `json:"personalDomain,omitempty" xml:"personalDomain,omitempty"`
 	PersonalDomainPrefix    *string                 `json:"personalDomainPrefix,omitempty" xml:"personalDomainPrefix,omitempty"`
+	PrivateDomain           *string                 `json:"privateDomain,omitempty" xml:"privateDomain,omitempty"`
+	PrivateIp               *string                 `json:"privateIp,omitempty" xml:"privateIp,omitempty"`
 	Protocol                *string                 `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RegionId                *string                 `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	ResourceGroupId         *string                 `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
@@ -244,6 +246,16 @@ func (s *GrafanaWorkspace) SetPersonalDomain(v string) *GrafanaWorkspace {
 
 func (s *GrafanaWorkspace) SetPersonalDomainPrefix(v string) *GrafanaWorkspace {
 	s.PersonalDomainPrefix = &v
+	return s
+}
+
+func (s *GrafanaWorkspace) SetPrivateDomain(v string) *GrafanaWorkspace {
+	s.PrivateDomain = &v
+	return s
+}
+
+func (s *GrafanaWorkspace) SetPrivateIp(v string) *GrafanaWorkspace {
+	s.PrivateIp = &v
 	return s
 }
 
@@ -6501,8 +6513,11 @@ func (s *CreatePrometheusAlertRuleRequestTags) SetValue(v string) *CreatePrometh
 }
 
 type CreatePrometheusAlertRuleResponseBody struct {
+	Code                *int64                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message             *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	PrometheusAlertRule *CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule `json:"PrometheusAlertRule,omitempty" xml:"PrometheusAlertRule,omitempty" type:"Struct"`
 	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreatePrometheusAlertRuleResponseBody) String() string {
@@ -6513,6 +6528,16 @@ func (s CreatePrometheusAlertRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePrometheusAlertRuleResponseBody) SetCode(v int64) *CreatePrometheusAlertRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePrometheusAlertRuleResponseBody) SetMessage(v string) *CreatePrometheusAlertRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *CreatePrometheusAlertRuleResponseBody) SetPrometheusAlertRule(v *CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule) *CreatePrometheusAlertRuleResponseBody {
 	s.PrometheusAlertRule = v
 	return s
@@ -6520,6 +6545,11 @@ func (s *CreatePrometheusAlertRuleResponseBody) SetPrometheusAlertRule(v *Create
 
 func (s *CreatePrometheusAlertRuleResponseBody) SetRequestId(v string) *CreatePrometheusAlertRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePrometheusAlertRuleResponseBody) SetSuccess(v bool) *CreatePrometheusAlertRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -9522,6 +9552,8 @@ func (s *DeletePrometheusAlertRuleRequest) SetClusterId(v string) *DeletePrometh
 }
 
 type DeletePrometheusAlertRuleResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the request.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -9533,6 +9565,16 @@ func (s DeletePrometheusAlertRuleResponseBody) String() string {
 
 func (s DeletePrometheusAlertRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeletePrometheusAlertRuleResponseBody) SetCode(v int64) *DeletePrometheusAlertRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePrometheusAlertRuleResponseBody) SetMessage(v string) *DeletePrometheusAlertRuleResponseBody {
+	s.Message = &v
+	return s
 }
 
 func (s *DeletePrometheusAlertRuleResponseBody) SetRequestId(v string) *DeletePrometheusAlertRuleResponseBody {
@@ -11581,8 +11623,11 @@ func (s *DescribePrometheusAlertRuleRequest) SetClusterId(v string) *DescribePro
 }
 
 type DescribePrometheusAlertRuleResponseBody struct {
+	Code                *int64                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message             *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	PrometheusAlertRule *DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule `json:"PrometheusAlertRule,omitempty" xml:"PrometheusAlertRule,omitempty" type:"Struct"`
 	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribePrometheusAlertRuleResponseBody) String() string {
@@ -11593,6 +11638,16 @@ func (s DescribePrometheusAlertRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePrometheusAlertRuleResponseBody) SetCode(v int64) *DescribePrometheusAlertRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePrometheusAlertRuleResponseBody) SetMessage(v string) *DescribePrometheusAlertRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *DescribePrometheusAlertRuleResponseBody) SetPrometheusAlertRule(v *DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule) *DescribePrometheusAlertRuleResponseBody {
 	s.PrometheusAlertRule = v
 	return s
@@ -11600,6 +11655,11 @@ func (s *DescribePrometheusAlertRuleResponseBody) SetPrometheusAlertRule(v *Desc
 
 func (s *DescribePrometheusAlertRuleResponseBody) SetRequestId(v string) *DescribePrometheusAlertRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePrometheusAlertRuleResponseBody) SetSuccess(v bool) *DescribePrometheusAlertRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -22148,8 +22208,11 @@ func (s *ListPrometheusAlertRulesRequestTags) SetValue(v string) *ListPrometheus
 }
 
 type ListPrometheusAlertRulesResponseBody struct {
+	Code                 *int64                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message              *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	PrometheusAlertRules []*ListPrometheusAlertRulesResponseBodyPrometheusAlertRules `json:"PrometheusAlertRules,omitempty" xml:"PrometheusAlertRules,omitempty" type:"Repeated"`
 	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListPrometheusAlertRulesResponseBody) String() string {
@@ -22160,6 +22223,16 @@ func (s ListPrometheusAlertRulesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListPrometheusAlertRulesResponseBody) SetCode(v int64) *ListPrometheusAlertRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPrometheusAlertRulesResponseBody) SetMessage(v string) *ListPrometheusAlertRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *ListPrometheusAlertRulesResponseBody) SetPrometheusAlertRules(v []*ListPrometheusAlertRulesResponseBodyPrometheusAlertRules) *ListPrometheusAlertRulesResponseBody {
 	s.PrometheusAlertRules = v
 	return s
@@ -22167,6 +22240,11 @@ func (s *ListPrometheusAlertRulesResponseBody) SetPrometheusAlertRules(v []*List
 
 func (s *ListPrometheusAlertRulesResponseBody) SetRequestId(v string) *ListPrometheusAlertRulesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListPrometheusAlertRulesResponseBody) SetSuccess(v bool) *ListPrometheusAlertRulesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -30610,8 +30688,11 @@ func (s *UpdatePrometheusAlertRuleRequestTags) SetValue(v string) *UpdatePrometh
 }
 
 type UpdatePrometheusAlertRuleResponseBody struct {
+	Code                *int64                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message             *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	PrometheusAlertRule *UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule `json:"PrometheusAlertRule,omitempty" xml:"PrometheusAlertRule,omitempty" type:"Struct"`
 	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdatePrometheusAlertRuleResponseBody) String() string {
@@ -30622,6 +30703,16 @@ func (s UpdatePrometheusAlertRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdatePrometheusAlertRuleResponseBody) SetCode(v int64) *UpdatePrometheusAlertRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePrometheusAlertRuleResponseBody) SetMessage(v string) *UpdatePrometheusAlertRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *UpdatePrometheusAlertRuleResponseBody) SetPrometheusAlertRule(v *UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule) *UpdatePrometheusAlertRuleResponseBody {
 	s.PrometheusAlertRule = v
 	return s
@@ -30629,6 +30720,11 @@ func (s *UpdatePrometheusAlertRuleResponseBody) SetPrometheusAlertRule(v *Update
 
 func (s *UpdatePrometheusAlertRuleResponseBody) SetRequestId(v string) *UpdatePrometheusAlertRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePrometheusAlertRuleResponseBody) SetSuccess(v bool) *UpdatePrometheusAlertRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
