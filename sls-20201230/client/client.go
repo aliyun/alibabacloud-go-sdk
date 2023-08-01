@@ -135,6 +135,110 @@ func (s *Histogram) SetTo(v int32) *Histogram {
 	return s
 }
 
+type LogContent struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s LogContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogContent) GoString() string {
+	return s.String()
+}
+
+func (s *LogContent) SetKey(v string) *LogContent {
+	s.Key = &v
+	return s
+}
+
+func (s *LogContent) SetValue(v string) *LogContent {
+	s.Value = &v
+	return s
+}
+
+type LogGroup struct {
+	LogTags *LogTag  `json:"LogTags,omitempty" xml:"LogTags,omitempty"`
+	Logs    *LogItem `json:"Logs,omitempty" xml:"Logs,omitempty"`
+	Source  *string  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Topic   *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s LogGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogGroup) GoString() string {
+	return s.String()
+}
+
+func (s *LogGroup) SetLogTags(v *LogTag) *LogGroup {
+	s.LogTags = v
+	return s
+}
+
+func (s *LogGroup) SetLogs(v *LogItem) *LogGroup {
+	s.Logs = v
+	return s
+}
+
+func (s *LogGroup) SetSource(v string) *LogGroup {
+	s.Source = &v
+	return s
+}
+
+func (s *LogGroup) SetTopic(v string) *LogGroup {
+	s.Topic = &v
+	return s
+}
+
+type LogItem struct {
+	Contents []*LogContent `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	Time     *int64        `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s LogItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogItem) GoString() string {
+	return s.String()
+}
+
+func (s *LogItem) SetContents(v []*LogContent) *LogItem {
+	s.Contents = v
+	return s
+}
+
+func (s *LogItem) SetTime(v int64) *LogItem {
+	s.Time = &v
+	return s
+}
+
+type LogTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s LogTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogTag) GoString() string {
+	return s.String()
+}
+
+func (s *LogTag) SetKey(v string) *LogTag {
+	s.Key = &v
+	return s
+}
+
+func (s *LogTag) SetValue(v string) *LogTag {
+	s.Value = &v
+	return s
+}
+
 type LogtailConfig struct {
 	ConfigName     *string                    `json:"configName,omitempty" xml:"configName,omitempty"`
 	CreateTime     *int64                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
@@ -1270,6 +1374,46 @@ func (s *ConsumerGroupHeartBeatResponse) SetBody(v []*int32) *ConsumerGroupHeart
 	return s
 }
 
+type CreateConfigRequest struct {
+	Body *LogtailConfig `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConfigRequest) SetBody(v *LogtailConfig) *CreateConfigRequest {
+	s.Body = v
+	return s
+}
+
+type CreateConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConfigResponse) SetHeaders(v map[string]*string) *CreateConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateConfigResponse) SetStatusCode(v int32) *CreateConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateConsumerGroupRequest struct {
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
 	Order         *bool   `json:"order,omitempty" xml:"order,omitempty"`
@@ -1318,6 +1462,46 @@ func (s *CreateConsumerGroupResponse) SetHeaders(v map[string]*string) *CreateCo
 }
 
 func (s *CreateConsumerGroupResponse) SetStatusCode(v int32) *CreateConsumerGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateDashboardRequest struct {
+	Body *Dashboard `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDashboardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDashboardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDashboardRequest) SetBody(v *Dashboard) *CreateDashboardRequest {
+	s.Body = v
+	return s
+}
+
+type CreateDashboardResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateDashboardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDashboardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDashboardResponse) SetHeaders(v map[string]*string) *CreateDashboardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDashboardResponse) SetStatusCode(v int32) *CreateDashboardResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2347,6 +2531,29 @@ func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchRes
 	return s
 }
 
+type DeleteConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigResponse) SetHeaders(v map[string]*string) *DeleteConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConfigResponse) SetStatusCode(v int32) *DeleteConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteConsumerGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2366,6 +2573,29 @@ func (s *DeleteConsumerGroupResponse) SetHeaders(v map[string]*string) *DeleteCo
 }
 
 func (s *DeleteConsumerGroupResponse) SetStatusCode(v int32) *DeleteConsumerGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteDashboardResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteDashboardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDashboardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDashboardResponse) SetHeaders(v map[string]*string) *DeleteDashboardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDashboardResponse) SetStatusCode(v int32) *DeleteDashboardResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2786,6 +3016,35 @@ func (s *GetCheckPointResponseBody) SetConsumer(v string) *GetCheckPointResponse
 	return s
 }
 
+type GetConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LogtailConfig     `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigResponse) SetHeaders(v map[string]*string) *GetConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConfigResponse) SetStatusCode(v int32) *GetConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConfigResponse) SetBody(v *LogtailConfig) *GetConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetContextLogsRequest struct {
 	BackLines    *int64  `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
 	ForwardLines *int64  `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
@@ -3019,6 +3278,35 @@ func (s *GetCursorTimeResponse) SetStatusCode(v int32) *GetCursorTimeResponse {
 }
 
 func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursorTimeResponse {
+	s.Body = v
+	return s
+}
+
+type GetDashboardResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Dashboard         `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDashboardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDashboardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDashboardResponse) SetHeaders(v map[string]*string) *GetDashboardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDashboardResponse) SetStatusCode(v int32) *GetDashboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDashboardResponse) SetBody(v *Dashboard) *GetDashboardResponse {
 	s.Body = v
 	return s
 }
@@ -3470,9 +3758,10 @@ type GetLogsV2Request struct {
 	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
 	Reverse  *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
 	Session  *string `json:"session,omitempty" xml:"session,omitempty"`
-	Shard    *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
-	To       *int32  `json:"to,omitempty" xml:"to,omitempty"`
-	Topic    *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// Shard ID。
+	Shard *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
+	To    *int32  `json:"to,omitempty" xml:"to,omitempty"`
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
 func (s GetLogsV2Request) String() string {
@@ -4034,6 +4323,99 @@ func (s *GetShipperStatusResponse) SetBody(v *GetShipperStatusResponseBody) *Get
 	return s
 }
 
+type ListConfigRequest struct {
+	ConfigName   *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	Offset       *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size         *int64  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRequest) SetConfigName(v string) *ListConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *ListConfigRequest) SetLogstoreName(v string) *ListConfigRequest {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *ListConfigRequest) SetOffset(v int64) *ListConfigRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListConfigRequest) SetSize(v int64) *ListConfigRequest {
+	s.Size = &v
+	return s
+}
+
+type ListConfigResponseBody struct {
+	Configs []*LogtailConfig `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	Count   *int32           `json:"count,omitempty" xml:"count,omitempty"`
+	Total   *int32           `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigResponseBody) SetConfigs(v []*LogtailConfig) *ListConfigResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListConfigResponseBody) SetCount(v int32) *ListConfigResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListConfigResponseBody) SetTotal(v int32) *ListConfigResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListConfigResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigResponse) SetHeaders(v map[string]*string) *ListConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConfigResponse) SetStatusCode(v int32) *ListConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConfigResponse) SetBody(v *ListConfigResponseBody) *ListConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ListConsumerGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4059,6 +4441,104 @@ func (s *ListConsumerGroupResponse) SetStatusCode(v int32) *ListConsumerGroupRes
 }
 
 func (s *ListConsumerGroupResponse) SetBody(v []*ConsumerGroup) *ListConsumerGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListDashboardRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListDashboardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardRequest) SetOffset(v int32) *ListDashboardRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListDashboardRequest) SetSize(v int32) *ListDashboardRequest {
+	s.Size = &v
+	return s
+}
+
+type ListDashboardResponseBody struct {
+	DashboardItems []*ListDashboardResponseBodyDashboardItems `json:"dashboardItems,omitempty" xml:"dashboardItems,omitempty" type:"Repeated"`
+	Dashboards     []*string                                  `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
+}
+
+func (s ListDashboardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardResponseBody) SetDashboardItems(v []*ListDashboardResponseBodyDashboardItems) *ListDashboardResponseBody {
+	s.DashboardItems = v
+	return s
+}
+
+func (s *ListDashboardResponseBody) SetDashboards(v []*string) *ListDashboardResponseBody {
+	s.Dashboards = v
+	return s
+}
+
+type ListDashboardResponseBodyDashboardItems struct {
+	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
+	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s ListDashboardResponseBodyDashboardItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardResponseBodyDashboardItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardResponseBodyDashboardItems) SetDashboardName(v string) *ListDashboardResponseBodyDashboardItems {
+	s.DashboardName = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyDashboardItems) SetDisplayName(v string) *ListDashboardResponseBodyDashboardItems {
+	s.DisplayName = &v
+	return s
+}
+
+type ListDashboardResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDashboardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardResponse) SetHeaders(v map[string]*string) *ListDashboardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDashboardResponse) SetStatusCode(v int32) *ListDashboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDashboardResponse) SetBody(v *ListDashboardResponseBody) *ListDashboardResponse {
 	s.Body = v
 	return s
 }
@@ -4279,6 +4759,7 @@ func (s *ListLogStoresRequest) SetTelemetryType(v string) *ListLogStoresRequest 
 }
 
 type ListLogStoresResponseBody struct {
+	Count     *int32    `json:"count,omitempty" xml:"count,omitempty"`
 	Logstores []*string `json:"logstores,omitempty" xml:"logstores,omitempty" type:"Repeated"`
 	Total     *int32    `json:"total,omitempty" xml:"total,omitempty"`
 }
@@ -4289,6 +4770,11 @@ func (s ListLogStoresResponseBody) String() string {
 
 func (s ListLogStoresResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListLogStoresResponseBody) SetCount(v int32) *ListLogStoresResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *ListLogStoresResponseBody) SetLogstores(v []*string) *ListLogStoresResponseBody {
@@ -5279,6 +5765,46 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 	return s
 }
 
+type UpdateConfigRequest struct {
+	Body *LogtailConfig `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigRequest) SetBody(v *LogtailConfig) *UpdateConfigRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigResponse) SetHeaders(v map[string]*string) *UpdateConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConfigResponse) SetStatusCode(v int32) *UpdateConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateConsumerGroupRequest struct {
 	Order   *bool  `json:"order,omitempty" xml:"order,omitempty"`
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
@@ -5321,6 +5847,70 @@ func (s *UpdateConsumerGroupResponse) SetHeaders(v map[string]*string) *UpdateCo
 }
 
 func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateDashboardRequest struct {
+	Attribute     map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	Charts        []*Chart           `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
+	DashboardName *string            `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
+	Description   *string            `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string            `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s UpdateDashboardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDashboardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDashboardRequest) SetAttribute(v map[string]*string) *UpdateDashboardRequest {
+	s.Attribute = v
+	return s
+}
+
+func (s *UpdateDashboardRequest) SetCharts(v []*Chart) *UpdateDashboardRequest {
+	s.Charts = v
+	return s
+}
+
+func (s *UpdateDashboardRequest) SetDashboardName(v string) *UpdateDashboardRequest {
+	s.DashboardName = &v
+	return s
+}
+
+func (s *UpdateDashboardRequest) SetDescription(v string) *UpdateDashboardRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDashboardRequest) SetDisplayName(v string) *UpdateDashboardRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type UpdateDashboardResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateDashboardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDashboardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDashboardResponse) SetHeaders(v map[string]*string) *UpdateDashboardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDashboardResponse) SetStatusCode(v int32) *UpdateDashboardResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -6385,7 +6975,7 @@ func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, mach
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ApplyConfigToMachineGroupResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -6408,11 +6998,13 @@ func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *s
 	return _result, _err
 }
 
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithOptions(project *string, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["resourceGroupId"] = request.ResourceGroupId
@@ -6427,6 +7019,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	}
 
 	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -6450,11 +7043,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroup(project *string, request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
+	_body, _err := client.ChangeResourceGroupWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6512,6 +7105,50 @@ func (client *Client) ConsumerGroupHeartBeat(project *string, logstore *string, 
 	return _result, _err
 }
 
+func (client *Client) CreateConfigWithOptions(project *string, request *CreateConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/configs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateConfig(project *string, request *CreateConfigRequest) (_result *CreateConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateConfigResponse{}
+	_body, _err := client.CreateConfigWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *string, request *CreateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6562,6 +7199,50 @@ func (client *Client) CreateConsumerGroup(project *string, logstore *string, req
 	headers := make(map[string]*string)
 	_result = &CreateConsumerGroupResponse{}
 	_body, _err := client.CreateConsumerGroupWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDashboardWithOptions(project *string, request *CreateDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDashboardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDashboard"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dashboards"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateDashboardResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDashboard(project *string, request *CreateDashboardRequest) (_result *CreateDashboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDashboardResponse{}
+	_body, _err := client.CreateDashboardWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7100,7 +7781,7 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProjectResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -7245,6 +7926,45 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 	return _result, _err
 }
 
+func (client *Client) DeleteConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConfigResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/configs/" + tea.StringValue(configName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteConfig(project *string, configName *string) (_result *DeleteConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConfigResponse{}
+	_body, _err := client.DeleteConfigWithOptions(project, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *string, consumerGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -7277,6 +7997,45 @@ func (client *Client) DeleteConsumerGroup(project *string, logstore *string, con
 	headers := make(map[string]*string)
 	_result = &DeleteConsumerGroupResponse{}
 	_body, _err := client.DeleteConsumerGroupWithOptions(project, logstore, consumerGroup, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDashboardWithOptions(project *string, dashboardName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDashboardResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDashboard"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dashboards/" + tea.StringValue(dashboardName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteDashboardResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDashboard(project *string, dashboardName *string) (_result *DeleteDashboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDashboardResponse{}
+	_body, _err := client.DeleteDashboardWithOptions(project, dashboardName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7801,6 +8560,45 @@ func (client *Client) GetCheckPoint(project *string, logstore *string, consumerG
 	return _result, _err
 }
 
+func (client *Client) GetConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConfigResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/configs/" + tea.StringValue(configName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetConfig(project *string, configName *string) (_result *GetConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConfigResponse{}
+	_body, _err := client.GetConfigWithOptions(project, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetContextLogsWithOptions(project *string, logstore *string, request *GetContextLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContextLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7957,6 +8755,45 @@ func (client *Client) GetCursorTime(project *string, logstore *string, shardId *
 	headers := make(map[string]*string)
 	_result = &GetCursorTimeResponse{}
 	_body, _err := client.GetCursorTimeWithOptions(project, logstore, shardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDashboardWithOptions(project *string, dashboardName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDashboard"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dashboards/" + tea.StringValue(dashboardName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDashboardResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDashboard(project *string, dashboardName *string) (_result *GetDashboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDashboardResponse{}
+	_body, _err := client.GetDashboardWithOptions(project, dashboardName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8630,6 +9467,67 @@ func (client *Client) GetShipperStatus(project *string, logstore *string, shippe
 	return _result, _err
 }
 
+func (client *Client) ListConfigWithOptions(project *string, request *ListConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		query["configName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogstoreName)) {
+		query["logstoreName"] = request.LogstoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/configs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConfig(project *string, request *ListConfigRequest) (_result *ListConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConfigResponse{}
+	_body, _err := client.ListConfigWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -8662,6 +9560,59 @@ func (client *Client) ListConsumerGroup(project *string, logstore *string) (_res
 	headers := make(map[string]*string)
 	_result = &ListConsumerGroupResponse{}
 	_body, _err := client.ListConsumerGroupWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDashboardWithOptions(project *string, request *ListDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDashboardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboard"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dashboards"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDashboardResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDashboard(project *string, request *ListDashboardRequest) (_result *ListDashboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDashboardResponse{}
+	_body, _err := client.ListDashboardWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9573,6 +10524,50 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+func (client *Client) UpdateConfigWithOptions(project *string, configName *string, request *UpdateConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/configs/" + tea.StringValue(configName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateConfig(project *string, configName *string, request *UpdateConfigRequest) (_result *UpdateConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConfigResponse{}
+	_body, _err := client.UpdateConfigWithOptions(project, configName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *string, consumerGroup *string, request *UpdateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9619,6 +10614,71 @@ func (client *Client) UpdateConsumerGroup(project *string, logstore *string, con
 	headers := make(map[string]*string)
 	_result = &UpdateConsumerGroupResponse{}
 	_body, _err := client.UpdateConsumerGroupWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDashboardWithOptions(project *string, dashboardName *string, request *UpdateDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDashboardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attribute)) {
+		body["attribute"] = request.Attribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Charts)) {
+		body["charts"] = request.Charts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DashboardName)) {
+		body["dashboardName"] = request.DashboardName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDashboard"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dashboards/" + tea.StringValue(dashboardName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateDashboardResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDashboard(project *string, dashboardName *string, request *UpdateDashboardRequest) (_result *UpdateDashboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDashboardResponse{}
+	_body, _err := client.UpdateDashboardWithOptions(project, dashboardName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
