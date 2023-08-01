@@ -764,9 +764,9 @@ func (s *AttachParserDataSourceResponse) SetBody(v *AttachParserDataSourceRespon
 }
 
 type BatchAddDataForApiSourceRequest struct {
-	ApiId         *string                `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ContentList   map[string]interface{} `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
-	IotInstanceId *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ContentList   *string `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s BatchAddDataForApiSourceRequest) String() string {
@@ -782,8 +782,8 @@ func (s *BatchAddDataForApiSourceRequest) SetApiId(v string) *BatchAddDataForApi
 	return s
 }
 
-func (s *BatchAddDataForApiSourceRequest) SetContentList(v map[string]interface{}) *BatchAddDataForApiSourceRequest {
-	s.ContentList = v
+func (s *BatchAddDataForApiSourceRequest) SetContentList(v string) *BatchAddDataForApiSourceRequest {
+	s.ContentList = &v
 	return s
 }
 
@@ -792,41 +792,11 @@ func (s *BatchAddDataForApiSourceRequest) SetIotInstanceId(v string) *BatchAddDa
 	return s
 }
 
-type BatchAddDataForApiSourceShrinkRequest struct {
-	ApiId             *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ContentListShrink *string `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
-	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-}
-
-func (s BatchAddDataForApiSourceShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchAddDataForApiSourceShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchAddDataForApiSourceShrinkRequest) SetApiId(v string) *BatchAddDataForApiSourceShrinkRequest {
-	s.ApiId = &v
-	return s
-}
-
-func (s *BatchAddDataForApiSourceShrinkRequest) SetContentListShrink(v string) *BatchAddDataForApiSourceShrinkRequest {
-	s.ContentListShrink = &v
-	return s
-}
-
-func (s *BatchAddDataForApiSourceShrinkRequest) SetIotInstanceId(v string) *BatchAddDataForApiSourceShrinkRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
 type BatchAddDataForApiSourceResponseBody struct {
-	Code         *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchAddDataForApiSourceResponseBody) String() string {
@@ -839,11 +809,6 @@ func (s BatchAddDataForApiSourceResponseBody) GoString() string {
 
 func (s *BatchAddDataForApiSourceResponseBody) SetCode(v string) *BatchAddDataForApiSourceResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *BatchAddDataForApiSourceResponseBody) SetData(v map[string]interface{}) *BatchAddDataForApiSourceResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -68105,24 +68070,18 @@ func (client *Client) AttachParserDataSource(request *AttachParserDataSourceRequ
 	return _result, _err
 }
 
-func (client *Client) BatchAddDataForApiSourceWithOptions(tmpReq *BatchAddDataForApiSourceRequest, runtime *util.RuntimeOptions) (_result *BatchAddDataForApiSourceResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) BatchAddDataForApiSourceWithOptions(request *BatchAddDataForApiSourceRequest, runtime *util.RuntimeOptions) (_result *BatchAddDataForApiSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &BatchAddDataForApiSourceShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ContentList)) {
-		request.ContentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContentList, tea.String("ContentList"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
 		query["ApiId"] = request.ApiId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ContentListShrink)) {
-		query["ContentList"] = request.ContentListShrink
+	if !tea.BoolValue(util.IsUnset(request.ContentList)) {
+		query["ContentList"] = request.ContentList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
