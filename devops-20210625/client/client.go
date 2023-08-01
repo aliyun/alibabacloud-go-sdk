@@ -92,7 +92,6 @@ type AddGroupMemberResponseBodyResult struct {
 	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
 	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
@@ -120,11 +119,6 @@ func (s *AddGroupMemberResponseBodyResult) SetAvatarUrl(v string) *AddGroupMembe
 
 func (s *AddGroupMemberResponseBodyResult) SetEmail(v string) *AddGroupMemberResponseBodyResult {
 	s.Email = &v
-	return s
-}
-
-func (s *AddGroupMemberResponseBodyResult) SetExternUid(v string) *AddGroupMemberResponseBodyResult {
-	s.ExternUid = &v
 	return s
 }
 
@@ -346,12 +340,11 @@ func (s *AddRepositoryMemberResponseBody) SetSuccess(v bool) *AddRepositoryMembe
 }
 
 type AddRepositoryMemberResponseBodyResult struct {
-	AccessLevel  *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
-	AvatarUrl    *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	Email        *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUserId *string `json:"externUserId,omitempty" xml:"externUserId,omitempty"`
-	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	State        *string `json:"state,omitempty" xml:"state,omitempty"`
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	State       *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s AddRepositoryMemberResponseBodyResult) String() string {
@@ -374,11 +367,6 @@ func (s *AddRepositoryMemberResponseBodyResult) SetAvatarUrl(v string) *AddRepos
 
 func (s *AddRepositoryMemberResponseBodyResult) SetEmail(v string) *AddRepositoryMemberResponseBodyResult {
 	s.Email = &v
-	return s
-}
-
-func (s *AddRepositoryMemberResponseBodyResult) SetExternUserId(v string) *AddRepositoryMemberResponseBodyResult {
-	s.ExternUserId = &v
 	return s
 }
 
@@ -6683,7 +6671,6 @@ func (s *DeleteGroupMemberResponseBody) SetSuccess(v bool) *DeleteGroupMemberRes
 type DeleteGroupMemberResponseBodyResult struct {
 	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
 	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -6707,11 +6694,6 @@ func (s *DeleteGroupMemberResponseBodyResult) SetAccessLevel(v int32) *DeleteGro
 
 func (s *DeleteGroupMemberResponseBodyResult) SetAvatarUrl(v string) *DeleteGroupMemberResponseBodyResult {
 	s.AvatarUrl = &v
-	return s
-}
-
-func (s *DeleteGroupMemberResponseBodyResult) SetExternUid(v string) *DeleteGroupMemberResponseBodyResult {
-	s.ExternUid = &v
 	return s
 }
 
@@ -7555,7 +7537,6 @@ func (s *DeleteRepositoryMemberResponseBody) SetSuccess(v bool) *DeleteRepositor
 type DeleteRepositoryMemberResponseBodyResult struct {
 	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
 	CreateAt    *string `json:"createAt,omitempty" xml:"createAt,omitempty"`
-	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
@@ -7578,11 +7559,6 @@ func (s *DeleteRepositoryMemberResponseBodyResult) SetAccessLevel(v int32) *Dele
 
 func (s *DeleteRepositoryMemberResponseBodyResult) SetCreateAt(v string) *DeleteRepositoryMemberResponseBodyResult {
 	s.CreateAt = &v
-	return s
-}
-
-func (s *DeleteRepositoryMemberResponseBodyResult) SetExternUid(v string) *DeleteRepositoryMemberResponseBodyResult {
-	s.ExternUid = &v
 	return s
 }
 
@@ -8902,11 +8878,9 @@ func (s *GetBranchInfoResponseBodyResultCommit) SetTitle(v string) *GetBranchInf
 type GetBranchInfoResponseBodyResultCommitAuthor struct {
 	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 	State     *string `json:"state,omitempty" xml:"state,omitempty"`
-	TbUserId  *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -8928,11 +8902,6 @@ func (s *GetBranchInfoResponseBodyResultCommitAuthor) SetEmail(v string) *GetBra
 	return s
 }
 
-func (s *GetBranchInfoResponseBodyResultCommitAuthor) SetExternUid(v string) *GetBranchInfoResponseBodyResultCommitAuthor {
-	s.ExternUid = &v
-	return s
-}
-
 func (s *GetBranchInfoResponseBodyResultCommitAuthor) SetId(v int64) *GetBranchInfoResponseBodyResultCommitAuthor {
 	s.Id = &v
 	return s
@@ -8948,11 +8917,6 @@ func (s *GetBranchInfoResponseBodyResultCommitAuthor) SetState(v string) *GetBra
 	return s
 }
 
-func (s *GetBranchInfoResponseBodyResultCommitAuthor) SetTbUserId(v string) *GetBranchInfoResponseBodyResultCommitAuthor {
-	s.TbUserId = &v
-	return s
-}
-
 func (s *GetBranchInfoResponseBodyResultCommitAuthor) SetUsername(v string) *GetBranchInfoResponseBodyResultCommitAuthor {
 	s.Username = &v
 	return s
@@ -8961,11 +8925,9 @@ func (s *GetBranchInfoResponseBodyResultCommitAuthor) SetUsername(v string) *Get
 type GetBranchInfoResponseBodyResultCommitCommitter struct {
 	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 	State     *string `json:"state,omitempty" xml:"state,omitempty"`
-	TbUserId  *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -8987,11 +8949,6 @@ func (s *GetBranchInfoResponseBodyResultCommitCommitter) SetEmail(v string) *Get
 	return s
 }
 
-func (s *GetBranchInfoResponseBodyResultCommitCommitter) SetExternUid(v string) *GetBranchInfoResponseBodyResultCommitCommitter {
-	s.ExternUid = &v
-	return s
-}
-
 func (s *GetBranchInfoResponseBodyResultCommitCommitter) SetId(v int64) *GetBranchInfoResponseBodyResultCommitCommitter {
 	s.Id = &v
 	return s
@@ -9004,11 +8961,6 @@ func (s *GetBranchInfoResponseBodyResultCommitCommitter) SetName(v string) *GetB
 
 func (s *GetBranchInfoResponseBodyResultCommitCommitter) SetState(v string) *GetBranchInfoResponseBodyResultCommitCommitter {
 	s.State = &v
-	return s
-}
-
-func (s *GetBranchInfoResponseBodyResultCommitCommitter) SetTbUserId(v string) *GetBranchInfoResponseBodyResultCommitCommitter {
-	s.TbUserId = &v
 	return s
 }
 
@@ -9428,14 +9380,12 @@ func (s *GetCompareDetailResponseBodyResultCommits) SetTitle(v string) *GetCompa
 }
 
 type GetCompareDetailResponseBodyResultCommitsAuthor struct {
-	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
-	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	State      *string `json:"state,omitempty" xml:"state,omitempty"`
-	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
-	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GetCompareDetailResponseBodyResultCommitsAuthor) String() string {
@@ -9453,11 +9403,6 @@ func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetAvatarUrl(v string)
 
 func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetEmail(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
 	s.Email = &v
-	return s
-}
-
-func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetExternUid(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
-	s.ExternUid = &v
 	return s
 }
 
@@ -9481,20 +9426,13 @@ func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetUsername(v string) 
 	return s
 }
 
-func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetWebsiteUrl(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
-	s.WebsiteUrl = &v
-	return s
-}
-
 type GetCompareDetailResponseBodyResultCommitsCommitter struct {
-	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
-	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	State      *string `json:"state,omitempty" xml:"state,omitempty"`
-	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
-	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GetCompareDetailResponseBodyResultCommitsCommitter) String() string {
@@ -9515,11 +9453,6 @@ func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetEmail(v string) 
 	return s
 }
 
-func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetExternUid(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
-	s.ExternUid = &v
-	return s
-}
-
 func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetId(v int64) *GetCompareDetailResponseBodyResultCommitsCommitter {
 	s.Id = &v
 	return s
@@ -9537,11 +9470,6 @@ func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetState(v string) 
 
 func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetUsername(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
 	s.Username = &v
-	return s
-}
-
-func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetWebsiteUrl(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
-	s.WebsiteUrl = &v
 	return s
 }
 
@@ -12270,11 +12198,10 @@ func (s *GetProjectMemberResponseBody) SetSuccess(v bool) *GetProjectMemberRespo
 }
 
 type GetProjectMemberResponseBodyResult struct {
-	AccessLevel  *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
-	AvatarUrl    *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	ExternUserId *string `json:"externUserId,omitempty" xml:"externUserId,omitempty"`
-	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s GetProjectMemberResponseBodyResult) String() string {
@@ -12292,11 +12219,6 @@ func (s *GetProjectMemberResponseBodyResult) SetAccessLevel(v int32) *GetProject
 
 func (s *GetProjectMemberResponseBodyResult) SetAvatarUrl(v string) *GetProjectMemberResponseBodyResult {
 	s.AvatarUrl = &v
-	return s
-}
-
-func (s *GetProjectMemberResponseBodyResult) SetExternUserId(v string) *GetProjectMemberResponseBodyResult {
-	s.ExternUserId = &v
 	return s
 }
 
@@ -12803,11 +12725,9 @@ func (s *GetRepositoryCommitResponseBodyResult) SetTitle(v string) *GetRepositor
 type GetRepositoryCommitResponseBodyResultAuthor struct {
 	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	State      *string `json:"state,omitempty" xml:"state,omitempty"`
-	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
 	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
 }
@@ -12830,11 +12750,6 @@ func (s *GetRepositoryCommitResponseBodyResultAuthor) SetEmail(v string) *GetRep
 	return s
 }
 
-func (s *GetRepositoryCommitResponseBodyResultAuthor) SetExternUid(v string) *GetRepositoryCommitResponseBodyResultAuthor {
-	s.ExternUid = &v
-	return s
-}
-
 func (s *GetRepositoryCommitResponseBodyResultAuthor) SetId(v int64) *GetRepositoryCommitResponseBodyResultAuthor {
 	s.Id = &v
 	return s
@@ -12847,11 +12762,6 @@ func (s *GetRepositoryCommitResponseBodyResultAuthor) SetName(v string) *GetRepo
 
 func (s *GetRepositoryCommitResponseBodyResultAuthor) SetState(v string) *GetRepositoryCommitResponseBodyResultAuthor {
 	s.State = &v
-	return s
-}
-
-func (s *GetRepositoryCommitResponseBodyResultAuthor) SetTbUserId(v string) *GetRepositoryCommitResponseBodyResultAuthor {
-	s.TbUserId = &v
 	return s
 }
 
@@ -12868,11 +12778,9 @@ func (s *GetRepositoryCommitResponseBodyResultAuthor) SetWebsiteUrl(v string) *G
 type GetRepositoryCommitResponseBodyResultCommitter struct {
 	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	State      *string `json:"state,omitempty" xml:"state,omitempty"`
-	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
 	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
 }
@@ -12895,11 +12803,6 @@ func (s *GetRepositoryCommitResponseBodyResultCommitter) SetEmail(v string) *Get
 	return s
 }
 
-func (s *GetRepositoryCommitResponseBodyResultCommitter) SetExternUid(v string) *GetRepositoryCommitResponseBodyResultCommitter {
-	s.ExternUid = &v
-	return s
-}
-
 func (s *GetRepositoryCommitResponseBodyResultCommitter) SetId(v int64) *GetRepositoryCommitResponseBodyResultCommitter {
 	s.Id = &v
 	return s
@@ -12912,11 +12815,6 @@ func (s *GetRepositoryCommitResponseBodyResultCommitter) SetName(v string) *GetR
 
 func (s *GetRepositoryCommitResponseBodyResultCommitter) SetState(v string) *GetRepositoryCommitResponseBodyResultCommitter {
 	s.State = &v
-	return s
-}
-
-func (s *GetRepositoryCommitResponseBodyResultCommitter) SetTbUserId(v string) *GetRepositoryCommitResponseBodyResultCommitter {
-	s.TbUserId = &v
 	return s
 }
 
@@ -14213,7 +14111,6 @@ func (s *GetUserInfoResponseBody) SetSuccess(v bool) *GetUserInfoResponseBody {
 type GetUserInfoResponseBodyResult struct {
 	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
@@ -14234,11 +14131,6 @@ func (s *GetUserInfoResponseBodyResult) SetAvatarUrl(v string) *GetUserInfoRespo
 
 func (s *GetUserInfoResponseBodyResult) SetEmail(v string) *GetUserInfoResponseBodyResult {
 	s.Email = &v
-	return s
-}
-
-func (s *GetUserInfoResponseBodyResult) SetExternUid(v string) *GetUserInfoResponseBodyResult {
-	s.ExternUid = &v
 	return s
 }
 
@@ -16614,7 +16506,6 @@ type ListGroupMemberResponseBodyResult struct {
 	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
 	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -16643,11 +16534,6 @@ func (s *ListGroupMemberResponseBodyResult) SetAvatarUrl(v string) *ListGroupMem
 
 func (s *ListGroupMemberResponseBodyResult) SetEmail(v string) *ListGroupMemberResponseBodyResult {
 	s.Email = &v
-	return s
-}
-
-func (s *ListGroupMemberResponseBodyResult) SetExternUid(v string) *ListGroupMemberResponseBodyResult {
-	s.ExternUid = &v
 	return s
 }
 
@@ -19719,7 +19605,6 @@ type ListProtectedBranchesResponseBodyResultAllowMergeUsers struct {
 	Email    *string `json:"email,omitempty" xml:"email,omitempty"`
 	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	TbUserId *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -19751,11 +19636,6 @@ func (s *ListProtectedBranchesResponseBodyResultAllowMergeUsers) SetName(v strin
 	return s
 }
 
-func (s *ListProtectedBranchesResponseBodyResultAllowMergeUsers) SetTbUserId(v string) *ListProtectedBranchesResponseBodyResultAllowMergeUsers {
-	s.TbUserId = &v
-	return s
-}
-
 func (s *ListProtectedBranchesResponseBodyResultAllowMergeUsers) SetUsername(v string) *ListProtectedBranchesResponseBodyResultAllowMergeUsers {
 	s.Username = &v
 	return s
@@ -19766,7 +19646,6 @@ type ListProtectedBranchesResponseBodyResultAllowPushUsers struct {
 	Email    *string `json:"email,omitempty" xml:"email,omitempty"`
 	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	TbUserId *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -19795,11 +19674,6 @@ func (s *ListProtectedBranchesResponseBodyResultAllowPushUsers) SetId(v int64) *
 
 func (s *ListProtectedBranchesResponseBodyResultAllowPushUsers) SetName(v string) *ListProtectedBranchesResponseBodyResultAllowPushUsers {
 	s.Name = &v
-	return s
-}
-
-func (s *ListProtectedBranchesResponseBodyResultAllowPushUsers) SetTbUserId(v string) *ListProtectedBranchesResponseBodyResultAllowPushUsers {
-	s.TbUserId = &v
 	return s
 }
 
@@ -19878,7 +19752,6 @@ type ListProtectedBranchesResponseBodyResultMergeRequestSettingDefaultAssignees 
 	Email    *string `json:"email,omitempty" xml:"email,omitempty"`
 	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	TbUserId *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -19907,11 +19780,6 @@ func (s *ListProtectedBranchesResponseBodyResultMergeRequestSettingDefaultAssign
 
 func (s *ListProtectedBranchesResponseBodyResultMergeRequestSettingDefaultAssignees) SetName(v string) *ListProtectedBranchesResponseBodyResultMergeRequestSettingDefaultAssignees {
 	s.Name = &v
-	return s
-}
-
-func (s *ListProtectedBranchesResponseBodyResultMergeRequestSettingDefaultAssignees) SetTbUserId(v string) *ListProtectedBranchesResponseBodyResultMergeRequestSettingDefaultAssignees {
-	s.TbUserId = &v
 	return s
 }
 
@@ -21024,11 +20892,9 @@ func (s *ListRepositoryCommitsResponseBodyResult) SetTitle(v string) *ListReposi
 type ListRepositoryCommitsResponseBodyResultAuthor struct {
 	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	State      *string `json:"state,omitempty" xml:"state,omitempty"`
-	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
 	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
 }
@@ -21051,11 +20917,6 @@ func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetEmail(v string) *List
 	return s
 }
 
-func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetExternUid(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
-	s.ExternUid = &v
-	return s
-}
-
 func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetId(v int64) *ListRepositoryCommitsResponseBodyResultAuthor {
 	s.Id = &v
 	return s
@@ -21068,11 +20929,6 @@ func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetName(v string) *ListR
 
 func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetState(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
 	s.State = &v
-	return s
-}
-
-func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetTbUserId(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
-	s.TbUserId = &v
 	return s
 }
 
@@ -21089,11 +20945,9 @@ func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetWebsiteUrl(v string) 
 type ListRepositoryCommitsResponseBodyResultCommitter struct {
 	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	State      *string `json:"state,omitempty" xml:"state,omitempty"`
-	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
 	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
 }
@@ -21116,11 +20970,6 @@ func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetEmail(v string) *L
 	return s
 }
 
-func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetExternUid(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
-	s.ExternUid = &v
-	return s
-}
-
 func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetId(v int64) *ListRepositoryCommitsResponseBodyResultCommitter {
 	s.Id = &v
 	return s
@@ -21133,11 +20982,6 @@ func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetName(v string) *Li
 
 func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetState(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
 	s.State = &v
-	return s
-}
-
-func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetTbUserId(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
-	s.TbUserId = &v
 	return s
 }
 
@@ -21522,15 +21366,14 @@ func (s *ListRepositoryMemberWithInheritedResponseBody) SetSuccess(v bool) *List
 }
 
 type ListRepositoryMemberWithInheritedResponseBodyResult struct {
-	AccessLevel  *int32                                                        `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
-	AvatarUrl    *string                                                       `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	Email        *string                                                       `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUserId *string                                                       `json:"externUserId,omitempty" xml:"externUserId,omitempty"`
-	Id           *int64                                                        `json:"id,omitempty" xml:"id,omitempty"`
-	Inherited    *ListRepositoryMemberWithInheritedResponseBodyResultInherited `json:"inherited,omitempty" xml:"inherited,omitempty" type:"Struct"`
-	Name         *string                                                       `json:"name,omitempty" xml:"name,omitempty"`
-	State        *string                                                       `json:"state,omitempty" xml:"state,omitempty"`
-	Username     *string                                                       `json:"username,omitempty" xml:"username,omitempty"`
+	AccessLevel *int32                                                        `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string                                                       `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email       *string                                                       `json:"email,omitempty" xml:"email,omitempty"`
+	Id          *int64                                                        `json:"id,omitempty" xml:"id,omitempty"`
+	Inherited   *ListRepositoryMemberWithInheritedResponseBodyResultInherited `json:"inherited,omitempty" xml:"inherited,omitempty" type:"Struct"`
+	Name        *string                                                       `json:"name,omitempty" xml:"name,omitempty"`
+	State       *string                                                       `json:"state,omitempty" xml:"state,omitempty"`
+	Username    *string                                                       `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListRepositoryMemberWithInheritedResponseBodyResult) String() string {
@@ -21553,11 +21396,6 @@ func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetAvatarUrl(v str
 
 func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetEmail(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
 	s.Email = &v
-	return s
-}
-
-func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetExternUserId(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
-	s.ExternUserId = &v
 	return s
 }
 
@@ -24096,6 +23934,505 @@ func (s *ListUserKeysResponse) SetBody(v *ListUserKeysResponseBody) *ListUserKey
 	return s
 }
 
+type ListUserResourcesRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	UserIds        *string `json:"userIds,omitempty" xml:"userIds,omitempty"`
+}
+
+func (s ListUserResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesRequest) SetAccessToken(v string) *ListUserResourcesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListUserResourcesRequest) SetOrganizationId(v string) *ListUserResourcesRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListUserResourcesRequest) SetPage(v int64) *ListUserResourcesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListUserResourcesRequest) SetPageSize(v int64) *ListUserResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserResourcesRequest) SetUserIds(v string) *ListUserResourcesRequest {
+	s.UserIds = &v
+	return s
+}
+
+type ListUserResourcesResponseBody struct {
+	ErrorCode    *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListUserResourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListUserResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBody) SetErrorCode(v string) *ListUserResourcesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBody) SetErrorMessage(v string) *ListUserResourcesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBody) SetRequestId(v string) *ListUserResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBody) SetResult(v []*ListUserResourcesResponseBodyResult) *ListUserResourcesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListUserResourcesResponseBody) SetSuccess(v bool) *ListUserResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBody) SetTotal(v int64) *ListUserResourcesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListUserResourcesResponseBodyResult struct {
+	GroupInfos      []*ListUserResourcesResponseBodyResultGroupInfos      `json:"groupInfos,omitempty" xml:"groupInfos,omitempty" type:"Repeated"`
+	RepositoryInfos []*ListUserResourcesResponseBodyResultRepositoryInfos `json:"repositoryInfos,omitempty" xml:"repositoryInfos,omitempty" type:"Repeated"`
+	UserInfo        *ListUserResourcesResponseBodyResultUserInfo          `json:"userInfo,omitempty" xml:"userInfo,omitempty" type:"Struct"`
+}
+
+func (s ListUserResourcesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResult) SetGroupInfos(v []*ListUserResourcesResponseBodyResultGroupInfos) *ListUserResourcesResponseBodyResult {
+	s.GroupInfos = v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResult) SetRepositoryInfos(v []*ListUserResourcesResponseBodyResultRepositoryInfos) *ListUserResourcesResponseBodyResult {
+	s.RepositoryInfos = v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResult) SetUserInfo(v *ListUserResourcesResponseBodyResultUserInfo) *ListUserResourcesResponseBodyResult {
+	s.UserInfo = v
+	return s
+}
+
+type ListUserResourcesResponseBodyResultGroupInfos struct {
+	GroupInfo *ListUserResourcesResponseBodyResultGroupInfosGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	GroupRole *ListUserResourcesResponseBodyResultGroupInfosGroupRole `json:"groupRole,omitempty" xml:"groupRole,omitempty" type:"Struct"`
+}
+
+func (s ListUserResourcesResponseBodyResultGroupInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResultGroupInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfos) SetGroupInfo(v *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) *ListUserResourcesResponseBodyResultGroupInfos {
+	s.GroupInfo = v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfos) SetGroupRole(v *ListUserResourcesResponseBodyResultGroupInfosGroupRole) *ListUserResourcesResponseBodyResultGroupInfos {
+	s.GroupRole = v
+	return s
+}
+
+type ListUserResourcesResponseBodyResultGroupInfosGroupInfo struct {
+	CreatedAt         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	OwnerId           *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	ParentId          *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	UpdatedAt         *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+}
+
+func (s ListUserResourcesResponseBodyResultGroupInfosGroupInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResultGroupInfosGroupInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetCreatedAt(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetDescription(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetId(v int64) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetName(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetNameWithNamespace(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetOwnerId(v int64) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetParentId(v int64) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.ParentId = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetPath(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.Path = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetPathWithNamespace(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetUpdatedAt(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupInfo) SetVisibilityLevel(v int32) *ListUserResourcesResponseBodyResultGroupInfosGroupInfo {
+	s.VisibilityLevel = &v
+	return s
+}
+
+type ListUserResourcesResponseBodyResultGroupInfosGroupRole struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	CnRoleName  *string `json:"cnRoleName,omitempty" xml:"cnRoleName,omitempty"`
+	EnRoleName  *string `json:"enRoleName,omitempty" xml:"enRoleName,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+}
+
+func (s ListUserResourcesResponseBodyResultGroupInfosGroupRole) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResultGroupInfosGroupRole) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupRole) SetAccessLevel(v int32) *ListUserResourcesResponseBodyResultGroupInfosGroupRole {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupRole) SetCnRoleName(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupRole {
+	s.CnRoleName = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupRole) SetEnRoleName(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupRole {
+	s.EnRoleName = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupRole) SetSourceId(v int64) *ListUserResourcesResponseBodyResultGroupInfosGroupRole {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultGroupInfosGroupRole) SetSourceType(v string) *ListUserResourcesResponseBodyResultGroupInfosGroupRole {
+	s.SourceType = &v
+	return s
+}
+
+type ListUserResourcesResponseBodyResultRepositoryInfos struct {
+	RepositoryInfo *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo `json:"repositoryInfo,omitempty" xml:"repositoryInfo,omitempty" type:"Struct"`
+	RepositoryRole *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole `json:"repositoryRole,omitempty" xml:"repositoryRole,omitempty" type:"Struct"`
+}
+
+func (s ListUserResourcesResponseBodyResultRepositoryInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResultRepositoryInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfos) SetRepositoryInfo(v *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) *ListUserResourcesResponseBodyResultRepositoryInfos {
+	s.RepositoryInfo = v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfos) SetRepositoryRole(v *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) *ListUserResourcesResponseBodyResultRepositoryInfos {
+	s.RepositoryRole = v
+	return s
+}
+
+type ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo struct {
+	AccessLevel       *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	Archived          *bool   `json:"archived,omitempty" xml:"archived,omitempty"`
+	CreatedAt         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatorId         *int64  `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Encrypted         *bool   `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	LastActivityAt    *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	NamespaceId       *int64  `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	UpdatedAt         *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+}
+
+func (s ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetAccessLevel(v int32) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetArchived(v bool) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.Archived = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetCreatedAt(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetCreatorId(v int64) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetDescription(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetEncrypted(v bool) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetId(v int64) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetLastActivityAt(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.LastActivityAt = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetName(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetNameWithNamespace(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetNamespaceId(v int64) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetPath(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.Path = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetPathWithNamespace(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetUpdatedAt(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo) SetVisibilityLevel(v int32) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryInfo {
+	s.VisibilityLevel = &v
+	return s
+}
+
+type ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	CnRoleName  *string `json:"cnRoleName,omitempty" xml:"cnRoleName,omitempty"`
+	EnRoleName  *string `json:"enRoleName,omitempty" xml:"enRoleName,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+}
+
+func (s ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) SetAccessLevel(v int32) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) SetCnRoleName(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole {
+	s.CnRoleName = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) SetEnRoleName(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole {
+	s.EnRoleName = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) SetSourceId(v int64) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole) SetSourceType(v string) *ListUserResourcesResponseBodyResultRepositoryInfosRepositoryRole {
+	s.SourceType = &v
+	return s
+}
+
+type ListUserResourcesResponseBodyResultUserInfo struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListUserResourcesResponseBodyResultUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponseBodyResultUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponseBodyResultUserInfo) SetAvatarUrl(v string) *ListUserResourcesResponseBodyResultUserInfo {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultUserInfo) SetEmail(v string) *ListUserResourcesResponseBodyResultUserInfo {
+	s.Email = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultUserInfo) SetId(v int64) *ListUserResourcesResponseBodyResultUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultUserInfo) SetName(v string) *ListUserResourcesResponseBodyResultUserInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultUserInfo) SetState(v string) *ListUserResourcesResponseBodyResultUserInfo {
+	s.State = &v
+	return s
+}
+
+func (s *ListUserResourcesResponseBodyResultUserInfo) SetUsername(v string) *ListUserResourcesResponseBodyResultUserInfo {
+	s.Username = &v
+	return s
+}
+
+type ListUserResourcesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserResourcesResponse) SetHeaders(v map[string]*string) *ListUserResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserResourcesResponse) SetStatusCode(v int32) *ListUserResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserResourcesResponse) SetBody(v *ListUserResourcesResponseBody) *ListUserResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListVariableGroupsRequest struct {
 	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
@@ -26531,6 +26868,236 @@ func (s *StopVMDeployOrderResponse) SetBody(v *StopVMDeployOrderResponseBody) *S
 	return s
 }
 
+type TransferRepositoryRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	GroupId        *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryId   *string `json:"repositoryId,omitempty" xml:"repositoryId,omitempty"`
+}
+
+func (s TransferRepositoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferRepositoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferRepositoryRequest) SetAccessToken(v string) *TransferRepositoryRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *TransferRepositoryRequest) SetGroupId(v string) *TransferRepositoryRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *TransferRepositoryRequest) SetOrganizationId(v string) *TransferRepositoryRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *TransferRepositoryRequest) SetRepositoryId(v string) *TransferRepositoryRequest {
+	s.RepositoryId = &v
+	return s
+}
+
+type TransferRepositoryResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *TransferRepositoryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s TransferRepositoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferRepositoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferRepositoryResponseBody) SetErrorCode(v string) *TransferRepositoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBody) SetErrorMessage(v string) *TransferRepositoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBody) SetRequestId(v string) *TransferRepositoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBody) SetResult(v *TransferRepositoryResponseBodyResult) *TransferRepositoryResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *TransferRepositoryResponseBody) SetSuccess(v bool) *TransferRepositoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TransferRepositoryResponseBodyResult struct {
+	AccessLevel       *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	Archived          *bool   `json:"archived,omitempty" xml:"archived,omitempty"`
+	CreatedAt         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatorId         *int64  `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	DemoProject       *bool   `json:"demoProject,omitempty" xml:"demoProject,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Encrypted         *bool   `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	LastActivityAt    *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	NamespaceId       *int64  `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	StarCount         *int64  `json:"starCount,omitempty" xml:"starCount,omitempty"`
+	Starred           *bool   `json:"starred,omitempty" xml:"starred,omitempty"`
+	UpdatedAt         *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s TransferRepositoryResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferRepositoryResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetAccessLevel(v int32) *TransferRepositoryResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetArchived(v bool) *TransferRepositoryResponseBodyResult {
+	s.Archived = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetCreatedAt(v string) *TransferRepositoryResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetCreatorId(v int64) *TransferRepositoryResponseBodyResult {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetDemoProject(v bool) *TransferRepositoryResponseBodyResult {
+	s.DemoProject = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetDescription(v string) *TransferRepositoryResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetEncrypted(v bool) *TransferRepositoryResponseBodyResult {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetId(v int64) *TransferRepositoryResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetLastActivityAt(v string) *TransferRepositoryResponseBodyResult {
+	s.LastActivityAt = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetName(v string) *TransferRepositoryResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetNameWithNamespace(v string) *TransferRepositoryResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetNamespaceId(v int64) *TransferRepositoryResponseBodyResult {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetPath(v string) *TransferRepositoryResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetPathWithNamespace(v string) *TransferRepositoryResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetStarCount(v int64) *TransferRepositoryResponseBodyResult {
+	s.StarCount = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetStarred(v bool) *TransferRepositoryResponseBodyResult {
+	s.Starred = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetUpdatedAt(v string) *TransferRepositoryResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetVisibilityLevel(v int32) *TransferRepositoryResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *TransferRepositoryResponseBodyResult) SetWebUrl(v string) *TransferRepositoryResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type TransferRepositoryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TransferRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TransferRepositoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferRepositoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferRepositoryResponse) SetHeaders(v map[string]*string) *TransferRepositoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferRepositoryResponse) SetStatusCode(v int32) *TransferRepositoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TransferRepositoryResponse) SetBody(v *TransferRepositoryResponseBody) *TransferRepositoryResponse {
+	s.Body = v
+	return s
+}
+
 type TriggerRepositoryMirrorSyncRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	Account        *string `json:"account,omitempty" xml:"account,omitempty"`
@@ -27277,7 +27844,6 @@ type UpdateGroupMemberResponseBodyResult struct {
 	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
 	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
-	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -27306,11 +27872,6 @@ func (s *UpdateGroupMemberResponseBodyResult) SetAvatarUrl(v string) *UpdateGrou
 
 func (s *UpdateGroupMemberResponseBodyResult) SetEmail(v string) *UpdateGroupMemberResponseBodyResult {
 	s.Email = &v
-	return s
-}
-
-func (s *UpdateGroupMemberResponseBodyResult) SetExternUid(v string) *UpdateGroupMemberResponseBodyResult {
-	s.ExternUid = &v
 	return s
 }
 
@@ -29286,7 +29847,6 @@ type UpdateRepositoryMemberResponseBodyResult struct {
 	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
 	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
 	ExpireAt    *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
-	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
 	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	MemberName  *string `json:"memberName,omitempty" xml:"memberName,omitempty"`
 	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
@@ -29294,7 +29854,6 @@ type UpdateRepositoryMemberResponseBodyResult struct {
 	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	State       *string `json:"state,omitempty" xml:"state,omitempty"`
-	TbUserId    *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
 	// web url
 	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
@@ -29325,11 +29884,6 @@ func (s *UpdateRepositoryMemberResponseBodyResult) SetEmail(v string) *UpdateRep
 
 func (s *UpdateRepositoryMemberResponseBodyResult) SetExpireAt(v string) *UpdateRepositoryMemberResponseBodyResult {
 	s.ExpireAt = &v
-	return s
-}
-
-func (s *UpdateRepositoryMemberResponseBodyResult) SetExternUid(v string) *UpdateRepositoryMemberResponseBodyResult {
-	s.ExternUid = &v
 	return s
 }
 
@@ -29365,11 +29919,6 @@ func (s *UpdateRepositoryMemberResponseBodyResult) SetSourceType(v string) *Upda
 
 func (s *UpdateRepositoryMemberResponseBodyResult) SetState(v string) *UpdateRepositoryMemberResponseBodyResult {
 	s.State = &v
-	return s
-}
-
-func (s *UpdateRepositoryMemberResponseBodyResult) SetTbUserId(v string) *UpdateRepositoryMemberResponseBodyResult {
-	s.TbUserId = &v
 	return s
 }
 
@@ -37906,6 +38455,68 @@ func (client *Client) ListUserKeys(request *ListUserKeysRequest) (_result *ListU
 	return _result, _err
 }
 
+func (client *Client) ListUserResourcesWithOptions(request *ListUserResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["userIds"] = request.UserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserResources"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/user/vision/user_resources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserResources(request *ListUserResourcesRequest) (_result *ListUserResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserResourcesResponse{}
+	_body, _err := client.ListUserResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListVariableGroupsWithOptions(organizationId *string, request *ListVariableGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVariableGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38805,6 +39416,64 @@ func (client *Client) StopVMDeployOrder(organizationId *string, pipelineId *stri
 	headers := make(map[string]*string)
 	_result = &StopVMDeployOrderResponse{}
 	_body, _err := client.StopVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TransferRepositoryWithOptions(request *TransferRepositoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TransferRepositoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["groupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryId)) {
+		query["repositoryId"] = request.RepositoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferRepository"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/repository/transfer"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransferRepositoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TransferRepository(request *TransferRepositoryRequest) (_result *TransferRepositoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TransferRepositoryResponse{}
+	_body, _err := client.TransferRepositoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
