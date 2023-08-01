@@ -579,6 +579,426 @@ func (s *TextModerationResponse) SetBody(v *TextModerationResponseBody) *TextMod
 	return s
 }
 
+type VideoModerationRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s VideoModerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationRequest) SetService(v string) *VideoModerationRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *VideoModerationRequest) SetServiceParameters(v string) *VideoModerationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type VideoModerationResponseBody struct {
+	Code    *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *VideoModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoModerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResponseBody) SetCode(v int32) *VideoModerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VideoModerationResponseBody) SetData(v *VideoModerationResponseBodyData) *VideoModerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *VideoModerationResponseBody) SetMessage(v string) *VideoModerationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VideoModerationResponseBody) SetRequestId(v string) *VideoModerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VideoModerationResponseBodyData struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s VideoModerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResponseBodyData) SetTaskId(v string) *VideoModerationResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type VideoModerationResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VideoModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VideoModerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResponse) SetHeaders(v map[string]*string) *VideoModerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VideoModerationResponse) SetStatusCode(v int32) *VideoModerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoModerationResponse) SetBody(v *VideoModerationResponseBody) *VideoModerationResponse {
+	s.Body = v
+	return s
+}
+
+type VideoModerationResultRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s VideoModerationResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultRequest) SetService(v string) *VideoModerationResultRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *VideoModerationResultRequest) SetServiceParameters(v string) *VideoModerationResultRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type VideoModerationResultResponseBody struct {
+	Code    *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *VideoModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoModerationResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBody) SetCode(v int32) *VideoModerationResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBody) SetData(v *VideoModerationResultResponseBodyData) *VideoModerationResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBody) SetMessage(v string) *VideoModerationResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBody) SetRequestId(v string) *VideoModerationResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyData struct {
+	AudioResult *VideoModerationResultResponseBodyDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
+	DataId      *string                                           `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	FrameResult *VideoModerationResultResponseBodyDataFrameResult `json:"FrameResult,omitempty" xml:"FrameResult,omitempty" type:"Struct"`
+	LiveId      *string                                           `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyData) SetAudioResult(v *VideoModerationResultResponseBodyDataAudioResult) *VideoModerationResultResponseBodyData {
+	s.AudioResult = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyData) SetDataId(v string) *VideoModerationResultResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyData) SetFrameResult(v *VideoModerationResultResponseBodyDataFrameResult) *VideoModerationResultResponseBodyData {
+	s.FrameResult = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyData) SetLiveId(v string) *VideoModerationResultResponseBodyData {
+	s.LiveId = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataAudioResult struct {
+	SliceDetails []*VideoModerationResultResponseBodyDataAudioResultSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResult) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResult) SetSliceDetails(v []*VideoModerationResultResponseBodyDataAudioResultSliceDetails) *VideoModerationResultResponseBodyDataAudioResult {
+	s.SliceDetails = v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
+	EndTime        *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTimestamp   *int64   `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	Extend         *string  `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Labels         *string  `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RiskTips       *string  `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	RiskWords      *string  `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	StartTime      *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTimestamp *int64   `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	Text           *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+	Url            *string  `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetEndTime(v int64) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.EndTime = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetEndTimestamp(v int64) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetExtend(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.Extend = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetLabels(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.Labels = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetRiskTips(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.RiskTips = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetRiskWords(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.RiskWords = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetScore(v float32) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.Score = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetStartTime(v int64) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.StartTime = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetStartTimestamp(v int64) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetText(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.Text = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetUrl(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.Url = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResult struct {
+	FrameNum *int32                                                    `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	Frames   []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResult) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResult) SetFrameNum(v int32) *VideoModerationResultResponseBodyDataFrameResult {
+	s.FrameNum = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResult) SetFrames(v []*VideoModerationResultResponseBodyDataFrameResultFrames) *VideoModerationResultResponseBodyDataFrameResult {
+	s.Frames = v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFrames struct {
+	Offset  *float32                                                         `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Results []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TempUrl *string                                                          `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFrames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFrames) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetOffset(v float32) *VideoModerationResultResponseBodyDataFrameResultFrames {
+	s.Offset = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetResults(v []*VideoModerationResultResponseBodyDataFrameResultFramesResults) *VideoModerationResultResponseBodyDataFrameResultFrames {
+	s.Results = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTempUrl(v string) *VideoModerationResultResponseBodyDataFrameResultFrames {
+	s.TempUrl = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
+	Result  []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Service *string                                                                `json:"Service,omitempty" xml:"Service,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetResult(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.Result = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetService(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.Service = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsResult struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) SetConfidence(v float32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) SetLabel(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult {
+	s.Label = &v
+	return s
+}
+
+type VideoModerationResultResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VideoModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VideoModerationResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponse) SetHeaders(v map[string]*string) *VideoModerationResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VideoModerationResultResponse) SetStatusCode(v int32) *VideoModerationResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoModerationResultResponse) SetBody(v *VideoModerationResultResponseBody) *VideoModerationResultResponse {
+	s.Body = v
+	return s
+}
+
 type VoiceModerationRequest struct {
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
@@ -1209,6 +1629,102 @@ func (client *Client) TextModeration(request *TextModerationRequest) (_result *T
 	runtime := &util.RuntimeOptions{}
 	_result = &TextModerationResponse{}
 	_body, _err := client.TextModerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest, runtime *util.RuntimeOptions) (_result *VideoModerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoModeration"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VideoModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VideoModeration(request *VideoModerationRequest) (_result *VideoModerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VideoModerationResponse{}
+	_body, _err := client.VideoModerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VideoModerationResultWithOptions(request *VideoModerationResultRequest, runtime *util.RuntimeOptions) (_result *VideoModerationResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoModerationResult"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VideoModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VideoModerationResult(request *VideoModerationResultRequest) (_result *VideoModerationResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VideoModerationResultResponse{}
+	_body, _err := client.VideoModerationResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
