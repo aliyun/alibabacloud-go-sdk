@@ -5187,6 +5187,7 @@ func (s *DescribeDBInstanceIndexUsageResponse) SetBody(v *DescribeDBInstanceInde
 }
 
 type DescribeDBInstanceNetInfoRequest struct {
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
@@ -5199,6 +5200,11 @@ func (s DescribeDBInstanceNetInfoRequest) String() string {
 
 func (s DescribeDBInstanceNetInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceNetInfoRequest) SetConnectionString(v string) *DescribeDBInstanceNetInfoRequest {
+	s.ConnectionString = &v
+	return s
 }
 
 func (s *DescribeDBInstanceNetInfoRequest) SetDBInstanceId(v string) *DescribeDBInstanceNetInfoRequest {
@@ -12069,6 +12075,105 @@ func (s *GrantCollectionResponse) SetBody(v *GrantCollectionResponseBody) *Grant
 	return s
 }
 
+type InitVectorDatabaseRequest struct {
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s InitVectorDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitVectorDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitVectorDatabaseRequest) SetDBInstanceId(v string) *InitVectorDatabaseRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *InitVectorDatabaseRequest) SetManagerAccount(v string) *InitVectorDatabaseRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *InitVectorDatabaseRequest) SetManagerAccountPassword(v string) *InitVectorDatabaseRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *InitVectorDatabaseRequest) SetOwnerId(v int64) *InitVectorDatabaseRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *InitVectorDatabaseRequest) SetRegionId(v string) *InitVectorDatabaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+type InitVectorDatabaseResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s InitVectorDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitVectorDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitVectorDatabaseResponseBody) SetMessage(v string) *InitVectorDatabaseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitVectorDatabaseResponseBody) SetRequestId(v string) *InitVectorDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitVectorDatabaseResponseBody) SetStatus(v string) *InitVectorDatabaseResponseBody {
+	s.Status = &v
+	return s
+}
+
+type InitVectorDatabaseResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InitVectorDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitVectorDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitVectorDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitVectorDatabaseResponse) SetHeaders(v map[string]*string) *InitVectorDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitVectorDatabaseResponse) SetStatusCode(v int32) *InitVectorDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitVectorDatabaseResponse) SetBody(v *InitVectorDatabaseResponseBody) *InitVectorDatabaseResponse {
+	s.Body = v
+	return s
+}
+
 type ListCollectionsRequest struct {
 	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -13974,6 +14079,7 @@ func (s *QueryCollectionDataShrinkRequest) SetVectorShrink(v string) *QueryColle
 
 type QueryCollectionDataResponseBody struct {
 	Matches   *QueryCollectionDataResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status    *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -13988,6 +14094,11 @@ func (s QueryCollectionDataResponseBody) GoString() string {
 
 func (s *QueryCollectionDataResponseBody) SetMatches(v *QueryCollectionDataResponseBodyMatches) *QueryCollectionDataResponseBody {
 	s.Matches = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBody) SetMessage(v string) *QueryCollectionDataResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -14019,9 +14130,10 @@ func (s *QueryCollectionDataResponseBodyMatches) SetMatch(v []*QueryCollectionDa
 }
 
 type QueryCollectionDataResponseBodyMatchesMatch struct {
-	Id       *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Metadata map[string]*string                                 `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Values   *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+	Id         *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata   map[string]*string                                 `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Similarity *float64                                           `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	Values     *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
 func (s QueryCollectionDataResponseBodyMatchesMatch) String() string {
@@ -14039,6 +14151,11 @@ func (s *QueryCollectionDataResponseBodyMatchesMatch) SetId(v string) *QueryColl
 
 func (s *QueryCollectionDataResponseBodyMatchesMatch) SetMetadata(v map[string]*string) *QueryCollectionDataResponseBodyMatchesMatch {
 	s.Metadata = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatch) SetSimilarity(v float64) *QueryCollectionDataResponseBodyMatchesMatch {
+	s.Similarity = &v
 	return s
 }
 
@@ -18160,6 +18277,10 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionString)) {
+		query["ConnectionString"] = request.ConnectionString
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -20634,6 +20755,66 @@ func (client *Client) GrantCollection(request *GrantCollectionRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantCollectionResponse{}
 	_body, _err := client.GrantCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InitVectorDatabaseWithOptions(request *InitVectorDatabaseRequest, runtime *util.RuntimeOptions) (_result *InitVectorDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitVectorDatabase"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitVectorDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitVectorDatabase(request *InitVectorDatabaseRequest) (_result *InitVectorDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitVectorDatabaseResponse{}
+	_body, _err := client.InitVectorDatabaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
