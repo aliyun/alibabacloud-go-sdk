@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/avatar-20220130
+module github.com/alibabacloud-go/avatar-20220130/v2
 
 go 1.15
 

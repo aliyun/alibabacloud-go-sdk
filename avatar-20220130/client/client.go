@@ -987,6 +987,7 @@ func (s *GetVideoTaskInfoResponseBodyData) SetType(v string) *GetVideoTaskInfoRe
 }
 
 type GetVideoTaskInfoResponseBodyDataTaskResult struct {
+	AlphaUrl      *string `json:"AlphaUrl,omitempty" xml:"AlphaUrl,omitempty"`
 	FailCode      *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
 	FailReason    *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 	SubtitlesUrl  *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
@@ -1002,6 +1003,11 @@ func (s GetVideoTaskInfoResponseBodyDataTaskResult) String() string {
 
 func (s GetVideoTaskInfoResponseBodyDataTaskResult) GoString() string {
 	return s.String()
+}
+
+func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetAlphaUrl(v string) *GetVideoTaskInfoResponseBodyDataTaskResult {
+	s.AlphaUrl = &v
+	return s
 }
 
 func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetFailCode(v string) *GetVideoTaskInfoResponseBodyDataTaskResult {
@@ -3672,7 +3678,7 @@ type SubmitAudioTo2DAvatarVideoTaskResponseBody struct {
 	Data      *SubmitAudioTo2DAvatarVideoTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitAudioTo2DAvatarVideoTaskResponseBody) String() string {
@@ -3703,7 +3709,7 @@ func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetRequestId(v string) *Sub
 	return s
 }
 
-func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetSuccess(v string) *SubmitAudioTo2DAvatarVideoTaskResponseBody {
+func (s *SubmitAudioTo2DAvatarVideoTaskResponseBody) SetSuccess(v bool) *SubmitAudioTo2DAvatarVideoTaskResponseBody {
 	s.Success = &v
 	return s
 }
@@ -3976,7 +3982,7 @@ type SubmitAudioTo3DAvatarVideoTaskResponseBody struct {
 	Data      *SubmitAudioTo3DAvatarVideoTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitAudioTo3DAvatarVideoTaskResponseBody) String() string {
@@ -4007,7 +4013,7 @@ func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetRequestId(v string) *Sub
 	return s
 }
 
-func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetSuccess(v string) *SubmitAudioTo3DAvatarVideoTaskResponseBody {
+func (s *SubmitAudioTo3DAvatarVideoTaskResponseBody) SetSuccess(v bool) *SubmitAudioTo3DAvatarVideoTaskResponseBody {
 	s.Success = &v
 	return s
 }
@@ -4202,8 +4208,10 @@ type SubmitTextTo2DAvatarVideoTaskRequestVideoInfo struct {
 	AlphaFormat        *int32  `json:"AlphaFormat,omitempty" xml:"AlphaFormat,omitempty"`
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
 	IsAlpha            *bool   `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
-	IsSubtitles        *bool   `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
-	Resolution         *int32  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// Deprecated
+	IsSubtitles      *bool  `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
+	Resolution       *int32 `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	SubtitleEmbedded *bool  `json:"SubtitleEmbedded,omitempty" xml:"SubtitleEmbedded,omitempty"`
 }
 
 func (s SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) String() string {
@@ -4236,6 +4244,11 @@ func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetIsSubtitles(v bool) *
 
 func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
 	s.Resolution = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo) SetSubtitleEmbedded(v bool) *SubmitTextTo2DAvatarVideoTaskRequestVideoInfo {
+	s.SubtitleEmbedded = &v
 	return s
 }
 
@@ -4559,8 +4572,10 @@ type SubmitTextTo3DAvatarVideoTaskRequestVideoInfo struct {
 	AlphaFormat        *int32  `json:"AlphaFormat,omitempty" xml:"AlphaFormat,omitempty"`
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
 	IsAlpha            *bool   `json:"IsAlpha,omitempty" xml:"IsAlpha,omitempty"`
-	IsSubtitles        *bool   `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
-	Resolution         *int32  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// Deprecated
+	IsSubtitles      *bool  `json:"IsSubtitles,omitempty" xml:"IsSubtitles,omitempty"`
+	Resolution       *int32 `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	SubtitleEmbedded *bool  `json:"SubtitleEmbedded,omitempty" xml:"SubtitleEmbedded,omitempty"`
 }
 
 func (s SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) String() string {
@@ -4593,6 +4608,11 @@ func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) SetIsSubtitles(v bool) *
 
 func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) SetResolution(v int32) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo {
 	s.Resolution = &v
+	return s
+}
+
+func (s *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo) SetSubtitleEmbedded(v bool) *SubmitTextTo3DAvatarVideoTaskRequestVideoInfo {
+	s.SubtitleEmbedded = &v
 	return s
 }
 
