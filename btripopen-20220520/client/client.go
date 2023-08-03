@@ -2460,6 +2460,7 @@ type ApplyListQueryResponseBodyModuleList struct {
 	ItineraryList        []*ApplyListQueryResponseBodyModuleListItineraryList        `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
 	ItineraryRule        *int32                                                      `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
 	ItinerarySetList     []*ApplyListQueryResponseBodyModuleListItinerarySetList     `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
+	JobNo                *string                                                     `json:"job_no,omitempty" xml:"job_no,omitempty"`
 	Status               *int32                                                      `json:"status,omitempty" xml:"status,omitempty"`
 	StatusDesc           *string                                                     `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
 	ThirdpartBusinessId  *string                                                     `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
@@ -2549,6 +2550,11 @@ func (s *ApplyListQueryResponseBodyModuleList) SetItineraryRule(v int32) *ApplyL
 
 func (s *ApplyListQueryResponseBodyModuleList) SetItinerarySetList(v []*ApplyListQueryResponseBodyModuleListItinerarySetList) *ApplyListQueryResponseBodyModuleList {
 	s.ItinerarySetList = v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleList) SetJobNo(v string) *ApplyListQueryResponseBodyModuleList {
+	s.JobNo = &v
 	return s
 }
 
@@ -5673,11 +5679,16 @@ func (s *CarBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *CarBill
 }
 
 type CarBillSettlementQueryResponseBodyModuleDataList struct {
-	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AlipayTradeNo    *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
 	// 审批扩展自定义字段
 	ApplyExtendField      *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId               *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrCity               *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode           *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	ArrDate               *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	ArrLocation           *string  `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
 	ArrTime               *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
@@ -5694,6 +5705,7 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	CostCenterNumber      *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
 	Coupon                *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
 	CouponPrice           *float64 `json:"coupon_price,omitempty" xml:"coupon_price,omitempty"`
+	DepCityCode           *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	Department            *string  `json:"department,omitempty" xml:"department,omitempty"`
 	DepartmentId          *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
 	DeptCity              *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
@@ -5728,12 +5740,13 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	Status                *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	SubOrderId            *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 	// 税率
-	TaxRate         *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TravelerId      *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo   *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName    *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	UserConfirmDesc *string `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
-	VoucherType     *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TravelerId       *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo    *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName     *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UserConfirmDesc  *string `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
+	VoucherType      *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s CarBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -5749,6 +5762,26 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v st
 	return s
 }
 
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityCode(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityCode = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityName(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityName = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityCode(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityCode = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityName(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityName = &v
+	return s
+}
+
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyExtendField = &v
 	return s
@@ -5761,6 +5794,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) 
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetArrCity(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.ArrCity = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetArrCityCode(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrCityCode = &v
 	return s
 }
 
@@ -5841,6 +5879,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetCoupon(v float64) 
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetCouponPrice(v float64) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.CouponPrice = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetDepCityCode(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.DepCityCode = &v
 	return s
 }
 
@@ -6011,6 +6054,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetSubOrderId(v strin
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetThirdItineraryId(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdItineraryId = &v
 	return s
 }
 
@@ -10813,15 +10861,20 @@ func (s *FlightBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Flig
 }
 
 type FlightBillSettlementQueryResponseBodyModuleDataList struct {
-	AdvanceDay      *int32  `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
-	AirlineCorpCode *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
-	AirlineCorpName *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
-	AlipayTradeNo   *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AdvanceDay       *int32  `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
+	AirlineCorpCode  *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
+	AirlineCorpName  *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	AlipayTradeNo    *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
 	// 审批扩展自定义字段
 	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode            *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	ArrDate                *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	ArrStation             *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
 	ArrTime                *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
@@ -10842,6 +10895,7 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
 	Coupon                 *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
 	DepAirportCode         *string  `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCityCode            *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
 	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
 	DeptCity               *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
@@ -10881,13 +10935,14 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
-	TaxRate       *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketId      *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
-	TravelerId    *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName  *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	UpgradeCost   *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
-	VoucherType   *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate          *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TicketId         *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	TravelerId       *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo    *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName     *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UpgradeCost      *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
+	VoucherType      *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s FlightBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -10918,6 +10973,26 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v
 	return s
 }
 
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityCode(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityCode = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityName(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityName = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityCode(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityCode = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityName(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityName = &v
+	return s
+}
+
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyExtendField = &v
 	return s
@@ -10935,6 +11010,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetArrAirportCode(
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetArrCity(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ArrCity = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetArrCityCode(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrCityCode = &v
 	return s
 }
 
@@ -11035,6 +11115,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetCoupon(v float6
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetDepAirportCode(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.DepAirportCode = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetDepCityCode(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DepCityCode = &v
 	return s
 }
 
@@ -11230,6 +11315,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32)
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetThirdItineraryId(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdItineraryId = &v
 	return s
 }
 
@@ -24284,7 +24374,11 @@ func (s *HotelBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Hotel
 }
 
 type HotelBillSettlementQueryResponseBodyModuleDataList struct {
-	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AlipayTradeNo    *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
 	// 审批扩展自定义字段
 	ApplyExtendField   *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId            *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
@@ -24335,12 +24429,13 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementType     *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
-	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TotalNights   *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
-	TravelerId    *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName  *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType   *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TotalNights      *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
+	TravelerId       *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo    *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName     *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType      *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s HotelBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -24353,6 +24448,26 @@ func (s HotelBillSettlementQueryResponseBodyModuleDataList) GoString() string {
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityCode(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityCode = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityName(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityName = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityCode(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityCode = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityName(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityName = &v
 	return s
 }
 
@@ -24598,6 +24713,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) 
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetThirdItineraryId(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdItineraryId = &v
 	return s
 }
 
@@ -31335,15 +31455,20 @@ func (s *IeFlightBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Ie
 }
 
 type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
-	AdvanceDay      *int32  `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
-	AirlineCorpCode *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
-	AirlineCorpName *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
-	AlipayTradeNo   *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AdvanceDay       *int32  `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
+	AirlineCorpCode  *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
+	AirlineCorpName  *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	AlipayTradeNo    *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
 	// 审批扩展自定义字段
 	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode            *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	ArrDate                *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	ArrStation             *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
 	ArrTime                *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
@@ -31364,6 +31489,7 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
 	Coupon                 *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
 	DepAirportCode         *string  `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCityCode            *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
 	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
 	DeptCity               *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
@@ -31404,13 +31530,14 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 	TaxFee                 *float64 `json:"tax_fee,omitempty" xml:"tax_fee,omitempty"`
 	// 税率
-	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketId      *string `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
-	Trade         *string `json:"trade,omitempty" xml:"trade,omitempty"`
-	TravelerId    *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName  *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType   *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TicketId         *string `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	Trade            *string `json:"trade,omitempty" xml:"trade,omitempty"`
+	TravelerId       *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo    *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName     *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType      *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s IeFlightBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -31441,6 +31568,26 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo
 	return s
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityName = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityName = &v
+	return s
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyExtendField = &v
 	return s
@@ -31458,6 +31605,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrAirportCod
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrCity(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ArrCity = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrCityCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrCityCode = &v
 	return s
 }
 
@@ -31558,6 +31710,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCoupon(v floa
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepAirportCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.DepAirportCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepCityCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DepCityCode = &v
 	return s
 }
 
@@ -31758,6 +31915,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTaxFee(v floa
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetThirdItineraryId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdItineraryId = &v
 	return s
 }
 
@@ -38962,10 +39124,15 @@ func (s *TrainBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Train
 }
 
 type TrainBillSettlementQueryResponseBodyModuleDataList struct {
-	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AlipayTradeNo    *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
 	// 审批扩展自定义字段
 	ApplyExtendField   *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId            *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrCityCode        *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	ArrDate            *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	ArrStation         *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
 	ArrTime            *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
@@ -38980,6 +39147,7 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	CostCenter         *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
 	CostCenterNumber   *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
 	Coupon             *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
+	DepCityCode        *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	Department         *string  `json:"department,omitempty" xml:"department,omitempty"`
 	DepartmentId       *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
 	DeptDate           *string  `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
@@ -39006,15 +39174,16 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementType     *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
-	TaxRate       *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketNo      *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPrice   *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TrainNo       *string  `json:"train_no,omitempty" xml:"train_no,omitempty"`
-	TrainType     *string  `json:"train_type,omitempty" xml:"train_type,omitempty"`
-	TravelerId    *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName  *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType   *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate          *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TicketNo         *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPrice      *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TrainNo          *string  `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	TrainType        *string  `json:"train_type,omitempty" xml:"train_type,omitempty"`
+	TravelerId       *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo    *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName     *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType      *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s TrainBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -39030,6 +39199,26 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v 
 	return s
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityCode(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityCode = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityName(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityName = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityCode(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityCode = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityName(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityName = &v
+	return s
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyExtendField = &v
 	return s
@@ -39037,6 +39226,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetArrCityCode(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrCityCode = &v
 	return s
 }
 
@@ -39107,6 +39301,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetCostCenterNumber
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetCoupon(v float64) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.Coupon = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetDepCityCode(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.DepCityCode = &v
 	return s
 }
 
@@ -39237,6 +39436,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) 
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetThirdItineraryId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdItineraryId = &v
 	return s
 }
 
