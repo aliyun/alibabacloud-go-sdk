@@ -1603,7 +1603,9 @@ func (s *CancelAutoSnapshotPolicyResponse) SetBody(v *CancelAutoSnapshotPolicyRe
 }
 
 type CancelCdsFileShareLinkRequest struct {
-	CdsId   *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the file sharing task.
 	ShareId *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
 }
 
@@ -1626,11 +1628,19 @@ func (s *CancelCdsFileShareLinkRequest) SetShareId(v string) *CancelCdsFileShare
 }
 
 type CancelCdsFileShareLinkResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data information.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message that is returned if the request failed. This parameter is not returned if the value of Code is `success`.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**: The request is successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelCdsFileShareLinkResponseBody) String() string {
@@ -2020,10 +2030,13 @@ func (s *CompleteCdsFileResponse) SetBody(v *CompleteCdsFileResponseBody) *Compl
 }
 
 type ConfigADConnectorTrustRequest struct {
+	// The ID of the AD workspace.
 	OfficeSiteId     *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	RdsLicenseDomain *bool   `json:"RdsLicenseDomain,omitempty" xml:"RdsLicenseDomain,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TrustKey         *string `json:"TrustKey,omitempty" xml:"TrustKey,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The trust password. You can specify the password when you configure a trust relationship between the AD domain and the ecd.acs domain.
+	TrustKey *string `json:"TrustKey,omitempty" xml:"TrustKey,omitempty"`
 }
 
 func (s ConfigADConnectorTrustRequest) String() string {
@@ -2055,6 +2068,7 @@ func (s *ConfigADConnectorTrustRequest) SetTrustKey(v string) *ConfigADConnector
 }
 
 type ConfigADConnectorTrustResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2196,14 +2210,42 @@ func (s *ConfigADConnectorUserResponse) SetBody(v *ConfigADConnectorUserResponse
 }
 
 type CopyCdsFileRequest struct {
-	AutoRename       *bool   `json:"AutoRename,omitempty" xml:"AutoRename,omitempty"`
-	CdsId            *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	EndUserId        *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileId           *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	FileReceiverId   *string `json:"FileReceiverId,omitempty" xml:"FileReceiverId,omitempty"`
+	// Specifies whether to automatically rename the file if a file that has the same name exists in the folder to which you want to copy the file. Default value: false.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	AutoRename *bool `json:"AutoRename,omitempty" xml:"AutoRename,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The user ID that you want to use to access the cloud disk.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The file ID. You can call the CreateCdsFile operation to query the file ID.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// 目标复制文件所在的个人空间ID（即UserId，您可以在DescribeCloudDriveUsers接口返回的报文中获取。）或者目标复制文件所在的团队空间ID（即GroupId，您可以在DescribeCloudDriveGroups接口返回的报文中获取。）
+	// > FileReceiverId和FileReceiverType都为空时，默认复制到文件所在的个人空间。
+	// >
+	FileReceiverId *string `json:"FileReceiverId,omitempty" xml:"FileReceiverId,omitempty"`
+	// 文件所属的空间类型。
 	FileReceiverType *string `json:"FileReceiverType,omitempty" xml:"FileReceiverType,omitempty"`
-	ParentFolderId   *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the parent folder of the folder to which you want to copy the file. If you want to copy the file to the root directory, set this parameter to root.
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CopyCdsFileRequest) String() string {
@@ -2255,11 +2297,34 @@ func (s *CopyCdsFileRequest) SetRegionId(v string) *CopyCdsFileRequest {
 }
 
 type CopyCdsFileResponseBody struct {
-	Code             *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details about the file copying.
 	CopyCdsFileModel *CopyCdsFileResponseBodyCopyCdsFileModel `json:"CopyCdsFileModel,omitempty" xml:"CopyCdsFileModel,omitempty" type:"Struct"`
-	Message          *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *string                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error message that is returned. This parameter is not returned if the value of Code is success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CopyCdsFileResponseBody) String() string {
@@ -2296,8 +2361,10 @@ func (s *CopyCdsFileResponseBody) SetSuccess(v string) *CopyCdsFileResponseBody 
 }
 
 type CopyCdsFileResponseBodyCopyCdsFileModel struct {
+	// The ID of the asynchronous task. This parameter is not returned if you copy a file. This parameter is returned if you copy a folder in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
-	FileId      *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the copied file or folder.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 }
 
 func (s CopyCdsFileResponseBodyCopyCdsFileModel) String() string {
@@ -2628,26 +2695,64 @@ func (s *CreateADConnectorDirectoryResponse) SetBody(v *CreateADConnectorDirecto
 }
 
 type CreateADConnectorOfficeSiteRequest struct {
-	AdHostname           *string   `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
-	Bandwidth            *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	CenId                *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CenOwnerId           *int64    `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	CidrBlock            *string   `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	DesktopAccessType    *string   `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
-	DnsAddress           []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
-	DomainName           *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainPassword       *string   `json:"DomainPassword,omitempty" xml:"DomainPassword,omitempty"`
-	DomainUserName       *string   `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
-	EnableAdminAccess    *bool     `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	EnableInternetAccess *bool     `json:"EnableInternetAccess,omitempty" xml:"EnableInternetAccess,omitempty"`
-	MfaEnabled           *bool     `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
-	OfficeSiteName       *string   `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	ProtocolType         *string   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Specification        *int64    `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	SubDomainDnsAddress  []*string `json:"SubDomainDnsAddress,omitempty" xml:"SubDomainDnsAddress,omitempty" type:"Repeated"`
-	SubDomainName        *string   `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
-	VerifyCode           *string   `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	// The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
+	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
+	// The maximum public bandwidth of the Internet access package. Valid values: 0 to 200.\
+	// If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the Cloud Enterprise Network (CEN) instance belongs.
+	//
+	// *   If you do not specify CenId or the CEN instance that is specified by CenId belongs to the current Alibaba Cloud account, leave this parameter empty.
+	// *   If you specify CenId and the CEN instance that is specified by CenId belongs to another Alibaba Cloud account, enter the ID of the Alibaba Cloud account.
+	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// The IPv4 CIDR block in the secure office network of the workspace. The IPv4 CIDR block that the system uses to create a virtual private cloud (VPC) for the workspace. We recommend that you set the IPv4 CIDR block to 10.0.0.0/12, 172.16.0.0/12, 192.168.0.0/16, or a subnet of these CIDR blocks. If you set the IPv4 CIDR block to 10.0.0.0/12 or 172.16.0.0/12, the mask is 1224 bits in length. If you set the IPv4 CIDR block to 192.168.0.0/16, the mask is 1624 bits in length.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The connection method that is used to connect clients to cloud desktops. Valid values:
+	//
+	// *   Internet: connects clients to cloud desktops only over the Internet.
+	// *   VPC: connects clients to cloud desktops only over a VPC.
+	// *   Any: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method based on your business requirements when you connect to your cloud desktop from a client.
+	//
+	// Default value: Internet
+	//
+	// > VPC connections are established by using Alibaba Cloud PrivateLink. You can use PrivateLink free of charge. If you set this parameter to VPC or Any, PrivateLink is automatically activated.
+	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	// The IP address of the DNS server of the enterprise AD system. You can specify only one IP address.
+	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
+	// The domain name of the enterprise AD system. You can register each domain name only once.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The password of the domain administrator. The password can be up to 64 characters in length.
+	DomainPassword *string `json:"DomainPassword,omitempty" xml:"DomainPassword,omitempty"`
+	// The username of the domain administrator. The username can be up to 64 characters in length.
+	//
+	// > Specify the username by using sAMAccountName instead of userPrincipalName.
+	DomainUserName *string `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
+	// Specifies whether to grant the permissions of the local administrator to end users of the cloud desktops that belong to the workspace. Default value: `true`
+	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
+	// Specifies whether to enable Internet access.
+	EnableInternetAccess *bool `json:"EnableInternetAccess,omitempty" xml:"EnableInternetAccess,omitempty"`
+	// Specifies whether to enable multi-factor authentication (MFA).
+	MfaEnabled *bool `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
+	// The name of the workspace. The name must be 2 to 255 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).\
+	// Default value: null
+	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// The type of the protocol. Set the value to ASP.
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The region ID of the workspace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the AD connector.
+	//
+	// *   1: General
+	// *   2: Advanced
+	Specification *int64 `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The DNS address of the enterprise AD subdomain. If you specify `SubDomainName` but do not specify this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+	SubDomainDnsAddress []*string `json:"SubDomainDnsAddress,omitempty" xml:"SubDomainDnsAddress,omitempty" type:"Repeated"`
+	// The domain name of the enterprise AD subdomain.
+	SubDomainName *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
+	// The verification code. If the CEN instance that is specified by CenId belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
+	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 
 func (s CreateADConnectorOfficeSiteRequest) String() string {
@@ -2759,8 +2864,10 @@ func (s *CreateADConnectorOfficeSiteRequest) SetVerifyCode(v string) *CreateADCo
 }
 
 type CreateADConnectorOfficeSiteResponseBody struct {
+	// The ID of the workspace.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateADConnectorOfficeSiteResponseBody) String() string {
@@ -3164,15 +3271,100 @@ func (s *CreateBundleResponse) SetBody(v *CreateBundleResponseBody) *CreateBundl
 }
 
 type CreateCdsFileRequest struct {
-	CdsId          *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The policy that is used when the file that you want to upload has the same name as an existing file in the cloud disk.
+	//
+	// Valid values:
+	//
+	// *   refuse
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     denies creating the file
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   auto_rename
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     automatically renames the file
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   ignore
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     allows the file to use the same name as the existing file in the cloud disk
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   over_write
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     overwrites the existing file in the cloud disk
+	//
+	//     <!-- -->
+	//
+	//     .
 	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
-	EndUserId      *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileHash       *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
-	FileLength     *int64  `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
-	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileType       *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	ParentFileId   *string `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The hash value of the SHA1 algorithm that is used by the file.
+	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	// The file size. Unit: bytes.
+	FileLength *int64 `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
+	// The file name.
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type.
+	//
+	// Valid values:
+	//
+	// *   file
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   folder
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The ID of the parent folder.
+	ParentFileId *string `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateCdsFileRequest) String() string {
@@ -3230,7 +3422,8 @@ func (s *CreateCdsFileRequest) SetRegionId(v string) *CreateCdsFileRequest {
 
 type CreateCdsFileResponseBody struct {
 	FileModel *CreateCdsFileResponseBodyFileModel `json:"FileModel,omitempty" xml:"FileModel,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCdsFileResponseBody) String() string {
@@ -3310,19 +3503,122 @@ func (s *CreateCdsFileResponse) SetBody(v *CreateCdsFileResponseBody) *CreateCds
 }
 
 type CreateCdsFileShareLinkRequest struct {
-	CdsId           *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	Description     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisableDownload *bool     `json:"DisableDownload,omitempty" xml:"DisableDownload,omitempty"`
-	DisablePreview  *bool     `json:"DisablePreview,omitempty" xml:"DisablePreview,omitempty"`
-	DisableSave     *bool     `json:"DisableSave,omitempty" xml:"DisableSave,omitempty"`
-	DownloadLimit   *int64    `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
-	EndUserId       *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	Expiration      *string   `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	FileIds         []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
-	PreviewLimit    *int64    `json:"PreviewLimit,omitempty" xml:"PreviewLimit,omitempty"`
-	SaveLimit       *int64    `json:"SaveLimit,omitempty" xml:"SaveLimit,omitempty"`
-	ShareName       *string   `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
-	SharePwd        *string   `json:"SharePwd,omitempty" xml:"SharePwd,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The description of the file sharing task. The description must be 0 to 1,024 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to prohibit the download of the files that are being shared.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     prohibits file download
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     allows file download
+	//
+	//     <!-- -->
+	//
+	//     .
+	DisableDownload *bool `json:"DisableDownload,omitempty" xml:"DisableDownload,omitempty"`
+	// Specifies whether to prohibit the preview of the files that are being shared.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     prohibits file preview
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     allows file preview
+	//
+	//     <!-- -->
+	//
+	//     .
+	DisablePreview *bool `json:"DisablePreview,omitempty" xml:"DisablePreview,omitempty"`
+	// Specifies whether to prohibit the dump of the files that are being shared.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     prohibits file dump
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     allows file dump
+	//
+	//     <!-- -->
+	//
+	//     .
+	DisableSave *bool `json:"DisableSave,omitempty" xml:"DisableSave,omitempty"`
+	// The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
+	DownloadLimit *int64 `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
+	// The ID of the end user.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The file IDs.
+	FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
+	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be previewed.
+	PreviewLimit *int64 `json:"PreviewLimit,omitempty" xml:"PreviewLimit,omitempty"`
+	// The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be dumped.
+	SaveLimit *int64 `json:"SaveLimit,omitempty" xml:"SaveLimit,omitempty"`
+	// The name of the file sharing task. If you leave this parameter empty, the file name that corresponds to the first ID in the file ID list is used. The name must be 0 to 128 characters in length.
+	ShareName *string `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
+	// The length of the access code. Valid values: 6 to 8. Unit: bytes. If you leave this parameter empty or set it to null, no access code is required. If you use a token to share files, you do not need to configure this parameter. The access code can contain only visible ASCII characters.
+	SharePwd *string `json:"SharePwd,omitempty" xml:"SharePwd,omitempty"`
 }
 
 func (s CreateCdsFileShareLinkRequest) String() string {
@@ -3399,11 +3695,34 @@ func (s *CreateCdsFileShareLinkRequest) SetSharePwd(v string) *CreateCdsFileShar
 }
 
 type CreateCdsFileShareLinkResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CdsFileShareLinkModel `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data information.
+	Data *CdsFileShareLinkModel `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message that is returned. This parameter is not returned if the value of Code is success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateCdsFileShareLinkResponseBody) String() string {
@@ -3469,10 +3788,14 @@ func (s *CreateCdsFileShareLinkResponse) SetBody(v *CreateCdsFileShareLinkRespon
 }
 
 type CreateCloudDriveUsersRequest struct {
-	CdsId       *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	EndUserId   []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserMaxSize *int64    `json:"UserMaxSize,omitempty" xml:"UserMaxSize,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The IDs of the end users.
+	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The maximum storage space of an end user. Unit: bytes.
+	UserMaxSize *int64 `json:"UserMaxSize,omitempty" xml:"UserMaxSize,omitempty"`
 }
 
 func (s CreateCloudDriveUsersRequest) String() string {
@@ -3504,6 +3827,7 @@ func (s *CreateCloudDriveUsersRequest) SetUserMaxSize(v int64) *CreateCloudDrive
 }
 
 type CreateCloudDriveUsersResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4911,7 +5235,9 @@ type CreatePolicyGroupRequest struct {
 	//
 	// *   off
 	// *   on
-	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	DomainList            *string                                      `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	DomainResolveRule     []*CreatePolicyGroupRequestDomainResolveRule `json:"DomainResolveRule,omitempty" xml:"DomainResolveRule,omitempty" type:"Repeated"`
+	DomainResolveRuleType *string                                      `json:"DomainResolveRuleType,omitempty" xml:"DomainResolveRuleType,omitempty"`
 	// Specifies whether to allow end users to seek assistance from the administrator. Valid values: ON OFF
 	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
 	// The switch for collaboration between end users. Valid values: ON OFF
@@ -5387,6 +5713,16 @@ func (s *CreatePolicyGroupRequest) SetDomainList(v string) *CreatePolicyGroupReq
 	return s
 }
 
+func (s *CreatePolicyGroupRequest) SetDomainResolveRule(v []*CreatePolicyGroupRequestDomainResolveRule) *CreatePolicyGroupRequest {
+	s.DomainResolveRule = v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetDomainResolveRuleType(v string) *CreatePolicyGroupRequest {
+	s.DomainResolveRuleType = &v
+	return s
+}
+
 func (s *CreatePolicyGroupRequest) SetEndUserApplyAdminCoordinate(v string) *CreatePolicyGroupRequest {
 	s.EndUserApplyAdminCoordinate = &v
 	return s
@@ -5847,6 +6183,35 @@ func (s *CreatePolicyGroupRequestClientType) SetClientType(v string) *CreatePoli
 
 func (s *CreatePolicyGroupRequestClientType) SetStatus(v string) *CreatePolicyGroupRequestClientType {
 	s.Status = &v
+	return s
+}
+
+type CreatePolicyGroupRequestDomainResolveRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s CreatePolicyGroupRequestDomainResolveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupRequestDomainResolveRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupRequestDomainResolveRule) SetDescription(v string) *CreatePolicyGroupRequestDomainResolveRule {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDomainResolveRule) SetDomain(v string) *CreatePolicyGroupRequestDomainResolveRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDomainResolveRule) SetPolicy(v string) *CreatePolicyGroupRequestDomainResolveRule {
+	s.Policy = &v
 	return s
 }
 
@@ -6522,10 +6887,14 @@ func (s *DeleteBundlesResponse) SetBody(v *DeleteBundlesResponseBody) *DeleteBun
 }
 
 type DeleteCdsFileRequest struct {
-	CdsId     *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the end user who uses the cloud disk.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileId    *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the file. The ID is a unique identifier for the file.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteCdsFileRequest) String() string {
@@ -6557,11 +6926,52 @@ func (s *DeleteCdsFileRequest) SetRegionId(v string) *DeleteCdsFileRequest {
 }
 
 type DeleteCdsFileResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The operation result. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the data is returned.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteCdsFileResponseBody) String() string {
@@ -7109,6 +7519,75 @@ func (s *DeleteDirectoriesResponse) SetBody(v *DeleteDirectoriesResponseBody) *D
 	return s
 }
 
+type DeleteEduRoomRequest struct {
+	EduRoomId *string `json:"EduRoomId,omitempty" xml:"EduRoomId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteEduRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEduRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEduRoomRequest) SetEduRoomId(v string) *DeleteEduRoomRequest {
+	s.EduRoomId = &v
+	return s
+}
+
+func (s *DeleteEduRoomRequest) SetRegionId(v string) *DeleteEduRoomRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteEduRoomResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEduRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEduRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEduRoomResponseBody) SetRequestId(v string) *DeleteEduRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEduRoomResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEduRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEduRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEduRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEduRoomResponse) SetHeaders(v map[string]*string) *DeleteEduRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEduRoomResponse) SetStatusCode(v int32) *DeleteEduRoomResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEduRoomResponse) SetBody(v *DeleteEduRoomResponseBody) *DeleteEduRoomResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteImagesRequest struct {
 	DeleteCascadedBundle *bool     `json:"DeleteCascadedBundle,omitempty" xml:"DeleteCascadedBundle,omitempty"`
 	ImageId              []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
@@ -7612,6 +8091,134 @@ func (s *DeleteVirtualMFADeviceResponse) SetBody(v *DeleteVirtualMFADeviceRespon
 	return s
 }
 
+type DescribeAclEntriesRequest struct {
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DescribeAclEntriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAclEntriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAclEntriesRequest) SetMaxResults(v int32) *DescribeAclEntriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeAclEntriesRequest) SetNextToken(v string) *DescribeAclEntriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeAclEntriesRequest) SetRegionId(v string) *DescribeAclEntriesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAclEntriesRequest) SetSourceId(v string) *DescribeAclEntriesRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DescribeAclEntriesRequest) SetSourceType(v string) *DescribeAclEntriesRequest {
+	s.SourceType = &v
+	return s
+}
+
+type DescribeAclEntriesResponseBody struct {
+	AclEntries []*DescribeAclEntriesResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	NextToken  *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAclEntriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAclEntriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAclEntriesResponseBody) SetAclEntries(v []*DescribeAclEntriesResponseBodyAclEntries) *DescribeAclEntriesResponseBody {
+	s.AclEntries = v
+	return s
+}
+
+func (s *DescribeAclEntriesResponseBody) SetNextToken(v string) *DescribeAclEntriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeAclEntriesResponseBody) SetRequestId(v string) *DescribeAclEntriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAclEntriesResponseBodyAclEntries struct {
+	Policy     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DescribeAclEntriesResponseBodyAclEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAclEntriesResponseBodyAclEntries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAclEntriesResponseBodyAclEntries) SetPolicy(v string) *DescribeAclEntriesResponseBodyAclEntries {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeAclEntriesResponseBodyAclEntries) SetSourceId(v string) *DescribeAclEntriesResponseBodyAclEntries {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DescribeAclEntriesResponseBodyAclEntries) SetSourceType(v string) *DescribeAclEntriesResponseBodyAclEntries {
+	s.SourceType = &v
+	return s
+}
+
+type DescribeAclEntriesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAclEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAclEntriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAclEntriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAclEntriesResponse) SetHeaders(v map[string]*string) *DescribeAclEntriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAclEntriesResponse) SetStatusCode(v int32) *DescribeAclEntriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAclEntriesResponse) SetBody(v *DescribeAclEntriesResponseBody) *DescribeAclEntriesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAlarmEventStackInfoRequest struct {
 	// The ID of the request.
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
@@ -7923,6 +8530,7 @@ type DescribeBundlesRequest struct {
 	OsType                  *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	ProtocolType            *string   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Scope                   *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	SelectedBundle          *bool     `json:"SelectedBundle,omitempty" xml:"SelectedBundle,omitempty"`
 	SessionType             *string   `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 	SupportMultiSession     *bool     `json:"SupportMultiSession,omitempty" xml:"SupportMultiSession,omitempty"`
@@ -8009,6 +8617,11 @@ func (s *DescribeBundlesRequest) SetProtocolType(v string) *DescribeBundlesReque
 
 func (s *DescribeBundlesRequest) SetRegionId(v string) *DescribeBundlesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBundlesRequest) SetScope(v string) *DescribeBundlesRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -8286,13 +8899,20 @@ func (s *DescribeBundlesResponse) SetBody(v *DescribeBundlesResponseBody) *Descr
 }
 
 type DescribeCdsFileShareLinksRequest struct {
-	CdsId      *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	Creators   []*string `json:"Creators,omitempty" xml:"Creators,omitempty" type:"Repeated"`
-	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ShareId    *string   `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
-	ShareName  *string   `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
-	Status     *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The users that create the file sharing links.
+	Creators []*string `json:"Creators,omitempty" xml:"Creators,omitempty" type:"Repeated"`
+	// The maximum number of resources to return. Valid values: 1 to 100. Default value: 100. The number of returned resources must be less than or equal to the specified number.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Specifies the marker after which the returned list begins. If this parameter is not specified, all results are returned. Default value: null.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the file sharing link.
+	ShareId *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
+	// The sharing name for fuzzy search.
+	ShareName *string `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
+	// The file sharing status. Valid values: ● disabled: canceled ● enabled: valid
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCdsFileShareLinksRequest) String() string {
@@ -8339,12 +8959,18 @@ func (s *DescribeCdsFileShareLinksRequest) SetStatus(v string) *DescribeCdsFileS
 }
 
 type DescribeCdsFileShareLinksResponseBody struct {
-	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*CdsFileShareLinkModel `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken *string                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The operation result. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data information.
+	Data []*CdsFileShareLinkModel `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message that is returned. This parameter is not returned if the value of Code is `success`.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCdsFileShareLinksResponseBody) String() string {
@@ -9156,6 +9782,7 @@ func (s *DescribeCloudDriveGroupsResponseBody) SetSuccess(v bool) *DescribeCloud
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
+	AdminUserIds *string `json:"AdminUserIds,omitempty" xml:"AdminUserIds,omitempty"`
 	// The time when the team space was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The workspace ID.
@@ -9166,6 +9793,7 @@ type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the team space.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The team space status. Valid values:
 	//
 	// *   enabled
@@ -9185,6 +9813,11 @@ func (s DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) String() string {
 
 func (s DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetAdminUserIds(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups {
+	s.AdminUserIds = &v
+	return s
 }
 
 func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetCreateTime(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups {
@@ -9209,6 +9842,11 @@ func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetGroupId(v stri
 
 func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetGroupName(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups {
 	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetOrgId(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups {
+	s.OrgId = &v
 	return s
 }
 
@@ -9426,6 +10064,7 @@ func (s *DescribeCloudDriveUsersResponseBody) SetRequestId(v string) *DescribeCl
 
 type DescribeCloudDriveUsersResponseBodyCloudDriveUsers struct {
 	DriveId   *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalSize *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 	UsedSize  *int64  `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
@@ -9443,6 +10082,11 @@ func (s DescribeCloudDriveUsersResponseBodyCloudDriveUsers) GoString() string {
 
 func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetDriveId(v string) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
 	s.DriveId = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetEndUserId(v string) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
+	s.EndUserId = &v
 	return s
 }
 
@@ -9864,7 +10508,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// The remarks.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The maximum period of time during which the session is connected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. This parameter is required only for cloud desktops of the same desktop group.
-	ConnectDuration *int64 `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
+	ConnectDuration *int64                                                          `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
+	CountPerStatus  []*DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus `json:"CountPerStatus,omitempty" xml:"CountPerStatus,omitempty" type:"Repeated"`
 	// The number of vCPUs.
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The time when the desktop group was created.
@@ -9913,16 +10558,19 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
 	// The size of the data disk. Unit: GiB.
 	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DesktopCount *int32  `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
 	// The desktop group ID.
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	// The desktop group name.
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	DesktopType      *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
 	// The number of users that are authorized to use the desktop group.
 	EndUserCount *int32 `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
 	// The time when the subscription cloud desktop expires.
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The number of GPUs.
-	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuCount         *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuDriverVersion *string  `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The GPU memory.
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
 	// The maximum period of time during which the session is idle. When a session is idle, no inputs of keyboards or mouses are detected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. This parameter is required only for cloud desktops of the same desktop group.
@@ -10194,7 +10842,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//     <!-- -->
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The period of time before the idle cloud desktop enters the Stopped state. When the specified period of time is reached, the idle cloud desktop automatically enters the Stopped state. If an end user connects to a cloud desktop that is in the Stopped state, the cloud desktop automatically starts. Unit: milliseconds.
-	StopDuration *int64 `json:"StopDuration,omitempty" xml:"StopDuration,omitempty"`
+	StopDuration *int64  `json:"StopDuration,omitempty" xml:"StopDuration,omitempty"`
+	SubnetId     *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 	// The category of the system disk.
 	//
 	// Valid values:
@@ -10273,6 +10922,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetConnectDuration(v in
 	return s
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetCountPerStatus(v []*DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.CountPerStatus = v
+	return s
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetCpu(v int32) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.Cpu = &v
 	return s
@@ -10298,6 +10952,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetDataDiskSize(v strin
 	return s
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetDesktopCount(v int32) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.DesktopCount = &v
+	return s
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetDesktopGroupId(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.DesktopGroupId = &v
 	return s
@@ -10305,6 +10964,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetDesktopGroupId(v str
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetDesktopGroupName(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.DesktopGroupName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetDesktopType(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.DesktopType = &v
 	return s
 }
 
@@ -10320,6 +10984,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetExpiredTime(v string
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetGpuCount(v float32) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.GpuCount = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetGpuDriverVersion(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.GpuDriverVersion = &v
 	return s
 }
 
@@ -10438,6 +11107,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetStopDuration(v int64
 	return s
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSubnetId(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.SubnetId = &v
+	return s
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSystemDiskCategory(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.SystemDiskCategory = &v
 	return s
@@ -10460,6 +11134,29 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetVolumeEncryptionEnab
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetVolumeEncryptionKey(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.VolumeEncryptionKey = &v
+	return s
+}
+
+type DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus struct {
+	Count  *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus) SetCount(v int32) *DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus) SetStatus(v string) *DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus {
+	s.Status = &v
 	return s
 }
 
@@ -10618,16 +11315,247 @@ func (s *DescribeDesktopIdsByVulNamesResponse) SetBody(v *DescribeDesktopIdsByVu
 	return s
 }
 
+type DescribeDesktopSessionsRequest struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	OfficeSiteId  *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDesktopSessionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopSessionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopSessionsRequest) SetEndTime(v string) *DescribeDesktopSessionsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetEndUserId(v string) *DescribeDesktopSessionsRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetOfficeSiteId(v string) *DescribeDesktopSessionsRequest {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetPageNumber(v int32) *DescribeDesktopSessionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetPageSize(v int32) *DescribeDesktopSessionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetRegionId(v string) *DescribeDesktopSessionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetSessionStatus(v string) *DescribeDesktopSessionsRequest {
+	s.SessionStatus = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetStartTime(v string) *DescribeDesktopSessionsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDesktopSessionsResponseBody struct {
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Sessions   []*DescribeDesktopSessionsResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDesktopSessionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopSessionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopSessionsResponseBody) SetRequestId(v string) *DescribeDesktopSessionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBody) SetSessions(v []*DescribeDesktopSessionsResponseBodySessions) *DescribeDesktopSessionsResponseBody {
+	s.Sessions = v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBody) SetTotalCount(v int32) *DescribeDesktopSessionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDesktopSessionsResponseBodySessions struct {
+	ClientIp                   *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ClientOS                   *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	ClientVersion              *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	DesktopId                  *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopName                *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	EndUserApplyCoordinateTime *int64  `json:"EndUserApplyCoordinateTime,omitempty" xml:"EndUserApplyCoordinateTime,omitempty"`
+	EndUserId                  *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	LatestConnectionTime       *int64  `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
+	OfficeSiteId               *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OfficeSiteName             *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	OsType                     *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	ProtocolType               *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	SessionEndTime             *string `json:"SessionEndTime,omitempty" xml:"SessionEndTime,omitempty"`
+	SessionIdleTime            *int64  `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
+	SessionStartTime           *string `json:"SessionStartTime,omitempty" xml:"SessionStartTime,omitempty"`
+	SessionStatus              *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	TotalConnectionTime        *int64  `json:"TotalConnectionTime,omitempty" xml:"TotalConnectionTime,omitempty"`
+}
+
+func (s DescribeDesktopSessionsResponseBodySessions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopSessionsResponseBodySessions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetClientIp(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetClientOS(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetClientVersion(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetDesktopId(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.DesktopId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetDesktopName(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.DesktopName = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetEndUserApplyCoordinateTime(v int64) *DescribeDesktopSessionsResponseBodySessions {
+	s.EndUserApplyCoordinateTime = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetEndUserId(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetLatestConnectionTime(v int64) *DescribeDesktopSessionsResponseBodySessions {
+	s.LatestConnectionTime = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetOfficeSiteId(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetOfficeSiteName(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.OfficeSiteName = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetOsType(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.OsType = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetProtocolType(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetSessionEndTime(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.SessionEndTime = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetSessionIdleTime(v int64) *DescribeDesktopSessionsResponseBodySessions {
+	s.SessionIdleTime = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetSessionStartTime(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.SessionStartTime = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetSessionStatus(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.SessionStatus = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetTotalConnectionTime(v int64) *DescribeDesktopSessionsResponseBodySessions {
+	s.TotalConnectionTime = &v
+	return s
+}
+
+type DescribeDesktopSessionsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDesktopSessionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDesktopSessionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopSessionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopSessionsResponse) SetHeaders(v map[string]*string) *DescribeDesktopSessionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponse) SetStatusCode(v int32) *DescribeDesktopSessionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponse) SetBody(v *DescribeDesktopSessionsResponseBody) *DescribeDesktopSessionsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDesktopTypesRequest struct {
-	AppliedScope       *string  `json:"AppliedScope,omitempty" xml:"AppliedScope,omitempty"`
-	CpuCount           *int32   `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	DesktopIdForModify *string  `json:"DesktopIdForModify,omitempty" xml:"DesktopIdForModify,omitempty"`
-	DesktopTypeId      *string  `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
-	GpuCount           *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	InstanceTypeFamily *string  `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	MemorySize         *int32   `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	OrderType          *string  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	RegionId           *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AppliedScope            *string  `json:"AppliedScope,omitempty" xml:"AppliedScope,omitempty"`
+	CpuCount                *int32   `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	DesktopGroupIdForModify *string  `json:"DesktopGroupIdForModify,omitempty" xml:"DesktopGroupIdForModify,omitempty"`
+	DesktopIdForModify      *string  `json:"DesktopIdForModify,omitempty" xml:"DesktopIdForModify,omitempty"`
+	DesktopTypeId           *string  `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
+	GpuCount                *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	InstanceTypeFamily      *string  `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	MemorySize              *int32   `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	OrderType               *string  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	RegionId                *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDesktopTypesRequest) String() string {
@@ -10645,6 +11573,11 @@ func (s *DescribeDesktopTypesRequest) SetAppliedScope(v string) *DescribeDesktop
 
 func (s *DescribeDesktopTypesRequest) SetCpuCount(v int32) *DescribeDesktopTypesRequest {
 	s.CpuCount = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetDesktopGroupIdForModify(v string) *DescribeDesktopTypesRequest {
+	s.DesktopGroupIdForModify = &v
 	return s
 }
 
@@ -11093,7 +12026,8 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// > This parameter is in invitational preview and is unavailable to the public.
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
 	// > This parameter is in invitational preview and is unavailable to the public.
-	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DataDiskSize        *string                                                    `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DesktopDurationList []*DescribeDesktopsResponseBodyDesktopsDesktopDurationList `json:"DesktopDurationList,omitempty" xml:"DesktopDurationList,omitempty" type:"Repeated"`
 	// The ID of the group to which the cloud desktop belongs. Default value: null.
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	// The ID of the cloud desktop.
@@ -11250,6 +12184,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetDataDiskCategory(v string) *De
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetDataDiskSize(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.DataDiskSize = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetDesktopDurationList(v []*DescribeDesktopsResponseBodyDesktopsDesktopDurationList) *DescribeDesktopsResponseBodyDesktops {
+	s.DesktopDurationList = v
 	return s
 }
 
@@ -11503,6 +12442,53 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetZoneType(v string) *DescribeDe
 	return s
 }
 
+type DescribeDesktopsResponseBodyDesktopsDesktopDurationList struct {
+	PackageCreationTime *string `json:"PackageCreationTime,omitempty" xml:"PackageCreationTime,omitempty"`
+	PackageExpiredTime  *string `json:"PackageExpiredTime,omitempty" xml:"PackageExpiredTime,omitempty"`
+	PackageId           *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	PackageStatus       *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
+	TotalDuration       *int64  `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
+	UsedDuration        *int64  `json:"UsedDuration,omitempty" xml:"UsedDuration,omitempty"`
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsDesktopDurationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsDesktopDurationList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageCreationTime(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageCreationTime = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageExpiredTime(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageExpiredTime = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageId(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageId = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageStatus(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageStatus = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetTotalDuration(v int64) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.TotalDuration = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetUsedDuration(v int64) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.UsedDuration = &v
+	return s
+}
+
 type DescribeDesktopsResponseBodyDesktopsDisks struct {
 	// The ID of the disk.
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
@@ -11555,7 +12541,9 @@ type DescribeDesktopsResponseBodyDesktopsFotaUpdate struct {
 	// The version to which the cloud desktop can be updated.
 	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
 	// The description of the version to which the cloud desktop can be updated.
-	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNote   *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
+	ReleaseNoteJp *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
 	// The size of the installation package for the version to which the cloud desktop can be updated. Unit: KB.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
@@ -11580,6 +12568,16 @@ func (s *DescribeDesktopsResponseBodyDesktopsFotaUpdate) SetNewAppVersion(v stri
 
 func (s *DescribeDesktopsResponseBodyDesktopsFotaUpdate) SetReleaseNote(v string) *DescribeDesktopsResponseBodyDesktopsFotaUpdate {
 	s.ReleaseNote = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsFotaUpdate) SetReleaseNoteEn(v string) *DescribeDesktopsResponseBodyDesktopsFotaUpdate {
+	s.ReleaseNoteEn = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsFotaUpdate) SetReleaseNoteJp(v string) *DescribeDesktopsResponseBodyDesktopsFotaUpdate {
+	s.ReleaseNoteJp = &v
 	return s
 }
 
@@ -11747,7 +12745,8 @@ type DescribeDesktopsInGroupResponseBody struct {
 	// The number of subscription cloud desktops that are running.
 	RunningPrePaidDesktopsCount *int32 `json:"RunningPrePaidDesktopsCount,omitempty" xml:"RunningPrePaidDesktopsCount,omitempty"`
 	// The number of subscription cloud desktops that are stopped.
-	StopedPrePaidDesktopsCount *int32 `json:"StopedPrePaidDesktopsCount,omitempty" xml:"StopedPrePaidDesktopsCount,omitempty"`
+	StopedPrePaidDesktopsCount  *int32 `json:"StopedPrePaidDesktopsCount,omitempty" xml:"StopedPrePaidDesktopsCount,omitempty"`
+	StoppedPrePaidDesktopsCount *int32 `json:"StoppedPrePaidDesktopsCount,omitempty" xml:"StoppedPrePaidDesktopsCount,omitempty"`
 }
 
 func (s DescribeDesktopsInGroupResponseBody) String() string {
@@ -11805,6 +12804,11 @@ func (s *DescribeDesktopsInGroupResponseBody) SetRunningPrePaidDesktopsCount(v i
 
 func (s *DescribeDesktopsInGroupResponseBody) SetStopedPrePaidDesktopsCount(v int32) *DescribeDesktopsInGroupResponseBody {
 	s.StopedPrePaidDesktopsCount = &v
+	return s
+}
+
+func (s *DescribeDesktopsInGroupResponseBody) SetStoppedPrePaidDesktopsCount(v int32) *DescribeDesktopsInGroupResponseBody {
+	s.StoppedPrePaidDesktopsCount = &v
 	return s
 }
 
@@ -12923,12 +13927,23 @@ func (s *DescribeFlowMetricResponse) SetBody(v *DescribeFlowMetricResponseBody) 
 }
 
 type DescribeFlowStatisticRequest struct {
-	DesktopId    *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The ID of the cloud desktop.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The ID of the workspace.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Period       *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return.\
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The interval to query the traffic data. Unit: seconds. Valid values:
+	//
+	// *   3600
+	// *   10800
+	// *   86400
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeFlowStatisticRequest) String() string {
@@ -12970,9 +13985,12 @@ func (s *DescribeFlowStatisticRequest) SetRegionId(v string) *DescribeFlowStatis
 }
 
 type DescribeFlowStatisticResponseBody struct {
-	DesktopCount         *int32                                                   `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	// The number of available cloud desktops in the workspace.
+	DesktopCount *int32 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	// Details of the traffic that is consumed by cloud desktops.
 	DesktopFlowStatistic []*DescribeFlowStatisticResponseBodyDesktopFlowStatistic `json:"DesktopFlowStatistic,omitempty" xml:"DesktopFlowStatistic,omitempty" type:"Repeated"`
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFlowStatisticResponseBody) String() string {
@@ -12999,10 +14017,14 @@ func (s *DescribeFlowStatisticResponseBody) SetRequestId(v string) *DescribeFlow
 }
 
 type DescribeFlowStatisticResponseBodyDesktopFlowStatistic struct {
-	DesktopId   *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The ID of the cloud desktop.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The name of the cloud desktop.
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	FlowIn      *string `json:"FlowIn,omitempty" xml:"FlowIn,omitempty"`
-	FlowRank    *int32  `json:"FlowRank,omitempty" xml:"FlowRank,omitempty"`
+	// The amount of the traffic. Unit: KB.
+	FlowIn *string `json:"FlowIn,omitempty" xml:"FlowIn,omitempty"`
+	// The traffic ranking.
+	FlowRank *int32 `json:"FlowRank,omitempty" xml:"FlowRank,omitempty"`
 }
 
 func (s DescribeFlowStatisticResponseBodyDesktopFlowStatistic) String() string {
@@ -13063,10 +14085,13 @@ func (s *DescribeFlowStatisticResponse) SetBody(v *DescribeFlowStatisticResponse
 }
 
 type DescribeFotaPendingDesktopsRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskUid    *string `json:"TaskUid,omitempty" xml:"TaskUid,omitempty"`
+	DesktopId    *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopName  *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskUid      *string `json:"TaskUid,omitempty" xml:"TaskUid,omitempty"`
 }
 
 func (s DescribeFotaPendingDesktopsRequest) String() string {
@@ -13077,6 +14102,16 @@ func (s DescribeFotaPendingDesktopsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeFotaPendingDesktopsRequest) SetDesktopId(v string) *DescribeFotaPendingDesktopsRequest {
+	s.DesktopId = &v
+	return s
+}
+
+func (s *DescribeFotaPendingDesktopsRequest) SetDesktopName(v string) *DescribeFotaPendingDesktopsRequest {
+	s.DesktopName = &v
+	return s
+}
+
 func (s *DescribeFotaPendingDesktopsRequest) SetMaxResults(v int32) *DescribeFotaPendingDesktopsRequest {
 	s.MaxResults = &v
 	return s
@@ -13084,6 +14119,11 @@ func (s *DescribeFotaPendingDesktopsRequest) SetMaxResults(v int32) *DescribeFot
 
 func (s *DescribeFotaPendingDesktopsRequest) SetNextToken(v string) *DescribeFotaPendingDesktopsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeFotaPendingDesktopsRequest) SetOfficeSiteId(v string) *DescribeFotaPendingDesktopsRequest {
+	s.OfficeSiteId = &v
 	return s
 }
 
@@ -13098,7 +14138,9 @@ func (s *DescribeFotaPendingDesktopsRequest) SetTaskUid(v string) *DescribeFotaP
 }
 
 type DescribeFotaPendingDesktopsResponseBody struct {
+	Code                *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	FotaPendingDesktops []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops `json:"FotaPendingDesktops,omitempty" xml:"FotaPendingDesktops,omitempty" type:"Repeated"`
+	Message             *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	NextToken           *string                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -13111,8 +14153,18 @@ func (s DescribeFotaPendingDesktopsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeFotaPendingDesktopsResponseBody) SetCode(v string) *DescribeFotaPendingDesktopsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DescribeFotaPendingDesktopsResponseBody) SetFotaPendingDesktops(v []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) *DescribeFotaPendingDesktopsResponseBody {
 	s.FotaPendingDesktops = v
+	return s
+}
+
+func (s *DescribeFotaPendingDesktopsResponseBody) SetMessage(v string) *DescribeFotaPendingDesktopsResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -13127,11 +14179,13 @@ func (s *DescribeFotaPendingDesktopsResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
-	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	DesktopId         *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	DesktopName       *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	FotaProject       *string `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
-	OfficeSiteId      *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	CurrentAppVersion *string                                                               `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
+	DesktopId         *string                                                               `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopName       *string                                                               `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	FotaProject       *string                                                               `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
+	OfficeSiteId      *string                                                               `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	Sessions          []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	Status            *int64                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) String() string {
@@ -13164,6 +14218,33 @@ func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) SetFotaProj
 
 func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) SetOfficeSiteId(v string) *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) SetSessions(v []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions) *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops {
+	s.Sessions = v
+	return s
+}
+
+func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) SetStatus(v int64) *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops {
+	s.Status = &v
+	return s
+}
+
+type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions struct {
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+}
+
+func (s DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions) SetEndUserId(v string) *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions {
+	s.EndUserId = &v
 	return s
 }
 
@@ -14054,12 +15135,14 @@ func (s *DescribeImagePermissionResponse) SetBody(v *DescribeImagePermissionResp
 type DescribeImagesRequest struct {
 	// The cloud desktop type. You can call the [DescribeBundles](~~188884~~) operation to query the available cloud desktop types.
 	DesktopInstanceType *string `json:"DesktopInstanceType,omitempty" xml:"DesktopInstanceType,omitempty"`
+	FotaVersion         *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
 	// Specifies whether the image is a GPU-accelerated image.
 	GpuCategory *bool `json:"GpuCategory,omitempty" xml:"GpuCategory,omitempty"`
 	// The version of the GPU driver.
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The IDs of the images. You can specify one or more image IDs.
-	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	ImageId   []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	ImageName *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The state of the image.
 	ImageStatus *string `json:"ImageStatus,omitempty" xml:"ImageStatus,omitempty"`
 	// The type of the image.
@@ -14096,6 +15179,11 @@ func (s *DescribeImagesRequest) SetDesktopInstanceType(v string) *DescribeImages
 	return s
 }
 
+func (s *DescribeImagesRequest) SetFotaVersion(v string) *DescribeImagesRequest {
+	s.FotaVersion = &v
+	return s
+}
+
 func (s *DescribeImagesRequest) SetGpuCategory(v bool) *DescribeImagesRequest {
 	s.GpuCategory = &v
 	return s
@@ -14108,6 +15196,11 @@ func (s *DescribeImagesRequest) SetGpuDriverVersion(v string) *DescribeImagesReq
 
 func (s *DescribeImagesRequest) SetImageId(v []*string) *DescribeImagesRequest {
 	s.ImageId = v
+	return s
+}
+
+func (s *DescribeImagesRequest) SetImageName(v string) *DescribeImagesRequest {
+	s.ImageName = &v
 	return s
 }
 
@@ -15274,12 +16367,21 @@ func (s *DescribeNetworkPackagesResponse) SetBody(v *DescribeNetworkPackagesResp
 }
 
 type DescribeOfficeSitesRequest struct {
-	MaxResults     *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OfficeSiteId   []*string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty" type:"Repeated"`
-	OfficeSiteType *string   `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// *   Maximum value: 100.
+	// *   Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start point of the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The IDs of the workspaces. You can specify 1 to 100 IDs of workspaces.
+	OfficeSiteId []*string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty" type:"Repeated"`
+	// The account type of the workspace.
+	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The state of the workspace.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeOfficeSitesRequest) String() string {
@@ -15321,9 +16423,12 @@ func (s *DescribeOfficeSitesRequest) SetStatus(v string) *DescribeOfficeSitesReq
 }
 
 type DescribeOfficeSitesResponseBody struct {
-	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Details of the workspaces.
 	OfficeSites []*DescribeOfficeSitesResponseBodyOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBody) String() string {
@@ -15350,48 +16455,92 @@ func (s *DescribeOfficeSitesResponseBody) SetRequestId(v string) *DescribeOffice
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSites struct {
-	ADConnectors             []*DescribeOfficeSitesResponseBodyOfficeSitesADConnectors `json:"ADConnectors,omitempty" xml:"ADConnectors,omitempty" type:"Repeated"`
-	AdHostname               *string                                                   `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
-	Bandwidth                *int32                                                    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	CenId                    *string                                                   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CidrBlock                *string                                                   `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	CloudBoxOfficeSite       *bool                                                     `json:"CloudBoxOfficeSite,omitempty" xml:"CloudBoxOfficeSite,omitempty"`
-	CreationTime             *string                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	CustomSecurityGroupId    *string                                                   `json:"CustomSecurityGroupId,omitempty" xml:"CustomSecurityGroupId,omitempty"`
-	DesktopAccessType        *string                                                   `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
-	DesktopCount             *int64                                                    `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
-	DesktopVpcEndpoint       *string                                                   `json:"DesktopVpcEndpoint,omitempty" xml:"DesktopVpcEndpoint,omitempty"`
-	DnsAddress               []*string                                                 `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
-	DnsUserName              *string                                                   `json:"DnsUserName,omitempty" xml:"DnsUserName,omitempty"`
-	DomainName               *string                                                   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainPassword           *string                                                   `json:"DomainPassword,omitempty" xml:"DomainPassword,omitempty"`
-	DomainUserName           *string                                                   `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
-	EnableAdminAccess        *bool                                                     `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	EnableCrossDesktopAccess *bool                                                     `json:"EnableCrossDesktopAccess,omitempty" xml:"EnableCrossDesktopAccess,omitempty"`
-	EnableInternetAccess     *bool                                                     `json:"EnableInternetAccess,omitempty" xml:"EnableInternetAccess,omitempty"`
-	FileSystemIds            []*string                                                 `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
-	Logs                     []*DescribeOfficeSitesResponseBodyOfficeSitesLogs         `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	MfaEnabled               *bool                                                     `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
-	Name                     *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedVerifyLoginRisk      *bool                                                     `json:"NeedVerifyLoginRisk,omitempty" xml:"NeedVerifyLoginRisk,omitempty"`
-	NeedVerifyZeroDevice     *bool                                                     `json:"NeedVerifyZeroDevice,omitempty" xml:"NeedVerifyZeroDevice,omitempty"`
-	NetworkPackageId         *string                                                   `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	OfficeSiteId             *string                                                   `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OfficeSiteType           *string                                                   `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	OuName                   *string                                                   `json:"OuName,omitempty" xml:"OuName,omitempty"`
-	ProtocolType             *string                                                   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RdsLicenseAddress        *string                                                   `json:"RdsLicenseAddress,omitempty" xml:"RdsLicenseAddress,omitempty"`
-	RdsLicenseDomainName     *string                                                   `json:"RdsLicenseDomainName,omitempty" xml:"RdsLicenseDomainName,omitempty"`
-	RdsLicenseStatus         *string                                                   `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
-	SsoEnabled               *bool                                                     `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
-	SsoType                  *string                                                   `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
-	Status                   *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubDnsAddress            []*string                                                 `json:"SubDnsAddress,omitempty" xml:"SubDnsAddress,omitempty" type:"Repeated"`
-	SubDomainName            *string                                                   `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
-	TrustPassword            *string                                                   `json:"TrustPassword,omitempty" xml:"TrustPassword,omitempty"`
-	VSwitchIds               []*string                                                 `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId                    *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcType                  *string                                                   `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// Details of the AD connectors.
+	ADConnectors []*DescribeOfficeSitesResponseBodyOfficeSitesADConnectors `json:"ADConnectors,omitempty" xml:"ADConnectors,omitempty" type:"Repeated"`
+	// The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
+	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
+	// The maximum public bandwidth of the Internet access package. Valid values: 0 to 1000.\
+	// If the value of this parameter is 0, Internet access is disabled.
+	Bandwidth       *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	CenAttachStatus *string `json:"CenAttachStatus,omitempty" xml:"CenAttachStatus,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The IPv4 CIDR block that is included in the secure office network of the workspace.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// Indicates whether the workspace is created for cloud desktops on a cloud box.
+	CloudBoxOfficeSite *bool `json:"CloudBoxOfficeSite,omitempty" xml:"CloudBoxOfficeSite,omitempty"`
+	// The time when the workspace was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the security group.
+	CustomSecurityGroupId *string `json:"CustomSecurityGroupId,omitempty" xml:"CustomSecurityGroupId,omitempty"`
+	// The method used to connect the Alibaba Cloud Workspace client to cloud desktops.
+	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	// The number of cloud desktops that are created.
+	DesktopCount *int64 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	// The endpoint that is used to connect to cloud desktops over a VPC.
+	DesktopVpcEndpoint *string `json:"DesktopVpcEndpoint,omitempty" xml:"DesktopVpcEndpoint,omitempty"`
+	// The DNS addresses of the AD domains.
+	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
+	// The username of the DNS account.
+	DnsUserName *string `json:"DnsUserName,omitempty" xml:"DnsUserName,omitempty"`
+	// The domain name of the enterprise Active Directory (AD) system.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The password of the domain administrator.
+	DomainPassword *string `json:"DomainPassword,omitempty" xml:"DomainPassword,omitempty"`
+	// The username of the domain administrator.
+	DomainUserName *string `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
+	// Indicates whether the permissions of the desktop administrator are granted to the user of the cloud desktop.
+	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
+	// Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. If the feature is enabled, cloud desktops in the same workspace can access each other.
+	EnableCrossDesktopAccess *bool `json:"EnableCrossDesktopAccess,omitempty" xml:"EnableCrossDesktopAccess,omitempty"`
+	// Indicates whether Internet access is enabled.
+	EnableInternetAccess *bool `json:"EnableInternetAccess,omitempty" xml:"EnableInternetAccess,omitempty"`
+	// The IDs of the Apsara File Storage NAS (NAS) file systems.
+	FileSystemIds []*string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
+	// Details of the registration logs.
+	Logs []*DescribeOfficeSitesResponseBodyOfficeSitesLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// Indicates whether multi-factor authentication (MFA) is enabled.
+	MfaEnabled *bool `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
+	// The name of the workspace. The name is unique in the same region.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether two-factor verification for logons is enabled. This parameter is returned only for workspaces of the convenience account type.\
+	// If two-factor verification is enabled, the system checks whether security risks exist within the logon account when a convenience user logs on to an Alibaba Cloud Workspace client. If risks are detected, the system sends a verification code to the email address that is associated with the account. Then, the convenience user can log on to the client only after the user enters the correct verification code.
+	NeedVerifyLoginRisk *bool `json:"NeedVerifyLoginRisk,omitempty" xml:"NeedVerifyLoginRisk,omitempty"`
+	// Indicates whether trusted device verification is enabled.
+	NeedVerifyZeroDevice *bool `json:"NeedVerifyZeroDevice,omitempty" xml:"NeedVerifyZeroDevice,omitempty"`
+	// The ID of the Internet access package.
+	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
+	// The ID of the workspace.
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The account type of the workspace.
+	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	// The name of the organizational unit (OU) that is connected to the AD domain.
+	OuName *string `json:"OuName,omitempty" xml:"OuName,omitempty"`
+	// The type of the protocol.
+	ProtocolType         *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	RdsLicenseAddress    *string `json:"RdsLicenseAddress,omitempty" xml:"RdsLicenseAddress,omitempty"`
+	RdsLicenseDomainName *string `json:"RdsLicenseDomainName,omitempty" xml:"RdsLicenseDomainName,omitempty"`
+	RdsLicenseStatus     *string `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
+	// Indicates whether single sign-on (SSO) is enabled.
+	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	// The type of SSO.
+	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
+	// The state of the workspace.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The DNS addresses of the AD subdomains.
+	SubDnsAddress []*string `json:"SubDnsAddress,omitempty" xml:"SubDnsAddress,omitempty" type:"Repeated"`
+	// The username of a Domain Name System (DNS) account in the AD subdomain.
+	SubDomainName         *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
+	TotalEdsCount         *int64  `json:"TotalEdsCount,omitempty" xml:"TotalEdsCount,omitempty"`
+	TotalEdsCountForGroup *int64  `json:"TotalEdsCountForGroup,omitempty" xml:"TotalEdsCountForGroup,omitempty"`
+	// > This parameter is unavailable.
+	TrustPassword *string `json:"TrustPassword,omitempty" xml:"TrustPassword,omitempty"`
+	// The IDs of the vSwitches.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The ID of the secure office network of the workspace. The ID is also the ID of the virtual private cloud (VPC) used by the workspace.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC type.
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBodyOfficeSites) String() string {
@@ -15414,6 +16563,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetAdHostname(v string) *De
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetBandwidth(v int32) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetCenAttachStatus(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.CenAttachStatus = &v
 	return s
 }
 
@@ -15592,6 +16746,16 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetSubDomainName(v string) 
 	return s
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetTotalEdsCount(v int64) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.TotalEdsCount = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetTotalEdsCountForGroup(v int64) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.TotalEdsCountForGroup = &v
+	return s
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetTrustPassword(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.TrustPassword = &v
 	return s
@@ -15613,12 +16777,18 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetVpcType(v string) *Descr
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesADConnectors struct {
+	// The IP address of the AD connector.
 	ADConnectorAddress *string `json:"ADConnectorAddress,omitempty" xml:"ADConnectorAddress,omitempty"`
-	ConnectorStatus    *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
+	// The state of the AD connector.
+	ConnectorStatus *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
+	// The ID of the network interface controller (NIC) that is associated with the AD connector.
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	Specification      *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	TrustKey           *string `json:"TrustKey,omitempty" xml:"TrustKey,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The type of the AD connector.
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The trust password that is specified when you configured the AD trust relationship.
+	TrustKey *string `json:"TrustKey,omitempty" xml:"TrustKey,omitempty"`
+	// The ID of the vSwitch that corresponds to the network of the AD connector.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBodyOfficeSitesADConnectors) String() string {
@@ -15660,9 +16830,13 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSitesADConnectors) SetVSwitchId(v 
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesLogs struct {
-	Level     *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Step      *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// The log level.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Details of the log entry.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The step that corresponds to the log entry.
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// The time when the log entry was printed.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
@@ -17204,6 +18378,519 @@ func (s *DescribePolicyGroupsResponse) SetBody(v *DescribePolicyGroupsResponseBo
 	return s
 }
 
+type DescribePriceRequest struct {
+	// The number of the resources. Default value: 1.
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The maximum public bandwidth. Unit: Mbit/s.
+	//
+	// *   Valid values if the PayByTraffic parameter is set to PayByBandwidth: 10 to 1000
+	// *   Valid values if the PayByTraffic parameter is set to PayByTraffic: 10 to 200
+	Bandwidth          *int32                              `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BundleModels       []*DescribePriceRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
+	EduCdsSize         *int32                              `json:"EduCdsSize,omitempty" xml:"EduCdsSize,omitempty"`
+	EduCommittedTime   *int32                              `json:"EduCommittedTime,omitempty" xml:"EduCommittedTime,omitempty"`
+	EduDesktopBundleId *string                             `json:"EduDesktopBundleId,omitempty" xml:"EduDesktopBundleId,omitempty"`
+	EduDesktopNum      *int32                              `json:"EduDesktopNum,omitempty" xml:"EduDesktopNum,omitempty"`
+	EduRoomClassify    *string                             `json:"EduRoomClassify,omitempty" xml:"EduRoomClassify,omitempty"`
+	EduStudentBundleId *string                             `json:"EduStudentBundleId,omitempty" xml:"EduStudentBundleId,omitempty"`
+	EduStudentNum      *int32                              `json:"EduStudentNum,omitempty" xml:"EduStudentNum,omitempty"`
+	EduTeacherBundleId *string                             `json:"EduTeacherBundleId,omitempty" xml:"EduTeacherBundleId,omitempty"`
+	EduTeacherNum      *int32                              `json:"EduTeacherNum,omitempty" xml:"EduTeacherNum,omitempty"`
+	GroupDesktopCount  *int32                              `json:"GroupDesktopCount,omitempty" xml:"GroupDesktopCount,omitempty"`
+	// The model of the WUYING hardware client.
+	HardwareVersion *string `json:"HardwareVersion,omitempty" xml:"HardwareVersion,omitempty"`
+	// The resource specifications.
+	//
+	// *   If you set ResourceType to Desktop, set this parameter to one of the following values:
+	//
+	//     *   ecd.basic.small
+	//     *   ecd.basic.large
+	//     *   ecd.advanced.large
+	//     *   ecd.advanced.xlarge
+	//     *   ecd.performance.2xlarge
+	//     *   ecd.graphics.xlarge
+	//     *   ecd.graphics.2xlarge
+	//     *   ecd.advanced.xlarge_s8d2
+	//     *   ecd.advanced.xlarge_s8d7
+	//     *   ecd.graphics.1g72c
+	//     *   eds.general.2c2g
+	//     *   eds.general.2c4g
+	//     *   eds.general.2c8g
+	//     *   eds.general.4c8g
+	//     *   eds.general.4c16g
+	//     *   eds.general.8c16g
+	//     *   eds.general.8c32g
+	//     *   eds.general.16c32g
+	//
+	// *   If you set ResourceType to OfficeSite, set this parameter to large.
+	//
+	// *   If you set ResourceType to Bandwidth, leave this parameter empty.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The metering method of the Internet access package. Valid values:
+	//
+	// *   PayByBandwidth: pay-by-bandwidth
+	// *   PayByTraffic: pay-by-data-transfer
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The OS. Valid values:
+	//
+	// *   Windows
+	// *   Linux
+	//
+	// Default value: Windows.
+	OsType      *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PackageSize *int32  `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
+	// The subscription duration. Default value: 1.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the billing cycle. Valid values:
+	//
+	// *   Hour
+	// *   Month
+	// *   Year
+	//
+	// Default value: Hour.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The promotion ID.
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// *   Desktop: cloud desktop
+	// *   OfficeSite: workspace
+	// *   Bandwidth: network bandwidth
+	//
+	// Default value: Desktop.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The performance level (PL) of the system disk. Valid values:
+	//
+	// *   PL0
+	// *   PL1
+	// *   PL2
+	// *   PL3
+	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
+	// The system disk size. Unit: GiB.
+	RootDiskSizeGib *int32  `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	SpPeriodInfo    *string `json:"SpPeriodInfo,omitempty" xml:"SpPeriodInfo,omitempty"`
+	SpPrice         *bool   `json:"SpPrice,omitempty" xml:"SpPrice,omitempty"`
+	SpType          *string `json:"SpType,omitempty" xml:"SpType,omitempty"`
+	// The PL of the data disk. Valid values:
+	//
+	// *   PL0
+	// *   PL1
+	// *   PL2
+	// *   PL3
+	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
+	// The data disk size. Unit: GiB.
+	UserDiskSizeGib *int32 `json:"UserDiskSizeGib,omitempty" xml:"UserDiskSizeGib,omitempty"`
+}
+
+func (s DescribePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceRequest) SetAmount(v int32) *DescribePriceRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetBandwidth(v int32) *DescribePriceRequest {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetBundleModels(v []*DescribePriceRequestBundleModels) *DescribePriceRequest {
+	s.BundleModels = v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduCdsSize(v int32) *DescribePriceRequest {
+	s.EduCdsSize = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduCommittedTime(v int32) *DescribePriceRequest {
+	s.EduCommittedTime = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduDesktopBundleId(v string) *DescribePriceRequest {
+	s.EduDesktopBundleId = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduDesktopNum(v int32) *DescribePriceRequest {
+	s.EduDesktopNum = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduRoomClassify(v string) *DescribePriceRequest {
+	s.EduRoomClassify = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduStudentBundleId(v string) *DescribePriceRequest {
+	s.EduStudentBundleId = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduStudentNum(v int32) *DescribePriceRequest {
+	s.EduStudentNum = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduTeacherBundleId(v string) *DescribePriceRequest {
+	s.EduTeacherBundleId = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetEduTeacherNum(v int32) *DescribePriceRequest {
+	s.EduTeacherNum = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetGroupDesktopCount(v int32) *DescribePriceRequest {
+	s.GroupDesktopCount = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetHardwareVersion(v string) *DescribePriceRequest {
+	s.HardwareVersion = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetInstanceType(v string) *DescribePriceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetInternetChargeType(v string) *DescribePriceRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetOsType(v string) *DescribePriceRequest {
+	s.OsType = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetPackageSize(v int32) *DescribePriceRequest {
+	s.PackageSize = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetPeriod(v int32) *DescribePriceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetPeriodUnit(v string) *DescribePriceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetPromotionId(v string) *DescribePriceRequest {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetRegionId(v string) *DescribePriceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetResourceType(v string) *DescribePriceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetRootDiskPerformanceLevel(v string) *DescribePriceRequest {
+	s.RootDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetRootDiskSizeGib(v int32) *DescribePriceRequest {
+	s.RootDiskSizeGib = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetSpPeriodInfo(v string) *DescribePriceRequest {
+	s.SpPeriodInfo = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetSpPrice(v bool) *DescribePriceRequest {
+	s.SpPrice = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetSpType(v string) *DescribePriceRequest {
+	s.SpType = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetUserDiskPerformanceLevel(v string) *DescribePriceRequest {
+	s.UserDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetUserDiskSizeGib(v int32) *DescribePriceRequest {
+	s.UserDiskSizeGib = &v
+	return s
+}
+
+type DescribePriceRequestBundleModels struct {
+	Amount   *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s DescribePriceRequestBundleModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceRequestBundleModels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceRequestBundleModels) SetAmount(v int32) *DescribePriceRequestBundleModels {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribePriceRequestBundleModels) SetBundleId(v string) *DescribePriceRequestBundleModels {
+	s.BundleId = &v
+	return s
+}
+
+func (s *DescribePriceRequestBundleModels) SetDuration(v int32) *DescribePriceRequestBundleModels {
+	s.Duration = &v
+	return s
+}
+
+type DescribePriceResponseBody struct {
+	// The price details.
+	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBody) SetPriceInfo(v *DescribePriceResponseBodyPriceInfo) *DescribePriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *DescribePriceResponseBody) SetRequestId(v string) *DescribePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePriceResponseBodyPriceInfo struct {
+	FreeCdsQuota *bool  `json:"FreeCdsQuota,omitempty" xml:"FreeCdsQuota,omitempty"`
+	FreeCdsSize  *int64 `json:"FreeCdsSize,omitempty" xml:"FreeCdsSize,omitempty"`
+	// The information about the price.
+	Price *DescribePriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The details of the promotion rules.
+	Rules []*DescribePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyPriceInfo) SetFreeCdsQuota(v bool) *DescribePriceResponseBodyPriceInfo {
+	s.FreeCdsQuota = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfo) SetFreeCdsSize(v int64) *DescribePriceResponseBodyPriceInfo {
+	s.FreeCdsSize = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfo) SetPrice(v *DescribePriceResponseBodyPriceInfoPrice) *DescribePriceResponseBodyPriceInfo {
+	s.Price = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfo) SetRules(v []*DescribePriceResponseBodyPriceInfoRules) *DescribePriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+type DescribePriceResponseBodyPriceInfoPrice struct {
+	// The unit of the currency.
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted price.
+	DiscountPrice *float32           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OrderLines    map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	// The original price.
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The details of the promotion.
+	Promotions []*DescribePriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	SpPrice    *int64                                               `json:"SpPrice,omitempty" xml:"SpPrice,omitempty"`
+	// The actual price that is paid. The original price minus the discounted part equals the actual price.
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribePriceResponseBodyPriceInfoPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyPriceInfoPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPrice) SetCurrency(v string) *DescribePriceResponseBodyPriceInfoPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPrice) SetDiscountPrice(v float32) *DescribePriceResponseBodyPriceInfoPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPrice) SetOrderLines(v map[string]*string) *DescribePriceResponseBodyPriceInfoPrice {
+	s.OrderLines = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPrice) SetOriginalPrice(v float32) *DescribePriceResponseBodyPriceInfoPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPrice) SetPromotions(v []*DescribePriceResponseBodyPriceInfoPricePromotions) *DescribePriceResponseBodyPriceInfoPrice {
+	s.Promotions = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPrice) SetSpPrice(v int64) *DescribePriceResponseBodyPriceInfoPrice {
+	s.SpPrice = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPrice) SetTradePrice(v float32) *DescribePriceResponseBodyPriceInfoPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribePriceResponseBodyPriceInfoPricePromotions struct {
+	// The description of the promotion rule.
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The description of the promotion.
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The promotion ID.
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The promotion name.
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether an item is selected.
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s DescribePriceResponseBodyPriceInfoPricePromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyPriceInfoPricePromotions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPricePromotions) SetOptionCode(v string) *DescribePriceResponseBodyPriceInfoPricePromotions {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPricePromotions) SetPromotionDesc(v string) *DescribePriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPricePromotions) SetPromotionId(v string) *DescribePriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPricePromotions) SetPromotionName(v string) *DescribePriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoPricePromotions) SetSelected(v bool) *DescribePriceResponseBodyPriceInfoPricePromotions {
+	s.Selected = &v
+	return s
+}
+
+type DescribePriceResponseBodyPriceInfoRules struct {
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribePriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyPriceInfoRules) SetDescription(v string) *DescribePriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfoRules) SetRuleId(v int64) *DescribePriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type DescribePriceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponse) SetHeaders(v map[string]*string) *DescribePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePriceResponse) SetStatusCode(v int32) *DescribePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePriceResponse) SetBody(v *DescribePriceResponseBody) *DescribePriceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The ID of the region.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
@@ -17640,6 +19327,134 @@ func (s *DescribeSecurityEventOperationsResponse) SetStatusCode(v int32) *Descri
 }
 
 func (s *DescribeSecurityEventOperationsResponse) SetBody(v *DescribeSecurityEventOperationsResponseBody) *DescribeSecurityEventOperationsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSessionStatisticRequest struct {
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OfficeSiteId   *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	Period         *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSessionStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionStatisticRequest) SetEndTime(v string) *DescribeSessionStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticRequest) SetOfficeSiteId(v string) *DescribeSessionStatisticRequest {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticRequest) SetPeriod(v int32) *DescribeSessionStatisticRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticRequest) SetRegionId(v string) *DescribeSessionStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticRequest) SetSearchRegionId(v string) *DescribeSessionStatisticRequest {
+	s.SearchRegionId = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticRequest) SetStartTime(v string) *DescribeSessionStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSessionStatisticResponseBody struct {
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistic  []*DescribeSessionStatisticResponseBodyStatistic `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Repeated"`
+	TotalCount *string                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSessionStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionStatisticResponseBody) SetRequestId(v string) *DescribeSessionStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticResponseBody) SetStatistic(v []*DescribeSessionStatisticResponseBodyStatistic) *DescribeSessionStatisticResponseBody {
+	s.Statistic = v
+	return s
+}
+
+func (s *DescribeSessionStatisticResponseBody) SetTotalCount(v string) *DescribeSessionStatisticResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSessionStatisticResponseBodyStatistic struct {
+	Count     *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	TimePoint *int64 `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+}
+
+func (s DescribeSessionStatisticResponseBodyStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionStatisticResponseBodyStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionStatisticResponseBodyStatistic) SetCount(v int64) *DescribeSessionStatisticResponseBodyStatistic {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticResponseBodyStatistic) SetTimePoint(v int64) *DescribeSessionStatisticResponseBodyStatistic {
+	s.TimePoint = &v
+	return s
+}
+
+type DescribeSessionStatisticResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSessionStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSessionStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionStatisticResponse) SetHeaders(v map[string]*string) *DescribeSessionStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSessionStatisticResponse) SetStatusCode(v int32) *DescribeSessionStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSessionStatisticResponse) SetBody(v *DescribeSessionStatisticResponseBody) *DescribeSessionStatisticResponse {
 	s.Body = v
 	return s
 }
@@ -22307,9 +24122,9 @@ func (s *GetDesktopGroupDetailResponse) SetBody(v *GetDesktopGroupDetailResponse
 }
 
 type GetOfficeSiteSsoStatusRequest struct {
-	// Indicates whether SSO is enabled.
+	// The workspace ID.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the workspace.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -22332,8 +24147,10 @@ func (s *GetOfficeSiteSsoStatusRequest) SetRegionId(v string) *GetOfficeSiteSsoS
 }
 
 type GetOfficeSiteSsoStatusResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SsoStatus *bool   `json:"SsoStatus,omitempty" xml:"SsoStatus,omitempty"`
+	// Indicates whether SSO is enabled.
+	SsoStatus *bool `json:"SsoStatus,omitempty" xml:"SsoStatus,omitempty"`
 }
 
 func (s GetOfficeSiteSsoStatusResponseBody) String() string {
@@ -22384,10 +24201,11 @@ func (s *GetOfficeSiteSsoStatusResponse) SetBody(v *GetOfficeSiteSsoStatusRespon
 }
 
 type GetSpMetadataRequest struct {
-	// GetSpMetadata
-	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The workspace ID. This parameter is the same as `OfficeSiteId`. We recommend that you use `OfficeSiteId` to replace `DirectoryId`. You can specify only `DirectoryId` or `OfficeSiteId`.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The workspace ID.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The operation that you want to perform. Set the value to GetSpMetadata.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -22415,7 +24233,9 @@ func (s *GetSpMetadataRequest) SetRegionId(v string) *GetSpMetadataRequest {
 }
 
 type GetSpMetadataResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The metadata of the SP.
 	SpMetadata *string `json:"SpMetadata,omitempty" xml:"SpMetadata,omitempty"`
 }
 
@@ -23528,19 +25348,20 @@ func (s *ListFilePermissionResponse) SetBody(v *ListFilePermissionResponseBody) 
 }
 
 type ListOfficeSiteOverviewRequest struct {
-	// The beginning of the time range that you want to query.
-	//
-	// > The desktop group feature is in invitational preview. If you want to use this feature, submit a ticket.
+	// Specifies whether to refresh the cache.
 	ForceRefresh *bool `json:"ForceRefresh,omitempty" xml:"ForceRefresh,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	// The number of entries to return on each page.
+	//
+	// *   Valid values: 1 to 100
+	// *   Default value: 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Details of the workspaces.
+	// The token that determines the start point of the next query. If this is your first query or no next query is to be sent, skip this parameter. If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the workspace.
-	OfficeSiteId []*string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty" type:"Repeated"`
-	// The region ID of the workspace.
-	QueryRange *int32 `json:"QueryRange,omitempty" xml:"QueryRange,omitempty"`
 	// Details about the IDs of the workspaces. You can specify 1 to 100 workspace IDs.
+	OfficeSiteId []*string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty" type:"Repeated"`
+	// The query scope. Default value: 1.
+	QueryRange *int32 `json:"QueryRange,omitempty" xml:"QueryRange,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23583,11 +25404,11 @@ func (s *ListOfficeSiteOverviewRequest) SetRegionId(v string) *ListOfficeSiteOve
 }
 
 type ListOfficeSiteOverviewResponseBody struct {
-	// The status of the workspace.
+	// The token that is used to start the next query. If this parameter is empty, all results are returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Specifies whether to refresh the cache.
+	// Details of the workspaces.
 	OfficeSiteOverviewResults []*ListOfficeSiteOverviewResponseBodyOfficeSiteOverviewResults `json:"OfficeSiteOverviewResults,omitempty" xml:"OfficeSiteOverviewResults,omitempty" type:"Repeated"`
-	// The information that is returned.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23615,29 +25436,31 @@ func (s *ListOfficeSiteOverviewResponseBody) SetRequestId(v string) *ListOfficeS
 }
 
 type ListOfficeSiteOverviewResponseBodyOfficeSiteOverviewResults struct {
-	// 153021
-	HasExpiredEdsCount         *int32 `json:"HasExpiredEdsCount,omitempty" xml:"HasExpiredEdsCount,omitempty"`
+	// The number of expired cloud desktops in the workspace.
+	HasExpiredEdsCount *int32 `json:"HasExpiredEdsCount,omitempty" xml:"HasExpiredEdsCount,omitempty"`
+	// The number of expired cloud desktops in the desktop group.
 	HasExpiredEdsCountForGroup *int32 `json:"HasExpiredEdsCountForGroup,omitempty" xml:"HasExpiredEdsCountForGroup,omitempty"`
-	// The name of the workspace.
-	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// Queries the overview information about workspaces in Elastic Desktop Service (EDS).
-	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The number of running cloud desktops in the workspace.
-	OfficeSiteStatus *string `json:"OfficeSiteStatus,omitempty" xml:"OfficeSiteStatus,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of running cloud desktops in the desktop group.
-	RunningEdsCount *int32 `json:"RunningEdsCount,omitempty" xml:"RunningEdsCount,omitempty"`
-	// The ID of the request.
-	RunningEdsCountForGroup *int32 `json:"RunningEdsCountForGroup,omitempty" xml:"RunningEdsCountForGroup,omitempty"`
 	// The ID of the workspace.
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The name of the workspace.
+	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// The status of the workspace.
+	OfficeSiteStatus *string `json:"OfficeSiteStatus,omitempty" xml:"OfficeSiteStatus,omitempty"`
+	// The region ID of the workspace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of running cloud desktops in the workspace.
+	RunningEdsCount *int32 `json:"RunningEdsCount,omitempty" xml:"RunningEdsCount,omitempty"`
+	// The number of running cloud desktops in the desktop group.
+	RunningEdsCountForGroup *int32 `json:"RunningEdsCountForGroup,omitempty" xml:"RunningEdsCountForGroup,omitempty"`
+	// The total number of cloud desktops in the workspace.
 	TotalEdsCount *int32 `json:"TotalEdsCount,omitempty" xml:"TotalEdsCount,omitempty"`
-	// The number of cloud desktops that are about to expire in the workspace.
+	// The total number of cloud desktops in the desktop group.
 	TotalEdsCountForGroup *int32 `json:"TotalEdsCountForGroup,omitempty" xml:"TotalEdsCountForGroup,omitempty"`
-	// ListOfficeSiteOverview
-	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 	// The virtual private cloud (VPC) type of the workspace.
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The number of cloud desktops that are about to expire in the workspace.
 	WillExpiredEdsCount *int32 `json:"WillExpiredEdsCount,omitempty" xml:"WillExpiredEdsCount,omitempty"`
-	// The token that determines the start point of the next query. If this is your first query or no next query is to be sent, skip this parameter. If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// The number of cloud desktops that are about to expire in the desktop group.
 	WillExpiredEdsCountForGroup *int32 `json:"WillExpiredEdsCountForGroup,omitempty" xml:"WillExpiredEdsCountForGroup,omitempty"`
 }
 
@@ -24271,9 +26094,12 @@ func (s *LockVirtualMFADeviceResponse) SetBody(v *LockVirtualMFADeviceResponseBo
 }
 
 type MigrateDesktopsRequest struct {
-	DesktopId          []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TargetOfficeSiteId *string   `json:"TargetOfficeSiteId,omitempty" xml:"TargetOfficeSiteId,omitempty"`
+	// The IDs of the cloud desktops. You can specify one or more cloud desktops. Valid values of N: 1 to 100.
+	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the destination workspace.
+	TargetOfficeSiteId *string `json:"TargetOfficeSiteId,omitempty" xml:"TargetOfficeSiteId,omitempty"`
 }
 
 func (s MigrateDesktopsRequest) String() string {
@@ -24300,6 +26126,7 @@ func (s *MigrateDesktopsRequest) SetTargetOfficeSiteId(v string) *MigrateDesktop
 }
 
 type MigrateDesktopsResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24603,6 +26430,87 @@ func (s *ModifyADConnectorOfficeSiteResponse) SetBody(v *ModifyADConnectorOffice
 	return s
 }
 
+type ModifyAclEntriesRequest struct {
+	Policy     *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceId   []*string `json:"SourceId,omitempty" xml:"SourceId,omitempty" type:"Repeated"`
+	SourceType *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ModifyAclEntriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAclEntriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAclEntriesRequest) SetPolicy(v string) *ModifyAclEntriesRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *ModifyAclEntriesRequest) SetRegionId(v string) *ModifyAclEntriesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyAclEntriesRequest) SetSourceId(v []*string) *ModifyAclEntriesRequest {
+	s.SourceId = v
+	return s
+}
+
+func (s *ModifyAclEntriesRequest) SetSourceType(v string) *ModifyAclEntriesRequest {
+	s.SourceType = &v
+	return s
+}
+
+type ModifyAclEntriesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAclEntriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAclEntriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAclEntriesResponseBody) SetRequestId(v string) *ModifyAclEntriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAclEntriesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAclEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAclEntriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAclEntriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAclEntriesResponse) SetHeaders(v map[string]*string) *ModifyAclEntriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAclEntriesResponse) SetStatusCode(v int32) *ModifyAclEntriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAclEntriesResponse) SetBody(v *ModifyAclEntriesResponseBody) *ModifyAclEntriesResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAutoSnapshotPolicyRequest struct {
 	// The CRON expression.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
@@ -24798,12 +26706,18 @@ func (s *ModifyBundleResponse) SetBody(v *ModifyBundleResponseBody) *ModifyBundl
 }
 
 type ModifyCdsFileRequest struct {
-	CdsId          *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The processing method that is used if the file that you want to create has the same name as an existing file in the cloud. Valid values: ignore: allows you to create the file by using the same name as an existing file in the cloud. auto_rename: automatically renames the file that you want to create if a file that has the same name exists in the cloud. By default, the current point in time is added to the end of the file name. Example: xxx\_20060102\_150405. refuse: denies creating the file if a file that has the same name exists in the cloud. Default value: refuse.
 	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
-	EndUserId      *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileId         *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the end user who uses the cloud disk.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The file ID.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyCdsFileRequest) String() string {
@@ -24845,11 +26759,16 @@ func (s *ModifyCdsFileRequest) SetRegionId(v string) *ModifyCdsFileRequest {
 }
 
 type ModifyCdsFileResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The modification result. The value success indicates that the modification is successful. If the modification failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The value true returned if the request is successful.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the request failed.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyCdsFileResponseBody) String() string {
@@ -24915,24 +26834,42 @@ func (s *ModifyCdsFileResponse) SetBody(v *ModifyCdsFileResponseBody) *ModifyCds
 }
 
 type ModifyCdsFileShareLinkRequest struct {
-	CdsId             *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisableDownload   *bool   `json:"DisableDownload,omitempty" xml:"DisableDownload,omitempty"`
-	DisablePreview    *bool   `json:"DisablePreview,omitempty" xml:"DisablePreview,omitempty"`
-	DisableSave       *bool   `json:"DisableSave,omitempty" xml:"DisableSave,omitempty"`
-	DownloadCount     *int64  `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
-	DownloadLimit     *int64  `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
-	Expiration        *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	PreviewCount      *int64  `json:"PreviewCount,omitempty" xml:"PreviewCount,omitempty"`
-	PreviewLimit      *int64  `json:"PreviewLimit,omitempty" xml:"PreviewLimit,omitempty"`
-	ReportCount       *int64  `json:"ReportCount,omitempty" xml:"ReportCount,omitempty"`
-	SaveCount         *int64  `json:"SaveCount,omitempty" xml:"SaveCount,omitempty"`
-	SaveLimit         *int64  `json:"SaveLimit,omitempty" xml:"SaveLimit,omitempty"`
-	ShareId           *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
-	ShareName         *string `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
-	SharePwd          *string `json:"SharePwd,omitempty" xml:"SharePwd,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VideoPreviewCount *int64  `json:"VideoPreviewCount,omitempty" xml:"VideoPreviewCount,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The description of the file sharing task. The description must be 0 to 1,024 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to prohibit the download of the files that are being shared.
+	DisableDownload *bool `json:"DisableDownload,omitempty" xml:"DisableDownload,omitempty"`
+	// Specifies whether to prohibit the preview of the files that are being shared.
+	DisablePreview *bool `json:"DisablePreview,omitempty" xml:"DisablePreview,omitempty"`
+	// Specifies whether to prohibit the dump of the files that are being shared.
+	DisableSave *bool `json:"DisableSave,omitempty" xml:"DisableSave,omitempty"`
+	// The number of times that the shared files are downloaded. The value of this parameter must be equal to or greater than 0.
+	DownloadCount *int64 `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
+	// The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
+	DownloadLimit *int64 `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
+	// The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The number of times that the shared files are previewed. The value of this parameter must be equal to or greater than 0.
+	PreviewCount *int64 `json:"PreviewCount,omitempty" xml:"PreviewCount,omitempty"`
+	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be previewed.
+	PreviewLimit *int64 `json:"PreviewLimit,omitempty" xml:"PreviewLimit,omitempty"`
+	// The number of times that the shared files are reported. The value of this parameter must be equal to or greater than 0.
+	ReportCount *int64 `json:"ReportCount,omitempty" xml:"ReportCount,omitempty"`
+	// The number of times that the shared files are dumped. The value of this parameter must be equal to or greater than 0.
+	SaveCount *int64 `json:"SaveCount,omitempty" xml:"SaveCount,omitempty"`
+	// The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be dumped.
+	SaveLimit *int64 `json:"SaveLimit,omitempty" xml:"SaveLimit,omitempty"`
+	// The ID of the file sharing task.
+	ShareId *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
+	// The name of the file sharing task. If you leave this parameter empty, the file name that corresponds to the first ID in the file ID list is used. The name must be 0 to 128 characters in length.
+	ShareName *string `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
+	// The length of the access code. Valid values: 6 to 8. Unit: bytes. If you leave this parameter empty or set it to null, no access code is required. If you use a token to share files, you do not need to configure this parameter. The access code can contain only visible ASCII characters.
+	SharePwd *string `json:"SharePwd,omitempty" xml:"SharePwd,omitempty"`
+	// The status of the file sharing link. Valid values: ● disabled: The file sharing link is canceled. ● enabled: The file sharing link is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of times that the videos are previewed in the shared files. The value of this parameter must be equal to or greater than 0.
+	VideoPreviewCount *int64 `json:"VideoPreviewCount,omitempty" xml:"VideoPreviewCount,omitempty"`
 }
 
 func (s ModifyCdsFileShareLinkRequest) String() string {
@@ -25034,11 +26971,21 @@ func (s *ModifyCdsFileShareLinkRequest) SetVideoPreviewCount(v int64) *ModifyCds
 }
 
 type ModifyCdsFileShareLinkResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CdsFileShareLinkModel `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The modification result. The value success indicates that the modification is successful. If the modification failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data information.
+	Data *CdsFileShareLinkModel `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message that is returned. This parameter is not returned if the value of Code is success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyCdsFileShareLinkResponseBody) String() string {
@@ -25513,7 +27460,8 @@ type ModifyDesktopChargeTypeRequest struct {
 	// *   If the `PeriodUnit` parameter is set to `Week`, the valid value of the Period parameter is 1.
 	// *   If the `PeriodUnit` parameter is set to `Month`, the valid values of the Period parameter are 1, 2, 3, and 6.
 	// *   If the `PeriodUnit` parameter is set to `Year`, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UseDuration *int32  `json:"UseDuration,omitempty" xml:"UseDuration,omitempty"`
 }
 
 func (s ModifyDesktopChargeTypeRequest) String() string {
@@ -25556,6 +27504,11 @@ func (s *ModifyDesktopChargeTypeRequest) SetPromotionId(v string) *ModifyDesktop
 
 func (s *ModifyDesktopChargeTypeRequest) SetRegionId(v string) *ModifyDesktopChargeTypeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDesktopChargeTypeRequest) SetUseDuration(v int32) *ModifyDesktopChargeTypeRequest {
+	s.UseDuration = &v
 	return s
 }
 
@@ -26026,14 +27979,37 @@ func (s *ModifyDesktopNameResponse) SetBody(v *ModifyDesktopNameResponseBody) *M
 }
 
 type ModifyDesktopSpecRequest struct {
-	AutoPay                  *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	DesktopId                *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	DesktopType              *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	PromotionId              *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RootDiskSizeGib          *int32  `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	// Specifies whether to automatically complete the payment. Valid values:
+	//
+	// *   `true`: automatically completes the payment. Make sure that your Alibaba Cloud account has sufficient balance. If your Alibaba Cloud account does not have sufficient balance, abnormal orders are generated.
+	// *   `false`: does not automatically complete the payment. In this case, an order is generated, but no payment is made. You can log on to the EDS console and complete the payment based on the order ID on the **Orders** page.
+	//
+	// Default value: `true`.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The ID of the cloud desktop.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The new cloud desktop type. You can call the [DescribeDesktopTypes](~~188882~~) operation to query the IDs of supported cloud desktop types.
+	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The ID of the sales promotion.
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The size of the new system disk. Unit: GiB. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
+	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	// The performance level (PL) of the data disk. Valid values:
+	//
+	// *   PL0
+	// *   PL1
+	// *   PL2
+	// *   PL3
+	//
+	// Default value: PL0.
 	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
-	UserDiskSizeGib          *int32  `json:"UserDiskSizeGib,omitempty" xml:"UserDiskSizeGib,omitempty"`
+	// The size of the new data disk. Unit: GiB.
+	//
+	// *   The data disk size of a non-Graphics cloud desktop can be within the range of 20 to 1,020 GiB. The value must be a multiple of 10.
+	// *   The data disk size of the Graphics cloud desktop can be within the range of 40 to 1,020 GiB. The value must be a multiple of 10.
+	UserDiskSizeGib *int32 `json:"UserDiskSizeGib,omitempty" xml:"UserDiskSizeGib,omitempty"`
 }
 
 func (s ModifyDesktopSpecRequest) String() string {
@@ -26085,7 +28061,9 @@ func (s *ModifyDesktopSpecRequest) SetUserDiskSizeGib(v int32) *ModifyDesktopSpe
 }
 
 type ModifyDesktopSpecResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26132,6 +28110,146 @@ func (s *ModifyDesktopSpecResponse) SetStatusCode(v int32) *ModifyDesktopSpecRes
 }
 
 func (s *ModifyDesktopSpecResponse) SetBody(v *ModifyDesktopSpecResponseBody) *ModifyDesktopSpecResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDesktopTimerRequest struct {
+	DesktopId        []*string                                 `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	DesktopTimers    []*ModifyDesktopTimerRequestDesktopTimers `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
+	RegionId         *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UseDesktopTimers *bool                                     `json:"UseDesktopTimers,omitempty" xml:"UseDesktopTimers,omitempty"`
+}
+
+func (s ModifyDesktopTimerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDesktopTimerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDesktopTimerRequest) SetDesktopId(v []*string) *ModifyDesktopTimerRequest {
+	s.DesktopId = v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequest) SetDesktopTimers(v []*ModifyDesktopTimerRequestDesktopTimers) *ModifyDesktopTimerRequest {
+	s.DesktopTimers = v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequest) SetRegionId(v string) *ModifyDesktopTimerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequest) SetUseDesktopTimers(v bool) *ModifyDesktopTimerRequest {
+	s.UseDesktopTimers = &v
+	return s
+}
+
+type ModifyDesktopTimerRequestDesktopTimers struct {
+	AllowClientSetting *bool   `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
+	CronExpression     *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	Enforce            *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	Interval           *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ResetType          *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	TimerType          *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
+}
+
+func (s ModifyDesktopTimerRequestDesktopTimers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDesktopTimerRequestDesktopTimers) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDesktopTimerRequestDesktopTimers) SetAllowClientSetting(v bool) *ModifyDesktopTimerRequestDesktopTimers {
+	s.AllowClientSetting = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequestDesktopTimers) SetCronExpression(v string) *ModifyDesktopTimerRequestDesktopTimers {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequestDesktopTimers) SetEnforce(v bool) *ModifyDesktopTimerRequestDesktopTimers {
+	s.Enforce = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequestDesktopTimers) SetInterval(v int32) *ModifyDesktopTimerRequestDesktopTimers {
+	s.Interval = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequestDesktopTimers) SetOperationType(v string) *ModifyDesktopTimerRequestDesktopTimers {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequestDesktopTimers) SetResetType(v string) *ModifyDesktopTimerRequestDesktopTimers {
+	s.ResetType = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerRequestDesktopTimers) SetTimerType(v string) *ModifyDesktopTimerRequestDesktopTimers {
+	s.TimerType = &v
+	return s
+}
+
+type ModifyDesktopTimerResponseBody struct {
+	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDesktopTimerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDesktopTimerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDesktopTimerResponseBody) SetDesktopIds(v []*string) *ModifyDesktopTimerResponseBody {
+	s.DesktopIds = v
+	return s
+}
+
+func (s *ModifyDesktopTimerResponseBody) SetRequestId(v string) *ModifyDesktopTimerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDesktopTimerResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDesktopTimerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDesktopTimerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDesktopTimerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDesktopTimerResponse) SetHeaders(v map[string]*string) *ModifyDesktopTimerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDesktopTimerResponse) SetStatusCode(v int32) *ModifyDesktopTimerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDesktopTimerResponse) SetBody(v *ModifyDesktopTimerResponseBody) *ModifyDesktopTimerResponse {
 	s.Body = v
 	return s
 }
@@ -26375,9 +28493,11 @@ func (s *ModifyDiskSpecResponse) SetBody(v *ModifyDiskSpecResponseBody) *ModifyD
 }
 
 type ModifyEntitlementRequest struct {
-	DesktopId *string   `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The ID of the cloud desktop.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The usernames of users. You can specify up to 100 usernames.
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// ModifyEntitlement
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -26405,6 +28525,7 @@ func (s *ModifyEntitlementRequest) SetRegionId(v string) *ModifyEntitlementReque
 }
 
 type ModifyEntitlementResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26863,14 +28984,28 @@ func (s *ModifyNetworkPackageEnabledResponse) SetBody(v *ModifyNetworkPackageEna
 }
 
 type ModifyOfficeSiteAttributeRequest struct {
+	// The method that you want to use to connect the Alibaba Cloud Workspace client to cloud desktops. Valid values:
+	//
+	// *   INTERNET: connects the client to cloud desktops only over the Internet.
+	// *   VPC: connects the client to cloud desktops only over a VPC.
+	// *   Any: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method based on your business requirements when you connect to a cloud desktop from the client.
+	//
+	// Default value: INTERNET.
+	//
+	// > VPC connections are established by using Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to VPC or Any, PrivateLink is automatically activated.
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
 	// 是否为使用云桌面的用户赋予本地管理员权限。
-	EnableAdminAccess    *bool   `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	NeedVerifyLoginRisk  *bool   `json:"NeedVerifyLoginRisk,omitempty" xml:"NeedVerifyLoginRisk,omitempty"`
-	NeedVerifyZeroDevice *bool   `json:"NeedVerifyZeroDevice,omitempty" xml:"NeedVerifyZeroDevice,omitempty"`
-	OfficeSiteId         *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OfficeSiteName       *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
+	// This parameter is only applicable to a workspace of the convenience account type, which indicates whether to require two-factor verification when you log on to the client. If two-factor verification is enabled, the system checks whether security risks exist within the logon account when a convenience user logs on to the client. If risks are detected, the system sends a verification code to the email address that is associated with the account. Then, the convenience user can log on to the client only after the verification code is correctly entered.
+	NeedVerifyLoginRisk *bool `json:"NeedVerifyLoginRisk,omitempty" xml:"NeedVerifyLoginRisk,omitempty"`
+	// This parameter is only applicable to a workspace of the convenience account type, which indicates whether to require device verification when you log on to the client. For a workspace of the enterprise Active Directory (AD) account type, the value of this parameter is empty.
+	NeedVerifyZeroDevice *bool `json:"NeedVerifyZeroDevice,omitempty" xml:"NeedVerifyZeroDevice,omitempty"`
+	// The ID of the workspace.
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The name of the workspace. We recommend that you specify a name that is easy to identify. The name must be 2 to 255 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter but cannot start with http:// or https://.
+	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyOfficeSiteAttributeRequest) String() string {
@@ -26917,6 +29052,7 @@ func (s *ModifyOfficeSiteAttributeRequest) SetRegionId(v string) *ModifyOfficeSi
 }
 
 type ModifyOfficeSiteAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26963,10 +29099,14 @@ func (s *ModifyOfficeSiteAttributeResponse) SetBody(v *ModifyOfficeSiteAttribute
 }
 
 type ModifyOfficeSiteCrossDesktopAccessRequest struct {
+	// Specifies whether to enable cross-desktop access for a workspace.
+	//
+	// *   true: enables cross-desktop access.
+	// *   false: disables cross-desktop access.
 	EnableCrossDesktopAccess *bool `json:"EnableCrossDesktopAccess,omitempty" xml:"EnableCrossDesktopAccess,omitempty"`
-	// ModifyOfficeSiteCrossDesktopAccess
+	// The ID of the workspace.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// Enables cross-desktop access in a workspace.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -26994,6 +29134,7 @@ func (s *ModifyOfficeSiteCrossDesktopAccessRequest) SetRegionId(v string) *Modif
 }
 
 type ModifyOfficeSiteCrossDesktopAccessResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27040,11 +29181,14 @@ func (s *ModifyOfficeSiteCrossDesktopAccessResponse) SetBody(v *ModifyOfficeSite
 }
 
 type ModifyOfficeSiteMfaEnabledRequest struct {
-	// Enables or disables multi-factor authentication (MFA) for a workspace.
+	// Specifies whether to enable MFA. Valid values:
+	//
+	// *   true: enables MFA
+	// *   false: disables MFA
 	MfaEnabled *bool `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
 	// The ID of the workspace.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The operation that you want to perform. Set the value to ModifyOfficeSiteMfaEnabled.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -27072,6 +29216,7 @@ func (s *ModifyOfficeSiteMfaEnabledRequest) SetRegionId(v string) *ModifyOfficeS
 }
 
 type ModifyOfficeSiteMfaEnabledResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27241,6 +29386,8 @@ type ModifyPolicyGroupRequest struct {
 	ClientType                    []*ModifyPolicyGroupRequestClientType                  `json:"ClientType,omitempty" xml:"ClientType,omitempty" type:"Repeated"`
 	Clipboard                     *string                                                `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
 	DomainList                    *string                                                `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	DomainResolveRule             []*ModifyPolicyGroupRequestDomainResolveRule           `json:"DomainResolveRule,omitempty" xml:"DomainResolveRule,omitempty" type:"Repeated"`
+	DomainResolveRuleType         *string                                                `json:"DomainResolveRuleType,omitempty" xml:"DomainResolveRuleType,omitempty"`
 	EndUserApplyAdminCoordinate   *string                                                `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
 	EndUserGroupCoordinate        *string                                                `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
 	GpuAcceleration               *string                                                `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
@@ -27324,6 +29471,16 @@ func (s *ModifyPolicyGroupRequest) SetClipboard(v string) *ModifyPolicyGroupRequ
 
 func (s *ModifyPolicyGroupRequest) SetDomainList(v string) *ModifyPolicyGroupRequest {
 	s.DomainList = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetDomainResolveRule(v []*ModifyPolicyGroupRequestDomainResolveRule) *ModifyPolicyGroupRequest {
+	s.DomainResolveRule = v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetDomainResolveRuleType(v string) *ModifyPolicyGroupRequest {
+	s.DomainResolveRuleType = &v
 	return s
 }
 
@@ -27628,6 +29785,35 @@ func (s *ModifyPolicyGroupRequestClientType) SetClientType(v string) *ModifyPoli
 
 func (s *ModifyPolicyGroupRequestClientType) SetStatus(v string) *ModifyPolicyGroupRequestClientType {
 	s.Status = &v
+	return s
+}
+
+type ModifyPolicyGroupRequestDomainResolveRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s ModifyPolicyGroupRequestDomainResolveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyGroupRequestDomainResolveRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyGroupRequestDomainResolveRule) SetDescription(v string) *ModifyPolicyGroupRequestDomainResolveRule {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDomainResolveRule) SetDomain(v string) *ModifyPolicyGroupRequestDomainResolveRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDomainResolveRule) SetPolicy(v string) *ModifyPolicyGroupRequestDomainResolveRule {
+	s.Policy = &v
 	return s
 }
 
@@ -28505,11 +30691,16 @@ func (s *RebuildDesktopsResponse) SetBody(v *RebuildDesktopsResponseBody) *Rebui
 }
 
 type RemoveFilePermissionRequest struct {
-	CdsId      *string                                  `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	EndUserId  *string                                  `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileId     *string                                  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the cloud disk in Cloud Drive Service.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The user ID.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The file ID. The ID is a unique identifier for the file.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The users that you want to authorize.
 	MemberList []*RemoveFilePermissionRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	RegionId   *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RemoveFilePermissionRequest) String() string {
@@ -28546,8 +30737,168 @@ func (s *RemoveFilePermissionRequest) SetRegionId(v string) *RemoveFilePermissio
 }
 
 type RemoveFilePermissionRequestMemberList struct {
+	// The permission information.
 	CdsIdentity *RemoveFilePermissionRequestMemberListCdsIdentity `json:"CdsIdentity,omitempty" xml:"CdsIdentity,omitempty" type:"Struct"`
-	RoleId      *string                                           `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The role ID. You can configure permissions on roles or actions. This parameter is used to specify the permissions on roles, which conflicts with the ActionList parameter. When you configure both the parameters, this parameter shall prevail.
+	//
+	// Valid values:
+	//
+	// *   SystemFileEditorWithoutShareLink
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to edit files but cannot share files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileUploaderAndDownloaderWithShareLink
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to upload, download, and share files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileDownloader
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to download files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileEditorWithoutDelete
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to edit files but cannot delete files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileOwner
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to collaborate with others
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileDownloaderWithShareLink
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to download and share files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileUploaderAndViewer
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to preview or upload files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileViewer
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to preview files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileEditor
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to edit files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileUploaderWithShareLink
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to upload or share files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileUploader
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permission to upload files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileUploaderAndDownloader
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to upload or download files
+	//
+	//     <!-- -->
+	//
+	// *   SystemFileMetaViewer
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the role that has the permissions to view files
+	//
+	//     <!-- -->
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s RemoveFilePermissionRequestMemberList) String() string {
@@ -28569,7 +30920,35 @@ func (s *RemoveFilePermissionRequestMemberList) SetRoleId(v string) *RemoveFileP
 }
 
 type RemoveFilePermissionRequestMemberListCdsIdentity struct {
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The user ID or group ID.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The object type.
+	//
+	// Valid values:
+	//
+	// *   IT_Group
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     group
+	//
+	//     <!-- -->
+	//
+	// *   IT_User
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     user
+	//
+	//     <!-- -->
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -28592,11 +30971,16 @@ func (s *RemoveFilePermissionRequestMemberListCdsIdentity) SetType(v string) *Re
 }
 
 type RemoveFilePermissionShrinkRequest struct {
-	CdsId            *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	EndUserId        *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileId           *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the cloud disk in Cloud Drive Service.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The user ID.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The file ID. The ID is a unique identifier for the file.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The users that you want to authorize.
 	MemberListShrink *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RemoveFilePermissionShrinkRequest) String() string {
@@ -28633,6 +31017,7 @@ func (s *RemoveFilePermissionShrinkRequest) SetRegionId(v string) *RemoveFilePer
 }
 
 type RemoveFilePermissionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28975,12 +31360,20 @@ func (s *RenewNetworkPackagesResponse) SetBody(v *RenewNetworkPackagesResponseBo
 }
 
 type ResetDesktopsRequest struct {
-	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	DesktopId      []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	ImageId        *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	PayType        *string   `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResetType      *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// The ID of the desktop group. If you specify the `DesktopId` parameter, ignore the `DesktopGroupId` parameter. If you do not specify the `DesktopId` parameter, specify the `DesktopGroupId` parameter in the call to request all IDs of the cloud desktops in the specified desktop group.``
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// The IDs of the cloud desktops. You can specify 1 to 100 cloud desktop IDs.
+	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing method.
+	//
+	// > This parameter is available only when you reset desktop groups. If you leave this parameter empty, all cloud desktops in the specified desktop group are reset, regardless of how the cloud desktops are billed.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the disk that you want to reset.
+	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
 }
 
 func (s ResetDesktopsRequest) String() string {
@@ -29022,6 +31415,7 @@ func (s *ResetDesktopsRequest) SetResetType(v string) *ResetDesktopsRequest {
 }
 
 type ResetDesktopsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29927,9 +32321,15 @@ func (s *SetDesktopGroupTimerStatusResponse) SetBody(v *SetDesktopGroupTimerStat
 }
 
 type SetDirectorySsoStatusRequest struct {
+	// The AD directory ID.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EnableSso   *bool   `json:"EnableSso,omitempty" xml:"EnableSso,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable SSO. Valid values:
+	//
+	// *   true: enables SSO.
+	// *   false: disables SSO.
+	EnableSso *bool `json:"EnableSso,omitempty" xml:"EnableSso,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetDirectorySsoStatusRequest) String() string {
@@ -29956,6 +32356,7 @@ func (s *SetDirectorySsoStatusRequest) SetRegionId(v string) *SetDirectorySsoSta
 }
 
 type SetDirectorySsoStatusResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30002,12 +32403,13 @@ func (s *SetDirectorySsoStatusResponse) SetBody(v *SetDirectorySsoStatusResponse
 }
 
 type SetIdpMetadataRequest struct {
-	// The ID of the request.
+	// The workspace ID. This parameter is the same as `OfficeSiteId`. We recommend that you use `OfficeSiteId` to replace `DirectoryId`. You can specify only `DirectoryId` or `OfficeSiteId`.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	IdpMetadata *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
-	// The operation that you want to perform. Set the value to SetIdpMetadata.
-	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The metadata of the IdP.
+	IdpMetadata *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
+	// The workspace ID.
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -30040,8 +32442,10 @@ func (s *SetIdpMetadataRequest) SetRegionId(v string) *SetIdpMetadataRequest {
 }
 
 type SetIdpMetadataResponseBody struct {
+	// The entity ID obtained after the IdP metadata file is parsed.
 	IdpEntityId *string `json:"IdpEntityId,omitempty" xml:"IdpEntityId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetIdpMetadataResponseBody) String() string {
@@ -30092,10 +32496,29 @@ func (s *SetIdpMetadataResponse) SetBody(v *SetIdpMetadataResponseBody) *SetIdpM
 }
 
 type SetOfficeSiteSsoStatusRequest struct {
+	// Specifies whether to enable SSO.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	EnableSso *bool `json:"EnableSso,omitempty" xml:"EnableSso,omitempty"`
-	// The operation that you want to perform. Set the value to SetOfficeSiteSsoStatus.
+	// The workspace ID.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the request.
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -30123,6 +32546,7 @@ func (s *SetOfficeSiteSsoStatusRequest) SetRegionId(v string) *SetOfficeSiteSsoS
 }
 
 type SetOfficeSiteSsoStatusResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30764,15 +33188,13 @@ func (s *StopInvocationResponse) SetBody(v *StopInvocationResponseBody) *StopInv
 }
 
 type TagResourcesRequest struct {
-	// The IDs of the resources. You can specify 1 to 50 resource IDs.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The resource ID, namely the cloud desktop ID. Valid values of N: 1 to 50.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The tags. You can specify 1 to 20 tags.
+	// The resource type. Valid value: ALIYUN::GWS::INSTANCE.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of tag.
-	//
-	// The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -30805,7 +33227,11 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The keys of a tag. Valid values of N: 1 to 20.\
+	// You cannot enter an empty string as the parameter value. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The key cannot start with `aliyun` and `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. Valid values of N: 1 to 20.\
+	// You can enter an empty string as the parameter value. The tag value must be up to 128 characters in length and cannot contain `http://` or `https://`. The value cannot start with `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -30828,6 +33254,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32854,7 +35281,11 @@ func (client *Client) CreateADConnectorDirectory(request *CreateADConnectorDirec
 }
 
 /**
- * The ID of the CEN instance.
+ * *   When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
+ * *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
+ *     **
+ *     **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+ * For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
  *
  * @param request CreateADConnectorOfficeSiteRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32970,7 +35401,11 @@ func (client *Client) CreateADConnectorOfficeSiteWithOptions(request *CreateADCo
 }
 
 /**
- * The ID of the CEN instance.
+ * *   When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
+ * *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
+ *     **
+ *     **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+ * For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
  *
  * @param request CreateADConnectorOfficeSiteRequest
  * @return CreateADConnectorOfficeSiteResponse
@@ -33230,6 +35665,13 @@ func (client *Client) CreateBundle(request *CreateBundleRequest) (_result *Creat
 	return _result, _err
 }
 
+/**
+ * After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
+ *
+ * @param request CreateCdsFileRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateCdsFileResponse
+ */
 func (client *Client) CreateCdsFileWithOptions(request *CreateCdsFileRequest, runtime *util.RuntimeOptions) (_result *CreateCdsFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33295,6 +35737,12 @@ func (client *Client) CreateCdsFileWithOptions(request *CreateCdsFileRequest, ru
 	return _result, _err
 }
 
+/**
+ * After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
+ *
+ * @param request CreateCdsFileRequest
+ * @return CreateCdsFileResponse
+ */
 func (client *Client) CreateCdsFile(request *CreateCdsFileRequest) (_result *CreateCdsFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCdsFileResponse{}
@@ -34137,6 +36585,14 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.DomainList)) {
 		query["DomainList"] = request.DomainList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRule)) {
+		query["DomainResolveRule"] = request.DomainResolveRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRuleType)) {
+		query["DomainResolveRuleType"] = request.DomainResolveRuleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndUserApplyAdminCoordinate)) {
@@ -35057,6 +37513,54 @@ func (client *Client) DeleteDirectories(request *DeleteDirectoriesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteEduRoomWithOptions(request *DeleteEduRoomRequest, runtime *util.RuntimeOptions) (_result *DeleteEduRoomResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EduRoomId)) {
+		query["EduRoomId"] = request.EduRoomId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEduRoom"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEduRoomResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEduRoom(request *DeleteEduRoomRequest) (_result *DeleteEduRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEduRoomResponse{}
+	_body, _err := client.DeleteEduRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * The IDs of the images that you want to delete. You can configure one or more image IDs. Valid values of N: 1 to 100.
  *
@@ -35474,6 +37978,66 @@ func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeAclEntriesWithOptions(request *DescribeAclEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeAclEntriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAclEntries"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAclEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAclEntries(request *DescribeAclEntriesRequest) (_result *DescribeAclEntriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAclEntriesResponse{}
+	_body, _err := client.DescribeAclEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAlarmEventStackInfoWithOptions(request *DescribeAlarmEventStackInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35671,6 +38235,10 @@ func (client *Client) DescribeBundlesWithOptions(request *DescribeBundlesRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SelectedBundle)) {
@@ -36364,6 +38932,78 @@ func (client *Client) DescribeDesktopIdsByVulNames(request *DescribeDesktopIdsBy
 	return _result, _err
 }
 
+func (client *Client) DescribeDesktopSessionsWithOptions(request *DescribeDesktopSessionsRequest, runtime *util.RuntimeOptions) (_result *DescribeDesktopSessionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeSiteId)) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionStatus)) {
+		query["SessionStatus"] = request.SessionStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDesktopSessions"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDesktopSessionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDesktopSessions(request *DescribeDesktopSessionsRequest) (_result *DescribeDesktopSessionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDesktopSessionsResponse{}
+	_body, _err := client.DescribeDesktopSessionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTypesRequest, runtime *util.RuntimeOptions) (_result *DescribeDesktopTypesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36376,6 +39016,10 @@ func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTy
 
 	if !tea.BoolValue(util.IsUnset(request.CpuCount)) {
 		query["CpuCount"] = request.CpuCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupIdForModify)) {
+		query["DesktopGroupIdForModify"] = request.DesktopGroupIdForModify
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DesktopIdForModify)) {
@@ -36868,6 +39512,13 @@ func (client *Client) DescribeFlowMetric(request *DescribeFlowMetricRequest) (_r
 	return _result, _err
 }
 
+/**
+ * > You can query only the traffic data in the last 90 days.
+ *
+ * @param request DescribeFlowStatisticRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeFlowStatisticResponse
+ */
 func (client *Client) DescribeFlowStatisticWithOptions(request *DescribeFlowStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowStatisticResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36921,6 +39572,12 @@ func (client *Client) DescribeFlowStatisticWithOptions(request *DescribeFlowStat
 	return _result, _err
 }
 
+/**
+ * > You can query only the traffic data in the last 90 days.
+ *
+ * @param request DescribeFlowStatisticRequest
+ * @return DescribeFlowStatisticResponse
+ */
 func (client *Client) DescribeFlowStatistic(request *DescribeFlowStatisticRequest) (_result *DescribeFlowStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFlowStatisticResponse{}
@@ -37291,6 +39948,10 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 		query["DesktopInstanceType"] = request.DesktopInstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FotaVersion)) {
+		query["FotaVersion"] = request.FotaVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GpuCategory)) {
 		query["GpuCategory"] = request.GpuCategory
 	}
@@ -37301,6 +39962,10 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
 		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageStatus)) {
@@ -37790,6 +40455,189 @@ func (client *Client) DescribePolicyGroups(request *DescribePolicyGroupsRequest)
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
+ * *   If you set ResourceType to OfficeSite, you must specify InstanceType.
+ * *   If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+ * *   If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+ * > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](~~188609~~).
+ *
+ * @param request DescribePriceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePriceResponse
+ */
+func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, runtime *util.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BundleModels)) {
+		query["BundleModels"] = request.BundleModels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduCdsSize)) {
+		query["EduCdsSize"] = request.EduCdsSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduCommittedTime)) {
+		query["EduCommittedTime"] = request.EduCommittedTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduDesktopBundleId)) {
+		query["EduDesktopBundleId"] = request.EduDesktopBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduDesktopNum)) {
+		query["EduDesktopNum"] = request.EduDesktopNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduRoomClassify)) {
+		query["EduRoomClassify"] = request.EduRoomClassify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduStudentBundleId)) {
+		query["EduStudentBundleId"] = request.EduStudentBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduStudentNum)) {
+		query["EduStudentNum"] = request.EduStudentNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduTeacherBundleId)) {
+		query["EduTeacherBundleId"] = request.EduTeacherBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EduTeacherNum)) {
+		query["EduTeacherNum"] = request.EduTeacherNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupDesktopCount)) {
+		query["GroupDesktopCount"] = request.GroupDesktopCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HardwareVersion)) {
+		query["HardwareVersion"] = request.HardwareVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OsType)) {
+		query["OsType"] = request.OsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageSize)) {
+		query["PackageSize"] = request.PackageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromotionId)) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootDiskPerformanceLevel)) {
+		query["RootDiskPerformanceLevel"] = request.RootDiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootDiskSizeGib)) {
+		query["RootDiskSizeGib"] = request.RootDiskSizeGib
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpPeriodInfo)) {
+		query["SpPeriodInfo"] = request.SpPeriodInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpPrice)) {
+		query["SpPrice"] = request.SpPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpType)) {
+		query["SpType"] = request.SpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDiskPerformanceLevel)) {
+		query["UserDiskPerformanceLevel"] = request.UserDiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDiskSizeGib)) {
+		query["UserDiskSizeGib"] = request.UserDiskSizeGib
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePrice"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * ## Usage notes
+ * The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
+ * *   If you set ResourceType to OfficeSite, you must specify InstanceType.
+ * *   If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+ * *   If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+ * > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](~~188609~~).
+ *
+ * @param request DescribePriceRequest
+ * @return DescribePriceResponse
+ */
+func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *DescribePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePriceResponse{}
+	_body, _err := client.DescribePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37979,6 +40827,70 @@ func (client *Client) DescribeSecurityEventOperations(request *DescribeSecurityE
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityEventOperationsResponse{}
 	_body, _err := client.DescribeSecurityEventOperationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSessionStatisticWithOptions(request *DescribeSessionStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeSessionStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeSiteId)) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchRegionId)) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSessionStatistic"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSessionStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSessionStatistic(request *DescribeSessionStatisticRequest) (_result *DescribeSessionStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSessionStatisticResponse{}
+	_body, _err := client.DescribeSessionStatisticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39540,7 +42452,7 @@ func (client *Client) GetOfficeSiteSsoStatus(request *GetOfficeSiteSsoStatusRequ
 }
 
 /**
- * The ID of the workspace.
+ * You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
  *
  * @param request GetSpMetadataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39588,7 +42500,7 @@ func (client *Client) GetSpMetadataWithOptions(request *GetSpMetadataRequest, ru
 }
 
 /**
- * The ID of the workspace.
+ * You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
  *
  * @param request GetSpMetadataRequest
  * @return GetSpMetadataResponse
@@ -40464,6 +43376,62 @@ func (client *Client) ModifyADConnectorOfficeSite(request *ModifyADConnectorOffi
 	return _result, _err
 }
 
+func (client *Client) ModifyAclEntriesWithOptions(request *ModifyAclEntriesRequest, runtime *util.RuntimeOptions) (_result *ModifyAclEntriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAclEntries"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAclEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAclEntries(request *ModifyAclEntriesRequest) (_result *ModifyAclEntriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAclEntriesResponse{}
+	_body, _err := client.ModifyAclEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyAutoSnapshotPolicyWithOptions(request *ModifyAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41046,6 +44014,10 @@ func (client *Client) ModifyDesktopChargeTypeWithOptions(request *ModifyDesktopC
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UseDuration)) {
+		query["UseDuration"] = request.UseDuration
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -41368,6 +44340,22 @@ func (client *Client) ModifyDesktopName(request *ModifyDesktopNameRequest) (_res
 	return _result, _err
 }
 
+/**
+ * You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
+ * *   Before you call this operation, take note of the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides. For more information, see [Cloud desktop types](~~188609~~).
+ * *   When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. You must take note of the following items:
+ *     *   Each desktop type contains different desktop specifications, such as vCPUs, memory, and GPUs. When you change the desktop configurations, you can only change the desktop type from one to another. However, you cannot change only one of the specifications, such as vCPUs, memory, and GPUs.
+ *     *   You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
+ *     *   You can only increase the sizes of system and data disks.
+ *     *   If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or pay for the price difference.
+ *     *   If you want to change the configurations of your cloud desktop for multiple times, we recommend that you wait at least 5 minutes the next time you change the configurations of the same cloud desktop.
+ *     *   The cloud desktop for which you want to change configurations must be in the Stopped state.
+ * *   The changes do not affect your personal data on the cloud desktop.
+ *
+ * @param request ModifyDesktopSpecRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDesktopSpecResponse
+ */
 func (client *Client) ModifyDesktopSpecWithOptions(request *ModifyDesktopSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyDesktopSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41429,10 +44417,81 @@ func (client *Client) ModifyDesktopSpecWithOptions(request *ModifyDesktopSpecReq
 	return _result, _err
 }
 
+/**
+ * You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
+ * *   Before you call this operation, take note of the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides. For more information, see [Cloud desktop types](~~188609~~).
+ * *   When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. You must take note of the following items:
+ *     *   Each desktop type contains different desktop specifications, such as vCPUs, memory, and GPUs. When you change the desktop configurations, you can only change the desktop type from one to another. However, you cannot change only one of the specifications, such as vCPUs, memory, and GPUs.
+ *     *   You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
+ *     *   You can only increase the sizes of system and data disks.
+ *     *   If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or pay for the price difference.
+ *     *   If you want to change the configurations of your cloud desktop for multiple times, we recommend that you wait at least 5 minutes the next time you change the configurations of the same cloud desktop.
+ *     *   The cloud desktop for which you want to change configurations must be in the Stopped state.
+ * *   The changes do not affect your personal data on the cloud desktop.
+ *
+ * @param request ModifyDesktopSpecRequest
+ * @return ModifyDesktopSpecResponse
+ */
 func (client *Client) ModifyDesktopSpec(request *ModifyDesktopSpecRequest) (_result *ModifyDesktopSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDesktopSpecResponse{}
 	_body, _err := client.ModifyDesktopSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDesktopTimerWithOptions(request *ModifyDesktopTimerRequest, runtime *util.RuntimeOptions) (_result *ModifyDesktopTimerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopTimers)) {
+		query["DesktopTimers"] = request.DesktopTimers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseDesktopTimers)) {
+		query["UseDesktopTimers"] = request.UseDesktopTimers
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDesktopTimer"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDesktopTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDesktopTimer(request *ModifyDesktopTimerRequest) (_result *ModifyDesktopTimerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDesktopTimerResponse{}
+	_body, _err := client.ModifyDesktopTimerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41592,7 +44651,7 @@ func (client *Client) ModifyDiskSpec(request *ModifyDiskSpecRequest) (_result *M
 }
 
 /**
- * The ID of the request.
+ * The cloud desktop must be in the Running state.
  *
  * @param request ModifyEntitlementRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41640,7 +44699,7 @@ func (client *Client) ModifyEntitlementWithOptions(request *ModifyEntitlementReq
 }
 
 /**
- * The ID of the request.
+ * The cloud desktop must be in the Running state.
  *
  * @param request ModifyEntitlementRequest
  * @return ModifyEntitlementResponse
@@ -42235,6 +45294,14 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.DomainList)) {
 		query["DomainList"] = request.DomainList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRule)) {
+		query["DomainResolveRule"] = request.DomainResolveRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRuleType)) {
+		query["DomainResolveRuleType"] = request.DomainResolveRuleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndUserApplyAdminCoordinate)) {
@@ -43072,6 +46139,13 @@ func (client *Client) RenewNetworkPackages(request *RenewNetworkPackagesRequest)
 	return _result, _err
 }
 
+/**
+ * > You can call this operation to reset only cloud desktops that are managed by a cloud desktop group. You cannot reset an independent cloud desktop.
+ *
+ * @param request ResetDesktopsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResetDesktopsResponse
+ */
 func (client *Client) ResetDesktopsWithOptions(request *ResetDesktopsRequest, runtime *util.RuntimeOptions) (_result *ResetDesktopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43125,6 +46199,12 @@ func (client *Client) ResetDesktopsWithOptions(request *ResetDesktopsRequest, ru
 	return _result, _err
 }
 
+/**
+ * > You can call this operation to reset only cloud desktops that are managed by a cloud desktop group. You cannot reset an independent cloud desktop.
+ *
+ * @param request ResetDesktopsRequest
+ * @return ResetDesktopsResponse
+ */
 func (client *Client) ResetDesktops(request *ResetDesktopsRequest) (_result *ResetDesktopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetDesktopsResponse{}
@@ -43698,6 +46778,13 @@ func (client *Client) SetDesktopGroupTimerStatus(request *SetDesktopGroupTimerSt
 	return _result, _err
 }
 
+/**
+ * This operation is supported only for AD directories, not for RAM directories.
+ *
+ * @param request SetDirectorySsoStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDirectorySsoStatusResponse
+ */
 func (client *Client) SetDirectorySsoStatusWithOptions(request *SetDirectorySsoStatusRequest, runtime *util.RuntimeOptions) (_result *SetDirectorySsoStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43739,6 +46826,12 @@ func (client *Client) SetDirectorySsoStatusWithOptions(request *SetDirectorySsoS
 	return _result, _err
 }
 
+/**
+ * This operation is supported only for AD directories, not for RAM directories.
+ *
+ * @param request SetDirectorySsoStatusRequest
+ * @return SetDirectorySsoStatusResponse
+ */
 func (client *Client) SetDirectorySsoStatus(request *SetDirectorySsoStatusRequest) (_result *SetDirectorySsoStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDirectorySsoStatusResponse{}
@@ -43751,7 +46844,7 @@ func (client *Client) SetDirectorySsoStatus(request *SetDirectorySsoStatusReques
 }
 
 /**
- * The entityID value obtained after the IdP metadata file is parsed.
+ * You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
  *
  * @param request SetIdpMetadataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43803,7 +46896,7 @@ func (client *Client) SetIdpMetadataWithOptions(request *SetIdpMetadataRequest, 
 }
 
 /**
- * The entityID value obtained after the IdP metadata file is parsed.
+ * You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
  *
  * @param request SetIdpMetadataRequest
  * @return SetIdpMetadataResponse
@@ -44183,7 +47276,7 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 }
 
 /**
- * The ID of the resource, which is the ID of the cloud desktop.
+ * If TagKey is specified, the new TagValue value overrides the original TagValue value.
  *
  * @param request TagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44235,7 +47328,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 }
 
 /**
- * The ID of the resource, which is the ID of the cloud desktop.
+ * If TagKey is specified, the new TagValue value overrides the original TagValue value.
  *
  * @param request TagResourcesRequest
  * @return TagResourcesResponse
