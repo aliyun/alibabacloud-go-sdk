@@ -16408,6 +16408,139 @@ func (s *DescribeDomainResponse) SetBody(v *DescribeDomainResponseBody) *Describ
 	return s
 }
 
+type DescribeGroupQpsRequest struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeGroupQpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupQpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupQpsRequest) SetEndTime(v string) *DescribeGroupQpsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeGroupQpsRequest) SetGroupId(v string) *DescribeGroupQpsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeGroupQpsRequest) SetSecurityToken(v string) *DescribeGroupQpsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeGroupQpsRequest) SetStageName(v string) *DescribeGroupQpsRequest {
+	s.StageName = &v
+	return s
+}
+
+func (s *DescribeGroupQpsRequest) SetStartTime(v string) *DescribeGroupQpsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeGroupQpsResponseBody struct {
+	GroupQps  *DescribeGroupQpsResponseBodyGroupQps `json:"GroupQps,omitempty" xml:"GroupQps,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeGroupQpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupQpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupQpsResponseBody) SetGroupQps(v *DescribeGroupQpsResponseBodyGroupQps) *DescribeGroupQpsResponseBody {
+	s.GroupQps = v
+	return s
+}
+
+func (s *DescribeGroupQpsResponseBody) SetRequestId(v string) *DescribeGroupQpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeGroupQpsResponseBodyGroupQps struct {
+	MonitorItem []*DescribeGroupQpsResponseBodyGroupQpsMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGroupQpsResponseBodyGroupQps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupQpsResponseBodyGroupQps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupQpsResponseBodyGroupQps) SetMonitorItem(v []*DescribeGroupQpsResponseBodyGroupQpsMonitorItem) *DescribeGroupQpsResponseBodyGroupQps {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeGroupQpsResponseBodyGroupQpsMonitorItem struct {
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeGroupQpsResponseBodyGroupQpsMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupQpsResponseBodyGroupQpsMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupQpsResponseBodyGroupQpsMonitorItem) SetItemTime(v string) *DescribeGroupQpsResponseBodyGroupQpsMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeGroupQpsResponseBodyGroupQpsMonitorItem) SetItemValue(v string) *DescribeGroupQpsResponseBodyGroupQpsMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeGroupQpsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGroupQpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGroupQpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupQpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupQpsResponse) SetHeaders(v map[string]*string) *DescribeGroupQpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGroupQpsResponse) SetStatusCode(v int32) *DescribeGroupQpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGroupQpsResponse) SetBody(v *DescribeGroupQpsResponseBody) *DescribeGroupQpsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHistoryApisRequest struct {
 	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
@@ -35552,6 +35685,66 @@ func (client *Client) DescribeDomain(request *DescribeDomainRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainResponse{}
 	_body, _err := client.DescribeDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGroupQpsWithOptions(request *DescribeGroupQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupQpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupQps"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGroupQpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGroupQps(request *DescribeGroupQpsRequest) (_result *DescribeGroupQpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGroupQpsResponse{}
+	_body, _err := client.DescribeGroupQpsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
