@@ -10029,9 +10029,13 @@ func (s *DeletePrometheusRemoteWriteResponse) SetBody(v *DeletePrometheusRemoteW
 }
 
 type DeleteRetcodeAppRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName  *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The process identifier (PID) of the application.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10064,11 +10068,26 @@ func (s *DeleteRetcodeAppRequest) SetRegionId(v string) *DeleteRetcodeAppRequest
 }
 
 type DeleteRetcodeAppResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the Browser Monitoring task was deleted. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned for the operation. Valid values:
+	//
+	// *   **Success** is returned if the operation is successful.
+	// *   An error message is returned if the operation fails.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteRetcodeAppResponseBody) String() string {
@@ -10478,7 +10497,8 @@ func (s *DeleteSyntheticTaskResponse) SetBody(v *DeleteSyntheticTaskResponseBody
 
 type DeleteTraceAppRequest struct {
 	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId        *string                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DeleteReason *DeleteTraceAppRequestDeleteReason `json:"DeleteReason,omitempty" xml:"DeleteReason,omitempty" type:"Struct"`
 	// The PID of the application that you want to delete. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region.
@@ -10503,6 +10523,11 @@ func (s *DeleteTraceAppRequest) SetAppId(v string) *DeleteTraceAppRequest {
 	return s
 }
 
+func (s *DeleteTraceAppRequest) SetDeleteReason(v *DeleteTraceAppRequestDeleteReason) *DeleteTraceAppRequest {
+	s.DeleteReason = v
+	return s
+}
+
 func (s *DeleteTraceAppRequest) SetPid(v string) *DeleteTraceAppRequest {
 	s.Pid = &v
 	return s
@@ -10518,11 +10543,108 @@ func (s *DeleteTraceAppRequest) SetType(v string) *DeleteTraceAppRequest {
 	return s
 }
 
+type DeleteTraceAppRequestDeleteReason struct {
+	ReasonIds []*DeleteTraceAppRequestDeleteReasonReasonIds `json:"ReasonIds,omitempty" xml:"ReasonIds,omitempty" type:"Repeated"`
+	Remark    *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s DeleteTraceAppRequestDeleteReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTraceAppRequestDeleteReason) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTraceAppRequestDeleteReason) SetReasonIds(v []*DeleteTraceAppRequestDeleteReasonReasonIds) *DeleteTraceAppRequestDeleteReason {
+	s.ReasonIds = v
+	return s
+}
+
+func (s *DeleteTraceAppRequestDeleteReason) SetRemark(v string) *DeleteTraceAppRequestDeleteReason {
+	s.Remark = &v
+	return s
+}
+
+type DeleteTraceAppRequestDeleteReasonReasonIds struct {
+	Id   *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeleteTraceAppRequestDeleteReasonReasonIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTraceAppRequestDeleteReasonReasonIds) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTraceAppRequestDeleteReasonReasonIds) SetId(v int32) *DeleteTraceAppRequestDeleteReasonReasonIds {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteTraceAppRequestDeleteReasonReasonIds) SetName(v string) *DeleteTraceAppRequestDeleteReasonReasonIds {
+	s.Name = &v
+	return s
+}
+
+type DeleteTraceAppShrinkRequest struct {
+	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
+	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DeleteReasonShrink *string `json:"DeleteReason,omitempty" xml:"DeleteReason,omitempty"`
+	// The PID of the application that you want to delete. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
+	//
+	// *   `TRACE`: application monitoring
+	// *   `RETCODE`: frontend monitoring
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DeleteTraceAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTraceAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTraceAppShrinkRequest) SetAppId(v string) *DeleteTraceAppShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteTraceAppShrinkRequest) SetDeleteReasonShrink(v string) *DeleteTraceAppShrinkRequest {
+	s.DeleteReasonShrink = &v
+	return s
+}
+
+func (s *DeleteTraceAppShrinkRequest) SetPid(v string) *DeleteTraceAppShrinkRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *DeleteTraceAppShrinkRequest) SetRegionId(v string) *DeleteTraceAppShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteTraceAppShrinkRequest) SetType(v string) *DeleteTraceAppShrinkRequest {
+	s.Type = &v
+	return s
+}
+
 type DeleteTraceAppResponseBody struct {
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response in JSON format, including the HTTP status code, error code, response message, and trace ID.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTraceAppResponseBody) String() string {
@@ -10533,13 +10655,28 @@ func (s DeleteTraceAppResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteTraceAppResponseBody) SetCode(v int64) *DeleteTraceAppResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteTraceAppResponseBody) SetData(v string) *DeleteTraceAppResponseBody {
 	s.Data = &v
 	return s
 }
 
+func (s *DeleteTraceAppResponseBody) SetMessage(v string) *DeleteTraceAppResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *DeleteTraceAppResponseBody) SetRequestId(v string) *DeleteTraceAppResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTraceAppResponseBody) SetSuccess(v bool) *DeleteTraceAppResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11600,6 +11737,7 @@ func (s *DescribeIMRobotsResponse) SetBody(v *DescribeIMRobotsResponseBody) *Des
 }
 
 type DescribePrometheusAlertRuleRequest struct {
+	// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
 	AlertId   *int64  `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
@@ -11623,11 +11761,13 @@ func (s *DescribePrometheusAlertRuleRequest) SetClusterId(v string) *DescribePro
 }
 
 type DescribePrometheusAlertRuleResponseBody struct {
-	Code                *int64                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message             *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned struct.
 	PrometheusAlertRule *DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule `json:"PrometheusAlertRule,omitempty" xml:"PrometheusAlertRule,omitempty" type:"Struct"`
-	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribePrometheusAlertRuleResponseBody) String() string {
@@ -11664,18 +11804,36 @@ func (s *DescribePrometheusAlertRuleResponseBody) SetSuccess(v bool) *DescribePr
 }
 
 type DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule struct {
-	AlertId        *int64                                                                   `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
-	AlertName      *string                                                                  `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	Annotations    []*DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
-	ClusterId      *string                                                                  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DispatchRuleId *int64                                                                   `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
-	Duration       *string                                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Expression     *string                                                                  `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Labels         []*DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Message        *string                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	NotifyType     *string                                                                  `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	Status         *int32                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the alert rule.
+	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The name of the alert rule.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The annotations of the alert rule.
+	Annotations []*DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the notification policy. This parameter is returned if the **NotifyType** parameter is set to `DISPATCH_RULE`.
+	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The expression of the alert rule.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The tags of the alert rule.
+	Labels []*DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The alert message. Tags can be referenced in the {{$labels.xxx}} format.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The method of that is used to send alert notifications. Valid values:
+	//
+	// *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+	// *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
+	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// Indicates whether the alert rule is enabled. Valid values:
+	//
+	// *   `1`: The alert rule is enabled.
+	// *   `0`: The alert rule is disabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the alert rule.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule) String() string {
@@ -11747,7 +11905,9 @@ func (s *DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule) SetType(v s
 }
 
 type DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the annotation.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the annotation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11770,7 +11930,9 @@ func (s *DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations) 
 }
 
 type DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the tag.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25748,8 +25910,11 @@ func (s *SaveTraceAppConfigRequestSettings) SetValue(v string) *SaveTraceAppConf
 }
 
 type SaveTraceAppConfigResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SaveTraceAppConfigResponseBody) String() string {
@@ -25760,13 +25925,28 @@ func (s SaveTraceAppConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *SaveTraceAppConfigResponseBody) SetCode(v int64) *SaveTraceAppConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *SaveTraceAppConfigResponseBody) SetData(v string) *SaveTraceAppConfigResponseBody {
 	s.Data = &v
 	return s
 }
 
+func (s *SaveTraceAppConfigResponseBody) SetMessage(v string) *SaveTraceAppConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *SaveTraceAppConfigResponseBody) SetRequestId(v string) *SaveTraceAppConfigResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SaveTraceAppConfigResponseBody) SetSuccess(v bool) *SaveTraceAppConfigResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -30890,7 +31070,9 @@ type UpdatePrometheusGlobalViewRequest struct {
 	// 创建GlobalView时，是否要求所有子实例都校验成功时，才创建GlobalView实例。默认是false，即可以部分成功。
 	AllSubClustersSuccess *bool `json:"AllSubClustersSuccess,omitempty" xml:"AllSubClustersSuccess,omitempty"`
 	// The ID of the Prometheus instance.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	MostRegionId *string `json:"MostRegionId,omitempty" xml:"MostRegionId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Prometheus instance belongs.
@@ -30914,6 +31096,16 @@ func (s *UpdatePrometheusGlobalViewRequest) SetAllSubClustersSuccess(v bool) *Up
 
 func (s *UpdatePrometheusGlobalViewRequest) SetClusterId(v string) *UpdatePrometheusGlobalViewRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdatePrometheusGlobalViewRequest) SetGroupName(v string) *UpdatePrometheusGlobalViewRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdatePrometheusGlobalViewRequest) SetMostRegionId(v string) *UpdatePrometheusGlobalViewRequest {
+	s.MostRegionId = &v
 	return s
 }
 
@@ -35331,14 +35523,24 @@ func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (
 	return _result, _err
 }
 
-func (client *Client) DeleteTraceAppWithOptions(request *DeleteTraceAppRequest, runtime *util.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteTraceAppWithOptions(tmpReq *DeleteTraceAppRequest, runtime *util.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DeleteTraceAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeleteReason)) {
+		request.DeleteReasonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteReason, tea.String("DeleteReason"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteReasonShrink)) {
+		query["DeleteReason"] = request.DeleteReasonShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Pid)) {
@@ -41591,6 +41793,14 @@ func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdateProme
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MostRegionId)) {
+		query["MostRegionId"] = request.MostRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
