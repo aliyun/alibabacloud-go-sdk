@@ -12,14 +12,338 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type GetInstanceResponseBody struct {
-	ErrorCode      *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *string                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Instance       *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+type CreateInstanceRequest struct {
+	AutoPay          *bool   `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
+	AutoRenew        *bool   `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	ChargeType       *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	ColdStorageSize  *int64  `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
+	Cpu              *int64  `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Duration         *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
+	GatewayCount     *int64  `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
+	InstanceName     *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	InstanceType     *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	LeaderInstanceId *string `json:"leaderInstanceId,omitempty" xml:"leaderInstanceId,omitempty"`
+	PricingCycle     *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
+	RegionId         *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ResourceGroupId  *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	StorageSize      *int64  `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	VSwitchId        *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	VpcId            *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	ZoneId           *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s CreateInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequest) SetAutoPay(v bool) *CreateInstanceRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetChargeType(v string) *CreateInstanceRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetColdStorageSize(v int64) *CreateInstanceRequest {
+	s.ColdStorageSize = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetCpu(v int64) *CreateInstanceRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetDuration(v int64) *CreateInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetGatewayCount(v int64) *CreateInstanceRequest {
+	s.GatewayCount = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetLeaderInstanceId(v string) *CreateInstanceRequest {
+	s.LeaderInstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPricingCycle(v string) *CreateInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetStorageSize(v int64) *CreateInstanceRequest {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetVSwitchId(v string) *CreateInstanceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetVpcId(v string) *CreateInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetZoneId(v string) *CreateInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateInstanceResponseBody struct {
+	Data           *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *string                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponseBody) SetData(v *CreateInstanceResponseBodyData) *CreateInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetErrorCode(v string) *CreateInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetErrorMessage(v string) *CreateInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetHttpStatusCode(v string) *CreateInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateInstanceResponseBodyData struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponseBodyData) SetCode(v string) *CreateInstanceResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBodyData) SetInstanceId(v string) *CreateInstanceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBodyData) SetMessage(v string) *CreateInstanceResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBodyData) SetOrderId(v string) *CreateInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBodyData) SetSuccess(v string) *CreateInstanceResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type CreateInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceRequest) SetRegionId(v string) *DeleteInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteInstanceResponseBody struct {
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResponseBody) SetData(v bool) *DeleteInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetErrorCode(v string) *DeleteInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetErrorMessage(v string) *DeleteInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetHttpStatusCode(v string) *DeleteInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceResponseBody struct {
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the instance.
+	Instance *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result, which indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -61,32 +385,283 @@ func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 }
 
 type GetInstanceResponseBodyInstance struct {
-	AutoRenewal        *string                                     `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ColdStorage        *int64                                      `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	CommodityCode      *string                                     `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ComputeNodeCount   *int64                                      `json:"ComputeNodeCount,omitempty" xml:"ComputeNodeCount,omitempty"`
-	Cpu                *int64                                      `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime       *string                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Disk               *string                                     `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	EnableHiveAccess   *string                                     `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
-	Endpoints          []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	ExpirationTime     *string                                     `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	GatewayCount       *int64                                      `json:"GatewayCount,omitempty" xml:"GatewayCount,omitempty"`
-	GatewayCpu         *int64                                      `json:"GatewayCpu,omitempty" xml:"GatewayCpu,omitempty"`
-	GatewayMemory      *int64                                      `json:"GatewayMemory,omitempty" xml:"GatewayMemory,omitempty"`
-	InstanceChargeType *string                                     `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceId         *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName       *string                                     `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceOwner      *string                                     `json:"InstanceOwner,omitempty" xml:"InstanceOwner,omitempty"`
-	InstanceStatus     *string                                     `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType       *string                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	LeaderInstanceId   *string                                     `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
-	Memory             *int64                                      `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	ResourceGroupId    *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SuspendReason      *string                                     `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
-	Tags               []*GetInstanceResponseBodyInstanceTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Version            *string                                     `json:"Version,omitempty" xml:"Version,omitempty"`
-	ZoneId             *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Indicates whether auto-renewal is enabled.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	AutoRenewal *string `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// The cold storage capacity of the instance. Unit: GB. Standard SSD is used for hot storage, and HDD is used for cold storage.
+	ColdStorage *int64 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	// The commodity code.
+	//
+	// Valid values:
+	//
+	// *   hologram_maxcomputeAccelerate_public_cn
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     China site/Lakehouse Acceleration Edition
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   hologram_combo_public_cn
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     China site/Subscription
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   hologram_prepay_public_intl
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     International site/Subscription
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   hologram_storage_dp_cn
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     China site/Storage plan
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   hologram_postpay_public_cn
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     China site/Pay-as-you-go
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   hologram_postpay_public_intl
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     International site/Pay-as-you-go
+	//
+	//     <!-- -->
+	//
+	// *   hologram_maxcomputeAccelerate_public_intl
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     International site/Lakehouse Acceleration Edition
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   hologram_cu_dp_cn
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     China site/Compute plan
+	//
+	//     <!-- -->
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The number of compute nodes. In a typical configuration, a node has 16 vCPUs and 32 GB of memory.
+	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" xml:"ComputeNodeCount,omitempty"`
+	// The number of vCPUs.
+	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The creation time.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The amount of data that can be stored in the disk of the Standard storage class. Unit: GB.
+	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// Indicates whether data lake acceleration is enabled.
+	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
+	// The list of endpoints.
+	Endpoints []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// The expiration time. This parameter is invalid for pay-as-you-go instances.
+	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// 网关节点数量。
+	GatewayCount *int64 `json:"GatewayCount,omitempty" xml:"GatewayCount,omitempty"`
+	// 网关cpu资源。
+	// 单位：core。
+	GatewayCpu *int64 `json:"GatewayCpu,omitempty" xml:"GatewayCpu,omitempty"`
+	// 网关内存资源。
+	// 单位：GB。
+	GatewayMemory *int64 `json:"GatewayMemory,omitempty" xml:"GatewayMemory,omitempty"`
+	// The billing method of the instance.
+	//
+	// Valid values:
+	//
+	// *   PostPaid
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     pay-as-you-go
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   PrePaid
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     subscription
+	//
+	//     <!-- -->
+	//
+	//     .
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name. The instance name must be 2 to 64 characters in length.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The owner of the instance.
+	InstanceOwner *string `json:"InstanceOwner,omitempty" xml:"InstanceOwner,omitempty"`
+	// The status of the instance.
+	//
+	// Valid values:
+	//
+	// *   Creating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Running
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Suspended
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Allocating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The type of the instance.
+	//
+	// Valid values:
+	//
+	// *   Follower
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     read-only secondary instance
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   Standard
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     normal instance
+	//
+	//     <!-- -->
+	//
+	//     .
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the primary instance.
+	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
+	// The memory size. Unit: GB.
+	Memory   *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The reason for the suspension.
+	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
+	// The instance tag.
+	Tags []*GetInstanceResponseBodyInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The instance version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the zone where the instance resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyInstance) String() string {
@@ -202,6 +777,11 @@ func (s *GetInstanceResponseBodyInstance) SetMemory(v int64) *GetInstanceRespons
 	return s
 }
 
+func (s *GetInstanceResponseBodyInstance) SetRegionId(v string) *GetInstanceResponseBodyInstance {
+	s.RegionId = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyInstance) SetResourceGroupId(v string) *GetInstanceResponseBodyInstance {
 	s.ResourceGroupId = &v
 	return s
@@ -228,13 +808,93 @@ func (s *GetInstanceResponseBodyInstance) SetZoneId(v string) *GetInstanceRespon
 }
 
 type GetInstanceResponseBodyInstanceEndpoints struct {
+	// The endpoint. This parameter is returned if both the AnyTunnel and SingleTunnel modes are enabled for an instance, and the instance is switched from the AnyTunnel mode to the SingleTunnel mode. In this case, two endpoints are returned.
 	AlternativeEndpoints *string `json:"AlternativeEndpoints,omitempty" xml:"AlternativeEndpoints,omitempty"`
-	Enabled              *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Endpoint             *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Indicates whether the network is enabled.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The endpoint.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The network type.
+	//
+	// Valid values:
+	//
+	// *   VPCSingleTunnel
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     virtual private cloud (VPC)
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   Intranet
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     internal network
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   VPCAnyTunnel
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     not supported by new instances
+	//
+	//     <!-- -->
+	//
+	// *   Internet
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Internet
+	//
+	//     <!-- -->
+	//
+	//     .
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of VPC to which the instance belongs.
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -282,7 +942,9 @@ func (s *GetInstanceResponseBodyInstanceEndpoints) SetVpcInstanceId(v string) *G
 }
 
 type GetInstanceResponseBodyInstanceTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -334,8 +996,11 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type ListInstancesRequest struct {
-	ResourceGroupId *string                    `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tag             []*ListInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	CmsInstanceType *string `json:"cmsInstanceType,omitempty" xml:"cmsInstanceType,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The tags to add to the resource.
+	Tag []*ListInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -344,6 +1009,11 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequest) SetCmsInstanceType(v string) *ListInstancesRequest {
+	s.CmsInstanceType = &v
+	return s
 }
 
 func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
@@ -357,7 +1027,9 @@ func (s *ListInstancesRequest) SetTag(v []*ListInstancesRequestTag) *ListInstanc
 }
 
 type ListInstancesRequestTag struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -380,13 +1052,18 @@ func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
 }
 
 type ListInstancesResponseBody struct {
-	ErrorCode      *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *string                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceList   []*ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// Id of the request
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The list of queried instances.
+	InstanceList []*ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -428,21 +1105,150 @@ func (s *ListInstancesResponseBody) SetSuccess(v string) *ListInstancesResponseB
 }
 
 type ListInstancesResponseBodyInstanceList struct {
-	CommodityCode      *string                                           `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	CreationTime       *string                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EnableHiveAccess   *string                                           `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
-	Endpoints          []*ListInstancesResponseBodyInstanceListEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	ExpirationTime     *string                                           `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	InstanceChargeType *string                                           `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceId         *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName       *string                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus     *string                                           `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType       *string                                           `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	LeaderInstanceId   *string                                           `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
-	ResourceGroupId    *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SuspendReason      *string                                           `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
-	Tags               []*ListInstancesResponseBodyInstanceListTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Version            *string                                           `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The commodity code, which is the same as that on the Billing Management page.
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The time when the cluster was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Indicates whether lakehouse acceleration is enabled.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
+	// The list of endpoints.
+	Endpoints []*ListInstancesResponseBodyInstanceListEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// The time when the cluster expires.
+	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// Valid values:
+	//
+	// *   PostPaid
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     pay-as-you-go
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   PrePaid
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     subscription
+	//
+	//     <!-- -->
+	//
+	//     .
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The status of the instance.
+	//
+	// Valid values:
+	//
+	// *   Creating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Running
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Suspended
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Allocating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The type of the instance.
+	//
+	// Valid values:
+	//
+	// *   Follower
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     read-only secondary instance
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   Standard
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     normal instance
+	//
+	//     <!-- -->
+	//
+	//     .
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the primary instance.
+	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The reason for the suspension.
+	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
+	// The tags that are added to the resource.
+	Tags []*ListInstancesResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The version of the cluster.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstanceList) String() string {
@@ -508,6 +1314,11 @@ func (s *ListInstancesResponseBodyInstanceList) SetLeaderInstanceId(v string) *L
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstanceList) SetRegionId(v string) *ListInstancesResponseBodyInstanceList {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstanceList) SetResourceGroupId(v string) *ListInstancesResponseBodyInstanceList {
 	s.ResourceGroupId = &v
 	return s
@@ -528,13 +1339,95 @@ func (s *ListInstancesResponseBodyInstanceList) SetVersion(v string) *ListInstan
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstanceList) SetZoneId(v string) *ListInstancesResponseBodyInstanceList {
+	s.ZoneId = &v
+	return s
+}
+
 type ListInstancesResponseBodyInstanceListEndpoints struct {
-	Enabled   *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Endpoint  *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the endpoint is enabled.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The endpoint.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The network type.
+	//
+	// Valid values:
+	//
+	// *   VPCSingleTunnel
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     virtual private cloud (VPC)
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   Intranet
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     internal network
+	//
+	//     <!-- -->
+	//
+	// *   VPCAnyTunnel
+	//
+	//     <!-- -->
+	//
+	//     : This value is not supported by new instances
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   Internet
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Internet
+	//
+	//     <!-- -->
+	//
+	//     .
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the VPC to which the instance belongs.
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -577,7 +1470,9 @@ func (s *ListInstancesResponseBodyInstanceListEndpoints) SetVpcInstanceId(v stri
 }
 
 type ListInstancesResponseBodyInstanceListTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -628,14 +1523,172 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
-type RestartInstanceResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+type RenewInstanceRequest struct {
+	AutoRenew *bool  `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	Duration  *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+}
+
+func (s RenewInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewInstanceRequest) SetAutoRenew(v bool) *RenewInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *RenewInstanceRequest) SetDuration(v int32) *RenewInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+type RenewInstanceResponseBody struct {
+	Data           *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *string                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RenewInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewInstanceResponseBody) SetData(v *RenewInstanceResponseBodyData) *RenewInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RenewInstanceResponseBody) SetErrorCode(v string) *RenewInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RenewInstanceResponseBody) SetErrorMessage(v string) *RenewInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RenewInstanceResponseBody) SetHttpStatusCode(v string) *RenewInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RenewInstanceResponseBody) SetRequestId(v string) *RenewInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RenewInstanceResponseBody) SetSuccess(v string) *RenewInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RenewInstanceResponseBodyData struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RenewInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RenewInstanceResponseBodyData) SetCode(v string) *RenewInstanceResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *RenewInstanceResponseBodyData) SetMessage(v string) *RenewInstanceResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *RenewInstanceResponseBodyData) SetOrderId(v string) *RenewInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RenewInstanceResponseBodyData) SetSuccess(v bool) *RenewInstanceResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type RenewInstanceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenewInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewInstanceResponse) SetHeaders(v map[string]*string) *RenewInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewInstanceResponse) SetStatusCode(v int32) *RenewInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RestartInstanceResponseBody struct {
+	// Indicates whether the operation was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result, which indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RestartInstanceResponseBody) String() string {
@@ -706,13 +1759,18 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 }
 
 type ResumeInstanceResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The returned result, which indicates whether the operation was successful.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request result, which indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResumeInstanceResponseBody) String() string {
@@ -782,14 +1840,196 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 	return s
 }
 
-type StopInstanceResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+type ScaleInstanceRequest struct {
+	ColdStorageSize *int64  `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
+	Cpu             *int64  `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	ScaleType       *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	StorageSize     *int64  `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+}
+
+func (s ScaleInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleInstanceRequest) SetColdStorageSize(v int64) *ScaleInstanceRequest {
+	s.ColdStorageSize = &v
+	return s
+}
+
+func (s *ScaleInstanceRequest) SetCpu(v int64) *ScaleInstanceRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ScaleInstanceRequest) SetScaleType(v string) *ScaleInstanceRequest {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *ScaleInstanceRequest) SetStorageSize(v int64) *ScaleInstanceRequest {
+	s.StorageSize = &v
+	return s
+}
+
+type ScaleInstanceResponseBody struct {
+	Data           *ScaleInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *string                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ScaleInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleInstanceResponseBody) SetData(v *ScaleInstanceResponseBodyData) *ScaleInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ScaleInstanceResponseBody) SetErrorCode(v string) *ScaleInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ScaleInstanceResponseBody) SetErrorMessage(v string) *ScaleInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ScaleInstanceResponseBody) SetHttpStatusCode(v string) *ScaleInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ScaleInstanceResponseBody) SetRequestId(v string) *ScaleInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScaleInstanceResponseBodyData struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ScaleInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleInstanceResponseBodyData) SetCode(v string) *ScaleInstanceResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *ScaleInstanceResponseBodyData) SetMessage(v string) *ScaleInstanceResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *ScaleInstanceResponseBodyData) SetOrderId(v string) *ScaleInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ScaleInstanceResponseBodyData) SetSuccess(v bool) *ScaleInstanceResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type ScaleInstanceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScaleInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScaleInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleInstanceResponse) SetHeaders(v map[string]*string) *ScaleInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScaleInstanceResponse) SetStatusCode(v int32) *ScaleInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScaleInstanceResponse) SetBody(v *ScaleInstanceResponseBody) *ScaleInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopInstanceResponseBody struct {
+	// The returned result, which indicates whether the operation was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result, which indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopInstanceResponseBody) String() string {
@@ -860,6 +2100,7 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateInstanceNameRequest struct {
+	// The new name of the instance.
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 }
 
@@ -877,13 +2118,54 @@ func (s *UpdateInstanceNameRequest) SetInstanceName(v string) *UpdateInstanceNam
 }
 
 type UpdateInstanceNameResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The returned result, which indicates whether the operation was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request result, which indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateInstanceNameResponseBody) String() string {
@@ -954,13 +2236,35 @@ func (s *UpdateInstanceNameResponse) SetBody(v *UpdateInstanceNameResponseBody) 
 }
 
 type UpdateInstanceNetworkTypeRequest struct {
+	// Specifies whether to change the network type from AnyTunnel to SingleTunnel. This parameter is invalid for new instances. For new instances, this parameter is set to null by default.
+	//
+	// Valid values:
+	//
+	// *   others/null
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	AnyTunnelToSingleTunnel *string `json:"anyTunnelToSingleTunnel,omitempty" xml:"anyTunnelToSingleTunnel,omitempty"`
-	NetworkTypes            *string `json:"networkTypes,omitempty" xml:"networkTypes,omitempty"`
-	VSwitchId               *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// VPC ID。
-	VpcId      *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// A list of network types that you want to enable. The list of enabled network types is randomly ordered. For example, the Internet, internal network, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
+	NetworkTypes *string `json:"networkTypes,omitempty" xml:"networkTypes,omitempty"`
+	// The vSwitch ID.
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the VPC to which the instance belongs.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The owner ID of the VPC, which is the ID of the Alibaba Cloud account.
 	VpcOwnerId *string `json:"vpcOwnerId,omitempty" xml:"vpcOwnerId,omitempty"`
-	// vpc regionId。
+	// The region ID of the VPC.
 	VpcRegionId *string `json:"vpcRegionId,omitempty" xml:"vpcRegionId,omitempty"`
 }
 
@@ -1003,13 +2307,54 @@ func (s *UpdateInstanceNetworkTypeRequest) SetVpcRegionId(v string) *UpdateInsta
 }
 
 type UpdateInstanceNetworkTypeResponseBody struct {
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The returned result, which indicates whether the operation was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateInstanceNetworkTypeResponseBody) String() string {
@@ -1126,6 +2471,162 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		body["autoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		body["autoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		body["chargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColdStorageSize)) {
+		body["coldStorageSize"] = request.ColdStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayCount)) {
+		body["gatewayCount"] = request.GatewayCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["instanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LeaderInstanceId)) {
+		body["leaderInstanceId"] = request.LeaderInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		body["pricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		body["storageSize"] = request.StorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		body["vSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["vpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		body["zoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *DeleteInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstance(instanceId *string, request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1168,6 +2669,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CmsInstanceType)) {
+		body["cmsInstanceType"] = request.CmsInstanceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["resourceGroupId"] = request.ResourceGroupId
 	}
@@ -1205,6 +2710,56 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	headers := make(map[string]*string)
 	_result = &ListInstancesResponse{}
 	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RenewInstanceWithOptions(instanceId *string, request *RenewInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		body["autoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["duration"] = request.Duration
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewInstance"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/renew"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenewInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenewInstance(instanceId *string, request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RenewInstanceResponse{}
+	_body, _err := client.RenewInstanceWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1277,6 +2832,64 @@ func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanc
 	headers := make(map[string]*string)
 	_result = &ResumeInstanceResponse{}
 	_body, _err := client.ResumeInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *ScaleInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColdStorageSize)) {
+		body["coldStorageSize"] = request.ColdStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
+		body["scaleType"] = request.ScaleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		body["storageSize"] = request.StorageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScaleInstance"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/scale"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScaleInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScaleInstance(instanceId *string, request *ScaleInstanceRequest) (_result *ScaleInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ScaleInstanceResponse{}
+	_body, _err := client.ScaleInstanceWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
