@@ -3333,6 +3333,7 @@ type ListCardInfoRequest struct {
 	MaxRestFlowPercentage *float64 `json:"MaxRestFlowPercentage,omitempty" xml:"MaxRestFlowPercentage,omitempty"`
 	MinFlow               *string  `json:"MinFlow,omitempty" xml:"MinFlow,omitempty"`
 	Msisdn                *string  `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
+	NetworkType           *string  `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	NotifyId              *string  `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
 	OsStatus              *string  `json:"OsStatus,omitempty" xml:"OsStatus,omitempty"`
 	PageNo                *int32   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -3445,6 +3446,11 @@ func (s *ListCardInfoRequest) SetMinFlow(v string) *ListCardInfoRequest {
 
 func (s *ListCardInfoRequest) SetMsisdn(v string) *ListCardInfoRequest {
 	s.Msisdn = &v
+	return s
+}
+
+func (s *ListCardInfoRequest) SetNetworkType(v string) *ListCardInfoRequest {
+	s.NetworkType = &v
 	return s
 }
 
@@ -3587,38 +3593,40 @@ func (s *ListCardInfoResponseBodyData) SetTotal(v int32) *ListCardInfoResponseBo
 }
 
 type ListCardInfoResponseBodyDataList struct {
-	ActiveTime            *string                                    `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
-	ActiveType            *string                                    `json:"ActiveType,omitempty" xml:"ActiveType,omitempty"`
-	AliFee                *string                                    `json:"AliFee,omitempty" xml:"AliFee,omitempty"`
-	AliyunOrderId         *string                                    `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	ApnName               *string                                    `json:"ApnName,omitempty" xml:"ApnName,omitempty"`
-	CertifyType           *string                                    `json:"CertifyType,omitempty" xml:"CertifyType,omitempty"`
-	CredentialInstanceId  *string                                    `json:"CredentialInstanceId,omitempty" xml:"CredentialInstanceId,omitempty"`
-	CredentialNo          *string                                    `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
-	CredentialType        *string                                    `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	DataLevel             *string                                    `json:"DataLevel,omitempty" xml:"DataLevel,omitempty"`
-	DataType              *string                                    `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DirectionalGroupId    *int64                                     `json:"DirectionalGroupId,omitempty" xml:"DirectionalGroupId,omitempty"`
-	DirectionalGroupName  *string                                    `json:"DirectionalGroupName,omitempty" xml:"DirectionalGroupName,omitempty"`
-	ExpireTime            *string                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Iccid                 *string                                    `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	Imsi                  []*string                                  `json:"Imsi,omitempty" xml:"Imsi,omitempty" type:"Repeated"`
-	IsAutoRecharge        *bool                                      `json:"IsAutoRecharge,omitempty" xml:"IsAutoRecharge,omitempty"`
-	Msisdn                []*string                                  `json:"Msisdn,omitempty" xml:"Msisdn,omitempty" type:"Repeated"`
-	NotifyId              *string                                    `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
-	OpenAccountTime       *string                                    `json:"OpenAccountTime,omitempty" xml:"OpenAccountTime,omitempty"`
-	OsStatus              *string                                    `json:"OsStatus,omitempty" xml:"OsStatus,omitempty"`
-	Period                *string                                    `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodAddFlow         *string                                    `json:"PeriodAddFlow,omitempty" xml:"PeriodAddFlow,omitempty"`
-	PeriodRestFlow        *string                                    `json:"PeriodRestFlow,omitempty" xml:"PeriodRestFlow,omitempty"`
-	PeriodSmsUse          *string                                    `json:"PeriodSmsUse,omitempty" xml:"PeriodSmsUse,omitempty"`
-	PrivateNetworkSegment *string                                    `json:"PrivateNetworkSegment,omitempty" xml:"PrivateNetworkSegment,omitempty"`
-	Remark                *string                                    `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SimType               *string                                    `json:"SimType,omitempty" xml:"SimType,omitempty"`
-	Status                *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagList               []*ListCardInfoResponseBodyDataListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	Vendor                *string                                    `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	VsimInstanceId        *int64                                     `json:"VsimInstanceId,omitempty" xml:"VsimInstanceId,omitempty"`
+	ActiveTime             *string                                    `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	ActiveType             *string                                    `json:"ActiveType,omitempty" xml:"ActiveType,omitempty"`
+	AliFee                 *string                                    `json:"AliFee,omitempty" xml:"AliFee,omitempty"`
+	AliyunOrderId          *string                                    `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	ApnName                *string                                    `json:"ApnName,omitempty" xml:"ApnName,omitempty"`
+	CertifyType            *string                                    `json:"CertifyType,omitempty" xml:"CertifyType,omitempty"`
+	CredentialInstanceId   *string                                    `json:"CredentialInstanceId,omitempty" xml:"CredentialInstanceId,omitempty"`
+	CredentialNo           *string                                    `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	CredentialType         *string                                    `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	DataLevel              *string                                    `json:"DataLevel,omitempty" xml:"DataLevel,omitempty"`
+	DataType               *string                                    `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DirectionalGroupId     *int64                                     `json:"DirectionalGroupId,omitempty" xml:"DirectionalGroupId,omitempty"`
+	DirectionalGroupName   *string                                    `json:"DirectionalGroupName,omitempty" xml:"DirectionalGroupName,omitempty"`
+	ExpireTime             *string                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FlowLatestModifiedTime *string                                    `json:"FlowLatestModifiedTime,omitempty" xml:"FlowLatestModifiedTime,omitempty"`
+	Iccid                  *string                                    `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Imsi                   []*string                                  `json:"Imsi,omitempty" xml:"Imsi,omitempty" type:"Repeated"`
+	IsAutoRecharge         *bool                                      `json:"IsAutoRecharge,omitempty" xml:"IsAutoRecharge,omitempty"`
+	Msisdn                 []*string                                  `json:"Msisdn,omitempty" xml:"Msisdn,omitempty" type:"Repeated"`
+	NetworkType            *string                                    `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NotifyId               *string                                    `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
+	OpenAccountTime        *string                                    `json:"OpenAccountTime,omitempty" xml:"OpenAccountTime,omitempty"`
+	OsStatus               *string                                    `json:"OsStatus,omitempty" xml:"OsStatus,omitempty"`
+	Period                 *string                                    `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodAddFlow          *string                                    `json:"PeriodAddFlow,omitempty" xml:"PeriodAddFlow,omitempty"`
+	PeriodRestFlow         *string                                    `json:"PeriodRestFlow,omitempty" xml:"PeriodRestFlow,omitempty"`
+	PeriodSmsUse           *string                                    `json:"PeriodSmsUse,omitempty" xml:"PeriodSmsUse,omitempty"`
+	PrivateNetworkSegment  *string                                    `json:"PrivateNetworkSegment,omitempty" xml:"PrivateNetworkSegment,omitempty"`
+	Remark                 *string                                    `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SimType                *string                                    `json:"SimType,omitempty" xml:"SimType,omitempty"`
+	Status                 *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagList                []*ListCardInfoResponseBodyDataListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	Vendor                 *string                                    `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	VsimInstanceId         *int64                                     `json:"VsimInstanceId,omitempty" xml:"VsimInstanceId,omitempty"`
 }
 
 func (s ListCardInfoResponseBodyDataList) String() string {
@@ -3699,6 +3707,11 @@ func (s *ListCardInfoResponseBodyDataList) SetExpireTime(v string) *ListCardInfo
 	return s
 }
 
+func (s *ListCardInfoResponseBodyDataList) SetFlowLatestModifiedTime(v string) *ListCardInfoResponseBodyDataList {
+	s.FlowLatestModifiedTime = &v
+	return s
+}
+
 func (s *ListCardInfoResponseBodyDataList) SetIccid(v string) *ListCardInfoResponseBodyDataList {
 	s.Iccid = &v
 	return s
@@ -3716,6 +3729,11 @@ func (s *ListCardInfoResponseBodyDataList) SetIsAutoRecharge(v bool) *ListCardIn
 
 func (s *ListCardInfoResponseBodyDataList) SetMsisdn(v []*string) *ListCardInfoResponseBodyDataList {
 	s.Msisdn = v
+	return s
+}
+
+func (s *ListCardInfoResponseBodyDataList) SetNetworkType(v string) *ListCardInfoResponseBodyDataList {
+	s.NetworkType = &v
 	return s
 }
 
@@ -4405,6 +4423,7 @@ type ListOrderResponseBodyDataList struct {
 	ExpressNoList     []*string                                  `json:"ExpressNoList,omitempty" xml:"ExpressNoList,omitempty" type:"Repeated"`
 	FlowType          *string                                    `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
 	FunctionFee       *int32                                     `json:"FunctionFee,omitempty" xml:"FunctionFee,omitempty"`
+	NetworkType       *string                                    `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OrderDetailUrl    *string                                    `json:"OrderDetailUrl,omitempty" xml:"OrderDetailUrl,omitempty"`
 	OrderId           *string                                    `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OrderInfo         *string                                    `json:"OrderInfo,omitempty" xml:"OrderInfo,omitempty"`
@@ -4489,6 +4508,11 @@ func (s *ListOrderResponseBodyDataList) SetFlowType(v string) *ListOrderResponse
 
 func (s *ListOrderResponseBodyDataList) SetFunctionFee(v int32) *ListOrderResponseBodyDataList {
 	s.FunctionFee = &v
+	return s
+}
+
+func (s *ListOrderResponseBodyDataList) SetNetworkType(v string) *ListOrderResponseBodyDataList {
+	s.NetworkType = &v
 	return s
 }
 
@@ -6526,6 +6550,10 @@ func (client *Client) ListCardInfoWithOptions(request *ListCardInfoRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Msisdn)) {
 		query["Msisdn"] = request.Msisdn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyId)) {
