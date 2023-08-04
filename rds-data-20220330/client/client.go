@@ -2319,8 +2319,8 @@ func (client *Client) ExecuteStatementWithOptions(tmpReq *ExecuteStatementReques
 		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ResultSetOptions))) {
-		request.ResultSetOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ResultSetOptions), tea.String("ResultSetOptions"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResultSetOptions)) {
+		request.ResultSetOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResultSetOptions, tea.String("ResultSetOptions"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
