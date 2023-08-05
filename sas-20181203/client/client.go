@@ -5163,14 +5163,23 @@ func (s *CreateInterceptionRuleResponse) SetBody(v *CreateInterceptionRuleRespon
 }
 
 type CreateInterceptionTargetRequest struct {
-	AppName     *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ClusterId   *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName *string   `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ImageList   []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	Namespace   *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	TagList     []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	TargetName  *string   `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetType  *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The name of the application to which the network object belongs.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// An array that consists of the images of the network object.
+	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
+	// The namespace to which the network object belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// An array that consists of the labels specified for the network object.
+	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The object name.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The object type. Valid value:
+	// - **IMAGE**: specifies an image
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CreateInterceptionTargetRequest) String() string {
@@ -5222,8 +5231,10 @@ func (s *CreateInterceptionTargetRequest) SetTargetType(v string) *CreateInterce
 }
 
 type CreateInterceptionTargetResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The response parameters.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CreateInterceptionTargetResponseBody) String() string {
@@ -7967,8 +7978,12 @@ func (s *DeleteInstallCodeResponse) SetBody(v *DeleteInstallCodeResponseBody) *D
 }
 
 type DeleteInterceptionRuleRequest struct {
-	ClusterId *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RuleIds   []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The ID of the cluster that you want to query.
+	//
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IDs of the rules that you want to delete.
+	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteInterceptionRuleRequest) String() string {
@@ -7990,6 +8005,7 @@ func (s *DeleteInterceptionRuleRequest) SetRuleIds(v []*int64) *DeleteIntercepti
 }
 
 type DeleteInterceptionRuleResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8036,6 +8052,7 @@ func (s *DeleteInterceptionRuleResponse) SetBody(v *DeleteInterceptionRuleRespon
 }
 
 type DeleteInterceptionTargetRequest struct {
+	// The IDs of the network objects that you want to remove. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the IDs of the network objects.
 	TargetIds *string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty"`
 }
 
@@ -8053,8 +8070,13 @@ func (s *DeleteInterceptionTargetRequest) SetTargetIds(v string) *DeleteIntercep
 }
 
 type DeleteInterceptionTargetResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the network objects are removed. Valid values:
+	//
+	// *   **true**: The network objects are removed.
+	// *   **false**: The network objects fail to be removed.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteInterceptionTargetResponseBody) String() string {
@@ -15516,7 +15538,7 @@ type DescribeCheckWarningsRequest struct {
 	// *   **hc.check.type.attack_defense**: intrusion prevention
 	// *   **hc.check.type.others**: others
 	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The name of container.
+	// The name of the container.
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -20755,7 +20777,8 @@ type DescribeEmgVulItemResponseBodyGroupedVulItems struct {
 	// The progress of the urgent vulnerability detection task. Valid values: 0 to 100.
 	//
 	// > This parameter is returned only when an urgent vulnerability is being detected.
-	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress   *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
 	// The detection status of the urgent vulnerability. Valid values:
 	//
 	// *   **10**: The urgent vulnerability is not detected.
@@ -20809,6 +20832,11 @@ func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetPendingCount(v int32)
 
 func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetProgress(v int32) *DescribeEmgVulItemResponseBodyGroupedVulItems {
 	s.Progress = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetRaspDefend(v int32) *DescribeEmgVulItemResponseBodyGroupedVulItems {
+	s.RaspDefend = &v
 	return s
 }
 
@@ -21671,7 +21699,7 @@ func (s *DescribeExposedInstanceCriteriaResponse) SetBody(v *DescribeExposedInst
 type DescribeExposedInstanceDetailRequest struct {
 	// The UUID of the server that is exposed on the Internet.
 	//
-	// >  You can call the [DescribeExposedInstanceList](~~DescribeExposedInstanceList~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeExposedInstanceList](~~DescribeExposedInstanceList~~) operation to query the UUIDs of servers.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -21689,7 +21717,7 @@ func (s *DescribeExposedInstanceDetailRequest) SetUuid(v string) *DescribeExpose
 }
 
 type DescribeExposedInstanceDetailResponseBody struct {
-	// The exposure details about the server.
+	// The list of exposure details of the server.
 	ExposedChains []*DescribeExposedInstanceDetailResponseBodyExposedChains `json:"ExposedChains,omitempty" xml:"ExposedChains,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -21714,11 +21742,11 @@ func (s *DescribeExposedInstanceDetailResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeExposedInstanceDetailResponseBodyExposedChains struct {
-	// The information about all vulnerabilities on the server.
+	// The details of all vulnerabilities on the server.
 	AllVulList []*DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList `json:"AllVulList,omitempty" xml:"AllVulList,omitempty" type:"Repeated"`
 	// The server component that is exposed on the Internet.
 	ExposureComponent *string `json:"ExposureComponent,omitempty" xml:"ExposureComponent,omitempty"`
-	// The public IP address.
+	// The IP address that is exposed.
 	ExposureIp *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
 	// The port that is exposed on the Internet.
 	ExposurePort *string `json:"ExposurePort,omitempty" xml:"ExposurePort,omitempty"`
@@ -21729,16 +21757,16 @@ type DescribeExposedInstanceDetailResponseBodyExposedChains struct {
 	// *   **EIP**: an elastic IP address (EIP)
 	// *   **DNAT**: the NAT gateway that connects to the Internet by using the DNAT feature
 	ExposureType *string `json:"ExposureType,omitempty" xml:"ExposureType,omitempty"`
-	// The ID of the instance to which the resource belongs. The valid values of this parameter vary based on the value of the ExposureType parameter.
+	// The ID of the instance to which the resource belongs. The valid values of this parameter vary based on the ExposureType parameter.
 	//
-	// *   If the value of the ExposureType parameter is **INTERNET_IP**, the value of this parameter is an empty string.
-	// *   If the value of the ExposureType parameter is **SLB**, the value of this parameter is the ID of the Internet-facing SLB instance.
+	// *   If the value of the ExposureType parameter is **INTERNET_IP**, this parameter is empty.
+	// *   If the value of the ExposureType parameter is **SLB**, the value of this parameter is the ID of the SLB instance.
 	// *   If the value of the ExposureType parameter is **EIP**, the value of this parameter is the ID of the EIP.
 	// *   If the value of the ExposureType parameter is **DNAT**, the value of this parameter is the ID of the NAT gateway.
 	ExposureTypeId *string `json:"ExposureTypeId,omitempty" xml:"ExposureTypeId,omitempty"`
 	// The server group to which the server belongs.
 	GroupNo *string `json:"GroupNo,omitempty" xml:"GroupNo,omitempty"`
-	// The ID of the server.
+	// The instance ID of the server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the server.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -21750,7 +21778,7 @@ type DescribeExposedInstanceDetailResponseBodyExposedChains struct {
 	RealVulList []*DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList `json:"RealVulList,omitempty" xml:"RealVulList,omitempty" type:"Repeated"`
 	// The region in which the server resides.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The UUID of the server.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -21845,16 +21873,16 @@ type DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList struct {
 	// *   **later**: medium
 	// *   **nntf**: low
 	//
-	// >  We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
+	// > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
-	// *   **cve**: Linux software vulnerabilities
-	// *   **sys**: Windows system vulnerabilities
-	// *   **cms**: Web-CMS vulnerabilities
-	// *   **app**: application vulnerabilities
-	// *   **emg**: urgent vulnerabilities
-	// *   **sca**: middleware vulnerabilities
+	// *   **cve**: Linux software vulnerability
+	// *   **sys**: Windows system vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	// *   **app**: application vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **sca**: middleware vulnerability
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The UUID of the server.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -21904,16 +21932,16 @@ type DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList struct {
 	// *   **later**: medium
 	// *   **nntf**: low
 	//
-	// >  We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
+	// > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
-	// *   **cve**: Linux software vulnerabilities
-	// *   **sys**: Windows system vulnerabilities
-	// *   **cms**: Web-CMS vulnerabilities
-	// *   **app**: application vulnerabilities
-	// *   **emg**: urgent vulnerabilities
-	// *   **sca**: middleware vulnerabilities
+	// *   **cve**: Linux software vulnerability
+	// *   **sys**: Windows system vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	// *   **app**: application vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **sca**: middleware vulnerability
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The UUID of the server.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -57478,9 +57506,18 @@ func (s *GetAlarmMachineCountResponse) SetBody(v *GetAlarmMachineCountResponseBo
 }
 
 type GetAppNetworkRequest struct {
+	// The ID of the cluster to which the container belongs.
+	//
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end timestamp of the query. Unit: milliseconds.
+	//
+	// > The days between the start timestamp and the end timestamp cannot exceed **seven** days.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start timestamp of the query. Unit: milliseconds.
+	//
+	// > The days between the start timestamp and the end timestamp cannot exceed **seven** days.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetAppNetworkRequest) String() string {
@@ -57507,8 +57544,10 @@ func (s *GetAppNetworkRequest) SetStartTime(v int64) *GetAppNetworkRequest {
 }
 
 type GetAppNetworkResponseBody struct {
+	// The information about the application network topology.
 	AppNetwork *GetAppNetworkResponseBodyAppNetwork `json:"AppNetwork,omitempty" xml:"AppNetwork,omitempty" type:"Struct"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAppNetworkResponseBody) String() string {
@@ -57530,9 +57569,12 @@ func (s *GetAppNetworkResponseBody) SetRequestId(v string) *GetAppNetworkRespons
 }
 
 type GetAppNetworkResponseBodyAppNetwork struct {
-	Edge      []*GetAppNetworkResponseBodyAppNetworkEdge      `json:"Edge,omitempty" xml:"Edge,omitempty" type:"Repeated"`
+	// The information about the topology edge.
+	Edge []*GetAppNetworkResponseBodyAppNetworkEdge `json:"Edge,omitempty" xml:"Edge,omitempty" type:"Repeated"`
+	// The namespace.
 	Namespace []*GetAppNetworkResponseBodyAppNetworkNamespace `json:"Namespace,omitempty" xml:"Namespace,omitempty" type:"Repeated"`
-	Node      []*GetAppNetworkResponseBodyAppNetworkNode      `json:"Node,omitempty" xml:"Node,omitempty" type:"Repeated"`
+	// The information about the application node.
+	Node []*GetAppNetworkResponseBodyAppNetworkNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Repeated"`
 }
 
 func (s GetAppNetworkResponseBodyAppNetwork) String() string {
@@ -57559,11 +57601,23 @@ func (s *GetAppNetworkResponseBodyAppNetwork) SetNode(v []*GetAppNetworkResponse
 }
 
 type GetAppNetworkResponseBodyAppNetworkEdge struct {
-	DstNodeId   *string `json:"DstNodeId,omitempty" xml:"DstNodeId,omitempty"`
+	// The ID of the destination node.
+	DstNodeId *string `json:"DstNodeId,omitempty" xml:"DstNodeId,omitempty"`
+	// The type of the destination node. Valid values:
+	//
+	// *   **app**: an application
+	// *   **internet**: a network node in another cluster
 	DstNodeType *string `json:"DstNodeType,omitempty" xml:"DstNodeType,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	SrcNodeId   *string `json:"SrcNodeId,omitempty" xml:"SrcNodeId,omitempty"`
+	// The ID of the edge.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of the destination port.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the source node.
+	SrcNodeId *string `json:"SrcNodeId,omitempty" xml:"SrcNodeId,omitempty"`
+	// The type of the source node. Valid values:
+	//
+	// *   **app**: an application
+	// *   **internet**: a network node in another cluster
 	SrcNodeType *string `json:"SrcNodeType,omitempty" xml:"SrcNodeType,omitempty"`
 }
 
@@ -57606,7 +57660,9 @@ func (s *GetAppNetworkResponseBodyAppNetworkEdge) SetSrcNodeType(v string) *GetA
 }
 
 type GetAppNetworkResponseBodyAppNetworkNamespace struct {
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the namespace.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the custom namespace.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -57629,12 +57685,27 @@ func (s *GetAppNetworkResponseBodyAppNetworkNamespace) SetName(v string) *GetApp
 }
 
 type GetAppNetworkResponseBodyAppNetworkNode struct {
+	// The list of the container IDs.
 	ContainerIds []*string `json:"ContainerIds,omitempty" xml:"ContainerIds,omitempty" type:"Repeated"`
-	Id           *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId  *string   `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RiskLevel    *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Type         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the node.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the node.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   **3**: high
+	// *   **2**: medium
+	// *   **1**: low
+	// *   **0**: warning
+	// *   **-1**: unknown
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The type of the node. Valid values:
+	//
+	// *   **app**: an application
+	// *   **internet**: a network node in another cluster
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAppNetworkResponseBodyAppNetworkNode) String() string {
@@ -62743,8 +62814,14 @@ func (s *GetImageScanNumInPeriodResponse) SetBody(v *GetImageScanNumInPeriodResp
 }
 
 type GetInterceptionRuleDetailRequest struct {
+	// The ID of the container cluster.
+	//
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the rule.
+	//
+	// > You can call the [ListInterceptionRulePage](~~ListInterceptionRulePage~~) operation to query the IDs of rules.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s GetInterceptionRuleDetailRequest) String() string {
@@ -62766,8 +62843,10 @@ func (s *GetInterceptionRuleDetailRequest) SetRuleId(v string) *GetInterceptionR
 }
 
 type GetInterceptionRuleDetailResponseBody struct {
+	// The details of the rule.
 	InterceptionRuleDetail *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail `json:"InterceptionRuleDetail,omitempty" xml:"InterceptionRuleDetail,omitempty" type:"Struct"`
-	RequestId              *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInterceptionRuleDetailResponseBody) String() string {
@@ -62789,14 +62868,33 @@ func (s *GetInterceptionRuleDetailResponseBody) SetRequestId(v string) *GetInter
 }
 
 type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail struct {
-	DstTarget     *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailDstTarget `json:"DstTarget,omitempty" xml:"DstTarget,omitempty" type:"Struct"`
-	InterceptType *int64                                                                `json:"InterceptType,omitempty" xml:"InterceptType,omitempty"`
-	OrderIndex    *int64                                                                `json:"OrderIndex,omitempty" xml:"OrderIndex,omitempty"`
-	RuleId        *int64                                                                `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName      *string                                                               `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleSwitch    *int32                                                                `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
-	RuleType      *string                                                               `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	SrcTarget     *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailSrcTarget `json:"SrcTarget,omitempty" xml:"SrcTarget,omitempty" type:"Struct"`
+	// The destination network object.
+	DstTarget *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailDstTarget `json:"DstTarget,omitempty" xml:"DstTarget,omitempty" type:"Struct"`
+	// The interception mode. Valid values:
+	//
+	// *   **0**: monitor
+	// *   **1**: block
+	// *   **2**: alert
+	// *   **3**: allow
+	InterceptType *int64 `json:"InterceptType,omitempty" xml:"InterceptType,omitempty"`
+	// The priority of the rule. Valid values: 1 to 1000. A smaller value indicates a higher priority.
+	OrderIndex *int64 `json:"OrderIndex,omitempty" xml:"OrderIndex,omitempty"`
+	// The ID of the rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the defense rule. Valid values:
+	//
+	// *   **1**: The rule is enabled.
+	// *   **0**: The rule is disabled.
+	RuleSwitch *int32 `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   **suggest**: a suggestion rule
+	// *   **customize**: a custom rule
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The source network object.
+	SrcTarget *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailSrcTarget `json:"SrcTarget,omitempty" xml:"SrcTarget,omitempty" type:"Struct"`
 }
 
 func (s GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail) String() string {
@@ -62848,15 +62946,24 @@ func (s *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail) SetSrcTarg
 }
 
 type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailDstTarget struct {
-	AppName    *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ImageList  []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	Namespace  *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Ports      []*string `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	RuleType   *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	TagList    []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	TargetId   *int32    `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName *string   `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetType *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// An array that consists of the name of the image specified for the network object.
+	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
+	// The namespace to which the network object belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// An array that consists of the port range of the destination network object.
+	Ports []*string `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The type of the rule.
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// An array that consists of the labels specified for the network object.
+	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The ID of the network object.
+	TargetId *int32 `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The type of the network object.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailDstTarget) String() string {
@@ -62913,14 +63020,22 @@ func (s *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailDstTarget) S
 }
 
 type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailSrcTarget struct {
-	AppName    *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ImageList  []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	Namespace  *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RuleType   *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	TagList    []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	TargetId   *int32    `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName *string   `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetType *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The images of the network object.
+	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
+	// The namespace to which the network object belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The type of the rule.
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The labels specified for the network object.
+	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The ID of the network object.
+	TargetId *int32 `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The type of the network object.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailSrcTarget) String() string {
@@ -63001,6 +63116,9 @@ func (s *GetInterceptionRuleDetailResponse) SetBody(v *GetInterceptionRuleDetail
 }
 
 type GetInterceptionSummaryRequest struct {
+	// The ID of the cluster.
+	//
+	// > You can call the [DescribeGroupedContainerInstances](~~421736~~) operation to query the IDs of clusters.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -63018,8 +63136,10 @@ func (s *GetInterceptionSummaryRequest) SetClusterId(v string) *GetInterceptionS
 }
 
 type GetInterceptionSummaryResponseBody struct {
+	// The statistics.
 	InterceptionSummary *GetInterceptionSummaryResponseBodyInterceptionSummary `json:"InterceptionSummary,omitempty" xml:"InterceptionSummary,omitempty" type:"Struct"`
-	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInterceptionSummaryResponseBody) String() string {
@@ -63041,16 +63161,26 @@ func (s *GetInterceptionSummaryResponseBody) SetRequestId(v string) *GetIntercep
 }
 
 type GetInterceptionSummaryResponseBodyInterceptionSummary struct {
-	CloseClusterCount       *int32 `json:"CloseClusterCount,omitempty" xml:"CloseClusterCount,omitempty"`
-	CloseRuleCount          *int32 `json:"CloseRuleCount,omitempty" xml:"CloseRuleCount,omitempty"`
-	ClusterCount            *int32 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// The number of clusters that are not protected.
+	CloseClusterCount *int32 `json:"CloseClusterCount,omitempty" xml:"CloseClusterCount,omitempty"`
+	// The number of disabled cluster defense rules.
+	CloseRuleCount *int32 `json:"CloseRuleCount,omitempty" xml:"CloseRuleCount,omitempty"`
+	// The total number of clusters.
+	ClusterCount *int32 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// The total number of interception records for the specified cluster.
 	InterceptionCountInDays *int32 `json:"InterceptionCountInDays,omitempty" xml:"InterceptionCountInDays,omitempty"`
-	OpenClusterCount        *int32 `json:"OpenClusterCount,omitempty" xml:"OpenClusterCount,omitempty"`
-	OpenRuleCount           *int32 `json:"OpenRuleCount,omitempty" xml:"OpenRuleCount,omitempty"`
-	RiskCount180Day         *int64 `json:"RiskCount180Day,omitempty" xml:"RiskCount180Day,omitempty"`
-	RiskCount30Day          *int64 `json:"RiskCount30Day,omitempty" xml:"RiskCount30Day,omitempty"`
-	RiskCountToday          *int64 `json:"RiskCountToday,omitempty" xml:"RiskCountToday,omitempty"`
-	RuleCount               *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+	// The number of clusters that are protected.
+	OpenClusterCount *int32 `json:"OpenClusterCount,omitempty" xml:"OpenClusterCount,omitempty"`
+	// The number of enabled cluster defense rules.
+	OpenRuleCount *int32 `json:"OpenRuleCount,omitempty" xml:"OpenRuleCount,omitempty"`
+	// The number of security risks that are detected in the last 180 days.
+	RiskCount180Day *int64 `json:"RiskCount180Day,omitempty" xml:"RiskCount180Day,omitempty"`
+	// The number of security risks that are detected in the last 30 days.
+	RiskCount30Day *int64 `json:"RiskCount30Day,omitempty" xml:"RiskCount30Day,omitempty"`
+	// The number of security risks that are detected in the last 24 hours.
+	RiskCountToday *int64 `json:"RiskCountToday,omitempty" xml:"RiskCountToday,omitempty"`
+	// The total number of cluster defense rules.
+	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
 }
 
 func (s GetInterceptionSummaryResponseBodyInterceptionSummary) String() string {
