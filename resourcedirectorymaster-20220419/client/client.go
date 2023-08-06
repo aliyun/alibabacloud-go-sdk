@@ -200,6 +200,8 @@ type AddMessageContactRequest struct {
 	//
 	// Specify the mobile phone number in the `<Country code>-<Mobile phone number>` format.
 	//
+	// > Only mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are supported.
+	//
 	// After you specify a mobile phone number, you need to call [SendPhoneVerificationForMessageContact](~~SendPhoneVerificationForMessageContact~~) to send verification information to the mobile phone number. After the verification is passed, the mobile phone number takes effect.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The job title of the contact.
@@ -1859,7 +1861,7 @@ type DeleteAccountResponseBody struct {
 	// The type of the deletion. Valid values:
 	//
 	// *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-	// *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
+	// *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
 	DeletionType *string `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4279,7 +4281,7 @@ type InviteAccountToResourceDirectoryRequest struct {
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	// The ID of the parent folder.
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	// The tag value.
+	// The tags.
 	Tag []*InviteAccountToResourceDirectoryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID or logon email address of the account that you want to invite.
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
@@ -6896,6 +6898,116 @@ func (s *ListMessageContactsResponse) SetBody(v *ListMessageContactsResponseBody
 	return s
 }
 
+type ListTagKeysRequest struct {
+	KeyFilter    *string `json:"KeyFilter,omitempty" xml:"KeyFilter,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListTagKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagKeysRequest) SetKeyFilter(v string) *ListTagKeysRequest {
+	s.KeyFilter = &v
+	return s
+}
+
+func (s *ListTagKeysRequest) SetMaxResults(v int32) *ListTagKeysRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagKeysRequest) SetNextToken(v string) *ListTagKeysRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ListTagKeysResponseBody struct {
+	NextToken *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags      []*ListTagKeysResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListTagKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagKeysResponseBody) SetNextToken(v string) *ListTagKeysResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagKeysResponseBody) SetRequestId(v string) *ListTagKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagKeysResponseBody) SetTags(v []*ListTagKeysResponseBodyTags) *ListTagKeysResponseBody {
+	s.Tags = v
+	return s
+}
+
+type ListTagKeysResponseBodyTags struct {
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s ListTagKeysResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagKeysResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagKeysResponseBodyTags) SetKey(v string) *ListTagKeysResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+type ListTagKeysResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagKeysResponse) SetHeaders(v map[string]*string) *ListTagKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagKeysResponse) SetStatusCode(v int32) *ListTagKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The number of entries to return on each page.
 	//
@@ -7076,6 +7188,122 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagValuesRequest struct {
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	ValueFilter  *string `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty"`
+}
+
+func (s ListTagValuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagValuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagValuesRequest) SetMaxResults(v int32) *ListTagValuesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagValuesRequest) SetNextToken(v string) *ListTagValuesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagValuesRequest) SetTagKey(v string) *ListTagValuesRequest {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagValuesRequest) SetValueFilter(v string) *ListTagValuesRequest {
+	s.ValueFilter = &v
+	return s
+}
+
+type ListTagValuesResponseBody struct {
+	NextToken *string                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags      []*ListTagValuesResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListTagValuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagValuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagValuesResponseBody) SetNextToken(v string) *ListTagValuesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagValuesResponseBody) SetRequestId(v string) *ListTagValuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagValuesResponseBody) SetTags(v []*ListTagValuesResponseBodyTags) *ListTagValuesResponseBody {
+	s.Tags = v
+	return s
+}
+
+type ListTagValuesResponseBodyTags struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagValuesResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagValuesResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagValuesResponseBodyTags) SetValue(v string) *ListTagValuesResponseBodyTags {
+	s.Value = &v
+	return s
+}
+
+type ListTagValuesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagValuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagValuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagValuesResponse) SetHeaders(v map[string]*string) *ListTagValuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagValuesResponse) SetStatusCode(v int32) *ListTagValuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagValuesResponse {
 	s.Body = v
 	return s
 }
@@ -9759,9 +9987,8 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 }
 
 /**
- * > The member deletion feature is in invitational preview. You can contact the customer business manager (CBM) of Alibaba Cloud to apply for a trial.
  * Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
- * After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
+ * After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
  *
  * @param tmpReq DeleteAccountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9811,9 +10038,8 @@ func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, run
 }
 
 /**
- * > The member deletion feature is in invitational preview. You can contact the customer business manager (CBM) of Alibaba Cloud to apply for a trial.
  * Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
- * After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
+ * After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
  *
  * @param request DeleteAccountRequest
  * @return DeleteAccountResponse
@@ -11564,6 +11790,62 @@ func (client *Client) ListMessageContacts(request *ListMessageContactsRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyFilter)) {
+		query["KeyFilter"] = request.KeyFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagKeys"),
+		Version:     tea.String("2022-04-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagKeysResponse{}
+	_body, _err := client.ListTagKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11617,6 +11899,66 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValueFilter)) {
+		query["ValueFilter"] = request.ValueFilter
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagValues"),
+		Version:     tea.String("2022-04-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagValuesResponse{}
+	_body, _err := client.ListTagValuesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
