@@ -1747,6 +1747,7 @@ func (s *FaceLivenessResponse) SetBody(v *FaceLivenessResponseBody) *FaceLivenes
 
 type FraudResultCallBackRequest struct {
 	CertifyId       *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	ExtParams       *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
 	ResultCode      *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	VerifyDeployEnv *string `json:"VerifyDeployEnv,omitempty" xml:"VerifyDeployEnv,omitempty"`
 }
@@ -1761,6 +1762,11 @@ func (s FraudResultCallBackRequest) GoString() string {
 
 func (s *FraudResultCallBackRequest) SetCertifyId(v string) *FraudResultCallBackRequest {
 	s.CertifyId = &v
+	return s
+}
+
+func (s *FraudResultCallBackRequest) SetExtParams(v string) *FraudResultCallBackRequest {
+	s.ExtParams = &v
 	return s
 }
 
@@ -2806,6 +2812,10 @@ func (client *Client) FraudResultCallBackWithOptions(request *FraudResultCallBac
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
 		query["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtParams)) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResultCode)) {
