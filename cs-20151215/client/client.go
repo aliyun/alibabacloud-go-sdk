@@ -43,9 +43,11 @@ func (s *Addon) SetName(v string) *Addon {
 
 type DataDisk struct {
 	AutoSnapshotPolicyId *string `json:"auto_snapshot_policy_id,omitempty" xml:"auto_snapshot_policy_id,omitempty"`
+	BurstingEnabled      *bool   `json:"bursting_enabled,omitempty" xml:"bursting_enabled,omitempty"`
 	Category             *string `json:"category,omitempty" xml:"category,omitempty"`
 	Encrypted            *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
 	PerformanceLevel     *string `json:"performance_level,omitempty" xml:"performance_level,omitempty"`
+	ProvisionedIops      *int64  `json:"provisioned_iops,omitempty" xml:"provisioned_iops,omitempty"`
 	Size                 *int64  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -62,6 +64,11 @@ func (s *DataDisk) SetAutoSnapshotPolicyId(v string) *DataDisk {
 	return s
 }
 
+func (s *DataDisk) SetBurstingEnabled(v bool) *DataDisk {
+	s.BurstingEnabled = &v
+	return s
+}
+
 func (s *DataDisk) SetCategory(v string) *DataDisk {
 	s.Category = &v
 	return s
@@ -74,6 +81,11 @@ func (s *DataDisk) SetEncrypted(v string) *DataDisk {
 
 func (s *DataDisk) SetPerformanceLevel(v string) *DataDisk {
 	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DataDisk) SetProvisionedIops(v int64) *DataDisk {
+	s.ProvisionedIops = &v
 	return s
 }
 
@@ -114,6 +126,646 @@ func (s *MaintenanceWindow) SetMaintenanceTime(v string) *MaintenanceWindow {
 
 func (s *MaintenanceWindow) SetWeeklyPeriod(v string) *MaintenanceWindow {
 	s.WeeklyPeriod = &v
+	return s
+}
+
+type Nodepool struct {
+	AutoScaling *NodepoolAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	// Deprecated
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// Deprecated
+	InterconnectConfig *NodepoolInterconnectConfig `json:"interconnect_config,omitempty" xml:"interconnect_config,omitempty" type:"Struct"`
+	InterconnectMode   *string                     `json:"interconnect_mode,omitempty" xml:"interconnect_mode,omitempty"`
+	KubernetesConfig   *NodepoolKubernetesConfig   `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
+	Management         *NodepoolManagement         `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
+	MaxNodes           *int64                      `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodepoolInfo       *NodepoolNodepoolInfo       `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
+	ScalingGroup       *NodepoolScalingGroup       `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
+	TeeConfig          *NodepoolTeeConfig          `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
+}
+
+func (s Nodepool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Nodepool) GoString() string {
+	return s.String()
+}
+
+func (s *Nodepool) SetAutoScaling(v *NodepoolAutoScaling) *Nodepool {
+	s.AutoScaling = v
+	return s
+}
+
+func (s *Nodepool) SetCount(v int64) *Nodepool {
+	s.Count = &v
+	return s
+}
+
+func (s *Nodepool) SetInterconnectConfig(v *NodepoolInterconnectConfig) *Nodepool {
+	s.InterconnectConfig = v
+	return s
+}
+
+func (s *Nodepool) SetInterconnectMode(v string) *Nodepool {
+	s.InterconnectMode = &v
+	return s
+}
+
+func (s *Nodepool) SetKubernetesConfig(v *NodepoolKubernetesConfig) *Nodepool {
+	s.KubernetesConfig = v
+	return s
+}
+
+func (s *Nodepool) SetManagement(v *NodepoolManagement) *Nodepool {
+	s.Management = v
+	return s
+}
+
+func (s *Nodepool) SetMaxNodes(v int64) *Nodepool {
+	s.MaxNodes = &v
+	return s
+}
+
+func (s *Nodepool) SetNodepoolInfo(v *NodepoolNodepoolInfo) *Nodepool {
+	s.NodepoolInfo = v
+	return s
+}
+
+func (s *Nodepool) SetScalingGroup(v *NodepoolScalingGroup) *Nodepool {
+	s.ScalingGroup = v
+	return s
+}
+
+func (s *Nodepool) SetTeeConfig(v *NodepoolTeeConfig) *Nodepool {
+	s.TeeConfig = v
+	return s
+}
+
+type NodepoolAutoScaling struct {
+	// Deprecated
+	EipBandwidth *int64 `json:"eip_bandwidth,omitempty" xml:"eip_bandwidth,omitempty"`
+	// Deprecated
+	EipInternetChargeType *string `json:"eip_internet_charge_type,omitempty" xml:"eip_internet_charge_type,omitempty"`
+	Enable                *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Deprecated
+	IsBondEip    *bool   `json:"is_bond_eip,omitempty" xml:"is_bond_eip,omitempty"`
+	MaxInstances *int64  `json:"max_instances,omitempty" xml:"max_instances,omitempty"`
+	MinInstances *int64  `json:"min_instances,omitempty" xml:"min_instances,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s NodepoolAutoScaling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolAutoScaling) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolAutoScaling) SetEipBandwidth(v int64) *NodepoolAutoScaling {
+	s.EipBandwidth = &v
+	return s
+}
+
+func (s *NodepoolAutoScaling) SetEipInternetChargeType(v string) *NodepoolAutoScaling {
+	s.EipInternetChargeType = &v
+	return s
+}
+
+func (s *NodepoolAutoScaling) SetEnable(v bool) *NodepoolAutoScaling {
+	s.Enable = &v
+	return s
+}
+
+func (s *NodepoolAutoScaling) SetIsBondEip(v bool) *NodepoolAutoScaling {
+	s.IsBondEip = &v
+	return s
+}
+
+func (s *NodepoolAutoScaling) SetMaxInstances(v int64) *NodepoolAutoScaling {
+	s.MaxInstances = &v
+	return s
+}
+
+func (s *NodepoolAutoScaling) SetMinInstances(v int64) *NodepoolAutoScaling {
+	s.MinInstances = &v
+	return s
+}
+
+func (s *NodepoolAutoScaling) SetType(v string) *NodepoolAutoScaling {
+	s.Type = &v
+	return s
+}
+
+type NodepoolInterconnectConfig struct {
+	// Deprecated
+	Bandwidth *int64 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	// Deprecated
+	CcnId *string `json:"ccn_id,omitempty" xml:"ccn_id,omitempty"`
+	// Deprecated
+	CcnRegionId *string `json:"ccn_region_id,omitempty" xml:"ccn_region_id,omitempty"`
+	// Deprecated
+	CenId *string `json:"cen_id,omitempty" xml:"cen_id,omitempty"`
+	// Deprecated
+	ImprovedPeriod *string `json:"improved_period,omitempty" xml:"improved_period,omitempty"`
+}
+
+func (s NodepoolInterconnectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolInterconnectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolInterconnectConfig) SetBandwidth(v int64) *NodepoolInterconnectConfig {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *NodepoolInterconnectConfig) SetCcnId(v string) *NodepoolInterconnectConfig {
+	s.CcnId = &v
+	return s
+}
+
+func (s *NodepoolInterconnectConfig) SetCcnRegionId(v string) *NodepoolInterconnectConfig {
+	s.CcnRegionId = &v
+	return s
+}
+
+func (s *NodepoolInterconnectConfig) SetCenId(v string) *NodepoolInterconnectConfig {
+	s.CenId = &v
+	return s
+}
+
+func (s *NodepoolInterconnectConfig) SetImprovedPeriod(v string) *NodepoolInterconnectConfig {
+	s.ImprovedPeriod = &v
+	return s
+}
+
+type NodepoolKubernetesConfig struct {
+	CmsEnabled     *bool    `json:"cms_enabled,omitempty" xml:"cms_enabled,omitempty"`
+	CpuPolicy      *string  `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	Labels         []*Tag   `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	NodeNameMode   *string  `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
+	Runtime        *string  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	RuntimeVersion *string  `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
+	Taints         []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	UserData       *string  `json:"user_data,omitempty" xml:"user_data,omitempty"`
+}
+
+func (s NodepoolKubernetesConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolKubernetesConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolKubernetesConfig) SetCmsEnabled(v bool) *NodepoolKubernetesConfig {
+	s.CmsEnabled = &v
+	return s
+}
+
+func (s *NodepoolKubernetesConfig) SetCpuPolicy(v string) *NodepoolKubernetesConfig {
+	s.CpuPolicy = &v
+	return s
+}
+
+func (s *NodepoolKubernetesConfig) SetLabels(v []*Tag) *NodepoolKubernetesConfig {
+	s.Labels = v
+	return s
+}
+
+func (s *NodepoolKubernetesConfig) SetNodeNameMode(v string) *NodepoolKubernetesConfig {
+	s.NodeNameMode = &v
+	return s
+}
+
+func (s *NodepoolKubernetesConfig) SetRuntime(v string) *NodepoolKubernetesConfig {
+	s.Runtime = &v
+	return s
+}
+
+func (s *NodepoolKubernetesConfig) SetRuntimeVersion(v string) *NodepoolKubernetesConfig {
+	s.RuntimeVersion = &v
+	return s
+}
+
+func (s *NodepoolKubernetesConfig) SetTaints(v []*Taint) *NodepoolKubernetesConfig {
+	s.Taints = v
+	return s
+}
+
+func (s *NodepoolKubernetesConfig) SetUserData(v string) *NodepoolKubernetesConfig {
+	s.UserData = &v
+	return s
+}
+
+type NodepoolManagement struct {
+	AutoRepair    *bool                            `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
+	Enable        *bool                            `json:"enable,omitempty" xml:"enable,omitempty"`
+	UpgradeConfig *NodepoolManagementUpgradeConfig `json:"upgrade_config,omitempty" xml:"upgrade_config,omitempty" type:"Struct"`
+}
+
+func (s NodepoolManagement) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolManagement) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolManagement) SetAutoRepair(v bool) *NodepoolManagement {
+	s.AutoRepair = &v
+	return s
+}
+
+func (s *NodepoolManagement) SetEnable(v bool) *NodepoolManagement {
+	s.Enable = &v
+	return s
+}
+
+func (s *NodepoolManagement) SetUpgradeConfig(v *NodepoolManagementUpgradeConfig) *NodepoolManagement {
+	s.UpgradeConfig = v
+	return s
+}
+
+type NodepoolManagementUpgradeConfig struct {
+	AutoUpgrade     *bool  `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
+	MaxUnavailable  *int64 `json:"max_unavailable,omitempty" xml:"max_unavailable,omitempty"`
+	Surge           *int64 `json:"surge,omitempty" xml:"surge,omitempty"`
+	SurgePercentage *int64 `json:"surge_percentage,omitempty" xml:"surge_percentage,omitempty"`
+}
+
+func (s NodepoolManagementUpgradeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolManagementUpgradeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolManagementUpgradeConfig) SetAutoUpgrade(v bool) *NodepoolManagementUpgradeConfig {
+	s.AutoUpgrade = &v
+	return s
+}
+
+func (s *NodepoolManagementUpgradeConfig) SetMaxUnavailable(v int64) *NodepoolManagementUpgradeConfig {
+	s.MaxUnavailable = &v
+	return s
+}
+
+func (s *NodepoolManagementUpgradeConfig) SetSurge(v int64) *NodepoolManagementUpgradeConfig {
+	s.Surge = &v
+	return s
+}
+
+func (s *NodepoolManagementUpgradeConfig) SetSurgePercentage(v int64) *NodepoolManagementUpgradeConfig {
+	s.SurgePercentage = &v
+	return s
+}
+
+type NodepoolNodepoolInfo struct {
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s NodepoolNodepoolInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolNodepoolInfo) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolNodepoolInfo) SetName(v string) *NodepoolNodepoolInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *NodepoolNodepoolInfo) SetResourceGroupId(v string) *NodepoolNodepoolInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *NodepoolNodepoolInfo) SetType(v string) *NodepoolNodepoolInfo {
+	s.Type = &v
+	return s
+}
+
+type NodepoolScalingGroup struct {
+	AutoRenew                           *bool                                   `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	AutoRenewPeriod                     *int64                                  `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CompensateWithOnDemand              *bool                                   `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	DataDisks                           []*DataDisk                             `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DeploymentsetId                     *string                                 `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	DesiredSize                         *int64                                  `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	ImageId                             *string                                 `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageType                           *string                                 `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	InstanceChargeType                  *string                                 `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstanceTypes                       []*string                               `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	InternetChargeType                  *string                                 `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	InternetMaxBandwidthOut             *int64                                  `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
+	KeyPair                             *string                                 `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginPassword                       *string                                 `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MultiAzPolicy                       *string                                 `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	OnDemandBaseCapacity                *int64                                  `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int64                                  `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	Period                              *int64                                  `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                          *string                                 `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	Platform                            *string                                 `json:"platform,omitempty" xml:"platform,omitempty"`
+	PrivatePoolOptions                  *NodepoolScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
+	RdsInstances                        []*string                               `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ScalingPolicy                       *string                                 `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	SecurityGroupId                     *string                                 `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	SecurityGroupIds                    []*string                               `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SpotInstancePools                   *int64                                  `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	SpotInstanceRemedy                  *bool                                   `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	SpotPriceLimit                      []*NodepoolScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
+	SpotStrategy                        *string                                 `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskBurstingEnabled           *bool                                   `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	SystemDiskCategory                  *string                                 `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskPerformanceLevel          *string                                 `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskProvisionedIops           *int64                                  `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
+	SystemDiskSize                      *int64                                  `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	Tags                                []*NodepoolScalingGroupTags             `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VswitchIds                          []*string                               `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+}
+
+func (s NodepoolScalingGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolScalingGroup) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolScalingGroup) SetAutoRenew(v bool) *NodepoolScalingGroup {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetAutoRenewPeriod(v int64) *NodepoolScalingGroup {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetCompensateWithOnDemand(v bool) *NodepoolScalingGroup {
+	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetDataDisks(v []*DataDisk) *NodepoolScalingGroup {
+	s.DataDisks = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetDeploymentsetId(v string) *NodepoolScalingGroup {
+	s.DeploymentsetId = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetDesiredSize(v int64) *NodepoolScalingGroup {
+	s.DesiredSize = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetImageId(v string) *NodepoolScalingGroup {
+	s.ImageId = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetImageType(v string) *NodepoolScalingGroup {
+	s.ImageType = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetInstanceChargeType(v string) *NodepoolScalingGroup {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetInstanceTypes(v []*string) *NodepoolScalingGroup {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetInternetChargeType(v string) *NodepoolScalingGroup {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetInternetMaxBandwidthOut(v int64) *NodepoolScalingGroup {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetKeyPair(v string) *NodepoolScalingGroup {
+	s.KeyPair = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetLoginPassword(v string) *NodepoolScalingGroup {
+	s.LoginPassword = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetMultiAzPolicy(v string) *NodepoolScalingGroup {
+	s.MultiAzPolicy = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetOnDemandBaseCapacity(v int64) *NodepoolScalingGroup {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetOnDemandPercentageAboveBaseCapacity(v int64) *NodepoolScalingGroup {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetPeriod(v int64) *NodepoolScalingGroup {
+	s.Period = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetPeriodUnit(v string) *NodepoolScalingGroup {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetPlatform(v string) *NodepoolScalingGroup {
+	s.Platform = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetPrivatePoolOptions(v *NodepoolScalingGroupPrivatePoolOptions) *NodepoolScalingGroup {
+	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetRdsInstances(v []*string) *NodepoolScalingGroup {
+	s.RdsInstances = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetScalingPolicy(v string) *NodepoolScalingGroup {
+	s.ScalingPolicy = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSecurityGroupId(v string) *NodepoolScalingGroup {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSecurityGroupIds(v []*string) *NodepoolScalingGroup {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSpotInstancePools(v int64) *NodepoolScalingGroup {
+	s.SpotInstancePools = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSpotInstanceRemedy(v bool) *NodepoolScalingGroup {
+	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSpotPriceLimit(v []*NodepoolScalingGroupSpotPriceLimit) *NodepoolScalingGroup {
+	s.SpotPriceLimit = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSpotStrategy(v string) *NodepoolScalingGroup {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskBurstingEnabled(v bool) *NodepoolScalingGroup {
+	s.SystemDiskBurstingEnabled = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskCategory(v string) *NodepoolScalingGroup {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskPerformanceLevel(v string) *NodepoolScalingGroup {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskProvisionedIops(v int64) *NodepoolScalingGroup {
+	s.SystemDiskProvisionedIops = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskSize(v int64) *NodepoolScalingGroup {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetTags(v []*NodepoolScalingGroupTags) *NodepoolScalingGroup {
+	s.Tags = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetVswitchIds(v []*string) *NodepoolScalingGroup {
+	s.VswitchIds = v
+	return s
+}
+
+type NodepoolScalingGroupPrivatePoolOptions struct {
+	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
+	MatchCriteria *string `json:"match_criteria,omitempty" xml:"match_criteria,omitempty"`
+}
+
+func (s NodepoolScalingGroupPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolScalingGroupPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolScalingGroupPrivatePoolOptions) SetId(v string) *NodepoolScalingGroupPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+func (s *NodepoolScalingGroupPrivatePoolOptions) SetMatchCriteria(v string) *NodepoolScalingGroupPrivatePoolOptions {
+	s.MatchCriteria = &v
+	return s
+}
+
+type NodepoolScalingGroupSpotPriceLimit struct {
+	InstanceType *string `json:"instance_type,omitempty" xml:"instance_type,omitempty"`
+	PriceLimit   *string `json:"price_limit,omitempty" xml:"price_limit,omitempty"`
+}
+
+func (s NodepoolScalingGroupSpotPriceLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolScalingGroupSpotPriceLimit) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolScalingGroupSpotPriceLimit) SetInstanceType(v string) *NodepoolScalingGroupSpotPriceLimit {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *NodepoolScalingGroupSpotPriceLimit) SetPriceLimit(v string) *NodepoolScalingGroupSpotPriceLimit {
+	s.PriceLimit = &v
+	return s
+}
+
+type NodepoolScalingGroupTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s NodepoolScalingGroupTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolScalingGroupTags) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolScalingGroupTags) SetKey(v string) *NodepoolScalingGroupTags {
+	s.Key = &v
+	return s
+}
+
+func (s *NodepoolScalingGroupTags) SetValue(v string) *NodepoolScalingGroupTags {
+	s.Value = &v
+	return s
+}
+
+type NodepoolTeeConfig struct {
+	TeeEnable *bool `json:"tee_enable,omitempty" xml:"tee_enable,omitempty"`
+}
+
+func (s NodepoolTeeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolTeeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolTeeConfig) SetTeeEnable(v bool) *NodepoolTeeConfig {
+	s.TeeEnable = &v
 	return s
 }
 
