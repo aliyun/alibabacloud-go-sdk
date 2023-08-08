@@ -1193,7 +1193,8 @@ type CheckCreateDdrDBInstanceRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the destination instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list of region IDs.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1657,6 +1658,10 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 }
 
 type CloneDBInstanceRequest struct {
+	// Specifies whether to enable automatic payment. Default value: true. Valid values:
+	//
+	// *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+	// *   **false**: disables automatic payment. In this case, you must manually pay for the instance. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, click **Expenses**. On the page that appears, select **Orders** from the left-side navigation pane. On the Orders page, find the order and complete the payment.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The ID of the backup set.
 	//
@@ -1668,9 +1673,11 @@ type CloneDBInstanceRequest struct {
 	//
 	// *   **FullBackup**
 	// *   **IncrementalBackup**
-	BackupType      *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BpeEnabled      *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	BurstingEnabled *bool   `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// This parameter is not publicly available.
+	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
+	// This parameter is not publicly available.
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
 	// *   **Basic**: RDS Basic Edition.
@@ -1972,6 +1979,10 @@ func (s *CloneDBInstanceRequestServerlessConfig) SetSwitchForce(v bool) *CloneDB
 }
 
 type CloneDBInstanceShrinkRequest struct {
+	// Specifies whether to enable automatic payment. Default value: true. Valid values:
+	//
+	// *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+	// *   **false**: disables automatic payment. In this case, you must manually pay for the instance. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, click **Expenses**. On the page that appears, select **Orders** from the left-side navigation pane. On the Orders page, find the order and complete the payment.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The ID of the backup set.
 	//
@@ -1983,9 +1994,11 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// *   **FullBackup**
 	// *   **IncrementalBackup**
-	BackupType      *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BpeEnabled      *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	BurstingEnabled *bool   `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// This parameter is not publicly available.
+	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
+	// This parameter is not publicly available.
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
 	// *   **Basic**: RDS Basic Edition.
@@ -2311,7 +2324,8 @@ type CloneParameterGroupRequest struct {
 	// The name of the parameter template in the destination region.
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// The ID of the source region to which the parameter template belongs. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4795,8 +4809,9 @@ type CreateDBInstanceEndpointRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The IP address of the internal endpoint.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The vSwitch ID of the internal endpoint.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The virtual private cloud (VPC) ID of the internal endpoint.
@@ -4931,8 +4946,9 @@ type CreateDBInstanceEndpointShrinkRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The IP address of the internal endpoint.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The vSwitch ID of the internal endpoint.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The virtual private cloud (VPC) ID of the internal endpoint.
@@ -5107,7 +5123,8 @@ type CreateDBInstanceEndpointAddressRequest struct {
 	// The network type of the endpoint. Only Internet is supported. Set the value to **Public**.
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	// The port number of the public endpoint.
-	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -5526,12 +5543,13 @@ type CreateDBNodesRequest struct {
 	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// An array that consists of the details of the node.
-	DBNode               []*CreateDBNodesRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
-	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId      *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DBNode       []*CreateDBNodesRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
+	OwnerAccount *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s CreateDBNodesRequest) String() string {
@@ -5615,9 +5633,10 @@ type CreateDBNodesShrinkRequest struct {
 	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// An array that consists of the details of the node.
-	DBNodeShrink         *string `json:"DBNode,omitempty" xml:"DBNode,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBNodeShrink *string `json:"DBNode,omitempty" xml:"DBNode,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7550,7 +7569,8 @@ type CreateParameterGroupRequest struct {
 	// A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](~~96751~~).
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID of the parameter template. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7792,6 +7812,10 @@ func (s *CreatePostgresExtensionsResponse) SetBody(v *CreatePostgresExtensionsRe
 }
 
 type CreateReadOnlyDBInstanceRequest struct {
+	// Specifies whether payment is automatically made during renewal. Valid values:
+	//
+	// *   **True**: enables automatic payment. Make sure that your Alibaba Cloud account has adequate balance.
+	// *   **False** (default): disables automatic payment. You have to manually pay the order in the console. Log on to the ApsaraDB RDS console. In the upper-right corner, choose **Expenses > User Center**. In the left-side navigation pane, click **Orders**. On the page that appears, find your order and complete the payment.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable the auto-renewal feature for the read-only instance. If you set the PayType parameter to Prepaid, you must also specify this parameter. Valid values:
 	//
@@ -7800,9 +7824,11 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// > * If you set the Period parameter to Month, the auto-renewal cycle is one month.
 	// > * If you set the Period parameter to Year, the auto-renewal cycle is one year.
-	AutoRenew       *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BpeEnabled      *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	BurstingEnabled *bool   `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is not publicly available.
+	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
+	// This parameter is not publicly available.
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition of the read-only instance. Valid values:
 	//
 	// *   **Basic**: RDS Basic Edition.
@@ -8977,9 +9003,17 @@ func (s *DeleteBackupFileResponse) SetBody(v *DeleteBackupFileResponseBody) *Del
 }
 
 type DeleteDBInstanceRequest struct {
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The policy that is used to retain archived backup files if the instance is released. Default value: None. Valid values:
+	//
+	// *   **None**: No archived backup files are retained.
+	// *   **Lastest**: Only the last archived backup file is retained.
+	// *   **All**: All archived backup files are retained.
+	//
+	// > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
 	ReleasedKeepPolicy   *string `json:"ReleasedKeepPolicy,omitempty" xml:"ReleasedKeepPolicy,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -9024,7 +9058,9 @@ func (s *DeleteDBInstanceRequest) SetResourceOwnerId(v int64) *DeleteDBInstanceR
 }
 
 type DeleteDBInstanceResponseBody struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9319,12 +9355,13 @@ type DeleteDBNodesRequest struct {
 	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// An array that consists of information about the ID of the node.
-	DBNodeId             []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId      *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DBNodeId     []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteDBNodesRequest) String() string {
@@ -9383,9 +9420,10 @@ type DeleteDBNodesShrinkRequest struct {
 	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// An array that consists of information about the ID of the node.
-	DBNodeIdShrink       *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBNodeIdShrink *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -9501,11 +9539,24 @@ func (s *DeleteDBNodesResponse) SetBody(v *DeleteDBNodesResponseBody) *DeleteDBN
 }
 
 type DeleteDBProxyEndpointAddressRequest struct {
-	DBInstanceId                *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The network type of the proxy endpoint. Valid values:
+	//
+	// *   **Public**: Internet
+	// *   **VPC**: virtual private cloud (VPC)
+	// *   **Classic**: classic network
+	//
+	// If the instance runs MySQL, the default value of this parameter is **Classic**.
+	//
+	// > If the instance runs PostgreSQL, you must set this parameter to **Public** or **VPC**.
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	DBProxyEndpointId           *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	DBProxyEngineType           *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the proxy endpoint. You can call the [DescribeDBProxyEndpoint](~~610507~~) operation to query the ID of the proxy endpoint.
+	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
+	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteDBProxyEndpointAddressRequest) String() string {
@@ -9542,6 +9593,7 @@ func (s *DeleteDBProxyEndpointAddressRequest) SetRegionId(v string) *DeleteDBPro
 }
 
 type DeleteDBProxyEndpointAddressResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9669,7 +9721,8 @@ type DeleteGadInstanceRequest struct {
 	// The ID of the global active database cluster. You can call the [DescribeGadInstances](~~330105~~) operation to query the IDs of global active database clusters.
 	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
 	// The region ID of the central node of the global active database cluster. You can call the [DescribeGadInstances](~~330105~~) operation to query the region IDs of global active database clusters.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -9748,7 +9801,8 @@ type DeleteParameterGroupRequest struct {
 	// The ID of the parameter template. You can call the [DescribeParameterGroups](~~144491~~) operation to query the ID of the parameter template.
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -9970,7 +10024,8 @@ type DeleteSecretRequest struct {
 	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~446624~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -10266,7 +10321,8 @@ type DeleteUserBackupFileRequest struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11100,8 +11156,9 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 
 type DescribeActionEventPolicyRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11141,11 +11198,11 @@ func (s *DescribeActionEventPolicyRequest) SetResourceOwnerId(v int64) *Describe
 }
 
 type DescribeActionEventPolicyResponseBody struct {
-	// Indicates whether the event history feature is enabled.
+	// The operation that you want to perform. Set the value to **DescribeActionEventPolicy**.
 	EnableEventLog *string `json:"EnableEventLog,omitempty" xml:"EnableEventLog,omitempty"`
-	// The ID of the region.
+	// Indicates whether the event history feature is enabled.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14352,7 +14409,8 @@ type DescribeCharacterSetNameRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22158,7 +22216,8 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	// Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -24824,7 +24883,7 @@ func (s *DescribeDTCSecurityIpHostsForSQLServerResponse) SetBody(v *DescribeDTCS
 }
 
 type DescribeDatabasesRequest struct {
-	// The ID of the instance.
+	// The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
@@ -24913,7 +24972,7 @@ func (s *DescribeDatabasesRequest) SetResourceOwnerId(v int64) *DescribeDatabase
 }
 
 type DescribeDatabasesResponseBody struct {
-	// An array that consists of the information about databases.
+	// The information about databases.
 	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -24956,22 +25015,28 @@ func (s *DescribeDatabasesResponseBodyDatabases) SetDatabase(v []*DescribeDataba
 
 type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	// An array that consists of the details of the accounts. Each account has specific permissions on the database.
-	Accounts     *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts     `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	Accounts *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	// The advanced information about the database.
+	//
+	// > This parameter is returned only for instances that run SQL Server.
 	AdvancedInfo *DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo `json:"AdvancedInfo,omitempty" xml:"AdvancedInfo,omitempty" type:"Struct"`
-	BasicInfo    *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo    `json:"BasicInfo,omitempty" xml:"BasicInfo,omitempty" type:"Struct"`
+	// The basic information of the database.
+	//
+	// > This parameter is returned only for instances that run SQL Server.
+	BasicInfo *DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo `json:"BasicInfo,omitempty" xml:"BasicInfo,omitempty" type:"Struct"`
 	// The name of the character set.
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
 	// The collation of the character set. The example value C stands for localization.
 	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
+	// > This parameter is returned only for instances that run PostgreSQL.
 	Collate *string `json:"Collate,omitempty" xml:"Collate,omitempty"`
 	// The limit on the number of concurrent requests. The value -1 indicates that the number of concurrent requests is unlimited.
 	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
+	// > This parameter is returned only for instances that run PostgreSQL.
 	ConnLimit *string `json:"ConnLimit,omitempty" xml:"ConnLimit,omitempty"`
 	// The type of the character set.
 	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
+	// > This parameter is returned only for instances that run PostgreSQL.
 	Ctype *string `json:"Ctype,omitempty" xml:"Ctype,omitempty"`
 	// The description of the database.
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
@@ -24985,17 +25050,21 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	// *   **Running**
 	// *   **Deleting**
 	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
-	// The database engine of the instance to which the database belongs.
-	Engine     *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The reserved parameter.
+	// The database engine of the instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// A reserved parameter.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// A reserved parameter.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RuntimeInfo     *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo `json:"RuntimeInfo,omitempty" xml:"RuntimeInfo,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The running of the database.
+	//
+	// > This parameter is returned only for instances that run SQL Server.
+	RuntimeInfo *DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo `json:"RuntimeInfo,omitempty" xml:"RuntimeInfo,omitempty" type:"Struct"`
 	// The tablespace of the database.
 	//
-	// >  This parameter is returned only for instances that run PostgreSQL.
+	// > This parameter is returned only for instances that run PostgreSQL.
 	Tablespace *string `json:"Tablespace,omitempty" xml:"Tablespace,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -38340,7 +38409,8 @@ type DetachGadInstanceMemberRequest struct {
 	// The ID of the instance that serves as the unit node you want to remove. You can call the [DescribeGadInstances](~~330105~~) query the ID of the instance.
 	MemberInstanceName *string `json:"MemberInstanceName,omitempty" xml:"MemberInstanceName,omitempty"`
 	// The region ID of the central node. You can call the [DescribeGadInstances](~~330105~~) operation to query the most recent region list.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -39264,7 +39334,8 @@ type ImportUserBackupFileRequest struct {
 	// *   The value of this parameter is the ID of the region in which you want to create the instance.
 	//
 	// *   The value of this parameter must be consistent with the value of **BucketRegion**.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -39867,7 +39938,8 @@ type ListUserBackupFilesRequest struct {
 	OssUrl  *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -46824,7 +46896,8 @@ type ModifyParameterGroupRequest struct {
 	// The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
 	//
 	// > The region of a parameter template cannot be changed. You can call the [CloneParameterGroup](~~144581~~) operation to replicate a parameter template to a specific region.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -47094,9 +47167,10 @@ type ModifyReadonlyInstanceDelayReplicationTimeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latency at which to replicate data from the primary instance to the read-only instance. Unit: seconds.
 	ReadSQLReplicationTime *string `json:"ReadSQLReplicationTime,omitempty" xml:"ReadSQLReplicationTime,omitempty"`
-	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyReadonlyInstanceDelayReplicationTimeRequest) String() string {
@@ -49600,7 +49674,8 @@ type RestartDBInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The unique ID of the secondary instance. You can call [DescribeDBInstanceHAConfig](~~26244~~) to query the secondary instance ID.
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -50867,9 +50942,10 @@ func (s *SwitchDBInstanceVpcResponse) SetBody(v *SwitchDBInstanceVpcResponseBody
 
 type SwitchGuardToMasterInstanceRequest struct {
 	// The ID of the disaster recovery instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -57147,6 +57223,23 @@ func (client *Client) DeleteBackupFile(request *DeleteBackupFileRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### References
+ * > Note Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Release an ApsaraDB RDS for MySQL instance](~~96057~~)
+ * *   [Release an ApsaraDB RDS for PostgreSQL instance](~~96749~~)
+ * *   [Release an ApsaraDB RDS for SQL Server instance](~~95662~~)
+ * *   [Release an ApsaraDB RDS for MariaDB instance](~~97128~~)
+ *
+ * @param request DeleteDBInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDBInstanceResponse
+ */
 func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57200,6 +57293,22 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 	return _result, _err
 }
 
+/**
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### References
+ * > Note Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Release an ApsaraDB RDS for MySQL instance](~~96057~~)
+ * *   [Release an ApsaraDB RDS for PostgreSQL instance](~~96749~~)
+ * *   [Release an ApsaraDB RDS for SQL Server instance](~~95662~~)
+ * *   [Release an ApsaraDB RDS for MariaDB instance](~~97128~~)
+ *
+ * @param request DeleteDBInstanceRequest
+ * @return DeleteDBInstanceResponse
+ */
 func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_result *DeleteDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstanceResponse{}
@@ -57439,6 +57548,19 @@ func (client *Client) DeleteDBNodes(request *DeleteDBNodesRequest) (_result *Del
 	return _result, _err
 }
 
+/**
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * ### References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * *   [Configure the dedicated proxy endpoint of an ApsaraDB RDS for MySQL instance](~~184921~~)
+ * *   [Configure the dedicated proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418274~~)
+ *
+ * @param request DeleteDBProxyEndpointAddressRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDBProxyEndpointAddressResponse
+ */
 func (client *Client) DeleteDBProxyEndpointAddressWithOptions(request *DeleteDBProxyEndpointAddressRequest, runtime *util.RuntimeOptions) (_result *DeleteDBProxyEndpointAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57492,6 +57614,18 @@ func (client *Client) DeleteDBProxyEndpointAddressWithOptions(request *DeleteDBP
 	return _result, _err
 }
 
+/**
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * ### References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * *   [Configure the dedicated proxy endpoint of an ApsaraDB RDS for MySQL instance](~~184921~~)
+ * *   [Configure the dedicated proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418274~~)
+ *
+ * @param request DeleteDBProxyEndpointAddressRequest
+ * @return DeleteDBProxyEndpointAddressResponse
+ */
 func (client *Client) DeleteDBProxyEndpointAddress(request *DeleteDBProxyEndpointAddressRequest) (_result *DeleteDBProxyEndpointAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBProxyEndpointAddressResponse{}
@@ -62633,7 +62767,11 @@ func (client *Client) DescribeDTCSecurityIpHostsForSQLServer(request *DescribeDT
 }
 
 /**
- * >  If the specified request parameters are invalid, no database information is returned.
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
  *
  * @param request DescribeDatabasesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -62709,7 +62847,11 @@ func (client *Client) DescribeDatabasesWithOptions(request *DescribeDatabasesReq
 }
 
 /**
- * >  If the specified request parameters are invalid, no database information is returned.
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
  *
  * @param request DescribeDatabasesRequest
  * @return DescribeDatabasesResponse
