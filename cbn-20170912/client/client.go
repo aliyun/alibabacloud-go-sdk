@@ -15966,13 +15966,18 @@ func (s *ListCenInterRegionTrafficQosQueuesResponse) SetBody(v *ListCenInterRegi
 }
 
 type ListGrantVSwitchEnisRequest struct {
-	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CenId                *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	MaxResults           *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NetworkInterfaceId   []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
+	NetworkInterfaceName *string   `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrimaryIpAddress     *string   `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VSwitchId            *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisRequest) String() string {
@@ -15988,6 +15993,26 @@ func (s *ListGrantVSwitchEnisRequest) SetCenId(v string) *ListGrantVSwitchEnisRe
 	return s
 }
 
+func (s *ListGrantVSwitchEnisRequest) SetMaxResults(v int64) *ListGrantVSwitchEnisRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetNetworkInterfaceId(v []*string) *ListGrantVSwitchEnisRequest {
+	s.NetworkInterfaceId = v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetNetworkInterfaceName(v string) *ListGrantVSwitchEnisRequest {
+	s.NetworkInterfaceName = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetNextToken(v string) *ListGrantVSwitchEnisRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListGrantVSwitchEnisRequest) SetOwnerAccount(v string) *ListGrantVSwitchEnisRequest {
 	s.OwnerAccount = &v
 	return s
@@ -15995,6 +16020,11 @@ func (s *ListGrantVSwitchEnisRequest) SetOwnerAccount(v string) *ListGrantVSwitc
 
 func (s *ListGrantVSwitchEnisRequest) SetOwnerId(v int64) *ListGrantVSwitchEnisRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetPrimaryIpAddress(v string) *ListGrantVSwitchEnisRequest {
+	s.PrimaryIpAddress = &v
 	return s
 }
 
@@ -16020,6 +16050,8 @@ func (s *ListGrantVSwitchEnisRequest) SetVpcId(v string) *ListGrantVSwitchEnisRe
 
 type ListGrantVSwitchEnisResponseBody struct {
 	GrantVSwitchEnis []*ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis `json:"GrantVSwitchEnis,omitempty" xml:"GrantVSwitchEnis,omitempty" type:"Repeated"`
+	MaxResults       *int64                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount       *string                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
@@ -16037,6 +16069,16 @@ func (s *ListGrantVSwitchEnisResponseBody) SetGrantVSwitchEnis(v []*ListGrantVSw
 	return s
 }
 
+func (s *ListGrantVSwitchEnisResponseBody) SetMaxResults(v int64) *ListGrantVSwitchEnisResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBody) SetNextToken(v string) *ListGrantVSwitchEnisResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListGrantVSwitchEnisResponseBody) SetRequestId(v string) *ListGrantVSwitchEnisResponseBody {
 	s.RequestId = &v
 	return s
@@ -16048,11 +16090,13 @@ func (s *ListGrantVSwitchEnisResponseBody) SetTotalCount(v string) *ListGrantVSw
 }
 
 type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	TransitRouterFlag  *bool   `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NetworkInterfaceId   *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+	PrimaryIpAddress     *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
+	TransitRouterFlag    *bool   `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) String() string {
@@ -16070,6 +16114,16 @@ func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetDescription(v stri
 
 func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetNetworkInterfaceId(v string) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
 	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetNetworkInterfaceName(v string) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
+	s.NetworkInterfaceName = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetPrimaryIpAddress(v string) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
+	s.PrimaryIpAddress = &v
 	return s
 }
 
@@ -28976,7 +29030,7 @@ func (client *Client) CreateTransitRouterMulticastDomain(request *CreateTransitR
 }
 
 /**
- * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenbandwidthpackage).
+ * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](~~468263~~).
  * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
  * *   If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
  * *   If an inter-region connection is in the **Attached** state, the inter-region connection is created.
@@ -29087,7 +29141,7 @@ func (client *Client) CreateTransitRouterPeerAttachmentWithOptions(request *Crea
 }
 
 /**
- * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenbandwidthpackage).
+ * You must purchase a bandwidth plan before you can create an inter-region connection. For more information, see [CreateCenBandwidthPackage](~~468263~~).
  * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
  * *   If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
  * *   If an inter-region connection is in the **Attached** state, the inter-region connection is created.
@@ -34734,12 +34788,32 @@ func (client *Client) ListGrantVSwitchEnisWithOptions(request *ListGrantVSwitchE
 		query["CenId"] = request.CenId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceName)) {
+		query["NetworkInterfaceName"] = request.NetworkInterfaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryIpAddress)) {
+		query["PrimaryIpAddress"] = request.PrimaryIpAddress
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
