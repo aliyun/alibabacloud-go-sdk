@@ -6092,7 +6092,8 @@ type CreateSiteMonitorRequest struct {
 	//
 	// *   true
 	// *   false
-	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	AlertIds       *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	CustomSchedule *string `json:"CustomSchedule,omitempty" xml:"CustomSchedule,omitempty"`
 	// The operation that you want to perform. Set the value to **CreateSiteMonitor**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The information of the detection points. If you leave this parameter empty, the system randomly selects three detection points.
@@ -6129,6 +6130,11 @@ func (s *CreateSiteMonitorRequest) SetAddress(v string) *CreateSiteMonitorReques
 
 func (s *CreateSiteMonitorRequest) SetAlertIds(v string) *CreateSiteMonitorRequest {
 	s.AlertIds = &v
+	return s
+}
+
+func (s *CreateSiteMonitorRequest) SetCustomSchedule(v string) *CreateSiteMonitorRequest {
+	s.CustomSchedule = &v
 	return s
 }
 
@@ -26051,8 +26057,9 @@ func (s *DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule) SetThres
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitors struct {
 	// The information of detection points. The information includes the carriers that provide the detection points and the cities where the detection points reside.
-	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
+	Address        *string                                                             `json:"Address,omitempty" xml:"Address,omitempty"`
+	AgentGroup     *string                                                             `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
+	CustomSchedule *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule `json:"CustomSchedule,omitempty" xml:"CustomSchedule,omitempty" type:"Struct"`
 	// The name of the site monitoring task.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The name of the carrier.
@@ -26089,6 +26096,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) SetAgentGroup(v s
 	return s
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) SetCustomSchedule(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) *DescribeSiteMonitorAttributeResponseBodySiteMonitors {
+	s.CustomSchedule = v
+	return s
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) SetInterval(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitors {
 	s.Interval = &v
 	return s
@@ -26121,6 +26133,58 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) SetTaskState(v st
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) SetTaskType(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitors {
 	s.TaskType = &v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule struct {
+	Days      *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays `json:"days,omitempty" xml:"days,omitempty" type:"Struct"`
+	EndHour   *int32                                                                  `json:"end_hour,omitempty" xml:"end_hour,omitempty"`
+	StartHour *int32                                                                  `json:"start_hour,omitempty" xml:"start_hour,omitempty"`
+	TimeZone  *string                                                                 `json:"time_zone,omitempty" xml:"time_zone,omitempty"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) SetDays(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule {
+	s.Days = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) SetEndHour(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule {
+	s.EndHour = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) SetStartHour(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule {
+	s.StartHour = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) SetTimeZone(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule {
+	s.TimeZone = &v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays struct {
+	Days []*int32 `json:"days,omitempty" xml:"days,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays) SetDays(v []*int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays {
+	s.Days = v
 	return s
 }
 
@@ -33005,7 +33069,8 @@ type ModifySiteMonitorRequest struct {
 	// The ID of the site monitoring task.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The returned message.
-	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	AlertIds       *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	CustomSchedule *string `json:"CustomSchedule,omitempty" xml:"CustomSchedule,omitempty"`
 	// The HTTP status code.
 	//
 	// >  The status code 200 indicates that the call was successful.
@@ -33040,6 +33105,11 @@ func (s *ModifySiteMonitorRequest) SetAddress(v string) *ModifySiteMonitorReques
 
 func (s *ModifySiteMonitorRequest) SetAlertIds(v string) *ModifySiteMonitorRequest {
 	s.AlertIds = &v
+	return s
+}
+
+func (s *ModifySiteMonitorRequest) SetCustomSchedule(v string) *ModifySiteMonitorRequest {
+	s.CustomSchedule = &v
 	return s
 }
 
@@ -40635,6 +40705,10 @@ func (client *Client) CreateSiteMonitorWithOptions(request *CreateSiteMonitorReq
 		query["AlertIds"] = request.AlertIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomSchedule)) {
+		query["CustomSchedule"] = request.CustomSchedule
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Interval)) {
 		query["Interval"] = request.Interval
 	}
@@ -47841,6 +47915,10 @@ func (client *Client) ModifySiteMonitorWithOptions(request *ModifySiteMonitorReq
 
 	if !tea.BoolValue(util.IsUnset(request.AlertIds)) {
 		query["AlertIds"] = request.AlertIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomSchedule)) {
+		query["CustomSchedule"] = request.CustomSchedule
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Interval)) {
