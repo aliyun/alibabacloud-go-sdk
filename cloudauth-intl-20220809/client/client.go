@@ -453,6 +453,122 @@ func (s *DeletePictureResponse) SetBody(v *DeletePictureResponseBody) *DeletePic
 	return s
 }
 
+type DeleteVerifyResultRequest struct {
+	DeleteAfterQuery *string `json:"DeleteAfterQuery,omitempty" xml:"DeleteAfterQuery,omitempty"`
+	DeleteType       *string `json:"DeleteType,omitempty" xml:"DeleteType,omitempty"`
+	TransactionId    *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s DeleteVerifyResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVerifyResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVerifyResultRequest) SetDeleteAfterQuery(v string) *DeleteVerifyResultRequest {
+	s.DeleteAfterQuery = &v
+	return s
+}
+
+func (s *DeleteVerifyResultRequest) SetDeleteType(v string) *DeleteVerifyResultRequest {
+	s.DeleteType = &v
+	return s
+}
+
+func (s *DeleteVerifyResultRequest) SetTransactionId(v string) *DeleteVerifyResultRequest {
+	s.TransactionId = &v
+	return s
+}
+
+type DeleteVerifyResultResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DeleteVerifyResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s DeleteVerifyResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVerifyResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVerifyResultResponseBody) SetCode(v string) *DeleteVerifyResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteVerifyResultResponseBody) SetMessage(v string) *DeleteVerifyResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteVerifyResultResponseBody) SetRequestId(v string) *DeleteVerifyResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteVerifyResultResponseBody) SetResult(v *DeleteVerifyResultResponseBodyResult) *DeleteVerifyResultResponseBody {
+	s.Result = v
+	return s
+}
+
+type DeleteVerifyResultResponseBodyResult struct {
+	DeleteResult  *string `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s DeleteVerifyResultResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVerifyResultResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVerifyResultResponseBodyResult) SetDeleteResult(v string) *DeleteVerifyResultResponseBodyResult {
+	s.DeleteResult = &v
+	return s
+}
+
+func (s *DeleteVerifyResultResponseBodyResult) SetTransactionId(v string) *DeleteVerifyResultResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type DeleteVerifyResultResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteVerifyResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVerifyResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVerifyResultResponse) SetHeaders(v map[string]*string) *DeleteVerifyResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVerifyResultResponse) SetStatusCode(v int32) *DeleteVerifyResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVerifyResultResponse) SetBody(v *DeleteVerifyResultResponseBody) *DeleteVerifyResultResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAddressLabelsRequest struct {
 	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	Coin          *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
@@ -2309,6 +2425,58 @@ func (client *Client) DeletePicture(request *DeletePictureRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePictureResponse{}
 	_body, _err := client.DeletePictureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteVerifyResultWithOptions(request *DeleteVerifyResultRequest, runtime *util.RuntimeOptions) (_result *DeleteVerifyResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeleteAfterQuery)) {
+		query["DeleteAfterQuery"] = request.DeleteAfterQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteType)) {
+		query["DeleteType"] = request.DeleteType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionId)) {
+		query["TransactionId"] = request.TransactionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVerifyResult"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVerifyResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteVerifyResult(request *DeleteVerifyResultRequest) (_result *DeleteVerifyResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVerifyResultResponse{}
+	_body, _err := client.DeleteVerifyResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
