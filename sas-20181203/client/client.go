@@ -51141,6 +51141,7 @@ type DescribeVulDetailsResponseBodyCves struct {
 	//
 	// > This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	OtherId    *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
 	// The POC content.
 	Poc *string `json:"Poc,omitempty" xml:"Poc,omitempty"`
 	// The timestamp when the proof of concept (POC) was created. Unit: milliseconds.
@@ -51234,6 +51235,11 @@ func (s *DescribeVulDetailsResponseBodyCves) SetInternetIp(v string) *DescribeVu
 
 func (s *DescribeVulDetailsResponseBodyCves) SetIntranetIp(v string) *DescribeVulDetailsResponseBodyCves {
 	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeVulDetailsResponseBodyCves) SetOtherId(v string) *DescribeVulDetailsResponseBodyCves {
+	s.OtherId = &v
 	return s
 }
 
@@ -82740,7 +82746,7 @@ type OperationSuspEventsRequest struct {
 	SubOperation *string `json:"SubOperation,omitempty" xml:"SubOperation,omitempty"`
 	// The IDs of alert events.
 	//
-	// >  You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to obtain the IDs of alert events from the SecurityEventIds response parameter.
+	// >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the IDs of alert events from the SecurityEventIds response parameter.
 	SuspiciousEventIds *string `json:"SuspiciousEventIds,omitempty" xml:"SuspiciousEventIds,omitempty"`
 	// The type of the exceptions. Valid values:
 	//
