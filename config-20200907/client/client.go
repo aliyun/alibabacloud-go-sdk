@@ -804,6 +804,138 @@ func (s *CopyConfigRulesResponse) SetBody(v *CopyConfigRulesResponseBody) *CopyC
 	return s
 }
 
+type CreateAdvancedSearchFileRequest struct {
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+}
+
+func (s CreateAdvancedSearchFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAdvancedSearchFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAdvancedSearchFileRequest) SetSql(v string) *CreateAdvancedSearchFileRequest {
+	s.Sql = &v
+	return s
+}
+
+type CreateAdvancedSearchFileResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAdvancedSearchFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAdvancedSearchFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAdvancedSearchFileResponseBody) SetRequestId(v string) *CreateAdvancedSearchFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAdvancedSearchFileResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAdvancedSearchFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAdvancedSearchFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAdvancedSearchFileResponse) SetHeaders(v map[string]*string) *CreateAdvancedSearchFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAdvancedSearchFileResponse) SetStatusCode(v int32) *CreateAdvancedSearchFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAdvancedSearchFileResponse) SetBody(v *CreateAdvancedSearchFileResponseBody) *CreateAdvancedSearchFileResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAggregateAdvancedSearchFileRequest struct {
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	Sql          *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+}
+
+func (s CreateAggregateAdvancedSearchFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateAdvancedSearchFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateAdvancedSearchFileRequest) SetAggregatorId(v string) *CreateAggregateAdvancedSearchFileRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *CreateAggregateAdvancedSearchFileRequest) SetSql(v string) *CreateAggregateAdvancedSearchFileRequest {
+	s.Sql = &v
+	return s
+}
+
+type CreateAggregateAdvancedSearchFileResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAggregateAdvancedSearchFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateAdvancedSearchFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateAdvancedSearchFileResponseBody) SetRequestId(v string) *CreateAggregateAdvancedSearchFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAggregateAdvancedSearchFileResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAggregateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAggregateAdvancedSearchFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateAdvancedSearchFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateAdvancedSearchFileResponse) SetHeaders(v map[string]*string) *CreateAggregateAdvancedSearchFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAggregateAdvancedSearchFileResponse) SetStatusCode(v int32) *CreateAggregateAdvancedSearchFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAggregateAdvancedSearchFileResponse) SetBody(v *CreateAggregateAdvancedSearchFileResponseBody) *CreateAggregateAdvancedSearchFileResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAggregateCompliancePackRequest struct {
 	// The ID of the account group.
 	//
@@ -4536,7 +4668,7 @@ func (s *DeleteConfigDeliveryChannelResponse) SetBody(v *DeleteConfigDeliveryCha
 type DeleteConfigRulesRequest struct {
 	// The rule IDs. Separate multiple rule IDs with commas (,).
 	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/609222.html).
+	// For more information about how to obtain the ID of a rule, see ListConfigRules.
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -5821,6 +5953,87 @@ func (s *GenerateResourceInventoryResponse) SetBody(v *GenerateResourceInventory
 	return s
 }
 
+type GetAdvancedSearchFileResponseBody struct {
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceSearch *GetAdvancedSearchFileResponseBodyResourceSearch `json:"ResourceSearch,omitempty" xml:"ResourceSearch,omitempty" type:"Struct"`
+}
+
+func (s GetAdvancedSearchFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvancedSearchFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvancedSearchFileResponseBody) SetRequestId(v string) *GetAdvancedSearchFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAdvancedSearchFileResponseBody) SetResourceSearch(v *GetAdvancedSearchFileResponseBodyResourceSearch) *GetAdvancedSearchFileResponseBody {
+	s.ResourceSearch = v
+	return s
+}
+
+type GetAdvancedSearchFileResponseBodyResourceSearch struct {
+	DownloadUrl                   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ResourceInventoryGenerateTime *int64  `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
+	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetAdvancedSearchFileResponseBodyResourceSearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvancedSearchFileResponseBodyResourceSearch) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvancedSearchFileResponseBodyResourceSearch) SetDownloadUrl(v string) *GetAdvancedSearchFileResponseBodyResourceSearch {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *GetAdvancedSearchFileResponseBodyResourceSearch) SetResourceInventoryGenerateTime(v int64) *GetAdvancedSearchFileResponseBodyResourceSearch {
+	s.ResourceInventoryGenerateTime = &v
+	return s
+}
+
+func (s *GetAdvancedSearchFileResponseBodyResourceSearch) SetStatus(v string) *GetAdvancedSearchFileResponseBodyResourceSearch {
+	s.Status = &v
+	return s
+}
+
+type GetAdvancedSearchFileResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAdvancedSearchFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvancedSearchFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvancedSearchFileResponse) SetHeaders(v map[string]*string) *GetAdvancedSearchFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAdvancedSearchFileResponse) SetStatusCode(v int32) *GetAdvancedSearchFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAdvancedSearchFileResponse) SetBody(v *GetAdvancedSearchFileResponseBody) *GetAdvancedSearchFileResponse {
+	s.Body = v
+	return s
+}
+
 type GetAggregateAccountComplianceByPackRequest struct {
 	// The ID of the account group.
 	//
@@ -5980,6 +6193,104 @@ func (s *GetAggregateAccountComplianceByPackResponse) SetBody(v *GetAggregateAcc
 	return s
 }
 
+type GetAggregateAdvancedSearchFileRequest struct {
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+}
+
+func (s GetAggregateAdvancedSearchFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateAdvancedSearchFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateAdvancedSearchFileRequest) SetAggregatorId(v string) *GetAggregateAdvancedSearchFileRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+type GetAggregateAdvancedSearchFileResponseBody struct {
+	RequestId      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceSearch *GetAggregateAdvancedSearchFileResponseBodyResourceSearch `json:"ResourceSearch,omitempty" xml:"ResourceSearch,omitempty" type:"Struct"`
+}
+
+func (s GetAggregateAdvancedSearchFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateAdvancedSearchFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateAdvancedSearchFileResponseBody) SetRequestId(v string) *GetAggregateAdvancedSearchFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAggregateAdvancedSearchFileResponseBody) SetResourceSearch(v *GetAggregateAdvancedSearchFileResponseBodyResourceSearch) *GetAggregateAdvancedSearchFileResponseBody {
+	s.ResourceSearch = v
+	return s
+}
+
+type GetAggregateAdvancedSearchFileResponseBodyResourceSearch struct {
+	DownloadUrl                   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ResourceInventoryGenerateTime *int64  `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
+	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetAggregateAdvancedSearchFileResponseBodyResourceSearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateAdvancedSearchFileResponseBodyResourceSearch) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateAdvancedSearchFileResponseBodyResourceSearch) SetDownloadUrl(v string) *GetAggregateAdvancedSearchFileResponseBodyResourceSearch {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *GetAggregateAdvancedSearchFileResponseBodyResourceSearch) SetResourceInventoryGenerateTime(v int64) *GetAggregateAdvancedSearchFileResponseBodyResourceSearch {
+	s.ResourceInventoryGenerateTime = &v
+	return s
+}
+
+func (s *GetAggregateAdvancedSearchFileResponseBodyResourceSearch) SetStatus(v string) *GetAggregateAdvancedSearchFileResponseBodyResourceSearch {
+	s.Status = &v
+	return s
+}
+
+type GetAggregateAdvancedSearchFileResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAggregateAdvancedSearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAggregateAdvancedSearchFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateAdvancedSearchFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateAdvancedSearchFileResponse) SetHeaders(v map[string]*string) *GetAggregateAdvancedSearchFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAggregateAdvancedSearchFileResponse) SetStatusCode(v int32) *GetAggregateAdvancedSearchFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAggregateAdvancedSearchFileResponse) SetBody(v *GetAggregateAdvancedSearchFileResponseBody) *GetAggregateAdvancedSearchFileResponse {
+	s.Body = v
+	return s
+}
+
 type GetAggregateCompliancePackRequest struct {
 	// The ID of the account group.
 	//
@@ -6045,7 +6356,11 @@ type GetAggregateCompliancePackResponseBodyCompliancePack struct {
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
 	// The ID of the compliance package template.
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The rules in the compliance package.
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high
+	// *   2: medium
+	// *   3: low
 	ConfigRules []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	// The timestamp when the compliance package was created. Unit: milliseconds.
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
@@ -8970,20 +9285,23 @@ type GetAggregateResourceConfigurationTimelineRequest struct {
 	//
 	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The timestamp that specifies the end of the time range to query. The default value indicates the time when the GetAggregateResourceConfigurationTimeline operation is called. Unit: milliseconds.
+	// The end of the time range to query. The default value indicates the time when the GetAggregateResourceConfigurationTimeline operation is called. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	// The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which the resource resides.
 	//
 	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The ID of the resource.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource in the account group belongs.
 	//
-	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	// > You can use either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you use the ResourceAccountId parameter.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The resource ID.
+	//
+	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Deprecated
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -8991,7 +9309,7 @@ type GetAggregateResourceConfigurationTimelineRequest struct {
 	//
 	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
+	// The beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9054,9 +9372,9 @@ func (s *GetAggregateResourceConfigurationTimelineRequest) SetStartTime(v int64)
 }
 
 type GetAggregateResourceConfigurationTimelineResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the configuration timeline.
+	// The configuration timeline of the resource.
 	ResourceConfigurationTimeline *GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline `json:"ResourceConfigurationTimeline,omitempty" xml:"ResourceConfigurationTimeline,omitempty" type:"Struct"`
 }
 
@@ -9079,7 +9397,7 @@ func (s *GetAggregateResourceConfigurationTimelineResponseBody) SetResourceConfi
 }
 
 type GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline struct {
-	// The configuration changes on the configuration timeline.
+	// The resource name.
 	ConfigurationList []*GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList `json:"ConfigurationList,omitempty" xml:"ConfigurationList,omitempty" type:"Repeated"`
 	// The maximum number of entries returned for a single request.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -9243,11 +9561,14 @@ type GetAggregateResourceCountsGroupByRegionRequest struct {
 	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// The ID of the folder in the resource directory. For more information about how to obtain the ID of a folder, see [View the basic information of a folder](~~111223~~).
-	FolderId          *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
+	//
+	// > You can use either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you use the ResourceAccountId parameter.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// Deprecated
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -9287,9 +9608,9 @@ func (s *GetAggregateResourceCountsGroupByRegionRequest) SetResourceType(v strin
 }
 
 type GetAggregateResourceCountsGroupByRegionResponseBody struct {
-	// The statistics on resources.
+	// The ID of the region by which statistics are collected.
 	DiscoveredResourceCountsSummary []*GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9383,9 +9704,12 @@ type GetAggregateResourceCountsGroupByResourceTypeRequest struct {
 	//
 	// For more information about how to obtain the ID of a folder, see [View the basic information of a folder](~~111223~~).
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the region in which the resource resides.
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
+	//
+	// > You can specify either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you specify the ResourceAccountId parameter.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// Deprecated
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -9424,9 +9748,9 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeRequest) SetResourceOwnerI
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeResponseBody struct {
-	// The statistics on the resources.
+	// The resource type by which the statistics are collected.
 	DiscoveredResourceCountsSummary []*GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9505,6 +9829,104 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeResponse) SetStatusCode(v 
 }
 
 func (s *GetAggregateResourceCountsGroupByResourceTypeResponse) SetBody(v *GetAggregateResourceCountsGroupByResourceTypeResponseBody) *GetAggregateResourceCountsGroupByResourceTypeResponse {
+	s.Body = v
+	return s
+}
+
+type GetAggregateResourceInventoryRequest struct {
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+}
+
+func (s GetAggregateResourceInventoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceInventoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceInventoryRequest) SetAggregatorId(v string) *GetAggregateResourceInventoryRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+type GetAggregateResourceInventoryResponseBody struct {
+	RequestId         *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceInventory *GetAggregateResourceInventoryResponseBodyResourceInventory `json:"ResourceInventory,omitempty" xml:"ResourceInventory,omitempty" type:"Struct"`
+}
+
+func (s GetAggregateResourceInventoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceInventoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceInventoryResponseBody) SetRequestId(v string) *GetAggregateResourceInventoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAggregateResourceInventoryResponseBody) SetResourceInventory(v *GetAggregateResourceInventoryResponseBodyResourceInventory) *GetAggregateResourceInventoryResponseBody {
+	s.ResourceInventory = v
+	return s
+}
+
+type GetAggregateResourceInventoryResponseBodyResourceInventory struct {
+	DownloadUrl                   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ResourceInventoryGenerateTime *int64  `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
+	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetAggregateResourceInventoryResponseBodyResourceInventory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceInventoryResponseBodyResourceInventory) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetDownloadUrl(v string) *GetAggregateResourceInventoryResponseBodyResourceInventory {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetResourceInventoryGenerateTime(v int64) *GetAggregateResourceInventoryResponseBodyResourceInventory {
+	s.ResourceInventoryGenerateTime = &v
+	return s
+}
+
+func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetStatus(v string) *GetAggregateResourceInventoryResponseBodyResourceInventory {
+	s.Status = &v
+	return s
+}
+
+type GetAggregateResourceInventoryResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAggregateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAggregateResourceInventoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceInventoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceInventoryResponse) SetHeaders(v map[string]*string) *GetAggregateResourceInventoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAggregateResourceInventoryResponse) SetStatusCode(v int32) *GetAggregateResourceInventoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAggregateResourceInventoryResponse) SetBody(v *GetAggregateResourceInventoryResponseBody) *GetAggregateResourceInventoryResponse {
 	s.Body = v
 	return s
 }
@@ -9759,7 +10181,11 @@ type GetCompliancePackResponseBodyCompliancePack struct {
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
 	// The ID of the compliance package template.
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The rules in the compliance package.
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high
+	// *   2: medium
+	// *   3: low
 	ConfigRules []*GetCompliancePackResponseBodyCompliancePackConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	// The timestamp when the compliance package was created. Unit: milliseconds.
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
@@ -10608,8 +11034,9 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	// *   1: high
 	// *   2: medium
 	// *   3: low
-	RiskLevel *int32                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Scope     *GetConfigRuleResponseBodyConfigRuleScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The effective scope of the rule.
+	Scope *GetConfigRuleResponseBodyConfigRuleScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
 	// The information about how the rule was created.
 	Source *GetConfigRuleResponseBodyConfigRuleSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule.
@@ -10911,7 +11338,15 @@ type GetConfigRuleResponseBodyConfigRuleManagedRule struct {
 	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
 	// The optional input parameters of the managed rule.
 	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	// The details of the source of the managed rule.
+	// The interval at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour
+	// *   Three_Hours: 3 hours
+	// *   Six_Hours: 6 hours
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	//
+	// > This parameter is returned if the rule is periodically triggered.
 	SourceDetails []*GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
@@ -11004,6 +11439,7 @@ func (s *GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) SetMessage
 }
 
 type GetConfigRuleResponseBodyConfigRuleScope struct {
+	// The types of the resources to be evaluated against the rule. You can also view the resource types by using the ResourceTypesScope parameter.
 	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -11031,7 +11467,15 @@ type GetConfigRuleResponseBodyConfigRuleSource struct {
 	// *   CUSTOM_FC: a custom rule.
 	// *   ALIYUN: a managed rule.
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The details of how the rule was created.
+	// The interval at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour
+	// *   Three_Hours: 3 hours
+	// *   Six_Hours: 6 hours
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	//
+	// > This parameter is returned if the rule is periodically triggered.
 	SourceDetails []*GetConfigRuleResponseBodyConfigRuleSourceSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
@@ -13420,6 +13864,87 @@ func (s *GetResourceConfigurationTimelineResponse) SetBody(v *GetResourceConfigu
 	return s
 }
 
+type GetResourceInventoryResponseBody struct {
+	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceInventory *GetResourceInventoryResponseBodyResourceInventory `json:"ResourceInventory,omitempty" xml:"ResourceInventory,omitempty" type:"Struct"`
+}
+
+func (s GetResourceInventoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceInventoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceInventoryResponseBody) SetRequestId(v string) *GetResourceInventoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceInventoryResponseBody) SetResourceInventory(v *GetResourceInventoryResponseBodyResourceInventory) *GetResourceInventoryResponseBody {
+	s.ResourceInventory = v
+	return s
+}
+
+type GetResourceInventoryResponseBodyResourceInventory struct {
+	DownloadUrl                   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ResourceInventoryGenerateTime *int64  `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
+	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetResourceInventoryResponseBodyResourceInventory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceInventoryResponseBodyResourceInventory) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceInventoryResponseBodyResourceInventory) SetDownloadUrl(v string) *GetResourceInventoryResponseBodyResourceInventory {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *GetResourceInventoryResponseBodyResourceInventory) SetResourceInventoryGenerateTime(v int64) *GetResourceInventoryResponseBodyResourceInventory {
+	s.ResourceInventoryGenerateTime = &v
+	return s
+}
+
+func (s *GetResourceInventoryResponseBodyResourceInventory) SetStatus(v string) *GetResourceInventoryResponseBodyResourceInventory {
+	s.Status = &v
+	return s
+}
+
+type GetResourceInventoryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceInventoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceInventoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceInventoryResponse) SetHeaders(v map[string]*string) *GetResourceInventoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceInventoryResponse) SetStatusCode(v int32) *GetResourceInventoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceInventoryResponse) SetBody(v *GetResourceInventoryResponseBody) *GetResourceInventoryResponse {
+	s.Body = v
+	return s
+}
+
 type GetSupportedResourceRelationConfigRequest struct {
 	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -14736,6 +15261,122 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponse) SetBody(v *ListAggreg
 	return s
 }
 
+type ListAggregateConfigRuleEvaluationStatisticsRequest struct {
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsRequest) SetAggregatorId(v string) *ListAggregateConfigRuleEvaluationStatisticsRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+type ListAggregateConfigRuleEvaluationStatisticsResponseBody struct {
+	EvaluationResults []*ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Repeated"`
+	RequestId         *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBody) SetEvaluationResults(v []*ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) *ListAggregateConfigRuleEvaluationStatisticsResponseBody {
+	s.EvaluationResults = v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBody) SetRequestId(v string) *ListAggregateConfigRuleEvaluationStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults struct {
+	AggregatorId            *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	NonCompliantResourceCnt *int32  `json:"NonCompliantResourceCnt,omitempty" xml:"NonCompliantResourceCnt,omitempty"`
+	NonCompliantRuleCnt     *int32  `json:"NonCompliantRuleCnt,omitempty" xml:"NonCompliantRuleCnt,omitempty"`
+	StatisticDate           *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
+	TotalResourceCnt        *int32  `json:"TotalResourceCnt,omitempty" xml:"TotalResourceCnt,omitempty"`
+	TotalRuleCnt            *int32  `json:"TotalRuleCnt,omitempty" xml:"TotalRuleCnt,omitempty"`
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetAggregatorId(v string) *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetNonCompliantResourceCnt(v int32) *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.NonCompliantResourceCnt = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetNonCompliantRuleCnt(v int32) *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.NonCompliantRuleCnt = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetStatisticDate(v string) *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.StatisticDate = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetTotalResourceCnt(v int32) *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.TotalResourceCnt = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetTotalRuleCnt(v int32) *ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.TotalRuleCnt = &v
+	return s
+}
+
+type ListAggregateConfigRuleEvaluationStatisticsResponse struct {
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAggregateConfigRuleEvaluationStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateConfigRuleEvaluationStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponse) SetHeaders(v map[string]*string) *ListAggregateConfigRuleEvaluationStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponse) SetStatusCode(v int32) *ListAggregateConfigRuleEvaluationStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationStatisticsResponse) SetBody(v *ListAggregateConfigRuleEvaluationStatisticsResponseBody) *ListAggregateConfigRuleEvaluationStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAggregateConfigRulesRequest struct {
 	// The ID of the account group.
 	//
@@ -15436,6 +16077,181 @@ func (s *ListAggregateDiscoveredResourcesResponse) SetBody(v *ListAggregateDisco
 	return s
 }
 
+type ListAggregateRemediationExecutionsRequest struct {
+	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleId      *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ExecutionStatus   *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
+	MaxResults        *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+}
+
+func (s ListAggregateRemediationExecutionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationExecutionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationExecutionsRequest) SetAggregatorId(v string) *ListAggregateRemediationExecutionsRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsRequest) SetConfigRuleId(v string) *ListAggregateRemediationExecutionsRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsRequest) SetExecutionStatus(v string) *ListAggregateRemediationExecutionsRequest {
+	s.ExecutionStatus = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsRequest) SetMaxResults(v int64) *ListAggregateRemediationExecutionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsRequest) SetNextToken(v string) *ListAggregateRemediationExecutionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsRequest) SetResourceAccountId(v int64) *ListAggregateRemediationExecutionsRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
+type ListAggregateRemediationExecutionsResponseBody struct {
+	RemediationExecutionData *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData `json:"RemediationExecutionData,omitempty" xml:"RemediationExecutionData,omitempty" type:"Struct"`
+	RequestId                *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAggregateRemediationExecutionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationExecutionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBody) SetRemediationExecutionData(v *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData) *ListAggregateRemediationExecutionsResponseBody {
+	s.RemediationExecutionData = v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBody) SetRequestId(v string) *ListAggregateRemediationExecutionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData struct {
+	MaxResults            *int64                                                                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string                                                                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RemediationExecutions []*ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions `json:"RemediationExecutions,omitempty" xml:"RemediationExecutions,omitempty" type:"Repeated"`
+}
+
+func (s ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData) SetMaxResults(v int64) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData) SetNextToken(v string) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData) SetRemediationExecutions(v []*ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData {
+	s.RemediationExecutions = v
+	return s
+}
+
+type ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions struct {
+	ExecutionCreateDate    *string `json:"ExecutionCreateDate,omitempty" xml:"ExecutionCreateDate,omitempty"`
+	ExecutionInvocationId  *string `json:"ExecutionInvocationId,omitempty" xml:"ExecutionInvocationId,omitempty"`
+	ExecutionResourceIds   *string `json:"ExecutionResourceIds,omitempty" xml:"ExecutionResourceIds,omitempty"`
+	ExecutionResourceType  *string `json:"ExecutionResourceType,omitempty" xml:"ExecutionResourceType,omitempty"`
+	ExecutionStatus        *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
+	ExecutionStatusMessage *string `json:"ExecutionStatusMessage,omitempty" xml:"ExecutionStatusMessage,omitempty"`
+}
+
+func (s ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) SetExecutionCreateDate(v string) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions {
+	s.ExecutionCreateDate = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) SetExecutionInvocationId(v string) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions {
+	s.ExecutionInvocationId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) SetExecutionResourceIds(v string) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions {
+	s.ExecutionResourceIds = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) SetExecutionResourceType(v string) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions {
+	s.ExecutionResourceType = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) SetExecutionStatus(v string) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions {
+	s.ExecutionStatus = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions) SetExecutionStatusMessage(v string) *ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions {
+	s.ExecutionStatusMessage = &v
+	return s
+}
+
+type ListAggregateRemediationExecutionsResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAggregateRemediationExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAggregateRemediationExecutionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationExecutionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationExecutionsResponse) SetHeaders(v map[string]*string) *ListAggregateRemediationExecutionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponse) SetStatusCode(v int32) *ListAggregateRemediationExecutionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAggregateRemediationExecutionsResponse) SetBody(v *ListAggregateRemediationExecutionsResponseBody) *ListAggregateRemediationExecutionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAggregateRemediationsRequest struct {
 	// The ID of the account group.
 	//
@@ -15975,7 +16791,7 @@ type ListAggregateResourceRelationsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the resource resides.
+	// The ID of the region in which the resource resides.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the relationship between the resource and the object.
 	//
@@ -16005,7 +16821,7 @@ type ListAggregateResourceRelationsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Contains: The object contains the resource.
+	// *   Contains: The actual value contains the expected value.
 	//
 	//     <!-- -->
 	//
@@ -16013,7 +16829,7 @@ type ListAggregateResourceRelationsRequest struct {
 	//
 	//     <!-- -->
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource in the account group belongs.
+	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The resource ID.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -16109,11 +16925,45 @@ func (s *ListAggregateResourceRelationsResponseBody) SetResourceRelations(v *Lis
 }
 
 type ListAggregateResourceRelationsResponseBodyResourceRelations struct {
-	// The maximum number of entries returned per page.
+	// The maximum number of entries returned on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token that was used to initiate the next request.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// An array that contains the relationships.
+	// The type of the relationship between the resource and the object.
+	//
+	// Valid values:
+	//
+	// *   IsContained: The object is included as part of the resource.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   IsAttachedTo: The object is added to the resource.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   IsAssociatedIn: The object is associated with the resource.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Contains: The actual value contains the expected value.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ResourceRelationList []*ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList `json:"ResourceRelationList,omitempty" xml:"ResourceRelationList,omitempty" type:"Repeated"`
 }
 
@@ -16259,6 +17109,121 @@ func (s *ListAggregateResourceRelationsResponse) SetStatusCode(v int32) *ListAgg
 }
 
 func (s *ListAggregateResourceRelationsResponse) SetBody(v *ListAggregateResourceRelationsResponseBody) *ListAggregateResourceRelationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAggregateResourcesByAdvancedSearchRequest struct {
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	Sql          *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+}
+
+func (s ListAggregateResourcesByAdvancedSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateResourcesByAdvancedSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchRequest) SetAggregatorId(v string) *ListAggregateResourcesByAdvancedSearchRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchRequest) SetSql(v string) *ListAggregateResourcesByAdvancedSearchRequest {
+	s.Sql = &v
+	return s
+}
+
+type ListAggregateResourcesByAdvancedSearchResponseBody struct {
+	QueryResults *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults `json:"QueryResults,omitempty" xml:"QueryResults,omitempty" type:"Struct"`
+	RequestId    *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponseBody) SetQueryResults(v *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults) *ListAggregateResourcesByAdvancedSearchResponseBody {
+	s.QueryResults = v
+	return s
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponseBody) SetRequestId(v string) *ListAggregateResourcesByAdvancedSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults struct {
+	QueryResultList *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList `json:"QueryResultList,omitempty" xml:"QueryResultList,omitempty" type:"Struct"`
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults) SetQueryResultList(v *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults {
+	s.QueryResultList = v
+	return s
+}
+
+type ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList struct {
+	Columns []*string     `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Values  []interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) SetColumns(v []*string) *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList {
+	s.Columns = v
+	return s
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) SetValues(v []interface{}) *ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList {
+	s.Values = v
+	return s
+}
+
+type ListAggregateResourcesByAdvancedSearchResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAggregateResourcesByAdvancedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateResourcesByAdvancedSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponse) SetHeaders(v map[string]*string) *ListAggregateResourcesByAdvancedSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponse) SetStatusCode(v int32) *ListAggregateResourcesByAdvancedSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAggregateResourcesByAdvancedSearchResponse) SetBody(v *ListAggregateResourcesByAdvancedSearchResponseBody) *ListAggregateResourcesByAdvancedSearchResponse {
 	s.Body = v
 	return s
 }
@@ -17546,15 +18511,136 @@ func (s *ListConfigRuleEvaluationResultsResponse) SetBody(v *ListConfigRuleEvalu
 	return s
 }
 
+type ListConfigRuleEvaluationStatisticsResponseBody struct {
+	EvaluationResults []*ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Repeated"`
+	RequestId         *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListConfigRuleEvaluationStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRuleEvaluationStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponseBody) SetEvaluationResults(v []*ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) *ListConfigRuleEvaluationStatisticsResponseBody {
+	s.EvaluationResults = v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponseBody) SetRequestId(v string) *ListConfigRuleEvaluationStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults struct {
+	NonCompliantResourceCnt *int32  `json:"NonCompliantResourceCnt,omitempty" xml:"NonCompliantResourceCnt,omitempty"`
+	NonCompliantRuleCnt     *int32  `json:"NonCompliantRuleCnt,omitempty" xml:"NonCompliantRuleCnt,omitempty"`
+	StatisticDate           *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
+	TotalResourceCnt        *int32  `json:"TotalResourceCnt,omitempty" xml:"TotalResourceCnt,omitempty"`
+	TotalRuleCnt            *int32  `json:"TotalRuleCnt,omitempty" xml:"TotalRuleCnt,omitempty"`
+}
+
+func (s ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetNonCompliantResourceCnt(v int32) *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.NonCompliantResourceCnt = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetNonCompliantRuleCnt(v int32) *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.NonCompliantRuleCnt = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetStatisticDate(v string) *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.StatisticDate = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetTotalResourceCnt(v int32) *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.TotalResourceCnt = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults) SetTotalRuleCnt(v int32) *ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults {
+	s.TotalRuleCnt = &v
+	return s
+}
+
+type ListConfigRuleEvaluationStatisticsResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigRuleEvaluationStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListConfigRuleEvaluationStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRuleEvaluationStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponse) SetHeaders(v map[string]*string) *ListConfigRuleEvaluationStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponse) SetStatusCode(v int32) *ListConfigRuleEvaluationStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationStatisticsResponse) SetBody(v *ListConfigRuleEvaluationStatisticsResponseBody) *ListConfigRuleEvaluationStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type ListConfigRulesRequest struct {
-	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleName  *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The compliance evaluation result. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to the resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   ACTIVE: The rule is enabled.
+	// *   DELETING: The rule is being deleted.
+	// *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+	// *   INACTIVE: The rule is disabled.
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	RiskLevel       *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The query keyword.
+	//
+	// You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
+	// Pages start from page 1. Default value: 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resources to be evaluated based on the rule.
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high
+	// *   2: medium
+	// *   3: low
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListConfigRulesRequest) String() string {
@@ -17606,8 +18692,10 @@ func (s *ListConfigRulesRequest) SetRiskLevel(v int32) *ListConfigRulesRequest {
 }
 
 type ListConfigRulesResponseBody struct {
+	// The queried rules.
 	ConfigRules *ListConfigRulesResponseBodyConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Struct"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConfigRulesResponseBody) String() string {
@@ -17629,10 +18717,14 @@ func (s *ListConfigRulesResponseBody) SetRequestId(v string) *ListConfigRulesRes
 }
 
 type ListConfigRulesResponseBodyConfigRules struct {
+	// The types of resources evaluated by the rule. Separate multiple resource types with commas (,).
 	ConfigRuleList []*ListConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
-	PageNumber     *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of rules.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListConfigRulesResponseBodyConfigRules) String() string {
@@ -18099,6 +19191,87 @@ func (s *ListDiscoveredResourcesResponse) SetBody(v *ListDiscoveredResourcesResp
 	return s
 }
 
+type ListIntegratedServiceResponseBody struct {
+	Data      []*ListIntegratedServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListIntegratedServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegratedServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegratedServiceResponseBody) SetData(v []*ListIntegratedServiceResponseBodyData) *ListIntegratedServiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIntegratedServiceResponseBody) SetRequestId(v string) *ListIntegratedServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListIntegratedServiceResponseBodyData struct {
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status      *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListIntegratedServiceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegratedServiceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegratedServiceResponseBodyData) SetServiceCode(v string) *ListIntegratedServiceResponseBodyData {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *ListIntegratedServiceResponseBodyData) SetServiceName(v string) *ListIntegratedServiceResponseBodyData {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListIntegratedServiceResponseBodyData) SetStatus(v bool) *ListIntegratedServiceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListIntegratedServiceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIntegratedServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIntegratedServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegratedServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegratedServiceResponse) SetHeaders(v map[string]*string) *ListIntegratedServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIntegratedServiceResponse) SetStatusCode(v int32) *ListIntegratedServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIntegratedServiceResponse) SetBody(v *ListIntegratedServiceResponseBody) *ListIntegratedServiceResponse {
+	s.Body = v
+	return s
+}
+
 type ListManagedRulesRequest struct {
 	// The keyword that you want to use to filter managed rules.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
@@ -18178,7 +19351,7 @@ func (s *ListManagedRulesResponseBody) SetRequestId(v string) *ListManagedRulesR
 }
 
 type ListManagedRulesResponseBodyManagedRules struct {
-	// The details of the managed rules.
+	// The name of the remediation template.
 	ManagedRuleList []*ListManagedRulesResponseBodyManagedRulesManagedRuleList `json:"ManagedRuleList,omitempty" xml:"ManagedRuleList,omitempty" type:"Repeated"`
 	// The page number of the returned page. Minimum value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -18711,8 +19884,10 @@ type ListRemediationTemplatesRequest struct {
 	//
 	// You can call the [ListCompliancePackTemplates](~~261176~~) operation to obtain the managed rule identifier.
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	PageNumber            *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Pages start from page 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
 	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
 }
@@ -18746,12 +19921,15 @@ func (s *ListRemediationTemplatesRequest) SetRemediationType(v string) *ListReme
 }
 
 type ListRemediationTemplatesResponseBody struct {
+	// The page number. Pages start from page 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the remediation template.
+	// The number of entries per page. Valid values: 1 to 100.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The description of the remediation template.
 	RemediationTemplates []*ListRemediationTemplatesResponseBodyRemediationTemplates `json:"RemediationTemplates,omitempty" xml:"RemediationTemplates,omitempty" type:"Repeated"`
 	// The ID of the request.
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of remediation templates.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -18863,13 +20041,13 @@ func (s *ListRemediationTemplatesResponse) SetBody(v *ListRemediationTemplatesRe
 }
 
 type ListRemediationsRequest struct {
-	// The rule ID. Separate multiple rule IDs with commas (,).
+	// The rule IDs. Separate multiple rule IDs with commas (,).
 	//
 	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
-	// 资源列表的页码。起始值：1。
+	// The page number. Pages start from page 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页查询时设置的每页行数。取值范围：1~50。
+	// The number of entries per page. Valid values: 1 to 50.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -18897,15 +20075,15 @@ func (s *ListRemediationsRequest) SetPageSize(v int64) *ListRemediationsRequest 
 }
 
 type ListRemediationsResponseBody struct {
-	// 修正列表的页码。起始值：1。
+	// The page number. Pages start from page 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页查询时设置的每页行数。取值范围：1~50。
+	// The number of entries per page. Valid values: 1 to 50.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// An array that contains the remediation templates.
+	// The converted configuration of the remediation template. This parameter is returned only for an OOS remediation template.
 	Remediations []*ListRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 修正设置总数。
+	// The total number of remediation settings.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19415,7 +20593,7 @@ type ListResourceRelationsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the resource resides.
+	// The ID of the region in which the resource resides.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the relationship between the resource and the object.
 	//
@@ -19445,7 +20623,7 @@ type ListResourceRelationsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Contains: The object contains the resource.
+	// *   Contains: The actual value contains the expected value.
 	//
 	//     <!-- -->
 	//
@@ -19537,11 +20715,45 @@ func (s *ListResourceRelationsResponseBody) SetResourceRelations(v *ListResource
 }
 
 type ListResourceRelationsResponseBodyResourceRelations struct {
-	// The maximum number of entries returned per page.
+	// The maximum number of entries returned on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token that was used to initiate the next request.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// An array that contains the relationships.
+	// The type of the relationship between the resource and the object.
+	//
+	// Valid values:
+	//
+	// *   IsContained: The object is included as part of the resource.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   IsAttachedTo: The object is added to the resource.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   IsAssociatedIn: The object is associated with the resource.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Contains: The actual value contains the expected value.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ResourceRelationList []*ListResourceRelationsResponseBodyResourceRelationsResourceRelationList `json:"ResourceRelationList,omitempty" xml:"ResourceRelationList,omitempty" type:"Repeated"`
 }
 
@@ -19687,6 +20899,266 @@ func (s *ListResourceRelationsResponse) SetStatusCode(v int32) *ListResourceRela
 }
 
 func (s *ListResourceRelationsResponse) SetBody(v *ListResourceRelationsResponseBody) *ListResourceRelationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListResourcesByAdvancedSearchRequest struct {
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+}
+
+func (s ListResourcesByAdvancedSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesByAdvancedSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesByAdvancedSearchRequest) SetSql(v string) *ListResourcesByAdvancedSearchRequest {
+	s.Sql = &v
+	return s
+}
+
+type ListResourcesByAdvancedSearchResponseBody struct {
+	QueryResults *ListResourcesByAdvancedSearchResponseBodyQueryResults `json:"QueryResults,omitempty" xml:"QueryResults,omitempty" type:"Struct"`
+	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListResourcesByAdvancedSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesByAdvancedSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesByAdvancedSearchResponseBody) SetQueryResults(v *ListResourcesByAdvancedSearchResponseBodyQueryResults) *ListResourcesByAdvancedSearchResponseBody {
+	s.QueryResults = v
+	return s
+}
+
+func (s *ListResourcesByAdvancedSearchResponseBody) SetRequestId(v string) *ListResourcesByAdvancedSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListResourcesByAdvancedSearchResponseBodyQueryResults struct {
+	QueryResultList *ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList `json:"QueryResultList,omitempty" xml:"QueryResultList,omitempty" type:"Struct"`
+}
+
+func (s ListResourcesByAdvancedSearchResponseBodyQueryResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesByAdvancedSearchResponseBodyQueryResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesByAdvancedSearchResponseBodyQueryResults) SetQueryResultList(v *ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) *ListResourcesByAdvancedSearchResponseBodyQueryResults {
+	s.QueryResultList = v
+	return s
+}
+
+type ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList struct {
+	Columns []*string     `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Values  []interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) SetColumns(v []*string) *ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList {
+	s.Columns = v
+	return s
+}
+
+func (s *ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList) SetValues(v []interface{}) *ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList {
+	s.Values = v
+	return s
+}
+
+type ListResourcesByAdvancedSearchResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourcesByAdvancedSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListResourcesByAdvancedSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesByAdvancedSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesByAdvancedSearchResponse) SetHeaders(v map[string]*string) *ListResourcesByAdvancedSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourcesByAdvancedSearchResponse) SetStatusCode(v int32) *ListResourcesByAdvancedSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResourcesByAdvancedSearchResponse) SetBody(v *ListResourcesByAdvancedSearchResponseBody) *ListResourcesByAdvancedSearchResponse {
+	s.Body = v
+	return s
+}
+
+type ListSupportedProductsRequest struct {
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListSupportedProductsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupportedProductsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupportedProductsRequest) SetMaxResults(v int32) *ListSupportedProductsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSupportedProductsRequest) SetNextToken(v string) *ListSupportedProductsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListSupportedProductsResponseBody struct {
+	MaxResults *string                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Products   []*ListSupportedProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSupportedProductsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupportedProductsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupportedProductsResponseBody) SetMaxResults(v string) *ListSupportedProductsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBody) SetNextToken(v string) *ListSupportedProductsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBody) SetProducts(v []*ListSupportedProductsResponseBodyProducts) *ListSupportedProductsResponseBody {
+	s.Products = v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBody) SetRequestId(v string) *ListSupportedProductsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSupportedProductsResponseBodyProducts struct {
+	ProductNameEn    *string                                                      `json:"ProductNameEn,omitempty" xml:"ProductNameEn,omitempty"`
+	ProductNameZh    *string                                                      `json:"ProductNameZh,omitempty" xml:"ProductNameZh,omitempty"`
+	ResourceTypeList []*ListSupportedProductsResponseBodyProductsResourceTypeList `json:"ResourceTypeList,omitempty" xml:"ResourceTypeList,omitempty" type:"Repeated"`
+}
+
+func (s ListSupportedProductsResponseBodyProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupportedProductsResponseBodyProducts) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupportedProductsResponseBodyProducts) SetProductNameEn(v string) *ListSupportedProductsResponseBodyProducts {
+	s.ProductNameEn = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBodyProducts) SetProductNameZh(v string) *ListSupportedProductsResponseBodyProducts {
+	s.ProductNameZh = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBodyProducts) SetResourceTypeList(v []*ListSupportedProductsResponseBodyProductsResourceTypeList) *ListSupportedProductsResponseBodyProducts {
+	s.ResourceTypeList = v
+	return s
+}
+
+type ListSupportedProductsResponseBodyProductsResourceTypeList struct {
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TypeNameEn   *string `json:"TypeNameEn,omitempty" xml:"TypeNameEn,omitempty"`
+	TypeNameZh   *string `json:"TypeNameZh,omitempty" xml:"TypeNameZh,omitempty"`
+	TypePageLink *string `json:"TypePageLink,omitempty" xml:"TypePageLink,omitempty"`
+}
+
+func (s ListSupportedProductsResponseBodyProductsResourceTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupportedProductsResponseBodyProductsResourceTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupportedProductsResponseBodyProductsResourceTypeList) SetResourceType(v string) *ListSupportedProductsResponseBodyProductsResourceTypeList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBodyProductsResourceTypeList) SetTypeNameEn(v string) *ListSupportedProductsResponseBodyProductsResourceTypeList {
+	s.TypeNameEn = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBodyProductsResourceTypeList) SetTypeNameZh(v string) *ListSupportedProductsResponseBodyProductsResourceTypeList {
+	s.TypeNameZh = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponseBodyProductsResourceTypeList) SetTypePageLink(v string) *ListSupportedProductsResponseBodyProductsResourceTypeList {
+	s.TypePageLink = &v
+	return s
+}
+
+type ListSupportedProductsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSupportedProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSupportedProductsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupportedProductsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupportedProductsResponse) SetHeaders(v map[string]*string) *ListSupportedProductsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSupportedProductsResponse) SetStatusCode(v int32) *ListSupportedProductsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSupportedProductsResponse) SetBody(v *ListSupportedProductsResponseBody) *ListSupportedProductsResponse {
 	s.Body = v
 	return s
 }
@@ -20450,13 +21922,16 @@ func (s *StartAggregateConfigRuleEvaluationResponse) SetBody(v *StartAggregateCo
 type StartAggregateRemediationRequest struct {
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	// For information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// The rule ID.
 	//
 	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
-	ConfigRuleId      *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources to be remediated belong. If this parameter is left empty, non-compliant resources of all accounts in the account group are remediated.
+	//
+	// > You must specify the ID of the current management account or a member account in the account group of the management account.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 }
 
 func (s StartAggregateRemediationRequest) String() string {
@@ -20485,8 +21960,8 @@ func (s *StartAggregateRemediationRequest) SetResourceAccountId(v int64) *StartA
 type StartAggregateRemediationResponseBody struct {
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// *   true
+	// *   false
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -24226,6 +25701,98 @@ func (client *Client) CopyConfigRules(request *CopyConfigRulesRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) CreateAdvancedSearchFileWithOptions(request *CreateAdvancedSearchFileRequest, runtime *util.RuntimeOptions) (_result *CreateAdvancedSearchFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Sql)) {
+		query["Sql"] = request.Sql
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAdvancedSearchFile"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAdvancedSearchFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAdvancedSearchFile(request *CreateAdvancedSearchFileRequest) (_result *CreateAdvancedSearchFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAdvancedSearchFileResponse{}
+	_body, _err := client.CreateAdvancedSearchFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAggregateAdvancedSearchFileWithOptions(request *CreateAggregateAdvancedSearchFileRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateAdvancedSearchFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sql)) {
+		query["Sql"] = request.Sql
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAggregateAdvancedSearchFile"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAggregateAdvancedSearchFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAggregateAdvancedSearchFile(request *CreateAggregateAdvancedSearchFileRequest) (_result *CreateAggregateAdvancedSearchFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAggregateAdvancedSearchFileResponse{}
+	_body, _err := client.CreateAggregateAdvancedSearchFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can use your management account to create up to five compliance packages for each account group.
  * This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
@@ -26511,6 +28078,39 @@ func (client *Client) GenerateResourceInventory(request *GenerateResourceInvento
 	return _result, _err
 }
 
+func (client *Client) GetAdvancedSearchFileWithOptions(runtime *util.RuntimeOptions) (_result *GetAdvancedSearchFileResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetAdvancedSearchFile"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAdvancedSearchFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAdvancedSearchFile() (_result *GetAdvancedSearchFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAdvancedSearchFileResponse{}
+	_body, _err := client.GetAdvancedSearchFileWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087****` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
  *
@@ -26557,6 +28157,50 @@ func (client *Client) GetAggregateAccountComplianceByPack(request *GetAggregateA
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateAccountComplianceByPackResponse{}
 	_body, _err := client.GetAggregateAccountComplianceByPackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAggregateAdvancedSearchFileWithOptions(request *GetAggregateAdvancedSearchFileRequest, runtime *util.RuntimeOptions) (_result *GetAggregateAdvancedSearchFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateAdvancedSearchFile"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAggregateAdvancedSearchFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAggregateAdvancedSearchFile(request *GetAggregateAdvancedSearchFileRequest) (_result *GetAggregateAdvancedSearchFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAggregateAdvancedSearchFileResponse{}
+	_body, _err := client.GetAggregateAdvancedSearchFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27449,7 +29093,7 @@ func (client *Client) GetAggregateResourceCountsGroupByRegion(request *GetAggreg
 }
 
 /**
- * This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005****` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+ * This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005****` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
  *
  * @param request GetAggregateResourceCountsGroupByResourceTypeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27505,7 +29149,7 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceTypeWithOptions(r
 }
 
 /**
- * This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005****` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+ * This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005****` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
  *
  * @param request GetAggregateResourceCountsGroupByResourceTypeRequest
  * @return GetAggregateResourceCountsGroupByResourceTypeResponse
@@ -27514,6 +29158,50 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceType(request *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceCountsGroupByResourceTypeResponse{}
 	_body, _err := client.GetAggregateResourceCountsGroupByResourceTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAggregateResourceInventoryWithOptions(request *GetAggregateResourceInventoryRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceInventoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceInventory"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAggregateResourceInventoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAggregateResourceInventory(request *GetAggregateResourceInventoryRequest) (_result *GetAggregateResourceInventoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAggregateResourceInventoryResponse{}
+	_body, _err := client.GetAggregateResourceInventoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28618,6 +30306,39 @@ func (client *Client) GetResourceConfigurationTimeline(request *GetResourceConfi
 	return _result, _err
 }
 
+func (client *Client) GetResourceInventoryWithOptions(runtime *util.RuntimeOptions) (_result *GetResourceInventoryResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceInventory"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceInventoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceInventory() (_result *GetResourceInventoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResourceInventoryResponse{}
+	_body, _err := client.GetResourceInventoryWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
  *
@@ -29047,6 +30768,50 @@ func (client *Client) ListAggregateConfigRuleEvaluationResults(request *ListAggr
 	return _result, _err
 }
 
+func (client *Client) ListAggregateConfigRuleEvaluationStatisticsWithOptions(request *ListAggregateConfigRuleEvaluationStatisticsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateConfigRuleEvaluationStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateConfigRuleEvaluationStatistics"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAggregateConfigRuleEvaluationStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAggregateConfigRuleEvaluationStatistics(request *ListAggregateConfigRuleEvaluationStatisticsRequest) (_result *ListAggregateConfigRuleEvaluationStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAggregateConfigRuleEvaluationStatisticsResponse{}
+	_body, _err := client.ListAggregateConfigRuleEvaluationStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079****`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
  *
@@ -29218,6 +30983,70 @@ func (client *Client) ListAggregateDiscoveredResources(request *ListAggregateDis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateDiscoveredResourcesResponse{}
 	_body, _err := client.ListAggregateDiscoveredResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAggregateRemediationExecutionsWithOptions(request *ListAggregateRemediationExecutionsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateRemediationExecutionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionStatus)) {
+		query["ExecutionStatus"] = request.ExecutionStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAccountId)) {
+		query["ResourceAccountId"] = request.ResourceAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateRemediationExecutions"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAggregateRemediationExecutionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAggregateRemediationExecutions(request *ListAggregateRemediationExecutionsRequest) (_result *ListAggregateRemediationExecutionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAggregateRemediationExecutionsResponse{}
+	_body, _err := client.ListAggregateRemediationExecutionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29453,6 +31282,54 @@ func (client *Client) ListAggregateResourceRelations(request *ListAggregateResou
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateResourceRelationsResponse{}
 	_body, _err := client.ListAggregateResourceRelationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAggregateResourcesByAdvancedSearchWithOptions(request *ListAggregateResourcesByAdvancedSearchRequest, runtime *util.RuntimeOptions) (_result *ListAggregateResourcesByAdvancedSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sql)) {
+		query["Sql"] = request.Sql
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateResourcesByAdvancedSearch"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAggregateResourcesByAdvancedSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAggregateResourcesByAdvancedSearch(request *ListAggregateResourcesByAdvancedSearchRequest) (_result *ListAggregateResourcesByAdvancedSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAggregateResourcesByAdvancedSearchResponse{}
+	_body, _err := client.ListAggregateResourcesByAdvancedSearchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29752,6 +31629,46 @@ func (client *Client) ListConfigRuleEvaluationResults(request *ListConfigRuleEva
 	return _result, _err
 }
 
+func (client *Client) ListConfigRuleEvaluationStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *ListConfigRuleEvaluationStatisticsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfigRuleEvaluationStatistics"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConfigRuleEvaluationStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConfigRuleEvaluationStatistics() (_result *ListConfigRuleEvaluationStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConfigRuleEvaluationStatisticsResponse{}
+	_body, _err := client.ListConfigRuleEvaluationStatisticsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+ *
+ * @param request ListConfigRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListConfigRulesResponse
+ */
 func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ListConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29813,6 +31730,12 @@ func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+ *
+ * @param request ListConfigRulesRequest
+ * @return ListConfigRulesResponse
+ */
 func (client *Client) ListConfigRules(request *ListConfigRulesRequest) (_result *ListConfigRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConfigRulesResponse{}
@@ -29894,6 +31817,39 @@ func (client *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDiscoveredResourcesResponse{}
 	_body, _err := client.ListDiscoveredResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIntegratedServiceWithOptions(runtime *util.RuntimeOptions) (_result *ListIntegratedServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListIntegratedService"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIntegratedServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIntegratedService() (_result *ListIntegratedServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIntegratedServiceResponse{}
+	_body, _err := client.ListIntegratedServiceWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30384,6 +32340,98 @@ func (client *Client) ListResourceRelations(request *ListResourceRelationsReques
 	return _result, _err
 }
 
+func (client *Client) ListResourcesByAdvancedSearchWithOptions(request *ListResourcesByAdvancedSearchRequest, runtime *util.RuntimeOptions) (_result *ListResourcesByAdvancedSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Sql)) {
+		query["Sql"] = request.Sql
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourcesByAdvancedSearch"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListResourcesByAdvancedSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListResourcesByAdvancedSearch(request *ListResourcesByAdvancedSearchRequest) (_result *ListResourcesByAdvancedSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListResourcesByAdvancedSearchResponse{}
+	_body, _err := client.ListResourcesByAdvancedSearchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSupportedProductsWithOptions(request *ListSupportedProductsRequest, runtime *util.RuntimeOptions) (_result *ListSupportedProductsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSupportedProducts"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSupportedProductsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSupportedProducts(request *ListSupportedProductsRequest) (_result *ListSupportedProductsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSupportedProductsResponse{}
+	_body, _err := client.ListSupportedProductsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30724,7 +32772,7 @@ func (client *Client) StartAggregateConfigRuleEvaluation(request *StartAggregate
 }
 
 /**
- * This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the manual execution is successful.
+ * This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
  *
  * @param request StartAggregateRemediationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30772,7 +32820,7 @@ func (client *Client) StartAggregateRemediationWithOptions(request *StartAggrega
 }
 
 /**
- * This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the manual execution is successful.
+ * This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
  *
  * @param request StartAggregateRemediationRequest
  * @return StartAggregateRemediationResponse
