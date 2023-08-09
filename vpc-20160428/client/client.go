@@ -10527,6 +10527,7 @@ func (s *CreatePhysicalConnectionSetupOrderResponse) SetBody(v *CreatePhysicalCo
 }
 
 type CreatePublicIpAddressPoolRequest struct {
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The client token that you want to use to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that the value is unique among all requests. ClientToken can contain only ASCII characters.
@@ -10573,6 +10574,7 @@ type CreatePublicIpAddressPoolRequest struct {
 	ResourceOwnerAccount *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Tag                  []*CreatePublicIpAddressPoolRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Zones                []*string                              `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s CreatePublicIpAddressPoolRequest) String() string {
@@ -10581,6 +10583,11 @@ func (s CreatePublicIpAddressPoolRequest) String() string {
 
 func (s CreatePublicIpAddressPoolRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePublicIpAddressPoolRequest) SetBizType(v string) *CreatePublicIpAddressPoolRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *CreatePublicIpAddressPoolRequest) SetClientToken(v string) *CreatePublicIpAddressPoolRequest {
@@ -10640,6 +10647,11 @@ func (s *CreatePublicIpAddressPoolRequest) SetResourceOwnerId(v int64) *CreatePu
 
 func (s *CreatePublicIpAddressPoolRequest) SetTag(v []*CreatePublicIpAddressPoolRequestTag) *CreatePublicIpAddressPoolRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreatePublicIpAddressPoolRequest) SetZones(v []*string) *CreatePublicIpAddressPoolRequest {
+	s.Zones = v
 	return s
 }
 
@@ -23953,6 +23965,7 @@ type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBan
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The ID of the EIP bandwidth plan.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BizType            *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The service state of the EIP bandwidth plan.
 	//
 	// *   **Normal**: The EIP bandwidth plan works as expected.
@@ -24041,6 +24054,7 @@ type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBan
 	// *   **Modifying**: The EIP bandwidth plan is being modified.
 	Status *string                                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Zone   *string                                                                                       `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage) String() string {
@@ -24058,6 +24072,11 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage) SetBandwidthPackageId(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage {
 	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage) SetBizType(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage {
+	s.BizType = &v
 	return s
 }
 
@@ -24168,6 +24187,11 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage) SetTags(v *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTags) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage) SetZone(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage {
+	s.Zone = &v
 	return s
 }
 
@@ -25378,6 +25402,7 @@ type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The type of the bandwidth. Only **CommonBandwidthPackage** (EIP Bandwidth Plan) is returned.
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The service status of the EIP. Valid values:
 	//
 	// *   **Normal**: active
@@ -25550,6 +25575,11 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetBandwidthPac
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetBandwidthPackageType(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
 	s.BandwidthPackageType = &v
+	return s
+}
+
+func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetBizType(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
+	s.BizType = &v
 	return s
 }
 
@@ -33427,7 +33457,8 @@ type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnect
 	// *   **Allocation Failed**: The system failed to allocate resources.
 	// *   **Terminating**: The Express Connect circuit is being disabled.
 	// *   **Terminated**: The Express Connect circuit is disabled.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The type of the Express Connect circuit. The value is set to **VPC**.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The number of hosted connections that are established over the Express Connect circuit.
@@ -33610,6 +33641,11 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 	return s
 }
 
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetTags(v *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetType(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
 	s.Type = &v
 	return s
@@ -33627,6 +33663,46 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetVpconnStatus(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
 	s.VpconnStatus = &v
+	return s
+}
+
+type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags struct {
+	Tags []*DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags) SetTags(v []*DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags {
+	s.Tags = v
+	return s
+}
+
+type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags) SetKey(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags) SetValue(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTagsTags {
+	s.Value = &v
 	return s
 }
 
@@ -48021,6 +48097,7 @@ func (s *EnableNatGatewayEcsMetricResponse) SetBody(v *EnableNatGatewayEcsMetric
 }
 
 type EnablePhysicalConnectionRequest struct {
+	ByPassSp *bool `json:"ByPassSp,omitempty" xml:"ByPassSp,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -48043,6 +48120,11 @@ func (s EnablePhysicalConnectionRequest) String() string {
 
 func (s EnablePhysicalConnectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EnablePhysicalConnectionRequest) SetByPassSp(v bool) *EnablePhysicalConnectionRequest {
+	s.ByPassSp = &v
+	return s
 }
 
 func (s *EnablePhysicalConnectionRequest) SetClientToken(v string) *EnablePhysicalConnectionRequest {
@@ -54570,6 +54652,7 @@ func (s *ListPublicIpAddressPoolsResponseBody) SetTotalCount(v int32) *ListPubli
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The region ID of the IP address pool.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The status of the IP address pool. Valid values:
@@ -54623,8 +54706,9 @@ type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
 	// The description of the IP address pool.
 	TotalIpNum *int32 `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
 	// The total number of IP addresses in the public IP address pool.
-	UsedIpNum *int32 `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
-	UserType  *bool  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	UsedIpNum *int32    `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
+	UserType  *bool     `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Zones     []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) String() string {
@@ -54633,6 +54717,11 @@ func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) String() st
 
 func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) GoString() string {
 	return s.String()
+}
+
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetBizType(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
+	s.BizType = &v
+	return s
 }
 
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetCreationTime(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
@@ -54707,6 +54796,11 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetUsedIpN
 
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetUserType(v bool) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.UserType = &v
+	return s
+}
+
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetZones(v []*string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
+	s.Zones = v
 	return s
 }
 
@@ -56431,7 +56525,8 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	// *   **Canceled**: The application is canceled.
 	// *   **Allocation Failed**: The system failed to allocate resources.
 	// *   **Terminated**: The Express Connect circuit is disabled.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of Express Connect circuit. Default value: **VPC**.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The service status of the hosted connection. Valid values:
@@ -56587,6 +56682,11 @@ func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) S
 	return s
 }
 
+func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) SetTags(v []*ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags) *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections {
+	s.Tags = v
+	return s
+}
+
 func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) SetType(v string) *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections {
 	s.Type = &v
 	return s
@@ -56599,6 +56699,29 @@ func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) S
 
 func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) SetVlanId(v string) *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections {
 	s.VlanId = &v
+	return s
+}
+
+type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags) SetKey(v string) *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags) SetValue(v string) *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags {
+	s.Value = &v
 	return s
 }
 
@@ -58413,13 +58536,10 @@ func (s *ModifyExpressCloudConnectionAttributeResponse) SetBody(v *ModifyExpress
 }
 
 type ModifyExpressCloudConnectionBandwidthRequest struct {
-	// The bandwidth of the ECC instance.
-	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the ECC instance.
-	EccId        *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	Bandwidth            *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	EccId                *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -58469,7 +58589,6 @@ func (s *ModifyExpressCloudConnectionBandwidthRequest) SetResourceOwnerId(v int6
 }
 
 type ModifyExpressCloudConnectionBandwidthResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -78936,6 +79055,10 @@ func (client *Client) CreatePublicIpAddressPoolWithOptions(request *CreatePublic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -78982,6 +79105,10 @@ func (client *Client) CreatePublicIpAddressPoolWithOptions(request *CreatePublic
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zones)) {
+		query["Zones"] = request.Zones
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -92685,6 +92812,10 @@ func (client *Client) EnablePhysicalConnectionWithOptions(request *EnablePhysica
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ByPassSp)) {
+		query["ByPassSp"] = request.ByPassSp
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
