@@ -1574,7 +1574,8 @@ type CreateServiceMeshRequest struct {
 	// *   `false`
 	//
 	// Default value: `false`.
-	GatewayAPIEnabled *bool `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
+	GatewayAPIEnabled *bool   `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
+	GuestCluster      *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
 	// The IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
 	IncludeIPRanges *string `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
 	// The Istio version of the ASM instance.
@@ -1897,6 +1898,11 @@ func (s *CreateServiceMeshRequest) SetFilterGatewayClusterConfig(v bool) *Create
 
 func (s *CreateServiceMeshRequest) SetGatewayAPIEnabled(v bool) *CreateServiceMeshRequest {
 	s.GatewayAPIEnabled = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetGuestCluster(v string) *CreateServiceMeshRequest {
+	s.GuestCluster = &v
 	return s
 }
 
@@ -16275,6 +16281,10 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayAPIEnabled)) {
 		body["GatewayAPIEnabled"] = request.GatewayAPIEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeIPRanges)) {
