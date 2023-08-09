@@ -24,10 +24,9 @@ type AddCdnDomainRequest struct {
 	// The domain name that you want to add to Alibaba Cloud CDN.
 	//
 	// A wildcard domain that starts with a period (.) is supported, such as .example.com.
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
-	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
 	//
 	// If you do not set this parameter, the system uses the ID of the default resource group.
@@ -67,11 +66,6 @@ func (s *AddCdnDomainRequest) SetCheckUrl(v string) *AddCdnDomainRequest {
 
 func (s *AddCdnDomainRequest) SetDomainName(v string) *AddCdnDomainRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *AddCdnDomainRequest) SetGlobalResourcePlan(v string) *AddCdnDomainRequest {
-	s.GlobalResourcePlan = &v
 	return s
 }
 
@@ -8887,218 +8881,6 @@ func (s *DescribeDomainDetailDataByLayerResponse) SetStatusCode(v int32) *Descri
 }
 
 func (s *DescribeDomainDetailDataByLayerResponse) SetBody(v *DescribeDomainDetailDataByLayerResponseBody) *DescribeDomainDetailDataByLayerResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDomainFileSizeProportionDataRequest struct {
-	// The accelerated domain name. You can specify only one domain name in each request.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The end time must be later than the start time.
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeDomainFileSizeProportionDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainFileSizeProportionDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainFileSizeProportionDataRequest) SetDomainName(v string) *DescribeDomainFileSizeProportionDataRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataRequest) SetEndTime(v string) *DescribeDomainFileSizeProportionDataRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataRequest) SetOwnerId(v int64) *DescribeDomainFileSizeProportionDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataRequest) SetSecurityToken(v string) *DescribeDomainFileSizeProportionDataRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataRequest) SetStartTime(v string) *DescribeDomainFileSizeProportionDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeDomainFileSizeProportionDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The proportions of files in different sizes.
-	FileSizeProportionDataInterval *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval `json:"FileSizeProportionDataInterval,omitempty" xml:"FileSizeProportionDataInterval,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range that was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBody) SetDataInterval(v string) *DescribeDomainFileSizeProportionDataResponseBody {
-	s.DataInterval = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBody) SetDomainName(v string) *DescribeDomainFileSizeProportionDataResponseBody {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBody) SetEndTime(v string) *DescribeDomainFileSizeProportionDataResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBody) SetFileSizeProportionDataInterval(v *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) *DescribeDomainFileSizeProportionDataResponseBody {
-	s.FileSizeProportionDataInterval = v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBody) SetRequestId(v string) *DescribeDomainFileSizeProportionDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBody) SetStartTime(v string) *DescribeDomainFileSizeProportionDataResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval struct {
-	UsageData []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData `json:"UsageData,omitempty" xml:"UsageData,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval) SetUsageData(v []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval {
-	s.UsageData = v
-	return s
-}
-
-type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData struct {
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The proportions of files in different sizes.
-	Value *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) SetTimeStamp(v string) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData {
-	s.TimeStamp = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData) SetValue(v *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData {
-	s.Value = v
-	return s
-}
-
-type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue struct {
-	FileSizeProportionData []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData `json:"FileSizeProportionData,omitempty" xml:"FileSizeProportionData,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue) SetFileSizeProportionData(v []*DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue {
-	s.FileSizeProportionData = v
-	return s
-}
-
-type DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData struct {
-	// The size of the file.
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The proportion of the file.
-	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) SetFileSize(v string) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData {
-	s.FileSize = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData) SetProportion(v string) *DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData {
-	s.Proportion = &v
-	return s
-}
-
-type DescribeDomainFileSizeProportionDataResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainFileSizeProportionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDomainFileSizeProportionDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainFileSizeProportionDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponse) SetHeaders(v map[string]*string) *DescribeDomainFileSizeProportionDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponse) SetStatusCode(v int32) *DescribeDomainFileSizeProportionDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDomainFileSizeProportionDataResponse) SetBody(v *DescribeDomainFileSizeProportionDataResponseBody) *DescribeDomainFileSizeProportionDataResponse {
 	s.Body = v
 	return s
 }
@@ -23179,8 +22961,7 @@ func (s *UpdateFCTriggerResponse) SetBody(v *UpdateFCTriggerResponseBody) *Updat
 
 type VerifyDomainOwnerRequest struct {
 	// The domain name of which you want to verify the ownership. You can specify only one domain name.
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The verification method. Valid values:
 	//
 	// *   **dnsCheck**: by DNS record
@@ -23198,11 +22979,6 @@ func (s VerifyDomainOwnerRequest) GoString() string {
 
 func (s *VerifyDomainOwnerRequest) SetDomainName(v string) *VerifyDomainOwnerRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *VerifyDomainOwnerRequest) SetGlobalResourcePlan(v string) *VerifyDomainOwnerRequest {
-	s.GlobalResourcePlan = &v
 	return s
 }
 
@@ -23354,10 +23130,6 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GlobalResourcePlan)) {
-		query["GlobalResourcePlan"] = request.GlobalResourcePlan
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -27593,83 +27365,6 @@ func (client *Client) DescribeDomainDetailDataByLayer(request *DescribeDomainDet
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainDetailDataByLayerResponse{}
 	_body, _err := client.DescribeDomainDetailDataByLayerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * >
- * *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
- * *   You can call this operation up to 10 times per second per account.
- *
- * @param request DescribeDomainFileSizeProportionDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDomainFileSizeProportionDataResponse
- */
-func (client *Client) DescribeDomainFileSizeProportionDataWithOptions(request *DescribeDomainFileSizeProportionDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainFileSizeProportionDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDomainFileSizeProportionData"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDomainFileSizeProportionDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * >
- * *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
- * *   You can call this operation up to 10 times per second per account.
- *
- * @param request DescribeDomainFileSizeProportionDataRequest
- * @return DescribeDomainFileSizeProportionDataResponse
- */
-func (client *Client) DescribeDomainFileSizeProportionData(request *DescribeDomainFileSizeProportionDataRequest) (_result *DescribeDomainFileSizeProportionDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDomainFileSizeProportionDataResponse{}
-	_body, _err := client.DescribeDomainFileSizeProportionDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34030,10 +33725,6 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GlobalResourcePlan)) {
-		query["GlobalResourcePlan"] = request.GlobalResourcePlan
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {

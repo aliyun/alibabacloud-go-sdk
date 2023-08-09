@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/cdn-20180510/v2
+module github.com/alibabacloud-go/cdn-20180510/v3
 
 go 1.15
 
