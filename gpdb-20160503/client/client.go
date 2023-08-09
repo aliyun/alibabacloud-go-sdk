@@ -326,12 +326,15 @@ type CreateCollectionRequest struct {
 	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Dimension               *int64  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
+	HnswM                   *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
 	ManagerAccount          *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	ManagerAccountPassword  *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metrics                 *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Namespace               *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	PqEnable                *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
 	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -363,6 +366,11 @@ func (s *CreateCollectionRequest) SetFullTextRetrievalFields(v string) *CreateCo
 	return s
 }
 
+func (s *CreateCollectionRequest) SetHnswM(v int32) *CreateCollectionRequest {
+	s.HnswM = &v
+	return s
+}
+
 func (s *CreateCollectionRequest) SetManagerAccount(v string) *CreateCollectionRequest {
 	s.ManagerAccount = &v
 	return s
@@ -378,6 +386,11 @@ func (s *CreateCollectionRequest) SetMetadata(v string) *CreateCollectionRequest
 	return s
 }
 
+func (s *CreateCollectionRequest) SetMetrics(v string) *CreateCollectionRequest {
+	s.Metrics = &v
+	return s
+}
+
 func (s *CreateCollectionRequest) SetNamespace(v string) *CreateCollectionRequest {
 	s.Namespace = &v
 	return s
@@ -390,6 +403,11 @@ func (s *CreateCollectionRequest) SetOwnerId(v int64) *CreateCollectionRequest {
 
 func (s *CreateCollectionRequest) SetParser(v string) *CreateCollectionRequest {
 	s.Parser = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetPqEnable(v int32) *CreateCollectionRequest {
+	s.PqEnable = &v
 	return s
 }
 
@@ -1389,12 +1407,14 @@ type CreateVectorIndexRequest struct {
 	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Dimension              *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	HnswM                  *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
 	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// Distance Metrics。
 	Metrics   *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PqEnable  *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1421,6 +1441,11 @@ func (s *CreateVectorIndexRequest) SetDimension(v int32) *CreateVectorIndexReque
 	return s
 }
 
+func (s *CreateVectorIndexRequest) SetHnswM(v int32) *CreateVectorIndexRequest {
+	s.HnswM = &v
+	return s
+}
+
 func (s *CreateVectorIndexRequest) SetManagerAccount(v string) *CreateVectorIndexRequest {
 	s.ManagerAccount = &v
 	return s
@@ -1443,6 +1468,11 @@ func (s *CreateVectorIndexRequest) SetNamespace(v string) *CreateVectorIndexRequ
 
 func (s *CreateVectorIndexRequest) SetOwnerId(v int64) *CreateVectorIndexRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetPqEnable(v int32) *CreateVectorIndexRequest {
+	s.PqEnable = &v
 	return s
 }
 
@@ -12682,18 +12712,18 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyAccountDescriptionRequest struct {
-	// The description of the account. The description must meet the following requirements:
+	// The new description of the database account.
 	//
 	// *   The description must start with a letter.
-	// *   The description can contain letters, digits, underscores (\_), and hyphens (-).
 	// *   The description cannot start with `http://` or `https://`.
+	// *   The description can contain letters, underscores (\_), hyphens (-), and digits.
 	// *   The description must be 2 to 256 characters in length.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
-	//
-	// > You can call the [DescribeAccounts](~~~~) operation to query the information about database accounts in a cluster, including the database account name.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -12721,7 +12751,7 @@ func (s *ModifyAccountDescriptionRequest) SetDBInstanceId(v string) *ModifyAccou
 }
 
 type ModifyAccountDescriptionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14130,10 +14160,10 @@ func (s *QueryCollectionDataResponseBodyMatches) SetMatch(v []*QueryCollectionDa
 }
 
 type QueryCollectionDataResponseBodyMatchesMatch struct {
-	Id         *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Metadata   map[string]*string                                 `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Similarity *float64                                           `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
-	Values     *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+	Id       *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata map[string]*string                                 `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Score    *float64                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Values   *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
 func (s QueryCollectionDataResponseBodyMatchesMatch) String() string {
@@ -14154,8 +14184,8 @@ func (s *QueryCollectionDataResponseBodyMatchesMatch) SetMetadata(v map[string]*
 	return s
 }
 
-func (s *QueryCollectionDataResponseBodyMatchesMatch) SetSimilarity(v float64) *QueryCollectionDataResponseBodyMatchesMatch {
-	s.Similarity = &v
+func (s *QueryCollectionDataResponseBodyMatchesMatch) SetScore(v float64) *QueryCollectionDataResponseBodyMatchesMatch {
+	s.Score = &v
 	return s
 }
 
@@ -16308,6 +16338,10 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 		query["FullTextRetrievalFields"] = request.FullTextRetrievalFields
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HnswM)) {
+		query["HnswM"] = request.HnswM
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
 		query["ManagerAccount"] = request.ManagerAccount
 	}
@@ -16320,6 +16354,10 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 		query["Metadata"] = request.Metadata
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
 		query["Namespace"] = request.Namespace
 	}
@@ -16330,6 +16368,10 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 
 	if !tea.BoolValue(util.IsUnset(request.Parser)) {
 		query["Parser"] = request.Parser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PqEnable)) {
+		query["PqEnable"] = request.PqEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -16873,6 +16915,10 @@ func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexReq
 		query["Dimension"] = request.Dimension
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HnswM)) {
+		query["HnswM"] = request.HnswM
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
 		query["ManagerAccount"] = request.ManagerAccount
 	}
@@ -16891,6 +16937,10 @@ func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexReq
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PqEnable)) {
+		query["PqEnable"] = request.PqEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
