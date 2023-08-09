@@ -1474,94 +1474,108 @@ func (s *CreateAutoscalingConfigResponse) SetStatusCode(v int32) *CreateAutoscal
 }
 
 type CreateClusterRequest struct {
-	Addons                           []*Addon                               `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
-	ApiAudiences                     *string                                `json:"api_audiences,omitempty" xml:"api_audiences,omitempty"`
-	ChargeType                       *string                                `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
-	CisEnabled                       *bool                                  `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
-	CloudMonitorFlags                *bool                                  `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	ClusterDomain                    *string                                `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
-	ClusterSpec                      *string                                `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	ClusterType                      *string                                `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	ContainerCidr                    *string                                `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
-	ControlplaneLogComponents        []*string                              `json:"controlplane_log_components,omitempty" xml:"controlplane_log_components,omitempty" type:"Repeated"`
-	ControlplaneLogProject           *string                                `json:"controlplane_log_project,omitempty" xml:"controlplane_log_project,omitempty"`
-	ControlplaneLogTtl               *string                                `json:"controlplane_log_ttl,omitempty" xml:"controlplane_log_ttl,omitempty"`
-	CpuPolicy                        *string                                `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	CustomSan                        *string                                `json:"custom_san,omitempty" xml:"custom_san,omitempty"`
-	DeletionProtection               *bool                                  `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
-	DisableRollback                  *bool                                  `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
-	EnableRrsa                       *bool                                  `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
-	EncryptionProviderKey            *string                                `json:"encryption_provider_key,omitempty" xml:"encryption_provider_key,omitempty"`
-	EndpointPublicAccess             *bool                                  `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
-	FormatDisk                       *bool                                  `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
-	ImageId                          *string                                `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	ImageType                        *string                                `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	Instances                        []*string                              `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	IpStack                          *string                                `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
-	IsEnterpriseSecurityGroup        *bool                                  `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
-	KeepInstanceName                 *bool                                  `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
-	KeyPair                          *string                                `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	KubernetesVersion                *string                                `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
-	LoadBalancerSpec                 *string                                `json:"load_balancer_spec,omitempty" xml:"load_balancer_spec,omitempty"`
-	LoggingType                      *string                                `json:"logging_type,omitempty" xml:"logging_type,omitempty"`
-	LoginPassword                    *string                                `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	MasterAutoRenew                  *bool                                  `json:"master_auto_renew,omitempty" xml:"master_auto_renew,omitempty"`
-	MasterAutoRenewPeriod            *int64                                 `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
-	MasterCount                      *int64                                 `json:"master_count,omitempty" xml:"master_count,omitempty"`
-	MasterInstanceChargeType         *string                                `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
-	MasterInstanceTypes              []*string                              `json:"master_instance_types,omitempty" xml:"master_instance_types,omitempty" type:"Repeated"`
-	MasterPeriod                     *int64                                 `json:"master_period,omitempty" xml:"master_period,omitempty"`
-	MasterPeriodUnit                 *string                                `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
-	MasterSystemDiskCategory         *string                                `json:"master_system_disk_category,omitempty" xml:"master_system_disk_category,omitempty"`
-	MasterSystemDiskPerformanceLevel *string                                `json:"master_system_disk_performance_level,omitempty" xml:"master_system_disk_performance_level,omitempty"`
-	MasterSystemDiskSize             *int64                                 `json:"master_system_disk_size,omitempty" xml:"master_system_disk_size,omitempty"`
-	MasterSystemDiskSnapshotPolicyId *string                                `json:"master_system_disk_snapshot_policy_id,omitempty" xml:"master_system_disk_snapshot_policy_id,omitempty"`
-	MasterVswitchIds                 []*string                              `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
-	Name                             *string                                `json:"name,omitempty" xml:"name,omitempty"`
-	NatGateway                       *bool                                  `json:"nat_gateway,omitempty" xml:"nat_gateway,omitempty"`
-	NodeCidrMask                     *string                                `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
-	NodeNameMode                     *string                                `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
-	NodePortRange                    *string                                `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	NumOfNodes                       *int64                                 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
-	OsType                           *string                                `json:"os_type,omitempty" xml:"os_type,omitempty"`
-	Period                           *int64                                 `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit                       *string                                `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	Platform                         *string                                `json:"platform,omitempty" xml:"platform,omitempty"`
-	PodVswitchIds                    []*string                              `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
-	Profile                          *string                                `json:"profile,omitempty" xml:"profile,omitempty"`
-	ProxyMode                        *string                                `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
-	RdsInstances                     []*string                              `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	RegionId                         *string                                `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	ResourceGroupId                  *string                                `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	Runtime                          *Runtime                               `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	SecurityGroupId                  *string                                `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	ServiceAccountIssuer             *string                                `json:"service_account_issuer,omitempty" xml:"service_account_issuer,omitempty"`
-	ServiceCidr                      *string                                `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
-	ServiceDiscoveryTypes            []*string                              `json:"service_discovery_types,omitempty" xml:"service_discovery_types,omitempty" type:"Repeated"`
-	SnatEntry                        *bool                                  `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
-	SocEnabled                       *bool                                  `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	SshFlags                         *bool                                  `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
-	Tags                             []*Tag                                 `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	Taints                           []*Taint                               `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	TimeoutMins                      *int64                                 `json:"timeout_mins,omitempty" xml:"timeout_mins,omitempty"`
-	Timezone                         *string                                `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	UserCa                           *string                                `json:"user_ca,omitempty" xml:"user_ca,omitempty"`
-	UserData                         *string                                `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	Vpcid                            *string                                `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
-	VswitchIds                       []*string                              `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	WorkerAutoRenew                  *bool                                  `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
-	WorkerAutoRenewPeriod            *int64                                 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
-	WorkerDataDisks                  []*CreateClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
-	WorkerInstanceChargeType         *string                                `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
-	WorkerInstanceTypes              []*string                              `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
-	WorkerPeriod                     *int64                                 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
-	WorkerPeriodUnit                 *string                                `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
-	WorkerSystemDiskCategory         *string                                `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
-	WorkerSystemDiskPerformanceLevel *string                                `json:"worker_system_disk_performance_level,omitempty" xml:"worker_system_disk_performance_level,omitempty"`
-	WorkerSystemDiskSize             *int64                                 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
-	WorkerSystemDiskSnapshotPolicyId *string                                `json:"worker_system_disk_snapshot_policy_id,omitempty" xml:"worker_system_disk_snapshot_policy_id,omitempty"`
-	WorkerVswitchIds                 []*string                              `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
-	ZoneId                           *string                                `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
+	Addons                           []*Addon    `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
+	ApiAudiences                     *string     `json:"api_audiences,omitempty" xml:"api_audiences,omitempty"`
+	ChargeType                       *string     `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
+	CisEnabled                       *bool       `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
+	CloudMonitorFlags                *bool       `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
+	ClusterDomain                    *string     `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
+	ClusterSpec                      *string     `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	ClusterType                      *string     `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	ContainerCidr                    *string     `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
+	ControlplaneLogComponents        []*string   `json:"controlplane_log_components,omitempty" xml:"controlplane_log_components,omitempty" type:"Repeated"`
+	ControlplaneLogProject           *string     `json:"controlplane_log_project,omitempty" xml:"controlplane_log_project,omitempty"`
+	ControlplaneLogTtl               *string     `json:"controlplane_log_ttl,omitempty" xml:"controlplane_log_ttl,omitempty"`
+	CpuPolicy                        *string     `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	CustomSan                        *string     `json:"custom_san,omitempty" xml:"custom_san,omitempty"`
+	DeletionProtection               *bool       `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	DisableRollback                  *bool       `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
+	EnableRrsa                       *bool       `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
+	EncryptionProviderKey            *string     `json:"encryption_provider_key,omitempty" xml:"encryption_provider_key,omitempty"`
+	EndpointPublicAccess             *bool       `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
+	FormatDisk                       *bool       `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	ImageId                          *string     `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageType                        *string     `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	Instances                        []*string   `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	IpStack                          *string     `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
+	IsEnterpriseSecurityGroup        *bool       `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
+	KeepInstanceName                 *bool       `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
+	KeyPair                          *string     `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	KubernetesVersion                *string     `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	LoadBalancerSpec                 *string     `json:"load_balancer_spec,omitempty" xml:"load_balancer_spec,omitempty"`
+	LoggingType                      *string     `json:"logging_type,omitempty" xml:"logging_type,omitempty"`
+	LoginPassword                    *string     `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MasterAutoRenew                  *bool       `json:"master_auto_renew,omitempty" xml:"master_auto_renew,omitempty"`
+	MasterAutoRenewPeriod            *int64      `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
+	MasterCount                      *int64      `json:"master_count,omitempty" xml:"master_count,omitempty"`
+	MasterInstanceChargeType         *string     `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
+	MasterInstanceTypes              []*string   `json:"master_instance_types,omitempty" xml:"master_instance_types,omitempty" type:"Repeated"`
+	MasterPeriod                     *int64      `json:"master_period,omitempty" xml:"master_period,omitempty"`
+	MasterPeriodUnit                 *string     `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
+	MasterSystemDiskCategory         *string     `json:"master_system_disk_category,omitempty" xml:"master_system_disk_category,omitempty"`
+	MasterSystemDiskPerformanceLevel *string     `json:"master_system_disk_performance_level,omitempty" xml:"master_system_disk_performance_level,omitempty"`
+	MasterSystemDiskSize             *int64      `json:"master_system_disk_size,omitempty" xml:"master_system_disk_size,omitempty"`
+	MasterSystemDiskSnapshotPolicyId *string     `json:"master_system_disk_snapshot_policy_id,omitempty" xml:"master_system_disk_snapshot_policy_id,omitempty"`
+	MasterVswitchIds                 []*string   `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
+	Name                             *string     `json:"name,omitempty" xml:"name,omitempty"`
+	NatGateway                       *bool       `json:"nat_gateway,omitempty" xml:"nat_gateway,omitempty"`
+	NodeCidrMask                     *string     `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
+	NodeNameMode                     *string     `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
+	NodePortRange                    *string     `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
+	Nodepools                        []*Nodepool `json:"nodepools,omitempty" xml:"nodepools,omitempty" type:"Repeated"`
+	// Deprecated
+	NumOfNodes            *int64    `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
+	OsType                *string   `json:"os_type,omitempty" xml:"os_type,omitempty"`
+	Period                *int64    `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit            *string   `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	Platform              *string   `json:"platform,omitempty" xml:"platform,omitempty"`
+	PodVswitchIds         []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
+	Profile               *string   `json:"profile,omitempty" xml:"profile,omitempty"`
+	ProxyMode             *string   `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
+	RdsInstances          []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	RegionId              *string   `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	ResourceGroupId       *string   `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	Runtime               *Runtime  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	SecurityGroupId       *string   `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	ServiceAccountIssuer  *string   `json:"service_account_issuer,omitempty" xml:"service_account_issuer,omitempty"`
+	ServiceCidr           *string   `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
+	ServiceDiscoveryTypes []*string `json:"service_discovery_types,omitempty" xml:"service_discovery_types,omitempty" type:"Repeated"`
+	SnatEntry             *bool     `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
+	SocEnabled            *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
+	SshFlags              *bool     `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
+	Tags                  []*Tag    `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Taints                []*Taint  `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	TimeoutMins           *int64    `json:"timeout_mins,omitempty" xml:"timeout_mins,omitempty"`
+	Timezone              *string   `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	UserCa                *string   `json:"user_ca,omitempty" xml:"user_ca,omitempty"`
+	UserData              *string   `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	Vpcid                 *string   `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
+	VswitchIds            []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// Deprecated
+	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
+	// Deprecated
+	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
+	// Deprecated
+	WorkerDataDisks []*CreateClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
+	// Deprecated
+	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
+	// Deprecated
+	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
+	// Deprecated
+	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
+	// Deprecated
+	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
+	// Deprecated
+	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
+	// Deprecated
+	WorkerSystemDiskPerformanceLevel *string `json:"worker_system_disk_performance_level,omitempty" xml:"worker_system_disk_performance_level,omitempty"`
+	// Deprecated
+	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
+	// Deprecated
+	WorkerSystemDiskSnapshotPolicyId *string `json:"worker_system_disk_snapshot_policy_id,omitempty" xml:"worker_system_disk_snapshot_policy_id,omitempty"`
+	// Deprecated
+	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
+	ZoneId           *string   `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -1809,6 +1823,11 @@ func (s *CreateClusterRequest) SetNodeNameMode(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetNodePortRange(v string) *CreateClusterRequest {
 	s.NodePortRange = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetNodepools(v []*Nodepool) *CreateClusterRequest {
+	s.Nodepools = v
 	return s
 }
 
@@ -2455,8 +2474,10 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	SpotInstanceRemedy                  *bool                                                       `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
 	SpotPriceLimit                      []*CreateClusterNodePoolRequestScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
 	SpotStrategy                        *string                                                     `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskBurstingEnabled           *bool                                                       `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
 	SystemDiskCategory                  *string                                                     `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
 	SystemDiskPerformanceLevel          *string                                                     `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskProvisionedIops           *int64                                                      `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
 	SystemDiskSize                      *int64                                                      `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
 	Tags                                []*CreateClusterNodePoolRequestScalingGroupTags             `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	VswitchIds                          []*string                                                   `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
@@ -2615,6 +2636,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetSpotStrategy(v string) *Cr
 	return s
 }
 
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskBurstingEnabled(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskBurstingEnabled = &v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskCategory(v string) *CreateClusterNodePoolRequestScalingGroup {
 	s.SystemDiskCategory = &v
 	return s
@@ -2622,6 +2648,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskCategory(v strin
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskPerformanceLevel(v string) *CreateClusterNodePoolRequestScalingGroup {
 	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskProvisionedIops(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskProvisionedIops = &v
 	return s
 }
 
@@ -15849,6 +15880,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.NodePortRange)) {
 		body["node_port_range"] = request.NodePortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nodepools)) {
+		body["nodepools"] = request.Nodepools
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NumOfNodes)) {
