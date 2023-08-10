@@ -1278,6 +1278,7 @@ type JobSettings struct {
 	AdvancedSettings                map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
 	BusinessUserId                  *string                `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
 	Caller                          *string                `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Driver                          *string                `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	EnableErrorMonitoringInAIMaster *bool                  `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
 	EnableOssAppend                 *bool                  `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
 	EnableRDMA                      *bool                  `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
@@ -1308,6 +1309,11 @@ func (s *JobSettings) SetBusinessUserId(v string) *JobSettings {
 
 func (s *JobSettings) SetCaller(v string) *JobSettings {
 	s.Caller = &v
+	return s
+}
+
+func (s *JobSettings) SetDriver(v string) *JobSettings {
+	s.Driver = &v
 	return s
 }
 
@@ -4122,6 +4128,7 @@ type ListTensorboardsRequest struct {
 	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ShowOwn       *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
 	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
@@ -4167,6 +4174,11 @@ func (s *ListTensorboardsRequest) SetPageNumber(v int32) *ListTensorboardsReques
 
 func (s *ListTensorboardsRequest) SetPageSize(v int32) *ListTensorboardsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTensorboardsRequest) SetShowOwn(v bool) *ListTensorboardsRequest {
+	s.ShowOwn = &v
 	return s
 }
 
@@ -5645,6 +5657,10 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowOwn)) {
+		query["ShowOwn"] = request.ShowOwn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
