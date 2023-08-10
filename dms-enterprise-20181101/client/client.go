@@ -29339,7 +29339,7 @@ type ListSQLReviewOriginSQLRequest struct {
 	OrderActionDetail *ListSQLReviewOriginSQLRequestOrderActionDetail `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty" type:"Struct"`
 	// The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](~~257777~~) operation to query the ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) or [ListUserTenants](https://www.alibabacloud.com/help/en/data-management-service/latest/listusertenants) operation to query the ID of the tenant.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~465818~~) operation to query the ID of the tenant.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -29449,7 +29449,7 @@ type ListSQLReviewOriginSQLShrinkRequest struct {
 	OrderActionDetailShrink *string `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty"`
 	// The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](~~257777~~) operation to query the ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) or [ListUserTenants](https://www.alibabacloud.com/help/en/data-management-service/latest/listusertenants) operation to query the ID of the tenant.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~465818~~) operation to query the ID of the tenant.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -30660,7 +30660,8 @@ type ListStandardGroupsResponseBodyStandardGroupList struct {
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The description of the security rule set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the security rule set.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The control mode. Valid values:
 	//
 	// *   **NONE_CONTROL**: Flexible Management
@@ -35323,6 +35324,7 @@ func (s *ReRunTaskFlowInstanceResponse) SetBody(v *ReRunTaskFlowInstanceResponse
 }
 
 type RefundPayAsYouGoOrderRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The order ID of the order for the pay-as-you-go resource. You can call the ListEffectiveOrders operation to query the order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the tenant.
@@ -35337,6 +35339,11 @@ func (s RefundPayAsYouGoOrderRequest) String() string {
 
 func (s RefundPayAsYouGoOrderRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RefundPayAsYouGoOrderRequest) SetInstanceId(v string) *RefundPayAsYouGoOrderRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *RefundPayAsYouGoOrderRequest) SetOrderId(v string) *RefundPayAsYouGoOrderRequest {
@@ -46905,7 +46912,7 @@ func (client *Client) GetSQLReviewCheckResultStatus(request *GetSQLReviewCheckRe
 }
 
 /**
- * For more information about the SQL review feature, see [SQL review](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2433364).
+ * For more information about the SQL review feature, see [SQL review](~~60374~~).
  *
  * @param request GetSQLReviewOptimizeDetailRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -46949,7 +46956,7 @@ func (client *Client) GetSQLReviewOptimizeDetailWithOptions(request *GetSQLRevie
 }
 
 /**
- * For more information about the SQL review feature, see [SQL review](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2433364).
+ * For more information about the SQL review feature, see [SQL review](~~60374~~).
  *
  * @param request GetSQLReviewOptimizeDetailRequest
  * @return GetSQLReviewOptimizeDetailResponse
@@ -51307,6 +51314,10 @@ func (client *Client) RefundPayAsYouGoOrderWithOptions(request *RefundPayAsYouGo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
 	}
