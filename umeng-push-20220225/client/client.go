@@ -42,9 +42,9 @@ func (s *Alert) SetTitle(v string) *Alert {
 }
 
 type AndroidPayload struct {
-	Body        *Body                  `json:"body,omitempty" xml:"body,omitempty"`
-	DisplayType *string                `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	Extra       map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	Body        *Body              `json:"body,omitempty" xml:"body,omitempty"`
+	DisplayType *string            `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	Extra       map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
 }
 
 func (s AndroidPayload) String() string {
@@ -65,7 +65,7 @@ func (s *AndroidPayload) SetDisplayType(v string) *AndroidPayload {
 	return s
 }
 
-func (s *AndroidPayload) SetExtra(v map[string]interface{}) *AndroidPayload {
+func (s *AndroidPayload) SetExtra(v map[string]*string) *AndroidPayload {
 	s.Extra = v
 	return s
 }
@@ -119,8 +119,8 @@ func (s *Aps) SetSound(v string) *Aps {
 
 type Body struct {
 	Activity    *string `json:"activity,omitempty" xml:"activity,omitempty"`
+	AddBadge    *int32  `json:"addBadge,omitempty" xml:"addBadge,omitempty"`
 	AfterOpen   *string `json:"afterOpen,omitempty" xml:"afterOpen,omitempty"`
-	Badge       *int32  `json:"badge,omitempty" xml:"badge,omitempty"`
 	BuilderId   *int64  `json:"builderId,omitempty" xml:"builderId,omitempty"`
 	Custom      *string `json:"custom,omitempty" xml:"custom,omitempty"`
 	ExpandImage *string `json:"expandImage,omitempty" xml:"expandImage,omitempty"`
@@ -130,6 +130,8 @@ type Body struct {
 	PlayLights  *bool   `json:"playLights,omitempty" xml:"playLights,omitempty"`
 	PlaySound   *bool   `json:"playSound,omitempty" xml:"playSound,omitempty"`
 	PlayVibrate *bool   `json:"playVibrate,omitempty" xml:"playVibrate,omitempty"`
+	RePop       *int32  `json:"rePop,omitempty" xml:"rePop,omitempty"`
+	SetBadge    *int32  `json:"setBadge,omitempty" xml:"setBadge,omitempty"`
 	Sound       *string `json:"sound,omitempty" xml:"sound,omitempty"`
 	Text        *string `json:"text,omitempty" xml:"text,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
@@ -149,13 +151,13 @@ func (s *Body) SetActivity(v string) *Body {
 	return s
 }
 
-func (s *Body) SetAfterOpen(v string) *Body {
-	s.AfterOpen = &v
+func (s *Body) SetAddBadge(v int32) *Body {
+	s.AddBadge = &v
 	return s
 }
 
-func (s *Body) SetBadge(v int32) *Body {
-	s.Badge = &v
+func (s *Body) SetAfterOpen(v string) *Body {
+	s.AfterOpen = &v
 	return s
 }
 
@@ -204,6 +206,16 @@ func (s *Body) SetPlayVibrate(v bool) *Body {
 	return s
 }
 
+func (s *Body) SetRePop(v int32) *Body {
+	s.RePop = &v
+	return s
+}
+
+func (s *Body) SetSetBadge(v int32) *Body {
+	s.SetBadge = &v
+	return s
+}
+
 func (s *Body) SetSound(v string) *Body {
 	s.Sound = &v
 	return s
@@ -225,11 +237,14 @@ func (s *Body) SetUrl(v string) *Body {
 }
 
 type ChannelProperties struct {
-	ChannelActivity    *string `json:"channelActivity,omitempty" xml:"channelActivity,omitempty"`
-	MainActivity       *string `json:"mainActivity,omitempty" xml:"mainActivity,omitempty"`
-	OppoChannelId      *string `json:"oppoChannelId,omitempty" xml:"oppoChannelId,omitempty"`
-	VivoClassification *string `json:"vivoClassification,omitempty" xml:"vivoClassification,omitempty"`
-	XiaomiChannelId    *string `json:"xiaomiChannelId,omitempty" xml:"xiaomiChannelId,omitempty"`
+	ChannelActivity         *string `json:"channelActivity,omitempty" xml:"channelActivity,omitempty"`
+	ChannelFcm              *string `json:"channelFcm,omitempty" xml:"channelFcm,omitempty"`
+	HuaweiChannelCategory   *string `json:"huaweiChannelCategory,omitempty" xml:"huaweiChannelCategory,omitempty"`
+	HuaweiChannelImportance *string `json:"huaweiChannelImportance,omitempty" xml:"huaweiChannelImportance,omitempty"`
+	MainActivity            *string `json:"mainActivity,omitempty" xml:"mainActivity,omitempty"`
+	OppoChannelId           *string `json:"oppoChannelId,omitempty" xml:"oppoChannelId,omitempty"`
+	VivoCategory            *string `json:"vivoCategory,omitempty" xml:"vivoCategory,omitempty"`
+	XiaomiChannelId         *string `json:"xiaomiChannelId,omitempty" xml:"xiaomiChannelId,omitempty"`
 }
 
 func (s ChannelProperties) String() string {
@@ -245,6 +260,21 @@ func (s *ChannelProperties) SetChannelActivity(v string) *ChannelProperties {
 	return s
 }
 
+func (s *ChannelProperties) SetChannelFcm(v string) *ChannelProperties {
+	s.ChannelFcm = &v
+	return s
+}
+
+func (s *ChannelProperties) SetHuaweiChannelCategory(v string) *ChannelProperties {
+	s.HuaweiChannelCategory = &v
+	return s
+}
+
+func (s *ChannelProperties) SetHuaweiChannelImportance(v string) *ChannelProperties {
+	s.HuaweiChannelImportance = &v
+	return s
+}
+
 func (s *ChannelProperties) SetMainActivity(v string) *ChannelProperties {
 	s.MainActivity = &v
 	return s
@@ -255,8 +285,8 @@ func (s *ChannelProperties) SetOppoChannelId(v string) *ChannelProperties {
 	return s
 }
 
-func (s *ChannelProperties) SetVivoClassification(v string) *ChannelProperties {
-	s.VivoClassification = &v
+func (s *ChannelProperties) SetVivoCategory(v string) *ChannelProperties {
+	s.VivoCategory = &v
 	return s
 }
 
@@ -266,8 +296,8 @@ func (s *ChannelProperties) SetXiaomiChannelId(v string) *ChannelProperties {
 }
 
 type IosPayload struct {
-	Aps   *Aps                   `json:"aps,omitempty" xml:"aps,omitempty"`
-	Extra map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	Aps   *Aps               `json:"aps,omitempty" xml:"aps,omitempty"`
+	Extra map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
 }
 
 func (s IosPayload) String() string {
@@ -283,7 +313,7 @@ func (s *IosPayload) SetAps(v *Aps) *IosPayload {
 	return s
 }
 
-func (s *IosPayload) SetExtra(v map[string]interface{}) *IosPayload {
+func (s *IosPayload) SetExtra(v map[string]*string) *IosPayload {
 	s.Extra = v
 	return s
 }
