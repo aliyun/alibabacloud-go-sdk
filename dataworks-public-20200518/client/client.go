@@ -198,6 +198,29 @@ func (s *RelationshipVO) SetType(v string) *RelationshipVO {
 	return s
 }
 
+type UserEntityTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UserEntityTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserEntityTag) GoString() string {
+	return s.String()
+}
+
+func (s *UserEntityTag) SetTagKey(v string) *UserEntityTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UserEntityTag) SetTagValue(v string) *UserEntityTag {
+	s.TagValue = &v
+	return s
+}
+
 type AbolishDataServiceApiRequest struct {
 	// The ID of the DataService Studio API.
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
@@ -319,6 +342,7 @@ type AddMetaCollectionEntityRequest struct {
 	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
 	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
+	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s AddMetaCollectionEntityRequest) String() string {
@@ -336,6 +360,11 @@ func (s *AddMetaCollectionEntityRequest) SetCollectionQualifiedName(v string) *A
 
 func (s *AddMetaCollectionEntityRequest) SetEntityQualifiedName(v string) *AddMetaCollectionEntityRequest {
 	s.EntityQualifiedName = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityRequest) SetRemark(v string) *AddMetaCollectionEntityRequest {
+	s.Remark = &v
 	return s
 }
 
@@ -33277,6 +33306,268 @@ func (s *ListEnabledExtensionsForProjectResponse) SetBody(v *ListEnabledExtensio
 	return s
 }
 
+type ListEntitiesByTagsRequest struct {
+	EntityType *string          `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	NextToken  *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize   *int32           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tags       []*UserEntityTag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListEntitiesByTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesByTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesByTagsRequest) SetEntityType(v string) *ListEntitiesByTagsRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsRequest) SetNextToken(v string) *ListEntitiesByTagsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsRequest) SetPageSize(v int32) *ListEntitiesByTagsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsRequest) SetTags(v []*UserEntityTag) *ListEntitiesByTagsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListEntitiesByTagsShrinkRequest struct {
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListEntitiesByTagsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesByTagsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesByTagsShrinkRequest) SetEntityType(v string) *ListEntitiesByTagsShrinkRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsShrinkRequest) SetNextToken(v string) *ListEntitiesByTagsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsShrinkRequest) SetPageSize(v int32) *ListEntitiesByTagsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsShrinkRequest) SetTagsShrink(v string) *ListEntitiesByTagsShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type ListEntitiesByTagsResponseBody struct {
+	Data           *ListEntitiesByTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEntitiesByTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesByTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesByTagsResponseBody) SetData(v *ListEntitiesByTagsResponseBodyData) *ListEntitiesByTagsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponseBody) SetErrorCode(v string) *ListEntitiesByTagsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponseBody) SetErrorMessage(v string) *ListEntitiesByTagsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponseBody) SetHttpStatusCode(v int32) *ListEntitiesByTagsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponseBody) SetRequestId(v string) *ListEntitiesByTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponseBody) SetSuccess(v bool) *ListEntitiesByTagsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEntitiesByTagsResponseBodyData struct {
+	EntityList []*Entity `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListEntitiesByTagsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesByTagsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesByTagsResponseBodyData) SetEntityList(v []*Entity) *ListEntitiesByTagsResponseBodyData {
+	s.EntityList = v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponseBodyData) SetNextToken(v string) *ListEntitiesByTagsResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+type ListEntitiesByTagsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEntitiesByTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEntitiesByTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesByTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesByTagsResponse) SetHeaders(v map[string]*string) *ListEntitiesByTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponse) SetStatusCode(v int32) *ListEntitiesByTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEntitiesByTagsResponse) SetBody(v *ListEntitiesByTagsResponseBody) *ListEntitiesByTagsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEntityTagsRequest struct {
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+}
+
+func (s ListEntityTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntityTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntityTagsRequest) SetQualifiedName(v string) *ListEntityTagsRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+type ListEntityTagsResponseBody struct {
+	Data           []*UserEntityTag `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode      *string          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEntityTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntityTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntityTagsResponseBody) SetData(v []*UserEntityTag) *ListEntityTagsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEntityTagsResponseBody) SetErrorCode(v string) *ListEntityTagsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListEntityTagsResponseBody) SetErrorMessage(v string) *ListEntityTagsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListEntityTagsResponseBody) SetHttpStatusCode(v int32) *ListEntityTagsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListEntityTagsResponseBody) SetRequestId(v string) *ListEntityTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEntityTagsResponseBody) SetSuccess(v bool) *ListEntityTagsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEntityTagsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEntityTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEntityTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntityTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntityTagsResponse) SetHeaders(v map[string]*string) *ListEntityTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEntityTagsResponse) SetStatusCode(v int32) *ListEntityTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEntityTagsResponse) SetBody(v *ListEntityTagsResponseBody) *ListEntityTagsResponse {
+	s.Body = v
+	return s
+}
+
 type ListExtensionsRequest struct {
 	// The number of entries to return on each page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -43463,6 +43754,128 @@ func (s *RegisterLineageRelationResponse) SetBody(v *RegisterLineageRelationResp
 	return s
 }
 
+type RemoveEntityTagsRequest struct {
+	QualifiedName *string   `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	TagKeys       []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s RemoveEntityTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntityTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntityTagsRequest) SetQualifiedName(v string) *RemoveEntityTagsRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *RemoveEntityTagsRequest) SetTagKeys(v []*string) *RemoveEntityTagsRequest {
+	s.TagKeys = v
+	return s
+}
+
+type RemoveEntityTagsShrinkRequest struct {
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	TagKeysShrink *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+}
+
+func (s RemoveEntityTagsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntityTagsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntityTagsShrinkRequest) SetQualifiedName(v string) *RemoveEntityTagsShrinkRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *RemoveEntityTagsShrinkRequest) SetTagKeysShrink(v string) *RemoveEntityTagsShrinkRequest {
+	s.TagKeysShrink = &v
+	return s
+}
+
+type RemoveEntityTagsResponseBody struct {
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RemoveEntityTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntityTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntityTagsResponseBody) SetData(v bool) *RemoveEntityTagsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RemoveEntityTagsResponseBody) SetErrorCode(v string) *RemoveEntityTagsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RemoveEntityTagsResponseBody) SetErrorMessage(v string) *RemoveEntityTagsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RemoveEntityTagsResponseBody) SetHttpStatusCode(v int32) *RemoveEntityTagsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RemoveEntityTagsResponseBody) SetRequestId(v string) *RemoveEntityTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveEntityTagsResponseBody) SetSuccess(v bool) *RemoveEntityTagsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RemoveEntityTagsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveEntityTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveEntityTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntityTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntityTagsResponse) SetHeaders(v map[string]*string) *RemoveEntityTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveEntityTagsResponse) SetStatusCode(v int32) *RemoveEntityTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveEntityTagsResponse) SetBody(v *RemoveEntityTagsResponseBody) *RemoveEntityTagsResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveProjectMemberFromRoleRequest struct {
 	// The ID of the DataWorks workspace.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -45256,6 +45669,128 @@ func (s *SetDataSourceShareResponse) SetStatusCode(v int32) *SetDataSourceShareR
 }
 
 func (s *SetDataSourceShareResponse) SetBody(v *SetDataSourceShareResponseBody) *SetDataSourceShareResponse {
+	s.Body = v
+	return s
+}
+
+type SetEntityTagsRequest struct {
+	QualifiedName *string          `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	Tags          []*UserEntityTag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s SetEntityTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEntityTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetEntityTagsRequest) SetQualifiedName(v string) *SetEntityTagsRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *SetEntityTagsRequest) SetTags(v []*UserEntityTag) *SetEntityTagsRequest {
+	s.Tags = v
+	return s
+}
+
+type SetEntityTagsShrinkRequest struct {
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s SetEntityTagsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEntityTagsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetEntityTagsShrinkRequest) SetQualifiedName(v string) *SetEntityTagsShrinkRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *SetEntityTagsShrinkRequest) SetTagsShrink(v string) *SetEntityTagsShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type SetEntityTagsResponseBody struct {
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetEntityTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEntityTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetEntityTagsResponseBody) SetData(v bool) *SetEntityTagsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SetEntityTagsResponseBody) SetErrorCode(v string) *SetEntityTagsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SetEntityTagsResponseBody) SetErrorMessage(v string) *SetEntityTagsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SetEntityTagsResponseBody) SetHttpStatusCode(v int32) *SetEntityTagsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SetEntityTagsResponseBody) SetRequestId(v string) *SetEntityTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetEntityTagsResponseBody) SetSuccess(v bool) *SetEntityTagsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetEntityTagsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetEntityTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetEntityTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEntityTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetEntityTagsResponse) SetHeaders(v map[string]*string) *SetEntityTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetEntityTagsResponse) SetStatusCode(v int32) *SetEntityTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetEntityTagsResponse) SetBody(v *SetEntityTagsResponseBody) *SetEntityTagsResponse {
 	s.Body = v
 	return s
 }
@@ -51666,6 +52201,10 @@ func (client *Client) AddMetaCollectionEntityWithOptions(request *AddMetaCollect
 
 	if !tea.BoolValue(util.IsUnset(request.EntityQualifiedName)) {
 		query["EntityQualifiedName"] = request.EntityQualifiedName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -61325,6 +61864,92 @@ func (client *Client) ListEnabledExtensionsForProject(request *ListEnabledExtens
 	return _result, _err
 }
 
+func (client *Client) ListEntitiesByTagsWithOptions(tmpReq *ListEntitiesByTagsRequest, runtime *util.RuntimeOptions) (_result *ListEntitiesByTagsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListEntitiesByTagsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEntitiesByTags"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEntitiesByTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEntitiesByTags(request *ListEntitiesByTagsRequest) (_result *ListEntitiesByTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEntitiesByTagsResponse{}
+	_body, _err := client.ListEntitiesByTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEntityTagsWithOptions(request *ListEntityTagsRequest, runtime *util.RuntimeOptions) (_result *ListEntityTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEntityTags"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEntityTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEntityTags(request *ListEntityTagsRequest) (_result *ListEntityTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEntityTagsResponse{}
+	_body, _err := client.ListEntityTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListExtensionsWithOptions(request *ListExtensionsRequest, runtime *util.RuntimeOptions) (_result *ListExtensionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63961,6 +64586,62 @@ func (client *Client) RegisterLineageRelation(request *RegisterLineageRelationRe
 	return _result, _err
 }
 
+func (client *Client) RemoveEntityTagsWithOptions(tmpReq *RemoveEntityTagsRequest, runtime *util.RuntimeOptions) (_result *RemoveEntityTagsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveEntityTagsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKeys)) {
+		request.TagKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKeys, tea.String("TagKeys"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QualifiedName)) {
+		query["QualifiedName"] = request.QualifiedName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagKeysShrink)) {
+		body["TagKeys"] = request.TagKeysShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveEntityTags"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveEntityTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveEntityTags(request *RemoveEntityTagsRequest) (_result *RemoveEntityTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveEntityTagsResponse{}
+	_body, _err := client.RemoveEntityTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveProjectMemberFromRoleWithOptions(request *RemoveProjectMemberFromRoleRequest, runtime *util.RuntimeOptions) (_result *RemoveProjectMemberFromRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64854,6 +65535,62 @@ func (client *Client) SetDataSourceShare(request *SetDataSourceShareRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataSourceShareResponse{}
 	_body, _err := client.SetDataSourceShareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetEntityTagsWithOptions(tmpReq *SetEntityTagsRequest, runtime *util.RuntimeOptions) (_result *SetEntityTagsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetEntityTagsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QualifiedName)) {
+		query["QualifiedName"] = request.QualifiedName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetEntityTags"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetEntityTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetEntityTags(request *SetEntityTagsRequest) (_result *SetEntityTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetEntityTagsResponse{}
+	_body, _err := client.SetEntityTagsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
