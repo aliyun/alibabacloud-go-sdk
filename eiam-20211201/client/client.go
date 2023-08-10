@@ -2048,6 +2048,77 @@ func (s *DisableApplicationProvisioningResponse) SetBody(v *DisableApplicationPr
 	return s
 }
 
+type DisableApplicationSsoRequest struct {
+	// IDaaS的应用主键id
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// IDaaS EIAM的实例id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableApplicationSsoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableApplicationSsoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableApplicationSsoRequest) SetApplicationId(v string) *DisableApplicationSsoRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *DisableApplicationSsoRequest) SetInstanceId(v string) *DisableApplicationSsoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableApplicationSsoResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableApplicationSsoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableApplicationSsoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableApplicationSsoResponseBody) SetRequestId(v string) *DisableApplicationSsoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableApplicationSsoResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableApplicationSsoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableApplicationSsoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableApplicationSsoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableApplicationSsoResponse) SetHeaders(v map[string]*string) *DisableApplicationSsoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableApplicationSsoResponse) SetStatusCode(v int32) *DisableApplicationSsoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableApplicationSsoResponse) SetBody(v *DisableApplicationSsoResponseBody) *DisableApplicationSsoResponse {
+	s.Body = v
+	return s
+}
+
 type DisableUserRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2411,6 +2482,77 @@ func (s *EnableApplicationProvisioningResponse) SetStatusCode(v int32) *EnableAp
 }
 
 func (s *EnableApplicationProvisioningResponse) SetBody(v *EnableApplicationProvisioningResponseBody) *EnableApplicationProvisioningResponse {
+	s.Body = v
+	return s
+}
+
+type EnableApplicationSsoRequest struct {
+	// IDaaS的应用主键id
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// IDaaS EIAM的实例id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s EnableApplicationSsoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableApplicationSsoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableApplicationSsoRequest) SetApplicationId(v string) *EnableApplicationSsoRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *EnableApplicationSsoRequest) SetInstanceId(v string) *EnableApplicationSsoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type EnableApplicationSsoResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableApplicationSsoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableApplicationSsoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableApplicationSsoResponseBody) SetRequestId(v string) *EnableApplicationSsoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableApplicationSsoResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableApplicationSsoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableApplicationSsoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableApplicationSsoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableApplicationSsoResponse) SetHeaders(v map[string]*string) *EnableApplicationSsoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableApplicationSsoResponse) SetStatusCode(v int32) *EnableApplicationSsoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableApplicationSsoResponse) SetBody(v *EnableApplicationSsoResponseBody) *EnableApplicationSsoResponse {
 	s.Body = v
 	return s
 }
@@ -2867,7 +3009,9 @@ type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig s
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The configuration of the custom event callback protocol of IDaaS.
 	CallbackProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig `json:"CallbackProvisioningConfig,omitempty" xml:"CallbackProvisioningConfig,omitempty" type:"Struct"`
-	// 账户同步页面渲染方式
+	// Client-side rendering, Valid values:
+	// - standard：standard mode.
+	// - template：template mode.
 	ConfigOperateMode *string `json:"ConfigOperateMode,omitempty" xml:"ConfigOperateMode,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -3707,6 +3851,124 @@ func (s *GetApplicationSsoConfigResponse) SetStatusCode(v int32) *GetApplication
 }
 
 func (s *GetApplicationSsoConfigResponse) SetBody(v *GetApplicationSsoConfigResponseBody) *GetApplicationSsoConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetForgetPasswordConfigurationRequest struct {
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetForgetPasswordConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetForgetPasswordConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetForgetPasswordConfigurationRequest) SetInstanceId(v string) *GetForgetPasswordConfigurationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetForgetPasswordConfigurationResponseBody struct {
+	// The forgot password configurations.
+	OpenForgetPasswordConfiguration *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration `json:"OpenForgetPasswordConfiguration,omitempty" xml:"OpenForgetPasswordConfiguration,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetForgetPasswordConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetForgetPasswordConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetForgetPasswordConfigurationResponseBody) SetOpenForgetPasswordConfiguration(v *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) *GetForgetPasswordConfigurationResponseBody {
+	s.OpenForgetPasswordConfiguration = v
+	return s
+}
+
+func (s *GetForgetPasswordConfigurationResponseBody) SetRequestId(v string) *GetForgetPasswordConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration struct {
+	// 表示忘记密码认证渠道。枚举取值:email(邮件)、sms(短信)
+	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
+	// Indicates whether the forgot password feature is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether email authentication is enabled for the forgot password feature.
+	EnableEmail *bool `json:"EnableEmail,omitempty" xml:"EnableEmail,omitempty"`
+	// Indicates whether Short Message Service (SMS) authentication is enabled for the forgot password feature.
+	EnableSms *bool `json:"EnableSms,omitempty" xml:"EnableSms,omitempty"`
+	// 表示忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
+	ForgetPasswordStatus *string `json:"ForgetPasswordStatus,omitempty" xml:"ForgetPasswordStatus,omitempty"`
+}
+
+func (s GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) SetAuthenticationChannels(v []*string) *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration {
+	s.AuthenticationChannels = v
+	return s
+}
+
+func (s *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) SetEnable(v bool) *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) SetEnableEmail(v bool) *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration {
+	s.EnableEmail = &v
+	return s
+}
+
+func (s *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) SetEnableSms(v bool) *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration {
+	s.EnableSms = &v
+	return s
+}
+
+func (s *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration) SetForgetPasswordStatus(v string) *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration {
+	s.ForgetPasswordStatus = &v
+	return s
+}
+
+type GetForgetPasswordConfigurationResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetForgetPasswordConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetForgetPasswordConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetForgetPasswordConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetForgetPasswordConfigurationResponse) SetHeaders(v map[string]*string) *GetForgetPasswordConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetForgetPasswordConfigurationResponse) SetStatusCode(v int32) *GetForgetPasswordConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetForgetPasswordConfigurationResponse) SetBody(v *GetForgetPasswordConfigurationResponseBody) *GetForgetPasswordConfigurationResponse {
 	s.Body = v
 	return s
 }
@@ -9654,6 +9916,85 @@ func (s *SetApplicationSsoConfigResponse) SetBody(v *SetApplicationSsoConfigResp
 	return s
 }
 
+type SetForgetPasswordConfigurationRequest struct {
+	// 身份认证渠道。枚举取值:email(邮件)、sms(短信)
+	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
+	// 忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
+	ForgetPasswordStatus *string `json:"ForgetPasswordStatus,omitempty" xml:"ForgetPasswordStatus,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s SetForgetPasswordConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetForgetPasswordConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetForgetPasswordConfigurationRequest) SetAuthenticationChannels(v []*string) *SetForgetPasswordConfigurationRequest {
+	s.AuthenticationChannels = v
+	return s
+}
+
+func (s *SetForgetPasswordConfigurationRequest) SetForgetPasswordStatus(v string) *SetForgetPasswordConfigurationRequest {
+	s.ForgetPasswordStatus = &v
+	return s
+}
+
+func (s *SetForgetPasswordConfigurationRequest) SetInstanceId(v string) *SetForgetPasswordConfigurationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type SetForgetPasswordConfigurationResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetForgetPasswordConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetForgetPasswordConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetForgetPasswordConfigurationResponseBody) SetRequestId(v string) *SetForgetPasswordConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetForgetPasswordConfigurationResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetForgetPasswordConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetForgetPasswordConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetForgetPasswordConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetForgetPasswordConfigurationResponse) SetHeaders(v map[string]*string) *SetForgetPasswordConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetForgetPasswordConfigurationResponse) SetStatusCode(v int32) *SetForgetPasswordConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetForgetPasswordConfigurationResponse) SetBody(v *SetForgetPasswordConfigurationResponseBody) *SetForgetPasswordConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type SetPasswordComplexityConfigurationRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -12601,6 +12942,54 @@ func (client *Client) DisableApplicationProvisioning(request *DisableApplication
 	return _result, _err
 }
 
+func (client *Client) DisableApplicationSsoWithOptions(request *DisableApplicationSsoRequest, runtime *util.RuntimeOptions) (_result *DisableApplicationSsoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableApplicationSso"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableApplicationSsoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableApplicationSso(request *DisableApplicationSsoRequest) (_result *DisableApplicationSsoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableApplicationSsoResponse{}
+	_body, _err := client.DisableApplicationSsoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtime *util.RuntimeOptions) (_result *DisableUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12838,6 +13227,54 @@ func (client *Client) EnableApplicationProvisioning(request *EnableApplicationPr
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableApplicationProvisioningResponse{}
 	_body, _err := client.EnableApplicationProvisioningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableApplicationSsoWithOptions(request *EnableApplicationSsoRequest, runtime *util.RuntimeOptions) (_result *EnableApplicationSsoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableApplicationSso"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableApplicationSsoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest) (_result *EnableApplicationSsoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableApplicationSsoResponse{}
+	_body, _err := client.EnableApplicationSsoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13126,6 +13563,50 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationSsoConfigResponse{}
 	_body, _err := client.GetApplicationSsoConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetForgetPasswordConfigurationWithOptions(request *GetForgetPasswordConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetForgetPasswordConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetForgetPasswordConfiguration"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetForgetPasswordConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetForgetPasswordConfiguration(request *GetForgetPasswordConfigurationRequest) (_result *GetForgetPasswordConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetForgetPasswordConfigurationResponse{}
+	_body, _err := client.GetForgetPasswordConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15250,6 +15731,58 @@ func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SetApplicationSsoConfigResponse{}
 	_body, _err := client.SetApplicationSsoConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetForgetPasswordConfigurationWithOptions(request *SetForgetPasswordConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetForgetPasswordConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationChannels)) {
+		query["AuthenticationChannels"] = request.AuthenticationChannels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForgetPasswordStatus)) {
+		query["ForgetPasswordStatus"] = request.ForgetPasswordStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetForgetPasswordConfiguration"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetForgetPasswordConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetForgetPasswordConfiguration(request *SetForgetPasswordConfigurationRequest) (_result *SetForgetPasswordConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetForgetPasswordConfigurationResponse{}
+	_body, _err := client.SetForgetPasswordConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
