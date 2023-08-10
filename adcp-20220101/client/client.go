@@ -3693,11 +3693,12 @@ func (s *GrantUserPermissionsResponse) SetBody(v *GrantUserPermissionsResponseBo
 }
 
 type UpdateHubClusterFeatureRequest struct {
+	AccessControlList []*string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Repeated"`
 	// The ID of the EIP.
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
+	ArgoCDHAEnabled   *bool   `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
-	ArmsEnabled       *bool   `json:"ArmsEnabled,omitempty" xml:"ArmsEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
 	// *   true: enables the audit logging feature.
@@ -3713,11 +3714,13 @@ type UpdateHubClusterFeatureRequest struct {
 	// Specifies whether to enable Alibaba Cloud Service Mesh (ASM). Valid values:
 	//
 	// true: enables ASM. false: disables ASM.
-	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	EnableMesh     *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	MonitorEnabled *bool `json:"MonitorEnabled,omitempty" xml:"MonitorEnabled,omitempty"`
 	// The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
-	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	PriceLimit          *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	PublicAccessEnabled *bool   `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
 	//
 	// *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
@@ -3735,6 +3738,11 @@ func (s UpdateHubClusterFeatureRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateHubClusterFeatureRequest) SetAccessControlList(v []*string) *UpdateHubClusterFeatureRequest {
+	s.AccessControlList = v
+	return s
+}
+
 func (s *UpdateHubClusterFeatureRequest) SetApiServerEipId(v string) *UpdateHubClusterFeatureRequest {
 	s.ApiServerEipId = &v
 	return s
@@ -3745,13 +3753,13 @@ func (s *UpdateHubClusterFeatureRequest) SetArgoCDEnabled(v bool) *UpdateHubClus
 	return s
 }
 
-func (s *UpdateHubClusterFeatureRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureRequest {
-	s.ArgoServerEnabled = &v
+func (s *UpdateHubClusterFeatureRequest) SetArgoCDHAEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.ArgoCDHAEnabled = &v
 	return s
 }
 
-func (s *UpdateHubClusterFeatureRequest) SetArmsEnabled(v bool) *UpdateHubClusterFeatureRequest {
-	s.ArmsEnabled = &v
+func (s *UpdateHubClusterFeatureRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.ArgoServerEnabled = &v
 	return s
 }
 
@@ -3775,6 +3783,11 @@ func (s *UpdateHubClusterFeatureRequest) SetEnableMesh(v bool) *UpdateHubCluster
 	return s
 }
 
+func (s *UpdateHubClusterFeatureRequest) SetMonitorEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.MonitorEnabled = &v
+	return s
+}
+
 func (s *UpdateHubClusterFeatureRequest) SetName(v string) *UpdateHubClusterFeatureRequest {
 	s.Name = &v
 	return s
@@ -3782,6 +3795,11 @@ func (s *UpdateHubClusterFeatureRequest) SetName(v string) *UpdateHubClusterFeat
 
 func (s *UpdateHubClusterFeatureRequest) SetPriceLimit(v string) *UpdateHubClusterFeatureRequest {
 	s.PriceLimit = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetPublicAccessEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.PublicAccessEnabled = &v
 	return s
 }
 
@@ -3801,11 +3819,12 @@ func (s *UpdateHubClusterFeatureRequest) SetWorkflowScheduleMode(v string) *Upda
 }
 
 type UpdateHubClusterFeatureShrinkRequest struct {
+	AccessControlListShrink *string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty"`
 	// The ID of the EIP.
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
+	ArgoCDHAEnabled   *bool   `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
-	ArmsEnabled       *bool   `json:"ArmsEnabled,omitempty" xml:"ArmsEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
 	// *   true: enables the audit logging feature.
@@ -3821,11 +3840,13 @@ type UpdateHubClusterFeatureShrinkRequest struct {
 	// Specifies whether to enable Alibaba Cloud Service Mesh (ASM). Valid values:
 	//
 	// true: enables ASM. false: disables ASM.
-	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	EnableMesh     *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	MonitorEnabled *bool `json:"MonitorEnabled,omitempty" xml:"MonitorEnabled,omitempty"`
 	// The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
-	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	PriceLimit          *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	PublicAccessEnabled *bool   `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
 	//
 	// *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
@@ -3843,6 +3864,11 @@ func (s UpdateHubClusterFeatureShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateHubClusterFeatureShrinkRequest) SetAccessControlListShrink(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.AccessControlListShrink = &v
+	return s
+}
+
 func (s *UpdateHubClusterFeatureShrinkRequest) SetApiServerEipId(v string) *UpdateHubClusterFeatureShrinkRequest {
 	s.ApiServerEipId = &v
 	return s
@@ -3853,13 +3879,13 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoCDEnabled(v bool) *UpdateH
 	return s
 }
 
-func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
-	s.ArgoServerEnabled = &v
+func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoCDHAEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.ArgoCDHAEnabled = &v
 	return s
 }
 
-func (s *UpdateHubClusterFeatureShrinkRequest) SetArmsEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
-	s.ArmsEnabled = &v
+func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.ArgoServerEnabled = &v
 	return s
 }
 
@@ -3883,6 +3909,11 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetEnableMesh(v bool) *UpdateHubC
 	return s
 }
 
+func (s *UpdateHubClusterFeatureShrinkRequest) SetMonitorEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.MonitorEnabled = &v
+	return s
+}
+
 func (s *UpdateHubClusterFeatureShrinkRequest) SetName(v string) *UpdateHubClusterFeatureShrinkRequest {
 	s.Name = &v
 	return s
@@ -3890,6 +3921,11 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetName(v string) *UpdateHubClust
 
 func (s *UpdateHubClusterFeatureShrinkRequest) SetPriceLimit(v string) *UpdateHubClusterFeatureShrinkRequest {
 	s.PriceLimit = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetPublicAccessEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.PublicAccessEnabled = &v
 	return s
 }
 
@@ -5199,11 +5235,19 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 	}
 	request := &UpdateHubClusterFeatureShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AccessControlList)) {
+		request.AccessControlListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccessControlList, tea.String("AccessControlList"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.VSwitches)) {
 		request.VSwitchesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VSwitches, tea.String("VSwitches"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessControlListShrink)) {
+		query["AccessControlList"] = request.AccessControlListShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ApiServerEipId)) {
 		query["ApiServerEipId"] = request.ApiServerEipId
 	}
@@ -5212,12 +5256,12 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 		query["ArgoCDEnabled"] = request.ArgoCDEnabled
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ArgoServerEnabled)) {
-		query["ArgoServerEnabled"] = request.ArgoServerEnabled
+	if !tea.BoolValue(util.IsUnset(request.ArgoCDHAEnabled)) {
+		query["ArgoCDHAEnabled"] = request.ArgoCDHAEnabled
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ArmsEnabled)) {
-		query["ArmsEnabled"] = request.ArmsEnabled
+	if !tea.BoolValue(util.IsUnset(request.ArgoServerEnabled)) {
+		query["ArgoServerEnabled"] = request.ArgoServerEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AuditLogEnabled)) {
@@ -5236,12 +5280,20 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 		query["EnableMesh"] = request.EnableMesh
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MonitorEnabled)) {
+		query["MonitorEnabled"] = request.MonitorEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PriceLimit)) {
 		query["PriceLimit"] = request.PriceLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicAccessEnabled)) {
+		query["PublicAccessEnabled"] = request.PublicAccessEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PublicApiServerEnabled)) {
