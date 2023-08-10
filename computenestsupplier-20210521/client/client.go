@@ -12,6 +12,134 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ContinueDeployServiceInstanceRequest struct {
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun            *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Parameters        *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s ContinueDeployServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContinueDeployServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ContinueDeployServiceInstanceRequest) SetClientToken(v string) *ContinueDeployServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceRequest) SetDryRun(v bool) *ContinueDeployServiceInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceRequest) SetParameters(v string) *ContinueDeployServiceInstanceRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceRequest) SetRegionId(v string) *ContinueDeployServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceRequest) SetServiceInstanceId(v string) *ContinueDeployServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type ContinueDeployServiceInstanceResponseBody struct {
+	DryRunResult      *ContinueDeployServiceInstanceResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
+	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceInstanceId *string                                                `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s ContinueDeployServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContinueDeployServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ContinueDeployServiceInstanceResponseBody) SetDryRunResult(v *ContinueDeployServiceInstanceResponseBodyDryRunResult) *ContinueDeployServiceInstanceResponseBody {
+	s.DryRunResult = v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceResponseBody) SetRequestId(v string) *ContinueDeployServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceResponseBody) SetServiceInstanceId(v string) *ContinueDeployServiceInstanceResponseBody {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type ContinueDeployServiceInstanceResponseBodyDryRunResult struct {
+	ParametersAllowedToBeModified              []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersConditionallyAllowedToBeModified []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersNotAllowedToBeModified           []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
+}
+
+func (s ContinueDeployServiceInstanceResponseBodyDryRunResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContinueDeployServiceInstanceResponseBodyDryRunResult) GoString() string {
+	return s.String()
+}
+
+func (s *ContinueDeployServiceInstanceResponseBodyDryRunResult) SetParametersAllowedToBeModified(v []*string) *ContinueDeployServiceInstanceResponseBodyDryRunResult {
+	s.ParametersAllowedToBeModified = v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceResponseBodyDryRunResult) SetParametersConditionallyAllowedToBeModified(v []*string) *ContinueDeployServiceInstanceResponseBodyDryRunResult {
+	s.ParametersConditionallyAllowedToBeModified = v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceResponseBodyDryRunResult) SetParametersNotAllowedToBeModified(v []*string) *ContinueDeployServiceInstanceResponseBodyDryRunResult {
+	s.ParametersNotAllowedToBeModified = v
+	return s
+}
+
+type ContinueDeployServiceInstanceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ContinueDeployServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ContinueDeployServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContinueDeployServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ContinueDeployServiceInstanceResponse) SetHeaders(v map[string]*string) *ContinueDeployServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceResponse) SetStatusCode(v int32) *ContinueDeployServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployServiceInstanceResponseBody) *ContinueDeployServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateArtifactRequest struct {
 	ArtifactId       *string                                `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 	ArtifactProperty *CreateArtifactRequestArtifactProperty `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty" type:"Struct"`
@@ -572,6 +700,264 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 	return s
 }
 
+type CreateServiceInstanceRequest struct {
+	ClientToken       *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Name              *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters        map[string]interface{}             `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId         *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceVersion    *string                            `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationName *string                            `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Tag               []*CreateServiceInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TemplateName      *string                            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	UserId            *string                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceInstanceRequest) SetClientToken(v string) *CreateServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetName(v string) *CreateServiceInstanceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetParameters(v map[string]interface{}) *CreateServiceInstanceRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetRegionId(v string) *CreateServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetResourceGroupId(v string) *CreateServiceInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetServiceId(v string) *CreateServiceInstanceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetServiceVersion(v string) *CreateServiceInstanceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetSpecificationName(v string) *CreateServiceInstanceRequest {
+	s.SpecificationName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetTag(v []*CreateServiceInstanceRequestTag) *CreateServiceInstanceRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetTemplateName(v string) *CreateServiceInstanceRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetUserId(v string) *CreateServiceInstanceRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateServiceInstanceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateServiceInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceInstanceRequestTag) SetKey(v string) *CreateServiceInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequestTag) SetValue(v string) *CreateServiceInstanceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateServiceInstanceShrinkRequest struct {
+	ClientToken       *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Name              *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParametersShrink  *string                                  `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId          *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId         *string                                  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceVersion    *string                                  `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationName *string                                  `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Tag               []*CreateServiceInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TemplateName      *string                                  `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	UserId            *string                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateServiceInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetClientToken(v string) *CreateServiceInstanceShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetName(v string) *CreateServiceInstanceShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetParametersShrink(v string) *CreateServiceInstanceShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetRegionId(v string) *CreateServiceInstanceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetResourceGroupId(v string) *CreateServiceInstanceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetServiceId(v string) *CreateServiceInstanceShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetServiceVersion(v string) *CreateServiceInstanceShrinkRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetSpecificationName(v string) *CreateServiceInstanceShrinkRequest {
+	s.SpecificationName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetTag(v []*CreateServiceInstanceShrinkRequestTag) *CreateServiceInstanceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetTemplateName(v string) *CreateServiceInstanceShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetUserId(v string) *CreateServiceInstanceShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateServiceInstanceShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateServiceInstanceShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceInstanceShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceInstanceShrinkRequestTag) SetKey(v string) *CreateServiceInstanceShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequestTag) SetValue(v string) *CreateServiceInstanceShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateServiceInstanceResponseBody struct {
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceInstanceResponseBody) SetRequestId(v string) *CreateServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceResponseBody) SetServiceInstanceId(v string) *CreateServiceInstanceResponseBody {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceResponseBody) SetStatus(v string) *CreateServiceInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateServiceInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceInstanceResponse) SetHeaders(v map[string]*string) *CreateServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceInstanceResponse) SetStatusCode(v int32) *CreateServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceInstanceResponse) SetBody(v *CreateServiceInstanceResponseBody) *CreateServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteArtifactRequest struct {
 	ArtifactId      *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
@@ -718,6 +1104,81 @@ func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
 }
 
 func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteServiceInstancesRequest struct {
+	ClientToken       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceInstanceId []*string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty" type:"Repeated"`
+}
+
+func (s DeleteServiceInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceInstancesRequest) SetClientToken(v string) *DeleteServiceInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteServiceInstancesRequest) SetRegionId(v string) *DeleteServiceInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteServiceInstancesRequest) SetServiceInstanceId(v []*string) *DeleteServiceInstancesRequest {
+	s.ServiceInstanceId = v
+	return s
+}
+
+type DeleteServiceInstancesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteServiceInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceInstancesResponseBody) SetRequestId(v string) *DeleteServiceInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceInstancesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceInstancesResponse) SetHeaders(v map[string]*string) *DeleteServiceInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceInstancesResponse) SetStatusCode(v int32) *DeleteServiceInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesResponseBody) *DeleteServiceInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -4540,6 +5001,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ContinueDeployServiceInstanceWithOptions(request *ContinueDeployServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *ContinueDeployServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ContinueDeployServiceInstance"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ContinueDeployServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ContinueDeployServiceInstance(request *ContinueDeployServiceInstanceRequest) (_result *ContinueDeployServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ContinueDeployServiceInstanceResponse{}
+	_body, _err := client.ContinueDeployServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4742,6 +5263,96 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateServiceInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecificationName)) {
+		query["SpecificationName"] = request.SpecificationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceInstance"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceInstance(request *CreateServiceInstanceRequest) (_result *CreateServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceInstanceResponse{}
+	_body, _err := client.CreateServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteArtifactWithOptions(request *DeleteArtifactRequest, runtime *util.RuntimeOptions) (_result *DeleteArtifactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4839,6 +5450,58 @@ func (client *Client) DeleteService(request *DeleteServiceRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServiceResponse{}
 	_body, _err := client.DeleteServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceInstancesWithOptions(request *DeleteServiceInstancesRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceInstances"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequest) (_result *DeleteServiceInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteServiceInstancesResponse{}
+	_body, _err := client.DeleteServiceInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
