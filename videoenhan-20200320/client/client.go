@@ -2314,6 +2314,7 @@ func (s *InterpolateVideoFrameResponse) SetBody(v *InterpolateVideoFrameResponse
 }
 
 type MergeVideoFaceRequest struct {
+	AddWatermark *bool   `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
 	ReferenceURL *string `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
 	VideoURL     *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
@@ -2324,6 +2325,11 @@ func (s MergeVideoFaceRequest) String() string {
 
 func (s MergeVideoFaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MergeVideoFaceRequest) SetAddWatermark(v bool) *MergeVideoFaceRequest {
+	s.AddWatermark = &v
+	return s
 }
 
 func (s *MergeVideoFaceRequest) SetReferenceURL(v string) *MergeVideoFaceRequest {
@@ -2337,6 +2343,7 @@ func (s *MergeVideoFaceRequest) SetVideoURL(v string) *MergeVideoFaceRequest {
 }
 
 type MergeVideoFaceAdvanceRequest struct {
+	AddWatermark       *bool     `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
 	ReferenceURLObject io.Reader `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
 	VideoURLObject     io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
@@ -2347,6 +2354,11 @@ func (s MergeVideoFaceAdvanceRequest) String() string {
 
 func (s MergeVideoFaceAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MergeVideoFaceAdvanceRequest) SetAddWatermark(v bool) *MergeVideoFaceAdvanceRequest {
+	s.AddWatermark = &v
+	return s
 }
 
 func (s *MergeVideoFaceAdvanceRequest) SetReferenceURLObject(v io.Reader) *MergeVideoFaceAdvanceRequest {
@@ -2435,6 +2447,7 @@ func (s *MergeVideoFaceResponse) SetBody(v *MergeVideoFaceResponseBody) *MergeVi
 }
 
 type MergeVideoModelFaceRequest struct {
+	AddWatermark *bool                                   `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
 	FaceImageURL *string                                 `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
 	MergeInfos   []*MergeVideoModelFaceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
 	TemplateId   *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -2446,6 +2459,11 @@ func (s MergeVideoModelFaceRequest) String() string {
 
 func (s MergeVideoModelFaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MergeVideoModelFaceRequest) SetAddWatermark(v bool) *MergeVideoModelFaceRequest {
+	s.AddWatermark = &v
+	return s
 }
 
 func (s *MergeVideoModelFaceRequest) SetFaceImageURL(v string) *MergeVideoModelFaceRequest {
@@ -2493,6 +2511,7 @@ func (s *MergeVideoModelFaceRequestMergeInfos) SetTemplateFaceURL(v string) *Mer
 }
 
 type MergeVideoModelFaceAdvanceRequest struct {
+	AddWatermark       *bool                                          `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
 	FaceImageURLObject io.Reader                                      `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
 	MergeInfos         []*MergeVideoModelFaceAdvanceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
 	TemplateId         *string                                        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -2504,6 +2523,11 @@ func (s MergeVideoModelFaceAdvanceRequest) String() string {
 
 func (s MergeVideoModelFaceAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MergeVideoModelFaceAdvanceRequest) SetAddWatermark(v bool) *MergeVideoModelFaceAdvanceRequest {
+	s.AddWatermark = &v
+	return s
 }
 
 func (s *MergeVideoModelFaceAdvanceRequest) SetFaceImageURLObject(v io.Reader) *MergeVideoModelFaceAdvanceRequest {
@@ -5419,6 +5443,10 @@ func (client *Client) MergeVideoFaceWithOptions(request *MergeVideoFaceRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddWatermark)) {
+		body["AddWatermark"] = request.AddWatermark
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReferenceURL)) {
 		body["ReferenceURL"] = request.ReferenceURL
 	}
@@ -5610,6 +5638,10 @@ func (client *Client) MergeVideoModelFaceWithOptions(request *MergeVideoModelFac
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddWatermark)) {
+		body["AddWatermark"] = request.AddWatermark
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FaceImageURL)) {
 		body["FaceImageURL"] = request.FaceImageURL
 	}
