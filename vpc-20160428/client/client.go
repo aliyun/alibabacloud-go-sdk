@@ -25175,7 +25175,8 @@ type DescribeEipAddressesRequest struct {
 	// *   **InUse**: allocated
 	// *   **Available**: available
 	// *   **Releasing**: being released
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*DescribeEipAddressesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEipAddressesRequest) String() string {
@@ -25301,6 +25302,11 @@ func (s *DescribeEipAddressesRequest) SetStatus(v string) *DescribeEipAddressesR
 	return s
 }
 
+func (s *DescribeEipAddressesRequest) SetTag(v []*DescribeEipAddressesRequestTag) *DescribeEipAddressesRequest {
+	s.Tag = v
+	return s
+}
+
 type DescribeEipAddressesRequestFilter struct {
 	// The filter key used to query resources. Set the value to **CreationStartTime**, which indicates the time when the system started to create the resource.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -25322,6 +25328,29 @@ func (s *DescribeEipAddressesRequestFilter) SetKey(v string) *DescribeEipAddress
 }
 
 func (s *DescribeEipAddressesRequestFilter) SetValue(v string) *DescribeEipAddressesRequestFilter {
+	s.Value = &v
+	return s
+}
+
+type DescribeEipAddressesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEipAddressesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEipAddressesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEipAddressesRequestTag) SetKey(v string) *DescribeEipAddressesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeEipAddressesRequestTag) SetValue(v string) *DescribeEipAddressesRequestTag {
 	s.Value = &v
 	return s
 }
@@ -27225,7 +27254,8 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry
 	// *   **TCP**: The NAT gateway forwards TCP packets.
 	// *   **UDP**: The NAT gateway forwards UDP packets.
 	// *   **Any**: The NAT gateway forwards packets of all protocols.
-	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// The status of the DNAT entry. Valid values:
 	//
 	// *   **Pending**: being created or modified
@@ -27279,6 +27309,11 @@ func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableE
 
 func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry) SetIpProtocol(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry {
 	s.IpProtocol = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry) SetNatGatewayId(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry {
+	s.NatGatewayId = &v
 	return s
 }
 
@@ -36862,6 +36897,7 @@ func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSnatTableEntry
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry struct {
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
 	// The name of the SNAT entry.
@@ -36890,6 +36926,11 @@ func (s DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry) Stri
 
 func (s DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry) SetNatGatewayId(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry {
+	s.NatGatewayId = &v
+	return s
 }
 
 func (s *DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry) SetSnatEntryId(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry {
@@ -58536,10 +58577,13 @@ func (s *ModifyExpressCloudConnectionAttributeResponse) SetBody(v *ModifyExpress
 }
 
 type ModifyExpressCloudConnectionBandwidthRequest struct {
-	Bandwidth            *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	EccId                *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The bandwidth of the ECC instance.
+	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the ECC instance.
+	EccId        *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -58589,6 +58633,7 @@ func (s *ModifyExpressCloudConnectionBandwidthRequest) SetResourceOwnerId(v int6
 }
 
 type ModifyExpressCloudConnectionBandwidthResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -62596,6 +62641,512 @@ func (s *ModifySslVpnServerResponse) SetStatusCode(v int32) *ModifySslVpnServerR
 }
 
 func (s *ModifySslVpnServerResponse) SetBody(v *ModifySslVpnServerResponseBody) *ModifySslVpnServerResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTunnelAttributeRequest struct {
+	ClientToken                *string                                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount               *string                                                 `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                    *int64                                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                   *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount       *string                                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId            *int64                                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TunnelId                   *string                                                 `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelOptionsSpecification *ModifyTunnelAttributeRequestTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
+	VpnConnectionId            *string                                                 `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
+}
+
+func (s ModifyTunnelAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeRequest) SetClientToken(v string) *ModifyTunnelAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetOwnerAccount(v string) *ModifyTunnelAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetOwnerId(v int64) *ModifyTunnelAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetRegionId(v string) *ModifyTunnelAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetResourceOwnerAccount(v string) *ModifyTunnelAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetResourceOwnerId(v int64) *ModifyTunnelAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetTunnelId(v string) *ModifyTunnelAttributeRequest {
+	s.TunnelId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetTunnelOptionsSpecification(v *ModifyTunnelAttributeRequestTunnelOptionsSpecification) *ModifyTunnelAttributeRequest {
+	s.TunnelOptionsSpecification = v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequest) SetVpnConnectionId(v string) *ModifyTunnelAttributeRequest {
+	s.VpnConnectionId = &v
+	return s
+}
+
+type ModifyTunnelAttributeRequestTunnelOptionsSpecification struct {
+	EnableDpd           *bool                                                                    `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *bool                                                                    `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	RemoteCaCertificate *string                                                                  `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	TunnelBgpConfig     *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelIkeConfig     *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) SetEnableDpd(v bool) *ModifyTunnelAttributeRequestTunnelOptionsSpecification {
+	s.EnableDpd = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) SetEnableNatTraversal(v bool) *ModifyTunnelAttributeRequestTunnelOptionsSpecification {
+	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) SetRemoteCaCertificate(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecification {
+	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) SetTunnelBgpConfig(v *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) *ModifyTunnelAttributeRequestTunnelOptionsSpecification {
+	s.TunnelBgpConfig = v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) SetTunnelIkeConfig(v *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) *ModifyTunnelAttributeRequestTunnelOptionsSpecification {
+	s.TunnelIkeConfig = v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) SetTunnelIpsecConfig(v *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) *ModifyTunnelAttributeRequestTunnelOptionsSpecification {
+	s.TunnelIpsecConfig = v
+	return s
+}
+
+type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig struct {
+	LocalAsn   *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
+	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) SetLocalAsn(v int64) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.LocalAsn = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) SetLocalBgpIp(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.LocalBgpIp = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) SetTunnelCidr(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig {
+	s.TunnelCidr = &v
+	return s
+}
+
+type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeAuthAlg(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeEncAlg(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeLifetime(v int64) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeMode(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkePfs(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetIkeVersion(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetLocalId(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetPsk(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) SetRemoteId(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int64  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecAuthAlg(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecEncAlg(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecLifetime(v int64) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig) SetIpsecPfs(v string) *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig {
+	s.IpsecPfs = &v
+	return s
+}
+
+type ModifyTunnelAttributeResponseBody struct {
+	CustomerGatewayId   *string                                             `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EnableDpd           *bool                                               `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal  *bool                                               `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	InternetIp          *string                                             `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	RemoteCaCertificate *string                                             `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	RequestId           *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role                *string                                             `json:"Role,omitempty" xml:"Role,omitempty"`
+	State               *string                                             `json:"State,omitempty" xml:"State,omitempty"`
+	TunnelBgpConfig     *ModifyTunnelAttributeResponseBodyTunnelBgpConfig   `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	TunnelId            *string                                             `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelIkeConfig     *ModifyTunnelAttributeResponseBodyTunnelIkeConfig   `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
+	TunnelIpsecConfig   *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
+	ZoneNo              *string                                             `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
+}
+
+func (s ModifyTunnelAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetCustomerGatewayId(v string) *ModifyTunnelAttributeResponseBody {
+	s.CustomerGatewayId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetEnableDpd(v bool) *ModifyTunnelAttributeResponseBody {
+	s.EnableDpd = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetEnableNatTraversal(v bool) *ModifyTunnelAttributeResponseBody {
+	s.EnableNatTraversal = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetInternetIp(v string) *ModifyTunnelAttributeResponseBody {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetRemoteCaCertificate(v string) *ModifyTunnelAttributeResponseBody {
+	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetRequestId(v string) *ModifyTunnelAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetRole(v string) *ModifyTunnelAttributeResponseBody {
+	s.Role = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetState(v string) *ModifyTunnelAttributeResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetTunnelBgpConfig(v *ModifyTunnelAttributeResponseBodyTunnelBgpConfig) *ModifyTunnelAttributeResponseBody {
+	s.TunnelBgpConfig = v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetTunnelId(v string) *ModifyTunnelAttributeResponseBody {
+	s.TunnelId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetTunnelIkeConfig(v *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) *ModifyTunnelAttributeResponseBody {
+	s.TunnelIkeConfig = v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetTunnelIpsecConfig(v *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig) *ModifyTunnelAttributeResponseBody {
+	s.TunnelIpsecConfig = v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBody) SetZoneNo(v string) *ModifyTunnelAttributeResponseBody {
+	s.ZoneNo = &v
+	return s
+}
+
+type ModifyTunnelAttributeResponseBodyTunnelBgpConfig struct {
+	EnableBgp  *bool   `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
+	LocalAsn   *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
+	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
+	PeerAsn    *int64  `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
+	PeerBgpIp  *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
+	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
+}
+
+func (s ModifyTunnelAttributeResponseBodyTunnelBgpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeResponseBodyTunnelBgpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelBgpConfig) SetEnableBgp(v bool) *ModifyTunnelAttributeResponseBodyTunnelBgpConfig {
+	s.EnableBgp = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelBgpConfig) SetLocalAsn(v int64) *ModifyTunnelAttributeResponseBodyTunnelBgpConfig {
+	s.LocalAsn = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelBgpConfig) SetLocalBgpIp(v string) *ModifyTunnelAttributeResponseBodyTunnelBgpConfig {
+	s.LocalBgpIp = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelBgpConfig) SetPeerAsn(v int64) *ModifyTunnelAttributeResponseBodyTunnelBgpConfig {
+	s.PeerAsn = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelBgpConfig) SetPeerBgpIp(v string) *ModifyTunnelAttributeResponseBodyTunnelBgpConfig {
+	s.PeerBgpIp = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelBgpConfig) SetTunnelCidr(v string) *ModifyTunnelAttributeResponseBodyTunnelBgpConfig {
+	s.TunnelCidr = &v
+	return s
+}
+
+type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+}
+
+func (s ModifyTunnelAttributeResponseBodyTunnelIkeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeResponseBodyTunnelIkeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetIkeAuthAlg(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.IkeAuthAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetIkeEncAlg(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.IkeEncAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetIkeLifetime(v int64) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.IkeLifetime = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetIkeMode(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.IkeMode = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetIkePfs(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.IkePfs = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetIkeVersion(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.IkeVersion = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetLocalId(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetPsk(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.Psk = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIkeConfig) SetRemoteId(v string) *ModifyTunnelAttributeResponseBodyTunnelIkeConfig {
+	s.RemoteId = &v
+	return s
+}
+
+type ModifyTunnelAttributeResponseBodyTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int64  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+}
+
+func (s ModifyTunnelAttributeResponseBodyTunnelIpsecConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeResponseBodyTunnelIpsecConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig) SetIpsecAuthAlg(v string) *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig {
+	s.IpsecAuthAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig) SetIpsecEncAlg(v string) *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig {
+	s.IpsecEncAlg = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig) SetIpsecLifetime(v int64) *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig {
+	s.IpsecLifetime = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig) SetIpsecPfs(v string) *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig {
+	s.IpsecPfs = &v
+	return s
+}
+
+type ModifyTunnelAttributeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTunnelAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyTunnelAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTunnelAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTunnelAttributeResponse) SetHeaders(v map[string]*string) *ModifyTunnelAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponse) SetStatusCode(v int32) *ModifyTunnelAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTunnelAttributeResponse) SetBody(v *ModifyTunnelAttributeResponseBody) *ModifyTunnelAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -87153,6 +87704,10 @@ func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddres
 		query["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
 	}
@@ -99271,6 +99826,82 @@ func (client *Client) ModifySslVpnServer(request *ModifySslVpnServerRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySslVpnServerResponse{}
 	_body, _err := client.ModifySslVpnServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyTunnelAttributeWithOptions(request *ModifyTunnelAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyTunnelAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TunnelId)) {
+		query["TunnelId"] = request.TunnelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TunnelOptionsSpecification)) {
+		query["TunnelOptionsSpecification"] = request.TunnelOptionsSpecification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnConnectionId)) {
+		query["VpnConnectionId"] = request.VpnConnectionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTunnelAttribute"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTunnelAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyTunnelAttribute(request *ModifyTunnelAttributeRequest) (_result *ModifyTunnelAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTunnelAttributeResponse{}
+	_body, _err := client.ModifyTunnelAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
