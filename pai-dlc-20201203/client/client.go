@@ -3525,6 +3525,7 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 
 type GetTensorboardRequest struct {
 	JodId       *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
+	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -3538,6 +3539,11 @@ func (s GetTensorboardRequest) GoString() string {
 
 func (s *GetTensorboardRequest) SetJodId(v string) *GetTensorboardRequest {
 	s.JodId = &v
+	return s
+}
+
+func (s *GetTensorboardRequest) SetToken(v string) *GetTensorboardRequest {
+	s.Token = &v
 	return s
 }
 
@@ -3571,6 +3577,75 @@ func (s *GetTensorboardResponse) SetStatusCode(v int32) *GetTensorboardResponse 
 }
 
 func (s *GetTensorboardResponse) SetBody(v *Tensorboard) *GetTensorboardResponse {
+	s.Body = v
+	return s
+}
+
+type GetTensorboardSharedUrlRequest struct {
+	ExpireTimeSeconds *string `json:"ExpireTimeSeconds,omitempty" xml:"ExpireTimeSeconds,omitempty"`
+}
+
+func (s GetTensorboardSharedUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTensorboardSharedUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTensorboardSharedUrlRequest) SetExpireTimeSeconds(v string) *GetTensorboardSharedUrlRequest {
+	s.ExpireTimeSeconds = &v
+	return s
+}
+
+type GetTensorboardSharedUrlResponseBody struct {
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TensorboardSharedUrl *string `json:"TensorboardSharedUrl,omitempty" xml:"TensorboardSharedUrl,omitempty"`
+}
+
+func (s GetTensorboardSharedUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTensorboardSharedUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTensorboardSharedUrlResponseBody) SetRequestId(v string) *GetTensorboardSharedUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTensorboardSharedUrlResponseBody) SetTensorboardSharedUrl(v string) *GetTensorboardSharedUrlResponseBody {
+	s.TensorboardSharedUrl = &v
+	return s
+}
+
+type GetTensorboardSharedUrlResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTensorboardSharedUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTensorboardSharedUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTensorboardSharedUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTensorboardSharedUrlResponse) SetHeaders(v map[string]*string) *GetTensorboardSharedUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTensorboardSharedUrlResponse) SetStatusCode(v int32) *GetTensorboardSharedUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTensorboardSharedUrlResponse) SetBody(v *GetTensorboardSharedUrlResponseBody) *GetTensorboardSharedUrlResponse {
 	s.Body = v
 	return s
 }
@@ -5307,6 +5382,10 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 		query["JodId"] = request.JodId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -5340,6 +5419,52 @@ func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorbo
 	headers := make(map[string]*string)
 	_result = &GetTensorboardResponse{}
 	_body, _err := client.GetTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTensorboardSharedUrlWithOptions(TensorboardId *string, request *GetTensorboardSharedUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTensorboardSharedUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpireTimeSeconds)) {
+		query["ExpireTimeSeconds"] = request.ExpireTimeSeconds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTensorboardSharedUrl"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(openapiutil.GetEncodeParam(TensorboardId)) + "/sharedurl"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTensorboardSharedUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTensorboardSharedUrl(TensorboardId *string, request *GetTensorboardSharedUrlRequest) (_result *GetTensorboardSharedUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTensorboardSharedUrlResponse{}
+	_body, _err := client.GetTensorboardSharedUrlWithOptions(TensorboardId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
