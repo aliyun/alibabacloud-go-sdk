@@ -13,9 +13,19 @@ import (
 )
 
 type AddIpRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpList          *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the Anti-DDoS Origin Enterprise instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// The ID of the request.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -48,6 +58,7 @@ func (s *AddIpRequest) SetResourceGroupId(v string) *AddIpRequest {
 }
 
 type AddIpResponseBody struct {
+	// Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -94,7 +105,12 @@ func (s *AddIpResponse) SetBody(v *AddIpResponseBody) *AddIpResponse {
 }
 
 type CheckAccessLogAuthRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether Anti-DDoS Origin was authorized to access Log Service. Valid values:
+	//
+	// *   **true**: Anti-DDoS Origin was authorized.
+	// *   **false**: Anti-DDoS Origin was not authorized.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -117,6 +133,9 @@ func (s *CheckAccessLogAuthRequest) SetResourceGroupId(v string) *CheckAccessLog
 }
 
 type CheckAccessLogAuthResponseBody struct {
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
 	AccessLogAuth *bool   `json:"AccessLogAuth,omitempty" xml:"AccessLogAuth,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -169,7 +188,10 @@ func (s *CheckAccessLogAuthResponse) SetBody(v *CheckAccessLogAuthResponseBody) 
 }
 
 type CheckGrantRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	IsSlr *bool `json:"IsSlr,omitempty" xml:"IsSlr,omitempty"`
+	// WB269094
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// CheckGrant
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -179,6 +201,11 @@ func (s CheckGrantRequest) String() string {
 
 func (s CheckGrantRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CheckGrantRequest) SetIsSlr(v bool) *CheckGrantRequest {
+	s.IsSlr = &v
+	return s
 }
 
 func (s *CheckGrantRequest) SetRegionId(v string) *CheckGrantRequest {
@@ -244,18 +271,50 @@ func (s *CheckGrantResponse) SetBody(v *CheckGrantResponseBody) *CheckGrantRespo
 }
 
 type ConfigSchedruleOnDemandRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleAction        *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	RuleConditionCnt  *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
+	// The name of the scheduling rule.
+	//
+	// The name can contain lowercase letters, digits, hyphens (-), and underscores (\_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the request.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether the scheduling rule is enabled. Valid values:
+	//
+	// *   **on**: enabled
+	// *   **off**: disabled
+	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+	RuleConditionCnt *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
+	// If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
+	//
+	// >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
 	RuleConditionKpps *string `json:"RuleConditionKpps,omitempty" xml:"RuleConditionKpps,omitempty"`
+	// The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
 	RuleConditionMbps *string `json:"RuleConditionMbps,omitempty" xml:"RuleConditionMbps,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleSwitch        *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
+	// The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The stop method of the scheduling rule. Valid values:
+	//
+	// *   **auto**: The scheduling rule automatically stops.
+	// *   **manual**: The scheduling rule is manually stopped.
+	RuleSwitch *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
+	// The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
 	RuleUndoBeginTime *string `json:"RuleUndoBeginTime,omitempty" xml:"RuleUndoBeginTime,omitempty"`
-	RuleUndoEndTime   *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
-	RuleUndoMode      *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
-	TimeZone          *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
+	//
+	// For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
+	//
+	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	RuleUndoEndTime *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
+	// The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+	//
+	// If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
+	//
+	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	RuleUndoMode *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
+	// The region ID of the on-demand instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s ConfigSchedruleOnDemandRequest) String() string {
@@ -327,6 +386,9 @@ func (s *ConfigSchedruleOnDemandRequest) SetTimeZone(v string) *ConfigSchedruleO
 }
 
 type ConfigSchedruleOnDemandResponseBody struct {
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -373,18 +435,50 @@ func (s *ConfigSchedruleOnDemandResponse) SetBody(v *ConfigSchedruleOnDemandResp
 }
 
 type CreateSchedruleOnDemandRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleAction        *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	RuleConditionCnt  *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
+	// The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The stop method of the scheduling rule. Valid values:
+	//
+	// *   **auto**: The scheduling rule automatically stops.
+	// *   **manual**: The scheduling rule is manually stopped.
+	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// Specifies whether the scheduling rule is enabled. Valid values:
+	//
+	// *   **on**: enabled
+	// *   **off**: disabled
+	RuleConditionCnt *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
+	// The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
 	RuleConditionKpps *string `json:"RuleConditionKpps,omitempty" xml:"RuleConditionKpps,omitempty"`
+	// If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
+	//
+	// >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
 	RuleConditionMbps *string `json:"RuleConditionMbps,omitempty" xml:"RuleConditionMbps,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleSwitch        *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
+	// The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+	//
+	// If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
+	//
+	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	RuleSwitch *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
+	// The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
+	//
+	// For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
+	//
+	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
 	RuleUndoBeginTime *string `json:"RuleUndoBeginTime,omitempty" xml:"RuleUndoBeginTime,omitempty"`
-	RuleUndoEndTime   *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
-	RuleUndoMode      *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
-	TimeZone          *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The region ID of the on-demand instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	RuleUndoEndTime *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
+	// The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+	RuleUndoMode *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
+	// The ID of the request.
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s CreateSchedruleOnDemandRequest) String() string {
@@ -456,6 +550,7 @@ func (s *CreateSchedruleOnDemandRequest) SetTimeZone(v string) *CreateSchedruleO
 }
 
 type CreateSchedruleOnDemandResponseBody struct {
+	// Creates a scheduling rule for an on-demand instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -502,9 +597,21 @@ func (s *CreateSchedruleOnDemandResponse) SetBody(v *CreateSchedruleOnDemandResp
 }
 
 type DeleteBlackholeRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Anti-DDoS Origin instance.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address for which you want to deactivate blackhole filtering.
+	//
+	// >  You can call the [DescribePackIpList](~~118701~~) operation to query all the IP addresses that are protected by the Anti-DDoS Origin instance and the protection status of the IP addresses. For example, you can query whether blackhole filtering is triggered for an IP address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The ID of the region where the Anti-DDoS Origin instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+	//
+	// If you do not specify this parameter, the instance belongs to the default resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -537,6 +644,7 @@ func (s *DeleteBlackholeRequest) SetResourceGroupId(v string) *DeleteBlackholeRe
 }
 
 type DeleteBlackholeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -583,9 +691,17 @@ func (s *DeleteBlackholeResponse) SetBody(v *DeleteBlackholeResponseBody) *Delet
 }
 
 type DeleteIpRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpList          *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the Anti-DDoS Origin Enterprise instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -618,6 +734,7 @@ func (s *DeleteIpRequest) SetResourceGroupId(v string) *DeleteIpRequest {
 }
 
 type DeleteIpResponseBody struct {
+	// Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -664,9 +781,14 @@ func (s *DeleteIpResponse) SetBody(v *DeleteIpResponseBody) *DeleteIpResponse {
 }
 
 type DeleteSchedruleOnDemandRequest struct {
+	// The name of the scheduling rule that you want to delete.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The ID of the request.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the on-demand instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s DeleteSchedruleOnDemandRequest) String() string {
@@ -693,6 +815,9 @@ func (s *DeleteSchedruleOnDemandRequest) SetRuleName(v string) *DeleteSchedruleO
 }
 
 type DeleteSchedruleOnDemandResponseBody struct {
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -739,14 +864,29 @@ func (s *DeleteSchedruleOnDemandResponse) SetBody(v *DeleteSchedruleOnDemandResp
 }
 
 type DescribeDdosEventRequest struct {
-	EndTime         *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the DDoS attack event. Valid values:
+	//
+	// *   **hole_begin**: indicates that blackhole filtering is triggered for the attacked IP address.
+	// *   **hole_end**: indicates that blackhole filtering is deactivated for the attacked IP address.
+	// *   **defense_begin**: indicates that attack traffic is being scrubbed.
+	// *   **defense_end**: indicates that attack traffic is scrubbed.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The attacked IP address to query.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The ID of the Anti-DDoS Origin instance to query.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The details about the DDoS attack event.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeDdosEvent**
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDdosEventRequest) String() string {
@@ -798,9 +938,12 @@ func (s *DescribeDdosEventRequest) SetStartTime(v int32) *DescribeDdosEventReque
 }
 
 type DescribeDdosEventResponseBody struct {
-	Events    []*DescribeDdosEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The number of packets at the start of the DDoS attack. Unit: packets per second (PPS).
+	Events []*DescribeDdosEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDdosEventResponseBody) String() string {
@@ -827,12 +970,18 @@ func (s *DescribeDdosEventResponseBody) SetTotal(v int64) *DescribeDdosEventResp
 }
 
 type DescribeDdosEventResponseBodyEvents struct {
-	EndTime   *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Mbps      *int32  `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
-	Pps       *int32  `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	StartTime *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	EndTime *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// WB269094
+	Mbps *int32 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
+	Pps  *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// DescribeDdosEvent
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDdosEventResponseBodyEvents) String() string {
@@ -903,7 +1052,9 @@ func (s *DescribeDdosEventResponse) SetBody(v *DescribeDdosEventResponseBody) *D
 }
 
 type DescribeExcpetionCountRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// DescribeExcpetionCount
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Queries the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -926,6 +1077,7 @@ func (s *DescribeExcpetionCountRequest) SetResourceGroupId(v string) *DescribeEx
 }
 
 type DescribeExcpetionCountResponseBody struct {
+	// WB269094
 	ExceptionIpCount *int32  `json:"ExceptionIpCount,omitempty" xml:"ExceptionIpCount,omitempty"`
 	ExpireTimeCount  *int32  `json:"ExpireTimeCount,omitempty" xml:"ExpireTimeCount,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -984,16 +1136,38 @@ func (s *DescribeExcpetionCountResponse) SetBody(v *DescribeExcpetionCountRespon
 }
 
 type DescribeInstanceListRequest struct {
-	InstanceIdList  *string                           `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
-	InstanceType    *string                           `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip              *string                           `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	IpVersion       *string                           `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Orderby         *string                           `json:"Orderby,omitempty" xml:"Orderby,omitempty"`
-	Orderdire       *string                           `json:"Orderdire,omitempty" xml:"Orderdire,omitempty"`
-	PageNo          *int32                            `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark          *string                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The details about the Anti-DDoS Origin instance.
+	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
+	// The IDs of the Anti-DDoS Origin instances to query. Specify the value is in the `["<Instance ID 1>","<Instance ID 2>",……]` format.
+	InstanceType     *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
+	// The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The time when the instance was purchased. This value is a UNIX timestamp. Unit: milliseconds.
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
+	//
+	// *   **0**: the Professional mitigation plan
+	// *   **1**: the Enterprise mitigation plan
+	Orderby *string `json:"Orderby,omitempty" xml:"Orderby,omitempty"`
+	// The key of the tag that is added to the Anti-DDoS Origin instance to query.
+	Orderdire *string `json:"Orderdire,omitempty" xml:"Orderdire,omitempty"`
+	// The total number of Anti-DDoS Origin instances.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region where the Anti-DDoS Origin instance to query resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether auto-renewal is enabled for the instance. Valid values:
+	//
+	// *   **true**: enabled
+	// *   **false**: disabled
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+	//
+	// If you do not specify this parameter, the instance belongs to the default resource group.
 	ResourceGroupId *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -1013,6 +1187,11 @@ func (s *DescribeInstanceListRequest) SetInstanceIdList(v string) *DescribeInsta
 
 func (s *DescribeInstanceListRequest) SetInstanceType(v string) *DescribeInstanceListRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceListRequest) SetInstanceTypeList(v []*string) *DescribeInstanceListRequest {
+	s.InstanceTypeList = v
 	return s
 }
 
@@ -1067,7 +1246,11 @@ func (s *DescribeInstanceListRequest) SetTag(v []*DescribeInstanceListRequestTag
 }
 
 type DescribeInstanceListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the instance.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
+	//
+	// You can set the **Orderdire** parameter to specify the sorting method.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1090,9 +1273,17 @@ func (s *DescribeInstanceListRequestTag) SetValue(v string) *DescribeInstanceLis
 }
 
 type DescribeInstanceListResponseBody struct {
+	// The number of the page to return.
 	InstanceList []*DescribeInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total        *int64                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The value of the tag that is added to the Anti-DDoS Origin instance to query.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the cloud service that is associated with the Anti-DDoS Origin instance. By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
+	//
+	// Valid values:
+	//
+	// *   **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
+	// *   **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeInstanceListResponseBody) String() string {
@@ -1119,16 +1310,25 @@ func (s *DescribeInstanceListResponseBody) SetTotal(v int64) *DescribeInstanceLi
 }
 
 type DescribeInstanceListResponseBodyInstanceList struct {
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
 	AutoRenewal       *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	BlackholdingCount *string `json:"BlackholdingCount,omitempty" xml:"BlackholdingCount,omitempty"`
-	ExpireTime        *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtCreate         *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType      *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IpType            *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	Product           *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Remark            *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CoverageType      *int32  `json:"CoverageType,omitempty" xml:"CoverageType,omitempty"`
+	// DescribeInstanceList
+	ExpireTime   *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the request.
+	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// WB269094
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// Queries the details of all Anti-DDoS Origin instances.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remarks of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInstanceListResponseBodyInstanceList) String() string {
@@ -1146,6 +1346,11 @@ func (s *DescribeInstanceListResponseBodyInstanceList) SetAutoRenewal(v bool) *D
 
 func (s *DescribeInstanceListResponseBodyInstanceList) SetBlackholdingCount(v string) *DescribeInstanceListResponseBodyInstanceList {
 	s.BlackholdingCount = &v
+	return s
+}
+
+func (s *DescribeInstanceListResponseBodyInstanceList) SetCoverageType(v int32) *DescribeInstanceListResponseBodyInstanceList {
+	s.CoverageType = &v
 	return s
 }
 
@@ -1219,8 +1424,16 @@ func (s *DescribeInstanceListResponse) SetBody(v *DescribeInstanceListResponseBo
 }
 
 type DescribeInstanceSpecsRequest struct {
-	InstanceIdList  *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin Enterprise instance belongs to the default resource group.
+	//
+	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
+	// The normal clean bandwidth. Unit: Mbit/s.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether the unlimited protection feature is enabled. Valid values:
+	//
+	// *   **0**: The unlimited protection feature is disabled.
+	// *   **1**: The unlimited protection feature is enabled.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1248,8 +1461,10 @@ func (s *DescribeInstanceSpecsRequest) SetResourceGroupId(v string) *DescribeIns
 }
 
 type DescribeInstanceSpecsResponseBody struct {
+	// The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
 	InstanceSpecs []*DescribeInstanceSpecsResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Repeated"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of times that the unlimited protection feature can be enabled.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceSpecsResponseBody) String() string {
@@ -1271,13 +1486,24 @@ func (s *DescribeInstanceSpecsResponseBody) SetRequestId(v string) *DescribeInst
 }
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
-	AvailableDefenseTimes         *int32                                                    `json:"AvailableDefenseTimes,omitempty" xml:"AvailableDefenseTimes,omitempty"`
-	AvailableDeleteBlackholeCount *string                                                   `json:"AvailableDeleteBlackholeCount,omitempty" xml:"AvailableDeleteBlackholeCount,omitempty"`
-	InstanceId                    *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsFullDefenseMode             *int32                                                    `json:"IsFullDefenseMode,omitempty" xml:"IsFullDefenseMode,omitempty"`
-	PackConfig                    *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig `json:"PackConfig,omitempty" xml:"PackConfig,omitempty" type:"Struct"`
-	Region                        *string                                                   `json:"Region,omitempty" xml:"Region,omitempty"`
-	TotalDefenseTimes             *int32                                                    `json:"TotalDefenseTimes,omitempty" xml:"TotalDefenseTimes,omitempty"`
+	// The ID of the Anti-DDoS Origin Enterprise instance. This parameter value is a string consisting of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+	AvailableDefenseTimes *int32 `json:"AvailableDefenseTimes,omitempty" xml:"AvailableDefenseTimes,omitempty"`
+	// The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+	AvailableDeleteBlackholeCount *string `json:"AvailableDeleteBlackholeCount,omitempty" xml:"AvailableDeleteBlackholeCount,omitempty"`
+	// The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the Anti-DDoS Origin Enterprise instance.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the name of the region.
+	IsFullDefenseMode *int32 `json:"IsFullDefenseMode,omitempty" xml:"IsFullDefenseMode,omitempty"`
+	// The specifications of the Anti-DDoS Origin Enterprise instance, including whether the unlimited protection feature is enabled, and the numbers of times that the unlimited protection feature can be enabled and has been enabled.
+	PackConfig *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig `json:"PackConfig,omitempty" xml:"PackConfig,omitempty" type:"Struct"`
+	// The number of times that blackhole filtering can be deactivated.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The number of times that the unlimited protection feature can be enabled.
+	TotalDefenseTimes *int32 `json:"TotalDefenseTimes,omitempty" xml:"TotalDefenseTimes,omitempty"`
 }
 
 func (s DescribeInstanceSpecsResponseBodyInstanceSpecs) String() string {
@@ -1324,14 +1550,22 @@ func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetTotalDefenseTimes(v 
 }
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig struct {
-	Bandwidth       *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BindIpCount     *int32 `json:"BindIpCount,omitempty" xml:"BindIpCount,omitempty"`
-	IpAdvanceThre   *int32 `json:"IpAdvanceThre,omitempty" xml:"IpAdvanceThre,omitempty"`
-	IpBasicThre     *int32 `json:"IpBasicThre,omitempty" xml:"IpBasicThre,omitempty"`
-	IpSpec          *int32 `json:"IpSpec,omitempty" xml:"IpSpec,omitempty"`
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the Anti-DDoS Origin Enterprise instance.
+	BindIpCount *int32 `json:"BindIpCount,omitempty" xml:"BindIpCount,omitempty"`
+	// DescribeInstanceSpecs
+	IpAdvanceThre *int32 `json:"IpAdvanceThre,omitempty" xml:"IpAdvanceThre,omitempty"`
+	// WB269094
+	IpBasicThre *int32 `json:"IpBasicThre,omitempty" xml:"IpBasicThre,omitempty"`
+	IpSpec      *int32 `json:"IpSpec,omitempty" xml:"IpSpec,omitempty"`
+	// DescribeInstanceSpecs
 	NormalBandwidth *int32 `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
-	PackAdvThre     *int32 `json:"PackAdvThre,omitempty" xml:"PackAdvThre,omitempty"`
-	PackBasicThre   *int32 `json:"PackBasicThre,omitempty" xml:"PackBasicThre,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	PackAdvThre *int32 `json:"PackAdvThre,omitempty" xml:"PackAdvThre,omitempty"`
+	// The ID of the request.
+	PackBasicThre *int32 `json:"PackBasicThre,omitempty" xml:"PackBasicThre,omitempty"`
 }
 
 func (s DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig) String() string {
@@ -1412,14 +1646,26 @@ func (s *DescribeInstanceSpecsResponse) SetBody(v *DescribeInstanceSpecsResponse
 }
 
 type DescribeOnDemandDdosEventRequest struct {
-	EndTime         *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp that indicates the end time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The timestamp that specifies the beginning of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// *   **hole_begin **: indicates that the event is in the blackhole state.
+	// *   **hole_end **: indicates that blackhole ends.
+	// *   **defense_begin **: indicates that the event is in the cleaning state.
+	// *   **defense_end **: indicates that cleaning ends.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP address of the protection target.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The ID of the on-demand instance to query.
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of the page to return. Default value: **1**.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeOnDemandDdosEvent**.
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeOnDemandDdosEventRequest) String() string {
@@ -1471,9 +1717,12 @@ func (s *DescribeOnDemandDdosEventRequest) SetStartTime(v int32) *DescribeOnDema
 }
 
 type DescribeOnDemandDdosEventResponseBody struct {
-	Events    []*DescribeOnDemandDdosEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The ID of the request.
+	Events []*DescribeOnDemandDdosEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The timestamp that indicates the start time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of DDoS events and the details of each event.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeOnDemandDdosEventResponseBody) String() string {
@@ -1500,6 +1749,7 @@ func (s *DescribeOnDemandDdosEventResponseBody) SetTotal(v int64) *DescribeOnDem
 }
 
 type DescribeOnDemandDdosEventResponseBodyEvents struct {
+	// The packet forwarding rate of the DDoS attack. Unit: packets per second (PPS).
 	EndTime   *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Mbps      *int32  `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
@@ -1576,8 +1826,13 @@ func (s *DescribeOnDemandDdosEventResponse) SetBody(v *DescribeOnDemandDdosEvent
 }
 
 type DescribeOnDemandInstanceStatusRequest struct {
+	// The mode used to start the on-demand instance. Valid values:
+	//
+	// *   **manual**: The instance is manually started.
+	// *   **netflow-auto**: The instance is automatically started by using NetFlow that monitors network traffic.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The details of the on-demand instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeOnDemandInstanceStatusRequest) String() string {
@@ -1599,8 +1854,10 @@ func (s *DescribeOnDemandInstanceStatusRequest) SetRegionId(v string) *DescribeO
 }
 
 type DescribeOnDemandInstanceStatusResponseBody struct {
+	// The ID of the Alibaba Cloud account.
 	Instances []*DescribeOnDemandInstanceStatusResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The CIDR block of the on-demand instance.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOnDemandInstanceStatusResponseBody) String() string {
@@ -1622,13 +1879,20 @@ func (s *DescribeOnDemandInstanceStatusResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeOnDemandInstanceStatusResponseBodyInstances struct {
-	Declared   *string `json:"Declared,omitempty" xml:"Declared,omitempty"`
-	Desc       *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// WB269094
+	Declared *string `json:"Declared,omitempty" xml:"Declared,omitempty"`
+	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// DescribeOnDemandInstanceStatus
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Mode       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Net        *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Net  *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	// DescribeOnDemandInstanceStatus
 	RegistedAs *string `json:"RegistedAs,omitempty" xml:"RegistedAs,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the request.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeOnDemandInstanceStatusResponseBodyInstances) String() string {
@@ -1704,15 +1968,58 @@ func (s *DescribeOnDemandInstanceStatusResponse) SetBody(v *DescribeOnDemandInst
 }
 
 type DescribeOpEntitiesRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderBy         *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OrderDir        *string `json:"OrderDir,omitempty" xml:"OrderDir,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeOpEntities**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The details of the operation log.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number of the returned page.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sort order of operation logs. Valid values:
+	//
+	// *   **ASC**: the ascending order.
+	// *   **DESC**: the descending order.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The ID of the region where the Anti-DDoS Origin instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	OrderDir *string `json:"OrderDir,omitempty" xml:"OrderDir,omitempty"`
+	// The type of the operation object. The value is fixed as **1**, which indicates Anti-DDoS Origin instances.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the Alibaba Cloud account that performs the operation.
+	//
+	// >  If the value is **system**, the operation is performed by Anti-DDoS Origin.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The details about the operation. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// *   **entity**: the operation object. Data type: object. The fields that are included in the value of the **entity** parameter vary based on the value of the **OpAction** parameter. Take note of the following items:
+	//
+	//     *   If the value of the **OpAction** parameter is **3**, the value of the **entity** parameter consists of the following field:
+	//
+	//         *   **ips**: the public IP addresses that are protected by the Anti-DDoS Origin instance. Data type: array
+	//
+	//     *   If the value of the **OpAction** parameter is **4**, the value of the **entity** parameter consists of the following field:
+	//
+	//         *   **ips**: the public IP addresses that are no longer protected by the Anti-DDoS Origin instance. Data type: array.
+	//
+	//     *   If the value of the **OpAction** parameter is **5**, the value of the **entity** parameter consists of the following fields:
+	//
+	//         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//         *   **opSource**: the source of the operation. The value is fixed as **1**, indicating that the operation is performed by Anti-DDoS Origin. Data type: integer.
+	//
+	//     *   If the value of the **OpAction** parameter is **6**, the value of the **entity** parameter consists of the following field:
+	//
+	//         *   **ips**: the public IP addresses for which to deactivate blackhole filtering. Data type: array.
+	//
+	//     *   If the value of the **OpAction** parameter is **7**, the **entity** parameter is not returned.
+	//
+	//     *   If the value of the **OpAction** parameter is **8**, the value of the **entity** parameter consists of the following fields:
+	//
+	//         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeOpEntitiesRequest) String() string {
@@ -1769,9 +2076,12 @@ func (s *DescribeOpEntitiesRequest) SetStartTime(v int64) *DescribeOpEntitiesReq
 }
 
 type DescribeOpEntitiesResponseBody struct {
+	// The ID of the request.
 	OpEntities []*DescribeOpEntitiesResponseBodyOpEntities `json:"OpEntities,omitempty" xml:"OpEntities,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The end time. Operation logs that were generated before this time are queried.**** This value is a UNIX timestamp. Unit: milliseconds.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the log was generated. This value is a UNIX timestamp. Unit: milliseconds.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOpEntitiesResponseBody) String() string {
@@ -1798,12 +2108,18 @@ func (s *DescribeOpEntitiesResponseBody) SetTotalCount(v int32) *DescribeOpEntit
 }
 
 type DescribeOpEntitiesResponseBodyOpEntities struct {
+	// Queries the operation logs of an Anti-DDoS Origin instance.
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	EntityType   *int32  `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	OpAccount    *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
-	OpAction     *int32  `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	OpDesc       *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// WB01342967
+	GmtCreate *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
+	// DescribeOpEntities
+	OpAction *int32  `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
+	OpDesc   *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
 }
 
 func (s DescribeOpEntitiesResponseBodyOpEntities) String() string {
@@ -1874,12 +2190,32 @@ func (s *DescribeOpEntitiesResponse) SetBody(v *DescribeOpEntitiesResponseBody) 
 }
 
 type DescribePackIpListRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+	//
+	// If you do not specify this parameter, the instance belongs to the default resource group.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribePackIpList**.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The type of the cloud asset to which the protected IP address to query belongs. Valid values:
+	//
+	// *   **ECS**: an Elastic Compute Service (ECS) instance.
+	// *   **SLB**: a Classic Load Balancer (CLB) instance, originally called a Server Load Balancer (SLB) instance.
+	// *   **EIP**: an elastic IP address (EIP). An Internet-facing Application Load Balancer (ALB) instance uses an EIP. If the IP address belongs to the Internet-facing ALB instance, set this parameter to EIP.
+	// *   **WAF**: a Web Application Firewall (WAF) instance.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The protected IP address to query.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The list of IP addresses that are protected by the Anti-DDoS Origin instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the cloud asset to which the IP address belongs. Valid values:
+	//
+	// *   **ECS**: an ECS instance.
+	// *   **SLB**: an CLB instance.
+	// *   **EIP**: an EIP. If the IP address belongs to an ALB instance, the value EIP is returned.
+	// *   **WAF**: a WAF instance.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1898,6 +2234,11 @@ func (s *DescribePackIpListRequest) SetInstanceId(v string) *DescribePackIpListR
 
 func (s *DescribePackIpListRequest) SetIp(v string) *DescribePackIpListRequest {
 	s.Ip = &v
+	return s
+}
+
+func (s *DescribePackIpListRequest) SetMemberUid(v string) *DescribePackIpListRequest {
+	s.MemberUid = &v
 	return s
 }
 
@@ -1927,11 +2268,18 @@ func (s *DescribePackIpListRequest) SetResourceGroupId(v string) *DescribePackIp
 }
 
 type DescribePackIpListResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	IpList    []*DescribePackIpListResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total     *int32                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The ID of the request.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// WB269094
+	IpList []*DescribePackIpListResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// DescribePackIpList
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Queries the IP addresses that are protected by a specific Anti-DDoS Origin instance.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribePackIpListResponseBody) String() string {
@@ -1968,10 +2316,12 @@ func (s *DescribePackIpListResponseBody) SetTotal(v int32) *DescribePackIpListRe
 }
 
 type DescribePackIpListResponseBodyIpList struct {
-	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Remark  *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	Product   *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Remark    *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePackIpListResponseBodyIpList) String() string {
@@ -1987,8 +2337,18 @@ func (s *DescribePackIpListResponseBodyIpList) SetIp(v string) *DescribePackIpLi
 	return s
 }
 
+func (s *DescribePackIpListResponseBodyIpList) SetMemberUid(v string) *DescribePackIpListResponseBodyIpList {
+	s.MemberUid = &v
+	return s
+}
+
 func (s *DescribePackIpListResponseBodyIpList) SetProduct(v string) *DescribePackIpListResponseBodyIpList {
 	s.Product = &v
+	return s
+}
+
+func (s *DescribePackIpListResponseBodyIpList) SetRegion(v string) *DescribePackIpListResponseBodyIpList {
+	s.Region = &v
 	return s
 }
 
@@ -2032,7 +2392,13 @@ func (s *DescribePackIpListResponse) SetBody(v *DescribePackIpListResponseBody) 
 }
 
 type DescribeRegionsRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID to query. The default value is **cn-hangzhou**, which indicates that the regions of cloud assets that are supported by an Anti-DDoS Origin instance in the China (Hangzhou) region are queried.
+	//
+	// For more information about the IDs of other regions, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// For more information about resource groups, see [Create a resource group](~~94485~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2055,10 +2421,17 @@ func (s *DescribeRegionsRequest) SetResourceGroupId(v string) *DescribeRegionsRe
 }
 
 type DescribeRegionsResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about regions of the cloud assets that are supported by the Anti-DDoS Origin instance. The information includes region IDs and names.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**: The request is successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -2090,9 +2463,12 @@ func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsRespons
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The English name of the region where the cloud assets reside.
 	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName   *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region where the cloud assets reside.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -2148,15 +2524,37 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeTrafficRequest struct {
-	EndTime         *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FlowType        *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Interval        *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Ipnet           *string `json:"Ipnet,omitempty" xml:"Ipnet,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the traffic statistics are calculated. This value is a UNIX timestamp. Unit: seconds.
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the region where the Anti-DDoS Origin instance resides.
+	//
+	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
+	// The type of the traffic statistics to query. Valid values:
+	//
+	// *   **max**: the peak traffic within the specified interval
+	// *   **avg**: the average traffic within the specified interval
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The interval at which the traffic statistics are calculated. Unit: seconds. Default value: **5**.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The packet forwarding rate of attack traffic. Unit: packets per second.
+	//
+	// >  This parameter is returned only if attack traffic exists.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeTraffic**.
+	Ipnet *string `json:"Ipnet,omitempty" xml:"Ipnet,omitempty"`
+	// The bandwidth of the total traffic. Unit: Kbit/s.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Anti-DDoS Origin instance to query.
+	//
+	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	//
+	// If you specify an on-demand instance, you must configure the **Interval** parameter.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartTime       *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// If you do not specify this parameter, the current system time is used as the end time.
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeTrafficRequest) String() string {
@@ -2213,8 +2611,10 @@ func (s *DescribeTrafficRequest) SetStartTime(v int32) *DescribeTrafficRequest {
 }
 
 type DescribeTrafficResponseBody struct {
-	FlowList  []*DescribeTrafficResponseBodyFlowList `json:"FlowList,omitempty" xml:"FlowList,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the traffic statistics.
+	FlowList []*DescribeTrafficResponseBodyFlowList `json:"FlowList,omitempty" xml:"FlowList,omitempty" type:"Repeated"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeTrafficResponseBody) String() string {
@@ -2236,13 +2636,20 @@ func (s *DescribeTrafficResponseBody) SetRequestId(v string) *DescribeTrafficRes
 }
 
 type DescribeTrafficResponseBodyFlowList struct {
-	AttackBps *int64  `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
-	AttackPps *int64  `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
-	FlowType  *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	Kbps      *int32  `json:"Kbps,omitempty" xml:"Kbps,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Pps       *int32  `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	Time      *int32  `json:"Time,omitempty" xml:"Time,omitempty"`
+	AttackBps *int64 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
+	// Queries traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+	AttackPps *int64 `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the "**Examples**" section of this topic.
+	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
+	Kbps     *int32  `json:"Kbps,omitempty" xml:"Kbps,omitempty"`
+	// DescribeTraffic
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// WB269094
+	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// The ID of the request.
+	Time *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeTrafficResponseBodyFlowList) String() string {
@@ -2318,7 +2725,12 @@ func (s *DescribeTrafficResponse) SetBody(v *DescribeTrafficResponseBody) *Descr
 }
 
 type GetSlsOpenStatusRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether Log Service was activated. Valid values:
+	//
+	// *   **true**: Log Service was activated.
+	// *   **false**: Log Service was not activated.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2341,8 +2753,11 @@ func (s *GetSlsOpenStatusRequest) SetResourceGroupId(v string) *GetSlsOpenStatus
 }
 
 type GetSlsOpenStatusResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlsOpenStatus *bool   `json:"SlsOpenStatus,omitempty" xml:"SlsOpenStatus,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	SlsOpenStatus *bool `json:"SlsOpenStatus,omitempty" xml:"SlsOpenStatus,omitempty"`
 }
 
 func (s GetSlsOpenStatusResponseBody) String() string {
@@ -2393,8 +2808,11 @@ func (s *GetSlsOpenStatusResponse) SetBody(v *GetSlsOpenStatusResponseBody) *Get
 }
 
 type ListOpenedAccessLogInstancesRequest struct {
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the Anti-DDoS Origin instances for which log analysis was enabled.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2422,9 +2840,15 @@ func (s *ListOpenedAccessLogInstancesRequest) SetResourceGroupId(v string) *List
 }
 
 type ListOpenedAccessLogInstancesResponseBody struct {
-	RequestId       *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the Anti-DDoS Origin instance.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether log analysis was enabled for the Anti-DDoS Origin instance. Valid values:
+	//
+	// *   **true**: Log analysis was enabled.
+	// *   **false**: Log analysis was disabled.
 	SlsConfigStatus []*ListOpenedAccessLogInstancesResponseBodySlsConfigStatus `json:"SlsConfigStatus,omitempty" xml:"SlsConfigStatus,omitempty" type:"Repeated"`
-	TotalCount      *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The configuration of log analysis for the Anti-DDoS Origin instance.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListOpenedAccessLogInstancesResponseBody) String() string {
@@ -2451,7 +2875,10 @@ func (s *ListOpenedAccessLogInstancesResponseBody) SetTotalCount(v int32) *ListO
 }
 
 type ListOpenedAccessLogInstancesResponseBodySlsConfigStatus struct {
-	Enable     *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2503,11 +2930,16 @@ func (s *ListOpenedAccessLogInstancesResponse) SetBody(v *ListOpenedAccessLogIns
 }
 
 type ListTagKeysRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resource. Valid value: **INSTANCE**.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The page number of the returned page.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to **50**. Default value: **10**.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -2544,11 +2976,16 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagKeys     []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
-	TotalCount  *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The total number of tags.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries returned per page.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of tag values that correspond to each key.
+	TagKeys []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	// The list of tags and the details of each tag.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -2585,6 +3022,7 @@ func (s *ListTagKeysResponseBody) SetTotalCount(v int32) *ListTagKeysResponseBod
 }
 
 type ListTagKeysResponseBodyTagKeys struct {
+	// The key of each tag.
 	TagCount *int32  `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
@@ -2637,12 +3075,24 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	NextToken       *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId        *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType    *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag             []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+	//
+	// If you do not specify this parameter, the instance belongs to the default resource group.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The operation that you want to perform. Set the value to **ListTagResources**.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Anti-DDoS Origin instance.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The value of the tag that is added to the instance.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The value of the tag to query.
+	//
+	// >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key of the tag to query.
+	//
+	// >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -2684,7 +3134,9 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the request.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The type of the resource. The value is fixed as **INSTANCE**, which indicates instances.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2707,8 +3159,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// ListTagResources
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// WB269094
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -2817,9 +3274,12 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyRemarkRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Adds remarks for a specific Anti-DDoS Origin instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ModifyRemark
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// WB269094
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2898,8 +3358,10 @@ func (s *ModifyRemarkResponse) SetBody(v *ModifyRemarkResponseBody) *ModifyRemar
 }
 
 type QuerySchedruleOnDemandRequest struct {
+	// The ID of the request.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the on-demand instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s QuerySchedruleOnDemandRequest) String() string {
@@ -2921,11 +3383,19 @@ func (s *QuerySchedruleOnDemandRequest) SetRegionId(v string) *QuerySchedruleOnD
 }
 
 type QuerySchedruleOnDemandResponseBody struct {
-	InstanceId *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of the scheduling rule.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
 	RuleConfig []*QuerySchedruleOnDemandResponseBodyRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Repeated"`
+	// The CIDR block of the on-demand instance.
 	RuleStatus []*QuerySchedruleOnDemandResponseBodyRuleStatus `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty" type:"Repeated"`
-	UserId     *string                                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Indicates whether the scheduling rule is enabled. Valid values:
+	//
+	// *   **on**: enabled
+	// *   **off**: disabled
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QuerySchedruleOnDemandResponseBody) String() string {
@@ -2962,16 +3432,42 @@ func (s *QuerySchedruleOnDemandResponseBody) SetUserId(v string) *QuerySchedrule
 }
 
 type QuerySchedruleOnDemandResponseBodyRuleConfig struct {
-	RuleAction        *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	RuleConditionCnt  *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
+	// The stop method of the scheduling rule. Valid values:
+	//
+	// *   **auto**: The scheduling rule automatically stops.
+	// *   **manual**: The scheduling rule is manually stopped.
+	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The name of the scheduling rule.
+	RuleConditionCnt *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
+	// The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+	//
+	// If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
+	//
+	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
 	RuleConditionKpps *string `json:"RuleConditionKpps,omitempty" xml:"RuleConditionKpps,omitempty"`
+	// The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
 	RuleConditionMbps *string `json:"RuleConditionMbps,omitempty" xml:"RuleConditionMbps,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleSwitch        *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
+	// The scheduling status. Valid values:
+	//
+	// *   **scheduled**
+	// *   **unscheduled**
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
+	//
+	// For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
+	//
+	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	RuleSwitch *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
+	// The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
 	RuleUndoBeginTime *string `json:"RuleUndoBeginTime,omitempty" xml:"RuleUndoBeginTime,omitempty"`
-	RuleUndoEndTime   *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
-	RuleUndoMode      *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
-	TimeZone          *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The status of the scheduling rule.
+	RuleUndoEndTime *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
+	// If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
+	//
+	// >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+	RuleUndoMode *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
+	// The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s QuerySchedruleOnDemandResponseBodyRuleConfig) String() string {
@@ -3033,7 +3529,10 @@ func (s *QuerySchedruleOnDemandResponseBodyRuleConfig) SetTimeZone(v string) *Qu
 }
 
 type QuerySchedruleOnDemandResponseBodyRuleStatus struct {
-	Net             *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
 	RuleSchedStatus *string `json:"RuleSchedStatus,omitempty" xml:"RuleSchedStatus,omitempty"`
 }
 
@@ -3085,9 +3584,12 @@ func (s *QuerySchedruleOnDemandResponse) SetBody(v *QuerySchedruleOnDemandRespon
 }
 
 type SetInstanceModeOnDemandRequest struct {
+	// SetInstanceModeOnDemand
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// SetInstanceModeOnDemand
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// WB269094
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetInstanceModeOnDemandRequest) String() string {
@@ -3160,11 +3662,16 @@ func (s *SetInstanceModeOnDemandResponse) SetBody(v *SetInstanceModeOnDemandResp
 }
 
 type TagResourcesRequest struct {
-	RegionId        *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType    *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag             []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+	//
+	// For more information about sample requests, see the **"Examples"** section of this topic.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The operation that you want to perform. Set the value to **TagResources**.
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Adds tags to Anti-DDoS Origin instances.
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -3201,6 +3708,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// WB269094
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -3270,12 +3778,16 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All             *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The operation that you want to perform. Set the value to **UntagResources**.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// testKey1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the specified resource. Set the value to **INSTANCE**.
 	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType    *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey          []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The ID of the request.
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -3535,6 +4047,15 @@ func (client *Client) CheckAccessLogAuth(request *CheckAccessLogAuthRequest) (_r
 	return _result, _err
 }
 
+/**
+ * Indicates whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account. Valid values:
+ * *   **1**: Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+ * *   **0**: Anti-DDoS Origin is not authorized to obtain information about the assets within the current Alibaba Cloud account.
+ *
+ * @param request CheckGrantRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CheckGrantResponse
+ */
 func (client *Client) CheckGrantWithOptions(request *CheckGrantRequest, runtime *util.RuntimeOptions) (_result *CheckGrantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3564,6 +4085,14 @@ func (client *Client) CheckGrantWithOptions(request *CheckGrantRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * Indicates whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account. Valid values:
+ * *   **1**: Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+ * *   **0**: Anti-DDoS Origin is not authorized to obtain information about the assets within the current Alibaba Cloud account.
+ *
+ * @param request CheckGrantRequest
+ * @return CheckGrantResponse
+ */
 func (client *Client) CheckGrant(request *CheckGrantRequest) (_result *CheckGrantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckGrantResponse{}
@@ -3751,6 +4280,16 @@ func (client *Client) CreateSchedruleOnDemand(request *CreateSchedruleOnDemandRe
 	return _result, _err
 }
 
+/**
+ * You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
+ * Before you call this operation, you can call the [DescribePackIpList](~~118701~~) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
+ * ### Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteBlackholeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteBlackholeResponse
+ */
 func (client *Client) DeleteBlackholeWithOptions(request *DeleteBlackholeRequest, runtime *util.RuntimeOptions) (_result *DeleteBlackholeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3796,6 +4335,15 @@ func (client *Client) DeleteBlackholeWithOptions(request *DeleteBlackholeRequest
 	return _result, _err
 }
 
+/**
+ * You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
+ * Before you call this operation, you can call the [DescribePackIpList](~~118701~~) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
+ * ### Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteBlackholeRequest
+ * @return DeleteBlackholeResponse
+ */
 func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result *DeleteBlackholeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBlackholeResponse{}
@@ -3807,6 +4355,14 @@ func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * The ID of the Anti-DDoS Origin Enterprise instance.
+ * >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+ *
+ * @param request DeleteIpRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteIpResponse
+ */
 func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *util.RuntimeOptions) (_result *DeleteIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3852,6 +4408,13 @@ func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *uti
 	return _result, _err
 }
 
+/**
+ * The ID of the Anti-DDoS Origin Enterprise instance.
+ * >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+ *
+ * @param request DeleteIpRequest
+ * @return DeleteIpResponse
+ */
 func (client *Client) DeleteIp(request *DeleteIpRequest) (_result *DeleteIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIpResponse{}
@@ -3915,6 +4478,13 @@ func (client *Client) DeleteSchedruleOnDemand(request *DeleteSchedruleOnDemandRe
 	return _result, _err
 }
 
+/**
+ * The number of entries to return on each page.
+ *
+ * @param request DescribeDdosEventRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDdosEventResponse
+ */
 func (client *Client) DescribeDdosEventWithOptions(request *DescribeDdosEventRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3976,6 +4546,12 @@ func (client *Client) DescribeDdosEventWithOptions(request *DescribeDdosEventReq
 	return _result, _err
 }
 
+/**
+ * The number of entries to return on each page.
+ *
+ * @param request DescribeDdosEventRequest
+ * @return DescribeDdosEventResponse
+ */
 func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_result *DescribeDdosEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDdosEventResponse{}
@@ -3987,6 +4563,13 @@ func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_res
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **DescribeExcpetionCount**.
+ *
+ * @param request DescribeExcpetionCountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeExcpetionCountResponse
+ */
 func (client *Client) DescribeExcpetionCountWithOptions(request *DescribeExcpetionCountRequest, runtime *util.RuntimeOptions) (_result *DescribeExcpetionCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4024,6 +4607,12 @@ func (client *Client) DescribeExcpetionCountWithOptions(request *DescribeExcpeti
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **DescribeExcpetionCount**.
+ *
+ * @param request DescribeExcpetionCountRequest
+ * @return DescribeExcpetionCountResponse
+ */
 func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequest) (_result *DescribeExcpetionCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExcpetionCountResponse{}
@@ -4035,6 +4624,16 @@ func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequ
 	return _result, _err
 }
 
+/**
+ * The status of the instance. Valid values:
+ * *   **1**: normal
+ * *   **2**: expired
+ * *   **3**: released
+ *
+ * @param request DescribeInstanceListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInstanceListResponse
+ */
 func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceListRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4047,6 +4646,10 @@ func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceL
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
 		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceTypeList)) {
+		query["InstanceTypeList"] = request.InstanceTypeList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
@@ -4112,6 +4715,15 @@ func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceL
 	return _result, _err
 }
 
+/**
+ * The status of the instance. Valid values:
+ * *   **1**: normal
+ * *   **2**: expired
+ * *   **3**: released
+ *
+ * @param request DescribeInstanceListRequest
+ * @return DescribeInstanceListResponse
+ */
 func (client *Client) DescribeInstanceList(request *DescribeInstanceListRequest) (_result *DescribeInstanceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceListResponse{}
@@ -4175,6 +4787,13 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 	return _result, _err
 }
 
+/**
+ * The ID of the resource group.
+ *
+ * @param request DescribeOnDemandDdosEventRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeOnDemandDdosEventResponse
+ */
 func (client *Client) DescribeOnDemandDdosEventWithOptions(request *DescribeOnDemandDdosEventRequest, runtime *util.RuntimeOptions) (_result *DescribeOnDemandDdosEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4236,6 +4855,12 @@ func (client *Client) DescribeOnDemandDdosEventWithOptions(request *DescribeOnDe
 	return _result, _err
 }
 
+/**
+ * The ID of the resource group.
+ *
+ * @param request DescribeOnDemandDdosEventRequest
+ * @return DescribeOnDemandDdosEventResponse
+ */
 func (client *Client) DescribeOnDemandDdosEvent(request *DescribeOnDemandDdosEventRequest) (_result *DescribeOnDemandDdosEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOnDemandDdosEventResponse{}
@@ -4295,6 +4920,13 @@ func (client *Client) DescribeOnDemandInstanceStatus(request *DescribeOnDemandIn
 	return _result, _err
 }
 
+/**
+ * The start time. Operation logs that were generated after this time are queried.**** This value is a UNIX timestamp. Unit: milliseconds.
+ *
+ * @param request DescribeOpEntitiesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeOpEntitiesResponse
+ */
 func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesRequest, runtime *util.RuntimeOptions) (_result *DescribeOpEntitiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4360,6 +4992,12 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 	return _result, _err
 }
 
+/**
+ * The start time. Operation logs that were generated after this time are queried.**** This value is a UNIX timestamp. Unit: milliseconds.
+ *
+ * @param request DescribeOpEntitiesRequest
+ * @return DescribeOpEntitiesResponse
+ */
 func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_result *DescribeOpEntitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOpEntitiesResponse{}
@@ -4371,6 +5009,13 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 	return _result, _err
 }
 
+/**
+ * The number of entries to return on each page.
+ *
+ * @param request DescribePackIpListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePackIpListResponse
+ */
 func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListRequest, runtime *util.RuntimeOptions) (_result *DescribePackIpListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4383,6 +5028,10 @@ func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListR
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
+		query["MemberUid"] = request.MemberUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
@@ -4428,6 +5077,12 @@ func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListR
 	return _result, _err
 }
 
+/**
+ * The number of entries to return on each page.
+ *
+ * @param request DescribePackIpListRequest
+ * @return DescribePackIpListResponse
+ */
 func (client *Client) DescribePackIpList(request *DescribePackIpListRequest) (_result *DescribePackIpListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePackIpListResponse{}
@@ -4487,6 +5142,14 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * The bandwidth of attack traffic. Unit: bit/s.
+ * >  This parameter is returned only if attack traffic exists.
+ *
+ * @param request DescribeTrafficRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeTrafficResponse
+ */
 func (client *Client) DescribeTrafficWithOptions(request *DescribeTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeTrafficResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4552,6 +5215,13 @@ func (client *Client) DescribeTrafficWithOptions(request *DescribeTrafficRequest
 	return _result, _err
 }
 
+/**
+ * The bandwidth of attack traffic. Unit: bit/s.
+ * >  This parameter is returned only if attack traffic exists.
+ *
+ * @param request DescribeTrafficRequest
+ * @return DescribeTrafficResponse
+ */
 func (client *Client) DescribeTraffic(request *DescribeTrafficRequest) (_result *DescribeTrafficResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTrafficResponse{}
@@ -4723,6 +5393,14 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+/**
+ * The ID of the region where the Anti-DDoS Origin instance resides.
+ * >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+ *
+ * @param request ListTagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4776,6 +5454,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+/**
+ * The ID of the region where the Anti-DDoS Origin instance resides.
+ * >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+ *
+ * @param request ListTagResourcesRequest
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -4787,6 +5472,13 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **ModifyRemark**.
+ *
+ * @param request ModifyRemarkRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyRemarkResponse
+ */
 func (client *Client) ModifyRemarkWithOptions(request *ModifyRemarkRequest, runtime *util.RuntimeOptions) (_result *ModifyRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4832,6 +5524,12 @@ func (client *Client) ModifyRemarkWithOptions(request *ModifyRemarkRequest, runt
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to **ModifyRemark**.
+ *
+ * @param request ModifyRemarkRequest
+ * @return ModifyRemarkResponse
+ */
 func (client *Client) ModifyRemark(request *ModifyRemarkRequest) (_result *ModifyRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyRemarkResponse{}
@@ -4943,6 +5641,14 @@ func (client *Client) SetInstanceModeOnDemand(request *SetInstanceModeOnDemandRe
 	return _result, _err
 }
 
+/**
+ * The ID of Anti-DDoS Origin Instance N to which you want to add tags.
+ * >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+ *
+ * @param request TagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4992,6 +5698,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+/**
+ * The ID of Anti-DDoS Origin Instance N to which you want to add tags.
+ * >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+ *
+ * @param request TagResourcesRequest
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
