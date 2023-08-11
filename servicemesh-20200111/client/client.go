@@ -1520,7 +1520,8 @@ type CreateServiceMeshRequest struct {
 	// Default value: `false`.
 	DubboFilterEnabled *bool `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
 	// The edition of the ASM instance.
-	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	Edition       *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	EnableAmbient *bool   `json:"EnableAmbient,omitempty" xml:"EnableAmbient,omitempty"`
 	// Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
 	//
 	// *   `true`
@@ -1574,8 +1575,10 @@ type CreateServiceMeshRequest struct {
 	// *   `false`
 	//
 	// Default value: `false`.
-	GatewayAPIEnabled *bool   `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
-	GuestCluster      *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	GatewayAPIEnabled *bool `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
+	// After this ASM instance is successfully created, automatically add an ACK cluster to it.
+	// Make sure this ASM instance and ACK cluster have same VPC, VSwitch, cluster domain.
+	GuestCluster *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
 	// The IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
 	IncludeIPRanges *string `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
 	// The Istio version of the ASM instance.
@@ -1833,6 +1836,11 @@ func (s *CreateServiceMeshRequest) SetDubboFilterEnabled(v bool) *CreateServiceM
 
 func (s *CreateServiceMeshRequest) SetEdition(v string) *CreateServiceMeshRequest {
 	s.Edition = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetEnableAmbient(v bool) *CreateServiceMeshRequest {
+	s.EnableAmbient = &v
 	return s
 }
 
@@ -13776,6 +13784,7 @@ func (s *UpdateIstioGatewayRoutesResponse) SetBody(v *UpdateIstioGatewayRoutesRe
 }
 
 type UpdateIstioInjectionConfigRequest struct {
+	DataPlaneMode *string `json:"DataPlaneMode,omitempty" xml:"DataPlaneMode,omitempty"`
 	// Specifies whether to enable Istio automatic sidecar injection.
 	EnableIstioInjection *bool `json:"EnableIstioInjection,omitempty" xml:"EnableIstioInjection,omitempty"`
 	// Specifies whether to enable automatic sidecar injection by using SidecarSet.
@@ -13793,6 +13802,11 @@ func (s UpdateIstioInjectionConfigRequest) String() string {
 
 func (s UpdateIstioInjectionConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetDataPlaneMode(v string) *UpdateIstioInjectionConfigRequest {
+	s.DataPlaneMode = &v
+	return s
 }
 
 func (s *UpdateIstioInjectionConfigRequest) SetEnableIstioInjection(v bool) *UpdateIstioInjectionConfigRequest {
@@ -16229,6 +16243,10 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 
 	if !tea.BoolValue(util.IsUnset(request.Edition)) {
 		body["Edition"] = request.Edition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAmbient)) {
+		body["EnableAmbient"] = request.EnableAmbient
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableAudit)) {
@@ -19744,6 +19762,10 @@ func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstio
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataPlaneMode)) {
+		body["DataPlaneMode"] = request.DataPlaneMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableIstioInjection)) {
 		body["EnableIstioInjection"] = request.EnableIstioInjection
 	}
