@@ -8,8 +8,13 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
+	fileform "github.com/alibabacloud-go/tea-fileform/service"
+	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
+	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type GetH5PageTrendRequest struct {
@@ -861,6 +866,7 @@ type GetSymUploadParamRequest struct {
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
 	FileName     *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	FileType     *int32  `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	FlutterName  *string `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
 }
 
 func (s GetSymUploadParamRequest) String() string {
@@ -888,6 +894,11 @@ func (s *GetSymUploadParamRequest) SetFileName(v string) *GetSymUploadParamReque
 
 func (s *GetSymUploadParamRequest) SetFileType(v int32) *GetSymUploadParamRequest {
 	s.FileType = &v
+	return s
+}
+
+func (s *GetSymUploadParamRequest) SetFlutterName(v string) *GetSymUploadParamRequest {
+	s.FlutterName = &v
 	return s
 }
 
@@ -1227,6 +1238,172 @@ func (s *UpdateAlertPlanResponse) SetStatusCode(v int32) *UpdateAlertPlanRespons
 }
 
 func (s *UpdateAlertPlanResponse) SetBody(v *UpdateAlertPlanResponseBody) *UpdateAlertPlanResponse {
+	s.Body = v
+	return s
+}
+
+type UploadSymbolFileRequest struct {
+	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	FileName     *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	FileType     *int32  `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	FlutterName  *string `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
+	OssUrl       *string `json:"ossUrl,omitempty" xml:"ossUrl,omitempty"`
+}
+
+func (s UploadSymbolFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadSymbolFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadSymbolFileRequest) SetAppVersion(v string) *UploadSymbolFileRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *UploadSymbolFileRequest) SetDataSourceId(v string) *UploadSymbolFileRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UploadSymbolFileRequest) SetFileName(v string) *UploadSymbolFileRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UploadSymbolFileRequest) SetFileType(v int32) *UploadSymbolFileRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *UploadSymbolFileRequest) SetFlutterName(v string) *UploadSymbolFileRequest {
+	s.FlutterName = &v
+	return s
+}
+
+func (s *UploadSymbolFileRequest) SetOssUrl(v string) *UploadSymbolFileRequest {
+	s.OssUrl = &v
+	return s
+}
+
+type UploadSymbolFileAdvanceRequest struct {
+	AppVersion   *string   `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	DataSourceId *string   `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	FileName     *string   `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	FileType     *int32    `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	FlutterName  *string   `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
+	OssUrlObject io.Reader `json:"ossUrl,omitempty" xml:"ossUrl,omitempty"`
+}
+
+func (s UploadSymbolFileAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadSymbolFileAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadSymbolFileAdvanceRequest) SetAppVersion(v string) *UploadSymbolFileAdvanceRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *UploadSymbolFileAdvanceRequest) SetDataSourceId(v string) *UploadSymbolFileAdvanceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UploadSymbolFileAdvanceRequest) SetFileName(v string) *UploadSymbolFileAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UploadSymbolFileAdvanceRequest) SetFileType(v int32) *UploadSymbolFileAdvanceRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *UploadSymbolFileAdvanceRequest) SetFlutterName(v string) *UploadSymbolFileAdvanceRequest {
+	s.FlutterName = &v
+	return s
+}
+
+func (s *UploadSymbolFileAdvanceRequest) SetOssUrlObject(v io.Reader) *UploadSymbolFileAdvanceRequest {
+	s.OssUrlObject = v
+	return s
+}
+
+type UploadSymbolFileResponseBody struct {
+	// code
+	Code      *int64  `json:"code,omitempty" xml:"code,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s UploadSymbolFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadSymbolFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadSymbolFileResponseBody) SetCode(v int64) *UploadSymbolFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UploadSymbolFileResponseBody) SetMsg(v string) *UploadSymbolFileResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *UploadSymbolFileResponseBody) SetRequestId(v string) *UploadSymbolFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadSymbolFileResponseBody) SetSuccess(v bool) *UploadSymbolFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UploadSymbolFileResponseBody) SetTraceId(v string) *UploadSymbolFileResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UploadSymbolFileResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadSymbolFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadSymbolFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadSymbolFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadSymbolFileResponse) SetHeaders(v map[string]*string) *UploadSymbolFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadSymbolFileResponse) SetStatusCode(v int32) *UploadSymbolFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadSymbolFileResponse) SetBody(v *UploadSymbolFileResponseBody) *UploadSymbolFileResponse {
 	s.Body = v
 	return s
 }
@@ -1610,6 +1787,10 @@ func (client *Client) GetSymUploadParamWithOptions(request *GetSymUploadParamReq
 		query["fileType"] = request.FileType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FlutterName)) {
+		query["flutterName"] = request.FlutterName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -1751,5 +1932,177 @@ func (client *Client) UpdateAlertPlan(request *UpdateAlertPlanRequest) (_result 
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadSymbolFileWithOptions(request *UploadSymbolFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadSymbolFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		query["appVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["fileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		query["fileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlutterName)) {
+		query["flutterName"] = request.FlutterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssUrl)) {
+		query["ossUrl"] = request.OssUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadSymbolFile"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/uploadSymbolFile"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadSymbolFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadSymbolFile(request *UploadSymbolFileRequest) (_result *UploadSymbolFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UploadSymbolFileResponse{}
+	_body, _err := client.UploadSymbolFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadSymbolFileAdvance(request *UploadSymbolFileAdvanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadSymbolFileResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("umeng-apm"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	uploadSymbolFileReq := &UploadSymbolFileRequest{}
+	openapiutil.Convert(request, uploadSymbolFileReq)
+	if !tea.BoolValue(util.IsUnset(request.OssUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.OssUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		uploadSymbolFileReq.OssUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	uploadSymbolFileResp, _err := client.UploadSymbolFileWithOptions(uploadSymbolFileReq, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = uploadSymbolFileResp
 	return _result, _err
 }
