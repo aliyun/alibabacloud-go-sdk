@@ -3398,6 +3398,316 @@ func (s *CreateResourceMemberResponse) SetBody(v *CreateResourceMemberResponseBo
 	return s
 }
 
+type CreateServiceAuthRequest struct {
+	ServiceAuthType *string `json:"serviceAuthType,omitempty" xml:"serviceAuthType,omitempty"`
+}
+
+func (s CreateServiceAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAuthRequest) SetServiceAuthType(v string) *CreateServiceAuthRequest {
+	s.ServiceAuthType = &v
+	return s
+}
+
+type CreateServiceAuthResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Id           *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateServiceAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAuthResponseBody) SetErrorCode(v string) *CreateServiceAuthResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateServiceAuthResponseBody) SetErrorMessage(v string) *CreateServiceAuthResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateServiceAuthResponseBody) SetId(v string) *CreateServiceAuthResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateServiceAuthResponseBody) SetRequestId(v string) *CreateServiceAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceAuthResponseBody) SetSuccess(v bool) *CreateServiceAuthResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateServiceAuthResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAuthResponse) SetHeaders(v map[string]*string) *CreateServiceAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceAuthResponse) SetStatusCode(v int32) *CreateServiceAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceAuthResponse) SetBody(v *CreateServiceAuthResponseBody) *CreateServiceAuthResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceConnectionRequest struct {
+	AuthType       *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	ConnectionName *string `json:"connectionName,omitempty" xml:"connectionName,omitempty"`
+	ConnectionType *string `json:"connectionType,omitempty" xml:"connectionType,omitempty"`
+	Scope          *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ServiceAuthId  *int64  `json:"serviceAuthId,omitempty" xml:"serviceAuthId,omitempty"`
+}
+
+func (s CreateServiceConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceConnectionRequest) SetAuthType(v string) *CreateServiceConnectionRequest {
+	s.AuthType = &v
+	return s
+}
+
+func (s *CreateServiceConnectionRequest) SetConnectionName(v string) *CreateServiceConnectionRequest {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *CreateServiceConnectionRequest) SetConnectionType(v string) *CreateServiceConnectionRequest {
+	s.ConnectionType = &v
+	return s
+}
+
+func (s *CreateServiceConnectionRequest) SetScope(v string) *CreateServiceConnectionRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateServiceConnectionRequest) SetServiceAuthId(v int64) *CreateServiceConnectionRequest {
+	s.ServiceAuthId = &v
+	return s
+}
+
+type CreateServiceConnectionResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateServiceConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceConnectionResponseBody) SetErrorCode(v string) *CreateServiceConnectionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetErrorMessage(v string) *CreateServiceConnectionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetId(v int64) *CreateServiceConnectionResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetRequestId(v string) *CreateServiceConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetSuccess(v bool) *CreateServiceConnectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateServiceConnectionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceConnectionResponse) SetHeaders(v map[string]*string) *CreateServiceConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceConnectionResponse) SetStatusCode(v int32) *CreateServiceConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponse) SetBody(v *CreateServiceConnectionResponseBody) *CreateServiceConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceCredentialRequest struct {
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	Scope    *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateServiceCredentialRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceCredentialRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceCredentialRequest) SetName(v string) *CreateServiceCredentialRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceCredentialRequest) SetPassword(v string) *CreateServiceCredentialRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateServiceCredentialRequest) SetScope(v string) *CreateServiceCredentialRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateServiceCredentialRequest) SetType(v string) *CreateServiceCredentialRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateServiceCredentialRequest) SetUsername(v string) *CreateServiceCredentialRequest {
+	s.Username = &v
+	return s
+}
+
+type CreateServiceCredentialResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateServiceCredentialResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceCredentialResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceCredentialResponseBody) SetErrorCode(v string) *CreateServiceCredentialResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateServiceCredentialResponseBody) SetErrorMessage(v string) *CreateServiceCredentialResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateServiceCredentialResponseBody) SetId(v int64) *CreateServiceCredentialResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateServiceCredentialResponseBody) SetRequestId(v string) *CreateServiceCredentialResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceCredentialResponseBody) SetSuccess(v bool) *CreateServiceCredentialResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateServiceCredentialResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceCredentialResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceCredentialResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceCredentialResponse) SetHeaders(v map[string]*string) *CreateServiceCredentialResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceCredentialResponse) SetStatusCode(v int32) *CreateServiceCredentialResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceCredentialResponse) SetBody(v *CreateServiceCredentialResponseBody) *CreateServiceCredentialResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSprintRequest struct {
 	EndDate         *string   `json:"endDate,omitempty" xml:"endDate,omitempty"`
 	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
@@ -23171,6 +23481,128 @@ func (s *ListSearchSourceCodeResponse) SetBody(v *ListSearchSourceCodeResponseBo
 	return s
 }
 
+type ListServiceAuthsRequest struct {
+	ServiceAuthType *string `json:"serviceAuthType,omitempty" xml:"serviceAuthType,omitempty"`
+}
+
+func (s ListServiceAuthsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAuthsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAuthsRequest) SetServiceAuthType(v string) *ListServiceAuthsRequest {
+	s.ServiceAuthType = &v
+	return s
+}
+
+type ListServiceAuthsResponseBody struct {
+	ErrorCode    *string                                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ServiceAuths []*ListServiceAuthsResponseBodyServiceAuths `json:"serviceAuths,omitempty" xml:"serviceAuths,omitempty" type:"Repeated"`
+	Success      *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListServiceAuthsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAuthsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAuthsResponseBody) SetErrorCode(v string) *ListServiceAuthsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListServiceAuthsResponseBody) SetErrorMessage(v string) *ListServiceAuthsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListServiceAuthsResponseBody) SetRequestId(v string) *ListServiceAuthsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceAuthsResponseBody) SetServiceAuths(v []*ListServiceAuthsResponseBodyServiceAuths) *ListServiceAuthsResponseBody {
+	s.ServiceAuths = v
+	return s
+}
+
+func (s *ListServiceAuthsResponseBody) SetSuccess(v bool) *ListServiceAuthsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListServiceAuthsResponseBodyServiceAuths struct {
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	OwnerName    *string `json:"ownerName,omitempty" xml:"ownerName,omitempty"`
+	OwnerStaffId *string `json:"ownerStaffId,omitempty" xml:"ownerStaffId,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListServiceAuthsResponseBodyServiceAuths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAuthsResponseBodyServiceAuths) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAuthsResponseBodyServiceAuths) SetId(v int64) *ListServiceAuthsResponseBodyServiceAuths {
+	s.Id = &v
+	return s
+}
+
+func (s *ListServiceAuthsResponseBodyServiceAuths) SetOwnerName(v string) *ListServiceAuthsResponseBodyServiceAuths {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *ListServiceAuthsResponseBodyServiceAuths) SetOwnerStaffId(v string) *ListServiceAuthsResponseBodyServiceAuths {
+	s.OwnerStaffId = &v
+	return s
+}
+
+func (s *ListServiceAuthsResponseBodyServiceAuths) SetType(v string) *ListServiceAuthsResponseBodyServiceAuths {
+	s.Type = &v
+	return s
+}
+
+type ListServiceAuthsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceAuthsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceAuthsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAuthsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAuthsResponse) SetHeaders(v map[string]*string) *ListServiceAuthsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceAuthsResponse) SetStatusCode(v int32) *ListServiceAuthsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceAuthsResponse) SetBody(v *ListServiceAuthsResponseBody) *ListServiceAuthsResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceConnectionsRequest struct {
 	SericeConnectionType *string `json:"sericeConnectionType,omitempty" xml:"sericeConnectionType,omitempty"`
 }
@@ -23295,6 +23727,128 @@ func (s *ListServiceConnectionsResponse) SetStatusCode(v int32) *ListServiceConn
 }
 
 func (s *ListServiceConnectionsResponse) SetBody(v *ListServiceConnectionsResponseBody) *ListServiceConnectionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceCredentialsRequest struct {
+	ServiceCredentialType *string `json:"serviceCredentialType,omitempty" xml:"serviceCredentialType,omitempty"`
+}
+
+func (s ListServiceCredentialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCredentialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCredentialsRequest) SetServiceCredentialType(v string) *ListServiceCredentialsRequest {
+	s.ServiceCredentialType = &v
+	return s
+}
+
+type ListServiceCredentialsResponseBody struct {
+	ErrorCode          *string                                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage       *string                                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId          *string                                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ServiceCredentials []*ListServiceCredentialsResponseBodyServiceCredentials `json:"serviceCredentials,omitempty" xml:"serviceCredentials,omitempty" type:"Repeated"`
+	Success            *bool                                                   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListServiceCredentialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCredentialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCredentialsResponseBody) SetErrorCode(v string) *ListServiceCredentialsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListServiceCredentialsResponseBody) SetErrorMessage(v string) *ListServiceCredentialsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListServiceCredentialsResponseBody) SetRequestId(v string) *ListServiceCredentialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceCredentialsResponseBody) SetServiceCredentials(v []*ListServiceCredentialsResponseBodyServiceCredentials) *ListServiceCredentialsResponseBody {
+	s.ServiceCredentials = v
+	return s
+}
+
+func (s *ListServiceCredentialsResponseBody) SetSuccess(v bool) *ListServiceCredentialsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListServiceCredentialsResponseBodyServiceCredentials struct {
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	OwnerName    *string `json:"ownerName,omitempty" xml:"ownerName,omitempty"`
+	OwnerStaffId *string `json:"ownerStaffId,omitempty" xml:"ownerStaffId,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListServiceCredentialsResponseBodyServiceCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCredentialsResponseBodyServiceCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCredentialsResponseBodyServiceCredentials) SetId(v int64) *ListServiceCredentialsResponseBodyServiceCredentials {
+	s.Id = &v
+	return s
+}
+
+func (s *ListServiceCredentialsResponseBodyServiceCredentials) SetOwnerName(v string) *ListServiceCredentialsResponseBodyServiceCredentials {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *ListServiceCredentialsResponseBodyServiceCredentials) SetOwnerStaffId(v string) *ListServiceCredentialsResponseBodyServiceCredentials {
+	s.OwnerStaffId = &v
+	return s
+}
+
+func (s *ListServiceCredentialsResponseBodyServiceCredentials) SetType(v string) *ListServiceCredentialsResponseBodyServiceCredentials {
+	s.Type = &v
+	return s
+}
+
+type ListServiceCredentialsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceCredentialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCredentialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCredentialsResponse) SetHeaders(v map[string]*string) *ListServiceCredentialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceCredentialsResponse) SetStatusCode(v int32) *ListServiceCredentialsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceCredentialsResponse) SetBody(v *ListServiceCredentialsResponseBody) *ListServiceCredentialsResponse {
 	s.Body = v
 	return s
 }
@@ -25110,6 +25664,176 @@ func (s *ListWorkItemWorkFlowStatusResponse) SetStatusCode(v int32) *ListWorkIte
 }
 
 func (s *ListWorkItemWorkFlowStatusResponse) SetBody(v *ListWorkItemWorkFlowStatusResponseBody) *ListWorkItemWorkFlowStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkitemEstimateResponseBody struct {
+	Code                 *int64                                                  `json:"code,omitempty" xml:"code,omitempty"`
+	ErrorCode            *string                                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg             *string                                                 `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId            *string                                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success              *bool                                                   `json:"success,omitempty" xml:"success,omitempty"`
+	WorkitemTimeEstimate []*ListWorkitemEstimateResponseBodyWorkitemTimeEstimate `json:"workitemTimeEstimate,omitempty" xml:"workitemTimeEstimate,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkitemEstimateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemEstimateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemEstimateResponseBody) SetCode(v int64) *ListWorkitemEstimateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBody) SetErrorCode(v string) *ListWorkitemEstimateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBody) SetErrorMsg(v string) *ListWorkitemEstimateResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBody) SetRequestId(v string) *ListWorkitemEstimateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBody) SetSuccess(v bool) *ListWorkitemEstimateResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBody) SetWorkitemTimeEstimate(v []*ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) *ListWorkitemEstimateResponseBody {
+	s.WorkitemTimeEstimate = v
+	return s
+}
+
+type ListWorkitemEstimateResponseBodyWorkitemTimeEstimate struct {
+	Description        *string                                                         `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate          *int64                                                          `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtEnd             *int64                                                          `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
+	GmtModified        *int64                                                          `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	GmtStart           *int64                                                          `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	Identifier         *string                                                         `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	RecordUser         *ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser `json:"recordUser,omitempty" xml:"recordUser,omitempty" type:"Struct"`
+	SpentTime          *float32                                                        `json:"spentTime,omitempty" xml:"spentTime,omitempty"`
+	Type               *string                                                         `json:"type,omitempty" xml:"type,omitempty"`
+	WorkitemIdentifier *string                                                         `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
+}
+
+func (s ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetDescription(v string) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetGmtCreate(v int64) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetGmtEnd(v int64) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetGmtModified(v int64) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetGmtStart(v int64) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetIdentifier(v string) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetRecordUser(v *ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.RecordUser = v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetSpentTime(v float32) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.SpentTime = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetType(v string) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.Type = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate) SetWorkitemIdentifier(v string) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimate {
+	s.WorkitemIdentifier = &v
+	return s
+}
+
+type ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser struct {
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser) SetIdentifier(v string) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser) SetName(v string) *ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser {
+	s.Name = &v
+	return s
+}
+
+type ListWorkitemEstimateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkitemEstimateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkitemEstimateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemEstimateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemEstimateResponse) SetHeaders(v map[string]*string) *ListWorkitemEstimateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponse) SetStatusCode(v int32) *ListWorkitemEstimateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkitemEstimateResponse) SetBody(v *ListWorkitemEstimateResponseBody) *ListWorkitemEstimateResponse {
 	s.Body = v
 	return s
 }
@@ -28332,6 +29056,354 @@ func (s *UpdatePipelineGroupResponse) SetStatusCode(v int32) *UpdatePipelineGrou
 }
 
 func (s *UpdatePipelineGroupResponse) SetBody(v *UpdatePipelineGroupResponseBody) *UpdatePipelineGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateProjectFieldRequest struct {
+	StatusIdentifier            *string                                                 `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	UpdateBasicFieldRequestList []*UpdateProjectFieldRequestUpdateBasicFieldRequestList `json:"updateBasicFieldRequestList,omitempty" xml:"updateBasicFieldRequestList,omitempty" type:"Repeated"`
+	UpdateForOpenApiList        []*UpdateProjectFieldRequestUpdateForOpenApiList        `json:"updateForOpenApiList,omitempty" xml:"updateForOpenApiList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateProjectFieldRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectFieldRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectFieldRequest) SetStatusIdentifier(v string) *UpdateProjectFieldRequest {
+	s.StatusIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldRequest) SetUpdateBasicFieldRequestList(v []*UpdateProjectFieldRequestUpdateBasicFieldRequestList) *UpdateProjectFieldRequest {
+	s.UpdateBasicFieldRequestList = v
+	return s
+}
+
+func (s *UpdateProjectFieldRequest) SetUpdateForOpenApiList(v []*UpdateProjectFieldRequestUpdateForOpenApiList) *UpdateProjectFieldRequest {
+	s.UpdateForOpenApiList = v
+	return s
+}
+
+type UpdateProjectFieldRequestUpdateBasicFieldRequestList struct {
+	PropertyKey   *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
+}
+
+func (s UpdateProjectFieldRequestUpdateBasicFieldRequestList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectFieldRequestUpdateBasicFieldRequestList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectFieldRequestUpdateBasicFieldRequestList) SetPropertyKey(v string) *UpdateProjectFieldRequestUpdateBasicFieldRequestList {
+	s.PropertyKey = &v
+	return s
+}
+
+func (s *UpdateProjectFieldRequestUpdateBasicFieldRequestList) SetPropertyValue(v string) *UpdateProjectFieldRequestUpdateBasicFieldRequestList {
+	s.PropertyValue = &v
+	return s
+}
+
+type UpdateProjectFieldRequestUpdateForOpenApiList struct {
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateProjectFieldRequestUpdateForOpenApiList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectFieldRequestUpdateForOpenApiList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectFieldRequestUpdateForOpenApiList) SetFieldIdentifier(v string) *UpdateProjectFieldRequestUpdateForOpenApiList {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldRequestUpdateForOpenApiList) SetValue(v string) *UpdateProjectFieldRequestUpdateForOpenApiList {
+	s.Value = &v
+	return s
+}
+
+type UpdateProjectFieldResponseBody struct {
+	ErrorCode    *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Project      *UpdateProjectFieldResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
+	RequestId    *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true/false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateProjectFieldResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectFieldResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectFieldResponseBody) SetErrorCode(v string) *UpdateProjectFieldResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBody) SetErrorMessage(v string) *UpdateProjectFieldResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBody) SetProject(v *UpdateProjectFieldResponseBodyProject) *UpdateProjectFieldResponseBody {
+	s.Project = v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBody) SetRequestId(v string) *UpdateProjectFieldResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBody) SetSuccess(v bool) *UpdateProjectFieldResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateProjectFieldResponseBodyProject struct {
+	Category               *string                                           `json:"category,omitempty" xml:"category,omitempty"`
+	CategoryIdentifier     *string                                           `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string                                           `json:"creator,omitempty" xml:"creator,omitempty"`
+	CustomCode             *string                                           `json:"customCode,omitempty" xml:"customCode,omitempty"`
+	Description            *string                                           `json:"description,omitempty" xml:"description,omitempty"`
+	FieldList              []*UpdateProjectFieldResponseBodyProjectFieldList `json:"fieldList,omitempty" xml:"fieldList,omitempty" type:"Repeated"`
+	GmtCreate              *int64                                            `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64                                            `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Icon                   *string                                           `json:"icon,omitempty" xml:"icon,omitempty"`
+	IconBig                *string                                           `json:"iconBig,omitempty" xml:"iconBig,omitempty"`
+	IconGroup              *string                                           `json:"iconGroup,omitempty" xml:"iconGroup,omitempty"`
+	IconSmall              *string                                           `json:"iconSmall,omitempty" xml:"iconSmall,omitempty"`
+	Id                     *string                                           `json:"id,omitempty" xml:"id,omitempty"`
+	Identifier             *string                                           `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	IdentifierPath         *string                                           `json:"identifierPath,omitempty" xml:"identifierPath,omitempty"`
+	LogicalStatus          *string                                           `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string                                           `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name                   *string                                           `json:"name,omitempty" xml:"name,omitempty"`
+	OrganizationIdentifier *string                                           `json:"organizationIdentifier,omitempty" xml:"organizationIdentifier,omitempty"`
+	ParentIdentifier       *string                                           `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	Scope                  *string                                           `json:"scope,omitempty" xml:"scope,omitempty"`
+	StatusIdentifier       *string                                           `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusName             *string                                           `json:"statusName,omitempty" xml:"statusName,omitempty"`
+	StatusStageIdentifier  *string                                           `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	SubType                *string                                           `json:"subType,omitempty" xml:"subType,omitempty"`
+	TypeIdentifier         *string                                           `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
+}
+
+func (s UpdateProjectFieldResponseBodyProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectFieldResponseBodyProject) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetCategory(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Category = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetCategoryIdentifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetCreator(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Creator = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetCustomCode(v string) *UpdateProjectFieldResponseBodyProject {
+	s.CustomCode = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetDescription(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetFieldList(v []*UpdateProjectFieldResponseBodyProjectFieldList) *UpdateProjectFieldResponseBodyProject {
+	s.FieldList = v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetGmtCreate(v int64) *UpdateProjectFieldResponseBodyProject {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetGmtModified(v int64) *UpdateProjectFieldResponseBodyProject {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetIcon(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Icon = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetIconBig(v string) *UpdateProjectFieldResponseBodyProject {
+	s.IconBig = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetIconGroup(v string) *UpdateProjectFieldResponseBodyProject {
+	s.IconGroup = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetIconSmall(v string) *UpdateProjectFieldResponseBodyProject {
+	s.IconSmall = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetId(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetIdentifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Identifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetIdentifierPath(v string) *UpdateProjectFieldResponseBodyProject {
+	s.IdentifierPath = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetLogicalStatus(v string) *UpdateProjectFieldResponseBodyProject {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetModifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Modifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetName(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetOrganizationIdentifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.OrganizationIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetParentIdentifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetScope(v string) *UpdateProjectFieldResponseBodyProject {
+	s.Scope = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetStatusIdentifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.StatusIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetStatusName(v string) *UpdateProjectFieldResponseBodyProject {
+	s.StatusName = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetStatusStageIdentifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetSubType(v string) *UpdateProjectFieldResponseBodyProject {
+	s.SubType = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProject) SetTypeIdentifier(v string) *UpdateProjectFieldResponseBodyProject {
+	s.TypeIdentifier = &v
+	return s
+}
+
+type UpdateProjectFieldResponseBodyProjectFieldList struct {
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Identifier  *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Value       *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType   *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+}
+
+func (s UpdateProjectFieldResponseBodyProjectFieldList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectFieldResponseBodyProjectFieldList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectFieldResponseBodyProjectFieldList) SetDisplayName(v string) *UpdateProjectFieldResponseBodyProjectFieldList {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProjectFieldList) SetIdentifier(v string) *UpdateProjectFieldResponseBodyProjectFieldList {
+	s.Identifier = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProjectFieldList) SetValue(v string) *UpdateProjectFieldResponseBodyProjectFieldList {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponseBodyProjectFieldList) SetValueType(v string) *UpdateProjectFieldResponseBodyProjectFieldList {
+	s.ValueType = &v
+	return s
+}
+
+type UpdateProjectFieldResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProjectFieldResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateProjectFieldResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectFieldResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectFieldResponse) SetHeaders(v map[string]*string) *UpdateProjectFieldResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProjectFieldResponse) SetStatusCode(v int32) *UpdateProjectFieldResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProjectFieldResponse) SetBody(v *UpdateProjectFieldResponseBody) *UpdateProjectFieldResponse {
 	s.Body = v
 	return s
 }
@@ -32674,6 +33746,176 @@ func (client *Client) CreateResourceMember(organizationId *string, resourceType 
 	headers := make(map[string]*string)
 	_result = &CreateResourceMemberResponse{}
 	_body, _err := client.CreateResourceMemberWithOptions(organizationId, resourceType, resourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceAuthWithOptions(organizationId *string, request *CreateServiceAuthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceAuthType)) {
+		query["serviceAuthType"] = request.ServiceAuthType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceAuth"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/serviceAuths"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceAuth(organizationId *string, request *CreateServiceAuthRequest) (_result *CreateServiceAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceAuthResponse{}
+	_body, _err := client.CreateServiceAuthWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceConnectionWithOptions(organizationId *string, request *CreateServiceConnectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		body["authType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		body["connectionName"] = request.ConnectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionType)) {
+		body["connectionType"] = request.ConnectionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceAuthId)) {
+		body["serviceAuthId"] = request.ServiceAuthId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceConnection"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/createServiceConnection"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceConnection(organizationId *string, request *CreateServiceConnectionRequest) (_result *CreateServiceConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceConnectionResponse{}
+	_body, _err := client.CreateServiceConnectionWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceCredentialWithOptions(organizationId *string, request *CreateServiceCredentialRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceCredentialResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceCredential"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/serviceCredentials"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceCredential(organizationId *string, request *CreateServiceCredentialRequest) (_result *CreateServiceCredentialResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceCredentialResponse{}
+	_body, _err := client.CreateServiceCredentialWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38239,6 +39481,52 @@ func (client *Client) ListSearchSourceCode(request *ListSearchSourceCodeRequest)
 	return _result, _err
 }
 
+func (client *Client) ListServiceAuthsWithOptions(organizationId *string, request *ListServiceAuthsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceAuthsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceAuthType)) {
+		query["serviceAuthType"] = request.ServiceAuthType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceAuths"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/serviceAuths"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceAuthsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceAuths(organizationId *string, request *ListServiceAuthsRequest) (_result *ListServiceAuthsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceAuthsResponse{}
+	_body, _err := client.ListServiceAuthsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, request *ListServiceConnectionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceConnectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38278,6 +39566,52 @@ func (client *Client) ListServiceConnections(organizationId *string, request *Li
 	headers := make(map[string]*string)
 	_result = &ListServiceConnectionsResponse{}
 	_body, _err := client.ListServiceConnectionsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListServiceCredentialsWithOptions(organizationId *string, request *ListServiceCredentialsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceCredentialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceCredentialType)) {
+		query["serviceCredentialType"] = request.ServiceCredentialType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceCredentials"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/serviceCredentials"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceCredentialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceCredentials(organizationId *string, request *ListServiceCredentialsRequest) (_result *ListServiceCredentialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceCredentialsResponse{}
+	_body, _err := client.ListServiceCredentialsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38680,6 +40014,42 @@ func (client *Client) ListWorkItemWorkFlowStatus(organizationId *string, request
 	headers := make(map[string]*string)
 	_result = &ListWorkItemWorkFlowStatusResponse{}
 	_body, _err := client.ListWorkItemWorkFlowStatusWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkitemEstimateWithOptions(organizationId *string, workitemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkitemEstimateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkitemEstimate"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/" + tea.StringValue(openapiutil.GetEncodeParam(workitemId)) + "/estimate/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkitemEstimateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkitemEstimate(organizationId *string, workitemId *string) (_result *ListWorkitemEstimateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkitemEstimateResponse{}
+	_body, _err := client.ListWorkitemEstimateWithOptions(organizationId, workitemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40084,6 +41454,60 @@ func (client *Client) UpdatePipelineGroup(organizationId *string, groupId *strin
 	headers := make(map[string]*string)
 	_result = &UpdatePipelineGroupResponse{}
 	_body, _err := client.UpdatePipelineGroupWithOptions(organizationId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateProjectFieldWithOptions(organizationId *string, identifier *string, request *UpdateProjectFieldRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectFieldResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.StatusIdentifier)) {
+		body["statusIdentifier"] = request.StatusIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateBasicFieldRequestList)) {
+		body["updateBasicFieldRequestList"] = request.UpdateBasicFieldRequestList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateForOpenApiList)) {
+		body["updateForOpenApiList"] = request.UpdateForOpenApiList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProjectField"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/project/" + tea.StringValue(openapiutil.GetEncodeParam(identifier))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateProjectFieldResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateProjectField(organizationId *string, identifier *string, request *UpdateProjectFieldRequest) (_result *UpdateProjectFieldResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateProjectFieldResponse{}
+	_body, _err := client.UpdateProjectFieldWithOptions(organizationId, identifier, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
