@@ -46467,6 +46467,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	K8sNodeName *string `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
 	// The name of the Kubernetes pod.
 	K8sPodName *string `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
+	LargeModel *bool   `json:"LargeModel,omitempty" xml:"LargeModel,omitempty"`
 	// The time when the alert event was last generated.
 	LastTime *string `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 	// The timestamp when the exception was last detected. Unit: milliseconds.
@@ -46690,6 +46691,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetK8sNodeName(v string) *Des
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetK8sPodName(v string) *DescribeSuspEventsResponseBodySuspEvents {
 	s.K8sPodName = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetLargeModel(v bool) *DescribeSuspEventsResponseBodySuspEvents {
+	s.LargeModel = &v
 	return s
 }
 
@@ -49459,9 +49465,13 @@ func (s *DescribeUserBaselineAuthorizationResponse) SetBody(v *DescribeUserBasel
 }
 
 type DescribeUserLayoutAuthorizationRequest struct {
+	// The language of the content within the request and response. Valid values:
+	// - **zh**: Chinese
+	// - **en**: English
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source IP address of the request.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeUserLayoutAuthorizationRequest) String() string {
@@ -49488,8 +49498,12 @@ func (s *DescribeUserLayoutAuthorizationRequest) SetSourceIp(v string) *Describe
 }
 
 type DescribeUserLayoutAuthorizationResponseBody struct {
-	Authorized *bool   `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the query. Valid values:
+	// - **true**: The brute-force attacks protection feature has been authorized.
+	// - **false**: The brute-force attacks protection feature is not authorized.
+	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUserLayoutAuthorizationResponseBody) String() string {
@@ -59866,6 +59880,226 @@ func (s *GetCheckSummaryResponse) SetBody(v *GetCheckSummaryResponseBody) *GetCh
 	return s
 }
 
+type GetClientInstallationStatisticRequest struct {
+	TimeEnd   *int64 `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	TimeStart *int64 `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+}
+
+func (s GetClientInstallationStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticRequest) SetTimeEnd(v int64) *GetClientInstallationStatisticRequest {
+	s.TimeEnd = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticRequest) SetTimeStart(v int64) *GetClientInstallationStatisticRequest {
+	s.TimeStart = &v
+	return s
+}
+
+type GetClientInstallationStatisticResponseBody struct {
+	ClientInstallRatio *GetClientInstallationStatisticResponseBodyClientInstallRatio `json:"ClientInstallRatio,omitempty" xml:"ClientInstallRatio,omitempty" type:"Struct"`
+	RequestId          *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetClientInstallationStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticResponseBody) SetClientInstallRatio(v *GetClientInstallationStatisticResponseBodyClientInstallRatio) *GetClientInstallationStatisticResponseBody {
+	s.ClientInstallRatio = v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBody) SetRequestId(v string) *GetClientInstallationStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetClientInstallationStatisticResponseBodyClientInstallRatio struct {
+	CurrentItems []*GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems `json:"CurrentItems,omitempty" xml:"CurrentItems,omitempty" type:"Repeated"`
+	Dates        []*int64                                                                    `json:"Dates,omitempty" xml:"Dates,omitempty" type:"Repeated"`
+	HistoryItems []*GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatio) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatio) SetCurrentItems(v []*GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems) *GetClientInstallationStatisticResponseBodyClientInstallRatio {
+	s.CurrentItems = v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatio) SetDates(v []*int64) *GetClientInstallationStatisticResponseBodyClientInstallRatio {
+	s.Dates = v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatio) SetHistoryItems(v []*GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems) *GetClientInstallationStatisticResponseBodyClientInstallRatio {
+	s.HistoryItems = v
+	return s
+}
+
+type GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems struct {
+	Items  []*GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Vendor *int64                                                                           `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems) SetItems(v []*GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems) *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems {
+	s.Items = v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems) SetVendor(v int64) *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems {
+	s.Vendor = &v
+	return s
+}
+
+type GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems struct {
+	AssetTotalCount     *int32   `json:"AssetTotalCount,omitempty" xml:"AssetTotalCount,omitempty"`
+	CalculateTime       *int64   `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
+	InstallRatio        *float64 `json:"InstallRatio,omitempty" xml:"InstallRatio,omitempty"`
+	InstalledAssetCount *int32   `json:"InstalledAssetCount,omitempty" xml:"InstalledAssetCount,omitempty"`
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems) SetAssetTotalCount(v int32) *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems {
+	s.AssetTotalCount = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems) SetCalculateTime(v int64) *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems {
+	s.CalculateTime = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems) SetInstallRatio(v float64) *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems {
+	s.InstallRatio = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems) SetInstalledAssetCount(v int32) *GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems {
+	s.InstalledAssetCount = &v
+	return s
+}
+
+type GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems struct {
+	Items  []*GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Vendor *int64                                                                           `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems) SetItems(v []*GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems) *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems {
+	s.Items = v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems) SetVendor(v int64) *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems {
+	s.Vendor = &v
+	return s
+}
+
+type GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems struct {
+	AssetTotalCount     *int32   `json:"AssetTotalCount,omitempty" xml:"AssetTotalCount,omitempty"`
+	CalculateTime       *int64   `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
+	InstallRatio        *float64 `json:"InstallRatio,omitempty" xml:"InstallRatio,omitempty"`
+	InstalledAssetCount *int32   `json:"InstalledAssetCount,omitempty" xml:"InstalledAssetCount,omitempty"`
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems) SetAssetTotalCount(v int32) *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems {
+	s.AssetTotalCount = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems) SetCalculateTime(v int64) *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems {
+	s.CalculateTime = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems) SetInstallRatio(v float64) *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems {
+	s.InstallRatio = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems) SetInstalledAssetCount(v int32) *GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems {
+	s.InstalledAssetCount = &v
+	return s
+}
+
+type GetClientInstallationStatisticResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClientInstallationStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetClientInstallationStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientInstallationStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientInstallationStatisticResponse) SetHeaders(v map[string]*string) *GetClientInstallationStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponse) SetStatusCode(v int32) *GetClientInstallationStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClientInstallationStatisticResponse) SetBody(v *GetClientInstallationStatisticResponseBody) *GetClientInstallationStatisticResponse {
+	s.Body = v
+	return s
+}
+
 type GetClientRatioStatisticRequest struct {
 	ResourceDirectoryAccountId *int64    `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	StatisticTypes             []*string `json:"StatisticTypes,omitempty" xml:"StatisticTypes,omitempty" type:"Repeated"`
@@ -67327,6 +67561,257 @@ func (s *ListCheckInstanceResultResponse) SetStatusCode(v int32) *ListCheckInsta
 }
 
 func (s *ListCheckInstanceResultResponse) SetBody(v *ListCheckInstanceResultResponseBody) *ListCheckInstanceResultResponse {
+	s.Body = v
+	return s
+}
+
+type ListCheckItemRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListCheckItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckItemRequest) SetCurrentPage(v int32) *ListCheckItemRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCheckItemRequest) SetLang(v string) *ListCheckItemRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ListCheckItemRequest) SetPageSize(v int32) *ListCheckItemRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListCheckItemResponseBody struct {
+	CheckItems []*ListCheckItemResponseBodyCheckItems `json:"CheckItems,omitempty" xml:"CheckItems,omitempty" type:"Repeated"`
+	PageInfo   *ListCheckItemResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCheckItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckItemResponseBody) SetCheckItems(v []*ListCheckItemResponseBodyCheckItems) *ListCheckItemResponseBody {
+	s.CheckItems = v
+	return s
+}
+
+func (s *ListCheckItemResponseBody) SetPageInfo(v *ListCheckItemResponseBodyPageInfo) *ListCheckItemResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListCheckItemResponseBody) SetRequestId(v string) *ListCheckItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCheckItemResponseBodyCheckItems struct {
+	CheckId         *int64                                              `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckShowName   *string                                             `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
+	CustomConfigs   []*ListCheckItemResponseBodyCheckItemsCustomConfigs `json:"CustomConfigs,omitempty" xml:"CustomConfigs,omitempty" type:"Repeated"`
+	Description     *ListCheckItemResponseBodyCheckItemsDescription     `json:"Description,omitempty" xml:"Description,omitempty" type:"Struct"`
+	InstanceSubType *string                                             `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
+	InstanceType    *string                                             `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RiskLevel       *string                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SectionIds      []*int64                                            `json:"SectionIds,omitempty" xml:"SectionIds,omitempty" type:"Repeated"`
+	Vendor          *string                                             `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s ListCheckItemResponseBodyCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckItemResponseBodyCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetCheckId(v int64) *ListCheckItemResponseBodyCheckItems {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetCheckShowName(v string) *ListCheckItemResponseBodyCheckItems {
+	s.CheckShowName = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetCustomConfigs(v []*ListCheckItemResponseBodyCheckItemsCustomConfigs) *ListCheckItemResponseBodyCheckItems {
+	s.CustomConfigs = v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetDescription(v *ListCheckItemResponseBodyCheckItemsDescription) *ListCheckItemResponseBodyCheckItems {
+	s.Description = v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetInstanceSubType(v string) *ListCheckItemResponseBodyCheckItems {
+	s.InstanceSubType = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetInstanceType(v string) *ListCheckItemResponseBodyCheckItems {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetRiskLevel(v string) *ListCheckItemResponseBodyCheckItems {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetSectionIds(v []*int64) *ListCheckItemResponseBodyCheckItems {
+	s.SectionIds = v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItems) SetVendor(v string) *ListCheckItemResponseBodyCheckItems {
+	s.Vendor = &v
+	return s
+}
+
+type ListCheckItemResponseBodyCheckItemsCustomConfigs struct {
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShowName     *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	TypeDefine   *string `json:"TypeDefine,omitempty" xml:"TypeDefine,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListCheckItemResponseBodyCheckItemsCustomConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckItemResponseBodyCheckItemsCustomConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckItemResponseBodyCheckItemsCustomConfigs) SetDefaultValue(v string) *ListCheckItemResponseBodyCheckItemsCustomConfigs {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItemsCustomConfigs) SetName(v string) *ListCheckItemResponseBodyCheckItemsCustomConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItemsCustomConfigs) SetShowName(v string) *ListCheckItemResponseBodyCheckItemsCustomConfigs {
+	s.ShowName = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItemsCustomConfigs) SetTypeDefine(v string) *ListCheckItemResponseBodyCheckItemsCustomConfigs {
+	s.TypeDefine = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItemsCustomConfigs) SetValue(v string) *ListCheckItemResponseBodyCheckItemsCustomConfigs {
+	s.Value = &v
+	return s
+}
+
+type ListCheckItemResponseBodyCheckItemsDescription struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListCheckItemResponseBodyCheckItemsDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckItemResponseBodyCheckItemsDescription) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckItemResponseBodyCheckItemsDescription) SetType(v string) *ListCheckItemResponseBodyCheckItemsDescription {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyCheckItemsDescription) SetValue(v string) *ListCheckItemResponseBodyCheckItemsDescription {
+	s.Value = &v
+	return s
+}
+
+type ListCheckItemResponseBodyPageInfo struct {
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCheckItemResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckItemResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckItemResponseBodyPageInfo) SetCount(v int32) *ListCheckItemResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyPageInfo) SetCurrentPage(v int32) *ListCheckItemResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyPageInfo) SetPageSize(v int32) *ListCheckItemResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckItemResponseBodyPageInfo) SetTotalCount(v int32) *ListCheckItemResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCheckItemResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCheckItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCheckItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckItemResponse) SetHeaders(v map[string]*string) *ListCheckItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCheckItemResponse) SetStatusCode(v int32) *ListCheckItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCheckItemResponse) SetBody(v *ListCheckItemResponseBody) *ListCheckItemResponse {
 	s.Body = v
 	return s
 }
@@ -105760,6 +106245,69 @@ func (client *Client) GetCheckSummary(request *GetCheckSummaryRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * @deprecated : GetClientInstallationStatistic is deprecated, please use Sas::2018-12-03::GetClientRatioStatistic instead.
+ *
+ * @param request GetClientInstallationStatisticRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetClientInstallationStatisticResponse
+ */
+// Deprecated
+func (client *Client) GetClientInstallationStatisticWithOptions(request *GetClientInstallationStatisticRequest, runtime *util.RuntimeOptions) (_result *GetClientInstallationStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TimeEnd)) {
+		query["TimeEnd"] = request.TimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStart)) {
+		query["TimeStart"] = request.TimeStart
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClientInstallationStatistic"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClientInstallationStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated : GetClientInstallationStatistic is deprecated, please use Sas::2018-12-03::GetClientRatioStatistic instead.
+ *
+ * @param request GetClientInstallationStatisticRequest
+ * @return GetClientInstallationStatisticResponse
+ */
+// Deprecated
+func (client *Client) GetClientInstallationStatistic(request *GetClientInstallationStatisticRequest) (_result *GetClientInstallationStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClientInstallationStatisticResponse{}
+	_body, _err := client.GetClientInstallationStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetClientRatioStatisticWithOptions(request *GetClientRatioStatisticRequest, runtime *util.RuntimeOptions) (_result *GetClientRatioStatisticResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108104,6 +108652,58 @@ func (client *Client) ListCheckInstanceResult(request *ListCheckInstanceResultRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCheckInstanceResultResponse{}
 	_body, _err := client.ListCheckInstanceResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCheckItemWithOptions(request *ListCheckItemRequest, runtime *util.RuntimeOptions) (_result *ListCheckItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCheckItem"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCheckItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCheckItem(request *ListCheckItemRequest) (_result *ListCheckItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCheckItemResponse{}
+	_body, _err := client.ListCheckItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
