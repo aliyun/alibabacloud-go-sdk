@@ -12,6 +12,534 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelOrderRequest struct {
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	TradeId   *string `json:"TradeId,omitempty" xml:"TradeId,omitempty"`
+}
+
+func (s CancelOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderRequest) SetChannelId(v string) *CancelOrderRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *CancelOrderRequest) SetTradeId(v string) *CancelOrderRequest {
+	s.TradeId = &v
+	return s
+}
+
+type CancelOrderResponseBody struct {
+	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                        `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Ext       map[string]interface{}         `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Header    *CancelOrderResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Result    *CancelOrderResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderResponseBody) SetErrorCode(v string) *CancelOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CancelOrderResponseBody) SetErrorMsg(v string) *CancelOrderResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CancelOrderResponseBody) SetExt(v map[string]interface{}) *CancelOrderResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *CancelOrderResponseBody) SetHeader(v *CancelOrderResponseBodyHeader) *CancelOrderResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *CancelOrderResponseBody) SetResult(v *CancelOrderResponseBodyResult) *CancelOrderResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CancelOrderResponseBody) SetSuccess(v bool) *CancelOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelOrderResponseBodyHeader struct {
+	CostTime       *int64  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	InnerErrorCode *string `json:"InnerErrorCode,omitempty" xml:"InnerErrorCode,omitempty"`
+	InnerErrorMsg  *string `json:"InnerErrorMsg,omitempty" xml:"InnerErrorMsg,omitempty"`
+	// RPC ID
+	RpcId   *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CancelOrderResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderResponseBodyHeader) SetCostTime(v int64) *CancelOrderResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *CancelOrderResponseBodyHeader) SetInnerErrorCode(v string) *CancelOrderResponseBodyHeader {
+	s.InnerErrorCode = &v
+	return s
+}
+
+func (s *CancelOrderResponseBodyHeader) SetInnerErrorMsg(v string) *CancelOrderResponseBodyHeader {
+	s.InnerErrorMsg = &v
+	return s
+}
+
+func (s *CancelOrderResponseBodyHeader) SetRpcId(v string) *CancelOrderResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *CancelOrderResponseBodyHeader) SetTraceId(v string) *CancelOrderResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *CancelOrderResponseBodyHeader) SetVersion(v string) *CancelOrderResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type CancelOrderResponseBodyResult struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelOrderResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderResponseBodyResult) SetRequestId(v string) *CancelOrderResponseBodyResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelOrderResponseBodyResult) SetSuccess(v bool) *CancelOrderResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type CancelOrderResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderResponse) SetHeaders(v map[string]*string) *CancelOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelOrderResponse) SetStatusCode(v int32) *CancelOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelOrderResponse) SetBody(v *CancelOrderResponseBody) *CancelOrderResponse {
+	s.Body = v
+	return s
+}
+
+type ConfirmSampleReceivedRequest struct {
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	TradeId   *string `json:"TradeId,omitempty" xml:"TradeId,omitempty"`
+}
+
+func (s ConfirmSampleReceivedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleReceivedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleReceivedRequest) SetChannelId(v string) *ConfirmSampleReceivedRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedRequest) SetTradeId(v string) *ConfirmSampleReceivedRequest {
+	s.TradeId = &v
+	return s
+}
+
+type ConfirmSampleReceivedResponseBody struct {
+	ErrorCode *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                  `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Ext       map[string]interface{}                   `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Header    *ConfirmSampleReceivedResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Result    *ConfirmSampleReceivedResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfirmSampleReceivedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleReceivedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleReceivedResponseBody) SetErrorCode(v string) *ConfirmSampleReceivedResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBody) SetErrorMsg(v string) *ConfirmSampleReceivedResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBody) SetExt(v map[string]interface{}) *ConfirmSampleReceivedResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBody) SetHeader(v *ConfirmSampleReceivedResponseBodyHeader) *ConfirmSampleReceivedResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBody) SetResult(v *ConfirmSampleReceivedResponseBodyResult) *ConfirmSampleReceivedResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBody) SetSuccess(v bool) *ConfirmSampleReceivedResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConfirmSampleReceivedResponseBodyHeader struct {
+	CostTime       *int64  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	InnerErrorCode *string `json:"InnerErrorCode,omitempty" xml:"InnerErrorCode,omitempty"`
+	InnerErrorMsg  *string `json:"InnerErrorMsg,omitempty" xml:"InnerErrorMsg,omitempty"`
+	// RPC ID
+	RpcId   *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ConfirmSampleReceivedResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleReceivedResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleReceivedResponseBodyHeader) SetCostTime(v int64) *ConfirmSampleReceivedResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBodyHeader) SetInnerErrorCode(v string) *ConfirmSampleReceivedResponseBodyHeader {
+	s.InnerErrorCode = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBodyHeader) SetInnerErrorMsg(v string) *ConfirmSampleReceivedResponseBodyHeader {
+	s.InnerErrorMsg = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBodyHeader) SetRpcId(v string) *ConfirmSampleReceivedResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBodyHeader) SetTraceId(v string) *ConfirmSampleReceivedResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBodyHeader) SetVersion(v string) *ConfirmSampleReceivedResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type ConfirmSampleReceivedResponseBodyResult struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfirmSampleReceivedResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleReceivedResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleReceivedResponseBodyResult) SetRequestId(v string) *ConfirmSampleReceivedResponseBodyResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponseBodyResult) SetSuccess(v bool) *ConfirmSampleReceivedResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type ConfirmSampleReceivedResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConfirmSampleReceivedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConfirmSampleReceivedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleReceivedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleReceivedResponse) SetHeaders(v map[string]*string) *ConfirmSampleReceivedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponse) SetStatusCode(v int32) *ConfirmSampleReceivedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfirmSampleReceivedResponse) SetBody(v *ConfirmSampleReceivedResponseBody) *ConfirmSampleReceivedResponse {
+	s.Body = v
+	return s
+}
+
+type ConfirmSampleShippedRequest struct {
+	BuyerAddress     *string `json:"BuyerAddress,omitempty" xml:"BuyerAddress,omitempty"`
+	BuyerName        *string `json:"BuyerName,omitempty" xml:"BuyerName,omitempty"`
+	BuyerPhoneNumber *string `json:"BuyerPhoneNumber,omitempty" xml:"BuyerPhoneNumber,omitempty"`
+	ChannelId        *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	TradeId          *string `json:"TradeId,omitempty" xml:"TradeId,omitempty"`
+}
+
+func (s ConfirmSampleShippedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleShippedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleShippedRequest) SetBuyerAddress(v string) *ConfirmSampleShippedRequest {
+	s.BuyerAddress = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedRequest) SetBuyerName(v string) *ConfirmSampleShippedRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedRequest) SetBuyerPhoneNumber(v string) *ConfirmSampleShippedRequest {
+	s.BuyerPhoneNumber = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedRequest) SetChannelId(v string) *ConfirmSampleShippedRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedRequest) SetTradeId(v string) *ConfirmSampleShippedRequest {
+	s.TradeId = &v
+	return s
+}
+
+type ConfirmSampleShippedResponseBody struct {
+	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Ext       map[string]interface{}                  `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Header    *ConfirmSampleShippedResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Result    *ConfirmSampleShippedResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfirmSampleShippedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleShippedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleShippedResponseBody) SetErrorCode(v string) *ConfirmSampleShippedResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBody) SetErrorMsg(v string) *ConfirmSampleShippedResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBody) SetExt(v map[string]interface{}) *ConfirmSampleShippedResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBody) SetHeader(v *ConfirmSampleShippedResponseBodyHeader) *ConfirmSampleShippedResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBody) SetResult(v *ConfirmSampleShippedResponseBodyResult) *ConfirmSampleShippedResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBody) SetSuccess(v bool) *ConfirmSampleShippedResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConfirmSampleShippedResponseBodyHeader struct {
+	CostTime       *int64  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	InnerErrorCode *string `json:"InnerErrorCode,omitempty" xml:"InnerErrorCode,omitempty"`
+	InnerErrorMsg  *string `json:"InnerErrorMsg,omitempty" xml:"InnerErrorMsg,omitempty"`
+	// RPC ID
+	RpcId   *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ConfirmSampleShippedResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleShippedResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleShippedResponseBodyHeader) SetCostTime(v int64) *ConfirmSampleShippedResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBodyHeader) SetInnerErrorCode(v string) *ConfirmSampleShippedResponseBodyHeader {
+	s.InnerErrorCode = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBodyHeader) SetInnerErrorMsg(v string) *ConfirmSampleShippedResponseBodyHeader {
+	s.InnerErrorMsg = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBodyHeader) SetRpcId(v string) *ConfirmSampleShippedResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBodyHeader) SetTraceId(v string) *ConfirmSampleShippedResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBodyHeader) SetVersion(v string) *ConfirmSampleShippedResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type ConfirmSampleShippedResponseBodyResult struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfirmSampleShippedResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleShippedResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleShippedResponseBodyResult) SetRequestId(v string) *ConfirmSampleShippedResponseBodyResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponseBodyResult) SetSuccess(v bool) *ConfirmSampleShippedResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type ConfirmSampleShippedResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConfirmSampleShippedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConfirmSampleShippedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmSampleShippedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmSampleShippedResponse) SetHeaders(v map[string]*string) *ConfirmSampleShippedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponse) SetStatusCode(v int32) *ConfirmSampleShippedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfirmSampleShippedResponse) SetBody(v *ConfirmSampleShippedResponseBody) *ConfirmSampleShippedResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDeviceRequest struct {
 	ChannelId         *string                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	City              *string                `json:"City,omitempty" xml:"City,omitempty"`
@@ -2501,6 +3029,558 @@ func (s *ListAdvertisingResponse) SetBody(v *ListAdvertisingResponseBody) *ListA
 	return s
 }
 
+type ListSpecificAdRequest struct {
+	// app
+	App *ListSpecificAdRequestApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	Ext map[string]interface{}    `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// imp
+	Imp []*ListSpecificAdRequestImp `json:"Imp,omitempty" xml:"Imp,omitempty" type:"Repeated"`
+	// user
+	User     *ListSpecificAdRequestUser       `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	Verifyad []*ListSpecificAdRequestVerifyad `json:"Verifyad,omitempty" xml:"Verifyad,omitempty" type:"Repeated"`
+}
+
+func (s ListSpecificAdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdRequest) SetApp(v *ListSpecificAdRequestApp) *ListSpecificAdRequest {
+	s.App = v
+	return s
+}
+
+func (s *ListSpecificAdRequest) SetExt(v map[string]interface{}) *ListSpecificAdRequest {
+	s.Ext = v
+	return s
+}
+
+func (s *ListSpecificAdRequest) SetId(v string) *ListSpecificAdRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecificAdRequest) SetImp(v []*ListSpecificAdRequestImp) *ListSpecificAdRequest {
+	s.Imp = v
+	return s
+}
+
+func (s *ListSpecificAdRequest) SetUser(v *ListSpecificAdRequestUser) *ListSpecificAdRequest {
+	s.User = v
+	return s
+}
+
+func (s *ListSpecificAdRequest) SetVerifyad(v []*ListSpecificAdRequestVerifyad) *ListSpecificAdRequest {
+	s.Verifyad = v
+	return s
+}
+
+type ListSpecificAdRequestApp struct {
+	// ext
+	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// mediaid
+	Mediaid *string `json:"Mediaid,omitempty" xml:"Mediaid,omitempty"`
+	// sn
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s ListSpecificAdRequestApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdRequestApp) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdRequestApp) SetExt(v map[string]interface{}) *ListSpecificAdRequestApp {
+	s.Ext = v
+	return s
+}
+
+func (s *ListSpecificAdRequestApp) SetMediaid(v string) *ListSpecificAdRequestApp {
+	s.Mediaid = &v
+	return s
+}
+
+func (s *ListSpecificAdRequestApp) SetSn(v string) *ListSpecificAdRequestApp {
+	s.Sn = &v
+	return s
+}
+
+type ListSpecificAdRequestImp struct {
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// tagid
+	Tagid *string `json:"Tagid,omitempty" xml:"Tagid,omitempty"`
+}
+
+func (s ListSpecificAdRequestImp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdRequestImp) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdRequestImp) SetId(v string) *ListSpecificAdRequestImp {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecificAdRequestImp) SetTagid(v string) *ListSpecificAdRequestImp {
+	s.Tagid = &v
+	return s
+}
+
+type ListSpecificAdRequestUser struct {
+	// uid
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// uidtype
+	Usertype *string `json:"Usertype,omitempty" xml:"Usertype,omitempty"`
+}
+
+func (s ListSpecificAdRequestUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdRequestUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdRequestUser) SetId(v string) *ListSpecificAdRequestUser {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecificAdRequestUser) SetUsertype(v string) *ListSpecificAdRequestUser {
+	s.Usertype = &v
+	return s
+}
+
+type ListSpecificAdRequestVerifyad struct {
+	// id
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Itemid        *string `json:"Itemid,omitempty" xml:"Itemid,omitempty"`
+	Marketingtype *string `json:"Marketingtype,omitempty" xml:"Marketingtype,omitempty"`
+	Seat          *string `json:"Seat,omitempty" xml:"Seat,omitempty"`
+}
+
+func (s ListSpecificAdRequestVerifyad) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdRequestVerifyad) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdRequestVerifyad) SetId(v string) *ListSpecificAdRequestVerifyad {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecificAdRequestVerifyad) SetItemid(v string) *ListSpecificAdRequestVerifyad {
+	s.Itemid = &v
+	return s
+}
+
+func (s *ListSpecificAdRequestVerifyad) SetMarketingtype(v string) *ListSpecificAdRequestVerifyad {
+	s.Marketingtype = &v
+	return s
+}
+
+func (s *ListSpecificAdRequestVerifyad) SetSeat(v string) *ListSpecificAdRequestVerifyad {
+	s.Seat = &v
+	return s
+}
+
+type ListSpecificAdShrinkRequest struct {
+	// app
+	AppShrink *string `json:"App,omitempty" xml:"App,omitempty"`
+	ExtShrink *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// imp
+	ImpShrink *string `json:"Imp,omitempty" xml:"Imp,omitempty"`
+	// user
+	UserShrink     *string `json:"User,omitempty" xml:"User,omitempty"`
+	VerifyadShrink *string `json:"Verifyad,omitempty" xml:"Verifyad,omitempty"`
+}
+
+func (s ListSpecificAdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdShrinkRequest) SetAppShrink(v string) *ListSpecificAdShrinkRequest {
+	s.AppShrink = &v
+	return s
+}
+
+func (s *ListSpecificAdShrinkRequest) SetExtShrink(v string) *ListSpecificAdShrinkRequest {
+	s.ExtShrink = &v
+	return s
+}
+
+func (s *ListSpecificAdShrinkRequest) SetId(v string) *ListSpecificAdShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecificAdShrinkRequest) SetImpShrink(v string) *ListSpecificAdShrinkRequest {
+	s.ImpShrink = &v
+	return s
+}
+
+func (s *ListSpecificAdShrinkRequest) SetUserShrink(v string) *ListSpecificAdShrinkRequest {
+	s.UserShrink = &v
+	return s
+}
+
+func (s *ListSpecificAdShrinkRequest) SetVerifyadShrink(v string) *ListSpecificAdShrinkRequest {
+	s.VerifyadShrink = &v
+	return s
+}
+
+type ListSpecificAdResponseBody struct {
+	// errorCode
+	Errorcode *string `json:"Errorcode,omitempty" xml:"Errorcode,omitempty"`
+	// errorMsg
+	Errormsg *string `json:"Errormsg,omitempty" xml:"Errormsg,omitempty"`
+	// ext
+	Ext map[string]*string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// header
+	Header    *ListSpecificAdResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListSpecificAdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListSpecificAdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBody) SetErrorcode(v string) *ListSpecificAdResponseBody {
+	s.Errorcode = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBody) SetErrormsg(v string) *ListSpecificAdResponseBody {
+	s.Errormsg = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBody) SetExt(v map[string]*string) *ListSpecificAdResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *ListSpecificAdResponseBody) SetHeader(v *ListSpecificAdResponseBodyHeader) *ListSpecificAdResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *ListSpecificAdResponseBody) SetRequestId(v string) *ListSpecificAdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBody) SetResult(v *ListSpecificAdResponseBodyResult) *ListSpecificAdResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListSpecificAdResponseBody) SetSuccess(v bool) *ListSpecificAdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSpecificAdResponseBodyHeader struct {
+	// costTime
+	CostTime *int64 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// rpcId
+	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	// traceId
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// version
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListSpecificAdResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBodyHeader) SetCostTime(v int64) *ListSpecificAdResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyHeader) SetRpcId(v string) *ListSpecificAdResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyHeader) SetTraceId(v string) *ListSpecificAdResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyHeader) SetVersion(v string) *ListSpecificAdResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type ListSpecificAdResponseBodyResult struct {
+	Bidid *string `json:"Bidid,omitempty" xml:"Bidid,omitempty"`
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// seat
+	Seatbid []*ListSpecificAdResponseBodyResultSeatbid `json:"Seatbid,omitempty" xml:"Seatbid,omitempty" type:"Repeated"`
+}
+
+func (s ListSpecificAdResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBodyResult) SetBidid(v string) *ListSpecificAdResponseBodyResult {
+	s.Bidid = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResult) SetId(v string) *ListSpecificAdResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResult) SetSeatbid(v []*ListSpecificAdResponseBodyResultSeatbid) *ListSpecificAdResponseBodyResult {
+	s.Seatbid = v
+	return s
+}
+
+type ListSpecificAdResponseBodyResultSeatbid struct {
+	// Bid
+	Bid []*ListSpecificAdResponseBodyResultSeatbidBid `json:"Bid,omitempty" xml:"Bid,omitempty" type:"Repeated"`
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbid) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbid) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbid) SetBid(v []*ListSpecificAdResponseBodyResultSeatbidBid) *ListSpecificAdResponseBodyResultSeatbid {
+	s.Bid = v
+	return s
+}
+
+type ListSpecificAdResponseBodyResultSeatbidBid struct {
+	// ad
+	Ads []*ListSpecificAdResponseBodyResultSeatbidBidAds `json:"Ads,omitempty" xml:"Ads,omitempty" type:"Repeated"`
+	// impId
+	Impid *string `json:"Impid,omitempty" xml:"Impid,omitempty"`
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBid) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBid) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBid) SetAds(v []*ListSpecificAdResponseBodyResultSeatbidBidAds) *ListSpecificAdResponseBodyResultSeatbidBid {
+	s.Ads = v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBid) SetImpid(v string) *ListSpecificAdResponseBodyResultSeatbidBid {
+	s.Impid = &v
+	return s
+}
+
+type ListSpecificAdResponseBodyResultSeatbidBidAds struct {
+	// crid
+	Crid  *string                                            `json:"Crid,omitempty" xml:"Crid,omitempty"`
+	Crurl *string                                            `json:"Crurl,omitempty" xml:"Crurl,omitempty"`
+	Icon  *ListSpecificAdResponseBodyResultSeatbidBidAdsIcon `json:"Icon,omitempty" xml:"Icon,omitempty" type:"Struct"`
+	Id    *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Interacttype
+	Interacttype  *int32    `json:"Interacttype,omitempty" xml:"Interacttype,omitempty"`
+	Itemid        *string   `json:"Itemid,omitempty" xml:"Itemid,omitempty"`
+	Labeltype     *string   `json:"Labeltype,omitempty" xml:"Labeltype,omitempty"`
+	Landingurls   []*string `json:"Landingurls,omitempty" xml:"Landingurls,omitempty" type:"Repeated"`
+	Marketingtype *string   `json:"Marketingtype,omitempty" xml:"Marketingtype,omitempty"`
+	Objective     *string   `json:"Objective,omitempty" xml:"Objective,omitempty"`
+	Price         *string   `json:"Price,omitempty" xml:"Price,omitempty"`
+	// seat
+	Seat     *string                                                `json:"Seat,omitempty" xml:"Seat,omitempty"`
+	Title    *string                                                `json:"Title,omitempty" xml:"Title,omitempty"`
+	Trackers *ListSpecificAdResponseBodyResultSeatbidBidAdsTrackers `json:"Trackers,omitempty" xml:"Trackers,omitempty" type:"Struct"`
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBidAds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBidAds) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetCrid(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Crid = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetCrurl(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Crurl = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetIcon(v *ListSpecificAdResponseBodyResultSeatbidBidAdsIcon) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Icon = v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetId(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetInteracttype(v int32) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Interacttype = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetItemid(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Itemid = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetLabeltype(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Labeltype = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetLandingurls(v []*string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Landingurls = v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetMarketingtype(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Marketingtype = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetObjective(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Objective = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetPrice(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Price = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetSeat(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Seat = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetTitle(v string) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Title = &v
+	return s
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAds) SetTrackers(v *ListSpecificAdResponseBodyResultSeatbidBidAdsTrackers) *ListSpecificAdResponseBodyResultSeatbidBidAds {
+	s.Trackers = v
+	return s
+}
+
+type ListSpecificAdResponseBodyResultSeatbidBidAdsIcon struct {
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBidAdsIcon) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBidAdsIcon) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAdsIcon) SetUrl(v string) *ListSpecificAdResponseBodyResultSeatbidBidAdsIcon {
+	s.Url = &v
+	return s
+}
+
+type ListSpecificAdResponseBodyResultSeatbidBidAdsTrackers struct {
+	Imps []*string `json:"Imps,omitempty" xml:"Imps,omitempty" type:"Repeated"`
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBidAdsTrackers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponseBodyResultSeatbidBidAdsTrackers) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponseBodyResultSeatbidBidAdsTrackers) SetImps(v []*string) *ListSpecificAdResponseBodyResultSeatbidBidAdsTrackers {
+	s.Imps = v
+	return s
+}
+
+type ListSpecificAdResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSpecificAdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSpecificAdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecificAdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecificAdResponse) SetHeaders(v map[string]*string) *ListSpecificAdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSpecificAdResponse) SetStatusCode(v int32) *ListSpecificAdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSpecificAdResponse) SetBody(v *ListSpecificAdResponseBody) *ListSpecificAdResponse {
+	s.Body = v
+	return s
+}
+
 type QueryAuditResultRequest struct {
 	DspId *string   `json:"DspId,omitempty" xml:"DspId,omitempty"`
 	Ids   []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
@@ -2619,6 +3699,230 @@ func (s *QueryAuditResultResponse) SetStatusCode(v int32) *QueryAuditResultRespo
 }
 
 func (s *QueryAuditResultResponse) SetBody(v *QueryAuditResultResponseBody) *QueryAuditResultResponse {
+	s.Body = v
+	return s
+}
+
+type QueryOrderRequest struct {
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelTradeId *string `json:"ChannelTradeId,omitempty" xml:"ChannelTradeId,omitempty"`
+	TradeId        *string `json:"TradeId,omitempty" xml:"TradeId,omitempty"`
+}
+
+func (s QueryOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderRequest) SetChannelId(v string) *QueryOrderRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *QueryOrderRequest) SetChannelTradeId(v string) *QueryOrderRequest {
+	s.ChannelTradeId = &v
+	return s
+}
+
+func (s *QueryOrderRequest) SetTradeId(v string) *QueryOrderRequest {
+	s.TradeId = &v
+	return s
+}
+
+type QueryOrderResponseBody struct {
+	ErrorCode *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Ext       map[string]interface{}        `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Header    *QueryOrderResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Result    *QueryOrderResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderResponseBody) SetErrorCode(v string) *QueryOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryOrderResponseBody) SetErrorMsg(v string) *QueryOrderResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryOrderResponseBody) SetExt(v map[string]interface{}) *QueryOrderResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *QueryOrderResponseBody) SetHeader(v *QueryOrderResponseBodyHeader) *QueryOrderResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *QueryOrderResponseBody) SetResult(v *QueryOrderResponseBodyResult) *QueryOrderResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryOrderResponseBody) SetSuccess(v bool) *QueryOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryOrderResponseBodyHeader struct {
+	CostTime       *int64  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	InnerErrorCode *string `json:"InnerErrorCode,omitempty" xml:"InnerErrorCode,omitempty"`
+	InnerErrorMsg  *string `json:"InnerErrorMsg,omitempty" xml:"InnerErrorMsg,omitempty"`
+	// RPC ID
+	RpcId   *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s QueryOrderResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderResponseBodyHeader) SetCostTime(v int64) *QueryOrderResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyHeader) SetInnerErrorCode(v string) *QueryOrderResponseBodyHeader {
+	s.InnerErrorCode = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyHeader) SetInnerErrorMsg(v string) *QueryOrderResponseBodyHeader {
+	s.InnerErrorMsg = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyHeader) SetRpcId(v string) *QueryOrderResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyHeader) SetTraceId(v string) *QueryOrderResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyHeader) SetVersion(v string) *QueryOrderResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type QueryOrderResponseBodyResult struct {
+	AlipayTradeId  *string `json:"AlipayTradeId,omitempty" xml:"AlipayTradeId,omitempty"`
+	ChannelTradeId *string `json:"ChannelTradeId,omitempty" xml:"ChannelTradeId,omitempty"`
+	ItemId         *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ModifiedTime   *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	OrderStatus    *int32  `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	Price          *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaobaoTradeId  *string `json:"TaobaoTradeId,omitempty" xml:"TaobaoTradeId,omitempty"`
+	TradeId        *string `json:"TradeId,omitempty" xml:"TradeId,omitempty"`
+}
+
+func (s QueryOrderResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderResponseBodyResult) SetAlipayTradeId(v string) *QueryOrderResponseBodyResult {
+	s.AlipayTradeId = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetChannelTradeId(v string) *QueryOrderResponseBodyResult {
+	s.ChannelTradeId = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetItemId(v int64) *QueryOrderResponseBodyResult {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetModifiedTime(v int64) *QueryOrderResponseBodyResult {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetOrderStatus(v int32) *QueryOrderResponseBodyResult {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetPrice(v int64) *QueryOrderResponseBodyResult {
+	s.Price = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetRequestId(v string) *QueryOrderResponseBodyResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetSuccess(v bool) *QueryOrderResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetTaobaoTradeId(v string) *QueryOrderResponseBodyResult {
+	s.TaobaoTradeId = &v
+	return s
+}
+
+func (s *QueryOrderResponseBodyResult) SetTradeId(v string) *QueryOrderResponseBodyResult {
+	s.TradeId = &v
+	return s
+}
+
+type QueryOrderResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderResponse) SetHeaders(v map[string]*string) *QueryOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrderResponse) SetStatusCode(v int32) *QueryOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrderResponse) SetBody(v *QueryOrderResponseBody) *QueryOrderResponse {
 	s.Body = v
 	return s
 }
@@ -2786,6 +4090,180 @@ func (s *ReportImpressionResponse) SetStatusCode(v int32) *ReportImpressionRespo
 }
 
 func (s *ReportImpressionResponse) SetBody(v *ReportImpressionResponseBody) *ReportImpressionResponse {
+	s.Body = v
+	return s
+}
+
+type ReportTranslateRequest struct {
+	Impressionlink *string `json:"Impressionlink,omitempty" xml:"Impressionlink,omitempty"`
+}
+
+func (s ReportTranslateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportTranslateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReportTranslateRequest) SetImpressionlink(v string) *ReportTranslateRequest {
+	s.Impressionlink = &v
+	return s
+}
+
+type ReportTranslateResponseBody struct {
+	// errorCode
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// errorMsg
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// header
+	Header    *ReportTranslateResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ReportTranslateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReportTranslateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportTranslateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReportTranslateResponseBody) SetErrorCode(v string) *ReportTranslateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBody) SetErrorMsg(v string) *ReportTranslateResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBody) SetHeader(v *ReportTranslateResponseBodyHeader) *ReportTranslateResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *ReportTranslateResponseBody) SetRequestId(v string) *ReportTranslateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBody) SetResult(v *ReportTranslateResponseBodyResult) *ReportTranslateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ReportTranslateResponseBody) SetSuccess(v bool) *ReportTranslateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReportTranslateResponseBodyHeader struct {
+	// costTime
+	CostTime *int64 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// innerErrorCode
+	InnerErrorCode *string `json:"InnerErrorCode,omitempty" xml:"InnerErrorCode,omitempty"`
+	// innerErrorMsg
+	InnerErrorMsg *string `json:"InnerErrorMsg,omitempty" xml:"InnerErrorMsg,omitempty"`
+	// rpcId
+	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	// traceId
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// version
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ReportTranslateResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportTranslateResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *ReportTranslateResponseBodyHeader) SetCostTime(v int64) *ReportTranslateResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBodyHeader) SetInnerErrorCode(v string) *ReportTranslateResponseBodyHeader {
+	s.InnerErrorCode = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBodyHeader) SetInnerErrorMsg(v string) *ReportTranslateResponseBodyHeader {
+	s.InnerErrorMsg = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBodyHeader) SetRpcId(v string) *ReportTranslateResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBodyHeader) SetTraceId(v string) *ReportTranslateResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBodyHeader) SetVersion(v string) *ReportTranslateResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type ReportTranslateResponseBodyResult struct {
+	Bidid *string `json:"Bidid,omitempty" xml:"Bidid,omitempty"`
+	// success
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReportTranslateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportTranslateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ReportTranslateResponseBodyResult) SetBidid(v string) *ReportTranslateResponseBodyResult {
+	s.Bidid = &v
+	return s
+}
+
+func (s *ReportTranslateResponseBodyResult) SetSuccess(v string) *ReportTranslateResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type ReportTranslateResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReportTranslateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportTranslateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReportTranslateResponse) SetHeaders(v map[string]*string) *ReportTranslateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReportTranslateResponse) SetStatusCode(v int32) *ReportTranslateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReportTranslateResponse) SetBody(v *ReportTranslateResponseBody) *ReportTranslateResponse {
 	s.Body = v
 	return s
 }
@@ -4273,6 +5751,162 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtime *util.RuntimeOptions) (_result *CancelOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TradeId)) {
+		body["TradeId"] = request.TradeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelOrder"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelOrder(request *CancelOrderRequest) (_result *CancelOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelOrderResponse{}
+	_body, _err := client.CancelOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ConfirmSampleReceivedWithOptions(request *ConfirmSampleReceivedRequest, runtime *util.RuntimeOptions) (_result *ConfirmSampleReceivedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TradeId)) {
+		body["TradeId"] = request.TradeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmSampleReceived"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfirmSampleReceivedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConfirmSampleReceived(request *ConfirmSampleReceivedRequest) (_result *ConfirmSampleReceivedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfirmSampleReceivedResponse{}
+	_body, _err := client.ConfirmSampleReceivedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ConfirmSampleShippedWithOptions(request *ConfirmSampleShippedRequest, runtime *util.RuntimeOptions) (_result *ConfirmSampleShippedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BuyerAddress)) {
+		body["BuyerAddress"] = request.BuyerAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		body["BuyerName"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerPhoneNumber)) {
+		body["BuyerPhoneNumber"] = request.BuyerPhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TradeId)) {
+		body["TradeId"] = request.TradeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmSampleShipped"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfirmSampleShippedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConfirmSampleShipped(request *ConfirmSampleShippedRequest) (_result *ConfirmSampleShippedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfirmSampleShippedResponse{}
+	_body, _err := client.ConfirmSampleShippedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDeviceWithOptions(tmpReq *CreateDeviceRequest, runtime *util.RuntimeOptions) (_result *CreateDeviceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4913,6 +6547,92 @@ func (client *Client) ListAdvertising(request *ListAdvertisingRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ListSpecificAdWithOptions(tmpReq *ListSpecificAdRequest, runtime *util.RuntimeOptions) (_result *ListSpecificAdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListSpecificAdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.App)) {
+		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ext)) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, tea.String("Ext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Imp)) {
+		request.ImpShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Imp, tea.String("Imp"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.User)) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.User, tea.String("User"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Verifyad)) {
+		request.VerifyadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Verifyad, tea.String("Verifyad"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
+		query["App"] = request.AppShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtShrink)) {
+		query["Ext"] = request.ExtShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImpShrink)) {
+		query["Imp"] = request.ImpShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserShrink)) {
+		query["User"] = request.UserShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyadShrink)) {
+		query["Verifyad"] = request.VerifyadShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSpecificAd"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSpecificAdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSpecificAd(request *ListSpecificAdRequest) (_result *ListSpecificAdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSpecificAdResponse{}
+	_body, _err := client.ListSpecificAdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryAuditResultWithOptions(request *QueryAuditResultRequest, runtime *util.RuntimeOptions) (_result *QueryAuditResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4961,6 +6681,58 @@ func (client *Client) QueryAuditResult(request *QueryAuditResultRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) QueryOrderWithOptions(request *QueryOrderRequest, runtime *util.RuntimeOptions) (_result *QueryOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelTradeId)) {
+		body["ChannelTradeId"] = request.ChannelTradeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TradeId)) {
+		body["TradeId"] = request.TradeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrder"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrder(request *QueryOrderRequest) (_result *QueryOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOrderResponse{}
+	_body, _err := client.QueryOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReportImpressionWithOptions(request *ReportImpressionRequest, runtime *util.RuntimeOptions) (_result *ReportImpressionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4998,6 +6770,46 @@ func (client *Client) ReportImpression(request *ReportImpressionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ReportImpressionResponse{}
 	_body, _err := client.ReportImpressionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReportTranslateWithOptions(request *ReportTranslateRequest, runtime *util.RuntimeOptions) (_result *ReportTranslateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReportTranslate"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReportTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReportTranslate(request *ReportTranslateRequest) (_result *ReportTranslateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReportTranslateResponse{}
+	_body, _err := client.ReportTranslateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
