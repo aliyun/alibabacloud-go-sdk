@@ -12,6 +12,3042 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ModuleFlightItemListBestPriceItemFlightRuleInfosValue struct {
+	RefundChangeRuleDesc *string `json:"refund_change_rule_desc,omitempty" xml:"refund_change_rule_desc,omitempty"`
+	BaggageDesc          *string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemFlightRuleInfosValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemFlightRuleInfosValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemFlightRuleInfosValue) SetRefundChangeRuleDesc(v string) *ModuleFlightItemListBestPriceItemFlightRuleInfosValue {
+	s.RefundChangeRuleDesc = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemFlightRuleInfosValue) SetBaggageDesc(v string) *ModuleFlightItemListBestPriceItemFlightRuleInfosValue {
+	s.BaggageDesc = &v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemShoppingItemMapValue struct {
+	// id
+	Id            *string                                                                             `json:"id,omitempty" xml:"id,omitempty"`
+	CabinQuantity map[string]*ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
+	SearchPrice   *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice                   `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	SegmentPrice  map[string]*ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue  `json:"segment_price,omitempty" xml:"segment_price,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValue) SetId(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValue {
+	s.Id = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValue) SetCabinQuantity(v map[string]*ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) *ModuleFlightItemListBestPriceItemShoppingItemMapValue {
+	s.CabinQuantity = v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValue) SetSearchPrice(v *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) *ModuleFlightItemListBestPriceItemShoppingItemMapValue {
+	s.SearchPrice = v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValue) SetSegmentPrice(v map[string]*ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) *ModuleFlightItemListBestPriceItemShoppingItemMapValue {
+	s.SegmentPrice = v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                         `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                         `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                         `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                         `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                         `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                       `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                         `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                         `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                         `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetFloorPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetTicketPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetSellPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetOriginalSellPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetBaseTotalPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetBeforeControlPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetTax(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetSupplyPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetBasicCabinPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetBuildPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetOilPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetFirstStandardPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetBusinessStandardPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetCommonStandardPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetInterTicketPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetSubtractedPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetOriginCommonPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetInstallmentNum(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetInstallmentPrice(v float64) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice) SetPriceShowInfo(v *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPrice {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSearchPricePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemSubItemPositionMapValue struct {
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemPositionMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemPositionMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemPositionMapValue) SetJourneyIndex(v int32) *ModuleFlightItemListBestPriceItemSubItemPositionMapValue {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemPositionMapValue) SetSegmentIndex(v int32) *ModuleFlightItemListBestPriceItemSubItemPositionMapValue {
+	s.SegmentIndex = &v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue struct {
+	// id
+	Id            *string                                                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	CabinQuantity map[string]*ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
+	SearchPrice   *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice                   `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	SegmentPrice  map[string]*ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue  `json:"segment_price,omitempty" xml:"segment_price,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue) SetId(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue {
+	s.Id = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue) SetCabinQuantity(v map[string]*ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue {
+	s.CabinQuantity = v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue) SetSearchPrice(v *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue {
+	s.SearchPrice = v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue) SetSegmentPrice(v map[string]*ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue {
+	s.SegmentPrice = v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                                 `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                                 `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                                 `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                                 `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                                 `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                               `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                                 `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                                 `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                                 `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetFloorPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetTicketPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetSellPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetOriginalSellPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetBaseTotalPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetBeforeControlPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetTax(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetSupplyPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetBasicCabinPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetBuildPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetOilPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetFirstStandardPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetBusinessStandardPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetCommonStandardPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetInterTicketPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetSubtractedPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetOriginCommonPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetInstallmentNum(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetInstallmentPrice(v float64) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice) SetPriceShowInfo(v *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPrice {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleFlightItemListItemListFlightRuleInfosValue struct {
+	RefundChangeRuleDesc *string `json:"refund_change_rule_desc,omitempty" xml:"refund_change_rule_desc,omitempty"`
+	BaggageDesc          *string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListFlightRuleInfosValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListFlightRuleInfosValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListFlightRuleInfosValue) SetRefundChangeRuleDesc(v string) *ModuleFlightItemListItemListFlightRuleInfosValue {
+	s.RefundChangeRuleDesc = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListFlightRuleInfosValue) SetBaggageDesc(v string) *ModuleFlightItemListItemListFlightRuleInfosValue {
+	s.BaggageDesc = &v
+	return s
+}
+
+type ModuleFlightItemListItemListShoppingItemMapValue struct {
+	// id
+	Id            *string                                                                        `json:"id,omitempty" xml:"id,omitempty"`
+	CabinQuantity map[string]*ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
+	SearchPrice   *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice                   `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	SegmentPrice  map[string]*ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue  `json:"segment_price,omitempty" xml:"segment_price,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValue) SetId(v string) *ModuleFlightItemListItemListShoppingItemMapValue {
+	s.Id = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValue) SetCabinQuantity(v map[string]*ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) *ModuleFlightItemListItemListShoppingItemMapValue {
+	s.CabinQuantity = v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValue) SetSearchPrice(v *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) *ModuleFlightItemListItemListShoppingItemMapValue {
+	s.SearchPrice = v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValue) SetSegmentPrice(v map[string]*ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) *ModuleFlightItemListItemListShoppingItemMapValue {
+	s.SegmentPrice = v
+	return s
+}
+
+type ModuleFlightItemListItemListShoppingItemMapValueSearchPrice struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                    `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                    `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                    `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                    `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                    `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                  `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                    `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                    `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                    `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetFloorPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetTicketPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetSellPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetOriginalSellPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetBaseTotalPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetBeforeControlPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetTax(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetSupplyPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetBasicCabinPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetBuildPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetOilPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetFirstStandardPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetBusinessStandardPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetCommonStandardPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetInterTicketPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetSubtractedPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetOriginCommonPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetInstallmentNum(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetInstallmentPrice(v float64) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) SetPriceShowInfo(v *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo) *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleFlightItemListItemListSubItemPositionMapValue struct {
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListSubItemPositionMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListSubItemPositionMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListSubItemPositionMapValue) SetJourneyIndex(v int32) *ModuleFlightItemListItemListSubItemPositionMapValue {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemPositionMapValue) SetSegmentIndex(v int32) *ModuleFlightItemListItemListSubItemPositionMapValue {
+	s.SegmentIndex = &v
+	return s
+}
+
+type ModuleFlightItemListItemListSubItemsShoppingItemMapValue struct {
+	// id
+	Id            *string                                                                                `json:"id,omitempty" xml:"id,omitempty"`
+	CabinQuantity map[string]*ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
+	SearchPrice   *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice                   `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	SegmentPrice  map[string]*ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue  `json:"segment_price,omitempty" xml:"segment_price,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValue) SetId(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValue {
+	s.Id = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValue) SetCabinQuantity(v map[string]*ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) *ModuleFlightItemListItemListSubItemsShoppingItemMapValue {
+	s.CabinQuantity = v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValue) SetSearchPrice(v *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) *ModuleFlightItemListItemListSubItemsShoppingItemMapValue {
+	s.SearchPrice = v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValue) SetSegmentPrice(v map[string]*ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) *ModuleFlightItemListItemListSubItemsShoppingItemMapValue {
+	s.SegmentPrice = v
+	return s
+}
+
+type ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                            `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                            `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                            `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                            `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                            `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                          `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                            `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                            `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                            `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetFloorPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetTicketPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetSellPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetOriginalSellPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetBaseTotalPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetBeforeControlPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetTax(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetSupplyPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetBasicCabinPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetBuildPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetOilPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetFirstStandardPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetBusinessStandardPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetCommonStandardPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetInterTicketPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetSubtractedPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetOriginCommonPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetInstallmentNum(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetInstallmentPrice(v float64) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice) SetPriceShowInfo(v *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleItemListFlightRuleInfosValue struct {
+	RefundChangeRuleDesc *string `json:"refund_change_rule_desc,omitempty" xml:"refund_change_rule_desc,omitempty"`
+	BaggageDesc          *string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
+}
+
+func (s ModuleItemListFlightRuleInfosValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListFlightRuleInfosValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListFlightRuleInfosValue) SetRefundChangeRuleDesc(v string) *ModuleItemListFlightRuleInfosValue {
+	s.RefundChangeRuleDesc = &v
+	return s
+}
+
+func (s *ModuleItemListFlightRuleInfosValue) SetBaggageDesc(v string) *ModuleItemListFlightRuleInfosValue {
+	s.BaggageDesc = &v
+	return s
+}
+
+type ModuleItemListShoppingItemMapValue struct {
+	// id
+	Id            *string                                                          `json:"id,omitempty" xml:"id,omitempty"`
+	CabinQuantity map[string]*ModuleItemListShoppingItemMapValueCabinQuantityValue `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
+	SearchPrice   *ModuleItemListShoppingItemMapValueSearchPrice                   `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	SegmentPrice  map[string]*ModuleItemListShoppingItemMapValueSegmentPriceValue  `json:"segment_price,omitempty" xml:"segment_price,omitempty"`
+}
+
+func (s ModuleItemListShoppingItemMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListShoppingItemMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListShoppingItemMapValue) SetId(v string) *ModuleItemListShoppingItemMapValue {
+	s.Id = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValue) SetCabinQuantity(v map[string]*ModuleItemListShoppingItemMapValueCabinQuantityValue) *ModuleItemListShoppingItemMapValue {
+	s.CabinQuantity = v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValue) SetSearchPrice(v *ModuleItemListShoppingItemMapValueSearchPrice) *ModuleItemListShoppingItemMapValue {
+	s.SearchPrice = v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValue) SetSegmentPrice(v map[string]*ModuleItemListShoppingItemMapValueSegmentPriceValue) *ModuleItemListShoppingItemMapValue {
+	s.SegmentPrice = v
+	return s
+}
+
+type ModuleItemListShoppingItemMapValueSearchPrice struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                      `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                      `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                      `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                      `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                      `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                    `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                      `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                      `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                      `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleItemListShoppingItemMapValueSearchPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListShoppingItemMapValueSearchPrice) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetFloorPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetTicketPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetSellPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetOriginalSellPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetBaseTotalPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetBeforeControlPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetTax(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetSupplyPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetBasicCabinPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetBuildPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetOilPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetFirstStandardPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetBusinessStandardPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetCommonStandardPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetInterTicketPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetSubtractedPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetOriginCommonPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetDynamicPromotionPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetInstallmentNum(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetInstallmentPrice(v float64) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetCompetitionDynamicPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetCompetitionPromotionPrice(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetMinBeforeControlPriceOfNormal(v int32) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPrice) SetPriceShowInfo(v *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo) *ModuleItemListShoppingItemMapValueSearchPrice {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountInfo(v string) *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountNum(v float64) *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo) SetShowTicketPrice(v bool) *ModuleItemListShoppingItemMapValueSearchPricePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleItemListSubItemPositionMapValue struct {
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+}
+
+func (s ModuleItemListSubItemPositionMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListSubItemPositionMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListSubItemPositionMapValue) SetJourneyIndex(v int32) *ModuleItemListSubItemPositionMapValue {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemPositionMapValue) SetSegmentIndex(v int32) *ModuleItemListSubItemPositionMapValue {
+	s.SegmentIndex = &v
+	return s
+}
+
+type ModuleItemListSubItemsShoppingItemMapValue struct {
+	// id
+	Id            *string                                                                  `json:"id,omitempty" xml:"id,omitempty"`
+	CabinQuantity map[string]*ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
+	SearchPrice   *ModuleItemListSubItemsShoppingItemMapValueSearchPrice                   `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	SegmentPrice  map[string]*ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue  `json:"segment_price,omitempty" xml:"segment_price,omitempty"`
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValue) SetId(v string) *ModuleItemListSubItemsShoppingItemMapValue {
+	s.Id = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValue) SetCabinQuantity(v map[string]*ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) *ModuleItemListSubItemsShoppingItemMapValue {
+	s.CabinQuantity = v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValue) SetSearchPrice(v *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) *ModuleItemListSubItemsShoppingItemMapValue {
+	s.SearchPrice = v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValue) SetSegmentPrice(v map[string]*ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) *ModuleItemListSubItemsShoppingItemMapValue {
+	s.SegmentPrice = v
+	return s
+}
+
+type ModuleItemListSubItemsShoppingItemMapValueSearchPrice struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                              `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                              `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                              `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                              `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                              `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                            `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                              `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                              `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                              `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSearchPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSearchPrice) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetFloorPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetTicketPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetSellPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetOriginalSellPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetBaseTotalPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetBeforeControlPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetTax(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetSupplyPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetBasicCabinPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetBuildPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetOilPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetFirstStandardPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetBusinessStandardPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetCommonStandardPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetInterTicketPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetSubtractedPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetOriginCommonPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetDynamicPromotionPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetInstallmentNum(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetInstallmentPrice(v float64) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetCompetitionDynamicPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetCompetitionPromotionPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetMinBeforeControlPriceOfNormal(v int32) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPrice) SetPriceShowInfo(v *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) *ModuleItemListSubItemsShoppingItemMapValueSearchPrice {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountInfo(v string) *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetDiscountNum(v float64) *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) SetShowTicketPrice(v bool) *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue struct {
+	Cabin             *string   `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	CabinClassMemo    *string   `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
+	Specification     *string   `json:"specification,omitempty" xml:"specification,omitempty"`
+	Quantity          *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	LinkCabins        []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
+	ReshopChangeCabin *bool     `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
+	ChildCabinType    *int32    `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
+	InfantBasicCabin  *string   `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
+	InnerCabinClass   *int32    `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetCabin(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.Cabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetCabinClass(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetCabinClassName(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassName = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetCabinClassMemo(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassMemo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetSpecification(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.Specification = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetQuantity(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetLinkCabins(v []*string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.LinkCabins = v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetReshopChangeCabin(v bool) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.ReshopChangeCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetChildCabinType(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.ChildCabinType = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetInfantBasicCabin(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.InfantBasicCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue) SetInnerCabinClass(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue {
+	s.InnerCabinClass = &v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                               `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                               `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                               `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                               `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                               `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                             `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                               `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                               `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                               `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetFloorPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetTicketPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetSellPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetOriginalSellPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetBaseTotalPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetBeforeControlPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetTax(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetSupplyPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetBasicCabinPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetBuildPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetOilPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetFirstStandardPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetBusinessStandardPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetCommonStandardPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetInterTicketPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetSubtractedPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetOriginCommonPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetInstallmentNum(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetInstallmentPrice(v float64) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue) SetPriceShowInfo(v *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue struct {
+	Cabin             *string   `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	CabinClassMemo    *string   `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
+	Specification     *string   `json:"specification,omitempty" xml:"specification,omitempty"`
+	Quantity          *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	LinkCabins        []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
+	ReshopChangeCabin *bool     `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
+	ChildCabinType    *int32    `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
+	InfantBasicCabin  *string   `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
+	InnerCabinClass   *int32    `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetCabin(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Cabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClass(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClassName(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassName = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClassMemo(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassMemo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetSpecification(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Specification = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetQuantity(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetLinkCabins(v []*string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.LinkCabins = v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetReshopChangeCabin(v bool) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.ReshopChangeCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetChildCabinType(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.ChildCabinType = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetInfantBasicCabin(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.InfantBasicCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue) SetInnerCabinClass(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.InnerCabinClass = &v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                                       `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                                       `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                                       `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                                       `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                                       `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                                     `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                                       `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                                       `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                                       `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetFloorPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetTicketPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetSellPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetOriginalSellPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetBaseTotalPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetBeforeControlPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetTax(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetSupplyPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetBasicCabinPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetBuildPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetOilPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetFirstStandardPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetBusinessStandardPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetCommonStandardPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetInterTicketPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetSubtractedPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetOriginCommonPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetInstallmentNum(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetInstallmentPrice(v float64) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue) SetPriceShowInfo(v *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue struct {
+	Cabin             *string   `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	CabinClassMemo    *string   `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
+	Specification     *string   `json:"specification,omitempty" xml:"specification,omitempty"`
+	Quantity          *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	LinkCabins        []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
+	ReshopChangeCabin *bool     `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
+	ChildCabinType    *int32    `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
+	InfantBasicCabin  *string   `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
+	InnerCabinClass   *int32    `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetCabin(v string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.Cabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetCabinClass(v string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetCabinClassName(v string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassName = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetCabinClassMemo(v string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassMemo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetSpecification(v string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.Specification = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetQuantity(v string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetLinkCabins(v []*string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.LinkCabins = v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetReshopChangeCabin(v bool) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.ReshopChangeCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetChildCabinType(v int32) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.ChildCabinType = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetInfantBasicCabin(v string) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.InfantBasicCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue) SetInnerCabinClass(v int32) *ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue {
+	s.InnerCabinClass = &v
+	return s
+}
+
+type ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                          `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                          `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                          `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                          `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                          `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                        `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                          `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                          `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                          `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetFloorPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetTicketPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetSellPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetOriginalSellPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetBaseTotalPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetBeforeControlPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetTax(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetSupplyPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetBasicCabinPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetBuildPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetOilPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetFirstStandardPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetBusinessStandardPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetCommonStandardPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetInterTicketPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetSubtractedPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetOriginCommonPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetInstallmentNum(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetInstallmentPrice(v float64) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue) SetPriceShowInfo(v *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValue {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue struct {
+	Cabin             *string   `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	CabinClassMemo    *string   `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
+	Specification     *string   `json:"specification,omitempty" xml:"specification,omitempty"`
+	Quantity          *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	LinkCabins        []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
+	ReshopChangeCabin *bool     `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
+	ChildCabinType    *int32    `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
+	InfantBasicCabin  *string   `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
+	InnerCabinClass   *int32    `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabin(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Cabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClass(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClassName(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassName = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClassMemo(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassMemo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetSpecification(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Specification = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetQuantity(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetLinkCabins(v []*string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.LinkCabins = v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetReshopChangeCabin(v bool) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.ReshopChangeCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetChildCabinType(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.ChildCabinType = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetInfantBasicCabin(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.InfantBasicCabin = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetInnerCabinClass(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.InnerCabinClass = &v
+	return s
+}
+
+type ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                                  `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                                  `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                                  `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                                  `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                                  `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                                `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                                  `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                                  `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                                  `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetFloorPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetTicketPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetSellPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetOriginalSellPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBaseTotalPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBeforeControlPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetTax(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetSupplyPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBasicCabinPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBuildPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetOilPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetFirstStandardPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBusinessStandardPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetCommonStandardPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetInterTicketPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetSubtractedPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetOriginCommonPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetDynamicPromotionPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetInstallmentNum(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetInstallmentPrice(v float64) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetCompetitionDynamicPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetCompetitionPromotionPrice(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetMinBeforeControlPriceOfNormal(v int32) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetPriceShowInfo(v *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountInfo(v string) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountNum(v float64) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetShowTicketPrice(v bool) *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleItemListShoppingItemMapValueCabinQuantityValue struct {
+	Cabin             *string   `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	CabinClassMemo    *string   `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
+	Specification     *string   `json:"specification,omitempty" xml:"specification,omitempty"`
+	Quantity          *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	LinkCabins        []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
+	ReshopChangeCabin *bool     `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
+	ChildCabinType    *int32    `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
+	InfantBasicCabin  *string   `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
+	InnerCabinClass   *int32    `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+}
+
+func (s ModuleItemListShoppingItemMapValueCabinQuantityValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListShoppingItemMapValueCabinQuantityValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetCabin(v string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.Cabin = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetCabinClass(v string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetCabinClassName(v string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassName = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetCabinClassMemo(v string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassMemo = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetSpecification(v string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.Specification = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetQuantity(v string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetLinkCabins(v []*string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.LinkCabins = v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetReshopChangeCabin(v bool) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.ReshopChangeCabin = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetChildCabinType(v int32) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.ChildCabinType = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetInfantBasicCabin(v string) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.InfantBasicCabin = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueCabinQuantityValue) SetInnerCabinClass(v int32) *ModuleItemListShoppingItemMapValueCabinQuantityValue {
+	s.InnerCabinClass = &v
+	return s
+}
+
+type ModuleItemListShoppingItemMapValueSegmentPriceValue struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                            `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                            `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                            `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                            `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                            `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                          `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                            `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                            `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                            `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleItemListShoppingItemMapValueSegmentPriceValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListShoppingItemMapValueSegmentPriceValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetFloorPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetTicketPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetSellPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetOriginalSellPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetBaseTotalPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetBeforeControlPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetTax(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetSupplyPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetBasicCabinPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetBuildPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetOilPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetFirstStandardPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetBusinessStandardPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetCommonStandardPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetInterTicketPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetSubtractedPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetOriginCommonPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetDynamicPromotionPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetInstallmentNum(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetInstallmentPrice(v float64) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetCompetitionDynamicPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetCompetitionPromotionPrice(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetMinBeforeControlPriceOfNormal(v int32) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValue) SetPriceShowInfo(v *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) *ModuleItemListShoppingItemMapValueSegmentPriceValue {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountInfo(v string) *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountNum(v float64) *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetShowTicketPrice(v bool) *ModuleItemListShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
+type ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue struct {
+	Cabin             *string   `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	CabinClassMemo    *string   `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
+	Specification     *string   `json:"specification,omitempty" xml:"specification,omitempty"`
+	Quantity          *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	LinkCabins        []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
+	ReshopChangeCabin *bool     `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
+	ChildCabinType    *int32    `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
+	InfantBasicCabin  *string   `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
+	InnerCabinClass   *int32    `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabin(v string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Cabin = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClass(v string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClassName(v string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassName = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetCabinClassMemo(v string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.CabinClassMemo = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetSpecification(v string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Specification = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetQuantity(v string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetLinkCabins(v []*string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.LinkCabins = v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetReshopChangeCabin(v bool) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.ReshopChangeCabin = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetChildCabinType(v int32) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.ChildCabinType = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetInfantBasicCabin(v string) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.InfantBasicCabin = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue) SetInnerCabinClass(v int32) *ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue {
+	s.InnerCabinClass = &v
+	return s
+}
+
+type ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue struct {
+	FloorPrice            *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice           *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice             *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice     *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice        *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice    *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                   *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice           *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice       *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice            *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice   *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	// fdPrice
+	InterTicketPrice              *int32                                                                    `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                    `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                    `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                    `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                    `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                  `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                    `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                    `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
+	MinBeforeControlPriceOfNormal *int32                                                                    `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
+	PriceShowInfo                 *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetFloorPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.FloorPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetTicketPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetSellPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetOriginalSellPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OriginalSellPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBaseTotalPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BaseTotalPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBeforeControlPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetTax(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.Tax = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetSupplyPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SupplyPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBasicCabinPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBuildPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetOilPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetFirstStandardPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.FirstStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetBusinessStandardPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.BusinessStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetCommonStandardPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CommonStandardPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetInterTicketPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InterTicketPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetSubtractedPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.SubtractedPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetOriginCommonPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.OriginCommonPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetDynamicPromotionPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.DynamicPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetInstallmentNum(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentNum = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetInstallmentPrice(v float64) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.InstallmentPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetCompetitionDynamicPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionDynamicPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetCompetitionPromotionPrice(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.CompetitionPromotionPrice = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetMinBeforeControlPriceOfNormal(v int32) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.MinBeforeControlPriceOfNormal = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue) SetPriceShowInfo(v *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue {
+	s.PriceShowInfo = v
+	return s
+}
+
+type ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo struct {
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountInfo(v string) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetDiscountNum(v float64) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.DiscountNum = &v
+	return s
+}
+
+func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo) SetShowTicketPrice(v bool) *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInfo {
+	s.ShowTicketPrice = &v
+	return s
+}
+
 type AccessTokenRequest struct {
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
 }
@@ -14166,6 +17202,1063 @@ func (s *FlightListingSearchResponse) SetBody(v *FlightListingSearchResponseBody
 	return s
 }
 
+type FlightListingSearchV2Headers struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s FlightListingSearchV2Headers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2Headers) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2Headers) SetCommonHeaders(v map[string]*string) *FlightListingSearchV2Headers {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightListingSearchV2Headers) SetXAcsBtripCorpToken(v string) *FlightListingSearchV2Headers {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type FlightListingSearchV2Request struct {
+	AirlineCode         *string                                       `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	CabinTypeList       []*int32                                      `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty" type:"Repeated"`
+	DirectOnly          *bool                                         `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	IsvName             *string                                       `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	NeedMultiClassPrice *bool                                         `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
+	NeedQueryServiceFee *bool                                         `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
+	NeedShareFlight     *bool                                         `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	NeedYCBestPrice     *bool                                         `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
+	SearchJourneys      []*FlightListingSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	SearchMode          *int32                                        `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	TripType            *int32                                        `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightListingSearchV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2Request) SetAirlineCode(v string) *FlightListingSearchV2Request {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetCabinTypeList(v []*int32) *FlightListingSearchV2Request {
+	s.CabinTypeList = v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetDirectOnly(v bool) *FlightListingSearchV2Request {
+	s.DirectOnly = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetIsvName(v string) *FlightListingSearchV2Request {
+	s.IsvName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetNeedMultiClassPrice(v bool) *FlightListingSearchV2Request {
+	s.NeedMultiClassPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetNeedQueryServiceFee(v bool) *FlightListingSearchV2Request {
+	s.NeedQueryServiceFee = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetNeedShareFlight(v bool) *FlightListingSearchV2Request {
+	s.NeedShareFlight = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetNeedYCBestPrice(v bool) *FlightListingSearchV2Request {
+	s.NeedYCBestPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetSearchJourneys(v []*FlightListingSearchV2RequestSearchJourneys) *FlightListingSearchV2Request {
+	s.SearchJourneys = v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetSearchMode(v int32) *FlightListingSearchV2Request {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Request) SetTripType(v int32) *FlightListingSearchV2Request {
+	s.TripType = &v
+	return s
+}
+
+type FlightListingSearchV2RequestSearchJourneys struct {
+	ArrCityCode     *string                                                      `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	DepCityCode     *string                                                      `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate         *string                                                      `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	SelectedFlights []*FlightListingSearchV2RequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchV2RequestSearchJourneys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2RequestSearchJourneys) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneys) SetArrCityCode(v string) *FlightListingSearchV2RequestSearchJourneys {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneys) SetDepCityCode(v string) *FlightListingSearchV2RequestSearchJourneys {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneys) SetDepDate(v string) *FlightListingSearchV2RequestSearchJourneys {
+	s.DepDate = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneys) SetSelectedFlights(v []*FlightListingSearchV2RequestSearchJourneysSelectedFlights) *FlightListingSearchV2RequestSearchJourneys {
+	s.SelectedFlights = v
+	return s
+}
+
+type FlightListingSearchV2RequestSearchJourneysSelectedFlights struct {
+	ArrAirportCode  *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCityCode     *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	DepAirportCode  *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCityCode     *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	FlightTime      *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	MarketFlightNo  *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
+	OperateFlightNo *string `json:"operate_flight_no,omitempty" xml:"operate_flight_no,omitempty"`
+}
+
+func (s FlightListingSearchV2RequestSearchJourneysSelectedFlights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2RequestSearchJourneysSelectedFlights) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneysSelectedFlights) SetArrAirportCode(v string) *FlightListingSearchV2RequestSearchJourneysSelectedFlights {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneysSelectedFlights) SetArrCityCode(v string) *FlightListingSearchV2RequestSearchJourneysSelectedFlights {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneysSelectedFlights) SetDepAirportCode(v string) *FlightListingSearchV2RequestSearchJourneysSelectedFlights {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneysSelectedFlights) SetDepCityCode(v string) *FlightListingSearchV2RequestSearchJourneysSelectedFlights {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneysSelectedFlights) SetFlightTime(v string) *FlightListingSearchV2RequestSearchJourneysSelectedFlights {
+	s.FlightTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneysSelectedFlights) SetMarketFlightNo(v string) *FlightListingSearchV2RequestSearchJourneysSelectedFlights {
+	s.MarketFlightNo = &v
+	return s
+}
+
+func (s *FlightListingSearchV2RequestSearchJourneysSelectedFlights) SetOperateFlightNo(v string) *FlightListingSearchV2RequestSearchJourneysSelectedFlights {
+	s.OperateFlightNo = &v
+	return s
+}
+
+type FlightListingSearchV2ShrinkRequest struct {
+	AirlineCode          *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	CabinTypeListShrink  *string `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty"`
+	DirectOnly           *bool   `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	IsvName              *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	NeedMultiClassPrice  *bool   `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
+	NeedQueryServiceFee  *bool   `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
+	NeedShareFlight      *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	NeedYCBestPrice      *bool   `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
+	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
+	SearchMode           *int32  `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	TripType             *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightListingSearchV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetAirlineCode(v string) *FlightListingSearchV2ShrinkRequest {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetCabinTypeListShrink(v string) *FlightListingSearchV2ShrinkRequest {
+	s.CabinTypeListShrink = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetDirectOnly(v bool) *FlightListingSearchV2ShrinkRequest {
+	s.DirectOnly = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetIsvName(v string) *FlightListingSearchV2ShrinkRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetNeedMultiClassPrice(v bool) *FlightListingSearchV2ShrinkRequest {
+	s.NeedMultiClassPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetNeedQueryServiceFee(v bool) *FlightListingSearchV2ShrinkRequest {
+	s.NeedQueryServiceFee = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetNeedShareFlight(v bool) *FlightListingSearchV2ShrinkRequest {
+	s.NeedShareFlight = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetNeedYCBestPrice(v bool) *FlightListingSearchV2ShrinkRequest {
+	s.NeedYCBestPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetSearchJourneysShrink(v string) *FlightListingSearchV2ShrinkRequest {
+	s.SearchJourneysShrink = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetSearchMode(v int32) *FlightListingSearchV2ShrinkRequest {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ShrinkRequest) SetTripType(v int32) *FlightListingSearchV2ShrinkRequest {
+	s.TripType = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBody struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *FlightListingSearchV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBody) SetCode(v string) *FlightListingSearchV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBody) SetMessage(v string) *FlightListingSearchV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBody) SetModule(v *FlightListingSearchV2ResponseBodyModule) *FlightListingSearchV2ResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBody) SetRequestId(v string) *FlightListingSearchV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBody) SetSuccess(v bool) *FlightListingSearchV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBody) SetTraceId(v string) *FlightListingSearchV2ResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModule struct {
+	FlightItemList []*FlightListingSearchV2ResponseBodyModuleFlightItemList `json:"flight_item_list,omitempty" xml:"flight_item_list,omitempty" type:"Repeated"`
+	SearchMode     *int32                                                   `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	TripType       *int32                                                   `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModule) SetFlightItemList(v []*FlightListingSearchV2ResponseBodyModuleFlightItemList) *FlightListingSearchV2ResponseBodyModule {
+	s.FlightItemList = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModule) SetSearchMode(v int32) *FlightListingSearchV2ResponseBodyModule {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModule) SetTripType(v int32) *FlightListingSearchV2ResponseBodyModule {
+	s.TripType = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemList struct {
+	BestPriceItem      *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem        `json:"best_price_item,omitempty" xml:"best_price_item,omitempty" type:"Struct"`
+	FlightJourneyInfos []*FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos `json:"flight_journey_infos,omitempty" xml:"flight_journey_infos,omitempty" type:"Repeated"`
+	ItemList           []*FlightListingSearchV2ResponseBodyModuleFlightItemListItemList           `json:"item_list,omitempty" xml:"item_list,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemList) SetBestPriceItem(v *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) *FlightListingSearchV2ResponseBodyModuleFlightItemList {
+	s.BestPriceItem = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemList) SetFlightJourneyInfos(v []*FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) *FlightListingSearchV2ResponseBodyModuleFlightItemList {
+	s.FlightJourneyInfos = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemList) SetItemList(v []*FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) *FlightListingSearchV2ResponseBodyModuleFlightItemList {
+	s.ItemList = v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem struct {
+	FlightRuleInfos    map[string]*ModuleFlightItemListBestPriceItemFlightRuleInfosValue             `json:"flight_rule_infos,omitempty" xml:"flight_rule_infos,omitempty"`
+	ItemId             *string                                                                       `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	ShoppingItemMap    map[string]*ModuleFlightItemListBestPriceItemShoppingItemMapValue             `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	SubItemPositionMap map[string][]*ModuleFlightItemListBestPriceItemSubItemPositionMapValue        `json:"sub_item_position_map,omitempty" xml:"sub_item_position_map,omitempty"`
+	SubItems           []*FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) SetFlightRuleInfos(v map[string]*ModuleFlightItemListBestPriceItemFlightRuleInfosValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem {
+	s.FlightRuleInfos = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) SetItemId(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem {
+	s.ItemId = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) SetShoppingItemMap(v map[string]*ModuleFlightItemListBestPriceItemShoppingItemMapValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem {
+	s.ShoppingItemMap = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) SetSubItemPositionMap(v map[string][]*ModuleFlightItemListBestPriceItemSubItemPositionMapValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem {
+	s.SubItemPositionMap = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem) SetSubItems(v []*FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems) *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem {
+	s.SubItems = v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems struct {
+	ShoppingItemMap map[string]*ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	UniqKey         *string                                                                   `json:"uniq_key,omitempty" xml:"uniq_key,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems) SetShoppingItemMap(v map[string]*ModuleFlightItemListBestPriceItemSubItemsShoppingItemMapValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems {
+	s.ShoppingItemMap = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems) SetUniqKey(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems {
+	s.UniqKey = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos struct {
+	ArrCityCode        *string                                                                                      `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName        *string                                                                                      `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime            *string                                                                                      `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepCityCode        *string                                                                                      `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName        *string                                                                                      `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime            *string                                                                                      `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Duration           *int32                                                                                       `json:"duration,omitempty" xml:"duration,omitempty"`
+	Extensions         map[string]*string                                                                           `json:"extensions,omitempty" xml:"extensions,omitempty"`
+	FlightSegmentInfos []*FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos `json:"flight_segment_infos,omitempty" xml:"flight_segment_infos,omitempty" type:"Repeated"`
+	JourneyIndex       *int32                                                                                       `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	TransferTime       *int32                                                                                       `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetArrCityCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetArrCityName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetArrTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetDepCityCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetDepCityName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetDepTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.DepTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetDuration(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.Duration = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetExtensions(v map[string]*string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.Extensions = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetFlightSegmentInfos(v []*FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.FlightSegmentInfos = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetJourneyIndex(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos) SetTransferTime(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfos {
+	s.TransferTime = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos struct {
+	AirlineInfo    *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrCityCode    *string                                                                                                  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName    *string                                                                                                  `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime        *string                                                                                                  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BaggageDesc    *string                                                                                                  `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
+	DepAirportInfo *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode    *string                                                                                                  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName    *string                                                                                                  `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime        *string                                                                                                  `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// duration
+	Duration           *int32                                                                                                    `json:"duration,omitempty" xml:"duration,omitempty"`
+	ExtraInfo          map[string]interface{}                                                                                    `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
+	FlightNo           *string                                                                                                   `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightShareInfo    *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
+	FlightSize         *string                                                                                                   `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightStopInfo     *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo  `json:"flight_stop_info,omitempty" xml:"flight_stop_info,omitempty" type:"Struct"`
+	FlightType         *string                                                                                                   `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	Manufacturer       *string                                                                                                   `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	MealDesc           *string                                                                                                   `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	Miles              *int32                                                                                                    `json:"miles,omitempty" xml:"miles,omitempty"`
+	OnTimeRate         *string                                                                                                   `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
+	OneMore            *int32                                                                                                    `json:"one_more,omitempty" xml:"one_more,omitempty"`
+	OneMoreShow        *string                                                                                                   `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
+	SegmentIndex       *int32                                                                                                    `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	Share              *bool                                                                                                     `json:"share,omitempty" xml:"share,omitempty"`
+	ShortFlightSize    *string                                                                                                   `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	Stop               *bool                                                                                                     `json:"stop,omitempty" xml:"stop,omitempty"`
+	TotalTime          *string                                                                                                   `json:"total_time,omitempty" xml:"total_time,omitempty"`
+	TransferTime       *string                                                                                                   `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
+	TransferTimeNumber *int32                                                                                                    `json:"transfer_time_number,omitempty" xml:"transfer_time_number,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetAirlineInfo(v *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.AirlineInfo = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetArrAirportInfo(v *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.ArrAirportInfo = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetArrCityCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetArrCityName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetArrTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetBaggageDesc(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.BaggageDesc = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetDepAirportInfo(v *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.DepAirportInfo = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetDepCityCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetDepCityName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetDepTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.DepTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetDuration(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.Duration = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetExtraInfo(v map[string]interface{}) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetFlightNo(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetFlightShareInfo(v *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.FlightShareInfo = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetFlightSize(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.FlightSize = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetFlightStopInfo(v *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.FlightStopInfo = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetFlightType(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.FlightType = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetManufacturer(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.Manufacturer = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetMealDesc(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.MealDesc = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetMiles(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.Miles = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetOnTimeRate(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.OnTimeRate = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetOneMore(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.OneMore = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetOneMoreShow(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.OneMoreShow = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetSegmentIndex(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.SegmentIndex = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetShare(v bool) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.Share = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetShortFlightSize(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.ShortFlightSize = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetStop(v bool) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.Stop = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetTotalTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetTransferTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.TransferTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) SetTransferTimeNumber(v int32) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos {
+	s.TransferTimeNumber = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo struct {
+	AirlineChineseName      *string `json:"airline_chinese_name,omitempty" xml:"airline_chinese_name,omitempty"`
+	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
+	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineChineseName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineChineseName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineChineseShortName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineChineseShortName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineIcon(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineIcon = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetCheapFlight(v bool) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.CheapFlight = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo struct {
+	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	AirportNameColor *string `json:"airport_name_color,omitempty" xml:"airport_name_color,omitempty"`
+	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportNameColor(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportNameColor = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportShortName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportShortName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetTerminal(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo struct {
+	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	AirportNameColor *string `json:"airport_name_color,omitempty" xml:"airport_name_color,omitempty"`
+	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportNameColor(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportNameColor = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportShortName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportShortName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetTerminal(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo struct {
+	OperatingAirlineInfo *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo `json:"operating_airline_info,omitempty" xml:"operating_airline_info,omitempty" type:"Struct"`
+	OperatingFlightNo    *string                                                                                                                       `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo) SetOperatingAirlineInfo(v *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo {
+	s.OperatingAirlineInfo = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo) SetOperatingFlightNo(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo {
+	s.OperatingFlightNo = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
+	AirlineChineseName      *string `json:"airline_chinese_name,omitempty" xml:"airline_chinese_name,omitempty"`
+	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
+	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineChineseName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineChineseName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineChineseShortName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineChineseShortName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineIcon(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineIcon = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetCheapFlight(v bool) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.CheapFlight = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo struct {
+	StopAirport     *string   `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	StopAirportName *string   `json:"stop_airport_name,omitempty" xml:"stop_airport_name,omitempty"`
+	StopArrTerm     *string   `json:"stop_arr_term,omitempty" xml:"stop_arr_term,omitempty"`
+	StopArrTime     *string   `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCityCode    *string   `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
+	StopCityName    *string   `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
+	StopCityNames   []*string `json:"stop_city_names,omitempty" xml:"stop_city_names,omitempty" type:"Repeated"`
+	StopDepTerm     *string   `json:"stop_dep_term,omitempty" xml:"stop_dep_term,omitempty"`
+	StopDepTime     *string   `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	StopTime        *string   `json:"stop_time,omitempty" xml:"stop_time,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopAirport(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopAirport = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopAirportName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopAirportName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopArrTerm(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopArrTerm = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopArrTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopArrTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopCityCode(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopCityName(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopCityName = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopCityNames(v []*string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopCityNames = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopDepTerm(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopDepTerm = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopDepTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopDepTime = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopTime(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopTime = &v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListItemList struct {
+	FlightRuleInfos    map[string]*ModuleFlightItemListItemListFlightRuleInfosValue             `json:"flight_rule_infos,omitempty" xml:"flight_rule_infos,omitempty"`
+	ItemId             *string                                                                  `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	ShoppingItemMap    map[string]*ModuleFlightItemListItemListShoppingItemMapValue             `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	SubItemPositionMap map[string][]*ModuleFlightItemListItemListSubItemPositionMapValue        `json:"sub_item_position_map,omitempty" xml:"sub_item_position_map,omitempty"`
+	SubItems           []*FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) SetFlightRuleInfos(v map[string]*ModuleFlightItemListItemListFlightRuleInfosValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList {
+	s.FlightRuleInfos = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) SetItemId(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) SetShoppingItemMap(v map[string]*ModuleFlightItemListItemListShoppingItemMapValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList {
+	s.ShoppingItemMap = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) SetSubItemPositionMap(v map[string][]*ModuleFlightItemListItemListSubItemPositionMapValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList {
+	s.SubItemPositionMap = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList) SetSubItems(v []*FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems) *FlightListingSearchV2ResponseBodyModuleFlightItemListItemList {
+	s.SubItems = v
+	return s
+}
+
+type FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems struct {
+	ShoppingItemMap map[string]*ModuleFlightItemListItemListSubItemsShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	UniqKey         *string                                                              `json:"uniq_key,omitempty" xml:"uniq_key,omitempty"`
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems) SetShoppingItemMap(v map[string]*ModuleFlightItemListItemListSubItemsShoppingItemMapValue) *FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems {
+	s.ShoppingItemMap = v
+	return s
+}
+
+func (s *FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems) SetUniqKey(v string) *FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems {
+	s.UniqKey = &v
+	return s
+}
+
+type FlightListingSearchV2Response struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FlightListingSearchV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FlightListingSearchV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchV2Response) SetHeaders(v map[string]*string) *FlightListingSearchV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *FlightListingSearchV2Response) SetStatusCode(v int32) *FlightListingSearchV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlightListingSearchV2Response) SetBody(v *FlightListingSearchV2ResponseBody) *FlightListingSearchV2Response {
+	s.Body = v
+	return s
+}
+
 type FlightOrderDetailInfoHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -16211,6 +20304,731 @@ func (s *FlightOrderQueryResponse) SetStatusCode(v int32) *FlightOrderQueryRespo
 }
 
 func (s *FlightOrderQueryResponse) SetBody(v *FlightOrderQueryResponseBody) *FlightOrderQueryResponse {
+	s.Body = v
+	return s
+}
+
+type FlightOtaItemDetailHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s FlightOtaItemDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailHeaders) SetCommonHeaders(v map[string]*string) *FlightOtaItemDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightOtaItemDetailHeaders) SetXAcsBtripCorpToken(v string) *FlightOtaItemDetailHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type FlightOtaItemDetailRequest struct {
+	IsvName   *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+}
+
+func (s FlightOtaItemDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailRequest) SetIsvName(v string) *FlightOtaItemDetailRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailRequest) SetOtaItemId(v string) *FlightOtaItemDetailRequest {
+	s.OtaItemId = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBody struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *FlightOtaItemDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBody) SetCode(v string) *FlightOtaItemDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBody) SetMessage(v string) *FlightOtaItemDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBody) SetModule(v *FlightOtaItemDetailResponseBodyModule) *FlightOtaItemDetailResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBody) SetRequestId(v string) *FlightOtaItemDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBody) SetSuccess(v bool) *FlightOtaItemDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBody) SetTraceId(v string) *FlightOtaItemDetailResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModule struct {
+	BaggageRule   []*FlightOtaItemDetailResponseBodyModuleBaggageRule `json:"baggage_rule,omitempty" xml:"baggage_rule,omitempty" type:"Repeated"`
+	ChangeRule    []*FlightOtaItemDetailResponseBodyModuleChangeRule  `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Repeated"`
+	RefundRule    []*FlightOtaItemDetailResponseBodyModuleRefundRule  `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Repeated"`
+	SellPrice     *int32                                              `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	SellPriceList []*int32                                            `json:"sell_price_list,omitempty" xml:"sell_price_list,omitempty" type:"Repeated"`
+	TripType      *int32                                              `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModule) SetBaggageRule(v []*FlightOtaItemDetailResponseBodyModuleBaggageRule) *FlightOtaItemDetailResponseBodyModule {
+	s.BaggageRule = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModule) SetChangeRule(v []*FlightOtaItemDetailResponseBodyModuleChangeRule) *FlightOtaItemDetailResponseBodyModule {
+	s.ChangeRule = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModule) SetRefundRule(v []*FlightOtaItemDetailResponseBodyModuleRefundRule) *FlightOtaItemDetailResponseBodyModule {
+	s.RefundRule = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModule) SetSellPrice(v int32) *FlightOtaItemDetailResponseBodyModule {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModule) SetSellPriceList(v []*int32) *FlightOtaItemDetailResponseBodyModule {
+	s.SellPriceList = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModule) SetTripType(v int32) *FlightOtaItemDetailResponseBodyModule {
+	s.TripType = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleBaggageRule struct {
+	BaggageSubItems []*FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
+	Index           *int32                                                             `json:"index,omitempty" xml:"index,omitempty"`
+	TableHead       *string                                                            `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips            *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	Title           *string                                                            `json:"title,omitempty" xml:"title,omitempty"`
+	Type            *int32                                                             `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) SetBaggageSubItems(v []*FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) *FlightOtaItemDetailResponseBodyModuleBaggageRule {
+	s.BaggageSubItems = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) SetIndex(v int32) *FlightOtaItemDetailResponseBodyModuleBaggageRule {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) SetTableHead(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRule {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) SetTips(v *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips) *FlightOtaItemDetailResponseBodyModuleBaggageRule {
+	s.Tips = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRule {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) SetType(v int32) *FlightOtaItemDetailResponseBodyModuleBaggageRule {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems struct {
+	BaggageSubContentVisualizes []*FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
+	ExtraContentVisualizes      []interface{}                                                                                 `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
+	IsStruct                    *bool                                                                                         `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc                         *string                                                                                       `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	Title                       *string                                                                                       `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) SetBaggageSubContentVisualizes(v []*FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems {
+	s.BaggageSubContentVisualizes = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) SetExtraContentVisualizes(v []interface{}) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems {
+	s.ExtraContentVisualizes = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) SetIsStruct(v bool) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) SetPtc(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes struct {
+	// baggage_desc
+	BaggageDesc           []*string                                                                                              `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
+	BaggageSubContentType *int32                                                                                                 `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
+	Description           *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
+	ImageDO               *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
+	IsHighlight           *bool                                                                                                  `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	SubTitle              *string                                                                                                `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) SetBaggageDesc(v []*string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageDesc = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) SetBaggageSubContentType(v int32) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageSubContentType = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) SetDescription(v *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes {
+	s.Description = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) SetImageDO(v *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes {
+	s.ImageDO = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) SetIsHighlight(v bool) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes {
+	s.IsHighlight = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) SetSubTitle(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes {
+	s.SubTitle = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription struct {
+	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription) SetDesc(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Desc = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription) SetIcon(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Icon = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription) SetImage(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
+	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
+	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
+	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO) SetImage(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO) SetLargest(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Largest = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO) SetMiddle(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Middle = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO) SetSmallest(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Smallest = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleBaggageRuleTips struct {
+	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
+	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleTips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleTips) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips) SetLogo(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips {
+	s.Logo = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips) SetTipsDesc(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips {
+	s.TipsDesc = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips) SetTipsImage(v string) *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips {
+	s.TipsImage = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleChangeRule struct {
+	ExtraContents  []*FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	FlightNo       *string                                                          `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FreeBaggage    *int32                                                           `json:"free_baggage,omitempty" xml:"free_baggage,omitempty"`
+	Index          *int32                                                           `json:"index,omitempty" xml:"index,omitempty"`
+	Level          *int32                                                           `json:"level,omitempty" xml:"level,omitempty"`
+	RefundSubItems []*FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	// subTableHead
+	SubTableHead []*string `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead    *string   `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title        *string   `json:"title,omitempty" xml:"title,omitempty"`
+	Type         *int32    `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetExtraContents(v []*FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetFlightNo(v string) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetFreeBaggage(v int32) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.FreeBaggage = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetIndex(v int32) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetLevel(v int32) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.Level = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetRefundSubItems(v []*FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetSubTableHead(v []*string) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetTableHead(v string) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) SetType(v int32) *FlightOtaItemDetailResponseBodyModuleChangeRule {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents) SetContent(v string) *FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems struct {
+	IsStruct          *bool                                                                             `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                           `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                           `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) SetIsStruct(v bool) *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) SetPtc(v string) *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) SetRefundSubContents(v []*FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents) *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleRefundRule struct {
+	ExtraContents  []*FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	FlightNo       *string                                                          `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FreeBaggage    *int32                                                           `json:"free_baggage,omitempty" xml:"free_baggage,omitempty"`
+	Index          *int32                                                           `json:"index,omitempty" xml:"index,omitempty"`
+	Level          *int32                                                           `json:"level,omitempty" xml:"level,omitempty"`
+	RefundSubItems []*FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	// subTableHead
+	SubTableHead []*string `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead    *string   `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title        *string   `json:"title,omitempty" xml:"title,omitempty"`
+	Type         *int32    `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetExtraContents(v []*FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetFlightNo(v string) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetFreeBaggage(v int32) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.FreeBaggage = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetIndex(v int32) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetLevel(v int32) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.Level = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetRefundSubItems(v []*FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetSubTableHead(v []*string) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetTableHead(v string) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) SetType(v int32) *FlightOtaItemDetailResponseBodyModuleRefundRule {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents) SetContent(v string) *FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems struct {
+	IsStruct          *bool                                                                             `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                           `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                           `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) SetIsStruct(v bool) *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) SetPtc(v string) *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) SetRefundSubContents(v []*FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents) *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) SetTitle(v string) *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightOtaItemDetailResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FlightOtaItemDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FlightOtaItemDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaItemDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaItemDetailResponse) SetHeaders(v map[string]*string) *FlightOtaItemDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponse) SetStatusCode(v int32) *FlightOtaItemDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlightOtaItemDetailResponse) SetBody(v *FlightOtaItemDetailResponseBody) *FlightOtaItemDetailResponse {
 	s.Body = v
 	return s
 }
@@ -18628,6 +23446,928 @@ func (s *FlightOtaSearchResponse) SetStatusCode(v int32) *FlightOtaSearchRespons
 }
 
 func (s *FlightOtaSearchResponse) SetBody(v *FlightOtaSearchResponseBody) *FlightOtaSearchResponse {
+	s.Body = v
+	return s
+}
+
+type FlightOtaSearchV2Headers struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s FlightOtaSearchV2Headers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2Headers) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2Headers) SetCommonHeaders(v map[string]*string) *FlightOtaSearchV2Headers {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightOtaSearchV2Headers) SetXAcsBtripCorpToken(v string) *FlightOtaSearchV2Headers {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type FlightOtaSearchV2Request struct {
+	CabinTypeList   []*int32                                  `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty" type:"Repeated"`
+	DirectOnly      *bool                                     `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	IsvName         *string                                   `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	NeedShareFlight *bool                                     `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	SearchJourneys  []*FlightOtaSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	SearchMode      *int32                                    `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	TripType        *int32                                    `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightOtaSearchV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2Request) SetCabinTypeList(v []*int32) *FlightOtaSearchV2Request {
+	s.CabinTypeList = v
+	return s
+}
+
+func (s *FlightOtaSearchV2Request) SetDirectOnly(v bool) *FlightOtaSearchV2Request {
+	s.DirectOnly = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2Request) SetIsvName(v string) *FlightOtaSearchV2Request {
+	s.IsvName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2Request) SetNeedShareFlight(v bool) *FlightOtaSearchV2Request {
+	s.NeedShareFlight = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2Request) SetSearchJourneys(v []*FlightOtaSearchV2RequestSearchJourneys) *FlightOtaSearchV2Request {
+	s.SearchJourneys = v
+	return s
+}
+
+func (s *FlightOtaSearchV2Request) SetSearchMode(v int32) *FlightOtaSearchV2Request {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2Request) SetTripType(v int32) *FlightOtaSearchV2Request {
+	s.TripType = &v
+	return s
+}
+
+type FlightOtaSearchV2RequestSearchJourneys struct {
+	ArrCityCode     *string                                                  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	DepCityCode     *string                                                  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate         *string                                                  `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	SelectedFlights []*FlightOtaSearchV2RequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchV2RequestSearchJourneys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2RequestSearchJourneys) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneys) SetArrCityCode(v string) *FlightOtaSearchV2RequestSearchJourneys {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneys) SetDepCityCode(v string) *FlightOtaSearchV2RequestSearchJourneys {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneys) SetDepDate(v string) *FlightOtaSearchV2RequestSearchJourneys {
+	s.DepDate = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneys) SetSelectedFlights(v []*FlightOtaSearchV2RequestSearchJourneysSelectedFlights) *FlightOtaSearchV2RequestSearchJourneys {
+	s.SelectedFlights = v
+	return s
+}
+
+type FlightOtaSearchV2RequestSearchJourneysSelectedFlights struct {
+	ArrAirportCode  *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCityCode     *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	DepAirportCode  *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCityCode     *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	FlightTime      *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	MarketFlightNo  *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
+	OperateFlightNo *string `json:"operate_flight_no,omitempty" xml:"operate_flight_no,omitempty"`
+}
+
+func (s FlightOtaSearchV2RequestSearchJourneysSelectedFlights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2RequestSearchJourneysSelectedFlights) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneysSelectedFlights) SetArrAirportCode(v string) *FlightOtaSearchV2RequestSearchJourneysSelectedFlights {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneysSelectedFlights) SetArrCityCode(v string) *FlightOtaSearchV2RequestSearchJourneysSelectedFlights {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneysSelectedFlights) SetDepAirportCode(v string) *FlightOtaSearchV2RequestSearchJourneysSelectedFlights {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneysSelectedFlights) SetDepCityCode(v string) *FlightOtaSearchV2RequestSearchJourneysSelectedFlights {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneysSelectedFlights) SetFlightTime(v string) *FlightOtaSearchV2RequestSearchJourneysSelectedFlights {
+	s.FlightTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneysSelectedFlights) SetMarketFlightNo(v string) *FlightOtaSearchV2RequestSearchJourneysSelectedFlights {
+	s.MarketFlightNo = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2RequestSearchJourneysSelectedFlights) SetOperateFlightNo(v string) *FlightOtaSearchV2RequestSearchJourneysSelectedFlights {
+	s.OperateFlightNo = &v
+	return s
+}
+
+type FlightOtaSearchV2ShrinkRequest struct {
+	CabinTypeListShrink  *string `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty"`
+	DirectOnly           *bool   `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	IsvName              *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	NeedShareFlight      *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
+	SearchMode           *int32  `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	TripType             *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightOtaSearchV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ShrinkRequest) SetCabinTypeListShrink(v string) *FlightOtaSearchV2ShrinkRequest {
+	s.CabinTypeListShrink = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ShrinkRequest) SetDirectOnly(v bool) *FlightOtaSearchV2ShrinkRequest {
+	s.DirectOnly = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ShrinkRequest) SetIsvName(v string) *FlightOtaSearchV2ShrinkRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ShrinkRequest) SetNeedShareFlight(v bool) *FlightOtaSearchV2ShrinkRequest {
+	s.NeedShareFlight = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ShrinkRequest) SetSearchJourneysShrink(v string) *FlightOtaSearchV2ShrinkRequest {
+	s.SearchJourneysShrink = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ShrinkRequest) SetSearchMode(v int32) *FlightOtaSearchV2ShrinkRequest {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ShrinkRequest) SetTripType(v int32) *FlightOtaSearchV2ShrinkRequest {
+	s.TripType = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBody struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *FlightOtaSearchV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBody) SetCode(v string) *FlightOtaSearchV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBody) SetMessage(v string) *FlightOtaSearchV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBody) SetModule(v *FlightOtaSearchV2ResponseBodyModule) *FlightOtaSearchV2ResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBody) SetRequestId(v string) *FlightOtaSearchV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBody) SetSuccess(v bool) *FlightOtaSearchV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBody) SetTraceId(v string) *FlightOtaSearchV2ResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModule struct {
+	FlightJourneyInfos []*FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos `json:"flight_journey_infos,omitempty" xml:"flight_journey_infos,omitempty" type:"Repeated"`
+	ItemList           []*FlightOtaSearchV2ResponseBodyModuleItemList           `json:"item_list,omitempty" xml:"item_list,omitempty" type:"Repeated"`
+	SearchMode         *int32                                                   `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	TripType           *int32                                                   `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModule) SetFlightJourneyInfos(v []*FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) *FlightOtaSearchV2ResponseBodyModule {
+	s.FlightJourneyInfos = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModule) SetItemList(v []*FlightOtaSearchV2ResponseBodyModuleItemList) *FlightOtaSearchV2ResponseBodyModule {
+	s.ItemList = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModule) SetSearchMode(v int32) *FlightOtaSearchV2ResponseBodyModule {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModule) SetTripType(v int32) *FlightOtaSearchV2ResponseBodyModule {
+	s.TripType = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos struct {
+	ArrCityCode        *string                                                                    `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName        *string                                                                    `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime            *string                                                                    `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepCityCode        *string                                                                    `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName        *string                                                                    `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime            *string                                                                    `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Duration           *int32                                                                     `json:"duration,omitempty" xml:"duration,omitempty"`
+	Extensions         map[string]*string                                                         `json:"extensions,omitempty" xml:"extensions,omitempty"`
+	FlightSegmentInfos []*FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos `json:"flight_segment_infos,omitempty" xml:"flight_segment_infos,omitempty" type:"Repeated"`
+	JourneyIndex       *int32                                                                     `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	TransferTime       *int32                                                                     `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetArrCityCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetArrCityName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetArrTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetDepCityCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetDepCityName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetDepTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.DepTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetDuration(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.Duration = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetExtensions(v map[string]*string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.Extensions = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetFlightSegmentInfos(v []*FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.FlightSegmentInfos = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetJourneyIndex(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos) SetTransferTime(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfos {
+	s.TransferTime = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos struct {
+	AirlineInfo    *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrCityCode    *string                                                                                `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName    *string                                                                                `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime        *string                                                                                `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BaggageDesc    *string                                                                                `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
+	DepAirportInfo *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode    *string                                                                                `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName    *string                                                                                `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime        *string                                                                                `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// duration
+	Duration           *int32                                                                                  `json:"duration,omitempty" xml:"duration,omitempty"`
+	ExtraInfo          map[string]interface{}                                                                  `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
+	FlightNo           *string                                                                                 `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightShareInfo    *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
+	FlightSize         *string                                                                                 `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightStopInfo     *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo  `json:"flight_stop_info,omitempty" xml:"flight_stop_info,omitempty" type:"Struct"`
+	FlightType         *string                                                                                 `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	Manufacturer       *string                                                                                 `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	MealDesc           *string                                                                                 `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	Miles              *int32                                                                                  `json:"miles,omitempty" xml:"miles,omitempty"`
+	OnTimeRate         *string                                                                                 `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
+	OneMore            *int32                                                                                  `json:"one_more,omitempty" xml:"one_more,omitempty"`
+	OneMoreShow        *string                                                                                 `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
+	SegmentIndex       *int32                                                                                  `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	Share              *bool                                                                                   `json:"share,omitempty" xml:"share,omitempty"`
+	ShortFlightSize    *string                                                                                 `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	Stop               *bool                                                                                   `json:"stop,omitempty" xml:"stop,omitempty"`
+	TotalTime          *string                                                                                 `json:"total_time,omitempty" xml:"total_time,omitempty"`
+	TransferTime       *string                                                                                 `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
+	TransferTimeNumber *int32                                                                                  `json:"transfer_time_number,omitempty" xml:"transfer_time_number,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetAirlineInfo(v *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.AirlineInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetArrAirportInfo(v *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.ArrAirportInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetArrCityCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetArrCityName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetArrTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetBaggageDesc(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.BaggageDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetDepAirportInfo(v *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.DepAirportInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetDepCityCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetDepCityName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetDepTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.DepTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetDuration(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.Duration = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetExtraInfo(v map[string]interface{}) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetFlightNo(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetFlightShareInfo(v *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.FlightShareInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetFlightSize(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.FlightSize = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetFlightStopInfo(v *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.FlightStopInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetFlightType(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.FlightType = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetManufacturer(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.Manufacturer = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetMealDesc(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.MealDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetMiles(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.Miles = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetOnTimeRate(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.OnTimeRate = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetOneMore(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.OneMore = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetOneMoreShow(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.OneMoreShow = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetSegmentIndex(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.SegmentIndex = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetShare(v bool) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.Share = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetShortFlightSize(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.ShortFlightSize = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetStop(v bool) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.Stop = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetTotalTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetTransferTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.TransferTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) SetTransferTimeNumber(v int32) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos {
+	s.TransferTimeNumber = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo struct {
+	AirlineChineseName      *string `json:"airline_chinese_name,omitempty" xml:"airline_chinese_name,omitempty"`
+	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
+	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineChineseName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineChineseName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineChineseShortName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineChineseShortName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetAirlineIcon(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.AirlineIcon = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) SetCheapFlight(v bool) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo {
+	s.CheapFlight = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo struct {
+	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	AirportNameColor *string `json:"airport_name_color,omitempty" xml:"airport_name_color,omitempty"`
+	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportNameColor(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportNameColor = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetAirportShortName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.AirportShortName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) SetTerminal(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo struct {
+	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	AirportNameColor *string `json:"airport_name_color,omitempty" xml:"airport_name_color,omitempty"`
+	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportNameColor(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportNameColor = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetAirportShortName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.AirportShortName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) SetTerminal(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo struct {
+	OperatingAirlineInfo *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo `json:"operating_airline_info,omitempty" xml:"operating_airline_info,omitempty" type:"Struct"`
+	OperatingFlightNo    *string                                                                                                     `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo) SetOperatingAirlineInfo(v *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo {
+	s.OperatingAirlineInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo) SetOperatingFlightNo(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo {
+	s.OperatingFlightNo = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
+	AirlineChineseName      *string `json:"airline_chinese_name,omitempty" xml:"airline_chinese_name,omitempty"`
+	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
+	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineChineseName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineChineseName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineChineseShortName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineChineseShortName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetAirlineIcon(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.AirlineIcon = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) SetCheapFlight(v bool) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo {
+	s.CheapFlight = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo struct {
+	StopAirport     *string   `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	StopAirportName *string   `json:"stop_airport_name,omitempty" xml:"stop_airport_name,omitempty"`
+	StopArrTerm     *string   `json:"stop_arr_term,omitempty" xml:"stop_arr_term,omitempty"`
+	StopArrTime     *string   `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCityCode    *string   `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
+	StopCityName    *string   `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
+	StopCityNames   []*string `json:"stop_city_names,omitempty" xml:"stop_city_names,omitempty" type:"Repeated"`
+	StopDepTerm     *string   `json:"stop_dep_term,omitempty" xml:"stop_dep_term,omitempty"`
+	StopDepTime     *string   `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	StopTime        *string   `json:"stop_time,omitempty" xml:"stop_time,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopAirport(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopAirport = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopAirportName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopAirportName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopArrTerm(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopArrTerm = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopArrTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopArrTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopCityCode(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopCityName(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopCityName = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopCityNames(v []*string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopCityNames = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopDepTerm(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopDepTerm = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopDepTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopDepTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo) SetStopTime(v string) *FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfo {
+	s.StopTime = &v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleItemList struct {
+	FlightRuleInfos    map[string]*ModuleItemListFlightRuleInfosValue         `json:"flight_rule_infos,omitempty" xml:"flight_rule_infos,omitempty"`
+	ItemId             *string                                                `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	ShoppingItemMap    map[string]*ModuleItemListShoppingItemMapValue         `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	SubItemPositionMap map[string][]*ModuleItemListSubItemPositionMapValue    `json:"sub_item_position_map,omitempty" xml:"sub_item_position_map,omitempty"`
+	SubItems           []*FlightOtaSearchV2ResponseBodyModuleItemListSubItems `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleItemList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleItemList) SetFlightRuleInfos(v map[string]*ModuleItemListFlightRuleInfosValue) *FlightOtaSearchV2ResponseBodyModuleItemList {
+	s.FlightRuleInfos = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleItemList) SetItemId(v string) *FlightOtaSearchV2ResponseBodyModuleItemList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleItemList) SetShoppingItemMap(v map[string]*ModuleItemListShoppingItemMapValue) *FlightOtaSearchV2ResponseBodyModuleItemList {
+	s.ShoppingItemMap = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleItemList) SetSubItemPositionMap(v map[string][]*ModuleItemListSubItemPositionMapValue) *FlightOtaSearchV2ResponseBodyModuleItemList {
+	s.SubItemPositionMap = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleItemList) SetSubItems(v []*FlightOtaSearchV2ResponseBodyModuleItemListSubItems) *FlightOtaSearchV2ResponseBodyModuleItemList {
+	s.SubItems = v
+	return s
+}
+
+type FlightOtaSearchV2ResponseBodyModuleItemListSubItems struct {
+	ShoppingItemMap map[string]*ModuleItemListSubItemsShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	UniqKey         *string                                                `json:"uniq_key,omitempty" xml:"uniq_key,omitempty"`
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleItemListSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2ResponseBodyModuleItemListSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleItemListSubItems) SetShoppingItemMap(v map[string]*ModuleItemListSubItemsShoppingItemMapValue) *FlightOtaSearchV2ResponseBodyModuleItemListSubItems {
+	s.ShoppingItemMap = v
+	return s
+}
+
+func (s *FlightOtaSearchV2ResponseBodyModuleItemListSubItems) SetUniqKey(v string) *FlightOtaSearchV2ResponseBodyModuleItemListSubItems {
+	s.UniqKey = &v
+	return s
+}
+
+type FlightOtaSearchV2Response struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FlightOtaSearchV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FlightOtaSearchV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchV2Response) SetHeaders(v map[string]*string) *FlightOtaSearchV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *FlightOtaSearchV2Response) SetStatusCode(v int32) *FlightOtaSearchV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchV2Response) SetBody(v *FlightOtaSearchV2ResponseBody) *FlightOtaSearchV2Response {
 	s.Body = v
 	return s
 }
@@ -46871,6 +52611,111 @@ func (client *Client) FlightListingSearch(request *FlightListingSearchRequest) (
 	return _result, _err
 }
 
+func (client *Client) FlightListingSearchV2WithOptions(tmpReq *FlightListingSearchV2Request, headers *FlightListingSearchV2Headers, runtime *util.RuntimeOptions) (_result *FlightListingSearchV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &FlightListingSearchV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CabinTypeList)) {
+		request.CabinTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CabinTypeList, tea.String("cabin_type_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SearchJourneys)) {
+		request.SearchJourneysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchJourneys, tea.String("search_journeys"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AirlineCode)) {
+		query["airline_code"] = request.AirlineCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CabinTypeListShrink)) {
+		query["cabin_type_list"] = request.CabinTypeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectOnly)) {
+		query["direct_only"] = request.DirectOnly
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedMultiClassPrice)) {
+		query["need_multi_class_price"] = request.NeedMultiClassPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedQueryServiceFee)) {
+		query["need_query_service_fee"] = request.NeedQueryServiceFee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedShareFlight)) {
+		query["need_share_flight"] = request.NeedShareFlight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedYCBestPrice)) {
+		query["need_y_c_best_price"] = request.NeedYCBestPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchJourneysShrink)) {
+		query["search_journeys"] = request.SearchJourneysShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchMode)) {
+		query["search_mode"] = request.SearchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TripType)) {
+		query["trip_type"] = request.TripType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlightListingSearchV2"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v2/flight/action/listing-search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlightListingSearchV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FlightListingSearchV2(request *FlightListingSearchV2Request) (_result *FlightListingSearchV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FlightListingSearchV2Headers{}
+	_result = &FlightListingSearchV2Response{}
+	_body, _err := client.FlightListingSearchV2WithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) FlightOrderDetailInfoWithOptions(request *FlightOrderDetailInfoRequest, headers *FlightOrderDetailInfoHeaders, runtime *util.RuntimeOptions) (_result *FlightOrderDetailInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47080,6 +52925,65 @@ func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) FlightOtaItemDetailWithOptions(request *FlightOtaItemDetailRequest, headers *FlightOtaItemDetailHeaders, runtime *util.RuntimeOptions) (_result *FlightOtaItemDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtaItemId)) {
+		query["ota_item_id"] = request.OtaItemId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlightOtaItemDetail"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/flight/action/ota-item-detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlightOtaItemDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FlightOtaItemDetail(request *FlightOtaItemDetailRequest) (_result *FlightOtaItemDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FlightOtaItemDetailHeaders{}
+	_result = &FlightOtaItemDetailResponse{}
+	_body, _err := client.FlightOtaItemDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) FlightOtaSearchWithOptions(request *FlightOtaSearchRequest, headers *FlightOtaSearchHeaders, runtime *util.RuntimeOptions) (_result *FlightOtaSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47152,6 +53056,95 @@ func (client *Client) FlightOtaSearch(request *FlightOtaSearchRequest) (_result 
 	headers := &FlightOtaSearchHeaders{}
 	_result = &FlightOtaSearchResponse{}
 	_body, _err := client.FlightOtaSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FlightOtaSearchV2WithOptions(tmpReq *FlightOtaSearchV2Request, headers *FlightOtaSearchV2Headers, runtime *util.RuntimeOptions) (_result *FlightOtaSearchV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &FlightOtaSearchV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CabinTypeList)) {
+		request.CabinTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CabinTypeList, tea.String("cabin_type_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SearchJourneys)) {
+		request.SearchJourneysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchJourneys, tea.String("search_journeys"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CabinTypeListShrink)) {
+		query["cabin_type_list"] = request.CabinTypeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectOnly)) {
+		query["direct_only"] = request.DirectOnly
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedShareFlight)) {
+		query["need_share_flight"] = request.NeedShareFlight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchJourneysShrink)) {
+		query["search_journeys"] = request.SearchJourneysShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchMode)) {
+		query["search_mode"] = request.SearchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TripType)) {
+		query["trip_type"] = request.TripType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlightOtaSearchV2"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v2/flight/action/ota-search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlightOtaSearchV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FlightOtaSearchV2(request *FlightOtaSearchV2Request) (_result *FlightOtaSearchV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FlightOtaSearchV2Headers{}
+	_result = &FlightOtaSearchV2Response{}
+	_body, _err := client.FlightOtaSearchV2WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
