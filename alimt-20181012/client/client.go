@@ -17,6 +17,140 @@ import (
 	"io"
 )
 
+type CreateAsyncTranslateRequest struct {
+	ApiType        *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	SourceText     *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+}
+
+func (s CreateAsyncTranslateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAsyncTranslateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAsyncTranslateRequest) SetApiType(v string) *CreateAsyncTranslateRequest {
+	s.ApiType = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateRequest) SetFormatType(v string) *CreateAsyncTranslateRequest {
+	s.FormatType = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateRequest) SetScene(v string) *CreateAsyncTranslateRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateRequest) SetSourceLanguage(v string) *CreateAsyncTranslateRequest {
+	s.SourceLanguage = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateRequest) SetSourceText(v string) *CreateAsyncTranslateRequest {
+	s.SourceText = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateRequest) SetTargetLanguage(v string) *CreateAsyncTranslateRequest {
+	s.TargetLanguage = &v
+	return s
+}
+
+type CreateAsyncTranslateResponseBody struct {
+	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateAsyncTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAsyncTranslateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAsyncTranslateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAsyncTranslateResponseBody) SetCode(v int32) *CreateAsyncTranslateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateResponseBody) SetData(v *CreateAsyncTranslateResponseBodyData) *CreateAsyncTranslateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateAsyncTranslateResponseBody) SetMessage(v string) *CreateAsyncTranslateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateResponseBody) SetRequestId(v string) *CreateAsyncTranslateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAsyncTranslateResponseBodyData struct {
+	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateAsyncTranslateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAsyncTranslateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAsyncTranslateResponseBodyData) SetJobId(v string) *CreateAsyncTranslateResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateResponseBodyData) SetStatus(v string) *CreateAsyncTranslateResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type CreateAsyncTranslateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAsyncTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAsyncTranslateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAsyncTranslateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAsyncTranslateResponse) SetHeaders(v map[string]*string) *CreateAsyncTranslateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAsyncTranslateResponse) SetStatusCode(v int32) *CreateAsyncTranslateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAsyncTranslateResponse) SetBody(v *CreateAsyncTranslateResponseBody) *CreateAsyncTranslateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDocTranslateTaskRequest struct {
 	CallbackUrl    *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -287,6 +421,122 @@ func (s *CreateImageTranslateTaskResponse) SetStatusCode(v int32) *CreateImageTr
 }
 
 func (s *CreateImageTranslateTaskResponse) SetBody(v *CreateImageTranslateTaskResponseBody) *CreateImageTranslateTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetAsyncTranslateRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAsyncTranslateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTranslateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTranslateRequest) SetJobId(v string) *GetAsyncTranslateRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetAsyncTranslateResponseBody struct {
+	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAsyncTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAsyncTranslateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTranslateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTranslateResponseBody) SetCode(v int32) *GetAsyncTranslateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAsyncTranslateResponseBody) SetData(v *GetAsyncTranslateResponseBodyData) *GetAsyncTranslateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAsyncTranslateResponseBody) SetMessage(v string) *GetAsyncTranslateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAsyncTranslateResponseBody) SetRequestId(v string) *GetAsyncTranslateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAsyncTranslateResponseBodyData struct {
+	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TranslatedText   *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
+	WordCount        *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+}
+
+func (s GetAsyncTranslateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTranslateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTranslateResponseBodyData) SetDetectedLanguage(v string) *GetAsyncTranslateResponseBodyData {
+	s.DetectedLanguage = &v
+	return s
+}
+
+func (s *GetAsyncTranslateResponseBodyData) SetStatus(v string) *GetAsyncTranslateResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAsyncTranslateResponseBodyData) SetTranslatedText(v string) *GetAsyncTranslateResponseBodyData {
+	s.TranslatedText = &v
+	return s
+}
+
+func (s *GetAsyncTranslateResponseBodyData) SetWordCount(v string) *GetAsyncTranslateResponseBodyData {
+	s.WordCount = &v
+	return s
+}
+
+type GetAsyncTranslateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsyncTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsyncTranslateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTranslateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTranslateResponse) SetHeaders(v map[string]*string) *GetAsyncTranslateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncTranslateResponse) SetStatusCode(v int32) *GetAsyncTranslateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAsyncTranslateResponse) SetBody(v *GetAsyncTranslateResponseBody) *GetAsyncTranslateResponse {
 	s.Body = v
 	return s
 }
@@ -2635,6 +2885,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateAsyncTranslateWithOptions(request *CreateAsyncTranslateRequest, runtime *util.RuntimeOptions) (_result *CreateAsyncTranslateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiType)) {
+		body["ApiType"] = request.ApiType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAsyncTranslate"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAsyncTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAsyncTranslate(request *CreateAsyncTranslateRequest) (_result *CreateAsyncTranslateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAsyncTranslateResponse{}
+	_body, _err := client.CreateAsyncTranslateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDocTranslateTaskWithOptions(request *CreateDocTranslateTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDocTranslateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2858,6 +3172,50 @@ func (client *Client) CreateImageTranslateTask(request *CreateImageTranslateTask
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageTranslateTaskResponse{}
 	_body, _err := client.CreateImageTranslateTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAsyncTranslateWithOptions(request *GetAsyncTranslateRequest, runtime *util.RuntimeOptions) (_result *GetAsyncTranslateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncTranslate"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAsyncTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncTranslate(request *GetAsyncTranslateRequest) (_result *GetAsyncTranslateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncTranslateResponse{}
+	_body, _err := client.GetAsyncTranslateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
