@@ -487,6 +487,10 @@ type CreateMyBaseRequest struct {
 	DedicatedHostGroupDescription *string                            `json:"DedicatedHostGroupDescription,omitempty" xml:"DedicatedHostGroupDescription,omitempty"`
 	DedicatedHostGroupId          *string                            `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	ECSClassList                  []*CreateMyBaseRequestECSClassList `json:"ECSClassList,omitempty" xml:"ECSClassList,omitempty" type:"Repeated"`
+	EcsDeploymentSetId            *string                            `json:"EcsDeploymentSetId,omitempty" xml:"EcsDeploymentSetId,omitempty"`
+	EcsHostName                   *string                            `json:"EcsHostName,omitempty" xml:"EcsHostName,omitempty"`
+	EcsInstanceName               *string                            `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
+	EcsUniqueSuffix               *string                            `json:"EcsUniqueSuffix,omitempty" xml:"EcsUniqueSuffix,omitempty"`
 	Engine                        *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ImageId                       *string                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	KeyPairName                   *string                            `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
@@ -535,6 +539,26 @@ func (s *CreateMyBaseRequest) SetDedicatedHostGroupId(v string) *CreateMyBaseReq
 
 func (s *CreateMyBaseRequest) SetECSClassList(v []*CreateMyBaseRequestECSClassList) *CreateMyBaseRequest {
 	s.ECSClassList = v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetEcsDeploymentSetId(v string) *CreateMyBaseRequest {
+	s.EcsDeploymentSetId = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetEcsHostName(v string) *CreateMyBaseRequest {
+	s.EcsHostName = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetEcsInstanceName(v string) *CreateMyBaseRequest {
+	s.EcsInstanceName = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetEcsUniqueSuffix(v string) *CreateMyBaseRequest {
+	s.EcsUniqueSuffix = &v
 	return s
 }
 
@@ -689,6 +713,10 @@ type CreateMyBaseShrinkRequest struct {
 	DedicatedHostGroupDescription *string `json:"DedicatedHostGroupDescription,omitempty" xml:"DedicatedHostGroupDescription,omitempty"`
 	DedicatedHostGroupId          *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	ECSClassListShrink            *string `json:"ECSClassList,omitempty" xml:"ECSClassList,omitempty"`
+	EcsDeploymentSetId            *string `json:"EcsDeploymentSetId,omitempty" xml:"EcsDeploymentSetId,omitempty"`
+	EcsHostName                   *string `json:"EcsHostName,omitempty" xml:"EcsHostName,omitempty"`
+	EcsInstanceName               *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
+	EcsUniqueSuffix               *string `json:"EcsUniqueSuffix,omitempty" xml:"EcsUniqueSuffix,omitempty"`
 	Engine                        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ImageId                       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	KeyPairName                   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
@@ -737,6 +765,26 @@ func (s *CreateMyBaseShrinkRequest) SetDedicatedHostGroupId(v string) *CreateMyB
 
 func (s *CreateMyBaseShrinkRequest) SetECSClassListShrink(v string) *CreateMyBaseShrinkRequest {
 	s.ECSClassListShrink = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetEcsDeploymentSetId(v string) *CreateMyBaseShrinkRequest {
+	s.EcsDeploymentSetId = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetEcsHostName(v string) *CreateMyBaseShrinkRequest {
+	s.EcsHostName = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetEcsInstanceName(v string) *CreateMyBaseShrinkRequest {
+	s.EcsInstanceName = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetEcsUniqueSuffix(v string) *CreateMyBaseShrinkRequest {
+	s.EcsUniqueSuffix = &v
 	return s
 }
 
@@ -861,9 +909,10 @@ func (s *CreateMyBaseResponseBodyOrderList) SetOrderList(v []*CreateMyBaseRespon
 }
 
 type CreateMyBaseResponseBodyOrderListOrderList struct {
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	ECSInstanceIds  *string `json:"ECSInstanceIds,omitempty" xml:"ECSInstanceIds,omitempty"`
-	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	CreateTimestamp        *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DedicatedHostGroupName *string `json:"DedicatedHostGroupName,omitempty" xml:"DedicatedHostGroupName,omitempty"`
+	ECSInstanceIds         *string `json:"ECSInstanceIds,omitempty" xml:"ECSInstanceIds,omitempty"`
+	OrderId                *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateMyBaseResponseBodyOrderListOrderList) String() string {
@@ -876,6 +925,11 @@ func (s CreateMyBaseResponseBodyOrderListOrderList) GoString() string {
 
 func (s *CreateMyBaseResponseBodyOrderListOrderList) SetCreateTimestamp(v int64) *CreateMyBaseResponseBodyOrderListOrderList {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *CreateMyBaseResponseBodyOrderListOrderList) SetDedicatedHostGroupName(v string) *CreateMyBaseResponseBodyOrderListOrderList {
+	s.DedicatedHostGroupName = &v
 	return s
 }
 
@@ -1180,8 +1234,9 @@ type DescribeDedicatedHostAttributeResponseBody struct {
 	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StorageUsed            *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 	VPCId                  *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId              *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                 *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// VSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedHostAttributeResponseBody) String() string {
@@ -4680,6 +4735,22 @@ func (client *Client) CreateMyBaseWithOptions(tmpReq *CreateMyBaseRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.ECSClassListShrink)) {
 		query["ECSClassList"] = request.ECSClassListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsDeploymentSetId)) {
+		query["EcsDeploymentSetId"] = request.EcsDeploymentSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsHostName)) {
+		query["EcsHostName"] = request.EcsHostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceName)) {
+		query["EcsInstanceName"] = request.EcsInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsUniqueSuffix)) {
+		query["EcsUniqueSuffix"] = request.EcsUniqueSuffix
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Engine)) {
