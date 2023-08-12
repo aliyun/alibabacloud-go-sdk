@@ -6721,6 +6721,7 @@ type CreatePrometheusInstanceRequest struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
+	ParamJson         *string `json:"ParamJson,omitempty" xml:"ParamJson,omitempty"`
 	// The region ID. If you create a Prometheus instance for cloud services in China, set the value to cn-shanghai.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
@@ -6767,6 +6768,11 @@ func (s *CreatePrometheusInstanceRequest) SetClusterType(v string) *CreatePromet
 
 func (s *CreatePrometheusInstanceRequest) SetGrafanaInstanceId(v string) *CreatePrometheusInstanceRequest {
 	s.GrafanaInstanceId = &v
+	return s
+}
+
+func (s *CreatePrometheusInstanceRequest) SetParamJson(v string) *CreatePrometheusInstanceRequest {
+	s.ParamJson = &v
 	return s
 }
 
@@ -8262,6 +8268,917 @@ func (s *CreateSyntheticTaskResponse) SetStatusCode(v int32) *CreateSyntheticTas
 }
 
 func (s *CreateSyntheticTaskResponse) SetBody(v *CreateSyntheticTaskResponseBody) *CreateSyntheticTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequest struct {
+	AvailableAssertions []*CreateTimingSyntheticTaskRequestAvailableAssertions `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty" type:"Repeated"`
+	CommonSetting       *CreateTimingSyntheticTaskRequestCommonSetting         `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
+	CustomPeriod        *CreateTimingSyntheticTaskRequestCustomPeriod          `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
+	Frequency           *string                                                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	MonitorCategory     *int32                                                 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	MonitorConf         *CreateTimingSyntheticTaskRequestMonitorConf           `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
+	Monitors            []*CreateTimingSyntheticTaskRequestMonitors            `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	Name                *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId            *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId     *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                []*CreateTimingSyntheticTaskRequestTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskType            *int32                                                 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetAvailableAssertions(v []*CreateTimingSyntheticTaskRequestAvailableAssertions) *CreateTimingSyntheticTaskRequest {
+	s.AvailableAssertions = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetCommonSetting(v *CreateTimingSyntheticTaskRequestCommonSetting) *CreateTimingSyntheticTaskRequest {
+	s.CommonSetting = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetCustomPeriod(v *CreateTimingSyntheticTaskRequestCustomPeriod) *CreateTimingSyntheticTaskRequest {
+	s.CustomPeriod = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetFrequency(v string) *CreateTimingSyntheticTaskRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetMonitorCategory(v int32) *CreateTimingSyntheticTaskRequest {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetMonitorConf(v *CreateTimingSyntheticTaskRequestMonitorConf) *CreateTimingSyntheticTaskRequest {
+	s.MonitorConf = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetMonitors(v []*CreateTimingSyntheticTaskRequestMonitors) *CreateTimingSyntheticTaskRequest {
+	s.Monitors = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetName(v string) *CreateTimingSyntheticTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetRegionId(v string) *CreateTimingSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetResourceGroupId(v string) *CreateTimingSyntheticTaskRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetTags(v []*CreateTimingSyntheticTaskRequestTags) *CreateTimingSyntheticTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequest) SetTaskType(v int32) *CreateTimingSyntheticTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestAvailableAssertions struct {
+	Expect   *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestAvailableAssertions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestAvailableAssertions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestAvailableAssertions) SetExpect(v string) *CreateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Expect = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestAvailableAssertions) SetOperator(v string) *CreateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestAvailableAssertions) SetTarget(v string) *CreateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Target = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) *CreateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Type = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestCommonSetting struct {
+	CustomHost     *CreateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	IpType         *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MonitorSamples *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetCustomHost(v *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.CustomHost = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetIpType(v int32) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.IpType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetMonitorSamples(v int32) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.MonitorSamples = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestCommonSettingCustomHost struct {
+	Hosts      []*CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	SelectType *int32                                                          `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomHost) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) SetHosts(v []*CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) *CreateTimingSyntheticTaskRequestCommonSettingCustomHost {
+	s.Hosts = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) SetSelectType(v int32) *CreateTimingSyntheticTaskRequestCommonSettingCustomHost {
+	s.SelectType = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts struct {
+	Domain *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	IpType *int32    `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetDomain(v string) *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIpType(v int32) *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
+	s.IpType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIps(v []*string) *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
+	s.Ips = v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestCustomPeriod struct {
+	EndHour   *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	StartHour *int32 `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestCustomPeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestCustomPeriod) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestCustomPeriod) SetEndHour(v int32) *CreateTimingSyntheticTaskRequestCustomPeriod {
+	s.EndHour = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCustomPeriod) SetStartHour(v int32) *CreateTimingSyntheticTaskRequestCustomPeriod {
+	s.StartHour = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConf struct {
+	ApiHTTP      *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP      `json:"ApiHTTP,omitempty" xml:"ApiHTTP,omitempty" type:"Struct"`
+	FileDownload *CreateTimingSyntheticTaskRequestMonitorConfFileDownload `json:"FileDownload,omitempty" xml:"FileDownload,omitempty" type:"Struct"`
+	NetDNS       *CreateTimingSyntheticTaskRequestMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
+	NetICMP      *CreateTimingSyntheticTaskRequestMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
+	NetTCP       *CreateTimingSyntheticTaskRequestMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	Website      *CreateTimingSyntheticTaskRequestMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConf) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetApiHTTP(v *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) *CreateTimingSyntheticTaskRequestMonitorConf {
+	s.ApiHTTP = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetFileDownload(v *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) *CreateTimingSyntheticTaskRequestMonitorConf {
+	s.FileDownload = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetNetDNS(v *CreateTimingSyntheticTaskRequestMonitorConfNetDNS) *CreateTimingSyntheticTaskRequestMonitorConf {
+	s.NetDNS = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetNetICMP(v *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) *CreateTimingSyntheticTaskRequestMonitorConf {
+	s.NetICMP = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetNetTCP(v *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) *CreateTimingSyntheticTaskRequestMonitorConf {
+	s.NetTCP = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetWebsite(v *CreateTimingSyntheticTaskRequestMonitorConfWebsite) *CreateTimingSyntheticTaskRequestMonitorConf {
+	s.Website = v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
+	ConnectTimeout *int64                                                         `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	Method         *string                                                        `json:"Method,omitempty" xml:"Method,omitempty"`
+	RequestBody    *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
+	RequestHeaders map[string]*string                                             `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	TargetUrl      *string                                                        `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetConnectTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetMethod(v string) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.Method = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetRequestBody(v *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.RequestBody = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetRequestHeaders(v map[string]*string) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.RequestHeaders = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.Timeout = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) SetContent(v string) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) SetType(v string) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody {
+	s.Type = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConfFileDownload struct {
+	ConnectionTimeout                   *int64             `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	CustomHeaderContent                 map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DownloadKernel                      *int32             `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	IgnoreCertificateAuthError          *int32             `json:"IgnoreCertificateAuthError,omitempty" xml:"IgnoreCertificateAuthError,omitempty"`
+	IgnoreCertificateCanceledError      *int32             `json:"IgnoreCertificateCanceledError,omitempty" xml:"IgnoreCertificateCanceledError,omitempty"`
+	IgnoreCertificateOutOfDateError     *int32             `json:"IgnoreCertificateOutOfDateError,omitempty" xml:"IgnoreCertificateOutOfDateError,omitempty"`
+	IgnoreCertificateStatusError        *int32             `json:"IgnoreCertificateStatusError,omitempty" xml:"IgnoreCertificateStatusError,omitempty"`
+	IgnoreCertificateUntrustworthyError *int32             `json:"IgnoreCertificateUntrustworthyError,omitempty" xml:"IgnoreCertificateUntrustworthyError,omitempty"`
+	IgnoreCertificateUsingError         *int32             `json:"IgnoreCertificateUsingError,omitempty" xml:"IgnoreCertificateUsingError,omitempty"`
+	IgnoreInvalidHostError              *int32             `json:"IgnoreInvalidHostError,omitempty" xml:"IgnoreInvalidHostError,omitempty"`
+	MonitorTimeout                      *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	QuickProtocol                       *int32             `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfFileDownload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfFileDownload) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetConnectionTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.ConnectionTimeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetCustomHeaderContent(v map[string]*string) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetDownloadKernel(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.DownloadKernel = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateAuthError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateAuthError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateCanceledError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateCanceledError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateOutOfDateError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateOutOfDateError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateStatusError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateStatusError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateUntrustworthyError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateUntrustworthyError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateUsingError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateUsingError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreInvalidHostError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreInvalidHostError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetMonitorTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetQuickProtocol(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.QuickProtocol = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetRedirection(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.Redirection = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTransmissionSize(v int64) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.TransmissionSize = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConfNetDNS struct {
+	DnsServerIpType *int32  `json:"DnsServerIpType,omitempty" xml:"DnsServerIpType,omitempty"`
+	NsServer        *string `json:"NsServer,omitempty" xml:"NsServer,omitempty"`
+	QueryMethod     *int32  `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
+	TargetUrl       *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout         *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfNetDNS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfNetDNS) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetDNS) SetDnsServerIpType(v int32) *CreateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.DnsServerIpType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetDNS) SetNsServer(v string) *CreateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.NsServer = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetDNS) SetQueryMethod(v int32) *CreateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.QueryMethod = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetDNS) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetDNS) SetTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.Timeout = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConfNetICMP struct {
+	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	PackageNum     *int32  `json:"PackageNum,omitempty" xml:"PackageNum,omitempty"`
+	PackageSize    *int32  `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
+	SplitPackage   *bool   `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
+	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfNetICMP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfNetICMP) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetInterval(v int64) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetPackageNum(v int32) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.PackageNum = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetPackageSize(v int32) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.PackageSize = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetSplitPackage(v bool) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.SplitPackage = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.Timeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTracertEnable(v bool) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TracertEnable = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTracertNumMax(v int32) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TracertNumMax = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTracertTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TracertTimeout = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConfNetTCP struct {
+	ConnectTimes   *int32  `json:"ConnectTimes,omitempty" xml:"ConnectTimes,omitempty"`
+	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfNetTCP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfNetTCP) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetConnectTimes(v int32) *CreateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.ConnectTimes = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetInterval(v int64) *CreateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.Timeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertEnable(v bool) *CreateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TracertEnable = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertNumMax(v int32) *CreateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TracertNumMax = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TracertTimeout = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitorConfWebsite struct {
+	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
+	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
+	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
+	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
+	MonitorTimeout         *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfWebsite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfWebsite) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetAutomaticScrolling(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.AutomaticScrolling = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetCustomHeader(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.CustomHeader = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetCustomHeaderContent(v map[string]*string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCache(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.DisableCache = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCompression(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.DisableCompression = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetFilterInvalidIP(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetIgnoreCertificateError(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.IgnoreCertificateError = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetMonitorTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetRedirection(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.Redirection = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetSlowElementThreshold(v int64) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.SlowElementThreshold = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetWaitCompletionTime(v int64) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.WaitCompletionTime = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestMonitors struct {
+	CityCode     *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	ClientType   *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	OperatorCode *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitors) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitors) SetCityCode(v string) *CreateTimingSyntheticTaskRequestMonitors {
+	s.CityCode = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitors) SetClientType(v int32) *CreateTimingSyntheticTaskRequestMonitors {
+	s.ClientType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitors) SetOperatorCode(v string) *CreateTimingSyntheticTaskRequestMonitors {
+	s.OperatorCode = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestTags) SetKey(v string) *CreateTimingSyntheticTaskRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestTags) SetValue(v string) *CreateTimingSyntheticTaskRequestTags {
+	s.Value = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskShrinkRequest struct {
+	AvailableAssertionsShrink *string `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty"`
+	CommonSettingShrink       *string `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty"`
+	CustomPeriodShrink        *string `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty"`
+	Frequency                 *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	MonitorCategory           *int32  `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	MonitorConfShrink         *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	MonitorsShrink            *string `json:"Monitors,omitempty" xml:"Monitors,omitempty"`
+	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagsShrink                *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TaskType                  *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetAvailableAssertionsShrink(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.AvailableAssertionsShrink = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetCommonSettingShrink(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.CommonSettingShrink = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetCustomPeriodShrink(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.CustomPeriodShrink = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetFrequency(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetMonitorCategory(v int32) *CreateTimingSyntheticTaskShrinkRequest {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetMonitorConfShrink(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.MonitorConfShrink = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetMonitorsShrink(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.MonitorsShrink = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetName(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetRegionId(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetResourceGroupId(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetTagsShrink(v string) *CreateTimingSyntheticTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskShrinkRequest) SetTaskType(v int32) *CreateTimingSyntheticTaskShrinkRequest {
+	s.TaskType = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskResponseBody struct {
+	Code    *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *CreateTimingSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskResponseBody) SetCode(v int64) *CreateTimingSyntheticTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskResponseBody) SetData(v *CreateTimingSyntheticTaskResponseBodyData) *CreateTimingSyntheticTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskResponseBody) SetMessage(v string) *CreateTimingSyntheticTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskResponseBody) SetRequestId(v string) *CreateTimingSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskResponseBody) SetSuccess(v bool) *CreateTimingSyntheticTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskResponseBodyData struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskResponseBodyData) SetStatus(v string) *CreateTimingSyntheticTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskResponseBodyData) SetTaskId(v string) *CreateTimingSyntheticTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateTimingSyntheticTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTimingSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTimingSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskResponse) SetHeaders(v map[string]*string) *CreateTimingSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskResponse) SetStatusCode(v int32) *CreateTimingSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskResponse) SetBody(v *CreateTimingSyntheticTaskResponseBody) *CreateTimingSyntheticTaskResponse {
 	s.Body = v
 	return s
 }
@@ -10491,6 +11408,93 @@ func (s *DeleteSyntheticTaskResponse) SetStatusCode(v int32) *DeleteSyntheticTas
 }
 
 func (s *DeleteSyntheticTaskResponse) SetBody(v *DeleteSyntheticTaskResponseBody) *DeleteSyntheticTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTimingSyntheticTaskRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteTimingSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTimingSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTimingSyntheticTaskRequest) SetRegionId(v string) *DeleteTimingSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteTimingSyntheticTaskRequest) SetTaskId(v string) *DeleteTimingSyntheticTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteTimingSyntheticTaskResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTimingSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTimingSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTimingSyntheticTaskResponseBody) SetCode(v int64) *DeleteTimingSyntheticTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteTimingSyntheticTaskResponseBody) SetData(v bool) *DeleteTimingSyntheticTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteTimingSyntheticTaskResponseBody) SetMessage(v string) *DeleteTimingSyntheticTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteTimingSyntheticTaskResponseBody) SetRequestId(v string) *DeleteTimingSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTimingSyntheticTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTimingSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTimingSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTimingSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTimingSyntheticTaskResponse) SetHeaders(v map[string]*string) *DeleteTimingSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTimingSyntheticTaskResponse) SetStatusCode(v int32) *DeleteTimingSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTimingSyntheticTaskResponse) SetBody(v *DeleteTimingSyntheticTaskResponseBody) *DeleteTimingSyntheticTaskResponse {
 	s.Body = v
 	return s
 }
@@ -16472,6 +17476,216 @@ func (s *GetStackResponse) SetBody(v *GetStackResponseBody) *GetStackResponse {
 	return s
 }
 
+type GetSyntheticMonitorsRequest struct {
+	Filter   *GetSyntheticMonitorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSyntheticMonitorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticMonitorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticMonitorsRequest) SetFilter(v *GetSyntheticMonitorsRequestFilter) *GetSyntheticMonitorsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *GetSyntheticMonitorsRequest) SetRegionId(v string) *GetSyntheticMonitorsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSyntheticMonitorsRequestFilter struct {
+	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	Network         *int32 `json:"Network,omitempty" xml:"Network,omitempty"`
+	TaskType        *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetSyntheticMonitorsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticMonitorsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticMonitorsRequestFilter) SetMonitorCategory(v int32) *GetSyntheticMonitorsRequestFilter {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsRequestFilter) SetNetwork(v int32) *GetSyntheticMonitorsRequestFilter {
+	s.Network = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsRequestFilter) SetTaskType(v int32) *GetSyntheticMonitorsRequestFilter {
+	s.TaskType = &v
+	return s
+}
+
+type GetSyntheticMonitorsShrinkRequest struct {
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSyntheticMonitorsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticMonitorsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticMonitorsShrinkRequest) SetFilterShrink(v string) *GetSyntheticMonitorsShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsShrinkRequest) SetRegionId(v string) *GetSyntheticMonitorsShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSyntheticMonitorsResponseBody struct {
+	Code      *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetSyntheticMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSyntheticMonitorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticMonitorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticMonitorsResponseBody) SetCode(v int64) *GetSyntheticMonitorsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBody) SetData(v []*GetSyntheticMonitorsResponseBodyData) *GetSyntheticMonitorsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBody) SetMessage(v string) *GetSyntheticMonitorsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBody) SetRequestId(v string) *GetSyntheticMonitorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSyntheticMonitorsResponseBodyData struct {
+	Available     *string `json:"Available,omitempty" xml:"Available,omitempty"`
+	CanBeSelected *bool   `json:"CanBeSelected,omitempty" xml:"CanBeSelected,omitempty"`
+	City          *string `json:"City,omitempty" xml:"City,omitempty"`
+	CityCode      *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	ClientType    *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	Country       *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Ipv6          *int32  `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Operator      *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OperatorCode  *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s GetSyntheticMonitorsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticMonitorsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetAvailable(v string) *GetSyntheticMonitorsResponseBodyData {
+	s.Available = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetCanBeSelected(v bool) *GetSyntheticMonitorsResponseBodyData {
+	s.CanBeSelected = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetCity(v string) *GetSyntheticMonitorsResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetCityCode(v string) *GetSyntheticMonitorsResponseBodyData {
+	s.CityCode = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetClientType(v int32) *GetSyntheticMonitorsResponseBodyData {
+	s.ClientType = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetCountry(v string) *GetSyntheticMonitorsResponseBodyData {
+	s.Country = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetIpv6(v int32) *GetSyntheticMonitorsResponseBodyData {
+	s.Ipv6 = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetOperator(v string) *GetSyntheticMonitorsResponseBodyData {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetOperatorCode(v string) *GetSyntheticMonitorsResponseBodyData {
+	s.OperatorCode = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponseBodyData) SetRegion(v string) *GetSyntheticMonitorsResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+type GetSyntheticMonitorsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSyntheticMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSyntheticMonitorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticMonitorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticMonitorsResponse) SetHeaders(v map[string]*string) *GetSyntheticMonitorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponse) SetStatusCode(v int32) *GetSyntheticMonitorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSyntheticMonitorsResponse) SetBody(v *GetSyntheticMonitorsResponseBody) *GetSyntheticMonitorsResponse {
+	s.Body = v
+	return s
+}
+
 type GetSyntheticTaskDetailRequest struct {
 	// 地域ID。默认为cn-hangzhou。
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -17844,6 +19058,839 @@ func (s *GetSyntheticTaskMonitorsResponse) SetStatusCode(v int32) *GetSyntheticT
 }
 
 func (s *GetSyntheticTaskMonitorsResponse) SetBody(v *GetSyntheticTaskMonitorsResponseBody) *GetSyntheticTaskMonitorsResponse {
+	s.Body = v
+	return s
+}
+
+type GetTimingSyntheticTaskRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskRequest) SetRegionId(v string) *GetTimingSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskRequest) SetTaskId(v string) *GetTimingSyntheticTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBody struct {
+	Code      *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetTimingSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBody) SetCode(v int64) *GetTimingSyntheticTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBody) SetData(v *GetTimingSyntheticTaskResponseBodyData) *GetTimingSyntheticTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBody) SetMessage(v string) *GetTimingSyntheticTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBody) SetRequestId(v string) *GetTimingSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyData struct {
+	AvailableAssertions []*GetTimingSyntheticTaskResponseBodyDataAvailableAssertions `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty" type:"Repeated"`
+	CommonSetting       *GetTimingSyntheticTaskResponseBodyDataCommonSetting         `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
+	CustomPeriod        *GetTimingSyntheticTaskResponseBodyDataCustomPeriod          `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
+	Frequency           *string                                                      `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	MonitorCategory     *int64                                                       `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	MonitorConf         *GetTimingSyntheticTaskResponseBodyDataMonitorConf           `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
+	Monitors            []*GetTimingSyntheticTaskResponseBodyDataMonitors            `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	Name                *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId            *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId     *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status              *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                []*GetTimingSyntheticTaskResponseBodyDataTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskId              *string                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType            *int32                                                       `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetAvailableAssertions(v []*GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) *GetTimingSyntheticTaskResponseBodyData {
+	s.AvailableAssertions = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetCommonSetting(v *GetTimingSyntheticTaskResponseBodyDataCommonSetting) *GetTimingSyntheticTaskResponseBodyData {
+	s.CommonSetting = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetCustomPeriod(v *GetTimingSyntheticTaskResponseBodyDataCustomPeriod) *GetTimingSyntheticTaskResponseBodyData {
+	s.CustomPeriod = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetFrequency(v string) *GetTimingSyntheticTaskResponseBodyData {
+	s.Frequency = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetMonitorCategory(v int64) *GetTimingSyntheticTaskResponseBodyData {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetMonitorConf(v *GetTimingSyntheticTaskResponseBodyDataMonitorConf) *GetTimingSyntheticTaskResponseBodyData {
+	s.MonitorConf = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetMonitors(v []*GetTimingSyntheticTaskResponseBodyDataMonitors) *GetTimingSyntheticTaskResponseBodyData {
+	s.Monitors = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetName(v string) *GetTimingSyntheticTaskResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetRegionId(v string) *GetTimingSyntheticTaskResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetResourceGroupId(v string) *GetTimingSyntheticTaskResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetStatus(v string) *GetTimingSyntheticTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetTags(v []*GetTimingSyntheticTaskResponseBodyDataTags) *GetTimingSyntheticTaskResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetTaskId(v string) *GetTimingSyntheticTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyData) SetTaskType(v int32) *GetTimingSyntheticTaskResponseBodyData {
+	s.TaskType = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataAvailableAssertions struct {
+	Expect   *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetExpect(v string) *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions {
+	s.Expect = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetOperator(v string) *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetTarget(v string) *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions {
+	s.Target = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetType(v string) *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions {
+	s.Type = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataCommonSetting struct {
+	CustomHost     *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	IpType         *int32                                                         `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MonitorSamples *int32                                                         `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSetting) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetCustomHost(v *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.CustomHost = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetIpType(v int32) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.IpType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetMonitorSamples(v int32) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.MonitorSamples = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost struct {
+	Hosts      []*GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	SelectType *int32                                                                `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) SetHosts(v []*GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost {
+	s.Hosts = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) SetSelectType(v int32) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost {
+	s.SelectType = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts struct {
+	Domain *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	IpType *int32    `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) SetDomain(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) SetIpType(v int32) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts {
+	s.IpType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) SetIps(v []*string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts {
+	s.Ips = v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataCustomPeriod struct {
+	EndHour   *int64 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	StartHour *int64 `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCustomPeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCustomPeriod) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCustomPeriod) SetEndHour(v int64) *GetTimingSyntheticTaskResponseBodyDataCustomPeriod {
+	s.EndHour = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCustomPeriod) SetStartHour(v int64) *GetTimingSyntheticTaskResponseBodyDataCustomPeriod {
+	s.StartHour = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConf struct {
+	ApiHTTP      *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP      `json:"ApiHTTP,omitempty" xml:"ApiHTTP,omitempty" type:"Struct"`
+	FileDownload *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload `json:"FileDownload,omitempty" xml:"FileDownload,omitempty" type:"Struct"`
+	NetDNS       *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
+	NetICMP      *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
+	NetTCP       *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	Website      *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConf) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetApiHTTP(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
+	s.ApiHTTP = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetFileDownload(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
+	s.FileDownload = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetNetDNS(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
+	s.NetDNS = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetNetICMP(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
+	s.NetICMP = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetNetTCP(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
+	s.NetTCP = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetWebsite(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
+	s.Website = v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP struct {
+	ConnectTimeout *int64                                                               `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	Method         *string                                                              `json:"Method,omitempty" xml:"Method,omitempty"`
+	RequestBody    *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
+	RequestHeaders map[string]*string                                                   `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	TargetUrl      *string                                                              `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64                                                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetConnectTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetMethod(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.Method = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetRequestBody(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.RequestBody = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetRequestHeaders(v map[string]*string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.RequestHeaders = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.Timeout = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody) SetContent(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody {
+	s.Content = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody) SetType(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody {
+	s.Type = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload struct {
+	ConnectionTimeout                   *int64             `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	CustomHeaderContent                 map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DownloadKernel                      *int64             `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	IgnoreCertificateAuthError          *int32             `json:"IgnoreCertificateAuthError,omitempty" xml:"IgnoreCertificateAuthError,omitempty"`
+	IgnoreCertificateCanceledError      *int32             `json:"IgnoreCertificateCanceledError,omitempty" xml:"IgnoreCertificateCanceledError,omitempty"`
+	IgnoreCertificateOutOfDateError     *int32             `json:"IgnoreCertificateOutOfDateError,omitempty" xml:"IgnoreCertificateOutOfDateError,omitempty"`
+	IgnoreCertificateStatusError        *int32             `json:"IgnoreCertificateStatusError,omitempty" xml:"IgnoreCertificateStatusError,omitempty"`
+	IgnoreCertificateUntrustworthyError *int32             `json:"IgnoreCertificateUntrustworthyError,omitempty" xml:"IgnoreCertificateUntrustworthyError,omitempty"`
+	IgnoreCertificateUsingError         *int32             `json:"IgnoreCertificateUsingError,omitempty" xml:"IgnoreCertificateUsingError,omitempty"`
+	IgnoreInvalidHostError              *int32             `json:"IgnoreInvalidHostError,omitempty" xml:"IgnoreInvalidHostError,omitempty"`
+	MonitorTimeout                      *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	QuickProtocol                       *int64             `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetConnectionTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.ConnectionTimeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetCustomHeaderContent(v map[string]*string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetDownloadKernel(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.DownloadKernel = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetIgnoreCertificateAuthError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.IgnoreCertificateAuthError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetIgnoreCertificateCanceledError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.IgnoreCertificateCanceledError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetIgnoreCertificateOutOfDateError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.IgnoreCertificateOutOfDateError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetIgnoreCertificateStatusError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.IgnoreCertificateStatusError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetIgnoreCertificateUntrustworthyError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.IgnoreCertificateUntrustworthyError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetIgnoreCertificateUsingError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.IgnoreCertificateUsingError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetIgnoreInvalidHostError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.IgnoreInvalidHostError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetMonitorTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetQuickProtocol(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.QuickProtocol = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetRedirection(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.Redirection = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetTransmissionSize(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.TransmissionSize = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS struct {
+	DnsServerIpType *int32  `json:"DnsServerIpType,omitempty" xml:"DnsServerIpType,omitempty"`
+	NsServer        *string `json:"NsServer,omitempty" xml:"NsServer,omitempty"`
+	QueryMethod     *int32  `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
+	TargetUrl       *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout         *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) SetDnsServerIpType(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS {
+	s.DnsServerIpType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) SetNsServer(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS {
+	s.NsServer = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) SetQueryMethod(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS {
+	s.QueryMethod = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS) SetTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS {
+	s.Timeout = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP struct {
+	Interval       *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	PackageNum     *int32  `json:"PackageNum,omitempty" xml:"PackageNum,omitempty"`
+	PackageSize    *int32  `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
+	SplitPackage   *bool   `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
+	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetInterval(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.Interval = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetPackageNum(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.PackageNum = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetPackageSize(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.PackageSize = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetSplitPackage(v bool) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.SplitPackage = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetTracertEnable(v bool) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.TracertEnable = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetTracertNumMax(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.TracertNumMax = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP) SetTracertTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP {
+	s.TracertTimeout = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP struct {
+	ConnectTimes   *int32  `json:"ConnectTimes,omitempty" xml:"ConnectTimes,omitempty"`
+	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetConnectTimes(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP {
+	s.ConnectTimes = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetInterval(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP {
+	s.Interval = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetTracertEnable(v bool) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP {
+	s.TracertEnable = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetTracertNumMax(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP {
+	s.TracertNumMax = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetTracertTimeout(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP {
+	s.TracertTimeout = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite struct {
+	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
+	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
+	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
+	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
+	MonitorTimeout         *int32             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetAutomaticScrolling(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.AutomaticScrolling = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetCustomHeader(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.CustomHeader = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetCustomHeaderContent(v map[string]*string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetDisableCache(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.DisableCache = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetDisableCompression(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.DisableCompression = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetFilterInvalidIP(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetIgnoreCertificateError(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.IgnoreCertificateError = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetMonitorTimeout(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetRedirection(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.Redirection = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetSlowElementThreshold(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.SlowElementThreshold = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetWaitCompletionTime(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.WaitCompletionTime = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataMonitors struct {
+	CityCode     *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	ClientType   *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	OperatorCode *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitors) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitors) SetCityCode(v string) *GetTimingSyntheticTaskResponseBodyDataMonitors {
+	s.CityCode = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitors) SetClientType(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitors {
+	s.ClientType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitors) SetOperatorCode(v string) *GetTimingSyntheticTaskResponseBodyDataMonitors {
+	s.OperatorCode = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataTags) SetKey(v string) *GetTimingSyntheticTaskResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataTags) SetValue(v string) *GetTimingSyntheticTaskResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
+type GetTimingSyntheticTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTimingSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTimingSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponse) SetHeaders(v map[string]*string) *GetTimingSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponse) SetStatusCode(v int32) *GetTimingSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponse) SetBody(v *GetTimingSyntheticTaskResponseBody) *GetTimingSyntheticTaskResponse {
 	s.Body = v
 	return s
 }
@@ -24337,7 +26384,372 @@ func (s *ListSilencePoliciesResponse) SetBody(v *ListSilencePoliciesResponseBody
 	return s
 }
 
+type ListTimingSyntheticTasksRequest struct {
+	RegionId        *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Search          *ListTimingSyntheticTasksRequestSearch `json:"Search,omitempty" xml:"Search,omitempty" type:"Struct"`
+	Tags            []*ListTimingSyntheticTasksRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListTimingSyntheticTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksRequest) SetRegionId(v string) *ListTimingSyntheticTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequest) SetResourceGroupId(v string) *ListTimingSyntheticTasksRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequest) SetSearch(v *ListTimingSyntheticTasksRequestSearch) *ListTimingSyntheticTasksRequest {
+	s.Search = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequest) SetTags(v []*ListTimingSyntheticTasksRequestTags) *ListTimingSyntheticTasksRequest {
+	s.Tags = v
+	return s
+}
+
+type ListTimingSyntheticTasksRequestSearch struct {
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order      *int32    `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderField *string   `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	Page       *int32    `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskIds    []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	TaskTypes  []*int32  `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
+}
+
+func (s ListTimingSyntheticTasksRequestSearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksRequestSearch) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetName(v string) *ListTimingSyntheticTasksRequestSearch {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetOrder(v int32) *ListTimingSyntheticTasksRequestSearch {
+	s.Order = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetOrderField(v string) *ListTimingSyntheticTasksRequestSearch {
+	s.OrderField = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetPage(v int32) *ListTimingSyntheticTasksRequestSearch {
+	s.Page = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetPageSize(v int32) *ListTimingSyntheticTasksRequestSearch {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetStatus(v string) *ListTimingSyntheticTasksRequestSearch {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetTaskIds(v []*string) *ListTimingSyntheticTasksRequestSearch {
+	s.TaskIds = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestSearch) SetTaskTypes(v []*int32) *ListTimingSyntheticTasksRequestSearch {
+	s.TaskTypes = v
+	return s
+}
+
+type ListTimingSyntheticTasksRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksRequestTags) SetKey(v string) *ListTimingSyntheticTasksRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksRequestTags) SetValue(v string) *ListTimingSyntheticTasksRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListTimingSyntheticTasksShrinkRequest struct {
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SearchShrink    *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksShrinkRequest) SetRegionId(v string) *ListTimingSyntheticTasksShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksShrinkRequest) SetResourceGroupId(v string) *ListTimingSyntheticTasksShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksShrinkRequest) SetSearchShrink(v string) *ListTimingSyntheticTasksShrinkRequest {
+	s.SearchShrink = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksShrinkRequest) SetTagsShrink(v string) *ListTimingSyntheticTasksShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBody struct {
+	Code      *int64                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListTimingSyntheticTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBody) SetCode(v int64) *ListTimingSyntheticTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBody) SetData(v *ListTimingSyntheticTasksResponseBodyData) *ListTimingSyntheticTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBody) SetMessage(v string) *ListTimingSyntheticTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBody) SetRequestId(v string) *ListTimingSyntheticTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyData struct {
+	Items    []*ListTimingSyntheticTasksResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Page     *int32                                           `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                           `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyData) SetItems(v []*ListTimingSyntheticTasksResponseBodyDataItems) *ListTimingSyntheticTasksResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyData) SetPage(v int32) *ListTimingSyntheticTasksResponseBodyData {
+	s.Page = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyData) SetPageSize(v int32) *ListTimingSyntheticTasksResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyData) SetTotal(v int32) *ListTimingSyntheticTasksResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyDataItems struct {
+	Frequency       *string                                              `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	GmtCreate       *string                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MonitorCategory *int32                                               `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	MonitorNum      *string                                              `json:"MonitorNum,omitempty" xml:"MonitorNum,omitempty"`
+	Name            *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId        *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status          *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            []*ListTimingSyntheticTasksResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskId          *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType        *int32                                               `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Url             *string                                              `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetFrequency(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.Frequency = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetGmtCreate(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetGmtModified(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetMonitorCategory(v int32) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetMonitorNum(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.MonitorNum = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetName(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetRegionId(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetResourceGroupId(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetStatus(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetTags(v []*ListTimingSyntheticTasksResponseBodyDataItemsTags) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.Tags = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetTaskId(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetTaskType(v int32) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetUrl(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.Url = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyDataItemsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsTags) SetKey(v string) *ListTimingSyntheticTasksResponseBodyDataItemsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsTags) SetValue(v string) *ListTimingSyntheticTasksResponseBodyDataItemsTags {
+	s.Value = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTimingSyntheticTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTimingSyntheticTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponse) SetHeaders(v map[string]*string) *ListTimingSyntheticTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponse) SetStatusCode(v int32) *ListTimingSyntheticTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponse) SetBody(v *ListTimingSyntheticTasksResponseBody) *ListTimingSyntheticTasksResponse {
+	s.Body = v
+	return s
+}
+
 type ListTraceAppsRequest struct {
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
@@ -24352,6 +26764,11 @@ func (s ListTraceAppsRequest) String() string {
 
 func (s ListTraceAppsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTraceAppsRequest) SetRegion(v string) *ListTraceAppsRequest {
+	s.Region = &v
+	return s
 }
 
 func (s *ListTraceAppsRequest) SetRegionId(v string) *ListTraceAppsRequest {
@@ -29308,6 +31725,116 @@ func (s *StartAlertResponse) SetBody(v *StartAlertResponseBody) *StartAlertRespo
 	return s
 }
 
+type StartTimingSyntheticTaskRequest struct {
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskIds  []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+}
+
+func (s StartTimingSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTimingSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartTimingSyntheticTaskRequest) SetRegionId(v string) *StartTimingSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StartTimingSyntheticTaskRequest) SetTaskIds(v []*string) *StartTimingSyntheticTaskRequest {
+	s.TaskIds = v
+	return s
+}
+
+type StartTimingSyntheticTaskShrinkRequest struct {
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s StartTimingSyntheticTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTimingSyntheticTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartTimingSyntheticTaskShrinkRequest) SetRegionId(v string) *StartTimingSyntheticTaskShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StartTimingSyntheticTaskShrinkRequest) SetTaskIdsShrink(v string) *StartTimingSyntheticTaskShrinkRequest {
+	s.TaskIdsShrink = &v
+	return s
+}
+
+type StartTimingSyntheticTaskResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartTimingSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTimingSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartTimingSyntheticTaskResponseBody) SetCode(v int64) *StartTimingSyntheticTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartTimingSyntheticTaskResponseBody) SetData(v bool) *StartTimingSyntheticTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StartTimingSyntheticTaskResponseBody) SetMessage(v string) *StartTimingSyntheticTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartTimingSyntheticTaskResponseBody) SetRequestId(v string) *StartTimingSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartTimingSyntheticTaskResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartTimingSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartTimingSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTimingSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartTimingSyntheticTaskResponse) SetHeaders(v map[string]*string) *StartTimingSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartTimingSyntheticTaskResponse) SetStatusCode(v int32) *StartTimingSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartTimingSyntheticTaskResponse) SetBody(v *StartTimingSyntheticTaskResponseBody) *StartTimingSyntheticTaskResponse {
+	s.Body = v
+	return s
+}
+
 type StopAlertRequest struct {
 	AlertId  *string `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -29379,6 +31906,116 @@ func (s *StopAlertResponse) SetStatusCode(v int32) *StopAlertResponse {
 }
 
 func (s *StopAlertResponse) SetBody(v *StopAlertResponseBody) *StopAlertResponse {
+	s.Body = v
+	return s
+}
+
+type StopTimingSyntheticTaskRequest struct {
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskIds  []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+}
+
+func (s StopTimingSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTimingSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTimingSyntheticTaskRequest) SetRegionId(v string) *StopTimingSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StopTimingSyntheticTaskRequest) SetTaskIds(v []*string) *StopTimingSyntheticTaskRequest {
+	s.TaskIds = v
+	return s
+}
+
+type StopTimingSyntheticTaskShrinkRequest struct {
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s StopTimingSyntheticTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTimingSyntheticTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTimingSyntheticTaskShrinkRequest) SetRegionId(v string) *StopTimingSyntheticTaskShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StopTimingSyntheticTaskShrinkRequest) SetTaskIdsShrink(v string) *StopTimingSyntheticTaskShrinkRequest {
+	s.TaskIdsShrink = &v
+	return s
+}
+
+type StopTimingSyntheticTaskResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopTimingSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTimingSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTimingSyntheticTaskResponseBody) SetCode(v int64) *StopTimingSyntheticTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopTimingSyntheticTaskResponseBody) SetData(v bool) *StopTimingSyntheticTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StopTimingSyntheticTaskResponseBody) SetMessage(v string) *StopTimingSyntheticTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopTimingSyntheticTaskResponseBody) SetRequestId(v string) *StopTimingSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopTimingSyntheticTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopTimingSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopTimingSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTimingSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTimingSyntheticTaskResponse) SetHeaders(v map[string]*string) *StopTimingSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTimingSyntheticTaskResponse) SetStatusCode(v int32) *StopTimingSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTimingSyntheticTaskResponse) SetBody(v *StopTimingSyntheticTaskResponseBody) *StopTimingSyntheticTaskResponse {
 	s.Body = v
 	return s
 }
@@ -31073,6 +33710,7 @@ type UpdatePrometheusGlobalViewRequest struct {
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	MostRegionId *string `json:"MostRegionId,omitempty" xml:"MostRegionId,omitempty"`
+	ParamJson    *string `json:"ParamJson,omitempty" xml:"ParamJson,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Prometheus instance belongs.
@@ -31106,6 +33744,11 @@ func (s *UpdatePrometheusGlobalViewRequest) SetGroupName(v string) *UpdatePromet
 
 func (s *UpdatePrometheusGlobalViewRequest) SetMostRegionId(v string) *UpdatePrometheusGlobalViewRequest {
 	s.MostRegionId = &v
+	return s
+}
+
+func (s *UpdatePrometheusGlobalViewRequest) SetParamJson(v string) *UpdatePrometheusGlobalViewRequest {
+	s.ParamJson = &v
 	return s
 }
 
@@ -31734,6 +34377,928 @@ func (s *UpdatePrometheusRemoteWriteResponse) SetStatusCode(v int32) *UpdateProm
 }
 
 func (s *UpdatePrometheusRemoteWriteResponse) SetBody(v *UpdatePrometheusRemoteWriteResponseBody) *UpdatePrometheusRemoteWriteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequest struct {
+	AvailableAssertions []*UpdateTimingSyntheticTaskRequestAvailableAssertions `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty" type:"Repeated"`
+	CommonSetting       *UpdateTimingSyntheticTaskRequestCommonSetting         `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
+	CustomPeriod        *UpdateTimingSyntheticTaskRequestCustomPeriod          `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
+	Frequency           *string                                                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	MonitorCategory     *int32                                                 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	MonitorConf         *UpdateTimingSyntheticTaskRequestMonitorConf           `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
+	Monitors            []*UpdateTimingSyntheticTaskRequestMonitors            `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	Name                *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId            *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId     *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                []*UpdateTimingSyntheticTaskRequestTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskId              *string                                                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType            *int32                                                 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetAvailableAssertions(v []*UpdateTimingSyntheticTaskRequestAvailableAssertions) *UpdateTimingSyntheticTaskRequest {
+	s.AvailableAssertions = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetCommonSetting(v *UpdateTimingSyntheticTaskRequestCommonSetting) *UpdateTimingSyntheticTaskRequest {
+	s.CommonSetting = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetCustomPeriod(v *UpdateTimingSyntheticTaskRequestCustomPeriod) *UpdateTimingSyntheticTaskRequest {
+	s.CustomPeriod = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetFrequency(v string) *UpdateTimingSyntheticTaskRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetMonitorCategory(v int32) *UpdateTimingSyntheticTaskRequest {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetMonitorConf(v *UpdateTimingSyntheticTaskRequestMonitorConf) *UpdateTimingSyntheticTaskRequest {
+	s.MonitorConf = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetMonitors(v []*UpdateTimingSyntheticTaskRequestMonitors) *UpdateTimingSyntheticTaskRequest {
+	s.Monitors = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetName(v string) *UpdateTimingSyntheticTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetRegionId(v string) *UpdateTimingSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetResourceGroupId(v string) *UpdateTimingSyntheticTaskRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetTags(v []*UpdateTimingSyntheticTaskRequestTags) *UpdateTimingSyntheticTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetTaskId(v string) *UpdateTimingSyntheticTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequest) SetTaskType(v int32) *UpdateTimingSyntheticTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestAvailableAssertions struct {
+	Expect   *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestAvailableAssertions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestAvailableAssertions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetExpect(v string) *UpdateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Expect = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetOperator(v string) *UpdateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetTarget(v string) *UpdateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Target = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) *UpdateTimingSyntheticTaskRequestAvailableAssertions {
+	s.Type = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestCommonSetting struct {
+	CustomHost     *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	IpType         *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MonitorSamples *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetCustomHost(v *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.CustomHost = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetIpType(v int32) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.IpType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetMonitorSamples(v int32) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.MonitorSamples = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestCommonSettingCustomHost struct {
+	Hosts      []*UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	SelectType *int32                                                          `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) SetHosts(v []*UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost {
+	s.Hosts = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) SetSelectType(v int32) *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost {
+	s.SelectType = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts struct {
+	Domain *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	IpType *int32    `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetDomain(v string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
+	s.Domain = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIpType(v int32) *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
+	s.IpType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIps(v []*string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
+	s.Ips = v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestCustomPeriod struct {
+	EndHour   *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	StartHour *int32 `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestCustomPeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestCustomPeriod) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCustomPeriod) SetEndHour(v int32) *UpdateTimingSyntheticTaskRequestCustomPeriod {
+	s.EndHour = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCustomPeriod) SetStartHour(v int32) *UpdateTimingSyntheticTaskRequestCustomPeriod {
+	s.StartHour = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConf struct {
+	ApiHTTP      *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP      `json:"ApiHTTP,omitempty" xml:"ApiHTTP,omitempty" type:"Struct"`
+	FileDownload *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload `json:"FileDownload,omitempty" xml:"FileDownload,omitempty" type:"Struct"`
+	NetDNS       *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
+	NetICMP      *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
+	NetTCP       *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	Website      *UpdateTimingSyntheticTaskRequestMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConf) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetApiHTTP(v *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) *UpdateTimingSyntheticTaskRequestMonitorConf {
+	s.ApiHTTP = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetFileDownload(v *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) *UpdateTimingSyntheticTaskRequestMonitorConf {
+	s.FileDownload = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetNetDNS(v *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) *UpdateTimingSyntheticTaskRequestMonitorConf {
+	s.NetDNS = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetNetICMP(v *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) *UpdateTimingSyntheticTaskRequestMonitorConf {
+	s.NetICMP = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetNetTCP(v *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) *UpdateTimingSyntheticTaskRequestMonitorConf {
+	s.NetTCP = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetWebsite(v *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) *UpdateTimingSyntheticTaskRequestMonitorConf {
+	s.Website = v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
+	ConnectTimeout *int64                                                         `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	Method         *string                                                        `json:"Method,omitempty" xml:"Method,omitempty"`
+	RequestBody    *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
+	RequestHeaders map[string]*string                                             `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	TargetUrl      *string                                                        `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetConnectTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetMethod(v string) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.Method = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetRequestBody(v *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.RequestBody = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetRequestHeaders(v map[string]*string) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.RequestHeaders = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) SetContent(v string) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody) SetType(v string) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody {
+	s.Type = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfFileDownload struct {
+	ConnectionTimeout                   *int64             `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	CustomHeaderContent                 map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DownloadKernel                      *int32             `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	IgnoreCertificateAuthError          *int32             `json:"IgnoreCertificateAuthError,omitempty" xml:"IgnoreCertificateAuthError,omitempty"`
+	IgnoreCertificateCanceledError      *int32             `json:"IgnoreCertificateCanceledError,omitempty" xml:"IgnoreCertificateCanceledError,omitempty"`
+	IgnoreCertificateOutOfDateError     *int32             `json:"IgnoreCertificateOutOfDateError,omitempty" xml:"IgnoreCertificateOutOfDateError,omitempty"`
+	IgnoreCertificateStatusError        *int32             `json:"IgnoreCertificateStatusError,omitempty" xml:"IgnoreCertificateStatusError,omitempty"`
+	IgnoreCertificateUntrustworthyError *int32             `json:"IgnoreCertificateUntrustworthyError,omitempty" xml:"IgnoreCertificateUntrustworthyError,omitempty"`
+	IgnoreCertificateUsingError         *int32             `json:"IgnoreCertificateUsingError,omitempty" xml:"IgnoreCertificateUsingError,omitempty"`
+	IgnoreInvalidHostError              *int32             `json:"IgnoreInvalidHostError,omitempty" xml:"IgnoreInvalidHostError,omitempty"`
+	MonitorTimeout                      *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	QuickProtocol                       *int32             `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetConnectionTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.ConnectionTimeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetCustomHeaderContent(v map[string]*string) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetDownloadKernel(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.DownloadKernel = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateAuthError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateAuthError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateCanceledError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateCanceledError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateOutOfDateError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateOutOfDateError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateStatusError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateStatusError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateUntrustworthyError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateUntrustworthyError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreCertificateUsingError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreCertificateUsingError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetIgnoreInvalidHostError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.IgnoreInvalidHostError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetMonitorTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetQuickProtocol(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.QuickProtocol = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetRedirection(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.Redirection = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTransmissionSize(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.TransmissionSize = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfNetDNS struct {
+	Dig             *int32  `json:"Dig,omitempty" xml:"Dig,omitempty"`
+	DnsServerIpType *int32  `json:"DnsServerIpType,omitempty" xml:"DnsServerIpType,omitempty"`
+	NsServer        *string `json:"NsServer,omitempty" xml:"NsServer,omitempty"`
+	QueryMethod     *int32  `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
+	TargetUrl       *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout         *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) SetDig(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.Dig = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) SetDnsServerIpType(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.DnsServerIpType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) SetNsServer(v string) *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.NsServer = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) SetQueryMethod(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.QueryMethod = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS) SetTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfNetICMP struct {
+	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	PackageNum     *int32  `json:"PackageNum,omitempty" xml:"PackageNum,omitempty"`
+	PackageSize    *int32  `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
+	SplitPackage   *bool   `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
+	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetInterval(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetPackageNum(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.PackageNum = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetPackageSize(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.PackageSize = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetSplitPackage(v bool) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.SplitPackage = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTracertEnable(v bool) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TracertEnable = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTracertNumMax(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TracertNumMax = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP) SetTracertTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP {
+	s.TracertTimeout = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfNetTCP struct {
+	ConnectTimes   *int32  `json:"ConnectTimes,omitempty" xml:"ConnectTimes,omitempty"`
+	Interval       *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	TargetUrl      *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout        *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	TracertEnable  *bool   `json:"TracertEnable,omitempty" xml:"TracertEnable,omitempty"`
+	TracertNumMax  *int32  `json:"TracertNumMax,omitempty" xml:"TracertNumMax,omitempty"`
+	TracertTimeout *int64  `json:"TracertTimeout,omitempty" xml:"TracertTimeout,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetConnectTimes(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.ConnectTimes = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetInterval(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertEnable(v bool) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TracertEnable = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertNumMax(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TracertNumMax = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
+	s.TracertTimeout = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfWebsite struct {
+	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
+	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
+	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
+	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
+	MonitorTimeout         *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfWebsite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfWebsite) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetAutomaticScrolling(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.AutomaticScrolling = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetCustomHeader(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.CustomHeader = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetCustomHeaderContent(v map[string]*string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCache(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.DisableCache = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCompression(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.DisableCompression = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetFilterInvalidIP(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetIgnoreCertificateError(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.IgnoreCertificateError = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetMonitorTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetRedirection(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.Redirection = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetSlowElementThreshold(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.SlowElementThreshold = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetWaitCompletionTime(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.WaitCompletionTime = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitors struct {
+	CityCode     *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	ClientType   *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	OperatorCode *string `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitors) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitors) SetCityCode(v string) *UpdateTimingSyntheticTaskRequestMonitors {
+	s.CityCode = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitors) SetClientType(v int32) *UpdateTimingSyntheticTaskRequestMonitors {
+	s.ClientType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitors) SetOperatorCode(v string) *UpdateTimingSyntheticTaskRequestMonitors {
+	s.OperatorCode = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestTags) SetKey(v string) *UpdateTimingSyntheticTaskRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestTags) SetValue(v string) *UpdateTimingSyntheticTaskRequestTags {
+	s.Value = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskShrinkRequest struct {
+	AvailableAssertionsShrink *string `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty"`
+	CommonSettingShrink       *string `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty"`
+	CustomPeriodShrink        *string `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty"`
+	Frequency                 *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	MonitorCategory           *int32  `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	MonitorConfShrink         *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	MonitorsShrink            *string `json:"Monitors,omitempty" xml:"Monitors,omitempty"`
+	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagsShrink                *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TaskId                    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType                  *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetAvailableAssertionsShrink(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.AvailableAssertionsShrink = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetCommonSettingShrink(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.CommonSettingShrink = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetCustomPeriodShrink(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.CustomPeriodShrink = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetFrequency(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetMonitorCategory(v int32) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetMonitorConfShrink(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.MonitorConfShrink = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetMonitorsShrink(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.MonitorsShrink = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetName(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetRegionId(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetResourceGroupId(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetTagsShrink(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetTaskId(v string) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskShrinkRequest) SetTaskType(v int32) *UpdateTimingSyntheticTaskShrinkRequest {
+	s.TaskType = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskResponseBody struct {
+	Code      *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateTimingSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskResponseBody) SetCode(v int64) *UpdateTimingSyntheticTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskResponseBody) SetData(v *UpdateTimingSyntheticTaskResponseBodyData) *UpdateTimingSyntheticTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskResponseBody) SetMessage(v string) *UpdateTimingSyntheticTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskResponseBody) SetRequestId(v string) *UpdateTimingSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskResponseBody) SetSuccess(v bool) *UpdateTimingSyntheticTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskResponseBodyData struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskResponseBodyData) SetTaskId(v string) *UpdateTimingSyntheticTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTimingSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTimingSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskResponse) SetHeaders(v map[string]*string) *UpdateTimingSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskResponse) SetStatusCode(v int32) *UpdateTimingSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskResponse) SetBody(v *UpdateTimingSyntheticTaskResponseBody) *UpdateTimingSyntheticTaskResponse {
 	s.Body = v
 	return s
 }
@@ -33925,6 +37490,10 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 		query["GrafanaInstanceId"] = request.GrafanaInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParamJson)) {
+		query["ParamJson"] = request.ParamJson
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -34232,6 +37801,120 @@ func (client *Client) CreateSyntheticTask(request *CreateSyntheticTaskRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSyntheticTaskResponse{}
 	_body, _err := client.CreateSyntheticTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTimingSyntheticTaskWithOptions(tmpReq *CreateTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *CreateTimingSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateTimingSyntheticTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AvailableAssertions)) {
+		request.AvailableAssertionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvailableAssertions, tea.String("AvailableAssertions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CommonSetting)) {
+		request.CommonSettingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommonSetting, tea.String("CommonSetting"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomPeriod)) {
+		request.CustomPeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomPeriod, tea.String("CustomPeriod"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MonitorConf)) {
+		request.MonitorConfShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MonitorConf, tea.String("MonitorConf"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Monitors)) {
+		request.MonitorsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Monitors, tea.String("Monitors"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvailableAssertionsShrink)) {
+		query["AvailableAssertions"] = request.AvailableAssertionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommonSettingShrink)) {
+		query["CommonSetting"] = request.CommonSettingShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomPeriodShrink)) {
+		query["CustomPeriod"] = request.CustomPeriodShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorCategory)) {
+		query["MonitorCategory"] = request.MonitorCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorConfShrink)) {
+		query["MonitorConf"] = request.MonitorConfShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorsShrink)) {
+		query["Monitors"] = request.MonitorsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTimingSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTimingSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTimingSyntheticTask(request *CreateTimingSyntheticTaskRequest) (_result *CreateTimingSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTimingSyntheticTaskResponse{}
+	_body, _err := client.CreateTimingSyntheticTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35516,6 +39199,54 @@ func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSyntheticTaskResponse{}
 	_body, _err := client.DeleteSyntheticTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTimingSyntheticTaskWithOptions(request *DeleteTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTimingSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTimingSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTimingSyntheticTask(request *DeleteTimingSyntheticTaskRequest) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTimingSyntheticTaskResponse{}
+	_body, _err := client.DeleteTimingSyntheticTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37338,6 +41069,52 @@ func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackRespo
 	return _result, _err
 }
 
+func (client *Client) GetSyntheticMonitorsWithOptions(tmpReq *GetSyntheticMonitorsRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticMonitorsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetSyntheticMonitorsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSyntheticMonitors"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSyntheticMonitorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSyntheticMonitors(request *GetSyntheticMonitorsRequest) (_result *GetSyntheticMonitorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSyntheticMonitorsResponse{}
+	_body, _err := client.GetSyntheticMonitorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSyntheticTaskDetailWithOptions(request *GetSyntheticTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37499,6 +41276,46 @@ func (client *Client) GetSyntheticTaskMonitors(request *GetSyntheticTaskMonitors
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSyntheticTaskMonitorsResponse{}
 	_body, _err := client.GetSyntheticTaskMonitorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTimingSyntheticTaskWithOptions(request *GetTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *GetTimingSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTimingSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTimingSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTimingSyntheticTask(request *GetTimingSyntheticTaskRequest) (_result *GetTimingSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTimingSyntheticTaskResponse{}
+	_body, _err := client.GetTimingSyntheticTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39263,12 +43080,66 @@ func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListTimingSyntheticTasksWithOptions(tmpReq *ListTimingSyntheticTasksRequest, runtime *util.RuntimeOptions) (_result *ListTimingSyntheticTasksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTimingSyntheticTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Search)) {
+		request.SearchShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Search, tea.String("Search"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTimingSyntheticTasks"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTimingSyntheticTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTimingSyntheticTasks(request *ListTimingSyntheticTasksRequest) (_result *ListTimingSyntheticTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTimingSyntheticTasksResponse{}
+	_body, _err := client.ListTimingSyntheticTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, runtime *util.RuntimeOptions) (_result *ListTraceAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -40967,6 +44838,60 @@ func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAler
 	return _result, _err
 }
 
+func (client *Client) StartTimingSyntheticTaskWithOptions(tmpReq *StartTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *StartTimingSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartTimingSyntheticTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIds)) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, tea.String("TaskIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdsShrink)) {
+		query["TaskIds"] = request.TaskIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartTimingSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartTimingSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartTimingSyntheticTask(request *StartTimingSyntheticTaskRequest) (_result *StartTimingSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartTimingSyntheticTaskResponse{}
+	_body, _err := client.StartTimingSyntheticTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *util.RuntimeOptions) (_result *StopAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41008,6 +44933,60 @@ func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertRe
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAlertResponse{}
 	_body, _err := client.StopAlertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopTimingSyntheticTaskWithOptions(tmpReq *StopTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *StopTimingSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopTimingSyntheticTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIds)) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, tea.String("TaskIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdsShrink)) {
+		query["TaskIds"] = request.TaskIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTimingSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTimingSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopTimingSyntheticTask(request *StopTimingSyntheticTaskRequest) (_result *StopTimingSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopTimingSyntheticTaskResponse{}
+	_body, _err := client.StopTimingSyntheticTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41803,6 +45782,10 @@ func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdateProme
 		query["MostRegionId"] = request.MostRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParamJson)) {
+		query["ParamJson"] = request.ParamJson
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -42082,6 +46065,124 @@ func (client *Client) UpdatePrometheusRemoteWrite(request *UpdatePrometheusRemot
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusRemoteWriteResponse{}
 	_body, _err := client.UpdatePrometheusRemoteWriteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTimingSyntheticTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AvailableAssertions)) {
+		request.AvailableAssertionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvailableAssertions, tea.String("AvailableAssertions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CommonSetting)) {
+		request.CommonSettingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommonSetting, tea.String("CommonSetting"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomPeriod)) {
+		request.CustomPeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomPeriod, tea.String("CustomPeriod"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MonitorConf)) {
+		request.MonitorConfShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MonitorConf, tea.String("MonitorConf"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Monitors)) {
+		request.MonitorsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Monitors, tea.String("Monitors"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvailableAssertionsShrink)) {
+		query["AvailableAssertions"] = request.AvailableAssertionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommonSettingShrink)) {
+		query["CommonSetting"] = request.CommonSettingShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomPeriodShrink)) {
+		query["CustomPeriod"] = request.CustomPeriodShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorCategory)) {
+		query["MonitorCategory"] = request.MonitorCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorConfShrink)) {
+		query["MonitorConf"] = request.MonitorConfShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorsShrink)) {
+		query["Monitors"] = request.MonitorsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTimingSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTimingSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTimingSyntheticTask(request *UpdateTimingSyntheticTaskRequest) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTimingSyntheticTaskResponse{}
+	_body, _err := client.UpdateTimingSyntheticTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
