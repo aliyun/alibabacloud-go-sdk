@@ -13,18 +13,16 @@ import (
 )
 
 type CancelStackOperationRequest struct {
-	// The operation N that you want to cancel on the stack.
+	// The operations that you want to cancel on the stack.
 	AllowedStackOperations []*string `json:"AllowedStackOperations,omitempty" xml:"AllowedStackOperations,omitempty" type:"Repeated"`
-	// The method that you want to use to cancel the operation. Default value: Safe. Valid values:
+	// The method that you want to use to cancel the operations. Valid values:
 	//
-	// *   Quick: cancels the operation on the stack at the earliest opportunity. In this case, ROS stops scheduling new resources and stops running resources at the earliest opportunity. If you use this method, the resource status may become invalid and subsequent stack operations may be affected.
-	// *   Safe: cancels the operation on the stack in a secure manner. In this case, ROS stops scheduling new resources and waits for running resources to be stopped.
+	// *   Quick: cancels the operations on the stack at the earliest opportunity. In this case, Resource Orchestration Service (ROS) stops scheduling new resources and stops running resources at the earliest opportunity. If you use this method, the resource status may become invalid and subsequent stack operations may be affected.
+	// *   Safe (default): cancels the operations on the stack in a secure manner. In this case, ROS stops scheduling new resources and waits for running resources to be stopped.
 	CancelType *string `json:"CancelType,omitempty" xml:"CancelType,omitempty"`
-	// The region ID of the stack.
-	//
-	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the stack.
+	// The stack ID.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
@@ -57,7 +55,7 @@ func (s *CancelStackOperationRequest) SetStackId(v string) *CancelStackOperation
 }
 
 type CancelStackOperationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -967,11 +965,10 @@ type CreateStackRequest struct {
 	//
 	// By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
 	//
-	// >
 	//
-	// *   If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave this parameter empty, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
 	//
-	// *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack, such as an update operation.
+	// > -  If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave this parameter empty, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+	// > -  If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack, such as an update operation.
 	Parallelism *int64 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	// The parameters that are defined in the template.
 	Parameters []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
@@ -1193,11 +1190,8 @@ type CreateStackRequestTags struct {
 	//
 	// Valid values of N: 1 to 20.
 	//
-	// >
-	//
-	// *   The Tags parameter is optional. If you specify Tags, you must specify Tags.N.Key.
-	//
-	// *   The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
+	// > - The Tags parameter is optional. If you specify Tags, you must specify Tags.N.Key.
+	// > -  The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N that you want to add to the stack.
 	//
@@ -1280,71 +1274,63 @@ func (s *CreateStackResponse) SetBody(v *CreateStackResponseBody) *CreateStackRe
 }
 
 type CreateStackGroupRequest struct {
-	// The ID of the template. This parameter applies to shared and private templates.
+	// The name of the RAM role that you specify for the administrator account when you create a self-managed stack group. ROS assumes the administrator role to perform operations. If you do not specify this parameter, AliyunROSStackGroupAdministrationRole is used as the default value. ROS uses the administrator role to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks in the stack group.
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	// The name must be 1 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	AdministrationRoleName *string `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	// Specifies whether to retain stacks within a member when you remove the member from the folder.
+	// The information about automatic deployment settings.
+	//
+	// > You must specify this parameter if PermissionModel is set to SERVICE_MANAGED.
+	AutoDeployment *CreateStackGroupRequestAutoDeployment `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
+	// 资源栈组选项列表，最大长度为1。
+	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+	// The token can contain letters, digits, underscores (\_), and hyphens (-) and cannot exceed 64 characters in length.\
+	// For more information, see [How to ensure idempotence](~~134212~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the stack group.\
+	// The description must be 1 to 256 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, AliyunROSStackGroupExecutionRole is used as the default value. ROS assumes the execution role to perform operations on the stacks in the stack group.
+	//
+	// The name must be 1 to 64 characters in length and can contain letters, digits, and hyphens (-).
+	ExecutionRoleName *string `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
+	// The parameters of the stack group.
+	Parameters []*CreateStackGroupRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The permission model of the stack group.
 	//
 	// Valid values:
 	//
-	// *   true: retains the stacks.
-	// *   false: deletes the stacks.
+	// *   SELF_MANAGED (default): the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
+	// *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
 	//
-	// >  This parameter is required if the Enabled parameter is set to true.
-	AutoDeployment *CreateStackGroupRequestAutoDeployment `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
-	Capabilities   []*string                              `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
-	// The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. ROS assumes the execution role to perform operations on the stacks in the stack group.
+	// > If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Manage a delegated administrator account](~~308253~~) and [Enable trusted access](~~298229~~).
+	PermissionModel *string `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	// The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\
+	// For more information about resource groups, see [Resource groups](~~94475~~).
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the stack group. The name must be unique within a region.\
+	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	// The tags of the stack group.
+	Tags []*CreateStackGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
 	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The ID of the template. This parameter applies to shared and private templates.
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket. The template body must be 1 to 524,288 bytes in length. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
+	//
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	// The version of the template. If you do not specify this parameter, the latest version is used.
 	//
-	// >  This parameter takes effect only when the TemplateId parameter is specified.
-	ExecutionRoleName *string `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	// The value of parameter N.
-	//
-	// Maximum value of N: 200.
-	//
-	// >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
-	Parameters []*CreateStackGroupRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The key of tag N that you want to add to the stack group.
-	//
-	// >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
-	PermissionModel *string `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	// The description of the stack group.
-	//
-	// The description must be 1 to 256 characters in length.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The value of tag N that you want to add to the stack group.
-	Tags []*CreateStackGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-	//
-	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	//
-	// For more information, see [Ensure idempotence](~~134212~~).
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The parameters.
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the RAM role that you specify for the administrator account when you create a self-managed stack group. ROS assumes the administrator role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. ROS uses the administrator role to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks in the stack group.
-	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
-	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	// The name of parameter N. If you do not specify the name and value of a parameter, ROS uses the default name and value that are defined in the template.
-	//
-	// Maximum value of N: 200.
-	//
-	// >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
+	// > TemplateVersion takes effect only if you specify TemplateId.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -1437,9 +1423,21 @@ func (s *CreateStackGroupRequest) SetTemplateVersion(v string) *CreateStackGroup
 }
 
 type CreateStackGroupRequestAutoDeployment struct {
-	// The ID of the request.
+	// Indicates whether automatic deployment is enabled.
+	//
+	// Valid values:
+	//
+	// *   true: Automatic deployment is enabled. If you add a member account to the folder to which the stack group belongs after you enable automatic deployment, ROS automatically adds the stacks in the stack group to the member account. If you remove a member account from the folder, ROS automatically deletes the stacks from the member account.
+	// *   false: Automatic deployment is disabled. After you disable automatic deployment, the stacks remain unchanged when you add member accounts to or remove member accounts from the folder.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the stack group.
+	// Indicates whether the stacks within a member account are retained when you remove the member account from the folder.
+	//
+	// Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// > You must specify RetainStacksOnAccountRemoval if Enabled is set to true.
 	RetainStacksOnAccountRemoval *bool `json:"RetainStacksOnAccountRemoval,omitempty" xml:"RetainStacksOnAccountRemoval,omitempty"`
 }
 
@@ -1462,18 +1460,17 @@ func (s *CreateStackGroupRequestAutoDeployment) SetRetainStacksOnAccountRemoval(
 }
 
 type CreateStackGroupRequestParameters struct {
-	// The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.
+	// The key of parameter N. If you do not specify the key and value of a parameter, ROS uses the default name and value that are defined in the template.
 	//
-	// For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
+	// Maximum value of N: 200.
+	//
+	// > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterKey.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The permission model.
+	// The value of parameter N.
 	//
-	// Default value: SELF_MANAGED. Valid values:
+	// Maximum value of N: 200.
 	//
-	// *   SELF_MANAGED: the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
-	// *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
-	//
-	// >  When you use the service-managed permission model to deploy stacks, make sure that your account is the management account or a delegated administrator account in the resource directory and the trusted access feature is enabled for your account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
+	// > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -1496,16 +1493,11 @@ func (s *CreateStackGroupRequestParameters) SetParameterValue(v string) *CreateS
 }
 
 type CreateStackGroupRequestTags struct {
-	// The information about automatic deployment settings.
+	// The tag key of the stack group.
 	//
-	// >  This parameter is required only if the PermissionModel parameter is set to SERVICE_MANAGED.
+	// > Tags is optional. If you want to specify Tags, you must also specify Tags.N.Key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies whether to enable automatic deployment.
-	//
-	// Valid values:
-	//
-	// *   true: enables automatic deployment. If you add a member to the folder to which the stack group belongs after you enable automatic deployment, ROS automatically adds the stacks in the stack group to the member. If you remove a member from the folder, ROS automatically deletes the stacks from the member.
-	// *   false: disables automatic deployment. After you disable automatic deployment, the stacks remain unchanged when you change the members in the folder.
+	// The tag value of the stack group.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1528,71 +1520,63 @@ func (s *CreateStackGroupRequestTags) SetValue(v string) *CreateStackGroupReques
 }
 
 type CreateStackGroupShrinkRequest struct {
-	// The ID of the template. This parameter applies to shared and private templates.
+	// The name of the RAM role that you specify for the administrator account when you create a self-managed stack group. ROS assumes the administrator role to perform operations. If you do not specify this parameter, AliyunROSStackGroupAdministrationRole is used as the default value. ROS uses the administrator role to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks in the stack group.
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	// The name must be 1 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	AdministrationRoleName *string `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	// Specifies whether to retain stacks within a member when you remove the member from the folder.
+	// The information about automatic deployment settings.
+	//
+	// > You must specify this parameter if PermissionModel is set to SERVICE_MANAGED.
+	AutoDeploymentShrink *string `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
+	// 资源栈组选项列表，最大长度为1。
+	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+	// The token can contain letters, digits, underscores (\_), and hyphens (-) and cannot exceed 64 characters in length.\
+	// For more information, see [How to ensure idempotence](~~134212~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the stack group.\
+	// The description must be 1 to 256 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, AliyunROSStackGroupExecutionRole is used as the default value. ROS assumes the execution role to perform operations on the stacks in the stack group.
+	//
+	// The name must be 1 to 64 characters in length and can contain letters, digits, and hyphens (-).
+	ExecutionRoleName *string `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
+	// The parameters of the stack group.
+	Parameters []*CreateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The permission model of the stack group.
 	//
 	// Valid values:
 	//
-	// *   true: retains the stacks.
-	// *   false: deletes the stacks.
+	// *   SELF_MANAGED (default): the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
+	// *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
 	//
-	// >  This parameter is required if the Enabled parameter is set to true.
-	AutoDeploymentShrink *string   `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
-	Capabilities         []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
-	// The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. ROS assumes the execution role to perform operations on the stacks in the stack group.
+	// > If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Manage a delegated administrator account](~~308253~~) and [Enable trusted access](~~298229~~).
+	PermissionModel *string `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	// The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\
+	// For more information about resource groups, see [Resource groups](~~94475~~).
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the stack group. The name must be unique within a region.\
+	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	// The tags of the stack group.
+	Tags []*CreateStackGroupShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
 	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The ID of the template. This parameter applies to shared and private templates.
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket. The template body must be 1 to 524,288 bytes in length. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
+	//
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	// The version of the template. If you do not specify this parameter, the latest version is used.
 	//
-	// >  This parameter takes effect only when the TemplateId parameter is specified.
-	ExecutionRoleName *string `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	// The value of parameter N.
-	//
-	// Maximum value of N: 200.
-	//
-	// >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
-	Parameters []*CreateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The key of tag N that you want to add to the stack group.
-	//
-	// >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
-	PermissionModel *string `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	// The description of the stack group.
-	//
-	// The description must be 1 to 256 characters in length.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
-	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The value of tag N that you want to add to the stack group.
-	Tags []*CreateStackGroupShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-	//
-	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	//
-	// For more information, see [Ensure idempotence](~~134212~~).
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The parameters.
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the RAM role that you specify for the administrator account when you create a self-managed stack group. ROS assumes the administrator role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. ROS uses the administrator role to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks in the stack group.
-	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
-	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	// The name of parameter N. If you do not specify the name and value of a parameter, ROS uses the default name and value that are defined in the template.
-	//
-	// Maximum value of N: 200.
-	//
-	// >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
+	// > TemplateVersion takes effect only if you specify TemplateId.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -1685,18 +1669,17 @@ func (s *CreateStackGroupShrinkRequest) SetTemplateVersion(v string) *CreateStac
 }
 
 type CreateStackGroupShrinkRequestParameters struct {
-	// The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.
+	// The key of parameter N. If you do not specify the key and value of a parameter, ROS uses the default name and value that are defined in the template.
 	//
-	// For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
+	// Maximum value of N: 200.
+	//
+	// > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterKey.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The permission model.
+	// The value of parameter N.
 	//
-	// Default value: SELF_MANAGED. Valid values:
+	// Maximum value of N: 200.
 	//
-	// *   SELF_MANAGED: the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
-	// *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
-	//
-	// >  When you use the service-managed permission model to deploy stacks, make sure that your account is the management account or a delegated administrator account in the resource directory and the trusted access feature is enabled for your account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
+	// > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -1719,16 +1702,11 @@ func (s *CreateStackGroupShrinkRequestParameters) SetParameterValue(v string) *C
 }
 
 type CreateStackGroupShrinkRequestTags struct {
-	// The information about automatic deployment settings.
+	// The tag key of the stack group.
 	//
-	// >  This parameter is required only if the PermissionModel parameter is set to SERVICE_MANAGED.
+	// > Tags is optional. If you want to specify Tags, you must also specify Tags.N.Key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies whether to enable automatic deployment.
-	//
-	// Valid values:
-	//
-	// *   true: enables automatic deployment. If you add a member to the folder to which the stack group belongs after you enable automatic deployment, ROS automatically adds the stacks in the stack group to the member. If you remove a member from the folder, ROS automatically deletes the stacks from the member.
-	// *   false: disables automatic deployment. After you disable automatic deployment, the stacks remain unchanged when you change the members in the folder.
+	// The tag value of the stack group.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1751,7 +1729,9 @@ func (s *CreateStackGroupShrinkRequestTags) SetValue(v string) *CreateStackGroup
 }
 
 type CreateStackGroupResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the stack group.
 	StackGroupId *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
 }
 
@@ -2265,43 +2245,34 @@ func (s *CreateStackInstancesResponse) SetBody(v *CreateStackInstancesResponseBo
 type CreateTemplateRequest struct {
 	// The description of the template. The description can be up to 256 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource group.
-	//
-	// For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](~~94475~~)
+	// The ID of the resource group.\
+	// For more information about resource groups, see [Resource groups](~~94475~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The tags of the template.
 	Tags []*CreateTemplateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	// The structure of the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
 	//
-	// >  You must specify the TemplateBody or TemplateURL parameter.
+	// > You must specify TemplateBody or TemplateURL.
 	//
 	// You can create a Terraform template based on your business requirements. The following sample code provides an example on how to create a Terraform template:
 	//
-	// ```
-	//
-	// {
-	//   "ROSTemplateFormatVersion": "2015-09-01",
-	//   "Transform": "Aliyun::Terraform-v1.0",
-	//   "Workspace": {
-	//     "main.tf": "variable  \"name\" {  default = \"auto_provisioning_group\"}"
-	//   },
-	//   "Outputs": {}
-	// }
-	// ```
+	//     {
+	//       "ROSTemplateFormatVersion": "2015-09-01",
+	//       "Transform": "Aliyun::Terraform-v1.0",
+	//       "Workspace": {
+	//         "main.tf": "variable  \"name\" {  default = \"auto_provisioning_group\"}"
+	//       },
+	//       "Outputs": {}
+	//     }
 	//
 	// For more information about Terraform templates, see [Structure of Terraform templates](~~184397~~).
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The name of the template.
-	//
-	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+	// The name of the template.\
+	// The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou.
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body must be 1 to 1,024 bytes in length. If you do not specify the region of the OSS bucket, the value of RegionId is used.
 	//
-	// The template body must be 1 to 1,024 bytes in length.
-	//
-	// If you do not specify the region of the OSS bucket, the value of the RegionId parameter is used.
-	//
-	// >  You must specify the TemplateBody or TemplateURL parameter.
+	// > You must specify TemplateBody or TemplateURL.
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 }
 
@@ -2344,11 +2315,11 @@ func (s *CreateTemplateRequest) SetTemplateURL(v string) *CreateTemplateRequest 
 }
 
 type CreateTemplateRequestTags struct {
-	// The key of tag N that you want to add to the template.
+	// The tag key of the template.
 	//
-	// >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
+	// > Tags is optional. If you need to specify Tags, you must also specify Key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that you want to add to the template.
+	// The tag value of the template.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2425,28 +2396,28 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type CreateTemplateScratchRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// For more information, see [Ensure idempotence](~~134212~~).
+	// For more information, see [How to ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the scenario.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The execution mode. Default value: Async. Valid values:
+	// The execution mode. Valid values:
 	//
-	// *   Async: asynchronous mode
-	// *   Sync: synchronous mode
+	// *   Async (default)
+	// *   Sync
 	//
-	// >  If a wide scope of resources exist, the synchronous mode takes a longer period of time than the asynchronous mode. If you set the ExecutionMode parameter to Sync, we recommend that you configure the ClientToken parameter to prevent a timeout error.
+	// > If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you specify ClientToken to prevent the execution timeout.
 	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	// The policy based on which the logical ID is generated. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+	// The policy based on which the logical ID is generated. Valid values:
 	//
-	// *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+	// *   LongTypePrefixAndIndexSuffix (default): long-type prefix + index-type suffix
 	// *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
 	// *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that you want to configure for the scenario.
+	// The preference parameters of the scenario.
 	PreferenceParameters []*CreateTemplateScratchRequestPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
-	// The ID of the region in which you want to create the scenario.
+	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2456,7 +2427,7 @@ type CreateTemplateScratchRequest struct {
 	SourceResources []*CreateTemplateScratchRequestSourceResources `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
 	// The source tag.
 	SourceTag *CreateTemplateScratchRequestSourceTag `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
-	// The tags.
+	// The tags of the scenario.
 	Tags []*CreateTemplateScratchRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the scenario. Valid values:
 	//
@@ -2530,19 +2501,17 @@ func (s *CreateTemplateScratchRequest) SetTemplateScratchType(v string) *CreateT
 }
 
 type CreateTemplateScratchRequestPreferenceParameters struct {
-	// The name of the parameter.
+	// The key of the parameter.
 	//
-	// For more information about the valid values of the ParameterKey parameter, see the "**Additional information about request parameters**" section of this topic.
-	//
-	// >
-	// *   The PreferenceParameters parameter is optional. If you want to specify the PreferenceParameters parameter, you must specify both the ParameterKey and ParameterValue parameters.
-	// *   If you set the TemplateScratchType parameter to ResourceImport, you must set the ParameterKey parameter to DeletionPolicy.
+	// For information about the valid values of ParameterKey, see the **Additional information about request parameters** section of this topic.
+	// > - PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
+	// > -  If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The value of the parameter. The value of the ParameterValue parameter varies based on the value of the ParameterKey parameter.
+	// The value of the parameter. The value of ParameterValue varies based on the value of ParameterKey.
 	//
-	// For more information about the valid values of the ParameterValue parameter, see the "**Additional information about request parameters**" section of this topic.
+	// For information about the valid values of ParameterValue, see the **Additional information about request parameters** section of this topic.
 	//
-	// >  The PreferenceParameters parameter is optional. If you want to specify the PreferenceParameters parameter, you must specify both the ParameterKey and ParameterValue parameters.
+	// > PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -2567,9 +2536,7 @@ func (s *CreateTemplateScratchRequestPreferenceParameters) SetParameterValue(v s
 type CreateTemplateScratchRequestSourceResourceGroup struct {
 	// The ID of the source resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The filter for resource types. If you specify this parameter, only the resources of the specified types and in the specified resource groups are scanned. If you do not specify this parameter, all resources in the specified resource groups are scanned.
-	//
-	// You can specify up to 20 resource types.
+	// The resource types.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -2594,7 +2561,7 @@ func (s *CreateTemplateScratchRequestSourceResourceGroup) SetResourceTypeFilter(
 type CreateTemplateScratchRequestSourceResources struct {
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -2617,15 +2584,11 @@ func (s *CreateTemplateScratchRequestSourceResources) SetResourceType(v string) 
 }
 
 type CreateTemplateScratchRequestSourceTag struct {
-	// The source tags that consist of key-value pairs.
-	//
-	// If you want to specify only the tag key, you must leave the tag value empty. Example: `{"TagKey": ""}`.
+	// The source tags that consist of key-value pairs. If you want to specify only the tag key, you must leave the tag value empty. Example: `{"TagKey": ""}`.
 	//
 	// You can add up to 10 source tags.
 	ResourceTags map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
-	// The filter for resource types. If you specify this parameter, only the resources of the specified types and have the specified tags are scanned. If you do not specify this parameter, all resources that have the specified tags are scanned.
-	//
-	// You can specify up to 20 resource types.
+	// The resource types.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -2648,11 +2611,11 @@ func (s *CreateTemplateScratchRequestSourceTag) SetResourceTypeFilter(v []*strin
 }
 
 type CreateTemplateScratchRequestTags struct {
-	// The key of tag N that you want to add to the scenario.
+	// The tag key of the scenario.
 	//
-	// >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
+	// > Tags is optional. If you want to specify Tags, you must specify Key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that you want to add to the scenario.
+	// The tag value of the scenario.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2675,28 +2638,28 @@ func (s *CreateTemplateScratchRequestTags) SetValue(v string) *CreateTemplateScr
 }
 
 type CreateTemplateScratchShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// For more information, see [Ensure idempotence](~~134212~~).
+	// For more information, see [How to ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the scenario.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The execution mode. Default value: Async. Valid values:
+	// The execution mode. Valid values:
 	//
-	// *   Async: asynchronous mode
-	// *   Sync: synchronous mode
+	// *   Async (default)
+	// *   Sync
 	//
-	// >  If a wide scope of resources exist, the synchronous mode takes a longer period of time than the asynchronous mode. If you set the ExecutionMode parameter to Sync, we recommend that you configure the ClientToken parameter to prevent a timeout error.
+	// > If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you specify ClientToken to prevent the execution timeout.
 	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	// The policy based on which the logical ID is generated. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+	// The policy based on which the logical ID is generated. Valid values:
 	//
-	// *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+	// *   LongTypePrefixAndIndexSuffix (default): long-type prefix + index-type suffix
 	// *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
 	// *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that you want to configure for the scenario.
+	// The preference parameters of the scenario.
 	PreferenceParametersShrink *string `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty"`
-	// The ID of the region in which you want to create the scenario.
+	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2706,7 +2669,7 @@ type CreateTemplateScratchShrinkRequest struct {
 	SourceResourcesShrink *string `json:"SourceResources,omitempty" xml:"SourceResources,omitempty"`
 	// The source tag.
 	SourceTagShrink *string `json:"SourceTag,omitempty" xml:"SourceTag,omitempty"`
-	// The tags.
+	// The tags of the scenario.
 	Tags []*CreateTemplateScratchShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the scenario. Valid values:
 	//
@@ -2780,11 +2743,11 @@ func (s *CreateTemplateScratchShrinkRequest) SetTemplateScratchType(v string) *C
 }
 
 type CreateTemplateScratchShrinkRequestTags struct {
-	// The key of tag N that you want to add to the scenario.
+	// The tag key of the scenario.
 	//
-	// >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
+	// > Tags is optional. If you want to specify Tags, you must specify Key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that you want to add to the scenario.
+	// The tag value of the scenario.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3524,7 +3487,7 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 }
 
 type DeleteTemplateScratchRequest struct {
-	// The ID of the region in which the scenario is created.
+	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3667,11 +3630,9 @@ func (s *DeregisterResourceTypeResponse) SetBody(v *DeregisterResourceTypeRespon
 }
 
 type DescribeRegionsRequest struct {
-	// The language in which the returned results are displayed.
+	// The language in which you want to display the results. Valid values:
 	//
-	// Default value: zh-CN. Valid values:
-	//
-	// *   zh-CN: Chinese
+	// *   zh-CN (default): Chinese
 	// *   en-US: English
 	// *   ja: Japanese
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
@@ -3691,9 +3652,9 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	// The list of regions.
+	// The regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3720,7 +3681,7 @@ type DescribeRegionsResponseBodyRegions struct {
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4125,28 +4086,28 @@ func (s *DetectStackResourceDriftRequest) SetStackId(v string) *DetectStackResou
 }
 
 type DetectStackResourceDriftResponseBody struct {
-	// The actual resource properties in JSON format.
+	// The actual JSON-formatted resource properties.
 	ActualProperties *string `json:"ActualProperties,omitempty" xml:"ActualProperties,omitempty"`
-	// The time at which the resource drift detection operation was initiated.
+	// The time when the resource drift detection was initiated.
 	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	// The resource properties as defined in the template, in JSON format.
+	// The JSON-formatted resource properties that are defined in the template.
 	ExpectedProperties *string `json:"ExpectedProperties,omitempty" xml:"ExpectedProperties,omitempty"`
-	// The logical ID of the resource as defined in the template.
+	// The logical ID of the resource that is defined in the template.
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	// The physical ID of the resource.
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	// The property differences of the resource.
+	// The property drifts of the resource.
 	PropertyDifferences []*DetectStackResourceDriftResponseBodyPropertyDifferences `json:"PropertyDifferences,omitempty" xml:"PropertyDifferences,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource drift status. Valid values:
+	// The drift status of the resource. Valid values:
 	//
-	// *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource has been deleted.
+	// *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource is deleted.
 	// *   MODIFIED: The actual configuration of the resource differs from its expected template configuration.
 	// *   NOT_CHECKED: Resource Orchestration Service (ROS) has not checked whether the actual configuration of the resource differs from its expected template configuration.
 	// *   IN_SYNC: The actual configuration of the resource matches its expected template configuration.
 	ResourceDriftStatus *string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the stack.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
@@ -4215,11 +4176,11 @@ type DetectStackResourceDriftResponseBodyPropertyDifferences struct {
 	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
 	// The drift type of the resource property. Valid values:
 	//
-	// *   ADD: The value has been added to a resource property whose data type is Array or List.
+	// *   ADD: The property value has been added to a resource property whose data type was Array or List.
 	// *   REMOVE: The property has been deleted from the current resource configuration.
 	// *   NOT_EQUAL: The current property value differs from the expected value defined in the stack template.
 	DifferenceType *string `json:"DifferenceType,omitempty" xml:"DifferenceType,omitempty"`
-	// The expected value of the resource property as defined in the template.
+	// The expected value of the resource property that is defined in the template.
 	ExpectedValue *string `json:"ExpectedValue,omitempty" xml:"ExpectedValue,omitempty"`
 	// The path of the resource property.
 	PropertyPath *string `json:"PropertyPath,omitempty" xml:"PropertyPath,omitempty"`
@@ -4366,9 +4327,9 @@ func (s *ExecuteChangeSetResponse) SetBody(v *ExecuteChangeSetResponseBody) *Exe
 }
 
 type GenerateTemplateByScratchRequest struct {
-	// The ID of the region to which the new node belongs.
+	// The region ID of the new node.
 	ProvisionRegionId *string `json:"ProvisionRegionId,omitempty" xml:"ProvisionRegionId,omitempty"`
-	// The ID of the region in which the scenario is created.
+	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4410,11 +4371,11 @@ func (s *GenerateTemplateByScratchRequest) SetTemplateType(v string) *GenerateTe
 type GenerateTemplateByScratchResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources that you want to import to a stack in the scenario of the Resource Management type.
+	// The resources that you want to import into a stack in the scenario.
 	//
-	// >  This parameter is returned only for scenarios of the Resource Management type.
+	// > This parameter is returned only if the scenario is of the Resource Management type.
 	ResourcesToImport []*GenerateTemplateByScratchResponseBodyResourcesToImport `json:"ResourcesToImport,omitempty" xml:"ResourcesToImport,omitempty" type:"Repeated"`
-	// The content of the template that is created for the scenario.
+	// The template content of the scenario.
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 }
 
@@ -4442,10 +4403,9 @@ func (s *GenerateTemplateByScratchResponseBody) SetTemplateBody(v string) *Gener
 }
 
 type GenerateTemplateByScratchResponseBodyResourcesToImport struct {
-	// The ID of the logical resource.
+	// The logical ID of the resource.
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	// The key-value mappings from string to string. The parameter value is a JSON string that identifies the resource that is imported.
-	//
+	// The key-value mapping between strings. The value is a JSON string that identifies the resource that you want to import into a stack.\
 	// A key is an identifier for a resource, and a value is an assignment of data to the key. For example, VpcId is a key that indicates the ID of a virtual private cloud (VPC), and `vpc-bp1m6fww66xbntjyc****"` is a value that is assigned to VpcId.
 	ResourceIdentifier map[string]interface{} `json:"ResourceIdentifier,omitempty" xml:"ResourceIdentifier,omitempty"`
 	// The type of the resource.
@@ -4701,10 +4661,10 @@ type GetChangeSetRequest struct {
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	// The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to show the template. Default value: false. Valid values:
+	// Specifies whether to obtain the template. Valid values:
 	//
-	// *   true: shows the template.
-	// *   false: does not show the template.
+	// *   true
+	// *   false (default)
 	ShowTemplate *bool `json:"ShowTemplate,omitempty" xml:"ShowTemplate,omitempty"`
 }
 
@@ -4739,22 +4699,20 @@ type GetChangeSetResponseBody struct {
 	// The type of the change set.
 	ChangeSetType *string `json:"ChangeSetType,omitempty" xml:"ChangeSetType,omitempty"`
 	// The changes of the change set.
-	//
-	// For more information, see [Data structure](~~155988~~).
 	Changes []map[string]interface{} `json:"Changes,omitempty" xml:"Changes,omitempty" type:"Repeated"`
-	// The time when the resource was created. The time is displayed in UTC.
+	// The time when the change set was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the change set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether rollback was performed.
+	// Indicates whether rollback was performed when the stack failed to be created or updated.
 	DisableRollback *bool `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	// The execution status of the change set.
 	ExecutionStatus *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
-	// The logs of the change set.
+	// The output logs of the change set.
 	Log *GetChangeSetResponseBodyLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	// The parameters of the stack.
 	Parameters []*GetChangeSetResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The ID of the region.
+	// The region ID of the change set.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4768,9 +4726,9 @@ type GetChangeSetResponseBody struct {
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	// The template body of the change set.
 	//
-	// >  This parameter takes effect only when the ShowTemplate parameter is set to true.
+	// > This parameter takes effect only if you set ShowTemplate to true.
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The timeout period that is specified for the stack creation or update request.
+	// The timeout period that is specified for the stack creation or update operation.
 	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
@@ -4873,9 +4831,9 @@ func (s *GetChangeSetResponseBody) SetTimeoutInMinutes(v int32) *GetChangeSetRes
 }
 
 type GetChangeSetResponseBodyLog struct {
-	// The logs of the Terraform stack. This parameter is returned only for the change set of a Terraform stack.
+	// The Terraform logs. This parameter is returned only for change sets of Terraform stacks.
 	//
-	// >  This parameter is not returned for change sets that are in the creating state. This parameter indicates the change set creation logs of the Terraform stack.
+	// > This parameter is not returned for change sets that are in the Creating state. This parameter indicates the logs of the change set creation operation for Terraform stacks.
 	TerraformLogs []*GetChangeSetResponseBodyLogTerraformLogs `json:"TerraformLogs,omitempty" xml:"TerraformLogs,omitempty" type:"Repeated"`
 }
 
@@ -4893,21 +4851,21 @@ func (s *GetChangeSetResponseBodyLog) SetTerraformLogs(v []*GetChangeSetResponse
 }
 
 type GetChangeSetResponseBodyLogTerraformLogs struct {
-	// The name of the Terraform command. Valid values:
+	// The name of the Terraform command that is run. Valid values:
 	//
 	// *   apply
 	// *   plan
 	// *   destroy
 	// *   version
 	//
-	// For more information about the Terraform commands, see [Provisioning Infrastructure with Terraform](https://www.terraform.io/cli/commands).
+	// For more information about Terraform commands, see [Command](https://www.terraform.io/cli/commands).
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The content of the output stream.
+	// The content of the output stream that is returned after the command is run.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The output stream. Valid values:
 	//
-	// *   stdout: the standard output stream.
-	// *   stderr: the standard error stream.
+	// *   stdout: standard output stream
+	// *   stderr: standard error stream
 	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 }
 
@@ -4935,7 +4893,7 @@ func (s *GetChangeSetResponseBodyLogTerraformLogs) SetStream(v string) *GetChang
 }
 
 type GetChangeSetResponseBodyParameters struct {
-	// The name of the parameter.
+	// The key of the parameter.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	// The value of the parameter.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
@@ -5748,29 +5706,27 @@ func (s *GetResourceTypeTemplateResponse) SetBody(v *GetResourceTypeTemplateResp
 }
 
 type GetServiceProvisionsRequest struct {
-	// The list of parameters.
+	// The parameters.
 	Parameters []*GetServiceProvisionsRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The ID of the region.
-	//
-	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The services.
 	Services []*GetServiceProvisionsRequestServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
 	//
-	// You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.N.ServiceName.
+	// You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The ID of the template. This parameter applies to shared and private templates.
+	// The template ID. This parameter applies to shared and private templates.
 	//
-	// You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.N.ServiceName.
+	// You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
 	//
-	// You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.N.ServiceName.
+	// You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	// The version of the template. If you do not specify this parameter, the latest version is used.
 	//
-	// This parameter takes effect only when the TemplateId parameter is specified.
+	// This parameter takes effect only when TemplateId is specified.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -5818,13 +5774,13 @@ func (s *GetServiceProvisionsRequest) SetTemplateVersion(v string) *GetServicePr
 }
 
 type GetServiceProvisionsRequestParameters struct {
-	// The name of parameter N. If you do not specify the name and the value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template.
+	// The name of the parameter. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template.
 	//
-	// >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
+	// > The Parameters parameter is optional. If you specify Parameters, you must specify ParameterKey.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The value of parameter N.
+	// The value of the parameter.
 	//
-	// >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
+	// > The Parameters parameter is optional. If you specify Parameters, you must specify ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -5847,7 +5803,7 @@ func (s *GetServiceProvisionsRequestParameters) SetParameterValue(v string) *Get
 }
 
 type GetServiceProvisionsRequestServices struct {
-	// The name of service N or feature N. Valid values:
+	// The service or feature name. Valid values:
 	//
 	// *   AHAS: Application High Availability Service
 	// *   ARMS: Application Real-Time Monitoring Service (ARMS)
@@ -5858,11 +5814,11 @@ type GetServiceProvisionsRequestServices struct {
 	// *   CMS: CloudMonitor
 	// *   CR: Container Registry
 	// *   CS: Container Service for Kubernetes (ACK)
-	// *   DCDN: Dynamic Route for CDN (DCDN)
+	// *   DCDN: Dynamic Content Delivery Network (DCDN)
 	// *   DataHub: DataHub
 	// *   DataWorks: DataWorks
 	// *   EDAS: Enterprise Distributed Application Service (EDAS)
-	// *   E-HPC: Elastic High Performance Computing (E-HPC)
+	// *   EHPC: Elastic High Performance Computing (E-HPC)
 	// *   EMAS: Enterprise Mobile Application Studio (EMAS)
 	// *   FC: Function Compute
 	// *   FNF: Serverless Workflow (SWF)
@@ -5878,12 +5834,12 @@ type GetServiceProvisionsRequestServices struct {
 	// *   OTS: Tablestore
 	// *   PrivateLink: PrivateLink
 	// *   PrivateZone: Alibaba Cloud DNS PrivateZone
-	// *   RocketMQ: Message Queue for Apache RocketMQ
+	// *   RocketMQ: ApsaraMQ for RocketMQ
 	// *   SAE: Serverless App Engine (SAE)
 	// *   SLS: Log Service
 	// *   TrafficMirror: the traffic mirroring feature
 	// *   VS: Video Surveillance System
-	// *   Xtrace: Tracing Analysis
+	// *   Xtrace: Managed Service for OpenTelemetry
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -5901,9 +5857,9 @@ func (s *GetServiceProvisionsRequestServices) SetServiceName(v string) *GetServi
 }
 
 type GetServiceProvisionsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the service.
+	// The information about the services.
 	ServiceProvisions []*GetServiceProvisionsResponseBodyServiceProvisions `json:"ServiceProvisions,omitempty" xml:"ServiceProvisions,omitempty" type:"Repeated"`
 }
 
@@ -5931,15 +5887,15 @@ type GetServiceProvisionsResponseBodyServiceProvisions struct {
 	// *   true: Automatic activation for the service is defined in the template.
 	// *   false: Manual activation for the service is defined in the template.
 	AutoEnableService *bool `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
-	// The names of Alibaba Cloud services on which the service depends.
+	// The names of the services on which the service that is queried depends.
 	DependentServiceNames []*string `json:"DependentServiceNames,omitempty" xml:"DependentServiceNames,omitempty" type:"Repeated"`
 	// The URL that points to the activation page of the service.
 	//
-	// >  This parameter is returned if the Status parameter is set to Disabled.
+	// > This parameter is returned if Status is set to Disabled.
 	EnableURL *string `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
-	// The information about the RAM role of the service. If this parameter is empty, no RAM role is associated with the service.
+	// The information about the RAM roles of the service. If this parameter is empty, no RAM role is associated with the service.
 	RoleProvision *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision `json:"RoleProvision,omitempty" xml:"RoleProvision,omitempty" type:"Struct"`
-	// The name of the service.
+	// The service name.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The activation status of the service. Valid values:
 	//
@@ -5949,7 +5905,7 @@ type GetServiceProvisionsResponseBodyServiceProvisions struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The reason why the service is in the Disabled or Unknown state.
 	//
-	// >  This parameter is returned if the Status parameter is set to Disabled or Unknown.
+	// > This parameter is returned if Status is set to Disabled or Unknown.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
@@ -5999,7 +5955,7 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatusReason(v st
 type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision struct {
 	// The authorization URL of the RAM role.
 	//
-	// >  This parameter is returned if the Created parameter is set to false.
+	// > This parameter is returned if Created is set to false.
 	AuthorizationURL *string `json:"AuthorizationURL,omitempty" xml:"AuthorizationURL,omitempty"`
 	// The RAM roles of the service.
 	Roles []*GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
@@ -6031,11 +5987,9 @@ type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles struct 
 	// *   true
 	// *   false
 	Created *bool `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The purpose for which the RAM role is used.
-	//
-	// Default value: Default. This value indicates that the RAM role is the default role of the service.
+	// The purpose for which the RAM role is used. Default value: Default. A value of Default indicates that the RAM role is the default role of the service.
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The name of the RAM role.
+	// The name of the role.
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -6072,12 +6026,10 @@ type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCr
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The ID of the Alibaba Cloud service to which the API operation belongs.
 	ApiProductId *string `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
-	// The type of the API operation.
+	// The type of the API operation. Valid values:
 	//
-	// Valid values:
-	//
-	// *   Open: public API operation
-	// *   Inner: private API operation
+	// *   Open: public
+	// *   Inner: private
 	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
 	// The parameters of the API operation. If a parameter is a variable, use the ${Variable name} format. Only the following variable is supported: ${RegionId}.
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
@@ -6215,6 +6167,7 @@ func (s *GetStackRequest) SetStackId(v string) *GetStackRequest {
 }
 
 type GetStackResponseBody struct {
+	CheckedStackResourceCount *int32 `json:"CheckedStackResourceCount,omitempty" xml:"CheckedStackResourceCount,omitempty"`
 	// The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether deletion protection is enabled for the stack. Valid values:
@@ -6236,7 +6189,8 @@ type GetStackResponseBody struct {
 	// The description of the web UI in the ROS console.
 	Interface *string `json:"Interface,omitempty" xml:"Interface,omitempty"`
 	// The logs of the stack.
-	Log *GetStackResponseBodyLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
+	Log                          *GetStackResponseBodyLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
+	NotCheckedStackResourceCount *int32                   `json:"NotCheckedStackResourceCount,omitempty" xml:"NotCheckedStackResourceCount,omitempty"`
 	// The callback URLs that are used to receive stack events.
 	NotificationURLs []*string `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
 	// The additional information that is displayed when an error occurs on a stack operation.
@@ -6361,6 +6315,11 @@ func (s GetStackResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetStackResponseBody) SetCheckedStackResourceCount(v int32) *GetStackResponseBody {
+	s.CheckedStackResourceCount = &v
+	return s
+}
+
 func (s *GetStackResponseBody) SetCreateTime(v string) *GetStackResponseBody {
 	s.CreateTime = &v
 	return s
@@ -6393,6 +6352,11 @@ func (s *GetStackResponseBody) SetInterface(v string) *GetStackResponseBody {
 
 func (s *GetStackResponseBody) SetLog(v *GetStackResponseBodyLog) *GetStackResponseBody {
 	s.Log = v
+	return s
+}
+
+func (s *GetStackResponseBody) SetNotCheckedStackResourceCount(v int32) *GetStackResponseBody {
+	s.NotCheckedStackResourceCount = &v
 	return s
 }
 
@@ -7397,7 +7361,7 @@ func (s *GetStackGroupResponse) SetBody(v *GetStackGroupResponseBody) *GetStackG
 }
 
 type GetStackGroupOperationRequest struct {
-	// The ID of the operation that you want to query. You can call the [ListStackGroupOperations](~~151342~~) operation to query the operation.
+	// The operation ID. You can call the [ListStackGroupOperations](~~151342~~) operation to query the operation ID.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
 	// The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -7422,9 +7386,9 @@ func (s *GetStackGroupOperationRequest) SetRegionId(v string) *GetStackGroupOper
 }
 
 type GetStackGroupOperationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the operation on the stack group.
+	// The information about the stack group operation.
 	StackGroupOperation *GetStackGroupOperationResponseBodyStackGroupOperation `json:"StackGroupOperation,omitempty" xml:"StackGroupOperation,omitempty" type:"Struct"`
 }
 
@@ -7447,7 +7411,7 @@ func (s *GetStackGroupOperationResponseBody) SetStackGroupOperation(v *GetStackG
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperation struct {
-	// The operation that was performed.
+	// The operation type.
 	//
 	// Valid values:
 	//
@@ -7456,50 +7420,50 @@ type GetStackGroupOperationResponseBodyStackGroupOperation struct {
 	// *   DELETE
 	// *   DETECT_DRIFT
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The name of the RAM role that is specified for the administrator account in Resource Orchestration Service (ROS) when you create the stack group that is granted self-managed permissions. If this parameter is not specified, the default value AliyunROSStackGroupAdministrationRole is returned.
+	// The name of the RAM role that you specify for the administrator account when you create the self-managed stack group. ROS assumes the administrator role to perform operations. If this parameter is not specified, the default value AliyunROSStackGroupAdministrationRole is returned.
 	AdministrationRoleName *string `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
 	// The time when the operation was initiated.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The folders in which you want to deploy the stack instances that are granted service-managed permissions.
+	// The destinations to deploy stack instances when the stack is granted service-managed permissions.
 	DeploymentTargets *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
 	// The time when the operation ended.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the RAM role that is specified for the execution account when you create the stack group that is granted self-managed permissions. The administrator account whose RAM role is AliyunROSStackGroupAdministrationRole assumes this RAM role. If this parameter is not specified, the default value AliyunROSStackGroupExecutionRole is returned.
+	// The name of the RAM role that you specify for the execution account when you create the self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If this parameter is not specified, the default value AliyunROSStackGroupExecutionRole is returned.
 	ExecutionRoleName *string `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
 	// The description of the operation.
 	//
-	// >  This parameter is returned only if the OperationDescription request parameter is specified in the [CreateStackInstances](~~151338~~) operation to create stack instances.
+	// > This parameter is returned only if OperationDescription is specified when the [CreateStackInstances](~~151338~~) operation is called to create stack instances.
 	OperationDescription *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	// The ID of the operation that was performed on the stack group.
+	// The operation ID.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The operation preferences.
+	// The operation settings.
 	OperationPreferences *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty" type:"Struct"`
-	// Indicates whether the relevant stacks are retained when stack instances are deleted in the stack group.
+	// Indicates whether stacks are retained when the associated stack instances are deleted. When you delete a stack instance, you can choose to delete or retain the stack with which the stack instance is associated.
 	//
 	// Valid values:
 	//
-	// *   true: The stacks are retained.
-	// *   false: The stacks are deleted. Proceed with caution.
+	// *   true: Stacks are retained when the associated stack instances are deleted.
+	// *   false: Stacks are deleted when the associated stack instances are deleted. Proceed with caution.
 	//
-	// >  This parameter is returned only when the stack instances are deleted.
+	// > This parameter is returned only if you delete stack instances.
 	RetainStacks *bool `json:"RetainStacks,omitempty" xml:"RetainStacks,omitempty"`
-	// The details of the drift detection.
+	// The information about drift detection.
 	//
-	// >  This parameter is returned only when the drift detection is performed on the stack group.
+	// > This parameter is returned only if drift detection is performed.
 	StackGroupDriftDetectionDetail *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail `json:"StackGroupDriftDetectionDetail,omitempty" xml:"StackGroupDriftDetectionDetail,omitempty" type:"Struct"`
 	// The ID of the stack group.
 	StackGroupId *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
 	// The name of the stack group.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The status of the operation.
+	// The state of the operation.
 	//
 	// Valid values:
 	//
-	// *   RUNNING: The operation is being performed.
-	// *   SUCCEEDED: The operation succeeded.
-	// *   FAILED: The operation failed.
-	// *   STOPPING: The operation is being stopped.
-	// *   STOPPED: The operation is stopped.
+	// *   RUNNING
+	// *   SUCCEEDED
+	// *   FAILED
+	// *   STOPPING
+	// *   STOPPED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7582,11 +7546,11 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStatus(v stri
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets struct {
-	// The IDs of the member accounts in the resource directory.
+	// The IDs of the members in the resource directory.
 	//
-	// >  This parameter is returned only if the AccountIds request parameter is specified in the [UpdateStackInstances](~~151716~~) operation to update stack instances.
+	// > This parameter is returned only if AccountIds is specified when the [UpdateStackInstances](~~151716~~) operation is called to update stack instances.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The folder IDs of the resource directory.
+	// The IDs of the folders in the resource directory.
 	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 }
 
@@ -7609,31 +7573,31 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets)
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences struct {
-	// The maximum number of stack operation failures that can occur within the accounts in each region. When the value is exceeded, the operation fails to be performed in the region. If the operation fails to be performed in one region, the operation fails to be performed in other regions.
+	// The number of accounts within which stack operation failures are allowed to occur in each region. If the value of this parameter is exceeded in a region, Resource Orchestration Service (ROS) stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
 	//
 	// Valid values: 0 to 20.
 	//
-	// >  Only one of the FailureToleranceCount and FailureTolerancePercentage parameters is returned.
+	// > Only one of FailureToleranceCount and FailureTolerancePercentage can be returned.
 	FailureToleranceCount *int32 `json:"FailureToleranceCount,omitempty" xml:"FailureToleranceCount,omitempty"`
-	// The percentage of the total number of accounts within which stack operation failures can occur to the total number of accounts in each region. When the value is exceeded, the operation fails to be performed in the region.
+	// The percentage of the number of accounts within which stack operation failures are allowed to occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
 	//
 	// Valid values: 0 to 100.
 	//
-	// >  Only one of the FailureToleranceCount and FailureTolerancePercentage parameters is returned.
+	// > Only one of FailureToleranceCount and FailureTolerancePercentage can be returned.
 	FailureTolerancePercentage *int32 `json:"FailureTolerancePercentage,omitempty" xml:"FailureTolerancePercentage,omitempty"`
-	// The maximum number of accounts within which operations are performed on stacks concurrently in each region.
+	// The maximum number of accounts within which stacks are deployed at the same time in each region.
 	//
 	// Valid values: 1 to 20.
 	//
-	// >  Only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters is returned.
+	// > Only one of MaxConcurrentCount and MaxConcurrentPercentage can be returned.
 	MaxConcurrentCount *int32 `json:"MaxConcurrentCount,omitempty" xml:"MaxConcurrentCount,omitempty"`
-	// The percentage of the total number of accounts within which operations are performed on stacks concurrently to the total number of accounts in each region.
+	// The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
 	//
 	// Valid values: 1 to 100.
 	//
-	// >  Only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters is returned.
+	// > Only one of MaxConcurrentCount and MaxConcurrentPercentage can be returned.
 	MaxConcurrentPercentage *int32 `json:"MaxConcurrentPercentage,omitempty" xml:"MaxConcurrentPercentage,omitempty"`
-	// The regions in the order of which the operation is performed.
+	// The regions in the order of operation execution.
 	RegionIdsOrder []*string `json:"RegionIdsOrder,omitempty" xml:"RegionIdsOrder,omitempty" type:"Repeated"`
 }
 
@@ -7671,34 +7635,34 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferenc
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail struct {
-	// The number of stack instances for which the drift detection was canceled.
+	// The number of stack instances for which drift detection was canceled.
 	CancelledStackInstancesCount *int32 `json:"CancelledStackInstancesCount,omitempty" xml:"CancelledStackInstancesCount,omitempty"`
-	// The status of the drift detection.
+	// The drift detection state.
 	//
 	// Valid values:
 	//
-	// *   COMPLETED: The drift detection is performed and completed on all stack instances.
-	// *   FAILED: The drift detection is performed. The number of stack instances that failed the drift detection exceeds the specified threshold.
-	// *   PARTIAL_SUCCESS: The drift detection is performed. The number of stack instances that failed the drift detection does not exceed the specified threshold.
-	// *   IN_PROGRESS: The drift detection is being performed on the stack group.
-	// *   STOPPED: The drift detection is canceled for the stack group.
+	// *   COMPLETED: Drift detection is performed on the stack group and all stack instances passed the drift detection.
+	// *   FAILED: Drift detection is performed on the stack group. The number of stack instances that failed the drift detection exceeds the specified threshold.
+	// *   PARTIAL_SUCCESS: Drift detection is performed on the stack group. The number of stack instances that failed the drift detection does not exceed the specified threshold.
+	// *   IN_PROGRESS: Drift detection is being performed on the stack group.
+	// *   STOPPED: Drift detection is canceled for the stack group.
 	DriftDetectionStatus *string `json:"DriftDetectionStatus,omitempty" xml:"DriftDetectionStatus,omitempty"`
-	// The time when the drift detection was initiated.
+	// The time when drift detection was performed.
 	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	// The number of stack instances that were drifted.
+	// The number of stack instances that have drifted.
 	DriftedStackInstancesCount *int32 `json:"DriftedStackInstancesCount,omitempty" xml:"DriftedStackInstancesCount,omitempty"`
-	// The number of stack instances that failed the drift detection.
+	// The number of stack instances that failed drift detection.
 	FailedStackInstancesCount *int32 `json:"FailedStackInstancesCount,omitempty" xml:"FailedStackInstancesCount,omitempty"`
-	// The number of stack instances on which the drift detection was being performed.
+	// The number of stack instances on which drift detection was being performed.
 	InProgressStackInstancesCount *int32 `json:"InProgressStackInstancesCount,omitempty" xml:"InProgressStackInstancesCount,omitempty"`
 	// The number of stack instances that were being synchronized.
 	InSyncStackInstancesCount *int32 `json:"InSyncStackInstancesCount,omitempty" xml:"InSyncStackInstancesCount,omitempty"`
-	// The drift status of the stack group.
+	// The drift state of the stack group.
 	//
 	// Valid values:
 	//
-	// *   DRIFTED: At least one stack instance in the stack group is drifted.
-	// *   NOT_CHECKED: No drift detection is completed in the stack group.
+	// *   DRIFTED: At least one stack instance in the stack group has drifted.
+	// *   NOT_CHECKED: No successful drift detection is performed in the stack group.
 	// *   IN_SYNC: All the stack instances in the stack group are being synchronized.
 	StackGroupDriftStatus *string `json:"StackGroupDriftStatus,omitempty" xml:"StackGroupDriftStatus,omitempty"`
 	// The number of stack instances.
@@ -7788,20 +7752,19 @@ func (s *GetStackGroupOperationResponse) SetBody(v *GetStackGroupOperationRespon
 }
 
 type GetStackInstanceRequest struct {
-	// The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	// The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the stack group. The name must be unique in a region.
-	//
-	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+	// The name of the stack group. The name must be unique within a region.\
+	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The ID of the account to which the stack belongs.
+	// The ID of the destination account to which the stack belongs.
 	//
 	// *   If the stack group is granted self-managed permissions, the stack belongs to an Alibaba Cloud account.
 	// *   If the stack group is granted service-managed permissions, the stack belongs to a member in a resource directory.
 	//
-	// >  For more information about the account, see [Overview](~~154578~~).
+	// > For more information about the destination account, see [Overview](~~154578~~).
 	StackInstanceAccountId *string `json:"StackInstanceAccountId,omitempty" xml:"StackInstanceAccountId,omitempty"`
-	// The ID of the region to which the stack belongs.
+	// The region ID of the stack.
 	StackInstanceRegionId *string `json:"StackInstanceRegionId,omitempty" xml:"StackInstanceRegionId,omitempty"`
 }
 
@@ -7834,9 +7797,9 @@ func (s *GetStackInstanceRequest) SetStackInstanceRegionId(v string) *GetStackIn
 }
 
 type GetStackInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the stack.
+	// The information about the stack.
 	StackInstance *GetStackInstanceResponseBodyStackInstance `json:"StackInstance,omitempty" xml:"StackInstance,omitempty" type:"Struct"`
 }
 
@@ -7859,21 +7822,21 @@ func (s *GetStackInstanceResponseBody) SetStackInstance(v *GetStackInstanceRespo
 }
 
 type GetStackInstanceResponseBodyStackInstance struct {
-	// The ID of the account to which the stack belongs.
+	// The ID of the destination account to which the stack belongs.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when the last drift detection was performed on the stack group.
+	// The time when the most recent successful drift detection was performed on the stack group.
 	//
-	// >  This parameter is returned only if drift detection is performed on the stack group.
+	// > This parameter is returned only if drift detection is performed on the stack group.
 	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
 	// The parameters that are used to override specific parameters.
 	ParameterOverrides []*GetStackInstanceResponseBodyStackInstanceParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
 	// The ID of the folder in the resource directory.
 	//
-	// >  This parameter is returned only if the stack group is granted service-managed permissions.
+	// > This parameter is returned only if the stack group is granted service-managed permissions.
 	RdFolderId *string `json:"RdFolderId,omitempty" xml:"RdFolderId,omitempty"`
-	// The ID of the region to which the stack belongs.
+	// The region ID of the stack.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The state of the stack when the last successful drift detection was performed on the stack group.
+	// The state of the stack when the most recent successful drift detection was performed on the stack group.
 	//
 	// Valid values:
 	//
@@ -7881,31 +7844,31 @@ type GetStackInstanceResponseBodyStackInstance struct {
 	// *   NOT_CHECKED: No successful drift detection is performed on the stack.
 	// *   IN_SYNC: The stack is being synchronized.
 	//
-	// >  This parameter is returned only if drift detection is performed on the stack group.
+	// > This parameter is returned only if drift detection is performed on the stack group.
 	StackDriftStatus *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
 	// The ID of the stack group.
 	StackGroupId *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
 	// The name of the stack group.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The ID of the stack.
+	// The stack ID.
 	//
-	// >  This parameter is returned only if the stack is in the CURRENT state.
+	// > This parameter is returned only if the stack is in the CURRENT state.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	// The state of the stack.
 	//
 	// Valid values:
 	//
-	// *   CURRENT: The stack is up to date with the stack group.
+	// *   CURRENT: The stack is up-to-date with the stack group.
 	//
-	// *   OUTDATED: The stack is not up to date with the stack group. Stacks may be in the OUTDATED state due to the following reasons:
+	// *   OUTDATED: The stack is not up-to-date with the stack group. Stacks are in the OUTDATED state due to the following possible reasons:
 	//
-	//     *   When you call the CreateStackInstances operation to create stacks, the stacks fail to be created.
-	//     *   When you call the UpdateStackInstances or UpdateStackGroup operation to update stacks, the stacks fail to be updated or only specific stacks are updated.
+	//     *   When the CreateStackInstances operation is called to create stacks, the stacks fail to be created.
+	//     *   When the UpdateStackInstances or UpdateStackGroup operation is called to update stacks, the stacks fail to be updated, or only specific stacks are updated.
 	//     *   The creation or update operation is not complete.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The reason why the stack is in the OUTDATED state.
+	// The reason why the stack instance is in the OUTDATED state.
 	//
-	// >  This parameter is returned only if the stack is in the OUTDATED state.
+	// > This parameter is returned only if the stack instance is in the OUTDATED state.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
@@ -8364,48 +8327,47 @@ func (s *GetStackResourceResponse) SetBody(v *GetStackResourceResponseBody) *Get
 type GetTemplateRequest struct {
 	// The ID of the change set.
 	//
-	// >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
+	// > You must specify one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	// Specifies whether to query the template sharing information. Default value: Disabled. Valid values:
+	// Specifies whether to query the shared information about the template. Valid values:
 	//
 	// *   Enabled
-	// *   Disabled
+	// *   Disabled (default)
 	//
-	// >  Only the template owner can query the template sharing information.
+	// > Only the template owner can query the shared information of a template.
 	IncludePermission *string `json:"IncludePermission,omitempty" xml:"IncludePermission,omitempty"`
-	// Specifies whether to query the information about tags. Default value: Disabled. Valid values:
+	// Specifies whether to query the information about tags. Valid values:
 	//
 	// *   Enabled
-	// *   Disabled
+	// *   Disabled (default)
 	//
-	// >  This parameter only takes effect when you specify the TemplateId parameter.
+	// > This parameter takes effect only if you specify TemplateId.
 	IncludeTags *string `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
-	// The ID of the region to which the stack or stack group defined in the template belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	// The region ID of the stack or stack group that uses the template. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the stack group.
 	//
-	// >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
+	// > You must specify one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	// The ID of the stack.
 	//
-	// >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
+	// > You must specify one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	// The ID of the template.
 	//
-	// This parameter applies to shared and private templates. If the template is a shared template, the value of the TemplateId parameter is the same as the value of the TemplateARN parameter. You can use the template ID to query a shared template.
+	// This parameter applies to shared and private templates. If the template is a shared template, the value of TemplateId is the same as the value of TemplateARN. You can use the template ID to query a shared template.
 	//
-	// >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
+	// > You must specify one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The stage of the template. This parameter only takes effect when you specify the StackId, ChangeSetId, or StackGroupName parameter.
+	// The stage of the template. This parameter takes effect only if you specify StackId, ChangeSetId, or StackGroupName.
 	//
-	// Default value: Processed. Valid values:
+	// Valid values:
 	//
-	// *   Processed: returns the processed template that contains transforms.
-	// *   Original: returns the original template that you specify.
+	// *   Processed (default): returns the processed template.
+	// *   Original: returns the original template.
 	TemplateStage *string `json:"TemplateStage,omitempty" xml:"TemplateStage,omitempty"`
-	// The version of the template. This parameter only takes effect when you specify the TemplateId parameter.
-	//
-	// If the template is a shared template, you can specify this parameter only if you set the VersionOption parameter to AllVersions.
+	// The version of the template. This parameter takes effect only if you specify TemplateId.\
+	// If the template is a shared template, you can specify this parameter only if VersionOption is set to AllVersions. For more information, see [SetTemplatePermission](~~194768~~).
 	//
 	// Valid values: v1 to v100.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
@@ -8465,70 +8427,65 @@ func (s *GetTemplateRequest) SetTemplateVersion(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	// The ID of the change set. This parameter is returned only if the ChangeSetId parameter is specified.
+	// The ID of the change set. This parameter is returned only if you specify ChangeSetId.
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	// The time when the template was created. This parameter is returned only if the TemplateId parameter is specified.
+	// The time when the template was created. This parameter is returned only if you specify TemplateId.
 	//
-	// >
-	// *   If the TemplateVersion parameter is specified, the creation time of the template whose version is specified by using the TemplateVersion parameter is returned.
-	// *   If the TemplateVersion parameter is not specified, the creation time of the template whose version is the default version is returned.
+	// > - If you specify TemplateVersion, the creation time of the template whose version is specified by TemplateVersion is returned.
+	// > - If you do not specify TemplateVersion, the creation time of the template whose version is the default version is returned.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the template. This parameter is returned only if the TemplateId parameter is specified.
+	// The description of the template. This parameter is returned only if you specify TemplateId.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The description of the web UI in the ROS console.
 	Interface *string `json:"Interface,omitempty" xml:"Interface,omitempty"`
-	// The ID of the Alibaba Cloud account to which the template belongs. This parameter is returned only if the TemplateId parameter is specified.
+	// The ID of the Alibaba Cloud account to which the template belongs. This parameter is returned only if you specify TemplateId.
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Details of the sharing status of the template. This parameter is returned only if the TemplateId parameter is specified and the IncludePermission parameter is set to Enabled.
+	// Details of the sharing status of the template. This parameter is returned only if you specify TemplateId and set IncludePermission to Enabled.
 	//
-	// >
-	// *   If the TemplateVersion parameter is not specified or does not take effect, the details of the sharing status of the template whose version is the default version is returned.
-	// *   If the TemplateVersion parameter is specified and takes effect, the details of the sharing status of the template whose version is specified by using the TemplateVersion parameter is returned.
+	// > - If TemplateVersion is not specified or does not take effect, the details of the sharing status of the template whose version is the default version is returned.
+	// > - If TemplateVersion is specified and takes effect, the details of the sharing status of the template whose version is specified by TemplateVersion is returned.
 	Permissions []*GetTemplateResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	// The ID of the region to which the stack or stack group defined in the template belongs. This parameter is returned only if the StackId, ChangeSetId, or StackGroupName parameter is specified.
+	// The region ID of the stack or stack group that uses the template. This parameter is returned only if you specify StackId, ChangeSetId, or StackGroupName.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The sharing type of the template. This parameter is returned only if the TemplateId parameter is specified.
+	// The sharing type of the template. This parameter is returned only if you specify TemplateId.
 	//
 	// Valid values:
 	//
-	// *   Private: The template can be used only by the template owner.
-	// *   Shared: The template is shared with other users.
+	// *   Private: The template belongs to the template owner.
+	// *   Shared: The template is shared by other users.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The name of the stack group. This parameter is returned only if the StackGroupName parameter is specified.
+	// The name of the stack group. This parameter is returned only if you specify StackGroupName.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The ID of the stack. This parameter is returned only if the StackId parameter is specified.
+	// The ID of the stack. This parameter is returned only if you specify StackId.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	// The tags of the template.
 	Tags []*GetTemplateResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The Alibaba Cloud Resource Name (ARN) of the template. This parameter is returned only if the TemplateId parameter is specified.
+	// The Alibaba Cloud Resource Name (ARN) of the template. This parameter is returned only if you specify TemplateId.
 	TemplateARN *string `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
-	// The body of the template.
+	// The content of the template.
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The ID of the template. This parameter is returned only if the TemplateId parameter is specified.
+	// The ID of the template. This parameter is returned only if you specify TemplateId.
 	//
-	// If the template is a shared template, the value of this parameter is the same as the value of the TemplateARN parameter.
+	// If the template is a shared template, the value of this parameter is the same as the value of TemplateARN.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the template. This parameter is returned only if the TemplateId parameter is specified.
+	// The name of the template. This parameter is returned only if you specify TemplateId.
 	//
-	// >
-	// *   If the TemplateVersion parameter is specified, the name of the template whose version is specified by using the TemplateVersion parameter is returned.
-	// *   If the TemplateVersion parameter is not specified, the name of the template whose version is the default version is returned.
+	// > -   If you specify TemplateVersion, the name of the template whose version is specified by TemplateVersion is returned.
+	// > -  If you not specify TemplateVersion, the name of the template whose version is the default version is returned.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The version of the template. This parameter is returned only if the TemplateId parameter is specified.
+	// The version of the template. This parameter is returned only if you specify TemplateId.\
+	// If TemplateVersion is not specified or does not take effect, the default version is used.
 	//
-	// If the TemplateVersion parameter is not specified or does not take effect, the value of this parameter is the default version of the template.
-	//
-	// If the template is a shared template, this parameter is returned only if the VersionOption parameter is set to AllVersions.
+	// If the template is a shared template, this parameter is returned only if you set VersionOption to AllVersions.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The time when the template was last updated. This parameter is returned only if the TemplateId parameter is specified.
+	// The time when the template was last updated. This parameter is returned only if you specify TemplateId.
 	//
-	// >
-	// *   If the TemplateVersion parameter is specified, the last update time of the template whose version is specified by using the TemplateVersion parameter is returned.
-	// *   If the TemplateVersion parameter is not specified, the last update time of the template whose version is the default version is returned.
+	// > - If you specify TemplateVersion, the last update time of the template whose version is specified by TemplateVersion is returned.
+	// > - If you do not specify TemplateVersion, the last update time of the template whose version is the default version is returned.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -8640,31 +8597,27 @@ type GetTemplateResponseBodyPermissions struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The sharing option.
 	//
-	// The value is set to ShareToAccounts, which indicates that the template is shared with one or more Alibaba Cloud accounts.
+	// The value ShareToAccounts indicates that the template is shared with one or more Alibaba Cloud accounts.
 	ShareOption *string `json:"ShareOption,omitempty" xml:"ShareOption,omitempty"`
-	// The service that is used for resource sharing.
+	// The service that is used for resource sharing. Valid values:
 	//
-	// Valid values:
-	//
-	// *   ROS: Resources are shared from ROS by using the ROS console or calling the ROS API.
-	// *   ResourceDirectory: Resources are shared with accounts in a resource directory from Resource Management by using the resource sharing feature.
-	//
-	// >
-	// *   The number of accounts with which resources are shared from ROS is independent of the number of accounts with which resources are shared from the resource directory.
-	// *   The shared resources from ROS cannot override or overwrite the shared resources from the resource directory.
-	// *   The shared resources from the resource directory can overwrite the shared resources from ROS.
+	// - ROS: Resources are shared from ROS by using the ROS console or calling the ROS API.
+	// - ResourceDirectory: Resources are shared with accounts in a resource directory from Resource Management by using the resource sharing feature.
+	// > -  The number of accounts with which resources are shared from ROS is independent of the number of accounts with which resources are shared from the resource directory.
+	// > -  The shared resources from ROS cannot override or overwrite the shared resources from the resource directory.
+	// > -  The shared resources from the resource directory can overwrite the shared resources from ROS.
 	ShareSource *string `json:"ShareSource,omitempty" xml:"ShareSource,omitempty"`
-	// The version of the shared template. This parameter is returned only if the ShareOption parameter is set to ShareToAccounts and the VersionOption parameter is set to Specified or Current.
+	// The version of the shared template. This parameter is returned only if you set ShareOption to ShareToAccounts and set VersionOption to Specified or Current.
 	//
 	// Valid values: v1 to v100.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The version option for the shared template. This parameter is returned only if the ShareOption parameter is set to ShareToAccounts.
+	// The version option for the shared template. This parameter is returned only if you set ShareOption to ShareToAccounts.
 	//
 	// Valid values:
 	//
 	// *   AllVersions: All template versions are shared.
-	// *   Latest: Only the latest template version is shared. When the version of the template is updated, ROS updates the shared version to the latest version.
-	// *   Current: Only the default template version when you configure template sharing is shared. When the version of the template is updated, ROS does not update the shared version.
+	// *   Latest: Only the latest template version is shared. When the version of the template is updated, Resource Orchestration Service (ROS) updates the shared version to the latest version.
+	// *   Current: Only the latest template version is shared. When the version of the template is updated, ROS does not update the shared version.
 	// *   Specified: Only the specified template version is shared.
 	VersionOption *string `json:"VersionOption,omitempty" xml:"VersionOption,omitempty"`
 }
@@ -8703,9 +8656,9 @@ func (s *GetTemplateResponseBodyPermissions) SetVersionOption(v string) *GetTemp
 }
 
 type GetTemplateResponseBodyTags struct {
-	// The key of the tag.
+	// The tag key of the template.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value of the template.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10008,45 +9961,41 @@ type GetTemplateSummaryRequest struct {
 	//
 	// You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-	//
-	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	//
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).\
 	// For more information, see [Ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The parameters.
+	// The parameters that are defined in the template.
 	Parameters []*GetTemplateSummaryRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The ID of the region to which the stack or stack group in the template belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	// The region ID of the stack or stack group that uses the template. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	//
-	// This parameter takes effect only when you specify the StackId, ChangeSetId, or StackGroupName parameter.
+	// This parameter takes effect only when one of the following parameters are specified: StackId, ChangeSetId, and StackGroupName.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the stack group.
 	//
 	// You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	// The ID of the stack.
+	// The stack ID.
 	//
 	// You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
-	//
-	// If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-	//
+	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.\
+	// If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.\
 	// You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The ID of the template. This parameter applies to shared and private templates.
+	// The template ID. This parameter applies to shared and private templates.
 	//
 	// You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
 	//
-	// >  If you do not specify the region of the OSS bucket, the value of the RegionId parameter is used.
+	// > If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
 	//
 	// You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
 	//
 	// The URL can be up to 1,024 bytes in length.
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	// The version of the template. This parameter takes effect when you specify the TemplateId parameter.
+	// The version of the template. This parameter takes effect when TemplateId is specified.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -10109,17 +10058,17 @@ func (s *GetTemplateSummaryRequest) SetTemplateVersion(v string) *GetTemplateSum
 }
 
 type GetTemplateSummaryRequestParameters struct {
-	// The name of parameter N that is defined in the template. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value in the template.
+	// The name of parameter N that is defined in the template. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are defined in the template.
 	//
 	// Maximum value of N: 200.
 	//
-	// >  The Parameters parameter is optional. If you need to specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
+	// > The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	// The value of parameter N that is defined in the template.
 	//
 	// Maximum value of N: 200.
 	//
-	// >  The Parameters parameter is optional. If you need to specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
+	// > The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -10148,11 +10097,10 @@ type GetTemplateSummaryResponseBody struct {
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The declarations of the parameters in the template.
 	Parameters []map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource identifier summaries that describe the resources that you want to import and the properties that are used to identify the resources during the import.
-	//
-	// For example, VpcId is an identifier property for ALIYUN::ECS::VPC resources.
+	// The resource identifier summaries.\
+	// A summary describes the resource that you want to import and the properties that are used to identify the resource during the import. For example, VpcId is an identifier property of ALIYUN::ECS::VPC.
 	ResourceIdentifierSummaries []*GetTemplateSummaryResponseBodyResourceIdentifierSummaries `json:"ResourceIdentifierSummaries,omitempty" xml:"ResourceIdentifierSummaries,omitempty" type:"Repeated"`
 	// All resource types that are used in the template.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
@@ -10204,13 +10152,13 @@ func (s *GetTemplateSummaryResponseBody) SetVersion(v string) *GetTemplateSummar
 }
 
 type GetTemplateSummaryResponseBodyResourceIdentifierSummaries struct {
-	// The logical IDs of all resources of the type that is specified by the ResouceType parameter in the template.
+	// The logical IDs of all resources of the type that is specified by ResouceType in the template.
 	LogicalResourceIds []*string `json:"LogicalResourceIds,omitempty" xml:"LogicalResourceIds,omitempty" type:"Repeated"`
-	// The resource properties. You can use a resource property to identify the resources that you want to manage. For example, VpcId is an identifier property for ALIYUN::ECS::VPC resources.
+	// The resource properties. You can use a resource property to identify the resource that you want to manage. For example, VpcId is an identifier property of ALIYUN::ECS::VPC.
 	ResourceIdentifiers []*string `json:"ResourceIdentifiers,omitempty" xml:"ResourceIdentifiers,omitempty" type:"Repeated"`
 	// The resource type.
 	//
-	// >  You can import resources of the type that is specified by the ResouceType parameter.
+	// > The resource import feature is supported for the resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -10269,27 +10217,37 @@ func (s *GetTemplateSummaryResponse) SetBody(v *GetTemplateSummaryResponseBody) 
 type ListChangeSetsRequest struct {
 	// The ID of the change set. If detailed information about the change set is not required, you can use this parameter to replace the GetChangeSet operation.
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	// The name of change set.
+	// The name of change set N. Maximum value of N: 5. You can use an asterisk (\*) as a wildcard for fuzzy search.
 	ChangeSetName []*string `json:"ChangeSetName,omitempty" xml:"ChangeSetName,omitempty" type:"Repeated"`
-	// The execution status of change set.
+	// The execution status of change set N. Maximum value of N: 5. Valid values:
+	//
+	// *   UNAVAILABLE
+	// *   AVAILABLE
+	// *   EXECUTE_IN_PROGRESS
+	// *   EXECUTE_COMPLETE
+	// *   EXECUTE_FAILED
+	// *   OBSOLETE
 	ExecutionStatus []*string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty" type:"Repeated"`
-	// The number of the page to return.
-	//
-	// Pages start from page 1.
-	//
+	// The page number.\
+	// Pages start from page 1.\
 	// Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 1 to 50.
-	//
+	// The number of entries per page.\
+	// Valid values: 1 to 50.\
 	// Default value: 10.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the stack.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The status of change set.
+	// The status of change set N. Maximum value of N: 5. Valid values:
+	//
+	// *   CREATE_PENDING
+	// *   CREATE_IN_PROGRESS
+	// *   CREATE_COMPLETE
+	// *   CREATE_FAILED
+	// *   DELETE_FAILED
+	// *   DELETE_COMPLETE
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
@@ -10342,15 +10300,15 @@ func (s *ListChangeSetsRequest) SetStatus(v []*string) *ListChangeSetsRequest {
 }
 
 type ListChangeSetsResponseBody struct {
-	// The list of change sets.
+	// The change sets.
 	ChangeSets []*ListChangeSetsResponseBodyChangeSets `json:"ChangeSets,omitempty" xml:"ChangeSets,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried entries.
+	// The total number of change sets returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10394,13 +10352,13 @@ type ListChangeSetsResponseBodyChangeSets struct {
 	ChangeSetName *string `json:"ChangeSetName,omitempty" xml:"ChangeSetName,omitempty"`
 	// The type of the change set.
 	ChangeSetType *string `json:"ChangeSetType,omitempty" xml:"ChangeSetType,omitempty"`
-	// The time when the change set was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the change set was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the change set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution status of the change set.
 	ExecutionStatus *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
-	// The region ID.
+	// The region ID of the change set.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the stack with which the change set is associated.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
@@ -10408,7 +10366,7 @@ type ListChangeSetsResponseBodyChangeSets struct {
 	StackName *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
 	// The status of the change set.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The reason why the change set is in its current status.
+	// The reason why the change set is in its current state.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
@@ -10951,27 +10909,23 @@ func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *L
 }
 
 type ListStackEventsRequest struct {
-	// The logical ID of the resource that is defined in the template.
+	// The logical IDs of the resources.
 	LogicalResourceId []*string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty" type:"Repeated"`
-	// The page number of the page to return.
-	//
-	// Pages start from page 1.
-	//
+	// The number of the page to return.\
+	// Pages start from page 1.\
 	// Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
-	//
-	// Maximum value: 50.
-	//
+	// The number of entries to return on each page.\
+	// Maximum value: 50.\
 	// Default value: 10.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the stack resides. You can call the [DescribeRegions](~~131035~~) operation to query the most recent list of Alibaba Cloud regions.
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource types.
+	// The resource types.
 	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
-	// The ID of the stack.
+	// The stack ID.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The state of the resource.
+	// The status of the resource.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
@@ -11019,21 +10973,17 @@ func (s *ListStackEventsRequest) SetStatus(v []*string) *ListStackEventsRequest 
 }
 
 type ListStackEventsResponseBody struct {
-	// The list of events.
+	// The events.
 	Events []*ListStackEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	//
-	// Pages start from page 1.
-	//
+	// The page number of the returned page.\
+	// Pages start from page 1.\
 	// Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	//
-	// Maximum value: 50.
-	//
+	// The number of entries returned per page.\
+	// Maximum value: 50.\
 	// Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned events.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -11073,23 +11023,23 @@ func (s *ListStackEventsResponseBody) SetTotalCount(v int32) *ListStackEventsRes
 }
 
 type ListStackEventsResponseBodyEvents struct {
-	// The time when the resource was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The time when the event was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the event.
+	// The event ID.
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The logical ID of the resource that is defined in the template.
+	// The logical ID of the resource. The logical ID indicates the name of the resource that is defined in the template.
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	// The physical ID of the resource.
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
 	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the stack.
+	// The stack ID.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The name of the stack.
+	// The stack name.
 	StackName *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
 	// The state of the resource.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The reason why the resource is in its current state.
+	// The reason why the resource is in the current state.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
@@ -13090,7 +13040,8 @@ func (s *ListStacksResponseBody) SetTotalCount(v int32) *ListStacksResponseBody 
 
 type ListStacksResponseBodyStacks struct {
 	// The ID of the stack.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The state of the stack on which the last successful drift detection was performed. Valid values:
 	//
 	// *   DRIFTED: Drift detection is being performed on the stack.
@@ -13143,6 +13094,11 @@ func (s ListStacksResponseBodyStacks) GoString() string {
 
 func (s *ListStacksResponseBodyStacks) SetCreateTime(v string) *ListStacksResponseBodyStacks {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetDeletionProtection(v string) *ListStacksResponseBodyStacks {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -13336,7 +13292,7 @@ func (s *ListStacksResponse) SetBody(v *ListStacksResponseBody) *ListStacksRespo
 }
 
 type ListTagKeysRequest struct {
-	// The token that determines the start point of the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the tag key. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -13373,9 +13329,9 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	// The list of tag keys. Separate multiple tag keys with commas (,).
+	// The tag keys.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// The token that is used to start the next query.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -13434,11 +13390,11 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	// The token that determines the start point of the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource IDs.
+	// The IDs of the resources.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
@@ -13447,7 +13403,7 @@ type ListTagResourcesRequest struct {
 	// *   template: template
 	// *   templatescratch: scenario
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tags of the resources. You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -13485,12 +13441,10 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of tag N that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-	//
-	// The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.\
+	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-	//
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.\
 	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -13514,11 +13468,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that is used to start the next query.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the tags that are added to the resource.
+	// The information about the tags that are added to the resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -13614,9 +13568,9 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
-	// The tag key.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The token that determines the start point of the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the tag value. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -13658,7 +13612,7 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
-	// The token that is used to start the next query.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -13723,7 +13677,7 @@ type ListTemplateScratchesRequest struct {
 	//
 	// Pages start from page 1.
 	//
-	// Default value: 1.
+	// Default value: 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -13731,17 +13685,17 @@ type ListTemplateScratchesRequest struct {
 	//
 	// Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the scenario is created.
+	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The state of the scenario. Valid values:
+	// The status of the scenario. Valid values:
 	//
 	// *   GENERATE_IN_PROGRESS: The scenario is being created.
 	// *   GENERATE_COMPLETE: The scenario is created.
 	// *   GENERATE_FAILED: The scenario fails to be created.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The tags of the scenario.
 	Tags []*ListTemplateScratchesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the scenario.
 	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
@@ -13796,11 +13750,11 @@ func (s *ListTemplateScratchesRequest) SetTemplateScratchType(v string) *ListTem
 }
 
 type ListTemplateScratchesRequestTags struct {
-	// The key of tag N that is added to the scenario.
+	// The tag key of the scenario.
 	//
-	// >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
+	// > Tags is optional. If you want to specify Tags, you must specify Key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the scenario.
+	// The tag value of the scenario.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13877,15 +13831,15 @@ type ListTemplateScratchesResponseBodyTemplateScratches struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The status code of the scenario that fails to be created.
 	//
-	// >  This parameter is returned only if the Status parameter is set to GENERATE_FAILED.
+	// > This parameter is returned only if you set Status to GENERATE_FAILED.
 	FailedCode *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
-	// The policy based on which the logical ID is generated. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+	// The policy based on which the logical ID is generated. Valid values:
 	//
-	// *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+	// *   LongTypePrefixAndIndexSuffix (default): long-type prefix + index-type suffix
 	// *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
 	// *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that are configured for the scenario.
+	// The preference parameters of the scenario.
 	PreferenceParameters []*ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
 	// The source resource group.
 	SourceResourceGroup *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
@@ -13893,11 +13847,11 @@ type ListTemplateScratchesResponseBodyTemplateScratches struct {
 	SourceResources []*ListTemplateScratchesResponseBodyTemplateScratchesSourceResources `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
 	// The source tag.
 	SourceTag *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
-	// The state of the scenario.
+	// The status of the scenario.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The reason why the scenario fails to be created.
 	//
-	// >  This parameter is returned only if the Status parameter is set to GENERATE_FAILED.
+	// > This parameter is returned only if you set Status to GENERATE_FAILED.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	// The tags of the scenario.
 	Tags []*ListTemplateScratchesResponseBodyTemplateScratchesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -13993,7 +13947,7 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetUpdateTime(v str
 }
 
 type ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters struct {
-	// The name of the parameter.
+	// The key of the parameter.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	// The value of the parameter.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
@@ -14020,7 +13974,7 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters)
 type ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup struct {
 	// The ID of the source resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The filter for resource types.
+	// The resource types.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -14045,7 +13999,7 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup) 
 type ListTemplateScratchesResponseBodyTemplateScratchesSourceResources struct {
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -14070,7 +14024,7 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceResources) SetR
 type ListTemplateScratchesResponseBodyTemplateScratchesSourceTag struct {
 	// The source tags.
 	ResourceTags map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
-	// The filter for resource types.
+	// The resource types.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -14147,15 +14101,15 @@ func (s *ListTemplateScratchesResponse) SetBody(v *ListTemplateScratchesResponse
 }
 
 type ListTemplateVersionsRequest struct {
-	// The maximum number of results to be returned in a single call when the NextToken parameter is used for the query.
+	// The maximum number of results to be returned in a single call when NextToken is used for the query.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 50.
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the NextToken value that is returned from the last call.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the template. This parameter applies to shared and private templates.
+	// The template ID. This parameter applies to shared and private templates.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -14183,11 +14137,11 @@ func (s *ListTemplateVersionsRequest) SetTemplateId(v string) *ListTemplateVersi
 }
 
 type ListTemplateVersionsResponseBody struct {
-	// The query token that is returned in this call.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of versions.
+	// The versions.
 	Versions []*ListTemplateVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -14219,13 +14173,13 @@ type ListTemplateVersionsResponseBodyVersions struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the template. This parameter applies to shared and private templates. For a shared template, the template ID is the same as the Alibaba Cloud Resource Name (ARN) of the template.
+	// The template ID. This parameter applies to shared and private templates. For a shared template, the template ID is the same as the Alibaba Cloud Resource Name (ARN) of the template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template name that corresponds to the specified version.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version number.
 	//
-	// For a shared template, this parameter is returned only if the VersionOption parameter is set to AllVersions.
+	// For a shared template, this parameter is returned only if VersionOption is set to AllVersions.
 	//
 	// Valid values: v1 to v100.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
@@ -14301,40 +14255,33 @@ func (s *ListTemplateVersionsResponse) SetBody(v *ListTemplateVersionsResponseBo
 }
 
 type ListTemplatesRequest struct {
-	// Specifies whether to query the information about tags. Default value: Disabled. Valid values:
+	// Specifies whether to query the tag information. Valid values:
 	//
 	// *   Enabled
-	// *   Disabled
+	// *   Disabled (default)
 	IncludeTags *string `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
-	// The number of the page to return.
-	//
-	// Pages start from page 1.
-	//
+	// The page number.\
+	// Pages start from page 1.\
 	// Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 1 to 50.
-	//
+	// The number of entries per page.\
+	// Valid values: 1 to 50.\
 	// Default value: 10.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
-	//
-	// For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
+	// The ID of the resource group.\
+	// For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](~~94475~~)
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The sharing type of the template.
 	//
-	// Default value: Private. Valid values:
+	// Valid values:
 	//
-	// *   Private: The template belongs to the template owner.
+	// *   Private (default): The template belongs to the template owner.
 	// *   Shared: The template is shared with other users.
 	// *   Official: The template is the shared template of the official version.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The tags.
+	// The tags. You can specify up to 20 tags.
 	Tag []*ListTemplatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The name of the template. This parameter takes effect only when the ShareType parameter is set to Private.
-	//
-	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+	// The template name. This parameter takes effect only when ShareType is set to Private. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -14382,11 +14329,11 @@ func (s *ListTemplatesRequest) SetTemplateName(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesRequestTag struct {
-	// The key of tag N. This parameter takes effect only when the ShareType parameter is set to Private.
+	// The key of the tag. This parameter takes effect only when ShareType is set to Private.
 	//
 	// You can specify up to 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag N. This parameter takes effect only when the ShareType parameter is set to Private.
+	// The value of the tag. This parameter takes effect only when ShareType is set to Private.
 	//
 	// You can specify up to 20 tag values.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -14411,15 +14358,14 @@ func (s *ListTemplatesRequestTag) SetValue(v string) *ListTemplatesRequestTag {
 }
 
 type ListTemplatesResponseBody struct {
-	// The page number of the returned page.
-	//
+	// The page number.\
 	// Pages start from page 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of templates.
+	// The templates.
 	Templates []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 	// The total number of templates.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -14469,7 +14415,7 @@ type ListTemplatesResponseBodyTemplates struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The sharing type of the template.
 	//
-	// Default value: Private. Valid values:
+	// Valid values:
 	//
 	// *   Private: The template belongs to the template owner.
 	// *   Shared: The template is shared with other users.
@@ -14478,9 +14424,9 @@ type ListTemplatesResponseBodyTemplates struct {
 	Tags []*ListTemplatesResponseBodyTemplatesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The Alibaba Cloud Resource Name (ARN) of the template.
 	TemplateARN *string `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the template.
+	// The template name.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The latest version of the template.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
@@ -14697,81 +14643,79 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type PreviewStackRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
-	//
-	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	//
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+	// The token can be up to 64 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-).\
 	// For more information, see [Ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to disable rollback for the resources when the stack fails to be created. Default value: false. Valid values:
+	// Specifies whether to disable rollback for the resources when the stack fails to be created. Valid values:
 	//
 	// *   true
-	// *   false
+	// *   false (default)
 	DisableRollback *bool `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	// Specifies whether to query the parameters that want to use in compliance precheck.
+	// Specifies whether to query the parameters that you want to use in compliance precheck.
 	//
-	// Default value: false. Valid values:
+	// Valid values:
 	//
 	// *   true
-	// *   false
+	// *   false (default)
 	EnablePreConfig *bool `json:"EnablePreConfig,omitempty" xml:"EnablePreConfig,omitempty"`
 	// The maximum number of concurrent operations that can be performed on resources. This parameter takes effect only for Terraform stacks.
 	//
 	// By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
 	//
-	// >  If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave it empty, the default value of Terraform is used. In most cases, the default value of Terraform is 10.
+	// > If you set this parameter to an integer greater than 0, the integer is used. If you set this parameter to 0 or leave this parameter empty, the default value of Terraform is used. In most cases, the default value of Terraform is 10.
 	Parallelism *int64 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// The parameters.
+	// The parameters of the stack.
 	Parameters []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the stack. You can use this parameter to preview a stack that you want to update.
+	// The stack ID. You can use this parameter to preview a stack that you want to update.
 	//
 	// >
-	// *   You must specify only one of the StackName and StackId parameters.
+	//
+	// *   You must and can specify only one of StackName and StackId.
+	//
 	// *   In the scenario in which you preview a stack that you want to create or update, you cannot preview the resources in its nested stacks.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The name of the stack. You can use this parameter to preview the stack that you want to create.
+	// The stack name. You can use this parameter to preview the stack that you want to create. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
 	//
-	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
-	//
-	// >  You must specify only one of the StackName and StackId parameters.
+	// > You must and can specify only one of StackName and StackId.
 	StackName *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
 	// The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
 	//
-	// >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
+	// > You can specify only one of StackPolicyBody and StackPolicyURL.
 	StackPolicyBody *string `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	// The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+	// The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length. If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
 	//
-	// >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
+	// > You can specify only one of StackPolicyBody and StackPolicyURL.
 	//
 	// The URL can be up to 1,350 bytes in length.
 	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	// The structure of the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The ID of the template. This parameter applies to shared templates and private templates.
+	// The template ID. This parameter applies to shared and private templates.
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The ID of the scenario.
+	// The scenario ID.
 	//
-	// For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
+	// For more information about how to query the scenario ID, see [ListTemplateScratches](~~363050~~).
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
 	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	// The region ID of the scenario. The default value is the same as the value of the RegionId parameter.
+	// The region ID of the scenario. The default value is the same as the value of RegionId.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	TemplateScratchRegionId *string `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
 	//
-	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	// The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
+	// The version of the template. This parameter takes effect only when TemplateId is specified.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The timeout period that is allowed to create the stack.
+	// The timeout period for creating the stack.
 	//
 	// Unit: minutes.
 	//
@@ -14873,13 +14817,13 @@ func (s *PreviewStackRequest) SetTimeoutInMinutes(v int64) *PreviewStackRequest 
 }
 
 type PreviewStackRequestParameters struct {
-	// The name of parameter N. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template. Maximum value of N: 200.
+	// The name of the parameter N. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template. Maximum value of N: 200.
 	//
-	// >  If you specify Parameters, you must specify Parameters.N.ParameterKey.
+	// > If you specify Parameters, you must specify Parameters.N.ParameterKey.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	// The value of parameter N. Maximum value of N: 200.
 	//
-	// >  If you specify Parameters, you must specify Parameters.N.ParameterValue.
+	// > If you specify Parameters, you must specify Parameters.N.ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -14902,7 +14846,7 @@ func (s *PreviewStackRequestParameters) SetParameterValue(v string) *PreviewStac
 }
 
 type PreviewStackResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the stack that is previewed.
 	Stack *PreviewStackResponseBodyStack `json:"Stack,omitempty" xml:"Stack,omitempty" type:"Struct"`
@@ -14935,17 +14879,17 @@ type PreviewStackResponseBodyStack struct {
 	Log *PreviewStackResponseBodyStackLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	// The parameters of the stack.
 	Parameters []*PreviewStackResponseBodyStackParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The region ID of the stack.
+	// The region where the stack resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resources in the stack.
 	Resources []*PreviewStackResponseBodyStackResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The name of the stack.
+	// The stack name.
 	StackName *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
 	// The structure that contains the stack policy body.
 	StackPolicyBody map[string]interface{} `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
 	// The description of the template.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	// The timeout period that is allowed to create the stack.
+	// The timeout period for creating the stack.
 	//
 	// Unit: minutes.
 	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
@@ -15010,9 +14954,9 @@ func (s *PreviewStackResponseBodyStack) SetTimeoutInMinutes(v int32) *PreviewSta
 }
 
 type PreviewStackResponseBodyStackLog struct {
-	// The log that is generated when a Terraform stack is run. This parameter is returned only if the stack is a Terraform stack.
+	// The Terraform logs. This parameter is returned only if the stack is a Terraform stack.
 	//
-	// >  You can use this parameter to preview the logs of a Terraform stack.
+	// > This parameter contains the logs of previewing the stack.
 	TerraformLogs []*PreviewStackResponseBodyStackLogTerraformLogs `json:"TerraformLogs,omitempty" xml:"TerraformLogs,omitempty" type:"Repeated"`
 }
 
@@ -15030,7 +14974,7 @@ func (s *PreviewStackResponseBodyStackLog) SetTerraformLogs(v []*PreviewStackRes
 }
 
 type PreviewStackResponseBodyStackLogTerraformLogs struct {
-	// The name of the Terraform command. Valid values:
+	// The name of the Terraform command that is run. Valid values:
 	//
 	// *   apply
 	// *   plan
@@ -15097,9 +15041,9 @@ func (s *PreviewStackResponseBodyStackParameters) SetParameterValue(v string) *P
 }
 
 type PreviewStackResponseBodyStackResources struct {
-	// The type of the resource that belongs to an Alibaba Cloud service.
+	// The resource type of an Alibaba Cloud service.
 	AcsResourceType *string `json:"AcsResourceType,omitempty" xml:"AcsResourceType,omitempty"`
-	// The action that is performed on resources. Valid values:
+	// The action that is performed on the resource. Valid values:
 	//
 	// *   Add
 	// *   Modify
@@ -15112,9 +15056,9 @@ type PreviewStackResponseBodyStackResources struct {
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	// The physical ID of the resource.
 	//
-	// This parameter is returned only if the Action parameter is set to Modify or Remove.
+	// This parameter is returned only if Action is set to Modify or Remove.
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	// The properties of the resource.
+	// The resource properties.
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// Indicates whether a replacement update is performed on the template. Valid values:
 	//
@@ -15122,11 +15066,11 @@ type PreviewStackResponseBodyStackResources struct {
 	// *   False: A change is made on the template.
 	// *   Conditional: A replacement update may be performed on the template. You can check whether a replacement update is performed when the template is in use.
 	//
-	// >  This parameter is returned only if the Action parameter is set to Modify.
+	// > This parameter is returned only if Action is set to Modify.
 	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
 	// The resources on which the stack depends.
 	RequiredBy []*string `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The information about the nested stack. The data structure of the value is the same as the data structure of the entire response.
 	Stack map[string]interface{} `json:"Stack,omitempty" xml:"Stack,omitempty"`
@@ -15578,7 +15522,11 @@ func (s *SetStackPolicyResponse) SetBody(v *SetStackPolicyResponseBody) *SetStac
 }
 
 type SetTemplatePermissionRequest struct {
-	// The list of one or more Alibaba Cloud accounts with which you want to share or unshare the template.
+	// The Alibaba Cloud accounts with or from which you want to share or unshare the template.\
+	// Valid values of N: 1, 2, 3, 4, and 5.
+	//
+	// > - This parameter cannot be set to the ID of the Alibaba Cloud account that owns the template, or the RAM users of this Alibaba Cloud account.
+	// > - When ShareOption is set to CancelSharing, you can unshare the template from all the specified Alibaba Cloud accounts by using an asterisk (\*).
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The sharing option.
 	//
@@ -15589,18 +15537,18 @@ type SetTemplatePermissionRequest struct {
 	ShareOption *string `json:"ShareOption,omitempty" xml:"ShareOption,omitempty"`
 	// The ID of the template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The version of the template that you want to share. This parameter takes effect when the ShareOption parameter is set to ShareToAccounts and the VersionOption parameter is set to Specified.
+	// The version of the shared template. This parameter takes effect only if you set ShareOption to ShareToAccounts and set VersionOption to Specified.
 	//
 	// Valid values: v1 to v100.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The version option for template sharing. This parameter takes effect when the ShareOption parameter is set to ShareToAccounts.
+	// The version option for the shared template. This parameter takes effect only if you set ShareOption to ShareToAccounts.
 	//
-	// Default value: AllVersions. Valid values:
+	// Valid values:
 	//
-	// *   AllVersions: shares all versions of the template.
-	// *   Latest: shares only the latest version of the template. If the shared template is updated, the latest version of the template is shared with the destination account.
-	// *   Current: shares only the current version of the template. The current version of the template is shared with the destination account even if the template is updated.
-	// *   Specified: shares only one specific version of the template.
+	// *   AllVersions (default): shares all versions of the template.
+	// *   Latest: shares only the latest version of template. When the version of the template is updated, ROS updates the shared version to the latest version.
+	// *   Current: shares only the current version of the template. When the version of the template is updated, ROS does not update the shared version.
+	// *   Specified: shares only the specified version of the template.
 	VersionOption *string `json:"VersionOption,omitempty" xml:"VersionOption,omitempty"`
 }
 
@@ -15746,7 +15694,7 @@ func (s *SignalResourceRequest) SetUniqueId(v string) *SignalResourceRequest {
 }
 
 type SignalResourceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15867,18 +15815,18 @@ func (s *StopStackGroupOperationResponse) SetBody(v *StopStackGroupOperationResp
 }
 
 type TagResourcesRequest struct {
-	// The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	// The region ID of the tag that you want to create. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource.
+	// The IDs of the resources.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource to which you want to add the tag. Valid values:
+	// The type of the resource. Valid values:
 	//
 	// *   stack: stack
 	// *   stackgroup: stack group
 	// *   template: template
-	// *   TemplateScratch: scenario
+	// *   templatescratch: scenario
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tags of the resource. You can specify up to 20 tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -15911,13 +15859,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of tag N that you want to add to the resource. You can specify up to 20 tag keys.
+	// The tag key of the resource. You can specify up to 20 tag keys.
 	//
-	// The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that you want to add to the resource. You can specify up to 20 tag values.
+	// The tag value of the resource. You can specify up to 20 tag values.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15987,14 +15935,16 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the resources. This parameter takes effect when the TagKey.N parameter is not specified in the request. Default value: false. Valid values:
+	// Specifies whether to remove all tags from the resource. This parameter takes effect when TagKey is not specified in the request. Valid values:
 	//
-	// *   true: removes all tags from the resources.
-	// *   false: removes the specified tags from the resources.
+	// *   true
+	// *   false (default)
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of resource IDs.
+	// The IDs of the resource.
+	//
+	// > If you set ResourceType to stackgroup, you must set ResourceId to the name of the stack group.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
@@ -16003,7 +15953,7 @@ type UntagResourcesRequest struct {
 	// *   template: template
 	// *   templatescratch: scenario
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys of the resource.
+	// The tag keys of the resource. You can specify up to 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -16107,17 +16057,19 @@ type UpdateStackRequest struct {
 	// *   false: validates and updates the stack.
 	//
 	// >  When no changes are made during the update, the following rules apply: If you set the DryRun parameter to false, the NotSupported error code is returned. If you set the DryRun parameter to true, no error is reported.
-	DryRun        *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The dry run option in the list format. You can specify only one dry run option.
+	//
+	// > This parameter takes effect only when DryRun is set to true.
 	DryRunOptions []*string `json:"DryRunOptions,omitempty" xml:"DryRunOptions,omitempty" type:"Repeated"`
 	// The maximum number of concurrent operations that can be performed on resources.
 	//
 	// By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
 	//
-	// >
-	// *   If you set this parameter to an integer that is greater than 0, the integer is used.
-	// *   If you set this parameter to 0, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
-	// *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
-	// *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
+	// > - If you set this parameter to an integer that is greater than 0, the integer is used.
+	// > -  If you set this parameter to 0, no limit is imposed on Resource Orchestration Service (ROS) stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+	// > -  If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+	// > - If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
 	Parallelism *int64 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	// The parameters.
 	Parameters []*UpdateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
@@ -16364,9 +16316,8 @@ type UpdateStackRequestTags struct {
 	//
 	// Valid values of N: 1 to 20.
 	//
-	// >
-	// *   The Tags parameter is optional. If you specify Tags, you must specify Tags.N.Key.
-	// *   The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
+	// > - The Tags parameter is optional. If you specify Tags, you must specify Tags.N.Key.
+	// > - The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N that you want to add to the stack.
 	//
@@ -16395,7 +16346,7 @@ func (s *UpdateStackRequestTags) SetValue(v string) *UpdateStackRequestTags {
 }
 
 type UpdateStackResponseBody struct {
-	// The validation result. This parameter is returned only if the DryRun parameter is set to true.
+	// The dry run result. This parameter is returned only if DryRun is set to true.
 	DryRunResult *UpdateStackResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -16429,33 +16380,41 @@ func (s *UpdateStackResponseBody) SetStackId(v string) *UpdateStackResponseBody 
 type UpdateStackResponseBodyDryRunResult struct {
 	// The parameters that can be modified. If you change only values of the parameters in a stack template and use the template to update the stack, no validation errors are caused.
 	ParametersAllowedToBeModified []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
-	// The parameters whose changes cause service interruptions. If you change only values of the parameters in a stack template and use the template to update the stack, service interruptions are caused.
-	//
-	// >
-	// *   This parameter is supported only for a small number of resource types.
-	// *   This parameter is valid only for changes that are made on ROS stacks.
+	// The parameters whose changes cause service interruptions.
+	// > - This parameter is supported only for a small number of resource types.
+	// > - This parameter is valid only for updates on ROS stacks.
 	ParametersCauseInterruptionIfModified []*string `json:"ParametersCauseInterruptionIfModified,omitempty" xml:"ParametersCauseInterruptionIfModified,omitempty" type:"Repeated"`
-	ParametersCauseReplacementIfModified  []*string `json:"ParametersCauseReplacementIfModified,omitempty" xml:"ParametersCauseReplacementIfModified,omitempty" type:"Repeated"`
+	// The parameters whose changes trigger replacement updates for resources.
+	//
+	// > -  This parameter can be returned only if ReplacementOption is set to Enabled.
+	// > -  This parameter is valid only for updates on ROS stacks.
+	ParametersCauseReplacementIfModified []*string `json:"ParametersCauseReplacementIfModified,omitempty" xml:"ParametersCauseReplacementIfModified,omitempty" type:"Repeated"`
 	// The parameters that can be modified under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values of the parameters determine whether validation errors are caused.
 	ParametersConditionallyAllowedToBeModified []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
-	// The parameters whose changes cause service interruptions under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values and the update type determine whether service interruptions are caused.
+	// The parameters whose changes cause service interruptions under specific conditions.
 	//
-	// >
-	// *   This parameter is supported only for a small number of resource types.
-	// *   This parameter is valid only for changes that are made on ROS stacks.
+	// > - This parameter is supported only for a small number of resource types.
+	// > -  This parameter is valid only for updates on ROS stacks.
 	ParametersConditionallyCauseInterruptionIfModified []*string `json:"ParametersConditionallyCauseInterruptionIfModified,omitempty" xml:"ParametersConditionallyCauseInterruptionIfModified,omitempty" type:"Repeated"`
-	ParametersConditionallyCauseReplacementIfModified  []*string `json:"ParametersConditionallyCauseReplacementIfModified,omitempty" xml:"ParametersConditionallyCauseReplacementIfModified,omitempty" type:"Repeated"`
+	// The parameters whose changes trigger replacement updates for resources under specific conditions.
+	//
+	// > - This parameter can be returned only if ReplacementOption is set to Enabled.
+	// > - This parameter is valid only for updates on ROS stacks.
+	ParametersConditionallyCauseReplacementIfModified []*string `json:"ParametersConditionallyCauseReplacementIfModified,omitempty" xml:"ParametersConditionallyCauseReplacementIfModified,omitempty" type:"Repeated"`
 	// The parameters that cannot be modified. If you change only values of the parameters in a stack template and use the template to update the stack, validation errors are caused.
 	ParametersNotAllowedToBeModified []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
 	// The parameters that can be modified under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether validation errors are caused.
 	ParametersUncertainlyAllowedToBeModified []*string `json:"ParametersUncertainlyAllowedToBeModified,omitempty" xml:"ParametersUncertainlyAllowedToBeModified,omitempty" type:"Repeated"`
-	// The parameters whose changes cause service interruptions under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether service interruptions are caused.
+	// The parameters whose changes cause service interruptions under uncertain conditions.
 	//
-	// >
-	// *   This parameter is supported only for a small number of resource types.
-	// *   This parameter is valid only for changes that are made on ROS stacks.
+	// > - This parameter is supported only for a small number of resource types.
+	// > - This parameter is valid only for updates on ROS stacks.
 	ParametersUncertainlyCauseInterruptionIfModified []*string `json:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" xml:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" type:"Repeated"`
-	ParametersUncertainlyCauseReplacementIfModified  []*string `json:"ParametersUncertainlyCauseReplacementIfModified,omitempty" xml:"ParametersUncertainlyCauseReplacementIfModified,omitempty" type:"Repeated"`
+	// The parameters whose changes trigger replacement updates for resources under uncertain conditions.
+	//
+	// > - This parameter can be returned only if ReplacementOption is set to Enabled.
+	// > - This parameter is valid only for updates on ROS stacks.
+	ParametersUncertainlyCauseReplacementIfModified []*string `json:"ParametersUncertainlyCauseReplacementIfModified,omitempty" xml:"ParametersUncertainlyCauseReplacementIfModified,omitempty" type:"Repeated"`
 }
 
 func (s UpdateStackResponseBodyDryRunResult) String() string {
@@ -17785,34 +17744,34 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 }
 
 type UpdateTemplateScratchRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among the different requests. The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// For more information, see [How to ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the scenario.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The execution mode. Default value: Async. Valid values:
+	// The execution mode. Valid values:
 	//
-	// *   Async: asynchronous mode
-	// *   Sync: synchronous mode
+	// *   Async (default)
+	// *   Sync
 	//
-	// >  If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you set ClientToken to prevent the execution from timing out.
+	// > If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you specify ClientToken to prevent the execution timeout.
 	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	// The generation policy of the logical ID. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+	// The policy based on which the logical ID is generated. Valid values:
 	//
-	// *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+	// *   LongTypePrefixAndIndexSuffix (default): long-type prefix + index-type suffix
 	// *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
 	// *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that are configured in the scenario.
+	// The preference parameters of the scenario.
 	PreferenceParameters []*UpdateTemplateScratchRequestPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
-	// The ID of the region in which the scenario is created.
+	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source resource group.
 	SourceResourceGroup *UpdateTemplateScratchRequestSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
-	// The source resource.
+	// The source resources.
 	SourceResources []*UpdateTemplateScratchRequestSourceResources `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
 	// The source tag.
 	SourceTag *UpdateTemplateScratchRequestSourceTag `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
@@ -17879,19 +17838,18 @@ func (s *UpdateTemplateScratchRequest) SetTemplateScratchId(v string) *UpdateTem
 }
 
 type UpdateTemplateScratchRequestPreferenceParameters struct {
-	// The name of a request parameter.
+	// The key of the parameter.
 	//
-	// For more information about ParameterKey, see **Additional description of request parameters**.
+	// For more information about the valid values of ParameterKey, see the **Additional information about request parameters** section of this topic.
 	//
-	// >
-	// *   PreferenceParameters is optional. If you set PreferenceParameters, you must specify both ParameterKey and ParameterValue.
-	// *   If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
+	// > -  PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
+	// > - If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The value of a request parameter. The value of ParameterValue varies based on the value of ParameterKey.
+	// The value of the parameter. The value of ParameterValue varies based on the value of ParameterKey.
 	//
-	// For more information about ParameterValue, see **Additional description of request parameters**.
+	// For more information about the valid values of ParameterValue, see the **Additional information about request parameters** section of this topic.
 	//
-	// >  PreferenceParameters is optional. If you set PreferenceParameters, you must specify both ParameterKey and ParameterValue.
+	// > PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -17916,9 +17874,7 @@ func (s *UpdateTemplateScratchRequestPreferenceParameters) SetParameterValue(v s
 type UpdateTemplateScratchRequestSourceResourceGroup struct {
 	// The ID of the source resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The filter for resource types. If you specify this parameter, only the resources of the specified types and in the specified resource groups are scanned. If you do not specify this parameter, all the resources in the specified resource groups are scanned.
-	//
-	// You can specify up to 20 resource types.
+	// The resource types.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -17970,11 +17926,9 @@ type UpdateTemplateScratchRequestSourceTag struct {
 	//
 	// If you want to specify only the tag key, you must set the tag value to an empty string. Example: {"TagKey": ""}.
 	//
-	// You can configure up to 10 source tags.
+	// You can add up to 10 source tags.
 	ResourceTags map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
-	// The filter for resource types. If you specify this parameter, only the resources of the specified types and have the specified tags are scanned. If you do not specify this parameter, all resources that have the specified tags are scanned.
-	//
-	// You can specify up to 20 resource types.
+	// The resource types.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -17997,34 +17951,34 @@ func (s *UpdateTemplateScratchRequestSourceTag) SetResourceTypeFilter(v []*strin
 }
 
 type UpdateTemplateScratchShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among the different requests. The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// For more information, see [How to ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the scenario.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The execution mode. Default value: Async. Valid values:
+	// The execution mode. Valid values:
 	//
-	// *   Async: asynchronous mode
-	// *   Sync: synchronous mode
+	// *   Async (default)
+	// *   Sync
 	//
-	// >  If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you set ClientToken to prevent the execution from timing out.
+	// > If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you specify ClientToken to prevent the execution timeout.
 	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	// The generation policy of the logical ID. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+	// The policy based on which the logical ID is generated. Valid values:
 	//
-	// *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+	// *   LongTypePrefixAndIndexSuffix (default): long-type prefix + index-type suffix
 	// *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
 	// *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
-	// The parameters that are configured in the scenario.
+	// The preference parameters of the scenario.
 	PreferenceParametersShrink *string `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty"`
-	// The ID of the region in which the scenario is created.
+	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source resource group.
 	SourceResourceGroupShrink *string `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty"`
-	// The source resource.
+	// The source resources.
 	SourceResourcesShrink *string `json:"SourceResources,omitempty" xml:"SourceResources,omitempty"`
 	// The source tag.
 	SourceTagShrink *string `json:"SourceTag,omitempty" xml:"SourceTag,omitempty"`
@@ -18145,15 +18099,30 @@ func (s *UpdateTemplateScratchResponse) SetBody(v *UpdateTemplateScratchResponse
 }
 
 type ValidateTemplateRequest struct {
-	// The regular resource types.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// For more information, see [Ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the output item.
+	// The region ID of the template. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The name of the output item.
-	TemplateURL       *string   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
+	//
+	// > If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
+	//
+	// You can specify one of TemplateBody and TemplateURL, but not both of them. The URL can be up to 1,024 bytes in length.\
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	// The options that are used to control the generation of information about the stack update. You can specify up to two options.
 	UpdateInfoOptions []*string `json:"UpdateInfoOptions,omitempty" xml:"UpdateInfoOptions,omitempty" type:"Repeated"`
-	// The DataSource resource types.
+	// Specifies whether to enable additional validation for the template. Valid values:
+	//
+	// *   None (default): does not enable additional validation.
+	// *   EnableTerraformValidation: runs the `terraform validate` command in the Terraform CLI to enable additional validation for a Terraform template.
+	// *   EnableFastTerraformValidation: runs a command that is similar to the `terraform validate` command in the Terraform CLI to enable additional validation for a Terraform template.
+	//
+	// > Compared with the EnableTerraformValidation method, the EnableFastTerraformValidation method validates a template at a faster speed but a lower integrity level.
 	ValidationOption *string `json:"ValidationOption,omitempty" xml:"ValidationOption,omitempty"`
 }
 
@@ -18196,27 +18165,22 @@ func (s *ValidateTemplateRequest) SetValidationOption(v string) *ValidateTemplat
 }
 
 type ValidateTemplateResponseBody struct {
-	// The DataSource resource types.
+	// The description of the template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The path of the regular resource. In most cases, the path of a regular resource is the same as the resource name.
+	// The outputs of the template.
 	Outputs []*ValidateTemplateResponseBodyOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The parameters that are defined in the Parameters section of the template.
+	Parameters []map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource types that are used in the template.
+	ResourceTypes *ValidateTemplateResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Struct"`
 	// The regular resources that are defined in the template.
 	//
-	// >
-	// *   For a Resource Orchestration Service (ROS) template, the resource whose definition contains the `Count` parameter is not displayed as a list.
-	// *   For a Terraform template, the resource whose definition contains the `count` or `for_each` parameter is not displayed as a list.
-	Parameters []map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The regular resource type.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters that can be modified. If you change only values of the parameters in a stack template and use the template to update the stack, no validation errors are caused.
-	ResourceTypes *ValidateTemplateResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Struct"`
-	// The parameters whose changes cause service interruptions under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values and the update type determine whether service interruptions are caused.
-	//
-	// >
-	// *   This parameter is supported only for a small number of resource types.
-	// *   This parameter is valid only for changes that are made on ROS stacks.
+	// > - For a Resource Orchestration Service (ROS) template, the resource whose definition contains `Count` is not displayed as a list.
+	// > -  For a Terraform template, the resource whose definition contains `count` or `for_each` is not displayed as a list.
 	Resources []*ValidateTemplateResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The parameters that can be modified under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether validation errors are caused.
+	// The information about the stack update. This parameter cannot be returned if the value of UpdateInfoOptions contains Disabled.
 	UpdateInfo *ValidateTemplateResponseBodyUpdateInfo `json:"UpdateInfo,omitempty" xml:"UpdateInfo,omitempty" type:"Struct"`
 }
 
@@ -18264,36 +18228,11 @@ func (s *ValidateTemplateResponseBody) SetUpdateInfo(v *ValidateTemplateResponse
 }
 
 type ValidateTemplateResponseBodyOutputs struct {
-	// The update information about the stack.
+	// The description of the template output.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameters that can be modified. If you change only values of the parameters in a stack template and use the template to update the stack, no validation errors are caused.
+	// The alias of the template output.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The pattern in which the logical IDs of regular resources are formed.
-	//
-	// If resources are defined in an ROS template, the following rules apply:
-	//
-	// *   Resource whose definition does not contain the `Count` parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern and `ResourcePath` parameters is `server`.
-	// *   Resource whose definition contains the `Count` parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern parameter is `server[*]`, and the value of the `ResourcePath` parameter is `server`.
-	//
-	// If resources and [modules](https://www.terraform.io/language/modules) are defined in a Terraform template, the following rules apply:
-	//
-	// *   Resource and module whose definitions do not contain the [count](https://www.terraform.io/language/meta-arguments/count) or [for_each](https://www.terraform.io/language/meta-arguments/for_each) parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern and `ResourcePath` parameters is `server`.
-	// *   Resource and module whose definitions contain the [count](https://www.terraform.io/language/meta-arguments/count) or [for_each](https://www.terraform.io/language/meta-arguments/for_each) parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern parameter is `server[*]`, and the value of the `ResourcePath` parameter is `server`.
-	//
-	// Examples of the LogicalResourceIdPattern parameter for resources in a Terraform template:
-	//
-	// *   Valid values of the LogicalResourceIdPattern parameter if a resource belongs to the root module:
-	//
-	//     *   `server`: In this case, the `count` or `for_each` parameter is not contained in the resource. The value of the `ResourcePath` parameter is `server`.
-	//     *   `server[*]`: In this case, the `count` or `for_each` parameter is contained in the resource. The value of the `ResourcePath` parameter is `server`.
-	//
-	// *   Valid values of the LogicalResourceIdPattern parameter if a resource belongs to a child module:
-	//
-	//     *   `app.server`: In this case, the `count` or `for_each` parameter is not contained in the `app` module and the `server` resource. The value of the `ResourcePath` parameter is `app.server`.
-	//     *   `app.server[*]`: In this case, the `count` or `for_each` parameter is contained in the `server` resource, but not in the `app` module. The value of the `ResourcePath` parameter is `app.server`.
-	//     *   `app[*].server`: In this case, the `count` or `for_each` parameter is contained in the `app` module, but not in the `server` resource. The value of the `ResourcePath` parameter is `app.server`.
-	//     *   `app[*].server[*]`: In this case, the `count` or `for_each` parameter is contained in the `app` module and the `server` resource. The value of the `ResourcePath` parameter is `app.server`.
-	//     *   `app.app_group[*].server`: In this case, the `count` or `for_each` parameter is contained in the `app_group` module, but not in the `app` module and the `server` resource. The value of the `ResourcePath` parameter is `app.app_group.server`. The `app_group` module is a child module of the `app` module.
+	// The name of the template output.
 	OutputKey *string `json:"OutputKey,omitempty" xml:"OutputKey,omitempty"`
 }
 
@@ -18321,13 +18260,9 @@ func (s *ValidateTemplateResponseBodyOutputs) SetOutputKey(v string) *ValidateTe
 }
 
 type ValidateTemplateResponseBodyResourceTypes struct {
-	// The parameters that can be modified under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values of the parameters determine whether validation errors are caused.
+	// The DataSource resource types that are used in the template. The value is deduplicated.
 	DataSources []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// The parameters whose changes cause service interruptions. If you change only values of the parameters in a stack template and use the template to update the stack, service interruptions are caused.
-	//
-	// >
-	// *   This parameter is supported only for a small number of resource types.
-	// *   This parameter is valid only for changes that are made on ROS stacks.
+	// The regular resource types that are used in the template. The value is deduplicated.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -18350,15 +18285,36 @@ func (s *ValidateTemplateResponseBodyResourceTypes) SetResources(v []*string) *V
 }
 
 type ValidateTemplateResponseBodyResources struct {
-	// The parameters that cannot be modified. If you change only values of the parameters in a stack template and use the template to update the stack, validation errors are caused.
-	LogicalResourceIdPattern *string `json:"LogicalResourceIdPattern,omitempty" xml:"LogicalResourceIdPattern,omitempty"`
-	// The parameters that cannot be modified. If you change only values of the parameters in a stack template and use the template to update the stack, validation errors are caused.
-	ResourcePath *string `json:"ResourcePath,omitempty" xml:"ResourcePath,omitempty"`
-	// The parameters whose changes cause service interruptions under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values and the update type determine whether service interruptions are caused.
+	// The pattern in which the logical IDs of regular resources are formed.
 	//
-	// >
-	// *   This parameter is supported only for a small number of resource types.
-	// *   This parameter is valid only for changes that are made on ROS stacks.
+	// If resources are defined in a ROS template, the following rules apply:
+	//
+	// *   Resource whose definition does not contain `Count`: If the resource name defined in the template is `server`, the values of LogicalResourceIdPattern and `ResourcePath` are both `server`.``
+	// *   Resource whose definition contains `Count`: If the resource name defined in the template is `server`, the value of LogicalResourceIdPattern is `server[*]`, and the value of `ResourcePath` is `server`.
+	//
+	// If resources and [modules](https://www.terraform.io/language/modules) are defined in a Terraform template, the following rules apply:
+	//
+	// *   Resource and module whose definitions do not contain [`count`](https://www.terraform.io/language/meta-arguments/count) or [`for_each`](https://www.terraform.io/language/meta-arguments/for_each): If the resource name defined in the template is `server`, the values of LogicalResourceIdPattern and `ResourcePath` are both `server`.``
+	// *   Resource and module whose definitions contain [`count`](https://www.terraform.io/language/meta-arguments/count) or [`for_each`](https://www.terraform.io/language/meta-arguments/for_each): If the resource name defined in the template is `server`, the value of LogicalResourceIdPattern is `server[*]`, and the value of `ResourcePath` is `server`.
+	//
+	// Examples of LogicalResourceIdPattern for resources in a Terraform template:
+	//
+	// *   Valid values of LogicalResourceIdPattern if a resource belongs to the root module:
+	//
+	//     *   `server`: In this case, `count` and `for_each` are not contained in the resource. The value of `ResourcePath` is `server`.
+	//     *   `server[*]`: In this case, `count` or `for_each` is contained in the resource. The value of `ResourcePath` is `server`.
+	//
+	// *   Valid values of LogicalResourceIdPattern if a resource belongs to a child module:
+	//
+	//     *   `app.server`: In this case, `count` and `for_each` are not contained in the `app` module and the `server` resource. The value of `ResourcePath` is `app.server`.````
+	//     *   `app.server[*]`: In this case, `count` or `for_each` is contained in the `server` resource, but `count` and `for_each` are not contained in the `app` module. The value of `ResourcePath` is `app.server`.
+	//     *   `app[*].server`: In this case, `count` or `for_each` is contained in the `app` module, but `count` and `for_each` are not contained in the `server` resource. The value of `ResourcePath` is `app.server`.
+	//     *   `app[*].server[*]`: In this case, `count` or `for_each` is contained in the `app` module and the `server` resource. The value of `ResourcePath` is `app.server`.````
+	//     *   `app.app_group[*].server`: In this case, `count` or `for_each` is contained in the `app_group` module, but `count` and `for_each` are not contained in the `app` module and the `server` resource. The value of `ResourcePath` is `app.app_group.server`. The `app_group` module is a child module of the `app` module.````
+	LogicalResourceIdPattern *string `json:"LogicalResourceIdPattern,omitempty" xml:"LogicalResourceIdPattern,omitempty"`
+	// The path of the regular resource. In most cases, the path of a regular resource is the same as the resource name.
+	ResourcePath *string `json:"ResourcePath,omitempty" xml:"ResourcePath,omitempty"`
+	// The regular resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -18386,22 +18342,44 @@ func (s *ValidateTemplateResponseBodyResources) SetResourceType(v string) *Valid
 }
 
 type ValidateTemplateResponseBodyUpdateInfo struct {
-	// The parameters that can be modified under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether validation errors are caused.
+	// The parameters that can be modified.
 	ParametersAllowedToBeModified []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
-	// The parameters whose changes cause service interruptions under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether service interruptions are caused.
+	// The parameters whose changes cause service interruptions.
 	//
-	// >
-	// *   This parameter is supported only for a small number of resource types.
-	// *   This parameter is valid only for changes that are made on ROS stacks.
-	ParametersCauseInterruptionIfModified              []*string `json:"ParametersCauseInterruptionIfModified,omitempty" xml:"ParametersCauseInterruptionIfModified,omitempty" type:"Repeated"`
-	ParametersCauseReplacementIfModified               []*string `json:"ParametersCauseReplacementIfModified,omitempty" xml:"ParametersCauseReplacementIfModified,omitempty" type:"Repeated"`
-	ParametersConditionallyAllowedToBeModified         []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
+	// > - This parameter is supported only for a small number of resource types.
+	// > - This parameter is valid only for updates on ROS stacks.
+	ParametersCauseInterruptionIfModified []*string `json:"ParametersCauseInterruptionIfModified,omitempty" xml:"ParametersCauseInterruptionIfModified,omitempty" type:"Repeated"`
+	// The parameters whose changes trigger replacement updates for resources.
+	//
+	// > -  This parameter can be returned only if the value of UpdateInfoOptions contains EnableReplacement.
+	// > -  This parameter is valid only for updates on ROS stacks.
+	ParametersCauseReplacementIfModified []*string `json:"ParametersCauseReplacementIfModified,omitempty" xml:"ParametersCauseReplacementIfModified,omitempty" type:"Repeated"`
+	// The parameters that can be modified under specific conditions.
+	ParametersConditionallyAllowedToBeModified []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
+	// The parameters whose changes cause service interruptions under specific conditions.
+	//
+	// > - This parameter is supported only for a small number of resource types.
+	// > - This parameter is valid only for updates on ROS stacks.
 	ParametersConditionallyCauseInterruptionIfModified []*string `json:"ParametersConditionallyCauseInterruptionIfModified,omitempty" xml:"ParametersConditionallyCauseInterruptionIfModified,omitempty" type:"Repeated"`
-	ParametersConditionallyCauseReplacementIfModified  []*string `json:"ParametersConditionallyCauseReplacementIfModified,omitempty" xml:"ParametersConditionallyCauseReplacementIfModified,omitempty" type:"Repeated"`
-	ParametersNotAllowedToBeModified                   []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
-	ParametersUncertainlyAllowedToBeModified           []*string `json:"ParametersUncertainlyAllowedToBeModified,omitempty" xml:"ParametersUncertainlyAllowedToBeModified,omitempty" type:"Repeated"`
-	ParametersUncertainlyCauseInterruptionIfModified   []*string `json:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" xml:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" type:"Repeated"`
-	ParametersUncertainlyCauseReplacementIfModified    []*string `json:"ParametersUncertainlyCauseReplacementIfModified,omitempty" xml:"ParametersUncertainlyCauseReplacementIfModified,omitempty" type:"Repeated"`
+	// The parameters whose changes trigger replacement updates for resources under specific conditions.
+	//
+	// > - This parameter can be returned only if the value of UpdateInfoOptions contains EnableReplacement.
+	// > - This parameter is valid only for updates on ROS stacks.
+	ParametersConditionallyCauseReplacementIfModified []*string `json:"ParametersConditionallyCauseReplacementIfModified,omitempty" xml:"ParametersConditionallyCauseReplacementIfModified,omitempty" type:"Repeated"`
+	// The parameters that cannot be modified.
+	ParametersNotAllowedToBeModified []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
+	// The parameters that can be modified under uncertain conditions.
+	ParametersUncertainlyAllowedToBeModified []*string `json:"ParametersUncertainlyAllowedToBeModified,omitempty" xml:"ParametersUncertainlyAllowedToBeModified,omitempty" type:"Repeated"`
+	// The parameters whose changes cause service interruptions under uncertain conditions.
+	//
+	// > - This parameter is supported only for a small number of resource types.
+	// > - This parameter is valid only for updates on ROS stacks.
+	ParametersUncertainlyCauseInterruptionIfModified []*string `json:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" xml:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" type:"Repeated"`
+	// The parameters whose changes trigger replacement updates for resources under uncertain conditions.
+	//
+	// > -  This parameter can be returned only if the value of UpdateInfoOptions contains EnableReplacement.
+	// > -  This parameter is valid only for updates on ROS stacks.
+	ParametersUncertainlyCauseReplacementIfModified []*string `json:"ParametersUncertainlyCauseReplacementIfModified,omitempty" xml:"ParametersUncertainlyCauseReplacementIfModified,omitempty" type:"Repeated"`
 }
 
 func (s ValidateTemplateResponseBodyUpdateInfo) String() string {
@@ -19066,20 +19044,12 @@ func (client *Client) CreateStack(request *CreateStackRequest) (_result *CreateS
 }
 
 /**
- * | Error code | Error message | HTTP status code | Description |
- * | ---------- | ------------- | ---------------- | ----------- |
- * | CircularDependency | Circular Dependency Found: {reason}. | 400 | The error message returned because the template contains circular dependencies. reason indicates the cause of the error. |
- * | InvalidSchema | {reason}. | 400 | The error message returned because the template format is invalid. reason indicates the cause of the error. |
- * | InvalidTemplateAttribute | The Referenced Attribute ({resource} {name}) is incorrect. | 400 | The error message returned because the resource property that is referenced in the Outputs section of the template is invalid. resource indicates the resource name. name indicates the property name. |
- * | InvalidTemplatePropertyType | The specified value type of ({resource} {section}) is incorrect. | 400 | The error message returned because the type of the resource property that is defined in a template section is invalid. resource indicates the resource name. section indicates the section name. |
- * | InvalidTemplateReference | The specified reference "{name}" (in {referencer}) is incorrect. | 400 | The error message returned because the template contains an invalid reference. name indicates the reference name. referencer indicates the referencer name. |
- * | InvalidTemplateSection | The template section is invalid: {section}. | 400 | The error message returned because the template contains an invalid section. section indicates the section name. |
- * | InvalidTemplateVersion | The template version is invalid: {reason}. | 400 | The error message returned because the template version is invalid. reason indicates the cause of the error. |
- * | UnknownUserParameter | The Parameter ({name}) was not defined in template. | 400 | The error message returned because the specified parameter is not defined in the template. name indicates the parameter name. |
- * | UserParameterMissing | The Parameter {name} was not provided. | 400 | The error message returned because no value is specified for a parameter in the template. name indicates the parameter name. |
- * | StackGroupExists | The StackGroup ({name}) already exists. | 409 | The error message returned because a stack group that has the same name already exists. name indicates the name of the stack group. |
- * | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 404 | The error message returned because the template does not exist. ID indicates the ID of the template. |
- * | TemplateNotFound | The Template { ID } with version { version } could not be found. | 404 | The error message returned because the specified template or template version does not exist. ID indicates the ID of the template. version indicates the version of the template. |
+ * A stack group is a collection of ROS stacks that you can manage as a unit. You can use an ROS template of a stack group to create stacks within Alibaba Cloud accounts across regions.
+ * You can create a stack group that is granted self-managed or service-managed permissions:
+ * *   If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+ * *   If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+ * For more information about stack groups, see [Overview](~~154578~~).
+ * In this topic, a stack group named `MyStackGroup` is created in the `China (Hangzhou)` region and granted the self-managed permissions. In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is used.
  *
  * @param tmpReq CreateStackGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19185,20 +19155,12 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 }
 
 /**
- * | Error code | Error message | HTTP status code | Description |
- * | ---------- | ------------- | ---------------- | ----------- |
- * | CircularDependency | Circular Dependency Found: {reason}. | 400 | The error message returned because the template contains circular dependencies. reason indicates the cause of the error. |
- * | InvalidSchema | {reason}. | 400 | The error message returned because the template format is invalid. reason indicates the cause of the error. |
- * | InvalidTemplateAttribute | The Referenced Attribute ({resource} {name}) is incorrect. | 400 | The error message returned because the resource property that is referenced in the Outputs section of the template is invalid. resource indicates the resource name. name indicates the property name. |
- * | InvalidTemplatePropertyType | The specified value type of ({resource} {section}) is incorrect. | 400 | The error message returned because the type of the resource property that is defined in a template section is invalid. resource indicates the resource name. section indicates the section name. |
- * | InvalidTemplateReference | The specified reference "{name}" (in {referencer}) is incorrect. | 400 | The error message returned because the template contains an invalid reference. name indicates the reference name. referencer indicates the referencer name. |
- * | InvalidTemplateSection | The template section is invalid: {section}. | 400 | The error message returned because the template contains an invalid section. section indicates the section name. |
- * | InvalidTemplateVersion | The template version is invalid: {reason}. | 400 | The error message returned because the template version is invalid. reason indicates the cause of the error. |
- * | UnknownUserParameter | The Parameter ({name}) was not defined in template. | 400 | The error message returned because the specified parameter is not defined in the template. name indicates the parameter name. |
- * | UserParameterMissing | The Parameter {name} was not provided. | 400 | The error message returned because no value is specified for a parameter in the template. name indicates the parameter name. |
- * | StackGroupExists | The StackGroup ({name}) already exists. | 409 | The error message returned because a stack group that has the same name already exists. name indicates the name of the stack group. |
- * | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 404 | The error message returned because the template does not exist. ID indicates the ID of the template. |
- * | TemplateNotFound | The Template { ID } with version { version } could not be found. | 404 | The error message returned because the specified template or template version does not exist. ID indicates the ID of the template. version indicates the version of the template. |
+ * A stack group is a collection of ROS stacks that you can manage as a unit. You can use an ROS template of a stack group to create stacks within Alibaba Cloud accounts across regions.
+ * You can create a stack group that is granted self-managed or service-managed permissions:
+ * *   If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+ * *   If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+ * For more information about stack groups, see [Overview](~~154578~~).
+ * In this topic, a stack group named `MyStackGroup` is created in the `China (Hangzhou)` region and granted the self-managed permissions. In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is used.
  *
  * @param request CreateStackGroupRequest
  * @return CreateStackGroupResponse
@@ -19332,7 +19294,7 @@ func (client *Client) CreateStackInstances(request *CreateStackInstancesRequest)
 }
 
 /**
- * This topic provides an example on how to create a template. In this example, a template named `MyTemplate` is created in the `China (Hangzhou)` region. The `TemplateBody` parameter is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
+ * In this topic, a custom template named `MyTemplate` is created in the `cn-hangzhou` region. The `TemplateBody` parameter of the template is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
  *
  * @param request CreateTemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19392,7 +19354,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 }
 
 /**
- * This topic provides an example on how to create a template. In this example, a template named `MyTemplate` is created in the `China (Hangzhou)` region. The `TemplateBody` parameter is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
+ * In this topic, a custom template named `MyTemplate` is created in the `cn-hangzhou` region. The `TemplateBody` parameter of the template is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
  *
  * @param request CreateTemplateRequest
  * @return CreateTemplateResponse
@@ -19409,8 +19371,9 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 }
 
 /**
+ * ###
  * You can call this operation to create a scenario that allows you to specify a resource scope on a visualized interface and easily replicate and manage the resources that you specify. For more information about scenarios, see [Overview](~~352074~~).
- * This topic provides an example on how to create a scenario of the resource replication type in the China (Hangzhou) region. In this example, a virtual private cloud (VPC) named `vpc-bp1m6fww66xbntjyc****` is replicated by using the scenario.
+ * In this example, a scenario of the Resource Replication type is created in the China (Hangzhou) region. In the scenario, the virtual private cloud (VPC) whose ID is `vpc-bp1m6fww66xbntjyc****` is replicated.
  *
  * @param tmpReq CreateTemplateScratchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19508,8 +19471,9 @@ func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScr
 }
 
 /**
+ * ###
  * You can call this operation to create a scenario that allows you to specify a resource scope on a visualized interface and easily replicate and manage the resources that you specify. For more information about scenarios, see [Overview](~~352074~~).
- * This topic provides an example on how to create a scenario of the resource replication type in the China (Hangzhou) region. In this example, a virtual private cloud (VPC) named `vpc-bp1m6fww66xbntjyc****` is replicated by using the scenario.
+ * In this example, a scenario of the Resource Replication type is created in the China (Hangzhou) region. In the scenario, the virtual private cloud (VPC) whose ID is `vpc-bp1m6fww66xbntjyc****` is replicated.
  *
  * @param request CreateTemplateScratchRequest
  * @return CreateTemplateScratchResponse
@@ -19526,14 +19490,13 @@ func (client *Client) CreateTemplateScratch(request *CreateTemplateScratchReques
 }
 
 /**
- * Limits:
  * *   Before you call this operation, make sure that the following requirements are met:
  *     *   The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
  *     *   The execution status is UNAVAILABLE or AVAILABLE.
- * *   After a change set is executed, other change sets associated with the same stack as this change set are deleted.
+ * *   After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
  * *   After a stack is deleted, change sets associated with the stack are deleted.
  * *   If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
- * In this example, a change set in the China (Hangzhou) region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted.
+ * In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
  *
  * @param request DeleteChangeSetRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19577,14 +19540,13 @@ func (client *Client) DeleteChangeSetWithOptions(request *DeleteChangeSetRequest
 }
 
 /**
- * Limits:
  * *   Before you call this operation, make sure that the following requirements are met:
  *     *   The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
  *     *   The execution status is UNAVAILABLE or AVAILABLE.
- * *   After a change set is executed, other change sets associated with the same stack as this change set are deleted.
+ * *   After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
  * *   After a stack is deleted, change sets associated with the stack are deleted.
  * *   If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
- * In this example, a change set in the China (Hangzhou) region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted.
+ * In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
  *
  * @param request DeleteChangeSetRequest
  * @return DeleteChangeSetResponse
@@ -19835,7 +19797,7 @@ func (client *Client) DeleteStackInstances(request *DeleteStackInstancesRequest)
 }
 
 /**
- * If the template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
+ * If a template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
  *
  * @param request DeleteTemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19875,7 +19837,7 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 }
 
 /**
- * If the template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
+ * If a template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
  *
  * @param request DeleteTemplateRequest
  * @return DeleteTemplateResponse
@@ -19892,7 +19854,7 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 }
 
 /**
- * This topic describes how to delete a scenario. In this topic, the `ts-4f83704400994409****` scenario in the China (Hangzhou) region is deleted.
+ * In this topic, a scenario whose ID is `ts-4f83704400994409****` is deleted in the China (Hangzhou) region.
  *
  * @param request DeleteTemplateScratchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19936,7 +19898,7 @@ func (client *Client) DeleteTemplateScratchWithOptions(request *DeleteTemplateSc
 }
 
 /**
- * This topic describes how to delete a scenario. In this topic, the `ts-4f83704400994409****` scenario in the China (Hangzhou) region is deleted.
+ * In this topic, a scenario whose ID is `ts-4f83704400994409****` is deleted in the China (Hangzhou) region.
  *
  * @param request DeleteTemplateScratchRequest
  * @return DeleteTemplateScratchResponse
@@ -20219,7 +20181,7 @@ func (client *Client) DetectStackResourceDrift(request *DetectStackResourceDrift
 }
 
 /**
- * In this example, a change set in the `China (Hangzhou)` region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is executed.
+ * In this example, the change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is executed. The change set is created in the `China (Hangzhou)` region.
  *
  * @param request ExecuteChangeSetRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20267,7 +20229,7 @@ func (client *Client) ExecuteChangeSetWithOptions(request *ExecuteChangeSetReque
 }
 
 /**
- * In this example, a change set in the `China (Hangzhou)` region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is executed.
+ * In this example, the change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is executed. The change set is created in the `China (Hangzhou)` region.
  *
  * @param request ExecuteChangeSetRequest
  * @return ExecuteChangeSetResponse
@@ -20284,7 +20246,7 @@ func (client *Client) ExecuteChangeSet(request *ExecuteChangeSetRequest) (_resul
 }
 
 /**
- * This topic describes how to create a template for a scenario. In this topic, the `ts-aa9c62feab844a6b****` scenario of the Resource Management type in the China (Hangzhou) region is used.
+ * In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b****`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
  *
  * @param request GenerateTemplateByScratchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20336,7 +20298,7 @@ func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemp
 }
 
 /**
- * This topic describes how to create a template for a scenario. In this topic, the `ts-aa9c62feab844a6b****` scenario of the Resource Management type in the China (Hangzhou) region is used.
+ * In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b****`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
  *
  * @param request GenerateTemplateByScratchRequest
  * @return GenerateTemplateByScratchResponse
@@ -20428,7 +20390,7 @@ func (client *Client) GenerateTemplatePolicy(request *GenerateTemplatePolicyRequ
 }
 
 /**
- * In this example, the information of the change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62****` is queried.
+ * In this example, the details of a change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62****` is queried. The change set is created in the China (Hangzhou) region.
  *
  * @param request GetChangeSetRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20476,7 +20438,7 @@ func (client *Client) GetChangeSetWithOptions(request *GetChangeSetRequest, runt
 }
 
 /**
- * In this example, the information of the change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62****` is queried.
+ * In this example, the details of a change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62****` is queried. The change set is created in the China (Hangzhou) region.
  *
  * @param request GetChangeSetRequest
  * @return GetChangeSetResponse
@@ -20667,8 +20629,9 @@ func (client *Client) GetResourceTypeTemplate(request *GetResourceTypeTemplateRe
 }
 
 /**
+ * ### Description
  * This topic describes how to query the activation status and the RAM roles of an Alibaba Cloud service. In this example, the Elastic High Performance Computing (E-HPC) service that is deployed in the China (Hangzhou) region is queried.
- * >  Make sure that you have obtained the permissions on the [GetRole](~~28711~~) operation.
+ * > Make sure that you have the permissions to call the [GetRole](~~28711~~) operation.
  *
  * @param request GetServiceProvisionsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20732,8 +20695,9 @@ func (client *Client) GetServiceProvisionsWithOptions(request *GetServiceProvisi
 }
 
 /**
+ * ### Description
  * This topic describes how to query the activation status and the RAM roles of an Alibaba Cloud service. In this example, the Elastic High Performance Computing (E-HPC) service that is deployed in the China (Hangzhou) region is queried.
- * >  Make sure that you have obtained the permissions on the [GetRole](~~28711~~) operation.
+ * > Make sure that you have the permissions to call the [GetRole](~~28711~~) operation.
  *
  * @param request GetServiceProvisionsRequest
  * @return GetServiceProvisionsResponse
@@ -20953,7 +20917,7 @@ func (client *Client) GetStackGroup(request *GetStackGroupRequest) (_result *Get
 }
 
 /**
- * In this example, the operation ID `6da106ca-1784-4a6f-a7e1-e723863d∗∗∗∗` is set to query the details of an operation that you perform on a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+ * In this example, the information about the stack group operation whose ID is `6da106ca-1784-4a6f-a7e1-e723863d****` is queried. The stack group named `MyStackGroup` is granted self-managed permissions and deployed in the China (Hangzhou) region.
  *
  * @param request GetStackGroupOperationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20997,7 +20961,7 @@ func (client *Client) GetStackGroupOperationWithOptions(request *GetStackGroupOp
 }
 
 /**
- * In this example, the operation ID `6da106ca-1784-4a6f-a7e1-e723863d∗∗∗∗` is set to query the details of an operation that you perform on a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+ * In this example, the information about the stack group operation whose ID is `6da106ca-1784-4a6f-a7e1-e723863d****` is queried. The stack group named `MyStackGroup` is granted self-managed permissions and deployed in the China (Hangzhou) region.
  *
  * @param request GetStackGroupOperationRequest
  * @return GetStackGroupOperationResponse
@@ -21014,7 +20978,7 @@ func (client *Client) GetStackGroupOperation(request *GetStackGroupOperationRequ
 }
 
 /**
- * In this example, the details of a stack that is deployed in the China (Beijing) region within the `151266687691****` Alibaba Cloud account are queried. The stack is deployed in a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+ * In this example, the information about a stack instance associated with a stack group named `MyStackGroup` is queried. The stack instance is deployed in the China (Beijing) region within the `151266687691****` Alibaba Cloud account. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
  *
  * @param request GetStackInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21066,7 +21030,7 @@ func (client *Client) GetStackInstanceWithOptions(request *GetStackInstanceReque
 }
 
 /**
- * In this example, the details of a stack that is deployed in the China (Beijing) region within the `151266687691****` Alibaba Cloud account are queried. The stack is deployed in a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+ * In this example, the information about a stack instance associated with a stack group named `MyStackGroup` is queried. The stack instance is deployed in the China (Beijing) region within the `151266687691****` Alibaba Cloud account. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
  *
  * @param request GetStackInstanceRequest
  * @return GetStackInstanceResponse
@@ -21227,7 +21191,7 @@ func (client *Client) GetStackResource(request *GetStackResourceRequest) (_resul
 }
 
 /**
- * In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` and region ID is `cn-hangzhou` are queried.
+ * In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is queried. The region ID of the template is `cn-hangzhou`.
  *
  * @param request GetTemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21299,7 +21263,7 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 }
 
 /**
- * In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` and region ID is `cn-hangzhou` are queried.
+ * In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is queried. The region ID of the template is `cn-hangzhou`.
  *
  * @param request GetTemplateRequest
  * @return GetTemplateResponse
@@ -22819,9 +22783,10 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 }
 
 /**
- * *   To specify the query object, you must specify the ResourceId.N or Tag.N parameter in the request. Tag.N consists of Tag.N.Key and Tag.N.Value.
- * *   If you specify the Tag.N and ResourceId.N parameters, ROS resources that match both the parameters are returned.
- * This topic provides an example on how to query the tags that are added to a resource in a stack. In this example, the resource ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
+ * ###
+ * *   To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+ * *   If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+ * This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
  *
  * @param request ListTagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22877,9 +22842,10 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 }
 
 /**
- * *   To specify the query object, you must specify the ResourceId.N or Tag.N parameter in the request. Tag.N consists of Tag.N.Key and Tag.N.Value.
- * *   If you specify the Tag.N and ResourceId.N parameters, ROS resources that match both the parameters are returned.
- * This topic provides an example on how to query the tags that are added to a resource in a stack. In this example, the resource ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
+ * ###
+ * *   To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+ * *   If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+ * This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
  *
  * @param request ListTagResourcesRequest
  * @return ListTagResourcesResponse
@@ -22965,7 +22931,7 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 }
 
 /**
- * This topic provides an example on how to query the list of scenarios. In this example, the scenarios that are created in the China (Hangzhou) region are queried. The following scenarios are returned: resource management and resource replication scenarios.
+ * In this example, the scenarios that are created in the China (Hangzhou) region are queried. In the response, a scenario of the Resource Management and a scenario of the Resource Replication type are returned.
  *
  * @param request ListTemplateScratchesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23029,7 +22995,7 @@ func (client *Client) ListTemplateScratchesWithOptions(request *ListTemplateScra
 }
 
 /**
- * This topic provides an example on how to query the list of scenarios. In this example, the scenarios that are created in the China (Hangzhou) region are queried. The following scenarios are returned: resource management and resource replication scenarios.
+ * In this example, the scenarios that are created in the China (Hangzhou) region are queried. In the response, a scenario of the Resource Management and a scenario of the Resource Replication type are returned.
  *
  * @param request ListTemplateScratchesRequest
  * @return ListTemplateScratchesResponse
@@ -23235,7 +23201,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 }
 
 /**
- * This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region and preview the information about the stack. In this example, the template body of the stack is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
+ * This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template and preview the information about the stack. In this example, the `template body` is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
  *
  * @param request PreviewStackRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23339,7 +23305,7 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 }
 
 /**
- * This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region and preview the information about the stack. In this example, the template body of the stack is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
+ * This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template and preview the information about the stack. In this example, the `template body` is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
  *
  * @param request PreviewStackRequest
  * @return PreviewStackResponse
@@ -23599,8 +23565,8 @@ func (client *Client) SetStackPolicy(request *SetStackPolicyRequest) (_result *S
 }
 
 /**
- * In this example, a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is shared with an Alibaba Cloud account whose ID is `151266687691****`.
- * >  The account can authorize an RAM user to use the shared template.``
+ * In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is shared with an Alibaba Cloud account. The ID of the Alibaba Cloud account is `151266687691****`.
+ * > The recipient Alibaba Cloud account (ID: `151266687691****`) can authorize RAM users to use the shared template.
  *
  * @param request SetTemplatePermissionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23656,8 +23622,8 @@ func (client *Client) SetTemplatePermissionWithOptions(request *SetTemplatePermi
 }
 
 /**
- * In this example, a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is shared with an Alibaba Cloud account whose ID is `151266687691****`.
- * >  The account can authorize an RAM user to use the shared template.``
+ * In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is shared with an Alibaba Cloud account. The ID of the Alibaba Cloud account is `151266687691****`.
+ * > The recipient Alibaba Cloud account (ID: `151266687691****`) can authorize RAM users to use the shared template.
  *
  * @param request SetTemplatePermissionRequest
  * @return SetTemplatePermissionResponse
@@ -23799,7 +23765,7 @@ func (client *Client) StopStackGroupOperation(request *StopStackGroupOperationRe
 }
 
 /**
- * This topic provides an example on how to create a tag and add the tag to a resource in a stack. In this example, the resource ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b****`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
+ * This topic provides an example on how to create a tag and add the tag to a stack. In this example, the stack ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b****`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
  *
  * @param request TagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23851,7 +23817,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 }
 
 /**
- * This topic provides an example on how to create a tag and add the tag to a resource in a stack. In this example, the resource ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b****`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
+ * This topic provides an example on how to create a tag and add the tag to a stack. In this example, the stack ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b****`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
  *
  * @param request TagResourcesRequest
  * @return TagResourcesResponse
@@ -23868,7 +23834,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 }
 
 /**
- * This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the ID of the stack is `46ec7b78-9d5e-4b21-aefd-448c90aa****`.
+ * This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the stack ID is `46ec7b78-9d5e-4b21-aefd-448c90aa****`.
  *
  * @param request UntagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23924,7 +23890,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 }
 
 /**
- * This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the ID of the stack is `46ec7b78-9d5e-4b21-aefd-448c90aa****`.
+ * This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the stack ID is `46ec7b78-9d5e-4b21-aefd-448c90aa****`.
  *
  * @param request UntagResourcesRequest
  * @return UntagResourcesResponse
@@ -24431,9 +24397,9 @@ func (client *Client) UpdateStackTemplateByResources(request *UpdateStackTemplat
 }
 
 /**
- * Take note of the following items:
- * *   If you specify the TemplateBody or TemplateURL parameter, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to V2.
- * *   If you do not specify the TemplateBody or TemplateURL parameter, the version number remains unchanged.
+ * When you update a template, take note of the following items:
+ * *   If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+ * *   If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
  * *   A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
  *
  * @param request UpdateTemplateRequest
@@ -24490,9 +24456,9 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 }
 
 /**
- * Take note of the following items:
- * *   If you specify the TemplateBody or TemplateURL parameter, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to V2.
- * *   If you do not specify the TemplateBody or TemplateURL parameter, the version number remains unchanged.
+ * When you update a template, take note of the following items:
+ * *   If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+ * *   If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
  * *   A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
  *
  * @param request UpdateTemplateRequest
@@ -24510,7 +24476,7 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 }
 
 /**
- * In this topic, the `ts-7f7a704cf71c49a6****` scenario that is created in the China (Hangzhou) region is updated. In this scenario, the ID of the virtual private cloud (VPC) is updated to `ts-7f7a704cf71c49a6****`.
+ * In this example, a scenario whose ID is `ts-7f7a704cf71c49a6****` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
  *
  * @param tmpReq UpdateTemplateScratchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24604,7 +24570,7 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 }
 
 /**
- * In this topic, the `ts-7f7a704cf71c49a6****` scenario that is created in the China (Hangzhou) region is updated. In this scenario, the ID of the virtual private cloud (VPC) is updated to `ts-7f7a704cf71c49a6****`.
+ * In this example, a scenario whose ID is `ts-7f7a704cf71c49a6****` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
  *
  * @param request UpdateTemplateScratchRequest
  * @return UpdateTemplateScratchResponse
@@ -24621,7 +24587,7 @@ func (client *Client) UpdateTemplateScratch(request *UpdateTemplateScratchReques
 }
 
 /**
- * The description of the template.
+ * In this example, a template that you want to use to create a stack is validated. `TemplateURL` is set to `oss://ros/template/demo`.
  *
  * @param request ValidateTemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24683,7 +24649,7 @@ func (client *Client) ValidateTemplateWithOptions(request *ValidateTemplateReque
 }
 
 /**
- * The description of the template.
+ * In this example, a template that you want to use to create a stack is validated. `TemplateURL` is set to `oss://ros/template/demo`.
  *
  * @param request ValidateTemplateRequest
  * @return ValidateTemplateResponse
