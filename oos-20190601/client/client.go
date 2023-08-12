@@ -1397,6 +1397,7 @@ type CreatePatchBaselineRequest struct {
 	RegionId              *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RejectedPatches       []*string                         `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	RejectedPatchesAction *string                           `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	ResourceGroupId       *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Sources               []*string                         `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	Tags                  []*CreatePatchBaselineRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -1459,6 +1460,11 @@ func (s *CreatePatchBaselineRequest) SetRejectedPatchesAction(v string) *CreateP
 	return s
 }
 
+func (s *CreatePatchBaselineRequest) SetResourceGroupId(v string) *CreatePatchBaselineRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreatePatchBaselineRequest) SetSources(v []*string) *CreatePatchBaselineRequest {
 	s.Sources = v
 	return s
@@ -1518,6 +1524,7 @@ type CreatePatchBaselineShrinkRequest struct {
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RejectedPatchesShrink *string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty"`
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SourcesShrink         *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
 	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -1580,6 +1587,11 @@ func (s *CreatePatchBaselineShrinkRequest) SetRejectedPatchesAction(v string) *C
 	return s
 }
 
+func (s *CreatePatchBaselineShrinkRequest) SetResourceGroupId(v string) *CreatePatchBaselineShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreatePatchBaselineShrinkRequest) SetSourcesShrink(v string) *CreatePatchBaselineShrinkRequest {
 	s.SourcesShrink = &v
 	return s
@@ -1634,6 +1646,7 @@ type CreatePatchBaselineResponseBodyPatchBaseline struct {
 	OperationSystem       *string   `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	RejectedPatches       []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	RejectedPatchesAction *string   `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
 	ShareType *string                                             `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Sources   []*string                                           `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -1704,6 +1717,11 @@ func (s *CreatePatchBaselineResponseBodyPatchBaseline) SetRejectedPatches(v []*s
 
 func (s *CreatePatchBaselineResponseBodyPatchBaseline) SetRejectedPatchesAction(v string) *CreatePatchBaselineResponseBodyPatchBaseline {
 	s.RejectedPatchesAction = &v
+	return s
+}
+
+func (s *CreatePatchBaselineResponseBodyPatchBaseline) SetResourceGroupId(v string) *CreatePatchBaselineResponseBodyPatchBaseline {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5297,6 +5315,7 @@ type GetPatchBaselineResponseBodyPatchBaseline struct {
 	OperationSystem       *string   `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	RejectedPatches       []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	RejectedPatchesAction *string   `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
 	ShareType *string                                          `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Sources   []*string                                        `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -5372,6 +5391,11 @@ func (s *GetPatchBaselineResponseBodyPatchBaseline) SetRejectedPatches(v []*stri
 
 func (s *GetPatchBaselineResponseBodyPatchBaseline) SetRejectedPatchesAction(v string) *GetPatchBaselineResponseBodyPatchBaseline {
 	s.RejectedPatchesAction = &v
+	return s
+}
+
+func (s *GetPatchBaselineResponseBodyPatchBaseline) SetResourceGroupId(v string) *GetPatchBaselineResponseBodyPatchBaseline {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -12532,6 +12556,7 @@ type RegisterDefaultPatchBaselineResponseBodyPatchBaseline struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system.
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The user who last updated the patch baseline.
@@ -12580,6 +12605,11 @@ func (s *RegisterDefaultPatchBaselineResponseBodyPatchBaseline) SetName(v string
 
 func (s *RegisterDefaultPatchBaselineResponseBodyPatchBaseline) SetOperationSystem(v string) *RegisterDefaultPatchBaselineResponseBodyPatchBaseline {
 	s.OperationSystem = &v
+	return s
+}
+
+func (s *RegisterDefaultPatchBaselineResponseBodyPatchBaseline) SetResourceGroupId(v string) *RegisterDefaultPatchBaselineResponseBodyPatchBaseline {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -14859,6 +14889,7 @@ type UpdatePatchBaselineRequest struct {
 	RegionId              *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RejectedPatches       []*string                         `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	RejectedPatchesAction *string                           `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	ResourceGroupId       *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Sources               []*string                         `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	Tags                  []*UpdatePatchBaselineRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -14916,6 +14947,11 @@ func (s *UpdatePatchBaselineRequest) SetRejectedPatchesAction(v string) *UpdateP
 	return s
 }
 
+func (s *UpdatePatchBaselineRequest) SetResourceGroupId(v string) *UpdatePatchBaselineRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *UpdatePatchBaselineRequest) SetSources(v []*string) *UpdatePatchBaselineRequest {
 	s.Sources = v
 	return s
@@ -14964,6 +15000,7 @@ type UpdatePatchBaselineShrinkRequest struct {
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RejectedPatchesShrink *string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty"`
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SourcesShrink         *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
 	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -15021,6 +15058,11 @@ func (s *UpdatePatchBaselineShrinkRequest) SetRejectedPatchesAction(v string) *U
 	return s
 }
 
+func (s *UpdatePatchBaselineShrinkRequest) SetResourceGroupId(v string) *UpdatePatchBaselineShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *UpdatePatchBaselineShrinkRequest) SetSourcesShrink(v string) *UpdatePatchBaselineShrinkRequest {
 	s.SourcesShrink = &v
 	return s
@@ -15075,6 +15117,7 @@ type UpdatePatchBaselineResponseBodyPatchBaseline struct {
 	OperationSystem       *string   `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	RejectedPatches       []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	RejectedPatchesAction *string   `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
 	ShareType *string                                             `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Sources   []*string                                           `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -15145,6 +15188,11 @@ func (s *UpdatePatchBaselineResponseBodyPatchBaseline) SetRejectedPatches(v []*s
 
 func (s *UpdatePatchBaselineResponseBodyPatchBaseline) SetRejectedPatchesAction(v string) *UpdatePatchBaselineResponseBodyPatchBaseline {
 	s.RejectedPatchesAction = &v
+	return s
+}
+
+func (s *UpdatePatchBaselineResponseBodyPatchBaseline) SetResourceGroupId(v string) *UpdatePatchBaselineResponseBodyPatchBaseline {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -16856,6 +16904,10 @@ func (client *Client) CreatePatchBaselineWithOptions(tmpReq *CreatePatchBaseline
 
 	if !tea.BoolValue(util.IsUnset(request.RejectedPatchesAction)) {
 		query["RejectedPatchesAction"] = request.RejectedPatchesAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourcesShrink)) {
@@ -21221,6 +21273,10 @@ func (client *Client) UpdatePatchBaselineWithOptions(tmpReq *UpdatePatchBaseline
 
 	if !tea.BoolValue(util.IsUnset(request.RejectedPatchesAction)) {
 		query["RejectedPatchesAction"] = request.RejectedPatchesAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourcesShrink)) {
