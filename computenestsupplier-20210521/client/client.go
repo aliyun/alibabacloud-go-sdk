@@ -430,28 +430,30 @@ func (s *CreateArtifactResponse) SetBody(v *CreateArtifactResponseBody) *CreateA
 }
 
 type CreateServiceRequest struct {
-	AlarmMetadata     *string                            `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
-	ApprovalType      *string                            `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	ClientToken       *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeployMetadata    *string                            `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
-	DeployType        *string                            `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	Duration          *int64                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	IsSupportOperated *bool                              `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
-	LicenseMetadata   *string                            `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
-	LogMetadata       *string                            `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
-	OperationMetadata *string                            `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
-	PolicyNames       *string                            `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
-	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId   *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceId         *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceInfo       []*CreateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
-	ServiceType       *string                            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	ShareType         *string                            `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tag               []*CreateServiceRequestTag         `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TenantType        *string                            `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
-	TrialDuration     *int64                             `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
-	UpgradeMetadata   *string                            `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
-	VersionName       *string                            `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	AlarmMetadata        *string                            `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	ApprovalType         *string                            `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	ClientToken          *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeployMetadata       *string                            `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	DeployType           *string                            `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	Duration             *int64                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IsSupportOperated    *bool                              `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	LicenseMetadata      *string                            `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	LogMetadata          *string                            `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	OperationMetadata    *string                            `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	PolicyNames          *string                            `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	RegionId             *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId            *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInfo          []*CreateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	ServiceType          *string                            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ShareType            *string                            `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	SourceServiceId      *string                            `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	SourceServiceVersion *string                            `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
+	Tag                  []*CreateServiceRequestTag         `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TenantType           *string                            `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	TrialDuration        *int64                             `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	UpgradeMetadata      *string                            `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	VersionName          *string                            `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -544,6 +546,16 @@ func (s *CreateServiceRequest) SetServiceType(v string) *CreateServiceRequest {
 
 func (s *CreateServiceRequest) SetShareType(v string) *CreateServiceRequest {
 	s.ShareType = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetSourceServiceId(v string) *CreateServiceRequest {
+	s.SourceServiceId = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetSourceServiceVersion(v string) *CreateServiceRequest {
+	s.SourceServiceVersion = &v
 	return s
 }
 
@@ -702,6 +714,7 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 
 type CreateServiceInstanceRequest struct {
 	ClientToken       *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun            *bool                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Name              *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameters        map[string]interface{}             `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -724,6 +737,11 @@ func (s CreateServiceInstanceRequest) GoString() string {
 
 func (s *CreateServiceInstanceRequest) SetClientToken(v string) *CreateServiceInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetDryRun(v bool) *CreateServiceInstanceRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -802,6 +820,7 @@ func (s *CreateServiceInstanceRequestTag) SetValue(v string) *CreateServiceInsta
 
 type CreateServiceInstanceShrinkRequest struct {
 	ClientToken       *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun            *bool                                    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Name              *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParametersShrink  *string                                  `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	RegionId          *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -824,6 +843,11 @@ func (s CreateServiceInstanceShrinkRequest) GoString() string {
 
 func (s *CreateServiceInstanceShrinkRequest) SetClientToken(v string) *CreateServiceInstanceShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetDryRun(v bool) *CreateServiceInstanceShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -1488,11 +1512,12 @@ func (s *GetArtifactRepositoryCredentialsResponse) SetBody(v *GetArtifactReposit
 }
 
 type GetServiceRequest struct {
-	FilterAliUid   *bool     `json:"FilterAliUid,omitempty" xml:"FilterAliUid,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceVersion *string   `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	ShowDetail     []*string `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty" type:"Repeated"`
+	FilterAliUid      *bool     `json:"FilterAliUid,omitempty" xml:"FilterAliUid,omitempty"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId         *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceVersion    *string   `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SharedAccountType *string   `json:"SharedAccountType,omitempty" xml:"SharedAccountType,omitempty"`
+	ShowDetail        []*string `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceRequest) String() string {
@@ -1520,6 +1545,11 @@ func (s *GetServiceRequest) SetServiceId(v string) *GetServiceRequest {
 
 func (s *GetServiceRequest) SetServiceVersion(v string) *GetServiceRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetSharedAccountType(v string) *GetServiceRequest {
+	s.SharedAccountType = &v
 	return s
 }
 
@@ -1558,6 +1588,9 @@ type GetServiceResponseBody struct {
 	ServiceProductUrl       *string                                          `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
 	ServiceType             *string                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	ShareType               *string                                          `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	SourceServiceId         *string                                          `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	SourceServiceVersion    *string                                          `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
+	SourceSupplierName      *string                                          `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
 	Statistic               *GetServiceResponseBodyStatistic                 `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
 	Status                  *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusDetail            *string                                          `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
@@ -1724,6 +1757,21 @@ func (s *GetServiceResponseBody) SetServiceType(v string) *GetServiceResponseBod
 
 func (s *GetServiceResponseBody) SetShareType(v string) *GetServiceResponseBody {
 	s.ShareType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSourceServiceId(v string) *GetServiceResponseBody {
+	s.SourceServiceId = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSourceServiceVersion(v string) *GetServiceResponseBody {
+	s.SourceServiceVersion = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSourceSupplierName(v string) *GetServiceResponseBody {
+	s.SourceSupplierName = &v
 	return s
 }
 
@@ -3531,6 +3579,7 @@ type ListServiceInstancesResponseBodyServiceInstancesService struct {
 	ServiceId                  *string                                                                `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInfos               []*ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
 	ServiceType                *string                                                                `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	SourceSupplierName         *string                                                                `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
 	Status                     *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupplierName               *string                                                                `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 	SupplierUrl                *string                                                                `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
@@ -3578,6 +3627,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesService) SetServiceInfo
 
 func (s *ListServiceInstancesResponseBodyServiceInstancesService) SetServiceType(v string) *ListServiceInstancesResponseBodyServiceInstancesService {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesService) SetSourceSupplierName(v string) *ListServiceInstancesResponseBodyServiceInstancesService {
+	s.SourceSupplierName = &v
 	return s
 }
 
@@ -4080,30 +4134,35 @@ func (s *ListServicesResponseBody) SetTotalCount(v int32) *ListServicesResponseB
 }
 
 type ListServicesResponseBodyServices struct {
-	ApprovalType    *string                                         `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	ArtifactId      *string                                         `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	ArtifactVersion *string                                         `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	CommodityCode   *string                                         `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	CreateTime      *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DefaultVersion  *bool                                           `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	DeployType      *string                                         `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	PublishTime     *string                                         `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	RelationType    *string                                         `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceId       *string                                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceInfos    []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
-	ServiceType     *string                                         `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	ShareType       *string                                         `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	SourceImage     *string                                         `json:"SourceImage,omitempty" xml:"SourceImage,omitempty"`
-	Status          *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupplierName    *string                                         `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	SupplierUrl     *string                                         `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	Tags            []*ListServicesResponseBodyServicesTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantType      *string                                         `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
-	TrialType       *string                                         `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
-	UpdateTime      *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Version         *string                                         `json:"Version,omitempty" xml:"Version,omitempty"`
-	VersionName     *string                                         `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	ApprovalType                     *string                                         `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	ArtifactId                       *string                                         `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactVersion                  *string                                         `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
+	CommodityCode                    *string                                         `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CreateTime                       *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultVersion                   *bool                                           `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	DeployType                       *string                                         `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	LatestResellSourceServiceVersion *string                                         `json:"LatestResellSourceServiceVersion,omitempty" xml:"LatestResellSourceServiceVersion,omitempty"`
+	PublishTime                      *string                                         `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	RelationType                     *string                                         `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	ResellServiceId                  *string                                         `json:"ResellServiceId,omitempty" xml:"ResellServiceId,omitempty"`
+	ResourceGroupId                  *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId                        *string                                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInfos                     []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceType                      *string                                         `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ShareType                        *string                                         `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	SourceImage                      *string                                         `json:"SourceImage,omitempty" xml:"SourceImage,omitempty"`
+	SourceServiceId                  *string                                         `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	SourceServiceVersion             *string                                         `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
+	SourceSupplierName               *string                                         `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
+	Status                           *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierName                     *string                                         `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	SupplierUrl                      *string                                         `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	Tags                             []*ListServicesResponseBodyServicesTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantType                       *string                                         `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	TrialType                        *string                                         `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	UpdateTime                       *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Version                          *string                                         `json:"Version,omitempty" xml:"Version,omitempty"`
+	VersionName                      *string                                         `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ListServicesResponseBodyServices) String() string {
@@ -4149,6 +4208,11 @@ func (s *ListServicesResponseBodyServices) SetDeployType(v string) *ListServices
 	return s
 }
 
+func (s *ListServicesResponseBodyServices) SetLatestResellSourceServiceVersion(v string) *ListServicesResponseBodyServices {
+	s.LatestResellSourceServiceVersion = &v
+	return s
+}
+
 func (s *ListServicesResponseBodyServices) SetPublishTime(v string) *ListServicesResponseBodyServices {
 	s.PublishTime = &v
 	return s
@@ -4156,6 +4220,11 @@ func (s *ListServicesResponseBodyServices) SetPublishTime(v string) *ListService
 
 func (s *ListServicesResponseBodyServices) SetRelationType(v string) *ListServicesResponseBodyServices {
 	s.RelationType = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetResellServiceId(v string) *ListServicesResponseBodyServices {
+	s.ResellServiceId = &v
 	return s
 }
 
@@ -4186,6 +4255,21 @@ func (s *ListServicesResponseBodyServices) SetShareType(v string) *ListServicesR
 
 func (s *ListServicesResponseBodyServices) SetSourceImage(v string) *ListServicesResponseBodyServices {
 	s.SourceImage = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetSourceServiceId(v string) *ListServicesResponseBodyServices {
+	s.SourceServiceId = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetSourceServiceVersion(v string) *ListServicesResponseBodyServices {
+	s.SourceServiceVersion = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetSourceSupplierName(v string) *ListServicesResponseBodyServices {
+	s.SourceSupplierName = &v
 	return s
 }
 
@@ -5209,6 +5293,14 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 		query["ShareType"] = request.ShareType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceServiceId)) {
+		query["SourceServiceId"] = request.SourceServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceServiceVersion)) {
+		query["SourceServiceVersion"] = request.SourceServiceVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
 	}
@@ -5277,6 +5369,10 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -5629,6 +5725,10 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
 		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharedAccountType)) {
+		query["SharedAccountType"] = request.SharedAccountType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShowDetail)) {
