@@ -1780,15 +1780,6 @@ func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _
 	return _result, _err
 }
 
-/**
- * POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
- *
- * @param requestPath the whole path of resource string
- * @param request CreateResourceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateResourceResponse
- */
 func (client *Client) CreateResourceWithOptions(requestPath *string, request *CreateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1828,13 +1819,6 @@ func (client *Client) CreateResourceWithOptions(requestPath *string, request *Cr
 	return _result, _err
 }
 
-/**
- * POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
- *
- * @param requestPath the whole path of resource string
- * @param request CreateResourceRequest
- * @return CreateResourceResponse
- */
 func (client *Client) CreateResource(requestPath *string, request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1847,15 +1831,6 @@ func (client *Client) CreateResource(requestPath *string, request *CreateResourc
 	return _result, _err
 }
 
-/**
- * DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
- *
- * @param requestPath the whole path of resource string
- * @param request DeleteResourceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteResourceResponse
- */
 func (client *Client) DeleteResourceWithOptions(requestPath *string, request *DeleteResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1894,13 +1869,6 @@ func (client *Client) DeleteResourceWithOptions(requestPath *string, request *De
 	return _result, _err
 }
 
-/**
- * DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
- *
- * @param requestPath the whole path of resource string
- * @param request DeleteResourceRequest
- * @return DeleteResourceResponse
- */
 func (client *Client) DeleteResource(requestPath *string, request *DeleteResourceRequest) (_result *DeleteResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2070,15 +2038,6 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 	return _result, _err
 }
 
-/**
- * GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
- *
- * @param requestPath the whole path of resource string
- * @param tmpReq ListDataSourcesRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListDataSourcesResponse
- */
 func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2123,13 +2082,6 @@ func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *Li
 	return _result, _err
 }
 
-/**
- * GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
- *
- * @param requestPath the whole path of resource string
- * @param request ListDataSourcesRequest
- * @return ListDataSourcesResponse
- */
 func (client *Client) ListDataSources(requestPath *string, request *ListDataSourcesRequest) (_result *ListDataSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
