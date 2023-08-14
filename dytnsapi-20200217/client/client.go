@@ -309,6 +309,292 @@ func (s *DescribePhoneNumberAnalysisResponse) SetBody(v *DescribePhoneNumberAnal
 	return s
 }
 
+type DescribePhoneNumberAnalysisAIRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	ModelConfig          *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Rate                 *int64  `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisAIRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisAIRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisAIRequest) SetAuthCode(v string) *DescribePhoneNumberAnalysisAIRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIRequest) SetInputNumber(v string) *DescribePhoneNumberAnalysisAIRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIRequest) SetModelConfig(v string) *DescribePhoneNumberAnalysisAIRequest {
+	s.ModelConfig = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIRequest) SetOwnerId(v int64) *DescribePhoneNumberAnalysisAIRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIRequest) SetRate(v int64) *DescribePhoneNumberAnalysisAIRequest {
+	s.Rate = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIRequest) SetResourceOwnerAccount(v string) *DescribePhoneNumberAnalysisAIRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIRequest) SetResourceOwnerId(v int64) *DescribePhoneNumberAnalysisAIRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisAIResponseBody struct {
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribePhoneNumberAnalysisAIResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisAIResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisAIResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponseBody) SetCode(v string) *DescribePhoneNumberAnalysisAIResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponseBody) SetData(v *DescribePhoneNumberAnalysisAIResponseBodyData) *DescribePhoneNumberAnalysisAIResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponseBody) SetMessage(v string) *DescribePhoneNumberAnalysisAIResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponseBody) SetRequestId(v string) *DescribePhoneNumberAnalysisAIResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisAIResponseBodyData struct {
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisAIResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisAIResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponseBodyData) SetCode(v string) *DescribePhoneNumberAnalysisAIResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponseBodyData) SetNumber(v string) *DescribePhoneNumberAnalysisAIResponseBodyData {
+	s.Number = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisAIResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberAnalysisAIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePhoneNumberAnalysisAIResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisAIResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberAnalysisAIResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponse) SetStatusCode(v int32) *DescribePhoneNumberAnalysisAIResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisAIResponse) SetBody(v *DescribePhoneNumberAnalysisAIResponseBody) *DescribePhoneNumberAnalysisAIResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePhoneNumberAttributeRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribePhoneNumberAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAttributeRequest) SetOwnerId(v int64) *DescribePhoneNumberAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeRequest) SetPhoneNumber(v string) *DescribePhoneNumberAttributeRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeRequest) SetResourceOwnerAccount(v string) *DescribePhoneNumberAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeRequest) SetResourceOwnerId(v int64) *DescribePhoneNumberAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribePhoneNumberAttributeResponseBody struct {
+	Code                 *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message              *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	PhoneNumberAttribute *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute `json:"PhoneNumberAttribute,omitempty" xml:"PhoneNumberAttribute,omitempty" type:"Struct"`
+	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePhoneNumberAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAttributeResponseBody) SetCode(v string) *DescribePhoneNumberAttributeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBody) SetMessage(v string) *DescribePhoneNumberAttributeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBody) SetPhoneNumberAttribute(v *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) *DescribePhoneNumberAttributeResponseBody {
+	s.PhoneNumberAttribute = v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBody) SetRequestId(v string) *DescribePhoneNumberAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute struct {
+	BasicCarrier        *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	Carrier             *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	City                *string `json:"City,omitempty" xml:"City,omitempty"`
+	IsNumberPortability *bool   `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
+	NumberSegment       *int64  `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
+	Province            *string `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetBasicCarrier(v string) *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute {
+	s.BasicCarrier = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetCarrier(v string) *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute {
+	s.Carrier = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetCity(v string) *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute {
+	s.City = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetIsNumberPortability(v bool) *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute {
+	s.IsNumberPortability = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetNumberSegment(v int64) *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute {
+	s.NumberSegment = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetProvince(v string) *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute {
+	s.Province = &v
+	return s
+}
+
+type DescribePhoneNumberAttributeResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePhoneNumberAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAttributeResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponse) SetStatusCode(v int32) *DescribePhoneNumberAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponse) SetBody(v *DescribePhoneNumberAttributeResponseBody) *DescribePhoneNumberAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePhoneNumberOnlineTimeRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	Carrier              *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
@@ -2293,6 +2579,130 @@ func (client *Client) DescribePhoneNumberAnalysis(request *DescribePhoneNumberAn
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberAnalysisResponse{}
 	_body, _err := client.DescribePhoneNumberAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberAnalysisAIWithOptions(request *DescribePhoneNumberAnalysisAIRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberAnalysisAIResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelConfig)) {
+		query["ModelConfig"] = request.ModelConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rate)) {
+		query["Rate"] = request.Rate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePhoneNumberAnalysisAI"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePhoneNumberAnalysisAIResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberAnalysisAI(request *DescribePhoneNumberAnalysisAIRequest) (_result *DescribePhoneNumberAnalysisAIResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePhoneNumberAnalysisAIResponse{}
+	_body, _err := client.DescribePhoneNumberAnalysisAIWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberAttributeWithOptions(request *DescribePhoneNumberAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePhoneNumberAttribute"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePhoneNumberAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberAttribute(request *DescribePhoneNumberAttributeRequest) (_result *DescribePhoneNumberAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePhoneNumberAttributeResponse{}
+	_body, _err := client.DescribePhoneNumberAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
