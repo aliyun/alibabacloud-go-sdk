@@ -8881,6 +8881,7 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 }
 
 type DescribeExternalAgentRequest struct {
+	AgentMode        *string `json:"AgentMode,omitempty" xml:"AgentMode,omitempty"`
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
@@ -8890,6 +8891,11 @@ func (s DescribeExternalAgentRequest) String() string {
 
 func (s DescribeExternalAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeExternalAgentRequest) SetAgentMode(v string) *DescribeExternalAgentRequest {
+	s.AgentMode = &v
+	return s
 }
 
 func (s *DescribeExternalAgentRequest) SetPrivateIpAddress(v string) *DescribeExternalAgentRequest {
@@ -18140,6 +18146,10 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentMode)) {
+		query["AgentMode"] = request.AgentMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
 		query["PrivateIpAddress"] = request.PrivateIpAddress
 	}
