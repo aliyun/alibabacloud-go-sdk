@@ -47,11 +47,23 @@ type CreateLindormInstanceRequest struct {
 	SolrSpec             *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
 	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
 	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	TsdbNum              *int32  `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
-	TsdbSpec             *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
-	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// 实例的流引擎节点数量，取值：**0**~**60**。
+	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
+	// 实例的流引擎节点规格，取值：
+	//
+	// - **lindorm.g.xlarge**：表示4核16GB（独享规格）。
+	// - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
+	// - **lindorm.g.2xlarge**：表示8核32GB（独享规格）。
+	// - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
+	// - **lindorm.g.4xlarge**：表示16核64GB（独享规格）。
+	// - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
+	// - **lindorm.g.8xlarge**：表示32核128GB（独享规格）。
+	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
+	TsdbNum    *int32  `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
+	TsdbSpec   *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
+	VPCId      *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateLindormInstanceRequest) String() string {
@@ -232,6 +244,16 @@ func (s *CreateLindormInstanceRequest) SetStandbyZoneId(v string) *CreateLindorm
 	return s
 }
 
+func (s *CreateLindormInstanceRequest) SetStreamNum(v int32) *CreateLindormInstanceRequest {
+	s.StreamNum = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetStreamSpec(v string) *CreateLindormInstanceRequest {
+	s.StreamSpec = &v
+	return s
+}
+
 func (s *CreateLindormInstanceRequest) SetTsdbNum(v int32) *CreateLindormInstanceRequest {
 	s.TsdbNum = &v
 	return s
@@ -316,6 +338,7 @@ func (s *CreateLindormInstanceResponse) SetBody(v *CreateLindormInstanceResponse
 }
 
 type DescribeRegionsRequest struct {
+	// The ID of the region.
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -363,8 +386,10 @@ func (s *DescribeRegionsRequest) SetSecurityToken(v string) *DescribeRegionsRequ
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// China (Hangzhou)
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -386,7 +411,8 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// Queries the regions where Lindorm is available.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -444,7 +470,9 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type GetInstanceIpWhiteListRequest struct {
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the instance whose whitelist you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to query the instance ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -497,9 +525,11 @@ func (s *GetInstanceIpWhiteListRequest) SetSecurityToken(v string) *GetInstanceI
 }
 
 type GetInstanceIpWhiteListResponseBody struct {
+	// The ID of the Lindorm instance.
 	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IpList     []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInstanceIpWhiteListResponseBody) String() string {
@@ -554,7 +584,158 @@ func (s *GetInstanceIpWhiteListResponse) SetBody(v *GetInstanceIpWhiteListRespon
 	return s
 }
 
+type GetLdpsResourceCostRequest struct {
+	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime            *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetLdpsResourceCostRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsResourceCostRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsResourceCostRequest) SetEndTime(v int64) *GetLdpsResourceCostRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetInstanceId(v string) *GetLdpsResourceCostRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetJobId(v string) *GetLdpsResourceCostRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetOwnerAccount(v string) *GetLdpsResourceCostRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetOwnerId(v int64) *GetLdpsResourceCostRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetRegionId(v string) *GetLdpsResourceCostRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetResourceOwnerAccount(v string) *GetLdpsResourceCostRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetResourceOwnerId(v int64) *GetLdpsResourceCostRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetSecurityToken(v string) *GetLdpsResourceCostRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostRequest) SetStartTime(v int64) *GetLdpsResourceCostRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetLdpsResourceCostResponseBody struct {
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalResource *int64  `json:"TotalResource,omitempty" xml:"TotalResource,omitempty"`
+}
+
+func (s GetLdpsResourceCostResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsResourceCostResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsResourceCostResponseBody) SetEndTime(v int64) *GetLdpsResourceCostResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostResponseBody) SetInstanceId(v string) *GetLdpsResourceCostResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostResponseBody) SetJobId(v string) *GetLdpsResourceCostResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostResponseBody) SetRequestId(v string) *GetLdpsResourceCostResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostResponseBody) SetStartTime(v int64) *GetLdpsResourceCostResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostResponseBody) SetTotalResource(v int64) *GetLdpsResourceCostResponseBody {
+	s.TotalResource = &v
+	return s
+}
+
+type GetLdpsResourceCostResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLdpsResourceCostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLdpsResourceCostResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsResourceCostResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsResourceCostResponse) SetHeaders(v map[string]*string) *GetLdpsResourceCostResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLdpsResourceCostResponse) SetStatusCode(v int32) *GetLdpsResourceCostResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLdpsResourceCostResponse) SetBody(v *GetLdpsResourceCostResponseBody) *GetLdpsResourceCostResponse {
+	s.Body = v
+	return s
+}
+
 type GetLindormInstanceRequest struct {
+	// The disk type of the log nodes. This parameter is returned only for multi-zone instances. Valid values:
+	//
+	// *   **cloud_efficiency**: The nodes use the Standard type of storage.
+	// *   **cloud_ssd**: The nodes use the Performance type of storage.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -602,24 +783,29 @@ func (s *GetLindormInstanceRequest) SetSecurityToken(v string) *GetLindormInstan
 }
 
 type GetLindormInstanceResponseBody struct {
-	AliUid               *int64                                      `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ArbiterVSwitchId     *string                                     `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ArbiterZoneId        *string                                     `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	AutoRenew            *bool                                       `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ColdStorage          *int32                                      `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	CoreDiskCategory     *string                                     `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
-	CoreNum              *int32                                      `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
-	CoreSingleStorage    *int32                                      `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
-	CoreSpec             *string                                     `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
-	CreateMilliseconds   *int64                                      `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	AliUid             *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ArbiterVSwitchId   *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ArbiterZoneId      *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	ArchVersion        *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	AutoRenew          *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ColdStorage        *int32  `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	CoreDiskCategory   *string `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
+	CoreNum            *int32  `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
+	CoreSingleStorage  *int32  `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
+	CoreSpec           *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
+	CreateMilliseconds *int64  `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	// The storage capacity of the disk of a single log node. This parameter is returned only for multi-zone instances.
 	CreateTime           *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeletionProtection   *string                                     `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	DiskCategory         *string                                     `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
 	DiskThreshold        *string                                     `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
 	DiskUsage            *string                                     `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	EnableBlob           *bool                                       `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
 	EnableCdc            *bool                                       `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
 	EnableCompute        *bool                                       `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
 	EnableKms            *bool                                       `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	EnableLTS            *bool                                       `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
+	EnableMLCtrl         *bool                                       `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
 	EnableSSL            *bool                                       `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	EnableShs            *bool                                       `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
 	EnableStream         *bool                                       `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
@@ -639,18 +825,21 @@ type GetLindormInstanceResponseBody struct {
 	MaintainStartTime    *string                                     `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	MultiZoneCombination *string                                     `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
 	NetworkType          *string                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType              *string                                     `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PrimaryVSwitchId     *string                                     `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	PrimaryZoneId        *string                                     `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	RegionId             *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId            *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId      *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType          *string                                     `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	StandbyVSwitchId     *string                                     `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	StandbyZoneId        *string                                     `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	VpcId                *string                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId            *string                                     `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId               *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// 400
+	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId    *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId    *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The type of the log nodes. This parameter is returned only for multi-zone instances.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The number of the log nodes. This parameter is returned only for multi-zone instances.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLindormInstanceResponseBody) String() string {
@@ -673,6 +862,11 @@ func (s *GetLindormInstanceResponseBody) SetArbiterVSwitchId(v string) *GetLindo
 
 func (s *GetLindormInstanceResponseBody) SetArbiterZoneId(v string) *GetLindormInstanceResponseBody {
 	s.ArbiterZoneId = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetArchVersion(v string) *GetLindormInstanceResponseBody {
+	s.ArchVersion = &v
 	return s
 }
 
@@ -736,6 +930,11 @@ func (s *GetLindormInstanceResponseBody) SetDiskUsage(v string) *GetLindormInsta
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetEnableBlob(v bool) *GetLindormInstanceResponseBody {
+	s.EnableBlob = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetEnableCdc(v bool) *GetLindormInstanceResponseBody {
 	s.EnableCdc = &v
 	return s
@@ -748,6 +947,16 @@ func (s *GetLindormInstanceResponseBody) SetEnableCompute(v bool) *GetLindormIns
 
 func (s *GetLindormInstanceResponseBody) SetEnableKms(v bool) *GetLindormInstanceResponseBody {
 	s.EnableKms = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetEnableLTS(v bool) *GetLindormInstanceResponseBody {
+	s.EnableLTS = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetEnableMLCtrl(v bool) *GetLindormInstanceResponseBody {
+	s.EnableMLCtrl = &v
 	return s
 }
 
@@ -1494,16 +1703,23 @@ func (s *GetLindormInstanceListResponse) SetBody(v *GetLindormInstanceListRespon
 }
 
 type ListTagResourcesRequest struct {
-	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityToken        *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The token used to start the next query to retrieve more results.
+	//
+	// > This parameter is not required in the first query. If not all results are returned in one query, you can pass in the **NextToken** value returned for the query to perform the next query.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region in which the instances whose tags you want to query are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of resource IDs.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Set the value to **INSTANCE**.
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The list of tags associated with the instances you want to query.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -1565,7 +1781,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The keys of the tags associated with the instances you want to query.
+	//
+	// > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the tags associated with the instances you want to query.
+	//
+	// > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1588,8 +1810,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token used to start the next query.
+	//
+	// > If not all results are returned in the first query, this parameter is returned. You can pass in the returned value of this parameter for the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -1617,10 +1844,14 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource, which is the ID of the instance.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resources. The returned value is fixed to **ALIYUN::HITSDB::INSTANCE**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag associated with the instance.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag associated with the instance.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -1681,11 +1912,24 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyInstancePayTypeRequest struct {
-	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The subscription duration of the instance. The parameter is required if the instance is an subscription instance.
+	//
+	// *   If PricingCycle is set to Month, set this parameter to an integer that ranges from 1 to 9.
+	// *   If PricingCycle is set to Year, set this parameter to an integer that ranges from 1 to 3.
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the instance.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   **PREPAY**: subscription.
+	// *   **POSTPAY**: pay-as-you-go.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration for the instance. Valid values:
+	//
+	// *   Month
+	// *   Year
 	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1746,9 +1990,12 @@ func (s *ModifyInstancePayTypeRequest) SetSecurityToken(v string) *ModifyInstanc
 }
 
 type ModifyInstancePayTypeResponseBody struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyInstancePayTypeResponseBody) String() string {
@@ -1804,6 +2051,7 @@ func (s *ModifyInstancePayTypeResponse) SetBody(v *ModifyInstancePayTypeResponse
 }
 
 type ReleaseLindormInstanceRequest struct {
+	Immediately          *bool   `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1818,6 +2066,11 @@ func (s ReleaseLindormInstanceRequest) String() string {
 
 func (s ReleaseLindormInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReleaseLindormInstanceRequest) SetImmediately(v bool) *ReleaseLindormInstanceRequest {
+	s.Immediately = &v
+	return s
 }
 
 func (s *ReleaseLindormInstanceRequest) SetInstanceId(v string) *ReleaseLindormInstanceRequest {
@@ -2020,15 +2273,19 @@ func (s *RenewLindormInstanceResponse) SetBody(v *RenewLindormInstanceResponseBo
 }
 
 type TagResourcesRequest struct {
-	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityToken        *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region in which the instances you want to associate tags with are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of resource IDs.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Set the value to **INSTANCE**.
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The tags that you want to associate with the resource.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -2085,7 +2342,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that you want to associate with the resource.
+	//
+	// > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that you want to associate with the resource.
+	//
+	// > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2108,6 +2371,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2154,15 +2418,28 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to remove all tags from the instance. Valid values:
+	//
+	// *   **true**: Remove all tags from the instances.
+	// *   **false**: Do not remove all tags from the instances.
+	//
+	// >
+	//
+	// *   The default value of this parameter is false.
+	//
+	// *   If you specify the TagKey parameter together with this parameter, this parameter does not take effect.
+	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The IDs of instances.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityToken        *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The resource type. Set the value to **INSTANCE**.
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The list of keys of the tags that you want to remove.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -2219,6 +2496,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2265,14 +2543,19 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateInstanceIpWhiteListRequest struct {
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityIpList       *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The IP addresses that you want to add to the whitelist. For example, if you add 192.168.0.0/24 to the whitelist, you can use all IP addresses within this CIDR block to access the Lindorm instance.
+	//
+	// > If you add 127.0.0.1 to the whitelist, all IP addresses cannot be used to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with commas (,).
+	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s UpdateInstanceIpWhiteListRequest) String() string {
@@ -2324,6 +2607,7 @@ func (s *UpdateInstanceIpWhiteListRequest) SetSecurityToken(v string) *UpdateIns
 }
 
 type UpdateInstanceIpWhiteListResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2393,10 +2677,18 @@ type UpgradeLindormInstanceRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SolrNum              *int32  `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
 	SolrSpec             *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
-	TsdbNum              *int32  `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
-	TsdbSpec             *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
-	UpgradeType          *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// 变配后实例的流引擎节点数量，取值：**0**~**90**。
+	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
+	// 变配后实例的流引擎节点规格，取值：
+	//
+	// - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
+	// - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
+	// - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
+	StreamSpec  *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
+	TsdbNum     *int32  `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
+	TsdbSpec    *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
+	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
+	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpgradeLindormInstanceRequest) String() string {
@@ -2522,6 +2814,16 @@ func (s *UpgradeLindormInstanceRequest) SetSolrSpec(v string) *UpgradeLindormIns
 	return s
 }
 
+func (s *UpgradeLindormInstanceRequest) SetStreamNum(v int32) *UpgradeLindormInstanceRequest {
+	s.StreamNum = &v
+	return s
+}
+
+func (s *UpgradeLindormInstanceRequest) SetStreamSpec(v string) *UpgradeLindormInstanceRequest {
+	s.StreamSpec = &v
+	return s
+}
+
 func (s *UpgradeLindormInstanceRequest) SetTsdbNum(v int32) *UpgradeLindormInstanceRequest {
 	s.TsdbNum = &v
 	return s
@@ -2610,55 +2912,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-qingdao":                  tea.String("hitsdb.aliyuncs.com"),
-		"cn-beijing":                  tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou":                 tea.String("hitsdb.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("hitsdb.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("hitsdb.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("hitsdb.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("hitsdb.aliyuncs.com"),
-		"us-west-1":                   tea.String("hitsdb.aliyuncs.com"),
-		"us-east-1":                   tea.String("hitsdb.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("hitsdb.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("hitsdb.aliyuncs.com"),
-		"ap-northeast-2-pop":          tea.String("hitsdb.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("hitsdb.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("hitsdb.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("hitsdb.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("hitsdb.aliyuncs.com"),
-		"cn-chengdu":                  tea.String("hitsdb.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("hitsdb.aliyuncs.com"),
-		"cn-fujian":                   tea.String("hitsdb.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("hitsdb.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("hitsdb.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("hitsdb.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("hitsdb.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("hitsdb.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("hitsdb.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("hitsdb.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("hitsdb.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("hitsdb.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("hitsdb.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("hitsdb.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("hitsdb.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("hitsdb.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("hitsdb.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("hitsdb.aliyuncs.com"),
-		"cn-zhangbei":                 tea.String("hitsdb.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("hitsdb.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("hitsdb.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("hitsdb.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("hitsdb.aliyuncs.com"),
-		"me-east-1":                   tea.String("hitsdb.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("hitsdb.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -2830,6 +3083,14 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 
 	if !tea.BoolValue(util.IsUnset(request.StandbyZoneId)) {
 		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamNum)) {
+		query["StreamNum"] = request.StreamNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamSpec)) {
+		query["StreamSpec"] = request.StreamSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TsdbNum)) {
@@ -3011,6 +3272,86 @@ func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceIpWhiteListResponse{}
 	_body, _err := client.GetInstanceIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLdpsResourceCostWithOptions(request *GetLdpsResourceCostRequest, runtime *util.RuntimeOptions) (_result *GetLdpsResourceCostResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLdpsResourceCost"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLdpsResourceCostResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (_result *GetLdpsResourceCostResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLdpsResourceCostResponse{}
+	_body, _err := client.GetLdpsResourceCostWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3322,6 +3663,14 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+ * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+ *
+ * @param request ModifyInstancePayTypeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyInstancePayTypeResponse
+ */
 func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePayTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstancePayTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3387,6 +3736,13 @@ func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePa
 	return _result, _err
 }
 
+/**
+ * You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+ * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+ *
+ * @param request ModifyInstancePayTypeRequest
+ * @return ModifyInstancePayTypeResponse
+ */
 func (client *Client) ModifyInstancePayType(request *ModifyInstancePayTypeRequest) (_result *ModifyInstancePayTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstancePayTypeResponse{}
@@ -3404,6 +3760,10 @@ func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Immediately)) {
+		query["Immediately"] = request.Immediately
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -3462,6 +3822,13 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 	return _result, _err
 }
 
+/**
+ * The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+ *
+ * @param request RenewLindormInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RenewLindormInstanceResponse
+ */
 func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3527,6 +3894,12 @@ func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInsta
 	return _result, _err
 }
 
+/**
+ * The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+ *
+ * @param request RenewLindormInstanceRequest
+ * @return RenewLindormInstanceResponse
+ */
 func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest) (_result *RenewLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewLindormInstanceResponse{}
@@ -3690,6 +4063,13 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+/**
+ * ***
+ *
+ * @param request UpdateInstanceIpWhiteListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateInstanceIpWhiteListResponse
+ */
 func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstanceIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3751,6 +4131,12 @@ func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstan
 	return _result, _err
 }
 
+/**
+ * ***
+ *
+ * @param request UpdateInstanceIpWhiteListRequest
+ * @return UpdateInstanceIpWhiteListResponse
+ */
 func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteListRequest) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceIpWhiteListResponse{}
@@ -3762,6 +4148,13 @@ func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteLi
 	return _result, _err
 }
 
+/**
+ * Upgrades, scales up, or enable cold storage for a Lindorm instance.
+ *
+ * @param request UpgradeLindormInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpgradeLindormInstanceResponse
+ */
 func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3860,6 +4253,14 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 		query["SolrSpec"] = request.SolrSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StreamNum)) {
+		query["StreamNum"] = request.StreamNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamSpec)) {
+		query["StreamSpec"] = request.StreamSpec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TsdbNum)) {
 		query["TsdbNum"] = request.TsdbNum
 	}
@@ -3899,6 +4300,12 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 	return _result, _err
 }
 
+/**
+ * Upgrades, scales up, or enable cold storage for a Lindorm instance.
+ *
+ * @param request UpgradeLindormInstanceRequest
+ * @return UpgradeLindormInstanceResponse
+ */
 func (client *Client) UpgradeLindormInstance(request *UpgradeLindormInstanceRequest) (_result *UpgradeLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeLindormInstanceResponse{}
