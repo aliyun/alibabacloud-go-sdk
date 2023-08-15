@@ -781,6 +781,7 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 type CreateGlobalResourceRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
@@ -800,6 +801,11 @@ func (s *CreateGlobalResourceRequest) SetClientToken(v string) *CreateGlobalReso
 
 func (s *CreateGlobalResourceRequest) SetClusterId(v string) *CreateGlobalResourceRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateGlobalResourceRequest) SetRegionId(v string) *CreateGlobalResourceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1542,6 +1548,7 @@ func (s *CreateServerlessClusterResponse) SetBody(v *CreateServerlessClusterResp
 
 type DeleteGlobalResourceRequest struct {
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
@@ -1556,6 +1563,11 @@ func (s DeleteGlobalResourceRequest) GoString() string {
 
 func (s *DeleteGlobalResourceRequest) SetClusterId(v string) *DeleteGlobalResourceRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteGlobalResourceRequest) SetRegionId(v string) *DeleteGlobalResourceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6786,6 +6798,7 @@ type DescribeMultiZoneClusterResponseBody struct {
 	AutoRenewal             *bool                                                        `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	ClusterId               *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterName             *string                                                      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ColdStorageSize         *int32                                                       `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
 	CoreDiskCount           *string                                                      `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
 	CoreDiskSize            *int32                                                       `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
 	CoreDiskType            *string                                                      `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
@@ -6863,6 +6876,11 @@ func (s *DescribeMultiZoneClusterResponseBody) SetClusterId(v string) *DescribeM
 
 func (s *DescribeMultiZoneClusterResponseBody) SetClusterName(v string) *DescribeMultiZoneClusterResponseBody {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetColdStorageSize(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.ColdStorageSize = &v
 	return s
 }
 
@@ -7109,11 +7127,15 @@ func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) SetMultiZo
 }
 
 type DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel struct {
-	InsName         *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	IsLatestVersion *bool   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	MinorVersion    *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	HdfsMinorVersion       *string `json:"HdfsMinorVersion,omitempty" xml:"HdfsMinorVersion,omitempty"`
+	InsName                *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	IsHdfsLatestVersion    *string `json:"IsHdfsLatestVersion,omitempty" xml:"IsHdfsLatestVersion,omitempty"`
+	IsLatestVersion        *bool   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	LatestHdfsMinorVersion *string `json:"LatestHdfsMinorVersion,omitempty" xml:"LatestHdfsMinorVersion,omitempty"`
+	LatestMinorVersion     *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
+	MinorVersion           *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	Role                   *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) String() string {
@@ -7124,13 +7146,33 @@ func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInst
 	return s.String()
 }
 
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetHdfsMinorVersion(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.HdfsMinorVersion = &v
+	return s
+}
+
 func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetInsName(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
 	s.InsName = &v
 	return s
 }
 
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetIsHdfsLatestVersion(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.IsHdfsLatestVersion = &v
+	return s
+}
+
 func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetIsLatestVersion(v bool) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
 	s.IsLatestVersion = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetLatestHdfsMinorVersion(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.LatestHdfsMinorVersion = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetLatestMinorVersion(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.LatestMinorVersion = &v
 	return s
 }
 
@@ -11649,7 +11691,8 @@ func (s *QueryHBaseHaDBResponseBodyClusterList) SetCluster(v []*QueryHBaseHaDBRe
 }
 
 type QueryHBaseHaDBResponseBodyClusterListCluster struct {
-	ActiveName    *string                                                    `json:"ActiveName,omitempty" xml:"ActiveName,omitempty"`
+	ActiveName *string `json:"ActiveName,omitempty" xml:"ActiveName,omitempty"`
+	// bdsId
 	BdsName       *string                                                    `json:"BdsName,omitempty" xml:"BdsName,omitempty"`
 	HaName        *string                                                    `json:"HaName,omitempty" xml:"HaName,omitempty"`
 	HaSlbConnList *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList `json:"HaSlbConnList,omitempty" xml:"HaSlbConnList,omitempty" type:"Struct"`
@@ -13341,49 +13384,18 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          tea.String("hbase.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("hbase.aliyuncs.com"),
-		"cn-beijing":                  tea.String("hbase.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("hbase.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("hbase.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("hbase.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("hbase.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("hbase.aliyuncs.com"),
-		"cn-fujian":                   tea.String("hbase.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou":                 tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("hbase.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("hbase.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("hbase.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("hbase.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("hbase.aliyuncs.com"),
-		"cn-qingdao":                  tea.String("hbase.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("hbase.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("hbase.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("hbase.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("hbase.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("hbase.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("hbase.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("hbase.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("hbase.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("hbase.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("hbase.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("hbase.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("hbase.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("hbase.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("hbase.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("hbase.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("hbase.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("hbase.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("hbase.ap-northeast-1.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("hbase.ap-northeast-1.aliyuncs.com"),
-		"us-east-1":                   tea.String("hbase.aliyuncs.com"),
-		"us-west-1":                   tea.String("hbase.aliyuncs.com"),
+		"ap-southeast-1":        tea.String("hbase.aliyuncs.com"),
+		"cn-beijing":            tea.String("hbase.aliyuncs.com"),
+		"cn-hangzhou":           tea.String("hbase.aliyuncs.com"),
+		"cn-hangzhou-finance":   tea.String("hbase.aliyuncs.com"),
+		"cn-hongkong":           tea.String("hbase.aliyuncs.com"),
+		"cn-north-2-gov-1":      tea.String("hbase.aliyuncs.com"),
+		"cn-qingdao":            tea.String("hbase.aliyuncs.com"),
+		"cn-shanghai":           tea.String("hbase.aliyuncs.com"),
+		"cn-shanghai-finance-1": tea.String("hbase.aliyuncs.com"),
+		"cn-shenzhen":           tea.String("hbase.aliyuncs.com"),
+		"cn-shenzhen-finance-1": tea.String("hbase.aliyuncs.com"),
+		"cn-guangzhou":          tea.String("hbase.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -13910,6 +13922,10 @@ func (client *Client) CreateGlobalResourceWithOptions(request *CreateGlobalResou
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
 		query["ResourceName"] = request.ResourceName
 	}
@@ -14404,6 +14420,10 @@ func (client *Client) DeleteGlobalResourceWithOptions(request *DeleteGlobalResou
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
