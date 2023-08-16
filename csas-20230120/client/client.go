@@ -106,6 +106,129 @@ func (s *AttachApplication2ConnectorResponse) SetBody(v *AttachApplication2Conne
 	return s
 }
 
+type CreateDynamicRouteRequest struct {
+	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateDynamicRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDynamicRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDynamicRouteRequest) SetApplicationIds(v []*string) *CreateDynamicRouteRequest {
+	s.ApplicationIds = v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetApplicationType(v string) *CreateDynamicRouteRequest {
+	s.ApplicationType = &v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetDescription(v string) *CreateDynamicRouteRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetDynamicRouteType(v string) *CreateDynamicRouteRequest {
+	s.DynamicRouteType = &v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetName(v string) *CreateDynamicRouteRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetNextHop(v string) *CreateDynamicRouteRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetPriority(v int32) *CreateDynamicRouteRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetRegionIds(v []*string) *CreateDynamicRouteRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetStatus(v string) *CreateDynamicRouteRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDynamicRouteRequest) SetTagIds(v []*string) *CreateDynamicRouteRequest {
+	s.TagIds = v
+	return s
+}
+
+type CreateDynamicRouteResponseBody struct {
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDynamicRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDynamicRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDynamicRouteResponseBody) SetDynamicRouteId(v string) *CreateDynamicRouteResponseBody {
+	s.DynamicRouteId = &v
+	return s
+}
+
+func (s *CreateDynamicRouteResponseBody) SetRequestId(v string) *CreateDynamicRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDynamicRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDynamicRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDynamicRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDynamicRouteResponse) SetHeaders(v map[string]*string) *CreateDynamicRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDynamicRouteResponse) SetStatusCode(v int32) *CreateDynamicRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDynamicRouteResponse) SetBody(v *CreateDynamicRouteResponseBody) *CreateDynamicRouteResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePrivateAccessApplicationRequest struct {
 	Addresses   []*string                                          `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	Description *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -727,6 +850,69 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 	return s
 }
 
+type DeleteDynamicRouteRequest struct {
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+}
+
+func (s DeleteDynamicRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDynamicRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDynamicRouteRequest) SetDynamicRouteId(v string) *DeleteDynamicRouteRequest {
+	s.DynamicRouteId = &v
+	return s
+}
+
+type DeleteDynamicRouteResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDynamicRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDynamicRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDynamicRouteResponseBody) SetRequestId(v string) *DeleteDynamicRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDynamicRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDynamicRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDynamicRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDynamicRouteResponse) SetHeaders(v map[string]*string) *DeleteDynamicRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDynamicRouteResponse) SetStatusCode(v int32) *DeleteDynamicRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDynamicRouteResponse) SetBody(v *DeleteDynamicRouteResponseBody) *DeleteDynamicRouteResponse {
+	s.Body = v
+	return s
+}
+
 type DeletePrivateAccessApplicationRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 }
@@ -1069,6 +1255,158 @@ func (s *DetachApplication2ConnectorResponse) SetStatusCode(v int32) *DetachAppl
 }
 
 func (s *DetachApplication2ConnectorResponse) SetBody(v *DetachApplication2ConnectorResponseBody) *DetachApplication2ConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type GetDynamicRouteRequest struct {
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+}
+
+func (s GetDynamicRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDynamicRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDynamicRouteRequest) SetDynamicRouteId(v string) *GetDynamicRouteRequest {
+	s.DynamicRouteId = &v
+	return s
+}
+
+type GetDynamicRouteResponseBody struct {
+	DynamicRoute *GetDynamicRouteResponseBodyDynamicRoute `json:"DynamicRoute,omitempty" xml:"DynamicRoute,omitempty" type:"Struct"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDynamicRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDynamicRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDynamicRouteResponseBody) SetDynamicRoute(v *GetDynamicRouteResponseBodyDynamicRoute) *GetDynamicRouteResponseBody {
+	s.DynamicRoute = v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBody) SetRequestId(v string) *GetDynamicRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDynamicRouteResponseBodyDynamicRoute struct {
+	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DynamicRouteId   *string   `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+}
+
+func (s GetDynamicRouteResponseBodyDynamicRoute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDynamicRouteResponseBodyDynamicRoute) GoString() string {
+	return s.String()
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetApplicationIds(v []*string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.ApplicationIds = v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetApplicationType(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.ApplicationType = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetCreateTime(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetDescription(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetDynamicRouteId(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.DynamicRouteId = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetDynamicRouteType(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.DynamicRouteType = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetName(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetNextHop(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.NextHop = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetPriority(v int32) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetRegionIds(v []*string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.RegionIds = v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetStatus(v string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponseBodyDynamicRoute) SetTagIds(v []*string) *GetDynamicRouteResponseBodyDynamicRoute {
+	s.TagIds = v
+	return s
+}
+
+type GetDynamicRouteResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDynamicRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDynamicRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDynamicRouteResponse) SetHeaders(v map[string]*string) *GetDynamicRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDynamicRouteResponse) SetStatusCode(v int32) *GetDynamicRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDynamicRouteResponse) SetBody(v *GetDynamicRouteResponseBody) *GetDynamicRouteResponse {
 	s.Body = v
 	return s
 }
@@ -2134,6 +2472,270 @@ func (s *ListConnectorsResponse) SetBody(v *ListConnectorsResponseBody) *ListCon
 	return s
 }
 
+type ListDynamicRouteRegionsResponseBody struct {
+	Regions   []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum  *int32    `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListDynamicRouteRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDynamicRouteRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDynamicRouteRegionsResponseBody) SetRegions(v []*string) *ListDynamicRouteRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *ListDynamicRouteRegionsResponseBody) SetRequestId(v string) *ListDynamicRouteRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDynamicRouteRegionsResponseBody) SetTotalNum(v int32) *ListDynamicRouteRegionsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListDynamicRouteRegionsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDynamicRouteRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDynamicRouteRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDynamicRouteRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDynamicRouteRegionsResponse) SetHeaders(v map[string]*string) *ListDynamicRouteRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDynamicRouteRegionsResponse) SetStatusCode(v int32) *ListDynamicRouteRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDynamicRouteRegionsResponse) SetBody(v *ListDynamicRouteRegionsResponseBody) *ListDynamicRouteRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDynamicRoutesRequest struct {
+	ApplicationId   *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextHop         *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIds       []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagId           *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s ListDynamicRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDynamicRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDynamicRoutesRequest) SetApplicationId(v string) *ListDynamicRoutesRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetCurrentPage(v int32) *ListDynamicRoutesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetDynamicRouteIds(v []*string) *ListDynamicRoutesRequest {
+	s.DynamicRouteIds = v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetName(v string) *ListDynamicRoutesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetNextHop(v string) *ListDynamicRoutesRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetPageSize(v int32) *ListDynamicRoutesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetRegionIds(v []*string) *ListDynamicRoutesRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetStatus(v string) *ListDynamicRoutesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDynamicRoutesRequest) SetTagId(v string) *ListDynamicRoutesRequest {
+	s.TagId = &v
+	return s
+}
+
+type ListDynamicRoutesResponseBody struct {
+	DynamicRoutes []*ListDynamicRoutesResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum      *int32                                        `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListDynamicRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDynamicRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDynamicRoutesResponseBody) SetDynamicRoutes(v []*ListDynamicRoutesResponseBodyDynamicRoutes) *ListDynamicRoutesResponseBody {
+	s.DynamicRoutes = v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBody) SetRequestId(v string) *ListDynamicRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBody) SetTotalNum(v int32) *ListDynamicRoutesResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListDynamicRoutesResponseBodyDynamicRoutes struct {
+	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DynamicRouteId   *string   `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+}
+
+func (s ListDynamicRoutesResponseBodyDynamicRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDynamicRoutesResponseBodyDynamicRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetApplicationIds(v []*string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.ApplicationIds = v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetApplicationType(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.ApplicationType = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetCreateTime(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetDescription(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetDynamicRouteId(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.DynamicRouteId = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetDynamicRouteType(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.DynamicRouteType = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetName(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetNextHop(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.NextHop = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetPriority(v int32) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetRegionIds(v []*string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.RegionIds = v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetStatus(v string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponseBodyDynamicRoutes) SetTagIds(v []*string) *ListDynamicRoutesResponseBodyDynamicRoutes {
+	s.TagIds = v
+	return s
+}
+
+type ListDynamicRoutesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDynamicRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDynamicRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDynamicRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDynamicRoutesResponse) SetHeaders(v map[string]*string) *ListDynamicRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDynamicRoutesResponse) SetStatusCode(v int32) *ListDynamicRoutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDynamicRoutesResponse) SetBody(v *ListDynamicRoutesResponseBody) *ListDynamicRoutesResponse {
+	s.Body = v
+	return s
+}
+
 type ListPolicesForPrivateAccessApplicationRequest struct {
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 }
@@ -2878,6 +3480,180 @@ func (s *ListPrivateAccessApplicationsResponse) SetBody(v *ListPrivateAccessAppl
 	return s
 }
 
+type ListPrivateAccessApplicationsForDynamicRouteRequest struct {
+	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteRequest) SetDynamicRouteIds(v []*string) *ListPrivateAccessApplicationsForDynamicRouteRequest {
+	s.DynamicRouteIds = v
+	return s
+}
+
+type ListPrivateAccessApplicationsForDynamicRouteResponseBody struct {
+	DynamicRoutes []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
+	RequestId     *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBody) SetDynamicRoutes(v []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) *ListPrivateAccessApplicationsForDynamicRouteResponseBody {
+	s.DynamicRoutes = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBody) SetRequestId(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes struct {
+	Applications   []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	DynamicRouteId *string                                                                              `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) SetApplications(v []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes {
+	s.Applications = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) SetDynamicRouteId(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes {
+	s.DynamicRouteId = &v
+	return s
+}
+
+type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications struct {
+	Addresses     []*string                                                                                      `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	ApplicationId *string                                                                                        `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	CreateTime    *string                                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description   *string                                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name          *string                                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges    []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	Protocol      *string                                                                                        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Status        *string                                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetAddresses(v []*string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.Addresses = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetApplicationId(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetCreateTime(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetDescription(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.Description = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetName(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetPortRanges(v []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.PortRanges = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetProtocol(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) SetStatus(v string) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications {
+	s.Status = &v
+	return s
+}
+
+type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges struct {
+	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges) SetBegin(v int32) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges {
+	s.Begin = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges) SetEnd(v int32) *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges {
+	s.End = &v
+	return s
+}
+
+type ListPrivateAccessApplicationsForDynamicRouteResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPrivateAccessApplicationsForDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessApplicationsForDynamicRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponse) SetHeaders(v map[string]*string) *ListPrivateAccessApplicationsForDynamicRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponse) SetStatusCode(v int32) *ListPrivateAccessApplicationsForDynamicRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsForDynamicRouteResponse) SetBody(v *ListPrivateAccessApplicationsForDynamicRouteResponseBody) *ListPrivateAccessApplicationsForDynamicRouteResponse {
+	s.Body = v
+	return s
+}
+
 type ListPrivateAccessPolicesRequest struct {
 	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	CurrentPage   *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -3282,6 +4058,139 @@ func (s *ListPrivateAccessTagsResponse) SetStatusCode(v int32) *ListPrivateAcces
 }
 
 func (s *ListPrivateAccessTagsResponse) SetBody(v *ListPrivateAccessTagsResponseBody) *ListPrivateAccessTagsResponse {
+	s.Body = v
+	return s
+}
+
+type ListPrivateAccessTagsForDynamicRouteRequest struct {
+	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteRequest) SetDynamicRouteIds(v []*string) *ListPrivateAccessTagsForDynamicRouteRequest {
+	s.DynamicRouteIds = v
+	return s
+}
+
+type ListPrivateAccessTagsForDynamicRouteResponseBody struct {
+	DynamicRoutes []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
+	RequestId     *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBody) SetDynamicRoutes(v []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) *ListPrivateAccessTagsForDynamicRouteResponseBody {
+	s.DynamicRoutes = v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBody) SetRequestId(v string) *ListPrivateAccessTagsForDynamicRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes struct {
+	DynamicRouteId *string                                                              `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	Tags           []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) SetDynamicRouteId(v string) *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes {
+	s.DynamicRouteId = &v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) SetTags(v []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes {
+	s.Tags = v
+	return s
+}
+
+type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagType     *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) SetCreateTime(v string) *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) SetDescription(v string) *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags {
+	s.Description = &v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) SetName(v string) *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) SetTagId(v string) *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags {
+	s.TagId = &v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) SetTagType(v string) *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags {
+	s.TagType = &v
+	return s
+}
+
+type ListPrivateAccessTagsForDynamicRouteResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPrivateAccessTagsForDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateAccessTagsForDynamicRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponse) SetHeaders(v map[string]*string) *ListPrivateAccessTagsForDynamicRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponse) SetStatusCode(v int32) *ListPrivateAccessTagsForDynamicRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPrivateAccessTagsForDynamicRouteResponse) SetBody(v *ListPrivateAccessTagsForDynamicRouteResponseBody) *ListPrivateAccessTagsForDynamicRouteResponse {
 	s.Body = v
 	return s
 }
@@ -3900,6 +4809,135 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponse) SetStatusCode(v int32) *L
 }
 
 func (s *ListUserGroupsForPrivateAccessPolicyResponse) SetBody(v *ListUserGroupsForPrivateAccessPolicyResponseBody) *ListUserGroupsForPrivateAccessPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDynamicRouteRequest struct {
+	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DynamicRouteId   *string   `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	ModifyType       *string   `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDynamicRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDynamicRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDynamicRouteRequest) SetApplicationIds(v []*string) *UpdateDynamicRouteRequest {
+	s.ApplicationIds = v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetApplicationType(v string) *UpdateDynamicRouteRequest {
+	s.ApplicationType = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetDescription(v string) *UpdateDynamicRouteRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetDynamicRouteId(v string) *UpdateDynamicRouteRequest {
+	s.DynamicRouteId = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetDynamicRouteType(v string) *UpdateDynamicRouteRequest {
+	s.DynamicRouteType = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetModifyType(v string) *UpdateDynamicRouteRequest {
+	s.ModifyType = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetName(v string) *UpdateDynamicRouteRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetNextHop(v string) *UpdateDynamicRouteRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetPriority(v int32) *UpdateDynamicRouteRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetRegionIds(v []*string) *UpdateDynamicRouteRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetStatus(v string) *UpdateDynamicRouteRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteRequest) SetTagIds(v []*string) *UpdateDynamicRouteRequest {
+	s.TagIds = v
+	return s
+}
+
+type UpdateDynamicRouteResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDynamicRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDynamicRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDynamicRouteResponseBody) SetRequestId(v string) *UpdateDynamicRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDynamicRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDynamicRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDynamicRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDynamicRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDynamicRouteResponse) SetHeaders(v map[string]*string) *UpdateDynamicRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDynamicRouteResponse) SetStatusCode(v int32) *UpdateDynamicRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDynamicRouteResponse) SetBody(v *UpdateDynamicRouteResponseBody) *UpdateDynamicRouteResponse {
 	s.Body = v
 	return s
 }
@@ -4563,6 +5601,89 @@ func (client *Client) AttachApplication2Connector(request *AttachApplication2Con
 	return _result, _err
 }
 
+func (client *Client) CreateDynamicRouteWithOptions(request *CreateDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *CreateDynamicRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationIds)) {
+		bodyFlat["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationType)) {
+		body["ApplicationType"] = request.ApplicationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicRouteType)) {
+		body["DynamicRouteType"] = request.DynamicRouteType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
+		body["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIds)) {
+		bodyFlat["RegionIds"] = request.RegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIds)) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDynamicRoute"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDynamicRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_result *CreateDynamicRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDynamicRouteResponse{}
+	_body, _err := client.CreateDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4850,6 +5971,50 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DeleteDynamicRouteWithOptions(request *DeleteDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteDynamicRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DynamicRouteId)) {
+		query["DynamicRouteId"] = request.DynamicRouteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDynamicRoute"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDynamicRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDynamicRoute(request *DeleteDynamicRouteRequest) (_result *DeleteDynamicRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDynamicRouteResponse{}
+	_body, _err := client.DeleteDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeletePrivateAccessApplicationWithOptions(request *DeletePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *DeletePrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5073,6 +6238,46 @@ func (client *Client) DetachApplication2Connector(request *DetachApplication2Con
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachApplication2ConnectorResponse{}
 	_body, _err := client.DetachApplication2ConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDynamicRouteWithOptions(request *GetDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *GetDynamicRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDynamicRoute"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDynamicRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDynamicRoute(request *GetDynamicRouteRequest) (_result *GetDynamicRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDynamicRouteResponse{}
+	_body, _err := client.GetDynamicRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5320,6 +6525,79 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 	return _result, _err
 }
 
+func (client *Client) ListDynamicRouteRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListDynamicRouteRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListDynamicRouteRegions"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDynamicRouteRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDynamicRouteRegions() (_result *ListDynamicRouteRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDynamicRouteRegionsResponse{}
+	_body, _err := client.ListDynamicRouteRegionsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDynamicRoutesWithOptions(request *ListDynamicRoutesRequest, runtime *util.RuntimeOptions) (_result *ListDynamicRoutesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDynamicRoutes"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDynamicRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDynamicRoutes(request *ListDynamicRoutesRequest) (_result *ListDynamicRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDynamicRoutesResponse{}
+	_body, _err := client.ListDynamicRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListPolicesForPrivateAccessApplicationWithOptions(request *ListPolicesForPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForPrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5480,6 +6758,46 @@ func (client *Client) ListPrivateAccessApplications(request *ListPrivateAccessAp
 	return _result, _err
 }
 
+func (client *Client) ListPrivateAccessApplicationsForDynamicRouteWithOptions(request *ListPrivateAccessApplicationsForDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessApplicationsForDynamicRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPrivateAccessApplicationsForDynamicRoute"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPrivateAccessApplicationsForDynamicRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPrivateAccessApplicationsForDynamicRoute(request *ListPrivateAccessApplicationsForDynamicRouteRequest) (_result *ListPrivateAccessApplicationsForDynamicRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPrivateAccessApplicationsForDynamicRouteResponse{}
+	_body, _err := client.ListPrivateAccessApplicationsForDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListPrivateAccessPolicesWithOptions(request *ListPrivateAccessPolicesRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessPolicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5553,6 +6871,46 @@ func (client *Client) ListPrivateAccessTags(request *ListPrivateAccessTagsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrivateAccessTagsResponse{}
 	_body, _err := client.ListPrivateAccessTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPrivateAccessTagsForDynamicRouteWithOptions(request *ListPrivateAccessTagsForDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessTagsForDynamicRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPrivateAccessTagsForDynamicRoute"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPrivateAccessTagsForDynamicRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPrivateAccessTagsForDynamicRoute(request *ListPrivateAccessTagsForDynamicRouteRequest) (_result *ListPrivateAccessTagsForDynamicRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPrivateAccessTagsForDynamicRouteResponse{}
+	_body, _err := client.ListPrivateAccessTagsForDynamicRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5713,6 +7071,97 @@ func (client *Client) ListUserGroupsForPrivateAccessPolicy(request *ListUserGrou
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserGroupsForPrivateAccessPolicyResponse{}
 	_body, _err := client.ListUserGroupsForPrivateAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDynamicRouteWithOptions(request *UpdateDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateDynamicRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationIds)) {
+		bodyFlat["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationType)) {
+		body["ApplicationType"] = request.ApplicationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicRouteId)) {
+		body["DynamicRouteId"] = request.DynamicRouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicRouteType)) {
+		body["DynamicRouteType"] = request.DynamicRouteType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
+		body["ModifyType"] = request.ModifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
+		body["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIds)) {
+		bodyFlat["RegionIds"] = request.RegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIds)) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDynamicRoute"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDynamicRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDynamicRoute(request *UpdateDynamicRouteRequest) (_result *UpdateDynamicRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDynamicRouteResponse{}
+	_body, _err := client.UpdateDynamicRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
