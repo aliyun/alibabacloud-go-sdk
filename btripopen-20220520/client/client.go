@@ -41691,19 +41691,22 @@ func (s *IsvUserSaveRequest) SetUserList(v []*IsvUserSaveRequestUserList) *IsvUs
 }
 
 type IsvUserSaveRequestUserList struct {
-	DepartId          *int64    `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	Email             *string   `json:"email,omitempty" xml:"email,omitempty"`
-	JobNo             *string   `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	LeaveStatus       *int32    `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
-	ManagerUserId     *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
-	Phone             *string   `json:"phone,omitempty" xml:"phone,omitempty"`
-	Position          *string   `json:"position,omitempty" xml:"position,omitempty"`
-	PositionLevel     *string   `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	RealNameEn        *string   `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
-	ThirdDepartId     *string   `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
-	ThirdDepartIdList []*string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
-	UserId            *string   `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName          *string   `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	Birthday          *string                               `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertList          []*IsvUserSaveRequestUserListCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
+	DepartId          *int64                                `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	Email             *string                               `json:"email,omitempty" xml:"email,omitempty"`
+	Gender            *string                               `json:"gender,omitempty" xml:"gender,omitempty"`
+	JobNo             *string                               `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	LeaveStatus       *int32                                `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	ManagerUserId     *string                               `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	Phone             *string                               `json:"phone,omitempty" xml:"phone,omitempty"`
+	Position          *string                               `json:"position,omitempty" xml:"position,omitempty"`
+	PositionLevel     *string                               `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealNameEn        *string                               `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	ThirdDepartId     *string                               `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
+	ThirdDepartIdList []*string                             `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
+	UserId            *string                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName          *string                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s IsvUserSaveRequestUserList) String() string {
@@ -41714,6 +41717,16 @@ func (s IsvUserSaveRequestUserList) GoString() string {
 	return s.String()
 }
 
+func (s *IsvUserSaveRequestUserList) SetBirthday(v string) *IsvUserSaveRequestUserList {
+	s.Birthday = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserList) SetCertList(v []*IsvUserSaveRequestUserListCertList) *IsvUserSaveRequestUserList {
+	s.CertList = v
+	return s
+}
+
 func (s *IsvUserSaveRequestUserList) SetDepartId(v int64) *IsvUserSaveRequestUserList {
 	s.DepartId = &v
 	return s
@@ -41721,6 +41734,11 @@ func (s *IsvUserSaveRequestUserList) SetDepartId(v int64) *IsvUserSaveRequestUse
 
 func (s *IsvUserSaveRequestUserList) SetEmail(v string) *IsvUserSaveRequestUserList {
 	s.Email = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserList) SetGender(v string) *IsvUserSaveRequestUserList {
+	s.Gender = &v
 	return s
 }
 
@@ -41776,6 +41794,47 @@ func (s *IsvUserSaveRequestUserList) SetUserId(v string) *IsvUserSaveRequestUser
 
 func (s *IsvUserSaveRequestUserList) SetUserName(v string) *IsvUserSaveRequestUserList {
 	s.UserName = &v
+	return s
+}
+
+type IsvUserSaveRequestUserListCertList struct {
+	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
+	CertNation      *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo          *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType        *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+}
+
+func (s IsvUserSaveRequestUserListCertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvUserSaveRequestUserListCertList) GoString() string {
+	return s.String()
+}
+
+func (s *IsvUserSaveRequestUserListCertList) SetCertExpiredTime(v string) *IsvUserSaveRequestUserListCertList {
+	s.CertExpiredTime = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserListCertList) SetCertNation(v string) *IsvUserSaveRequestUserListCertList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserListCertList) SetCertNo(v string) *IsvUserSaveRequestUserListCertList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserListCertList) SetCertType(v int32) *IsvUserSaveRequestUserListCertList {
+	s.CertType = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserListCertList) SetNationality(v string) *IsvUserSaveRequestUserListCertList {
+	s.Nationality = &v
 	return s
 }
 
