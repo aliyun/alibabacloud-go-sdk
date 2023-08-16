@@ -509,6 +509,7 @@ type CreateClusterRequestNodeGroups struct {
 	NodeGroupDescription *string                                `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
 	NodeGroupName        *string                                `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	Nodes                []*CreateClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	UserData             *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	ZoneId               *string                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -542,6 +543,11 @@ func (s *CreateClusterRequestNodeGroups) SetNodeGroupName(v string) *CreateClust
 
 func (s *CreateClusterRequestNodeGroups) SetNodes(v []*CreateClusterRequestNodeGroupsNodes) *CreateClusterRequestNodeGroups {
 	s.Nodes = v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroups) SetUserData(v string) *CreateClusterRequestNodeGroups {
+	s.UserData = &v
 	return s
 }
 
@@ -1799,6 +1805,7 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) SetSubnet(v stri
 type ExtendClusterRequestNodeGroups struct {
 	NodeGroupId *string                                `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	Nodes       []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	UserData    *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ExtendClusterRequestNodeGroups) String() string {
@@ -1816,6 +1823,11 @@ func (s *ExtendClusterRequestNodeGroups) SetNodeGroupId(v string) *ExtendCluster
 
 func (s *ExtendClusterRequestNodeGroups) SetNodes(v []*ExtendClusterRequestNodeGroupsNodes) *ExtendClusterRequestNodeGroups {
 	s.Nodes = v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetUserData(v string) *ExtendClusterRequestNodeGroups {
+	s.UserData = &v
 	return s
 }
 
@@ -2744,6 +2756,7 @@ type ReimageNodesRequest struct {
 	ClusterId             *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	IgnoreFailedNodeTasks *bool                       `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	Nodes                 []*ReimageNodesRequestNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	UserData              *string                     `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ReimageNodesRequest) String() string {
@@ -2766,6 +2779,11 @@ func (s *ReimageNodesRequest) SetIgnoreFailedNodeTasks(v bool) *ReimageNodesRequ
 
 func (s *ReimageNodesRequest) SetNodes(v []*ReimageNodesRequestNodes) *ReimageNodesRequest {
 	s.Nodes = v
+	return s
+}
+
+func (s *ReimageNodesRequest) SetUserData(v string) *ReimageNodesRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -2808,6 +2826,7 @@ type ReimageNodesShrinkRequest struct {
 	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	NodesShrink           *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	UserData              *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ReimageNodesShrinkRequest) String() string {
@@ -2830,6 +2849,11 @@ func (s *ReimageNodesShrinkRequest) SetIgnoreFailedNodeTasks(v bool) *ReimageNod
 
 func (s *ReimageNodesShrinkRequest) SetNodesShrink(v string) *ReimageNodesShrinkRequest {
 	s.NodesShrink = &v
+	return s
+}
+
+func (s *ReimageNodesShrinkRequest) SetUserData(v string) *ReimageNodesShrinkRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -4056,6 +4080,10 @@ func (client *Client) ReimageNodesWithOptions(tmpReq *ReimageNodesRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.NodesShrink)) {
 		body["Nodes"] = request.NodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["UserData"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
