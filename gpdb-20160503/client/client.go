@@ -13970,6 +13970,8 @@ type QueryCollectionDataRequest struct {
 	Content           *string    `json:"Content,omitempty" xml:"Content,omitempty"`
 	DBInstanceId      *string    `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Filter            *string    `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IncludeValues     *bool      `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
+	Metrics           *string    `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Namespace         *string    `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespacePassword *string    `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14003,6 +14005,16 @@ func (s *QueryCollectionDataRequest) SetDBInstanceId(v string) *QueryCollectionD
 
 func (s *QueryCollectionDataRequest) SetFilter(v string) *QueryCollectionDataRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetIncludeValues(v bool) *QueryCollectionDataRequest {
+	s.IncludeValues = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetMetrics(v string) *QueryCollectionDataRequest {
+	s.Metrics = &v
 	return s
 }
 
@@ -14041,6 +14053,8 @@ type QueryCollectionDataShrinkRequest struct {
 	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Filter            *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IncludeValues     *bool   `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
+	Metrics           *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14074,6 +14088,16 @@ func (s *QueryCollectionDataShrinkRequest) SetDBInstanceId(v string) *QueryColle
 
 func (s *QueryCollectionDataShrinkRequest) SetFilter(v string) *QueryCollectionDataShrinkRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetIncludeValues(v bool) *QueryCollectionDataShrinkRequest {
+	s.IncludeValues = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetMetrics(v string) *QueryCollectionDataShrinkRequest {
+	s.Metrics = &v
 	return s
 }
 
@@ -15364,6 +15388,200 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCollectionDataMetadataRequest struct {
+	Collection        *string                `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter            *string                `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Ids               []*string              `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	Metadata          map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Namespace         *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string                `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateCollectionDataMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCollectionDataMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetCollection(v string) *UpdateCollectionDataMetadataRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetDBInstanceId(v string) *UpdateCollectionDataMetadataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetFilter(v string) *UpdateCollectionDataMetadataRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetIds(v []*string) *UpdateCollectionDataMetadataRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetMetadata(v map[string]interface{}) *UpdateCollectionDataMetadataRequest {
+	s.Metadata = v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetNamespace(v string) *UpdateCollectionDataMetadataRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetNamespacePassword(v string) *UpdateCollectionDataMetadataRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetOwnerId(v int64) *UpdateCollectionDataMetadataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataRequest) SetRegionId(v string) *UpdateCollectionDataMetadataRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateCollectionDataMetadataShrinkRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter            *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IdsShrink         *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	MetadataShrink    *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateCollectionDataMetadataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCollectionDataMetadataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetCollection(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetDBInstanceId(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetFilter(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetIdsShrink(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetMetadataShrink(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.MetadataShrink = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetNamespace(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetNamespacePassword(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetOwnerId(v int64) *UpdateCollectionDataMetadataShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetRegionId(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateCollectionDataMetadataResponseBody struct {
+	AppliedRows *int64  `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateCollectionDataMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCollectionDataMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCollectionDataMetadataResponseBody) SetAppliedRows(v int64) *UpdateCollectionDataMetadataResponseBody {
+	s.AppliedRows = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataResponseBody) SetMessage(v string) *UpdateCollectionDataMetadataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataResponseBody) SetRequestId(v string) *UpdateCollectionDataMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataResponseBody) SetStatus(v string) *UpdateCollectionDataMetadataResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UpdateCollectionDataMetadataResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCollectionDataMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCollectionDataMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCollectionDataMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCollectionDataMetadataResponse) SetHeaders(v map[string]*string) *UpdateCollectionDataMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataResponse) SetStatusCode(v int32) *UpdateCollectionDataMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataResponse) SetBody(v *UpdateCollectionDataMetadataResponseBody) *UpdateCollectionDataMetadataResponse {
 	s.Body = v
 	return s
 }
@@ -21922,6 +22140,14 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 		query["Filter"] = request.Filter
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IncludeValues)) {
+		query["IncludeValues"] = request.IncludeValues
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
 		query["Namespace"] = request.Namespace
 	}
@@ -22676,6 +22902,92 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCollectionDataMetadataWithOptions(tmpReq *UpdateCollectionDataMetadataRequest, runtime *util.RuntimeOptions) (_result *UpdateCollectionDataMetadataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateCollectionDataMetadataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Metadata)) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, tea.String("Metadata"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		query["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetadataShrink)) {
+		query["Metadata"] = request.MetadataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCollectionDataMetadata"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCollectionDataMetadataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCollectionDataMetadata(request *UpdateCollectionDataMetadataRequest) (_result *UpdateCollectionDataMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCollectionDataMetadataResponse{}
+	_body, _err := client.UpdateCollectionDataMetadataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
