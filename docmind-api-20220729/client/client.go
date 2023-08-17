@@ -17,6 +17,121 @@ import (
 	"io"
 )
 
+type ExtractFeedbackRequest struct {
+	FeedbackUrl *string `json:"FeedbackUrl,omitempty" xml:"FeedbackUrl,omitempty"`
+}
+
+func (s ExtractFeedbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFeedbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFeedbackRequest) SetFeedbackUrl(v string) *ExtractFeedbackRequest {
+	s.FeedbackUrl = &v
+	return s
+}
+
+type ExtractFeedbackAdvanceRequest struct {
+	FeedbackUrlObject io.Reader `json:"FeedbackUrl,omitempty" xml:"FeedbackUrl,omitempty"`
+}
+
+func (s ExtractFeedbackAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFeedbackAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFeedbackAdvanceRequest) SetFeedbackUrlObject(v io.Reader) *ExtractFeedbackAdvanceRequest {
+	s.FeedbackUrlObject = v
+	return s
+}
+
+type ExtractFeedbackResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ExtractFeedbackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExtractFeedbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFeedbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFeedbackResponseBody) SetCode(v string) *ExtractFeedbackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExtractFeedbackResponseBody) SetData(v *ExtractFeedbackResponseBodyData) *ExtractFeedbackResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExtractFeedbackResponseBody) SetMessage(v string) *ExtractFeedbackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExtractFeedbackResponseBody) SetRequestId(v string) *ExtractFeedbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExtractFeedbackResponseBodyData struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ExtractFeedbackResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFeedbackResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFeedbackResponseBodyData) SetId(v string) *ExtractFeedbackResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type ExtractFeedbackResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExtractFeedbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExtractFeedbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtractFeedbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExtractFeedbackResponse) SetHeaders(v map[string]*string) *ExtractFeedbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExtractFeedbackResponse) SetStatusCode(v int32) *ExtractFeedbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExtractFeedbackResponse) SetBody(v *ExtractFeedbackResponseBody) *ExtractFeedbackResponse {
+	s.Body = v
+	return s
+}
+
 type GetSingleDocumentExtractResultRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -110,10 +225,259 @@ func (s *GetSingleDocumentExtractResultResponse) SetBody(v *GetSingleDocumentExt
 	return s
 }
 
+type ReClassifyTradeDocumentExtractRequest struct {
+	BizId                *string                                                      `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	PageUpdateInfoModels []*ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels `json:"PageUpdateInfoModels,omitempty" xml:"PageUpdateInfoModels,omitempty" type:"Repeated"`
+}
+
+func (s ReClassifyTradeDocumentExtractRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReClassifyTradeDocumentExtractRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReClassifyTradeDocumentExtractRequest) SetBizId(v string) *ReClassifyTradeDocumentExtractRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractRequest) SetPageUpdateInfoModels(v []*ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels) *ReClassifyTradeDocumentExtractRequest {
+	s.PageUpdateInfoModels = v
+	return s
+}
+
+type ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels struct {
+	AttTypeCode *string `json:"AttTypeCode,omitempty" xml:"AttTypeCode,omitempty"`
+	PageId      *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+}
+
+func (s ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels) GoString() string {
+	return s.String()
+}
+
+func (s *ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels) SetAttTypeCode(v string) *ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels {
+	s.AttTypeCode = &v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels) SetPageId(v string) *ReClassifyTradeDocumentExtractRequestPageUpdateInfoModels {
+	s.PageId = &v
+	return s
+}
+
+type ReClassifyTradeDocumentExtractShrinkRequest struct {
+	BizId                      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	PageUpdateInfoModelsShrink *string `json:"PageUpdateInfoModels,omitempty" xml:"PageUpdateInfoModels,omitempty"`
+}
+
+func (s ReClassifyTradeDocumentExtractShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReClassifyTradeDocumentExtractShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReClassifyTradeDocumentExtractShrinkRequest) SetBizId(v string) *ReClassifyTradeDocumentExtractShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractShrinkRequest) SetPageUpdateInfoModelsShrink(v string) *ReClassifyTradeDocumentExtractShrinkRequest {
+	s.PageUpdateInfoModelsShrink = &v
+	return s
+}
+
+type ReClassifyTradeDocumentExtractResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ReClassifyTradeDocumentExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReClassifyTradeDocumentExtractResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReClassifyTradeDocumentExtractResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReClassifyTradeDocumentExtractResponseBody) SetCode(v string) *ReClassifyTradeDocumentExtractResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractResponseBody) SetData(v *ReClassifyTradeDocumentExtractResponseBodyData) *ReClassifyTradeDocumentExtractResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractResponseBody) SetMessage(v string) *ReClassifyTradeDocumentExtractResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractResponseBody) SetRequestId(v string) *ReClassifyTradeDocumentExtractResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReClassifyTradeDocumentExtractResponseBodyData struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ReClassifyTradeDocumentExtractResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReClassifyTradeDocumentExtractResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ReClassifyTradeDocumentExtractResponseBodyData) SetId(v string) *ReClassifyTradeDocumentExtractResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type ReClassifyTradeDocumentExtractResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReClassifyTradeDocumentExtractResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReClassifyTradeDocumentExtractResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReClassifyTradeDocumentExtractResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReClassifyTradeDocumentExtractResponse) SetHeaders(v map[string]*string) *ReClassifyTradeDocumentExtractResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractResponse) SetStatusCode(v int32) *ReClassifyTradeDocumentExtractResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReClassifyTradeDocumentExtractResponse) SetBody(v *ReClassifyTradeDocumentExtractResponseBody) *ReClassifyTradeDocumentExtractResponse {
+	s.Body = v
+	return s
+}
+
+type RetryTradeDocumentExtractRequest struct {
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s RetryTradeDocumentExtractRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryTradeDocumentExtractRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryTradeDocumentExtractRequest) SetBizId(v string) *RetryTradeDocumentExtractRequest {
+	s.BizId = &v
+	return s
+}
+
+type RetryTradeDocumentExtractResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RetryTradeDocumentExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RetryTradeDocumentExtractResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryTradeDocumentExtractResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryTradeDocumentExtractResponseBody) SetCode(v string) *RetryTradeDocumentExtractResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RetryTradeDocumentExtractResponseBody) SetData(v *RetryTradeDocumentExtractResponseBodyData) *RetryTradeDocumentExtractResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RetryTradeDocumentExtractResponseBody) SetMessage(v string) *RetryTradeDocumentExtractResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RetryTradeDocumentExtractResponseBody) SetRequestId(v string) *RetryTradeDocumentExtractResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RetryTradeDocumentExtractResponseBodyData struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s RetryTradeDocumentExtractResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryTradeDocumentExtractResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RetryTradeDocumentExtractResponseBodyData) SetId(v string) *RetryTradeDocumentExtractResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type RetryTradeDocumentExtractResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetryTradeDocumentExtractResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryTradeDocumentExtractResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryTradeDocumentExtractResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryTradeDocumentExtractResponse) SetHeaders(v map[string]*string) *RetryTradeDocumentExtractResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryTradeDocumentExtractResponse) SetStatusCode(v int32) *RetryTradeDocumentExtractResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryTradeDocumentExtractResponse) SetBody(v *RetryTradeDocumentExtractResponseBody) *RetryTradeDocumentExtractResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitAirWaybillExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitAirWaybillExtractJobRequest) String() string {
@@ -139,10 +503,16 @@ func (s *SubmitAirWaybillExtractJobRequest) SetFileUrl(v string) *SubmitAirWaybi
 	return s
 }
 
+func (s *SubmitAirWaybillExtractJobRequest) SetParserConfigId(v int32) *SubmitAirWaybillExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitAirWaybillExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitAirWaybillExtractJobAdvanceRequest) String() string {
@@ -165,6 +535,11 @@ func (s *SubmitAirWaybillExtractJobAdvanceRequest) SetFileNameExtension(v string
 
 func (s *SubmitAirWaybillExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitAirWaybillExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitAirWaybillExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitAirWaybillExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -253,6 +628,7 @@ type SubmitBillOfLadingExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitBillOfLadingExtractJobRequest) String() string {
@@ -278,10 +654,16 @@ func (s *SubmitBillOfLadingExtractJobRequest) SetFileUrl(v string) *SubmitBillOf
 	return s
 }
 
+func (s *SubmitBillOfLadingExtractJobRequest) SetParserConfigId(v int32) *SubmitBillOfLadingExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitBillOfLadingExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitBillOfLadingExtractJobAdvanceRequest) String() string {
@@ -304,6 +686,11 @@ func (s *SubmitBillOfLadingExtractJobAdvanceRequest) SetFileNameExtension(v stri
 
 func (s *SubmitBillOfLadingExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitBillOfLadingExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitBillOfLadingExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitBillOfLadingExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -392,6 +779,7 @@ type SubmitBookingNoteExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitBookingNoteExtractJobRequest) String() string {
@@ -417,10 +805,16 @@ func (s *SubmitBookingNoteExtractJobRequest) SetFileUrl(v string) *SubmitBooking
 	return s
 }
 
+func (s *SubmitBookingNoteExtractJobRequest) SetParserConfigId(v int32) *SubmitBookingNoteExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitBookingNoteExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitBookingNoteExtractJobAdvanceRequest) String() string {
@@ -443,6 +837,11 @@ func (s *SubmitBookingNoteExtractJobAdvanceRequest) SetFileNameExtension(v strin
 
 func (s *SubmitBookingNoteExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitBookingNoteExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitBookingNoteExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitBookingNoteExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -531,6 +930,7 @@ type SubmitCertificateOfOriginExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitCertificateOfOriginExtractJobRequest) String() string {
@@ -556,10 +956,16 @@ func (s *SubmitCertificateOfOriginExtractJobRequest) SetFileUrl(v string) *Submi
 	return s
 }
 
+func (s *SubmitCertificateOfOriginExtractJobRequest) SetParserConfigId(v int32) *SubmitCertificateOfOriginExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitCertificateOfOriginExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitCertificateOfOriginExtractJobAdvanceRequest) String() string {
@@ -582,6 +988,11 @@ func (s *SubmitCertificateOfOriginExtractJobAdvanceRequest) SetFileNameExtension
 
 func (s *SubmitCertificateOfOriginExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitCertificateOfOriginExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitCertificateOfOriginExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitCertificateOfOriginExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -670,6 +1081,7 @@ type SubmitContainerLoadPlanExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitContainerLoadPlanExtractJobRequest) String() string {
@@ -695,10 +1107,16 @@ func (s *SubmitContainerLoadPlanExtractJobRequest) SetFileUrl(v string) *SubmitC
 	return s
 }
 
+func (s *SubmitContainerLoadPlanExtractJobRequest) SetParserConfigId(v int32) *SubmitContainerLoadPlanExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitContainerLoadPlanExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitContainerLoadPlanExtractJobAdvanceRequest) String() string {
@@ -721,6 +1139,11 @@ func (s *SubmitContainerLoadPlanExtractJobAdvanceRequest) SetFileNameExtension(v
 
 func (s *SubmitContainerLoadPlanExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitContainerLoadPlanExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitContainerLoadPlanExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitContainerLoadPlanExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -809,6 +1232,7 @@ type SubmitExportDeclarationSheetExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitExportDeclarationSheetExtractJobRequest) String() string {
@@ -834,10 +1258,16 @@ func (s *SubmitExportDeclarationSheetExtractJobRequest) SetFileUrl(v string) *Su
 	return s
 }
 
+func (s *SubmitExportDeclarationSheetExtractJobRequest) SetParserConfigId(v int32) *SubmitExportDeclarationSheetExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitExportDeclarationSheetExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitExportDeclarationSheetExtractJobAdvanceRequest) String() string {
@@ -860,6 +1290,11 @@ func (s *SubmitExportDeclarationSheetExtractJobAdvanceRequest) SetFileNameExtens
 
 func (s *SubmitExportDeclarationSheetExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitExportDeclarationSheetExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitExportDeclarationSheetExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitExportDeclarationSheetExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -948,6 +1383,7 @@ type SubmitImportDeclarationSheetExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitImportDeclarationSheetExtractJobRequest) String() string {
@@ -973,10 +1409,16 @@ func (s *SubmitImportDeclarationSheetExtractJobRequest) SetFileUrl(v string) *Su
 	return s
 }
 
+func (s *SubmitImportDeclarationSheetExtractJobRequest) SetParserConfigId(v int32) *SubmitImportDeclarationSheetExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitImportDeclarationSheetExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitImportDeclarationSheetExtractJobAdvanceRequest) String() string {
@@ -999,6 +1441,11 @@ func (s *SubmitImportDeclarationSheetExtractJobAdvanceRequest) SetFileNameExtens
 
 func (s *SubmitImportDeclarationSheetExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitImportDeclarationSheetExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitImportDeclarationSheetExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitImportDeclarationSheetExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -1087,6 +1534,7 @@ type SubmitInvoiceExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitInvoiceExtractJobRequest) String() string {
@@ -1112,10 +1560,16 @@ func (s *SubmitInvoiceExtractJobRequest) SetFileUrl(v string) *SubmitInvoiceExtr
 	return s
 }
 
+func (s *SubmitInvoiceExtractJobRequest) SetParserConfigId(v int32) *SubmitInvoiceExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitInvoiceExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitInvoiceExtractJobAdvanceRequest) String() string {
@@ -1138,6 +1592,11 @@ func (s *SubmitInvoiceExtractJobAdvanceRequest) SetFileNameExtension(v string) *
 
 func (s *SubmitInvoiceExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitInvoiceExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitInvoiceExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitInvoiceExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -1226,6 +1685,7 @@ type SubmitPackingListExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitPackingListExtractJobRequest) String() string {
@@ -1251,10 +1711,16 @@ func (s *SubmitPackingListExtractJobRequest) SetFileUrl(v string) *SubmitPacking
 	return s
 }
 
+func (s *SubmitPackingListExtractJobRequest) SetParserConfigId(v int32) *SubmitPackingListExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitPackingListExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitPackingListExtractJobAdvanceRequest) String() string {
@@ -1277,6 +1743,11 @@ func (s *SubmitPackingListExtractJobAdvanceRequest) SetFileNameExtension(v strin
 
 func (s *SubmitPackingListExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitPackingListExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitPackingListExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitPackingListExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -1365,6 +1836,7 @@ type SubmitSalesConfirmationExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitSalesConfirmationExtractJobRequest) String() string {
@@ -1390,10 +1862,16 @@ func (s *SubmitSalesConfirmationExtractJobRequest) SetFileUrl(v string) *SubmitS
 	return s
 }
 
+func (s *SubmitSalesConfirmationExtractJobRequest) SetParserConfigId(v int32) *SubmitSalesConfirmationExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitSalesConfirmationExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitSalesConfirmationExtractJobAdvanceRequest) String() string {
@@ -1416,6 +1894,11 @@ func (s *SubmitSalesConfirmationExtractJobAdvanceRequest) SetFileNameExtension(v
 
 func (s *SubmitSalesConfirmationExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitSalesConfirmationExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitSalesConfirmationExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitSalesConfirmationExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -1504,6 +1987,7 @@ type SubmitSeaWaybillExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32  `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitSeaWaybillExtractJobRequest) String() string {
@@ -1529,10 +2013,16 @@ func (s *SubmitSeaWaybillExtractJobRequest) SetFileUrl(v string) *SubmitSeaWaybi
 	return s
 }
 
+func (s *SubmitSeaWaybillExtractJobRequest) SetParserConfigId(v int32) *SubmitSeaWaybillExtractJobRequest {
+	s.ParserConfigId = &v
+	return s
+}
+
 type SubmitSeaWaybillExtractJobAdvanceRequest struct {
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ParserConfigId    *int32    `json:"ParserConfigId,omitempty" xml:"ParserConfigId,omitempty"`
 }
 
 func (s SubmitSeaWaybillExtractJobAdvanceRequest) String() string {
@@ -1555,6 +2045,11 @@ func (s *SubmitSeaWaybillExtractJobAdvanceRequest) SetFileNameExtension(v string
 
 func (s *SubmitSeaWaybillExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitSeaWaybillExtractJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitSeaWaybillExtractJobAdvanceRequest) SetParserConfigId(v int32) *SubmitSeaWaybillExtractJobAdvanceRequest {
+	s.ParserConfigId = &v
 	return s
 }
 
@@ -1635,6 +2130,192 @@ func (s *SubmitSeaWaybillExtractJobResponse) SetStatusCode(v int32) *SubmitSeaWa
 }
 
 func (s *SubmitSeaWaybillExtractJobResponse) SetBody(v *SubmitSeaWaybillExtractJobResponseBody) *SubmitSeaWaybillExtractJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitTradeDocumentPackageExtractJobRequest struct {
+	CustomExtractionRange []*string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty" type:"Repeated"`
+	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileNameExtension     *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	FileUrl               *string   `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitTradeDocumentPackageExtractJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTradeDocumentPackageExtractJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobRequest) SetCustomExtractionRange(v []*string) *SubmitTradeDocumentPackageExtractJobRequest {
+	s.CustomExtractionRange = v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobRequest) SetFileName(v string) *SubmitTradeDocumentPackageExtractJobRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobRequest) SetFileNameExtension(v string) *SubmitTradeDocumentPackageExtractJobRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobRequest) SetFileUrl(v string) *SubmitTradeDocumentPackageExtractJobRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type SubmitTradeDocumentPackageExtractJobAdvanceRequest struct {
+	CustomExtractionRange []*string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty" type:"Repeated"`
+	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileNameExtension     *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitTradeDocumentPackageExtractJobAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTradeDocumentPackageExtractJobAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobAdvanceRequest) SetCustomExtractionRange(v []*string) *SubmitTradeDocumentPackageExtractJobAdvanceRequest {
+	s.CustomExtractionRange = v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobAdvanceRequest) SetFileName(v string) *SubmitTradeDocumentPackageExtractJobAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobAdvanceRequest) SetFileNameExtension(v string) *SubmitTradeDocumentPackageExtractJobAdvanceRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitTradeDocumentPackageExtractJobAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+type SubmitTradeDocumentPackageExtractJobShrinkRequest struct {
+	CustomExtractionRangeShrink *string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty"`
+	FileName                    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileNameExtension           *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	FileUrl                     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitTradeDocumentPackageExtractJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTradeDocumentPackageExtractJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobShrinkRequest) SetCustomExtractionRangeShrink(v string) *SubmitTradeDocumentPackageExtractJobShrinkRequest {
+	s.CustomExtractionRangeShrink = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobShrinkRequest) SetFileName(v string) *SubmitTradeDocumentPackageExtractJobShrinkRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobShrinkRequest) SetFileNameExtension(v string) *SubmitTradeDocumentPackageExtractJobShrinkRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobShrinkRequest) SetFileUrl(v string) *SubmitTradeDocumentPackageExtractJobShrinkRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type SubmitTradeDocumentPackageExtractJobResponseBody struct {
+	Code      *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SubmitTradeDocumentPackageExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitTradeDocumentPackageExtractJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTradeDocumentPackageExtractJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponseBody) SetCode(v string) *SubmitTradeDocumentPackageExtractJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponseBody) SetData(v *SubmitTradeDocumentPackageExtractJobResponseBodyData) *SubmitTradeDocumentPackageExtractJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponseBody) SetMessage(v string) *SubmitTradeDocumentPackageExtractJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponseBody) SetRequestId(v string) *SubmitTradeDocumentPackageExtractJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitTradeDocumentPackageExtractJobResponseBodyData struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitTradeDocumentPackageExtractJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTradeDocumentPackageExtractJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponseBodyData) SetId(v string) *SubmitTradeDocumentPackageExtractJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type SubmitTradeDocumentPackageExtractJobResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitTradeDocumentPackageExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitTradeDocumentPackageExtractJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTradeDocumentPackageExtractJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponse) SetHeaders(v map[string]*string) *SubmitTradeDocumentPackageExtractJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponse) SetStatusCode(v int32) *SubmitTradeDocumentPackageExtractJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitTradeDocumentPackageExtractJobResponse) SetBody(v *SubmitTradeDocumentPackageExtractJobResponseBody) *SubmitTradeDocumentPackageExtractJobResponse {
 	s.Body = v
 	return s
 }
@@ -1744,6 +2425,156 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ExtractFeedbackWithOptions(request *ExtractFeedbackRequest, runtime *util.RuntimeOptions) (_result *ExtractFeedbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeedbackUrl)) {
+		query["FeedbackUrl"] = request.FeedbackUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExtractFeedback"),
+		Version:     tea.String("2022-07-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExtractFeedbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExtractFeedback(request *ExtractFeedbackRequest) (_result *ExtractFeedbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExtractFeedbackResponse{}
+	_body, _err := client.ExtractFeedbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExtractFeedbackAdvance(request *ExtractFeedbackAdvanceRequest, runtime *util.RuntimeOptions) (_result *ExtractFeedbackResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("docmind-api"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	extractFeedbackReq := &ExtractFeedbackRequest{}
+	openapiutil.Convert(request, extractFeedbackReq)
+	if !tea.BoolValue(util.IsUnset(request.FeedbackUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FeedbackUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		extractFeedbackReq.FeedbackUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	extractFeedbackResp, _err := client.ExtractFeedbackWithOptions(extractFeedbackReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = extractFeedbackResp
+	return _result, _err
+}
+
 func (client *Client) GetSingleDocumentExtractResultWithOptions(request *GetSingleDocumentExtractResultRequest, runtime *util.RuntimeOptions) (_result *GetSingleDocumentExtractResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1788,6 +2619,104 @@ func (client *Client) GetSingleDocumentExtractResult(request *GetSingleDocumentE
 	return _result, _err
 }
 
+func (client *Client) ReClassifyTradeDocumentExtractWithOptions(tmpReq *ReClassifyTradeDocumentExtractRequest, runtime *util.RuntimeOptions) (_result *ReClassifyTradeDocumentExtractResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReClassifyTradeDocumentExtractShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PageUpdateInfoModels)) {
+		request.PageUpdateInfoModelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PageUpdateInfoModels, tea.String("PageUpdateInfoModels"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageUpdateInfoModelsShrink)) {
+		query["PageUpdateInfoModels"] = request.PageUpdateInfoModelsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReClassifyTradeDocumentExtract"),
+		Version:     tea.String("2022-07-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReClassifyTradeDocumentExtractResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReClassifyTradeDocumentExtract(request *ReClassifyTradeDocumentExtractRequest) (_result *ReClassifyTradeDocumentExtractResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReClassifyTradeDocumentExtractResponse{}
+	_body, _err := client.ReClassifyTradeDocumentExtractWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryTradeDocumentExtractWithOptions(request *RetryTradeDocumentExtractRequest, runtime *util.RuntimeOptions) (_result *RetryTradeDocumentExtractResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryTradeDocumentExtract"),
+		Version:     tea.String("2022-07-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryTradeDocumentExtractResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryTradeDocumentExtract(request *RetryTradeDocumentExtractRequest) (_result *RetryTradeDocumentExtractResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryTradeDocumentExtractResponse{}
+	_body, _err := client.RetryTradeDocumentExtractWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitAirWaybillExtractJobWithOptions(request *SubmitAirWaybillExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAirWaybillExtractJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1804,6 +2733,10 @@ func (client *Client) SubmitAirWaybillExtractJobWithOptions(request *SubmitAirWa
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -1964,6 +2897,10 @@ func (client *Client) SubmitBillOfLadingExtractJobWithOptions(request *SubmitBil
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2120,6 +3057,10 @@ func (client *Client) SubmitBookingNoteExtractJobWithOptions(request *SubmitBook
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2280,6 +3221,10 @@ func (client *Client) SubmitCertificateOfOriginExtractJobWithOptions(request *Su
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2436,6 +3381,10 @@ func (client *Client) SubmitContainerLoadPlanExtractJobWithOptions(request *Subm
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2596,6 +3545,10 @@ func (client *Client) SubmitExportDeclarationSheetExtractJobWithOptions(request 
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2752,6 +3705,10 @@ func (client *Client) SubmitImportDeclarationSheetExtractJobWithOptions(request 
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2912,6 +3869,10 @@ func (client *Client) SubmitInvoiceExtractJobWithOptions(request *SubmitInvoiceE
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3068,6 +4029,10 @@ func (client *Client) SubmitPackingListExtractJobWithOptions(request *SubmitPack
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3228,6 +4193,10 @@ func (client *Client) SubmitSalesConfirmationExtractJobWithOptions(request *Subm
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3386,6 +4355,10 @@ func (client *Client) SubmitSeaWaybillExtractJobWithOptions(request *SubmitSeaWa
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParserConfigId)) {
+		query["ParserConfigId"] = request.ParserConfigId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3523,5 +4496,173 @@ func (client *Client) SubmitSeaWaybillExtractJobAdvance(request *SubmitSeaWaybil
 	}
 
 	_result = submitSeaWaybillExtractJobResp
+	return _result, _err
+}
+
+func (client *Client) SubmitTradeDocumentPackageExtractJobWithOptions(tmpReq *SubmitTradeDocumentPackageExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitTradeDocumentPackageExtractJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitTradeDocumentPackageExtractJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomExtractionRange)) {
+		request.CustomExtractionRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomExtractionRange, tea.String("CustomExtractionRange"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomExtractionRangeShrink)) {
+		query["CustomExtractionRange"] = request.CustomExtractionRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+		query["FileNameExtension"] = request.FileNameExtension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitTradeDocumentPackageExtractJob"),
+		Version:     tea.String("2022-07-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitTradeDocumentPackageExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitTradeDocumentPackageExtractJob(request *SubmitTradeDocumentPackageExtractJobRequest) (_result *SubmitTradeDocumentPackageExtractJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitTradeDocumentPackageExtractJobResponse{}
+	_body, _err := client.SubmitTradeDocumentPackageExtractJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitTradeDocumentPackageExtractJobAdvance(request *SubmitTradeDocumentPackageExtractJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitTradeDocumentPackageExtractJobResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("docmind-api"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitTradeDocumentPackageExtractJobReq := &SubmitTradeDocumentPackageExtractJobRequest{}
+	openapiutil.Convert(request, submitTradeDocumentPackageExtractJobReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitTradeDocumentPackageExtractJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitTradeDocumentPackageExtractJobResp, _err := client.SubmitTradeDocumentPackageExtractJobWithOptions(submitTradeDocumentPackageExtractJobReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitTradeDocumentPackageExtractJobResp
 	return _result, _err
 }
