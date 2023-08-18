@@ -633,6 +633,116 @@ func (s *AddWebhookResponse) SetBody(v *AddWebhookResponseBody) *AddWebhookRespo
 	return s
 }
 
+type CloseMergeRequestRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CloseMergeRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseMergeRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseMergeRequestRequest) SetAccessToken(v string) *CloseMergeRequestRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CloseMergeRequestRequest) SetOrganizationId(v string) *CloseMergeRequestRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CloseMergeRequestResponseBody struct {
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CloseMergeRequestResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CloseMergeRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseMergeRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseMergeRequestResponseBody) SetErrorCode(v string) *CloseMergeRequestResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CloseMergeRequestResponseBody) SetErrorMessage(v string) *CloseMergeRequestResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CloseMergeRequestResponseBody) SetRequestId(v string) *CloseMergeRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloseMergeRequestResponseBody) SetResult(v *CloseMergeRequestResponseBodyResult) *CloseMergeRequestResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CloseMergeRequestResponseBody) SetSuccess(v bool) *CloseMergeRequestResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CloseMergeRequestResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s CloseMergeRequestResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseMergeRequestResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CloseMergeRequestResponseBodyResult) SetResult(v bool) *CloseMergeRequestResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type CloseMergeRequestResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CloseMergeRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloseMergeRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseMergeRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseMergeRequestResponse) SetHeaders(v map[string]*string) *CloseMergeRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseMergeRequestResponse) SetStatusCode(v int32) *CloseMergeRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloseMergeRequestResponse) SetBody(v *CloseMergeRequestResponseBody) *CloseMergeRequestResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBranchRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	BranchName     *string `json:"branchName,omitempty" xml:"branchName,omitempty"`
@@ -1465,6 +1575,455 @@ func (s *CreateHostGroupResponse) SetStatusCode(v int32) *CreateHostGroupRespons
 }
 
 func (s *CreateHostGroupResponse) SetBody(v *CreateHostGroupResponseBody) *CreateHostGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMergeRequestRequest struct {
+	AccessToken     *string   `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	CreateFrom      *string   `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
+	Description     *string   `json:"description,omitempty" xml:"description,omitempty"`
+	ReviewerIds     []*string `json:"reviewerIds,omitempty" xml:"reviewerIds,omitempty" type:"Repeated"`
+	SourceBranch    *string   `json:"sourceBranch,omitempty" xml:"sourceBranch,omitempty"`
+	SourceProjectId *int64    `json:"sourceProjectId,omitempty" xml:"sourceProjectId,omitempty"`
+	TargetBranch    *string   `json:"targetBranch,omitempty" xml:"targetBranch,omitempty"`
+	TargetProjectId *int64    `json:"targetProjectId,omitempty" xml:"targetProjectId,omitempty"`
+	Title           *string   `json:"title,omitempty" xml:"title,omitempty"`
+	WorkItemIds     *string   `json:"workItemIds,omitempty" xml:"workItemIds,omitempty"`
+	OrganizationId  *string   `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreateMergeRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMergeRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMergeRequestRequest) SetAccessToken(v string) *CreateMergeRequestRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetCreateFrom(v string) *CreateMergeRequestRequest {
+	s.CreateFrom = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetDescription(v string) *CreateMergeRequestRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetReviewerIds(v []*string) *CreateMergeRequestRequest {
+	s.ReviewerIds = v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetSourceBranch(v string) *CreateMergeRequestRequest {
+	s.SourceBranch = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetSourceProjectId(v int64) *CreateMergeRequestRequest {
+	s.SourceProjectId = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetTargetBranch(v string) *CreateMergeRequestRequest {
+	s.TargetBranch = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetTargetProjectId(v int64) *CreateMergeRequestRequest {
+	s.TargetProjectId = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetTitle(v string) *CreateMergeRequestRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetWorkItemIds(v string) *CreateMergeRequestRequest {
+	s.WorkItemIds = &v
+	return s
+}
+
+func (s *CreateMergeRequestRequest) SetOrganizationId(v string) *CreateMergeRequestRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreateMergeRequestResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateMergeRequestResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateMergeRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMergeRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMergeRequestResponseBody) SetErrorCode(v string) *CreateMergeRequestResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBody) SetErrorMessage(v string) *CreateMergeRequestResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBody) SetRequestId(v string) *CreateMergeRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBody) SetResult(v *CreateMergeRequestResponseBodyResult) *CreateMergeRequestResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBody) SetSuccess(v bool) *CreateMergeRequestResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateMergeRequestResponseBodyResult struct {
+	Ahead                       *int32                                             `json:"ahead,omitempty" xml:"ahead,omitempty"`
+	AllRequirementsPass         *bool                                              `json:"allRequirementsPass,omitempty" xml:"allRequirementsPass,omitempty"`
+	Author                      *CreateMergeRequestResponseBodyResultAuthor        `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	Behind                      *int32                                             `json:"behind,omitempty" xml:"behind,omitempty"`
+	CreateFrom                  *string                                            `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
+	CreateTime                  *string                                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description                 *string                                            `json:"description,omitempty" xml:"description,omitempty"`
+	DetailUrl                   *string                                            `json:"detailUrl,omitempty" xml:"detailUrl,omitempty"`
+	LocalId                     *int64                                             `json:"localId,omitempty" xml:"localId,omitempty"`
+	MrBizId                     *string                                            `json:"mrBizId,omitempty" xml:"mrBizId,omitempty"`
+	MrType                      *string                                            `json:"mrType,omitempty" xml:"mrType,omitempty"`
+	ProjectId                   *int64                                             `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Reviewers                   []*CreateMergeRequestResponseBodyResultReviewers   `json:"reviewers,omitempty" xml:"reviewers,omitempty" type:"Repeated"`
+	SourceBranch                *string                                            `json:"sourceBranch,omitempty" xml:"sourceBranch,omitempty"`
+	SourceProjectId             *int64                                             `json:"sourceProjectId,omitempty" xml:"sourceProjectId,omitempty"`
+	Status                      *string                                            `json:"status,omitempty" xml:"status,omitempty"`
+	Subscribers                 []*CreateMergeRequestResponseBodyResultSubscribers `json:"subscribers,omitempty" xml:"subscribers,omitempty" type:"Repeated"`
+	SupportMergeFastForwardOnly *bool                                              `json:"supportMergeFastForwardOnly,omitempty" xml:"supportMergeFastForwardOnly,omitempty"`
+	TargetBranch                *string                                            `json:"targetBranch,omitempty" xml:"targetBranch,omitempty"`
+	TargetProjectId             *int64                                             `json:"targetProjectId,omitempty" xml:"targetProjectId,omitempty"`
+	Title                       *string                                            `json:"title,omitempty" xml:"title,omitempty"`
+	UpdateTime                  *string                                            `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	WebUrl                      *string                                            `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s CreateMergeRequestResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMergeRequestResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetAhead(v int32) *CreateMergeRequestResponseBodyResult {
+	s.Ahead = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetAllRequirementsPass(v bool) *CreateMergeRequestResponseBodyResult {
+	s.AllRequirementsPass = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetAuthor(v *CreateMergeRequestResponseBodyResultAuthor) *CreateMergeRequestResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetBehind(v int32) *CreateMergeRequestResponseBodyResult {
+	s.Behind = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetCreateFrom(v string) *CreateMergeRequestResponseBodyResult {
+	s.CreateFrom = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetCreateTime(v string) *CreateMergeRequestResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetDescription(v string) *CreateMergeRequestResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetDetailUrl(v string) *CreateMergeRequestResponseBodyResult {
+	s.DetailUrl = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetLocalId(v int64) *CreateMergeRequestResponseBodyResult {
+	s.LocalId = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetMrBizId(v string) *CreateMergeRequestResponseBodyResult {
+	s.MrBizId = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetMrType(v string) *CreateMergeRequestResponseBodyResult {
+	s.MrType = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetProjectId(v int64) *CreateMergeRequestResponseBodyResult {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetReviewers(v []*CreateMergeRequestResponseBodyResultReviewers) *CreateMergeRequestResponseBodyResult {
+	s.Reviewers = v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetSourceBranch(v string) *CreateMergeRequestResponseBodyResult {
+	s.SourceBranch = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetSourceProjectId(v int64) *CreateMergeRequestResponseBodyResult {
+	s.SourceProjectId = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetStatus(v string) *CreateMergeRequestResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetSubscribers(v []*CreateMergeRequestResponseBodyResultSubscribers) *CreateMergeRequestResponseBodyResult {
+	s.Subscribers = v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetSupportMergeFastForwardOnly(v bool) *CreateMergeRequestResponseBodyResult {
+	s.SupportMergeFastForwardOnly = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetTargetBranch(v string) *CreateMergeRequestResponseBodyResult {
+	s.TargetBranch = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetTargetProjectId(v int64) *CreateMergeRequestResponseBodyResult {
+	s.TargetProjectId = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetTitle(v string) *CreateMergeRequestResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetUpdateTime(v string) *CreateMergeRequestResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResult) SetWebUrl(v string) *CreateMergeRequestResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type CreateMergeRequestResponseBodyResultAuthor struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateMergeRequestResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMergeRequestResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMergeRequestResponseBodyResultAuthor) SetAvatarUrl(v string) *CreateMergeRequestResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultAuthor) SetEmail(v string) *CreateMergeRequestResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultAuthor) SetId(v int64) *CreateMergeRequestResponseBodyResultAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultAuthor) SetName(v string) *CreateMergeRequestResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultAuthor) SetState(v string) *CreateMergeRequestResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultAuthor) SetUsername(v string) *CreateMergeRequestResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+type CreateMergeRequestResponseBodyResultReviewers struct {
+	AvatarUrl           *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email               *string `json:"email,omitempty" xml:"email,omitempty"`
+	HasReviewed         *bool   `json:"hasReviewed,omitempty" xml:"hasReviewed,omitempty"`
+	Id                  *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
+	ReviewOpinionStatus *string `json:"reviewOpinionStatus,omitempty" xml:"reviewOpinionStatus,omitempty"`
+	State               *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username            *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateMergeRequestResponseBodyResultReviewers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMergeRequestResponseBodyResultReviewers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetAvatarUrl(v string) *CreateMergeRequestResponseBodyResultReviewers {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetEmail(v string) *CreateMergeRequestResponseBodyResultReviewers {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetHasReviewed(v bool) *CreateMergeRequestResponseBodyResultReviewers {
+	s.HasReviewed = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetId(v int64) *CreateMergeRequestResponseBodyResultReviewers {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetName(v string) *CreateMergeRequestResponseBodyResultReviewers {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetReviewOpinionStatus(v string) *CreateMergeRequestResponseBodyResultReviewers {
+	s.ReviewOpinionStatus = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetState(v string) *CreateMergeRequestResponseBodyResultReviewers {
+	s.State = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultReviewers) SetUsername(v string) *CreateMergeRequestResponseBodyResultReviewers {
+	s.Username = &v
+	return s
+}
+
+type CreateMergeRequestResponseBodyResultSubscribers struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateMergeRequestResponseBodyResultSubscribers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMergeRequestResponseBodyResultSubscribers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMergeRequestResponseBodyResultSubscribers) SetAvatarUrl(v string) *CreateMergeRequestResponseBodyResultSubscribers {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultSubscribers) SetEmail(v string) *CreateMergeRequestResponseBodyResultSubscribers {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultSubscribers) SetId(v int64) *CreateMergeRequestResponseBodyResultSubscribers {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultSubscribers) SetName(v string) *CreateMergeRequestResponseBodyResultSubscribers {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultSubscribers) SetState(v string) *CreateMergeRequestResponseBodyResultSubscribers {
+	s.State = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponseBodyResultSubscribers) SetUsername(v string) *CreateMergeRequestResponseBodyResultSubscribers {
+	s.Username = &v
+	return s
+}
+
+type CreateMergeRequestResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMergeRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMergeRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMergeRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMergeRequestResponse) SetHeaders(v map[string]*string) *CreateMergeRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMergeRequestResponse) SetStatusCode(v int32) *CreateMergeRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMergeRequestResponse) SetBody(v *CreateMergeRequestResponseBody) *CreateMergeRequestResponse {
 	s.Body = v
 	return s
 }
@@ -10987,6 +11546,459 @@ func (s *GetHostGroupResponse) SetBody(v *GetHostGroupResponseBody) *GetHostGrou
 	return s
 }
 
+type GetMergeRequestRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetMergeRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestRequest) SetAccessToken(v string) *GetMergeRequestRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetMergeRequestRequest) SetOrganizationId(v string) *GetMergeRequestRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetMergeRequestResponseBody struct {
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetMergeRequestResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetMergeRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponseBody) SetErrorCode(v string) *GetMergeRequestResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBody) SetErrorMessage(v string) *GetMergeRequestResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBody) SetRequestId(v string) *GetMergeRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBody) SetResult(v *GetMergeRequestResponseBodyResult) *GetMergeRequestResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetMergeRequestResponseBody) SetSuccess(v bool) *GetMergeRequestResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMergeRequestResponseBodyResult struct {
+	Ahead                          *int32                                          `json:"ahead,omitempty" xml:"ahead,omitempty"`
+	AllRequirementsPass            *bool                                           `json:"allRequirementsPass,omitempty" xml:"allRequirementsPass,omitempty"`
+	Author                         *GetMergeRequestResponseBodyResultAuthor        `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	Behind                         *int32                                          `json:"behind,omitempty" xml:"behind,omitempty"`
+	CreateFrom                     *string                                         `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
+	CreateTime                     *string                                         `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description                    *string                                         `json:"description,omitempty" xml:"description,omitempty"`
+	DetailUrl                      *string                                         `json:"detailUrl,omitempty" xml:"detailUrl,omitempty"`
+	LocalId                        *int64                                          `json:"localId,omitempty" xml:"localId,omitempty"`
+	MrBizId                        *string                                         `json:"mrBizId,omitempty" xml:"mrBizId,omitempty"`
+	MrType                         *string                                         `json:"mrType,omitempty" xml:"mrType,omitempty"`
+	ProjectId                      *int64                                          `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Reviewers                      []*GetMergeRequestResponseBodyResultReviewers   `json:"reviewers,omitempty" xml:"reviewers,omitempty" type:"Repeated"`
+	SourceBranch                   *string                                         `json:"sourceBranch,omitempty" xml:"sourceBranch,omitempty"`
+	SourceProjectId                *int64                                          `json:"sourceProjectId,omitempty" xml:"sourceProjectId,omitempty"`
+	Status                         *string                                         `json:"status,omitempty" xml:"status,omitempty"`
+	Subscribers                    []*GetMergeRequestResponseBodyResultSubscribers `json:"subscribers,omitempty" xml:"subscribers,omitempty" type:"Repeated"`
+	SupportMergeFastForwardOnly    *bool                                           `json:"supportMergeFastForwardOnly,omitempty" xml:"supportMergeFastForwardOnly,omitempty"`
+	TargetBranch                   *string                                         `json:"targetBranch,omitempty" xml:"targetBranch,omitempty"`
+	TargetProjectId                *int64                                          `json:"targetProjectId,omitempty" xml:"targetProjectId,omitempty"`
+	TargetProjectNameWithNamespace *string                                         `json:"targetProjectNameWithNamespace,omitempty" xml:"targetProjectNameWithNamespace,omitempty"`
+	TargetProjectPathWithNamespace *string                                         `json:"targetProjectPathWithNamespace,omitempty" xml:"targetProjectPathWithNamespace,omitempty"`
+	Title                          *string                                         `json:"title,omitempty" xml:"title,omitempty"`
+	TodoList                       *GetMergeRequestResponseBodyResultTodoList      `json:"todoList,omitempty" xml:"todoList,omitempty" type:"Struct"`
+	UpdateTime                     *string                                         `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	WebUrl                         *string                                         `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s GetMergeRequestResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetAhead(v int32) *GetMergeRequestResponseBodyResult {
+	s.Ahead = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetAllRequirementsPass(v bool) *GetMergeRequestResponseBodyResult {
+	s.AllRequirementsPass = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetAuthor(v *GetMergeRequestResponseBodyResultAuthor) *GetMergeRequestResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetBehind(v int32) *GetMergeRequestResponseBodyResult {
+	s.Behind = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetCreateFrom(v string) *GetMergeRequestResponseBodyResult {
+	s.CreateFrom = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetCreateTime(v string) *GetMergeRequestResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetDescription(v string) *GetMergeRequestResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetDetailUrl(v string) *GetMergeRequestResponseBodyResult {
+	s.DetailUrl = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetLocalId(v int64) *GetMergeRequestResponseBodyResult {
+	s.LocalId = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetMrBizId(v string) *GetMergeRequestResponseBodyResult {
+	s.MrBizId = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetMrType(v string) *GetMergeRequestResponseBodyResult {
+	s.MrType = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetProjectId(v int64) *GetMergeRequestResponseBodyResult {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetReviewers(v []*GetMergeRequestResponseBodyResultReviewers) *GetMergeRequestResponseBodyResult {
+	s.Reviewers = v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetSourceBranch(v string) *GetMergeRequestResponseBodyResult {
+	s.SourceBranch = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetSourceProjectId(v int64) *GetMergeRequestResponseBodyResult {
+	s.SourceProjectId = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetStatus(v string) *GetMergeRequestResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetSubscribers(v []*GetMergeRequestResponseBodyResultSubscribers) *GetMergeRequestResponseBodyResult {
+	s.Subscribers = v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetSupportMergeFastForwardOnly(v bool) *GetMergeRequestResponseBodyResult {
+	s.SupportMergeFastForwardOnly = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetTargetBranch(v string) *GetMergeRequestResponseBodyResult {
+	s.TargetBranch = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetTargetProjectId(v int64) *GetMergeRequestResponseBodyResult {
+	s.TargetProjectId = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetTargetProjectNameWithNamespace(v string) *GetMergeRequestResponseBodyResult {
+	s.TargetProjectNameWithNamespace = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetTargetProjectPathWithNamespace(v string) *GetMergeRequestResponseBodyResult {
+	s.TargetProjectPathWithNamespace = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetTitle(v string) *GetMergeRequestResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetTodoList(v *GetMergeRequestResponseBodyResultTodoList) *GetMergeRequestResponseBodyResult {
+	s.TodoList = v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetUpdateTime(v string) *GetMergeRequestResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResult) SetWebUrl(v string) *GetMergeRequestResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type GetMergeRequestResponseBodyResultAuthor struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s GetMergeRequestResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponseBodyResultAuthor) SetAvatarUrl(v string) *GetMergeRequestResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultAuthor) SetEmail(v string) *GetMergeRequestResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultAuthor) SetId(v int64) *GetMergeRequestResponseBodyResultAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultAuthor) SetName(v string) *GetMergeRequestResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultAuthor) SetState(v string) *GetMergeRequestResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultAuthor) SetUsername(v string) *GetMergeRequestResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+type GetMergeRequestResponseBodyResultReviewers struct {
+	AvatarUrl           *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email               *string `json:"email,omitempty" xml:"email,omitempty"`
+	HasReviewed         *bool   `json:"hasReviewed,omitempty" xml:"hasReviewed,omitempty"`
+	Id                  *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
+	ReviewOpinionStatus *string `json:"reviewOpinionStatus,omitempty" xml:"reviewOpinionStatus,omitempty"`
+	State               *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username            *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s GetMergeRequestResponseBodyResultReviewers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponseBodyResultReviewers) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetAvatarUrl(v string) *GetMergeRequestResponseBodyResultReviewers {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetEmail(v string) *GetMergeRequestResponseBodyResultReviewers {
+	s.Email = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetHasReviewed(v bool) *GetMergeRequestResponseBodyResultReviewers {
+	s.HasReviewed = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetId(v int64) *GetMergeRequestResponseBodyResultReviewers {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetName(v string) *GetMergeRequestResponseBodyResultReviewers {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetReviewOpinionStatus(v string) *GetMergeRequestResponseBodyResultReviewers {
+	s.ReviewOpinionStatus = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetState(v string) *GetMergeRequestResponseBodyResultReviewers {
+	s.State = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultReviewers) SetUsername(v string) *GetMergeRequestResponseBodyResultReviewers {
+	s.Username = &v
+	return s
+}
+
+type GetMergeRequestResponseBodyResultSubscribers struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s GetMergeRequestResponseBodyResultSubscribers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponseBodyResultSubscribers) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponseBodyResultSubscribers) SetAvatarUrl(v string) *GetMergeRequestResponseBodyResultSubscribers {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultSubscribers) SetEmail(v string) *GetMergeRequestResponseBodyResultSubscribers {
+	s.Email = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultSubscribers) SetId(v int64) *GetMergeRequestResponseBodyResultSubscribers {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultSubscribers) SetName(v string) *GetMergeRequestResponseBodyResultSubscribers {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultSubscribers) SetState(v string) *GetMergeRequestResponseBodyResultSubscribers {
+	s.State = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultSubscribers) SetUsername(v string) *GetMergeRequestResponseBodyResultSubscribers {
+	s.Username = &v
+	return s
+}
+
+type GetMergeRequestResponseBodyResultTodoList struct {
+	RequirementCheckItems []*GetMergeRequestResponseBodyResultTodoListRequirementCheckItems `json:"requirementCheckItems,omitempty" xml:"requirementCheckItems,omitempty" type:"Repeated"`
+}
+
+func (s GetMergeRequestResponseBodyResultTodoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponseBodyResultTodoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponseBodyResultTodoList) SetRequirementCheckItems(v []*GetMergeRequestResponseBodyResultTodoListRequirementCheckItems) *GetMergeRequestResponseBodyResultTodoList {
+	s.RequirementCheckItems = v
+	return s
+}
+
+type GetMergeRequestResponseBodyResultTodoListRequirementCheckItems struct {
+	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
+	Pass     *bool   `json:"pass,omitempty" xml:"pass,omitempty"`
+}
+
+func (s GetMergeRequestResponseBodyResultTodoListRequirementCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponseBodyResultTodoListRequirementCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponseBodyResultTodoListRequirementCheckItems) SetItemType(v string) *GetMergeRequestResponseBodyResultTodoListRequirementCheckItems {
+	s.ItemType = &v
+	return s
+}
+
+func (s *GetMergeRequestResponseBodyResultTodoListRequirementCheckItems) SetPass(v bool) *GetMergeRequestResponseBodyResultTodoListRequirementCheckItems {
+	s.Pass = &v
+	return s
+}
+
+type GetMergeRequestResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMergeRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMergeRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestResponse) SetHeaders(v map[string]*string) *GetMergeRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMergeRequestResponse) SetStatusCode(v int32) *GetMergeRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMergeRequestResponse) SetBody(v *GetMergeRequestResponseBody) *GetMergeRequestResponse {
+	s.Body = v
+	return s
+}
+
 type GetOrganizationMemberResponseBody struct {
 	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -17423,6 +18435,498 @@ func (s *ListHostGroupsResponse) SetStatusCode(v int32) *ListHostGroupsResponse 
 }
 
 func (s *ListHostGroupsResponse) SetBody(v *ListHostGroupsResponseBody) *ListHostGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMergeRequestsRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AuthorIds      *string `json:"authorIds,omitempty" xml:"authorIds,omitempty"`
+	Filter         *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	GroupIds       *string `json:"groupIds,omitempty" xml:"groupIds,omitempty"`
+	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ProjectIds     *string `json:"projectIds,omitempty" xml:"projectIds,omitempty"`
+	ReviewerIds    *string `json:"reviewerIds,omitempty" xml:"reviewerIds,omitempty"`
+	Search         *string `json:"search,omitempty" xml:"search,omitempty"`
+	Sort           *string `json:"sort,omitempty" xml:"sort,omitempty"`
+	State          *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListMergeRequestsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsRequest) SetAccessToken(v string) *ListMergeRequestsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetAuthorIds(v string) *ListMergeRequestsRequest {
+	s.AuthorIds = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetFilter(v string) *ListMergeRequestsRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetGroupIds(v string) *ListMergeRequestsRequest {
+	s.GroupIds = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetOrderBy(v string) *ListMergeRequestsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetOrganizationId(v string) *ListMergeRequestsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetPage(v int64) *ListMergeRequestsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetPageSize(v int64) *ListMergeRequestsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetProjectIds(v string) *ListMergeRequestsRequest {
+	s.ProjectIds = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetReviewerIds(v string) *ListMergeRequestsRequest {
+	s.ReviewerIds = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetSearch(v string) *ListMergeRequestsRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetSort(v string) *ListMergeRequestsRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListMergeRequestsRequest) SetState(v string) *ListMergeRequestsRequest {
+	s.State = &v
+	return s
+}
+
+type ListMergeRequestsResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Id of the request
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListMergeRequestsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	Total     *int64                                 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListMergeRequestsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsResponseBody) SetErrorCode(v string) *ListMergeRequestsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBody) SetErrorMessage(v string) *ListMergeRequestsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBody) SetRequestId(v string) *ListMergeRequestsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBody) SetResult(v []*ListMergeRequestsResponseBodyResult) *ListMergeRequestsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBody) SetSuccess(v bool) *ListMergeRequestsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBody) SetTotal(v int64) *ListMergeRequestsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMergeRequestsResponseBodyResult struct {
+	Author                    *ListMergeRequestsResponseBodyResultAuthor        `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	CreatedAt                 *string                                           `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreationMethod            *string                                           `json:"creationMethod,omitempty" xml:"creationMethod,omitempty"`
+	Description               *string                                           `json:"description,omitempty" xml:"description,omitempty"`
+	DetailUrl                 *string                                           `json:"detailUrl,omitempty" xml:"detailUrl,omitempty"`
+	Id                        *int64                                            `json:"id,omitempty" xml:"id,omitempty"`
+	Iid                       *int64                                            `json:"iid,omitempty" xml:"iid,omitempty"`
+	LocalId                   *int64                                            `json:"localId,omitempty" xml:"localId,omitempty"`
+	MrBizId                   *string                                           `json:"mrBizId,omitempty" xml:"mrBizId,omitempty"`
+	NameWithNamespace         *string                                           `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	NewMergeRequestIdentifier *bool                                             `json:"newMergeRequestIdentifier,omitempty" xml:"newMergeRequestIdentifier,omitempty"`
+	NewVersionState           *string                                           `json:"newVersionState,omitempty" xml:"newVersionState,omitempty"`
+	ProjectId                 *int64                                            `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Reviewers                 []*ListMergeRequestsResponseBodyResultReviewers   `json:"reviewers,omitempty" xml:"reviewers,omitempty" type:"Repeated"`
+	SourceBranch              *string                                           `json:"sourceBranch,omitempty" xml:"sourceBranch,omitempty"`
+	SourceProjectId           *int64                                            `json:"sourceProjectId,omitempty" xml:"sourceProjectId,omitempty"`
+	SourceType                *string                                           `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SshUrl                    *string                                           `json:"sshUrl,omitempty" xml:"sshUrl,omitempty"`
+	State                     *string                                           `json:"state,omitempty" xml:"state,omitempty"`
+	Subscribers               []*ListMergeRequestsResponseBodyResultSubscribers `json:"subscribers,omitempty" xml:"subscribers,omitempty" type:"Repeated"`
+	SupportMergeFFOnly        *bool                                             `json:"supportMergeFFOnly,omitempty" xml:"supportMergeFFOnly,omitempty"`
+	TargetBranch              *string                                           `json:"targetBranch,omitempty" xml:"targetBranch,omitempty"`
+	TargetProjectId           *int64                                            `json:"targetProjectId,omitempty" xml:"targetProjectId,omitempty"`
+	TargetType                *string                                           `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	Title                     *string                                           `json:"title,omitempty" xml:"title,omitempty"`
+	UpdatedAt                 *string                                           `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	WebUrl                    *string                                           `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+	WorkInProgress            *bool                                             `json:"workInProgress,omitempty" xml:"workInProgress,omitempty"`
+}
+
+func (s ListMergeRequestsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetAuthor(v *ListMergeRequestsResponseBodyResultAuthor) *ListMergeRequestsResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetCreatedAt(v string) *ListMergeRequestsResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetCreationMethod(v string) *ListMergeRequestsResponseBodyResult {
+	s.CreationMethod = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetDescription(v string) *ListMergeRequestsResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetDetailUrl(v string) *ListMergeRequestsResponseBodyResult {
+	s.DetailUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetId(v int64) *ListMergeRequestsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetIid(v int64) *ListMergeRequestsResponseBodyResult {
+	s.Iid = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetLocalId(v int64) *ListMergeRequestsResponseBodyResult {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetMrBizId(v string) *ListMergeRequestsResponseBodyResult {
+	s.MrBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetNameWithNamespace(v string) *ListMergeRequestsResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetNewMergeRequestIdentifier(v bool) *ListMergeRequestsResponseBodyResult {
+	s.NewMergeRequestIdentifier = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetNewVersionState(v string) *ListMergeRequestsResponseBodyResult {
+	s.NewVersionState = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetProjectId(v int64) *ListMergeRequestsResponseBodyResult {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetReviewers(v []*ListMergeRequestsResponseBodyResultReviewers) *ListMergeRequestsResponseBodyResult {
+	s.Reviewers = v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetSourceBranch(v string) *ListMergeRequestsResponseBodyResult {
+	s.SourceBranch = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetSourceProjectId(v int64) *ListMergeRequestsResponseBodyResult {
+	s.SourceProjectId = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetSourceType(v string) *ListMergeRequestsResponseBodyResult {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetSshUrl(v string) *ListMergeRequestsResponseBodyResult {
+	s.SshUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetState(v string) *ListMergeRequestsResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetSubscribers(v []*ListMergeRequestsResponseBodyResultSubscribers) *ListMergeRequestsResponseBodyResult {
+	s.Subscribers = v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetSupportMergeFFOnly(v bool) *ListMergeRequestsResponseBodyResult {
+	s.SupportMergeFFOnly = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetTargetBranch(v string) *ListMergeRequestsResponseBodyResult {
+	s.TargetBranch = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetTargetProjectId(v int64) *ListMergeRequestsResponseBodyResult {
+	s.TargetProjectId = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetTargetType(v string) *ListMergeRequestsResponseBodyResult {
+	s.TargetType = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetTitle(v string) *ListMergeRequestsResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetUpdatedAt(v string) *ListMergeRequestsResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetWebUrl(v string) *ListMergeRequestsResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResult) SetWorkInProgress(v bool) *ListMergeRequestsResponseBodyResult {
+	s.WorkInProgress = &v
+	return s
+}
+
+type ListMergeRequestsResponseBodyResultAuthor struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListMergeRequestsResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsResponseBodyResultAuthor) SetAvatarUrl(v string) *ListMergeRequestsResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultAuthor) SetEmail(v string) *ListMergeRequestsResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultAuthor) SetId(v int64) *ListMergeRequestsResponseBodyResultAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultAuthor) SetName(v string) *ListMergeRequestsResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultAuthor) SetState(v string) *ListMergeRequestsResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultAuthor) SetUsername(v string) *ListMergeRequestsResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+type ListMergeRequestsResponseBodyResultReviewers struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListMergeRequestsResponseBodyResultReviewers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsResponseBodyResultReviewers) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetAvatarUrl(v string) *ListMergeRequestsResponseBodyResultReviewers {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetEmail(v string) *ListMergeRequestsResponseBodyResultReviewers {
+	s.Email = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetId(v int64) *ListMergeRequestsResponseBodyResultReviewers {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetName(v string) *ListMergeRequestsResponseBodyResultReviewers {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetState(v string) *ListMergeRequestsResponseBodyResultReviewers {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetStatus(v string) *ListMergeRequestsResponseBodyResultReviewers {
+	s.Status = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultReviewers) SetUsername(v string) *ListMergeRequestsResponseBodyResultReviewers {
+	s.Username = &v
+	return s
+}
+
+type ListMergeRequestsResponseBodyResultSubscribers struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListMergeRequestsResponseBodyResultSubscribers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsResponseBodyResultSubscribers) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsResponseBodyResultSubscribers) SetAvatarUrl(v string) *ListMergeRequestsResponseBodyResultSubscribers {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultSubscribers) SetEmail(v string) *ListMergeRequestsResponseBodyResultSubscribers {
+	s.Email = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultSubscribers) SetId(v int64) *ListMergeRequestsResponseBodyResultSubscribers {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultSubscribers) SetName(v string) *ListMergeRequestsResponseBodyResultSubscribers {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultSubscribers) SetState(v string) *ListMergeRequestsResponseBodyResultSubscribers {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponseBodyResultSubscribers) SetUsername(v string) *ListMergeRequestsResponseBodyResultSubscribers {
+	s.Username = &v
+	return s
+}
+
+type ListMergeRequestsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMergeRequestsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMergeRequestsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestsResponse) SetHeaders(v map[string]*string) *ListMergeRequestsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMergeRequestsResponse) SetStatusCode(v int32) *ListMergeRequestsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMergeRequestsResponse) SetBody(v *ListMergeRequestsResponseBody) *ListMergeRequestsResponse {
 	s.Body = v
 	return s
 }
@@ -26708,6 +28212,134 @@ func (s *LogVMDeployMachineResponse) SetBody(v *LogVMDeployMachineResponseBody) 
 	return s
 }
 
+type MergeMergeRequestRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	MergeMessage       *string `json:"mergeMessage,omitempty" xml:"mergeMessage,omitempty"`
+	MergeType          *string `json:"mergeType,omitempty" xml:"mergeType,omitempty"`
+	RemoveSourceBranch *bool   `json:"removeSourceBranch,omitempty" xml:"removeSourceBranch,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s MergeMergeRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeMergeRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MergeMergeRequestRequest) SetAccessToken(v string) *MergeMergeRequestRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *MergeMergeRequestRequest) SetMergeMessage(v string) *MergeMergeRequestRequest {
+	s.MergeMessage = &v
+	return s
+}
+
+func (s *MergeMergeRequestRequest) SetMergeType(v string) *MergeMergeRequestRequest {
+	s.MergeType = &v
+	return s
+}
+
+func (s *MergeMergeRequestRequest) SetRemoveSourceBranch(v bool) *MergeMergeRequestRequest {
+	s.RemoveSourceBranch = &v
+	return s
+}
+
+func (s *MergeMergeRequestRequest) SetOrganizationId(v string) *MergeMergeRequestRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type MergeMergeRequestResponseBody struct {
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *MergeMergeRequestResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s MergeMergeRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeMergeRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MergeMergeRequestResponseBody) SetErrorCode(v string) *MergeMergeRequestResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *MergeMergeRequestResponseBody) SetErrorMessage(v string) *MergeMergeRequestResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *MergeMergeRequestResponseBody) SetRequestId(v string) *MergeMergeRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MergeMergeRequestResponseBody) SetResult(v *MergeMergeRequestResponseBodyResult) *MergeMergeRequestResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *MergeMergeRequestResponseBody) SetSuccess(v bool) *MergeMergeRequestResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MergeMergeRequestResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s MergeMergeRequestResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeMergeRequestResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *MergeMergeRequestResponseBodyResult) SetResult(v bool) *MergeMergeRequestResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type MergeMergeRequestResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MergeMergeRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MergeMergeRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeMergeRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MergeMergeRequestResponse) SetHeaders(v map[string]*string) *MergeMergeRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MergeMergeRequestResponse) SetStatusCode(v int32) *MergeMergeRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MergeMergeRequestResponse) SetBody(v *MergeMergeRequestResponseBody) *MergeMergeRequestResponse {
+	s.Body = v
+	return s
+}
+
 type PassPipelineValidateResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -26896,6 +28528,116 @@ func (s *ReleaseWorkspaceResponse) SetStatusCode(v int32) *ReleaseWorkspaceRespo
 }
 
 func (s *ReleaseWorkspaceResponse) SetBody(v *ReleaseWorkspaceResponseBody) *ReleaseWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type ReopenMergeRequestRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ReopenMergeRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReopenMergeRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReopenMergeRequestRequest) SetAccessToken(v string) *ReopenMergeRequestRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ReopenMergeRequestRequest) SetOrganizationId(v string) *ReopenMergeRequestRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ReopenMergeRequestResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *ReopenMergeRequestResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ReopenMergeRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReopenMergeRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReopenMergeRequestResponseBody) SetErrorCode(v string) *ReopenMergeRequestResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ReopenMergeRequestResponseBody) SetErrorMessage(v string) *ReopenMergeRequestResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ReopenMergeRequestResponseBody) SetRequestId(v string) *ReopenMergeRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReopenMergeRequestResponseBody) SetResult(v *ReopenMergeRequestResponseBodyResult) *ReopenMergeRequestResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ReopenMergeRequestResponseBody) SetSuccess(v bool) *ReopenMergeRequestResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReopenMergeRequestResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ReopenMergeRequestResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReopenMergeRequestResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ReopenMergeRequestResponseBodyResult) SetResult(v bool) *ReopenMergeRequestResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type ReopenMergeRequestResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReopenMergeRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReopenMergeRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReopenMergeRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReopenMergeRequestResponse) SetHeaders(v map[string]*string) *ReopenMergeRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReopenMergeRequestResponse) SetStatusCode(v int32) *ReopenMergeRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReopenMergeRequestResponse) SetBody(v *ReopenMergeRequestResponseBody) *ReopenMergeRequestResponse {
 	s.Body = v
 	return s
 }
@@ -27181,6 +28923,134 @@ func (s *RetryVMDeployMachineResponse) SetStatusCode(v int32) *RetryVMDeployMach
 }
 
 func (s *RetryVMDeployMachineResponse) SetBody(v *RetryVMDeployMachineResponseBody) *RetryVMDeployMachineResponse {
+	s.Body = v
+	return s
+}
+
+type ReviewMergeRequestRequest struct {
+	AccessToken     *string   `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	DraftCommentIds []*string `json:"draftCommentIds,omitempty" xml:"draftCommentIds,omitempty" type:"Repeated"`
+	ReviewComment   *string   `json:"reviewComment,omitempty" xml:"reviewComment,omitempty"`
+	ReviewOpinion   *string   `json:"reviewOpinion,omitempty" xml:"reviewOpinion,omitempty"`
+	OrganizationId  *string   `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ReviewMergeRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReviewMergeRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReviewMergeRequestRequest) SetAccessToken(v string) *ReviewMergeRequestRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ReviewMergeRequestRequest) SetDraftCommentIds(v []*string) *ReviewMergeRequestRequest {
+	s.DraftCommentIds = v
+	return s
+}
+
+func (s *ReviewMergeRequestRequest) SetReviewComment(v string) *ReviewMergeRequestRequest {
+	s.ReviewComment = &v
+	return s
+}
+
+func (s *ReviewMergeRequestRequest) SetReviewOpinion(v string) *ReviewMergeRequestRequest {
+	s.ReviewOpinion = &v
+	return s
+}
+
+func (s *ReviewMergeRequestRequest) SetOrganizationId(v string) *ReviewMergeRequestRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ReviewMergeRequestResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *ReviewMergeRequestResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ReviewMergeRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReviewMergeRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReviewMergeRequestResponseBody) SetErrorCode(v string) *ReviewMergeRequestResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ReviewMergeRequestResponseBody) SetErrorMessage(v string) *ReviewMergeRequestResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ReviewMergeRequestResponseBody) SetRequestId(v string) *ReviewMergeRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReviewMergeRequestResponseBody) SetResult(v *ReviewMergeRequestResponseBodyResult) *ReviewMergeRequestResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ReviewMergeRequestResponseBody) SetSuccess(v bool) *ReviewMergeRequestResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReviewMergeRequestResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ReviewMergeRequestResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReviewMergeRequestResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ReviewMergeRequestResponseBodyResult) SetResult(v bool) *ReviewMergeRequestResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type ReviewMergeRequestResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReviewMergeRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReviewMergeRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReviewMergeRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReviewMergeRequestResponse) SetHeaders(v map[string]*string) *ReviewMergeRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReviewMergeRequestResponse) SetStatusCode(v int32) *ReviewMergeRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReviewMergeRequestResponse) SetBody(v *ReviewMergeRequestResponseBody) *ReviewMergeRequestResponse {
 	s.Body = v
 	return s
 }
@@ -28789,6 +30659,244 @@ func (s *UpdateHostGroupResponse) SetStatusCode(v int32) *UpdateHostGroupRespons
 }
 
 func (s *UpdateHostGroupResponse) SetBody(v *UpdateHostGroupResponseBody) *UpdateHostGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMergeRequestRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateMergeRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestRequest) SetAccessToken(v string) *UpdateMergeRequestRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateMergeRequestRequest) SetDescription(v string) *UpdateMergeRequestRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateMergeRequestRequest) SetTitle(v string) *UpdateMergeRequestRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *UpdateMergeRequestRequest) SetOrganizationId(v string) *UpdateMergeRequestRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateMergeRequestResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateMergeRequestResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateMergeRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestResponseBody) SetErrorCode(v string) *UpdateMergeRequestResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateMergeRequestResponseBody) SetErrorMessage(v string) *UpdateMergeRequestResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateMergeRequestResponseBody) SetRequestId(v string) *UpdateMergeRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMergeRequestResponseBody) SetResult(v *UpdateMergeRequestResponseBodyResult) *UpdateMergeRequestResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateMergeRequestResponseBody) SetSuccess(v bool) *UpdateMergeRequestResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateMergeRequestResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s UpdateMergeRequestResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestResponseBodyResult) SetResult(v bool) *UpdateMergeRequestResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type UpdateMergeRequestResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMergeRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMergeRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestResponse) SetHeaders(v map[string]*string) *UpdateMergeRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMergeRequestResponse) SetStatusCode(v int32) *UpdateMergeRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMergeRequestResponse) SetBody(v *UpdateMergeRequestResponseBody) *UpdateMergeRequestResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMergeRequestPersonnelRequest struct {
+	AccessToken    *string   `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	NewUserIdList  []*string `json:"newUserIdList,omitempty" xml:"newUserIdList,omitempty" type:"Repeated"`
+	OrganizationId *string   `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateMergeRequestPersonnelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestPersonnelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestPersonnelRequest) SetAccessToken(v string) *UpdateMergeRequestPersonnelRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelRequest) SetNewUserIdList(v []*string) *UpdateMergeRequestPersonnelRequest {
+	s.NewUserIdList = v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelRequest) SetOrganizationId(v string) *UpdateMergeRequestPersonnelRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateMergeRequestPersonnelResponseBody struct {
+	ErrorCode    *string                                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateMergeRequestPersonnelResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateMergeRequestPersonnelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestPersonnelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestPersonnelResponseBody) SetErrorCode(v string) *UpdateMergeRequestPersonnelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelResponseBody) SetErrorMessage(v string) *UpdateMergeRequestPersonnelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelResponseBody) SetRequestId(v string) *UpdateMergeRequestPersonnelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelResponseBody) SetResult(v *UpdateMergeRequestPersonnelResponseBodyResult) *UpdateMergeRequestPersonnelResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelResponseBody) SetSuccess(v bool) *UpdateMergeRequestPersonnelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateMergeRequestPersonnelResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s UpdateMergeRequestPersonnelResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestPersonnelResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestPersonnelResponseBodyResult) SetResult(v bool) *UpdateMergeRequestPersonnelResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type UpdateMergeRequestPersonnelResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMergeRequestPersonnelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMergeRequestPersonnelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMergeRequestPersonnelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMergeRequestPersonnelResponse) SetHeaders(v map[string]*string) *UpdateMergeRequestPersonnelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelResponse) SetStatusCode(v int32) *UpdateMergeRequestPersonnelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMergeRequestPersonnelResponse) SetBody(v *UpdateMergeRequestPersonnelResponseBody) *UpdateMergeRequestPersonnelResponse {
 	s.Body = v
 	return s
 }
@@ -32821,6 +34929,56 @@ func (client *Client) AddWebhook(repositoryId *string, request *AddWebhookReques
 	return _result, _err
 }
 
+func (client *Client) CloseMergeRequestWithOptions(repositoryId *string, localId *string, request *CloseMergeRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloseMergeRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseMergeRequest"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests/" + tea.StringValue(openapiutil.GetEncodeParam(localId)) + "/close"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloseMergeRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloseMergeRequest(repositoryId *string, localId *string, request *CloseMergeRequestRequest) (_result *CloseMergeRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CloseMergeRequestResponse{}
+	_body, _err := client.CloseMergeRequestWithOptions(repositoryId, localId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBranchWithOptions(repositoryId *string, request *CreateBranchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBranchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33188,6 +35346,94 @@ func (client *Client) CreateHostGroup(organizationId *string, request *CreateHos
 	headers := make(map[string]*string)
 	_result = &CreateHostGroupResponse{}
 	_body, _err := client.CreateHostGroupWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateMergeRequestWithOptions(repositoryId *string, request *CreateMergeRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMergeRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateFrom)) {
+		body["createFrom"] = request.CreateFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReviewerIds)) {
+		body["reviewerIds"] = request.ReviewerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceBranch)) {
+		body["sourceBranch"] = request.SourceBranch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProjectId)) {
+		body["sourceProjectId"] = request.SourceProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetBranch)) {
+		body["targetBranch"] = request.TargetBranch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetProjectId)) {
+		body["targetProjectId"] = request.TargetProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkItemIds)) {
+		body["workItemIds"] = request.WorkItemIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMergeRequest"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMergeRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMergeRequest(repositoryId *string, request *CreateMergeRequestRequest) (_result *CreateMergeRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMergeRequestResponse{}
+	_body, _err := client.CreateMergeRequestWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36343,6 +38589,56 @@ func (client *Client) GetHostGroup(organizationId *string, id *string) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetMergeRequestWithOptions(repositoryId *string, localId *string, request *GetMergeRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMergeRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMergeRequest"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests/" + tea.StringValue(openapiutil.GetEncodeParam(localId)) + "/detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMergeRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMergeRequest(repositoryId *string, localId *string, request *GetMergeRequestRequest) (_result *GetMergeRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMergeRequestResponse{}
+	_body, _err := client.GetMergeRequestWithOptions(repositoryId, localId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOrganizationMemberWithOptions(organizationId *string, accountId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrganizationMemberResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -37788,6 +40084,100 @@ func (client *Client) ListHostGroups(organizationId *string, request *ListHostGr
 	headers := make(map[string]*string)
 	_result = &ListHostGroupsResponse{}
 	_body, _err := client.ListHostGroupsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestsWithOptions(request *ListMergeRequestsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMergeRequestsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorIds)) {
+		query["authorIds"] = request.AuthorIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIds)) {
+		query["groupIds"] = request.GroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIds)) {
+		query["projectIds"] = request.ProjectIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReviewerIds)) {
+		query["reviewerIds"] = request.ReviewerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["state"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMergeRequests"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/merge_requests/advanced_search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMergeRequestsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequests(request *ListMergeRequestsRequest) (_result *ListMergeRequestsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMergeRequestsResponse{}
+	_body, _err := client.ListMergeRequestsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40315,6 +42705,70 @@ func (client *Client) LogVMDeployMachine(organizationId *string, pipelineId *str
 	return _result, _err
 }
 
+func (client *Client) MergeMergeRequestWithOptions(repositoryId *string, localId *string, request *MergeMergeRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MergeMergeRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MergeMessage)) {
+		body["mergeMessage"] = request.MergeMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeType)) {
+		body["mergeType"] = request.MergeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveSourceBranch)) {
+		body["removeSourceBranch"] = request.RemoveSourceBranch
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MergeMergeRequest"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests/" + tea.StringValue(openapiutil.GetEncodeParam(localId)) + "/merge"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MergeMergeRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MergeMergeRequest(repositoryId *string, localId *string, request *MergeMergeRequestRequest) (_result *MergeMergeRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &MergeMergeRequestResponse{}
+	_body, _err := client.MergeMergeRequestWithOptions(repositoryId, localId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PassPipelineValidateWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PassPipelineValidateResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -40416,6 +42870,56 @@ func (client *Client) ReleaseWorkspace(workspaceId *string) (_result *ReleaseWor
 	headers := make(map[string]*string)
 	_result = &ReleaseWorkspaceResponse{}
 	_body, _err := client.ReleaseWorkspaceWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReopenMergeRequestWithOptions(repositoryId *string, localId *string, request *ReopenMergeRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReopenMergeRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReopenMergeRequest"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests/" + tea.StringValue(openapiutil.GetEncodeParam(localId)) + "/reopen"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReopenMergeRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReopenMergeRequest(repositoryId *string, localId *string, request *ReopenMergeRequestRequest) (_result *ReopenMergeRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReopenMergeRequestResponse{}
+	_body, _err := client.ReopenMergeRequestWithOptions(repositoryId, localId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40560,6 +43064,70 @@ func (client *Client) RetryVMDeployMachine(organizationId *string, pipelineId *s
 	headers := make(map[string]*string)
 	_result = &RetryVMDeployMachineResponse{}
 	_body, _err := client.RetryVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReviewMergeRequestWithOptions(repositoryId *string, localId *string, request *ReviewMergeRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReviewMergeRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DraftCommentIds)) {
+		body["draftCommentIds"] = request.DraftCommentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReviewComment)) {
+		body["reviewComment"] = request.ReviewComment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReviewOpinion)) {
+		body["reviewOpinion"] = request.ReviewOpinion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReviewMergeRequest"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests/" + tea.StringValue(openapiutil.GetEncodeParam(localId)) + "/submit_review_opinion"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReviewMergeRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReviewMergeRequest(repositoryId *string, localId *string, request *ReviewMergeRequestRequest) (_result *ReviewMergeRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReviewMergeRequestResponse{}
+	_body, _err := client.ReviewMergeRequestWithOptions(repositoryId, localId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41300,6 +43868,122 @@ func (client *Client) UpdateHostGroup(organizationId *string, id *string, reques
 	headers := make(map[string]*string)
 	_result = &UpdateHostGroupResponse{}
 	_body, _err := client.UpdateHostGroupWithOptions(organizationId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMergeRequestWithOptions(repositoryId *string, localId *string, request *UpdateMergeRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMergeRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMergeRequest"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests/" + tea.StringValue(openapiutil.GetEncodeParam(localId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMergeRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMergeRequest(repositoryId *string, localId *string, request *UpdateMergeRequestRequest) (_result *UpdateMergeRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMergeRequestResponse{}
+	_body, _err := client.UpdateMergeRequestWithOptions(repositoryId, localId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMergeRequestPersonnelWithOptions(repositoryId *string, localId *string, personType *string, request *UpdateMergeRequestPersonnelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMergeRequestPersonnelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewUserIdList)) {
+		body["newUserIdList"] = request.NewUserIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMergeRequestPersonnel"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/merge_requests/" + tea.StringValue(openapiutil.GetEncodeParam(localId)) + "/person/" + tea.StringValue(openapiutil.GetEncodeParam(personType))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMergeRequestPersonnelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMergeRequestPersonnel(repositoryId *string, localId *string, personType *string, request *UpdateMergeRequestPersonnelRequest) (_result *UpdateMergeRequestPersonnelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMergeRequestPersonnelResponse{}
+	_body, _err := client.UpdateMergeRequestPersonnelWithOptions(repositoryId, localId, personType, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
