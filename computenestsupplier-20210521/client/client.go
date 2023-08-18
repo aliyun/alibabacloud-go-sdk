@@ -1207,6 +1207,81 @@ func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesRespon
 	return s
 }
 
+type DeployServiceInstanceRequest struct {
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s DeployServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployServiceInstanceRequest) SetClientToken(v string) *DeployServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeployServiceInstanceRequest) SetRegionId(v string) *DeployServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeployServiceInstanceRequest) SetServiceInstanceId(v string) *DeployServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type DeployServiceInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeployServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployServiceInstanceResponseBody) SetRequestId(v string) *DeployServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeployServiceInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeployServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeployServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployServiceInstanceResponse) SetHeaders(v map[string]*string) *DeployServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployServiceInstanceResponse) SetStatusCode(v int32) *DeployServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployServiceInstanceResponse) SetBody(v *DeployServiceInstanceResponseBody) *DeployServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type GetArtifactRequest struct {
 	ArtifactId      *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 	ArtifactName    *string `json:"ArtifactName,omitempty" xml:"ArtifactName,omitempty"`
@@ -4480,6 +4555,75 @@ func (s *ModifyServiceInstanceResourcesResponse) SetBody(v *ModifyServiceInstanc
 	return s
 }
 
+type PushMeteringDataRequest struct {
+	Metering          *string `json:"Metering,omitempty" xml:"Metering,omitempty"`
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s PushMeteringDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushMeteringDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushMeteringDataRequest) SetMetering(v string) *PushMeteringDataRequest {
+	s.Metering = &v
+	return s
+}
+
+func (s *PushMeteringDataRequest) SetServiceInstanceId(v string) *PushMeteringDataRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type PushMeteringDataResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PushMeteringDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushMeteringDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PushMeteringDataResponseBody) SetRequestId(v string) *PushMeteringDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PushMeteringDataResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushMeteringDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PushMeteringDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushMeteringDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushMeteringDataResponse) SetHeaders(v map[string]*string) *PushMeteringDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PushMeteringDataResponse) SetStatusCode(v int32) *PushMeteringDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PushMeteringDataResponse) SetBody(v *PushMeteringDataResponseBody) *PushMeteringDataResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseArtifactRequest struct {
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 }
@@ -5605,6 +5749,58 @@ func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequ
 	return _result, _err
 }
 
+func (client *Client) DeployServiceInstanceWithOptions(request *DeployServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *DeployServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployServiceInstance"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeployServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeployServiceInstance(request *DeployServiceInstanceRequest) (_result *DeployServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeployServiceInstanceResponse{}
+	_body, _err := client.DeployServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetArtifactWithOptions(request *GetArtifactRequest, runtime *util.RuntimeOptions) (_result *GetArtifactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6272,6 +6468,54 @@ func (client *Client) ModifyServiceInstanceResources(request *ModifyServiceInsta
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyServiceInstanceResourcesResponse{}
 	_body, _err := client.ModifyServiceInstanceResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataRequest, runtime *util.RuntimeOptions) (_result *PushMeteringDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Metering)) {
+		query["Metering"] = request.Metering
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushMeteringData"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PushMeteringDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PushMeteringData(request *PushMeteringDataRequest) (_result *PushMeteringDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PushMeteringDataResponse{}
+	_body, _err := client.PushMeteringDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
