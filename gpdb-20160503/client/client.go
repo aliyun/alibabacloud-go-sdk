@@ -475,6 +475,7 @@ func (s *CreateCollectionResponse) SetBody(v *CreateCollectionResponseBody) *Cre
 }
 
 type CreateDBInstanceRequest struct {
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to load a sample dataset after the instance is created. Valid values:
@@ -559,6 +560,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	MasterCU     *int32  `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
 	// The number of coordinator nodes. Valid values: 1 and 2.
 	//
 	// > If you do not specify this parameter, 1 is used.
@@ -619,7 +621,8 @@ type CreateDBInstanceRequest struct {
 	// The threshold of computing resources. Unit: AnalyticDB compute unit (ACU). Valid values: 8 to 32. The value must be in increments of 8 ACUs. Default value: 32.
 	//
 	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
-	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
+	ServerlessResource *int32  `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
+	SrcDbInstanceName  *string `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
 	// The storage capacity of the instance. Unit: GB. Valid values: 50 to 4000.
 	//
 	// > This parameter must be specified when you create an instance in elastic storage mode.
@@ -665,6 +668,11 @@ func (s CreateDBInstanceRequest) String() string {
 
 func (s CreateDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBInstanceRequest) SetBackupId(v string) *CreateDBInstanceRequest {
+	s.BackupId = &v
+	return s
 }
 
 func (s *CreateDBInstanceRequest) SetClientToken(v string) *CreateDBInstanceRequest {
@@ -737,6 +745,11 @@ func (s *CreateDBInstanceRequest) SetInstanceSpec(v string) *CreateDBInstanceReq
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetMasterCU(v int32) *CreateDBInstanceRequest {
+	s.MasterCU = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetMasterNodeNum(v string) *CreateDBInstanceRequest {
 	s.MasterNodeNum = &v
 	return s
@@ -799,6 +812,11 @@ func (s *CreateDBInstanceRequest) SetServerlessMode(v string) *CreateDBInstanceR
 
 func (s *CreateDBInstanceRequest) SetServerlessResource(v int32) *CreateDBInstanceRequest {
 	s.ServerlessResource = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetSrcDbInstanceName(v string) *CreateDBInstanceRequest {
+	s.SrcDbInstanceName = &v
 	return s
 }
 
@@ -3429,6 +3447,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
 	// The start time of the maintenance window.
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MasterCU          *int32  `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
 	// The number of coordinator nodes.
 	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	// The maximum number of concurrent connections to the instance.
@@ -3695,6 +3714,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMai
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMaintainStartTime(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MaintainStartTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMasterCU(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.MasterCU = &v
 	return s
 }
 
@@ -6675,7 +6699,8 @@ type DescribeDataBackupsResponseBody struct {
 	// The number of backup sets on the page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalBackupSize *int64  `json:"TotalBackupSize,omitempty" xml:"TotalBackupSize,omitempty"`
 	// The total number of entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
@@ -6708,6 +6733,11 @@ func (s *DescribeDataBackupsResponseBody) SetRequestId(v string) *DescribeDataBa
 	return s
 }
 
+func (s *DescribeDataBackupsResponseBody) SetTotalBackupSize(v int64) *DescribeDataBackupsResponseBody {
+	s.TotalBackupSize = &v
+	return s
+}
+
 func (s *DescribeDataBackupsResponseBody) SetTotalCount(v int32) *DescribeDataBackupsResponseBody {
 	s.TotalCount = &v
 	return s
@@ -6718,6 +6748,7 @@ type DescribeDataBackupsResponseBodyItems struct {
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The local time when the backup ended. The time is in the yyyy-MM-dd HH:mm:ss format. The time is your local time.
 	BackupEndTimeLocal *string `json:"BackupEndTimeLocal,omitempty" xml:"BackupEndTimeLocal,omitempty"`
+	BackupMethod       *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
 	// The backup mode.
 	//
 	// Valid values for full backup:
@@ -6773,6 +6804,11 @@ func (s *DescribeDataBackupsResponseBodyItems) SetBackupEndTime(v string) *Descr
 
 func (s *DescribeDataBackupsResponseBodyItems) SetBackupEndTimeLocal(v string) *DescribeDataBackupsResponseBodyItems {
 	s.BackupEndTimeLocal = &v
+	return s
+}
+
+func (s *DescribeDataBackupsResponseBodyItems) SetBackupMethod(v string) *DescribeDataBackupsResponseBodyItems {
+	s.BackupMethod = &v
 	return s
 }
 
@@ -16646,6 +16682,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -16702,6 +16742,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["InstanceSpec"] = request.InstanceSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MasterCU)) {
+		query["MasterCU"] = request.MasterCU
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MasterNodeNum)) {
 		query["MasterNodeNum"] = request.MasterNodeNum
 	}
@@ -16752,6 +16796,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.ServerlessResource)) {
 		query["ServerlessResource"] = request.ServerlessResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcDbInstanceName)) {
+		query["SrcDbInstanceName"] = request.SrcDbInstanceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
