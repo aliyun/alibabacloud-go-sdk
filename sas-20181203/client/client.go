@@ -522,6 +522,7 @@ func (s *AddClientUserDefineRuleResponse) SetBody(v *AddClientUserDefineRuleResp
 type AddImageVulWhiteListRequest struct {
 	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Target    *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
@@ -542,6 +543,11 @@ func (s *AddImageVulWhiteListRequest) SetLang(v string) *AddImageVulWhiteListReq
 
 func (s *AddImageVulWhiteListRequest) SetReason(v string) *AddImageVulWhiteListRequest {
 	s.Reason = &v
+	return s
+}
+
+func (s *AddImageVulWhiteListRequest) SetSource(v string) *AddImageVulWhiteListRequest {
+	s.Source = &v
 	return s
 }
 
@@ -641,9 +647,9 @@ type AddInstallCodeRequest struct {
 	//
 	// >  The installation command is valid only within the validity period. An expired installation command cannot be used to install the Security Center agent.
 	ExpiredDate *int64 `json:"ExpiredDate,omitempty" xml:"ExpiredDate,omitempty"`
-	// The ID of the asset group to which the you want to add the asset.
+	// The ID of the asset group to which you want to add the asset.
 	//
-	// >  You can call the [DescribeAllGroups](~~describeallgroups~~) operation to query the IDs of asset groups.
+	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Specifies whether to create an image. Default value: **false**. Valid values:
 	//
@@ -655,7 +661,8 @@ type AddInstallCodeRequest struct {
 	// *   **linux**
 	// *   **windows**
 	// *   **windows-2003**
-	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The name of the proxy cluster.
 	ProxyCluster *string `json:"ProxyCluster,omitempty" xml:"ProxyCluster,omitempty"`
 	// The name of the service provider for the asset. Default value: **ALIYUN**.
 	//
@@ -1273,10 +1280,39 @@ func (s *AddVpcHoneyPotResponse) SetBody(v *AddVpcHoneyPotResponseBody) *AddVpcH
 }
 
 type AdvanceSecurityEventOperationsRequest struct {
-	EventName       *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The alert name.
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The alert event type. Valid values:
+	//
+	// *   Suspicious process
+	// *   Webshell
+	// *   Unusual logon
+	// *   Exception
+	// *   Sensitive file tampering
+	// *   Malicious process (cloud threat detection)
+	// *   Unusual network connection
+	// *   Abnormal account
+	// *   Application intrusion event
+	// *   Cloud threat detection
+	// *   Precision defense
+	// *   Application whitelist
+	// *   Persistent webshell
+	// *   Web application threat detection
+	// *   Malicious script
+	// *   Threat intelligence
+	// *   Malicious network activity
+	// *   Cluster exception
+	// *   Webshell (on-premises threat detection)
+	// *   Vulnerability exploitation
+	// *   Malicious process (on-premises threat detection)
+	// *   Trusted exception
+	// *   Others
+	//
+	// For more information about alert types, see [Alerts](~~68388~~).
 	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RuleId          *int32  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule ID.
+	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s AdvanceSecurityEventOperationsRequest) String() string {
@@ -1308,7 +1344,9 @@ func (s *AdvanceSecurityEventOperationsRequest) SetRuleId(v int32) *AdvanceSecur
 }
 
 type AdvanceSecurityEventOperationsResponseBody struct {
-	RequestId                       *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The operation performed on the alert event.
 	SecurityEventOperationsResponse []*AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse `json:"SecurityEventOperationsResponse,omitempty" xml:"SecurityEventOperationsResponse,omitempty" type:"Repeated"`
 }
 
@@ -1331,11 +1369,30 @@ func (s *AdvanceSecurityEventOperationsResponseBody) SetSecurityEventOperationsR
 }
 
 type AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse struct {
-	MarkField        []*AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField        `json:"MarkField,omitempty" xml:"MarkField,omitempty" type:"Repeated"`
+	// The object on which the operation is performed. This parameter is required when you set the OperationCode parameter to **advance_mark_mis_info**.
+	MarkField []*AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField `json:"MarkField,omitempty" xml:"MarkField,omitempty" type:"Repeated"`
+	// The metadata configuration returned by the advanced whitelist rule.
 	MarkFieldsSource []*AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource `json:"MarkFieldsSource,omitempty" xml:"MarkFieldsSource,omitempty" type:"Repeated"`
-	OperationCode    *string                                                                                      `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	OperationParams  *string                                                                                      `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
-	UserCanOperate   *bool                                                                                        `json:"UserCanOperate,omitempty" xml:"UserCanOperate,omitempty"`
+	// The operation performed to handle the alert. Valid values:
+	//
+	// *   **block_ip**: blocks the alert.
+	// *   **advance_mark_mis_info**: adds the alert to the whitelist.
+	// *   **ignore**: ignores the alert.
+	// *   **manual_handled**: marks the alert as manually handled.
+	// *   **kill_process**: terminates the malicious process.
+	// *   **cleanup**: performs in-depth virus detection and removal.
+	// *   **kill_and_quara**: performs virus detection and removal.
+	// *   **disable_malicious_defense**: turns off malicious defense behavior.
+	// *   **client_problem_check**: performs troubleshooting.
+	// *   **quara**: performs quarantine operations.
+	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
+	// The configuration of the operation performed to handle the alert event.
+	OperationParams *string `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
+	// Indicates whether the operation can be performed.
+	//
+	// *   **true**: The operation can be performed.
+	// *   **false**: The operation cannot be performed.
+	UserCanOperate *bool `json:"UserCanOperate,omitempty" xml:"UserCanOperate,omitempty"`
 }
 
 func (s AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse) String() string {
@@ -1372,10 +1429,27 @@ func (s *AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsRespon
 }
 
 type AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField struct {
-	FiledAliasName   *string   `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
-	FiledName        *string   `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
-	MarkMisType      *string   `json:"MarkMisType,omitempty" xml:"MarkMisType,omitempty"`
-	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
+	// The alias of the field that is used in the whitelist rule.
+	FiledAliasName *string `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
+	// The field that is used in the whitelist rule.
+	FiledName *string `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
+	// The operation that is used in the whitelist rule. Valid values:
+	//
+	// *   **contains**: contains
+	// *   **notContains**: does not contain
+	// *   **regex**: regular expression
+	// *   **strEqual**: equals
+	// *   **strNotEqual**: does not equal
+	MarkMisType *string `json:"MarkMisType,omitempty" xml:"MarkMisType,omitempty"`
+	// The value of the field that is used in the whitelist rule.
+	MarkMisValue *string `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
+	// The operation that is used and can be modified in the whitelist rule. Valid values:
+	//
+	// *   **contains**: contains
+	// *   **notContains**: does not contain
+	// *   **regex**: regular expression
+	// *   **strEqual**: equals
+	// *   **strNotEqual**: does not equal
 	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 }
 
@@ -1413,9 +1487,19 @@ func (s *AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsRespon
 }
 
 type AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource struct {
-	FiledAliasName   *string   `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
-	FiledName        *string   `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
-	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
+	// The alias of the field that can be used in the whitelist rule.
+	FiledAliasName *string `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
+	// The field that can be used in the whitelist rule.
+	FiledName *string `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
+	// The value of the field that can be used in the whitelist rule.
+	MarkMisValue *string `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
+	// The operation that is supported in the whitelist rule. Valid values:
+	//
+	// *   **contains**: contains
+	// *   **notContains**: does not contain
+	// *   **regex**: regular expression
+	// *   **strEqual**: equals
+	// *   **strNotEqual**: does not equal
 	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 }
 
@@ -3090,8 +3174,17 @@ func (s *CreateAntiBruteForceRuleResponse) SetBody(v *CreateAntiBruteForceRuleRe
 }
 
 type CreateAssetSelectionConfigRequest struct {
+	// The business type that you want to select for the asset. Valid values:
+	//
+	// *   **VIRUS_SCAN_CYCLE_CONFIG**: virus detection configuration
+	// *   **VIRUS_SCAN_ONCE_TASK**: one-time scan for virus detection
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	TargetType   *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The dimension based on which you want to select the asset. Valid values:
+	//
+	// *   **instance**: selects the asset by server.
+	// *   **group**: selects the asset by group.
+	// *   **vpc**: selects the asset by virtual private cloud (VPC).
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CreateAssetSelectionConfigRequest) String() string {
@@ -3113,8 +3206,10 @@ func (s *CreateAssetSelectionConfigRequest) SetTargetType(v string) *CreateAsset
 }
 
 type CreateAssetSelectionConfigResponseBody struct {
-	Data      *CreateAssetSelectionConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response parameters.
+	Data *CreateAssetSelectionConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAssetSelectionConfigResponseBody) String() string {
@@ -3136,9 +3231,19 @@ func (s *CreateAssetSelectionConfigResponseBody) SetRequestId(v string) *CreateA
 }
 
 type CreateAssetSelectionConfigResponseBodyData struct {
+	// The business type that is selected for the asset. Valid values:
+	//
+	// *   **VIRUS_SCAN_CYCLE_CONFIG**: virus detection configuration
+	// *   **VIRUS_SCAN_ONCE_TASK**: one-time scan for virus detection
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	SelectionKey *int64  `json:"SelectionKey,omitempty" xml:"SelectionKey,omitempty"`
-	TargetType   *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the current asset selection. It can be used to query and modify the asset that is selected.
+	SelectionKey *int64 `json:"SelectionKey,omitempty" xml:"SelectionKey,omitempty"`
+	// The dimension based on which the asset is selected. Valid values:
+	//
+	// *   **group**: The asset is selected by server.
+	// *   **group**: The asset is selected by group.
+	// *   **vpc**: The asset is selected by VPC.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CreateAssetSelectionConfigResponseBodyData) String() string {
@@ -14083,7 +14188,7 @@ func (s *DescribeBruteForceRecordsRequest) SetStatus(v int32) *DescribeBruteForc
 }
 
 type DescribeBruteForceRecordsResponseBody struct {
-	// An array that consists of the IP addresses.
+	// The IP addresses.
 	MachineList []*DescribeBruteForceRecordsResponseBodyMachineList `json:"MachineList,omitempty" xml:"MachineList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeBruteForceRecordsResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
@@ -14115,17 +14220,25 @@ func (s *DescribeBruteForceRecordsResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeBruteForceRecordsResponseBodyMachineList struct {
+	// The status of the host network extension. Valid values:
+	//
+	// *   **true**: online
+	// *   **false**: offline
 	AliNetOnline *bool `json:"AliNetOnline,omitempty" xml:"AliNetOnline,omitempty"`
 	// The timestamp when the block action on the IP address becomes invalid.
 	BlockExpireDate *int64 `json:"BlockExpireDate,omitempty" xml:"BlockExpireDate,omitempty"`
-	// The blocked IP address.
-	BlockIp   *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
+	// The IP address that is blocked.
+	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
+	// The blocking type. Valid values:
+	//
+	// *   **group**: security group
+	// *   **alinet**: host network extension
 	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
 	// The error code returned when the defense rule fails to block the IP address.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the primary key in the table of records on the blocked IP address.
+	// The ID of the primary key that is recorded in the defense rule.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the server.
+	// The instance name of the server.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The public IP address.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
@@ -14146,7 +14259,7 @@ type DescribeBruteForceRecordsResponseBodyMachineList struct {
 	// *   **1**: enabled
 	// *   **2**: failed
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the server on which access from the IP address is blocked.
+	// The UUID of the server on which the defense rule takes effect.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -14298,7 +14411,7 @@ func (s *DescribeBruteForceRecordsResponse) SetBody(v *DescribeBruteForceRecords
 
 type DescribeBruteForceSummaryRequest struct {
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// DescribeBruteForceSummary
+	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -14321,8 +14434,10 @@ func (s *DescribeBruteForceSummaryRequest) SetSourceIp(v string) *DescribeBruteF
 }
 
 type DescribeBruteForceSummaryResponseBody struct {
+	// The statistics of IP address blocking policies.
 	BruteForceSummary *DescribeBruteForceSummaryResponseBodyBruteForceSummary `json:"BruteForceSummary,omitempty" xml:"BruteForceSummary,omitempty" type:"Struct"`
-	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBruteForceSummaryResponseBody) String() string {
@@ -14344,13 +14459,20 @@ func (s *DescribeBruteForceSummaryResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeBruteForceSummaryResponseBodyBruteForceSummary struct {
-	AllStrategyCount        *int32  `json:"AllStrategyCount,omitempty" xml:"AllStrategyCount,omitempty"`
+	// The number of anti-brute force IP blocking policies.
+	AllStrategyCount *int32 `json:"AllStrategyCount,omitempty" xml:"AllStrategyCount,omitempty"`
+	// The number of defense policies.
 	AntiBruteForceRuleCount *string `json:"AntiBruteForceRuleCount,omitempty" xml:"AntiBruteForceRuleCount,omitempty"`
-	CustomEffectiveCount    *string `json:"CustomEffectiveCount,omitempty" xml:"CustomEffectiveCount,omitempty"`
-	CustomRecordCount       *string `json:"CustomRecordCount,omitempty" xml:"CustomRecordCount,omitempty"`
-	EffectiveCount          *int32  `json:"EffectiveCount,omitempty" xml:"EffectiveCount,omitempty"`
-	SystemEffectiveCount    *string `json:"SystemEffectiveCount,omitempty" xml:"SystemEffectiveCount,omitempty"`
-	SystemRecordCount       *string `json:"SystemRecordCount,omitempty" xml:"SystemRecordCount,omitempty"`
+	// The number of custom blocking rules that are in effect.
+	CustomEffectiveCount *string `json:"CustomEffectiveCount,omitempty" xml:"CustomEffectiveCount,omitempty"`
+	// The number of custom blocking rules.
+	CustomRecordCount *string `json:"CustomRecordCount,omitempty" xml:"CustomRecordCount,omitempty"`
+	// The number of anti-brute force IP blocking policies enabled.
+	EffectiveCount *int32 `json:"EffectiveCount,omitempty" xml:"EffectiveCount,omitempty"`
+	// The number of system blocking rules that are in effect.
+	SystemEffectiveCount *string `json:"SystemEffectiveCount,omitempty" xml:"SystemEffectiveCount,omitempty"`
+	// The number of system blocking rules.
+	SystemRecordCount *string `json:"SystemRecordCount,omitempty" xml:"SystemRecordCount,omitempty"`
 }
 
 func (s DescribeBruteForceSummaryResponseBodyBruteForceSummary) String() string {
@@ -15560,7 +15682,8 @@ type DescribeCheckWarningsRequest struct {
 	// *   **3**: passed
 	// *   **5**: expired
 	// *   **6**: ignored
-	RiskStatus *int32 `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	RiskStatus *int32  `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The UUID of the server on which the baseline check is performed.
@@ -15614,6 +15737,11 @@ func (s *DescribeCheckWarningsRequest) SetRiskId(v int64) *DescribeCheckWarnings
 
 func (s *DescribeCheckWarningsRequest) SetRiskStatus(v int32) *DescribeCheckWarningsRequest {
 	s.RiskStatus = &v
+	return s
+}
+
+func (s *DescribeCheckWarningsRequest) SetSource(v string) *DescribeCheckWarningsRequest {
+	s.Source = &v
 	return s
 }
 
@@ -23645,7 +23773,14 @@ type DescribeGroupedInstancesRequest struct {
 	// *   **false**: no
 	NoPage *bool `json:"NoPage,omitempty" xml:"NoPage,omitempty"`
 	// The number of entries to return on each page. Default value: **20**.
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The edition of Security Center that protects the asset. Valid values:
+	//
+	// * **sas_gte_advanced**: the Advanced edition or higher
+	// * **sas_gte_enterprise**: the Enterprise edition or higher
+	// * **sas_gt_basic:** a paid edition
+	// * **sas_eq_advanced:** the Advanced edition
+	// * **sas_gt_anti_virus:** an edition higher than the Anti-virus edition
 	SaleVersionCheckCode *string `json:"SaleVersionCheckCode,omitempty" xml:"SaleVersionCheckCode,omitempty"`
 	// The source of the server. Valid values:
 	//
@@ -23757,7 +23892,8 @@ func (s *DescribeGroupedInstancesResponseBody) SetRequestId(v string) *DescribeG
 
 type DescribeGroupedInstancesResponseBodyInstances struct {
 	// The number of assets on which high-risk vulnerabilities are detected.
-	AsapVulInstanceCount  *int64 `json:"AsapVulInstanceCount,omitempty" xml:"AsapVulInstanceCount,omitempty"`
+	AsapVulInstanceCount *int64 `json:"AsapVulInstanceCount,omitempty" xml:"AsapVulInstanceCount,omitempty"`
+	// The number of assets that are protected by the specified edition.
 	AuthVersionCheckCount *int32 `json:"AuthVersionCheckCount,omitempty" xml:"AuthVersionCheckCount,omitempty"`
 	// The name of the server group.
 	FieldAliasName *string `json:"FieldAliasName,omitempty" xml:"FieldAliasName,omitempty"`
@@ -23770,7 +23906,13 @@ type DescribeGroupedInstancesResponseBodyInstances struct {
 	//
 	// >  If the **MachineTypes** request parameter is not specified, the value of the InstanceCount parameter is the total number of your assets.
 	InstanceCount *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Os            *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The operating system type of the asset. Valid values:
+	//
+	// * **windows**
+	// * **linux**
+	//
+	// > This parameter is returned only when Lang is set to zh.
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
 	// The number of assets that are at risk.
 	RiskInstanceCount *string `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
 	// The number of assets that are not protected by Security Center.
@@ -26166,7 +26308,8 @@ type DescribeImageBaselineStrategyRequest struct {
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The ID of the baseline check policy.
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
@@ -26181,6 +26324,11 @@ func (s DescribeImageBaselineStrategyRequest) GoString() string {
 
 func (s *DescribeImageBaselineStrategyRequest) SetLang(v string) *DescribeImageBaselineStrategyRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageBaselineStrategyRequest) SetSource(v string) *DescribeImageBaselineStrategyRequest {
+	s.Source = &v
 	return s
 }
 
@@ -26215,6 +26363,7 @@ func (s *DescribeImageBaselineStrategyResponseBody) SetStrategy(v *DescribeImage
 }
 
 type DescribeImageBaselineStrategyResponseBodyStrategy struct {
+	BaselineItem *string `json:"BaselineItem,omitempty" xml:"BaselineItem,omitempty"`
 	// An array that contains the baselines.
 	BaselineItemList []*DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList `json:"BaselineItemList,omitempty" xml:"BaselineItemList,omitempty" type:"Repeated"`
 	// The number of selected baseline check items.
@@ -26239,6 +26388,11 @@ func (s DescribeImageBaselineStrategyResponseBodyStrategy) String() string {
 
 func (s DescribeImageBaselineStrategyResponseBodyStrategy) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeImageBaselineStrategyResponseBodyStrategy) SetBaselineItem(v string) *DescribeImageBaselineStrategyResponseBodyStrategy {
+	s.BaselineItem = &v
+	return s
 }
 
 func (s *DescribeImageBaselineStrategyResponseBodyStrategy) SetBaselineItemList(v []*DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList) *DescribeImageBaselineStrategyResponseBodyStrategy {
@@ -26934,9 +27088,10 @@ type DescribeImageGroupedVulListResponseBodyGroupedVulItems struct {
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The number of vulnerabilities that have the high priority.
 	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	// 是否可支持修复。取值：
-	// - **yes**：支持修复
-	// - **no**： 不支持修复
+	// Indicates whether the vulnerability can be fixed in the Security Center console. Valid values:
+	//
+	// *   **yes**
+	// *   **no**
 	CanFix *string `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
 	// The timestamp when the first scan was performed. Unit: milliseconds.
 	GmtLast *int64 `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
@@ -31886,6 +32041,7 @@ type DescribeImageVulWhiteListRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s DescribeImageVulWhiteListRequest) String() string {
@@ -31913,6 +32069,11 @@ func (s *DescribeImageVulWhiteListRequest) SetLang(v string) *DescribeImageVulWh
 
 func (s *DescribeImageVulWhiteListRequest) SetPageSize(v int32) *DescribeImageVulWhiteListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageVulWhiteListRequest) SetSource(v string) *DescribeImageVulWhiteListRequest {
+	s.Source = &v
 	return s
 }
 
@@ -40022,7 +40183,7 @@ type DescribeRiskCheckResultRequest struct {
 	//
 	// > If you do not specify this parameter, all types of check items are queried.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the check item. For more information about the check item, see the check item table in the "Response parameters" section of this topic.
+	// An array that consists of the IDs of check items. For more information about the check item, see the check item table in the "Response parameters" section of this topic.
 	ItemIds []*string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Repeated"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
@@ -40131,7 +40292,7 @@ type DescribeRiskCheckResultResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of the check items.
+	// The check items.
 	List []*DescribeRiskCheckResultResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The total number of pages returned.
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
@@ -40923,7 +41084,8 @@ type DescribeRiskTypeRequest struct {
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -40938,6 +41100,11 @@ func (s DescribeRiskTypeRequest) GoString() string {
 
 func (s *DescribeRiskTypeRequest) SetLang(v string) *DescribeRiskTypeRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRiskTypeRequest) SetSource(v string) *DescribeRiskTypeRequest {
+	s.Source = &v
 	return s
 }
 
@@ -46018,9 +46185,9 @@ func (s *DescribeSuspEventUserSettingResponse) SetBody(v *DescribeSuspEventUserS
 type DescribeSuspEventsRequest struct {
 	// The ID of the alert event.
 	//
-	// >  To query the details about the exceptions of an alert event, you must specify the ID of the alert event. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the IDs of alert events.
+	// > To query the details of an alert event, you must specify the ID of the alert event. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the IDs of alert events.
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	// The types of assets.
+	// The types of the assets.
 	AssetsTypeList []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
 	// The ID of the cluster of whose alert events you want to query.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -46075,7 +46242,7 @@ type DescribeSuspEventsRequest struct {
 	OperateTimeEnd *string `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
 	// The timestamp when the handling operation starts.
 	OperateTimeStart *string `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of entries to return on each page. Default value: **20**. Maximum value: 100.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The alert type of the alert event. Valid values:
 	//
@@ -46106,8 +46273,11 @@ type DescribeSuspEventsRequest struct {
 	// The name of the alert or the information about the asset.
 	//
 	// >  Fuzzy search is supported. The asset information includes the name, public IP address, and private IP address of an asset.
-	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The custom sorting field. Default value: **operateTime**. Valid values:
 	//
 	// *   **lastTime**: the latest occurrence time.
@@ -46335,7 +46505,7 @@ type DescribeSuspEventsResponseBody struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information about the alert event.
+	// The information about the alert event.
 	SuspEvents []*DescribeSuspEventsResponseBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
 	// The total number of alert events.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -46445,7 +46615,8 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	// *   **false**: no
 	HasTraceInfo *bool `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
 	// The ID of the alert event.
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UUID of the image.
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
 	// The ID of the affected asset.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -46467,7 +46638,11 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	K8sNodeName *string `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
 	// The name of the Kubernetes pod.
 	K8sPodName *string `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
-	LargeModel *bool   `json:"LargeModel,omitempty" xml:"LargeModel,omitempty"`
+	// Indicates whether the alert event can be detected by the cloud sandbox feature. Valid values:
+	//
+	// * **true**
+	// * **false**
+	LargeModel *bool `json:"LargeModel,omitempty" xml:"LargeModel,omitempty"`
 	// The time when the alert event was last generated.
 	LastTime *string `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 	// The timestamp when the exception was last detected. Unit: milliseconds.
@@ -51051,8 +51226,11 @@ type DescribeVulDetailsRequest struct {
 	// The name of the vulnerability.
 	//
 	// > You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) or [DescribeVulList](~~DescribeVulList~~) operation to query the names of vulnerabilities.
-	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
 	// *   **cve**: Linux software vulnerability
@@ -51129,7 +51307,7 @@ type DescribeVulDetailsResponseBodyCves struct {
 	Classifys []*DescribeVulDetailsResponseBodyCvesClassifys `json:"Classifys,omitempty" xml:"Classifys,omitempty" type:"Repeated"`
 	// The China National Vulnerability Database (CNVD) ID.
 	CnvdId *string `json:"CnvdId,omitempty" xml:"CnvdId,omitempty"`
-	// The difficulty level of exploiting the vulnerability. Valid values:
+	// The difficulty level of exploiting the vulnerability. Valid value:
 	//
 	// *   **LOW**
 	// *   **MEDIUM**
@@ -51145,17 +51323,18 @@ type DescribeVulDetailsResponseBodyCves struct {
 	CvssVector *string `json:"CvssVector,omitempty" xml:"CvssVector,omitempty"`
 	// The instance name of the server.
 	//
-	// > This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
+	// >  This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The public IP address of the server.
 	//
-	// > This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
+	// >  This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// The private IP address of the server.
 	//
-	// > This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
+	// >  This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	OtherId    *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
+	// The ID of the vulnerability.
+	OtherId *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
 	// The POC content.
 	Poc *string `json:"Poc,omitempty" xml:"Poc,omitempty"`
 	// The timestamp when the proof of concept (POC) was created. Unit: milliseconds.
@@ -51172,15 +51351,15 @@ type DescribeVulDetailsResponseBodyCves struct {
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	// The introduction to the vulnerability.
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The ID of the asset on which the vulnerability is detected.
+	// The ID of the asset on which the malicious image sample is detected.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the asset on which the vulnerability is detected.
+	// The name of the asset on which the malicious image sample is detected.
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The title of the vulnerability announcement.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The vendor that disclosed the vulnerability.
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	// The severity of the vulnerability. Valid values:
+	// The severity of the vulnerability. Valid value:
 	//
 	// *   **serious**
 	// *   **high**
@@ -57350,6 +57529,7 @@ type GetAgentlessTaskCountResponseBody struct {
 	RiskMachine        *int32  `json:"RiskMachine,omitempty" xml:"RiskMachine,omitempty"`
 	ScaVulCount        *int32  `json:"ScaVulCount,omitempty" xml:"ScaVulCount,omitempty"`
 	ScanMachine        *int32  `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
+	SysVulCount        *string `json:"SysVulCount,omitempty" xml:"SysVulCount,omitempty"`
 	Vulnerability      *int32  `json:"Vulnerability,omitempty" xml:"Vulnerability,omitempty"`
 }
 
@@ -57398,6 +57578,11 @@ func (s *GetAgentlessTaskCountResponseBody) SetScaVulCount(v int32) *GetAgentles
 
 func (s *GetAgentlessTaskCountResponseBody) SetScanMachine(v int32) *GetAgentlessTaskCountResponseBody {
 	s.ScanMachine = &v
+	return s
+}
+
+func (s *GetAgentlessTaskCountResponseBody) SetSysVulCount(v string) *GetAgentlessTaskCountResponseBody {
+	s.SysVulCount = &v
 	return s
 }
 
@@ -57796,9 +57981,17 @@ func (s *GetAppNetworkResponse) SetBody(v *GetAppNetworkResponseBody) *GetAppNet
 }
 
 type GetAssetDetailByUuidRequest struct {
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request. The system specifies this parameter.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The UUID of the server to query.
+	//
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetAssetDetailByUuidRequest) String() string {
@@ -57825,8 +58018,10 @@ func (s *GetAssetDetailByUuidRequest) SetUuid(v string) *GetAssetDetailByUuidReq
 }
 
 type GetAssetDetailByUuidResponseBody struct {
+	// The details of the server.
 	AssetDetail *GetAssetDetailByUuidResponseBodyAssetDetail `json:"AssetDetail,omitempty" xml:"AssetDetail,omitempty" type:"Struct"`
-	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAssetDetailByUuidResponseBody) String() string {
@@ -57848,39 +58043,98 @@ func (s *GetAssetDetailByUuidResponseBody) SetRequestId(v string) *GetAssetDetai
 }
 
 type GetAssetDetailByUuidResponseBodyAssetDetail struct {
-	AssetType      *string                                                    `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	AuthModifyTime *int64                                                     `json:"AuthModifyTime,omitempty" xml:"AuthModifyTime,omitempty"`
-	AuthVersion    *int32                                                     `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	Bind           *bool                                                      `json:"Bind,omitempty" xml:"Bind,omitempty"`
-	ClientStatus   *string                                                    `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	ClientVersion  *string                                                    `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	Cpu            *int32                                                     `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CpuInfo        *string                                                    `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
-	CreateTime     *int64                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DiskInfoList   []*GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList `json:"DiskInfoList,omitempty" xml:"DiskInfoList,omitempty" type:"Repeated"`
-	Flag           *int32                                                     `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	GroupTrace     *string                                                    `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
-	HostName       *string                                                    `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InstanceId     *string                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName   *string                                                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp     *string                                                    `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp     *string                                                    `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Ip             *string                                                    `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	IpList         []*string                                                  `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	Kernel         *string                                                    `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
-	MacList        []*string                                                  `json:"MacList,omitempty" xml:"MacList,omitempty" type:"Repeated"`
-	Mem            *int32                                                     `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Memory         *int64                                                     `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Os             *string                                                    `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsDetail       *string                                                    `json:"OsDetail,omitempty" xml:"OsDetail,omitempty"`
-	OsName         *string                                                    `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	Region         *string                                                    `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId       *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName     *string                                                    `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	SysInfo        *string                                                    `json:"SysInfo,omitempty" xml:"SysInfo,omitempty"`
-	Tag            *string                                                    `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Uuid           *string                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VpcInstanceId  *string                                                    `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// The type of the server. Valid values:
+	//
+	// *   **0**: ECS instance
+	// *   **1**: Server Load Balancer (SLB) instance
+	// *   **2**: NAT gateway
+	// *   **3**: ApsaraDB RDS instance
+	// *   **4**: ApsaraDB for MongoDB instance
+	// *   **5**: ApsaraDB for Redis instance
+	// *   **6**: image
+	// *   **7**: container
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The timestamp when Security Center is authorized to protect the asset. Unit: milliseconds.
+	AuthModifyTime *int64 `json:"AuthModifyTime,omitempty" xml:"AuthModifyTime,omitempty"`
+	// The edition of Security Center that is authorized to protect the asset. Valid values:
+	//
+	// *   **1**: Basic edition
+	// *   **6**: Anti-virus edition
+	// *   **5**: Advanced edition
+	// *   **3**: Enterprise edition
+	// *   **7**: Ultimate edition
+	// *   **10**: Value-added Plan edition
+	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	// Indicates whether Security Center is authorized to protect the asset. Valid values:
+	//
+	// *   **true**: Security Center is authorized to protect the asset.
+	// *   **false**: Security Center is not authorized to protect the asset.
+	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// The status of the Security Center agent. Valid values:
+	//
+	// *   **pause**: The Security Center agent stops protecting your server.
+	// *   **online**: The Security Center agent is protecting your server.
+	// *   **offline**: The Security Center agent does not protect your server.
+	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	// The version of the Security Center agent.
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The details of the CPU.
+	CpuInfo *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	// The timestamp when Security Center records the details of the server. Unit: milliseconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The list of information about the disk.
+	DiskInfoList []*GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList `json:"DiskInfoList,omitempty" xml:"DiskInfoList,omitempty" type:"Repeated"`
+	// Indicates whether the asset is provided by Alibaba Cloud. Valid values:
+	//
+	// *   **0**: The server is provided by Alibaba Cloud.
+	// *   **1**: The server is not provided by Alibaba Cloud.
+	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The group to which the server belongs. By default, the servers that are not grouped belong to the **Default** group.
+	GroupTrace *string `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
+	// The name of the host.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the server.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the server.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address of the server.
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address of the server.
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The IP address that is assigned to the Elastic Compute Service (ECS) instance.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// An array that consists of the IP addresses of the server.
+	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// The kernel version of the operating system.
+	Kernel *string `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
+	// An array that consists of the media access control (MAC) addresses of the server.
+	MacList []*string `json:"MacList,omitempty" xml:"MacList,omitempty" type:"Repeated"`
+	// The memory size of the server. Unit: GB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The memory size of the server. Unit: MB.
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The operating system type of the server.
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The operating system version of the server.
+	OsDetail *string `json:"OsDetail,omitempty" xml:"OsDetail,omitempty"`
+	// The name of the operating system that the server runs.
+	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	// The region in which the server resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the region in which the asset resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region in which the server resides.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The operating system information about the server.
+	SysInfo *string `json:"SysInfo,omitempty" xml:"SysInfo,omitempty"`
+	// The tag that is added to the server.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The UUID of the server.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The ID of the virtual private cloud (VPC) in which the server resides.
+	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
 func (s GetAssetDetailByUuidResponseBodyAssetDetail) String() string {
@@ -58057,11 +58311,16 @@ func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetVpcInstanceId(v string)
 }
 
 type GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList struct {
-	DiskName      *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	TotalSizeByte *int64  `json:"TotalSizeByte,omitempty" xml:"TotalSizeByte,omitempty"`
-	UseSize       *int64  `json:"UseSize,omitempty" xml:"UseSize,omitempty"`
-	UseSizeByte   *int64  `json:"UseSizeByte,omitempty" xml:"UseSizeByte,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// The total disk space. Unit: GB.
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The total disk space. Unit: bytes.
+	TotalSizeByte *int64 `json:"TotalSizeByte,omitempty" xml:"TotalSizeByte,omitempty"`
+	// The amount of the used disk space. Unit: GB.
+	UseSize *int64 `json:"UseSize,omitempty" xml:"UseSize,omitempty"`
+	// The amount of the used disk space. Unit: bytes.
+	UseSizeByte *int64 `json:"UseSizeByte,omitempty" xml:"UseSizeByte,omitempty"`
 }
 
 func (s GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList) String() string {
@@ -60101,10 +60360,15 @@ func (s *GetClientInstallationStatisticResponse) SetBody(v *GetClientInstallatio
 }
 
 type GetClientRatioStatisticRequest struct {
-	ResourceDirectoryAccountId *int64    `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	StatisticTypes             []*string `json:"StatisticTypes,omitempty" xml:"StatisticTypes,omitempty" type:"Repeated"`
-	TimeEnd                    *int64    `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-	TimeStart                  *int64    `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+	// The ID of the primary account of the Resource Directory member account.
+	// > call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) interface to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// An array that consists of the details of a statistical type.
+	StatisticTypes []*string `json:"StatisticTypes,omitempty" xml:"StatisticTypes,omitempty" type:"Repeated"`
+	// The timestamp that specifies the end of the time range to collect statistics. Unit: milliseconds.
+	TimeEnd *int64 `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	// The timestamp that specifies the beginning of the time range to collect statistics. Unit: milliseconds.
+	TimeStart *int64 `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
 }
 
 func (s GetClientRatioStatisticRequest) String() string {
@@ -60136,10 +60400,14 @@ func (s *GetClientRatioStatisticRequest) SetTimeStart(v int64) *GetClientRatioSt
 }
 
 type GetClientRatioStatisticResponseBody struct {
+	// The statistics on the client installation rate.
 	ClientInstallRatio *GetClientRatioStatisticResponseBodyClientInstallRatio `json:"ClientInstallRatio,omitempty" xml:"ClientInstallRatio,omitempty" type:"Struct"`
-	ClientOnlineRatio  *GetClientRatioStatisticResponseBodyClientOnlineRatio  `json:"ClientOnlineRatio,omitempty" xml:"ClientOnlineRatio,omitempty" type:"Struct"`
-	Dates              []*int64                                               `json:"Dates,omitempty" xml:"Dates,omitempty" type:"Repeated"`
-	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics on the client online rate.
+	ClientOnlineRatio *GetClientRatioStatisticResponseBodyClientOnlineRatio `json:"ClientOnlineRatio,omitempty" xml:"ClientOnlineRatio,omitempty" type:"Struct"`
+	// The list of time when statistics were collected.
+	Dates []*int64 `json:"Dates,omitempty" xml:"Dates,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBody) String() string {
@@ -60171,7 +60439,9 @@ func (s *GetClientRatioStatisticResponseBody) SetRequestId(v string) *GetClientR
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatio struct {
+	// The list of current statistics on the installation rate of the client.
 	CurrentItems []*GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItems `json:"CurrentItems,omitempty" xml:"CurrentItems,omitempty" type:"Repeated"`
+	// The list of historical statistics on the installation rate of the client.
 	HistoryItems []*GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
 }
 
@@ -60194,8 +60464,16 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatio) SetHistoryItems(
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItems struct {
-	Items  []*GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Vendor *int64                                                                    `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The list of the statistics on the installation rate of the client by vendor.
+	Items []*GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The type of the server. Valid values:
+	//
+	// *   **0**: an asset provided by Alibaba Cloud
+	// *   **1**: a third-party cloud asset
+	// *   **2**: an asset in a data center
+	// *   **3**, **4**, **5**, and **7**: other cloud asset
+	// *   **8**: a lightweight asset
+	Vendor *int64 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItems) String() string {
@@ -60217,10 +60495,14 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItems) SetV
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItemsItems struct {
-	AssetTotalCount     *int32   `json:"AssetTotalCount,omitempty" xml:"AssetTotalCount,omitempty"`
-	CalculateTime       *int64   `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
-	InstallRatio        *float64 `json:"InstallRatio,omitempty" xml:"InstallRatio,omitempty"`
-	InstalledAssetCount *int32   `json:"InstalledAssetCount,omitempty" xml:"InstalledAssetCount,omitempty"`
+	// The total number of assets.
+	AssetTotalCount *int32 `json:"AssetTotalCount,omitempty" xml:"AssetTotalCount,omitempty"`
+	// The timestamp of the calculation. Unit: milliseconds.
+	CalculateTime *int64 `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
+	// The installation rate. Unit: %.
+	InstallRatio *float64 `json:"InstallRatio,omitempty" xml:"InstallRatio,omitempty"`
+	// The number of assets on which the client is installed.
+	InstalledAssetCount *int32 `json:"InstalledAssetCount,omitempty" xml:"InstalledAssetCount,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItemsItems) String() string {
@@ -60252,8 +60534,16 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItemsItems)
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItems struct {
-	Items  []*GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Vendor *int64                                                                    `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The list of statistics on the client installation rate.
+	Items []*GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The type of the cloud asset. Valid values:
+	//
+	// *   **0**: an asset provided by Alibaba Cloud
+	// *   **1**: a third-party cloud asset
+	// *   **2**: an asset in a data center
+	// *   **3**, **4**, **5**, and **7**: other cloud asset
+	// *   **8**: a simple application server
+	Vendor *int64 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItems) String() string {
@@ -60275,10 +60565,14 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItems) SetV
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItemsItems struct {
-	AssetTotalCount     *int32   `json:"AssetTotalCount,omitempty" xml:"AssetTotalCount,omitempty"`
-	CalculateTime       *int64   `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
-	InstallRatio        *float64 `json:"InstallRatio,omitempty" xml:"InstallRatio,omitempty"`
-	InstalledAssetCount *int32   `json:"InstalledAssetCount,omitempty" xml:"InstalledAssetCount,omitempty"`
+	// The total number of assets.
+	AssetTotalCount *int32 `json:"AssetTotalCount,omitempty" xml:"AssetTotalCount,omitempty"`
+	// The timestamp of the calculation. Unit: milliseconds.
+	CalculateTime *int64 `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
+	// The installation rate. Unit: %.
+	InstallRatio *float64 `json:"InstallRatio,omitempty" xml:"InstallRatio,omitempty"`
+	// The number of assets on which the client is installed.
+	InstalledAssetCount *int32 `json:"InstalledAssetCount,omitempty" xml:"InstalledAssetCount,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItemsItems) String() string {
@@ -60310,7 +60604,9 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItemsItems)
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatio struct {
+	// The list of current statistics on the online rate of the client.
 	CurrentItems []*GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItems `json:"CurrentItems,omitempty" xml:"CurrentItems,omitempty" type:"Repeated"`
+	// The list of historical statistics on the online rate of the client.
 	HistoryItems []*GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
 }
 
@@ -60333,8 +60629,16 @@ func (s *GetClientRatioStatisticResponseBodyClientOnlineRatio) SetHistoryItems(v
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItems struct {
-	Items  []*GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Vendor *int64                                                                   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The list of current statistics on the online rate of the client by vendor.
+	Items []*GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The type of the cloud asset. Valid values:
+	//
+	// *   **0**: an asset provided by Alibaba Cloud
+	// *   **1**: a third-party cloud asset
+	// *   **2**: an asset in a data center
+	// *   **3**, **4**, **5**, and **7**: other cloud asset
+	// *   **8**: a simple application server
+	Vendor *int64 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItems) String() string {
@@ -60356,10 +60660,14 @@ func (s *GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItems) SetVe
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItemsItems struct {
-	AssetInstallCount *int32   `json:"AssetInstallCount,omitempty" xml:"AssetInstallCount,omitempty"`
-	CalculateTime     *int64   `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
-	OnlineAssetCount  *int32   `json:"OnlineAssetCount,omitempty" xml:"OnlineAssetCount,omitempty"`
-	OnlineRatio       *float64 `json:"OnlineRatio,omitempty" xml:"OnlineRatio,omitempty"`
+	// The number of assets on which the client is installed.
+	AssetInstallCount *int32 `json:"AssetInstallCount,omitempty" xml:"AssetInstallCount,omitempty"`
+	// The timestamp of the calculation. Unit: milliseconds.
+	CalculateTime *int64 `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
+	// The number of online assets.
+	OnlineAssetCount *int32 `json:"OnlineAssetCount,omitempty" xml:"OnlineAssetCount,omitempty"`
+	// The online rate. Unit: %.
+	OnlineRatio *float64 `json:"OnlineRatio,omitempty" xml:"OnlineRatio,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItemsItems) String() string {
@@ -60391,8 +60699,16 @@ func (s *GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItemsItems) 
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItems struct {
-	Items  []*GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Vendor *int64                                                                   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The list of historical statistics on the online rate of the client by vendor.
+	Items []*GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItemsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The type of the server. Valid values:
+	//
+	// *   **0**: an asset provided by Alibaba Cloud
+	// *   **1**: a third-party cloud asset
+	// *   **2**: an asset in a data center
+	// *   **3**, **4**, **5**, and **7**: other cloud asset
+	// *   **8**: a lightweight asset
+	Vendor *int64 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItems) String() string {
@@ -60414,10 +60730,14 @@ func (s *GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItems) SetVe
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItemsItems struct {
-	AssetInstallCount *int32   `json:"AssetInstallCount,omitempty" xml:"AssetInstallCount,omitempty"`
-	CalculateTime     *int64   `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
-	OnlineAssetCount  *int32   `json:"OnlineAssetCount,omitempty" xml:"OnlineAssetCount,omitempty"`
-	OnlineRatio       *float64 `json:"OnlineRatio,omitempty" xml:"OnlineRatio,omitempty"`
+	// The number of assets on which the client is installed.
+	AssetInstallCount *int32 `json:"AssetInstallCount,omitempty" xml:"AssetInstallCount,omitempty"`
+	// The timestamp of the calculation. Unit: milliseconds.
+	CalculateTime *int64 `json:"CalculateTime,omitempty" xml:"CalculateTime,omitempty"`
+	// The number of online assets.
+	OnlineAssetCount *int32 `json:"OnlineAssetCount,omitempty" xml:"OnlineAssetCount,omitempty"`
+	// The online rate. Unit: %.
+	OnlineRatio *float64 `json:"OnlineRatio,omitempty" xml:"OnlineRatio,omitempty"`
 }
 
 func (s GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItemsItems) String() string {
@@ -61727,8 +62047,10 @@ func (s *GetClusterSuspEventStatisticsResponse) SetBody(v *GetClusterSuspEventSt
 }
 
 type GetFileDetectApiInvokeInfoResponseBody struct {
-	Data      *GetFileDetectApiInvokeInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the response body.
+	Data *GetFileDetectApiInvokeInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetFileDetectApiInvokeInfoResponseBody) String() string {
@@ -61750,12 +62072,24 @@ func (s *GetFileDetectApiInvokeInfoResponseBody) SetRequestId(v string) *GetFile
 }
 
 type GetFileDetectApiInvokeInfoResponseBodyData struct {
-	AuthCount       *int64  `json:"AuthCount,omitempty" xml:"AuthCount,omitempty"`
-	Expire          *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	FlowRate        *int32  `json:"FlowRate,omitempty" xml:"FlowRate,omitempty"`
-	RemainAuthCount *int64  `json:"RemainAuthCount,omitempty" xml:"RemainAuthCount,omitempty"`
-	SaleVersion     *int32  `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	TimeUnit        *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	// The total number of authorizations.
+	AuthCount *int64 `json:"AuthCount,omitempty" xml:"AuthCount,omitempty"`
+	// The timestamp of the expiration date of the authorization number.
+	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// The frequency of calls.
+	FlowRate *int32 `json:"FlowRate,omitempty" xml:"FlowRate,omitempty"`
+	// The number of remaining authorizations.
+	RemainAuthCount *int64 `json:"RemainAuthCount,omitempty" xml:"RemainAuthCount,omitempty"`
+	// The Authorized Version. Valid values include:
+	//
+	// * **1:** trial version
+	// * **2:** Enterprise Edition
+	SaleVersion *int32 `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
+	// The time unit of the frequency limit. Value:
+	//
+	// * **SECONDS**
+	// * **MINUTES**
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
 func (s GetFileDetectApiInvokeInfoResponseBodyData) String() string {
@@ -65156,6 +65490,7 @@ type IgnoreCheckItemsRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The reason why you add the risk item to the whitelist.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The operation that you want to perform on the risk item.Valid values:
 	// *  **1**: adds the risk item to the whitelist
 	// *  **2**: removes the risk item from the whitelist
@@ -65186,6 +65521,11 @@ func (s *IgnoreCheckItemsRequest) SetLang(v string) *IgnoreCheckItemsRequest {
 
 func (s *IgnoreCheckItemsRequest) SetReason(v string) *IgnoreCheckItemsRequest {
 	s.Reason = &v
+	return s
+}
+
+func (s *IgnoreCheckItemsRequest) SetSource(v string) *IgnoreCheckItemsRequest {
+	s.Source = &v
 	return s
 }
 
@@ -65276,6 +65616,7 @@ type IgnoreHcCheckWarningsRequest struct {
 	CheckWarningIds *string `json:"CheckWarningIds,omitempty" xml:"CheckWarningIds,omitempty"`
 	Reason          *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	RiskId          *string `json:"RiskId,omitempty" xml:"RiskId,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Type            *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -65305,6 +65646,11 @@ func (s *IgnoreHcCheckWarningsRequest) SetReason(v string) *IgnoreHcCheckWarning
 
 func (s *IgnoreHcCheckWarningsRequest) SetRiskId(v string) *IgnoreHcCheckWarningsRequest {
 	s.RiskId = &v
+	return s
+}
+
+func (s *IgnoreHcCheckWarningsRequest) SetSource(v string) *IgnoreHcCheckWarningsRequest {
+	s.Source = &v
 	return s
 }
 
@@ -65576,8 +65922,6 @@ type InstallPmAgentRequest struct {
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the client.
-	//
-	// *   **aliyun_assist**: Cloud Assistant client
 	// *   **aliyun_monitor**: CloudMonitor client
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The UUID of the server. If you specify multiple UUIDs, separate the UUIDs with commas (,).
@@ -65868,8 +66212,10 @@ func (s *JoinWebLockProcessWhiteListResponse) SetBody(v *JoinWebLockProcessWhite
 }
 
 type ListAgentlessRegionResponseBody struct {
+	// The information about the regions.
 	RegionList []*string `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAgentlessRegionResponseBody) String() string {
@@ -67842,6 +68188,7 @@ type ListCheckItemWarningMachineRequest struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the check item.
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
+	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the check item. Valid values:
 	//
 	// *   1: failed
@@ -67906,6 +68253,11 @@ func (s *ListCheckItemWarningMachineRequest) SetRemark(v string) *ListCheckItemW
 
 func (s *ListCheckItemWarningMachineRequest) SetRiskType(v string) *ListCheckItemWarningMachineRequest {
 	s.RiskType = &v
+	return s
+}
+
+func (s *ListCheckItemWarningMachineRequest) SetSource(v string) *ListCheckItemWarningMachineRequest {
+	s.Source = &v
 	return s
 }
 
@@ -67974,7 +68326,8 @@ type ListCheckItemWarningMachineResponseBodyList struct {
 	// The public IP address of the affected asset.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// The private IP address of the affected asset.
-	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	LastScanTime *int64  `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
 	// Indicates whether a port on the server is accessible over the Internet. Valid values:
 	//
 	// *   **true**: A port on the server is accessible over the Internet.
@@ -67995,7 +68348,10 @@ type ListCheckItemWarningMachineResponseBodyList struct {
 	// *   6: ignored
 	//
 	// *   7: fixing
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The UUID of the server.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	// An array consisting of the details about the baselines based on which the risk item is detected.
@@ -68055,6 +68411,11 @@ func (s *ListCheckItemWarningMachineResponseBodyList) SetIntranetIp(v string) *L
 	return s
 }
 
+func (s *ListCheckItemWarningMachineResponseBodyList) SetLastScanTime(v int64) *ListCheckItemWarningMachineResponseBodyList {
+	s.LastScanTime = &v
+	return s
+}
+
 func (s *ListCheckItemWarningMachineResponseBodyList) SetPortOpen(v bool) *ListCheckItemWarningMachineResponseBodyList {
 	s.PortOpen = &v
 	return s
@@ -68072,6 +68433,21 @@ func (s *ListCheckItemWarningMachineResponseBodyList) SetRegionId(v string) *Lis
 
 func (s *ListCheckItemWarningMachineResponseBodyList) SetStatus(v int32) *ListCheckItemWarningMachineResponseBodyList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCheckItemWarningMachineResponseBodyList) SetTargetId(v string) *ListCheckItemWarningMachineResponseBodyList {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListCheckItemWarningMachineResponseBodyList) SetTargetName(v string) *ListCheckItemWarningMachineResponseBodyList {
+	s.TargetName = &v
+	return s
+}
+
+func (s *ListCheckItemWarningMachineResponseBodyList) SetTargetType(v string) *ListCheckItemWarningMachineResponseBodyList {
+	s.TargetType = &v
 	return s
 }
 
@@ -68238,6 +68614,7 @@ type ListCheckItemWarningSummaryRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the baseline.
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
+	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListCheckItemWarningSummaryRequest) String() string {
@@ -68300,6 +68677,11 @@ func (s *ListCheckItemWarningSummaryRequest) SetPageSize(v int32) *ListCheckItem
 
 func (s *ListCheckItemWarningSummaryRequest) SetRiskType(v string) *ListCheckItemWarningSummaryRequest {
 	s.RiskType = &v
+	return s
+}
+
+func (s *ListCheckItemWarningSummaryRequest) SetSource(v string) *ListCheckItemWarningSummaryRequest {
+	s.Source = &v
 	return s
 }
 
@@ -84286,6 +84668,158 @@ func (s *PublicSyncAndCreateImageScanTaskResponse) SetBody(v *PublicSyncAndCreat
 	return s
 }
 
+type QueryAttackCountRequest struct {
+	// The ID of the request source. Set the value to sas.
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s QueryAttackCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttackCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttackCountRequest) SetFrom(v string) *QueryAttackCountRequest {
+	s.From = &v
+	return s
+}
+
+func (s *QueryAttackCountRequest) SetLang(v string) *QueryAttackCountRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *QueryAttackCountRequest) SetSourceIp(v string) *QueryAttackCountRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type QueryAttackCountResponseBody struct {
+	// The HTTP status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// An array that consists of the numbers of alert events in different attack phases.
+	Data []*QueryAttackCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether exceptions are handled. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAttackCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttackCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttackCountResponseBody) SetCode(v string) *QueryAttackCountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAttackCountResponseBody) SetCount(v int32) *QueryAttackCountResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *QueryAttackCountResponseBody) SetData(v []*QueryAttackCountResponseBodyData) *QueryAttackCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAttackCountResponseBody) SetMessage(v string) *QueryAttackCountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAttackCountResponseBody) SetRequestId(v string) *QueryAttackCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAttackCountResponseBody) SetSuccess(v bool) *QueryAttackCountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAttackCountResponseBodyData struct {
+	// The number of times that the alert is triggered.
+	EventCount *int32 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
+	// The ID of the ATT\&CK phase.
+	TacticId *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	// The type of the ATT\&CK phase.
+	TacticType *string `json:"TacticType,omitempty" xml:"TacticType,omitempty"`
+}
+
+func (s QueryAttackCountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttackCountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttackCountResponseBodyData) SetEventCount(v int32) *QueryAttackCountResponseBodyData {
+	s.EventCount = &v
+	return s
+}
+
+func (s *QueryAttackCountResponseBodyData) SetTacticId(v string) *QueryAttackCountResponseBodyData {
+	s.TacticId = &v
+	return s
+}
+
+func (s *QueryAttackCountResponseBodyData) SetTacticType(v string) *QueryAttackCountResponseBodyData {
+	s.TacticType = &v
+	return s
+}
+
+type QueryAttackCountResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryAttackCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAttackCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAttackCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAttackCountResponse) SetHeaders(v map[string]*string) *QueryAttackCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAttackCountResponse) SetStatusCode(v int32) *QueryAttackCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAttackCountResponse) SetBody(v *QueryAttackCountResponseBody) *QueryAttackCountResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDiscoverDatabaseRequest struct {
 	// The ID of the scan task.
 	//
@@ -85526,7 +86060,8 @@ type SaveImageBaselineStrategyRequest struct {
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The ID of the baseline check policy.
 	//
 	// > You can call the [DescribeImageBaselineStrategy](~~DescribeImageBaselineStrategy~~) operation to query the IDs of baseline check policies.
@@ -85550,6 +86085,11 @@ func (s *SaveImageBaselineStrategyRequest) SetBaselineItemList(v string) *SaveIm
 
 func (s *SaveImageBaselineStrategyRequest) SetLang(v string) *SaveImageBaselineStrategyRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *SaveImageBaselineStrategyRequest) SetSource(v string) *SaveImageBaselineStrategyRequest {
+	s.Source = &v
 	return s
 }
 
@@ -88101,6 +88641,10 @@ func (client *Client) AddImageVulWhiteListWithOptions(request *AddImageVulWhiteL
 
 	if !tea.BoolValue(util.IsUnset(request.Reason)) {
 		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
@@ -93858,6 +94402,10 @@ func (client *Client) DescribeCheckWarningsWithOptions(request *DescribeCheckWar
 		query["RiskStatus"] = request.RiskStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -96869,6 +97417,10 @@ func (client *Client) DescribeImageBaselineStrategyWithOptions(request *Describe
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
 		query["StrategyId"] = request.StrategyId
 	}
@@ -98103,6 +98655,10 @@ func (client *Client) DescribeImageVulWhiteListWithOptions(request *DescribeImag
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -100483,7 +101039,7 @@ func (client *Client) DescribeRiskCheckItemResult(request *DescribeRiskCheckItem
 
 /**
  * @deprecated
- * This operation is phased out. You can use the ListCheckResult operation.
+ * This operation is phased out. You can use the [ListCheckResult](~~ListCheckResult~~) operation.
  *
  * @param request DescribeRiskCheckResultRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -100569,7 +101125,7 @@ func (client *Client) DescribeRiskCheckResultWithOptions(request *DescribeRiskCh
 
 /**
  * @deprecated
- * This operation is phased out. You can use the ListCheckResult operation.
+ * This operation is phased out. You can use the [ListCheckResult](~~ListCheckResult~~) operation.
  *
  * @param request DescribeRiskCheckResultRequest
  * @return DescribeRiskCheckResultResponse
@@ -100817,6 +101373,10 @@ func (client *Client) DescribeRiskTypeWithOptions(request *DescribeRiskTypeReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
@@ -107678,6 +108238,10 @@ func (client *Client) IgnoreCheckItemsWithOptions(request *IgnoreCheckItemsReque
 		query["Reason"] = request.Reason
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -107740,6 +108304,10 @@ func (client *Client) IgnoreHcCheckWarningsWithOptions(request *IgnoreHcCheckWar
 
 	if !tea.BoolValue(util.IsUnset(request.RiskId)) {
 		query["RiskId"] = request.RiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
@@ -108753,6 +109321,10 @@ func (client *Client) ListCheckItemWarningMachineWithOptions(request *ListCheckI
 		query["RiskType"] = request.RiskType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
 	}
@@ -108839,6 +109411,10 @@ func (client *Client) ListCheckItemWarningSummaryWithOptions(request *ListCheckI
 
 	if !tea.BoolValue(util.IsUnset(request.RiskType)) {
 		query["RiskType"] = request.RiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -115033,6 +115609,60 @@ func (client *Client) PublicSyncAndCreateImageScanTask(request *PublicSyncAndCre
 	return _result, _err
 }
 
+func (client *Client) QueryAttackCountWithOptions(request *QueryAttackCountRequest, runtime *util.RuntimeOptions) (_result *QueryAttackCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		body["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		body["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAttackCount"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAttackCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAttackCount(request *QueryAttackCountRequest) (_result *QueryAttackCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAttackCountResponse{}
+	_body, _err := client.QueryAttackCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryDiscoverDatabaseWithOptions(request *QueryDiscoverDatabaseRequest, runtime *util.RuntimeOptions) (_result *QueryDiscoverDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -115660,6 +116290,10 @@ func (client *Client) SaveImageBaselineStrategyWithOptions(request *SaveImageBas
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
