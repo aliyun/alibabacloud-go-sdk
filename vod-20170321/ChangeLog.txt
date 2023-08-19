@@ -1,3 +1,6 @@
+2023-08-19 Version: v3.1.0
+- Generated golang 2017-03-21 for vod.
+
 2023-04-26 Version: v3.0.5
 - Api add media storage class.
 
