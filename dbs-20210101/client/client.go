@@ -508,6 +508,7 @@ type CreateSandboxInstanceRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the VSwitch that is used to connect to the sandbox instance.
 	VpcSwitchId *string `json:"VpcSwitchId,omitempty" xml:"VpcSwitchId,omitempty"`
+	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateSandboxInstanceRequest) String() string {
@@ -565,6 +566,11 @@ func (s *CreateSandboxInstanceRequest) SetVpcId(v string) *CreateSandboxInstance
 
 func (s *CreateSandboxInstanceRequest) SetVpcSwitchId(v string) *CreateSandboxInstanceRequest {
 	s.VpcSwitchId = &v
+	return s
+}
+
+func (s *CreateSandboxInstanceRequest) SetZoneId(v string) *CreateSandboxInstanceRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -689,6 +695,7 @@ type DeleteSandboxInstanceRequest struct {
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The ID of the sandbox instance. You can call the [DescribeSandboxInstances](~~437257~~) operation to query the ID of the sandbox instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DeleteSandboxInstanceRequest) String() string {
@@ -706,6 +713,11 @@ func (s *DeleteSandboxInstanceRequest) SetBackupPlanId(v string) *DeleteSandboxI
 
 func (s *DeleteSandboxInstanceRequest) SetInstanceId(v string) *DeleteSandboxInstanceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteSandboxInstanceRequest) SetZoneId(v string) *DeleteSandboxInstanceRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -2728,6 +2740,10 @@ func (client *Client) CreateSandboxInstanceWithOptions(request *CreateSandboxIns
 		query["VpcSwitchId"] = request.VpcSwitchId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2787,6 +2803,10 @@ func (client *Client) DeleteSandboxInstanceWithOptions(request *DeleteSandboxIns
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
 	}
 
 	req := &openapi.OpenApiRequest{
