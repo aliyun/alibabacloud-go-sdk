@@ -148,6 +148,7 @@ func (s *CreateIdleInstanceCullerResponse) SetBody(v *CreateIdleInstanceCullerRe
 
 type CreateInstanceRequest struct {
 	Accessibility        *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CloudDisks           []*CreateInstanceRequestCloudDisks      `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
 	Datasets             []*CreateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	EcsSpec              *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	EnvironmentVariables map[string]*string                      `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
@@ -158,8 +159,10 @@ type CreateInstanceRequest struct {
 	Priority             *int64                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RequestedResource    *CreateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
 	ResourceId           *string                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	UserId               *string                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserVpc              *CreateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	WorkspaceId          *string                                 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceSource      *string                                 `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -172,6 +175,11 @@ func (s CreateInstanceRequest) GoString() string {
 
 func (s *CreateInstanceRequest) SetAccessibility(v string) *CreateInstanceRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetCloudDisks(v []*CreateInstanceRequestCloudDisks) *CreateInstanceRequest {
+	s.CloudDisks = v
 	return s
 }
 
@@ -225,6 +233,11 @@ func (s *CreateInstanceRequest) SetResourceId(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetUserId(v string) *CreateInstanceRequest {
+	s.UserId = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetUserVpc(v *CreateInstanceRequestUserVpc) *CreateInstanceRequest {
 	s.UserVpc = v
 	return s
@@ -232,6 +245,46 @@ func (s *CreateInstanceRequest) SetUserVpc(v *CreateInstanceRequestUserVpc) *Cre
 
 func (s *CreateInstanceRequest) SetWorkspaceId(v string) *CreateInstanceRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetWorkspaceSource(v string) *CreateInstanceRequest {
+	s.WorkspaceSource = &v
+	return s
+}
+
+type CreateInstanceRequestCloudDisks struct {
+	Capacity  *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	SubType   *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+}
+
+func (s CreateInstanceRequestCloudDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestCloudDisks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestCloudDisks) SetCapacity(v string) *CreateInstanceRequestCloudDisks {
+	s.Capacity = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCloudDisks) SetMountPath(v string) *CreateInstanceRequestCloudDisks {
+	s.MountPath = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCloudDisks) SetPath(v string) *CreateInstanceRequestCloudDisks {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCloudDisks) SetSubType(v string) *CreateInstanceRequestCloudDisks {
+	s.SubType = &v
 	return s
 }
 
@@ -323,11 +376,11 @@ func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *Crea
 }
 
 type CreateInstanceRequestUserVpc struct {
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Vpc Id。
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateInstanceRequestUserVpc) String() string {
@@ -336,6 +389,11 @@ func (s CreateInstanceRequestUserVpc) String() string {
 
 func (s CreateInstanceRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceRequestUserVpc) SetDefaultRoute(v string) *CreateInstanceRequestUserVpc {
+	s.DefaultRoute = &v
+	return s
 }
 
 func (s *CreateInstanceRequestUserVpc) SetExtendedCIDRs(v []*string) *CreateInstanceRequestUserVpc {
@@ -1075,6 +1133,7 @@ type GetInstanceResponseBody struct {
 	AcceleratorType            *string                                        `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	Accessibility              *string                                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	AccumulatedRunningTimeInMs *int64                                         `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	CloudDisks                 []*GetInstanceResponseBodyCloudDisks           `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
 	Code                       *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datasets                   []*GetInstanceResponseBodyDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	EcsSpec                    *string                                        `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
@@ -1111,9 +1170,10 @@ type GetInstanceResponseBody struct {
 	UserName          *string                                   `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	UserVpc           *GetInstanceResponseBodyUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	// Web IDE url。
-	WebIDEUrl     *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	WebIDEUrl       *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName   *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -1136,6 +1196,11 @@ func (s *GetInstanceResponseBody) SetAccessibility(v string) *GetInstanceRespons
 
 func (s *GetInstanceResponseBody) SetAccumulatedRunningTimeInMs(v int64) *GetInstanceResponseBody {
 	s.AccumulatedRunningTimeInMs = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetCloudDisks(v []*GetInstanceResponseBodyCloudDisks) *GetInstanceResponseBody {
+	s.CloudDisks = v
 	return s
 }
 
@@ -1324,6 +1389,46 @@ func (s *GetInstanceResponseBody) SetWorkspaceName(v string) *GetInstanceRespons
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetWorkspaceSource(v string) *GetInstanceResponseBody {
+	s.WorkspaceSource = &v
+	return s
+}
+
+type GetInstanceResponseBodyCloudDisks struct {
+	Capacity  *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	SubType   *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+}
+
+func (s GetInstanceResponseBodyCloudDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyCloudDisks) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyCloudDisks) SetCapacity(v string) *GetInstanceResponseBodyCloudDisks {
+	s.Capacity = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyCloudDisks) SetMountPath(v string) *GetInstanceResponseBodyCloudDisks {
+	s.MountPath = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyCloudDisks) SetPath(v string) *GetInstanceResponseBodyCloudDisks {
+	s.Path = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyCloudDisks) SetSubType(v string) *GetInstanceResponseBodyCloudDisks {
+	s.SubType = &v
+	return s
+}
+
 type GetInstanceResponseBodyDatasets struct {
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
@@ -1430,15 +1535,24 @@ func (s *GetInstanceResponseBodyInstanceShutdownTimer) SetRemainingTimeInMs(v in
 }
 
 type GetInstanceResponseBodyInstanceSnapshotList struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 快照创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 快照修改时间
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// 镜像Url
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例快照错误代码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 实例快照错误消息
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// 镜像仓库Url
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	// 实例快照状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetInstanceResponseBodyInstanceSnapshotList) String() string {
@@ -1523,10 +1637,13 @@ type GetInstanceResponseBodyLatestSnapshot struct {
 	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 实例快照错误代码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 实例快照错误消息
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	// 实例快照状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetInstanceResponseBodyLatestSnapshot) String() string {
@@ -1624,8 +1741,10 @@ func (s *GetInstanceResponseBodyRequestedResource) SetSharedMemory(v string) *Ge
 }
 
 type GetInstanceResponseBodyUserVpc struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Vpc Id。
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -1636,6 +1755,16 @@ func (s GetInstanceResponseBodyUserVpc) String() string {
 
 func (s GetInstanceResponseBodyUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceResponseBodyUserVpc) SetDefaultRoute(v string) *GetInstanceResponseBodyUserVpc {
+	s.DefaultRoute = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyUserVpc) SetExtendedCIDRs(v []*string) *GetInstanceResponseBodyUserVpc {
+	s.ExtendedCIDRs = v
+	return s
 }
 
 func (s *GetInstanceResponseBodyUserVpc) SetSecurityGroupId(v string) *GetInstanceResponseBodyUserVpc {
@@ -2432,12 +2561,15 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type GetUserConfigResponseBody struct {
-	AccountSufficient *bool   `json:"AccountSufficient,omitempty" xml:"AccountSufficient,omitempty"`
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode    *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccountSufficient     *bool                              `json:"AccountSufficient,omitempty" xml:"AccountSufficient,omitempty"`
+	Code                  *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	EnableEciDisk         *bool                              `json:"EnableEciDisk,omitempty" xml:"EnableEciDisk,omitempty"`
+	FreeTier              *GetUserConfigResponseBodyFreeTier `json:"FreeTier,omitempty" xml:"FreeTier,omitempty" type:"Struct"`
+	FreeTierSpecAvailable *bool                              `json:"FreeTierSpecAvailable,omitempty" xml:"FreeTierSpecAvailable,omitempty"`
+	HttpStatusCode        *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message               *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId             *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetUserConfigResponseBody) String() string {
@@ -2458,6 +2590,21 @@ func (s *GetUserConfigResponseBody) SetCode(v string) *GetUserConfigResponseBody
 	return s
 }
 
+func (s *GetUserConfigResponseBody) SetEnableEciDisk(v bool) *GetUserConfigResponseBody {
+	s.EnableEciDisk = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBody) SetFreeTier(v *GetUserConfigResponseBodyFreeTier) *GetUserConfigResponseBody {
+	s.FreeTier = v
+	return s
+}
+
+func (s *GetUserConfigResponseBody) SetFreeTierSpecAvailable(v bool) *GetUserConfigResponseBody {
+	s.FreeTierSpecAvailable = &v
+	return s
+}
+
 func (s *GetUserConfigResponseBody) SetHttpStatusCode(v int32) *GetUserConfigResponseBody {
 	s.HttpStatusCode = &v
 	return s
@@ -2475,6 +2622,89 @@ func (s *GetUserConfigResponseBody) SetRequestId(v string) *GetUserConfigRespons
 
 func (s *GetUserConfigResponseBody) SetSuccess(v bool) *GetUserConfigResponseBody {
 	s.Success = &v
+	return s
+}
+
+type GetUserConfigResponseBodyFreeTier struct {
+	EndTime         *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InitBaseUnit    *string  `json:"InitBaseUnit,omitempty" xml:"InitBaseUnit,omitempty"`
+	InitBaseValue   *float64 `json:"InitBaseValue,omitempty" xml:"InitBaseValue,omitempty"`
+	InitShowUnit    *string  `json:"InitShowUnit,omitempty" xml:"InitShowUnit,omitempty"`
+	InitShowValue   *string  `json:"InitShowValue,omitempty" xml:"InitShowValue,omitempty"`
+	IsFreeTierUser  *bool    `json:"IsFreeTierUser,omitempty" xml:"IsFreeTierUser,omitempty"`
+	PeriodBaseUnit  *string  `json:"PeriodBaseUnit,omitempty" xml:"PeriodBaseUnit,omitempty"`
+	PeriodBaseValue *float64 `json:"PeriodBaseValue,omitempty" xml:"PeriodBaseValue,omitempty"`
+	PeriodShowUnit  *string  `json:"PeriodShowUnit,omitempty" xml:"PeriodShowUnit,omitempty"`
+	PeriodShowValue *string  `json:"PeriodShowValue,omitempty" xml:"PeriodShowValue,omitempty"`
+	StartTime       *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetUserConfigResponseBodyFreeTier) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserConfigResponseBodyFreeTier) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetEndTime(v string) *GetUserConfigResponseBodyFreeTier {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetInitBaseUnit(v string) *GetUserConfigResponseBodyFreeTier {
+	s.InitBaseUnit = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetInitBaseValue(v float64) *GetUserConfigResponseBodyFreeTier {
+	s.InitBaseValue = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetInitShowUnit(v string) *GetUserConfigResponseBodyFreeTier {
+	s.InitShowUnit = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetInitShowValue(v string) *GetUserConfigResponseBodyFreeTier {
+	s.InitShowValue = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetIsFreeTierUser(v bool) *GetUserConfigResponseBodyFreeTier {
+	s.IsFreeTierUser = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetPeriodBaseUnit(v string) *GetUserConfigResponseBodyFreeTier {
+	s.PeriodBaseUnit = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetPeriodBaseValue(v float64) *GetUserConfigResponseBodyFreeTier {
+	s.PeriodBaseValue = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetPeriodShowUnit(v string) *GetUserConfigResponseBodyFreeTier {
+	s.PeriodShowUnit = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetPeriodShowValue(v string) *GetUserConfigResponseBodyFreeTier {
+	s.PeriodShowValue = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetStartTime(v string) *GetUserConfigResponseBodyFreeTier {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetUserConfigResponseBodyFreeTier) SetStatus(v string) *GetUserConfigResponseBodyFreeTier {
+	s.Status = &v
 	return s
 }
 
@@ -2503,198 +2733,6 @@ func (s *GetUserConfigResponse) SetStatusCode(v int32) *GetUserConfigResponse {
 }
 
 func (s *GetUserConfigResponse) SetBody(v *GetUserConfigResponseBody) *GetUserConfigResponse {
-	s.Body = v
-	return s
-}
-
-type ListDemoCategoriesResponseBody struct {
-	Categories []*DemoCategory `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	RequestId  *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListDemoCategoriesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDemoCategoriesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDemoCategoriesResponseBody) SetCategories(v []*DemoCategory) *ListDemoCategoriesResponseBody {
-	s.Categories = v
-	return s
-}
-
-func (s *ListDemoCategoriesResponseBody) SetRequestId(v string) *ListDemoCategoriesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListDemoCategoriesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDemoCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDemoCategoriesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDemoCategoriesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDemoCategoriesResponse) SetHeaders(v map[string]*string) *ListDemoCategoriesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDemoCategoriesResponse) SetStatusCode(v int32) *ListDemoCategoriesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListDemoCategoriesResponse) SetBody(v *ListDemoCategoriesResponseBody) *ListDemoCategoriesResponse {
-	s.Body = v
-	return s
-}
-
-type ListDemosRequest struct {
-	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DemoName   *string `json:"DemoName,omitempty" xml:"DemoName,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListDemosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDemosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDemosRequest) SetCategory(v string) *ListDemosRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *ListDemosRequest) SetDemoName(v string) *ListDemosRequest {
-	s.DemoName = &v
-	return s
-}
-
-func (s *ListDemosRequest) SetPageNumber(v int64) *ListDemosRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDemosRequest) SetPageSize(v int64) *ListDemosRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListDemosResponseBody struct {
-	Demos      []*ListDemosResponseBodyDemos `json:"Demos,omitempty" xml:"Demos,omitempty" type:"Repeated"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDemosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDemosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDemosResponseBody) SetDemos(v []*ListDemosResponseBodyDemos) *ListDemosResponseBody {
-	s.Demos = v
-	return s
-}
-
-func (s *ListDemosResponseBody) SetRequestId(v string) *ListDemosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDemosResponseBody) SetTotalCount(v int64) *ListDemosResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDemosResponseBodyDemos struct {
-	Categories      []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	DemoDescription *string   `json:"DemoDescription,omitempty" xml:"DemoDescription,omitempty"`
-	DemoName        *string   `json:"DemoName,omitempty" xml:"DemoName,omitempty"`
-	DemoUrl         *string   `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
-	Order           *int64    `json:"Order,omitempty" xml:"Order,omitempty"`
-	Size            *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
-}
-
-func (s ListDemosResponseBodyDemos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDemosResponseBodyDemos) GoString() string {
-	return s.String()
-}
-
-func (s *ListDemosResponseBodyDemos) SetCategories(v []*string) *ListDemosResponseBodyDemos {
-	s.Categories = v
-	return s
-}
-
-func (s *ListDemosResponseBodyDemos) SetDemoDescription(v string) *ListDemosResponseBodyDemos {
-	s.DemoDescription = &v
-	return s
-}
-
-func (s *ListDemosResponseBodyDemos) SetDemoName(v string) *ListDemosResponseBodyDemos {
-	s.DemoName = &v
-	return s
-}
-
-func (s *ListDemosResponseBodyDemos) SetDemoUrl(v string) *ListDemosResponseBodyDemos {
-	s.DemoUrl = &v
-	return s
-}
-
-func (s *ListDemosResponseBodyDemos) SetOrder(v int64) *ListDemosResponseBodyDemos {
-	s.Order = &v
-	return s
-}
-
-func (s *ListDemosResponseBodyDemos) SetSize(v int64) *ListDemosResponseBodyDemos {
-	s.Size = &v
-	return s
-}
-
-type ListDemosResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDemosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDemosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDemosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDemosResponse) SetHeaders(v map[string]*string) *ListDemosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDemosResponse) SetStatusCode(v int32) *ListDemosResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListDemosResponse) SetBody(v *ListDemosResponseBody) *ListDemosResponse {
 	s.Body = v
 	return s
 }
@@ -2794,16 +2832,18 @@ func (s *ListEcsSpecsResponseBody) SetTotalCount(v int64) *ListEcsSpecsResponseB
 }
 
 type ListEcsSpecsResponseBodyEcsSpecs struct {
-	AcceleratorType     *string  `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	CPU                 *int64   `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	Currency            *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	GPU                 *int64   `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType             *string  `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	InstanceBandwidthRx *int64   `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
-	InstanceType        *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Price               *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
-	SystemDiskCapacity  *int64   `json:"SystemDiskCapacity,omitempty" xml:"SystemDiskCapacity,omitempty"`
+	AcceleratorType     *string                                   `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	CPU                 *int64                                    `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	Currency            *string                                   `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	GPU                 *int64                                    `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType             *string                                   `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	InstanceBandwidthRx *int64                                    `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
+	InstanceType        *string                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsAvailable         *bool                                     `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	Labels              []*ListEcsSpecsResponseBodyEcsSpecsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Memory              *float32                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Price               *float64                                  `json:"Price,omitempty" xml:"Price,omitempty"`
+	SystemDiskCapacity  *int64                                    `json:"SystemDiskCapacity,omitempty" xml:"SystemDiskCapacity,omitempty"`
 }
 
 func (s ListEcsSpecsResponseBodyEcsSpecs) String() string {
@@ -2849,6 +2889,16 @@ func (s *ListEcsSpecsResponseBodyEcsSpecs) SetInstanceType(v string) *ListEcsSpe
 	return s
 }
 
+func (s *ListEcsSpecsResponseBodyEcsSpecs) SetIsAvailable(v bool) *ListEcsSpecsResponseBodyEcsSpecs {
+	s.IsAvailable = &v
+	return s
+}
+
+func (s *ListEcsSpecsResponseBodyEcsSpecs) SetLabels(v []*ListEcsSpecsResponseBodyEcsSpecsLabels) *ListEcsSpecsResponseBodyEcsSpecs {
+	s.Labels = v
+	return s
+}
+
 func (s *ListEcsSpecsResponseBodyEcsSpecs) SetMemory(v float32) *ListEcsSpecsResponseBodyEcsSpecs {
 	s.Memory = &v
 	return s
@@ -2861,6 +2911,29 @@ func (s *ListEcsSpecsResponseBodyEcsSpecs) SetPrice(v float64) *ListEcsSpecsResp
 
 func (s *ListEcsSpecsResponseBodyEcsSpecs) SetSystemDiskCapacity(v int64) *ListEcsSpecsResponseBodyEcsSpecs {
 	s.SystemDiskCapacity = &v
+	return s
+}
+
+type ListEcsSpecsResponseBodyEcsSpecsLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEcsSpecsResponseBodyEcsSpecsLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEcsSpecsResponseBodyEcsSpecsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListEcsSpecsResponseBodyEcsSpecsLabels) SetKey(v string) *ListEcsSpecsResponseBodyEcsSpecsLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ListEcsSpecsResponseBodyEcsSpecsLabels) SetValue(v string) *ListEcsSpecsResponseBodyEcsSpecsLabels {
+	s.Value = &v
 	return s
 }
 
@@ -3343,6 +3416,7 @@ type ListInstancesResponseBodyInstances struct {
 	AcceleratorType            *string                                                   `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	Accessibility              *string                                                   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	AccumulatedRunningTimeInMs *int64                                                    `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	CloudDisks                 []*ListInstancesResponseBodyInstancesCloudDisks           `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
 	Datasets                   []*ListInstancesResponseBodyInstancesDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	EcsSpec                    *string                                                   `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	EnvironmentVariables       map[string]*string                                        `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
@@ -3374,9 +3448,10 @@ type ListInstancesResponseBodyInstances struct {
 	UserName          *string                                              `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	UserVpc           *ListInstancesResponseBodyInstancesUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	// Web IDE url。
-	WebIDEUrl     *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	WebIDEUrl       *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName   *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -3399,6 +3474,11 @@ func (s *ListInstancesResponseBodyInstances) SetAccessibility(v string) *ListIns
 
 func (s *ListInstancesResponseBodyInstances) SetAccumulatedRunningTimeInMs(v int64) *ListInstancesResponseBodyInstances {
 	s.AccumulatedRunningTimeInMs = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetCloudDisks(v []*ListInstancesResponseBodyInstancesCloudDisks) *ListInstancesResponseBodyInstances {
+	s.CloudDisks = v
 	return s
 }
 
@@ -3559,6 +3639,46 @@ func (s *ListInstancesResponseBodyInstances) SetWorkspaceId(v string) *ListInsta
 
 func (s *ListInstancesResponseBodyInstances) SetWorkspaceName(v string) *ListInstancesResponseBodyInstances {
 	s.WorkspaceName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetWorkspaceSource(v string) *ListInstancesResponseBodyInstances {
+	s.WorkspaceSource = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesCloudDisks struct {
+	Capacity  *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	SubType   *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesCloudDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesCloudDisks) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesCloudDisks) SetCapacity(v string) *ListInstancesResponseBodyInstancesCloudDisks {
+	s.Capacity = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesCloudDisks) SetMountPath(v string) *ListInstancesResponseBodyInstancesCloudDisks {
+	s.MountPath = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesCloudDisks) SetPath(v string) *ListInstancesResponseBodyInstancesCloudDisks {
+	s.Path = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesCloudDisks) SetSubType(v string) *ListInstancesResponseBodyInstancesCloudDisks {
+	s.SubType = &v
 	return s
 }
 
@@ -3862,10 +3982,11 @@ func (s *ListInstancesResponseBodyInstancesRequestedResource) SetSharedMemory(v 
 }
 
 type ListInstancesResponseBodyInstancesUserVpc struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Vpc Id。
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesUserVpc) String() string {
@@ -3874,6 +3995,16 @@ func (s ListInstancesResponseBodyInstancesUserVpc) String() string {
 
 func (s ListInstancesResponseBodyInstancesUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesUserVpc) SetDefaultRoute(v string) *ListInstancesResponseBodyInstancesUserVpc {
+	s.DefaultRoute = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesUserVpc) SetExtendedCIDRs(v []*string) *ListInstancesResponseBodyInstancesUserVpc {
+	s.ExtendedCIDRs = v
+	return s
 }
 
 func (s *ListInstancesResponseBodyInstancesUserVpc) SetSecurityGroupId(v string) *ListInstancesResponseBodyInstancesUserVpc {
@@ -4099,7 +4230,9 @@ type UpdateInstanceRequest struct {
 	ImageUrl             *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InstanceName         *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	RequestedResource    *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	UserId               *string                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserVpc              *UpdateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	WorkspaceSource      *string                                 `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -4155,8 +4288,18 @@ func (s *UpdateInstanceRequest) SetRequestedResource(v *UpdateInstanceRequestReq
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetUserId(v string) *UpdateInstanceRequest {
+	s.UserId = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetUserVpc(v *UpdateInstanceRequestUserVpc) *UpdateInstanceRequest {
 	s.UserVpc = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetWorkspaceSource(v string) *UpdateInstanceRequest {
+	s.WorkspaceSource = &v
 	return s
 }
 
@@ -4225,11 +4368,11 @@ func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *Upda
 }
 
 type UpdateInstanceRequestUserVpc struct {
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Vpc Id。
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateInstanceRequestUserVpc) String() string {
@@ -4238,6 +4381,11 @@ func (s UpdateInstanceRequestUserVpc) String() string {
 
 func (s UpdateInstanceRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceRequestUserVpc) SetDefaultRoute(v string) *UpdateInstanceRequestUserVpc {
+	s.DefaultRoute = &v
+	return s
 }
 
 func (s *UpdateInstanceRequestUserVpc) SetExtendedCIDRs(v []*string) *UpdateInstanceRequestUserVpc {
@@ -4447,6 +4595,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["Accessibility"] = request.Accessibility
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CloudDisks)) {
+		body["CloudDisks"] = request.CloudDisks
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Datasets)) {
 		body["Datasets"] = request.Datasets
 	}
@@ -4487,12 +4639,20 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["ResourceId"] = request.ResourceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
 		body["UserVpc"] = request.UserVpc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
 		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceSource)) {
+		body["WorkspaceSource"] = request.WorkspaceSource
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5191,100 +5351,6 @@ func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err erro
 	return _result, _err
 }
 
-func (client *Client) ListDemoCategoriesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDemoCategoriesResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDemoCategories"),
-		Version:     tea.String("2022-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/democategories"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDemoCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDemoCategories() (_result *ListDemoCategoriesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDemoCategoriesResponse{}
-	_body, _err := client.ListDemoCategoriesWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDemosWithOptions(request *ListDemosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDemosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Category)) {
-		query["Category"] = request.Category
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DemoName)) {
-		query["DemoName"] = request.DemoName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDemos"),
-		Version:     tea.String("2022-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/demos"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDemosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDemos(request *ListDemosRequest) (_result *ListDemosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDemosResponse{}
-	_body, _err := client.ListDemosWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEcsSpecsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5665,8 +5731,16 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["RequestedResource"] = request.RequestedResource
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
 		body["UserVpc"] = request.UserVpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceSource)) {
+		body["WorkspaceSource"] = request.WorkspaceSource
 	}
 
 	req := &openapi.OpenApiRequest{
