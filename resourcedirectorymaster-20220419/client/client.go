@@ -2044,6 +2044,69 @@ func (s *DeleteFolderResponse) SetBody(v *DeleteFolderResponseBody) *DeleteFolde
 	return s
 }
 
+type DeleteInvalidCloudAccountRecordRequest struct {
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+}
+
+func (s DeleteInvalidCloudAccountRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvalidCloudAccountRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvalidCloudAccountRecordRequest) SetRecordId(v string) *DeleteInvalidCloudAccountRecordRequest {
+	s.RecordId = &v
+	return s
+}
+
+type DeleteInvalidCloudAccountRecordResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInvalidCloudAccountRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvalidCloudAccountRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvalidCloudAccountRecordResponseBody) SetRequestId(v string) *DeleteInvalidCloudAccountRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInvalidCloudAccountRecordResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInvalidCloudAccountRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInvalidCloudAccountRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvalidCloudAccountRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvalidCloudAccountRecordResponse) SetHeaders(v map[string]*string) *DeleteInvalidCloudAccountRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInvalidCloudAccountRecordResponse) SetStatusCode(v int32) *DeleteInvalidCloudAccountRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInvalidCloudAccountRecordResponse) SetBody(v *DeleteInvalidCloudAccountRecordResponseBody) *DeleteInvalidCloudAccountRecordResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMessageContactRequest struct {
 	// The ID of the contact.
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
@@ -6899,9 +6962,17 @@ func (s *ListMessageContactsResponse) SetBody(v *ListMessageContactsResponseBody
 }
 
 type ListTagKeysRequest struct {
-	KeyFilter    *string `json:"KeyFilter,omitempty" xml:"KeyFilter,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tag key for a fuzzy query.
+	KeyFilter *string `json:"KeyFilter,omitempty" xml:"KeyFilter,omitempty"`
+	// The maximum number of entries to return for a single request.
+	//
+	// Valid values: 1 to 100. Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource type.
+	//
+	// The value Account indicates the members of the resource directory.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -6934,9 +7005,15 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	NextToken *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*ListTagKeysResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Indicates whether the next query is required.
+	//
+	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the tag keys.
+	Tags []*ListTagKeysResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -6963,6 +7040,7 @@ func (s *ListTagKeysResponseBody) SetTags(v []*ListTagKeysResponseBodyTags) *Lis
 }
 
 type ListTagKeysResponseBodyTags struct {
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -7193,11 +7271,20 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return for a single request.
+	//
+	// Valid values: 1 to 100. Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource type.
+	//
+	// The value Account indicates the members of the resource directory.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	ValueFilter  *string `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty"`
+	// The tag key. This parameter specifies a filter condition for the query.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value for a fuzzy query.
+	ValueFilter *string `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -7234,9 +7321,15 @@ func (s *ListTagValuesRequest) SetValueFilter(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
-	NextToken *string                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*ListTagValuesResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Indicates whether the next query is required.
+	//
+	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the tag values.
+	Tags []*ListTagValuesResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagValuesResponseBody) String() string {
@@ -7263,6 +7356,7 @@ func (s *ListTagValuesResponseBody) SetTags(v []*ListTagValuesResponseBodyTags) 
 }
 
 type ListTagValuesResponseBodyTags struct {
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7705,6 +7799,104 @@ func (s *MoveAccountResponse) SetStatusCode(v int32) *MoveAccountResponse {
 }
 
 func (s *MoveAccountResponse) SetBody(v *MoveAccountResponseBody) *MoveAccountResponse {
+	s.Body = v
+	return s
+}
+
+type PrecheckForConsolidatedBillingAccountRequest struct {
+	BillingAccountId *string `json:"BillingAccountId,omitempty" xml:"BillingAccountId,omitempty"`
+}
+
+func (s PrecheckForConsolidatedBillingAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrecheckForConsolidatedBillingAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PrecheckForConsolidatedBillingAccountRequest) SetBillingAccountId(v string) *PrecheckForConsolidatedBillingAccountRequest {
+	s.BillingAccountId = &v
+	return s
+}
+
+type PrecheckForConsolidatedBillingAccountResponseBody struct {
+	Reasons   []*PrecheckForConsolidatedBillingAccountResponseBodyReasons `json:"Reasons,omitempty" xml:"Reasons,omitempty" type:"Repeated"`
+	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool                                                       `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s PrecheckForConsolidatedBillingAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrecheckForConsolidatedBillingAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponseBody) SetReasons(v []*PrecheckForConsolidatedBillingAccountResponseBodyReasons) *PrecheckForConsolidatedBillingAccountResponseBody {
+	s.Reasons = v
+	return s
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponseBody) SetRequestId(v string) *PrecheckForConsolidatedBillingAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponseBody) SetResult(v bool) *PrecheckForConsolidatedBillingAccountResponseBody {
+	s.Result = &v
+	return s
+}
+
+type PrecheckForConsolidatedBillingAccountResponseBodyReasons struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s PrecheckForConsolidatedBillingAccountResponseBodyReasons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrecheckForConsolidatedBillingAccountResponseBodyReasons) GoString() string {
+	return s.String()
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponseBodyReasons) SetCode(v string) *PrecheckForConsolidatedBillingAccountResponseBodyReasons {
+	s.Code = &v
+	return s
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponseBodyReasons) SetMessage(v string) *PrecheckForConsolidatedBillingAccountResponseBodyReasons {
+	s.Message = &v
+	return s
+}
+
+type PrecheckForConsolidatedBillingAccountResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PrecheckForConsolidatedBillingAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PrecheckForConsolidatedBillingAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrecheckForConsolidatedBillingAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponse) SetHeaders(v map[string]*string) *PrecheckForConsolidatedBillingAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponse) SetStatusCode(v int32) *PrecheckForConsolidatedBillingAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PrecheckForConsolidatedBillingAccountResponse) SetBody(v *PrecheckForConsolidatedBillingAccountResponseBody) *PrecheckForConsolidatedBillingAccountResponse {
 	s.Body = v
 	return s
 }
@@ -10169,6 +10361,50 @@ func (client *Client) DeleteFolder(request *DeleteFolderRequest) (_result *Delet
 	return _result, _err
 }
 
+func (client *Client) DeleteInvalidCloudAccountRecordWithOptions(request *DeleteInvalidCloudAccountRecordRequest, runtime *util.RuntimeOptions) (_result *DeleteInvalidCloudAccountRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		query["RecordId"] = request.RecordId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInvalidCloudAccountRecord"),
+		Version:     tea.String("2022-04-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInvalidCloudAccountRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInvalidCloudAccountRecord(request *DeleteInvalidCloudAccountRecordRequest) (_result *DeleteInvalidCloudAccountRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteInvalidCloudAccountRecordResponse{}
+	_body, _err := client.DeleteInvalidCloudAccountRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteMessageContactWithOptions(request *DeleteMessageContactRequest, runtime *util.RuntimeOptions) (_result *DeleteMessageContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12124,6 +12360,50 @@ func (client *Client) MoveAccount(request *MoveAccountRequest) (_result *MoveAcc
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveAccountResponse{}
 	_body, _err := client.MoveAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PrecheckForConsolidatedBillingAccountWithOptions(request *PrecheckForConsolidatedBillingAccountRequest, runtime *util.RuntimeOptions) (_result *PrecheckForConsolidatedBillingAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillingAccountId)) {
+		query["BillingAccountId"] = request.BillingAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PrecheckForConsolidatedBillingAccount"),
+		Version:     tea.String("2022-04-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PrecheckForConsolidatedBillingAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PrecheckForConsolidatedBillingAccount(request *PrecheckForConsolidatedBillingAccountRequest) (_result *PrecheckForConsolidatedBillingAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PrecheckForConsolidatedBillingAccountResponse{}
+	_body, _err := client.PrecheckForConsolidatedBillingAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
