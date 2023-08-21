@@ -560,6 +560,8 @@ type CreateClusterRequestNodeGroupsNodes struct {
 	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateClusterRequestNodeGroupsNodes) String() string {
@@ -582,6 +584,16 @@ func (s *CreateClusterRequestNodeGroupsNodes) SetLoginPassword(v string) *Create
 
 func (s *CreateClusterRequestNodeGroupsNodes) SetNodeId(v string) *CreateClusterRequestNodeGroupsNodes {
 	s.NodeId = &v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroupsNodes) SetVSwitchId(v string) *CreateClusterRequestNodeGroupsNodes {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroupsNodes) SetVpcId(v string) *CreateClusterRequestNodeGroupsNodes {
+	s.VpcId = &v
 	return s
 }
 
@@ -849,6 +861,7 @@ type DescribeClusterResponseBody struct {
 	ResourceGroupId    *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TaskId             *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	UpdateTime         *string                                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VpcId              *string                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeClusterResponseBody) String() string {
@@ -926,6 +939,11 @@ func (s *DescribeClusterResponseBody) SetTaskId(v string) *DescribeClusterRespon
 
 func (s *DescribeClusterResponseBody) SetUpdateTime(v string) *DescribeClusterResponseBody {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBody) SetVpcId(v string) *DescribeClusterResponseBody {
+	s.VpcId = &v
 	return s
 }
 
@@ -2235,6 +2253,7 @@ type ListClustersResponseBodyClusters struct {
 	ResourceGroupId    *string     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TaskId             *string     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	UpdateTime         *string     `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VpcId              *string     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListClustersResponseBodyClusters) String() string {
@@ -2302,6 +2321,11 @@ func (s *ListClustersResponseBodyClusters) SetTaskId(v string) *ListClustersResp
 
 func (s *ListClustersResponseBodyClusters) SetUpdateTime(v string) *ListClustersResponseBodyClusters {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyClusters) SetVpcId(v string) *ListClustersResponseBodyClusters {
+	s.VpcId = &v
 	return s
 }
 
