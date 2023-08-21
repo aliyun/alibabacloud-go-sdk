@@ -2848,26 +2848,26 @@ func (s *CreateConfigDeliveryChannelResponse) SetBody(v *CreateConfigDeliveryCha
 }
 
 type CreateConfigRuleRequest struct {
-	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
 	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	// *   ScheduledNotification: The rule is periodically triggered.
 	//
-	// >  If a rule supports the preceding trigger types, separate the types with a comma (,).
+	// > Separate two trigger mechanisms with commas (,).
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	// The description of the rule.
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The ID of the resource excluded from the compliance evaluations performed based on the rule. Separate multiple resource IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to a managed rule.
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The input parameter of the rule.
+	// The input parameters of the rule.
 	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The intervals at which the rule is triggered. Valid values:
+	// The interval at which the rule is triggered. Valid values:
 	//
 	// *   One_Hour: 1 hour.
 	// *   Three_Hours: 3 hours.
@@ -2875,48 +2875,48 @@ type CreateConfigRuleRequest struct {
 	// *   Twelve_Hours: 12 hours.
 	// *   TwentyFour_Hours (default): 24 hours.
 	//
-	// >  This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
+	// > This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to a managed rule.
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
 	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to a managed rule.
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
 	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// *   1: high risk level
-	// *   2: medium risk level
-	// *   3: low risk level
+	// *   1: high
+	// *   2: medium
+	// *   3: low
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The ID of the rule.
+	// The identifier of the rule.
 	//
 	// *   If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
 	// *   If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
 	//
 	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The type of the rule Valid values:
+	// The type of the rule. Valid values:
 	//
-	// *   ALIYUN: managed rule.
-	// *   CUSTOM_FC: custom rule.
+	// *   ALIYUN: managed rule
+	// *   CUSTOM_FC: a custom rule
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
-	// *   AND: logical AND
-	// *   OR: logical OR
+	// *   AND
+	// *   OR
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	// The tag key used to filter resources. The rule applies only to the resources with a specified tag key.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
@@ -3009,26 +3009,26 @@ func (s *CreateConfigRuleRequest) SetTagValueScope(v string) *CreateConfigRuleRe
 }
 
 type CreateConfigRuleShrinkRequest struct {
-	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
 	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	// *   ScheduledNotification: The rule is periodically triggered.
 	//
-	// >  If a rule supports the preceding trigger types, separate the types with a comma (,).
+	// > Separate two trigger mechanisms with commas (,).
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	// The description of the rule.
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The ID of the resource excluded from the compliance evaluations performed based on the rule. Separate multiple resource IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to a managed rule.
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The input parameter of the rule.
+	// The input parameters of the rule.
 	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The intervals at which the rule is triggered. Valid values:
+	// The interval at which the rule is triggered. Valid values:
 	//
 	// *   One_Hour: 1 hour.
 	// *   Three_Hours: 3 hours.
@@ -3036,48 +3036,48 @@ type CreateConfigRuleShrinkRequest struct {
 	// *   Twelve_Hours: 12 hours.
 	// *   TwentyFour_Hours (default): 24 hours.
 	//
-	// >  This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
+	// > This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to a managed rule.
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
 	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// > This parameter applies only to a managed rule.
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
 	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// *   1: high risk level
-	// *   2: medium risk level
-	// *   3: low risk level
+	// *   1: high
+	// *   2: medium
+	// *   3: low
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The ID of the rule.
+	// The identifier of the rule.
 	//
 	// *   If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
 	// *   If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
 	//
 	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The type of the rule Valid values:
+	// The type of the rule. Valid values:
 	//
-	// *   ALIYUN: managed rule.
-	// *   CUSTOM_FC: custom rule.
+	// *   ALIYUN: managed rule
+	// *   CUSTOM_FC: a custom rule
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
-	// *   AND: logical AND
-	// *   OR: logical OR
+	// *   AND
+	// *   OR
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	// The tag key used to filter resources. The rule applies only to the resources with a specified tag key.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
@@ -3170,9 +3170,9 @@ func (s *CreateConfigRuleShrinkRequest) SetTagValueScope(v string) *CreateConfig
 }
 
 type CreateConfigRuleResponseBody struct {
-	// The ID of the rule.
+	// The rule ID.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4903,6 +4903,158 @@ func (s *DeleteRemediationsResponse) SetStatusCode(v int32) *DeleteRemediationsR
 }
 
 func (s *DeleteRemediationsResponse) SetBody(v *DeleteRemediationsResponseBody) *DeleteRemediationsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRemediationRequest struct {
+	ConfigRuleId  *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+}
+
+func (s DescribeRemediationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRemediationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRemediationRequest) SetConfigRuleId(v string) *DescribeRemediationRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DescribeRemediationRequest) SetRemediationId(v string) *DescribeRemediationRequest {
+	s.RemediationId = &v
+	return s
+}
+
+type DescribeRemediationResponseBody struct {
+	Remediation *DescribeRemediationResponseBodyRemediation `json:"Remediation,omitempty" xml:"Remediation,omitempty" type:"Struct"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRemediationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRemediationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRemediationResponseBody) SetRemediation(v *DescribeRemediationResponseBodyRemediation) *DescribeRemediationResponseBody {
+	s.Remediation = v
+	return s
+}
+
+func (s *DescribeRemediationResponseBody) SetRequestId(v string) *DescribeRemediationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRemediationResponseBodyRemediation struct {
+	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
+	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
+	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
+	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RemediationOriginParams      *string `json:"RemediationOriginParams,omitempty" xml:"RemediationOriginParams,omitempty"`
+	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
+	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+}
+
+func (s DescribeRemediationResponseBodyRemediation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRemediationResponseBodyRemediation) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetAccountId(v int64) *DescribeRemediationResponseBodyRemediation {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetConfigRuleId(v string) *DescribeRemediationResponseBodyRemediation {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetInvokeType(v string) *DescribeRemediationResponseBodyRemediation {
+	s.InvokeType = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetLastSuccessfulInvocationId(v string) *DescribeRemediationResponseBodyRemediation {
+	s.LastSuccessfulInvocationId = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetLastSuccessfulInvocationTime(v int64) *DescribeRemediationResponseBodyRemediation {
+	s.LastSuccessfulInvocationTime = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetLastSuccessfulInvocationType(v string) *DescribeRemediationResponseBodyRemediation {
+	s.LastSuccessfulInvocationType = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetRemediationId(v string) *DescribeRemediationResponseBodyRemediation {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetRemediationOriginParams(v string) *DescribeRemediationResponseBodyRemediation {
+	s.RemediationOriginParams = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetRemediationSourceType(v string) *DescribeRemediationResponseBodyRemediation {
+	s.RemediationSourceType = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetRemediationTemplateId(v string) *DescribeRemediationResponseBodyRemediation {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *DescribeRemediationResponseBodyRemediation) SetRemediationType(v string) *DescribeRemediationResponseBodyRemediation {
+	s.RemediationType = &v
+	return s
+}
+
+type DescribeRemediationResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRemediationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRemediationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRemediationResponse) SetHeaders(v map[string]*string) *DescribeRemediationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRemediationResponse) SetStatusCode(v int32) *DescribeRemediationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRemediationResponse) SetBody(v *DescribeRemediationResponseBody) *DescribeRemediationResponse {
 	s.Body = v
 	return s
 }
@@ -9011,30 +9163,33 @@ func (s *GetAggregateResourceComplianceGroupByResourceTypeResponse) SetBody(v *G
 type GetAggregateResourceComplianceTimelineRequest struct {
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	// For information about how to obtain the ID of the account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The timestamp that specifies the end of the time range to query. The default value indicates the time when the GetAggregateResourceComplianceTimeline operation is called. Unit: milliseconds.
+	// The end of the time range to query. The default value indicates the time when the GetAggregateResourceConfigurationTimeline operation is called. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	// The maximum number of entries returned for a single request. Valid values: 1 to 100.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	// The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region in which the resource resides.
+	// The ID of the region where the resource resides.
 	//
 	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The ID of the resource.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
 	//
-	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	// > You can use either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you use the ResourceAccountId parameter.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The resource ID.
+	//
+	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Deprecated
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the compliance evaluations in the last 30 days for the specified resource. Unit: milliseconds.
+	// The beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9097,7 +9252,7 @@ func (s *GetAggregateResourceComplianceTimelineRequest) SetStartTime(v int64) *G
 }
 
 type GetAggregateResourceComplianceTimelineResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the compliance timeline.
 	ResourceComplianceTimeline *GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline `json:"ResourceComplianceTimeline,omitempty" xml:"ResourceComplianceTimeline,omitempty" type:"Struct"`
@@ -9122,11 +9277,14 @@ func (s *GetAggregateResourceComplianceTimelineResponseBody) SetResourceComplian
 }
 
 type GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline struct {
-	// The compliance evaluation records on the compliance timeline.
+	// The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
+	//
+	// *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is empty.
 	ComplianceList []*GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList `json:"ComplianceList,omitempty" xml:"ComplianceList,omitempty" type:"Repeated"`
 	// The maximum number of entries returned for a single request.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to initiate the next request.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -15473,7 +15631,7 @@ func (s *ListAggregateConfigRulesRequest) SetRiskLevel(v int32) *ListAggregateCo
 }
 
 type ListAggregateConfigRulesResponseBody struct {
-	// The rules.
+	// The queried rules.
 	ConfigRules *ListAggregateConfigRulesResponseBodyConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -15498,7 +15656,7 @@ func (s *ListAggregateConfigRulesResponseBody) SetRequestId(v string) *ListAggre
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRules struct {
-	// The details of the rules.
+	// The details of the rule.
 	ConfigRuleList []*ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
 	// The number of the page returned.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -15537,9 +15695,9 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRules) SetTotalCount(v int64)
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
-	// The ID of the management account to which the rules belong.
+	// The ID of the management account to which the rule belongs.
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
+	// The type of the remediation template. Valid value: OOS, which indicates Operation Orchestration Service.
 	AutomationType *string `json:"AutomationType,omitempty" xml:"AutomationType,omitempty"`
 	// The compliance evaluation result.
 	Compliance *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
@@ -15547,11 +15705,11 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
 	// The rule ID.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   ACTIVE: The rule is being used to monitor resource configurations.
+	// *   ACTIVE: The rule is enabled.
 	// *   DELETING: The rule is being deleted.
 	// *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
 	// *   INACTIVE: The rule is disabled.
@@ -15559,23 +15717,24 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	// The information about the creation of the rule.
 	CreateBy *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
 	// The description of the rule.
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The types of resources evaluated by the rule. Multiple resource types are separated with commas (,).
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that do not comply with the rule. Valid values:
+	// The risk level of the resources that are not compliant with the rule. Valid values:
 	//
 	// *   1: high
 	// *   2: medium
 	// *   3: low
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The identifier of the rule.
+	// The ID of the rule.
 	//
-	// *   If the rule was created based on a managed rule, the value of this parameter is the name of the managed rule.
+	// *   If the rule is a managed rule, the value of this parameter is the name of the managed rule.
 	// *   If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The method that is used to create the rule. Valid values:
+	// The type of the rule. Valid values:
 	//
-	// *   CUSTOM_FC: a custom rule.
-	// *   ALIYUN: a managed rule.
+	// *   CUSTOM_FC: custom rule
+	// *   ALIYUN: managed rule
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
 	// The tags of the rule.
 	Tags []*ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -15660,14 +15819,14 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList) SetTags(
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
-	// The summary result of the rule compliance evaluation. Valid values:
+	// The compliance evaluation result. Valid values:
 	//
-	// *   COMPLIANT: The resource was evaluated as compliant.
-	// *   NON_COMPLIANT: The resource was evaluated as incompliant.
-	// *   NOT_APPLICABLE: The rule did not apply to your resources.
-	// *   INSUFFICIENT_DATA: No resource data was available.
+	// *   COMPLIANT: The resource is evaluated as compliant.
+	// *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to the resource.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The number of evaluation resources that correspond to the summary result of the rule compliance evaluation.
+	// The number of evaluated resources.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -15702,7 +15861,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struc
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The name of the management account that was used to create the rule.
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The type of the creator of the rule. The value is fixed to AGGREGATOR, which indicates an account group.
+	// The type of the creator of the rule. Valid value: AGGREGATOR, which indicates an account group.
 	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
 }
 
@@ -17450,7 +17609,7 @@ func (s *ListCompliancePackTemplatesRequest) SetResourceTypes(v string) *ListCom
 }
 
 type ListCompliancePackTemplatesResponseBody struct {
-	// The information about the compliance package templates returned.
+	// The information about the compliance package templates.
 	CompliancePackTemplatesResult *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult `json:"CompliancePackTemplatesResult,omitempty" xml:"CompliancePackTemplatesResult,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -17475,7 +17634,7 @@ func (s *ListCompliancePackTemplatesResponseBody) SetRequestId(v string) *ListCo
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult struct {
-	// An array that contains the compliance package templates.
+	// The compliance package templates.
 	CompliancePackTemplates []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates `json:"CompliancePackTemplates,omitempty" xml:"CompliancePackTemplates,omitempty" type:"Repeated"`
 	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -17518,7 +17677,7 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
 	// The name of the compliance package template.
 	CompliancePackTemplateName *string `json:"CompliancePackTemplateName,omitempty" xml:"CompliancePackTemplateName,omitempty"`
-	// An array that contains the managed rules in the compliance package.
+	// The information about managed rules in the compliance package.
 	ConfigRules []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	// The description of the compliance package.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -17593,11 +17752,11 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
 	// The description of the managed rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the managed rule.
+	// The identifier of the managed rule.
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	// The name of the managed rule.
 	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
-	// 规则评估的资源类型。
+	// The type of the resource evaluated based on the rule.
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	// The risk level of the resources that are not compliant with the managed rule. Valid values:
 	//
@@ -17667,7 +17826,7 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 	// Indicates whether the input parameter is required. Valid values:
 	//
-	// *   true: The input parameter is required.
+	// *   true: The parameter is required.
 	// *   false: The input parameter is optional.
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 }
@@ -19925,7 +20084,7 @@ type ListRemediationTemplatesResponseBody struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The description of the remediation template.
+	// The queried remediation templates.
 	RemediationTemplates []*ListRemediationTemplatesResponseBodyRemediationTemplates `json:"RemediationTemplates,omitempty" xml:"RemediationTemplates,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19967,12 +20126,13 @@ func (s *ListRemediationTemplatesResponseBody) SetTotalCount(v string) *ListReme
 }
 
 type ListRemediationTemplatesResponseBodyRemediationTemplates struct {
-	// The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
+	// The type of the remediation template. Valid value: OOS, which indicates Operation Orchestration Service.
 	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	// The configuration of the remediation template.
-	TemplateDefinition  *string `json:"TemplateDefinition,omitempty" xml:"TemplateDefinition,omitempty"`
+	// The definition of the remediation template.
+	TemplateDefinition *string `json:"TemplateDefinition,omitempty" xml:"TemplateDefinition,omitempty"`
+	// The description of the remediation template.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	// The identifier of the remediation template.
+	// The ID of the remediation template.
 	TemplateIdentifier *string `json:"TemplateIdentifier,omitempty" xml:"TemplateIdentifier,omitempty"`
 	// The name of the remediation template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -21424,8 +21584,16 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type PutEvaluationsRequest struct {
-	DeleteMode  *bool   `json:"DeleteMode,omitempty" xml:"DeleteMode,omitempty"`
+	// Specifies whether to enable the delete mode. Valid values:
+	//
+	// *   true: enables the delete mode
+	// *   false (default): disables the delete mode
+	//
+	// > This parameter is valid only when you manually trigger or periodically trigger custom rules to evaluate resources. If you enable the delete mode, the evaluation results that are not updated during the current evaluation are automatically deleted.
+	DeleteMode *bool `json:"DeleteMode,omitempty" xml:"DeleteMode,omitempty"`
+	// The evaluation results.
 	Evaluations *string `json:"Evaluations,omitempty" xml:"Evaluations,omitempty"`
+	// The callback token. When Cloud Config triggers a custom rule to evaluate resources, the token information is sent to Function Compute as an input parameter. The token must be specified when you submit the evaluation results.
 	ResultToken *string `json:"ResultToken,omitempty" xml:"ResultToken,omitempty"`
 }
 
@@ -21453,8 +21621,13 @@ func (s *PutEvaluationsRequest) SetResultToken(v string) *PutEvaluationsRequest 
 }
 
 type PutEvaluationsResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The submission status of the evaluation results of the custom rule. Valid values:
+	//
+	// *   true: The evaluation results are submitted.
+	// *   false: The evaluation results failed to be submitted.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s PutEvaluationsResponseBody) String() string {
@@ -26539,9 +26712,10 @@ func (client *Client) CreateConfigDeliveryChannel(request *CreateConfigDeliveryC
 }
 
 /**
+ * ### Limits
+ * You can use an ordinary account to create up to 200 rules.
+ * ### Usage notes
  * This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
- * ## Limits
- * You can use a common account to create up to 200 rules.
  *
  * @param tmpReq CreateConfigRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26651,9 +26825,10 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 }
 
 /**
+ * ### Limits
+ * You can use an ordinary account to create up to 200 rules.
+ * ### Usage notes
  * This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
- * ## Limits
- * You can use a common account to create up to 200 rules.
  *
  * @param request CreateConfigRuleRequest
  * @return CreateConfigRuleResponse
@@ -27517,6 +27692,46 @@ func (client *Client) DeleteRemediations(request *DeleteRemediationsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRemediationsResponse{}
 	_body, _err := client.DeleteRemediationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRemediationWithOptions(request *DescribeRemediationRequest, runtime *util.RuntimeOptions) (_result *DescribeRemediationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRemediation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRemediationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRemediation(request *DescribeRemediationRequest) (_result *DescribeRemediationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRemediationResponse{}
+	_body, _err := client.DescribeRemediationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
