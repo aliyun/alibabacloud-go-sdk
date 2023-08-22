@@ -9024,6 +9024,7 @@ func (s *DescribeServiceMeshKubeconfigRequest) SetServiceMeshId(v string) *Descr
 }
 
 type DescribeServiceMeshKubeconfigResponseBody struct {
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The content of the kubeconfig file of the cluster.
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
 	// The ID of the request.
@@ -9036,6 +9037,11 @@ func (s DescribeServiceMeshKubeconfigResponseBody) String() string {
 
 func (s DescribeServiceMeshKubeconfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceMeshKubeconfigResponseBody) SetExpireTime(v string) *DescribeServiceMeshKubeconfigResponseBody {
+	s.ExpireTime = &v
+	return s
 }
 
 func (s *DescribeServiceMeshKubeconfigResponseBody) SetKubeconfig(v string) *DescribeServiceMeshKubeconfigResponseBody {
@@ -15996,13 +16002,15 @@ type UpgradeMeshEditionPartiallyRequest struct {
 	// *   `false`
 	ASMGatewayContinue *bool   `json:"ASMGatewayContinue,omitempty" xml:"ASMGatewayContinue,omitempty"`
 	ExpectedVersion    *string `json:"ExpectedVersion,omitempty" xml:"ExpectedVersion,omitempty"`
-	// 执行升级检查。如果该值设置为true，则只会执行升级检查，并不会实际升级。
+	// Specifies whether to perform an upgrade check. If the value of this parameter is set to true, only the upgrade check is performed and the ASM instance is not upgraded.
 	PreCheck *bool `json:"PreCheck,omitempty" xml:"PreCheck,omitempty"`
 	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// Deprecated
-	// *   ``
-	// *   ``
+	// Specifies whether to upgrade the ASM instance to Professional Edition. Valid values:
+	//
+	// *   `true`
+	// *   `false`
 	SwitchToPro *bool `json:"SwitchToPro,omitempty" xml:"SwitchToPro,omitempty"`
 	// Specifies the ASM gateways to be upgraded. Separate multiple ASM gateways with commas (,).
 	UpgradeGatewayRecords *string `json:"UpgradeGatewayRecords,omitempty" xml:"UpgradeGatewayRecords,omitempty"`
