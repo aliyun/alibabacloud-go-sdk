@@ -327,6 +327,71 @@ func (s *LogtailConfigOutputDetail) SetRegion(v string) *LogtailConfigOutputDeta
 	return s
 }
 
+type LogtailPipelineConfig struct {
+	Aggregators    []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
+	ConfigName     *string                  `json:"configName,omitempty" xml:"configName,omitempty"`
+	CreateTime     *int64                   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Flushers       []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
+	Global         map[string]interface{}   `json:"global,omitempty" xml:"global,omitempty"`
+	Inputs         []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
+	LastModifyTime *int64                   `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	LogSample      *string                  `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	Processors     []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+}
+
+func (s LogtailPipelineConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogtailPipelineConfig) GoString() string {
+	return s.String()
+}
+
+func (s *LogtailPipelineConfig) SetAggregators(v []map[string]interface{}) *LogtailPipelineConfig {
+	s.Aggregators = v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetConfigName(v string) *LogtailPipelineConfig {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetCreateTime(v int64) *LogtailPipelineConfig {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetFlushers(v []map[string]interface{}) *LogtailPipelineConfig {
+	s.Flushers = v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetGlobal(v map[string]interface{}) *LogtailPipelineConfig {
+	s.Global = v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetInputs(v []map[string]interface{}) *LogtailPipelineConfig {
+	s.Inputs = v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetLastModifyTime(v int64) *LogtailPipelineConfig {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetLogSample(v string) *LogtailPipelineConfig {
+	s.LogSample = &v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetProcessors(v []map[string]interface{}) *LogtailPipelineConfig {
+	s.Processors = v
+	return s
+}
+
 type SavedSearch struct {
 	DisplayName     *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
@@ -2299,9 +2364,10 @@ func (s *CreateOssShipperResponse) SetStatusCode(v int32) *CreateOssShipperRespo
 }
 
 type CreateProjectRequest struct {
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	DataRedundancyType *string `json:"dataRedundancyType,omitempty" xml:"dataRedundancyType,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	ProjectName        *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ResourceGroupId    *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -2310,6 +2376,11 @@ func (s CreateProjectRequest) String() string {
 
 func (s CreateProjectRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateProjectRequest) SetDataRedundancyType(v string) *CreateProjectRequest {
+	s.DataRedundancyType = &v
+	return s
 }
 
 func (s *CreateProjectRequest) SetDescription(v string) *CreateProjectRequest {
@@ -7756,6 +7827,10 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataRedundancyType)) {
+		body["dataRedundancyType"] = request.DataRedundancyType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
@@ -7781,7 +7856,7 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &CreateProjectResponse{}
 	_body, _err := client.Execute(params, req, runtime)
