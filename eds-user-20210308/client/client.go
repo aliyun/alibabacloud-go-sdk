@@ -12,6 +12,47 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type WaIdPermissions struct {
+	Code           *string            `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsBasicChild   *bool              `json:"IsBasicChild,omitempty" xml:"IsBasicChild,omitempty"`
+	Name           *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	SubPermissions []*WaIdPermissions `json:"SubPermissions,omitempty" xml:"SubPermissions,omitempty" type:"Repeated"`
+	Type           *string            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s WaIdPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WaIdPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *WaIdPermissions) SetCode(v string) *WaIdPermissions {
+	s.Code = &v
+	return s
+}
+
+func (s *WaIdPermissions) SetIsBasicChild(v bool) *WaIdPermissions {
+	s.IsBasicChild = &v
+	return s
+}
+
+func (s *WaIdPermissions) SetName(v string) *WaIdPermissions {
+	s.Name = &v
+	return s
+}
+
+func (s *WaIdPermissions) SetSubPermissions(v []*WaIdPermissions) *WaIdPermissions {
+	s.SubPermissions = v
+	return s
+}
+
+func (s *WaIdPermissions) SetType(v string) *WaIdPermissions {
+	s.Type = &v
+	return s
+}
+
 type CheckUsedPropertyRequest struct {
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
 }
@@ -343,8 +384,9 @@ func (s *CreatePropertyResponse) SetBody(v *CreatePropertyResponseBody) *CreateP
 }
 
 type CreateUsersRequest struct {
+	// The initial password. If this parameter is left empty, an email for password reset is sent to the specified email address.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The remarks of the end user.
+	// Details of the convenience users.
 	Users []*CreateUsersRequestUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -367,18 +409,19 @@ func (s *CreateUsersRequest) SetUsers(v []*CreateUsersRequestUsers) *CreateUsers
 }
 
 type CreateUsersRequestUsers struct {
-	// The name of the end user.
+	// The email address of the end user. The email address is used to receive notifications about events such as desktop assignment. You must specify an email address or a mobile number to receive notifications.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Details of the convenience user that failed to be created.
+	// The name of the end user. The name must be 3 to 24 characters in length, and can contain lowercase letters, digits, and underscores (\_).
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The error message returned.
+	// The organization to which the end user belongs.
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The error code returned if the request failed.
+	// The type of the account ownership.
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// The mobile number of the end user.
+	// The password of the end user.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The email address of the end user.
-	Phone  *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// Mobile numbers are not supported on the international site (alibabacloud.com).
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The remarks of the end user.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -426,8 +469,10 @@ func (s *CreateUsersRequestUsers) SetRemark(v string) *CreateUsersRequestUsers {
 }
 
 type CreateUsersResponseBody struct {
+	// The result of user creation.
 	CreateResult *CreateUsersResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
-	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateUsersResponseBody) String() string {
@@ -449,8 +494,10 @@ func (s *CreateUsersResponseBody) SetRequestId(v string) *CreateUsersResponseBod
 }
 
 type CreateUsersResponseBodyCreateResult struct {
+	// Details of the created convenience users.
 	CreatedUsers []*CreateUsersResponseBodyCreateResultCreatedUsers `json:"CreatedUsers,omitempty" xml:"CreatedUsers,omitempty" type:"Repeated"`
-	FailedUsers  []*CreateUsersResponseBodyCreateResultFailedUsers  `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
+	// Details of the convenience users that failed to be created.
+	FailedUsers []*CreateUsersResponseBodyCreateResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
 }
 
 func (s CreateUsersResponseBodyCreateResult) String() string {
@@ -472,10 +519,14 @@ func (s *CreateUsersResponseBodyCreateResult) SetFailedUsers(v []*CreateUsersRes
 }
 
 type CreateUsersResponseBodyCreateResultCreatedUsers struct {
-	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The email address of the end user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The name of the end user.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	Phone     *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	Remark    *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The mobile number of the end user.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The remarks of the end user.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s CreateUsersResponseBodyCreateResultCreatedUsers) String() string {
@@ -507,11 +558,16 @@ func (s *CreateUsersResponseBodyCreateResultCreatedUsers) SetRemark(v string) *C
 }
 
 type CreateUsersResponseBodyCreateResultFailedUsers struct {
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The email address of the end user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The name of the end user.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The mobile number of the end user.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s CreateUsersResponseBodyCreateResultFailedUsers) String() string {
@@ -654,13 +710,16 @@ func (s *DeleteUserPropertyValueResponse) SetBody(v *DeleteUserPropertyValueResp
 }
 
 type DescribeMfaDevicesRequest struct {
-	// This parameter is unavailable.
-	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
 	// The list of username of convenience users.
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The maximum number of entries to return. Valid values: 1 to 500.
+	//
+	// Default value: 100.
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The query token. Set the value to the NextToken value returned in the last call.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The time when a locked virtual MFA device is automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The list of serial numbers of the virtual MFA devices.
 	SerialNumbers []*string `json:"SerialNumbers,omitempty" xml:"SerialNumbers,omitempty" type:"Repeated"`
 }
 
@@ -670,6 +729,11 @@ func (s DescribeMfaDevicesRequest) String() string {
 
 func (s DescribeMfaDevicesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMfaDevicesRequest) SetAdDomain(v string) *DescribeMfaDevicesRequest {
+	s.AdDomain = &v
+	return s
 }
 
 func (s *DescribeMfaDevicesRequest) SetEndUserIds(v []*string) *DescribeMfaDevicesRequest {
@@ -693,11 +757,11 @@ func (s *DescribeMfaDevicesRequest) SetSerialNumbers(v []*string) *DescribeMfaDe
 }
 
 type DescribeMfaDevicesResponseBody struct {
-	// The serial number of the virtual MFA device, which is a unique identifier.
+	// Details about the virtual MFA devices.
 	MfaDevices []*DescribeMfaDevicesResponseBodyMfaDevices `json:"MfaDevices,omitempty" xml:"MfaDevices,omitempty" type:"Repeated"`
-	// The operation that you want to perform. Set the value to DescribeMfaDevices.
+	// The token that determines the start point of the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// This parameter is unavailable.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -725,24 +789,28 @@ func (s *DescribeMfaDevicesResponseBody) SetRequestId(v string) *DescribeMfaDevi
 }
 
 type DescribeMfaDevicesResponseBodyMfaDevices struct {
-	// The ID of the request.
-	ConsecutiveFails *int32  `json:"ConsecutiveFails,omitempty" xml:"ConsecutiveFails,omitempty"`
-	DeviceType       *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The username of the convenience user that uses the virtual MFA device.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The number of consecutive failures to bind the virtual MFA device, or the number of MFA failures based on the virtual MFA device.
+	ConsecutiveFails *int32 `json:"ConsecutiveFails,omitempty" xml:"ConsecutiveFails,omitempty"`
 	// The types of the virtual MFA device. Set the value to TOTP_VIRTUAL, which indicates that the virtual MFA devices follow the Time-based One-time Password (TOTP) algorithm.
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// This parameter is unavailable.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The username of the convenience user that uses the virtual MFA device.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The serial numbers of the virtual MFA devices.
+	// The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	GmtEnabled *string `json:"GmtEnabled,omitempty" xml:"GmtEnabled,omitempty"`
-	// The serial number of the virtual MFA device, which is a unique identifier.
+	// The time when a locked virtual MFA device is automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	GmtUnlock *string `json:"GmtUnlock,omitempty" xml:"GmtUnlock,omitempty"`
-	// The maximum number of entries to return. Valid values: 1 to 500.
-	//
-	// Default value: 100.
+	// This parameter is unavailable.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Queries the information about virtual MFA devices that are bound to convenience users.
+	// The serial number of the virtual MFA device, which is a unique identifier.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the virtual MFA device. Valid values:
+	//
+	// *   UNBOUND
+	// *   NORMAL
+	// *   LOCKED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMfaDevicesResponseBodyMfaDevices) String() string {
@@ -828,12 +896,22 @@ func (s *DescribeMfaDevicesResponse) SetBody(v *DescribeMfaDevicesResponseBody) 
 }
 
 type DescribeUsersRequest struct {
-	EndUserIds        []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The list of usernames that must be exactly matched.
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The list of usernames to be exactly excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
-	Filter            *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	MaxResults        *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrgId             *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The number of entries per page.
+	//
+	// *   Valid values: 1 to 500
+	// *   Default value: 500
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\
+	// If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the organization in which you want to query users.
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 }
 
 func (s DescribeUsersRequest) String() string {
@@ -875,9 +953,10 @@ func (s *DescribeUsersRequest) SetOrgId(v string) *DescribeUsersRequest {
 }
 
 type DescribeUsersResponseBody struct {
-	NextToken *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users     []*DescribeUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the convenience users.
+	Users []*DescribeUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUsersResponseBody) String() string {
@@ -904,16 +983,71 @@ func (s *DescribeUsersResponseBody) SetUsers(v []*DescribeUsersResponseBodyUsers
 }
 
 type DescribeUsersResponseBodyUsers struct {
-	Email           *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EndUserId       *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTenantManager *bool   `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
-	OrgId           *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OwnerType       *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	Phone           *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status          *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	WyId            *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
+	// The email address.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The name of the user.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The ID of the user.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile phone of the user administrator. For more information, see [Create a convenience user](~~214472~~).
+	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
+	// The nickname of the user.
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The ID of the organization to which the user belongs.
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The type of the convenience account.
+	//
+	// *   The administrator-activated type. The administrator specifies the username and the password of the convenience account. User notifications such as password reset are sent to the email address or mobile number of the administrator.
+	// *   The user-activated type. The administrator specifies the username and the email address or mobile number of a user. Activation notifications are sent to the email address or mobile number of the user.
+	//
+	// Valid values:
+	//
+	// *   CreateFromManager
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     administrator-activated
+	//
+	//     <!-- -->
+	//
+	// *   Normal: user-activated
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// The mobile number of the user. If you leave this parameter empty, the value of this parameter is not returned.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The remarks on the user.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the user.
+	//
+	// Valid values:
+	//
+	// *   0: The user status is normal.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   9: The user is locked.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user ID that is globally unique.
+	WyId *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
 }
 
 func (s DescribeUsersResponseBodyUsers) String() string {
@@ -941,6 +1075,11 @@ func (s *DescribeUsersResponseBodyUsers) SetId(v int64) *DescribeUsersResponseBo
 
 func (s *DescribeUsersResponseBodyUsers) SetIsTenantManager(v bool) *DescribeUsersResponseBodyUsers {
 	s.IsTenantManager = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsers) SetNickName(v string) *DescribeUsersResponseBodyUsers {
+	s.NickName = &v
 	return s
 }
 
@@ -1004,27 +1143,27 @@ func (s *DescribeUsersResponse) SetBody(v *DescribeUsersResponseBody) *DescribeU
 }
 
 type FilterUsersRequest struct {
-	// The IDs of excluded users.
+	// The list of usernames to be precisely excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
-	// The string that you enter for a fuzzy search. You can enter a string to match the username or email address.
+	// The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\*) are supported for this parameter. For example, if you set this parameter to a\*m, the usernames or an email addresses that start with a or end with m are returned.
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// Specifies whether to return information about cloud desktops that are assigned to the convenience user.
 	IncludeDesktopCount *bool `json:"IncludeDesktopCount,omitempty" xml:"IncludeDesktopCount,omitempty"`
 	// Specifies whether to return the number of desktop groups that are assigned to the user.
 	IncludeDesktopGroupCount *bool `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
-	// The number of entries to return on each page. If you set this parameter to a value greater than 100, the system resets the value to 100.
+	// The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. You do not need to configure this parameter if you call this operation for the first time. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to perform the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The parameter that is supported to sort query results.
+	// The parameter that supports to sort query results.
 	OrderParam *FilterUsersRequestOrderParam `json:"OrderParam,omitempty" xml:"OrderParam,omitempty" type:"Struct"`
 	// The ID of the organization.
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The type of the account ownership.
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// Details of the user property that you want to perform fuzzy search.
+	// The list of properties for fuzzy search.
 	PropertyFilterParam []*FilterUsersRequestPropertyFilterParam `json:"PropertyFilterParam,omitempty" xml:"PropertyFilterParam,omitempty" type:"Repeated"`
-	// Details of the properties and property values.
+	// The list of property names and property values.
 	PropertyKeyValueFilterParam []*FilterUsersRequestPropertyKeyValueFilterParam `json:"PropertyKeyValueFilterParam,omitempty" xml:"PropertyKeyValueFilterParam,omitempty" type:"Repeated"`
 }
 
@@ -1092,9 +1231,53 @@ func (s *FilterUsersRequest) SetPropertyKeyValueFilterParam(v []*FilterUsersRequ
 }
 
 type FilterUsersRequestOrderParam struct {
-	// The method that you want to use to sort query results.
+	// The way to sort query results.
+	//
+	// Valid values:
+	//
+	// *   EndUserId
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   id
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   gmt_created
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// Specifies whether to sort query results in ascending or descending order.
+	// Specifies whether to sort query results in ascending or descending order. Valid values:
+	//
+	// Valid values:
+	//
+	// *   ASC: ascending
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   DESC (default): descending
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
 
@@ -1142,9 +1325,9 @@ func (s *FilterUsersRequestPropertyFilterParam) SetPropertyValueIds(v string) *F
 }
 
 type FilterUsersRequestPropertyKeyValueFilterParam struct {
-	// The name of the property.
+	// The property name.
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The values of the property.
+	// The property values.
 	PropertyValues *string `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty"`
 }
 
@@ -1167,27 +1350,27 @@ func (s *FilterUsersRequestPropertyKeyValueFilterParam) SetPropertyValues(v stri
 }
 
 type FilterUsersShrinkRequest struct {
-	// The IDs of excluded users.
+	// The list of usernames to be precisely excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
-	// The string that you enter for a fuzzy search. You can enter a string to match the username or email address.
+	// The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\*) are supported for this parameter. For example, if you set this parameter to a\*m, the usernames or an email addresses that start with a or end with m are returned.
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// Specifies whether to return information about cloud desktops that are assigned to the convenience user.
 	IncludeDesktopCount *bool `json:"IncludeDesktopCount,omitempty" xml:"IncludeDesktopCount,omitempty"`
 	// Specifies whether to return the number of desktop groups that are assigned to the user.
 	IncludeDesktopGroupCount *bool `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
-	// The number of entries to return on each page. If you set this parameter to a value greater than 100, the system resets the value to 100.
+	// The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. You do not need to configure this parameter if you call this operation for the first time. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to perform the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The parameter that is supported to sort query results.
+	// The parameter that supports to sort query results.
 	OrderParamShrink *string `json:"OrderParam,omitempty" xml:"OrderParam,omitempty"`
 	// The ID of the organization.
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The type of the account ownership.
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// Details of the user property that you want to perform fuzzy search.
+	// The list of properties for fuzzy search.
 	PropertyFilterParam []*FilterUsersShrinkRequestPropertyFilterParam `json:"PropertyFilterParam,omitempty" xml:"PropertyFilterParam,omitempty" type:"Repeated"`
-	// Details of the properties and property values.
+	// The list of property names and property values.
 	PropertyKeyValueFilterParam []*FilterUsersShrinkRequestPropertyKeyValueFilterParam `json:"PropertyKeyValueFilterParam,omitempty" xml:"PropertyKeyValueFilterParam,omitempty" type:"Repeated"`
 }
 
@@ -1280,9 +1463,9 @@ func (s *FilterUsersShrinkRequestPropertyFilterParam) SetPropertyValueIds(v stri
 }
 
 type FilterUsersShrinkRequestPropertyKeyValueFilterParam struct {
-	// The name of the property.
+	// The property name.
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The values of the property.
+	// The property values.
 	PropertyValues *string `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty"`
 }
 
@@ -1305,9 +1488,9 @@ func (s *FilterUsersShrinkRequestPropertyKeyValueFilterParam) SetPropertyValues(
 }
 
 type FilterUsersResponseBody struct {
-	// The token that is used to query the next page. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to perform the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details of the convenience users.
 	Users []*FilterUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -1341,26 +1524,107 @@ type FilterUsersResponseBodyUsers struct {
 	DesktopCount *int64 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
 	// The number of authorized desktop groups that are owned by the user. This value is returned if you set `IncludeDesktopGroupCount` to `true`.
 	DesktopGroupCount *int64 `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
-	// The email address of the user.
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EnableAdminAccess *bool   `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// The name of the user.
+	// The email address.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Indicates whether the user is a local administrator.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
+	// The username.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The additional information about the user.
 	ExternalInfo *FilterUsersResponseBodyUsersExternalInfo `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
-	// The ID of the user.
+	// The user ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether the user is a tenant administrator.
+	// Indicates whether the user is a tenant administrator.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
 	// The type of the account ownership.
+	//
+	// Valid values:
+	//
+	// *   CreateFromManager
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     administrator-activated
+	//
+	//     <!-- -->
+	//
+	// *   Normal
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     user-activated
+	//
+	//     <!-- -->
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// The mobile number of the user.
+	// The mobile number.
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The remarks of the user.
+	// The remarks.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the user.
+	// The user status.
+	//
+	// Valid values:
+	//
+	// *   0: The user status is normal.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   9: The user is locked.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Details of the user properties.
+	// Details of the properties.
 	UserSetPropertiesModels []*FilterUsersResponseBodyUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
 }
 
@@ -1438,9 +1702,9 @@ func (s *FilterUsersResponseBodyUsers) SetUserSetPropertiesModels(v []*FilterUse
 }
 
 type FilterUsersResponseBodyUsersExternalInfo struct {
-	// The name of the external system account to which the user is connected.
+	// The account that is connected to the user.
 	ExternalName *string `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
-	// The student ID or employee ID of the external system account that is connected to the user.
+	// The account, student ID, or employee ID that is connected to the user.
 	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
 }
 
@@ -1463,13 +1727,13 @@ func (s *FilterUsersResponseBodyUsersExternalInfo) SetJobNumber(v string) *Filte
 }
 
 type FilterUsersResponseBodyUsersUserSetPropertiesModels struct {
-	// The ID of the property.
+	// The property ID.
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The name of the property.
+	// The property name.
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The ID of property.
+	// The property ID.
 	PropertyType *int32 `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	// Details of the property value.
+	// The property value.
 	PropertyValues []*FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 	// The ID of the user that is bound to the property.
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -1518,7 +1782,7 @@ func (s *FilterUsersResponseBodyUsersUserSetPropertiesModels) SetUserName(v stri
 type FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues struct {
 	// The property value.
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property value.
+	// The property value ID.
 	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
 }
 
@@ -1780,6 +2044,7 @@ func (s *ListPropertyValueResponse) SetBody(v *ListPropertyValueResponseBody) *L
 }
 
 type LockMfaDeviceRequest struct {
+	AdDomain     *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -1789,6 +2054,11 @@ func (s LockMfaDeviceRequest) String() string {
 
 func (s LockMfaDeviceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *LockMfaDeviceRequest) SetAdDomain(v string) *LockMfaDeviceRequest {
+	s.AdDomain = &v
+	return s
 }
 
 func (s *LockMfaDeviceRequest) SetSerialNumber(v string) *LockMfaDeviceRequest {
@@ -2180,6 +2450,7 @@ func (s *QuerySyncStatusByAliUidResponse) SetBody(v *QuerySyncStatusByAliUidResp
 }
 
 type RemoveMfaDeviceRequest struct {
+	AdDomain     *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -2189,6 +2460,11 @@ func (s RemoveMfaDeviceRequest) String() string {
 
 func (s RemoveMfaDeviceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveMfaDeviceRequest) SetAdDomain(v string) *RemoveMfaDeviceRequest {
+	s.AdDomain = &v
+	return s
 }
 
 func (s *RemoveMfaDeviceRequest) SetSerialNumber(v string) *RemoveMfaDeviceRequest {
@@ -2427,8 +2703,48 @@ func (s *RemoveUsersResponse) SetBody(v *RemoveUsersResponseBody) *RemoveUsersRe
 }
 
 type ResetUserPasswordRequest struct {
-	NotifyType *int32    `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	Users      []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// The method to notify the user after the password is reset.
+	//
+	// Valid values:
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     email
+	//
+	//     <!-- -->
+	//
+	// *   2
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     text message
+	//
+	//     <!-- -->
+	//
+	// *   3
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     both
+	//
+	//     <!-- -->
+	NotifyType *int32 `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// The names of the convenience users whose passwords you want to reset.
+	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ResetUserPasswordRequest) String() string {
@@ -2450,7 +2766,9 @@ func (s *ResetUserPasswordRequest) SetUsers(v []*string) *ResetUserPasswordReque
 }
 
 type ResetUserPasswordResponseBody struct {
-	RequestId        *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of resetting the password of the convenience user.
 	ResetUsersResult *ResetUserPasswordResponseBodyResetUsersResult `json:"ResetUsersResult,omitempty" xml:"ResetUsersResult,omitempty" type:"Struct"`
 }
 
@@ -2473,8 +2791,10 @@ func (s *ResetUserPasswordResponseBody) SetResetUsersResult(v *ResetUserPassword
 }
 
 type ResetUserPasswordResponseBodyResetUsersResult struct {
+	// The information about the convenience users whose passwords failed to be reset.
 	FailedUsers []*ResetUserPasswordResponseBodyResetUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
-	ResetUsers  []*string                                                   `json:"ResetUsers,omitempty" xml:"ResetUsers,omitempty" type:"Repeated"`
+	// The convenience users to which the system sent a password reset email.
+	ResetUsers []*string `json:"ResetUsers,omitempty" xml:"ResetUsers,omitempty" type:"Repeated"`
 }
 
 func (s ResetUserPasswordResponseBodyResetUsersResult) String() string {
@@ -2496,8 +2816,11 @@ func (s *ResetUserPasswordResponseBodyResetUsersResult) SetResetUsers(v []*strin
 }
 
 type ResetUserPasswordResponseBodyResetUsersResultFailedUsers struct {
-	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the convenience user whose password failed to be reset.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
@@ -2707,6 +3030,7 @@ func (s *SyncAllEduInfoResponse) SetBody(v *SyncAllEduInfoResponseBody) *SyncAll
 }
 
 type UnlockMfaDeviceRequest struct {
+	AdDomain     *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -2716,6 +3040,11 @@ func (s UnlockMfaDeviceRequest) String() string {
 
 func (s UnlockMfaDeviceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UnlockMfaDeviceRequest) SetAdDomain(v string) *UnlockMfaDeviceRequest {
+	s.AdDomain = &v
+	return s
 }
 
 func (s *UnlockMfaDeviceRequest) SetSerialNumber(v string) *UnlockMfaDeviceRequest {
@@ -3319,7 +3648,7 @@ func (client *Client) CreateProperty(request *CreatePropertyRequest) (_result *C
 }
 
 /**
- * The mobile number of the end user.
+ * Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
  *
  * @param request CreateUsersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3363,7 +3692,7 @@ func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtim
 }
 
 /**
- * The mobile number of the end user.
+ * Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
  *
  * @param request CreateUsersRequest
  * @return CreateUsersResponse
@@ -3450,6 +3779,10 @@ func (client *Client) DescribeMfaDevicesWithOptions(request *DescribeMfaDevicesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdDomain)) {
+		query["AdDomain"] = request.AdDomain
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
 		query["EndUserIds"] = request.EndUserIds
 	}
@@ -3746,6 +4079,10 @@ func (client *Client) LockMfaDeviceWithOptions(request *LockMfaDeviceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdDomain)) {
+		query["AdDomain"] = request.AdDomain
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
 		query["SerialNumber"] = request.SerialNumber
 	}
@@ -3925,6 +4262,10 @@ func (client *Client) RemoveMfaDeviceWithOptions(request *RemoveMfaDeviceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdDomain)) {
+		query["AdDomain"] = request.AdDomain
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
 		query["SerialNumber"] = request.SerialNumber
 	}
@@ -4207,6 +4548,10 @@ func (client *Client) UnlockMfaDeviceWithOptions(request *UnlockMfaDeviceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdDomain)) {
+		query["AdDomain"] = request.AdDomain
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
 		query["SerialNumber"] = request.SerialNumber
 	}
