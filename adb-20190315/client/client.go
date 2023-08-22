@@ -14575,6 +14575,7 @@ type DescribeTablesRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The name of the database.
@@ -14601,6 +14602,11 @@ func (s *DescribeTablesRequest) SetOwnerAccount(v string) *DescribeTablesRequest
 
 func (s *DescribeTablesRequest) SetOwnerId(v int64) *DescribeTablesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTablesRequest) SetRegionId(v string) *DescribeTablesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -24199,6 +24205,10 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
