@@ -405,9 +405,10 @@ func (s *CreateAppInstanceGroupRequest) SetUsers(v []*string) *CreateAppInstance
 }
 
 type CreateAppInstanceGroupRequestNetwork struct {
-	IpExpireMinutes *int32                                        `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
-	Routes          []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
-	StrategyType    *string                                       `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	DomainRules     []*CreateAppInstanceGroupRequestNetworkDomainRules `json:"DomainRules,omitempty" xml:"DomainRules,omitempty" type:"Repeated"`
+	IpExpireMinutes *int32                                             `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
+	Routes          []*CreateAppInstanceGroupRequestNetworkRoutes      `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	StrategyType    *string                                            `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestNetwork) String() string {
@@ -416,6 +417,11 @@ func (s CreateAppInstanceGroupRequestNetwork) String() string {
 
 func (s CreateAppInstanceGroupRequestNetwork) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestNetwork) SetDomainRules(v []*CreateAppInstanceGroupRequestNetworkDomainRules) *CreateAppInstanceGroupRequestNetwork {
+	s.DomainRules = v
+	return s
 }
 
 func (s *CreateAppInstanceGroupRequestNetwork) SetIpExpireMinutes(v int32) *CreateAppInstanceGroupRequestNetwork {
@@ -430,6 +436,29 @@ func (s *CreateAppInstanceGroupRequestNetwork) SetRoutes(v []*CreateAppInstanceG
 
 func (s *CreateAppInstanceGroupRequestNetwork) SetStrategyType(v string) *CreateAppInstanceGroupRequestNetwork {
 	s.StrategyType = &v
+	return s
+}
+
+type CreateAppInstanceGroupRequestNetworkDomainRules struct {
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s CreateAppInstanceGroupRequestNetworkDomainRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppInstanceGroupRequestNetworkDomainRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestNetworkDomainRules) SetDomain(v string) *CreateAppInstanceGroupRequestNetworkDomainRules {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestNetworkDomainRules) SetPolicy(v string) *CreateAppInstanceGroupRequestNetworkDomainRules {
+	s.Policy = &v
 	return s
 }
 
@@ -1204,27 +1233,37 @@ func (s *GetAppInstanceGroupResponseBody) SetRequestId(v string) *GetAppInstance
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
-	Amount               *int32                                                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AppCenterImageId     *string                                                          `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppCenterImageName   *string                                                          `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
-	AppInstanceGroupId   *string                                                          `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceGroupName *string                                                          `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AppInstanceType      *string                                                          `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	AppPolicyId          *string                                                          `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	Apps                 []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps     `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	ChargeType           *string                                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ExpiredTime          *string                                                          `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtCreate            *string                                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	NodePool             []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
-	OsType               *string                                                          `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OtaInfo              *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
-	ProductType          *string                                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId             *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceStatus       *string                                                          `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	SessionTimeout       *string                                                          `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	SkipUserAuthCheck    *bool                                                            `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
-	SpecId               *string                                                          `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	Status               *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Amount                      *int32                                                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AppCenterImageId            *string                                                          `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	AppCenterImageName          *string                                                          `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
+	AppInstanceGroupId          *string                                                          `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupName        *string                                                          `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	AppInstanceType             *string                                                          `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	AppInstanceTypeName         *string                                                          `json:"AppInstanceTypeName,omitempty" xml:"AppInstanceTypeName,omitempty"`
+	AppPolicyId                 *string                                                          `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	Apps                        []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps     `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	ChargeResourceMode          *string                                                          `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	ChargeType                  *string                                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ExpiredTime                 *string                                                          `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GmtCreate                   *string                                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	MaxAmount                   *int32                                                           `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
+	MinAmount                   *int32                                                           `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	NodePool                    []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	OsType                      *string                                                          `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OtaInfo                     *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
+	ProductType                 *string                                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionId                    *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReserveAmountRatio          *string                                                          `json:"ReserveAmountRatio,omitempty" xml:"ReserveAmountRatio,omitempty"`
+	ReserveMaxAmount            *int32                                                           `json:"ReserveMaxAmount,omitempty" xml:"ReserveMaxAmount,omitempty"`
+	ReserveMinAmount            *int32                                                           `json:"ReserveMinAmount,omitempty" xml:"ReserveMinAmount,omitempty"`
+	ResourceStatus              *string                                                          `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ScalingDownAfterIdleMinutes *int32                                                           `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	ScalingStep                 *int32                                                           `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	ScalingUsageThreshold       *string                                                          `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	SessionTimeout              *string                                                          `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	SkipUserAuthCheck           *bool                                                            `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+	SpecId                      *string                                                          `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	Status                      *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -1265,6 +1304,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppInstanceTy
 	return s
 }
 
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppInstanceTypeName(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.AppInstanceTypeName = &v
+	return s
+}
+
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppPolicyId(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.AppPolicyId = &v
 	return s
@@ -1272,6 +1316,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppPolicyId(v
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetApps(v []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Apps = v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetChargeResourceMode(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ChargeResourceMode = &v
 	return s
 }
 
@@ -1287,6 +1336,16 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetExpiredTime(v
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetGmtCreate(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetMaxAmount(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.MaxAmount = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetMinAmount(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.MinAmount = &v
 	return s
 }
 
@@ -1315,8 +1374,38 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetRegionId(v st
 	return s
 }
 
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetReserveAmountRatio(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ReserveAmountRatio = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetReserveMaxAmount(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ReserveMaxAmount = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetReserveMinAmount(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ReserveMinAmount = &v
+	return s
+}
+
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetResourceStatus(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.ResourceStatus = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetScalingDownAfterIdleMinutes(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ScalingDownAfterIdleMinutes = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetScalingStep(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ScalingStep = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetScalingUsageThreshold(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ScalingUsageThreshold = &v
 	return s
 }
 
@@ -1671,6 +1760,7 @@ type GetConnectionTicketResponseBody struct {
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskStatus         *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TenantId           *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Ticket             *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
@@ -1714,6 +1804,11 @@ func (s *GetConnectionTicketResponseBody) SetTaskId(v string) *GetConnectionTick
 
 func (s *GetConnectionTicketResponseBody) SetTaskStatus(v string) *GetConnectionTicketResponseBody {
 	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBody) SetTenantId(v int64) *GetConnectionTicketResponseBody {
+	s.TenantId = &v
 	return s
 }
 
@@ -1951,6 +2046,7 @@ func (s *GetOtaTaskByTaskIdResponse) SetBody(v *GetOtaTaskByTaskIdResponseBody) 
 
 type GetResourcePriceRequest struct {
 	Amount           *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AppInstanceType  *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
 	BizRegionId      *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
@@ -1969,6 +2065,11 @@ func (s GetResourcePriceRequest) GoString() string {
 
 func (s *GetResourcePriceRequest) SetAmount(v int64) *GetResourcePriceRequest {
 	s.Amount = &v
+	return s
+}
+
+func (s *GetResourcePriceRequest) SetAppInstanceType(v string) *GetResourcePriceRequest {
+	s.AppInstanceType = &v
 	return s
 }
 
@@ -2003,10 +2104,11 @@ func (s *GetResourcePriceRequest) SetProductType(v string) *GetResourcePriceRequ
 }
 
 type GetResourcePriceResponseBody struct {
-	Code       *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	PriceModel *GetResourcePriceResponseBodyPriceModel `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	PriceList  []*GetResourcePriceResponseBodyPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
+	PriceModel *GetResourcePriceResponseBodyPriceModel  `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResourcePriceResponseBody) String() string {
@@ -2027,6 +2129,11 @@ func (s *GetResourcePriceResponseBody) SetMessage(v string) *GetResourcePriceRes
 	return s
 }
 
+func (s *GetResourcePriceResponseBody) SetPriceList(v []*GetResourcePriceResponseBodyPriceList) *GetResourcePriceResponseBody {
+	s.PriceList = v
+	return s
+}
+
 func (s *GetResourcePriceResponseBody) SetPriceModel(v *GetResourcePriceResponseBodyPriceModel) *GetResourcePriceResponseBody {
 	s.PriceModel = v
 	return s
@@ -2034,6 +2141,140 @@ func (s *GetResourcePriceResponseBody) SetPriceModel(v *GetResourcePriceResponse
 
 func (s *GetResourcePriceResponseBody) SetRequestId(v string) *GetResourcePriceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type GetResourcePriceResponseBodyPriceList struct {
+	Price     *GetResourcePriceResponseBodyPriceListPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	PriceType *string                                       `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+	Rules     []*GetResourcePriceResponseBodyPriceListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s GetResourcePriceResponseBodyPriceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourcePriceResponseBodyPriceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourcePriceResponseBodyPriceList) SetPrice(v *GetResourcePriceResponseBodyPriceListPrice) *GetResourcePriceResponseBodyPriceList {
+	s.Price = v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceList) SetPriceType(v string) *GetResourcePriceResponseBodyPriceList {
+	s.PriceType = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceList) SetRules(v []*GetResourcePriceResponseBodyPriceListRules) *GetResourcePriceResponseBodyPriceList {
+	s.Rules = v
+	return s
+}
+
+type GetResourcePriceResponseBodyPriceListPrice struct {
+	Currency      *string                                                 `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountPrice *string                                                 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OriginalPrice *string                                                 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	Promotions    []*GetResourcePriceResponseBodyPriceListPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	TradePrice    *string                                                 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s GetResourcePriceResponseBodyPriceListPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourcePriceResponseBodyPriceListPrice) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPrice) SetCurrency(v string) *GetResourcePriceResponseBodyPriceListPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPrice) SetDiscountPrice(v string) *GetResourcePriceResponseBodyPriceListPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPrice) SetOriginalPrice(v string) *GetResourcePriceResponseBodyPriceListPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPrice) SetPromotions(v []*GetResourcePriceResponseBodyPriceListPricePromotions) *GetResourcePriceResponseBodyPriceListPrice {
+	s.Promotions = v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPrice) SetTradePrice(v string) *GetResourcePriceResponseBodyPriceListPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type GetResourcePriceResponseBodyPriceListPricePromotions struct {
+	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	Selected      *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s GetResourcePriceResponseBodyPriceListPricePromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourcePriceResponseBodyPriceListPricePromotions) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPricePromotions) SetOptionCode(v string) *GetResourcePriceResponseBodyPriceListPricePromotions {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPricePromotions) SetPromotionDesc(v string) *GetResourcePriceResponseBodyPriceListPricePromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPricePromotions) SetPromotionId(v string) *GetResourcePriceResponseBodyPriceListPricePromotions {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPricePromotions) SetPromotionName(v string) *GetResourcePriceResponseBodyPriceListPricePromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListPricePromotions) SetSelected(v bool) *GetResourcePriceResponseBodyPriceListPricePromotions {
+	s.Selected = &v
+	return s
+}
+
+type GetResourcePriceResponseBodyPriceListRules struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s GetResourcePriceResponseBodyPriceListRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourcePriceResponseBodyPriceListRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourcePriceResponseBodyPriceListRules) SetDescription(v string) *GetResourcePriceResponseBodyPriceListRules {
+	s.Description = &v
+	return s
+}
+
+func (s *GetResourcePriceResponseBodyPriceListRules) SetRuleId(v int64) *GetResourcePriceResponseBodyPriceListRules {
+	s.RuleId = &v
 	return s
 }
 
@@ -2525,20 +2766,28 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	AppPolicyId *string                                                       `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	Apps        []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
 	// 售卖模式。
-	ChargeResourceMode *string                                                           `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType         *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ExpiredTime        *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtCreate          *string                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	NodePool           []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
-	OsType             *string                                                           `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OtaInfo            *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
-	ProductType        *string                                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId           *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceStatus     *string                                                           `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	SessionTimeout     *string                                                           `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	SkipUserAuthCheck  *bool                                                             `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
-	SpecId             *string                                                           `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	Status             *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	ChargeResourceMode          *string                                                           `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	ChargeType                  *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ExpiredTime                 *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GmtCreate                   *string                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	MaxAmount                   *int32                                                            `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
+	MinAmount                   *int32                                                            `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	NodePool                    []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	OsType                      *string                                                           `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OtaInfo                     *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
+	ProductType                 *string                                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionId                    *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReserveAmountRatio          *string                                                           `json:"ReserveAmountRatio,omitempty" xml:"ReserveAmountRatio,omitempty"`
+	ReserveMaxAmount            *int32                                                            `json:"ReserveMaxAmount,omitempty" xml:"ReserveMaxAmount,omitempty"`
+	ReserveMinAmount            *int32                                                            `json:"ReserveMinAmount,omitempty" xml:"ReserveMinAmount,omitempty"`
+	ResourceStatus              *string                                                           `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ScalingDownAfterIdleMinutes *int32                                                            `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	ScalingStep                 *int32                                                            `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	ScalingUsageThreshold       *string                                                           `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	SessionTimeout              *string                                                           `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	SkipUserAuthCheck           *bool                                                             `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+	SpecId                      *string                                                           `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	Status                      *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -2604,6 +2853,16 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetGmtCreate(v 
 	return s
 }
 
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetMaxAmount(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.MaxAmount = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetMinAmount(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.MinAmount = &v
+	return s
+}
+
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetNodePool(v []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.NodePool = v
 	return s
@@ -2629,8 +2888,38 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetRegionId(v s
 	return s
 }
 
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetReserveAmountRatio(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ReserveAmountRatio = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetReserveMaxAmount(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ReserveMaxAmount = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetReserveMinAmount(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ReserveMinAmount = &v
+	return s
+}
+
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetResourceStatus(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.ResourceStatus = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetScalingDownAfterIdleMinutes(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ScalingDownAfterIdleMinutes = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetScalingStep(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ScalingStep = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetScalingUsageThreshold(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ScalingUsageThreshold = &v
 	return s
 }
 
@@ -3694,7 +3983,10 @@ func (s *LogOffAllSessionsInAppInstanceGroupResponse) SetBody(v *LogOffAllSessio
 type ModifyAppInstanceGroupAttributeRequest struct {
 	AppInstanceGroupId   *string                                               `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string                                               `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	Network              *ModifyAppInstanceGroupAttributeRequestNetwork        `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	NodePool             *ModifyAppInstanceGroupAttributeRequestNodePool       `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	PreOpenAppId         *string                                               `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	PreOpenMode          *string                                               `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
 	ProductType          *string                                               `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SecurityPolicy       *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
 	SessionTimeout       *int32                                                `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
@@ -3719,8 +4011,23 @@ func (s *ModifyAppInstanceGroupAttributeRequest) SetAppInstanceGroupName(v strin
 	return s
 }
 
+func (s *ModifyAppInstanceGroupAttributeRequest) SetNetwork(v *ModifyAppInstanceGroupAttributeRequestNetwork) *ModifyAppInstanceGroupAttributeRequest {
+	s.Network = v
+	return s
+}
+
 func (s *ModifyAppInstanceGroupAttributeRequest) SetNodePool(v *ModifyAppInstanceGroupAttributeRequestNodePool) *ModifyAppInstanceGroupAttributeRequest {
 	s.NodePool = v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequest) SetPreOpenAppId(v string) *ModifyAppInstanceGroupAttributeRequest {
+	s.PreOpenAppId = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequest) SetPreOpenMode(v string) *ModifyAppInstanceGroupAttributeRequest {
+	s.PreOpenMode = &v
 	return s
 }
 
@@ -3741,6 +4048,46 @@ func (s *ModifyAppInstanceGroupAttributeRequest) SetSessionTimeout(v int32) *Mod
 
 func (s *ModifyAppInstanceGroupAttributeRequest) SetStoragePolicy(v *ModifyAppInstanceGroupAttributeRequestStoragePolicy) *ModifyAppInstanceGroupAttributeRequest {
 	s.StoragePolicy = v
+	return s
+}
+
+type ModifyAppInstanceGroupAttributeRequestNetwork struct {
+	DomainRules []*ModifyAppInstanceGroupAttributeRequestNetworkDomainRules `json:"DomainRules,omitempty" xml:"DomainRules,omitempty" type:"Repeated"`
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestNetwork) SetDomainRules(v []*ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) *ModifyAppInstanceGroupAttributeRequestNetwork {
+	s.DomainRules = v
+	return s
+}
+
+type ModifyAppInstanceGroupAttributeRequestNetworkDomainRules struct {
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) SetDomain(v string) *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules {
+	s.Domain = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) SetPolicy(v string) *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules {
+	s.Policy = &v
 	return s
 }
 
@@ -3810,7 +4157,10 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetStorageTypeList
 type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	NetworkShrink        *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	NodePoolShrink       *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
+	PreOpenAppId         *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	PreOpenMode          *string `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
 	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
@@ -3835,8 +4185,23 @@ func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetAppInstanceGroupName(v
 	return s
 }
 
+func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetNetworkShrink(v string) *ModifyAppInstanceGroupAttributeShrinkRequest {
+	s.NetworkShrink = &v
+	return s
+}
+
 func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetNodePoolShrink(v string) *ModifyAppInstanceGroupAttributeShrinkRequest {
 	s.NodePoolShrink = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetPreOpenAppId(v string) *ModifyAppInstanceGroupAttributeShrinkRequest {
+	s.PreOpenAppId = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetPreOpenMode(v string) *ModifyAppInstanceGroupAttributeShrinkRequest {
+	s.PreOpenMode = &v
 	return s
 }
 
@@ -5380,6 +5745,10 @@ func (client *Client) GetResourcePriceWithOptions(request *GetResourcePriceReque
 		query["Amount"] = request.Amount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceType)) {
+		query["AppInstanceType"] = request.AppInstanceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
 		query["BizRegionId"] = request.BizRegionId
 	}
@@ -5887,6 +6256,10 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyA
 	}
 	request := &ModifyAppInstanceGroupAttributeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Network)) {
+		request.NetworkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Network, tea.String("Network"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.NodePool)) {
 		request.NodePoolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodePool, tea.String("NodePool"), tea.String("json"))
 	}
@@ -5921,6 +6294,18 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyA
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkShrink)) {
+		body["Network"] = request.NetworkShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreOpenAppId)) {
+		body["PreOpenAppId"] = request.PreOpenAppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreOpenMode)) {
+		body["PreOpenMode"] = request.PreOpenMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyShrink)) {
 		body["SecurityPolicy"] = request.SecurityPolicyShrink
 	}
