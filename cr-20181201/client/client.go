@@ -13,8 +13,10 @@ import (
 )
 
 type CancelArtifactBuildTaskRequest struct {
+	// The ID of the artifact building task.
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CancelArtifactBuildTaskRequest) String() string {
@@ -36,8 +38,14 @@ func (s *CancelArtifactBuildTaskRequest) SetInstanceId(v string) *CancelArtifact
 }
 
 type CancelArtifactBuildTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -94,9 +102,12 @@ func (s *CancelArtifactBuildTaskResponse) SetBody(v *CancelArtifactBuildTaskResp
 }
 
 type CancelRepoBuildRecordRequest struct {
+	// The ID of the image building record.
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s CancelRepoBuildRecordRequest) String() string {
@@ -123,8 +134,11 @@ func (s *CancelRepoBuildRecordRequest) SetRepoId(v string) *CancelRepoBuildRecor
 }
 
 type CancelRepoBuildRecordResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -181,7 +195,8 @@ func (s *CancelRepoBuildRecordResponse) SetBody(v *CancelRepoBuildRecordResponse
 }
 
 type ChangeResourceGroupRequest struct {
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Id of the request
 	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
@@ -255,10 +270,112 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
-type CreateBuildRecordByRuleRequest struct {
+type CreateArtifactBuildRuleRequest struct {
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ScopeId      *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	ScopeType    *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+}
+
+func (s CreateArtifactBuildRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactBuildRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactBuildRuleRequest) SetArtifactType(v string) *CreateArtifactBuildRuleRequest {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleRequest) SetInstanceId(v string) *CreateArtifactBuildRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleRequest) SetScopeId(v string) *CreateArtifactBuildRuleRequest {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleRequest) SetScopeType(v string) *CreateArtifactBuildRuleRequest {
+	s.ScopeType = &v
+	return s
+}
+
+type CreateArtifactBuildRuleResponseBody struct {
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateArtifactBuildRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactBuildRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactBuildRuleResponseBody) SetBuildRuleId(v string) *CreateArtifactBuildRuleResponseBody {
+	s.BuildRuleId = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleResponseBody) SetCode(v string) *CreateArtifactBuildRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleResponseBody) SetIsSuccess(v bool) *CreateArtifactBuildRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleResponseBody) SetRequestId(v string) *CreateArtifactBuildRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateArtifactBuildRuleResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateArtifactBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateArtifactBuildRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactBuildRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactBuildRuleResponse) SetHeaders(v map[string]*string) *CreateArtifactBuildRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleResponse) SetStatusCode(v int32) *CreateArtifactBuildRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleResponse) SetBody(v *CreateArtifactBuildRuleResponseBody) *CreateArtifactBuildRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBuildRecordByRuleRequest struct {
+	// The ID of the image building rule.
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s CreateBuildRecordByRuleRequest) String() string {
@@ -285,10 +402,14 @@ func (s *CreateBuildRecordByRuleRequest) SetRepoId(v string) *CreateBuildRecordB
 }
 
 type CreateBuildRecordByRuleResponseBody struct {
+	// The ID of the image building record.
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess     *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBuildRecordByRuleResponseBody) String() string {
@@ -349,13 +470,20 @@ func (s *CreateBuildRecordByRuleResponse) SetBody(v *CreateBuildRecordByRuleResp
 }
 
 type CreateChainRequest struct {
-	ChainConfig       *string   `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
-	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name              *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	RepoName          *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespaceName *string   `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	ScopeExclude      []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
+	// The configuration of the delivery chain in the JSON format.
+	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
+	// The description of the delivery chain.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the delivery chain.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	// Repositories in which the delivery chain does not take effect.
+	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 }
 
 func (s CreateChainRequest) String() string {
@@ -402,9 +530,13 @@ func (s *CreateChainRequest) SetScopeExclude(v []*string) *CreateChainRequest {
 }
 
 type CreateChainResponseBody struct {
-	ChainId   *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the delivery chain.
+	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -466,10 +598,21 @@ func (s *CreateChainResponse) SetBody(v *CreateChainResponseBody) *CreateChainRe
 }
 
 type CreateChartNamespaceRequest struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// Specifies whether to automatically create repositories in the namespace. Valid values:
+	//
+	// \-`  true `: automatically creates repositories in the namespace.
+	//
+	// \-`  false `: does not automatically create repositories in the namespace.
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// The default repository type. Valid values:
+	//
+	// *   `PUBLIC`: a public repository
+	// *   `PRIVATE`: a private repository
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s CreateChartNamespaceRequest) String() string {
@@ -501,8 +644,14 @@ func (s *CreateChartNamespaceRequest) SetNamespaceName(v string) *CreateChartNam
 }
 
 type CreateChartNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -559,11 +708,21 @@ func (s *CreateChartNamespaceResponse) SetBody(v *CreateChartNamespaceResponseBo
 }
 
 type CreateChartRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The default repository type. Valid values:
+	//
+	// *   `PUBLIC`: a public repository.
+	// *   `PRIVATE`: a private repository.
+	//
+	// You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The summary of the repository.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s CreateChartRepositoryRequest) String() string {
@@ -600,9 +759,16 @@ func (s *CreateChartRepositoryRequest) SetSummary(v string) *CreateChartReposito
 }
 
 type CreateChartRepositoryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RepoId    *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -664,11 +830,19 @@ func (s *CreateChartRepositoryResponse) SetBody(v *CreateChartRepositoryResponse
 }
 
 type CreateInstanceEndpointAclPolicyRequest struct {
-	Comment      *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The description.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The type of the endpoint. Set the value to Internet.
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	Entry        *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The CIDR block that is accessible.
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the module that you want to access. Valid values:
+	//
+	// *   `Registry`: the image repository.
+	// *   `Chart`: a Helm chart.
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
 func (s CreateInstanceEndpointAclPolicyRequest) String() string {
@@ -705,8 +879,14 @@ func (s *CreateInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Create
 }
 
 type CreateInstanceEndpointAclPolicyResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -862,10 +1042,17 @@ func (s *CreateInstanceVpcEndpointLinkedVpcResponse) SetBody(v *CreateInstanceVp
 }
 
 type CreateNamespaceRequest struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// Specifies whether to automatically create an image repository in the namespace.
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// The default type of the repository that is automatically created. Valid values:
+	//
+	// *   `PUBLIC`: a public repository
+	// *   `PRIVATE`: a private repository
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace. The name must be 2 to 120 characters in length, and can contain lowercase letters, digits, and the following delimiters: underscores (\_), hyphens (-), and periods (.). The name cannot start or end with a delimiter.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -897,8 +1084,11 @@ func (s *CreateNamespaceRequest) SetNamespaceName(v string) *CreateNamespaceRequ
 }
 
 type CreateNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -955,15 +1145,35 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 }
 
 type CreateRepoBuildRuleRequest struct {
-	BuildArgs          []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	DockerfileLocation *string   `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	DockerfileName     *string   `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// Building arguments.
+	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
+	// The path of the Dockerfile.
+	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
+	// The name of the Dockerfile.
+	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
+	// The tag of the image.
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Architecture for image building. Valid values:
+	//
+	// *   `linux/amd64`
+	// *   `linux/arm64`
+	// *   `linux/386`
+	// *   `linux/arm/v7`
+	// *   `inux/arm/v6`
+	//
+	// Default value: `linux/amd64`
+	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	// The name of the push that triggers the building rule.
+	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
+	// The type of the push that triggers the building rule. Valid values:
+	//
+	// *   `GIT_TAG`: tag push
+	// *   `GIT_BRANCH`: branch push
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s CreateRepoBuildRuleRequest) String() string {
@@ -1020,10 +1230,17 @@ func (s *CreateRepoBuildRuleRequest) SetRepoId(v string) *CreateRepoBuildRuleReq
 }
 
 type CreateRepoBuildRuleResponseBody struct {
+	// The ID of the building rule.
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRepoBuildRuleResponseBody) String() string {
@@ -1084,14 +1301,31 @@ func (s *CreateRepoBuildRuleResponse) SetBody(v *CreateRepoBuildRuleResponseBody
 }
 
 type CreateRepoSourceCodeRepoRequest struct {
-	AutoBuild             *bool   `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
-	CodeRepoName          *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	// Specifies whether to trigger image building when source code is committed. Valid values:
+	//
+	// *   `true`: triggers image building when source code is committed.
+	// *   `false`: does not trigger image building when source code is committed.
+	AutoBuild *bool `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
+	// The name of the source code repository.
+	CodeRepoName *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	// The namespace to which the source code repository belongs.
 	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
-	CodeRepoType          *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
-	DisableCacheBuild     *bool   `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OverseaBuild          *bool   `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
-	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The type of the source code hosting platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
+	CodeRepoType *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
+	// Specifies whether to disable building caches. Valid values:
+	//
+	// *   `true`: disables building caches.
+	// *   `false`: enables building caches.
+	DisableCacheBuild *bool `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable Build With Servers Deployed Outside Chinese Mainland. Valid values:
+	//
+	// *   `true`: enables Build With Servers Deployed Outside Chinese Mainland.
+	// *   `false`: does not enable Build With Servers Deployed Outside Chinese Mainland.
+	OverseaBuild *bool `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s CreateRepoSourceCodeRepoRequest) String() string {
@@ -1143,8 +1377,11 @@ func (s *CreateRepoSourceCodeRepoRequest) SetRepoId(v string) *CreateRepoSourceC
 }
 
 type CreateRepoSourceCodeRepoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1483,10 +1720,14 @@ func (s *CreateRepoSyncTaskResponse) SetBody(v *CreateRepoSyncTaskResponseBody) 
 }
 
 type CreateRepoSyncTaskByRuleRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the synchronization rule.
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The version of the image to be synchronized.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s CreateRepoSyncTaskByRuleRequest) String() string {
@@ -1518,9 +1759,16 @@ func (s *CreateRepoSyncTaskByRuleRequest) SetTag(v string) *CreateRepoSyncTaskBy
 }
 
 type CreateRepoSyncTaskByRuleResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the synchronization task.
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -1582,11 +1830,16 @@ func (s *CreateRepoSyncTaskByRuleResponse) SetBody(v *CreateRepoSyncTaskByRuleRe
 }
 
 type CreateRepoTagRequest struct {
-	FromTag       *string `json:"FromTag,omitempty" xml:"FromTag,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The source image tag.
+	FromTag *string `json:"FromTag,omitempty" xml:"FromTag,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	ToTag         *string `json:"ToTag,omitempty" xml:"ToTag,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The image tag that you want to create.
+	ToTag *string `json:"ToTag,omitempty" xml:"ToTag,omitempty"`
 }
 
 func (s CreateRepoTagRequest) String() string {
@@ -1623,8 +1876,11 @@ func (s *CreateRepoTagRequest) SetToTag(v string) *CreateRepoTagRequest {
 }
 
 type CreateRepoTagResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1681,11 +1937,19 @@ func (s *CreateRepoTagResponse) SetBody(v *CreateRepoTagResponseBody) *CreateRep
 }
 
 type CreateRepoTagScanTaskRequest struct {
-	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The digest of the image.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The type of the scanning engine.
+	//
+	// *   `SAS_SCAN_SERVICE`: Security Center scan engine (paid service)
+	// *   `ACR_SCAN_SERVICE`: Container Registry scan engine
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The version of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s CreateRepoTagScanTaskRequest) String() string {
@@ -1722,8 +1986,14 @@ func (s *CreateRepoTagScanTaskRequest) SetTag(v string) *CreateRepoTagScanTaskRe
 }
 
 type CreateRepoTagScanTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1780,12 +2050,29 @@ func (s *CreateRepoTagScanTaskResponse) SetBody(v *CreateRepoTagScanTaskResponse
 }
 
 type CreateRepoTriggerRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the trigger.
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
-	TriggerTag  *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
+	// The image tag based on which the trigger is set.
+	//
+	// >
+	//
+	// *   If `TriggerType` is set to `ALL`, `TriggerTag` can be set to a string or an array, for example, `*`.
+	//
+	// *   If `TriggerType` is set to `TAG_LIST`, `TriggerTag` must be set to an array, for example, `[1]`.
+	// *   If `TriggerType` is set to `TAG_REG_EXP`, `TriggerTag` must be set to a string, for example, `*`.
+	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
+	// The type of the trigger. Valid values:
+	//
+	// *   `ALL`: a trigger that supports both tags and regular expressions.
+	// *   `TAG_LIST`: a tag-based trigger.
+	// *   `TAG_REG_EXP`: a regular expression-based trigger.
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	TriggerUrl  *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
+	// The URL of the trigger.
+	TriggerUrl *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
 }
 
 func (s CreateRepoTriggerRequest) String() string {
@@ -1827,9 +2114,13 @@ func (s *CreateRepoTriggerRequest) SetTriggerUrl(v string) *CreateRepoTriggerReq
 }
 
 type CreateRepoTriggerResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the trigger.
 	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 }
 
@@ -1891,13 +2182,26 @@ func (s *CreateRepoTriggerResponse) SetBody(v *CreateRepoTriggerResponseBody) *C
 }
 
 type CreateRepositoryRequest struct {
-	Detail            *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The description of the repository.
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the image repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
+	// The type of the repository. Valid values:
+	//
+	// *   `PUBLIC`: The repository is a public repository.
+	// *   `PRIVATE`: The repository is a private repository.
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The summary about the repository.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Specifies whether to enable the feature of image tag immutability. Valid values:
+	//
+	// *   `true`: enables the feature of image tag immutability.
+	// *   `false`: disables the feature of image tag immutability.
+	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
 
 func (s CreateRepositoryRequest) String() string {
@@ -1944,9 +2248,13 @@ func (s *CreateRepositoryRequest) SetTagImmutability(v bool) *CreateRepositoryRe
 }
 
 type CreateRepositoryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RepoId    *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2008,7 +2316,9 @@ func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *Cre
 }
 
 type DeleteChainRequest struct {
-	ChainId    *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// The ID of the delivery pipeline.
+	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2031,8 +2341,11 @@ func (s *DeleteChainRequest) SetInstanceId(v string) *DeleteChainRequest {
 }
 
 type DeleteChainResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2089,7 +2402,9 @@ func (s *DeleteChainResponse) SetBody(v *DeleteChainResponseBody) *DeleteChainRe
 }
 
 type DeleteChartNamespaceRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the chart namespace that you want to delete.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -2112,8 +2427,14 @@ func (s *DeleteChartNamespaceRequest) SetNamespaceName(v string) *DeleteChartNam
 }
 
 type DeleteChartNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2170,10 +2491,15 @@ func (s *DeleteChartNamespaceResponse) SetBody(v *DeleteChartNamespaceResponseBo
 }
 
 type DeleteChartReleaseRequest struct {
-	Chart             *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Release           *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the chart.
+	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The version of the chart that you want to delete.
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -2211,8 +2537,11 @@ func (s *DeleteChartReleaseRequest) SetRepoNamespaceName(v string) *DeleteChartR
 }
 
 type DeleteChartReleaseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2269,8 +2598,11 @@ func (s *DeleteChartReleaseResponse) SetBody(v *DeleteChartReleaseResponseBody) 
 }
 
 type DeleteChartRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -2298,8 +2630,14 @@ func (s *DeleteChartRepositoryRequest) SetRepoNamespaceName(v string) *DeleteCha
 }
 
 type DeleteChartRepositoryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2356,8 +2694,10 @@ func (s *DeleteChartRepositoryResponse) SetBody(v *DeleteChartRepositoryResponse
 }
 
 type DeleteEventCenterRuleRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the event notification rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteEventCenterRuleRequest) String() string {
@@ -2379,7 +2719,9 @@ func (s *DeleteEventCenterRuleRequest) SetRuleId(v string) *DeleteEventCenterRul
 }
 
 type DeleteEventCenterRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2431,10 +2773,17 @@ func (s *DeleteEventCenterRuleResponse) SetBody(v *DeleteEventCenterRuleResponse
 }
 
 type DeleteInstanceEndpointAclPolicyRequest struct {
+	// The type of the endpoint. Set the value to Internet.
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	Entry        *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The CIDR block.
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the module that you want to access. Valid values:
+	//
+	// *   `Registry`: the image repository.
+	// *   `Chart`: a Helm chart.
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
 func (s DeleteInstanceEndpointAclPolicyRequest) String() string {
@@ -2466,8 +2815,14 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Delete
 }
 
 type DeleteInstanceEndpointAclPolicyResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2524,10 +2879,17 @@ func (s *DeleteInstanceEndpointAclPolicyResponse) SetBody(v *DeleteInstanceEndpo
 }
 
 type DeleteInstanceVpcEndpointLinkedVpcRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the module that you want to access. Valid values:
+	//
+	// *   `Registry`: the image repository.
+	// *   `Chart`: a Helm chart.
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId  *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DeleteInstanceVpcEndpointLinkedVpcRequest) String() string {
@@ -2559,8 +2921,14 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetVswitchId(v string) *Dele
 }
 
 type DeleteInstanceVpcEndpointLinkedVpcResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2617,7 +2985,9 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcResponse) SetBody(v *DeleteInstanceVp
 }
 
 type DeleteNamespaceRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -2640,8 +3010,11 @@ func (s *DeleteNamespaceRequest) SetNamespaceName(v string) *DeleteNamespaceRequ
 }
 
 type DeleteNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2698,9 +3071,12 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 }
 
 type DeleteRepoBuildRuleRequest struct {
+	// The ID of the image building rule.
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s DeleteRepoBuildRuleRequest) String() string {
@@ -2727,8 +3103,11 @@ func (s *DeleteRepoBuildRuleRequest) SetRepoId(v string) *DeleteRepoBuildRuleReq
 }
 
 type DeleteRepoBuildRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2785,7 +3164,9 @@ func (s *DeleteRepoBuildRuleResponse) SetBody(v *DeleteRepoBuildRuleResponseBody
 }
 
 type DeleteRepoSyncRuleRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the synchronization rule.
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 }
 
@@ -2808,8 +3189,11 @@ func (s *DeleteRepoSyncRuleRequest) SetSyncRuleId(v string) *DeleteRepoSyncRuleR
 }
 
 type DeleteRepoSyncRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2866,9 +3250,12 @@ func (s *DeleteRepoSyncRuleResponse) SetBody(v *DeleteRepoSyncRuleResponseBody) 
 }
 
 type DeleteRepoTagRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The tag of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s DeleteRepoTagRequest) String() string {
@@ -2895,8 +3282,11 @@ func (s *DeleteRepoTagRequest) SetTag(v string) *DeleteRepoTagRequest {
 }
 
 type DeleteRepoTagResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2953,9 +3343,12 @@ func (s *DeleteRepoTagResponse) SetBody(v *DeleteRepoTagResponseBody) *DeleteRep
 }
 
 type DeleteRepoTriggerRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	TriggerId  *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the trigger.
+	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 }
 
 func (s DeleteRepoTriggerRequest) String() string {
@@ -2982,8 +3375,14 @@ func (s *DeleteRepoTriggerRequest) SetTriggerId(v string) *DeleteRepoTriggerRequ
 }
 
 type DeleteRepoTriggerResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3040,7 +3439,9 @@ func (s *DeleteRepoTriggerResponse) SetBody(v *DeleteRepoTriggerResponseBody) *D
 }
 
 type DeleteRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
 	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
@@ -3075,8 +3476,14 @@ func (s *DeleteRepositoryRequest) SetRepoNamespaceName(v string) *DeleteReposito
 }
 
 type DeleteRepositoryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3133,8 +3540,10 @@ func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *Del
 }
 
 type GetArtifactBuildTaskRequest struct {
+	// The ID of the artifact building task.
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetArtifactBuildTaskRequest) String() string {
@@ -3156,17 +3565,35 @@ func (s *GetArtifactBuildTaskRequest) SetInstanceId(v string) *GetArtifactBuildT
 }
 
 type GetArtifactBuildTaskResponseBody struct {
-	ArtifactBuildType *string                                         `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	BuildTaskId       *string                                         `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	Code              *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime           *int32                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Instructions      []*string                                       `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
-	IsSuccess         *bool                                           `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceArtifact    *GetArtifactBuildTaskResponseBodySourceArtifact `json:"SourceArtifact,omitempty" xml:"SourceArtifact,omitempty" type:"Struct"`
-	StartTime         *int32                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TargetArtifact    *GetArtifactBuildTaskResponseBodyTargetArtifact `json:"TargetArtifact,omitempty" xml:"TargetArtifact,omitempty" type:"Struct"`
-	TaskStatus        *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the artifact building task. Valid values:
+	//
+	// *   `IMAGE_TO_ACCELERATED_IMAGE`: builds accelerated images for Container Service for Kubernetes (ACK) clusters.
+	// *   `IMAGE_TO_ECI_ACCELERATED_IMAGE`: builds accelerated images for elastic container instances.
+	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The ID of the artifact building task.
+	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the artifact building task ends.
+	EndTime      *int32    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Instructions []*string `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the source artifact.
+	SourceArtifact *GetArtifactBuildTaskResponseBodySourceArtifact `json:"SourceArtifact,omitempty" xml:"SourceArtifact,omitempty" type:"Struct"`
+	// The time when the artifact building task starts.
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The artifact that is built in the task.
+	TargetArtifact *GetArtifactBuildTaskResponseBodyTargetArtifact `json:"TargetArtifact,omitempty" xml:"TargetArtifact,omitempty" type:"Struct"`
+	// The status of the artifact that is built in the task. Valid values:
+	//
+	// *   `PENDING`: The artifact is being scheduled.
+	// *   `BUILDING`: The artifact is being built.
+	// *   `SUCCESS`: The artifact is built.
+	// *   `FAILED`: The artifact fails to be built.
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetArtifactBuildTaskResponseBody) String() string {
@@ -3233,9 +3660,12 @@ func (s *GetArtifactBuildTaskResponseBody) SetTaskStatus(v string) *GetArtifactB
 }
 
 type GetArtifactBuildTaskResponseBodySourceArtifact struct {
+	// The type of the artifact that is built in the task. The value can only be IMAGE.
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the repository to which the source artifact belongs. The repository can only be an image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The version of the artifact. The artifact can only be an image.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetArtifactBuildTaskResponseBodySourceArtifact) String() string {
@@ -3262,9 +3692,12 @@ func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetVersion(v string) *G
 }
 
 type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
+	// The type of the artifact that is built in the task. The value can only be IMAGE.
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the repository to which the artifact that is built in the task belongs. The repository can only be an image repository. The value is the same as the ID of the repository to which the source artifact belongs.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The version of the artifact that is built in the task. The artifact can only be an image.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetArtifactBuildTaskResponseBodyTargetArtifact) String() string {
@@ -3320,6 +3753,7 @@ func (s *GetArtifactBuildTaskResponse) SetBody(v *GetArtifactBuildTaskResponseBo
 }
 
 type GetAuthorizationTokenRequest struct {
+	// The ID of the request.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3337,12 +3771,25 @@ func (s *GetAuthorizationTokenRequest) SetInstanceId(v string) *GetAuthorization
 }
 
 type GetAuthorizationTokenResponseBody struct {
+	// The temporary password returned after you call this API operation is a Security Token Service (STS) token whose validity period is 1 hour. Take note of the following items when you log on to Container Registry instances by using an STS token:
+	//
+	// *   If the STS token belongs to an Alibaba Cloud account, you can use the STS token to log on to all Container Registry instances that belong to the Alibaba Cloud account.
+	// *   If the STS token belongs to a Resource Access Management (RAM) user, you can use the STS token to log on to all Container Registry instances that belong to the RAM user.
+	// *   You can use an STS token to access only Container Registry instances to which the STS token is scoped.
 	AuthorizationToken *string `json:"AuthorizationToken,omitempty" xml:"AuthorizationToken,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ExpireTime         *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	IsSuccess          *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TempUsername       *string `json:"TempUsername,omitempty" xml:"TempUsername,omitempty"`
+	// Indicates whether the API call is successful.
+	//
+	// *   `true`: successful
+	// *   `false`: failed
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return value.
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The username that is used to log on to the Container Registry instance.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The timestamp when the temporary password expires. Unit: milliseconds.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The password that is used to log on to the Container Registry instance.
+	TempUsername *string `json:"TempUsername,omitempty" xml:"TempUsername,omitempty"`
 }
 
 func (s GetAuthorizationTokenResponseBody) String() string {
@@ -3769,7 +4216,9 @@ func (s *GetChainResponse) SetBody(v *GetChainResponseBody) *GetChainResponse {
 }
 
 type GetChartNamespaceRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -3792,14 +4241,35 @@ func (s *GetChartNamespaceRequest) SetNamespaceName(v string) *GetChartNamespace
 }
 
 type GetChartNamespaceResponseBody struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether a repository was automatically created in the namespace. Valid values:
+	//
+	// *   `true`: A repository was automatically created in the namespace.
+	// *   `false`: No repository was automatically created in the namespace.
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The default repository type. Valid values:
+	//
+	// *   `PUBLIC`: a public repository.
+	// *   `PRIVATE`: a private repository.
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// *   `NORMAL`: The namespace is normal.
+	// *   `DELETING`: The namespace is being deleted.
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	// The ID of the request.
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -3892,8 +4362,11 @@ func (s *GetChartNamespaceResponse) SetBody(v *GetChartNamespaceResponseBody) *G
 }
 
 type GetChartRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -3921,19 +4394,40 @@ func (s *GetChartRepositoryRequest) SetRepoNamespaceName(v string) *GetChartRepo
 }
 
 type GetChartRepositoryResponseBody struct {
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess         *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the chart repository was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The time when the chart repository was last modified.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the chart repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the chart repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the chart repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The status of the chart repository. Valid values:
+	//
+	// *   `NORMAL`: The repository is normal.
+	// *   `DELETING`: The repository is being deleted.
+	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	// The type of the chart repository. Valid values:
+	//
+	// *   `PUBLIC`: a public repository
+	// *   `PRIVATE`: a private repository
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The ID of the request.
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The summary about the chart repository.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s GetChartRepositoryResponseBody) String() string {
@@ -4059,6 +4553,7 @@ type GetInstanceResponseBody struct {
 	Code                  *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIssue         *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
 	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
 	InstanceStatus        *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
@@ -4088,6 +4583,11 @@ func (s *GetInstanceResponseBody) SetCreateTime(v int64) *GetInstanceResponseBod
 
 func (s *GetInstanceResponseBody) SetInstanceId(v string) *GetInstanceResponseBody {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetInstanceIssue(v string) *GetInstanceResponseBody {
+	s.InstanceIssue = &v
 	return s
 }
 
@@ -4220,9 +4720,15 @@ func (s *GetInstanceCountResponse) SetBody(v *GetInstanceCountResponseBody) *Get
 }
 
 type GetInstanceEndpointRequest struct {
+	// The type of the endpoint. Set the value to Internet.
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the module that you want to access. Valid values:
+	//
+	// *   `Registry`: the image repository.
+	// *   `Chart`: a Helm chart.
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
 func (s GetInstanceEndpointRequest) String() string {
@@ -4249,14 +4755,22 @@ func (s *GetInstanceEndpointRequest) SetModuleName(v string) *GetInstanceEndpoin
 }
 
 type GetInstanceEndpointResponseBody struct {
-	AclEnable  *bool                                        `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
+	// Indicates whether the access control list (ACL) feature is enabled.
+	AclEnable *bool `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
+	// The ACLs.
 	AclEntries []*GetInstanceEndpointResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Domains    []*GetInstanceEndpointResponseBodyDomains    `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	Enable     *bool                                        `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	IsSuccess  *bool                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status     *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Domain names.
+	Domains []*GetInstanceEndpointResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// Indicates whether the ACL feature is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetInstanceEndpointResponseBody) String() string {
@@ -4308,8 +4822,10 @@ func (s *GetInstanceEndpointResponseBody) SetStatus(v string) *GetInstanceEndpoi
 }
 
 type GetInstanceEndpointResponseBodyAclEntries struct {
+	// Remarks for public IP address whitelists.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Entry   *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The public IP address whitelist.
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
 func (s GetInstanceEndpointResponseBodyAclEntries) String() string {
@@ -4331,8 +4847,13 @@ func (s *GetInstanceEndpointResponseBodyAclEntries) SetEntry(v string) *GetInsta
 }
 
 type GetInstanceEndpointResponseBodyDomains struct {
+	// The domain name that is used to access the Container Registry Enterprise Edition instance.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the domain name. Valid values:
+	//
+	// *   `SYSTEM`: a system domain name.
+	// *   `USER`: a user domain name.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetInstanceEndpointResponseBodyDomains) String() string {
@@ -4383,6 +4904,7 @@ func (s *GetInstanceEndpointResponse) SetBody(v *GetInstanceEndpointResponseBody
 }
 
 type GetInstanceUsageRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4400,17 +4922,31 @@ func (s *GetInstanceUsageRequest) SetInstanceId(v string) *GetInstanceUsageReque
 }
 
 type GetInstanceUsageResponseBody struct {
+	// The quota of chart namespaces.
 	ChartNamespaceQuota *string `json:"ChartNamespaceQuota,omitempty" xml:"ChartNamespaceQuota,omitempty"`
+	// The number of chart namespaces that are created in the instance.
 	ChartNamespaceUsage *string `json:"ChartNamespaceUsage,omitempty" xml:"ChartNamespaceUsage,omitempty"`
-	ChartRepoQuota      *string `json:"ChartRepoQuota,omitempty" xml:"ChartRepoQuota,omitempty"`
-	ChartRepoUsage      *string `json:"ChartRepoUsage,omitempty" xml:"ChartRepoUsage,omitempty"`
-	Code                *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess           *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	NamespaceQuota      *string `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
-	NamespaceUsage      *string `json:"NamespaceUsage,omitempty" xml:"NamespaceUsage,omitempty"`
-	RepoQuota           *string `json:"RepoQuota,omitempty" xml:"RepoQuota,omitempty"`
-	RepoUsage           *string `json:"RepoUsage,omitempty" xml:"RepoUsage,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The quota of chart repositories for the instance.
+	ChartRepoQuota *string `json:"ChartRepoQuota,omitempty" xml:"ChartRepoQuota,omitempty"`
+	// The number of chart repositories that are created.
+	ChartRepoUsage *string `json:"ChartRepoUsage,omitempty" xml:"ChartRepoUsage,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The quota of image namespaces for the instance.
+	NamespaceQuota *string `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
+	// The number of image namespaces that are created in the instance.
+	NamespaceUsage *string `json:"NamespaceUsage,omitempty" xml:"NamespaceUsage,omitempty"`
+	// The quota of image repositories for the instance.
+	RepoQuota *string `json:"RepoQuota,omitempty" xml:"RepoQuota,omitempty"`
+	// The number of image repositories that are created in the instance.
+	RepoUsage *string `json:"RepoUsage,omitempty" xml:"RepoUsage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInstanceUsageResponseBody) String() string {
@@ -4506,7 +5042,12 @@ func (s *GetInstanceUsageResponse) SetBody(v *GetInstanceUsageResponseBody) *Get
 }
 
 type GetInstanceVpcEndpointRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the module that you want to access. Valid values:
+	//
+	// *   `Registry`: the image repository.
+	// *   `Chart`: a Helm chart.
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -4529,12 +5070,24 @@ func (s *GetInstanceVpcEndpointRequest) SetModuleName(v string) *GetInstanceVpcE
 }
 
 type GetInstanceVpcEndpointResponseBody struct {
-	Code       *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Domains    []*string                                       `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	Enable     *bool                                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	IsSuccess  *bool                                           `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code    *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// Indicates whether the access control list (ACL) feature is enabled. Valid values:
+	//
+	// *   `true`: The ACL feature is enabled.
+	// *   `false`: The ACL feature is disabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The VPCs in which the instance is deployed.
 	LinkedVpcs []*GetInstanceVpcEndpointResponseBodyLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ModuleName *string                                         `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInstanceVpcEndpointResponseBody) String() string {
@@ -4570,17 +5123,30 @@ func (s *GetInstanceVpcEndpointResponseBody) SetLinkedVpcs(v []*GetInstanceVpcEn
 	return s
 }
 
+func (s *GetInstanceVpcEndpointResponseBody) SetModuleName(v string) *GetInstanceVpcEndpointResponseBody {
+	s.ModuleName = &v
+	return s
+}
+
 func (s *GetInstanceVpcEndpointResponseBody) SetRequestId(v string) *GetInstanceVpcEndpointResponseBody {
 	s.RequestId = &v
 	return s
 }
 
 type GetInstanceVpcEndpointResponseBodyLinkedVpcs struct {
-	DefaultAccess *bool   `json:"DefaultAccess,omitempty" xml:"DefaultAccess,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId     *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// Indicates whether the default ACL is used.
+	DefaultAccess *bool `json:"DefaultAccess,omitempty" xml:"DefaultAccess,omitempty"`
+	// IP address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The status of the VPC. Valid values:
+	//
+	// *   `CREATING`: The VPC is being created.
+	// *   `RUNNING`: The VPC is running.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s GetInstanceVpcEndpointResponseBodyLinkedVpcs) String() string {
@@ -4646,8 +5212,11 @@ func (s *GetInstanceVpcEndpointResponse) SetBody(v *GetInstanceVpcEndpointRespon
 }
 
 type GetNamespaceRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The name of the namespace.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -4675,14 +5244,26 @@ func (s *GetNamespaceRequest) SetNamespaceName(v string) *GetNamespaceRequest {
 }
 
 type GetNamespaceResponseBody struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether a repository is automatically created when an image is pushed to the namespace.
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The default type of the repository. Valid values:
+	//
+	// *   PUBLIC: The repository is a public repository.
+	// *   PRIVATE: The repository is a private repository.
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The status of the namespace.
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	// The ID of the request.
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -4775,8 +5356,10 @@ func (s *GetNamespaceResponse) SetBody(v *GetNamespaceResponseBody) *GetNamespac
 }
 
 type GetRepoBuildRecordRequest struct {
+	// The ID of the image building record.
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetRepoBuildRecordRequest) String() string {
@@ -4798,14 +5381,22 @@ func (s *GetRepoBuildRecordRequest) SetInstanceId(v string) *GetRepoBuildRecordR
 }
 
 type GetRepoBuildRecordResponseBody struct {
-	BuildRecordId *string                              `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	Code          *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime       *int64                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Image         *GetRepoBuildRecordResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	IsSuccess     *bool                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime     *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the image building record.
+	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the image building was completed.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The information about the image.
+	Image *GetRepoBuildRecordResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the image building started.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetRepoBuildRecordResponseBody) String() string {
@@ -4857,8 +5448,11 @@ func (s *GetRepoBuildRecordResponseBody) SetStatus(v string) *GetRepoBuildRecord
 }
 
 type GetRepoBuildRecordResponseBodyImage struct {
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The tag of the image.
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the image repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -4915,9 +5509,12 @@ func (s *GetRepoBuildRecordResponse) SetBody(v *GetRepoBuildRecordResponseBody) 
 }
 
 type GetRepoBuildRecordStatusRequest struct {
+	// The ID of the image building record.
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s GetRepoBuildRecordStatusRequest) String() string {
@@ -4944,10 +5541,14 @@ func (s *GetRepoBuildRecordStatusRequest) SetRepoId(v string) *GetRepoBuildRecor
 }
 
 type GetRepoBuildRecordStatusResponseBody struct {
+	// The status of the image building.
 	BuildStatus *string `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRepoBuildRecordStatusResponseBody) String() string {
@@ -5008,8 +5609,10 @@ func (s *GetRepoBuildRecordStatusResponse) SetBody(v *GetRepoBuildRecordStatusRe
 }
 
 type GetRepoSourceCodeRepoRequest struct {
+	// The ID of the Container Registry instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s GetRepoSourceCodeRepoRequest) String() string {
@@ -5031,17 +5634,40 @@ func (s *GetRepoSourceCodeRepoRequest) SetRepoId(v string) *GetRepoSourceCodeRep
 }
 
 type GetRepoSourceCodeRepoResponseBody struct {
-	AutoBuild             *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
-	Code                  *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CodeRepoDomain        *string `json:"CodeRepoDomain,omitempty" xml:"CodeRepoDomain,omitempty"`
-	CodeRepoName          *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	// Indicates whether image building is automatically triggered when source code is committed. Valid values:
+	//
+	// *   `true`: Image building is automatically triggered when source code is committed.
+	// *   `false`: Image building is not triggered when source code is committed.
+	AutoBuild *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The address of the source code repository.
+	CodeRepoDomain *string `json:"CodeRepoDomain,omitempty" xml:"CodeRepoDomain,omitempty"`
+	// The name of the source code repository.
+	CodeRepoName *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	// The namespace to which the source code repository belongs.
 	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
-	CodeRepoType          *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
-	DisableCacheBuild     *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
-	IsSuccess             *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	OverseaBuild          *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
-	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the code hosting platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
+	CodeRepoType *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
+	// Indicates whether build cache is disabled. Valid values:
+	//
+	// *   `true`: Build cache is disabled.
+	// *   `false`: Build cache is enabled.
+	DisableCacheBuild *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// *   `true`: successful
+	// *   `false`: failed
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Indicates whether image building is accelerated for servers outside the Chinese mainland. Valid values:
+	//
+	// *   `true`: Image building is accelerated for servers outside the Chinese mainland.
+	// *   `false`: Image building is not accelerated for servers outside the Chinese mainland.
+	OverseaBuild *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRepoSourceCodeRepoResponseBody) String() string {
@@ -5137,7 +5763,9 @@ func (s *GetRepoSourceCodeRepoResponse) SetBody(v *GetRepoSourceCodeRepoResponse
 }
 
 type GetRepoSyncTaskRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the synchronization task.
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -5160,21 +5788,39 @@ func (s *GetRepoSyncTaskRequest) SetSyncTaskId(v string) *GetRepoSyncTaskRequest
 }
 
 type GetRepoSyncTaskResponseBody struct {
-	Code                *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	CrossUser           *bool                                    `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
-	ImageFrom           *GetRepoSyncTaskResponseBodyImageFrom    `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	ImageTo             *GetRepoSyncTaskResponseBodyImageTo      `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
-	IsSuccess           *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	LayerTasks          []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
-	Progress            *int64                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RequestId           *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SyncBatchTaskId     *string                                  `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
-	SyncRuleId          *string                                  `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	SyncTaskId          *string                                  `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
-	SyncTransAccelerate *bool                                    `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
-	SyncedSize          *int64                                   `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
-	TaskStatus          *string                                  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskTrigger         *string                                  `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the synchronization task is performed across Alibaba Cloud accounts.
+	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	// The source address of the image.
+	ImageFrom *GetRepoSyncTaskResponseBodyImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
+	// The destination address of the image.
+	ImageTo *GetRepoSyncTaskResponseBodyImageTo `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The synchronization tasks for the image layer.
+	LayerTasks []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
+	// The synchronization progress. Valid values:
+	//
+	// *   `0`: The synchronization starts or failed.
+	// *   `1`: The synchronization is successful.
+	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the synchronization task in which multiple images are synchronized at a time.
+	SyncBatchTaskId *string `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
+	// The ID of the synchronization rule.
+	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
+	// The ID of the synchronization task.
+	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
+	// Indicates whether transfer acceleration is enabled in the synchronization process.
+	SyncTransAccelerate *bool `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
+	// The size of the image layer that is synchronized. Unit: bytes.
+	SyncedSize *int64 `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
+	// The status of the task. Valid values:
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The policy that is used to trigger the synchronization task.
+	TaskTrigger *string `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 
 func (s GetRepoSyncTaskResponseBody) String() string {
@@ -5261,10 +5907,15 @@ func (s *GetRepoSyncTaskResponseBody) SetTaskTrigger(v string) *GetRepoSyncTaskR
 }
 
 type GetRepoSyncTaskResponseBodyImageFrom struct {
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The tag of the image.
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -5302,10 +5953,15 @@ func (s *GetRepoSyncTaskResponseBodyImageFrom) SetRepoNamespaceName(v string) *G
 }
 
 type GetRepoSyncTaskResponseBodyImageTo struct {
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The tag of the image.
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -5343,12 +5999,18 @@ func (s *GetRepoSyncTaskResponseBodyImageTo) SetRepoNamespaceName(v string) *Get
 }
 
 type GetRepoSyncTaskResponseBodyLayerTasks struct {
-	ArtifactDigest  *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
-	Digest          *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	Size            *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The digest of the artifact.
+	ArtifactDigest *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
+	// The digest of the image layer.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The size of synchronized image layers.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The ID of the synchronization task for the image layer.
 	SyncLayerTaskId *string `json:"SyncLayerTaskId,omitempty" xml:"SyncLayerTaskId,omitempty"`
-	SyncedSize      *int64  `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
-	TaskStatus      *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The size of the image layer that is synchronized.
+	SyncedSize *int64 `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
+	// The status of the synchronization task. Valid values:
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetRepoSyncTaskResponseBodyLayerTasks) String() string {
@@ -5419,9 +6081,12 @@ func (s *GetRepoSyncTaskResponse) SetBody(v *GetRepoSyncTaskResponseBody) *GetRe
 }
 
 type GetRepoTagRequest struct {
+	// The return value of status code.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The operation that you want to perform. Set the value to **GetRepoTag**.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The number of milliseconds that have elapsed since the image was created.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetRepoTagRequest) String() string {
@@ -5448,16 +6113,28 @@ func (s *GetRepoTagRequest) SetTag(v string) *GetRepoTagRequest {
 }
 
 type GetRepoTagResponseBody struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The ID of the image.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The size of the image. Unit: Bytes.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// crr-tquyps22md8p****
 	ImageCreate *int64  `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
 	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageSize   *int64  `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	ImageUpdate *int64  `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The number of milliseconds that have elapsed since the image was last updated.
+	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The ID of the request.
+	ImageUpdate *int64 `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
+	// The status of the image. Valid values:
+	//
+	// *   `NORMAL`: The image is normal.
+	// *   `DELETING`: The image is being deleted.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// 1.0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version of the repository.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetRepoTagResponseBody) String() string {
@@ -5548,10 +6225,14 @@ func (s *GetRepoTagResponse) SetBody(v *GetRepoTagResponseBody) *GetRepoTagRespo
 }
 
 type GetRepoTagLayersRequest struct {
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The digest of the image.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The tag of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetRepoTagLayersRequest) String() string {
@@ -5583,10 +6264,17 @@ func (s *GetRepoTagLayersRequest) SetTag(v string) *GetRepoTagLayersRequest {
 }
 
 type GetRepoTagLayersResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool                                 `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	Layers    []*GetRepoTagLayersResponseBodyLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The queried image layers.
+	Layers []*GetRepoTagLayersResponseBodyLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRepoTagLayersResponseBody) String() string {
@@ -5618,10 +6306,15 @@ func (s *GetRepoTagLayersResponseBody) SetRequestId(v string) *GetRepoTagLayersR
 }
 
 type GetRepoTagLayersResponseBodyLayers struct {
-	BlobDigest       *string `json:"BlobDigest,omitempty" xml:"BlobDigest,omitempty"`
-	BlobSize         *int64  `json:"BlobSize,omitempty" xml:"BlobSize,omitempty"`
-	LayerCMD         *string `json:"LayerCMD,omitempty" xml:"LayerCMD,omitempty"`
-	LayerIndex       *int32  `json:"LayerIndex,omitempty" xml:"LayerIndex,omitempty"`
+	// The digest of a single image layer.
+	BlobDigest *string `json:"BlobDigest,omitempty" xml:"BlobDigest,omitempty"`
+	// The size of the image layer.
+	BlobSize *int64 `json:"BlobSize,omitempty" xml:"BlobSize,omitempty"`
+	// Operation on the image layer.
+	LayerCMD *string `json:"LayerCMD,omitempty" xml:"LayerCMD,omitempty"`
+	// The sequence number of the layer stack.
+	LayerIndex *int32 `json:"LayerIndex,omitempty" xml:"LayerIndex,omitempty"`
+	// The command for the image layer.
 	LayerInstruction *string `json:"LayerInstruction,omitempty" xml:"LayerInstruction,omitempty"`
 }
 
@@ -5688,10 +6381,14 @@ func (s *GetRepoTagLayersResponse) SetBody(v *GetRepoTagLayersResponseBody) *Get
 }
 
 type GetRepoTagManifestRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	SchemaVersion *int32  `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The schema version of the manifest. Valid values: 1 and 2.
+	SchemaVersion *int32 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+	// The tag of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetRepoTagManifestRequest) String() string {
@@ -5723,10 +6420,14 @@ func (s *GetRepoTagManifestRequest) SetTag(v string) *GetRepoTagManifestRequest 
 }
 
 type GetRepoTagManifestResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool                                   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	Manifest  *GetRepoTagManifestResponseBodyManifest `json:"Manifest,omitempty" xml:"Manifest,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The information about the image manifest.
+	Manifest *GetRepoTagManifestResponseBodyManifest `json:"Manifest,omitempty" xml:"Manifest,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBody) String() string {
@@ -5758,16 +6459,26 @@ func (s *GetRepoTagManifestResponseBody) SetRequestId(v string) *GetRepoTagManif
 }
 
 type GetRepoTagManifestResponseBodyManifest struct {
-	Architecture  *string                                             `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	Config        *GetRepoTagManifestResponseBodyManifestConfig       `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	FsLayers      []*GetRepoTagManifestResponseBodyManifestFsLayers   `json:"FsLayers,omitempty" xml:"FsLayers,omitempty" type:"Repeated"`
-	History       []*GetRepoTagManifestResponseBodyManifestHistory    `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
-	Layers        []*GetRepoTagManifestResponseBodyManifestLayers     `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
-	MediaType     *string                                             `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	Name          *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	SchemaVersion *int32                                              `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
-	Signatures    []*GetRepoTagManifestResponseBodyManifestSignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
-	Tag           *string                                             `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Architecture.
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// The configuration information.
+	Config *GetRepoTagManifestResponseBodyManifestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The digest of the referenced filesystem image layer.
+	FsLayers []*GetRepoTagManifestResponseBodyManifestFsLayers `json:"FsLayers,omitempty" xml:"FsLayers,omitempty" type:"Repeated"`
+	// A list of unstructured historical data for V1 compatibility.
+	History []*GetRepoTagManifestResponseBodyManifestHistory `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
+	// The information about image layers.
+	Layers []*GetRepoTagManifestResponseBodyManifestLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
+	// The type.
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The schema version of the manifest.
+	SchemaVersion *int32 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+	// The information about signatures.
+	Signatures []*GetRepoTagManifestResponseBodyManifestSignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
+	// The tag of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBodyManifest) String() string {
@@ -5829,9 +6540,12 @@ func (s *GetRepoTagManifestResponseBodyManifest) SetTag(v string) *GetRepoTagMan
 }
 
 type GetRepoTagManifestResponseBodyManifestConfig struct {
-	Digest    *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The digest of the image.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The MIME type of the configuration file.
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Size
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBodyManifestConfig) String() string {
@@ -5858,6 +6572,7 @@ func (s *GetRepoTagManifestResponseBodyManifestConfig) SetSize(v int64) *GetRepo
 }
 
 type GetRepoTagManifestResponseBodyManifestFsLayers struct {
+	// A list of filesystem layer blob sums contained in this image.
 	BlobSum *string `json:"BlobSum,omitempty" xml:"BlobSum,omitempty"`
 }
 
@@ -5875,6 +6590,7 @@ func (s *GetRepoTagManifestResponseBodyManifestFsLayers) SetBlobSum(v string) *G
 }
 
 type GetRepoTagManifestResponseBodyManifestHistory struct {
+	// The raw V1 compatibility information.
 	V1Compatibility map[string]interface{} `json:"V1Compatibility,omitempty" xml:"V1Compatibility,omitempty"`
 }
 
@@ -5892,9 +6608,12 @@ func (s *GetRepoTagManifestResponseBodyManifestHistory) SetV1Compatibility(v map
 }
 
 type GetRepoTagManifestResponseBodyManifestLayers struct {
-	Digest    *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The digest of the image.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The MIME type of the configuration file.
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Size.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBodyManifestLayers) String() string {
@@ -5921,9 +6640,12 @@ func (s *GetRepoTagManifestResponseBodyManifestLayers) SetSize(v int64) *GetRepo
 }
 
 type GetRepoTagManifestResponseBodyManifestSignatures struct {
-	Header    map[string]interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	Protected *string                `json:"Protected,omitempty" xml:"Protected,omitempty"`
-	Signature *string                `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// The header information of the signature.
+	Header map[string]interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// The signed protected header.
+	Protected *string `json:"Protected,omitempty" xml:"Protected,omitempty"`
+	// The signature for the image manifest.
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBodyManifestSignatures) String() string {
@@ -6090,11 +6812,16 @@ func (s *GetRepoTagScanStatusResponse) SetBody(v *GetRepoTagScanStatusResponseBo
 }
 
 type GetRepoTagScanSummaryRequest struct {
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The number of unknown-severity vulnerabilities.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The ID of the image repository.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the image tag.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The digest of the image.
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the security scan task.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetRepoTagScanSummaryRequest) String() string {
@@ -6131,14 +6858,24 @@ func (s *GetRepoTagScanSummaryRequest) SetTag(v string) *GetRepoTagScanSummaryRe
 }
 
 type GetRepoTagScanSummaryResponseBody struct {
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HighSeverity    *int32  `json:"HighSeverity,omitempty" xml:"HighSeverity,omitempty"`
-	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	LowSeverity     *int32  `json:"LowSeverity,omitempty" xml:"LowSeverity,omitempty"`
-	MediumSeverity  *int32  `json:"MediumSeverity,omitempty" xml:"MediumSeverity,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalSeverity   *int32  `json:"TotalSeverity,omitempty" xml:"TotalSeverity,omitempty"`
-	UnknownSeverity *int32  `json:"UnknownSeverity,omitempty" xml:"UnknownSeverity,omitempty"`
+	// The number of medium-severity vulnerabilities.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of low-severity vulnerabilities.
+	HighSeverity *int32 `json:"HighSeverity,omitempty" xml:"HighSeverity,omitempty"`
+	// The number of high-severity vulnerabilities.
+	IsSuccess   *bool  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	LowSeverity *int32 `json:"LowSeverity,omitempty" xml:"LowSeverity,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	MediumSeverity *int32 `json:"MediumSeverity,omitempty" xml:"MediumSeverity,omitempty"`
+	// The total number of vulnerabilities detected on images.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	TotalSeverity *int32 `json:"TotalSeverity,omitempty" xml:"TotalSeverity,omitempty"`
+	// The ID of the request.
+	UnknownSeverity *int32 `json:"UnknownSeverity,omitempty" xml:"UnknownSeverity,omitempty"`
 }
 
 func (s GetRepoTagScanSummaryResponseBody) String() string {
@@ -6219,9 +6956,13 @@ func (s *GetRepoTagScanSummaryResponse) SetBody(v *GetRepoTagScanSummaryResponse
 }
 
 type GetRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -6254,22 +6995,46 @@ func (s *GetRepositoryRequest) SetRepoNamespaceName(v string) *GetRepositoryRequ
 }
 
 type GetRepositoryResponseBody struct {
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Detail            *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess         *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	RepoBuildType     *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the repository was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The details of the repository.
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The time when the repository was last modified.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Indicates how the repository was created. Valid values:
+	//
+	// *   `MANUAL`: The repository was manually created.
+	// *   `AUTO`: The repository was automatically created.
+	RepoBuildType *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
+	// The status of the repository.
+	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	// The type of the repository. Valid values:
+	//
+	// *   `PUBLIC`: public repository.
+	// *   `PRIVATE`: private repository.
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The ID of the request.
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The summary of the repository.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Indicates whether the feature of image tag immutability is enabled. Valid values:
+	//
+	// *   `true`: The feature of image tag immutability is enabled.
+	// *   `false`: The feature of image tag immutability is disabled.
+	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
 
 func (s GetRepositoryResponseBody) String() string {
@@ -6390,10 +7155,14 @@ func (s *GetRepositoryResponse) SetBody(v *GetRepositoryResponseBody) *GetReposi
 }
 
 type ListArtifactBuildTaskLogRequest struct {
+	// The ID of the artifact build task.
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Page        *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the Container Registry instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListArtifactBuildTaskLogRequest) String() string {
@@ -6425,11 +7194,19 @@ func (s *ListArtifactBuildTaskLogRequest) SetPageSize(v int32) *ListArtifactBuil
 }
 
 type ListArtifactBuildTaskLogResponseBody struct {
+	// The log entries of the artifact build task.
 	BuildTaskLogs []*ListArtifactBuildTaskLogResponseBodyBuildTaskLogs `json:"BuildTaskLogs,omitempty" xml:"BuildTaskLogs,omitempty" type:"Repeated"`
-	Code          *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess     *bool                                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API call is successful.
+	//
+	// *   `true`: successful
+	// *   `false`: failed
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of log entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListArtifactBuildTaskLogResponseBody) String() string {
@@ -6466,8 +7243,10 @@ func (s *ListArtifactBuildTaskLogResponseBody) SetTotalCount(v int32) *ListArtif
 }
 
 type ListArtifactBuildTaskLogResponseBodyBuildTaskLogs struct {
-	LineNumber *int32  `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The row number of the log entry.
+	LineNumber *int32 `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
+	// The content of the log entry.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s ListArtifactBuildTaskLogResponseBodyBuildTaskLogs) String() string {
@@ -6518,10 +7297,15 @@ func (s *ListArtifactBuildTaskLogResponse) SetBody(v *ListArtifactBuildTaskLogRe
 }
 
 type ListChainRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -6559,13 +7343,20 @@ func (s *ListChainRequest) SetRepoNamespaceName(v string) *ListChainRequest {
 }
 
 type ListChainResponseBody struct {
-	Chains     []*ListChainResponseBodyChains `json:"Chains,omitempty" xml:"Chains,omitempty" type:"Repeated"`
-	Code       *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo     *int32                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of delivery chains.
+	Chains []*ListChainResponseBodyChains `json:"Chains,omitempty" xml:"Chains,omitempty" type:"Repeated"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of delivery chains.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListChainResponseBody) String() string {
@@ -6612,15 +7403,24 @@ func (s *ListChainResponseBody) SetTotalCount(v int32) *ListChainResponseBody {
 }
 
 type ListChainResponseBodyChains struct {
-	ChainId      *string   `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	CreateTime   *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifiedTime *int64    `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the delivery chain.
+	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// The time when the delivery chain was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the delivery chain.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the delivery chain was last modified.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the delivery chain.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Repositories to which the delivery chain does not apply.
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
-	ScopeId      *string   `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	ScopeType    *string   `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// The ID of the delivery chain scope.
+	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	// The type of the delivery chain scope.
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s ListChainResponseBodyChains) String() string {
@@ -6706,10 +7506,15 @@ func (s *ListChainResponse) SetBody(v *ListChainResponseBody) *ListChainResponse
 }
 
 type ListChainInstanceRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The operation that you want to perform. Set this parameter to **ListChainInstance**.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the delivery chain started.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The name of the image repository.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The time when the delivery chain is completed.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the delivery chain.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -6747,14 +7552,22 @@ func (s *ListChainInstanceRequest) SetRepoNamespaceName(v string) *ListChainInst
 }
 
 type ListChainInstanceResponseBody struct {
+	// The number of entries to return on each page.
 	ChainInstances []*ListChainInstanceResponseBodyChainInstances `json:"ChainInstances,omitempty" xml:"ChainInstances,omitempty" type:"Repeated"`
-	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	InstanceId     *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess      *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo         *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize       *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The version of the delivery chain.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The page number of the page to return.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The execution record of the delivery chain.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// 30
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Indicates whether the operation is successful.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the Container Registry instance.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the repository.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListChainInstanceResponseBody) String() string {
@@ -6806,14 +7619,32 @@ func (s *ListChainInstanceResponseBody) SetTotalCount(v int32) *ListChainInstanc
 }
 
 type ListChainInstanceResponseBodyChainInstances struct {
-	Chain             *ListChainInstanceResponseBodyChainInstancesChain `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Struct"`
-	ChainInstanceId   *string                                           `json:"ChainInstanceId,omitempty" xml:"ChainInstanceId,omitempty"`
-	EndTime           *int64                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RepoName          *string                                           `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespaceName *string                                           `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	Result            *string                                           `json:"Result,omitempty" xml:"Result,omitempty"`
-	StartTime         *int64                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status            *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the namespace.
+	Chain *ListChainInstanceResponseBodyChainInstancesChain `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Struct"`
+	// 1
+	ChainInstanceId *string `json:"ChainInstanceId,omitempty" xml:"ChainInstanceId,omitempty"`
+	// The ID of the Container Registry instance.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the delivery chain.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The execution result of the delivery chain. Valid values:
+	//
+	// *   `SUCCESS`
+	// *   `FAILED`
+	// *   `CANCELED`
+	// *   `DENIED`
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	// The list of the execution records of delivery chains.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// test-repo
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the delivery chain. Valid values:
+	//
+	// *   `RUNNING`
+	// *   `COMPLETE`
+	// *   `CANCELING`
+	// *   `CANCELED`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListChainInstanceResponseBodyChainInstances) String() string {
@@ -6865,9 +7696,12 @@ func (s *ListChainInstanceResponseBodyChainInstances) SetStatus(v string) *ListC
 }
 
 type ListChainInstanceResponseBodyChainInstancesChain struct {
-	ChainId   *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// The name of the namespace.
+	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// The number of entries returned on each page.
 	ChainName *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
-	Version   *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the request.
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListChainInstanceResponseBodyChainInstancesChain) String() string {
@@ -6923,11 +7757,19 @@ func (s *ListChainInstanceResponse) SetBody(v *ListChainInstanceResponseBody) *L
 }
 
 type ListChartNamespaceRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// *   `NORMAL`: The namespace is normal.
+	// *   `DELETING`: The namespace is being deleted.
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListChartNamespaceRequest) String() string {
@@ -6964,13 +7806,20 @@ func (s *ListChartNamespaceRequest) SetPageSize(v int32) *ListChartNamespaceRequ
 }
 
 type ListChartNamespaceResponseBody struct {
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The namespaces.
 	Namespaces []*ListChartNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	PageNo     *int32                                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListChartNamespaceResponseBody) String() string {
@@ -7017,11 +7866,23 @@ func (s *ListChartNamespaceResponseBody) SetTotalCount(v string) *ListChartNames
 }
 
 type ListChartNamespaceResponseBodyNamespaces struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// Indicates whether a repository was automatically created when a chart is pushed to the namespace.
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// The default repository type. Valid values:
+	//
+	// *   `PUBLIC`: a public repository
+	// *   `PRIVATE`: a private repository
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// *   `NORMAL`: The namespace is normal.
+	// *   `DELETING`: The namespace is being deleted.
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -7099,11 +7960,17 @@ func (s *ListChartNamespaceResponse) SetBody(v *ListChartNamespaceResponseBody) 
 }
 
 type ListChartReleaseRequest struct {
-	Chart             *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The chart whose versions you want to query.
+	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -7146,13 +8013,20 @@ func (s *ListChartReleaseRequest) SetRepoNamespaceName(v string) *ListChartRelea
 }
 
 type ListChartReleaseResponseBody struct {
+	// The list of chart versions.
 	ChartReleases []*ListChartReleaseResponseBodyChartReleases `json:"ChartReleases,omitempty" xml:"ChartReleases,omitempty" type:"Repeated"`
-	Code          *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess     *bool                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo        *int32                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize      *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *string                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListChartReleaseResponseBody) String() string {
@@ -7199,13 +8073,20 @@ func (s *ListChartReleaseResponseBody) SetTotalCount(v string) *ListChartRelease
 }
 
 type ListChartReleaseResponseBodyChartReleases struct {
-	Chart        *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifiedTime *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Release      *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Size         *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the chart version.
+	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the chart was last modified.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The version number of the chart.
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The ID of the chart repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The size of the chart of the version. Unit: bytes.
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The status of the chart.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListChartReleaseResponseBodyChartReleases) String() string {
@@ -7281,12 +8162,22 @@ func (s *ListChartReleaseResponse) SetBody(v *ListChartReleaseResponseBody) *Lis
 }
 
 type ListChartRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	// The status of the chart repositories that you want to query. Valid values:
+	//
+	// *   `ALL`: query repositories of all status.
+	// *   `NORMAL`: query normal repositories.
+	// *   `DELETING`: query repositories that are being deleted.
+	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 }
 
 func (s ListChartRepositoryRequest) String() string {
@@ -7328,13 +8219,20 @@ func (s *ListChartRepositoryRequest) SetRepoStatus(v string) *ListChartRepositor
 }
 
 type ListChartRepositoryResponseBody struct {
-	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The queried repositories.
 	Repositories []*ListChartRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListChartRepositoryResponseBody) String() string {
@@ -7381,16 +8279,32 @@ func (s *ListChartRepositoryResponseBody) SetTotalCount(v string) *ListChartRepo
 }
 
 type ListChartRepositoryResponseBodyRepositories struct {
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The time when the repository was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the repository was last modified.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The status of the repository. Valid values:
+	//
+	// *   `NORMAL`: The repository is normal.
+	// *   `DELETING`: The repository is being deleted.
+	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	// The type of the repository. Valid values:
+	//
+	// *   `PRIVATE`: a private repository
+	// *   `PUBLIC`: a public repository
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The ID of the resource group to which the repository belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The summary about the repository.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s ListChartRepositoryResponseBodyRepositories) String() string {
@@ -7481,11 +8395,22 @@ func (s *ListChartRepositoryResponse) SetBody(v *ListChartRepositoryResponseBody
 }
 
 type ListEventCenterRecordRequest struct {
-	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The type of the event. Valid values:
+	//
+	// *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+	// *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+	// *   `cr:Artifact:BuildCompleted`: The image is built.
+	// *   `cr:Artifact:ScanCompleted`: The image is scanned.
+	// *   `cr:Artifact:SigningCompleted`: The image is signed.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the event notification rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s ListEventCenterRecordRequest) String() string {
@@ -7522,13 +8447,20 @@ func (s *ListEventCenterRecordRequest) SetRuleId(v string) *ListEventCenterRecor
 }
 
 type ListEventCenterRecordResponseBody struct {
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo     *int32                                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records    []*ListEventCenterRecordResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of historical events.
+	Records []*ListEventCenterRecordResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total entries of historical events.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEventCenterRecordResponseBody) String() string {
@@ -7575,19 +8507,36 @@ func (s *ListEventCenterRecordResponseBody) SetTotalCount(v int32) *ListEventCen
 }
 
 type ListEventCenterRecordResponseBodyRecords struct {
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EventChannel      *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
-	EventNotifyId     *string `json:"EventNotifyId,omitempty" xml:"EventNotifyId,omitempty"`
+	// The time when the event was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The event notification channel.
+	EventChannel *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
+	// The ID of the event notification.
+	EventNotifyId *string `json:"EventNotifyId,omitempty" xml:"EventNotifyId,omitempty"`
+	// The notification method. Valid values:
+	//
+	// *   `http`: The notification is sent over HTTP.
+	// *   `https`: The notification is sent over HTTPS.
+	// *   `dingding`: The notification is sent by using DingTalk.
 	EventNotifyMethod *string `json:"EventNotifyMethod,omitempty" xml:"EventNotifyMethod,omitempty"`
-	EventType         *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RecordId          *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Tag               *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	UpdateTime        *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The type of the event.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the event record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the event notification rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the event notification rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The tags.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The time when the event was last updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListEventCenterRecordResponseBodyRecords) String() string {
@@ -7693,6 +8642,7 @@ func (s *ListEventCenterRecordResponse) SetBody(v *ListEventCenterRecordResponse
 }
 
 type ListEventCenterRuleNameRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -7710,9 +8660,13 @@ func (s *ListEventCenterRuleNameRequest) SetInstanceId(v string) *ListEventCente
 }
 
 type ListEventCenterRuleNameResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool                                           `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of names of event notification rules.
 	RuleNames []*ListEventCenterRuleNameResponseBodyRuleNames `json:"RuleNames,omitempty" xml:"RuleNames,omitempty" type:"Repeated"`
 }
 
@@ -7745,7 +8699,9 @@ func (s *ListEventCenterRuleNameResponseBody) SetRuleNames(v []*ListEventCenterR
 }
 
 type ListEventCenterRuleNameResponseBodyRuleNames struct {
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the event notification rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the event notification rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -7893,6 +8849,7 @@ func (s *ListInstanceResponseBody) SetTotalCount(v int32) *ListInstanceResponseB
 type ListInstanceResponseBodyInstances struct {
 	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIssue         *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
 	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
 	InstanceStatus        *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
@@ -7916,6 +8873,11 @@ func (s *ListInstanceResponseBodyInstances) SetCreateTime(v string) *ListInstanc
 
 func (s *ListInstanceResponseBodyInstances) SetInstanceId(v string) *ListInstanceResponseBodyInstances {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyInstances) SetInstanceIssue(v string) *ListInstanceResponseBodyInstances {
+	s.InstanceIssue = &v
 	return s
 }
 
@@ -7979,7 +8941,12 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 }
 
 type ListInstanceEndpointRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the module that you want to access. Valid values:
+	//
+	// *   `Registry`: the image repository.
+	// *   `Chart`: a Helm chart.
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -8002,10 +8969,14 @@ func (s *ListInstanceEndpointRequest) SetModuleName(v string) *ListInstanceEndpo
 }
 
 type ListInstanceEndpointResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The endpoints of the instance.
 	Endpoints []*ListInstanceEndpointResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	IsSuccess *bool                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstanceEndpointResponseBody) String() string {
@@ -8037,13 +9008,20 @@ func (s *ListInstanceEndpointResponseBody) SetRequestId(v string) *ListInstanceE
 }
 
 type ListInstanceEndpointResponseBodyEndpoints struct {
-	AclEnable    *bool                                                  `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
-	AclEntries   []*ListInstanceEndpointResponseBodyEndpointsAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	Domains      []*ListInstanceEndpointResponseBodyEndpointsDomains    `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	Enable       *bool                                                  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EndpointType *string                                                `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	LinkedVpcs   []*ListInstanceEndpointResponseBodyEndpointsLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
-	Status       *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the access control list (ACL) feature is enabled.
+	AclEnable *bool `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
+	// The ACL configured for the instance.
+	AclEntries []*ListInstanceEndpointResponseBodyEndpointsAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	// Domain names.
+	Domains []*ListInstanceEndpointResponseBodyEndpointsDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// Indicates whether the ACL feature is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The type of the endpoint.
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The virtual private clouds (VPCs) that are associated with the instance.
+	LinkedVpcs []*ListInstanceEndpointResponseBodyEndpointsLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
+	// The status of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstanceEndpointResponseBodyEndpoints) String() string {
@@ -8090,6 +9068,7 @@ func (s *ListInstanceEndpointResponseBodyEndpoints) SetStatus(v string) *ListIns
 }
 
 type ListInstanceEndpointResponseBodyEndpointsAclEntries struct {
+	// Details about the ACL.
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
@@ -8107,8 +9086,10 @@ func (s *ListInstanceEndpointResponseBodyEndpointsAclEntries) SetEntry(v string)
 }
 
 type ListInstanceEndpointResponseBodyEndpointsDomains struct {
+	// The domain name.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstanceEndpointResponseBodyEndpointsDomains) String() string {
@@ -8130,6 +9111,7 @@ func (s *ListInstanceEndpointResponseBodyEndpointsDomains) SetType(v string) *Li
 }
 
 type ListInstanceEndpointResponseBodyEndpointsLinkedVpcs struct {
+	// VPC ID
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -8176,6 +9158,7 @@ func (s *ListInstanceEndpointResponse) SetBody(v *ListInstanceEndpointResponseBo
 }
 
 type ListInstanceRegionRequest struct {
+	// The language used for response parameters. Set this parameter to `zh-CN`.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -8193,10 +9176,17 @@ func (s *ListInstanceRegionRequest) SetLang(v string) *ListInstanceRegionRequest
 }
 
 type ListInstanceRegionResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	Regions   []*ListInstanceRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The list of regions.
+	Regions []*ListInstanceRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstanceRegionResponseBody) String() string {
@@ -8228,8 +9218,10 @@ func (s *ListInstanceRegionResponseBody) SetRequestId(v string) *ListInstanceReg
 }
 
 type ListInstanceRegionResponseBodyRegions struct {
+	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstanceRegionResponseBodyRegions) String() string {
@@ -8280,11 +9272,16 @@ func (s *ListInstanceRegionResponse) SetBody(v *ListInstanceRegionResponseBody) 
 }
 
 type ListNamespaceRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The number of the page to return.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries returned per page.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the namespace.
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of namespaces.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The ID of the request.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListNamespaceRequest) String() string {
@@ -8456,10 +9453,14 @@ func (s *ListNamespaceResponse) SetBody(v *ListNamespaceResponseBody) *ListNames
 }
 
 type ListRepoBuildRecordRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s ListRepoBuildRecordRequest) String() string {
@@ -8491,13 +9492,23 @@ func (s *ListRepoBuildRecordRequest) SetRepoId(v string) *ListRepoBuildRecordReq
 }
 
 type ListRepoBuildRecordResponseBody struct {
+	// The list of image building records.
 	BuildRecords []*ListRepoBuildRecordResponseBodyBuildRecords `json:"BuildRecords,omitempty" xml:"BuildRecords,omitempty" type:"Repeated"`
-	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRepoBuildRecordResponseBody) String() string {
@@ -8544,11 +9555,16 @@ func (s *ListRepoBuildRecordResponseBody) SetTotalCount(v string) *ListRepoBuild
 }
 
 type ListRepoBuildRecordResponseBodyBuildRecords struct {
-	BuildRecordId *string                                           `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	BuildStatus   *string                                           `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
-	EndTime       *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Image         *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	StartTime     *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the image building record.
+	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	// The status of the image building.
+	BuildStatus *string `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
+	// The time when the image building ended.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The information about the image.
+	Image *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	// The time when the image building started.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListRepoBuildRecordResponseBodyBuildRecords) String() string {
@@ -8585,9 +9601,13 @@ func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetStartTime(v string) *Li
 }
 
 type ListRepoBuildRecordResponseBodyBuildRecordsImage struct {
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The tag of the image.
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -8649,10 +9669,14 @@ func (s *ListRepoBuildRecordResponse) SetBody(v *ListRepoBuildRecordResponseBody
 }
 
 type ListRepoBuildRecordLogRequest struct {
+	// The ID of the image building record.
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Offset        *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The offset of log lines.
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s ListRepoBuildRecordLogRequest) String() string {
@@ -8684,13 +9708,20 @@ func (s *ListRepoBuildRecordLogRequest) SetRepoId(v string) *ListRepoBuildRecord
 }
 
 type ListRepoBuildRecordLogResponseBody struct {
+	// The log content of the image building record.
 	BuildRecordLogs []*ListRepoBuildRecordLogResponseBodyBuildRecordLogs `json:"BuildRecordLogs,omitempty" xml:"BuildRecordLogs,omitempty" type:"Repeated"`
-	Code            *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess       *bool                                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo          *int32                                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *string                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRepoBuildRecordLogResponseBody) String() string {
@@ -8737,9 +9768,12 @@ func (s *ListRepoBuildRecordLogResponseBody) SetTotalCount(v string) *ListRepoBu
 }
 
 type ListRepoBuildRecordLogResponseBodyBuildRecordLogs struct {
+	// The stage of the building that is recorded in the log entry.
 	BuildStage *string `json:"BuildStage,omitempty" xml:"BuildStage,omitempty"`
-	LineNumber *int32  `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The line number of the log entry.
+	LineNumber *int32 `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
+	// The content of the log.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s ListRepoBuildRecordLogResponseBodyBuildRecordLogs) String() string {
@@ -8795,10 +9829,14 @@ func (s *ListRepoBuildRecordLogResponse) SetBody(v *ListRepoBuildRecordLogRespon
 }
 
 type ListRepoBuildRuleRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s ListRepoBuildRuleRequest) String() string {
@@ -8830,13 +9868,23 @@ func (s *ListRepoBuildRuleRequest) SetRepoId(v string) *ListRepoBuildRuleRequest
 }
 
 type ListRepoBuildRuleResponseBody struct {
+	// The list of image building rules.
 	BuildRules []*ListRepoBuildRuleResponseBodyBuildRules `json:"BuildRules,omitempty" xml:"BuildRules,omitempty" type:"Repeated"`
-	Code       *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool                                      `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo     *int32                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRepoBuildRuleResponseBody) String() string {
@@ -8883,14 +9931,23 @@ func (s *ListRepoBuildRuleResponseBody) SetTotalCount(v string) *ListRepoBuildRu
 }
 
 type ListRepoBuildRuleResponseBodyBuildRules struct {
-	BuildArgs          []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	BuildRuleId        *string   `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	DockerfileLocation *string   `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	DockerfileName     *string   `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
+	// The ID of the image building rule.
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// The directory of the Dockerfile.
+	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
+	// The name of the Dockerfile.
+	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
+	// The tag of the image.
+	ImageTag  *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	// The name of the push that triggers the building rule.
+	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
+	// The type of the push that triggers the image building rule. Valid values:
+	//
+	// *   GIT_BRANCH: branch push
+	// *   GIT_TAG: tag push
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
 }
 
 func (s ListRepoBuildRuleResponseBodyBuildRules) String() string {
@@ -8971,13 +10028,20 @@ func (s *ListRepoBuildRuleResponse) SetBody(v *ListRepoBuildRuleResponseBody) *L
 }
 
 type ListRepoSyncRuleRequest struct {
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName    *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	PageNo           *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName         *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the destination instance.
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetRegionId   *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	// The region ID of the destination instance.
+	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
 }
 
 func (s ListRepoSyncRuleRequest) String() string {
@@ -9024,13 +10088,20 @@ func (s *ListRepoSyncRuleRequest) SetTargetRegionId(v string) *ListRepoSyncRuleR
 }
 
 type ListRepoSyncRuleResponseBody struct {
-	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo     *int32                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SyncRules  []*ListRepoSyncRuleResponseBodySyncRules `json:"SyncRules,omitempty" xml:"SyncRules,omitempty" type:"Repeated"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The synchronization rules.
+	SyncRules []*ListRepoSyncRuleResponseBodySyncRules `json:"SyncRules,omitempty" xml:"SyncRules,omitempty" type:"Repeated"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRepoSyncRuleResponseBody) String() string {
@@ -9077,23 +10148,54 @@ func (s *ListRepoSyncRuleResponseBody) SetTotalCount(v int32) *ListRepoSyncRuleR
 }
 
 type ListRepoSyncRuleResponseBodySyncRules struct {
-	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossUser           *bool   `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
-	LocalInstanceId     *string `json:"LocalInstanceId,omitempty" xml:"LocalInstanceId,omitempty"`
-	LocalNamespaceName  *string `json:"LocalNamespaceName,omitempty" xml:"LocalNamespaceName,omitempty"`
-	LocalRegionId       *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	LocalRepoName       *string `json:"LocalRepoName,omitempty" xml:"LocalRepoName,omitempty"`
-	ModifiedTime        *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	SyncDirection       *string `json:"SyncDirection,omitempty" xml:"SyncDirection,omitempty"`
-	SyncRuleId          *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	SyncRuleName        *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
-	SyncScope           *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
-	SyncTrigger         *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
-	TagFilter           *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
-	TargetInstanceId    *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// The time when the synchronization rule was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether images are synchronized across Alibaba Cloud accounts. Valid values:
+	//
+	// *   `true`: Images are synchronized across Alibaba Cloud accounts.
+	// *   `false`: Images are synchronized within the same Alibaba Cloud account.
+	//
+	// Default value: `false`
+	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	// The ID of the source instance.
+	LocalInstanceId *string `json:"LocalInstanceId,omitempty" xml:"LocalInstanceId,omitempty"`
+	// The namespace name of the source instance.
+	LocalNamespaceName *string `json:"LocalNamespaceName,omitempty" xml:"LocalNamespaceName,omitempty"`
+	// The region ID of the source instance.
+	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
+	// The image repository name of the source instance.
+	LocalRepoName *string `json:"LocalRepoName,omitempty" xml:"LocalRepoName,omitempty"`
+	// The time when the synchronization rule was last modified.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The synchronization direction. Valid values:
+	//
+	// *   `FROM`: Images are synchronized from the source instance to the destination instance.
+	// *   `TO`: Images are synchronized from the destination instance to the source instance.
+	SyncDirection *string `json:"SyncDirection,omitempty" xml:"SyncDirection,omitempty"`
+	// The ID of the synchronization rule.
+	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
+	// The name of the synchronization rule.
+	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
+	// The synchronization scope. Valid values:
+	//
+	// *   `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+	// *   `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
+	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
+	// The policy that is applied to trigger the synchronization rule. Valid values:
+	//
+	// *   `INITIATIVE`: The synchronization rule is positively triggered.
+	// *   `PASSIVE`: The synchronization rule is passively triggered.
+	SyncTrigger *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
+	// The regular expression that is used to filter image tags.
+	TagFilter *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
+	// The ID of the destination instance.
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// The namespace name of the destination instance.
 	TargetNamespaceName *string `json:"TargetNamespaceName,omitempty" xml:"TargetNamespaceName,omitempty"`
-	TargetRegionId      *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	TargetRepoName      *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
+	// The region ID of the destination instance.
+	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	// The image repository name of the destination instance.
+	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
 }
 
 func (s ListRepoSyncRuleResponseBodySyncRules) String() string {
@@ -9519,10 +10621,14 @@ func (s *ListRepoSyncTaskResponse) SetBody(v *ListRepoSyncTaskResponseBody) *Lis
 }
 
 type ListRepoTagRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s ListRepoTagRequest) String() string {
@@ -9554,13 +10660,20 @@ func (s *ListRepoTagRequest) SetRepoId(v string) *ListRepoTagRequest {
 }
 
 type ListRepoTagResponseBody struct {
-	Code       *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Images     []*ListRepoTagResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	IsSuccess  *bool                            `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo     *int32                           `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The images.
+	Images []*ListRepoTagResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRepoTagResponseBody) String() string {
@@ -9607,13 +10720,20 @@ func (s *ListRepoTagResponseBody) SetTotalCount(v string) *ListRepoTagResponseBo
 }
 
 type ListRepoTagResponseBodyImages struct {
-	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The digest of the image.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The time when the image was created.
 	ImageCreate *string `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageSize   *int64  `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The size of the image.
+	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The time when the image was last updated.
 	ImageUpdate *string `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The status of the image.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListRepoTagResponseBodyImages) String() string {
@@ -9689,16 +10809,35 @@ func (s *ListRepoTagResponse) SetBody(v *ListRepoTagResponseBody) *ListRepoTagRe
 }
 
 type ListRepoTagScanResultRequest struct {
-	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The digest of the image.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The parameter whose value that you want to query. Fox example, if the value is `FixCmd`, only the `FixCmd` parameter is returned.
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo      *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	ScanTaskId  *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	ScanType    *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	Severity    *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the security scan task.
+	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// *   `cve`: image system vulnerability
+	// *   `sca`: image application vulnerability
+	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The severity of the vulnerability. Valid values:
+	//
+	// *   `High`
+	// *   `Medium`
+	// *   `Low`
+	// *   `Unknown`
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The name of the image tag.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The keyword for fuzzy search used in scanning. The value can be a CVE name.
 	VulQueryKey *string `json:"VulQueryKey,omitempty" xml:"VulQueryKey,omitempty"`
 }
 
@@ -9766,12 +10905,22 @@ func (s *ListRepoTagScanResultRequest) SetVulQueryKey(v string) *ListRepoTagScan
 }
 
 type ListRepoTagScanResultResponseBody struct {
-	Code            *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess       *bool                                               `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo          *int32                                              `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request failed.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The number of the returned page.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of vulnerabilities detected on images.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The details about the detected vulnerabilities.
 	Vulnerabilities []*ListRepoTagScanResultResponseBodyVulnerabilities `json:"Vulnerabilities,omitempty" xml:"Vulnerabilities,omitempty" type:"Repeated"`
 }
 
@@ -9819,18 +10968,34 @@ func (s *ListRepoTagScanResultResponseBody) SetVulnerabilities(v []*ListRepoTagS
 }
 
 type ListRepoTagScanResultResponseBodyVulnerabilities struct {
-	AddedBy       *string `json:"AddedBy,omitempty" xml:"AddedBy,omitempty"`
-	AliasName     *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	CveLink       *string `json:"CveLink,omitempty" xml:"CveLink,omitempty"`
-	CveLocation   *string `json:"CveLocation,omitempty" xml:"CveLocation,omitempty"`
-	CveName       *string `json:"CveName,omitempty" xml:"CveName,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Feature       *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	FixCmd        *string `json:"FixCmd,omitempty" xml:"FixCmd,omitempty"`
-	ScanType      *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	Severity      *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	VersionFixed  *string `json:"VersionFixed,omitempty" xml:"VersionFixed,omitempty"`
+	// The ID of the image layer where the vulnerability was detected.
+	AddedBy *string `json:"AddedBy,omitempty" xml:"AddedBy,omitempty"`
+	// The name of the vulnerability.
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The URL of the vulnerability.
+	CveLink *string `json:"CveLink,omitempty" xml:"CveLink,omitempty"`
+	// The directory of the vulnerability.
+	CveLocation *string `json:"CveLocation,omitempty" xml:"CveLocation,omitempty"`
+	// The name of the vulnerability.
+	CveName *string `json:"CveName,omitempty" xml:"CveName,omitempty"`
+	// The description of the vulnerability.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The cause of the vulnerability.
+	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	// The command used to fix the vulnerability.
+	FixCmd *string `json:"FixCmd,omitempty" xml:"FixCmd,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// *   `cve`: image system vulnerability
+	// *   `sca`: image application vulnerability
+	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The severity of the vulnerability.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The version of the vulnerability.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version where the vulnerability was fixed.
+	VersionFixed *string `json:"VersionFixed,omitempty" xml:"VersionFixed,omitempty"`
+	// The format of the vulnerability.
 	VersionFormat *string `json:"VersionFormat,omitempty" xml:"VersionFormat,omitempty"`
 }
 
@@ -9937,8 +11102,10 @@ func (s *ListRepoTagScanResultResponse) SetBody(v *ListRepoTagScanResultResponse
 }
 
 type ListRepoTriggerRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s ListRepoTriggerRequest) String() string {
@@ -9960,10 +11127,17 @@ func (s *ListRepoTriggerRequest) SetRepoId(v string) *ListRepoTriggerRequest {
 }
 
 type ListRepoTriggerResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool                                  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Triggers  []*ListRepoTriggerResponseBodyTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The triggers of the repository.
+	Triggers []*ListRepoTriggerResponseBodyTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoTriggerResponseBody) String() string {
@@ -9995,12 +11169,25 @@ func (s *ListRepoTriggerResponseBody) SetTriggers(v []*ListRepoTriggerResponseBo
 }
 
 type ListRepoTriggerResponseBodyTriggers struct {
-	RepoEvent   *string `json:"RepoEvent,omitempty" xml:"RepoEvent,omitempty"`
-	TriggerId   *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
+	// The type of the event that activates the trigger. Valid values:
+	//
+	// *   `BUILD_SUCCESS`: The trigger is activated when an image building task is successful.
+	// *   `BUILD_Fail`: The trigger is activated when an image building task fails.
+	RepoEvent *string `json:"RepoEvent,omitempty" xml:"RepoEvent,omitempty"`
+	// The ID of the trigger.
+	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
+	// The name of the trigger.
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
-	TriggerTag  *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
+	// The image tag based on which the trigger is set.
+	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
+	// The type of the trigger. Valid values:
+	//
+	// *   `ALL`: a trigger that supports both tags and regular expressions.
+	// *   `TAG_LISTTAG`: a tag-based trigger.
+	// *   `TAG_REG_EXP`: a regular expression-based trigger.
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	TriggerUrl  *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
+	// The URL of the trigger.
+	TriggerUrl *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
 }
 
 func (s ListRepoTriggerResponseBodyTriggers) String() string {
@@ -10283,8 +11470,10 @@ func (s *ListRepositoryResponse) SetBody(v *ListRepositoryResponseBody) *ListRep
 }
 
 type ResetLoginPasswordRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The new password that you specify to log on to the instance. The password must be 8 to 32 bits in length, and must contain at least two of the following character types: letters, special characters, and digits.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
 func (s ResetLoginPasswordRequest) String() string {
@@ -10306,8 +11495,14 @@ func (s *ResetLoginPasswordRequest) SetPassword(v string) *ResetLoginPasswordReq
 }
 
 type ResetLoginPasswordResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10364,11 +11559,17 @@ func (s *ResetLoginPasswordResponse) SetBody(v *ResetLoginPasswordResponseBody) 
 }
 
 type UpdateChainRequest struct {
-	ChainConfig  *string   `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
-	ChainId      *string   `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	Description  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration of the delivery chain in the JSON format.
+	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
+	// The ID of the delivery chain.
+	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// The description of the delivery chain.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the delivery chain.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Repositories in which the delivery chain does not take effect.
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 }
 
@@ -10411,8 +11612,11 @@ func (s *UpdateChainRequest) SetScopeExclude(v []*string) *UpdateChainRequest {
 }
 
 type UpdateChainResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10469,10 +11673,20 @@ func (s *UpdateChainResponse) SetBody(v *UpdateChainResponseBody) *UpdateChainRe
 }
 
 type UpdateChartNamespaceRequest struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// Specifies whether to automatically create repositories in the namespace. Valid values:
+	//
+	// *   `true`: automatically creates repositories in the namespace.
+	// *   `false`: does not automatically create repositories in the namespace.
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// The default type of the repository. Valid values:
+	//
+	// *   `PUBLIC`: a public repository
+	// *   `PRIVATE`: a private repository
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace to which the repository belongs.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s UpdateChartNamespaceRequest) String() string {
@@ -10504,8 +11718,14 @@ func (s *UpdateChartNamespaceRequest) SetNamespaceName(v string) *UpdateChartNam
 }
 
 type UpdateChartNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10562,11 +11782,19 @@ func (s *UpdateChartNamespaceResponse) SetBody(v *UpdateChartNamespaceResponseBo
 }
 
 type UpdateChartRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The type of the repository. Valid values:
+	//
+	// *   `PUBLIC`: a public repository.
+	// *   `PRIVATE`: a private repository.
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The summary of the repository.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s UpdateChartRepositoryRequest) String() string {
@@ -10603,8 +11831,14 @@ func (s *UpdateChartRepositoryRequest) SetSummary(v string) *UpdateChartReposito
 }
 
 type UpdateChartRepositoryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10661,16 +11895,38 @@ func (s *UpdateChartRepositoryResponse) SetBody(v *UpdateChartRepositoryResponse
 }
 
 type UpdateEventCenterRuleRequest struct {
-	EventChannel         *string   `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
-	EventConfig          *string   `json:"EventConfig,omitempty" xml:"EventConfig,omitempty"`
-	EventScope           *string   `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	EventType            *string   `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespaces           []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	RepoNames            []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
-	RepoTagFilterPattern *string   `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
-	RuleId               *string   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName             *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The event notification channel.
+	EventChannel *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
+	// The event configuration.
+	EventConfig *string `json:"EventConfig,omitempty" xml:"EventConfig,omitempty"`
+	// The event scope. Valid values:
+	//
+	// *   `INSTANCE`
+	// *   `NAMESPACE`
+	// *   `REPO`
+	//
+	// Default value: `INSTANCE`
+	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
+	// The type of the event. Valid values:
+	//
+	// *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+	// *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+	// *   `cr:Artifact:BuildCompleted`: The image is built.
+	// *   `cr:Artifact:ScanCompleted`: The image is scanned.
+	// *   `cr:Artifact:SigningCompleted`: The image is signed.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespaces to which the event notification rule applies.
+	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// The names of the repositories to which the event notification rule applies.
+	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
+	// The regular expression for image tags.
+	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
+	// The ID of the event notification rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the event notification rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s UpdateEventCenterRuleRequest) String() string {
@@ -10732,16 +11988,38 @@ func (s *UpdateEventCenterRuleRequest) SetRuleName(v string) *UpdateEventCenterR
 }
 
 type UpdateEventCenterRuleShrinkRequest struct {
-	EventChannel         *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
-	EventConfig          *string `json:"EventConfig,omitempty" xml:"EventConfig,omitempty"`
-	EventScope           *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	EventType            *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespacesShrink     *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
-	RepoNamesShrink      *string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty"`
+	// The event notification channel.
+	EventChannel *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
+	// The event configuration.
+	EventConfig *string `json:"EventConfig,omitempty" xml:"EventConfig,omitempty"`
+	// The event scope. Valid values:
+	//
+	// *   `INSTANCE`
+	// *   `NAMESPACE`
+	// *   `REPO`
+	//
+	// Default value: `INSTANCE`
+	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
+	// The type of the event. Valid values:
+	//
+	// *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+	// *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+	// *   `cr:Artifact:BuildCompleted`: The image is built.
+	// *   `cr:Artifact:ScanCompleted`: The image is scanned.
+	// *   `cr:Artifact:SigningCompleted`: The image is signed.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespaces to which the event notification rule applies.
+	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
+	// The names of the repositories to which the event notification rule applies.
+	RepoNamesShrink *string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty"`
+	// The regular expression for image tags.
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
-	RuleId               *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The ID of the event notification rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the event notification rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s UpdateEventCenterRuleShrinkRequest) String() string {
@@ -10803,9 +12081,12 @@ func (s *UpdateEventCenterRuleShrinkRequest) SetRuleName(v string) *UpdateEventC
 }
 
 type UpdateEventCenterRuleResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the event notification rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s UpdateEventCenterRuleResponseBody) String() string {
@@ -10861,10 +12142,20 @@ func (s *UpdateEventCenterRuleResponse) SetBody(v *UpdateEventCenterRuleResponse
 }
 
 type UpdateInstanceEndpointStatusRequest struct {
-	Enable       *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether to enable the instance endpoint. Valid values:
+	//
+	// *   `true`: enables the instance endpoint.
+	// *   `false`: disables the instance endpoint
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The type of the endpoint. Set the value to Internet.
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the module that you want to access. Valid values:
+	//
+	// *   `Registry`: the image repository.
+	// *   `Chart`: a Helm chart.
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
 func (s UpdateInstanceEndpointStatusRequest) String() string {
@@ -10896,8 +12187,14 @@ func (s *UpdateInstanceEndpointStatusRequest) SetModuleName(v string) *UpdateIns
 }
 
 type UpdateInstanceEndpointStatusResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10954,10 +12251,17 @@ func (s *UpdateInstanceEndpointStatusResponse) SetBody(v *UpdateInstanceEndpoint
 }
 
 type UpdateNamespaceRequest struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// Specifies whether to automatically create a repository when an image is pushed to the namespace.
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// The default type of the repository. Valid values:
+	//
+	// *   `PUBLIC`: The repository is a public repository.
+	// *   `PRIVATE`: The repository is a private repository.
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s UpdateNamespaceRequest) String() string {
@@ -10989,8 +12293,11 @@ func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequ
 }
 
 type UpdateNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11047,16 +12354,37 @@ func (s *UpdateNamespaceResponse) SetBody(v *UpdateNamespaceResponseBody) *Updat
 }
 
 type UpdateRepoBuildRuleRequest struct {
-	BuildArgs          []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	BuildRuleId        *string   `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	DockerfileLocation *string   `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	DockerfileName     *string   `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// Building arguments.
+	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
+	// The ID of the building rule.
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// The path of the Dockerfile.
+	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
+	// The name of the Dockerfile.
+	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
+	// The tag of the image.
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Architecture for image building. Valid values:
+	//
+	// *   `linux/amd64`
+	// *   `linux/arm64`
+	// *   `linux/386`
+	// *   `linux/arm/v7`
+	// *   `linux/arm/v6`
+	//
+	// Default value: `linux/amd64`
+	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	// The name of the push that triggers the building rule.
+	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
+	// The type of the push that triggers the building rule. Valid values:
+	//
+	// *   `GIT_TAG`: tag push
+	// *   `GIT_BRANCH`: branch push
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s UpdateRepoBuildRuleRequest) String() string {
@@ -11118,10 +12446,17 @@ func (s *UpdateRepoBuildRuleRequest) SetRepoId(v string) *UpdateRepoBuildRuleReq
 }
 
 type UpdateRepoBuildRuleResponseBody struct {
+	// The ID of the building rule.
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   `true`: The request is successful.
+	// *   `false`: The request fails.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateRepoBuildRuleResponseBody) String() string {
@@ -11182,15 +12517,33 @@ func (s *UpdateRepoBuildRuleResponse) SetBody(v *UpdateRepoBuildRuleResponseBody
 }
 
 type UpdateRepoSourceCodeRepoRequest struct {
-	AutoBuild             *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
-	CodeRepoId            *string `json:"CodeRepoId,omitempty" xml:"CodeRepoId,omitempty"`
-	CodeRepoName          *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	// Specifies whether to enable automatic image building when code is committed. Valid values:
+	//
+	// *   `true`: enables automatic image building when code is committed.
+	// *   `false`: disables automatic image building when code is committed.
+	AutoBuild *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
+	// The ID of the source code repository.
+	CodeRepoId *string `json:"CodeRepoId,omitempty" xml:"CodeRepoId,omitempty"`
+	// The name of the source code repository.
+	CodeRepoName *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	// The namespace to which the source code repository belongs.
 	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
-	CodeRepoType          *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
-	DisableCacheBuild     *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OverseaBuild          *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
-	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The type of the source code hosting platform. Valid values: GITHUB, GITLAB, GITEE, CODE, and CODEUP.
+	CodeRepoType *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
+	// Specifies whether to disable building caches. Valid values:
+	//
+	// *   `true`: disables building caches.
+	// *   `false`: enables building caches.
+	DisableCacheBuild *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
+	// The ID of the Container Registry Enterprise Edition instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable Build With Servers Deployed Outside Chinese Mainland. Valid values:
+	//
+	// *   `true`: enables Build With Servers Deployed Outside Chinese Mainland.
+	// *   `false`: disables Build With Servers Deployed Outside Chinese Mainland.
+	OverseaBuild *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s UpdateRepoSourceCodeRepoRequest) String() string {
@@ -11247,8 +12600,11 @@ func (s *UpdateRepoSourceCodeRepoRequest) SetRepoId(v string) *UpdateRepoSourceC
 }
 
 type UpdateRepoSourceCodeRepoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11305,13 +12661,26 @@ func (s *UpdateRepoSourceCodeRepoResponse) SetBody(v *UpdateRepoSourceCodeRepoRe
 }
 
 type UpdateRepoTriggerRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	TriggerId   *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the trigger.
+	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
+	// The name of the trigger.
+	//
+	// You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
-	TriggerTag  *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
+	// The image tag based on which the trigger is set.
+	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
+	// The type of the trigger. Valid values:
+	//
+	// *   `ALL`: a trigger that supports both tags and regular expressions.
+	// *   `TAG_LISTTAG`: a tag-based trigger.
+	// *   `TAG_REG_EXP`: a regular expression-based trigger.
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	TriggerUrl  *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
+	// The URL of the trigger.
+	TriggerUrl *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
 }
 
 func (s UpdateRepoTriggerRequest) String() string {
@@ -11358,8 +12727,11 @@ func (s *UpdateRepoTriggerRequest) SetTriggerUrl(v string) *UpdateRepoTriggerReq
 }
 
 type UpdateRepoTriggerResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11731,6 +13103,75 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+/**
+ * The ID of the rule.
+ *
+ * @param request CreateArtifactBuildRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateArtifactBuildRuleResponse
+ */
+func (client *Client) CreateArtifactBuildRuleWithOptions(request *CreateArtifactBuildRuleRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactBuildRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArtifactType)) {
+		query["ArtifactType"] = request.ArtifactType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeId)) {
+		query["ScopeId"] = request.ScopeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateArtifactBuildRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateArtifactBuildRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * The ID of the rule.
+ *
+ * @param request CreateArtifactBuildRuleRequest
+ * @return CreateArtifactBuildRuleResponse
+ */
+func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRequest) (_result *CreateArtifactBuildRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateArtifactBuildRuleResponse{}
+	_body, _err := client.CreateArtifactBuildRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRecordByRuleRequest, runtime *util.RuntimeOptions) (_result *CreateBuildRecordByRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12027,6 +13468,13 @@ func (client *Client) CreateInstanceEndpointAclPolicy(request *CreateInstanceEnd
 	return _result, _err
 }
 
+/**
+ * The ID of the request.
+ *
+ * @param request CreateInstanceVpcEndpointLinkedVpcRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateInstanceVpcEndpointLinkedVpcResponse
+ */
 func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *CreateInstanceVpcEndpointLinkedVpcRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12076,6 +13524,12 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *Cre
 	return _result, _err
 }
 
+/**
+ * The ID of the request.
+ *
+ * @param request CreateInstanceVpcEndpointLinkedVpcRequest
+ * @return CreateInstanceVpcEndpointLinkedVpcResponse
+ */
 func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstanceVpcEndpointLinkedVpcRequest) (_result *CreateInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
@@ -12815,6 +14269,13 @@ func (client *Client) DeleteChain(request *DeleteChainRequest) (_result *DeleteC
 	return _result, _err
 }
 
+/**
+ * >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+ *
+ * @param request DeleteChartNamespaceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteChartNamespaceResponse
+ */
 func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteChartNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12852,6 +14313,12 @@ func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamesp
 	return _result, _err
 }
 
+/**
+ * >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+ *
+ * @param request DeleteChartNamespaceRequest
+ * @return DeleteChartNamespaceResponse
+ */
 func (client *Client) DeleteChartNamespace(request *DeleteChartNamespaceRequest) (_result *DeleteChartNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChartNamespaceResponse{}
@@ -13135,6 +14602,13 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpc(request *DeleteInstance
 	return _result, _err
 }
 
+/**
+ * > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+ *
+ * @param request DeleteNamespaceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteNamespaceResponse
+ */
 func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13172,6 +14646,12 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	return _result, _err
 }
 
+/**
+ * > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+ *
+ * @param request DeleteNamespaceRequest
+ * @return DeleteNamespaceResponse
+ */
 func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
@@ -13387,6 +14867,13 @@ func (client *Client) DeleteRepoTrigger(request *DeleteRepoTriggerRequest) (_res
 	return _result, _err
 }
 
+/**
+ * If you delete a repository, all images in the repository are also deleted.
+ *
+ * @param request DeleteRepositoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteRepositoryResponse
+ */
 func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryRequest, runtime *util.RuntimeOptions) (_result *DeleteRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13432,6 +14919,12 @@ func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryReque
 	return _result, _err
 }
 
+/**
+ * If you delete a repository, all images in the repository are also deleted.
+ *
+ * @param request DeleteRepositoryRequest
+ * @return DeleteRepositoryResponse
+ */
 func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_result *DeleteRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRepositoryResponse{}
@@ -13483,6 +14976,13 @@ func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest)
 	return _result, _err
 }
 
+/**
+ * The ID of the Container Registry instance.
+ *
+ * @param request GetAuthorizationTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAuthorizationTokenResponse
+ */
 func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorizationTokenRequest, runtime *util.RuntimeOptions) (_result *GetAuthorizationTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13516,6 +15016,12 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 	return _result, _err
 }
 
+/**
+ * The ID of the Container Registry instance.
+ *
+ * @param request GetAuthorizationTokenRequest
+ * @return GetAuthorizationTokenResponse
+ */
 func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenRequest) (_result *GetAuthorizationTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthorizationTokenResponse{}
@@ -13948,6 +15454,13 @@ func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNa
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetRepoBuildRecordRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetRepoBuildRecordResponse
+ */
 func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordRequest, runtime *util.RuntimeOptions) (_result *GetRepoBuildRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13985,6 +15498,12 @@ func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordR
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetRepoBuildRecordRequest
+ * @return GetRepoBuildRecordResponse
+ */
 func (client *Client) GetRepoBuildRecord(request *GetRepoBuildRecordRequest) (_result *GetRepoBuildRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoBuildRecordResponse{}
