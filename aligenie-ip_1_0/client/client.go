@@ -5,12 +5,3651 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
+
+type AddCartoonHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddCartoonHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCartoonHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddCartoonHeaders) SetCommonHeaders(v map[string]*string) *AddCartoonHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddCartoonHeaders) SetXAcsAligenieAccessToken(v string) *AddCartoonHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AddCartoonHeaders) SetAuthorization(v string) *AddCartoonHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddCartoonRequest struct {
+	HotelId       *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	StartVideoMd5 *string `json:"StartVideoMd5,omitempty" xml:"StartVideoMd5,omitempty"`
+	StartVideoUrl *string `json:"StartVideoUrl,omitempty" xml:"StartVideoUrl,omitempty"`
+}
+
+func (s AddCartoonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCartoonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCartoonRequest) SetHotelId(v string) *AddCartoonRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddCartoonRequest) SetStartVideoMd5(v string) *AddCartoonRequest {
+	s.StartVideoMd5 = &v
+	return s
+}
+
+func (s *AddCartoonRequest) SetStartVideoUrl(v string) *AddCartoonRequest {
+	s.StartVideoUrl = &v
+	return s
+}
+
+type AddCartoonResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s AddCartoonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCartoonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCartoonResponseBody) SetMessage(v string) *AddCartoonResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddCartoonResponseBody) SetRequestId(v string) *AddCartoonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCartoonResponseBody) SetResult(v bool) *AddCartoonResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *AddCartoonResponseBody) SetStatusCode(v int32) *AddCartoonResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type AddCartoonResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddCartoonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddCartoonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCartoonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCartoonResponse) SetHeaders(v map[string]*string) *AddCartoonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCartoonResponse) SetStatusCode(v int32) *AddCartoonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCartoonResponse) SetBody(v *AddCartoonResponseBody) *AddCartoonResponse {
+	s.Body = v
+	return s
+}
+
+type AddCustomQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddCustomQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomQAHeaders) SetCommonHeaders(v map[string]*string) *AddCustomQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddCustomQAHeaders) SetXAcsAligenieAccessToken(v string) *AddCustomQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AddCustomQAHeaders) SetAuthorization(v string) *AddCustomQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddCustomQARequest struct {
+	Answers                []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
+	HotelId                *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWords               []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	MajorQuestion          *string   `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
+	SupplementaryQuestions []*string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty" type:"Repeated"`
+}
+
+func (s AddCustomQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomQARequest) SetAnswers(v []*string) *AddCustomQARequest {
+	s.Answers = v
+	return s
+}
+
+func (s *AddCustomQARequest) SetHotelId(v string) *AddCustomQARequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddCustomQARequest) SetKeyWords(v []*string) *AddCustomQARequest {
+	s.KeyWords = v
+	return s
+}
+
+func (s *AddCustomQARequest) SetMajorQuestion(v string) *AddCustomQARequest {
+	s.MajorQuestion = &v
+	return s
+}
+
+func (s *AddCustomQARequest) SetSupplementaryQuestions(v []*string) *AddCustomQARequest {
+	s.SupplementaryQuestions = v
+	return s
+}
+
+type AddCustomQAShrinkRequest struct {
+	AnswersShrink                *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	HotelId                      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWordsShrink               *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	MajorQuestion                *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
+	SupplementaryQuestionsShrink *string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty"`
+}
+
+func (s AddCustomQAShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomQAShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomQAShrinkRequest) SetAnswersShrink(v string) *AddCustomQAShrinkRequest {
+	s.AnswersShrink = &v
+	return s
+}
+
+func (s *AddCustomQAShrinkRequest) SetHotelId(v string) *AddCustomQAShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddCustomQAShrinkRequest) SetKeyWordsShrink(v string) *AddCustomQAShrinkRequest {
+	s.KeyWordsShrink = &v
+	return s
+}
+
+func (s *AddCustomQAShrinkRequest) SetMajorQuestion(v string) *AddCustomQAShrinkRequest {
+	s.MajorQuestion = &v
+	return s
+}
+
+func (s *AddCustomQAShrinkRequest) SetSupplementaryQuestionsShrink(v string) *AddCustomQAShrinkRequest {
+	s.SupplementaryQuestionsShrink = &v
+	return s
+}
+
+type AddCustomQAResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s AddCustomQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomQAResponseBody) SetMessage(v string) *AddCustomQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddCustomQAResponseBody) SetRequestId(v string) *AddCustomQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCustomQAResponseBody) SetResult(v bool) *AddCustomQAResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *AddCustomQAResponseBody) SetStatusCode(v int32) *AddCustomQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type AddCustomQAResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddCustomQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddCustomQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomQAResponse) SetHeaders(v map[string]*string) *AddCustomQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCustomQAResponse) SetStatusCode(v int32) *AddCustomQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCustomQAResponse) SetBody(v *AddCustomQAResponseBody) *AddCustomQAResponse {
+	s.Body = v
+	return s
+}
+
+type AddMessageTemplateHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddMessageTemplateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMessageTemplateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddMessageTemplateHeaders) SetCommonHeaders(v map[string]*string) *AddMessageTemplateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddMessageTemplateHeaders) SetXAcsAligenieAccessToken(v string) *AddMessageTemplateHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AddMessageTemplateHeaders) SetAuthorization(v string) *AddMessageTemplateHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddMessageTemplateRequest struct {
+	TemplateDetail *string `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s AddMessageTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMessageTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMessageTemplateRequest) SetTemplateDetail(v string) *AddMessageTemplateRequest {
+	s.TemplateDetail = &v
+	return s
+}
+
+func (s *AddMessageTemplateRequest) SetTemplateName(v string) *AddMessageTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type AddMessageTemplateResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *int64  `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s AddMessageTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMessageTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMessageTemplateResponseBody) SetCode(v int32) *AddMessageTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddMessageTemplateResponseBody) SetMessage(v string) *AddMessageTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddMessageTemplateResponseBody) SetRequestId(v string) *AddMessageTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddMessageTemplateResponseBody) SetResult(v int64) *AddMessageTemplateResponseBody {
+	s.Result = &v
+	return s
+}
+
+type AddMessageTemplateResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddMessageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddMessageTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMessageTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMessageTemplateResponse) SetHeaders(v map[string]*string) *AddMessageTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMessageTemplateResponse) SetStatusCode(v int32) *AddMessageTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddMessageTemplateResponse) SetBody(v *AddMessageTemplateResponseBody) *AddMessageTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type AddOrUpdateDisPlayModesHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddOrUpdateDisPlayModesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateDisPlayModesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateDisPlayModesHeaders) SetCommonHeaders(v map[string]*string) *AddOrUpdateDisPlayModesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesHeaders) SetXAcsAligenieAccessToken(v string) *AddOrUpdateDisPlayModesHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesHeaders) SetAuthorization(v string) *AddOrUpdateDisPlayModesHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddOrUpdateDisPlayModesRequest struct {
+	HotelDeviceModeList []*string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
+	HotelId             *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s AddOrUpdateDisPlayModesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateDisPlayModesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateDisPlayModesRequest) SetHotelDeviceModeList(v []*string) *AddOrUpdateDisPlayModesRequest {
+	s.HotelDeviceModeList = v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesRequest) SetHotelId(v string) *AddOrUpdateDisPlayModesRequest {
+	s.HotelId = &v
+	return s
+}
+
+type AddOrUpdateDisPlayModesShrinkRequest struct {
+	HotelDeviceModeListShrink *string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty"`
+	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s AddOrUpdateDisPlayModesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateDisPlayModesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateDisPlayModesShrinkRequest) SetHotelDeviceModeListShrink(v string) *AddOrUpdateDisPlayModesShrinkRequest {
+	s.HotelDeviceModeListShrink = &v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesShrinkRequest) SetHotelId(v string) *AddOrUpdateDisPlayModesShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+type AddOrUpdateDisPlayModesResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s AddOrUpdateDisPlayModesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateDisPlayModesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateDisPlayModesResponseBody) SetMessage(v string) *AddOrUpdateDisPlayModesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesResponseBody) SetRequestId(v string) *AddOrUpdateDisPlayModesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesResponseBody) SetResult(v bool) *AddOrUpdateDisPlayModesResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesResponseBody) SetStatusCode(v int32) *AddOrUpdateDisPlayModesResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type AddOrUpdateDisPlayModesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddOrUpdateDisPlayModesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddOrUpdateDisPlayModesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateDisPlayModesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateDisPlayModesResponse) SetHeaders(v map[string]*string) *AddOrUpdateDisPlayModesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesResponse) SetStatusCode(v int32) *AddOrUpdateDisPlayModesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddOrUpdateDisPlayModesResponse) SetBody(v *AddOrUpdateDisPlayModesResponseBody) *AddOrUpdateDisPlayModesResponse {
+	s.Body = v
+	return s
+}
+
+type AddOrUpdateHotelSettingHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddOrUpdateHotelSettingHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateHotelSettingHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateHotelSettingHeaders) SetCommonHeaders(v map[string]*string) *AddOrUpdateHotelSettingHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingHeaders) SetXAcsAligenieAccessToken(v string) *AddOrUpdateHotelSettingHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingHeaders) SetAuthorization(v string) *AddOrUpdateHotelSettingHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddOrUpdateHotelSettingRequest struct {
+	HotelDeviceModeList []*string                                       `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
+	HotelId             *string                                         `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaver    *AddOrUpdateHotelSettingRequestHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
+	NightMode           *AddOrUpdateHotelSettingRequestNightMode        `json:"NightMode,omitempty" xml:"NightMode,omitempty" type:"Struct"`
+	SettingType         *string                                         `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+	Value               *string                                         `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddOrUpdateHotelSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateHotelSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateHotelSettingRequest) SetHotelDeviceModeList(v []*string) *AddOrUpdateHotelSettingRequest {
+	s.HotelDeviceModeList = v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequest) SetHotelId(v string) *AddOrUpdateHotelSettingRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequest) SetHotelScreenSaver(v *AddOrUpdateHotelSettingRequestHotelScreenSaver) *AddOrUpdateHotelSettingRequest {
+	s.HotelScreenSaver = v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequest) SetNightMode(v *AddOrUpdateHotelSettingRequestNightMode) *AddOrUpdateHotelSettingRequest {
+	s.NightMode = v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequest) SetSettingType(v string) *AddOrUpdateHotelSettingRequest {
+	s.SettingType = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequest) SetValue(v string) *AddOrUpdateHotelSettingRequest {
+	s.Value = &v
+	return s
+}
+
+type AddOrUpdateHotelSettingRequestHotelScreenSaver struct {
+	ScreenSaverPicUrl *string `json:"ScreenSaverPicUrl,omitempty" xml:"ScreenSaverPicUrl,omitempty"`
+	ScreenSaverStyle  *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
+}
+
+func (s AddOrUpdateHotelSettingRequestHotelScreenSaver) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateHotelSettingRequestHotelScreenSaver) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateHotelSettingRequestHotelScreenSaver) SetScreenSaverPicUrl(v string) *AddOrUpdateHotelSettingRequestHotelScreenSaver {
+	s.ScreenSaverPicUrl = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequestHotelScreenSaver) SetScreenSaverStyle(v string) *AddOrUpdateHotelSettingRequestHotelScreenSaver {
+	s.ScreenSaverStyle = &v
+	return s
+}
+
+type AddOrUpdateHotelSettingRequestNightMode struct {
+	DefaultBright *string `json:"DefaultBright,omitempty" xml:"DefaultBright,omitempty"`
+	DefaultVolume *string `json:"DefaultVolume,omitempty" xml:"DefaultVolume,omitempty"`
+	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	End           *string `json:"End,omitempty" xml:"End,omitempty"`
+	StandbyAction *string `json:"StandbyAction,omitempty" xml:"StandbyAction,omitempty"`
+	Start         *string `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s AddOrUpdateHotelSettingRequestNightMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateHotelSettingRequestNightMode) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateHotelSettingRequestNightMode) SetDefaultBright(v string) *AddOrUpdateHotelSettingRequestNightMode {
+	s.DefaultBright = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequestNightMode) SetDefaultVolume(v string) *AddOrUpdateHotelSettingRequestNightMode {
+	s.DefaultVolume = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequestNightMode) SetEnable(v bool) *AddOrUpdateHotelSettingRequestNightMode {
+	s.Enable = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequestNightMode) SetEnd(v string) *AddOrUpdateHotelSettingRequestNightMode {
+	s.End = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequestNightMode) SetStandbyAction(v string) *AddOrUpdateHotelSettingRequestNightMode {
+	s.StandbyAction = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingRequestNightMode) SetStart(v string) *AddOrUpdateHotelSettingRequestNightMode {
+	s.Start = &v
+	return s
+}
+
+type AddOrUpdateHotelSettingShrinkRequest struct {
+	HotelDeviceModeListShrink *string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty"`
+	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaverShrink    *string `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty"`
+	NightModeShrink           *string `json:"NightMode,omitempty" xml:"NightMode,omitempty"`
+	SettingType               *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+	Value                     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddOrUpdateHotelSettingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateHotelSettingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateHotelSettingShrinkRequest) SetHotelDeviceModeListShrink(v string) *AddOrUpdateHotelSettingShrinkRequest {
+	s.HotelDeviceModeListShrink = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingShrinkRequest) SetHotelId(v string) *AddOrUpdateHotelSettingShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingShrinkRequest) SetHotelScreenSaverShrink(v string) *AddOrUpdateHotelSettingShrinkRequest {
+	s.HotelScreenSaverShrink = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingShrinkRequest) SetNightModeShrink(v string) *AddOrUpdateHotelSettingShrinkRequest {
+	s.NightModeShrink = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingShrinkRequest) SetSettingType(v string) *AddOrUpdateHotelSettingShrinkRequest {
+	s.SettingType = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingShrinkRequest) SetValue(v string) *AddOrUpdateHotelSettingShrinkRequest {
+	s.Value = &v
+	return s
+}
+
+type AddOrUpdateHotelSettingResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s AddOrUpdateHotelSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateHotelSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateHotelSettingResponseBody) SetMessage(v string) *AddOrUpdateHotelSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingResponseBody) SetRequestId(v string) *AddOrUpdateHotelSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingResponseBody) SetResult(v bool) *AddOrUpdateHotelSettingResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingResponseBody) SetStatusCode(v int32) *AddOrUpdateHotelSettingResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type AddOrUpdateHotelSettingResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddOrUpdateHotelSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddOrUpdateHotelSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateHotelSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateHotelSettingResponse) SetHeaders(v map[string]*string) *AddOrUpdateHotelSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingResponse) SetStatusCode(v int32) *AddOrUpdateHotelSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddOrUpdateHotelSettingResponse) SetBody(v *AddOrUpdateHotelSettingResponseBody) *AddOrUpdateHotelSettingResponse {
+	s.Body = v
+	return s
+}
+
+type AddOrUpdateScreenSaverHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddOrUpdateScreenSaverHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateScreenSaverHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateScreenSaverHeaders) SetCommonHeaders(v map[string]*string) *AddOrUpdateScreenSaverHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverHeaders) SetXAcsAligenieAccessToken(v string) *AddOrUpdateScreenSaverHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverHeaders) SetAuthorization(v string) *AddOrUpdateScreenSaverHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddOrUpdateScreenSaverRequest struct {
+	HotelId          *string                                        `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaver *AddOrUpdateScreenSaverRequestHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
+}
+
+func (s AddOrUpdateScreenSaverRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateScreenSaverRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateScreenSaverRequest) SetHotelId(v string) *AddOrUpdateScreenSaverRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverRequest) SetHotelScreenSaver(v *AddOrUpdateScreenSaverRequestHotelScreenSaver) *AddOrUpdateScreenSaverRequest {
+	s.HotelScreenSaver = v
+	return s
+}
+
+type AddOrUpdateScreenSaverRequestHotelScreenSaver struct {
+	ScreenSaverPicUrl *string `json:"ScreenSaverPicUrl,omitempty" xml:"ScreenSaverPicUrl,omitempty"`
+	ScreenSaverStyle  *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
+}
+
+func (s AddOrUpdateScreenSaverRequestHotelScreenSaver) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateScreenSaverRequestHotelScreenSaver) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateScreenSaverRequestHotelScreenSaver) SetScreenSaverPicUrl(v string) *AddOrUpdateScreenSaverRequestHotelScreenSaver {
+	s.ScreenSaverPicUrl = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverRequestHotelScreenSaver) SetScreenSaverStyle(v string) *AddOrUpdateScreenSaverRequestHotelScreenSaver {
+	s.ScreenSaverStyle = &v
+	return s
+}
+
+type AddOrUpdateScreenSaverShrinkRequest struct {
+	HotelId                *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaverShrink *string `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty"`
+}
+
+func (s AddOrUpdateScreenSaverShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateScreenSaverShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateScreenSaverShrinkRequest) SetHotelId(v string) *AddOrUpdateScreenSaverShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverShrinkRequest) SetHotelScreenSaverShrink(v string) *AddOrUpdateScreenSaverShrinkRequest {
+	s.HotelScreenSaverShrink = &v
+	return s
+}
+
+type AddOrUpdateScreenSaverResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s AddOrUpdateScreenSaverResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateScreenSaverResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateScreenSaverResponseBody) SetMessage(v string) *AddOrUpdateScreenSaverResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverResponseBody) SetRequestId(v string) *AddOrUpdateScreenSaverResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverResponseBody) SetResult(v bool) *AddOrUpdateScreenSaverResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverResponseBody) SetStatusCode(v int32) *AddOrUpdateScreenSaverResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type AddOrUpdateScreenSaverResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddOrUpdateScreenSaverResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddOrUpdateScreenSaverResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateScreenSaverResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateScreenSaverResponse) SetHeaders(v map[string]*string) *AddOrUpdateScreenSaverResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverResponse) SetStatusCode(v int32) *AddOrUpdateScreenSaverResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddOrUpdateScreenSaverResponse) SetBody(v *AddOrUpdateScreenSaverResponseBody) *AddOrUpdateScreenSaverResponse {
+	s.Body = v
+	return s
+}
+
+type AddOrUpdateWelcomeTextHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddOrUpdateWelcomeTextHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateWelcomeTextHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateWelcomeTextHeaders) SetCommonHeaders(v map[string]*string) *AddOrUpdateWelcomeTextHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextHeaders) SetXAcsAligenieAccessToken(v string) *AddOrUpdateWelcomeTextHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextHeaders) SetAuthorization(v string) *AddOrUpdateWelcomeTextHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddOrUpdateWelcomeTextRequest struct {
+	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	MusicUrl    *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	WelcomeText *string `json:"WelcomeText,omitempty" xml:"WelcomeText,omitempty"`
+}
+
+func (s AddOrUpdateWelcomeTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateWelcomeTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateWelcomeTextRequest) SetHotelId(v string) *AddOrUpdateWelcomeTextRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextRequest) SetMusicUrl(v string) *AddOrUpdateWelcomeTextRequest {
+	s.MusicUrl = &v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextRequest) SetWelcomeText(v string) *AddOrUpdateWelcomeTextRequest {
+	s.WelcomeText = &v
+	return s
+}
+
+type AddOrUpdateWelcomeTextResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s AddOrUpdateWelcomeTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateWelcomeTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateWelcomeTextResponseBody) SetExtentions(v map[string]interface{}) *AddOrUpdateWelcomeTextResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextResponseBody) SetMessage(v string) *AddOrUpdateWelcomeTextResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextResponseBody) SetRequestId(v string) *AddOrUpdateWelcomeTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextResponseBody) SetResult(v bool) *AddOrUpdateWelcomeTextResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextResponseBody) SetStatusCode(v int32) *AddOrUpdateWelcomeTextResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type AddOrUpdateWelcomeTextResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddOrUpdateWelcomeTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddOrUpdateWelcomeTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddOrUpdateWelcomeTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddOrUpdateWelcomeTextResponse) SetHeaders(v map[string]*string) *AddOrUpdateWelcomeTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextResponse) SetStatusCode(v int32) *AddOrUpdateWelcomeTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddOrUpdateWelcomeTextResponse) SetBody(v *AddOrUpdateWelcomeTextResponseBody) *AddOrUpdateWelcomeTextResponse {
+	s.Body = v
+	return s
+}
+
+type AuditHotelHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AuditHotelHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditHotelHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AuditHotelHeaders) SetCommonHeaders(v map[string]*string) *AuditHotelHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AuditHotelHeaders) SetXAcsAligenieAccessToken(v string) *AuditHotelHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AuditHotelHeaders) SetAuthorization(v string) *AuditHotelHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AuditHotelRequest struct {
+	AuditHotelReq *AuditHotelRequestAuditHotelReq `json:"AuditHotelReq,omitempty" xml:"AuditHotelReq,omitempty" type:"Struct"`
+}
+
+func (s AuditHotelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditHotelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuditHotelRequest) SetAuditHotelReq(v *AuditHotelRequestAuditHotelReq) *AuditHotelRequest {
+	s.AuditHotelReq = v
+	return s
+}
+
+type AuditHotelRequestAuditHotelReq struct {
+	AuditOpinion *string `json:"AuditOpinion,omitempty" xml:"AuditOpinion,omitempty"`
+	HotelId      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s AuditHotelRequestAuditHotelReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditHotelRequestAuditHotelReq) GoString() string {
+	return s.String()
+}
+
+func (s *AuditHotelRequestAuditHotelReq) SetAuditOpinion(v string) *AuditHotelRequestAuditHotelReq {
+	s.AuditOpinion = &v
+	return s
+}
+
+func (s *AuditHotelRequestAuditHotelReq) SetHotelId(v string) *AuditHotelRequestAuditHotelReq {
+	s.HotelId = &v
+	return s
+}
+
+func (s *AuditHotelRequestAuditHotelReq) SetStatus(v int32) *AuditHotelRequestAuditHotelReq {
+	s.Status = &v
+	return s
+}
+
+type AuditHotelShrinkRequest struct {
+	AuditHotelReqShrink *string `json:"AuditHotelReq,omitempty" xml:"AuditHotelReq,omitempty"`
+}
+
+func (s AuditHotelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditHotelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuditHotelShrinkRequest) SetAuditHotelReqShrink(v string) *AuditHotelShrinkRequest {
+	s.AuditHotelReqShrink = &v
+	return s
+}
+
+type AuditHotelResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s AuditHotelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditHotelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuditHotelResponseBody) SetCode(v int32) *AuditHotelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AuditHotelResponseBody) SetMessage(v string) *AuditHotelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AuditHotelResponseBody) SetRequestId(v string) *AuditHotelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AuditHotelResponseBody) SetResult(v bool) *AuditHotelResponseBody {
+	s.Result = &v
+	return s
+}
+
+type AuditHotelResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AuditHotelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AuditHotelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditHotelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuditHotelResponse) SetHeaders(v map[string]*string) *AuditHotelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuditHotelResponse) SetStatusCode(v int32) *AuditHotelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuditHotelResponse) SetBody(v *AuditHotelResponseBody) *AuditHotelResponse {
+	s.Body = v
+	return s
+}
+
+type BatchAddHotelRoomHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s BatchAddHotelRoomHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddHotelRoomHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddHotelRoomHeaders) SetCommonHeaders(v map[string]*string) *BatchAddHotelRoomHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchAddHotelRoomHeaders) SetXAcsAligenieAccessToken(v string) *BatchAddHotelRoomHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *BatchAddHotelRoomHeaders) SetAuthorization(v string) *BatchAddHotelRoomHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type BatchAddHotelRoomRequest struct {
+	HotelId    *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNoList []*string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty" type:"Repeated"`
+}
+
+func (s BatchAddHotelRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddHotelRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddHotelRoomRequest) SetHotelId(v string) *BatchAddHotelRoomRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *BatchAddHotelRoomRequest) SetRoomNoList(v []*string) *BatchAddHotelRoomRequest {
+	s.RoomNoList = v
+	return s
+}
+
+type BatchAddHotelRoomShrinkRequest struct {
+	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNoListShrink *string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty"`
+}
+
+func (s BatchAddHotelRoomShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddHotelRoomShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddHotelRoomShrinkRequest) SetHotelId(v string) *BatchAddHotelRoomShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *BatchAddHotelRoomShrinkRequest) SetRoomNoListShrink(v string) *BatchAddHotelRoomShrinkRequest {
+	s.RoomNoListShrink = &v
+	return s
+}
+
+type BatchAddHotelRoomResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s BatchAddHotelRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddHotelRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddHotelRoomResponseBody) SetCode(v int32) *BatchAddHotelRoomResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchAddHotelRoomResponseBody) SetMessage(v string) *BatchAddHotelRoomResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchAddHotelRoomResponseBody) SetRequestId(v string) *BatchAddHotelRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchAddHotelRoomResponseBody) SetResult(v bool) *BatchAddHotelRoomResponseBody {
+	s.Result = &v
+	return s
+}
+
+type BatchAddHotelRoomResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchAddHotelRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchAddHotelRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddHotelRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddHotelRoomResponse) SetHeaders(v map[string]*string) *BatchAddHotelRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchAddHotelRoomResponse) SetStatusCode(v int32) *BatchAddHotelRoomResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchAddHotelRoomResponse) SetBody(v *BatchAddHotelRoomResponseBody) *BatchAddHotelRoomResponse {
+	s.Body = v
+	return s
+}
+
+type BatchDeleteHotelRoomHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s BatchDeleteHotelRoomHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteHotelRoomHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteHotelRoomHeaders) SetCommonHeaders(v map[string]*string) *BatchDeleteHotelRoomHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomHeaders) SetXAcsAligenieAccessToken(v string) *BatchDeleteHotelRoomHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomHeaders) SetAuthorization(v string) *BatchDeleteHotelRoomHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type BatchDeleteHotelRoomRequest struct {
+	HotelId    *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNoList []*string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty" type:"Repeated"`
+}
+
+func (s BatchDeleteHotelRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteHotelRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteHotelRoomRequest) SetHotelId(v string) *BatchDeleteHotelRoomRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomRequest) SetRoomNoList(v []*string) *BatchDeleteHotelRoomRequest {
+	s.RoomNoList = v
+	return s
+}
+
+type BatchDeleteHotelRoomShrinkRequest struct {
+	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNoListShrink *string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty"`
+}
+
+func (s BatchDeleteHotelRoomShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteHotelRoomShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteHotelRoomShrinkRequest) SetHotelId(v string) *BatchDeleteHotelRoomShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomShrinkRequest) SetRoomNoListShrink(v string) *BatchDeleteHotelRoomShrinkRequest {
+	s.RoomNoListShrink = &v
+	return s
+}
+
+type BatchDeleteHotelRoomResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s BatchDeleteHotelRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteHotelRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteHotelRoomResponseBody) SetCode(v int32) *BatchDeleteHotelRoomResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomResponseBody) SetMessage(v string) *BatchDeleteHotelRoomResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomResponseBody) SetRequestId(v string) *BatchDeleteHotelRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomResponseBody) SetResult(v bool) *BatchDeleteHotelRoomResponseBody {
+	s.Result = &v
+	return s
+}
+
+type BatchDeleteHotelRoomResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchDeleteHotelRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchDeleteHotelRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteHotelRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteHotelRoomResponse) SetHeaders(v map[string]*string) *BatchDeleteHotelRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomResponse) SetStatusCode(v int32) *BatchDeleteHotelRoomResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchDeleteHotelRoomResponse) SetBody(v *BatchDeleteHotelRoomResponseBody) *BatchDeleteHotelRoomResponse {
+	s.Body = v
+	return s
+}
+
+type CheckoutWithAKHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s CheckoutWithAKHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckoutWithAKHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CheckoutWithAKHeaders) SetCommonHeaders(v map[string]*string) *CheckoutWithAKHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CheckoutWithAKHeaders) SetXAcsAligenieAccessToken(v string) *CheckoutWithAKHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *CheckoutWithAKHeaders) SetAuthorization(v string) *CheckoutWithAKHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type CheckoutWithAKRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s CheckoutWithAKRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckoutWithAKRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckoutWithAKRequest) SetHotelId(v string) *CheckoutWithAKRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *CheckoutWithAKRequest) SetRoomNo(v string) *CheckoutWithAKRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type CheckoutWithAKResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s CheckoutWithAKResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckoutWithAKResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckoutWithAKResponseBody) SetMessage(v string) *CheckoutWithAKResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckoutWithAKResponseBody) SetRequestId(v string) *CheckoutWithAKResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckoutWithAKResponseBody) SetResult(v bool) *CheckoutWithAKResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *CheckoutWithAKResponseBody) SetStatusCode(v int32) *CheckoutWithAKResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type CheckoutWithAKResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckoutWithAKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckoutWithAKResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckoutWithAKResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckoutWithAKResponse) SetHeaders(v map[string]*string) *CheckoutWithAKResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckoutWithAKResponse) SetStatusCode(v int32) *CheckoutWithAKResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckoutWithAKResponse) SetBody(v *CheckoutWithAKResponseBody) *CheckoutWithAKResponse {
+	s.Body = v
+	return s
+}
+
+type ChildAccountAuthHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ChildAccountAuthHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChildAccountAuthHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ChildAccountAuthHeaders) SetCommonHeaders(v map[string]*string) *ChildAccountAuthHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ChildAccountAuthHeaders) SetXAcsAligenieAccessToken(v string) *ChildAccountAuthHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ChildAccountAuthHeaders) SetAuthorization(v string) *ChildAccountAuthHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ChildAccountAuthRequest struct {
+	Account  *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	AppKey   *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+}
+
+func (s ChildAccountAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChildAccountAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChildAccountAuthRequest) SetAccount(v string) *ChildAccountAuthRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *ChildAccountAuthRequest) SetAppKey(v string) *ChildAccountAuthRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *ChildAccountAuthRequest) SetHotelId(v string) *ChildAccountAuthRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ChildAccountAuthRequest) SetTbOpenId(v string) *ChildAccountAuthRequest {
+	s.TbOpenId = &v
+	return s
+}
+
+type ChildAccountAuthResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ChildAccountAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChildAccountAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChildAccountAuthResponseBody) SetExtentions(v map[string]interface{}) *ChildAccountAuthResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *ChildAccountAuthResponseBody) SetMessage(v string) *ChildAccountAuthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChildAccountAuthResponseBody) SetRequestId(v string) *ChildAccountAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChildAccountAuthResponseBody) SetResult(v bool) *ChildAccountAuthResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ChildAccountAuthResponseBody) SetStatusCode(v int32) *ChildAccountAuthResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ChildAccountAuthResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChildAccountAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChildAccountAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChildAccountAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChildAccountAuthResponse) SetHeaders(v map[string]*string) *ChildAccountAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChildAccountAuthResponse) SetStatusCode(v int32) *ChildAccountAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChildAccountAuthResponse) SetBody(v *ChildAccountAuthResponseBody) *ChildAccountAuthResponse {
+	s.Body = v
+	return s
+}
+
+type ControlRoomDeviceHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ControlRoomDeviceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ControlRoomDeviceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ControlRoomDeviceHeaders) SetCommonHeaders(v map[string]*string) *ControlRoomDeviceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ControlRoomDeviceHeaders) SetXAcsAligenieAccessToken(v string) *ControlRoomDeviceHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ControlRoomDeviceHeaders) SetAuthorization(v string) *ControlRoomDeviceHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ControlRoomDeviceRequest struct {
+	Cmd          *string            `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	DeviceIndex  *int32             `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	DeviceNumber *string            `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	HotelId      *string            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Properties   map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RoomNo       *string            `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s ControlRoomDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ControlRoomDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ControlRoomDeviceRequest) SetCmd(v string) *ControlRoomDeviceRequest {
+	s.Cmd = &v
+	return s
+}
+
+func (s *ControlRoomDeviceRequest) SetDeviceIndex(v int32) *ControlRoomDeviceRequest {
+	s.DeviceIndex = &v
+	return s
+}
+
+func (s *ControlRoomDeviceRequest) SetDeviceNumber(v string) *ControlRoomDeviceRequest {
+	s.DeviceNumber = &v
+	return s
+}
+
+func (s *ControlRoomDeviceRequest) SetHotelId(v string) *ControlRoomDeviceRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ControlRoomDeviceRequest) SetProperties(v map[string]*string) *ControlRoomDeviceRequest {
+	s.Properties = v
+	return s
+}
+
+func (s *ControlRoomDeviceRequest) SetRoomNo(v string) *ControlRoomDeviceRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type ControlRoomDeviceShrinkRequest struct {
+	Cmd              *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	DeviceIndex      *int32  `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	DeviceNumber     *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RoomNo           *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s ControlRoomDeviceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ControlRoomDeviceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ControlRoomDeviceShrinkRequest) SetCmd(v string) *ControlRoomDeviceShrinkRequest {
+	s.Cmd = &v
+	return s
+}
+
+func (s *ControlRoomDeviceShrinkRequest) SetDeviceIndex(v int32) *ControlRoomDeviceShrinkRequest {
+	s.DeviceIndex = &v
+	return s
+}
+
+func (s *ControlRoomDeviceShrinkRequest) SetDeviceNumber(v string) *ControlRoomDeviceShrinkRequest {
+	s.DeviceNumber = &v
+	return s
+}
+
+func (s *ControlRoomDeviceShrinkRequest) SetHotelId(v string) *ControlRoomDeviceShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ControlRoomDeviceShrinkRequest) SetPropertiesShrink(v string) *ControlRoomDeviceShrinkRequest {
+	s.PropertiesShrink = &v
+	return s
+}
+
+func (s *ControlRoomDeviceShrinkRequest) SetRoomNo(v string) *ControlRoomDeviceShrinkRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type ControlRoomDeviceResponseBody struct {
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ControlRoomDeviceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ControlRoomDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ControlRoomDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ControlRoomDeviceResponseBody) SetCode(v int32) *ControlRoomDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ControlRoomDeviceResponseBody) SetMessage(v string) *ControlRoomDeviceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ControlRoomDeviceResponseBody) SetRequestId(v string) *ControlRoomDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ControlRoomDeviceResponseBody) SetResult(v *ControlRoomDeviceResponseBodyResult) *ControlRoomDeviceResponseBody {
+	s.Result = v
+	return s
+}
+
+type ControlRoomDeviceResponseBodyResult struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ControlRoomDeviceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ControlRoomDeviceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ControlRoomDeviceResponseBodyResult) SetMessage(v string) *ControlRoomDeviceResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *ControlRoomDeviceResponseBodyResult) SetStatus(v int32) *ControlRoomDeviceResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type ControlRoomDeviceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ControlRoomDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ControlRoomDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ControlRoomDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ControlRoomDeviceResponse) SetHeaders(v map[string]*string) *ControlRoomDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ControlRoomDeviceResponse) SetStatusCode(v int32) *ControlRoomDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ControlRoomDeviceResponse) SetBody(v *ControlRoomDeviceResponseBody) *ControlRoomDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHotelHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s CreateHotelHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelHeaders) SetCommonHeaders(v map[string]*string) *CreateHotelHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateHotelHeaders) SetXAcsAligenieAccessToken(v string) *CreateHotelHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *CreateHotelHeaders) SetAuthorization(v string) *CreateHotelHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type CreateHotelRequest struct {
+	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	EstOpenTime  *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelEmail   *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	HotelName    *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RelatedPk    *string `json:"RelatedPk,omitempty" xml:"RelatedPk,omitempty"`
+	// 酒店关联产品列表
+	RelatedPks []*string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty" type:"Repeated"`
+	Remark     *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RoomNum    *int32    `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	TbOpenId   *string   `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+}
+
+func (s CreateHotelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelRequest) SetAppKey(v string) *CreateHotelRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetEstOpenTime(v string) *CreateHotelRequest {
+	s.EstOpenTime = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetHotelAddress(v string) *CreateHotelRequest {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetHotelEmail(v string) *CreateHotelRequest {
+	s.HotelEmail = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetHotelName(v string) *CreateHotelRequest {
+	s.HotelName = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetPhoneNumber(v string) *CreateHotelRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetRelatedPk(v string) *CreateHotelRequest {
+	s.RelatedPk = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetRelatedPks(v []*string) *CreateHotelRequest {
+	s.RelatedPks = v
+	return s
+}
+
+func (s *CreateHotelRequest) SetRemark(v string) *CreateHotelRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetRoomNum(v int32) *CreateHotelRequest {
+	s.RoomNum = &v
+	return s
+}
+
+func (s *CreateHotelRequest) SetTbOpenId(v string) *CreateHotelRequest {
+	s.TbOpenId = &v
+	return s
+}
+
+type CreateHotelShrinkRequest struct {
+	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	EstOpenTime  *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelEmail   *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	HotelName    *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RelatedPk    *string `json:"RelatedPk,omitempty" xml:"RelatedPk,omitempty"`
+	// 酒店关联产品列表
+	RelatedPksShrink *string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty"`
+	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RoomNum          *int32  `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	TbOpenId         *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+}
+
+func (s CreateHotelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelShrinkRequest) SetAppKey(v string) *CreateHotelShrinkRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetEstOpenTime(v string) *CreateHotelShrinkRequest {
+	s.EstOpenTime = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetHotelAddress(v string) *CreateHotelShrinkRequest {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetHotelEmail(v string) *CreateHotelShrinkRequest {
+	s.HotelEmail = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetHotelName(v string) *CreateHotelShrinkRequest {
+	s.HotelName = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetPhoneNumber(v string) *CreateHotelShrinkRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetRelatedPk(v string) *CreateHotelShrinkRequest {
+	s.RelatedPk = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetRelatedPksShrink(v string) *CreateHotelShrinkRequest {
+	s.RelatedPksShrink = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetRemark(v string) *CreateHotelShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetRoomNum(v int32) *CreateHotelShrinkRequest {
+	s.RoomNum = &v
+	return s
+}
+
+func (s *CreateHotelShrinkRequest) SetTbOpenId(v string) *CreateHotelShrinkRequest {
+	s.TbOpenId = &v
+	return s
+}
+
+type CreateHotelResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *string                `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s CreateHotelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelResponseBody) SetExtentions(v map[string]interface{}) *CreateHotelResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *CreateHotelResponseBody) SetMessage(v string) *CreateHotelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHotelResponseBody) SetRequestId(v string) *CreateHotelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHotelResponseBody) SetResult(v string) *CreateHotelResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *CreateHotelResponseBody) SetStatusCode(v int32) *CreateHotelResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateHotelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHotelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHotelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelResponse) SetHeaders(v map[string]*string) *CreateHotelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHotelResponse) SetStatusCode(v int32) *CreateHotelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHotelResponse) SetBody(v *CreateHotelResponseBody) *CreateHotelResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHotelAlarmHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s CreateHotelAlarmHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmHeaders) SetCommonHeaders(v map[string]*string) *CreateHotelAlarmHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateHotelAlarmHeaders) SetXAcsAligenieAccessToken(v string) *CreateHotelAlarmHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *CreateHotelAlarmHeaders) SetAuthorization(v string) *CreateHotelAlarmHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type CreateHotelAlarmRequest struct {
+	HotelId      *string                              `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	MusicType    *string                              `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	Rooms        []*string                            `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+	ScheduleInfo *CreateHotelAlarmRequestScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+}
+
+func (s CreateHotelAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmRequest) SetHotelId(v string) *CreateHotelAlarmRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequest) SetMusicType(v string) *CreateHotelAlarmRequest {
+	s.MusicType = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequest) SetRooms(v []*string) *CreateHotelAlarmRequest {
+	s.Rooms = v
+	return s
+}
+
+func (s *CreateHotelAlarmRequest) SetScheduleInfo(v *CreateHotelAlarmRequestScheduleInfo) *CreateHotelAlarmRequest {
+	s.ScheduleInfo = v
+	return s
+}
+
+type CreateHotelAlarmRequestScheduleInfo struct {
+	Once *CreateHotelAlarmRequestScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
+	// ONCE, WEEKLY
+	Type   *string                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weekly *CreateHotelAlarmRequestScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
+}
+
+func (s CreateHotelAlarmRequestScheduleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmRequestScheduleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfo) SetOnce(v *CreateHotelAlarmRequestScheduleInfoOnce) *CreateHotelAlarmRequestScheduleInfo {
+	s.Once = v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfo) SetType(v string) *CreateHotelAlarmRequestScheduleInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfo) SetWeekly(v *CreateHotelAlarmRequestScheduleInfoWeekly) *CreateHotelAlarmRequestScheduleInfo {
+	s.Weekly = v
+	return s
+}
+
+type CreateHotelAlarmRequestScheduleInfoOnce struct {
+	Day    *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	Hour   *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	Month  *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	Year   *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
+}
+
+func (s CreateHotelAlarmRequestScheduleInfoOnce) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmRequestScheduleInfoOnce) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoOnce) SetDay(v int32) *CreateHotelAlarmRequestScheduleInfoOnce {
+	s.Day = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoOnce) SetHour(v int32) *CreateHotelAlarmRequestScheduleInfoOnce {
+	s.Hour = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoOnce) SetMinute(v int32) *CreateHotelAlarmRequestScheduleInfoOnce {
+	s.Minute = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoOnce) SetMonth(v int32) *CreateHotelAlarmRequestScheduleInfoOnce {
+	s.Month = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoOnce) SetYear(v int32) *CreateHotelAlarmRequestScheduleInfoOnce {
+	s.Year = &v
+	return s
+}
+
+type CreateHotelAlarmRequestScheduleInfoWeekly struct {
+	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	Hour       *int32   `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	Minute     *int32   `json:"Minute,omitempty" xml:"Minute,omitempty"`
+}
+
+func (s CreateHotelAlarmRequestScheduleInfoWeekly) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmRequestScheduleInfoWeekly) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoWeekly) SetDaysOfWeek(v []*int32) *CreateHotelAlarmRequestScheduleInfoWeekly {
+	s.DaysOfWeek = v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoWeekly) SetHour(v int32) *CreateHotelAlarmRequestScheduleInfoWeekly {
+	s.Hour = &v
+	return s
+}
+
+func (s *CreateHotelAlarmRequestScheduleInfoWeekly) SetMinute(v int32) *CreateHotelAlarmRequestScheduleInfoWeekly {
+	s.Minute = &v
+	return s
+}
+
+type CreateHotelAlarmShrinkRequest struct {
+	HotelId            *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	MusicType          *string `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	RoomsShrink        *string `json:"Rooms,omitempty" xml:"Rooms,omitempty"`
+	ScheduleInfoShrink *string `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty"`
+}
+
+func (s CreateHotelAlarmShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmShrinkRequest) SetHotelId(v string) *CreateHotelAlarmShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *CreateHotelAlarmShrinkRequest) SetMusicType(v string) *CreateHotelAlarmShrinkRequest {
+	s.MusicType = &v
+	return s
+}
+
+func (s *CreateHotelAlarmShrinkRequest) SetRoomsShrink(v string) *CreateHotelAlarmShrinkRequest {
+	s.RoomsShrink = &v
+	return s
+}
+
+func (s *CreateHotelAlarmShrinkRequest) SetScheduleInfoShrink(v string) *CreateHotelAlarmShrinkRequest {
+	s.ScheduleInfoShrink = &v
+	return s
+}
+
+type CreateHotelAlarmResponseBody struct {
+	Extentions map[string]interface{}                `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*CreateHotelAlarmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                                `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s CreateHotelAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmResponseBody) SetExtentions(v map[string]interface{}) *CreateHotelAlarmResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBody) SetMessage(v string) *CreateHotelAlarmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBody) SetRequestId(v string) *CreateHotelAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBody) SetResult(v []*CreateHotelAlarmResponseBodyResult) *CreateHotelAlarmResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBody) SetStatusCode(v int32) *CreateHotelAlarmResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateHotelAlarmResponseBodyResult struct {
+	AlarmId      *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	FailMsg      *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
+	RoomNo       *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	UserOpenId   *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+}
+
+func (s CreateHotelAlarmResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmResponseBodyResult) SetAlarmId(v int64) *CreateHotelAlarmResponseBodyResult {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBodyResult) SetDeviceOpenId(v string) *CreateHotelAlarmResponseBodyResult {
+	s.DeviceOpenId = &v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBodyResult) SetFailMsg(v string) *CreateHotelAlarmResponseBodyResult {
+	s.FailMsg = &v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBodyResult) SetRoomNo(v string) *CreateHotelAlarmResponseBodyResult {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *CreateHotelAlarmResponseBodyResult) SetUserOpenId(v string) *CreateHotelAlarmResponseBodyResult {
+	s.UserOpenId = &v
+	return s
+}
+
+type CreateHotelAlarmResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHotelAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHotelAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotelAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotelAlarmResponse) SetHeaders(v map[string]*string) *CreateHotelAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHotelAlarmResponse) SetStatusCode(v int32) *CreateHotelAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHotelAlarmResponse) SetBody(v *CreateHotelAlarmResponseBody) *CreateHotelAlarmResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRcuSceneHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s CreateRcuSceneHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRcuSceneHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRcuSceneHeaders) SetCommonHeaders(v map[string]*string) *CreateRcuSceneHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateRcuSceneHeaders) SetXAcsAligenieAccessToken(v string) *CreateRcuSceneHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *CreateRcuSceneHeaders) SetAuthorization(v string) *CreateRcuSceneHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type CreateRcuSceneRequest struct {
+	HotelId             *string                                   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SceneId             *string                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneRelationExtDTO *CreateRcuSceneRequestSceneRelationExtDTO `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty" type:"Struct"`
+}
+
+func (s CreateRcuSceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRcuSceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRcuSceneRequest) SetHotelId(v string) *CreateRcuSceneRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *CreateRcuSceneRequest) SetSceneId(v string) *CreateRcuSceneRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *CreateRcuSceneRequest) SetSceneRelationExtDTO(v *CreateRcuSceneRequestSceneRelationExtDTO) *CreateRcuSceneRequest {
+	s.SceneRelationExtDTO = v
+	return s
+}
+
+type CreateRcuSceneRequestSceneRelationExtDTO struct {
+	CorpusList  []*string `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Icon        *string   `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateRcuSceneRequestSceneRelationExtDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRcuSceneRequestSceneRelationExtDTO) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRcuSceneRequestSceneRelationExtDTO) SetCorpusList(v []*string) *CreateRcuSceneRequestSceneRelationExtDTO {
+	s.CorpusList = v
+	return s
+}
+
+func (s *CreateRcuSceneRequestSceneRelationExtDTO) SetDescription(v string) *CreateRcuSceneRequestSceneRelationExtDTO {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRcuSceneRequestSceneRelationExtDTO) SetIcon(v string) *CreateRcuSceneRequestSceneRelationExtDTO {
+	s.Icon = &v
+	return s
+}
+
+func (s *CreateRcuSceneRequestSceneRelationExtDTO) SetName(v string) *CreateRcuSceneRequestSceneRelationExtDTO {
+	s.Name = &v
+	return s
+}
+
+type CreateRcuSceneShrinkRequest struct {
+	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SceneId                   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneRelationExtDTOShrink *string `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty"`
+}
+
+func (s CreateRcuSceneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRcuSceneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRcuSceneShrinkRequest) SetHotelId(v string) *CreateRcuSceneShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *CreateRcuSceneShrinkRequest) SetSceneId(v string) *CreateRcuSceneShrinkRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *CreateRcuSceneShrinkRequest) SetSceneRelationExtDTOShrink(v string) *CreateRcuSceneShrinkRequest {
+	s.SceneRelationExtDTOShrink = &v
+	return s
+}
+
+type CreateRcuSceneResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s CreateRcuSceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRcuSceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRcuSceneResponseBody) SetMessage(v string) *CreateRcuSceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateRcuSceneResponseBody) SetRequestId(v string) *CreateRcuSceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRcuSceneResponseBody) SetResult(v bool) *CreateRcuSceneResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *CreateRcuSceneResponseBody) SetStatusCode(v int32) *CreateRcuSceneResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateRcuSceneResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRcuSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRcuSceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRcuSceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRcuSceneResponse) SetHeaders(v map[string]*string) *CreateRcuSceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRcuSceneResponse) SetStatusCode(v int32) *CreateRcuSceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRcuSceneResponse) SetBody(v *CreateRcuSceneResponseBody) *CreateRcuSceneResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCartoonHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteCartoonHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCartoonHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCartoonHeaders) SetCommonHeaders(v map[string]*string) *DeleteCartoonHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteCartoonHeaders) SetXAcsAligenieAccessToken(v string) *DeleteCartoonHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *DeleteCartoonHeaders) SetAuthorization(v string) *DeleteCartoonHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteCartoonRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s DeleteCartoonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCartoonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCartoonRequest) SetHotelId(v string) *DeleteCartoonRequest {
+	s.HotelId = &v
+	return s
+}
+
+type DeleteCartoonResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DeleteCartoonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCartoonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCartoonResponseBody) SetMessage(v string) *DeleteCartoonResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCartoonResponseBody) SetRequestId(v string) *DeleteCartoonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCartoonResponseBody) SetResult(v bool) *DeleteCartoonResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteCartoonResponseBody) SetStatusCode(v int32) *DeleteCartoonResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteCartoonResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCartoonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCartoonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCartoonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCartoonResponse) SetHeaders(v map[string]*string) *DeleteCartoonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCartoonResponse) SetStatusCode(v int32) *DeleteCartoonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCartoonResponse) SetBody(v *DeleteCartoonResponseBody) *DeleteCartoonResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteCustomQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomQAHeaders) SetCommonHeaders(v map[string]*string) *DeleteCustomQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteCustomQAHeaders) SetXAcsAligenieAccessToken(v string) *DeleteCustomQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *DeleteCustomQAHeaders) SetAuthorization(v string) *DeleteCustomQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteCustomQARequest struct {
+	CustomQAIds []*string `json:"CustomQAIds,omitempty" xml:"CustomQAIds,omitempty" type:"Repeated"`
+	HotelId     *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s DeleteCustomQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomQARequest) SetCustomQAIds(v []*string) *DeleteCustomQARequest {
+	s.CustomQAIds = v
+	return s
+}
+
+func (s *DeleteCustomQARequest) SetHotelId(v string) *DeleteCustomQARequest {
+	s.HotelId = &v
+	return s
+}
+
+type DeleteCustomQAShrinkRequest struct {
+	CustomQAIdsShrink *string `json:"CustomQAIds,omitempty" xml:"CustomQAIds,omitempty"`
+	HotelId           *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s DeleteCustomQAShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomQAShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomQAShrinkRequest) SetCustomQAIdsShrink(v string) *DeleteCustomQAShrinkRequest {
+	s.CustomQAIdsShrink = &v
+	return s
+}
+
+func (s *DeleteCustomQAShrinkRequest) SetHotelId(v string) *DeleteCustomQAShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+type DeleteCustomQAResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DeleteCustomQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomQAResponseBody) SetMessage(v string) *DeleteCustomQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCustomQAResponseBody) SetRequestId(v string) *DeleteCustomQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomQAResponseBody) SetResult(v bool) *DeleteCustomQAResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteCustomQAResponseBody) SetStatusCode(v int32) *DeleteCustomQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteCustomQAResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomQAResponse) SetHeaders(v map[string]*string) *DeleteCustomQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomQAResponse) SetStatusCode(v int32) *DeleteCustomQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomQAResponse) SetBody(v *DeleteCustomQAResponseBody) *DeleteCustomQAResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHotelAlarmHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteHotelAlarmHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelAlarmHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelAlarmHeaders) SetCommonHeaders(v map[string]*string) *DeleteHotelAlarmHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteHotelAlarmHeaders) SetXAcsAligenieAccessToken(v string) *DeleteHotelAlarmHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmHeaders) SetAuthorization(v string) *DeleteHotelAlarmHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteHotelAlarmRequest struct {
+	Alarms  []*DeleteHotelAlarmRequestAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
+	HotelId *string                          `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s DeleteHotelAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelAlarmRequest) SetAlarms(v []*DeleteHotelAlarmRequestAlarms) *DeleteHotelAlarmRequest {
+	s.Alarms = v
+	return s
+}
+
+func (s *DeleteHotelAlarmRequest) SetHotelId(v string) *DeleteHotelAlarmRequest {
+	s.HotelId = &v
+	return s
+}
+
+type DeleteHotelAlarmRequestAlarms struct {
+	AlarmId      *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	RoomNo       *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	UserOpenId   *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+}
+
+func (s DeleteHotelAlarmRequestAlarms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelAlarmRequestAlarms) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelAlarmRequestAlarms) SetAlarmId(v int64) *DeleteHotelAlarmRequestAlarms {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmRequestAlarms) SetDeviceOpenId(v string) *DeleteHotelAlarmRequestAlarms {
+	s.DeviceOpenId = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmRequestAlarms) SetRoomNo(v string) *DeleteHotelAlarmRequestAlarms {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmRequestAlarms) SetUserOpenId(v string) *DeleteHotelAlarmRequestAlarms {
+	s.UserOpenId = &v
+	return s
+}
+
+type DeleteHotelAlarmShrinkRequest struct {
+	AlarmsShrink *string `json:"Alarms,omitempty" xml:"Alarms,omitempty"`
+	HotelId      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s DeleteHotelAlarmShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelAlarmShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelAlarmShrinkRequest) SetAlarmsShrink(v string) *DeleteHotelAlarmShrinkRequest {
+	s.AlarmsShrink = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmShrinkRequest) SetHotelId(v string) *DeleteHotelAlarmShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+type DeleteHotelAlarmResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *int32                 `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DeleteHotelAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelAlarmResponseBody) SetExtentions(v map[string]interface{}) *DeleteHotelAlarmResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *DeleteHotelAlarmResponseBody) SetMessage(v string) *DeleteHotelAlarmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmResponseBody) SetRequestId(v string) *DeleteHotelAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmResponseBody) SetResult(v int32) *DeleteHotelAlarmResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmResponseBody) SetStatusCode(v int32) *DeleteHotelAlarmResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteHotelAlarmResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHotelAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHotelAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelAlarmResponse) SetHeaders(v map[string]*string) *DeleteHotelAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHotelAlarmResponse) SetStatusCode(v int32) *DeleteHotelAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHotelAlarmResponse) SetBody(v *DeleteHotelAlarmResponseBody) *DeleteHotelAlarmResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHotelSceneBookItemHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteHotelSceneBookItemHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSceneBookItemHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSceneBookItemHeaders) SetCommonHeaders(v map[string]*string) *DeleteHotelSceneBookItemHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemHeaders) SetXAcsAligenieAccessToken(v string) *DeleteHotelSceneBookItemHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemHeaders) SetAuthorization(v string) *DeleteHotelSceneBookItemHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteHotelSceneBookItemRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Id      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeleteHotelSceneBookItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSceneBookItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSceneBookItemRequest) SetHotelId(v string) *DeleteHotelSceneBookItemRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemRequest) SetId(v int64) *DeleteHotelSceneBookItemRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemRequest) SetName(v string) *DeleteHotelSceneBookItemRequest {
+	s.Name = &v
+	return s
+}
+
+type DeleteHotelSceneBookItemResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteHotelSceneBookItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSceneBookItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSceneBookItemResponseBody) SetCode(v int32) *DeleteHotelSceneBookItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemResponseBody) SetMessage(v string) *DeleteHotelSceneBookItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemResponseBody) SetRequestId(v string) *DeleteHotelSceneBookItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemResponseBody) SetResult(v bool) *DeleteHotelSceneBookItemResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteHotelSceneBookItemResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHotelSceneBookItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHotelSceneBookItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSceneBookItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSceneBookItemResponse) SetHeaders(v map[string]*string) *DeleteHotelSceneBookItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemResponse) SetStatusCode(v int32) *DeleteHotelSceneBookItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHotelSceneBookItemResponse) SetBody(v *DeleteHotelSceneBookItemResponseBody) *DeleteHotelSceneBookItemResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHotelSettingHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteHotelSettingHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSettingHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSettingHeaders) SetCommonHeaders(v map[string]*string) *DeleteHotelSettingHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteHotelSettingHeaders) SetXAcsAligenieAccessToken(v string) *DeleteHotelSettingHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *DeleteHotelSettingHeaders) SetAuthorization(v string) *DeleteHotelSettingHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteHotelSettingRequest struct {
+	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+}
+
+func (s DeleteHotelSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSettingRequest) SetHotelId(v string) *DeleteHotelSettingRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *DeleteHotelSettingRequest) SetSettingType(v string) *DeleteHotelSettingRequest {
+	s.SettingType = &v
+	return s
+}
+
+type DeleteHotelSettingResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DeleteHotelSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSettingResponseBody) SetMessage(v string) *DeleteHotelSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHotelSettingResponseBody) SetRequestId(v string) *DeleteHotelSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHotelSettingResponseBody) SetResult(v bool) *DeleteHotelSettingResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteHotelSettingResponseBody) SetStatusCode(v int32) *DeleteHotelSettingResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteHotelSettingResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHotelSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHotelSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotelSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotelSettingResponse) SetHeaders(v map[string]*string) *DeleteHotelSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHotelSettingResponse) SetStatusCode(v int32) *DeleteHotelSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHotelSettingResponse) SetBody(v *DeleteHotelSettingResponseBody) *DeleteHotelSettingResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMessageTemplateHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteMessageTemplateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMessageTemplateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMessageTemplateHeaders) SetCommonHeaders(v map[string]*string) *DeleteMessageTemplateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteMessageTemplateHeaders) SetXAcsAligenieAccessToken(v string) *DeleteMessageTemplateHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *DeleteMessageTemplateHeaders) SetAuthorization(v string) *DeleteMessageTemplateHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteMessageTemplateRequest struct {
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteMessageTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMessageTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMessageTemplateRequest) SetTemplateId(v int64) *DeleteMessageTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteMessageTemplateResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DeleteMessageTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMessageTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMessageTemplateResponseBody) SetMessage(v string) *DeleteMessageTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteMessageTemplateResponseBody) SetRequestId(v string) *DeleteMessageTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMessageTemplateResponseBody) SetResult(v bool) *DeleteMessageTemplateResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteMessageTemplateResponseBody) SetStatusCode(v int32) *DeleteMessageTemplateResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteMessageTemplateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMessageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMessageTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMessageTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMessageTemplateResponse) SetHeaders(v map[string]*string) *DeleteMessageTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMessageTemplateResponse) SetStatusCode(v int32) *DeleteMessageTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMessageTemplateResponse) SetBody(v *DeleteMessageTemplateResponseBody) *DeleteMessageTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRcuSceneHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteRcuSceneHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRcuSceneHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRcuSceneHeaders) SetCommonHeaders(v map[string]*string) *DeleteRcuSceneHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteRcuSceneHeaders) SetXAcsAligenieAccessToken(v string) *DeleteRcuSceneHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *DeleteRcuSceneHeaders) SetAuthorization(v string) *DeleteRcuSceneHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteRcuSceneRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s DeleteRcuSceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRcuSceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRcuSceneRequest) SetHotelId(v string) *DeleteRcuSceneRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *DeleteRcuSceneRequest) SetSceneId(v string) *DeleteRcuSceneRequest {
+	s.SceneId = &v
+	return s
+}
+
+type DeleteRcuSceneResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DeleteRcuSceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRcuSceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRcuSceneResponseBody) SetMessage(v string) *DeleteRcuSceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteRcuSceneResponseBody) SetRequestId(v string) *DeleteRcuSceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRcuSceneResponseBody) SetResult(v bool) *DeleteRcuSceneResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteRcuSceneResponseBody) SetStatusCode(v int32) *DeleteRcuSceneResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteRcuSceneResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRcuSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRcuSceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRcuSceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRcuSceneResponse) SetHeaders(v map[string]*string) *DeleteRcuSceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRcuSceneResponse) SetStatusCode(v int32) *DeleteRcuSceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRcuSceneResponse) SetBody(v *DeleteRcuSceneResponseBody) *DeleteRcuSceneResponse {
+	s.Body = v
+	return s
+}
 
 type DeviceControlHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
@@ -67,8 +3706,6 @@ func (s *DeviceControlRequest) SetUserInfo(v *DeviceControlRequestUserInfo) *Dev
 type DeviceControlRequestPayload struct {
 	Category     *string            `json:"Category,omitempty" xml:"Category,omitempty"`
 	Cmd          *string            `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	Current      *string            `json:"Current,omitempty" xml:"Current,omitempty"`
-	Device       *string            `json:"Device,omitempty" xml:"Device,omitempty"`
 	DeviceNumber *string            `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
 	ExtendInfo   *string            `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	Location     *string            `json:"Location,omitempty" xml:"Location,omitempty"`
@@ -90,16 +3727,6 @@ func (s *DeviceControlRequestPayload) SetCategory(v string) *DeviceControlReques
 
 func (s *DeviceControlRequestPayload) SetCmd(v string) *DeviceControlRequestPayload {
 	s.Cmd = &v
-	return s
-}
-
-func (s *DeviceControlRequestPayload) SetCurrent(v string) *DeviceControlRequestPayload {
-	s.Current = &v
-	return s
-}
-
-func (s *DeviceControlRequestPayload) SetDevice(v string) *DeviceControlRequestPayload {
-	s.Device = &v
 	return s
 }
 
@@ -264,6 +3891,1090 @@ func (s *DeviceControlResponse) SetStatusCode(v int32) *DeviceControlResponse {
 }
 
 func (s *DeviceControlResponse) SetBody(v *DeviceControlResponseBody) *DeviceControlResponse {
+	s.Body = v
+	return s
+}
+
+type GetBasicInfoQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetBasicInfoQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicInfoQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicInfoQAHeaders) SetCommonHeaders(v map[string]*string) *GetBasicInfoQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetBasicInfoQAHeaders) SetXAcsAligenieAccessToken(v string) *GetBasicInfoQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetBasicInfoQAHeaders) SetAuthorization(v string) *GetBasicInfoQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetBasicInfoQARequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s GetBasicInfoQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicInfoQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicInfoQARequest) SetHotelId(v string) *GetBasicInfoQARequest {
+	s.HotelId = &v
+	return s
+}
+
+type GetBasicInfoQAResponseBody struct {
+	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *GetBasicInfoQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                            `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetBasicInfoQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicInfoQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicInfoQAResponseBody) SetMessage(v string) *GetBasicInfoQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBody) SetRequestId(v string) *GetBasicInfoQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBody) SetResult(v *GetBasicInfoQAResponseBodyResult) *GetBasicInfoQAResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBody) SetStatusCode(v int32) *GetBasicInfoQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetBasicInfoQAResponseBodyResult struct {
+	CheckInTime       *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
+	CheckOutTime      *string `json:"CheckOutTime,omitempty" xml:"CheckOutTime,omitempty"`
+	HotelAddress      *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelIntroduction *string `json:"HotelIntroduction,omitempty" xml:"HotelIntroduction,omitempty"`
+	HotelMember       *string `json:"HotelMember,omitempty" xml:"HotelMember,omitempty"`
+	HotelService      *string `json:"HotelService,omitempty" xml:"HotelService,omitempty"`
+	ParkingExpenses   *string `json:"ParkingExpenses,omitempty" xml:"ParkingExpenses,omitempty"`
+	ParkingPosition   *string `json:"ParkingPosition,omitempty" xml:"ParkingPosition,omitempty"`
+	PhoneNumber       *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	WifiName          *string `json:"WifiName,omitempty" xml:"WifiName,omitempty"`
+	WifiPassword      *string `json:"WifiPassword,omitempty" xml:"WifiPassword,omitempty"`
+}
+
+func (s GetBasicInfoQAResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicInfoQAResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetCheckInTime(v string) *GetBasicInfoQAResponseBodyResult {
+	s.CheckInTime = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetCheckOutTime(v string) *GetBasicInfoQAResponseBodyResult {
+	s.CheckOutTime = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetHotelAddress(v string) *GetBasicInfoQAResponseBodyResult {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetHotelIntroduction(v string) *GetBasicInfoQAResponseBodyResult {
+	s.HotelIntroduction = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetHotelMember(v string) *GetBasicInfoQAResponseBodyResult {
+	s.HotelMember = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetHotelService(v string) *GetBasicInfoQAResponseBodyResult {
+	s.HotelService = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetParkingExpenses(v string) *GetBasicInfoQAResponseBodyResult {
+	s.ParkingExpenses = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetParkingPosition(v string) *GetBasicInfoQAResponseBodyResult {
+	s.ParkingPosition = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetPhoneNumber(v string) *GetBasicInfoQAResponseBodyResult {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetWifiName(v string) *GetBasicInfoQAResponseBodyResult {
+	s.WifiName = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponseBodyResult) SetWifiPassword(v string) *GetBasicInfoQAResponseBodyResult {
+	s.WifiPassword = &v
+	return s
+}
+
+type GetBasicInfoQAResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBasicInfoQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBasicInfoQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicInfoQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicInfoQAResponse) SetHeaders(v map[string]*string) *GetBasicInfoQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBasicInfoQAResponse) SetStatusCode(v int32) *GetBasicInfoQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBasicInfoQAResponse) SetBody(v *GetBasicInfoQAResponseBody) *GetBasicInfoQAResponse {
+	s.Body = v
+	return s
+}
+
+type GetCartoonHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetCartoonHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCartoonHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetCartoonHeaders) SetCommonHeaders(v map[string]*string) *GetCartoonHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetCartoonHeaders) SetXAcsAligenieAccessToken(v string) *GetCartoonHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetCartoonHeaders) SetAuthorization(v string) *GetCartoonHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetCartoonRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s GetCartoonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCartoonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCartoonRequest) SetHotelId(v string) *GetCartoonRequest {
+	s.HotelId = &v
+	return s
+}
+
+type GetCartoonResponseBody struct {
+	Message    *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *GetCartoonResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                        `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetCartoonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCartoonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCartoonResponseBody) SetMessage(v string) *GetCartoonResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCartoonResponseBody) SetRequestId(v string) *GetCartoonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCartoonResponseBody) SetResult(v *GetCartoonResponseBodyResult) *GetCartoonResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetCartoonResponseBody) SetStatusCode(v int32) *GetCartoonResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetCartoonResponseBodyResult struct {
+	StartVideoMd5 *string `json:"StartVideoMd5,omitempty" xml:"StartVideoMd5,omitempty"`
+	StartVideoUrl *string `json:"StartVideoUrl,omitempty" xml:"StartVideoUrl,omitempty"`
+}
+
+func (s GetCartoonResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCartoonResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCartoonResponseBodyResult) SetStartVideoMd5(v string) *GetCartoonResponseBodyResult {
+	s.StartVideoMd5 = &v
+	return s
+}
+
+func (s *GetCartoonResponseBodyResult) SetStartVideoUrl(v string) *GetCartoonResponseBodyResult {
+	s.StartVideoUrl = &v
+	return s
+}
+
+type GetCartoonResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCartoonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCartoonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCartoonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCartoonResponse) SetHeaders(v map[string]*string) *GetCartoonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCartoonResponse) SetStatusCode(v int32) *GetCartoonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCartoonResponse) SetBody(v *GetCartoonResponseBody) *GetCartoonResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotelContactByGenieDeviceHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelContactByGenieDeviceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceHeaders) SetCommonHeaders(v map[string]*string) *GetHotelContactByGenieDeviceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelContactByGenieDeviceHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceHeaders) SetAuthorization(v string) *GetHotelContactByGenieDeviceHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelContactByGenieDeviceRequest struct {
+	DeviceInfo *GetHotelContactByGenieDeviceRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	UserInfo   *GetHotelContactByGenieDeviceRequestUserInfo   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s GetHotelContactByGenieDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceRequest) SetDeviceInfo(v *GetHotelContactByGenieDeviceRequestDeviceInfo) *GetHotelContactByGenieDeviceRequest {
+	s.DeviceInfo = v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequest) SetUserInfo(v *GetHotelContactByGenieDeviceRequestUserInfo) *GetHotelContactByGenieDeviceRequest {
+	s.UserInfo = v
+	return s
+}
+
+type GetHotelContactByGenieDeviceRequestDeviceInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s GetHotelContactByGenieDeviceRequestDeviceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceRequestDeviceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceRequestDeviceInfo) SetEncodeKey(v string) *GetHotelContactByGenieDeviceRequestDeviceInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestDeviceInfo) SetEncodeType(v string) *GetHotelContactByGenieDeviceRequestDeviceInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestDeviceInfo) SetId(v string) *GetHotelContactByGenieDeviceRequestDeviceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestDeviceInfo) SetIdType(v string) *GetHotelContactByGenieDeviceRequestDeviceInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestDeviceInfo) SetOrganizationId(v string) *GetHotelContactByGenieDeviceRequestDeviceInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetHotelContactByGenieDeviceRequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s GetHotelContactByGenieDeviceRequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceRequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceRequestUserInfo) SetEncodeKey(v string) *GetHotelContactByGenieDeviceRequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestUserInfo) SetEncodeType(v string) *GetHotelContactByGenieDeviceRequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestUserInfo) SetId(v string) *GetHotelContactByGenieDeviceRequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestUserInfo) SetIdType(v string) *GetHotelContactByGenieDeviceRequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceRequestUserInfo) SetOrganizationId(v string) *GetHotelContactByGenieDeviceRequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetHotelContactByGenieDeviceShrinkRequest struct {
+	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	UserInfoShrink   *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s GetHotelContactByGenieDeviceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceShrinkRequest) SetDeviceInfoShrink(v string) *GetHotelContactByGenieDeviceShrinkRequest {
+	s.DeviceInfoShrink = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceShrinkRequest) SetUserInfoShrink(v string) *GetHotelContactByGenieDeviceShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type GetHotelContactByGenieDeviceResponseBody struct {
+	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *GetHotelContactByGenieDeviceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                                          `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetHotelContactByGenieDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBody) SetMessage(v string) *GetHotelContactByGenieDeviceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBody) SetRequestId(v string) *GetHotelContactByGenieDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBody) SetResult(v *GetHotelContactByGenieDeviceResponseBodyResult) *GetHotelContactByGenieDeviceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBody) SetStatusCode(v int32) *GetHotelContactByGenieDeviceResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetHotelContactByGenieDeviceResponseBodyResult struct {
+	ExpireAt    *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Icon        *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Number      *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetHotelContactByGenieDeviceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetExpireAt(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetGmtCreate(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetGmtModified(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetHotelId(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetIcon(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.Icon = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetId(v int64) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetName(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetNumber(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.Number = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetStatus(v int32) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetType(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponseBodyResult) SetUuid(v string) *GetHotelContactByGenieDeviceResponseBodyResult {
+	s.Uuid = &v
+	return s
+}
+
+type GetHotelContactByGenieDeviceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelContactByGenieDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelContactByGenieDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByGenieDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByGenieDeviceResponse) SetHeaders(v map[string]*string) *GetHotelContactByGenieDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponse) SetStatusCode(v int32) *GetHotelContactByGenieDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelContactByGenieDeviceResponse) SetBody(v *GetHotelContactByGenieDeviceResponseBody) *GetHotelContactByGenieDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotelContactByNumberHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelContactByNumberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByNumberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByNumberHeaders) SetCommonHeaders(v map[string]*string) *GetHotelContactByNumberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelContactByNumberHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelContactByNumberHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberHeaders) SetAuthorization(v string) *GetHotelContactByNumberHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelContactByNumberRequest struct {
+	Number   *string                                 `json:"Number,omitempty" xml:"Number,omitempty"`
+	UserInfo *GetHotelContactByNumberRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s GetHotelContactByNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByNumberRequest) SetNumber(v string) *GetHotelContactByNumberRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberRequest) SetUserInfo(v *GetHotelContactByNumberRequestUserInfo) *GetHotelContactByNumberRequest {
+	s.UserInfo = v
+	return s
+}
+
+type GetHotelContactByNumberRequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s GetHotelContactByNumberRequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByNumberRequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByNumberRequestUserInfo) SetEncodeKey(v string) *GetHotelContactByNumberRequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberRequestUserInfo) SetEncodeType(v string) *GetHotelContactByNumberRequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberRequestUserInfo) SetId(v string) *GetHotelContactByNumberRequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberRequestUserInfo) SetIdType(v string) *GetHotelContactByNumberRequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberRequestUserInfo) SetOrganizationId(v string) *GetHotelContactByNumberRequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetHotelContactByNumberShrinkRequest struct {
+	Number         *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s GetHotelContactByNumberShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByNumberShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByNumberShrinkRequest) SetNumber(v string) *GetHotelContactByNumberShrinkRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberShrinkRequest) SetUserInfoShrink(v string) *GetHotelContactByNumberShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type GetHotelContactByNumberResponseBody struct {
+	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *GetHotelContactByNumberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                                     `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetHotelContactByNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByNumberResponseBody) SetMessage(v string) *GetHotelContactByNumberResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBody) SetRequestId(v string) *GetHotelContactByNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBody) SetResult(v *GetHotelContactByNumberResponseBodyResult) *GetHotelContactByNumberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBody) SetStatusCode(v int32) *GetHotelContactByNumberResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetHotelContactByNumberResponseBodyResult struct {
+	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Icon     *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetHotelContactByNumberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByNumberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetExpireAt(v string) *GetHotelContactByNumberResponseBodyResult {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetHotelId(v string) *GetHotelContactByNumberResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetIcon(v string) *GetHotelContactByNumberResponseBodyResult {
+	s.Icon = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetName(v string) *GetHotelContactByNumberResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetNumber(v string) *GetHotelContactByNumberResponseBodyResult {
+	s.Number = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetStatus(v int32) *GetHotelContactByNumberResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetType(v string) *GetHotelContactByNumberResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponseBodyResult) SetUuid(v string) *GetHotelContactByNumberResponseBodyResult {
+	s.Uuid = &v
+	return s
+}
+
+type GetHotelContactByNumberResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelContactByNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelContactByNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactByNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactByNumberResponse) SetHeaders(v map[string]*string) *GetHotelContactByNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponse) SetStatusCode(v int32) *GetHotelContactByNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelContactByNumberResponse) SetBody(v *GetHotelContactByNumberResponseBody) *GetHotelContactByNumberResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotelContactsHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelContactsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactsHeaders) SetCommonHeaders(v map[string]*string) *GetHotelContactsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelContactsHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelContactsHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelContactsHeaders) SetAuthorization(v string) *GetHotelContactsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelContactsRequest struct {
+	UserInfo *GetHotelContactsRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s GetHotelContactsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactsRequest) SetUserInfo(v *GetHotelContactsRequestUserInfo) *GetHotelContactsRequest {
+	s.UserInfo = v
+	return s
+}
+
+type GetHotelContactsRequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s GetHotelContactsRequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactsRequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactsRequestUserInfo) SetEncodeKey(v string) *GetHotelContactsRequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *GetHotelContactsRequestUserInfo) SetEncodeType(v string) *GetHotelContactsRequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetHotelContactsRequestUserInfo) SetId(v string) *GetHotelContactsRequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelContactsRequestUserInfo) SetIdType(v string) *GetHotelContactsRequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *GetHotelContactsRequestUserInfo) SetOrganizationId(v string) *GetHotelContactsRequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetHotelContactsShrinkRequest struct {
+	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s GetHotelContactsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactsShrinkRequest) SetUserInfoShrink(v string) *GetHotelContactsShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type GetHotelContactsResponseBody struct {
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*GetHotelContactsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                                `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetHotelContactsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactsResponseBody) SetMessage(v string) *GetHotelContactsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBody) SetRequestId(v string) *GetHotelContactsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBody) SetResult(v []*GetHotelContactsResponseBodyResult) *GetHotelContactsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetHotelContactsResponseBody) SetStatusCode(v int32) *GetHotelContactsResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetHotelContactsResponseBodyResult struct {
+	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Icon     *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetHotelContactsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetExpireAt(v string) *GetHotelContactsResponseBodyResult {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetHotelId(v string) *GetHotelContactsResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetIcon(v string) *GetHotelContactsResponseBodyResult {
+	s.Icon = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetName(v string) *GetHotelContactsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetNumber(v string) *GetHotelContactsResponseBodyResult {
+	s.Number = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetStatus(v int32) *GetHotelContactsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetType(v string) *GetHotelContactsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetHotelContactsResponseBodyResult) SetUuid(v string) *GetHotelContactsResponseBodyResult {
+	s.Uuid = &v
+	return s
+}
+
+type GetHotelContactsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelContactsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelContactsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelContactsResponse) SetHeaders(v map[string]*string) *GetHotelContactsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelContactsResponse) SetStatusCode(v int32) *GetHotelContactsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelContactsResponse) SetBody(v *GetHotelContactsResponseBody) *GetHotelContactsResponse {
 	s.Body = v
 	return s
 }
@@ -494,6 +5205,372 @@ func (s *GetHotelHomeBackImageAndModesResponse) SetBody(v *GetHotelHomeBackImage
 	return s
 }
 
+type GetHotelNoticeHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelNoticeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeHeaders) SetCommonHeaders(v map[string]*string) *GetHotelNoticeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelNoticeHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelNoticeHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelNoticeHeaders) SetAuthorization(v string) *GetHotelNoticeHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelNoticeRequest struct {
+	UserInfo *GetHotelNoticeRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s GetHotelNoticeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeRequest) SetUserInfo(v *GetHotelNoticeRequestUserInfo) *GetHotelNoticeRequest {
+	s.UserInfo = v
+	return s
+}
+
+type GetHotelNoticeRequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s GetHotelNoticeRequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeRequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeRequestUserInfo) SetEncodeKey(v string) *GetHotelNoticeRequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *GetHotelNoticeRequestUserInfo) SetEncodeType(v string) *GetHotelNoticeRequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetHotelNoticeRequestUserInfo) SetId(v string) *GetHotelNoticeRequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelNoticeRequestUserInfo) SetIdType(v string) *GetHotelNoticeRequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *GetHotelNoticeRequestUserInfo) SetOrganizationId(v string) *GetHotelNoticeRequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetHotelNoticeShrinkRequest struct {
+	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s GetHotelNoticeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeShrinkRequest) SetUserInfoShrink(v string) *GetHotelNoticeShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type GetHotelNoticeResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s GetHotelNoticeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeResponseBody) SetCode(v int32) *GetHotelNoticeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHotelNoticeResponseBody) SetMessage(v string) *GetHotelNoticeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelNoticeResponseBody) SetRequestId(v string) *GetHotelNoticeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelNoticeResponseBody) SetResult(v string) *GetHotelNoticeResponseBody {
+	s.Result = &v
+	return s
+}
+
+type GetHotelNoticeResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelNoticeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelNoticeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeResponse) SetHeaders(v map[string]*string) *GetHotelNoticeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelNoticeResponse) SetStatusCode(v int32) *GetHotelNoticeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelNoticeResponse) SetBody(v *GetHotelNoticeResponseBody) *GetHotelNoticeResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotelNoticeV2Headers struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelNoticeV2Headers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeV2Headers) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeV2Headers) SetCommonHeaders(v map[string]*string) *GetHotelNoticeV2Headers {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelNoticeV2Headers) SetXAcsAligenieAccessToken(v string) *GetHotelNoticeV2Headers {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2Headers) SetAuthorization(v string) *GetHotelNoticeV2Headers {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelNoticeV2Request struct {
+	UserInfo *GetHotelNoticeV2RequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s GetHotelNoticeV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeV2Request) SetUserInfo(v *GetHotelNoticeV2RequestUserInfo) *GetHotelNoticeV2Request {
+	s.UserInfo = v
+	return s
+}
+
+type GetHotelNoticeV2RequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s GetHotelNoticeV2RequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeV2RequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeV2RequestUserInfo) SetEncodeKey(v string) *GetHotelNoticeV2RequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2RequestUserInfo) SetEncodeType(v string) *GetHotelNoticeV2RequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2RequestUserInfo) SetId(v string) *GetHotelNoticeV2RequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2RequestUserInfo) SetIdType(v string) *GetHotelNoticeV2RequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2RequestUserInfo) SetOrganizationId(v string) *GetHotelNoticeV2RequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetHotelNoticeV2ShrinkRequest struct {
+	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s GetHotelNoticeV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeV2ShrinkRequest) SetUserInfoShrink(v string) *GetHotelNoticeV2ShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type GetHotelNoticeV2ResponseBody struct {
+	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *GetHotelNoticeV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                              `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetHotelNoticeV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeV2ResponseBody) SetMessage(v string) *GetHotelNoticeV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2ResponseBody) SetRequestId(v string) *GetHotelNoticeV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2ResponseBody) SetResult(v *GetHotelNoticeV2ResponseBodyResult) *GetHotelNoticeV2ResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetHotelNoticeV2ResponseBody) SetStatusCode(v int32) *GetHotelNoticeV2ResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetHotelNoticeV2ResponseBodyResult struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetHotelNoticeV2ResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeV2ResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeV2ResponseBodyResult) SetContent(v string) *GetHotelNoticeV2ResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2ResponseBodyResult) SetHotelId(v string) *GetHotelNoticeV2ResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2ResponseBodyResult) SetTitle(v string) *GetHotelNoticeV2ResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+type GetHotelNoticeV2Response struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelNoticeV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelNoticeV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelNoticeV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelNoticeV2Response) SetHeaders(v map[string]*string) *GetHotelNoticeV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelNoticeV2Response) SetStatusCode(v int32) *GetHotelNoticeV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelNoticeV2Response) SetBody(v *GetHotelNoticeV2ResponseBody) *GetHotelNoticeV2Response {
+	s.Body = v
+	return s
+}
+
 type GetHotelOrderDetailHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -679,6 +5756,169 @@ func (s *GetHotelOrderDetailResponse) SetBody(v *GetHotelOrderDetailResponseBody
 	return s
 }
 
+type GetHotelRoomDeviceHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelRoomDeviceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelRoomDeviceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelRoomDeviceHeaders) SetCommonHeaders(v map[string]*string) *GetHotelRoomDeviceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelRoomDeviceHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelRoomDeviceHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceHeaders) SetAuthorization(v string) *GetHotelRoomDeviceHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelRoomDeviceRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s GetHotelRoomDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelRoomDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelRoomDeviceRequest) SetHotelId(v string) *GetHotelRoomDeviceRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceRequest) SetRoomNo(v string) *GetHotelRoomDeviceRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type GetHotelRoomDeviceResponseBody struct {
+	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*GetHotelRoomDeviceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s GetHotelRoomDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelRoomDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelRoomDeviceResponseBody) SetCode(v int32) *GetHotelRoomDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBody) SetMessage(v string) *GetHotelRoomDeviceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBody) SetRequestId(v string) *GetHotelRoomDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBody) SetResult(v []*GetHotelRoomDeviceResponseBodyResult) *GetHotelRoomDeviceResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetHotelRoomDeviceResponseBodyResult struct {
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Mac             *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	OnlineStatus    *int32  `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s GetHotelRoomDeviceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelRoomDeviceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelRoomDeviceResponseBodyResult) SetFirmwareVersion(v string) *GetHotelRoomDeviceResponseBodyResult {
+	s.FirmwareVersion = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBodyResult) SetHotelId(v string) *GetHotelRoomDeviceResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBodyResult) SetMac(v string) *GetHotelRoomDeviceResponseBodyResult {
+	s.Mac = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBodyResult) SetOnlineStatus(v int32) *GetHotelRoomDeviceResponseBodyResult {
+	s.OnlineStatus = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBodyResult) SetRoomNo(v string) *GetHotelRoomDeviceResponseBodyResult {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponseBodyResult) SetSn(v string) *GetHotelRoomDeviceResponseBodyResult {
+	s.Sn = &v
+	return s
+}
+
+type GetHotelRoomDeviceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelRoomDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelRoomDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelRoomDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelRoomDeviceResponse) SetHeaders(v map[string]*string) *GetHotelRoomDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponse) SetStatusCode(v int32) *GetHotelRoomDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelRoomDeviceResponse) SetBody(v *GetHotelRoomDeviceResponseBody) *GetHotelRoomDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type GetHotelSampleUtterancesHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -843,6 +6083,265 @@ func (s *GetHotelSampleUtterancesResponse) SetStatusCode(v int32) *GetHotelSampl
 }
 
 func (s *GetHotelSampleUtterancesResponse) SetBody(v *GetHotelSampleUtterancesResponseBody) *GetHotelSampleUtterancesResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotelSceneItemDetailHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelSceneItemDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSceneItemDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSceneItemDetailHeaders) SetCommonHeaders(v map[string]*string) *GetHotelSceneItemDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelSceneItemDetailHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailHeaders) SetAuthorization(v string) *GetHotelSceneItemDetailHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelSceneItemDetailRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ItemId  *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetHotelSceneItemDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSceneItemDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSceneItemDetailRequest) SetHotelId(v string) *GetHotelSceneItemDetailRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailRequest) SetItemId(v int64) *GetHotelSceneItemDetailRequest {
+	s.ItemId = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailRequest) SetName(v string) *GetHotelSceneItemDetailRequest {
+	s.Name = &v
+	return s
+}
+
+type GetHotelSceneItemDetailResponseBody struct {
+	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetHotelSceneItemDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetHotelSceneItemDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSceneItemDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSceneItemDetailResponseBody) SetCode(v int32) *GetHotelSceneItemDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBody) SetMessage(v string) *GetHotelSceneItemDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBody) SetRequestId(v string) *GetHotelSceneItemDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBody) SetResult(v *GetHotelSceneItemDetailResponseBodyResult) *GetHotelSceneItemDetailResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetHotelSceneItemDetailResponseBodyResult struct {
+	Category     *string                                                  `json:"Category,omitempty" xml:"Category,omitempty"`
+	DialogueList []*GetHotelSceneItemDetailResponseBodyResultDialogueList `json:"DialogueList,omitempty" xml:"DialogueList,omitempty" type:"Repeated"`
+	Icon         *string                                                  `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Id           *int64                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name         *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Price        *int64                                                   `json:"Price,omitempty" xml:"Price,omitempty"`
+	Status       *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type         *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime   *int64                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetHotelSceneItemDetailResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSceneItemDetailResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetCategory(v string) *GetHotelSceneItemDetailResponseBodyResult {
+	s.Category = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetDialogueList(v []*GetHotelSceneItemDetailResponseBodyResultDialogueList) *GetHotelSceneItemDetailResponseBodyResult {
+	s.DialogueList = v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetIcon(v string) *GetHotelSceneItemDetailResponseBodyResult {
+	s.Icon = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetId(v int64) *GetHotelSceneItemDetailResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetName(v string) *GetHotelSceneItemDetailResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetPrice(v int64) *GetHotelSceneItemDetailResponseBodyResult {
+	s.Price = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetStatus(v string) *GetHotelSceneItemDetailResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetType(v string) *GetHotelSceneItemDetailResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResult) SetUpdateTime(v int64) *GetHotelSceneItemDetailResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetHotelSceneItemDetailResponseBodyResultDialogueList struct {
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DialogueId        *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	NoAnswer          *string `json:"NoAnswer,omitempty" xml:"NoAnswer,omitempty"`
+	NoAnswerTemplate  *string `json:"NoAnswerTemplate,omitempty" xml:"NoAnswerTemplate,omitempty"`
+	Process           *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
+	Question          *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UpdateTime        *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	YesAnswer         *string `json:"YesAnswer,omitempty" xml:"YesAnswer,omitempty"`
+	YesAnswerTemplate *string `json:"YesAnswerTemplate,omitempty" xml:"YesAnswerTemplate,omitempty"`
+}
+
+func (s GetHotelSceneItemDetailResponseBodyResultDialogueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSceneItemDetailResponseBodyResultDialogueList) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetCreateTime(v int64) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetDialogueId(v string) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.DialogueId = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetNoAnswer(v string) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.NoAnswer = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetNoAnswerTemplate(v string) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.NoAnswerTemplate = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetProcess(v int32) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.Process = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetQuestion(v string) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.Question = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetServiceId(v string) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetUpdateTime(v int64) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetYesAnswer(v string) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.YesAnswer = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponseBodyResultDialogueList) SetYesAnswerTemplate(v string) *GetHotelSceneItemDetailResponseBodyResultDialogueList {
+	s.YesAnswerTemplate = &v
+	return s
+}
+
+type GetHotelSceneItemDetailResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelSceneItemDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelSceneItemDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSceneItemDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSceneItemDetailResponse) SetHeaders(v map[string]*string) *GetHotelSceneItemDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponse) SetStatusCode(v int32) *GetHotelSceneItemDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelSceneItemDetailResponse) SetBody(v *GetHotelSceneItemDetailResponseBody) *GetHotelSceneItemDetailResponse {
 	s.Body = v
 	return s
 }
@@ -1038,6 +6537,3274 @@ func (s *GetHotelScreenSaverResponse) SetBody(v *GetHotelScreenSaverResponseBody
 	return s
 }
 
+type GetHotelScreenSaverStyleHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelScreenSaverStyleHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelScreenSaverStyleHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelScreenSaverStyleHeaders) SetCommonHeaders(v map[string]*string) *GetHotelScreenSaverStyleHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelScreenSaverStyleHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleHeaders) SetAuthorization(v string) *GetHotelScreenSaverStyleHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelScreenSaverStyleRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s GetHotelScreenSaverStyleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelScreenSaverStyleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelScreenSaverStyleRequest) SetHotelId(v string) *GetHotelScreenSaverStyleRequest {
+	s.HotelId = &v
+	return s
+}
+
+type GetHotelScreenSaverStyleResponseBody struct {
+	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*GetHotelScreenSaverStyleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                                        `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetHotelScreenSaverStyleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelScreenSaverStyleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelScreenSaverStyleResponseBody) SetMessage(v string) *GetHotelScreenSaverStyleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponseBody) SetRequestId(v string) *GetHotelScreenSaverStyleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponseBody) SetResult(v []*GetHotelScreenSaverStyleResponseBodyResult) *GetHotelScreenSaverStyleResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponseBody) SetStatusCode(v int32) *GetHotelScreenSaverStyleResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetHotelScreenSaverStyleResponseBodyResult struct {
+	CnName *string `json:"CnName,omitempty" xml:"CnName,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	PicUrl *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+}
+
+func (s GetHotelScreenSaverStyleResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelScreenSaverStyleResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelScreenSaverStyleResponseBodyResult) SetCnName(v string) *GetHotelScreenSaverStyleResponseBodyResult {
+	s.CnName = &v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponseBodyResult) SetCode(v string) *GetHotelScreenSaverStyleResponseBodyResult {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponseBodyResult) SetEnName(v string) *GetHotelScreenSaverStyleResponseBodyResult {
+	s.EnName = &v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponseBodyResult) SetPicUrl(v string) *GetHotelScreenSaverStyleResponseBodyResult {
+	s.PicUrl = &v
+	return s
+}
+
+type GetHotelScreenSaverStyleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelScreenSaverStyleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelScreenSaverStyleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelScreenSaverStyleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelScreenSaverStyleResponse) SetHeaders(v map[string]*string) *GetHotelScreenSaverStyleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponse) SetStatusCode(v int32) *GetHotelScreenSaverStyleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelScreenSaverStyleResponse) SetBody(v *GetHotelScreenSaverStyleResponseBody) *GetHotelScreenSaverStyleResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotelSettingHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetHotelSettingHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSettingHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSettingHeaders) SetCommonHeaders(v map[string]*string) *GetHotelSettingHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotelSettingHeaders) SetXAcsAligenieAccessToken(v string) *GetHotelSettingHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetHotelSettingHeaders) SetAuthorization(v string) *GetHotelSettingHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetHotelSettingRequest struct {
+	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+}
+
+func (s GetHotelSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSettingRequest) SetHotelId(v string) *GetHotelSettingRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelSettingRequest) SetSettingType(v string) *GetHotelSettingRequest {
+	s.SettingType = &v
+	return s
+}
+
+type GetHotelSettingResponseBody struct {
+	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *GetHotelSettingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetHotelSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSettingResponseBody) SetMessage(v string) *GetHotelSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBody) SetRequestId(v string) *GetHotelSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBody) SetResult(v *GetHotelSettingResponseBodyResult) *GetHotelSettingResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetHotelSettingResponseBody) SetStatusCode(v int32) *GetHotelSettingResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetHotelSettingResponseBodyResult struct {
+	DeleteToken         *int64                                             `json:"DeleteToken,omitempty" xml:"DeleteToken,omitempty"`
+	ExtInfo             *string                                            `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	HotelDeviceModeList []*string                                          `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
+	HotelId             *string                                            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaver    *GetHotelSettingResponseBodyResultHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
+	NightMode           *GetHotelSettingResponseBodyResultNightMode        `json:"NightMode,omitempty" xml:"NightMode,omitempty" type:"Struct"`
+	SettingType         *string                                            `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+	Value               *string                                            `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetHotelSettingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSettingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetDeleteToken(v int64) *GetHotelSettingResponseBodyResult {
+	s.DeleteToken = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetExtInfo(v string) *GetHotelSettingResponseBodyResult {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetHotelDeviceModeList(v []*string) *GetHotelSettingResponseBodyResult {
+	s.HotelDeviceModeList = v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetHotelId(v string) *GetHotelSettingResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetHotelScreenSaver(v *GetHotelSettingResponseBodyResultHotelScreenSaver) *GetHotelSettingResponseBodyResult {
+	s.HotelScreenSaver = v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetNightMode(v *GetHotelSettingResponseBodyResultNightMode) *GetHotelSettingResponseBodyResult {
+	s.NightMode = v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetSettingType(v string) *GetHotelSettingResponseBodyResult {
+	s.SettingType = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResult) SetValue(v string) *GetHotelSettingResponseBodyResult {
+	s.Value = &v
+	return s
+}
+
+type GetHotelSettingResponseBodyResultHotelScreenSaver struct {
+	ScreenSaverPicUrl *string `json:"ScreenSaverPicUrl,omitempty" xml:"ScreenSaverPicUrl,omitempty"`
+	ScreenSaverStyle  *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
+}
+
+func (s GetHotelSettingResponseBodyResultHotelScreenSaver) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSettingResponseBodyResultHotelScreenSaver) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSettingResponseBodyResultHotelScreenSaver) SetScreenSaverPicUrl(v string) *GetHotelSettingResponseBodyResultHotelScreenSaver {
+	s.ScreenSaverPicUrl = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResultHotelScreenSaver) SetScreenSaverStyle(v string) *GetHotelSettingResponseBodyResultHotelScreenSaver {
+	s.ScreenSaverStyle = &v
+	return s
+}
+
+type GetHotelSettingResponseBodyResultNightMode struct {
+	// 夜间模式下的默认亮度
+	DefaultBright *string `json:"DefaultBright,omitempty" xml:"DefaultBright,omitempty"`
+	// 夜间模式下的默认音量
+	DefaultVolume *string `json:"DefaultVolume,omitempty" xml:"DefaultVolume,omitempty"`
+	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	End           *string `json:"End,omitempty" xml:"End,omitempty"`
+	StandbyAction *string `json:"StandbyAction,omitempty" xml:"StandbyAction,omitempty"`
+	Start         *string `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s GetHotelSettingResponseBodyResultNightMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSettingResponseBodyResultNightMode) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSettingResponseBodyResultNightMode) SetDefaultBright(v string) *GetHotelSettingResponseBodyResultNightMode {
+	s.DefaultBright = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResultNightMode) SetDefaultVolume(v string) *GetHotelSettingResponseBodyResultNightMode {
+	s.DefaultVolume = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResultNightMode) SetEnable(v bool) *GetHotelSettingResponseBodyResultNightMode {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResultNightMode) SetEnd(v string) *GetHotelSettingResponseBodyResultNightMode {
+	s.End = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResultNightMode) SetStandbyAction(v string) *GetHotelSettingResponseBodyResultNightMode {
+	s.StandbyAction = &v
+	return s
+}
+
+func (s *GetHotelSettingResponseBodyResultNightMode) SetStart(v string) *GetHotelSettingResponseBodyResultNightMode {
+	s.Start = &v
+	return s
+}
+
+type GetHotelSettingResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHotelSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotelSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotelSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotelSettingResponse) SetHeaders(v map[string]*string) *GetHotelSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotelSettingResponse) SetStatusCode(v int32) *GetHotelSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotelSettingResponse) SetBody(v *GetHotelSettingResponseBody) *GetHotelSettingResponse {
+	s.Body = v
+	return s
+}
+
+type GetRelationProductListHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetRelationProductListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRelationProductListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetRelationProductListHeaders) SetCommonHeaders(v map[string]*string) *GetRelationProductListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetRelationProductListHeaders) SetXAcsAligenieAccessToken(v string) *GetRelationProductListHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetRelationProductListHeaders) SetAuthorization(v string) *GetRelationProductListHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetRelationProductListResponseBody struct {
+	Extentions map[string]interface{}                      `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*GetRelationProductListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                                      `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetRelationProductListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRelationProductListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRelationProductListResponseBody) SetExtentions(v map[string]interface{}) *GetRelationProductListResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *GetRelationProductListResponseBody) SetMessage(v string) *GetRelationProductListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRelationProductListResponseBody) SetRequestId(v string) *GetRelationProductListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRelationProductListResponseBody) SetResult(v []*GetRelationProductListResponseBodyResult) *GetRelationProductListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetRelationProductListResponseBody) SetStatusCode(v int32) *GetRelationProductListResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetRelationProductListResponseBodyResult struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Pk   *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
+}
+
+func (s GetRelationProductListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRelationProductListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRelationProductListResponseBodyResult) SetName(v string) *GetRelationProductListResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetRelationProductListResponseBodyResult) SetPk(v string) *GetRelationProductListResponseBodyResult {
+	s.Pk = &v
+	return s
+}
+
+type GetRelationProductListResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRelationProductListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRelationProductListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRelationProductListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRelationProductListResponse) SetHeaders(v map[string]*string) *GetRelationProductListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRelationProductListResponse) SetStatusCode(v int32) *GetRelationProductListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRelationProductListResponse) SetBody(v *GetRelationProductListResponseBody) *GetRelationProductListResponse {
+	s.Body = v
+	return s
+}
+
+type GetUnionIdHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetUnionIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUnionIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUnionIdHeaders) SetCommonHeaders(v map[string]*string) *GetUnionIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUnionIdHeaders) SetXAcsAligenieAccessToken(v string) *GetUnionIdHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetUnionIdHeaders) SetAuthorization(v string) *GetUnionIdHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetUnionIdRequest struct {
+	EncodeKey  *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType     *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+}
+
+func (s GetUnionIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUnionIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUnionIdRequest) SetEncodeKey(v string) *GetUnionIdRequest {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *GetUnionIdRequest) SetEncodeType(v string) *GetUnionIdRequest {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetUnionIdRequest) SetId(v string) *GetUnionIdRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUnionIdRequest) SetIdType(v string) *GetUnionIdRequest {
+	s.IdType = &v
+	return s
+}
+
+type GetUnionIdResponseBody struct {
+	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*GetUnionIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                          `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetUnionIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUnionIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUnionIdResponseBody) SetMessage(v string) *GetUnionIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUnionIdResponseBody) SetRequestId(v string) *GetUnionIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUnionIdResponseBody) SetResult(v []*GetUnionIdResponseBodyResult) *GetUnionIdResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetUnionIdResponseBody) SetStatusCode(v int32) *GetUnionIdResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetUnionIdResponseBodyResult struct {
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	UnionId        *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+}
+
+func (s GetUnionIdResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUnionIdResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetUnionIdResponseBodyResult) SetOrganizationId(v string) *GetUnionIdResponseBodyResult {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetUnionIdResponseBodyResult) SetUnionId(v string) *GetUnionIdResponseBodyResult {
+	s.UnionId = &v
+	return s
+}
+
+type GetUnionIdResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUnionIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUnionIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUnionIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUnionIdResponse) SetHeaders(v map[string]*string) *GetUnionIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUnionIdResponse) SetStatusCode(v int32) *GetUnionIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUnionIdResponse) SetBody(v *GetUnionIdResponseBody) *GetUnionIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetWelcomeTextAndMusicHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetWelcomeTextAndMusicHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWelcomeTextAndMusicHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetWelcomeTextAndMusicHeaders) SetCommonHeaders(v map[string]*string) *GetWelcomeTextAndMusicHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicHeaders) SetXAcsAligenieAccessToken(v string) *GetWelcomeTextAndMusicHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicHeaders) SetAuthorization(v string) *GetWelcomeTextAndMusicHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetWelcomeTextAndMusicRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s GetWelcomeTextAndMusicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWelcomeTextAndMusicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWelcomeTextAndMusicRequest) SetHotelId(v string) *GetWelcomeTextAndMusicRequest {
+	s.HotelId = &v
+	return s
+}
+
+type GetWelcomeTextAndMusicResponseBody struct {
+	Extentions map[string]interface{}                    `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *GetWelcomeTextAndMusicResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                                    `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s GetWelcomeTextAndMusicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWelcomeTextAndMusicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWelcomeTextAndMusicResponseBody) SetExtentions(v map[string]interface{}) *GetWelcomeTextAndMusicResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponseBody) SetMessage(v string) *GetWelcomeTextAndMusicResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponseBody) SetRequestId(v string) *GetWelcomeTextAndMusicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponseBody) SetResult(v *GetWelcomeTextAndMusicResponseBodyResult) *GetWelcomeTextAndMusicResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponseBody) SetStatusCode(v int32) *GetWelcomeTextAndMusicResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type GetWelcomeTextAndMusicResponseBodyResult struct {
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	MusicUrl *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	Text     *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GetWelcomeTextAndMusicResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWelcomeTextAndMusicResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetWelcomeTextAndMusicResponseBodyResult) SetHotelId(v string) *GetWelcomeTextAndMusicResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponseBodyResult) SetMusicUrl(v string) *GetWelcomeTextAndMusicResponseBodyResult {
+	s.MusicUrl = &v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponseBodyResult) SetText(v string) *GetWelcomeTextAndMusicResponseBodyResult {
+	s.Text = &v
+	return s
+}
+
+type GetWelcomeTextAndMusicResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWelcomeTextAndMusicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWelcomeTextAndMusicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWelcomeTextAndMusicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWelcomeTextAndMusicResponse) SetHeaders(v map[string]*string) *GetWelcomeTextAndMusicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponse) SetStatusCode(v int32) *GetWelcomeTextAndMusicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWelcomeTextAndMusicResponse) SetBody(v *GetWelcomeTextAndMusicResponseBody) *GetWelcomeTextAndMusicResponse {
+	s.Body = v
+	return s
+}
+
+type HotelQrBindHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s HotelQrBindHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelQrBindHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelQrBindHeaders) SetCommonHeaders(v map[string]*string) *HotelQrBindHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelQrBindHeaders) SetXAcsAligenieAccessToken(v string) *HotelQrBindHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *HotelQrBindHeaders) SetAuthorization(v string) *HotelQrBindHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type HotelQrBindRequest struct {
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtInfo  *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo   *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s HotelQrBindRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelQrBindRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelQrBindRequest) SetClientId(v string) *HotelQrBindRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *HotelQrBindRequest) SetCode(v string) *HotelQrBindRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelQrBindRequest) SetExtInfo(v string) *HotelQrBindRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *HotelQrBindRequest) SetHotelId(v string) *HotelQrBindRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *HotelQrBindRequest) SetRoomNo(v string) *HotelQrBindRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type HotelQrBindResponseBody struct {
+	Message    *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *HotelQrBindResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                         `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s HotelQrBindResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelQrBindResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelQrBindResponseBody) SetMessage(v string) *HotelQrBindResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBody) SetRequestId(v string) *HotelQrBindResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBody) SetResult(v *HotelQrBindResponseBodyResult) *HotelQrBindResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *HotelQrBindResponseBody) SetStatusCode(v int32) *HotelQrBindResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type HotelQrBindResponseBodyResult struct {
+	OpenDeviceInfo *HotelQrBindResponseBodyResultOpenDeviceInfo `json:"OpenDeviceInfo,omitempty" xml:"OpenDeviceInfo,omitempty" type:"Struct"`
+	OpenUserInfo   *HotelQrBindResponseBodyResultOpenUserInfo   `json:"OpenUserInfo,omitempty" xml:"OpenUserInfo,omitempty" type:"Struct"`
+}
+
+func (s HotelQrBindResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelQrBindResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *HotelQrBindResponseBodyResult) SetOpenDeviceInfo(v *HotelQrBindResponseBodyResultOpenDeviceInfo) *HotelQrBindResponseBodyResult {
+	s.OpenDeviceInfo = v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResult) SetOpenUserInfo(v *HotelQrBindResponseBodyResultOpenUserInfo) *HotelQrBindResponseBodyResult {
+	s.OpenUserInfo = v
+	return s
+}
+
+type HotelQrBindResponseBodyResultOpenDeviceInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s HotelQrBindResponseBodyResultOpenDeviceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelQrBindResponseBodyResultOpenDeviceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelQrBindResponseBodyResultOpenDeviceInfo) SetEncodeKey(v string) *HotelQrBindResponseBodyResultOpenDeviceInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenDeviceInfo) SetEncodeType(v string) *HotelQrBindResponseBodyResultOpenDeviceInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenDeviceInfo) SetId(v string) *HotelQrBindResponseBodyResultOpenDeviceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenDeviceInfo) SetIdType(v string) *HotelQrBindResponseBodyResultOpenDeviceInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenDeviceInfo) SetOrganizationId(v string) *HotelQrBindResponseBodyResultOpenDeviceInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type HotelQrBindResponseBodyResultOpenUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s HotelQrBindResponseBodyResultOpenUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelQrBindResponseBodyResultOpenUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelQrBindResponseBodyResultOpenUserInfo) SetEncodeKey(v string) *HotelQrBindResponseBodyResultOpenUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenUserInfo) SetEncodeType(v string) *HotelQrBindResponseBodyResultOpenUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenUserInfo) SetId(v string) *HotelQrBindResponseBodyResultOpenUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenUserInfo) SetIdType(v string) *HotelQrBindResponseBodyResultOpenUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *HotelQrBindResponseBodyResultOpenUserInfo) SetOrganizationId(v string) *HotelQrBindResponseBodyResultOpenUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type HotelQrBindResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HotelQrBindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HotelQrBindResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelQrBindResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelQrBindResponse) SetHeaders(v map[string]*string) *HotelQrBindResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelQrBindResponse) SetStatusCode(v int32) *HotelQrBindResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelQrBindResponse) SetBody(v *HotelQrBindResponseBody) *HotelQrBindResponse {
+	s.Body = v
+	return s
+}
+
+type ImportHotelConfigHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ImportHotelConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHotelConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHotelConfigHeaders) SetCommonHeaders(v map[string]*string) *ImportHotelConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ImportHotelConfigHeaders) SetXAcsAligenieAccessToken(v string) *ImportHotelConfigHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ImportHotelConfigHeaders) SetAuthorization(v string) *ImportHotelConfigHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ImportHotelConfigRequest struct {
+	HotelId           *string                                    `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ImportHotelConfig *ImportHotelConfigRequestImportHotelConfig `json:"ImportHotelConfig,omitempty" xml:"ImportHotelConfig,omitempty" type:"Struct"`
+}
+
+func (s ImportHotelConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHotelConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHotelConfigRequest) SetHotelId(v string) *ImportHotelConfigRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ImportHotelConfigRequest) SetImportHotelConfig(v *ImportHotelConfigRequestImportHotelConfig) *ImportHotelConfigRequest {
+	s.ImportHotelConfig = v
+	return s
+}
+
+type ImportHotelConfigRequestImportHotelConfig struct {
+	RcuCustomScenes []*ImportHotelConfigRequestImportHotelConfigRcuCustomScenes `json:"RcuCustomScenes,omitempty" xml:"RcuCustomScenes,omitempty" type:"Repeated"`
+}
+
+func (s ImportHotelConfigRequestImportHotelConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHotelConfigRequestImportHotelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHotelConfigRequestImportHotelConfig) SetRcuCustomScenes(v []*ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) *ImportHotelConfigRequestImportHotelConfig {
+	s.RcuCustomScenes = v
+	return s
+}
+
+type ImportHotelConfigRequestImportHotelConfigRcuCustomScenes struct {
+	CorpusList  []*string `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Icon        *string   `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	SceneId     *string   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) SetCorpusList(v []*string) *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes {
+	s.CorpusList = v
+	return s
+}
+
+func (s *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) SetDescription(v string) *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes {
+	s.Description = &v
+	return s
+}
+
+func (s *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) SetIcon(v string) *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes {
+	s.Icon = &v
+	return s
+}
+
+func (s *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) SetName(v string) *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) SetSceneId(v string) *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes {
+	s.SceneId = &v
+	return s
+}
+
+type ImportHotelConfigShrinkRequest struct {
+	HotelId                 *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ImportHotelConfigShrink *string `json:"ImportHotelConfig,omitempty" xml:"ImportHotelConfig,omitempty"`
+}
+
+func (s ImportHotelConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHotelConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHotelConfigShrinkRequest) SetHotelId(v string) *ImportHotelConfigShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ImportHotelConfigShrinkRequest) SetImportHotelConfigShrink(v string) *ImportHotelConfigShrinkRequest {
+	s.ImportHotelConfigShrink = &v
+	return s
+}
+
+type ImportHotelConfigResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ImportHotelConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHotelConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHotelConfigResponseBody) SetMessage(v string) *ImportHotelConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportHotelConfigResponseBody) SetRequestId(v string) *ImportHotelConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportHotelConfigResponseBody) SetResult(v bool) *ImportHotelConfigResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ImportHotelConfigResponseBody) SetStatusCode(v int32) *ImportHotelConfigResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ImportHotelConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportHotelConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportHotelConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportHotelConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHotelConfigResponse) SetHeaders(v map[string]*string) *ImportHotelConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportHotelConfigResponse) SetStatusCode(v int32) *ImportHotelConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportHotelConfigResponse) SetBody(v *ImportHotelConfigResponseBody) *ImportHotelConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ImportRoomControlDevicesHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ImportRoomControlDevicesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesHeaders) SetCommonHeaders(v map[string]*string) *ImportRoomControlDevicesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesHeaders) SetXAcsAligenieAccessToken(v string) *ImportRoomControlDevicesHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesHeaders) SetAuthorization(v string) *ImportRoomControlDevicesHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ImportRoomControlDevicesRequest struct {
+	EnableInfraredDeviceImport *string                                           `json:"EnableInfraredDeviceImport,omitempty" xml:"EnableInfraredDeviceImport,omitempty"`
+	HotelId                    *string                                           `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	LocationDevices            []*ImportRoomControlDevicesRequestLocationDevices `json:"LocationDevices,omitempty" xml:"LocationDevices,omitempty" type:"Repeated"`
+	RoomNo                     *string                                           `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s ImportRoomControlDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesRequest) SetEnableInfraredDeviceImport(v string) *ImportRoomControlDevicesRequest {
+	s.EnableInfraredDeviceImport = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequest) SetHotelId(v string) *ImportRoomControlDevicesRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequest) SetLocationDevices(v []*ImportRoomControlDevicesRequestLocationDevices) *ImportRoomControlDevicesRequest {
+	s.LocationDevices = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequest) SetRoomNo(v string) *ImportRoomControlDevicesRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type ImportRoomControlDevicesRequestLocationDevices struct {
+	Devices      []*ImportRoomControlDevicesRequestLocationDevicesDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	Location     *string                                                  `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationName *string                                                  `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevices) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevices) SetDevices(v []*ImportRoomControlDevicesRequestLocationDevicesDevices) *ImportRoomControlDevicesRequestLocationDevices {
+	s.Devices = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevices) SetLocation(v string) *ImportRoomControlDevicesRequestLocationDevices {
+	s.Location = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevices) SetLocationName(v string) *ImportRoomControlDevicesRequestLocationDevices {
+	s.LocationName = &v
+	return s
+}
+
+type ImportRoomControlDevicesRequestLocationDevicesDevices struct {
+	AliasList         []*string                                                               `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
+	Brand             *string                                                                 `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	City              *string                                                                 `json:"City,omitempty" xml:"City,omitempty"`
+	ConnectType       *string                                                                 `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	DeviceName        *string                                                                 `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Dn                *string                                                                 `json:"Dn,omitempty" xml:"Dn,omitempty"`
+	InfraredId        *string                                                                 `json:"InfraredId,omitempty" xml:"InfraredId,omitempty"`
+	InfraredIndex     *string                                                                 `json:"InfraredIndex,omitempty" xml:"InfraredIndex,omitempty"`
+	InfraredVersion   *string                                                                 `json:"InfraredVersion,omitempty" xml:"InfraredVersion,omitempty"`
+	MultiKeySwitchExt *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt `json:"MultiKeySwitchExt,omitempty" xml:"MultiKeySwitchExt,omitempty" type:"Struct"`
+	Name              *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Number            *string                                                                 `json:"Number,omitempty" xml:"Number,omitempty"`
+	Pk                *string                                                                 `json:"Pk,omitempty" xml:"Pk,omitempty"`
+	Province          *string                                                                 `json:"Province,omitempty" xml:"Province,omitempty"`
+	ServiceProvider   *string                                                                 `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevicesDevices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevicesDevices) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetAliasList(v []*string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.AliasList = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetBrand(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.Brand = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetCity(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.City = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetConnectType(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.ConnectType = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetDeviceName(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetDn(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.Dn = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetInfraredId(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.InfraredId = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetInfraredIndex(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.InfraredIndex = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetInfraredVersion(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.InfraredVersion = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetMultiKeySwitchExt(v *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.MultiKeySwitchExt = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetName(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetNumber(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.Number = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetPk(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.Pk = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetProvince(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.Province = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevices) SetServiceProvider(v string) *ImportRoomControlDevicesRequestLocationDevicesDevices {
+	s.ServiceProvider = &v
+	return s
+}
+
+type ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt struct {
+	SwitchList []*ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList `json:"SwitchList,omitempty" xml:"SwitchList,omitempty" type:"Repeated"`
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt) SetSwitchList(v []*ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt {
+	s.SwitchList = v
+	return s
+}
+
+type ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList struct {
+	AliasList   []*string `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
+	Category    *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeviceIndex *int32    `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	DeviceName  *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Location    *string   `json:"Location,omitempty" xml:"Location,omitempty"`
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) SetAliasList(v []*string) *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList {
+	s.AliasList = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) SetCategory(v string) *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList {
+	s.Category = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) SetDeviceIndex(v int32) *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceIndex = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) SetDeviceName(v string) *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList) SetLocation(v string) *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList {
+	s.Location = &v
+	return s
+}
+
+type ImportRoomControlDevicesShrinkRequest struct {
+	EnableInfraredDeviceImport *string `json:"EnableInfraredDeviceImport,omitempty" xml:"EnableInfraredDeviceImport,omitempty"`
+	HotelId                    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	LocationDevicesShrink      *string `json:"LocationDevices,omitempty" xml:"LocationDevices,omitempty"`
+	RoomNo                     *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s ImportRoomControlDevicesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesShrinkRequest) SetEnableInfraredDeviceImport(v string) *ImportRoomControlDevicesShrinkRequest {
+	s.EnableInfraredDeviceImport = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesShrinkRequest) SetHotelId(v string) *ImportRoomControlDevicesShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesShrinkRequest) SetLocationDevicesShrink(v string) *ImportRoomControlDevicesShrinkRequest {
+	s.LocationDevicesShrink = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesShrinkRequest) SetRoomNo(v string) *ImportRoomControlDevicesShrinkRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type ImportRoomControlDevicesResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *int32                 `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ImportRoomControlDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesResponseBody) SetExtentions(v map[string]interface{}) *ImportRoomControlDevicesResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesResponseBody) SetMessage(v string) *ImportRoomControlDevicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesResponseBody) SetRequestId(v string) *ImportRoomControlDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesResponseBody) SetResult(v int32) *ImportRoomControlDevicesResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesResponseBody) SetStatusCode(v int32) *ImportRoomControlDevicesResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ImportRoomControlDevicesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportRoomControlDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportRoomControlDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomControlDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomControlDevicesResponse) SetHeaders(v map[string]*string) *ImportRoomControlDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportRoomControlDevicesResponse) SetStatusCode(v int32) *ImportRoomControlDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportRoomControlDevicesResponse) SetBody(v *ImportRoomControlDevicesResponseBody) *ImportRoomControlDevicesResponse {
+	s.Body = v
+	return s
+}
+
+type ImportRoomGenieScenesHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ImportRoomGenieScenesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesHeaders) SetCommonHeaders(v map[string]*string) *ImportRoomGenieScenesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesHeaders) SetXAcsAligenieAccessToken(v string) *ImportRoomGenieScenesHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesHeaders) SetAuthorization(v string) *ImportRoomGenieScenesHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ImportRoomGenieScenesRequest struct {
+	HotelId   *string                                  `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo    *string                                  `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	SceneList []*ImportRoomGenieScenesRequestSceneList `json:"SceneList,omitempty" xml:"SceneList,omitempty" type:"Repeated"`
+}
+
+func (s ImportRoomGenieScenesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequest) SetHotelId(v string) *ImportRoomGenieScenesRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequest) SetRoomNo(v string) *ImportRoomGenieScenesRequest {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequest) SetSceneList(v []*ImportRoomGenieScenesRequestSceneList) *ImportRoomGenieScenesRequest {
+	s.SceneList = v
+	return s
+}
+
+type ImportRoomGenieScenesRequestSceneList struct {
+	Actions        []*ImportRoomGenieScenesRequestSceneListActions  `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	Description    *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Display        *bool                                            `json:"Display,omitempty" xml:"Display,omitempty"`
+	Icon           *string                                          `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	SceneName      *string                                          `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	TriggerLogical *int32                                           `json:"TriggerLogical,omitempty" xml:"TriggerLogical,omitempty"`
+	Triggers       []*ImportRoomGenieScenesRequestSceneListTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+}
+
+func (s ImportRoomGenieScenesRequestSceneList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequestSceneList) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequestSceneList) SetActions(v []*ImportRoomGenieScenesRequestSceneListActions) *ImportRoomGenieScenesRequestSceneList {
+	s.Actions = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneList) SetDescription(v string) *ImportRoomGenieScenesRequestSceneList {
+	s.Description = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneList) SetDisplay(v bool) *ImportRoomGenieScenesRequestSceneList {
+	s.Display = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneList) SetIcon(v string) *ImportRoomGenieScenesRequestSceneList {
+	s.Icon = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneList) SetSceneName(v string) *ImportRoomGenieScenesRequestSceneList {
+	s.SceneName = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneList) SetTriggerLogical(v int32) *ImportRoomGenieScenesRequestSceneList {
+	s.TriggerLogical = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneList) SetTriggers(v []*ImportRoomGenieScenesRequestSceneListTriggers) *ImportRoomGenieScenesRequestSceneList {
+	s.Triggers = v
+	return s
+}
+
+type ImportRoomGenieScenesRequestSceneListActions struct {
+	AttributeValues []*ImportRoomGenieScenesRequestSceneListActionsAttributeValues `json:"AttributeValues,omitempty" xml:"AttributeValues,omitempty" type:"Repeated"`
+	Device          *ImportRoomGenieScenesRequestSceneListActionsDevice            `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	Reply           *string                                                        `json:"Reply,omitempty" xml:"Reply,omitempty"`
+	Type            *int32                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ImportRoomGenieScenesRequestSceneListActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequestSceneListActions) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActions) SetAttributeValues(v []*ImportRoomGenieScenesRequestSceneListActionsAttributeValues) *ImportRoomGenieScenesRequestSceneListActions {
+	s.AttributeValues = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActions) SetDevice(v *ImportRoomGenieScenesRequestSceneListActionsDevice) *ImportRoomGenieScenesRequestSceneListActions {
+	s.Device = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActions) SetReply(v string) *ImportRoomGenieScenesRequestSceneListActions {
+	s.Reply = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActions) SetType(v int32) *ImportRoomGenieScenesRequestSceneListActions {
+	s.Type = &v
+	return s
+}
+
+type ImportRoomGenieScenesRequestSceneListActionsAttributeValues struct {
+	AttributeName  *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
+}
+
+func (s ImportRoomGenieScenesRequestSceneListActionsAttributeValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequestSceneListActionsAttributeValues) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActionsAttributeValues) SetAttributeName(v string) *ImportRoomGenieScenesRequestSceneListActionsAttributeValues {
+	s.AttributeName = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActionsAttributeValues) SetAttributeValue(v string) *ImportRoomGenieScenesRequestSceneListActionsAttributeValues {
+	s.AttributeValue = &v
+	return s
+}
+
+type ImportRoomGenieScenesRequestSceneListActionsDevice struct {
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeviceIndex  *int32  `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	Type         *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ImportRoomGenieScenesRequestSceneListActionsDevice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequestSceneListActionsDevice) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActionsDevice) SetCategory(v string) *ImportRoomGenieScenesRequestSceneListActionsDevice {
+	s.Category = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActionsDevice) SetDeviceIndex(v int32) *ImportRoomGenieScenesRequestSceneListActionsDevice {
+	s.DeviceIndex = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActionsDevice) SetDeviceNumber(v string) *ImportRoomGenieScenesRequestSceneListActionsDevice {
+	s.DeviceNumber = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListActionsDevice) SetType(v int32) *ImportRoomGenieScenesRequestSceneListActionsDevice {
+	s.Type = &v
+	return s
+}
+
+type ImportRoomGenieScenesRequestSceneListTriggers struct {
+	AttributeValues []*ImportRoomGenieScenesRequestSceneListTriggersAttributeValues `json:"AttributeValues,omitempty" xml:"AttributeValues,omitempty" type:"Repeated"`
+	CorpusList      []*string                                                       `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
+	Device          *ImportRoomGenieScenesRequestSceneListTriggersDevice            `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	Type            *int32                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ImportRoomGenieScenesRequestSceneListTriggers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequestSceneListTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggers) SetAttributeValues(v []*ImportRoomGenieScenesRequestSceneListTriggersAttributeValues) *ImportRoomGenieScenesRequestSceneListTriggers {
+	s.AttributeValues = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggers) SetCorpusList(v []*string) *ImportRoomGenieScenesRequestSceneListTriggers {
+	s.CorpusList = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggers) SetDevice(v *ImportRoomGenieScenesRequestSceneListTriggersDevice) *ImportRoomGenieScenesRequestSceneListTriggers {
+	s.Device = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggers) SetType(v int32) *ImportRoomGenieScenesRequestSceneListTriggers {
+	s.Type = &v
+	return s
+}
+
+type ImportRoomGenieScenesRequestSceneListTriggersAttributeValues struct {
+	AttributeName  *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
+}
+
+func (s ImportRoomGenieScenesRequestSceneListTriggersAttributeValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequestSceneListTriggersAttributeValues) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggersAttributeValues) SetAttributeName(v string) *ImportRoomGenieScenesRequestSceneListTriggersAttributeValues {
+	s.AttributeName = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggersAttributeValues) SetAttributeValue(v string) *ImportRoomGenieScenesRequestSceneListTriggersAttributeValues {
+	s.AttributeValue = &v
+	return s
+}
+
+type ImportRoomGenieScenesRequestSceneListTriggersDevice struct {
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeviceIndex  *string `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+}
+
+func (s ImportRoomGenieScenesRequestSceneListTriggersDevice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesRequestSceneListTriggersDevice) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggersDevice) SetCategory(v string) *ImportRoomGenieScenesRequestSceneListTriggersDevice {
+	s.Category = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggersDevice) SetDeviceIndex(v string) *ImportRoomGenieScenesRequestSceneListTriggersDevice {
+	s.DeviceIndex = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesRequestSceneListTriggersDevice) SetDeviceNumber(v string) *ImportRoomGenieScenesRequestSceneListTriggersDevice {
+	s.DeviceNumber = &v
+	return s
+}
+
+type ImportRoomGenieScenesShrinkRequest struct {
+	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	SceneListShrink *string `json:"SceneList,omitempty" xml:"SceneList,omitempty"`
+}
+
+func (s ImportRoomGenieScenesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesShrinkRequest) SetHotelId(v string) *ImportRoomGenieScenesShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesShrinkRequest) SetRoomNo(v string) *ImportRoomGenieScenesShrinkRequest {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesShrinkRequest) SetSceneListShrink(v string) *ImportRoomGenieScenesShrinkRequest {
+	s.SceneListShrink = &v
+	return s
+}
+
+type ImportRoomGenieScenesResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ImportRoomGenieScenesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesResponseBody) SetMessage(v string) *ImportRoomGenieScenesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesResponseBody) SetRequestId(v string) *ImportRoomGenieScenesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesResponseBody) SetResult(v bool) *ImportRoomGenieScenesResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesResponseBody) SetStatusCode(v int32) *ImportRoomGenieScenesResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ImportRoomGenieScenesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportRoomGenieScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportRoomGenieScenesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportRoomGenieScenesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportRoomGenieScenesResponse) SetHeaders(v map[string]*string) *ImportRoomGenieScenesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportRoomGenieScenesResponse) SetStatusCode(v int32) *ImportRoomGenieScenesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportRoomGenieScenesResponse) SetBody(v *ImportRoomGenieScenesResponseBody) *ImportRoomGenieScenesResponse {
+	s.Body = v
+	return s
+}
+
+type InsertHotelSceneBookItemHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s InsertHotelSceneBookItemHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertHotelSceneBookItemHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsertHotelSceneBookItemHeaders) SetCommonHeaders(v map[string]*string) *InsertHotelSceneBookItemHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemHeaders) SetXAcsAligenieAccessToken(v string) *InsertHotelSceneBookItemHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemHeaders) SetAuthorization(v string) *InsertHotelSceneBookItemHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type InsertHotelSceneBookItemRequest struct {
+	// addHotelSceneItemReq
+	AddHotelSceneItemReq *InsertHotelSceneBookItemRequestAddHotelSceneItemReq `json:"AddHotelSceneItemReq,omitempty" xml:"AddHotelSceneItemReq,omitempty" type:"Struct"`
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s InsertHotelSceneBookItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertHotelSceneBookItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertHotelSceneBookItemRequest) SetAddHotelSceneItemReq(v *InsertHotelSceneBookItemRequestAddHotelSceneItemReq) *InsertHotelSceneBookItemRequest {
+	s.AddHotelSceneItemReq = v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemRequest) SetHotelId(v string) *InsertHotelSceneBookItemRequest {
+	s.HotelId = &v
+	return s
+}
+
+type InsertHotelSceneBookItemRequestAddHotelSceneItemReq struct {
+	// icon
+	Icon  *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Price *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s InsertHotelSceneBookItemRequestAddHotelSceneItemReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertHotelSceneBookItemRequestAddHotelSceneItemReq) GoString() string {
+	return s.String()
+}
+
+func (s *InsertHotelSceneBookItemRequestAddHotelSceneItemReq) SetIcon(v string) *InsertHotelSceneBookItemRequestAddHotelSceneItemReq {
+	s.Icon = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemRequestAddHotelSceneItemReq) SetName(v string) *InsertHotelSceneBookItemRequestAddHotelSceneItemReq {
+	s.Name = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemRequestAddHotelSceneItemReq) SetPrice(v int64) *InsertHotelSceneBookItemRequestAddHotelSceneItemReq {
+	s.Price = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemRequestAddHotelSceneItemReq) SetType(v string) *InsertHotelSceneBookItemRequestAddHotelSceneItemReq {
+	s.Type = &v
+	return s
+}
+
+type InsertHotelSceneBookItemShrinkRequest struct {
+	// addHotelSceneItemReq
+	AddHotelSceneItemReqShrink *string `json:"AddHotelSceneItemReq,omitempty" xml:"AddHotelSceneItemReq,omitempty"`
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s InsertHotelSceneBookItemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertHotelSceneBookItemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertHotelSceneBookItemShrinkRequest) SetAddHotelSceneItemReqShrink(v string) *InsertHotelSceneBookItemShrinkRequest {
+	s.AddHotelSceneItemReqShrink = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemShrinkRequest) SetHotelId(v string) *InsertHotelSceneBookItemShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+type InsertHotelSceneBookItemResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s InsertHotelSceneBookItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertHotelSceneBookItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertHotelSceneBookItemResponseBody) SetCode(v int32) *InsertHotelSceneBookItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemResponseBody) SetMessage(v string) *InsertHotelSceneBookItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemResponseBody) SetRequestId(v string) *InsertHotelSceneBookItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemResponseBody) SetResult(v bool) *InsertHotelSceneBookItemResponseBody {
+	s.Result = &v
+	return s
+}
+
+type InsertHotelSceneBookItemResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsertHotelSceneBookItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsertHotelSceneBookItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertHotelSceneBookItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertHotelSceneBookItemResponse) SetHeaders(v map[string]*string) *InsertHotelSceneBookItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemResponse) SetStatusCode(v int32) *InsertHotelSceneBookItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertHotelSceneBookItemResponse) SetBody(v *InsertHotelSceneBookItemResponseBody) *InsertHotelSceneBookItemResponse {
+	s.Body = v
+	return s
+}
+
+type InvokeRobotPushHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s InvokeRobotPushHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeRobotPushHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeRobotPushHeaders) SetCommonHeaders(v map[string]*string) *InvokeRobotPushHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvokeRobotPushHeaders) SetXAcsAligenieAccessToken(v string) *InvokeRobotPushHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *InvokeRobotPushHeaders) SetAuthorization(v string) *InvokeRobotPushHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type InvokeRobotPushRequest struct {
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	RoomNo   *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s InvokeRobotPushRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeRobotPushRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeRobotPushRequest) SetHotelId(v string) *InvokeRobotPushRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *InvokeRobotPushRequest) SetPushType(v string) *InvokeRobotPushRequest {
+	s.PushType = &v
+	return s
+}
+
+func (s *InvokeRobotPushRequest) SetRoomNo(v string) *InvokeRobotPushRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type InvokeRobotPushResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s InvokeRobotPushResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeRobotPushResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeRobotPushResponseBody) SetMessage(v string) *InvokeRobotPushResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InvokeRobotPushResponseBody) SetRequestId(v string) *InvokeRobotPushResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InvokeRobotPushResponseBody) SetResult(v bool) *InvokeRobotPushResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *InvokeRobotPushResponseBody) SetStatusCode(v int32) *InvokeRobotPushResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type InvokeRobotPushResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InvokeRobotPushResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InvokeRobotPushResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeRobotPushResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeRobotPushResponse) SetHeaders(v map[string]*string) *InvokeRobotPushResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InvokeRobotPushResponse) SetStatusCode(v int32) *InvokeRobotPushResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InvokeRobotPushResponse) SetBody(v *InvokeRobotPushResponseBody) *InvokeRobotPushResponse {
+	s.Body = v
+	return s
+}
+
+type ListAllProvincesHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListAllProvincesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProvincesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProvincesHeaders) SetCommonHeaders(v map[string]*string) *ListAllProvincesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListAllProvincesHeaders) SetXAcsAligenieAccessToken(v string) *ListAllProvincesHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListAllProvincesHeaders) SetAuthorization(v string) *ListAllProvincesHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListAllProvincesResponseBody struct {
+	Message    *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32    `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListAllProvincesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProvincesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProvincesResponseBody) SetMessage(v string) *ListAllProvincesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAllProvincesResponseBody) SetRequestId(v string) *ListAllProvincesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAllProvincesResponseBody) SetResult(v []*string) *ListAllProvincesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListAllProvincesResponseBody) SetStatusCode(v int32) *ListAllProvincesResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListAllProvincesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAllProvincesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAllProvincesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProvincesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProvincesResponse) SetHeaders(v map[string]*string) *ListAllProvincesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAllProvincesResponse) SetStatusCode(v int32) *ListAllProvincesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAllProvincesResponse) SetBody(v *ListAllProvincesResponseBody) *ListAllProvincesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCitiesByProvinceHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListCitiesByProvinceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCitiesByProvinceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListCitiesByProvinceHeaders) SetCommonHeaders(v map[string]*string) *ListCitiesByProvinceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListCitiesByProvinceHeaders) SetXAcsAligenieAccessToken(v string) *ListCitiesByProvinceHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListCitiesByProvinceHeaders) SetAuthorization(v string) *ListCitiesByProvinceHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListCitiesByProvinceRequest struct {
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s ListCitiesByProvinceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCitiesByProvinceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCitiesByProvinceRequest) SetProvince(v string) *ListCitiesByProvinceRequest {
+	s.Province = &v
+	return s
+}
+
+type ListCitiesByProvinceResponseBody struct {
+	Message    *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32    `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListCitiesByProvinceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCitiesByProvinceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCitiesByProvinceResponseBody) SetMessage(v string) *ListCitiesByProvinceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCitiesByProvinceResponseBody) SetRequestId(v string) *ListCitiesByProvinceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCitiesByProvinceResponseBody) SetResult(v []*string) *ListCitiesByProvinceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListCitiesByProvinceResponseBody) SetStatusCode(v int32) *ListCitiesByProvinceResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListCitiesByProvinceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCitiesByProvinceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCitiesByProvinceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCitiesByProvinceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCitiesByProvinceResponse) SetHeaders(v map[string]*string) *ListCitiesByProvinceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCitiesByProvinceResponse) SetStatusCode(v int32) *ListCitiesByProvinceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCitiesByProvinceResponse) SetBody(v *ListCitiesByProvinceResponseBody) *ListCitiesByProvinceResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListCustomQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQAHeaders) SetCommonHeaders(v map[string]*string) *ListCustomQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListCustomQAHeaders) SetXAcsAligenieAccessToken(v string) *ListCustomQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListCustomQAHeaders) SetAuthorization(v string) *ListCustomQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListCustomQARequest struct {
+	HotelId *string                  `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Keyword *string                  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Page    *ListCustomQARequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+}
+
+func (s ListCustomQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQARequest) SetHotelId(v string) *ListCustomQARequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListCustomQARequest) SetKeyword(v string) *ListCustomQARequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListCustomQARequest) SetPage(v *ListCustomQARequestPage) *ListCustomQARequest {
+	s.Page = v
+	return s
+}
+
+type ListCustomQARequestPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListCustomQARequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQARequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQARequestPage) SetPageNumber(v int32) *ListCustomQARequestPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomQARequestPage) SetPageSize(v int32) *ListCustomQARequestPage {
+	s.PageSize = &v
+	return s
+}
+
+type ListCustomQAShrinkRequest struct {
+	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
+}
+
+func (s ListCustomQAShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQAShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQAShrinkRequest) SetHotelId(v string) *ListCustomQAShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListCustomQAShrinkRequest) SetKeyword(v string) *ListCustomQAShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListCustomQAShrinkRequest) SetPageShrink(v string) *ListCustomQAShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+type ListCustomQAResponseBody struct {
+	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page       *ListCustomQAResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListCustomQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                            `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListCustomQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQAResponseBody) SetMessage(v string) *ListCustomQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBody) SetPage(v *ListCustomQAResponseBodyPage) *ListCustomQAResponseBody {
+	s.Page = v
+	return s
+}
+
+func (s *ListCustomQAResponseBody) SetRequestId(v string) *ListCustomQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBody) SetResult(v []*ListCustomQAResponseBodyResult) *ListCustomQAResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListCustomQAResponseBody) SetStatusCode(v int32) *ListCustomQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListCustomQAResponseBodyPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListCustomQAResponseBodyPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQAResponseBodyPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQAResponseBodyPage) SetPageNumber(v int32) *ListCustomQAResponseBodyPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyPage) SetPageSize(v int32) *ListCustomQAResponseBodyPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyPage) SetTotal(v int32) *ListCustomQAResponseBodyPage {
+	s.Total = &v
+	return s
+}
+
+type ListCustomQAResponseBodyResult struct {
+	Answers               *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomQAId            *string `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
+	HotelId               *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWords              *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	MajorQuestion         *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
+	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplementaryQuestion *string `json:"SupplementaryQuestion,omitempty" xml:"SupplementaryQuestion,omitempty"`
+	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListCustomQAResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQAResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQAResponseBodyResult) SetAnswers(v string) *ListCustomQAResponseBodyResult {
+	s.Answers = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetCreateTime(v string) *ListCustomQAResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetCustomQAId(v string) *ListCustomQAResponseBodyResult {
+	s.CustomQAId = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetHotelId(v string) *ListCustomQAResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetKeyWords(v string) *ListCustomQAResponseBodyResult {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetMajorQuestion(v string) *ListCustomQAResponseBodyResult {
+	s.MajorQuestion = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetStatus(v int32) *ListCustomQAResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetSupplementaryQuestion(v string) *ListCustomQAResponseBodyResult {
+	s.SupplementaryQuestion = &v
+	return s
+}
+
+func (s *ListCustomQAResponseBodyResult) SetUpdateTime(v string) *ListCustomQAResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListCustomQAResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomQAResponse) SetHeaders(v map[string]*string) *ListCustomQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomQAResponse) SetStatusCode(v int32) *ListCustomQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomQAResponse) SetBody(v *ListCustomQAResponseBody) *ListCustomQAResponse {
+	s.Body = v
+	return s
+}
+
+type ListDialogueTemplateHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListDialogueTemplateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateHeaders) SetCommonHeaders(v map[string]*string) *ListDialogueTemplateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListDialogueTemplateHeaders) SetXAcsAligenieAccessToken(v string) *ListDialogueTemplateHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListDialogueTemplateHeaders) SetAuthorization(v string) *ListDialogueTemplateHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListDialogueTemplateRequest struct {
+	// hotelId
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s ListDialogueTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateRequest) SetHotelId(v string) *ListDialogueTemplateRequest {
+	s.HotelId = &v
+	return s
+}
+
+type ListDialogueTemplateResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListDialogueTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListDialogueTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateResponseBody) SetCode(v int32) *ListDialogueTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBody) SetMessage(v string) *ListDialogueTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBody) SetRequestId(v string) *ListDialogueTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBody) SetResult(v []*ListDialogueTemplateResponseBodyResult) *ListDialogueTemplateResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListDialogueTemplateResponseBodyResult struct {
+	TemplateDetail *ListDialogueTemplateResponseBodyResultTemplateDetail `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty" type:"Struct"`
+	TemplateId     *int64                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string                                               `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Type           *string                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDialogueTemplateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateResponseBodyResult) SetTemplateDetail(v *ListDialogueTemplateResponseBodyResultTemplateDetail) *ListDialogueTemplateResponseBodyResult {
+	s.TemplateDetail = v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBodyResult) SetTemplateId(v int64) *ListDialogueTemplateResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBodyResult) SetTemplateName(v string) *ListDialogueTemplateResponseBodyResult {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBodyResult) SetType(v string) *ListDialogueTemplateResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type ListDialogueTemplateResponseBodyResultTemplateDetail struct {
+	FirstDialogueTemplate  *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate  `json:"FirstDialogueTemplate,omitempty" xml:"FirstDialogueTemplate,omitempty" type:"Struct"`
+	SecondDialogueTemplate *ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate `json:"SecondDialogueTemplate,omitempty" xml:"SecondDialogueTemplate,omitempty" type:"Struct"`
+}
+
+func (s ListDialogueTemplateResponseBodyResultTemplateDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateResponseBodyResultTemplateDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateResponseBodyResultTemplateDetail) SetFirstDialogueTemplate(v *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate) *ListDialogueTemplateResponseBodyResultTemplateDetail {
+	s.FirstDialogueTemplate = v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBodyResultTemplateDetail) SetSecondDialogueTemplate(v *ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate) *ListDialogueTemplateResponseBodyResultTemplateDetail {
+	s.SecondDialogueTemplate = v
+	return s
+}
+
+type ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate struct {
+	NonzeroPriceYesAnswer *string `json:"NonzeroPriceYesAnswer,omitempty" xml:"NonzeroPriceYesAnswer,omitempty"`
+	ZeroPriceNoAnswer     *string `json:"ZeroPriceNoAnswer,omitempty" xml:"ZeroPriceNoAnswer,omitempty"`
+	ZeroPriceYesAnswer    *string `json:"ZeroPriceYesAnswer,omitempty" xml:"ZeroPriceYesAnswer,omitempty"`
+}
+
+func (s ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate) SetNonzeroPriceYesAnswer(v string) *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate {
+	s.NonzeroPriceYesAnswer = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate) SetZeroPriceNoAnswer(v string) *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate {
+	s.ZeroPriceNoAnswer = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate) SetZeroPriceYesAnswer(v string) *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate {
+	s.ZeroPriceYesAnswer = &v
+	return s
+}
+
+type ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate struct {
+	NonzeroPriceNoAnswer  *string `json:"NonzeroPriceNoAnswer,omitempty" xml:"NonzeroPriceNoAnswer,omitempty"`
+	NonzeroPriceYesAnswer *string `json:"NonzeroPriceYesAnswer,omitempty" xml:"NonzeroPriceYesAnswer,omitempty"`
+}
+
+func (s ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate) SetNonzeroPriceNoAnswer(v string) *ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate {
+	s.NonzeroPriceNoAnswer = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate) SetNonzeroPriceYesAnswer(v string) *ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate {
+	s.NonzeroPriceYesAnswer = &v
+	return s
+}
+
+type ListDialogueTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDialogueTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDialogueTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDialogueTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDialogueTemplateResponse) SetHeaders(v map[string]*string) *ListDialogueTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDialogueTemplateResponse) SetStatusCode(v int32) *ListDialogueTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDialogueTemplateResponse) SetBody(v *ListDialogueTemplateResponseBody) *ListDialogueTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotelAlarmHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListHotelAlarmHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmHeaders) SetCommonHeaders(v map[string]*string) *ListHotelAlarmHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListHotelAlarmHeaders) SetXAcsAligenieAccessToken(v string) *ListHotelAlarmHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListHotelAlarmHeaders) SetAuthorization(v string) *ListHotelAlarmHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListHotelAlarmRequest struct {
+	HotelId *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Rooms   []*string `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+}
+
+func (s ListHotelAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmRequest) SetHotelId(v string) *ListHotelAlarmRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelAlarmRequest) SetRooms(v []*string) *ListHotelAlarmRequest {
+	s.Rooms = v
+	return s
+}
+
+type ListHotelAlarmShrinkRequest struct {
+	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomsShrink *string `json:"Rooms,omitempty" xml:"Rooms,omitempty"`
+}
+
+func (s ListHotelAlarmShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmShrinkRequest) SetHotelId(v string) *ListHotelAlarmShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelAlarmShrinkRequest) SetRoomsShrink(v string) *ListHotelAlarmShrinkRequest {
+	s.RoomsShrink = &v
+	return s
+}
+
+type ListHotelAlarmResponseBody struct {
+	Extentions map[string]interface{}              `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListHotelAlarmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                              `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListHotelAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmResponseBody) SetExtentions(v map[string]interface{}) *ListHotelAlarmResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBody) SetMessage(v string) *ListHotelAlarmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBody) SetRequestId(v string) *ListHotelAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBody) SetResult(v []*ListHotelAlarmResponseBodyResult) *ListHotelAlarmResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBody) SetStatusCode(v int32) *ListHotelAlarmResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListHotelAlarmResponseBodyResult struct {
+	AlarmId      *int64                                        `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	DeviceOpenId *string                                       `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	ScheduleInfo *ListHotelAlarmResponseBodyResultScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+	UserOpenId   *string                                       `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+}
+
+func (s ListHotelAlarmResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmResponseBodyResult) SetAlarmId(v int64) *ListHotelAlarmResponseBodyResult {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResult) SetDeviceOpenId(v string) *ListHotelAlarmResponseBodyResult {
+	s.DeviceOpenId = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResult) SetScheduleInfo(v *ListHotelAlarmResponseBodyResultScheduleInfo) *ListHotelAlarmResponseBodyResult {
+	s.ScheduleInfo = v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResult) SetUserOpenId(v string) *ListHotelAlarmResponseBodyResult {
+	s.UserOpenId = &v
+	return s
+}
+
+type ListHotelAlarmResponseBodyResultScheduleInfo struct {
+	Once *ListHotelAlarmResponseBodyResultScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
+	// ONCE, WEEKLY
+	Type   *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weekly *ListHotelAlarmResponseBodyResultScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
+}
+
+func (s ListHotelAlarmResponseBodyResultScheduleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmResponseBodyResultScheduleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfo) SetOnce(v *ListHotelAlarmResponseBodyResultScheduleInfoOnce) *ListHotelAlarmResponseBodyResultScheduleInfo {
+	s.Once = v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfo) SetType(v string) *ListHotelAlarmResponseBodyResultScheduleInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfo) SetWeekly(v *ListHotelAlarmResponseBodyResultScheduleInfoWeekly) *ListHotelAlarmResponseBodyResultScheduleInfo {
+	s.Weekly = v
+	return s
+}
+
+type ListHotelAlarmResponseBodyResultScheduleInfoOnce struct {
+	Day    *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	Hour   *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	Month  *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	Year   *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
+}
+
+func (s ListHotelAlarmResponseBodyResultScheduleInfoOnce) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmResponseBodyResultScheduleInfoOnce) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoOnce) SetDay(v int32) *ListHotelAlarmResponseBodyResultScheduleInfoOnce {
+	s.Day = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoOnce) SetHour(v int32) *ListHotelAlarmResponseBodyResultScheduleInfoOnce {
+	s.Hour = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoOnce) SetMinute(v int32) *ListHotelAlarmResponseBodyResultScheduleInfoOnce {
+	s.Minute = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoOnce) SetMonth(v int32) *ListHotelAlarmResponseBodyResultScheduleInfoOnce {
+	s.Month = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoOnce) SetYear(v int32) *ListHotelAlarmResponseBodyResultScheduleInfoOnce {
+	s.Year = &v
+	return s
+}
+
+type ListHotelAlarmResponseBodyResultScheduleInfoWeekly struct {
+	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	Hour       *int32   `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	Minute     *int32   `json:"Minute,omitempty" xml:"Minute,omitempty"`
+}
+
+func (s ListHotelAlarmResponseBodyResultScheduleInfoWeekly) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmResponseBodyResultScheduleInfoWeekly) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoWeekly) SetDaysOfWeek(v []*int32) *ListHotelAlarmResponseBodyResultScheduleInfoWeekly {
+	s.DaysOfWeek = v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoWeekly) SetHour(v int32) *ListHotelAlarmResponseBodyResultScheduleInfoWeekly {
+	s.Hour = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponseBodyResultScheduleInfoWeekly) SetMinute(v int32) *ListHotelAlarmResponseBodyResultScheduleInfoWeekly {
+	s.Minute = &v
+	return s
+}
+
+type ListHotelAlarmResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotelAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotelAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelAlarmResponse) SetHeaders(v map[string]*string) *ListHotelAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotelAlarmResponse) SetStatusCode(v int32) *ListHotelAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotelAlarmResponse) SetBody(v *ListHotelAlarmResponseBody) *ListHotelAlarmResponse {
+	s.Body = v
+	return s
+}
+
 type ListHotelControlDeviceHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -1202,6 +9969,291 @@ func (s *ListHotelControlDeviceResponse) SetStatusCode(v int32) *ListHotelContro
 }
 
 func (s *ListHotelControlDeviceResponse) SetBody(v *ListHotelControlDeviceResponseBody) *ListHotelControlDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotelInfoHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListHotelInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelInfoHeaders) SetCommonHeaders(v map[string]*string) *ListHotelInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListHotelInfoHeaders) SetXAcsAligenieAccessToken(v string) *ListHotelInfoHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListHotelInfoHeaders) SetAuthorization(v string) *ListHotelInfoHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListHotelInfoResponseBody struct {
+	Extentions map[string]interface{}             `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListHotelInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListHotelInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelInfoResponseBody) SetExtentions(v map[string]interface{}) *ListHotelInfoResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *ListHotelInfoResponseBody) SetMessage(v string) *ListHotelInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotelInfoResponseBody) SetRequestId(v string) *ListHotelInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotelInfoResponseBody) SetResult(v []*ListHotelInfoResponseBodyResult) *ListHotelInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListHotelInfoResponseBody) SetStatusCode(v int32) *ListHotelInfoResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListHotelInfoResponseBodyResult struct {
+	AuthAccount  []*ListHotelInfoResponseBodyResultAuthAccount `json:"AuthAccount,omitempty" xml:"AuthAccount,omitempty" type:"Repeated"`
+	HotelAddress *string                                       `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelId      *string                                       `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName    *string                                       `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+}
+
+func (s ListHotelInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelInfoResponseBodyResult) SetAuthAccount(v []*ListHotelInfoResponseBodyResultAuthAccount) *ListHotelInfoResponseBodyResult {
+	s.AuthAccount = v
+	return s
+}
+
+func (s *ListHotelInfoResponseBodyResult) SetHotelAddress(v string) *ListHotelInfoResponseBodyResult {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *ListHotelInfoResponseBodyResult) SetHotelId(v string) *ListHotelInfoResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelInfoResponseBodyResult) SetHotelName(v string) *ListHotelInfoResponseBodyResult {
+	s.HotelName = &v
+	return s
+}
+
+type ListHotelInfoResponseBodyResultAuthAccount struct {
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListHotelInfoResponseBodyResultAuthAccount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelInfoResponseBodyResultAuthAccount) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelInfoResponseBodyResultAuthAccount) SetUserName(v string) *ListHotelInfoResponseBodyResultAuthAccount {
+	s.UserName = &v
+	return s
+}
+
+type ListHotelInfoResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotelInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotelInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelInfoResponse) SetHeaders(v map[string]*string) *ListHotelInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotelInfoResponse) SetStatusCode(v int32) *ListHotelInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotelInfoResponse) SetBody(v *ListHotelInfoResponseBody) *ListHotelInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotelMessageTemplateHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListHotelMessageTemplateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelMessageTemplateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelMessageTemplateHeaders) SetCommonHeaders(v map[string]*string) *ListHotelMessageTemplateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListHotelMessageTemplateHeaders) SetXAcsAligenieAccessToken(v string) *ListHotelMessageTemplateHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateHeaders) SetAuthorization(v string) *ListHotelMessageTemplateHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListHotelMessageTemplateResponseBody struct {
+	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListHotelMessageTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListHotelMessageTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelMessageTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelMessageTemplateResponseBody) SetCode(v int32) *ListHotelMessageTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponseBody) SetMessage(v string) *ListHotelMessageTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponseBody) SetRequestId(v string) *ListHotelMessageTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponseBody) SetResult(v []*ListHotelMessageTemplateResponseBodyResult) *ListHotelMessageTemplateResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListHotelMessageTemplateResponseBodyResult struct {
+	AuditMark      *string `json:"AuditMark,omitempty" xml:"AuditMark,omitempty"`
+	AuditStatus    *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	TemplateDetail *string `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty"`
+	TemplateId     *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ListHotelMessageTemplateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelMessageTemplateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelMessageTemplateResponseBodyResult) SetAuditMark(v string) *ListHotelMessageTemplateResponseBodyResult {
+	s.AuditMark = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponseBodyResult) SetAuditStatus(v string) *ListHotelMessageTemplateResponseBodyResult {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponseBodyResult) SetTemplateDetail(v string) *ListHotelMessageTemplateResponseBodyResult {
+	s.TemplateDetail = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponseBodyResult) SetTemplateId(v int64) *ListHotelMessageTemplateResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponseBodyResult) SetTemplateName(v string) *ListHotelMessageTemplateResponseBodyResult {
+	s.TemplateName = &v
+	return s
+}
+
+type ListHotelMessageTemplateResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotelMessageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotelMessageTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelMessageTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelMessageTemplateResponse) SetHeaders(v map[string]*string) *ListHotelMessageTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponse) SetStatusCode(v int32) *ListHotelMessageTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotelMessageTemplateResponse) SetBody(v *ListHotelMessageTemplateResponseBody) *ListHotelMessageTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -1538,6 +10590,432 @@ func (s *ListHotelOrderResponse) SetBody(v *ListHotelOrderResponseBody) *ListHot
 	return s
 }
 
+type ListHotelRoomsHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListHotelRoomsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelRoomsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelRoomsHeaders) SetCommonHeaders(v map[string]*string) *ListHotelRoomsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListHotelRoomsHeaders) SetXAcsAligenieAccessToken(v string) *ListHotelRoomsHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListHotelRoomsHeaders) SetAuthorization(v string) *ListHotelRoomsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListHotelRoomsRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s ListHotelRoomsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelRoomsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelRoomsRequest) SetHotelId(v string) *ListHotelRoomsRequest {
+	s.HotelId = &v
+	return s
+}
+
+type ListHotelRoomsResponseBody struct {
+	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListHotelRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListHotelRoomsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelRoomsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelRoomsResponseBody) SetCode(v int32) *ListHotelRoomsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotelRoomsResponseBody) SetMessage(v string) *ListHotelRoomsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotelRoomsResponseBody) SetRequestId(v string) *ListHotelRoomsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotelRoomsResponseBody) SetResult(v []*ListHotelRoomsResponseBodyResult) *ListHotelRoomsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListHotelRoomsResponseBodyResult struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s ListHotelRoomsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelRoomsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelRoomsResponseBodyResult) SetHotelId(v string) *ListHotelRoomsResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelRoomsResponseBodyResult) SetRoomNo(v string) *ListHotelRoomsResponseBodyResult {
+	s.RoomNo = &v
+	return s
+}
+
+type ListHotelRoomsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotelRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotelRoomsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelRoomsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelRoomsResponse) SetHeaders(v map[string]*string) *ListHotelRoomsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotelRoomsResponse) SetStatusCode(v int32) *ListHotelRoomsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotelRoomsResponse) SetBody(v *ListHotelRoomsResponseBody) *ListHotelRoomsResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotelSceneBookItemsHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListHotelSceneBookItemsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsHeaders) SetCommonHeaders(v map[string]*string) *ListHotelSceneBookItemsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsHeaders) SetXAcsAligenieAccessToken(v string) *ListHotelSceneBookItemsHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsHeaders) SetAuthorization(v string) *ListHotelSceneBookItemsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListHotelSceneBookItemsRequest struct {
+	// hotelID
+	HotelId *string                             `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Page    *ListHotelSceneBookItemsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	Type    *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListHotelSceneBookItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsRequest) SetHotelId(v string) *ListHotelSceneBookItemsRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsRequest) SetPage(v *ListHotelSceneBookItemsRequestPage) *ListHotelSceneBookItemsRequest {
+	s.Page = v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsRequest) SetType(v string) *ListHotelSceneBookItemsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListHotelSceneBookItemsRequestPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListHotelSceneBookItemsRequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsRequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsRequestPage) SetPageNumber(v int32) *ListHotelSceneBookItemsRequestPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsRequestPage) SetPageSize(v int32) *ListHotelSceneBookItemsRequestPage {
+	s.PageSize = &v
+	return s
+}
+
+type ListHotelSceneBookItemsShrinkRequest struct {
+	// hotelID
+	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListHotelSceneBookItemsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsShrinkRequest) SetHotelId(v string) *ListHotelSceneBookItemsShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsShrinkRequest) SetPageShrink(v string) *ListHotelSceneBookItemsShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsShrinkRequest) SetType(v string) *ListHotelSceneBookItemsShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type ListHotelSceneBookItemsResponseBody struct {
+	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListHotelSceneBookItemsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListHotelSceneBookItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsResponseBody) SetCode(v int32) *ListHotelSceneBookItemsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBody) SetMessage(v string) *ListHotelSceneBookItemsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBody) SetRequestId(v string) *ListHotelSceneBookItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBody) SetResult(v *ListHotelSceneBookItemsResponseBodyResult) *ListHotelSceneBookItemsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListHotelSceneBookItemsResponseBodyResult struct {
+	Page          *ListHotelSceneBookItemsResponseBodyResultPage            `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	SceneItemList []*ListHotelSceneBookItemsResponseBodyResultSceneItemList `json:"SceneItemList,omitempty" xml:"SceneItemList,omitempty" type:"Repeated"`
+}
+
+func (s ListHotelSceneBookItemsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResult) SetPage(v *ListHotelSceneBookItemsResponseBodyResultPage) *ListHotelSceneBookItemsResponseBodyResult {
+	s.Page = v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResult) SetSceneItemList(v []*ListHotelSceneBookItemsResponseBodyResultSceneItemList) *ListHotelSceneBookItemsResponseBodyResult {
+	s.SceneItemList = v
+	return s
+}
+
+type ListHotelSceneBookItemsResponseBodyResultPage struct {
+	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListHotelSceneBookItemsResponseBodyResultPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsResponseBodyResultPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultPage) SetHasNext(v bool) *ListHotelSceneBookItemsResponseBodyResultPage {
+	s.HasNext = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultPage) SetPageNumber(v int32) *ListHotelSceneBookItemsResponseBodyResultPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultPage) SetPageSize(v int32) *ListHotelSceneBookItemsResponseBodyResultPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultPage) SetTotal(v int32) *ListHotelSceneBookItemsResponseBodyResultPage {
+	s.Total = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultPage) SetTotalPage(v int32) *ListHotelSceneBookItemsResponseBodyResultPage {
+	s.TotalPage = &v
+	return s
+}
+
+type ListHotelSceneBookItemsResponseBodyResultSceneItemList struct {
+	Icon       *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Price      *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListHotelSceneBookItemsResponseBodyResultSceneItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsResponseBodyResultSceneItemList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultSceneItemList) SetIcon(v string) *ListHotelSceneBookItemsResponseBodyResultSceneItemList {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultSceneItemList) SetId(v int64) *ListHotelSceneBookItemsResponseBodyResultSceneItemList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultSceneItemList) SetName(v string) *ListHotelSceneBookItemsResponseBodyResultSceneItemList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultSceneItemList) SetPrice(v int64) *ListHotelSceneBookItemsResponseBodyResultSceneItemList {
+	s.Price = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultSceneItemList) SetStatus(v string) *ListHotelSceneBookItemsResponseBodyResultSceneItemList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultSceneItemList) SetType(v string) *ListHotelSceneBookItemsResponseBodyResultSceneItemList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponseBodyResultSceneItemList) SetUpdateTime(v int64) *ListHotelSceneBookItemsResponseBodyResultSceneItemList {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListHotelSceneBookItemsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotelSceneBookItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotelSceneBookItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneBookItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneBookItemsResponse) SetHeaders(v map[string]*string) *ListHotelSceneBookItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponse) SetStatusCode(v int32) *ListHotelSceneBookItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotelSceneBookItemsResponse) SetBody(v *ListHotelSceneBookItemsResponseBody) *ListHotelSceneBookItemsResponse {
+	s.Body = v
+	return s
+}
+
 type ListHotelSceneItemHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -1794,13 +11272,14 @@ func (s *ListHotelSceneItemResponseBodyResultSecondCategoryList) SetSecondCatego
 }
 
 type ListHotelSceneItemResponseBodyResultSecondCategoryListItemList struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Icon     *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Price    *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Icon         *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Price        *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	ResidueLimit *int64  `json:"ResidueLimit,omitempty" xml:"ResidueLimit,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListHotelSceneItemResponseBodyResultSecondCategoryListItemList) String() string {
@@ -1833,6 +11312,11 @@ func (s *ListHotelSceneItemResponseBodyResultSecondCategoryListItemList) SetName
 
 func (s *ListHotelSceneItemResponseBodyResultSecondCategoryListItemList) SetPrice(v int64) *ListHotelSceneItemResponseBodyResultSecondCategoryListItemList {
 	s.Price = &v
+	return s
+}
+
+func (s *ListHotelSceneItemResponseBodyResultSecondCategoryListItemList) SetResidueLimit(v int64) *ListHotelSceneItemResponseBodyResultSecondCategoryListItemList {
+	s.ResidueLimit = &v
 	return s
 }
 
@@ -1871,6 +11355,373 @@ func (s *ListHotelSceneItemResponse) SetStatusCode(v int32) *ListHotelSceneItemR
 }
 
 func (s *ListHotelSceneItemResponse) SetBody(v *ListHotelSceneItemResponseBody) *ListHotelSceneItemResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotelSceneItemsHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListHotelSceneItemsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsHeaders) SetCommonHeaders(v map[string]*string) *ListHotelSceneItemsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListHotelSceneItemsHeaders) SetXAcsAligenieAccessToken(v string) *ListHotelSceneItemsHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsHeaders) SetAuthorization(v string) *ListHotelSceneItemsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListHotelSceneItemsRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// ListHotelSceneReq
+	ListHotelSceneReq *ListHotelSceneItemsRequestListHotelSceneReq `json:"ListHotelSceneReq,omitempty" xml:"ListHotelSceneReq,omitempty" type:"Struct"`
+}
+
+func (s ListHotelSceneItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsRequest) SetHotelId(v string) *ListHotelSceneItemsRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsRequest) SetListHotelSceneReq(v *ListHotelSceneItemsRequestListHotelSceneReq) *ListHotelSceneItemsRequest {
+	s.ListHotelSceneReq = v
+	return s
+}
+
+type ListHotelSceneItemsRequestListHotelSceneReq struct {
+	Category *string                                          `json:"Category,omitempty" xml:"Category,omitempty"`
+	Keywords *string                                          `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	Page     *ListHotelSceneItemsRequestListHotelSceneReqPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	Status   *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type     *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListHotelSceneItemsRequestListHotelSceneReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsRequestListHotelSceneReq) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsRequestListHotelSceneReq) SetCategory(v string) *ListHotelSceneItemsRequestListHotelSceneReq {
+	s.Category = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsRequestListHotelSceneReq) SetKeywords(v string) *ListHotelSceneItemsRequestListHotelSceneReq {
+	s.Keywords = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsRequestListHotelSceneReq) SetPage(v *ListHotelSceneItemsRequestListHotelSceneReqPage) *ListHotelSceneItemsRequestListHotelSceneReq {
+	s.Page = v
+	return s
+}
+
+func (s *ListHotelSceneItemsRequestListHotelSceneReq) SetStatus(v string) *ListHotelSceneItemsRequestListHotelSceneReq {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsRequestListHotelSceneReq) SetType(v string) *ListHotelSceneItemsRequestListHotelSceneReq {
+	s.Type = &v
+	return s
+}
+
+type ListHotelSceneItemsRequestListHotelSceneReqPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListHotelSceneItemsRequestListHotelSceneReqPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsRequestListHotelSceneReqPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsRequestListHotelSceneReqPage) SetPageNumber(v int32) *ListHotelSceneItemsRequestListHotelSceneReqPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsRequestListHotelSceneReqPage) SetPageSize(v int32) *ListHotelSceneItemsRequestListHotelSceneReqPage {
+	s.PageSize = &v
+	return s
+}
+
+type ListHotelSceneItemsShrinkRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// ListHotelSceneReq
+	ListHotelSceneReqShrink *string `json:"ListHotelSceneReq,omitempty" xml:"ListHotelSceneReq,omitempty"`
+}
+
+func (s ListHotelSceneItemsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsShrinkRequest) SetHotelId(v string) *ListHotelSceneItemsShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsShrinkRequest) SetListHotelSceneReqShrink(v string) *ListHotelSceneItemsShrinkRequest {
+	s.ListHotelSceneReqShrink = &v
+	return s
+}
+
+type ListHotelSceneItemsResponseBody struct {
+	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListHotelSceneItemsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListHotelSceneItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsResponseBody) SetCode(v int32) *ListHotelSceneItemsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBody) SetMessage(v string) *ListHotelSceneItemsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBody) SetRequestId(v string) *ListHotelSceneItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBody) SetResult(v *ListHotelSceneItemsResponseBodyResult) *ListHotelSceneItemsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListHotelSceneItemsResponseBodyResult struct {
+	Page          *ListHotelSceneItemsResponseBodyResultPage            `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	SceneItemList []*ListHotelSceneItemsResponseBodyResultSceneItemList `json:"SceneItemList,omitempty" xml:"SceneItemList,omitempty" type:"Repeated"`
+}
+
+func (s ListHotelSceneItemsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsResponseBodyResult) SetPage(v *ListHotelSceneItemsResponseBodyResultPage) *ListHotelSceneItemsResponseBodyResult {
+	s.Page = v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResult) SetSceneItemList(v []*ListHotelSceneItemsResponseBodyResultSceneItemList) *ListHotelSceneItemsResponseBodyResult {
+	s.SceneItemList = v
+	return s
+}
+
+type ListHotelSceneItemsResponseBodyResultPage struct {
+	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListHotelSceneItemsResponseBodyResultPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsResponseBodyResultPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultPage) SetHasNext(v bool) *ListHotelSceneItemsResponseBodyResultPage {
+	s.HasNext = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultPage) SetPageNumber(v int32) *ListHotelSceneItemsResponseBodyResultPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultPage) SetPageSize(v int32) *ListHotelSceneItemsResponseBodyResultPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultPage) SetTotal(v int32) *ListHotelSceneItemsResponseBodyResultPage {
+	s.Total = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultPage) SetTotalPage(v int32) *ListHotelSceneItemsResponseBodyResultPage {
+	s.TotalPage = &v
+	return s
+}
+
+type ListHotelSceneItemsResponseBodyResultSceneItemList struct {
+	BeyondLimitReply *string `json:"BeyondLimitReply,omitempty" xml:"BeyondLimitReply,omitempty"`
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeliveryMethod   *string `json:"DeliveryMethod,omitempty" xml:"DeliveryMethod,omitempty"`
+	Icon             *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// id
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LimitNumber   *int32  `json:"LimitNumber,omitempty" xml:"LimitNumber,omitempty"`
+	LimitSwitch   *int32  `json:"LimitSwitch,omitempty" xml:"LimitSwitch,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	Price         *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	RobotName     *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListHotelSceneItemsResponseBodyResultSceneItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsResponseBodyResultSceneItemList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetBeyondLimitReply(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.BeyondLimitReply = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetCategory(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.Category = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetDeliveryMethod(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.DeliveryMethod = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetIcon(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetId(v int64) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetLimitNumber(v int32) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.LimitNumber = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetLimitSwitch(v int32) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.LimitSwitch = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetName(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetPaymentMethod(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.PaymentMethod = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetPrice(v int64) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.Price = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetRobotName(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.RobotName = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetStatus(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetType(v string) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponseBodyResultSceneItemList) SetUpdateTime(v int64) *ListHotelSceneItemsResponseBodyResultSceneItemList {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListHotelSceneItemsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotelSceneItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotelSceneItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelSceneItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelSceneItemsResponse) SetHeaders(v map[string]*string) *ListHotelSceneItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponse) SetStatusCode(v int32) *ListHotelSceneItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotelSceneItemsResponse) SetBody(v *ListHotelSceneItemsResponseBody) *ListHotelSceneItemsResponse {
 	s.Body = v
 	return s
 }
@@ -2056,6 +11907,2105 @@ func (s *ListHotelServiceCategoryResponse) SetStatusCode(v int32) *ListHotelServ
 }
 
 func (s *ListHotelServiceCategoryResponse) SetBody(v *ListHotelServiceCategoryResponseBody) *ListHotelServiceCategoryResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotelsHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListHotelsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsHeaders) SetCommonHeaders(v map[string]*string) *ListHotelsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListHotelsHeaders) SetXAcsAligenieAccessToken(v string) *ListHotelsHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListHotelsHeaders) SetAuthorization(v string) *ListHotelsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListHotelsRequest struct {
+	Page   *ListHotelsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	Status *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListHotelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsRequest) SetPage(v *ListHotelsRequestPage) *ListHotelsRequest {
+	s.Page = v
+	return s
+}
+
+func (s *ListHotelsRequest) SetStatus(v int32) *ListHotelsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListHotelsRequestPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListHotelsRequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsRequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsRequestPage) SetPageNumber(v int32) *ListHotelsRequestPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHotelsRequestPage) SetPageSize(v int32) *ListHotelsRequestPage {
+	s.PageSize = &v
+	return s
+}
+
+type ListHotelsShrinkRequest struct {
+	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListHotelsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsShrinkRequest) SetPageShrink(v string) *ListHotelsShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+func (s *ListHotelsShrinkRequest) SetStatus(v int32) *ListHotelsShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type ListHotelsResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListHotelsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListHotelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsResponseBody) SetCode(v int32) *ListHotelsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotelsResponseBody) SetMessage(v string) *ListHotelsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotelsResponseBody) SetRequestId(v string) *ListHotelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotelsResponseBody) SetResult(v *ListHotelsResponseBodyResult) *ListHotelsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListHotelsResponseBodyResult struct {
+	HotelInfoList []*ListHotelsResponseBodyResultHotelInfoList `json:"HotelInfoList,omitempty" xml:"HotelInfoList,omitempty" type:"Repeated"`
+	Page          *ListHotelsResponseBodyResultPage            `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+}
+
+func (s ListHotelsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsResponseBodyResult) SetHotelInfoList(v []*ListHotelsResponseBodyResultHotelInfoList) *ListHotelsResponseBodyResult {
+	s.HotelInfoList = v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResult) SetPage(v *ListHotelsResponseBodyResultPage) *ListHotelsResponseBodyResult {
+	s.Page = v
+	return s
+}
+
+type ListHotelsResponseBodyResultHotelInfoList struct {
+	AccountNames       []*string `json:"AccountNames,omitempty" xml:"AccountNames,omitempty" type:"Repeated"`
+	CreateTime         *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	HotelAddress       *string   `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelId            *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName          *string   `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	IndustryType       *string   `json:"IndustryType,omitempty" xml:"IndustryType,omitempty"`
+	PhoneNumber        *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RelatedProductName *string   `json:"RelatedProductName,omitempty" xml:"RelatedProductName,omitempty"`
+	RoomNum            *int32    `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	Status             *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListHotelsResponseBodyResultHotelInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsResponseBodyResultHotelInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetAccountNames(v []*string) *ListHotelsResponseBodyResultHotelInfoList {
+	s.AccountNames = v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetCreateTime(v int64) *ListHotelsResponseBodyResultHotelInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetHotelAddress(v string) *ListHotelsResponseBodyResultHotelInfoList {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetHotelId(v string) *ListHotelsResponseBodyResultHotelInfoList {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetHotelName(v string) *ListHotelsResponseBodyResultHotelInfoList {
+	s.HotelName = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetIndustryType(v string) *ListHotelsResponseBodyResultHotelInfoList {
+	s.IndustryType = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetPhoneNumber(v string) *ListHotelsResponseBodyResultHotelInfoList {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetRelatedProductName(v string) *ListHotelsResponseBodyResultHotelInfoList {
+	s.RelatedProductName = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetRoomNum(v int32) *ListHotelsResponseBodyResultHotelInfoList {
+	s.RoomNum = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultHotelInfoList) SetStatus(v int32) *ListHotelsResponseBodyResultHotelInfoList {
+	s.Status = &v
+	return s
+}
+
+type ListHotelsResponseBodyResultPage struct {
+	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListHotelsResponseBodyResultPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsResponseBodyResultPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsResponseBodyResultPage) SetHasNext(v bool) *ListHotelsResponseBodyResultPage {
+	s.HasNext = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultPage) SetPageNumber(v int32) *ListHotelsResponseBodyResultPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultPage) SetPageSize(v int32) *ListHotelsResponseBodyResultPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultPage) SetTotal(v int32) *ListHotelsResponseBodyResultPage {
+	s.Total = &v
+	return s
+}
+
+func (s *ListHotelsResponseBodyResultPage) SetTotalPage(v int32) *ListHotelsResponseBodyResultPage {
+	s.TotalPage = &v
+	return s
+}
+
+type ListHotelsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotelsResponse) SetHeaders(v map[string]*string) *ListHotelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotelsResponse) SetStatusCode(v int32) *ListHotelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotelsResponse) SetBody(v *ListHotelsResponseBody) *ListHotelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListInfraredDeviceBrandsHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListInfraredDeviceBrandsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredDeviceBrandsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredDeviceBrandsHeaders) SetCommonHeaders(v map[string]*string) *ListInfraredDeviceBrandsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsHeaders) SetXAcsAligenieAccessToken(v string) *ListInfraredDeviceBrandsHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsHeaders) SetAuthorization(v string) *ListInfraredDeviceBrandsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListInfraredDeviceBrandsRequest struct {
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ServiceProvider *string `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
+}
+
+func (s ListInfraredDeviceBrandsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredDeviceBrandsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredDeviceBrandsRequest) SetCategory(v string) *ListInfraredDeviceBrandsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsRequest) SetServiceProvider(v string) *ListInfraredDeviceBrandsRequest {
+	s.ServiceProvider = &v
+	return s
+}
+
+type ListInfraredDeviceBrandsResponseBody struct {
+	Message    *string              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     map[string][]*string `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32               `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListInfraredDeviceBrandsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredDeviceBrandsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredDeviceBrandsResponseBody) SetMessage(v string) *ListInfraredDeviceBrandsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsResponseBody) SetRequestId(v string) *ListInfraredDeviceBrandsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsResponseBody) SetResult(v map[string][]*string) *ListInfraredDeviceBrandsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsResponseBody) SetStatusCode(v int32) *ListInfraredDeviceBrandsResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListInfraredDeviceBrandsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInfraredDeviceBrandsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInfraredDeviceBrandsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredDeviceBrandsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredDeviceBrandsResponse) SetHeaders(v map[string]*string) *ListInfraredDeviceBrandsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsResponse) SetStatusCode(v int32) *ListInfraredDeviceBrandsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInfraredDeviceBrandsResponse) SetBody(v *ListInfraredDeviceBrandsResponseBody) *ListInfraredDeviceBrandsResponse {
+	s.Body = v
+	return s
+}
+
+type ListInfraredRemoteControllersHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListInfraredRemoteControllersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredRemoteControllersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredRemoteControllersHeaders) SetCommonHeaders(v map[string]*string) *ListInfraredRemoteControllersHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersHeaders) SetXAcsAligenieAccessToken(v string) *ListInfraredRemoteControllersHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersHeaders) SetAuthorization(v string) *ListInfraredRemoteControllersHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListInfraredRemoteControllersRequest struct {
+	Brand           *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	City            *string `json:"City,omitempty" xml:"City,omitempty"`
+	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	ServiceProvider *string `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
+}
+
+func (s ListInfraredRemoteControllersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredRemoteControllersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredRemoteControllersRequest) SetBrand(v string) *ListInfraredRemoteControllersRequest {
+	s.Brand = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersRequest) SetCategory(v string) *ListInfraredRemoteControllersRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersRequest) SetCity(v string) *ListInfraredRemoteControllersRequest {
+	s.City = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersRequest) SetHotelId(v string) *ListInfraredRemoteControllersRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersRequest) SetProvince(v string) *ListInfraredRemoteControllersRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersRequest) SetServiceProvider(v string) *ListInfraredRemoteControllersRequest {
+	s.ServiceProvider = &v
+	return s
+}
+
+type ListInfraredRemoteControllersResponseBody struct {
+	Message    *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListInfraredRemoteControllersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListInfraredRemoteControllersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredRemoteControllersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredRemoteControllersResponseBody) SetMessage(v string) *ListInfraredRemoteControllersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersResponseBody) SetRequestId(v string) *ListInfraredRemoteControllersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersResponseBody) SetResult(v []*ListInfraredRemoteControllersResponseBodyResult) *ListInfraredRemoteControllersResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersResponseBody) SetStatusCode(v int32) *ListInfraredRemoteControllersResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListInfraredRemoteControllersResponseBodyResult struct {
+	Index   *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	Rid     *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListInfraredRemoteControllersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredRemoteControllersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredRemoteControllersResponseBodyResult) SetIndex(v int32) *ListInfraredRemoteControllersResponseBodyResult {
+	s.Index = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersResponseBodyResult) SetRid(v int64) *ListInfraredRemoteControllersResponseBodyResult {
+	s.Rid = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersResponseBodyResult) SetVersion(v string) *ListInfraredRemoteControllersResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type ListInfraredRemoteControllersResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInfraredRemoteControllersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInfraredRemoteControllersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInfraredRemoteControllersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInfraredRemoteControllersResponse) SetHeaders(v map[string]*string) *ListInfraredRemoteControllersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersResponse) SetStatusCode(v int32) *ListInfraredRemoteControllersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInfraredRemoteControllersResponse) SetBody(v *ListInfraredRemoteControllersResponseBody) *ListInfraredRemoteControllersResponse {
+	s.Body = v
+	return s
+}
+
+type ListSTBServiceProvidersHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListSTBServiceProvidersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSTBServiceProvidersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListSTBServiceProvidersHeaders) SetCommonHeaders(v map[string]*string) *ListSTBServiceProvidersHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListSTBServiceProvidersHeaders) SetXAcsAligenieAccessToken(v string) *ListSTBServiceProvidersHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListSTBServiceProvidersHeaders) SetAuthorization(v string) *ListSTBServiceProvidersHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListSTBServiceProvidersRequest struct {
+	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s ListSTBServiceProvidersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSTBServiceProvidersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSTBServiceProvidersRequest) SetCity(v string) *ListSTBServiceProvidersRequest {
+	s.City = &v
+	return s
+}
+
+func (s *ListSTBServiceProvidersRequest) SetProvince(v string) *ListSTBServiceProvidersRequest {
+	s.Province = &v
+	return s
+}
+
+type ListSTBServiceProvidersResponseBody struct {
+	Message    *string              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     map[string][]*string `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32               `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListSTBServiceProvidersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSTBServiceProvidersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSTBServiceProvidersResponseBody) SetMessage(v string) *ListSTBServiceProvidersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSTBServiceProvidersResponseBody) SetRequestId(v string) *ListSTBServiceProvidersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSTBServiceProvidersResponseBody) SetResult(v map[string][]*string) *ListSTBServiceProvidersResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListSTBServiceProvidersResponseBody) SetStatusCode(v int32) *ListSTBServiceProvidersResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListSTBServiceProvidersResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSTBServiceProvidersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSTBServiceProvidersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSTBServiceProvidersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSTBServiceProvidersResponse) SetHeaders(v map[string]*string) *ListSTBServiceProvidersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSTBServiceProvidersResponse) SetStatusCode(v int32) *ListSTBServiceProvidersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSTBServiceProvidersResponse) SetBody(v *ListSTBServiceProvidersResponseBody) *ListSTBServiceProvidersResponse {
+	s.Body = v
+	return s
+}
+
+type ListSceneCategoryHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListSceneCategoryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSceneCategoryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListSceneCategoryHeaders) SetCommonHeaders(v map[string]*string) *ListSceneCategoryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListSceneCategoryHeaders) SetXAcsAligenieAccessToken(v string) *ListSceneCategoryHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListSceneCategoryHeaders) SetAuthorization(v string) *ListSceneCategoryHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListSceneCategoryRequest struct {
+	// hotelId
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListSceneCategoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSceneCategoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSceneCategoryRequest) SetHotelId(v string) *ListSceneCategoryRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListSceneCategoryRequest) SetType(v string) *ListSceneCategoryRequest {
+	s.Type = &v
+	return s
+}
+
+type ListSceneCategoryResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListSceneCategoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSceneCategoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSceneCategoryResponseBody) SetCode(v int32) *ListSceneCategoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSceneCategoryResponseBody) SetMessage(v string) *ListSceneCategoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSceneCategoryResponseBody) SetRequestId(v string) *ListSceneCategoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSceneCategoryResponseBody) SetResult(v []*string) *ListSceneCategoryResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListSceneCategoryResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSceneCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSceneCategoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSceneCategoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSceneCategoryResponse) SetHeaders(v map[string]*string) *ListSceneCategoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSceneCategoryResponse) SetStatusCode(v int32) *ListSceneCategoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSceneCategoryResponse) SetBody(v *ListSceneCategoryResponseBody) *ListSceneCategoryResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListServiceQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQAHeaders) SetCommonHeaders(v map[string]*string) *ListServiceQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListServiceQAHeaders) SetXAcsAligenieAccessToken(v string) *ListServiceQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListServiceQAHeaders) SetAuthorization(v string) *ListServiceQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListServiceQARequest struct {
+	Active  *bool                     `json:"Active,omitempty" xml:"Active,omitempty"`
+	HotelId *string                   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Keyword *string                   `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Page    *ListServiceQARequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+}
+
+func (s ListServiceQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQARequest) SetActive(v bool) *ListServiceQARequest {
+	s.Active = &v
+	return s
+}
+
+func (s *ListServiceQARequest) SetHotelId(v string) *ListServiceQARequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListServiceQARequest) SetKeyword(v string) *ListServiceQARequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListServiceQARequest) SetPage(v *ListServiceQARequestPage) *ListServiceQARequest {
+	s.Page = v
+	return s
+}
+
+type ListServiceQARequestPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListServiceQARequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQARequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQARequestPage) SetPageNumber(v int32) *ListServiceQARequestPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceQARequestPage) SetPageSize(v int32) *ListServiceQARequestPage {
+	s.PageSize = &v
+	return s
+}
+
+type ListServiceQAShrinkRequest struct {
+	Active     *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
+	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
+}
+
+func (s ListServiceQAShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQAShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQAShrinkRequest) SetActive(v bool) *ListServiceQAShrinkRequest {
+	s.Active = &v
+	return s
+}
+
+func (s *ListServiceQAShrinkRequest) SetHotelId(v string) *ListServiceQAShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListServiceQAShrinkRequest) SetKeyword(v string) *ListServiceQAShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListServiceQAShrinkRequest) SetPageShrink(v string) *ListServiceQAShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+type ListServiceQAResponseBody struct {
+	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page       *ListServiceQAResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListServiceQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListServiceQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQAResponseBody) SetMessage(v string) *ListServiceQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBody) SetPage(v *ListServiceQAResponseBodyPage) *ListServiceQAResponseBody {
+	s.Page = v
+	return s
+}
+
+func (s *ListServiceQAResponseBody) SetRequestId(v string) *ListServiceQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBody) SetResult(v []*ListServiceQAResponseBodyResult) *ListServiceQAResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListServiceQAResponseBody) SetStatusCode(v int32) *ListServiceQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListServiceQAResponseBodyPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListServiceQAResponseBodyPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQAResponseBodyPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQAResponseBodyPage) SetPageNumber(v int32) *ListServiceQAResponseBodyPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBodyPage) SetPageSize(v int32) *ListServiceQAResponseBodyPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBodyPage) SetTotal(v int32) *ListServiceQAResponseBodyPage {
+	s.Total = &v
+	return s
+}
+
+type ListServiceQAResponseBodyResult struct {
+	Active      *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
+	Answer      *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Question    *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	ServiceQAId *int64  `json:"ServiceQAId,omitempty" xml:"ServiceQAId,omitempty"`
+	Templates   *string `json:"Templates,omitempty" xml:"Templates,omitempty"`
+}
+
+func (s ListServiceQAResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQAResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQAResponseBodyResult) SetActive(v bool) *ListServiceQAResponseBodyResult {
+	s.Active = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBodyResult) SetAnswer(v string) *ListServiceQAResponseBodyResult {
+	s.Answer = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBodyResult) SetGmtModified(v string) *ListServiceQAResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBodyResult) SetQuestion(v string) *ListServiceQAResponseBodyResult {
+	s.Question = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBodyResult) SetServiceQAId(v int64) *ListServiceQAResponseBodyResult {
+	s.ServiceQAId = &v
+	return s
+}
+
+func (s *ListServiceQAResponseBodyResult) SetTemplates(v string) *ListServiceQAResponseBodyResult {
+	s.Templates = &v
+	return s
+}
+
+type ListServiceQAResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceQAResponse) SetHeaders(v map[string]*string) *ListServiceQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceQAResponse) SetStatusCode(v int32) *ListServiceQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceQAResponse) SetBody(v *ListServiceQAResponseBody) *ListServiceQAResponse {
+	s.Body = v
+	return s
+}
+
+type ListTicketsHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListTicketsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsHeaders) SetCommonHeaders(v map[string]*string) *ListTicketsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTicketsHeaders) SetXAcsAligenieAccessToken(v string) *ListTicketsHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ListTicketsHeaders) SetAuthorization(v string) *ListTicketsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListTicketsRequest struct {
+	EndTime        *string                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HotelId        *string                 `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	IsDesc         *bool                   `json:"IsDesc,omitempty" xml:"IsDesc,omitempty"`
+	IsNeedCallback *bool                   `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
+	IsNeedCharges  *bool                   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
+	Page           *ListTicketsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	RoomNo         *string                 `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	SortField      *string                 `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	StartTime      *string                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status         *string                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string                 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTicketsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsRequest) SetEndTime(v string) *ListTicketsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetHotelId(v string) *ListTicketsRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetIsDesc(v bool) *ListTicketsRequest {
+	s.IsDesc = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetIsNeedCallback(v bool) *ListTicketsRequest {
+	s.IsNeedCallback = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetIsNeedCharges(v bool) *ListTicketsRequest {
+	s.IsNeedCharges = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetPage(v *ListTicketsRequestPage) *ListTicketsRequest {
+	s.Page = v
+	return s
+}
+
+func (s *ListTicketsRequest) SetRoomNo(v string) *ListTicketsRequest {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetSortField(v string) *ListTicketsRequest {
+	s.SortField = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetStartTime(v string) *ListTicketsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetStatus(v string) *ListTicketsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetType(v string) *ListTicketsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListTicketsRequestPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListTicketsRequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsRequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsRequestPage) SetPageNumber(v int32) *ListTicketsRequestPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTicketsRequestPage) SetPageSize(v int32) *ListTicketsRequestPage {
+	s.PageSize = &v
+	return s
+}
+
+type ListTicketsShrinkRequest struct {
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HotelId        *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	IsDesc         *bool   `json:"IsDesc,omitempty" xml:"IsDesc,omitempty"`
+	IsNeedCallback *bool   `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
+	IsNeedCharges  *bool   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
+	PageShrink     *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	RoomNo         *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	SortField      *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTicketsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsShrinkRequest) SetEndTime(v string) *ListTicketsShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetHotelId(v string) *ListTicketsShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetIsDesc(v bool) *ListTicketsShrinkRequest {
+	s.IsDesc = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetIsNeedCallback(v bool) *ListTicketsShrinkRequest {
+	s.IsNeedCallback = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetIsNeedCharges(v bool) *ListTicketsShrinkRequest {
+	s.IsNeedCharges = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetPageShrink(v string) *ListTicketsShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetRoomNo(v string) *ListTicketsShrinkRequest {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetSortField(v string) *ListTicketsShrinkRequest {
+	s.SortField = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetStartTime(v string) *ListTicketsShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetStatus(v string) *ListTicketsShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTicketsShrinkRequest) SetType(v string) *ListTicketsShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type ListTicketsResponseBody struct {
+	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page       *ListTicketsResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListTicketsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                           `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListTicketsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponseBody) SetMessage(v string) *ListTicketsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetPage(v *ListTicketsResponseBodyPage) *ListTicketsResponseBody {
+	s.Page = v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetRequestId(v string) *ListTicketsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetResult(v []*ListTicketsResponseBodyResult) *ListTicketsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetStatusCode(v int32) *ListTicketsResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ListTicketsResponseBodyPage struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListTicketsResponseBodyPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponseBodyPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponseBodyPage) SetPageNumber(v int32) *ListTicketsResponseBodyPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyPage) SetPageSize(v int32) *ListTicketsResponseBodyPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyPage) SetTotal(v int32) *ListTicketsResponseBodyPage {
+	s.Total = &v
+	return s
+}
+
+type ListTicketsResponseBodyResult struct {
+	Action            *bool                                   `json:"Action,omitempty" xml:"Action,omitempty"`
+	AssignedHandler   *string                                 `json:"AssignedHandler,omitempty" xml:"AssignedHandler,omitempty"`
+	ChargesRemark     *string                                 `json:"ChargesRemark,omitempty" xml:"ChargesRemark,omitempty"`
+	CompleteRemark    *string                                 `json:"CompleteRemark,omitempty" xml:"CompleteRemark,omitempty"`
+	Dialogs           []*ListTicketsResponseBodyResultDialogs `json:"Dialogs,omitempty" xml:"Dialogs,omitempty" type:"Repeated"`
+	GmtCalled         *string                                 `json:"GmtCalled,omitempty" xml:"GmtCalled,omitempty"`
+	GmtCreate         *string                                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtDelayed        *string                                 `json:"GmtDelayed,omitempty" xml:"GmtDelayed,omitempty"`
+	GmtModified       *string                                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GroupKey          *string                                 `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	Id                *int64                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsAcceptedCharges *bool                                   `json:"IsAcceptedCharges,omitempty" xml:"IsAcceptedCharges,omitempty"`
+	IsDelayed         *bool                                   `json:"IsDelayed,omitempty" xml:"IsDelayed,omitempty"`
+	IsNeedCallback    *bool                                   `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
+	IsNeedCharges     *bool                                   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
+	Operations        []map[string]interface{}                `json:"Operations,omitempty" xml:"Operations,omitempty" type:"Repeated"`
+	Remark            *string                                 `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RoomNo            *string                                 `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	Status            *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type              *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTicketsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponseBodyResult) SetAction(v bool) *ListTicketsResponseBodyResult {
+	s.Action = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetAssignedHandler(v string) *ListTicketsResponseBodyResult {
+	s.AssignedHandler = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetChargesRemark(v string) *ListTicketsResponseBodyResult {
+	s.ChargesRemark = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetCompleteRemark(v string) *ListTicketsResponseBodyResult {
+	s.CompleteRemark = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetDialogs(v []*ListTicketsResponseBodyResultDialogs) *ListTicketsResponseBodyResult {
+	s.Dialogs = v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetGmtCalled(v string) *ListTicketsResponseBodyResult {
+	s.GmtCalled = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetGmtCreate(v string) *ListTicketsResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetGmtDelayed(v string) *ListTicketsResponseBodyResult {
+	s.GmtDelayed = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetGmtModified(v string) *ListTicketsResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetGroupKey(v string) *ListTicketsResponseBodyResult {
+	s.GroupKey = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetId(v int64) *ListTicketsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetIsAcceptedCharges(v bool) *ListTicketsResponseBodyResult {
+	s.IsAcceptedCharges = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetIsDelayed(v bool) *ListTicketsResponseBodyResult {
+	s.IsDelayed = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetIsNeedCallback(v bool) *ListTicketsResponseBodyResult {
+	s.IsNeedCallback = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetIsNeedCharges(v bool) *ListTicketsResponseBodyResult {
+	s.IsNeedCharges = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetOperations(v []map[string]interface{}) *ListTicketsResponseBodyResult {
+	s.Operations = v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetRemark(v string) *ListTicketsResponseBodyResult {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetRoomNo(v string) *ListTicketsResponseBodyResult {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetStatus(v string) *ListTicketsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResult) SetType(v string) *ListTicketsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type ListTicketsResponseBodyResultDialogs struct {
+	Answer   *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
+}
+
+func (s ListTicketsResponseBodyResultDialogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponseBodyResultDialogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponseBodyResultDialogs) SetAnswer(v string) *ListTicketsResponseBodyResultDialogs {
+	s.Answer = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyResultDialogs) SetQuestion(v string) *ListTicketsResponseBodyResultDialogs {
+	s.Question = &v
+	return s
+}
+
+type ListTicketsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTicketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTicketsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponse) SetHeaders(v map[string]*string) *ListTicketsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTicketsResponse) SetStatusCode(v int32) *ListTicketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTicketsResponse) SetBody(v *ListTicketsResponseBody) *ListTicketsResponse {
+	s.Body = v
+	return s
+}
+
+type PageGetHotelRoomDevicesHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s PageGetHotelRoomDevicesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageGetHotelRoomDevicesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PageGetHotelRoomDevicesHeaders) SetCommonHeaders(v map[string]*string) *PageGetHotelRoomDevicesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesHeaders) SetXAcsAligenieAccessToken(v string) *PageGetHotelRoomDevicesHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesHeaders) SetAuthorization(v string) *PageGetHotelRoomDevicesHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type PageGetHotelRoomDevicesRequest struct {
+	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s PageGetHotelRoomDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageGetHotelRoomDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PageGetHotelRoomDevicesRequest) SetHotelId(v string) *PageGetHotelRoomDevicesRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesRequest) SetPageNumber(v int32) *PageGetHotelRoomDevicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesRequest) SetPageSize(v int32) *PageGetHotelRoomDevicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type PageGetHotelRoomDevicesResponseBody struct {
+	Extentions map[string]interface{}                       `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page       *PageGetHotelRoomDevicesResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*PageGetHotelRoomDevicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	StatusCode *int32                                       `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s PageGetHotelRoomDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageGetHotelRoomDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PageGetHotelRoomDevicesResponseBody) SetExtentions(v map[string]interface{}) *PageGetHotelRoomDevicesResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBody) SetMessage(v string) *PageGetHotelRoomDevicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBody) SetPage(v *PageGetHotelRoomDevicesResponseBodyPage) *PageGetHotelRoomDevicesResponseBody {
+	s.Page = v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBody) SetRequestId(v string) *PageGetHotelRoomDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBody) SetResult(v []*PageGetHotelRoomDevicesResponseBodyResult) *PageGetHotelRoomDevicesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBody) SetStatusCode(v int32) *PageGetHotelRoomDevicesResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type PageGetHotelRoomDevicesResponseBodyPage struct {
+	End        *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Start      *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s PageGetHotelRoomDevicesResponseBodyPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageGetHotelRoomDevicesResponseBodyPage) GoString() string {
+	return s.String()
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyPage) SetEnd(v int32) *PageGetHotelRoomDevicesResponseBodyPage {
+	s.End = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyPage) SetHasNext(v bool) *PageGetHotelRoomDevicesResponseBodyPage {
+	s.HasNext = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyPage) SetPageNumber(v int32) *PageGetHotelRoomDevicesResponseBodyPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyPage) SetPageSize(v int32) *PageGetHotelRoomDevicesResponseBodyPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyPage) SetStart(v int32) *PageGetHotelRoomDevicesResponseBodyPage {
+	s.Start = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyPage) SetTotal(v int32) *PageGetHotelRoomDevicesResponseBodyPage {
+	s.Total = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyPage) SetTotalPage(v int32) *PageGetHotelRoomDevicesResponseBodyPage {
+	s.TotalPage = &v
+	return s
+}
+
+type PageGetHotelRoomDevicesResponseBodyResult struct {
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Mac             *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	OnlineStatus    *int32  `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s PageGetHotelRoomDevicesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageGetHotelRoomDevicesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyResult) SetFirmwareVersion(v string) *PageGetHotelRoomDevicesResponseBodyResult {
+	s.FirmwareVersion = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyResult) SetHotelId(v string) *PageGetHotelRoomDevicesResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyResult) SetMac(v string) *PageGetHotelRoomDevicesResponseBodyResult {
+	s.Mac = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyResult) SetOnlineStatus(v int32) *PageGetHotelRoomDevicesResponseBodyResult {
+	s.OnlineStatus = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyResult) SetRoomNo(v string) *PageGetHotelRoomDevicesResponseBodyResult {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponseBodyResult) SetSn(v string) *PageGetHotelRoomDevicesResponseBodyResult {
+	s.Sn = &v
+	return s
+}
+
+type PageGetHotelRoomDevicesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PageGetHotelRoomDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PageGetHotelRoomDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageGetHotelRoomDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PageGetHotelRoomDevicesResponse) SetHeaders(v map[string]*string) *PageGetHotelRoomDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponse) SetStatusCode(v int32) *PageGetHotelRoomDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PageGetHotelRoomDevicesResponse) SetBody(v *PageGetHotelRoomDevicesResponseBody) *PageGetHotelRoomDevicesResponse {
+	s.Body = v
+	return s
+}
+
+type PushHotelMessageHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s PushHotelMessageHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushHotelMessageHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PushHotelMessageHeaders) SetCommonHeaders(v map[string]*string) *PushHotelMessageHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PushHotelMessageHeaders) SetXAcsAligenieAccessToken(v string) *PushHotelMessageHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *PushHotelMessageHeaders) SetAuthorization(v string) *PushHotelMessageHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type PushHotelMessageRequest struct {
+	// pushHotelMessageReq
+	PushHotelMessageReq *PushHotelMessageRequestPushHotelMessageReq `json:"PushHotelMessageReq,omitempty" xml:"PushHotelMessageReq,omitempty" type:"Struct"`
+}
+
+func (s PushHotelMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushHotelMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushHotelMessageRequest) SetPushHotelMessageReq(v *PushHotelMessageRequestPushHotelMessageReq) *PushHotelMessageRequest {
+	s.PushHotelMessageReq = v
+	return s
+}
+
+type PushHotelMessageRequestPushHotelMessageReq struct {
+	HotelId    *string            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ParamMap   map[string]*string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
+	RoomNo     *string            `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	TemplateId *int64             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s PushHotelMessageRequestPushHotelMessageReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushHotelMessageRequestPushHotelMessageReq) GoString() string {
+	return s.String()
+}
+
+func (s *PushHotelMessageRequestPushHotelMessageReq) SetHotelId(v string) *PushHotelMessageRequestPushHotelMessageReq {
+	s.HotelId = &v
+	return s
+}
+
+func (s *PushHotelMessageRequestPushHotelMessageReq) SetParamMap(v map[string]*string) *PushHotelMessageRequestPushHotelMessageReq {
+	s.ParamMap = v
+	return s
+}
+
+func (s *PushHotelMessageRequestPushHotelMessageReq) SetRoomNo(v string) *PushHotelMessageRequestPushHotelMessageReq {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *PushHotelMessageRequestPushHotelMessageReq) SetTemplateId(v int64) *PushHotelMessageRequestPushHotelMessageReq {
+	s.TemplateId = &v
+	return s
+}
+
+type PushHotelMessageShrinkRequest struct {
+	// pushHotelMessageReq
+	PushHotelMessageReqShrink *string `json:"PushHotelMessageReq,omitempty" xml:"PushHotelMessageReq,omitempty"`
+}
+
+func (s PushHotelMessageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushHotelMessageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushHotelMessageShrinkRequest) SetPushHotelMessageReqShrink(v string) *PushHotelMessageShrinkRequest {
+	s.PushHotelMessageReqShrink = &v
+	return s
+}
+
+type PushHotelMessageResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s PushHotelMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushHotelMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PushHotelMessageResponseBody) SetCode(v int32) *PushHotelMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PushHotelMessageResponseBody) SetMessage(v string) *PushHotelMessageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PushHotelMessageResponseBody) SetRequestId(v string) *PushHotelMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PushHotelMessageResponseBody) SetResult(v bool) *PushHotelMessageResponseBody {
+	s.Result = &v
+	return s
+}
+
+type PushHotelMessageResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushHotelMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PushHotelMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushHotelMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushHotelMessageResponse) SetHeaders(v map[string]*string) *PushHotelMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PushHotelMessageResponse) SetStatusCode(v int32) *PushHotelMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PushHotelMessageResponse) SetBody(v *PushHotelMessageResponseBody) *PushHotelMessageResponse {
+	s.Body = v
+	return s
+}
+
+type PushWelcomeTextAndMusicHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s PushWelcomeTextAndMusicHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushWelcomeTextAndMusicHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PushWelcomeTextAndMusicHeaders) SetCommonHeaders(v map[string]*string) *PushWelcomeTextAndMusicHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicHeaders) SetXAcsAligenieAccessToken(v string) *PushWelcomeTextAndMusicHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicHeaders) SetAuthorization(v string) *PushWelcomeTextAndMusicHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type PushWelcomeTextAndMusicRequest struct {
+	HotelId          *string            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo           *string            `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	TemplateVariable map[string]*string `json:"TemplateVariable,omitempty" xml:"TemplateVariable,omitempty"`
+}
+
+func (s PushWelcomeTextAndMusicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushWelcomeTextAndMusicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushWelcomeTextAndMusicRequest) SetHotelId(v string) *PushWelcomeTextAndMusicRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicRequest) SetRoomNo(v string) *PushWelcomeTextAndMusicRequest {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicRequest) SetTemplateVariable(v map[string]*string) *PushWelcomeTextAndMusicRequest {
+	s.TemplateVariable = v
+	return s
+}
+
+type PushWelcomeTextAndMusicShrinkRequest struct {
+	HotelId                *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo                 *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	TemplateVariableShrink *string `json:"TemplateVariable,omitempty" xml:"TemplateVariable,omitempty"`
+}
+
+func (s PushWelcomeTextAndMusicShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushWelcomeTextAndMusicShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushWelcomeTextAndMusicShrinkRequest) SetHotelId(v string) *PushWelcomeTextAndMusicShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicShrinkRequest) SetRoomNo(v string) *PushWelcomeTextAndMusicShrinkRequest {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicShrinkRequest) SetTemplateVariableShrink(v string) *PushWelcomeTextAndMusicShrinkRequest {
+	s.TemplateVariableShrink = &v
+	return s
+}
+
+type PushWelcomeTextAndMusicResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s PushWelcomeTextAndMusicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushWelcomeTextAndMusicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PushWelcomeTextAndMusicResponseBody) SetExtentions(v map[string]interface{}) *PushWelcomeTextAndMusicResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicResponseBody) SetMessage(v string) *PushWelcomeTextAndMusicResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicResponseBody) SetRequestId(v string) *PushWelcomeTextAndMusicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicResponseBody) SetResult(v bool) *PushWelcomeTextAndMusicResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicResponseBody) SetStatusCode(v int32) *PushWelcomeTextAndMusicResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type PushWelcomeTextAndMusicResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushWelcomeTextAndMusicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PushWelcomeTextAndMusicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushWelcomeTextAndMusicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushWelcomeTextAndMusicResponse) SetHeaders(v map[string]*string) *PushWelcomeTextAndMusicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicResponse) SetStatusCode(v int32) *PushWelcomeTextAndMusicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PushWelcomeTextAndMusicResponse) SetBody(v *PushWelcomeTextAndMusicResponseBody) *PushWelcomeTextAndMusicResponse {
 	s.Body = v
 	return s
 }
@@ -2292,205 +14242,1373 @@ func (s *QueryDeviceStatusResponse) SetBody(v *QueryDeviceStatusResponseBody) *Q
 	return s
 }
 
-type QueryHotelProductHeaders struct {
+type QueryHotelRoomDetailHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
 	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
-func (s QueryHotelProductHeaders) String() string {
+func (s QueryHotelRoomDetailHeaders) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryHotelProductHeaders) GoString() string {
+func (s QueryHotelRoomDetailHeaders) GoString() string {
 	return s.String()
 }
 
-func (s *QueryHotelProductHeaders) SetCommonHeaders(v map[string]*string) *QueryHotelProductHeaders {
+func (s *QueryHotelRoomDetailHeaders) SetCommonHeaders(v map[string]*string) *QueryHotelRoomDetailHeaders {
 	s.CommonHeaders = v
 	return s
 }
 
-func (s *QueryHotelProductHeaders) SetXAcsAligenieAccessToken(v string) *QueryHotelProductHeaders {
+func (s *QueryHotelRoomDetailHeaders) SetXAcsAligenieAccessToken(v string) *QueryHotelRoomDetailHeaders {
 	s.XAcsAligenieAccessToken = &v
 	return s
 }
 
-func (s *QueryHotelProductHeaders) SetAuthorization(v string) *QueryHotelProductHeaders {
+func (s *QueryHotelRoomDetailHeaders) SetAuthorization(v string) *QueryHotelRoomDetailHeaders {
 	s.Authorization = &v
 	return s
 }
 
-type QueryHotelProductRequest struct {
-	UserInfo *QueryHotelProductRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+type QueryHotelRoomDetailRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Mac     *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// 设备sn信息
+	// 注：若在mac uuid sn全都输入的情况下 按照输入正确的内容查询 若全输入都是正确的 则 按照 uuid > mac > sn 优先级查询
+	// 传入mac uuid sn其中一个 则酒店id和房间号可不传
+	Sn   *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
-func (s QueryHotelProductRequest) String() string {
+func (s QueryHotelRoomDetailRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryHotelProductRequest) GoString() string {
+func (s QueryHotelRoomDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryHotelProductRequest) SetUserInfo(v *QueryHotelProductRequestUserInfo) *QueryHotelProductRequest {
-	s.UserInfo = v
-	return s
-}
-
-type QueryHotelProductRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
-	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-}
-
-func (s QueryHotelProductRequestUserInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryHotelProductRequestUserInfo) GoString() string {
-	return s.String()
-}
-
-func (s *QueryHotelProductRequestUserInfo) SetEncodeKey(v string) *QueryHotelProductRequestUserInfo {
-	s.EncodeKey = &v
-	return s
-}
-
-func (s *QueryHotelProductRequestUserInfo) SetEncodeType(v string) *QueryHotelProductRequestUserInfo {
-	s.EncodeType = &v
-	return s
-}
-
-func (s *QueryHotelProductRequestUserInfo) SetId(v string) *QueryHotelProductRequestUserInfo {
-	s.Id = &v
-	return s
-}
-
-func (s *QueryHotelProductRequestUserInfo) SetIdType(v string) *QueryHotelProductRequestUserInfo {
-	s.IdType = &v
-	return s
-}
-
-func (s *QueryHotelProductRequestUserInfo) SetOrganizationId(v string) *QueryHotelProductRequestUserInfo {
-	s.OrganizationId = &v
-	return s
-}
-
-type QueryHotelProductShrinkRequest struct {
-	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
-}
-
-func (s QueryHotelProductShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryHotelProductShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryHotelProductShrinkRequest) SetUserInfoShrink(v string) *QueryHotelProductShrinkRequest {
-	s.UserInfoShrink = &v
-	return s
-}
-
-type QueryHotelProductResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryHotelProductResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s QueryHotelProductResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryHotelProductResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryHotelProductResponseBody) SetCode(v int32) *QueryHotelProductResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryHotelProductResponseBody) SetMessage(v string) *QueryHotelProductResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryHotelProductResponseBody) SetRequestId(v string) *QueryHotelProductResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryHotelProductResponseBody) SetResult(v *QueryHotelProductResponseBodyResult) *QueryHotelProductResponseBody {
-	s.Result = v
-	return s
-}
-
-type QueryHotelProductResponseBodyResult struct {
-	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelName   *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	ProductKey  *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-}
-
-func (s QueryHotelProductResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryHotelProductResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *QueryHotelProductResponseBodyResult) SetHotelId(v string) *QueryHotelProductResponseBodyResult {
+func (s *QueryHotelRoomDetailRequest) SetHotelId(v string) *QueryHotelRoomDetailRequest {
 	s.HotelId = &v
 	return s
 }
 
-func (s *QueryHotelProductResponseBodyResult) SetHotelName(v string) *QueryHotelProductResponseBodyResult {
-	s.HotelName = &v
+func (s *QueryHotelRoomDetailRequest) SetMac(v string) *QueryHotelRoomDetailRequest {
+	s.Mac = &v
 	return s
 }
 
-func (s *QueryHotelProductResponseBodyResult) SetProductKey(v string) *QueryHotelProductResponseBodyResult {
-	s.ProductKey = &v
+func (s *QueryHotelRoomDetailRequest) SetRoomNo(v string) *QueryHotelRoomDetailRequest {
+	s.RoomNo = &v
 	return s
 }
 
-func (s *QueryHotelProductResponseBodyResult) SetProductName(v string) *QueryHotelProductResponseBodyResult {
-	s.ProductName = &v
+func (s *QueryHotelRoomDetailRequest) SetSn(v string) *QueryHotelRoomDetailRequest {
+	s.Sn = &v
 	return s
 }
 
-type QueryHotelProductResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryHotelProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *QueryHotelRoomDetailRequest) SetUuid(v string) *QueryHotelRoomDetailRequest {
+	s.Uuid = &v
+	return s
 }
 
-func (s QueryHotelProductResponse) String() string {
+type QueryHotelRoomDetailResponseBody struct {
+	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *QueryHotelRoomDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	StatusCode *int32                                  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QueryHotelRoomDetailResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryHotelProductResponse) GoString() string {
+func (s QueryHotelRoomDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryHotelProductResponse) SetHeaders(v map[string]*string) *QueryHotelProductResponse {
-	s.Headers = v
+func (s *QueryHotelRoomDetailResponseBody) SetMessage(v string) *QueryHotelRoomDetailResponseBody {
+	s.Message = &v
 	return s
 }
 
-func (s *QueryHotelProductResponse) SetStatusCode(v int32) *QueryHotelProductResponse {
+func (s *QueryHotelRoomDetailResponseBody) SetRequestId(v string) *QueryHotelRoomDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBody) SetResult(v *QueryHotelRoomDetailResponseBodyResult) *QueryHotelRoomDetailResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBody) SetStatusCode(v int32) *QueryHotelRoomDetailResponseBody {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *QueryHotelProductResponse) SetBody(v *QueryHotelProductResponseBody) *QueryHotelProductResponse {
+type QueryHotelRoomDetailResponseBodyResult struct {
+	AuthAccounts       []*QueryHotelRoomDetailResponseBodyResultAuthAccounts  `json:"AuthAccounts,omitempty" xml:"AuthAccounts,omitempty" type:"Repeated"`
+	ConnectType        *string                                                `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	CreatorAccountName *string                                                `json:"CreatorAccountName,omitempty" xml:"CreatorAccountName,omitempty"`
+	DeviceInfos        []*QueryHotelRoomDetailResponseBodyResultDeviceInfos   `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
+	HotelId            *string                                                `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName          *string                                                `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	OtherService       *QueryHotelRoomDetailResponseBodyResultOtherService    `json:"OtherService,omitempty" xml:"OtherService,omitempty" type:"Struct"`
+	RoomControlInfo    *QueryHotelRoomDetailResponseBodyResultRoomControlInfo `json:"RoomControlInfo,omitempty" xml:"RoomControlInfo,omitempty" type:"Struct"`
+	RoomNo             *string                                                `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	RoomServiceInfo    *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo `json:"RoomServiceInfo,omitempty" xml:"RoomServiceInfo,omitempty" type:"Struct"`
+}
+
+func (s QueryHotelRoomDetailResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetAuthAccounts(v []*QueryHotelRoomDetailResponseBodyResultAuthAccounts) *QueryHotelRoomDetailResponseBodyResult {
+	s.AuthAccounts = v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetConnectType(v string) *QueryHotelRoomDetailResponseBodyResult {
+	s.ConnectType = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetCreatorAccountName(v string) *QueryHotelRoomDetailResponseBodyResult {
+	s.CreatorAccountName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetDeviceInfos(v []*QueryHotelRoomDetailResponseBodyResultDeviceInfos) *QueryHotelRoomDetailResponseBodyResult {
+	s.DeviceInfos = v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetHotelId(v string) *QueryHotelRoomDetailResponseBodyResult {
+	s.HotelId = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetHotelName(v string) *QueryHotelRoomDetailResponseBodyResult {
+	s.HotelName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetOtherService(v *QueryHotelRoomDetailResponseBodyResultOtherService) *QueryHotelRoomDetailResponseBodyResult {
+	s.OtherService = v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetRoomControlInfo(v *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) *QueryHotelRoomDetailResponseBodyResult {
+	s.RoomControlInfo = v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetRoomNo(v string) *QueryHotelRoomDetailResponseBodyResult {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResult) SetRoomServiceInfo(v *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) *QueryHotelRoomDetailResponseBodyResult {
+	s.RoomServiceInfo = v
+	return s
+}
+
+type QueryHotelRoomDetailResponseBodyResultAuthAccounts struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AuthTime    *string `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultAuthAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultAuthAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultAuthAccounts) SetAccountName(v string) *QueryHotelRoomDetailResponseBodyResultAuthAccounts {
+	s.AccountName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultAuthAccounts) SetAuthTime(v string) *QueryHotelRoomDetailResponseBodyResultAuthAccounts {
+	s.AuthTime = &v
+	return s
+}
+
+type QueryHotelRoomDetailResponseBodyResultDeviceInfos struct {
+	ActiveTime      *string `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	Mac             *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	OnlineStatus    *int32  `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultDeviceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultDeviceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetActiveTime(v string) *QueryHotelRoomDetailResponseBodyResultDeviceInfos {
+	s.ActiveTime = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetDeviceName(v string) *QueryHotelRoomDetailResponseBodyResultDeviceInfos {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetFirmwareVersion(v string) *QueryHotelRoomDetailResponseBodyResultDeviceInfos {
+	s.FirmwareVersion = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetMac(v string) *QueryHotelRoomDetailResponseBodyResultDeviceInfos {
+	s.Mac = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetOnlineStatus(v int32) *QueryHotelRoomDetailResponseBodyResultDeviceInfos {
+	s.OnlineStatus = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetSn(v string) *QueryHotelRoomDetailResponseBodyResultDeviceInfos {
+	s.Sn = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetUuid(v string) *QueryHotelRoomDetailResponseBodyResultDeviceInfos {
+	s.Uuid = &v
+	return s
+}
+
+type QueryHotelRoomDetailResponseBodyResultOtherService struct {
+	OpenCall        *bool  `json:"OpenCall,omitempty" xml:"OpenCall,omitempty"`
+	UnhandleTickets *int32 `json:"UnhandleTickets,omitempty" xml:"UnhandleTickets,omitempty"`
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultOtherService) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultOtherService) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultOtherService) SetOpenCall(v bool) *QueryHotelRoomDetailResponseBodyResultOtherService {
+	s.OpenCall = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultOtherService) SetUnhandleTickets(v int32) *QueryHotelRoomDetailResponseBodyResultOtherService {
+	s.UnhandleTickets = &v
+	return s
+}
+
+type QueryHotelRoomDetailResponseBodyResultRoomControlInfo struct {
+	AppId        *int64                                                              `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName      *string                                                             `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DeviceInfos  []*QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
+	RcuUrl       *string                                                             `json:"RcuUrl,omitempty" xml:"RcuUrl,omitempty"`
+	TemplateId   *int64                                                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string                                                             `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultRoomControlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultRoomControlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) SetAppId(v int64) *QueryHotelRoomDetailResponseBodyResultRoomControlInfo {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) SetAppName(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) SetDeviceInfos(v []*QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) *QueryHotelRoomDetailResponseBodyResultRoomControlInfo {
+	s.DeviceInfos = v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) SetRcuUrl(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfo {
+	s.RcuUrl = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) SetTemplateId(v int64) *QueryHotelRoomDetailResponseBodyResultRoomControlInfo {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) SetTemplateName(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfo {
+	s.TemplateName = &v
+	return s
+}
+
+type QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos struct {
+	CategoryEnName    *string `json:"CategoryEnName,omitempty" xml:"CategoryEnName,omitempty"`
+	CategoryId        *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName      *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	DeviceConnectType *string `json:"DeviceConnectType,omitempty" xml:"DeviceConnectType,omitempty"`
+	DeviceCount       *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	DeviceId          *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	LocationEnName    *string `json:"LocationEnName,omitempty" xml:"LocationEnName,omitempty"`
+	LocationId        *int64  `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
+	LocationName      *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetCategoryEnName(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.CategoryEnName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetCategoryId(v int64) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetCategoryName(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetDeviceConnectType(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.DeviceConnectType = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetDeviceCount(v int32) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.DeviceCount = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetDeviceId(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetDeviceName(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetLocationEnName(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.LocationEnName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetLocationId(v int64) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.LocationId = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetLocationName(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.LocationName = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetProductKey(v string) *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos {
+	s.ProductKey = &v
+	return s
+}
+
+type QueryHotelRoomDetailResponseBodyResultRoomServiceInfo struct {
+	BookServiceCnt   *int32 `json:"BookServiceCnt,omitempty" xml:"BookServiceCnt,omitempty"`
+	GoodsServiceCnt  *int32 `json:"GoodsServiceCnt,omitempty" xml:"GoodsServiceCnt,omitempty"`
+	RepairServiceCnt *int32 `json:"RepairServiceCnt,omitempty" xml:"RepairServiceCnt,omitempty"`
+	RoomServiceCnt   *int32 `json:"RoomServiceCnt,omitempty" xml:"RoomServiceCnt,omitempty"`
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) SetBookServiceCnt(v int32) *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo {
+	s.BookServiceCnt = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) SetGoodsServiceCnt(v int32) *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo {
+	s.GoodsServiceCnt = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) SetRepairServiceCnt(v int32) *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo {
+	s.RepairServiceCnt = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) SetRoomServiceCnt(v int32) *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo {
+	s.RoomServiceCnt = &v
+	return s
+}
+
+type QueryHotelRoomDetailResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryHotelRoomDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryHotelRoomDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryHotelRoomDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryHotelRoomDetailResponse) SetHeaders(v map[string]*string) *QueryHotelRoomDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponse) SetStatusCode(v int32) *QueryHotelRoomDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryHotelRoomDetailResponse) SetBody(v *QueryHotelRoomDetailResponseBody) *QueryHotelRoomDetailResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRoomControlDevicesHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s QueryRoomControlDevicesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesHeaders) SetCommonHeaders(v map[string]*string) *QueryRoomControlDevicesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesHeaders) SetXAcsAligenieAccessToken(v string) *QueryRoomControlDevicesHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesHeaders) SetAuthorization(v string) *QueryRoomControlDevicesHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type QueryRoomControlDevicesRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s QueryRoomControlDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesRequest) SetHotelId(v string) *QueryRoomControlDevicesRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesRequest) SetRoomNo(v string) *QueryRoomControlDevicesRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type QueryRoomControlDevicesResponseBody struct {
+	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryRoomControlDevicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s QueryRoomControlDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesResponseBody) SetCode(v int32) *QueryRoomControlDevicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBody) SetMessage(v string) *QueryRoomControlDevicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBody) SetRequestId(v string) *QueryRoomControlDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBody) SetResult(v []*QueryRoomControlDevicesResponseBodyResult) *QueryRoomControlDevicesResponseBody {
+	s.Result = v
+	return s
+}
+
+type QueryRoomControlDevicesResponseBodyResult struct {
+	Devices      []*QueryRoomControlDevicesResponseBodyResultDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	Location     *string                                             `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationName *string                                             `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+}
+
+func (s QueryRoomControlDevicesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResult) SetDevices(v []*QueryRoomControlDevicesResponseBodyResultDevices) *QueryRoomControlDevicesResponseBodyResult {
+	s.Devices = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResult) SetLocation(v string) *QueryRoomControlDevicesResponseBodyResult {
+	s.Location = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResult) SetLocationName(v string) *QueryRoomControlDevicesResponseBodyResult {
+	s.LocationName = &v
+	return s
+}
+
+type QueryRoomControlDevicesResponseBodyResultDevices struct {
+	AliasList         []*string                                                          `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
+	ConnectType       *string                                                            `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	DN                *string                                                            `json:"DN,omitempty" xml:"DN,omitempty"`
+	DeviceName        *string                                                            `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceStatus      *string                                                            `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	MultiKeySwitchExt *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt `json:"MultiKeySwitchExt,omitempty" xml:"MultiKeySwitchExt,omitempty" type:"Struct"`
+	Name              *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Number            *string                                                            `json:"Number,omitempty" xml:"Number,omitempty"`
+	PK                *string                                                            `json:"PK,omitempty" xml:"PK,omitempty"`
+}
+
+func (s QueryRoomControlDevicesResponseBodyResultDevices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesResponseBodyResultDevices) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetAliasList(v []*string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.AliasList = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetConnectType(v string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.ConnectType = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetDN(v string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.DN = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetDeviceName(v string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetDeviceStatus(v string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.DeviceStatus = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetMultiKeySwitchExt(v *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.MultiKeySwitchExt = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetName(v string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetNumber(v string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.Number = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevices) SetPK(v string) *QueryRoomControlDevicesResponseBodyResultDevices {
+	s.PK = &v
+	return s
+}
+
+type QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt struct {
+	SwitchList []*QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList `json:"SwitchList,omitempty" xml:"SwitchList,omitempty" type:"Repeated"`
+}
+
+func (s QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt) SetSwitchList(v []*QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt {
+	s.SwitchList = v
+	return s
+}
+
+type QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList struct {
+	AliasList    []*string `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
+	Category     *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeviceIndex  *int32    `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	DeviceName   *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceStatus *string   `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	ElementCode  *string   `json:"ElementCode,omitempty" xml:"ElementCode,omitempty"`
+	Location     *string   `json:"Location,omitempty" xml:"Location,omitempty"`
+}
+
+func (s QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetAliasList(v []*string) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.AliasList = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetCategory(v string) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.Category = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetDeviceIndex(v int32) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceIndex = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetDeviceName(v string) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetDeviceStatus(v string) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceStatus = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetElementCode(v string) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.ElementCode = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetLocation(v string) *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.Location = &v
+	return s
+}
+
+type QueryRoomControlDevicesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryRoomControlDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryRoomControlDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesResponse) SetHeaders(v map[string]*string) *QueryRoomControlDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponse) SetStatusCode(v int32) *QueryRoomControlDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesResponse) SetBody(v *QueryRoomControlDevicesResponseBody) *QueryRoomControlDevicesResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySceneListHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s QuerySceneListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySceneListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySceneListHeaders) SetCommonHeaders(v map[string]*string) *QuerySceneListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QuerySceneListHeaders) SetXAcsAligenieAccessToken(v string) *QuerySceneListHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *QuerySceneListHeaders) SetAuthorization(v string) *QuerySceneListHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type QuerySceneListRequest struct {
+	HotelId         *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SceneStates     []*int32  `json:"SceneStates,omitempty" xml:"SceneStates,omitempty" type:"Repeated"`
+	SceneTypes      []*string `json:"SceneTypes,omitempty" xml:"SceneTypes,omitempty" type:"Repeated"`
+	TemplateInfoIds []*string `json:"TemplateInfoIds,omitempty" xml:"TemplateInfoIds,omitempty" type:"Repeated"`
+}
+
+func (s QuerySceneListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySceneListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySceneListRequest) SetHotelId(v string) *QuerySceneListRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *QuerySceneListRequest) SetSceneStates(v []*int32) *QuerySceneListRequest {
+	s.SceneStates = v
+	return s
+}
+
+func (s *QuerySceneListRequest) SetSceneTypes(v []*string) *QuerySceneListRequest {
+	s.SceneTypes = v
+	return s
+}
+
+func (s *QuerySceneListRequest) SetTemplateInfoIds(v []*string) *QuerySceneListRequest {
+	s.TemplateInfoIds = v
+	return s
+}
+
+type QuerySceneListShrinkRequest struct {
+	HotelId               *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SceneStatesShrink     *string `json:"SceneStates,omitempty" xml:"SceneStates,omitempty"`
+	SceneTypesShrink      *string `json:"SceneTypes,omitempty" xml:"SceneTypes,omitempty"`
+	TemplateInfoIdsShrink *string `json:"TemplateInfoIds,omitempty" xml:"TemplateInfoIds,omitempty"`
+}
+
+func (s QuerySceneListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySceneListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySceneListShrinkRequest) SetHotelId(v string) *QuerySceneListShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *QuerySceneListShrinkRequest) SetSceneStatesShrink(v string) *QuerySceneListShrinkRequest {
+	s.SceneStatesShrink = &v
+	return s
+}
+
+func (s *QuerySceneListShrinkRequest) SetSceneTypesShrink(v string) *QuerySceneListShrinkRequest {
+	s.SceneTypesShrink = &v
+	return s
+}
+
+func (s *QuerySceneListShrinkRequest) SetTemplateInfoIdsShrink(v string) *QuerySceneListShrinkRequest {
+	s.TemplateInfoIdsShrink = &v
+	return s
+}
+
+type QuerySceneListResponseBody struct {
+	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results    []*QuerySceneListResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	StatusCode *int32                               `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QuerySceneListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySceneListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySceneListResponseBody) SetMessage(v string) *QuerySceneListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBody) SetRequestId(v string) *QuerySceneListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBody) SetResults(v []*QuerySceneListResponseBodyResults) *QuerySceneListResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *QuerySceneListResponseBody) SetStatusCode(v int32) *QuerySceneListResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type QuerySceneListResponseBodyResults struct {
+	Icon                *string                                                 `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	SceneId             *string                                                 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName           *string                                                 `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SceneSource         *string                                                 `json:"SceneSource,omitempty" xml:"SceneSource,omitempty"`
+	SceneState          *int32                                                  `json:"SceneState,omitempty" xml:"SceneState,omitempty"`
+	SceneType           *string                                                 `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
+	TemplateInfoDTOList []*QuerySceneListResponseBodyResultsTemplateInfoDTOList `json:"TemplateInfoDTOList,omitempty" xml:"TemplateInfoDTOList,omitempty" type:"Repeated"`
+	UnavailableReason   *string                                                 `json:"UnavailableReason,omitempty" xml:"UnavailableReason,omitempty"`
+}
+
+func (s QuerySceneListResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySceneListResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySceneListResponseBodyResults) SetIcon(v string) *QuerySceneListResponseBodyResults {
+	s.Icon = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResults) SetSceneId(v string) *QuerySceneListResponseBodyResults {
+	s.SceneId = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResults) SetSceneName(v string) *QuerySceneListResponseBodyResults {
+	s.SceneName = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResults) SetSceneSource(v string) *QuerySceneListResponseBodyResults {
+	s.SceneSource = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResults) SetSceneState(v int32) *QuerySceneListResponseBodyResults {
+	s.SceneState = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResults) SetSceneType(v string) *QuerySceneListResponseBodyResults {
+	s.SceneType = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResults) SetTemplateInfoDTOList(v []*QuerySceneListResponseBodyResultsTemplateInfoDTOList) *QuerySceneListResponseBodyResults {
+	s.TemplateInfoDTOList = v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResults) SetUnavailableReason(v string) *QuerySceneListResponseBodyResults {
+	s.UnavailableReason = &v
+	return s
+}
+
+type QuerySceneListResponseBodyResultsTemplateInfoDTOList struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s QuerySceneListResponseBodyResultsTemplateInfoDTOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySceneListResponseBodyResultsTemplateInfoDTOList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySceneListResponseBodyResultsTemplateInfoDTOList) SetDescription(v string) *QuerySceneListResponseBodyResultsTemplateInfoDTOList {
+	s.Description = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResultsTemplateInfoDTOList) SetId(v int64) *QuerySceneListResponseBodyResultsTemplateInfoDTOList {
+	s.Id = &v
+	return s
+}
+
+func (s *QuerySceneListResponseBodyResultsTemplateInfoDTOList) SetName(v string) *QuerySceneListResponseBodyResultsTemplateInfoDTOList {
+	s.Name = &v
+	return s
+}
+
+type QuerySceneListResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySceneListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySceneListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySceneListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySceneListResponse) SetHeaders(v map[string]*string) *QuerySceneListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySceneListResponse) SetStatusCode(v int32) *QuerySceneListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySceneListResponse) SetBody(v *QuerySceneListResponseBody) *QuerySceneListResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveChildAccountAuthHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s RemoveChildAccountAuthHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveChildAccountAuthHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveChildAccountAuthHeaders) SetCommonHeaders(v map[string]*string) *RemoveChildAccountAuthHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RemoveChildAccountAuthHeaders) SetXAcsAligenieAccessToken(v string) *RemoveChildAccountAuthHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthHeaders) SetAuthorization(v string) *RemoveChildAccountAuthHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type RemoveChildAccountAuthRequest struct {
+	AppKey           *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	ChildAccountName *string `json:"ChildAccountName,omitempty" xml:"ChildAccountName,omitempty"`
+	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	TbOpenId         *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+}
+
+func (s RemoveChildAccountAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveChildAccountAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveChildAccountAuthRequest) SetAppKey(v string) *RemoveChildAccountAuthRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthRequest) SetChildAccountName(v string) *RemoveChildAccountAuthRequest {
+	s.ChildAccountName = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthRequest) SetHotelId(v string) *RemoveChildAccountAuthRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthRequest) SetTbOpenId(v string) *RemoveChildAccountAuthRequest {
+	s.TbOpenId = &v
+	return s
+}
+
+type RemoveChildAccountAuthResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s RemoveChildAccountAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveChildAccountAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveChildAccountAuthResponseBody) SetMessage(v string) *RemoveChildAccountAuthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthResponseBody) SetRequestId(v string) *RemoveChildAccountAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthResponseBody) SetResult(v bool) *RemoveChildAccountAuthResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthResponseBody) SetStatusCode(v int32) *RemoveChildAccountAuthResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type RemoveChildAccountAuthResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveChildAccountAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveChildAccountAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveChildAccountAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveChildAccountAuthResponse) SetHeaders(v map[string]*string) *RemoveChildAccountAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveChildAccountAuthResponse) SetStatusCode(v int32) *RemoveChildAccountAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveChildAccountAuthResponse) SetBody(v *RemoveChildAccountAuthResponseBody) *RemoveChildAccountAuthResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveHotelHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s RemoveHotelHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveHotelHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveHotelHeaders) SetCommonHeaders(v map[string]*string) *RemoveHotelHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RemoveHotelHeaders) SetXAcsAligenieAccessToken(v string) *RemoveHotelHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *RemoveHotelHeaders) SetAuthorization(v string) *RemoveHotelHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type RemoveHotelRequest struct {
+	// appkey
+	AppKey   *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+}
+
+func (s RemoveHotelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveHotelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveHotelRequest) SetAppKey(v string) *RemoveHotelRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *RemoveHotelRequest) SetHotelId(v string) *RemoveHotelRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *RemoveHotelRequest) SetTbOpenId(v string) *RemoveHotelRequest {
+	s.TbOpenId = &v
+	return s
+}
+
+type RemoveHotelResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s RemoveHotelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveHotelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveHotelResponseBody) SetExtentions(v map[string]interface{}) *RemoveHotelResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *RemoveHotelResponseBody) SetMessage(v string) *RemoveHotelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveHotelResponseBody) SetRequestId(v string) *RemoveHotelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveHotelResponseBody) SetResult(v bool) *RemoveHotelResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *RemoveHotelResponseBody) SetStatusCode(v int32) *RemoveHotelResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type RemoveHotelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveHotelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveHotelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveHotelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveHotelResponse) SetHeaders(v map[string]*string) *RemoveHotelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveHotelResponse) SetStatusCode(v int32) *RemoveHotelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveHotelResponse) SetBody(v *RemoveHotelResponseBody) *RemoveHotelResponse {
+	s.Body = v
+	return s
+}
+
+type ResetWelcomeTextAndMusicHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ResetWelcomeTextAndMusicHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetWelcomeTextAndMusicHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ResetWelcomeTextAndMusicHeaders) SetCommonHeaders(v map[string]*string) *ResetWelcomeTextAndMusicHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicHeaders) SetXAcsAligenieAccessToken(v string) *ResetWelcomeTextAndMusicHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicHeaders) SetAuthorization(v string) *ResetWelcomeTextAndMusicHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ResetWelcomeTextAndMusicRequest struct {
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+}
+
+func (s ResetWelcomeTextAndMusicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetWelcomeTextAndMusicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetWelcomeTextAndMusicRequest) SetHotelId(v string) *ResetWelcomeTextAndMusicRequest {
+	s.HotelId = &v
+	return s
+}
+
+type ResetWelcomeTextAndMusicResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ResetWelcomeTextAndMusicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetWelcomeTextAndMusicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetExtentions(v map[string]interface{}) *ResetWelcomeTextAndMusicResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetMessage(v string) *ResetWelcomeTextAndMusicResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetRequestId(v string) *ResetWelcomeTextAndMusicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetResult(v bool) *ResetWelcomeTextAndMusicResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetStatusCode(v int32) *ResetWelcomeTextAndMusicResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type ResetWelcomeTextAndMusicResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetWelcomeTextAndMusicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetWelcomeTextAndMusicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetWelcomeTextAndMusicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetWelcomeTextAndMusicResponse) SetHeaders(v map[string]*string) *ResetWelcomeTextAndMusicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponse) SetStatusCode(v int32) *ResetWelcomeTextAndMusicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponse) SetBody(v *ResetWelcomeTextAndMusicResponseBody) *ResetWelcomeTextAndMusicResponse {
 	s.Body = v
 	return s
 }
@@ -2879,10 +15997,11 @@ func (s *SubmitHotelOrderShrinkRequest) SetUserInfoShrink(v string) *SubmitHotel
 }
 
 type SubmitHotelOrderResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Code       *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitHotelOrderResponseBody) String() string {
@@ -2913,6 +16032,11 @@ func (s *SubmitHotelOrderResponseBody) SetResult(v string) *SubmitHotelOrderResp
 	return s
 }
 
+func (s *SubmitHotelOrderResponseBody) SetStatusCode(v int32) *SubmitHotelOrderResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
 type SubmitHotelOrderResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2938,6 +16062,2165 @@ func (s *SubmitHotelOrderResponse) SetStatusCode(v int32) *SubmitHotelOrderRespo
 }
 
 func (s *SubmitHotelOrderResponse) SetBody(v *SubmitHotelOrderResponseBody) *SubmitHotelOrderResponse {
+	s.Body = v
+	return s
+}
+
+type SyncDeviceStatusWithAkHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s SyncDeviceStatusWithAkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDeviceStatusWithAkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDeviceStatusWithAkHeaders) SetCommonHeaders(v map[string]*string) *SyncDeviceStatusWithAkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkHeaders) SetXAcsAligenieAccessToken(v string) *SyncDeviceStatusWithAkHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkHeaders) SetAuthorization(v string) *SyncDeviceStatusWithAkHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type SyncDeviceStatusWithAkRequest struct {
+	CategoryCnName  *string `json:"CategoryCnName,omitempty" xml:"CategoryCnName,omitempty"`
+	CategoryEnName  *string `json:"CategoryEnName,omitempty" xml:"CategoryEnName,omitempty"`
+	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Location        *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationCnName  *string `json:"LocationCnName,omitempty" xml:"LocationCnName,omitempty"`
+	Number          *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	Switch          *int32  `json:"Switch,omitempty" xml:"Switch,omitempty"`
+	FanSpeed        *string `json:"fanSpeed,omitempty" xml:"fanSpeed,omitempty"`
+	Mode            *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	RoomTemperature *string `json:"roomTemperature,omitempty" xml:"roomTemperature,omitempty"`
+	Temperature     *string `json:"temperature,omitempty" xml:"temperature,omitempty"`
+	Value           *int32  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s SyncDeviceStatusWithAkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDeviceStatusWithAkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetCategoryCnName(v string) *SyncDeviceStatusWithAkRequest {
+	s.CategoryCnName = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetCategoryEnName(v string) *SyncDeviceStatusWithAkRequest {
+	s.CategoryEnName = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetDeviceName(v string) *SyncDeviceStatusWithAkRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetHotelId(v string) *SyncDeviceStatusWithAkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetLocation(v string) *SyncDeviceStatusWithAkRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetLocationCnName(v string) *SyncDeviceStatusWithAkRequest {
+	s.LocationCnName = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetNumber(v string) *SyncDeviceStatusWithAkRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetRoomNo(v string) *SyncDeviceStatusWithAkRequest {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetSwitch(v int32) *SyncDeviceStatusWithAkRequest {
+	s.Switch = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetFanSpeed(v string) *SyncDeviceStatusWithAkRequest {
+	s.FanSpeed = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetMode(v string) *SyncDeviceStatusWithAkRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetRoomTemperature(v string) *SyncDeviceStatusWithAkRequest {
+	s.RoomTemperature = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetTemperature(v string) *SyncDeviceStatusWithAkRequest {
+	s.Temperature = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkRequest) SetValue(v int32) *SyncDeviceStatusWithAkRequest {
+	s.Value = &v
+	return s
+}
+
+type SyncDeviceStatusWithAkResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s SyncDeviceStatusWithAkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDeviceStatusWithAkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDeviceStatusWithAkResponseBody) SetMessage(v string) *SyncDeviceStatusWithAkResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkResponseBody) SetResult(v bool) *SyncDeviceStatusWithAkResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkResponseBody) SetStatusCode(v int32) *SyncDeviceStatusWithAkResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkResponseBody) SetRequestId(v string) *SyncDeviceStatusWithAkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncDeviceStatusWithAkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SyncDeviceStatusWithAkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncDeviceStatusWithAkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDeviceStatusWithAkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDeviceStatusWithAkResponse) SetHeaders(v map[string]*string) *SyncDeviceStatusWithAkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkResponse) SetStatusCode(v int32) *SyncDeviceStatusWithAkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncDeviceStatusWithAkResponse) SetBody(v *SyncDeviceStatusWithAkResponseBody) *SyncDeviceStatusWithAkResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateBasicInfoQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateBasicInfoQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicInfoQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicInfoQAHeaders) SetCommonHeaders(v map[string]*string) *UpdateBasicInfoQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateBasicInfoQAHeaders) SetXAcsAligenieAccessToken(v string) *UpdateBasicInfoQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQAHeaders) SetAuthorization(v string) *UpdateBasicInfoQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateBasicInfoQARequest struct {
+	CheckInTime       *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
+	CheckOutTime      *string `json:"CheckOutTime,omitempty" xml:"CheckOutTime,omitempty"`
+	HotelAddress      *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelId           *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelIntroduction *string `json:"HotelIntroduction,omitempty" xml:"HotelIntroduction,omitempty"`
+	HotelMember       *string `json:"HotelMember,omitempty" xml:"HotelMember,omitempty"`
+	HotelService      *string `json:"HotelService,omitempty" xml:"HotelService,omitempty"`
+	ParkingExpenses   *string `json:"ParkingExpenses,omitempty" xml:"ParkingExpenses,omitempty"`
+	ParkingPosition   *string `json:"ParkingPosition,omitempty" xml:"ParkingPosition,omitempty"`
+	PhoneNumber       *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	WifiName          *string `json:"WifiName,omitempty" xml:"WifiName,omitempty"`
+	WifiPassword      *string `json:"WifiPassword,omitempty" xml:"WifiPassword,omitempty"`
+}
+
+func (s UpdateBasicInfoQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicInfoQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicInfoQARequest) SetCheckInTime(v string) *UpdateBasicInfoQARequest {
+	s.CheckInTime = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetCheckOutTime(v string) *UpdateBasicInfoQARequest {
+	s.CheckOutTime = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetHotelAddress(v string) *UpdateBasicInfoQARequest {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetHotelId(v string) *UpdateBasicInfoQARequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetHotelIntroduction(v string) *UpdateBasicInfoQARequest {
+	s.HotelIntroduction = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetHotelMember(v string) *UpdateBasicInfoQARequest {
+	s.HotelMember = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetHotelService(v string) *UpdateBasicInfoQARequest {
+	s.HotelService = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetParkingExpenses(v string) *UpdateBasicInfoQARequest {
+	s.ParkingExpenses = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetParkingPosition(v string) *UpdateBasicInfoQARequest {
+	s.ParkingPosition = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetPhoneNumber(v string) *UpdateBasicInfoQARequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetWifiName(v string) *UpdateBasicInfoQARequest {
+	s.WifiName = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQARequest) SetWifiPassword(v string) *UpdateBasicInfoQARequest {
+	s.WifiPassword = &v
+	return s
+}
+
+type UpdateBasicInfoQAResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateBasicInfoQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicInfoQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicInfoQAResponseBody) SetMessage(v string) *UpdateBasicInfoQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQAResponseBody) SetRequestId(v string) *UpdateBasicInfoQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQAResponseBody) SetResult(v bool) *UpdateBasicInfoQAResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQAResponseBody) SetStatusCode(v int32) *UpdateBasicInfoQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateBasicInfoQAResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateBasicInfoQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBasicInfoQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicInfoQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicInfoQAResponse) SetHeaders(v map[string]*string) *UpdateBasicInfoQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBasicInfoQAResponse) SetStatusCode(v int32) *UpdateBasicInfoQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBasicInfoQAResponse) SetBody(v *UpdateBasicInfoQAResponseBody) *UpdateBasicInfoQAResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateCustomQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomQAHeaders) SetCommonHeaders(v map[string]*string) *UpdateCustomQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateCustomQAHeaders) SetXAcsAligenieAccessToken(v string) *UpdateCustomQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateCustomQAHeaders) SetAuthorization(v string) *UpdateCustomQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateCustomQARequest struct {
+	Answers                []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
+	CustomQAId             *string   `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
+	HotelId                *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWords               []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	MajorQuestion          *string   `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
+	SupplementaryQuestions []*string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty" type:"Repeated"`
+}
+
+func (s UpdateCustomQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomQARequest) SetAnswers(v []*string) *UpdateCustomQARequest {
+	s.Answers = v
+	return s
+}
+
+func (s *UpdateCustomQARequest) SetCustomQAId(v string) *UpdateCustomQARequest {
+	s.CustomQAId = &v
+	return s
+}
+
+func (s *UpdateCustomQARequest) SetHotelId(v string) *UpdateCustomQARequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateCustomQARequest) SetKeyWords(v []*string) *UpdateCustomQARequest {
+	s.KeyWords = v
+	return s
+}
+
+func (s *UpdateCustomQARequest) SetMajorQuestion(v string) *UpdateCustomQARequest {
+	s.MajorQuestion = &v
+	return s
+}
+
+func (s *UpdateCustomQARequest) SetSupplementaryQuestions(v []*string) *UpdateCustomQARequest {
+	s.SupplementaryQuestions = v
+	return s
+}
+
+type UpdateCustomQAShrinkRequest struct {
+	AnswersShrink                *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	CustomQAId                   *string `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
+	HotelId                      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWordsShrink               *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	MajorQuestion                *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
+	SupplementaryQuestionsShrink *string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty"`
+}
+
+func (s UpdateCustomQAShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomQAShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomQAShrinkRequest) SetAnswersShrink(v string) *UpdateCustomQAShrinkRequest {
+	s.AnswersShrink = &v
+	return s
+}
+
+func (s *UpdateCustomQAShrinkRequest) SetCustomQAId(v string) *UpdateCustomQAShrinkRequest {
+	s.CustomQAId = &v
+	return s
+}
+
+func (s *UpdateCustomQAShrinkRequest) SetHotelId(v string) *UpdateCustomQAShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateCustomQAShrinkRequest) SetKeyWordsShrink(v string) *UpdateCustomQAShrinkRequest {
+	s.KeyWordsShrink = &v
+	return s
+}
+
+func (s *UpdateCustomQAShrinkRequest) SetMajorQuestion(v string) *UpdateCustomQAShrinkRequest {
+	s.MajorQuestion = &v
+	return s
+}
+
+func (s *UpdateCustomQAShrinkRequest) SetSupplementaryQuestionsShrink(v string) *UpdateCustomQAShrinkRequest {
+	s.SupplementaryQuestionsShrink = &v
+	return s
+}
+
+type UpdateCustomQAResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateCustomQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomQAResponseBody) SetMessage(v string) *UpdateCustomQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCustomQAResponseBody) SetRequestId(v string) *UpdateCustomQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCustomQAResponseBody) SetResult(v bool) *UpdateCustomQAResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateCustomQAResponseBody) SetStatusCode(v int32) *UpdateCustomQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateCustomQAResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCustomQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCustomQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomQAResponse) SetHeaders(v map[string]*string) *UpdateCustomQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomQAResponse) SetStatusCode(v int32) *UpdateCustomQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomQAResponse) SetBody(v *UpdateCustomQAResponseBody) *UpdateCustomQAResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHotelHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateHotelHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelHeaders) SetCommonHeaders(v map[string]*string) *UpdateHotelHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateHotelHeaders) SetXAcsAligenieAccessToken(v string) *UpdateHotelHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateHotelHeaders) SetAuthorization(v string) *UpdateHotelHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateHotelRequest struct {
+	AppKey       *string   `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	EstOpenTime  *string   `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	HotelAddress *string   `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelEmail   *string   `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	HotelId      *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName    *string   `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	PhoneNumber  *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RelatedPks   []*string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty" type:"Repeated"`
+	Remark       *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RoomNum      *int32    `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	TbOpenId     *string   `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+}
+
+func (s UpdateHotelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelRequest) SetAppKey(v string) *UpdateHotelRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetEstOpenTime(v string) *UpdateHotelRequest {
+	s.EstOpenTime = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetHotelAddress(v string) *UpdateHotelRequest {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetHotelEmail(v string) *UpdateHotelRequest {
+	s.HotelEmail = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetHotelId(v string) *UpdateHotelRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetHotelName(v string) *UpdateHotelRequest {
+	s.HotelName = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetPhoneNumber(v string) *UpdateHotelRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetRelatedPks(v []*string) *UpdateHotelRequest {
+	s.RelatedPks = v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetRemark(v string) *UpdateHotelRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetRoomNum(v int32) *UpdateHotelRequest {
+	s.RoomNum = &v
+	return s
+}
+
+func (s *UpdateHotelRequest) SetTbOpenId(v string) *UpdateHotelRequest {
+	s.TbOpenId = &v
+	return s
+}
+
+type UpdateHotelShrinkRequest struct {
+	AppKey           *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	EstOpenTime      *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	HotelAddress     *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	HotelEmail       *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName        *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	PhoneNumber      *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RelatedPksShrink *string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty"`
+	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RoomNum          *int32  `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	TbOpenId         *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+}
+
+func (s UpdateHotelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelShrinkRequest) SetAppKey(v string) *UpdateHotelShrinkRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetEstOpenTime(v string) *UpdateHotelShrinkRequest {
+	s.EstOpenTime = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetHotelAddress(v string) *UpdateHotelShrinkRequest {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetHotelEmail(v string) *UpdateHotelShrinkRequest {
+	s.HotelEmail = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetHotelId(v string) *UpdateHotelShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetHotelName(v string) *UpdateHotelShrinkRequest {
+	s.HotelName = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetPhoneNumber(v string) *UpdateHotelShrinkRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetRelatedPksShrink(v string) *UpdateHotelShrinkRequest {
+	s.RelatedPksShrink = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetRemark(v string) *UpdateHotelShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetRoomNum(v int32) *UpdateHotelShrinkRequest {
+	s.RoomNum = &v
+	return s
+}
+
+func (s *UpdateHotelShrinkRequest) SetTbOpenId(v string) *UpdateHotelShrinkRequest {
+	s.TbOpenId = &v
+	return s
+}
+
+type UpdateHotelResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateHotelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelResponseBody) SetExtentions(v map[string]interface{}) *UpdateHotelResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *UpdateHotelResponseBody) SetMessage(v string) *UpdateHotelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHotelResponseBody) SetRequestId(v string) *UpdateHotelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHotelResponseBody) SetResult(v bool) *UpdateHotelResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateHotelResponseBody) SetStatusCode(v int32) *UpdateHotelResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateHotelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHotelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHotelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelResponse) SetHeaders(v map[string]*string) *UpdateHotelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHotelResponse) SetStatusCode(v int32) *UpdateHotelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHotelResponse) SetBody(v *UpdateHotelResponseBody) *UpdateHotelResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHotelAlarmHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateHotelAlarmHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmHeaders) SetCommonHeaders(v map[string]*string) *UpdateHotelAlarmHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateHotelAlarmHeaders) SetXAcsAligenieAccessToken(v string) *UpdateHotelAlarmHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmHeaders) SetAuthorization(v string) *UpdateHotelAlarmHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateHotelAlarmRequest struct {
+	Alarms       []*UpdateHotelAlarmRequestAlarms     `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
+	HotelId      *string                              `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ScheduleInfo *UpdateHotelAlarmRequestScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
+}
+
+func (s UpdateHotelAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmRequest) SetAlarms(v []*UpdateHotelAlarmRequestAlarms) *UpdateHotelAlarmRequest {
+	s.Alarms = v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequest) SetHotelId(v string) *UpdateHotelAlarmRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequest) SetScheduleInfo(v *UpdateHotelAlarmRequestScheduleInfo) *UpdateHotelAlarmRequest {
+	s.ScheduleInfo = v
+	return s
+}
+
+type UpdateHotelAlarmRequestAlarms struct {
+	AlarmId      *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	RoomNo       *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	UserOpenId   *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+}
+
+func (s UpdateHotelAlarmRequestAlarms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmRequestAlarms) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmRequestAlarms) SetAlarmId(v int64) *UpdateHotelAlarmRequestAlarms {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestAlarms) SetDeviceOpenId(v string) *UpdateHotelAlarmRequestAlarms {
+	s.DeviceOpenId = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestAlarms) SetRoomNo(v string) *UpdateHotelAlarmRequestAlarms {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestAlarms) SetUserOpenId(v string) *UpdateHotelAlarmRequestAlarms {
+	s.UserOpenId = &v
+	return s
+}
+
+type UpdateHotelAlarmRequestScheduleInfo struct {
+	Once *UpdateHotelAlarmRequestScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
+	// ONCE, WEEKLY
+	Type   *string                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weekly *UpdateHotelAlarmRequestScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
+}
+
+func (s UpdateHotelAlarmRequestScheduleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmRequestScheduleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfo) SetOnce(v *UpdateHotelAlarmRequestScheduleInfoOnce) *UpdateHotelAlarmRequestScheduleInfo {
+	s.Once = v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfo) SetType(v string) *UpdateHotelAlarmRequestScheduleInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfo) SetWeekly(v *UpdateHotelAlarmRequestScheduleInfoWeekly) *UpdateHotelAlarmRequestScheduleInfo {
+	s.Weekly = v
+	return s
+}
+
+type UpdateHotelAlarmRequestScheduleInfoOnce struct {
+	Day    *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	Hour   *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	Month  *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	Year   *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
+}
+
+func (s UpdateHotelAlarmRequestScheduleInfoOnce) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmRequestScheduleInfoOnce) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoOnce) SetDay(v int32) *UpdateHotelAlarmRequestScheduleInfoOnce {
+	s.Day = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoOnce) SetHour(v int32) *UpdateHotelAlarmRequestScheduleInfoOnce {
+	s.Hour = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoOnce) SetMinute(v int32) *UpdateHotelAlarmRequestScheduleInfoOnce {
+	s.Minute = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoOnce) SetMonth(v int32) *UpdateHotelAlarmRequestScheduleInfoOnce {
+	s.Month = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoOnce) SetYear(v int32) *UpdateHotelAlarmRequestScheduleInfoOnce {
+	s.Year = &v
+	return s
+}
+
+type UpdateHotelAlarmRequestScheduleInfoWeekly struct {
+	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	Hour       *int32   `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	Minute     *int32   `json:"Minute,omitempty" xml:"Minute,omitempty"`
+}
+
+func (s UpdateHotelAlarmRequestScheduleInfoWeekly) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmRequestScheduleInfoWeekly) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoWeekly) SetDaysOfWeek(v []*int32) *UpdateHotelAlarmRequestScheduleInfoWeekly {
+	s.DaysOfWeek = v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoWeekly) SetHour(v int32) *UpdateHotelAlarmRequestScheduleInfoWeekly {
+	s.Hour = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmRequestScheduleInfoWeekly) SetMinute(v int32) *UpdateHotelAlarmRequestScheduleInfoWeekly {
+	s.Minute = &v
+	return s
+}
+
+type UpdateHotelAlarmShrinkRequest struct {
+	AlarmsShrink       *string `json:"Alarms,omitempty" xml:"Alarms,omitempty"`
+	HotelId            *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ScheduleInfoShrink *string `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty"`
+}
+
+func (s UpdateHotelAlarmShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmShrinkRequest) SetAlarmsShrink(v string) *UpdateHotelAlarmShrinkRequest {
+	s.AlarmsShrink = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmShrinkRequest) SetHotelId(v string) *UpdateHotelAlarmShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmShrinkRequest) SetScheduleInfoShrink(v string) *UpdateHotelAlarmShrinkRequest {
+	s.ScheduleInfoShrink = &v
+	return s
+}
+
+type UpdateHotelAlarmResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *int32                 `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateHotelAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmResponseBody) SetExtentions(v map[string]interface{}) *UpdateHotelAlarmResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *UpdateHotelAlarmResponseBody) SetMessage(v string) *UpdateHotelAlarmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmResponseBody) SetRequestId(v string) *UpdateHotelAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmResponseBody) SetResult(v int32) *UpdateHotelAlarmResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmResponseBody) SetStatusCode(v int32) *UpdateHotelAlarmResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateHotelAlarmResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHotelAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHotelAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelAlarmResponse) SetHeaders(v map[string]*string) *UpdateHotelAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHotelAlarmResponse) SetStatusCode(v int32) *UpdateHotelAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHotelAlarmResponse) SetBody(v *UpdateHotelAlarmResponseBody) *UpdateHotelAlarmResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHotelSceneBookItemHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateHotelSceneBookItemHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneBookItemHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneBookItemHeaders) SetCommonHeaders(v map[string]*string) *UpdateHotelSceneBookItemHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemHeaders) SetXAcsAligenieAccessToken(v string) *UpdateHotelSceneBookItemHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemHeaders) SetAuthorization(v string) *UpdateHotelSceneBookItemHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateHotelSceneBookItemRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// updateHotelSceneBookReq
+	UpdateHotelSceneBookReq *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq `json:"UpdateHotelSceneBookReq,omitempty" xml:"UpdateHotelSceneBookReq,omitempty" type:"Struct"`
+}
+
+func (s UpdateHotelSceneBookItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneBookItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneBookItemRequest) SetHotelId(v string) *UpdateHotelSceneBookItemRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemRequest) SetUpdateHotelSceneBookReq(v *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) *UpdateHotelSceneBookItemRequest {
+	s.UpdateHotelSceneBookReq = v
+	return s
+}
+
+type UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq struct {
+	// icon
+	Icon  *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Price *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+}
+
+func (s UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) SetIcon(v string) *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq {
+	s.Icon = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) SetId(v int64) *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) SetName(v string) *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) SetPrice(v int64) *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq {
+	s.Price = &v
+	return s
+}
+
+type UpdateHotelSceneBookItemShrinkRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// updateHotelSceneBookReq
+	UpdateHotelSceneBookReqShrink *string `json:"UpdateHotelSceneBookReq,omitempty" xml:"UpdateHotelSceneBookReq,omitempty"`
+}
+
+func (s UpdateHotelSceneBookItemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneBookItemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneBookItemShrinkRequest) SetHotelId(v string) *UpdateHotelSceneBookItemShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemShrinkRequest) SetUpdateHotelSceneBookReqShrink(v string) *UpdateHotelSceneBookItemShrinkRequest {
+	s.UpdateHotelSceneBookReqShrink = &v
+	return s
+}
+
+type UpdateHotelSceneBookItemResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s UpdateHotelSceneBookItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneBookItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneBookItemResponseBody) SetCode(v int32) *UpdateHotelSceneBookItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemResponseBody) SetMessage(v string) *UpdateHotelSceneBookItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemResponseBody) SetRequestId(v string) *UpdateHotelSceneBookItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemResponseBody) SetResult(v bool) *UpdateHotelSceneBookItemResponseBody {
+	s.Result = &v
+	return s
+}
+
+type UpdateHotelSceneBookItemResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHotelSceneBookItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHotelSceneBookItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneBookItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneBookItemResponse) SetHeaders(v map[string]*string) *UpdateHotelSceneBookItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemResponse) SetStatusCode(v int32) *UpdateHotelSceneBookItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHotelSceneBookItemResponse) SetBody(v *UpdateHotelSceneBookItemResponseBody) *UpdateHotelSceneBookItemResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHotelSceneItemHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateHotelSceneItemHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemHeaders) SetCommonHeaders(v map[string]*string) *UpdateHotelSceneItemHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateHotelSceneItemHeaders) SetXAcsAligenieAccessToken(v string) *UpdateHotelSceneItemHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemHeaders) SetAuthorization(v string) *UpdateHotelSceneItemHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateHotelSceneItemRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// updateHotelSceneReq
+	UpdateHotelSceneOperateReq *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq `json:"UpdateHotelSceneOperateReq,omitempty" xml:"UpdateHotelSceneOperateReq,omitempty" type:"Struct"`
+	// UpdateHotelSceneReq
+	UpdateHotelSceneReq *UpdateHotelSceneItemRequestUpdateHotelSceneReq `json:"UpdateHotelSceneReq,omitempty" xml:"UpdateHotelSceneReq,omitempty" type:"Struct"`
+}
+
+func (s UpdateHotelSceneItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemRequest) SetHotelId(v string) *UpdateHotelSceneItemRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequest) SetUpdateHotelSceneOperateReq(v *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq) *UpdateHotelSceneItemRequest {
+	s.UpdateHotelSceneOperateReq = v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequest) SetUpdateHotelSceneReq(v *UpdateHotelSceneItemRequestUpdateHotelSceneReq) *UpdateHotelSceneItemRequest {
+	s.UpdateHotelSceneReq = v
+	return s
+}
+
+type UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq struct {
+	IsUseTemplateAnswer *bool   `json:"IsUseTemplateAnswer,omitempty" xml:"IsUseTemplateAnswer,omitempty"`
+	OperateType         *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+}
+
+func (s UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq) SetIsUseTemplateAnswer(v bool) *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq {
+	s.IsUseTemplateAnswer = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq) SetOperateType(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq {
+	s.OperateType = &v
+	return s
+}
+
+type UpdateHotelSceneItemRequestUpdateHotelSceneReq struct {
+	BeyondLimitReply *string                                                       `json:"BeyondLimitReply,omitempty" xml:"BeyondLimitReply,omitempty"`
+	DeliveryMethod   *string                                                       `json:"DeliveryMethod,omitempty" xml:"DeliveryMethod,omitempty"`
+	DialogueList     []*UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList `json:"DialogueList,omitempty" xml:"DialogueList,omitempty" type:"Repeated"`
+	// icon
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// itemID
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LimitNumber   *int64  `json:"LimitNumber,omitempty" xml:"LimitNumber,omitempty"`
+	LimitSwitch   *int32  `json:"LimitSwitch,omitempty" xml:"LimitSwitch,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	Price         *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	RobotName     *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateHotelSceneItemRequestUpdateHotelSceneReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemRequestUpdateHotelSceneReq) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetBeyondLimitReply(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.BeyondLimitReply = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetDeliveryMethod(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.DeliveryMethod = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetDialogueList(v []*UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.DialogueList = v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetIcon(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.Icon = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetId(v int64) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetLimitNumber(v int64) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.LimitNumber = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetLimitSwitch(v int32) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.LimitSwitch = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetName(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetPaymentMethod(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.PaymentMethod = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetPrice(v int64) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.Price = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetRobotName(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.RobotName = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetStatus(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReq {
+	s.Status = &v
+	return s
+}
+
+type UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList struct {
+	DialogueId       *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	NoAnswer         *string `json:"NoAnswer,omitempty" xml:"NoAnswer,omitempty"`
+	NoAnswerTemplate *string `json:"NoAnswerTemplate,omitempty" xml:"NoAnswerTemplate,omitempty"`
+	Process          *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
+	Question         *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// itemId
+	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	YesAnswer         *string `json:"YesAnswer,omitempty" xml:"YesAnswer,omitempty"`
+	YesAnswerTemplate *string `json:"YesAnswerTemplate,omitempty" xml:"YesAnswerTemplate,omitempty"`
+}
+
+func (s UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetDialogueId(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.DialogueId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetNoAnswer(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.NoAnswer = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetNoAnswerTemplate(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.NoAnswerTemplate = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetProcess(v int32) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.Process = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetQuestion(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.Question = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetServiceId(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetYesAnswer(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.YesAnswer = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetYesAnswerTemplate(v string) *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList {
+	s.YesAnswerTemplate = &v
+	return s
+}
+
+type UpdateHotelSceneItemShrinkRequest struct {
+	// hotelID
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// updateHotelSceneReq
+	UpdateHotelSceneOperateReqShrink *string `json:"UpdateHotelSceneOperateReq,omitempty" xml:"UpdateHotelSceneOperateReq,omitempty"`
+	// UpdateHotelSceneReq
+	UpdateHotelSceneReqShrink *string `json:"UpdateHotelSceneReq,omitempty" xml:"UpdateHotelSceneReq,omitempty"`
+}
+
+func (s UpdateHotelSceneItemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemShrinkRequest) SetHotelId(v string) *UpdateHotelSceneItemShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemShrinkRequest) SetUpdateHotelSceneOperateReqShrink(v string) *UpdateHotelSceneItemShrinkRequest {
+	s.UpdateHotelSceneOperateReqShrink = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemShrinkRequest) SetUpdateHotelSceneReqShrink(v string) *UpdateHotelSceneItemShrinkRequest {
+	s.UpdateHotelSceneReqShrink = &v
+	return s
+}
+
+type UpdateHotelSceneItemResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s UpdateHotelSceneItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemResponseBody) SetCode(v int32) *UpdateHotelSceneItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemResponseBody) SetMessage(v string) *UpdateHotelSceneItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemResponseBody) SetRequestId(v string) *UpdateHotelSceneItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemResponseBody) SetResult(v bool) *UpdateHotelSceneItemResponseBody {
+	s.Result = &v
+	return s
+}
+
+type UpdateHotelSceneItemResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHotelSceneItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHotelSceneItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotelSceneItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotelSceneItemResponse) SetHeaders(v map[string]*string) *UpdateHotelSceneItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHotelSceneItemResponse) SetStatusCode(v int32) *UpdateHotelSceneItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHotelSceneItemResponse) SetBody(v *UpdateHotelSceneItemResponseBody) *UpdateHotelSceneItemResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMessageTemplateHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateMessageTemplateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageTemplateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageTemplateHeaders) SetCommonHeaders(v map[string]*string) *UpdateMessageTemplateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMessageTemplateHeaders) SetXAcsAligenieAccessToken(v string) *UpdateMessageTemplateHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateMessageTemplateHeaders) SetAuthorization(v string) *UpdateMessageTemplateHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateMessageTemplateRequest struct {
+	TemplateDetail *string `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty"`
+	TemplateId     *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s UpdateMessageTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageTemplateRequest) SetTemplateDetail(v string) *UpdateMessageTemplateRequest {
+	s.TemplateDetail = &v
+	return s
+}
+
+func (s *UpdateMessageTemplateRequest) SetTemplateId(v int64) *UpdateMessageTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateMessageTemplateRequest) SetTemplateName(v string) *UpdateMessageTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type UpdateMessageTemplateResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateMessageTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageTemplateResponseBody) SetMessage(v string) *UpdateMessageTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateMessageTemplateResponseBody) SetRequestId(v string) *UpdateMessageTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMessageTemplateResponseBody) SetResult(v bool) *UpdateMessageTemplateResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateMessageTemplateResponseBody) SetStatusCode(v int32) *UpdateMessageTemplateResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateMessageTemplateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMessageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMessageTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageTemplateResponse) SetHeaders(v map[string]*string) *UpdateMessageTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMessageTemplateResponse) SetStatusCode(v int32) *UpdateMessageTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMessageTemplateResponse) SetBody(v *UpdateMessageTemplateResponseBody) *UpdateMessageTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRcuSceneHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateRcuSceneHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRcuSceneHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRcuSceneHeaders) SetCommonHeaders(v map[string]*string) *UpdateRcuSceneHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateRcuSceneHeaders) SetXAcsAligenieAccessToken(v string) *UpdateRcuSceneHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateRcuSceneHeaders) SetAuthorization(v string) *UpdateRcuSceneHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateRcuSceneRequest struct {
+	HotelId             *string                                   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SceneId             *string                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneRelationExtDTO *UpdateRcuSceneRequestSceneRelationExtDTO `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty" type:"Struct"`
+}
+
+func (s UpdateRcuSceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRcuSceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRcuSceneRequest) SetHotelId(v string) *UpdateRcuSceneRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateRcuSceneRequest) SetSceneId(v string) *UpdateRcuSceneRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *UpdateRcuSceneRequest) SetSceneRelationExtDTO(v *UpdateRcuSceneRequestSceneRelationExtDTO) *UpdateRcuSceneRequest {
+	s.SceneRelationExtDTO = v
+	return s
+}
+
+type UpdateRcuSceneRequestSceneRelationExtDTO struct {
+	CorpusList  []*string `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Icon        *string   `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateRcuSceneRequestSceneRelationExtDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRcuSceneRequestSceneRelationExtDTO) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRcuSceneRequestSceneRelationExtDTO) SetCorpusList(v []*string) *UpdateRcuSceneRequestSceneRelationExtDTO {
+	s.CorpusList = v
+	return s
+}
+
+func (s *UpdateRcuSceneRequestSceneRelationExtDTO) SetDescription(v string) *UpdateRcuSceneRequestSceneRelationExtDTO {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateRcuSceneRequestSceneRelationExtDTO) SetIcon(v string) *UpdateRcuSceneRequestSceneRelationExtDTO {
+	s.Icon = &v
+	return s
+}
+
+func (s *UpdateRcuSceneRequestSceneRelationExtDTO) SetName(v string) *UpdateRcuSceneRequestSceneRelationExtDTO {
+	s.Name = &v
+	return s
+}
+
+type UpdateRcuSceneShrinkRequest struct {
+	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	SceneId                   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneRelationExtDTOShrink *string `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty"`
+}
+
+func (s UpdateRcuSceneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRcuSceneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRcuSceneShrinkRequest) SetHotelId(v string) *UpdateRcuSceneShrinkRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateRcuSceneShrinkRequest) SetSceneId(v string) *UpdateRcuSceneShrinkRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *UpdateRcuSceneShrinkRequest) SetSceneRelationExtDTOShrink(v string) *UpdateRcuSceneShrinkRequest {
+	s.SceneRelationExtDTOShrink = &v
+	return s
+}
+
+type UpdateRcuSceneResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateRcuSceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRcuSceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRcuSceneResponseBody) SetMessage(v string) *UpdateRcuSceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateRcuSceneResponseBody) SetRequestId(v string) *UpdateRcuSceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateRcuSceneResponseBody) SetResult(v bool) *UpdateRcuSceneResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateRcuSceneResponseBody) SetStatusCode(v int32) *UpdateRcuSceneResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateRcuSceneResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRcuSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateRcuSceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRcuSceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRcuSceneResponse) SetHeaders(v map[string]*string) *UpdateRcuSceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRcuSceneResponse) SetStatusCode(v int32) *UpdateRcuSceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRcuSceneResponse) SetBody(v *UpdateRcuSceneResponseBody) *UpdateRcuSceneResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateServiceQAHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateServiceQAHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceQAHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceQAHeaders) SetCommonHeaders(v map[string]*string) *UpdateServiceQAHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateServiceQAHeaders) SetXAcsAligenieAccessToken(v string) *UpdateServiceQAHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateServiceQAHeaders) SetAuthorization(v string) *UpdateServiceQAHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateServiceQARequest struct {
+	Answer      *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ServiceQAId *int64  `json:"ServiceQAId,omitempty" xml:"ServiceQAId,omitempty"`
+	IsActive    *bool   `json:"isActive,omitempty" xml:"isActive,omitempty"`
+}
+
+func (s UpdateServiceQARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceQARequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceQARequest) SetAnswer(v string) *UpdateServiceQARequest {
+	s.Answer = &v
+	return s
+}
+
+func (s *UpdateServiceQARequest) SetHotelId(v string) *UpdateServiceQARequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateServiceQARequest) SetServiceQAId(v int64) *UpdateServiceQARequest {
+	s.ServiceQAId = &v
+	return s
+}
+
+func (s *UpdateServiceQARequest) SetIsActive(v bool) *UpdateServiceQARequest {
+	s.IsActive = &v
+	return s
+}
+
+type UpdateServiceQAResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateServiceQAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceQAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceQAResponseBody) SetMessage(v string) *UpdateServiceQAResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateServiceQAResponseBody) SetRequestId(v string) *UpdateServiceQAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateServiceQAResponseBody) SetResult(v bool) *UpdateServiceQAResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateServiceQAResponseBody) SetStatusCode(v int32) *UpdateServiceQAResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateServiceQAResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceQAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceQAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceQAResponse) SetHeaders(v map[string]*string) *UpdateServiceQAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceQAResponse) SetStatusCode(v int32) *UpdateServiceQAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceQAResponse) SetBody(v *UpdateServiceQAResponseBody) *UpdateServiceQAResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTicketHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateTicketHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTicketHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTicketHeaders) SetCommonHeaders(v map[string]*string) *UpdateTicketHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateTicketHeaders) SetXAcsAligenieAccessToken(v string) *UpdateTicketHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UpdateTicketHeaders) SetAuthorization(v string) *UpdateTicketHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateTicketRequest struct {
+	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTicketRequest) SetGroupKey(v string) *UpdateTicketRequest {
+	s.GroupKey = &v
+	return s
+}
+
+func (s *UpdateTicketRequest) SetHotelId(v string) *UpdateTicketRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *UpdateTicketRequest) SetStatus(v string) *UpdateTicketRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateTicketResponseBody struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s UpdateTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTicketResponseBody) SetMessage(v string) *UpdateTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetRequestId(v string) *UpdateTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetResult(v bool) *UpdateTicketResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetStatusCode(v int32) *UpdateTicketResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTicketResponse) SetHeaders(v map[string]*string) *UpdateTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTicketResponse) SetStatusCode(v int32) *UpdateTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTicketResponse) SetBody(v *UpdateTicketResponseBody) *UpdateTicketResponse {
 	s.Body = v
 	return s
 }
@@ -2989,11 +18272,1646 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) DeviceControl(request *DeviceControlRequest) (_result *DeviceControlResponse, _err error) {
+func (client *Client) AddCartoonWithOptions(request *AddCartoonRequest, headers *AddCartoonHeaders, runtime *util.RuntimeOptions) (_result *AddCartoonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartVideoMd5)) {
+		body["StartVideoMd5"] = request.StartVideoMd5
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartVideoUrl)) {
+		body["StartVideoUrl"] = request.StartVideoUrl
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCartoon"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/addCartoon"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCartoonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddCartoon(request *AddCartoonRequest) (_result *AddCartoonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeviceControlHeaders{}
-	_result = &DeviceControlResponse{}
-	_body, _err := client.DeviceControlWithOptions(request, headers, runtime)
+	headers := &AddCartoonHeaders{}
+	_result = &AddCartoonResponse{}
+	_body, _err := client.AddCartoonWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddCustomQAWithOptions(tmpReq *AddCustomQARequest, headers *AddCustomQAHeaders, runtime *util.RuntimeOptions) (_result *AddCustomQAResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddCustomQAShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Answers)) {
+		request.AnswersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Answers, tea.String("Answers"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.KeyWords)) {
+		request.KeyWordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KeyWords, tea.String("KeyWords"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SupplementaryQuestions)) {
+		request.SupplementaryQuestionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SupplementaryQuestions, tea.String("SupplementaryQuestions"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnswersShrink)) {
+		body["Answers"] = request.AnswersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyWordsShrink)) {
+		body["KeyWords"] = request.KeyWordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MajorQuestion)) {
+		body["MajorQuestion"] = request.MajorQuestion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplementaryQuestionsShrink)) {
+		body["SupplementaryQuestions"] = request.SupplementaryQuestionsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCustomQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/addCustomQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCustomQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddCustomQA(request *AddCustomQARequest) (_result *AddCustomQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddCustomQAHeaders{}
+	_result = &AddCustomQAResponse{}
+	_body, _err := client.AddCustomQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddMessageTemplateWithOptions(request *AddMessageTemplateRequest, headers *AddMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *AddMessageTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateDetail)) {
+		body["TemplateDetail"] = request.TemplateDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMessageTemplate"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/addMessageTemplate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddMessageTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddMessageTemplate(request *AddMessageTemplateRequest) (_result *AddMessageTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddMessageTemplateHeaders{}
+	_result = &AddMessageTemplateResponse{}
+	_body, _err := client.AddMessageTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateDisPlayModesWithOptions(tmpReq *AddOrUpdateDisPlayModesRequest, headers *AddOrUpdateDisPlayModesHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateDisPlayModesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddOrUpdateDisPlayModesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotelDeviceModeList)) {
+		request.HotelDeviceModeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotelDeviceModeList, tea.String("HotelDeviceModeList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelDeviceModeListShrink)) {
+		body["HotelDeviceModeList"] = request.HotelDeviceModeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddOrUpdateDisPlayModes"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/addOrUpdateDisPlayModes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddOrUpdateDisPlayModesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateDisPlayModes(request *AddOrUpdateDisPlayModesRequest) (_result *AddOrUpdateDisPlayModesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddOrUpdateDisPlayModesHeaders{}
+	_result = &AddOrUpdateDisPlayModesResponse{}
+	_body, _err := client.AddOrUpdateDisPlayModesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateHotelSettingWithOptions(tmpReq *AddOrUpdateHotelSettingRequest, headers *AddOrUpdateHotelSettingHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateHotelSettingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddOrUpdateHotelSettingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotelDeviceModeList)) {
+		request.HotelDeviceModeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotelDeviceModeList, tea.String("HotelDeviceModeList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotelScreenSaver)) {
+		request.HotelScreenSaverShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotelScreenSaver, tea.String("HotelScreenSaver"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NightMode)) {
+		request.NightModeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NightMode, tea.String("NightMode"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelDeviceModeListShrink)) {
+		body["HotelDeviceModeList"] = request.HotelDeviceModeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelScreenSaverShrink)) {
+		body["HotelScreenSaver"] = request.HotelScreenSaverShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NightModeShrink)) {
+		body["NightMode"] = request.NightModeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettingType)) {
+		body["SettingType"] = request.SettingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddOrUpdateHotelSetting"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/addOrUpdateHotelSetting"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddOrUpdateHotelSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateHotelSetting(request *AddOrUpdateHotelSettingRequest) (_result *AddOrUpdateHotelSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddOrUpdateHotelSettingHeaders{}
+	_result = &AddOrUpdateHotelSettingResponse{}
+	_body, _err := client.AddOrUpdateHotelSettingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateScreenSaverWithOptions(tmpReq *AddOrUpdateScreenSaverRequest, headers *AddOrUpdateScreenSaverHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateScreenSaverResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddOrUpdateScreenSaverShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotelScreenSaver)) {
+		request.HotelScreenSaverShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotelScreenSaver, tea.String("HotelScreenSaver"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelScreenSaverShrink)) {
+		body["HotelScreenSaver"] = request.HotelScreenSaverShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddOrUpdateScreenSaver"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/addOrUpdateScreenSaver"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddOrUpdateScreenSaverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateScreenSaver(request *AddOrUpdateScreenSaverRequest) (_result *AddOrUpdateScreenSaverResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddOrUpdateScreenSaverHeaders{}
+	_result = &AddOrUpdateScreenSaverResponse{}
+	_body, _err := client.AddOrUpdateScreenSaverWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateWelcomeTextWithOptions(request *AddOrUpdateWelcomeTextRequest, headers *AddOrUpdateWelcomeTextHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateWelcomeTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MusicUrl)) {
+		body["MusicUrl"] = request.MusicUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WelcomeText)) {
+		body["WelcomeText"] = request.WelcomeText
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddOrUpdateWelcomeText"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/addOrUpdateWelcomeText"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddOrUpdateWelcomeTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddOrUpdateWelcomeText(request *AddOrUpdateWelcomeTextRequest) (_result *AddOrUpdateWelcomeTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddOrUpdateWelcomeTextHeaders{}
+	_result = &AddOrUpdateWelcomeTextResponse{}
+	_body, _err := client.AddOrUpdateWelcomeTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AuditHotelWithOptions(tmpReq *AuditHotelRequest, headers *AuditHotelHeaders, runtime *util.RuntimeOptions) (_result *AuditHotelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AuditHotelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AuditHotelReq)) {
+		request.AuditHotelReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuditHotelReq, tea.String("AuditHotelReq"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuditHotelReqShrink)) {
+		query["AuditHotelReq"] = request.AuditHotelReqShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuditHotel"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/auditHotel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuditHotelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AuditHotel(request *AuditHotelRequest) (_result *AuditHotelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AuditHotelHeaders{}
+	_result = &AuditHotelResponse{}
+	_body, _err := client.AuditHotelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchAddHotelRoomWithOptions(tmpReq *BatchAddHotelRoomRequest, headers *BatchAddHotelRoomHeaders, runtime *util.RuntimeOptions) (_result *BatchAddHotelRoomResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchAddHotelRoomShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoomNoList)) {
+		request.RoomNoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoomNoList, tea.String("RoomNoList"), tea.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNoListShrink)) {
+		body["RoomNoList"] = request.RoomNoListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchAddHotelRoom"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/batchAddHotelRoom"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchAddHotelRoomResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchAddHotelRoom(request *BatchAddHotelRoomRequest) (_result *BatchAddHotelRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BatchAddHotelRoomHeaders{}
+	_result = &BatchAddHotelRoomResponse{}
+	_body, _err := client.BatchAddHotelRoomWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteHotelRoomWithOptions(tmpReq *BatchDeleteHotelRoomRequest, headers *BatchDeleteHotelRoomHeaders, runtime *util.RuntimeOptions) (_result *BatchDeleteHotelRoomResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchDeleteHotelRoomShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoomNoList)) {
+		request.RoomNoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoomNoList, tea.String("RoomNoList"), tea.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNoListShrink)) {
+		body["RoomNoList"] = request.RoomNoListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchDeleteHotelRoom"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/batchDeleteHotelRoom"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchDeleteHotelRoomResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteHotelRoom(request *BatchDeleteHotelRoomRequest) (_result *BatchDeleteHotelRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BatchDeleteHotelRoomHeaders{}
+	_result = &BatchDeleteHotelRoomResponse{}
+	_body, _err := client.BatchDeleteHotelRoomWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckoutWithAKWithOptions(request *CheckoutWithAKRequest, headers *CheckoutWithAKHeaders, runtime *util.RuntimeOptions) (_result *CheckoutWithAKResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckoutWithAK"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/checkoutWithAK"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckoutWithAKResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckoutWithAK(request *CheckoutWithAKRequest) (_result *CheckoutWithAKResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CheckoutWithAKHeaders{}
+	_result = &CheckoutWithAKResponse{}
+	_body, _err := client.CheckoutWithAKWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChildAccountAuthWithOptions(request *ChildAccountAuthRequest, headers *ChildAccountAuthHeaders, runtime *util.RuntimeOptions) (_result *ChildAccountAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		body["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbOpenId)) {
+		body["TbOpenId"] = request.TbOpenId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChildAccountAuth"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/childAccountAuth"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChildAccountAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChildAccountAuth(request *ChildAccountAuthRequest) (_result *ChildAccountAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ChildAccountAuthHeaders{}
+	_result = &ChildAccountAuthResponse{}
+	_body, _err := client.ChildAccountAuthWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ControlRoomDeviceWithOptions(tmpReq *ControlRoomDeviceRequest, headers *ControlRoomDeviceHeaders, runtime *util.RuntimeOptions) (_result *ControlRoomDeviceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ControlRoomDeviceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Properties)) {
+		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, tea.String("Properties"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cmd)) {
+		body["Cmd"] = request.Cmd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceIndex)) {
+		body["DeviceIndex"] = request.DeviceIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceNumber)) {
+		body["DeviceNumber"] = request.DeviceNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertiesShrink)) {
+		body["Properties"] = request.PropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ControlRoomDevice"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/controlRoomDevice"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ControlRoomDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ControlRoomDevice(request *ControlRoomDeviceRequest) (_result *ControlRoomDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ControlRoomDeviceHeaders{}
+	_result = &ControlRoomDeviceResponse{}
+	_body, _err := client.ControlRoomDeviceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHotelWithOptions(tmpReq *CreateHotelRequest, headers *CreateHotelHeaders, runtime *util.RuntimeOptions) (_result *CreateHotelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHotelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedPks)) {
+		request.RelatedPksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedPks, tea.String("RelatedPks"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EstOpenTime)) {
+		body["EstOpenTime"] = request.EstOpenTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelAddress)) {
+		body["HotelAddress"] = request.HotelAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelEmail)) {
+		body["HotelEmail"] = request.HotelEmail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelName)) {
+		body["HotelName"] = request.HotelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedPk)) {
+		body["RelatedPk"] = request.RelatedPk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedPksShrink)) {
+		body["RelatedPks"] = request.RelatedPksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNum)) {
+		body["RoomNum"] = request.RoomNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbOpenId)) {
+		body["TbOpenId"] = request.TbOpenId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHotel"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/createHotel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHotelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHotel(request *CreateHotelRequest) (_result *CreateHotelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateHotelHeaders{}
+	_result = &CreateHotelResponse{}
+	_body, _err := client.CreateHotelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHotelAlarmWithOptions(tmpReq *CreateHotelAlarmRequest, headers *CreateHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *CreateHotelAlarmResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHotelAlarmShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rooms)) {
+		request.RoomsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rooms, tea.String("Rooms"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleInfo)) {
+		request.ScheduleInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleInfo, tea.String("ScheduleInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MusicType)) {
+		body["MusicType"] = request.MusicType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomsShrink)) {
+		body["Rooms"] = request.RoomsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleInfoShrink)) {
+		body["ScheduleInfo"] = request.ScheduleInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHotelAlarm"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/createHotelAlarm"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHotelAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHotelAlarm(request *CreateHotelAlarmRequest) (_result *CreateHotelAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateHotelAlarmHeaders{}
+	_result = &CreateHotelAlarmResponse{}
+	_body, _err := client.CreateHotelAlarmWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRcuSceneWithOptions(tmpReq *CreateRcuSceneRequest, headers *CreateRcuSceneHeaders, runtime *util.RuntimeOptions) (_result *CreateRcuSceneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateRcuSceneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SceneRelationExtDTO)) {
+		request.SceneRelationExtDTOShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SceneRelationExtDTO, tea.String("SceneRelationExtDTO"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneRelationExtDTOShrink)) {
+		body["SceneRelationExtDTO"] = request.SceneRelationExtDTOShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRcuScene"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/createRcuScene"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRcuSceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRcuScene(request *CreateRcuSceneRequest) (_result *CreateRcuSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateRcuSceneHeaders{}
+	_result = &CreateRcuSceneResponse{}
+	_body, _err := client.CreateRcuSceneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCartoonWithOptions(request *DeleteCartoonRequest, headers *DeleteCartoonHeaders, runtime *util.RuntimeOptions) (_result *DeleteCartoonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCartoon"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/deleteCartoon"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCartoonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCartoon(request *DeleteCartoonRequest) (_result *DeleteCartoonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteCartoonHeaders{}
+	_result = &DeleteCartoonResponse{}
+	_body, _err := client.DeleteCartoonWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomQAWithOptions(tmpReq *DeleteCustomQARequest, headers *DeleteCustomQAHeaders, runtime *util.RuntimeOptions) (_result *DeleteCustomQAResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteCustomQAShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomQAIds)) {
+		request.CustomQAIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomQAIds, tea.String("CustomQAIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomQAIdsShrink)) {
+		body["CustomQAIds"] = request.CustomQAIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/deleteCustomQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomQA(request *DeleteCustomQARequest) (_result *DeleteCustomQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteCustomQAHeaders{}
+	_result = &DeleteCustomQAResponse{}
+	_body, _err := client.DeleteCustomQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHotelAlarmWithOptions(tmpReq *DeleteHotelAlarmRequest, headers *DeleteHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *DeleteHotelAlarmResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteHotelAlarmShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Alarms)) {
+		request.AlarmsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Alarms, tea.String("Alarms"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmsShrink)) {
+		body["Alarms"] = request.AlarmsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHotelAlarm"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/deleteHotelAlarm"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHotelAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHotelAlarm(request *DeleteHotelAlarmRequest) (_result *DeleteHotelAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteHotelAlarmHeaders{}
+	_result = &DeleteHotelAlarmResponse{}
+	_body, _err := client.DeleteHotelAlarmWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHotelSceneBookItemWithOptions(request *DeleteHotelSceneBookItemRequest, headers *DeleteHotelSceneBookItemHeaders, runtime *util.RuntimeOptions) (_result *DeleteHotelSceneBookItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHotelSceneBookItem"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/deleteHotelSceneBookItem"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHotelSceneBookItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHotelSceneBookItem(request *DeleteHotelSceneBookItemRequest) (_result *DeleteHotelSceneBookItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteHotelSceneBookItemHeaders{}
+	_result = &DeleteHotelSceneBookItemResponse{}
+	_body, _err := client.DeleteHotelSceneBookItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHotelSettingWithOptions(request *DeleteHotelSettingRequest, headers *DeleteHotelSettingHeaders, runtime *util.RuntimeOptions) (_result *DeleteHotelSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettingType)) {
+		body["SettingType"] = request.SettingType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHotelSetting"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/deleteHotelSetting"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHotelSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHotelSetting(request *DeleteHotelSettingRequest) (_result *DeleteHotelSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteHotelSettingHeaders{}
+	_result = &DeleteHotelSettingResponse{}
+	_body, _err := client.DeleteHotelSettingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMessageTemplateWithOptions(request *DeleteMessageTemplateRequest, headers *DeleteMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *DeleteMessageTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMessageTemplate"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/deleteMessageTemplate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMessageTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMessageTemplate(request *DeleteMessageTemplateRequest) (_result *DeleteMessageTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteMessageTemplateHeaders{}
+	_result = &DeleteMessageTemplateResponse{}
+	_body, _err := client.DeleteMessageTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRcuSceneWithOptions(request *DeleteRcuSceneRequest, headers *DeleteRcuSceneHeaders, runtime *util.RuntimeOptions) (_result *DeleteRcuSceneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRcuScene"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/deleteRcuScene"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRcuSceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRcuScene(request *DeleteRcuSceneRequest) (_result *DeleteRcuSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteRcuSceneHeaders{}
+	_result = &DeleteRcuSceneResponse{}
+	_body, _err := client.DeleteRcuSceneWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3008,12 +19926,12 @@ func (client *Client) DeviceControlWithOptions(tmpReq *DeviceControlRequest, hea
 	}
 	request := &DeviceControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3062,11 +19980,338 @@ func (client *Client) DeviceControlWithOptions(tmpReq *DeviceControlRequest, hea
 	return _result, _err
 }
 
-func (client *Client) GetHotelHomeBackImageAndModes(request *GetHotelHomeBackImageAndModesRequest) (_result *GetHotelHomeBackImageAndModesResponse, _err error) {
+func (client *Client) DeviceControl(request *DeviceControlRequest) (_result *DeviceControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetHotelHomeBackImageAndModesHeaders{}
-	_result = &GetHotelHomeBackImageAndModesResponse{}
-	_body, _err := client.GetHotelHomeBackImageAndModesWithOptions(request, headers, runtime)
+	headers := &DeviceControlHeaders{}
+	_result = &DeviceControlResponse{}
+	_body, _err := client.DeviceControlWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBasicInfoQAWithOptions(request *GetBasicInfoQARequest, headers *GetBasicInfoQAHeaders, runtime *util.RuntimeOptions) (_result *GetBasicInfoQAResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBasicInfoQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getBasicInfoQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBasicInfoQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBasicInfoQA(request *GetBasicInfoQARequest) (_result *GetBasicInfoQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetBasicInfoQAHeaders{}
+	_result = &GetBasicInfoQAResponse{}
+	_body, _err := client.GetBasicInfoQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCartoonWithOptions(request *GetCartoonRequest, headers *GetCartoonHeaders, runtime *util.RuntimeOptions) (_result *GetCartoonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCartoon"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getCartoon"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCartoonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCartoon(request *GetCartoonRequest) (_result *GetCartoonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetCartoonHeaders{}
+	_result = &GetCartoonResponse{}
+	_body, _err := client.GetCartoonWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelContactByGenieDeviceWithOptions(tmpReq *GetHotelContactByGenieDeviceRequest, headers *GetHotelContactByGenieDeviceHeaders, runtime *util.RuntimeOptions) (_result *GetHotelContactByGenieDeviceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetHotelContactByGenieDeviceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceInfoShrink)) {
+		query["DeviceInfo"] = request.DeviceInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		query["UserInfo"] = request.UserInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelContactByGenieDevice"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelContactByGenieDevice"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelContactByGenieDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelContactByGenieDevice(request *GetHotelContactByGenieDeviceRequest) (_result *GetHotelContactByGenieDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelContactByGenieDeviceHeaders{}
+	_result = &GetHotelContactByGenieDeviceResponse{}
+	_body, _err := client.GetHotelContactByGenieDeviceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelContactByNumberWithOptions(tmpReq *GetHotelContactByNumberRequest, headers *GetHotelContactByNumberHeaders, runtime *util.RuntimeOptions) (_result *GetHotelContactByNumberResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetHotelContactByNumberShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		query["UserInfo"] = request.UserInfoShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		body["Number"] = request.Number
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelContactByNumber"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelContactByNumber"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelContactByNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelContactByNumber(request *GetHotelContactByNumberRequest) (_result *GetHotelContactByNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelContactByNumberHeaders{}
+	_result = &GetHotelContactByNumberResponse{}
+	_body, _err := client.GetHotelContactByNumberWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelContactsWithOptions(tmpReq *GetHotelContactsRequest, headers *GetHotelContactsHeaders, runtime *util.RuntimeOptions) (_result *GetHotelContactsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetHotelContactsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		query["UserInfo"] = request.UserInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelContacts"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelContacts"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelContacts(request *GetHotelContactsRequest) (_result *GetHotelContactsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelContactsHeaders{}
+	_result = &GetHotelContactsResponse{}
+	_body, _err := client.GetHotelContactsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3081,8 +20326,8 @@ func (client *Client) GetHotelHomeBackImageAndModesWithOptions(tmpReq *GetHotelH
 	}
 	request := &GetHotelHomeBackImageAndModesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3127,11 +20372,141 @@ func (client *Client) GetHotelHomeBackImageAndModesWithOptions(tmpReq *GetHotelH
 	return _result, _err
 }
 
-func (client *Client) GetHotelOrderDetail(request *GetHotelOrderDetailRequest) (_result *GetHotelOrderDetailResponse, _err error) {
+func (client *Client) GetHotelHomeBackImageAndModes(request *GetHotelHomeBackImageAndModesRequest) (_result *GetHotelHomeBackImageAndModesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetHotelOrderDetailHeaders{}
-	_result = &GetHotelOrderDetailResponse{}
-	_body, _err := client.GetHotelOrderDetailWithOptions(request, headers, runtime)
+	headers := &GetHotelHomeBackImageAndModesHeaders{}
+	_result = &GetHotelHomeBackImageAndModesResponse{}
+	_body, _err := client.GetHotelHomeBackImageAndModesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelNoticeWithOptions(tmpReq *GetHotelNoticeRequest, headers *GetHotelNoticeHeaders, runtime *util.RuntimeOptions) (_result *GetHotelNoticeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetHotelNoticeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		query["UserInfo"] = request.UserInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelNotice"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelNotice"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelNoticeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelNotice(request *GetHotelNoticeRequest) (_result *GetHotelNoticeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelNoticeHeaders{}
+	_result = &GetHotelNoticeResponse{}
+	_body, _err := client.GetHotelNoticeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelNoticeV2WithOptions(tmpReq *GetHotelNoticeV2Request, headers *GetHotelNoticeV2Headers, runtime *util.RuntimeOptions) (_result *GetHotelNoticeV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetHotelNoticeV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		query["UserInfo"] = request.UserInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelNoticeV2"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelNoticeV2"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelNoticeV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelNoticeV2(request *GetHotelNoticeV2Request) (_result *GetHotelNoticeV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelNoticeV2Headers{}
+	_result = &GetHotelNoticeV2Response{}
+	_body, _err := client.GetHotelNoticeV2WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3146,8 +20521,8 @@ func (client *Client) GetHotelOrderDetailWithOptions(tmpReq *GetHotelOrderDetail
 	}
 	request := &GetHotelOrderDetailShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3192,11 +20567,74 @@ func (client *Client) GetHotelOrderDetailWithOptions(tmpReq *GetHotelOrderDetail
 	return _result, _err
 }
 
-func (client *Client) GetHotelSampleUtterances(request *GetHotelSampleUtterancesRequest) (_result *GetHotelSampleUtterancesResponse, _err error) {
+func (client *Client) GetHotelOrderDetail(request *GetHotelOrderDetailRequest) (_result *GetHotelOrderDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetHotelSampleUtterancesHeaders{}
-	_result = &GetHotelSampleUtterancesResponse{}
-	_body, _err := client.GetHotelSampleUtterancesWithOptions(request, headers, runtime)
+	headers := &GetHotelOrderDetailHeaders{}
+	_result = &GetHotelOrderDetailResponse{}
+	_body, _err := client.GetHotelOrderDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelRoomDeviceWithOptions(request *GetHotelRoomDeviceRequest, headers *GetHotelRoomDeviceHeaders, runtime *util.RuntimeOptions) (_result *GetHotelRoomDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		query["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		query["RoomNo"] = request.RoomNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelRoomDevice"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelRoomDevice"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelRoomDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelRoomDevice(request *GetHotelRoomDeviceRequest) (_result *GetHotelRoomDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelRoomDeviceHeaders{}
+	_result = &GetHotelRoomDeviceResponse{}
+	_body, _err := client.GetHotelRoomDeviceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3211,8 +20649,8 @@ func (client *Client) GetHotelSampleUtterancesWithOptions(tmpReq *GetHotelSample
 	}
 	request := &GetHotelSampleUtterancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3257,11 +20695,78 @@ func (client *Client) GetHotelSampleUtterancesWithOptions(tmpReq *GetHotelSample
 	return _result, _err
 }
 
-func (client *Client) GetHotelScreenSaver(request *GetHotelScreenSaverRequest) (_result *GetHotelScreenSaverResponse, _err error) {
+func (client *Client) GetHotelSampleUtterances(request *GetHotelSampleUtterancesRequest) (_result *GetHotelSampleUtterancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetHotelScreenSaverHeaders{}
-	_result = &GetHotelScreenSaverResponse{}
-	_body, _err := client.GetHotelScreenSaverWithOptions(request, headers, runtime)
+	headers := &GetHotelSampleUtterancesHeaders{}
+	_result = &GetHotelSampleUtterancesResponse{}
+	_body, _err := client.GetHotelSampleUtterancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelSceneItemDetailWithOptions(request *GetHotelSceneItemDetailRequest, headers *GetHotelSceneItemDetailHeaders, runtime *util.RuntimeOptions) (_result *GetHotelSceneItemDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
+		body["ItemId"] = request.ItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelSceneItemDetail"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelSceneItemDetail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelSceneItemDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelSceneItemDetail(request *GetHotelSceneItemDetailRequest) (_result *GetHotelSceneItemDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelSceneItemDetailHeaders{}
+	_result = &GetHotelSceneItemDetailResponse{}
+	_body, _err := client.GetHotelSceneItemDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3276,8 +20781,8 @@ func (client *Client) GetHotelScreenSaverWithOptions(tmpReq *GetHotelScreenSaver
 	}
 	request := &GetHotelScreenSaverShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3322,11 +20827,1053 @@ func (client *Client) GetHotelScreenSaverWithOptions(tmpReq *GetHotelScreenSaver
 	return _result, _err
 }
 
-func (client *Client) ListHotelControlDevice(request *ListHotelControlDeviceRequest) (_result *ListHotelControlDeviceResponse, _err error) {
+func (client *Client) GetHotelScreenSaver(request *GetHotelScreenSaverRequest) (_result *GetHotelScreenSaverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListHotelControlDeviceHeaders{}
-	_result = &ListHotelControlDeviceResponse{}
-	_body, _err := client.ListHotelControlDeviceWithOptions(request, headers, runtime)
+	headers := &GetHotelScreenSaverHeaders{}
+	_result = &GetHotelScreenSaverResponse{}
+	_body, _err := client.GetHotelScreenSaverWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelScreenSaverStyleWithOptions(request *GetHotelScreenSaverStyleRequest, headers *GetHotelScreenSaverStyleHeaders, runtime *util.RuntimeOptions) (_result *GetHotelScreenSaverStyleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelScreenSaverStyle"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelScreenSaverStyle"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelScreenSaverStyleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelScreenSaverStyle(request *GetHotelScreenSaverStyleRequest) (_result *GetHotelScreenSaverStyleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelScreenSaverStyleHeaders{}
+	_result = &GetHotelScreenSaverStyleResponse{}
+	_body, _err := client.GetHotelScreenSaverStyleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetHotelSettingWithOptions(request *GetHotelSettingRequest, headers *GetHotelSettingHeaders, runtime *util.RuntimeOptions) (_result *GetHotelSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettingType)) {
+		body["SettingType"] = request.SettingType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotelSetting"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelSetting"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotelSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotelSetting(request *GetHotelSettingRequest) (_result *GetHotelSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotelSettingHeaders{}
+	_result = &GetHotelSettingResponse{}
+	_body, _err := client.GetHotelSettingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRelationProductListWithOptions(headers *GetRelationProductListHeaders, runtime *util.RuntimeOptions) (_result *GetRelationProductListResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRelationProductList"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getRelationProductList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRelationProductListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRelationProductList() (_result *GetRelationProductListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetRelationProductListHeaders{}
+	_result = &GetRelationProductListResponse{}
+	_body, _err := client.GetRelationProductListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUnionIdWithOptions(request *GetUnionIdRequest, headers *GetUnionIdHeaders, runtime *util.RuntimeOptions) (_result *GetUnionIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncodeKey)) {
+		body["EncodeKey"] = request.EncodeKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncodeType)) {
+		body["EncodeType"] = request.EncodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdType)) {
+		body["IdType"] = request.IdType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUnionId"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getUnionId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUnionIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUnionId(request *GetUnionIdRequest) (_result *GetUnionIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUnionIdHeaders{}
+	_result = &GetUnionIdResponse{}
+	_body, _err := client.GetUnionIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWelcomeTextAndMusicWithOptions(request *GetWelcomeTextAndMusicRequest, headers *GetWelcomeTextAndMusicHeaders, runtime *util.RuntimeOptions) (_result *GetWelcomeTextAndMusicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWelcomeTextAndMusic"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getWelcomeTextAndMusic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWelcomeTextAndMusicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWelcomeTextAndMusic(request *GetWelcomeTextAndMusicRequest) (_result *GetWelcomeTextAndMusicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetWelcomeTextAndMusicHeaders{}
+	_result = &GetWelcomeTextAndMusicResponse{}
+	_body, _err := client.GetWelcomeTextAndMusicWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) HotelQrBindWithOptions(request *HotelQrBindRequest, headers *HotelQrBindHeaders, runtime *util.RuntimeOptions) (_result *HotelQrBindResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtInfo)) {
+		body["ExtInfo"] = request.ExtInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelQrBind"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/hotelQrBind"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelQrBindResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) HotelQrBind(request *HotelQrBindRequest) (_result *HotelQrBindResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelQrBindHeaders{}
+	_result = &HotelQrBindResponse{}
+	_body, _err := client.HotelQrBindWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportHotelConfigWithOptions(tmpReq *ImportHotelConfigRequest, headers *ImportHotelConfigHeaders, runtime *util.RuntimeOptions) (_result *ImportHotelConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportHotelConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ImportHotelConfig)) {
+		request.ImportHotelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImportHotelConfig, tea.String("ImportHotelConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportHotelConfigShrink)) {
+		body["ImportHotelConfig"] = request.ImportHotelConfigShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportHotelConfig"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/importHotelConfig"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportHotelConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportHotelConfig(request *ImportHotelConfigRequest) (_result *ImportHotelConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ImportHotelConfigHeaders{}
+	_result = &ImportHotelConfigResponse{}
+	_body, _err := client.ImportHotelConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportRoomControlDevicesWithOptions(tmpReq *ImportRoomControlDevicesRequest, headers *ImportRoomControlDevicesHeaders, runtime *util.RuntimeOptions) (_result *ImportRoomControlDevicesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportRoomControlDevicesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LocationDevices)) {
+		request.LocationDevicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LocationDevices, tea.String("LocationDevices"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableInfraredDeviceImport)) {
+		body["EnableInfraredDeviceImport"] = request.EnableInfraredDeviceImport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationDevicesShrink)) {
+		body["LocationDevices"] = request.LocationDevicesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportRoomControlDevices"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/importRoomControlDevices"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportRoomControlDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportRoomControlDevices(request *ImportRoomControlDevicesRequest) (_result *ImportRoomControlDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ImportRoomControlDevicesHeaders{}
+	_result = &ImportRoomControlDevicesResponse{}
+	_body, _err := client.ImportRoomControlDevicesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportRoomGenieScenesWithOptions(tmpReq *ImportRoomGenieScenesRequest, headers *ImportRoomGenieScenesHeaders, runtime *util.RuntimeOptions) (_result *ImportRoomGenieScenesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportRoomGenieScenesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SceneList)) {
+		request.SceneListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SceneList, tea.String("SceneList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneListShrink)) {
+		body["SceneList"] = request.SceneListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportRoomGenieScenes"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/importRoomGenieScenes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportRoomGenieScenesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportRoomGenieScenes(request *ImportRoomGenieScenesRequest) (_result *ImportRoomGenieScenesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ImportRoomGenieScenesHeaders{}
+	_result = &ImportRoomGenieScenesResponse{}
+	_body, _err := client.ImportRoomGenieScenesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertHotelSceneBookItemWithOptions(tmpReq *InsertHotelSceneBookItemRequest, headers *InsertHotelSceneBookItemHeaders, runtime *util.RuntimeOptions) (_result *InsertHotelSceneBookItemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsertHotelSceneBookItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AddHotelSceneItemReq)) {
+		request.AddHotelSceneItemReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddHotelSceneItemReq, tea.String("AddHotelSceneItemReq"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddHotelSceneItemReqShrink)) {
+		query["AddHotelSceneItemReq"] = request.AddHotelSceneItemReqShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertHotelSceneBookItem"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/insertHotelSceneBookItem"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertHotelSceneBookItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertHotelSceneBookItem(request *InsertHotelSceneBookItemRequest) (_result *InsertHotelSceneBookItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsertHotelSceneBookItemHeaders{}
+	_result = &InsertHotelSceneBookItemResponse{}
+	_body, _err := client.InsertHotelSceneBookItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InvokeRobotPushWithOptions(request *InvokeRobotPushRequest, headers *InvokeRobotPushHeaders, runtime *util.RuntimeOptions) (_result *InvokeRobotPushResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushType)) {
+		body["PushType"] = request.PushType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InvokeRobotPush"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/invokeRobotPush"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InvokeRobotPushResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InvokeRobotPush(request *InvokeRobotPushRequest) (_result *InvokeRobotPushResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InvokeRobotPushHeaders{}
+	_result = &InvokeRobotPushResponse{}
+	_body, _err := client.InvokeRobotPushWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAllProvincesWithOptions(headers *ListAllProvincesHeaders, runtime *util.RuntimeOptions) (_result *ListAllProvincesResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAllProvinces"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listAllProvinces"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAllProvincesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAllProvinces() (_result *ListAllProvincesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListAllProvincesHeaders{}
+	_result = &ListAllProvincesResponse{}
+	_body, _err := client.ListAllProvincesWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCitiesByProvinceWithOptions(request *ListCitiesByProvinceRequest, headers *ListCitiesByProvinceHeaders, runtime *util.RuntimeOptions) (_result *ListCitiesByProvinceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		body["Province"] = request.Province
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCitiesByProvince"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listCitiesByProvince"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCitiesByProvinceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCitiesByProvince(request *ListCitiesByProvinceRequest) (_result *ListCitiesByProvinceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListCitiesByProvinceHeaders{}
+	_result = &ListCitiesByProvinceResponse{}
+	_body, _err := client.ListCitiesByProvinceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomQAWithOptions(tmpReq *ListCustomQARequest, headers *ListCustomQAHeaders, runtime *util.RuntimeOptions) (_result *ListCustomQAResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListCustomQAShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		body["Page"] = request.PageShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listCustomQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomQA(request *ListCustomQARequest) (_result *ListCustomQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListCustomQAHeaders{}
+	_result = &ListCustomQAResponse{}
+	_body, _err := client.ListCustomQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDialogueTemplateWithOptions(request *ListDialogueTemplateRequest, headers *ListDialogueTemplateHeaders, runtime *util.RuntimeOptions) (_result *ListDialogueTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDialogueTemplate"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listDialogueTemplate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDialogueTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDialogueTemplate(request *ListDialogueTemplateRequest) (_result *ListDialogueTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListDialogueTemplateHeaders{}
+	_result = &ListDialogueTemplateResponse{}
+	_body, _err := client.ListDialogueTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotelAlarmWithOptions(tmpReq *ListHotelAlarmRequest, headers *ListHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *ListHotelAlarmResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListHotelAlarmShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rooms)) {
+		request.RoomsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rooms, tea.String("Rooms"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomsShrink)) {
+		body["Rooms"] = request.RoomsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotelAlarm"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/getHotelAlarmList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotelAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotelAlarm(request *ListHotelAlarmRequest) (_result *ListHotelAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListHotelAlarmHeaders{}
+	_result = &ListHotelAlarmResponse{}
+	_body, _err := client.ListHotelAlarmWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3341,8 +21888,8 @@ func (client *Client) ListHotelControlDeviceWithOptions(tmpReq *ListHotelControl
 	}
 	request := &ListHotelControlDeviceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3387,11 +21934,109 @@ func (client *Client) ListHotelControlDeviceWithOptions(tmpReq *ListHotelControl
 	return _result, _err
 }
 
-func (client *Client) ListHotelOrder(request *ListHotelOrderRequest) (_result *ListHotelOrderResponse, _err error) {
+func (client *Client) ListHotelControlDevice(request *ListHotelControlDeviceRequest) (_result *ListHotelControlDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListHotelOrderHeaders{}
-	_result = &ListHotelOrderResponse{}
-	_body, _err := client.ListHotelOrderWithOptions(request, headers, runtime)
+	headers := &ListHotelControlDeviceHeaders{}
+	_result = &ListHotelControlDeviceResponse{}
+	_body, _err := client.ListHotelControlDeviceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotelInfoWithOptions(headers *ListHotelInfoHeaders, runtime *util.RuntimeOptions) (_result *ListHotelInfoResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotelInfo"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listHotelInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotelInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotelInfo() (_result *ListHotelInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListHotelInfoHeaders{}
+	_result = &ListHotelInfoResponse{}
+	_body, _err := client.ListHotelInfoWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotelMessageTemplateWithOptions(headers *ListHotelMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *ListHotelMessageTemplateResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotelMessageTemplate"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listHotelMessageTemplate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotelMessageTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotelMessageTemplate() (_result *ListHotelMessageTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListHotelMessageTemplateHeaders{}
+	_result = &ListHotelMessageTemplateResponse{}
+	_body, _err := client.ListHotelMessageTemplateWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3406,12 +22051,12 @@ func (client *Client) ListHotelOrderWithOptions(tmpReq *ListHotelOrderRequest, h
 	}
 	request := &ListHotelOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3460,11 +22105,145 @@ func (client *Client) ListHotelOrderWithOptions(tmpReq *ListHotelOrderRequest, h
 	return _result, _err
 }
 
-func (client *Client) ListHotelSceneItem(request *ListHotelSceneItemRequest) (_result *ListHotelSceneItemResponse, _err error) {
+func (client *Client) ListHotelOrder(request *ListHotelOrderRequest) (_result *ListHotelOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListHotelSceneItemHeaders{}
-	_result = &ListHotelSceneItemResponse{}
-	_body, _err := client.ListHotelSceneItemWithOptions(request, headers, runtime)
+	headers := &ListHotelOrderHeaders{}
+	_result = &ListHotelOrderResponse{}
+	_body, _err := client.ListHotelOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotelRoomsWithOptions(request *ListHotelRoomsRequest, headers *ListHotelRoomsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelRoomsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotelRooms"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listHotelRooms"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotelRoomsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotelRooms(request *ListHotelRoomsRequest) (_result *ListHotelRoomsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListHotelRoomsHeaders{}
+	_result = &ListHotelRoomsResponse{}
+	_body, _err := client.ListHotelRoomsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotelSceneBookItemsWithOptions(tmpReq *ListHotelSceneBookItemsRequest, headers *ListHotelSceneBookItemsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelSceneBookItemsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListHotelSceneBookItemsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		query["Page"] = request.PageShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotelSceneBookItems"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listHotelSceneBookItems"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotelSceneBookItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotelSceneBookItems(request *ListHotelSceneBookItemsRequest) (_result *ListHotelSceneBookItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListHotelSceneBookItemsHeaders{}
+	_result = &ListHotelSceneBookItemsResponse{}
+	_body, _err := client.ListHotelSceneBookItemsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3479,12 +22258,12 @@ func (client *Client) ListHotelSceneItemWithOptions(tmpReq *ListHotelSceneItemRe
 	}
 	request := &ListHotelSceneItemShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3533,11 +22312,82 @@ func (client *Client) ListHotelSceneItemWithOptions(tmpReq *ListHotelSceneItemRe
 	return _result, _err
 }
 
-func (client *Client) ListHotelServiceCategory(request *ListHotelServiceCategoryRequest) (_result *ListHotelServiceCategoryResponse, _err error) {
+func (client *Client) ListHotelSceneItem(request *ListHotelSceneItemRequest) (_result *ListHotelSceneItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListHotelServiceCategoryHeaders{}
-	_result = &ListHotelServiceCategoryResponse{}
-	_body, _err := client.ListHotelServiceCategoryWithOptions(request, headers, runtime)
+	headers := &ListHotelSceneItemHeaders{}
+	_result = &ListHotelSceneItemResponse{}
+	_body, _err := client.ListHotelSceneItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotelSceneItemsWithOptions(tmpReq *ListHotelSceneItemsRequest, headers *ListHotelSceneItemsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelSceneItemsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListHotelSceneItemsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ListHotelSceneReq)) {
+		request.ListHotelSceneReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListHotelSceneReq, tea.String("ListHotelSceneReq"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ListHotelSceneReqShrink)) {
+		query["ListHotelSceneReq"] = request.ListHotelSceneReqShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotelSceneItems"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listHotelSceneItems"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotelSceneItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotelSceneItems(request *ListHotelSceneItemsRequest) (_result *ListHotelSceneItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListHotelSceneItemsHeaders{}
+	_result = &ListHotelSceneItemsResponse{}
+	_body, _err := client.ListHotelSceneItemsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3552,8 +22402,8 @@ func (client *Client) ListHotelServiceCategoryWithOptions(tmpReq *ListHotelServi
 	}
 	request := &ListHotelServiceCategoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3598,11 +22448,737 @@ func (client *Client) ListHotelServiceCategoryWithOptions(tmpReq *ListHotelServi
 	return _result, _err
 }
 
-func (client *Client) QueryDeviceStatus(request *QueryDeviceStatusRequest) (_result *QueryDeviceStatusResponse, _err error) {
+func (client *Client) ListHotelServiceCategory(request *ListHotelServiceCategoryRequest) (_result *ListHotelServiceCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &QueryDeviceStatusHeaders{}
-	_result = &QueryDeviceStatusResponse{}
-	_body, _err := client.QueryDeviceStatusWithOptions(request, headers, runtime)
+	headers := &ListHotelServiceCategoryHeaders{}
+	_result = &ListHotelServiceCategoryResponse{}
+	_body, _err := client.ListHotelServiceCategoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotelsWithOptions(tmpReq *ListHotelsRequest, headers *ListHotelsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListHotelsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		query["Page"] = request.PageShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotels"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listHotels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotels(request *ListHotelsRequest) (_result *ListHotelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListHotelsHeaders{}
+	_result = &ListHotelsResponse{}
+	_body, _err := client.ListHotelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInfraredDeviceBrandsWithOptions(request *ListInfraredDeviceBrandsRequest, headers *ListInfraredDeviceBrandsHeaders, runtime *util.RuntimeOptions) (_result *ListInfraredDeviceBrandsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceProvider)) {
+		body["ServiceProvider"] = request.ServiceProvider
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInfraredDeviceBrands"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listInfraredDeviceBrands"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInfraredDeviceBrandsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInfraredDeviceBrands(request *ListInfraredDeviceBrandsRequest) (_result *ListInfraredDeviceBrandsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListInfraredDeviceBrandsHeaders{}
+	_result = &ListInfraredDeviceBrandsResponse{}
+	_body, _err := client.ListInfraredDeviceBrandsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInfraredRemoteControllersWithOptions(request *ListInfraredRemoteControllersRequest, headers *ListInfraredRemoteControllersHeaders, runtime *util.RuntimeOptions) (_result *ListInfraredRemoteControllersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Brand)) {
+		body["Brand"] = request.Brand
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		body["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		body["Province"] = request.Province
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceProvider)) {
+		body["ServiceProvider"] = request.ServiceProvider
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInfraredRemoteControllers"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listInfraredRemoteControllers"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInfraredRemoteControllersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInfraredRemoteControllers(request *ListInfraredRemoteControllersRequest) (_result *ListInfraredRemoteControllersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListInfraredRemoteControllersHeaders{}
+	_result = &ListInfraredRemoteControllersResponse{}
+	_body, _err := client.ListInfraredRemoteControllersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSTBServiceProvidersWithOptions(request *ListSTBServiceProvidersRequest, headers *ListSTBServiceProvidersHeaders, runtime *util.RuntimeOptions) (_result *ListSTBServiceProvidersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		body["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		body["Province"] = request.Province
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSTBServiceProviders"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listSTBServiceProviders"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSTBServiceProvidersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSTBServiceProviders(request *ListSTBServiceProvidersRequest) (_result *ListSTBServiceProvidersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListSTBServiceProvidersHeaders{}
+	_result = &ListSTBServiceProvidersResponse{}
+	_body, _err := client.ListSTBServiceProvidersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSceneCategoryWithOptions(request *ListSceneCategoryRequest, headers *ListSceneCategoryHeaders, runtime *util.RuntimeOptions) (_result *ListSceneCategoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSceneCategory"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listSceneCategory"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSceneCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSceneCategory(request *ListSceneCategoryRequest) (_result *ListSceneCategoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListSceneCategoryHeaders{}
+	_result = &ListSceneCategoryResponse{}
+	_body, _err := client.ListSceneCategoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListServiceQAWithOptions(tmpReq *ListServiceQARequest, headers *ListServiceQAHeaders, runtime *util.RuntimeOptions) (_result *ListServiceQAResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListServiceQAShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Active)) {
+		body["Active"] = request.Active
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		body["Page"] = request.PageShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listServiceQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceQA(request *ListServiceQARequest) (_result *ListServiceQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListServiceQAHeaders{}
+	_result = &ListServiceQAResponse{}
+	_body, _err := client.ListServiceQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTicketsWithOptions(tmpReq *ListTicketsRequest, headers *ListTicketsHeaders, runtime *util.RuntimeOptions) (_result *ListTicketsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTicketsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDesc)) {
+		body["IsDesc"] = request.IsDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsNeedCallback)) {
+		body["IsNeedCallback"] = request.IsNeedCallback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsNeedCharges)) {
+		body["IsNeedCharges"] = request.IsNeedCharges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		body["Page"] = request.PageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortField)) {
+		body["SortField"] = request.SortField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTickets"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/listTickets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTicketsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTickets(request *ListTicketsRequest) (_result *ListTicketsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListTicketsHeaders{}
+	_result = &ListTicketsResponse{}
+	_body, _err := client.ListTicketsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PageGetHotelRoomDevicesWithOptions(request *PageGetHotelRoomDevicesRequest, headers *PageGetHotelRoomDevicesHeaders, runtime *util.RuntimeOptions) (_result *PageGetHotelRoomDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PageGetHotelRoomDevices"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/pageGetHotelRoomDevices"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PageGetHotelRoomDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PageGetHotelRoomDevices(request *PageGetHotelRoomDevicesRequest) (_result *PageGetHotelRoomDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &PageGetHotelRoomDevicesHeaders{}
+	_result = &PageGetHotelRoomDevicesResponse{}
+	_body, _err := client.PageGetHotelRoomDevicesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PushHotelMessageWithOptions(tmpReq *PushHotelMessageRequest, headers *PushHotelMessageHeaders, runtime *util.RuntimeOptions) (_result *PushHotelMessageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PushHotelMessageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PushHotelMessageReq)) {
+		request.PushHotelMessageReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PushHotelMessageReq, tea.String("PushHotelMessageReq"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PushHotelMessageReqShrink)) {
+		query["PushHotelMessageReq"] = request.PushHotelMessageReqShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushHotelMessage"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/pushHotelMessage"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PushHotelMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PushHotelMessage(request *PushHotelMessageRequest) (_result *PushHotelMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &PushHotelMessageHeaders{}
+	_result = &PushHotelMessageResponse{}
+	_body, _err := client.PushHotelMessageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PushWelcomeTextAndMusicWithOptions(tmpReq *PushWelcomeTextAndMusicRequest, headers *PushWelcomeTextAndMusicHeaders, runtime *util.RuntimeOptions) (_result *PushWelcomeTextAndMusicResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PushWelcomeTextAndMusicShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateVariable)) {
+		request.TemplateVariableShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateVariable, tea.String("TemplateVariable"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVariableShrink)) {
+		body["TemplateVariable"] = request.TemplateVariableShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushWelcomeTextAndMusic"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/pushWelcomeTextAndMusic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PushWelcomeTextAndMusicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PushWelcomeTextAndMusic(request *PushWelcomeTextAndMusicRequest) (_result *PushWelcomeTextAndMusicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &PushWelcomeTextAndMusicHeaders{}
+	_result = &PushWelcomeTextAndMusicResponse{}
+	_body, _err := client.PushWelcomeTextAndMusicWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3617,12 +23193,12 @@ func (client *Client) QueryDeviceStatusWithOptions(tmpReq *QueryDeviceStatusRequ
 	}
 	request := &QueryDeviceStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3671,11 +23247,11 @@ func (client *Client) QueryDeviceStatusWithOptions(tmpReq *QueryDeviceStatusRequ
 	return _result, _err
 }
 
-func (client *Client) QueryHotelProduct(request *QueryHotelProductRequest) (_result *QueryHotelProductResponse, _err error) {
+func (client *Client) QueryDeviceStatus(request *QueryDeviceStatusRequest) (_result *QueryDeviceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &QueryHotelProductHeaders{}
-	_result = &QueryHotelProductResponse{}
-	_body, _err := client.QueryHotelProductWithOptions(request, headers, runtime)
+	headers := &QueryDeviceStatusHeaders{}
+	_result = &QueryDeviceStatusResponse{}
+	_body, _err := client.QueryDeviceStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3683,20 +23259,93 @@ func (client *Client) QueryHotelProduct(request *QueryHotelProductRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) QueryHotelProductWithOptions(tmpReq *QueryHotelProductRequest, headers *QueryHotelProductHeaders, runtime *util.RuntimeOptions) (_result *QueryHotelProductResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) QueryHotelRoomDetailWithOptions(request *QueryHotelRoomDetailRequest, headers *QueryHotelRoomDetailHeaders, runtime *util.RuntimeOptions) (_result *QueryHotelRoomDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &QueryHotelProductShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mac)) {
+		body["Mac"] = request.Mac
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		body["Sn"] = request.Sn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryHotelRoomDetail"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/queryHotelRoomDetail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryHotelRoomDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryHotelRoomDetail(request *QueryHotelRoomDetailRequest) (_result *QueryHotelRoomDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryHotelRoomDetailHeaders{}
+	_result = &QueryHotelRoomDetailResponse{}
+	_body, _err := client.QueryHotelRoomDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRoomControlDevicesWithOptions(request *QueryRoomControlDevicesRequest, headers *QueryRoomControlDevicesHeaders, runtime *util.RuntimeOptions) (_result *QueryRoomControlDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
-		query["UserInfo"] = request.UserInfoShrink
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		query["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		query["RoomNo"] = request.RoomNo
 	}
 
 	realHeaders := make(map[string]*string)
@@ -3717,17 +23366,17 @@ func (client *Client) QueryHotelProductWithOptions(tmpReq *QueryHotelProductRequ
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("QueryHotelProduct"),
+		Action:      tea.String("QueryRoomControlDevices"),
 		Version:     tea.String("ip_1.0"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1.0/ip/queryHotelProduct"),
+		Pathname:    tea.String("/v1.0/ip/queryRoomControlDevices"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &QueryHotelProductResponse{}
+	_result = &QueryRoomControlDevicesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3736,11 +23385,293 @@ func (client *Client) QueryHotelProductWithOptions(tmpReq *QueryHotelProductRequ
 	return _result, _err
 }
 
-func (client *Client) RoomCheckOut(request *RoomCheckOutRequest) (_result *RoomCheckOutResponse, _err error) {
+func (client *Client) QueryRoomControlDevices(request *QueryRoomControlDevicesRequest) (_result *QueryRoomControlDevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &RoomCheckOutHeaders{}
-	_result = &RoomCheckOutResponse{}
-	_body, _err := client.RoomCheckOutWithOptions(request, headers, runtime)
+	headers := &QueryRoomControlDevicesHeaders{}
+	_result = &QueryRoomControlDevicesResponse{}
+	_body, _err := client.QueryRoomControlDevicesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySceneListWithOptions(tmpReq *QuerySceneListRequest, headers *QuerySceneListHeaders, runtime *util.RuntimeOptions) (_result *QuerySceneListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QuerySceneListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SceneStates)) {
+		request.SceneStatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SceneStates, tea.String("SceneStates"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SceneTypes)) {
+		request.SceneTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SceneTypes, tea.String("SceneTypes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateInfoIds)) {
+		request.TemplateInfoIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateInfoIds, tea.String("TemplateInfoIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneStatesShrink)) {
+		body["SceneStates"] = request.SceneStatesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneTypesShrink)) {
+		body["SceneTypes"] = request.SceneTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateInfoIdsShrink)) {
+		body["TemplateInfoIds"] = request.TemplateInfoIdsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySceneList"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/querySceneList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySceneListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySceneList(request *QuerySceneListRequest) (_result *QuerySceneListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QuerySceneListHeaders{}
+	_result = &QuerySceneListResponse{}
+	_body, _err := client.QuerySceneListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveChildAccountAuthWithOptions(request *RemoveChildAccountAuthRequest, headers *RemoveChildAccountAuthHeaders, runtime *util.RuntimeOptions) (_result *RemoveChildAccountAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildAccountName)) {
+		body["ChildAccountName"] = request.ChildAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbOpenId)) {
+		body["TbOpenId"] = request.TbOpenId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveChildAccountAuth"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/removeChildAccountAuth"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveChildAccountAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveChildAccountAuth(request *RemoveChildAccountAuthRequest) (_result *RemoveChildAccountAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RemoveChildAccountAuthHeaders{}
+	_result = &RemoveChildAccountAuthResponse{}
+	_body, _err := client.RemoveChildAccountAuthWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveHotelWithOptions(request *RemoveHotelRequest, headers *RemoveHotelHeaders, runtime *util.RuntimeOptions) (_result *RemoveHotelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbOpenId)) {
+		body["TbOpenId"] = request.TbOpenId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveHotel"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/removeHotel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveHotelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveHotel(request *RemoveHotelRequest) (_result *RemoveHotelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RemoveHotelHeaders{}
+	_result = &RemoveHotelResponse{}
+	_body, _err := client.RemoveHotelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResetWelcomeTextAndMusicWithOptions(request *ResetWelcomeTextAndMusicRequest, headers *ResetWelcomeTextAndMusicHeaders, runtime *util.RuntimeOptions) (_result *ResetWelcomeTextAndMusicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetWelcomeTextAndMusic"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/resetWelcomeTextAndMusic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetWelcomeTextAndMusicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetWelcomeTextAndMusic(request *ResetWelcomeTextAndMusicRequest) (_result *ResetWelcomeTextAndMusicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ResetWelcomeTextAndMusicHeaders{}
+	_result = &ResetWelcomeTextAndMusicResponse{}
+	_body, _err := client.ResetWelcomeTextAndMusicWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3755,12 +23686,12 @@ func (client *Client) RoomCheckOutWithOptions(tmpReq *RoomCheckOutRequest, heade
 	}
 	request := &RoomCheckOutShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3809,11 +23740,11 @@ func (client *Client) RoomCheckOutWithOptions(tmpReq *RoomCheckOutRequest, heade
 	return _result, _err
 }
 
-func (client *Client) SubmitHotelOrder(request *SubmitHotelOrderRequest) (_result *SubmitHotelOrderResponse, _err error) {
+func (client *Client) RoomCheckOut(request *RoomCheckOutRequest) (_result *RoomCheckOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &SubmitHotelOrderHeaders{}
-	_result = &SubmitHotelOrderResponse{}
-	_body, _err := client.SubmitHotelOrderWithOptions(request, headers, runtime)
+	headers := &RoomCheckOutHeaders{}
+	_result = &RoomCheckOutResponse{}
+	_body, _err := client.RoomCheckOutWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3828,12 +23759,12 @@ func (client *Client) SubmitHotelOrderWithOptions(tmpReq *SubmitHotelOrderReques
 	}
 	request := &SubmitHotelOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -3879,5 +23810,934 @@ func (client *Client) SubmitHotelOrderWithOptions(tmpReq *SubmitHotelOrderReques
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitHotelOrder(request *SubmitHotelOrderRequest) (_result *SubmitHotelOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SubmitHotelOrderHeaders{}
+	_result = &SubmitHotelOrderResponse{}
+	_body, _err := client.SubmitHotelOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncDeviceStatusWithAkWithOptions(request *SyncDeviceStatusWithAkRequest, headers *SyncDeviceStatusWithAkHeaders, runtime *util.RuntimeOptions) (_result *SyncDeviceStatusWithAkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryCnName)) {
+		body["CategoryCnName"] = request.CategoryCnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryEnName)) {
+		body["CategoryEnName"] = request.CategoryEnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Location)) {
+		body["Location"] = request.Location
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationCnName)) {
+		body["LocationCnName"] = request.LocationCnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		body["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Switch)) {
+		body["Switch"] = request.Switch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FanSpeed)) {
+		body["fanSpeed"] = request.FanSpeed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomTemperature)) {
+		body["roomTemperature"] = request.RoomTemperature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Temperature)) {
+		body["temperature"] = request.Temperature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["value"] = request.Value
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncDeviceStatusWithAk"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/syncDeviceStatusWithAk"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncDeviceStatusWithAkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncDeviceStatusWithAk(request *SyncDeviceStatusWithAkRequest) (_result *SyncDeviceStatusWithAkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SyncDeviceStatusWithAkHeaders{}
+	_result = &SyncDeviceStatusWithAkResponse{}
+	_body, _err := client.SyncDeviceStatusWithAkWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicInfoQAWithOptions(request *UpdateBasicInfoQARequest, headers *UpdateBasicInfoQAHeaders, runtime *util.RuntimeOptions) (_result *UpdateBasicInfoQAResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckInTime)) {
+		body["CheckInTime"] = request.CheckInTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckOutTime)) {
+		body["CheckOutTime"] = request.CheckOutTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelAddress)) {
+		body["HotelAddress"] = request.HotelAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelIntroduction)) {
+		body["HotelIntroduction"] = request.HotelIntroduction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelMember)) {
+		body["HotelMember"] = request.HotelMember
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelService)) {
+		body["HotelService"] = request.HotelService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParkingExpenses)) {
+		body["ParkingExpenses"] = request.ParkingExpenses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParkingPosition)) {
+		body["ParkingPosition"] = request.ParkingPosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WifiName)) {
+		body["WifiName"] = request.WifiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WifiPassword)) {
+		body["WifiPassword"] = request.WifiPassword
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBasicInfoQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateBasicInfoQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBasicInfoQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicInfoQA(request *UpdateBasicInfoQARequest) (_result *UpdateBasicInfoQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateBasicInfoQAHeaders{}
+	_result = &UpdateBasicInfoQAResponse{}
+	_body, _err := client.UpdateBasicInfoQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomQAWithOptions(tmpReq *UpdateCustomQARequest, headers *UpdateCustomQAHeaders, runtime *util.RuntimeOptions) (_result *UpdateCustomQAResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateCustomQAShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Answers)) {
+		request.AnswersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Answers, tea.String("Answers"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.KeyWords)) {
+		request.KeyWordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KeyWords, tea.String("KeyWords"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SupplementaryQuestions)) {
+		request.SupplementaryQuestionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SupplementaryQuestions, tea.String("SupplementaryQuestions"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnswersShrink)) {
+		body["Answers"] = request.AnswersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomQAId)) {
+		body["CustomQAId"] = request.CustomQAId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyWordsShrink)) {
+		body["KeyWords"] = request.KeyWordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MajorQuestion)) {
+		body["MajorQuestion"] = request.MajorQuestion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplementaryQuestionsShrink)) {
+		body["SupplementaryQuestions"] = request.SupplementaryQuestionsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateCustomQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomQA(request *UpdateCustomQARequest) (_result *UpdateCustomQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateCustomQAHeaders{}
+	_result = &UpdateCustomQAResponse{}
+	_body, _err := client.UpdateCustomQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHotelWithOptions(tmpReq *UpdateHotelRequest, headers *UpdateHotelHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHotelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedPks)) {
+		request.RelatedPksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedPks, tea.String("RelatedPks"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EstOpenTime)) {
+		body["EstOpenTime"] = request.EstOpenTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelAddress)) {
+		body["HotelAddress"] = request.HotelAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelEmail)) {
+		body["HotelEmail"] = request.HotelEmail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelName)) {
+		body["HotelName"] = request.HotelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedPksShrink)) {
+		body["RelatedPks"] = request.RelatedPksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNum)) {
+		body["RoomNum"] = request.RoomNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbOpenId)) {
+		body["TbOpenId"] = request.TbOpenId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHotel"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateHotel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHotelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHotel(request *UpdateHotelRequest) (_result *UpdateHotelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateHotelHeaders{}
+	_result = &UpdateHotelResponse{}
+	_body, _err := client.UpdateHotelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHotelAlarmWithOptions(tmpReq *UpdateHotelAlarmRequest, headers *UpdateHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelAlarmResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHotelAlarmShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Alarms)) {
+		request.AlarmsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Alarms, tea.String("Alarms"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleInfo)) {
+		request.ScheduleInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleInfo, tea.String("ScheduleInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmsShrink)) {
+		body["Alarms"] = request.AlarmsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleInfoShrink)) {
+		body["ScheduleInfo"] = request.ScheduleInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHotelAlarm"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateHotelAlarm"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHotelAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHotelAlarm(request *UpdateHotelAlarmRequest) (_result *UpdateHotelAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateHotelAlarmHeaders{}
+	_result = &UpdateHotelAlarmResponse{}
+	_body, _err := client.UpdateHotelAlarmWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHotelSceneBookItemWithOptions(tmpReq *UpdateHotelSceneBookItemRequest, headers *UpdateHotelSceneBookItemHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelSceneBookItemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHotelSceneBookItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateHotelSceneBookReq)) {
+		request.UpdateHotelSceneBookReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateHotelSceneBookReq, tea.String("UpdateHotelSceneBookReq"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UpdateHotelSceneBookReqShrink)) {
+		query["UpdateHotelSceneBookReq"] = request.UpdateHotelSceneBookReqShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHotelSceneBookItem"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateHotelSceneBookItem"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHotelSceneBookItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHotelSceneBookItem(request *UpdateHotelSceneBookItemRequest) (_result *UpdateHotelSceneBookItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateHotelSceneBookItemHeaders{}
+	_result = &UpdateHotelSceneBookItemResponse{}
+	_body, _err := client.UpdateHotelSceneBookItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHotelSceneItemWithOptions(tmpReq *UpdateHotelSceneItemRequest, headers *UpdateHotelSceneItemHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelSceneItemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHotelSceneItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateHotelSceneOperateReq)) {
+		request.UpdateHotelSceneOperateReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateHotelSceneOperateReq, tea.String("UpdateHotelSceneOperateReq"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateHotelSceneReq)) {
+		request.UpdateHotelSceneReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateHotelSceneReq, tea.String("UpdateHotelSceneReq"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UpdateHotelSceneOperateReqShrink)) {
+		query["UpdateHotelSceneOperateReq"] = request.UpdateHotelSceneOperateReqShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateHotelSceneReqShrink)) {
+		query["UpdateHotelSceneReq"] = request.UpdateHotelSceneReqShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHotelSceneItem"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateHotelSceneItem"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHotelSceneItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHotelSceneItem(request *UpdateHotelSceneItemRequest) (_result *UpdateHotelSceneItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateHotelSceneItemHeaders{}
+	_result = &UpdateHotelSceneItemResponse{}
+	_body, _err := client.UpdateHotelSceneItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageTemplateWithOptions(request *UpdateMessageTemplateRequest, headers *UpdateMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *UpdateMessageTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateDetail)) {
+		body["TemplateDetail"] = request.TemplateDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMessageTemplate"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateMessageTemplate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMessageTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageTemplate(request *UpdateMessageTemplateRequest) (_result *UpdateMessageTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateMessageTemplateHeaders{}
+	_result = &UpdateMessageTemplateResponse{}
+	_body, _err := client.UpdateMessageTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRcuSceneWithOptions(tmpReq *UpdateRcuSceneRequest, headers *UpdateRcuSceneHeaders, runtime *util.RuntimeOptions) (_result *UpdateRcuSceneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateRcuSceneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SceneRelationExtDTO)) {
+		request.SceneRelationExtDTOShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SceneRelationExtDTO, tea.String("SceneRelationExtDTO"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneRelationExtDTOShrink)) {
+		body["SceneRelationExtDTO"] = request.SceneRelationExtDTOShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRcuScene"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateRcuScene"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateRcuSceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRcuScene(request *UpdateRcuSceneRequest) (_result *UpdateRcuSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateRcuSceneHeaders{}
+	_result = &UpdateRcuSceneResponse{}
+	_body, _err := client.UpdateRcuSceneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceQAWithOptions(request *UpdateServiceQARequest, headers *UpdateServiceQAHeaders, runtime *util.RuntimeOptions) (_result *UpdateServiceQAResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Answer)) {
+		body["Answer"] = request.Answer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceQAId)) {
+		body["ServiceQAId"] = request.ServiceQAId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsActive)) {
+		body["isActive"] = request.IsActive
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceQA"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateServiceQA"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceQAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceQA(request *UpdateServiceQARequest) (_result *UpdateServiceQAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateServiceQAHeaders{}
+	_result = &UpdateServiceQAResponse{}
+	_body, _err := client.UpdateServiceQAWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTicketWithOptions(request *UpdateTicketRequest, headers *UpdateTicketHeaders, runtime *util.RuntimeOptions) (_result *UpdateTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupKey)) {
+		body["GroupKey"] = request.GroupKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTicket"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/updateTicket"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTicket(request *UpdateTicketRequest) (_result *UpdateTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateTicketHeaders{}
+	_result = &UpdateTicketResponse{}
+	_body, _err := client.UpdateTicketWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
